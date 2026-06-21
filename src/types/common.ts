@@ -2,7 +2,7 @@ export type Layer = 'normative' | 'descriptive' | 'prescriptive'
 
 export type TheoryContext = 'ideal' | 'nonideal' | 'mixed'
 
-export type ResponseType = 'likert5' | 'likert7'
+export type ResponseType = 'likert5' | 'likert7' | 'statementChoice'
 
 /**
  * Which question pool an item belongs to. Pools nest: quick is a subset of

@@ -1,6 +1,6 @@
 import type { Answer, Question } from '../types'
 
-const LIKERT_MAX: Record<Question['responseType'], number> = {
+const LIKERT_MAX: Record<'likert5' | 'likert7', number> = {
   likert5: 2,
   likert7: 3,
 }
@@ -11,6 +11,7 @@ const LIKERT_MAX: Record<Question['responseType'], number> = {
  */
 export function normalizeAnswer(question: Question, answer: Answer): number | null {
   if (answer.value === 'dont_know') return null
+  if (question.responseType === 'statementChoice') return 1
 
   const max = LIKERT_MAX[question.responseType]
   let unit = answer.value / max

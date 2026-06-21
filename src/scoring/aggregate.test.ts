@@ -50,6 +50,20 @@ const questions: Question[] = [
     tier: 'extensive',
     axisWeights: [{ axisId: 'presc-axis', weight: 1 }],
   },
+  {
+    id: 'q-statement-a',
+    prompt: 'e',
+    domain: 'state-legitimacy',
+    layer: 'normative',
+    theoryContext: 'mixed',
+    responseType: 'statementChoice',
+    tier: 'extensive',
+    axisWeights: [],
+    statementOptions: [
+      { id: 'opt0', text: 'first', axisWeights: [{ axisId: 'norm-axis', weight: 1 }] },
+      { id: 'opt1', text: 'second', axisWeights: [{ axisId: 'norm-axis', weight: -0.5 }] },
+    ],
+  },
 ]
 
 function answer(questionId: string, value: Answer['value']): AnswerMap {
@@ -121,6 +135,16 @@ describe('computeAxisScores', () => {
     const answers: AnswerMap = { 'q-presc-a': { questionId: 'q-presc-a', value: 3 } }
     const score = computeAxisScores(questions, answers, axes).find((s) => s.axisId === 'presc-axis')!
     expect(score.avgSalience).toBeUndefined()
+  })
+
+  it('scores a statementChoice question using the chosen option\'s own axis weight', () => {
+    const firstChosen = answer('q-statement-a', 0)
+    const secondChosen = answer('q-statement-a', 1)
+    const firstScore = computeAxisScores(questions, firstChosen, axes).find((s) => s.axisId === 'norm-axis')!
+    const secondScore = computeAxisScores(questions, secondChosen, axes).find((s) => s.axisId === 'norm-axis')!
+    expect(firstScore.normalized).toBeCloseTo(1)
+    expect(secondScore.normalized).toBeCloseTo(-1)
+    expect(firstScore.itemCount).toBe(1)
   })
 })
 

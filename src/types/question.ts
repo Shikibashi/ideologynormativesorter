@@ -12,6 +12,13 @@ export interface IdeologyAffinity {
   weight: number
 }
 
+/** One "which best represents your view" option for a statementChoice question. */
+export interface StatementOption {
+  id: string
+  text: string
+  axisWeights: AxisWeight[]
+}
+
 export interface Question {
   id: QuestionId
   prompt: string
@@ -22,6 +29,8 @@ export interface Question {
   /** Smallest question pool this item belongs to; quick ⊂ moderate ⊂ extensive. */
   tier: QuizTier
   axisWeights: AxisWeight[]
+  /** Required when responseType is statementChoice; each option carries its own axisWeights instead of the question-level scale. */
+  statementOptions?: StatementOption[]
   /** When true, the raw answer value is inverted before axis weights are applied. */
   reverseScored?: boolean
   ideologyAffinities?: IdeologyAffinity[]

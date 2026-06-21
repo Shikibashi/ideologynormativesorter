@@ -120,18 +120,33 @@ export function QuizScreen({ questions, onComplete }: QuizScreenProps) {
 
       <p className="prompt">{question.prompt}</p>
 
-      <div className="scale" role="group" aria-label="Agreement scale">
-        {scaleValues(question.responseType).map((value) => (
-          <button
-            key={value}
-            type="button"
-            className={`scale-button${selected?.value === value ? ' selected' : ''}`}
-            onClick={() => chooseValue(value)}
-          >
-            {scaleLabels(question.responseType)[value]}
-          </button>
-        ))}
-      </div>
+      {question.responseType === 'statementChoice' ? (
+        <div className="statement-list" role="group" aria-label="Which best represents your view">
+          {question.statementOptions?.map((option, optionIndex) => (
+            <button
+              key={option.id}
+              type="button"
+              className={`statement-button${selected?.value === optionIndex ? ' selected' : ''}`}
+              onClick={() => chooseValue(optionIndex)}
+            >
+              {option.text}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className="scale" role="group" aria-label="Agreement scale">
+          {scaleValues(question.responseType).map((value) => (
+            <button
+              key={value}
+              type="button"
+              className={`scale-button${selected?.value === value ? ' selected' : ''}`}
+              onClick={() => chooseValue(value)}
+            >
+              {scaleLabels(question.responseType)[value]}
+            </button>
+          ))}
+        </div>
+      )}
 
       {question.allowDontKnow && (
         <button

@@ -139,6 +139,34 @@
   background: var(--accent-bg);
 }
 
+.statement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.statement-button {
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-h);
+  font-size: 15px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.statement-button:hover {
+  border-color: var(--accent-border);
+}
+
+.statement-button.selected {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
 .dont-know-button {
   align-self: flex-start;
   padding: 8px 14px;

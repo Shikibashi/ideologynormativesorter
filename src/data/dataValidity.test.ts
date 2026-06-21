@@ -87,6 +87,34 @@ describe('questions', () => {
   })
 })
 
+describe('statementChoice questions', () => {
+  const statementQuestions = questions.filter((q) => q.responseType === 'statementChoice')
+
+  it('has at least one statement-choice item', () => {
+    expect(statementQuestions.length).toBeGreaterThan(0)
+  })
+
+  it('provides at least 3 options per item, each referencing valid same-layer axes', () => {
+    for (const question of statementQuestions) {
+      expect(question.statementOptions?.length ?? 0, `${question.id} needs statementOptions`).toBeGreaterThanOrEqual(3)
+      for (const option of question.statementOptions ?? []) {
+        for (const weight of option.axisWeights) {
+          const axis = axisById.get(weight.axisId)
+          expect(axis, `${question.id}/${option.id} references unknown axis ${weight.axisId}`).toBeDefined()
+          expect(axis!.layer, `${question.id}/${option.id} (${question.layer}) references ${weight.axisId} (${axis!.layer})`).toBe(question.layer)
+        }
+      }
+    }
+  })
+
+  it('has no duplicate option ids within an item', () => {
+    for (const question of statementQuestions) {
+      const ids = (question.statementOptions ?? []).map((o) => o.id)
+      expect(new Set(ids).size, `${question.id} has duplicate option ids`).toBe(ids.length)
+    }
+  })
+})
+
 describe('quiz tiers', () => {
   it('nests quick within moderate within extensive', () => {
     const quick = new Set(questionsForTier('quick').map((q) => q.id))

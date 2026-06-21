@@ -1,8 +1,21 @@
-import type { AnswerMap, Axis, AxisScore, Question, ScoreBreakdown } from '../types'
+import type { Answer, AnswerMap, Axis, AxisId, AxisScore, AxisWeight, Question, ScoreBreakdown } from '../types'
 import { normalizeAnswer, salienceFactor } from './normalize'
 
 function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value))
+}
+
+/**
+ * statementChoice questions carry their axis weights on the chosen option
+ * rather than on the question itself, since each option pushes different
+ * axes by design (it's a pick, not a scaled agreement).
+ */
+function axisWeightFor(question: Question, answer: Answer, axisId: AxisId): AxisWeight | undefined {
+  if (question.responseType !== 'statementChoice') {
+    return question.axisWeights.find((w) => w.axisId === axisId)
+  }
+  if (typeof answer.value !== 'number') return undefined
+  return question.statementOptions?.[answer.value]?.axisWeights.find((w) => w.axisId === axisId)
 }
 
 /**
@@ -22,11 +35,11 @@ export function computeAxisScores(questions: Question[], answers: AnswerMap, axe
     let salienceCount = 0
 
     for (const question of questions) {
-      const axisWeight = question.axisWeights.find((w) => w.axisId === axis.id)
-      if (!axisWeight) continue
-
       const answer = answers[question.id]
       if (!answer) continue
+
+      const axisWeight = axisWeightFor(question, answer, axis.id)
+      if (!axisWeight) continue
 
       const unit = normalizeAnswer(question, answer)
       if (unit === null) continue

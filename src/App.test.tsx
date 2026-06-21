@@ -5,9 +5,13 @@ import { questionsForTier } from './data/questions'
 
 const quickQuestions = questionsForTier('quick')
 
+function answerOptionButtons(): HTMLElement[] {
+  return Array.from(document.querySelectorAll<HTMLElement>('.scale-button, .statement-button'))
+}
+
 function clickScaleAndAnySalienceFollowUp(index: number) {
-  const scaleButtons = screen.getAllByRole('button', { name: /agree|disagree|neutral/i })
-  fireEvent.click(scaleButtons[index])
+  const optionButtons = answerOptionButtons()
+  fireEvent.click(optionButtons[index] ?? optionButtons[0])
 
   const salienceButtons = screen.queryAllByRole('button', { name: /^(low|medium|high)$/i })
   if (salienceButtons.length > 0) {
@@ -25,8 +29,8 @@ describe('App', () => {
 
     for (let i = 0; i < quickQuestions.length; i++) {
       expect(screen.getByText(`Question ${i + 1} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
-      const scaleButtons = screen.getAllByRole('button', { name: /agree|disagree|neutral/i })
-      clickScaleAndAnySalienceFollowUp(Math.floor(scaleButtons.length / 2))
+      const optionButtons = answerOptionButtons()
+      clickScaleAndAnySalienceFollowUp(Math.floor(optionButtons.length / 2))
     }
 
     expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
@@ -64,8 +68,7 @@ describe('App', () => {
       clickScaleAndAnySalienceFollowUp(0)
     }
 
-    const scaleButtons = screen.getAllByRole('button', { name: /agree|disagree|neutral/i })
-    fireEvent.click(scaleButtons[0])
+    fireEvent.click(answerOptionButtons()[0])
     fireEvent.click(screen.getByRole('button', { name: /^skip$/i }))
     expect(screen.getByText(`Question ${ratedIndex + 2} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
   })

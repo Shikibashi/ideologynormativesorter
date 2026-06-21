@@ -1,9 +1,10 @@
 import type { Question } from '../types'
+import { statementQuestions } from './statementQuestions'
 
 const CONFIDENCE_PROMPT = 'How confident are you in this empirical claim?'
 const PRIORITY_PROMPT = 'How high a priority is this relative to other reforms?'
 
-export const questions: Question[] = [
+const baseQuestions: Question[] = [
   // --- State legitimacy ---
   {
     id: 'q0001',
@@ -6024,6 +6025,8 @@ export const questions: Question[] = [
     confidencePrompt: CONFIDENCE_PROMPT,
   },
 ]
+
+export const questions: Question[] = [...baseQuestions, ...statementQuestions]
 
 export const questionById = new Map(questions.map((q) => [q.id, q]))
 
