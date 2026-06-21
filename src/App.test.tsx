@@ -1,9 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
 import { questionsForTier } from './data/questions'
+import { encodeAnswers } from './share'
 
 const quickQuestions = questionsForTier('quick')
+
+afterEach(() => {
+  window.history.replaceState(null, '', '/')
+})
 
 function answerOptionButtons(): HTMLElement[] {
   return Array.from(document.querySelectorAll<HTMLElement>('.scale-button, .statement-button'))
@@ -71,5 +76,27 @@ describe('App', () => {
     fireEvent.click(answerOptionButtons()[0])
     fireEvent.click(screen.getByRole('button', { name: /^skip$/i }))
     expect(screen.getByText(`Question ${ratedIndex + 2} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
+  })
+
+  it('lands directly on results when loaded with a shared #r= link', () => {
+    const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+    window.history.replaceState(null, '', `/#r=${encoded}`)
+
+    render(<App />)
+
+    expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
+  })
+
+  it('copies a shareable link to the clipboard from the results screen', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
+
+    const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+    window.history.replaceState(null, '', `/#r=${encoded}`)
+    render(<App />)
+
+    fireEvent.click(screen.getByRole('button', { name: /copy link to this result/i }))
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining('#r='))
+    await screen.findByRole('button', { name: /link copied/i })
   })
 })

@@ -167,6 +167,11 @@
   background: var(--accent-bg);
 }
 
+.copy-link-button {
+  align-self: flex-start;
+  padding: 8px 14px;
+}
+
 .dont-know-button {
   align-self: flex-start;
   padding: 8px 14px;

@@ -1,10 +1,13 @@
-import type { Axis, Domain, FactionModule, ResultProfile } from '../types'
+import { useState } from 'react'
+import { buildShareUrl } from '../share'
+import type { AnswerMap, Axis, Domain, FactionModule, ResultProfile } from '../types'
 import { AxisBar } from './AxisBar'
 
 interface ResultsScreenProps {
   result: ResultProfile
   axes: Axis[]
   domains: Domain[]
+  answers: AnswerMap
   suggestedModules: FactionModule[]
   onStartModule: (module: FactionModule) => void
   onRestart: () => void
@@ -16,9 +19,18 @@ const LAYER_TITLES = {
   prescriptive: 'Prescriptive profile — what you think should be done now',
 } as const
 
-export function ResultsScreen({ result, axes, domains, suggestedModules, onStartModule, onRestart }: ResultsScreenProps) {
+export function ResultsScreen({ result, axes, domains, answers, suggestedModules, onStartModule, onRestart }: ResultsScreenProps) {
   const axisById = new Map(axes.map((a) => [a.id, a]))
   const domainById = new Map(domains.map((d) => [d.id, d]))
+  const [copied, setCopied] = useState(false)
+
+  function handleCopyLink() {
+    const url = buildShareUrl(answers)
+    navigator.clipboard.writeText(url).then(
+      () => setCopied(true),
+      () => setCopied(false),
+    )
+  }
 
   return (
     <section className="screen results-screen">
@@ -27,6 +39,10 @@ export function ResultsScreen({ result, axes, domains, suggestedModules, onStart
         These three profiles are the actual result. The nearest-label section further down is a secondary, approximate
         summary &mdash; most real positions don't reduce cleanly to a single label.
       </p>
+
+      <button type="button" className="scale-button copy-link-button" onClick={handleCopyLink}>
+        {copied ? 'Link copied' : 'Copy link to this result'}
+      </button>
 
       {(['normative', 'descriptive', 'prescriptive'] as const).map((layer) => (
         <div className="result-block" key={layer}>

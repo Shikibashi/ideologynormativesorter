@@ -10,6 +10,7 @@ import { labels } from './data/labels'
 import { moduleQuestionById } from './data/moduleQuestions'
 import { questions, questionsForTier } from './data/questions'
 import { buildResultProfile, suggestModules } from './scoring'
+import { readSharedAnswers } from './share'
 import type { AnswerMap, FactionModule, QuizTier, ResultProfile } from './types'
 
 type Stage = 'intro' | 'quiz' | 'results'
@@ -21,10 +22,13 @@ const TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
 const ALL_SCORABLE_QUESTIONS = [...questions, ...moduleQuestionById.values()]
 
 function App() {
-  const [stage, setStage] = useState<Stage>('intro')
+  const [sharedAnswers] = useState<AnswerMap | null>(() => readSharedAnswers())
+  const [stage, setStage] = useState<Stage>(sharedAnswers ? 'results' : 'intro')
   const [activeQuestions, setActiveQuestions] = useState(questions)
-  const [answers, setAnswers] = useState<AnswerMap>({})
-  const [result, setResult] = useState<ResultProfile | null>(null)
+  const [answers, setAnswers] = useState<AnswerMap>(sharedAnswers ?? {})
+  const [result, setResult] = useState<ResultProfile | null>(() =>
+    sharedAnswers ? buildResultProfile(ALL_SCORABLE_QUESTIONS, sharedAnswers, axes, labels) : null,
+  )
   const [activeModule, setActiveModule] = useState<FactionModule | null>(null)
   const [completedModuleIds, setCompletedModuleIds] = useState<Set<string>>(new Set())
 
@@ -68,6 +72,7 @@ function App() {
   }
 
   function handleRestart() {
+    if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search)
     setResult(null)
     setAnswers({})
     setCompletedModuleIds(new Set())
@@ -88,6 +93,7 @@ function App() {
       result={result}
       axes={axes}
       domains={domains}
+      answers={answers}
       suggestedModules={suggestedModules}
       onStartModule={handleStartModule}
       onRestart={handleRestart}
