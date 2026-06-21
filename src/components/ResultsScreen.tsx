@@ -1,10 +1,12 @@
-import type { Axis, Domain, ResultProfile } from '../types'
+import type { Axis, Domain, FactionModule, ResultProfile } from '../types'
 import { AxisBar } from './AxisBar'
 
 interface ResultsScreenProps {
   result: ResultProfile
   axes: Axis[]
   domains: Domain[]
+  suggestedModules: FactionModule[]
+  onStartModule: (module: FactionModule) => void
   onRestart: () => void
 }
 
@@ -14,7 +16,7 @@ const LAYER_TITLES = {
   prescriptive: 'Prescriptive profile — what you think should be done now',
 } as const
 
-export function ResultsScreen({ result, axes, domains, onRestart }: ResultsScreenProps) {
+export function ResultsScreen({ result, axes, domains, suggestedModules, onStartModule, onRestart }: ResultsScreenProps) {
   const axisById = new Map(axes.map((a) => [a.id, a]))
   const domainById = new Map(domains.map((d) => [d.id, d]))
 
@@ -77,6 +79,29 @@ export function ResultsScreen({ result, axes, domains, onRestart }: ResultsScree
           <ul className="confounded-list">
             {result.confoundedLabels.map((flag) => (
               <li key={flag.labelId}>{flag.reason}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {suggestedModules.length > 0 && (
+        <div className="result-block">
+          <h2>Go deeper</h2>
+          <p className="muted">
+            Based on your nearest labels, these follow-up modules can distinguish currents within that broad position. Each
+            adds a handful of questions and refines your result &mdash; you don't have to take any of them.
+          </p>
+          <ul className="module-list">
+            {suggestedModules.map((module) => (
+              <li key={module.id} className="module-item">
+                <div className="module-item-header">
+                  <strong>{module.name}</strong>
+                  <button type="button" className="scale-button" onClick={() => onStartModule(module)}>
+                    Take this module ({module.questionIds.length} questions)
+                  </button>
+                </div>
+                <p className="muted">{module.description}</p>
+              </li>
             ))}
           </ul>
         </div>

@@ -5,8 +5,15 @@ interface AxisBarProps {
   score: AxisScore
 }
 
+function salienceBucket(avgSalience: number): string {
+  if (avgSalience < 2.34) return 'low'
+  if (avgSalience < 3.67) return 'medium'
+  return 'high'
+}
+
 export function AxisBar({ axis, score }: AxisBarProps) {
   const percent = ((score.normalized + 1) / 2) * 100
+  const salienceLabel = axis.layer === 'descriptive' ? 'confidence' : axis.layer === 'prescriptive' ? 'priority' : null
 
   return (
     <div className="axis-bar">
@@ -22,6 +29,11 @@ export function AxisBar({ axis, score }: AxisBarProps) {
         <span>{axis.negativePole}</span>
         <span>{axis.positivePole}</span>
       </div>
+      {salienceLabel && score.avgSalience !== undefined && (
+        <p className="axis-bar-salience muted">
+          Average {salienceLabel}: {salienceBucket(score.avgSalience)}
+        </p>
+      )}
     </div>
   )
 }

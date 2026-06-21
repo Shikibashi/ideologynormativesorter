@@ -9,6 +9,8 @@ export interface AxisScore {
   /** raw / sum(|weights|), clamped to -1..1. */
   normalized: number
   itemCount: number
+  /** Mean 1-5 confidence (descriptive) or priority (prescriptive) across rated items, if any were rated. */
+  avgSalience?: number
 }
 
 export interface ScoreBreakdown {

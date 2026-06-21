@@ -19,3 +19,22 @@ export function normalizeAnswer(question: Question, answer: Answer): number | nu
 
   return question.reverseScored ? -unit : unit
 }
+
+/**
+ * Scales a contribution by how strongly the respondent holds it: confidence
+ * for descriptive (empirical) items, priority for prescriptive (policy)
+ * items. 1-5 maps to 0.2..1 so a low-confidence/low-priority answer still
+ * counts, just much less. Normative items and unrated answers get full
+ * weight (1).
+ */
+export function salienceFactor(question: Question, answer: Answer): number {
+  const rating = question.layer === 'descriptive' ? answer.confidence : question.layer === 'prescriptive' ? answer.priority : undefined
+  if (rating === undefined) return 1
+  return clampUnit(rating / 5)
+}
+
+function clampUnit(value: number): number {
+  if (value > 1) return 1
+  if (value < 0.2) return 0.2
+  return value
+}

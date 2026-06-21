@@ -94,6 +94,34 @@ describe('computeAxisScores', () => {
     expect(scores.find((s) => s.axisId === 'desc-axis')!.itemCount).toBe(1)
     expect(scores.find((s) => s.axisId === 'presc-axis')!.itemCount).toBe(1)
   })
+
+  it('shrinks a descriptive contribution toward 0 when confidence is low', () => {
+    const lowConfidence: AnswerMap = { 'q-desc-a': { questionId: 'q-desc-a', value: 3, confidence: 1 } }
+    const highConfidence: AnswerMap = { 'q-desc-a': { questionId: 'q-desc-a', value: 3, confidence: 5 } }
+    const lowScore = computeAxisScores(questions, lowConfidence, axes).find((s) => s.axisId === 'desc-axis')!
+    const highScore = computeAxisScores(questions, highConfidence, axes).find((s) => s.axisId === 'desc-axis')!
+    expect(highScore.normalized).toBeCloseTo(1)
+    expect(lowScore.normalized).toBeCloseTo(1)
+    expect(lowScore.raw).toBeLessThan(highScore.raw)
+    expect(lowScore.avgSalience).toBe(1)
+    expect(highScore.avgSalience).toBe(5)
+  })
+
+  it('shrinks a prescriptive contribution toward 0 when priority is low', () => {
+    const lowPriority: AnswerMap = { 'q-presc-a': { questionId: 'q-presc-a', value: 3, priority: 1 } }
+    const highPriority: AnswerMap = { 'q-presc-a': { questionId: 'q-presc-a', value: 3, priority: 5 } }
+    const lowScore = computeAxisScores(questions, lowPriority, axes).find((s) => s.axisId === 'presc-axis')!
+    const highScore = computeAxisScores(questions, highPriority, axes).find((s) => s.axisId === 'presc-axis')!
+    expect(lowScore.raw).toBeLessThan(highScore.raw)
+    expect(lowScore.avgSalience).toBe(1)
+    expect(highScore.avgSalience).toBe(5)
+  })
+
+  it('leaves avgSalience undefined when no item provided a rating', () => {
+    const answers: AnswerMap = { 'q-presc-a': { questionId: 'q-presc-a', value: 3 } }
+    const score = computeAxisScores(questions, answers, axes).find((s) => s.axisId === 'presc-axis')!
+    expect(score.avgSalience).toBeUndefined()
+  })
 })
 
 describe('computeScoreBreakdown', () => {

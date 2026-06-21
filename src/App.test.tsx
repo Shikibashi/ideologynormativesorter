@@ -5,6 +5,16 @@ import { questionsForTier } from './data/questions'
 
 const quickQuestions = questionsForTier('quick')
 
+function clickScaleAndAnySalienceFollowUp(index: number) {
+  const scaleButtons = screen.getAllByRole('button', { name: /agree|disagree|neutral/i })
+  fireEvent.click(scaleButtons[index])
+
+  const salienceButtons = screen.queryAllByRole('button', { name: /^(low|medium|high)$/i })
+  if (salienceButtons.length > 0) {
+    fireEvent.click(salienceButtons[1])
+  }
+}
+
 describe('App', () => {
   it('walks through intro, the quick quiz, and renders results', () => {
     render(<App />)
@@ -16,7 +26,7 @@ describe('App', () => {
     for (let i = 0; i < quickQuestions.length; i++) {
       expect(screen.getByText(`Question ${i + 1} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
       const scaleButtons = screen.getAllByRole('button', { name: /agree|disagree|neutral/i })
-      fireEvent.click(scaleButtons[Math.floor(scaleButtons.length / 2)])
+      clickScaleAndAnySalienceFollowUp(Math.floor(scaleButtons.length / 2))
     }
 
     expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
@@ -36,12 +46,27 @@ describe('App', () => {
 
     const firstDescriptiveIndex = quickQuestions.findIndex((q) => q.allowDontKnow)
     for (let i = 0; i < firstDescriptiveIndex; i++) {
-      const scaleButtons = screen.getAllByRole('button', { name: /agree|disagree|neutral/i })
-      fireEvent.click(scaleButtons[0])
+      clickScaleAndAnySalienceFollowUp(0)
     }
 
     expect(screen.getByText(`Question ${firstDescriptiveIndex + 1} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: /i don't know/i }))
     expect(screen.getByText(`Question ${firstDescriptiveIndex + 2} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
+  })
+
+  it('lets a confidence/priority rating be skipped without losing the primary answer', () => {
+    render(<App />)
+    fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
+    fireEvent.click(screen.getByRole('button', { name: /begin/i }))
+
+    const ratedIndex = quickQuestions.findIndex((q) => q.layer !== 'normative')
+    for (let i = 0; i < ratedIndex; i++) {
+      clickScaleAndAnySalienceFollowUp(0)
+    }
+
+    const scaleButtons = screen.getAllByRole('button', { name: /agree|disagree|neutral/i })
+    fireEvent.click(scaleButtons[0])
+    fireEvent.click(screen.getByRole('button', { name: /^skip$/i }))
+    expect(screen.getByText(`Question ${ratedIndex + 2} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
   })
 })

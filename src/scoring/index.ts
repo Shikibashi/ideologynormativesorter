@@ -3,10 +3,11 @@ import { computeScoreBreakdown } from './aggregate'
 import { computeIdealNonIdealGaps } from './gap'
 import { computeConfoundedLabels, computeLabelMatches } from './labelMatch'
 
-export { normalizeAnswer } from './normalize'
+export { normalizeAnswer, salienceFactor } from './normalize'
 export { computeAxisScores, computeScoreBreakdown, axisScoreMap } from './aggregate'
 export { computeIdealNonIdealGaps } from './gap'
 export { computeLabelMatches, computeConfoundedLabels } from './labelMatch'
+export { suggestModules } from './moduleSuggestions'
 
 export function buildResultProfile(questions: Question[], answers: AnswerMap, axes: Axis[], labels: IdeologyLabel[]): ResultProfile {
   const scores = computeScoreBreakdown(questions, answers, axes)

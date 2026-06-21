@@ -217,6 +217,11 @@
   gap: 8px;
 }
 
+.axis-bar-salience {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
 .gap-list,
 .label-list,
 .confounded-list {
@@ -227,4 +232,31 @@
 .label-list li,
 .confounded-list li {
   margin-bottom: 8px;
+}
+
+.module-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.module-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.module-item-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.module-item-header .scale-button {
+  flex: 0 0 auto;
+  padding: 6px 12px;
 }

@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import type { Answer, AnswerMap, Question } from '../types'
 
+const SALIENCE_LEVELS: { label: string; value: number }[] = [
+  { label: 'Low', value: 1 },
+  { label: 'Medium', value: 3 },
+  { label: 'High', value: 5 },
+]
+
 const LIKERT_LABELS: Record<number, string> = {
   '-3': 'Strongly disagree',
   '-2': 'Disagree',
@@ -35,19 +41,71 @@ interface QuizScreenProps {
 export function QuizScreen({ questions, onComplete }: QuizScreenProps) {
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState<AnswerMap>({})
+  const [pendingValue, setPendingValue] = useState<Answer['value'] | null>(null)
 
   const question = questions[index]
   const selected = answers[question.id]
   const isLast = index === questions.length - 1
 
-  function recordAndAdvance(value: Answer['value']) {
-    const next: AnswerMap = { ...answers, [question.id]: { questionId: question.id, value } }
+  const salienceField = question.layer === 'descriptive' ? 'confidence' : question.layer === 'prescriptive' ? 'priority' : null
+  const salienceQuestion = pendingValue !== null && pendingValue !== 'dont_know' ? salienceField : null
+
+  function commit(value: Answer['value'], rating?: number) {
+    const answer: Answer = { questionId: question.id, value }
+    if (salienceField === 'confidence' && rating !== undefined) answer.confidence = rating
+    if (salienceField === 'priority' && rating !== undefined) answer.priority = rating
+
+    const next: AnswerMap = { ...answers, [question.id]: answer }
     setAnswers(next)
+    setPendingValue(null)
     if (isLast) {
       onComplete(next)
     } else {
       setIndex(index + 1)
     }
+  }
+
+  function chooseValue(value: Answer['value']) {
+    if (value !== 'dont_know' && salienceField) {
+      setPendingValue(value)
+    } else {
+      commit(value)
+    }
+  }
+
+  function goBack() {
+    setPendingValue(null)
+    setIndex(index - 1)
+  }
+
+  if (salienceQuestion) {
+    const prompt = salienceQuestion === 'confidence' ? question.confidencePrompt : question.priorityPrompt
+    return (
+      <section className="screen quiz-screen">
+        <div className="progress-track">
+          <div className="progress-fill" style={{ width: `${((index + 1) / questions.length) * 100}%` }} />
+        </div>
+        <p className="muted">
+          Question {index + 1} of {questions.length} &middot; {salienceQuestion}
+        </p>
+        <p className="prompt">{prompt}</p>
+        <div className="scale" role="group" aria-label={`${salienceQuestion} rating`}>
+          {SALIENCE_LEVELS.map((level) => (
+            <button
+              key={level.value}
+              type="button"
+              className="scale-button"
+              onClick={() => commit(pendingValue as Answer['value'], level.value)}
+            >
+              {level.label}
+            </button>
+          ))}
+        </div>
+        <button type="button" className="back-link" onClick={() => commit(pendingValue as Answer['value'])}>
+          Skip
+        </button>
+      </section>
+    )
   }
 
   return (
@@ -68,7 +126,7 @@ export function QuizScreen({ questions, onComplete }: QuizScreenProps) {
             key={value}
             type="button"
             className={`scale-button${selected?.value === value ? ' selected' : ''}`}
-            onClick={() => recordAndAdvance(value)}
+            onClick={() => chooseValue(value)}
           >
             {scaleLabels(question.responseType)[value]}
           </button>
@@ -79,14 +137,14 @@ export function QuizScreen({ questions, onComplete }: QuizScreenProps) {
         <button
           type="button"
           className={`dont-know-button${selected?.value === 'dont_know' ? ' selected' : ''}`}
-          onClick={() => recordAndAdvance('dont_know')}
+          onClick={() => chooseValue('dont_know')}
         >
           I don't know
         </button>
       )}
 
       {index > 0 && (
-        <button type="button" className="back-link" onClick={() => setIndex(index - 1)}>
+        <button type="button" className="back-link" onClick={goBack}>
           Back
         </button>
       )}
