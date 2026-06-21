@@ -10,6 +10,7 @@ function makeQuestion(overrides: Partial<Question> = {}): Question {
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [{ axisId: 'authority-legitimacy', weight: 1 }],
     ...overrides,
   }

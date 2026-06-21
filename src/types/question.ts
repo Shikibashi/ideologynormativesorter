@@ -1,4 +1,4 @@
-import type { AxisId, DomainId, LabelId, Layer, QuestionId, ResponseType, TheoryContext } from './common'
+import type { AxisId, DomainId, LabelId, Layer, QuestionId, QuizTier, ResponseType, TheoryContext } from './common'
 
 export interface AxisWeight {
   axisId: AxisId
@@ -19,6 +19,8 @@ export interface Question {
   layer: Layer
   theoryContext: TheoryContext
   responseType: ResponseType
+  /** Smallest question pool this item belongs to; quick ⊂ moderate ⊂ extensive. */
+  tier: QuizTier
   axisWeights: AxisWeight[]
   /** When true, the raw answer value is inverted before axis weights are applied. */
   reverseScored?: boolean

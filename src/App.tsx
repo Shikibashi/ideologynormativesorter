@@ -6,20 +6,32 @@ import { ResultsScreen } from './components/ResultsScreen'
 import { axes } from './data/axes'
 import { domains } from './data/domains'
 import { labels } from './data/labels'
-import { questions } from './data/questions'
+import { questions, questionsForTier } from './data/questions'
 import { buildResultProfile } from './scoring'
-import type { AnswerMap, ResultProfile } from './types'
+import type { AnswerMap, QuizTier, ResultProfile } from './types'
 
 type Stage = 'intro' | 'quiz' | 'results'
 
+const TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
+
 function App() {
   const [stage, setStage] = useState<Stage>('intro')
+  const [activeQuestions, setActiveQuestions] = useState(questions)
   const [result, setResult] = useState<ResultProfile | null>(null)
 
   const domainCount = useMemo(() => new Set(questions.map((q) => q.domain)).size, [])
+  const questionCounts = useMemo(
+    () => Object.fromEntries(TIERS.map((tier) => [tier, questionsForTier(tier).length])) as Record<QuizTier, number>,
+    [],
+  )
+
+  function handleStart(tier: QuizTier) {
+    setActiveQuestions(questionsForTier(tier))
+    setStage('quiz')
+  }
 
   function handleComplete(answers: AnswerMap) {
-    setResult(buildResultProfile(questions, answers, axes, labels))
+    setResult(buildResultProfile(activeQuestions, answers, axes, labels))
     setStage('results')
   }
 
@@ -29,11 +41,11 @@ function App() {
   }
 
   if (stage === 'intro') {
-    return <IntroScreen questionCount={questions.length} domainCount={domainCount} onStart={() => setStage('quiz')} />
+    return <IntroScreen questionCounts={questionCounts} domainCount={domainCount} onStart={handleStart} />
   }
 
   if (stage === 'quiz') {
-    return <QuizScreen questions={questions} onComplete={handleComplete} />
+    return <QuizScreen questions={activeQuestions} onComplete={handleComplete} />
   }
 
   return result ? (

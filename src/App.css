@@ -34,6 +34,49 @@
   margin-bottom: 8px;
 }
 
+.tier-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tier-picker legend {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 4px;
+  padding: 0;
+}
+
+.tier-option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  align-items: baseline;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.tier-option.selected {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.tier-option-label {
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.tier-option-blurb {
+  grid-column: 2;
+  font-size: 13px;
+  color: var(--text);
+}
+
 .primary-button {
   align-self: flex-start;
   font-size: 16px;

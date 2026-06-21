@@ -10,6 +10,7 @@ const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [{ axisId: 'authority-legitimacy', weight: 1 }],
   },
   {
@@ -19,6 +20,7 @@ const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [{ axisId: 'authority-legitimacy', weight: 1 }],
   },
   {
@@ -28,6 +30,7 @@ const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [{ axisId: 'market-confidence', weight: 1 }],
   },
   {
@@ -37,6 +40,7 @@ const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [{ axisId: 'property-legitimacy', weight: 1 }],
   },
 ]

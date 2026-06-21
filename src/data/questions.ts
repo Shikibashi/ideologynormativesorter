@@ -12,6 +12,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -25,6 +26,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -38,6 +40,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -51,6 +54,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -64,6 +68,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -77,6 +82,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -90,6 +96,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -105,6 +112,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -120,6 +128,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -135,6 +144,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -150,6 +160,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -165,6 +176,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -180,6 +192,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -194,6 +207,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -208,6 +222,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -222,6 +237,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -236,6 +252,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -250,6 +267,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -264,6 +282,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: 0.5 },
       { axisId: 'anti-domination', weight: -0.4 },
@@ -277,6 +296,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -292,6 +312,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: 0.5 },
       { axisId: 'anti-domination', weight: -0.4 },
@@ -305,6 +326,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -318,6 +340,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: 0.5 },
       { axisId: 'anti-domination', weight: -0.4 },
@@ -331,6 +354,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: 0.5 },
       { axisId: 'anti-domination', weight: -0.4 },
@@ -344,6 +368,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -357,6 +382,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: 0.5 },
       { axisId: 'anti-domination', weight: -0.4 },
@@ -370,6 +396,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -385,6 +412,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: -0.8 },
@@ -400,6 +428,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: -0.8 },
@@ -415,6 +444,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -430,6 +460,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -445,6 +476,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -460,6 +492,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 0.5 },
       { axisId: 'regulation-vs-deregulation', weight: -0.4 },
@@ -474,6 +507,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -488,6 +522,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -502,6 +537,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -516,6 +552,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 0.5 },
       { axisId: 'regulation-vs-deregulation', weight: -0.4 },
@@ -530,6 +567,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -544,6 +582,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -557,6 +596,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: -0.8 },
@@ -573,6 +613,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'property-legitimacy', weight: 0.8 },
@@ -586,6 +627,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 0.5 },
       { axisId: 'property-legitimacy', weight: -0.4 },
@@ -599,6 +641,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'property-legitimacy', weight: 0.8 },
@@ -612,6 +655,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 0.5 },
       { axisId: 'property-legitimacy', weight: -0.4 },
@@ -625,6 +669,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'property-legitimacy', weight: 0.8 },
@@ -638,6 +683,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'property-legitimacy', weight: 0.8 },
@@ -651,6 +697,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -666,6 +713,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -681,6 +729,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -696,6 +745,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -711,6 +761,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -726,6 +777,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -741,6 +793,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -755,6 +808,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -769,6 +823,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -783,6 +838,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 0.5 },
       { axisId: 'centralization-preference', weight: -0.4 },
@@ -797,6 +853,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -811,6 +868,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -825,6 +883,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'property-legitimacy', weight: 0.8 },
@@ -838,6 +897,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -854,6 +914,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -867,6 +928,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -880,6 +942,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -893,6 +956,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -906,6 +970,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -919,6 +984,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -932,6 +998,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -947,6 +1014,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -962,6 +1030,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -977,6 +1046,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'public-choice-skepticism', weight: -0.4 },
@@ -992,6 +1062,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'public-choice-skepticism', weight: -0.4 },
@@ -1007,6 +1078,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'public-choice-skepticism', weight: -0.4 },
@@ -1022,6 +1094,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -1036,6 +1109,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: -0.8 },
@@ -1050,6 +1124,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: -0.8 },
@@ -1064,6 +1139,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -1078,6 +1154,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -1092,6 +1169,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -1106,6 +1184,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -1119,6 +1198,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'public-choice-skepticism', weight: -0.4 },
@@ -1135,6 +1215,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'anti-domination', weight: 0.5 },
       { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -1148,6 +1229,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1161,6 +1243,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1174,6 +1257,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'anti-domination', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1187,6 +1271,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1200,6 +1285,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'anti-domination', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1213,6 +1299,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: -0.8 },
@@ -1228,6 +1315,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: 0.8 },
@@ -1243,6 +1331,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: 0.8 },
@@ -1258,6 +1347,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -1273,6 +1363,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -1288,6 +1379,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -1303,6 +1395,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -1317,6 +1410,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -1331,6 +1425,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -1345,6 +1440,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -1359,6 +1455,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -1373,6 +1470,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -1387,6 +1485,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1400,6 +1499,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -1416,6 +1516,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -1429,6 +1530,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: 1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -1442,6 +1544,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -1455,6 +1558,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: 1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -1468,6 +1572,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -1481,6 +1586,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: 0.5 },
       { axisId: 'equality-theory', weight: -0.4 },
@@ -1494,6 +1600,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: 0.8 },
@@ -1509,6 +1616,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: 0.8 },
@@ -1524,6 +1632,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -1539,6 +1648,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -1554,6 +1664,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: 0.8 },
@@ -1569,6 +1680,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -1584,6 +1696,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 0.5 },
       { axisId: 'redistribution-vs-predistribution', weight: -0.4 },
@@ -1598,6 +1711,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'redistribution-vs-predistribution', weight: 0.8 },
@@ -1612,6 +1726,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 0.5 },
       { axisId: 'redistribution-vs-predistribution', weight: -0.4 },
@@ -1626,6 +1741,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 0.5 },
       { axisId: 'redistribution-vs-predistribution', weight: -0.4 },
@@ -1640,6 +1756,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 0.5 },
       { axisId: 'redistribution-vs-predistribution', weight: -0.4 },
@@ -1654,6 +1771,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'redistribution-vs-predistribution', weight: 0.8 },
@@ -1668,6 +1786,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: 1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -1681,6 +1800,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -1697,6 +1817,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1710,6 +1831,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1723,6 +1845,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1736,6 +1859,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1749,6 +1873,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1762,6 +1887,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1775,6 +1901,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -1790,6 +1917,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -1805,6 +1933,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -1820,6 +1949,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -1835,6 +1965,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -1850,6 +1981,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -1865,6 +1997,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -1879,6 +2012,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: 0.8 },
@@ -1893,6 +2027,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -1907,6 +2042,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -1921,6 +2057,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -1935,6 +2072,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: 0.8 },
@@ -1949,6 +2087,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1962,6 +2101,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -1978,6 +2118,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1991,6 +2132,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2004,6 +2146,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2017,6 +2160,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2030,6 +2174,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2043,6 +2188,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: 0.5 },
       { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -2056,6 +2202,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: -0.8 },
@@ -2071,6 +2218,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: -0.8 },
@@ -2086,6 +2234,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: -0.8 },
@@ -2101,6 +2250,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: -0.8 },
@@ -2116,6 +2266,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -2131,6 +2282,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -2146,6 +2298,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: -0.8 },
@@ -2160,6 +2313,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: -0.8 },
@@ -2174,6 +2328,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: -0.8 },
@@ -2188,6 +2343,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: -0.8 },
@@ -2202,6 +2358,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: -0.8 },
@@ -2216,6 +2373,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: -0.8 },
@@ -2230,6 +2388,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'property-legitimacy', weight: -1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2243,6 +2402,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'market-process-confidence', weight: -0.8 },
@@ -2259,6 +2419,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -2272,6 +2433,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -2285,6 +2447,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -2298,6 +2461,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -2311,6 +2475,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -2324,6 +2489,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -2337,6 +2503,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -2352,6 +2519,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -2367,6 +2535,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -2382,6 +2551,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -2397,6 +2567,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -2412,6 +2583,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -2427,6 +2599,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -2441,6 +2614,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -2455,6 +2629,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -2469,6 +2644,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -2483,6 +2659,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -2497,6 +2674,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -2511,6 +2689,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -2524,6 +2703,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -2540,6 +2720,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -2553,6 +2734,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -2566,6 +2748,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -2579,6 +2762,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -2592,6 +2776,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -2605,6 +2790,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -2618,6 +2804,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -2633,6 +2820,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -2648,6 +2836,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -2663,6 +2852,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -2678,6 +2868,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -2693,6 +2884,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -2708,6 +2900,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -2722,6 +2915,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -2736,6 +2930,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -2750,6 +2945,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -2764,6 +2960,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -2778,6 +2975,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -2792,6 +2990,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -2805,6 +3004,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: -0.8 },
@@ -2821,6 +3021,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2834,6 +3035,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2847,6 +3049,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2860,6 +3063,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2873,6 +3077,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2886,6 +3091,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 0.5 },
       { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -2899,6 +3105,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 1 },
       { axisId: 'cultural-plasticity', weight: 0.8 },
@@ -2914,6 +3121,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 1 },
       { axisId: 'cultural-plasticity', weight: 0.8 },
@@ -2929,6 +3137,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 1 },
       { axisId: 'cultural-plasticity', weight: 0.8 },
@@ -2944,6 +3153,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 0.5 },
       { axisId: 'cultural-plasticity', weight: -0.4 },
@@ -2959,6 +3169,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 1 },
       { axisId: 'cultural-plasticity', weight: 0.8 },
@@ -2974,6 +3185,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 0.5 },
       { axisId: 'cultural-plasticity', weight: -0.4 },
@@ -2989,6 +3201,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -3003,6 +3216,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -3017,6 +3231,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -3031,6 +3246,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -3045,6 +3261,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -3059,6 +3276,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -3073,6 +3291,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -3086,6 +3305,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'market-process-confidence', weight: 1 },
       { axisId: 'cultural-plasticity', weight: 0.8 },
@@ -3102,6 +3322,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 0.5 },
       { axisId: 'anti-domination', weight: -0.4 },
@@ -3115,6 +3336,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -3128,6 +3350,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 0.5 },
       { axisId: 'anti-domination', weight: -0.4 },
@@ -3141,6 +3364,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -3154,6 +3378,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -3167,6 +3392,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 0.5 },
       { axisId: 'anti-domination', weight: -0.4 },
@@ -3180,6 +3406,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'democratic-confidence', weight: -0.4 },
@@ -3195,6 +3422,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'democratic-confidence', weight: 0.8 },
@@ -3210,6 +3438,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'democratic-confidence', weight: -0.4 },
@@ -3225,6 +3454,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'democratic-confidence', weight: -0.4 },
@@ -3240,6 +3470,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'democratic-confidence', weight: -0.4 },
@@ -3255,6 +3486,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'democratic-confidence', weight: -0.4 },
@@ -3270,6 +3502,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3284,6 +3517,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -3298,6 +3532,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3312,6 +3547,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -3326,6 +3562,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3340,6 +3577,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3354,6 +3592,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'political-community-boundary', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -3367,6 +3606,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'democratic-confidence', weight: 0.8 },
@@ -3383,6 +3623,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 0.5 },
       { axisId: 'authority-legitimacy', weight: -0.4 },
@@ -3396,6 +3637,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'authority-legitimacy', weight: 0.8 },
@@ -3409,6 +3651,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 0.5 },
       { axisId: 'authority-legitimacy', weight: -0.4 },
@@ -3422,6 +3665,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'authority-legitimacy', weight: 0.8 },
@@ -3435,6 +3679,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'authority-legitimacy', weight: 0.8 },
@@ -3448,6 +3693,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'authority-legitimacy', weight: 0.8 },
@@ -3461,6 +3707,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'cultural-plasticity', weight: -0.4 },
@@ -3476,6 +3723,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'cultural-plasticity', weight: 0.8 },
@@ -3491,6 +3739,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'cultural-plasticity', weight: -0.4 },
@@ -3506,6 +3755,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'cultural-plasticity', weight: -0.4 },
@@ -3521,6 +3771,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'cultural-plasticity', weight: 0.8 },
@@ -3536,6 +3787,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'cultural-plasticity', weight: -0.4 },
@@ -3551,6 +3803,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 0.5 },
       { axisId: 'regulation-vs-deregulation', weight: -0.4 },
@@ -3565,6 +3818,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 0.5 },
       { axisId: 'regulation-vs-deregulation', weight: -0.4 },
@@ -3579,6 +3833,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: 0.8 },
@@ -3593,6 +3848,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: 0.8 },
@@ -3607,6 +3863,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 0.5 },
       { axisId: 'regulation-vs-deregulation', weight: -0.4 },
@@ -3621,6 +3878,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 0.5 },
       { axisId: 'regulation-vs-deregulation', weight: -0.4 },
@@ -3635,6 +3893,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'authority-legitimacy', weight: 0.8 },
@@ -3648,6 +3907,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'cultural-plasticity', weight: 0.8 },
@@ -3664,6 +3924,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -3677,6 +3938,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -3690,6 +3952,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -3703,6 +3966,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -3716,6 +3980,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -3729,6 +3994,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 0.5 },
       { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -3742,6 +4008,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -3757,6 +4024,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -3772,6 +4040,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -3787,6 +4056,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -3802,6 +4072,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -3817,6 +4088,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -3832,6 +4104,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3846,6 +4119,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3860,6 +4134,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3874,6 +4149,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3888,6 +4164,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3902,6 +4179,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -3916,6 +4194,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'moral-traditionalism', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -3929,6 +4208,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -3945,6 +4225,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -3958,6 +4239,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -3971,6 +4253,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -3984,6 +4267,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -3997,6 +4281,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'equality-theory', weight: 0.5 },
       { axisId: 'political-community-boundary', weight: -0.4 },
@@ -4010,6 +4295,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'equality-theory', weight: 0.5 },
       { axisId: 'political-community-boundary', weight: -0.4 },
@@ -4023,6 +4309,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -4038,6 +4325,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -4053,6 +4341,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -4068,6 +4357,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -4083,6 +4373,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -4098,6 +4389,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 0.5 },
       { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -4113,6 +4405,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: 0.8 },
@@ -4127,6 +4420,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 0.5 },
       { axisId: 'regulation-vs-deregulation', weight: -0.4 },
@@ -4141,6 +4435,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 0.5 },
       { axisId: 'regulation-vs-deregulation', weight: -0.4 },
@@ -4155,6 +4450,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: 0.8 },
@@ -4169,6 +4465,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 0.5 },
       { axisId: 'regulation-vs-deregulation', weight: -0.4 },
@@ -4183,6 +4480,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'redistribution-vs-predistribution', weight: 1 },
       { axisId: 'regulation-vs-deregulation', weight: 0.8 },
@@ -4197,6 +4495,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'equality-theory', weight: 1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -4210,6 +4509,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'cultural-plasticity', weight: 1 },
       { axisId: 'state-capacity-confidence', weight: 0.8 },
@@ -4226,6 +4526,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'human-nature-priority', weight: 1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -4239,6 +4540,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'human-nature-priority', weight: 1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -4252,6 +4554,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'human-nature-priority', weight: 0.5 },
       { axisId: 'equality-theory', weight: -0.4 },
@@ -4265,6 +4568,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'human-nature-priority', weight: 1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -4278,6 +4582,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'human-nature-priority', weight: 0.5 },
       { axisId: 'equality-theory', weight: -0.4 },
@@ -4291,6 +4596,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'human-nature-priority', weight: 0.5 },
       { axisId: 'equality-theory', weight: -0.4 },
@@ -4304,6 +4610,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'market-process-confidence', weight: 0.8 },
@@ -4319,6 +4626,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'market-process-confidence', weight: 0.8 },
@@ -4334,6 +4642,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -4349,6 +4658,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -4364,6 +4674,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -4379,6 +4690,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -4394,6 +4706,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -4408,6 +4721,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -4422,6 +4736,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -4436,6 +4751,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 0.5 },
       { axisId: 'centralization-preference', weight: -0.4 },
@@ -4450,6 +4766,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -4464,6 +4781,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -4478,6 +4796,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'human-nature-priority', weight: 1 },
       { axisId: 'equality-theory', weight: 0.8 },
@@ -4491,6 +4810,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'market-process-confidence', weight: -0.4 },
@@ -4507,6 +4827,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'anti-domination', weight: 1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -4520,6 +4841,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -4533,6 +4855,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -4546,6 +4869,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -4559,6 +4883,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -4572,6 +4897,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'anti-domination', weight: 0.5 },
       { axisId: 'political-community-boundary', weight: -0.4 },
@@ -4585,6 +4911,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: 0.8 },
@@ -4600,6 +4927,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -4615,6 +4943,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -4630,6 +4959,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -4645,6 +4975,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'public-choice-skepticism', weight: -0.4 },
@@ -4660,6 +4991,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 0.5 },
       { axisId: 'public-choice-skepticism', weight: -0.4 },
@@ -4675,6 +5007,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -4689,6 +5022,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -4703,6 +5037,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: 0.8 },
@@ -4717,6 +5052,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -4731,6 +5067,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -4745,6 +5082,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'state-action-vs-exit', weight: 1 },
       { axisId: 'centralization-preference', weight: -0.8 },
@@ -4759,6 +5097,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'political-community-boundary', weight: 0.8 },
@@ -4772,6 +5111,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'state-capacity-confidence', weight: 1 },
       { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -4788,6 +5128,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -4801,6 +5142,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: 0.5 },
       { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -4814,6 +5156,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -4827,6 +5170,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -4840,6 +5184,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -4853,6 +5198,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: 0.5 },
       { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -4866,6 +5212,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'democratic-confidence', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -4881,6 +5228,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'democratic-confidence', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -4896,6 +5244,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'democratic-confidence', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -4911,6 +5260,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'democratic-confidence', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -4926,6 +5276,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'democratic-confidence', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -4941,6 +5292,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'democratic-confidence', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -4956,6 +5308,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -4970,6 +5323,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -4984,6 +5338,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -4998,6 +5353,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -5012,6 +5368,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -5026,6 +5383,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'centralization-preference', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -5040,6 +5398,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'authority-legitimacy', weight: 1 },
       { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -5053,6 +5412,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'democratic-confidence', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -5069,6 +5429,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -5082,6 +5443,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -5095,6 +5457,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -5108,6 +5471,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -5121,6 +5485,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -5134,6 +5499,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -5147,6 +5513,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -5162,6 +5529,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -5177,6 +5545,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -5192,6 +5561,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -5207,6 +5577,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -5222,6 +5593,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'expert-confidence', weight: -0.4 },
@@ -5237,6 +5609,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -5251,6 +5624,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 0.5 },
       { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -5265,6 +5639,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -5279,6 +5654,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -5293,6 +5669,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -5307,6 +5684,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'regulation-vs-deregulation', weight: 1 },
       { axisId: 'state-action-vs-exit', weight: 0.8 },
@@ -5321,6 +5699,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'liberty-noninterference', weight: 1 },
       { axisId: 'anti-domination', weight: 0.8 },
@@ -5334,6 +5713,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'expert-confidence', weight: 0.8 },
@@ -5350,6 +5730,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'anti-domination', weight: 0.5 },
       { axisId: 'authority-legitimacy', weight: -0.4 },
@@ -5363,6 +5744,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'authority-legitimacy', weight: 0.8 },
@@ -5376,6 +5758,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'authority-legitimacy', weight: 0.8 },
@@ -5389,6 +5772,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'authority-legitimacy', weight: 0.8 },
@@ -5402,6 +5786,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: 0.5 },
       { axisId: 'authority-legitimacy', weight: -0.4 },
@@ -5415,6 +5800,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'anti-domination', weight: 0.5 },
       { axisId: 'authority-legitimacy', weight: -0.4 },
@@ -5428,6 +5814,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'coordination-optimism', weight: -0.8 },
@@ -5443,6 +5830,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 1 },
       { axisId: 'coordination-optimism', weight: -0.8 },
@@ -5458,6 +5846,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'coordination-optimism', weight: -0.4 },
@@ -5473,6 +5862,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'coordination-optimism', weight: -0.4 },
@@ -5488,6 +5878,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'coordination-optimism', weight: -0.4 },
@@ -5503,6 +5894,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'coordination-optimism', weight: -0.4 },
@@ -5518,6 +5910,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'reform-vs-revolution', weight: 1 },
       { axisId: 'gradualism-vs-immediatism', weight: -0.8 },
@@ -5532,6 +5925,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'moderate',
     axisWeights: [
       { axisId: 'reform-vs-revolution', weight: 1 },
       { axisId: 'gradualism-vs-immediatism', weight: -0.8 },
@@ -5546,6 +5940,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'reform-vs-revolution', weight: 0.5 },
       { axisId: 'gradualism-vs-immediatism', weight: -0.4 },
@@ -5560,6 +5955,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'reform-vs-revolution', weight: 1 },
       { axisId: 'gradualism-vs-immediatism', weight: -0.8 },
@@ -5574,6 +5970,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'reform-vs-revolution', weight: 1 },
       { axisId: 'gradualism-vs-immediatism', weight: -0.8 },
@@ -5588,6 +5985,7 @@ export const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'mixed',
     responseType: 'likert7',
+    tier: 'quick',
     axisWeights: [
       { axisId: 'reform-vs-revolution', weight: 0.5 },
       { axisId: 'gradualism-vs-immediatism', weight: -0.4 },
@@ -5602,6 +6000,7 @@ export const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'anti-domination', weight: -1 },
       { axisId: 'authority-legitimacy', weight: 0.8 },
@@ -5615,6 +6014,7 @@ export const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [
       { axisId: 'public-choice-skepticism', weight: 0.5 },
       { axisId: 'coordination-optimism', weight: -0.4 },
@@ -5626,3 +6026,10 @@ export const questions: Question[] = [
 ]
 
 export const questionById = new Map(questions.map((q) => [q.id, q]))
+
+const TIER_RANK: Record<Question['tier'], number> = { quick: 0, moderate: 1, extensive: 2 }
+
+/** Quick is a subset of moderate, which is a subset of extensive (the full bank). */
+export function questionsForTier(tier: Question['tier']): Question[] {
+  return questions.filter((q) => TIER_RANK[q.tier] <= TIER_RANK[tier])
+}

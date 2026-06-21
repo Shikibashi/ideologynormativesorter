@@ -16,6 +16,7 @@ const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'ideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [{ axisId: 'norm-axis', weight: 1 }],
   },
   {
@@ -25,6 +26,7 @@ const questions: Question[] = [
     layer: 'normative',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [{ axisId: 'norm-axis', weight: 0.5 }],
   },
   {
@@ -34,6 +36,7 @@ const questions: Question[] = [
     layer: 'descriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [{ axisId: 'desc-axis', weight: 1 }],
     allowDontKnow: true,
   },
@@ -44,6 +47,7 @@ const questions: Question[] = [
     layer: 'prescriptive',
     theoryContext: 'nonideal',
     responseType: 'likert7',
+    tier: 'extensive',
     axisWeights: [{ axisId: 'presc-axis', weight: 1 }],
   },
 ]

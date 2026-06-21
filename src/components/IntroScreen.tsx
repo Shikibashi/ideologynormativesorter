@@ -1,10 +1,27 @@
-interface IntroScreenProps {
-  questionCount: number
-  domainCount: number
-  onStart: () => void
+import { useState } from 'react'
+import type { QuizTier } from '../types'
+
+interface TierOption {
+  tier: QuizTier
+  label: string
+  blurb: string
 }
 
-export function IntroScreen({ questionCount, domainCount, onStart }: IntroScreenProps) {
+const TIER_OPTIONS: TierOption[] = [
+  { tier: 'quick', label: 'Quick', blurb: 'One item per domain per layer. A fast overview.' },
+  { tier: 'moderate', label: 'Moderate', blurb: 'A balanced middle pool with more depth per domain.' },
+  { tier: 'extensive', label: 'Extensive', blurb: 'The full item bank, for the most precise profile.' },
+]
+
+interface IntroScreenProps {
+  questionCounts: Record<QuizTier, number>
+  domainCount: number
+  onStart: (tier: QuizTier) => void
+}
+
+export function IntroScreen({ questionCounts, domainCount, onStart }: IntroScreenProps) {
+  const [tier, setTier] = useState<QuizTier>('moderate')
+
   return (
     <section className="screen intro-screen">
       <h1>Political Judgment Decomposition</h1>
@@ -41,11 +58,30 @@ export function IntroScreen({ questionCount, domainCount, onStart }: IntroScreen
         cleanly to one label.
       </p>
 
+      <fieldset className="tier-picker">
+        <legend>Choose a length</legend>
+        {TIER_OPTIONS.map((option) => (
+          <label key={option.tier} className={`tier-option${tier === option.tier ? ' selected' : ''}`}>
+            <input
+              type="radio"
+              name="tier"
+              value={option.tier}
+              checked={tier === option.tier}
+              onChange={() => setTier(option.tier)}
+            />
+            <span className="tier-option-label">
+              {option.label} &middot; {questionCounts[option.tier]} questions
+            </span>
+            <span className="tier-option-blurb">{option.blurb}</span>
+          </label>
+        ))}
+      </fieldset>
+
       <p className="muted">
-        {questionCount} questions across {domainCount} policy domains. You can answer "I don't know" on empirical items.
+        Covers {domainCount} policy domains. You can answer "I don't know" on empirical items.
       </p>
 
-      <button type="button" className="primary-button" onClick={onStart}>
+      <button type="button" className="primary-button" onClick={() => onStart(tier)}>
         Begin
       </button>
     </section>

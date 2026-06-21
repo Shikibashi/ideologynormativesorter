@@ -1,10 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import type { Layer } from '../types'
+import type { Layer, QuizTier } from '../types'
 import { axes, axisById } from './axes'
 import { domainById, domains } from './domains'
 import { factionModules } from './factionModules'
 import { labelById, labels } from './labels'
-import { questions } from './questions'
+import { questions, questionsForTier } from './questions'
+
+const TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
 
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
 
@@ -80,6 +82,30 @@ describe('questions', () => {
   it('every prescriptive item provides a priority prompt', () => {
     for (const question of questions.filter((q) => q.layer === 'prescriptive')) {
       expect(question.priorityPrompt, `${question.id} is missing a priorityPrompt`).toBeTruthy()
+    }
+  })
+})
+
+describe('quiz tiers', () => {
+  it('nests quick within moderate within extensive', () => {
+    const quick = new Set(questionsForTier('quick').map((q) => q.id))
+    const moderate = new Set(questionsForTier('moderate').map((q) => q.id))
+    const extensive = new Set(questionsForTier('extensive').map((q) => q.id))
+
+    expect(extensive.size).toBe(questions.length)
+    for (const id of quick) expect(moderate.has(id)).toBe(true)
+    for (const id of moderate) expect(extensive.has(id)).toBe(true)
+  })
+
+  it('every domain has at least one item per layer in every tier', () => {
+    for (const tier of TIERS) {
+      const pool = questionsForTier(tier)
+      for (const domain of domains) {
+        for (const layer of LAYERS) {
+          const count = pool.filter((q) => q.domain === domain.id && q.layer === layer).length
+          expect(count, `${domain.id}/${layer} has no item in the ${tier} tier`).toBeGreaterThan(0)
+        }
+      }
     }
   })
 })
