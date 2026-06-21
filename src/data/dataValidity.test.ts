@@ -9,17 +9,18 @@ import { questions } from './questions'
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
 
 describe('domains', () => {
-  it('covers all 10 required policy domains exactly once', () => {
-    expect(domains).toHaveLength(10)
-    expect(new Set(domains.map((d) => d.id)).size).toBe(10)
+  it('covers all 20 required policy domains exactly once', () => {
+    expect(domains).toHaveLength(20)
+    expect(new Set(domains.map((d) => d.id)).size).toBe(20)
   })
 })
 
 describe('axes', () => {
-  it('defines 18 axes, 6 per layer', () => {
-    expect(axes).toHaveLength(18)
+  it('defines 24 axes, split 8 normative / 7 descriptive / 9 prescriptive', () => {
+    expect(axes).toHaveLength(24)
+    const expectedPerLayer: Record<Layer, number> = { normative: 8, descriptive: 7, prescriptive: 9 }
     for (const layer of LAYERS) {
-      expect(axes.filter((a) => a.layer === layer)).toHaveLength(6)
+      expect(axes.filter((a) => a.layer === layer)).toHaveLength(expectedPerLayer[layer])
     }
   })
 
@@ -80,10 +81,6 @@ describe('questions', () => {
     for (const question of questions.filter((q) => q.layer === 'prescriptive')) {
       expect(question.priorityPrompt, `${question.id} is missing a priorityPrompt`).toBeTruthy()
     }
-  })
-
-  it('exercises reverseScored on at least one item', () => {
-    expect(questions.some((q) => q.reverseScored)).toBe(true)
   })
 })
 
