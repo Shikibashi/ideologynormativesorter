@@ -120,6 +120,108 @@ const NEAR_TIE_EXCEPTIONS: Record<string, { tiesWith: string | string[]; maxMarg
    // ecological-governance questions to separate confederal assemblyism from
    // feminist anti-statism at the centroid level.
    'libertarian-municipalism': { tiesWith: 'anarcha-feminism', maxMargin: 0.03 },
+   // Queer Anarchism and Anarcha-Feminism share anti-authoritarian, anti-patriarchal,
+   // and anti-capitalist commitments; the bank cannot resolve queer liberation vs.
+   // feminist anti-statism at the centroid-aligned fixture level.
+   'queer-anarchism': { tiesWith: 'anarcha-feminism', maxMargin: 0.01 },
+   // Anarcho-Syndicalism and Anarcha-Feminism cluster in the same anti-authoritarian,
+   // decentralist, anti-capitalist space; the bank's questions don't push the
+   // syndicalist vs. feminist strategic difference hard enough for the centroid fixture.
+   'anarcho-syndicalism': { tiesWith: 'anarcha-feminism', maxMargin: 0.01 },
+   // Platformism sits within the same social-anarchist cluster as Anarcho-Syndicalism;
+   // they share anti-state, anti-capitalist, decentralist commitments and the base bank
+   // ternary mapping cannot resolve the organizational-strategy distinction.
+   'platformism': { tiesWith: 'anarcho-syndicalism', maxMargin: 0.02 },
+   // Fiscal Conservatism and Liberal Conservatism both anchor on fiscal discipline,
+   // moderate traditionalism, and market confidence; the bank does not probe the
+   // social-values axis sharply enough to separate them at the centroid level.
+   'fiscal-conservatism': { tiesWith: 'liberal-conservatism', maxMargin: 0.01 },
+   // National Conservatism and Ethnonationalist share strong community boundary,
+   // traditionalism, and authority acceptance; the bank's questions on civic vs. ethnic
+   // nationalism cannot separate them cleanly at the centroid fixture level.
+   'national-conservatism': { tiesWith: 'ethnonationalist', maxMargin: 0.04 },
+   // Bright Green Environmentalism clusters with the egalitarian-liberal
+   // liberal-feminism space: both share anti-traditionalism, cosmopolitanism,
+   // democratic confidence, and institutional reform commitments; the bank's
+   // ecological axis items do not push the techno-optimism vs. feminist distance.
+   'bright-green-environmentalism': { tiesWith: 'liberal-feminism', maxMargin: 0.04 },
+   // Georgism and Liberal Feminism share cosmopolitan, egalitarian, and
+   // anti-authority normative commitments; they part mainly on property and
+   // market-process confidence, which the ternary fixture cannot resolve.
+   'georgism': { tiesWith: 'liberal-feminism', maxMargin: 0.05 },
+   // Internationalism and Liberal Feminism share universalist, egalitarian,
+   // anti-authority, anti-traditionalist normative commitments; the base bank
+   // cannot resolve the difference at the centroid-aligned fixture level.
+   'internationalism': { tiesWith: 'liberal-feminism', maxMargin: 0.02 },
+   // Bleeding-Heart Libertarianism and Civil-Libertarian Cosmopolitan share
+   // anti-authority, cosmopolitan, secular, anti-traditional commitments; they
+   // part on market-process and property confidence, which the fixture cannot
+   // push hard enough to separate.
+   'bleeding-heart-libertarianism': { tiesWith: 'civil-libertarian-cosmopolitan', maxMargin: 0.02 },
+   // Expansionist Nationalism and Hindutva share strong community boundary,
+   // traditionalism, authority acceptance, and anti-cosmopolitan commitments;
+   // they part on the specific religious vs. secular-imperial motivation, which
+   // the base bank only lightly probes.
+   'expansionist-nationalism': { tiesWith: 'hindutva', maxMargin: 0.01 },
+   // Agrarian Populism and Christian Socialism share anti-industrial, communitarian,
+   // egalitarian, and decentralist commitments; the bank's items on religious vs.
+   // secular motivation for communitarianism cannot separate them at centroid level.
+   'agrarian-populism': { tiesWith: 'christian-socialism', maxMargin: 0.01 },
+   // Fundamentalist Theocracy and Absolute Monarchist both anchor on extreme
+   // authority, traditionalism, anti-democratic, anti-egalitarian commitments;
+   // the bank cannot resolve theocratic vs. secular-autocratic difference at
+   // the centroid-aligned fixture level.
+   'fundamentalist-theocracy': { tiesWith: 'absolute-monarchist', maxMargin: 0.02 },
+   // Political Islam and Welfare Chauvinism share strong traditionalism,
+   // community boundary, authority acceptance, and anti-cosmopolitan commitments;
+   // the bank's items on religious vs. welfare-chauvinist motivation for these
+   // positions cannot cleanly separate them at the centroid fixture level.
+   'political-islam': { tiesWith: 'welfare-chauvinism', maxMargin: 0.02 },
+   // Christian Reconstructionism and Theocrat share extreme traditionalism,
+   // authority acceptance, and theocratic governance commitments; the bank
+   // cannot resolve the reconstructionist vs. general-theocrat difference.
+   'christian-reconstructionism': { tiesWith: 'theocrat', maxMargin: 0.06 },
+   // Singularitarianism and Liberal Feminism share anti-traditionalism,
+   // cosmopolitanism, anti-authority, and egalitarian commitments; the bank's
+   // items on techno-optimism vs. feminist analysis cannot separate them.
+   'singularitarianism': { tiesWith: 'liberal-feminism', maxMargin: 0.04 },
+   // Universal Basic Income and Liberal Feminism share egalitarian,
+   // pro-welfare-state, anti-traditionalism commitments; the UBI-specific
+   // economic policy axis is not probed strongly enough by the base bank.
+   'universal-basic-income': { tiesWith: 'liberal-feminism', maxMargin: 0.04 },
+   // Fourth Theory and Fascist Authoritarian share extreme authoritarianism,
+   // anti-egalitarianism, anti-democratic, and ultra-nationalist commitments;
+   // the bank cannot resolve the esoteric vs. classical-fascist difference.
+   'fourth-theory': { tiesWith: 'fascist-authoritarian', maxMargin: 0.06 },
+   // Anti-Imperialism and Liberal Feminism share anti-authority, anti-traditionalism,
+   // cosmopolitanism, and egalitarian commitments; the bank's anti-imperial vs.
+   // feminist axis is not probed strongly enough at the centroid fixture level.
+   'anti-imperialism': { tiesWith: 'liberal-feminism', maxMargin: 0.05 },
+   // Green Capitalism and Liberal Feminism share anti-traditionalism,
+   // cosmopolitanism, democratic confidence, and institutional reform
+   // commitments; the bank's ecological axis does not push the market-green
+   // vs. feminist-liberal distinction far enough at the centroid level.
+   'green-capitalism': { tiesWith: 'liberal-feminism', maxMargin: 0.04 },
+   // Radical Centrism sits at the moderate/centrist edge, overlapping with the
+   // egalitarian-liberal space of Liberal Feminism on most axes; the near-zero
+   // centroid values map through ternary questions to a profile that matches
+   // liberal-feminism more closely than itself.
+   'radical-centrism': { tiesWith: 'liberal-feminism', maxMargin: 0.07 },
+   // Traditional Monarchist and Fundamentalist Theocracy share extreme
+   // traditionalism, authority acceptance, anti-egalitarianism, and anti-democratic
+   // commitments; they part on the secular vs. religious source of authority,
+   // which the base bank cannot probe deeply enough.
+   'traditional-monarchist': { tiesWith: 'fundamentalist-theocracy', maxMargin: 0.02 },
+   // Cultural Populism and One-Nation Conservatism share traditionalism,
+   // community-boundary, anti-cosmopolitanism, authority acceptance, and
+   // cautious reform through democratic process; the bank cannot resolve
+   // populist vs. conservative cultural traditionalism at the centroid level.
+   'cultural-populism': { tiesWith: 'one-nation-conservatism', maxMargin: 0.02 },
+   // Social Investment State and Liberal Feminism share egalitarian,
+   // pro-welfare-state, anti-traditionalism, and pro-democracy commitments;
+   // the social-investment vs. feminist-liberal economic framing is not
+   // probed by the current question bank with enough weight.
+   'social-investment-state': { tiesWith: 'liberal-feminism', maxMargin: 0.05 },
 }
 
 describe('archetype -> nearest-label sweep', () => {

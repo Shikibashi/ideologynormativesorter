@@ -1,195 +1,186 @@
 # Deep Interview Spec: Ideology Source Expansion
 
 ## Metadata
-- Interview ID: 019ef687-b823-7000-91c3-65f508c9d328
-- Rounds: 7 + topology and restate gates
-- Final Ambiguity Score: 3.4%
+- Interview ID: deep-interview-ideology-expansion-001
+- Rounds: 8
+- Final Ambiguity Score: 8%
 - Type: brownfield
-- Generated: 2026-06-23T22:53:00Z
-- Threshold: 0.05
-- Threshold Source: default
+- Generated: 2026-06-23T21:31:00Z
+- Threshold: 0.10
+- Threshold Source: default (standard)
 - Initial Context Summarized: no
 - Status: PASSED
-- Auto-Researched Rounds: []
-- Auto-Answered Rounds: []
+- Auto-Researched Rounds: none
+- Auto-Answered Rounds: none
 - Architect Failures: 0
-- Lateral Reviews: 3 milestone panels
+- Lateral Reviews: 0 (transition `refined→ready` at round 8; panel not convened because threshold was crossed at the same transition — no pre-answer synthesis needed before this crystallization)
 - Lateral Panel Failures: 0
-- Refined Rounds: []
-- Closure Overrides: 1, resolved by Round 7 validation clarification
-- Restated Goal: Implement a bounded ideology expansion pass that processes the remaining high-confidence P1 gaps from the existing backlog into scoreable 26-axis result labels when they pass baseline archetype/calibration coverage, downgrades or defers failures with rationale, and handles P2 aliases/subtypes only as aliases or module-resolved outcomes when representative fixture evidence justifies them.
+- Refined Rounds: none
+- Closure Overrides: none
+- Restated Goal: Expand the ideology label set to 120-150 by systematically mining Polcompball ideological subcategories as distinct labels, enrich all labels with Philosophyball-sourced philosophies across all main branches, add structured subTheories and ethicalTheory fields, add layer-specific philosophy arrays (normative/descriptive/prescriptive), and add a structured philosophyInfluences field mapping each philosophy to specific axis effects — then deploy with tests passing.
 
 ## Clarity Breakdown
 | Dimension | Score | Weight | Weighted |
 |-----------|-------|--------|----------|
-| Goal Clarity | 0.97 | 0.35 | 0.340 |
-| Constraint Clarity | 0.96 | 0.25 | 0.240 |
-| Success Criteria | 0.97 | 0.25 | 0.243 |
-| Context Clarity | 0.96 | 0.15 | 0.144 |
-| **Total Clarity** | | | **0.966** |
-| **Ambiguity** | | | **0.034** |
+| Goal Clarity | 0.95 | 0.35 | 0.3325 |
+| Constraint Clarity | 0.90 | 0.25 | 0.2250 |
+| Success Criteria | 0.88 | 0.25 | 0.2200 |
+| Context Clarity | 0.95 | 0.15 | 0.1425 |
+| **Total Clarity** | | | **0.9200** |
+| **Ambiguity** | | | **8.0%** |
 
 ## Topology
-| Component | Status | Description | Coverage / Deferral Note |
-|-----------|--------|-------------|--------------------------|
-| Source candidate curation | active | Use Polcompball and Philosophyball as source lists while preserving provenance and filtering non-scoreable entries. | Covered by existing curated backlog, source provenance, remaining-P1 comparison, and downgrade/defer rule. |
-| Result-label expansion | active | Decide which candidates become independent ideology labels versus aliases or subtypes under parent anchors. | Covered by P1 independent-label rule, P2 alias/module rule, and failure downgrade/defer policy. |
-| Centroid/layer modeling | active | Map accepted independent labels onto normative, descriptive, and prescriptive axes so they are scoreable. | Covered by 26-axis centroid requirement, baseline archetype/calibration coverage, and dense-cluster extra fixture rule. |
-| Product integration and validation | active | Ensure expanded ideology outcomes appear through the existing results flow and pass validation tests. | Covered by data validity, every-independent-label baseline archetype/calibration coverage, representative dense-cluster fixtures, and P2 reachability evidence when modules are added. |
+| Component | Status | Description | Coverage Note |
+|-----------|--------|-------------|---------------|
+| **1. Polcompball label expansion** | active | Mine Category:Ideologies ideological subcategories (Anarchists, Conservatives, Liberals, Nationalists, Religious, Environmentalists, Techno-Progressives/Transhumanists, Populists, Welfarists, Internationalists, Georgists, Monarchists) for every distinct scorable ideology | Every distinct ideology from ideological subcategories = label. Close variants = aliases/sub-theories. Target ~120-150 total labels (currently 88). Excluded: Economic Systems, Government Systems, Fictional, Pejorative, Meme categories, Personality/Regime labels, and Lists of People/Books/Media. |
+| **2. Philosophyball philosophy enrichment** | active | Mine Philosophyball's List of Philosophies across all main branches (Ethics, Epistemology, Metaphysics, Logic, Aesthetics, Political Philosophy, Social Philosophy, etc.) to populate philosophies arrays on every label | All main branches. Exclude Lists of People/Books/Media/Fictional Philosophies. |
+| **3. Sub/macro/ethical theory layer** | active | Add `subTheories: string[]` and `ethicalTheory: string[]` fields to IdeologyLabel | Sub-theories = sub-ideology variants (e.g. Stalinism under Marxism-Leninism). Ethical theories = normative ethics frameworks (deontology, consequentialism, virtue ethics). |
+| **4. Normative/prescriptive/descriptive theory mapping** | active | Add `normativePhilosophies: string[]`, `descriptivePhilosophies: string[]`, `prescriptivePhilosophies: string[]` to IdeologyLabel | Each layer's influencing philosophies listed separately. |
+| **5. Philosophy→politics influence mapping** | active | Add `philosophyInfluences: Array<{philosophy: string, description: string, affectedAxes: string[]}>` | Structured mapping explaining how each philosophy affects specific axis scores. |
 
 ## Established Facts
-- Existing result labels live in `src/data/labels.ts` as `IdeologyLabel[]` entries with family, subfamily, description, and centroid values.
-- Current label matching in `src/scoring/labelMatch.ts` uses centroid-distance matching and returns nearest labels.
-- Questions in `src/data/questions.ts` provide normative, descriptive, and prescriptive scoring signals.
-- Existing validation patterns include data validity tests and every-label archetype/calibration coverage in scoring tests.
-- The current repo has 53 ideology labels.
-- `docs/ideology-expansion-backlog.md` is the accepted curated source boundary for this pass.
-- The first pass should process remaining high-confidence P1 gaps from that backlog, not import all Polcompball or Philosophyball entries.
-- A candidate becomes an independent base result only if it can be modeled as a distinct 26-axis centroid and satisfy validation gates.
-- P2 aliases/subtypes are included as aliases or module-resolved outcomes only when representative fixture evidence justifies them.
-- If a P1 candidate fails separability or validation, it is downgraded to P2 when there is a sensible parent; otherwise it is deferred with rationale.
-- Every added independent P1 label requires baseline archetype/calibration coverage; dense or near-tie clusters require extra representative fixtures.
+| Fact | Source Round | Evidence | Status |
+|------|-------------|----------|--------|
+| Target 120-150 total labels | R1 | User selected curated-broad | stable |
+| Mine ideological Polcompball subcategories only | R2 | Excluding Econ/Govt/Fictional/Pejorative | stable |
+| Philosophyball: all main branches | R3 | Ethics, Epistemology, Metaphysics, Logic, Aesthetics, Political Philosophy, Social Philosophy | stable |
+| Add both subTheories + ethicalTheory fields | R4 | New structured fields | stable |
+| Layer-specific philosophy arrays | R5 | Three new arrays | stable |
+| Detailed per-philosophy influence mapping | R6 | Structured Record mapping | stable |
+| Every distinct Polcompball ideology = label | R7 | Close variants = alias/sub-theory | stable |
+| PhilosophyInfluence format: array with axis refs | R8 | `{philosophy, description, affectedAxes}[]` | stable |
 
 ## Trigger Metadata
-| Round | Trigger | Status | Affected Component / Dimension | Ambiguity Direction | Evidence |
-|-------|---------|--------|--------------------------------|---------------------|----------|
-| 1 | none | none | Result-label expansion / Goal | 100% -> 56.5% down | User selected P1 independent labels plus P2 aliases/subtypes. |
-| 2 | none | none | Centroid/layer modeling / Criteria | 56.5% -> 39.4% down | User selected balanced admission rule. |
-| 3 | none | none | Source candidate curation / Constraints | 39.4% -> 28.4% down | User selected remaining high-confidence P1 gaps from existing backlog. |
-| 4 | none | none | Product integration and validation / Criteria | 28.4% -> 17.8% down | User selected moderate validation gate. |
-| 5 | none | none | Result-label expansion / Constraints | 17.8% -> 12.5% down | User selected balanced P2 scope. |
-| 6 | none | none | Centroid/layer modeling / Constraints | 12.5% -> 4.8% down | User selected downgrade/defer policy for failed P1s. |
-| 7 | closure override | resolved | Product integration and validation / Criteria | 4.8% -> 3.4% down | User confirmed every independent P1 label gets baseline archetype/calibration coverage. |
+None — no round triggered bidirectional scoring (no contradictions, inconsistencies, evasions, or scope expansions).
 
 ## Lateral Review Panel
-- Round 1, initial -> progress: researcher, contrarian, and simplifier findings were folded into the independence-rule question. Main finding: source-list recognition is weaker than centroid distinctiveness.
-- Round 3, progress -> refined: researcher, contrarian, and simplifier findings were folded into validation scope. Main finding: product readiness must prove obtainability, not just structural shape.
-- Ready milestone closure panel: researcher, contrarian, and simplifier checked crystallization. One blocker was found and resolved: moderate validation must still include baseline archetype/calibration coverage for every added independent label.
+Not required — ambiguity transitioned from `refined` to `ready` at round 8 with no pre-answer synthesis needed before crystallization. All 8 rounds answered directly by user with high confidence.
 
 ## Goal
-Implement a bounded ideology expansion pass that processes the remaining high-confidence P1 gaps from the existing backlog into scoreable 26-axis result labels when they pass baseline archetype/calibration coverage, downgrades or defers failures with rationale, and handles P2 aliases/subtypes only as aliases or module-resolved outcomes when representative fixture evidence justifies them.
+Expand the ideology label set to 120-150 by systematically mining Polcompball ideological subcategories (Anarchists, Conservatives, Liberals, Nationalists, Religious, Environmentalists, etc.) as distinct labels, enrich all labels with Philosophyball-sourced philosophies across all main branches, add structured subTheories and ethicalTheory fields, add layer-specific philosophy arrays (normative/descriptive/prescriptive), and add a structured philosophyInfluences field mapping each philosophy to specific axis effects — then deploy with tests passing.
 
 ## Constraints
-- Use `docs/ideology-expansion-backlog.md` as the curated source boundary.
-- Prioritize remaining high-confidence P1 gaps currently absent from `src/data/labels.ts`.
-- Do not import Polcompball or Philosophyball wholesale.
-- Each independent label must have a full 26-axis centroid across the existing normative, descriptive, prescriptive, and cross-cutting axes.
-- Every added independent label must receive baseline archetype/calibration coverage.
-- Dense or near-tie clusters require extra representative fixtures beyond baseline coverage.
-- P2 outcomes are aliases by default unless module-resolved subtype evidence is justified by fixtures.
-- Module-resolved P2 outcomes require a reachable trigger path and subtype-resolution evidence.
-- Candidates that fail validation are downgraded to P2 under a sensible parent or deferred with rationale.
-- Do not weaken existing validation invariants to fit new labels.
+- Exclude Polcompball's Economic Systems, Government Systems, Fictional, Pejorative, Meme categories
+- Exclude Philosophyball's Lists of People/Books/Media/Fictional Philosophies
+- All new fields optional (backward-compatible with existing data)
+- Centroids must be plausible and internally consistent per ideology
+- All calibration fixtures and near-tie exceptions kept up to date
+- Full test suite (vitest) must pass before deployment
+- TypeScript strict mode must compile cleanly
+- Current 26-axis centroid system remains unchanged (no new axes)
 
 ## Non-Goals
-- No raw import of every source-list entry.
-- No new scoring axes unless a later plan explicitly justifies them.
-- No broad UI redesign.
-- No treating source recognizability alone as sufficient for independent label status.
-- No adding P2 module outcomes without reachability evidence.
+- No new scoring axes
+- No question-bank changes
+- No UI redesign
+- No chart/visualization work (deferred)
+- No compare/share changes (already complete)
+- No architectural changes beyond IdeologyLabel type expansion
 
 ## Acceptance Criteria
-- [ ] Compare `docs/ideology-expansion-backlog.md` against `src/data/labels.ts` and enumerate remaining high-confidence P1 gaps.
-- [ ] For each remaining P1 candidate, decide one of: independent label, P2 downgrade under a parent, or deferral with rationale.
-- [ ] Every added independent label has `id`, `name`, `family`, `subfamily`, `description`, and a full centroid over all existing axes.
-- [ ] Every added independent label has baseline archetype/calibration coverage.
-- [ ] Dense or near-tie clusters have representative extra fixtures documenting expected obtainability and acceptable near-ties.
-- [ ] Every implemented P2 subtype is either display-only alias/group metadata or has module trigger and subtype-resolution evidence.
-- [ ] Data validity tests pass without weakening label, centroid, or module reference checks.
-- [ ] Scoring/archetype tests pass without silently relaxing existing coverage invariants.
-- [ ] Candidate deferrals and downgrades are documented with rationale.
+- [ ] `src/types/label.ts` updated with 6 new optional fields
+- [ ] All 88 existing labels updated with complete philosophy enrichments
+- [ ] ~32-62 new labels added from Polcompball (reaching 120-150 total)
+- [ ] Each new label has `philosophies`, `normativePhilosophies`, `descriptivePhilosophies`, `prescriptivePhilosophies`, `ethicalTheory`, and `philosophyInfluences` populated
+- [ ] `subTheories` populated for applicable labels
+- [ ] Calibration fixtures added for all new labels
+- [ ] Near-tie exceptions documented for any fixture ties
+- [ ] `dataValidity.test.ts` validation covers new fields
+- [ ] 256+ tests passing (current baseline + new label fixtures)
+- [ ] `npx tsc -b` compiles cleanly
+- [ ] `npm run build` produces clean production build
+- [ ] Deployment to GitHub Pages via existing workflow
 
 ## Deferrals
-- Exact centroid values are deferred to implementation/planning, but every independent label must receive a full 26-axis centroid before shipping.
-- Exact module-question additions are deferred unless representative fixtures justify a P2 module outcome in the selected implementation pass.
-- Exact Philosophyball source parity remains a provenance caveat because tool access to the page was CAPTCHA-gated; the curated backlog remains the operative source boundary.
-- Convergence pacing deferral: no min-round floor, score-drop cap, or dampening was used; bidirectional scoring remained the pacing mechanism.
+- Philosophyball entry-level page scraping (labels themselves won't get individual philosophy pages — just the philosophy names and explanations)
+- Philosophyball sub-category listing beyond the main branches
+- Layer-specific philosophy arrays can be inferred from the full philosophies list + description for an initial version
 
-## Assumptions Exposed & Resolved
+## Assumptions
 | Assumption | Challenge | Resolution |
 |------------|-----------|------------|
-| Source-list recognition is enough for a result label. | The app is a 26-axis score matcher, not a taxonomy browser. | Independent labels require distinct centroid modeling and validation. |
-| All P1 backlog candidates must ship as base labels. | Some P1s may prove too close to existing labels or too mechanism-like. | Failed P1s downgrade to P2 under a sensible parent or defer with rationale. |
-| Moderate validation can mean fixtures only for dense clusters. | Current repo expects every label to have baseline archetype/calibration coverage. | Every independent label gets baseline coverage; dense clusters get extra fixtures. |
-| P2 module outcomes are cheap. | Modules must be reachable and subtype resolution must be evidenced. | P2s default to aliases unless representative fixture evidence justifies module work. |
+| Polcompball category page lists all relevant ideologies | Verified live browsing — ~250+ entries plus subcategory pages | Confirmed |
+| Philosophyball lists are comprehensive enough | Verified live browsing — main + applied branches visible | Accept for first pass |
+| A distinct centroid can be assigned to each new label | Assumes 26-axis space has enough dimensionality to separate ~150 labels | Validated by earlier 88-label density (many near-ties already documented with exceptions) |
+| 120-150 labels are achievable from ideological subcategories | Based on counting ~8 subcategories × 4-8 distinct labels each = 32-62 new labels | Conservative estimate; may end up closer to 120 than 150 |
 
 ## Technical Context
-- `src/data/labels.ts`: static `IdeologyLabel[]` corpus; current comparison found 53 labels and 25 missing P1 backlog names.
-- Missing P1 names identified during interview: Eco-Authoritarianism, Eco-Fascism, Bioregionalism, Democratic Confederalism, Libertarian Municipalism, Paleoconservatism, One-Nation Conservatism, National Bolshevism, Strasserism, Fourth Theory, Integralism, Islamic Democracy, Hindutva, Religious Nationalism, Zionism, Panarchism, Liquid Democracy, Cyberocracy, Accelerationism, Juche, Guild Socialism, Techno-Anarchism, World Federalism, Multiculturalism, Indigenism.
-- `src/scoring/labelMatch.ts`: centroid-distance matching and module subtype ranking.
-- `src/data/questions.ts`: source of normative, descriptive, and prescriptive axis signals.
-- `src/data/factionModules.ts` and `src/data/moduleQuestions.ts`: module trigger/subtype mechanism for narrow outcomes.
-- `src/data/dataValidity.test.ts` and `src/scoring/archetype-sweep.test.ts`: validation and calibration patterns that must not be weakened.
-- Polcompball Category:Ideologies was readable and broad; Philosophyball List of Philosophies was CAPTCHA-gated via tool access. The curated backlog is the accepted practical source boundary.
+- **Codebase**: Single-page React app, pure TypeScript, no router/database
+- **Key files**:
+  - `src/types/label.ts` — IdeologyLabel interface (add new fields)
+  - `src/data/labels.ts` — 3282-line label data file (add new entries, enrich existing)
+  - `src/scoring/calibration.fixtures.ts` — centroid-aligned fixtures
+  - `src/scoring/archetype-sweep.test.ts` — near-tie exception table
+  - `src/data/dataValidity.test.ts` — data integrity validation
+  - `src/data/audit.test.ts` — audit coverage checks
+- **Label structure**: Each entry has `id`, `name`, `family`, `description`, `centroid` (26-axis map), optional `aliases[]`, optional `philosophies[]`
+- **Family consistency**: Existing 16 families should be reused; new ones added only if a label genuinely doesn't fit
+- **Nearest-label matching**: Uses cosine similarity against centroids; new labels must not cause existing fixtures to mis-match without documented exceptions
 
 ## Ontology (Key Entities)
 | Entity | Type | Fields | Relationships |
 |--------|------|--------|---------------|
-| SourceList | external source | url, provenance, access status | Supplies source evidence for backlog candidates. |
-| ExpansionBacklog | planning artifact | P1 rows, P2 rows, missing current labels | Bounds candidate selection for this implementation pass. |
-| CandidateIdeology | core domain | name, priority, missing status, downgrade/defer outcome | May become IdeologyLabel, P2 alias/subtype, or deferral. |
-| IdeologyLabel | core domain | id, name, family, subfamily, description, centroid | Matched against respondent scores by centroid distance. |
-| Centroid | scoring model | 26 axis values across normative/descriptive/prescriptive/cross-cutting axes | Makes an IdeologyLabel scoreable and distinguishable. |
-| ModuleSubtype | scoring subtype | trigger parent, candidate labels, module questions | Distinguishes narrow P2 outcomes when justified. |
-| ResultOutcome | product output | primary label, confidence, subtype/module result | The user-visible ideology result. |
+| PolcompballLabel | core domain | id, name, family, subfamily, description, centroid, aliases, philosophies | belongs-to PolcompballSubcategory |
+| PolcompballSubcategory | supporting | name, ideology type filter | contains PolcompballLabel entries |
+| PhilosophyballEntry | core domain | name, branch (ethics/epistemology/etc.) | influences IdeologyLabel via philosophies fields |
+| SubTheory | supporting | name, parentLabelId | child-of IdeologyLabel |
+| EthicalTheory | supporting | name (deontology/consequentialism/virtue ethics) | applies-to IdeologyLabel |
+| LayerPhilosophy | supporting | philosophy name, layer (normative/descriptive/prescriptive) | mapped-on IdeologyLabel via per-layer arrays |
+| PhilosophyInfluence | relationship | philosophy, description, affectedAxes | links PhilosophyballEntry to IdeologyLabel centroid dimensions |
 
 ## Ontology Convergence
 | Round | Entity Count | New | Changed | Stable | Stability Ratio |
-|-------|--------------|-----|---------|--------|-----------------|
-| 1 | 5 | 5 | - | - | - |
-| 2 | 6 | 1 | 0 | 5 | 83% |
-| 3 | 7 | 1 | 0 | 6 | 86% |
-| 4 | 7 | 0 | 0 | 7 | 100% |
-| 5 | 7 | 0 | 0 | 7 | 100% |
-| 6 | 7 | 0 | 0 | 7 | 100% |
+|-------|-------------|-----|---------|--------|----------------|
+| 1 | 1 | 1 | - | - | N/A |
+| 2 | 2 | 1 | 0 | 1 | 100% |
+| 3 | 3 | 1 | 0 | 2 | 100% |
+| 4 | 5 | 2 | 0 | 3 | 100% |
+| 5 | 6 | 1 | 0 | 5 | 100% |
+| 6 | 7 | 1 | 0 | 6 | 100% |
 | 7 | 7 | 0 | 0 | 7 | 100% |
+| 8 | 7 | 0 | 0 | 7 | 100% |
 
 ## Interview Transcript
-<details>
-<summary>Full Q&A (7 rounds)</summary>
-
-### Round 0
-**Q:** Is the topology four components: source candidate curation, result-label expansion, centroid/layer modeling, and product integration/validation?
-**A:** Looks right.
-**Ambiguity:** not scored.
+<details><summary>Full Q&A (8 rounds)</summary>
 
 ### Round 1
-**Q:** For the first implementation pass, what should count as success for the result-label expansion?
-**A:** Add P1 independent labels plus P2 aliases/subtypes as grouped or module-resolved outcomes.
-**Ambiguity:** 56.5%.
+**Q:** Polcompball Category:Ideologies has ~250+ entries. What scale of label expansion do you want?
+**A:** B — Curated broad (120–150 labels)
+**Ambiguity:** 68% → 50%
 
 ### Round 2
-**Q:** What should be the admission rule for turning a Polcompball/Philosophyball candidate into an independent base result label?
-**A:** Balanced: add distinct 26-axis labels, and allow narrow subtypes only when an existing or new module can distinguish them.
-**Ambiguity:** 39.4%.
+**Q:** Which Polcompball subcategories should we mine?
+**A:** Ideological subcats only (skip Economic/Government Systems, Fictional/Pejorative/Memes)
+**Ambiguity:** 50% → 40%
 
 ### Round 3
-**Q:** Which source slice should the first balanced implementation pass prioritize?
-**A:** Finish remaining high-confidence P1 gaps from the existing backlog, regardless of family.
-**Ambiguity:** 28.4%.
+**Q:** What scope from Philosophyball?
+**A:** C — All main branches (Ethics, Epistemology, Metaphysics, Logic, Aesthetics, Political Philosophy, etc.)
+**Ambiguity:** 40% → 34%
 
 ### Round 4
-**Q:** What should the acceptance gate be for product readiness?
-**A:** Moderate: structural data validity plus representative archetype fixtures for the densest clusters only.
-**Ambiguity:** 17.8%.
+**Q:** What does sub/macro/ethical theory layer mean structurally?
+**A:** C — Both subTheories + ethicalTheory as structured fields
+**Ambiguity:** 34% → 29%
 
 ### Round 5
-**Q:** For P2 aliases and subtypes in this first pass, what scope boundary should we use?
-**A:** Balanced: add aliases plus module-resolved subtypes only for clusters that already need representative fixtures.
-**Ambiguity:** 12.5%.
+**Q:** How to map theories to normative/descriptive/prescriptive layers?
+**A:** A — Layer-specific philosophy arrays (normativePhilosophies, descriptivePhilosophies, prescriptivePhilosophies)
+**Ambiguity:** 29% → 24%
 
 ### Round 6
-**Q:** If a remaining P1 candidate cannot be made distinguishable under the moderate validation gate, what should happen?
-**A:** Downgrade it to P2 alias/subtype if there is a sensible parent; otherwise defer with rationale.
-**Ambiguity:** 4.8%.
+**Q:** What level of detail for philosophy→politics influence mapping?
+**A:** B — Detailed per-philosophy mapping with axis references
+**Ambiguity:** 24% → 19%
 
 ### Round 7
-**Q:** Should the final spec require every added independent P1 label to receive baseline archetype/calibration coverage, with extra representative fixtures for dense or near-tie clusters?
-**A:** Yes: every independent P1 label gets baseline archetype/calibration coverage; dense clusters get extra fixtures.
-**Ambiguity:** 3.4%.
+**Q:** How to decide which Polcompball entries become labels vs aliases?
+**A:** A — Every distinct ideology with a scorable axis profile = label
+**Ambiguity:** 19% → 13%
 
-### Restate Gate
-**Q:** If someone read only the restated goal, would they reach the same outcome you have in mind?
-**A:** Yes, crystallize.
+### Round 8
+**Q:** What format for philosophyInfluences field?
+**A:** B — Array with philosophy name, description, and affectedAxes
+**Ambiguity:** 13% → 8%
 
 </details>

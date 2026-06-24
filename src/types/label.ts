@@ -13,4 +13,28 @@ export interface IdeologyLabel {
    aliases?: string[]
    /** Influencing philosophical traditions (e.g. Marxism, Liberalism, Conservatism, etc.). Display-only. */
    philosophies?: string[]
+
+   /** Sub-ideology variants (e.g. Stalinism under Marxism-Leninism). Display-only. */
+   subTheories?: string[]
+
+   /** Normative ethics frameworks this ideology draws on (e.g. deontology, consequentialism, virtue ethics). Display-only. */
+   ethicalTheory?: string[]
+
+   /** Philosophies primarily shaping normative (ought-to-be) commitments. Subset of `philosophies`. */
+   normativePhilosophies?: string[]
+
+   /** Philosophies primarily shaping descriptive (what-is) empirical beliefs. Subset of `philosophies`. */
+   descriptivePhilosophies?: string[]
+
+   /** Philosophies primarily shaping prescriptive (what-to-do) policy/strategy preferences. Subset of `philosophies`. */
+   prescriptivePhilosophies?: string[]
+
+   /** Structured mapping from influencing philosophy to specific axis-score effects. */
+   philosophyInfluences?: Array<{
+      philosophy: string
+      /** Explanation of how this philosophy affects the ideology's axis positions. */
+      description: string
+      /** Axis IDs this philosophy primarily influences. */
+      affectedAxes: AxisId[]
+   }>
 }

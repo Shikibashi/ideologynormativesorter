@@ -1,6 +1,6 @@
 import type { Axis, AxisId, IdeologyLabel, LabelConflationFlag, LabelMatch, Layer, ScoreBreakdown } from '../types'
 
-const NEAREST_LABEL_COUNT = 3
+const NEAREST_LABEL_COUNT = 20
 /** A layer must agree at least this well to count as the "matched" layer. */
 const MATCH_FLOOR = 0.7
 /** Spread between best and worst layer agreement that counts as conflation. */

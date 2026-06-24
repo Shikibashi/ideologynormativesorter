@@ -9,6 +9,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Prioritizes material equality and is comfortable using state authority and public provision to achieve it, expecting public institutions to act competently and in good faith.',
       philosophies: ["Marxism","Socialism","Reformism","Social Democracy"],
+      subTheories: ["Social Democracy","Welfare State"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism","Social Democracy"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Reformism","Social Democracy"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Critique of capitalism drives strong equality and state-action commitments.",
+            affectedAxes: ["equality-theory","property-legitimacy","state-action-vs-exit"],
+         },
+         {
+            philosophy: "Social Democracy",
+            description: "Reformist welfare orientation tempers Marxism with gradual institutional change.",
+            affectedAxes: ["reform-vs-revolution","redistribution-vs-predistribution","gradualism-vs-immediatism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.4,
          'property-legitimacy': -0.5,
@@ -46,6 +63,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds market exchange in high empirical confidence, treats private property as strongly legitimate, and favors deregulation pursued through gradual institutional reform.',
       philosophies: ["Liberalism","Classical Liberalism","Lockeanism"],
+      subTheories: ["Classical Liberalism","Libertarianism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","Classical Liberalism","Lockeanism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Classical Liberalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Classical Liberalism",
+            description: "Emphasis on negative liberty and strong property rights.",
+            affectedAxes: ["property-legitimacy","liberty-noninterference","market-process-confidence"],
+         },
+         {
+            philosophy: "Lockeanism",
+            description: "Natural rights grounding for property and limited government.",
+            affectedAxes: ["authority-legitimacy","property-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0,
          'property-legitimacy': 0.7,
@@ -83,6 +117,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines a strong normative concern for domination and equal standing with deep public-choice skepticism toward the state, concluding that decentralized, market-based exit is the most reliable remedy.',
       philosophies: ["Libertarianism","Agorism","Rothbardianism"],
+      subTheories: ["Agorism","Rothbardianism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Libertarianism","Rothbardianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Libertarianism","Agorism","Rothbardianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Libertarianism",
+            description: "Anti-authority, pro-liberty stance prioritizing individual freedom.",
+            affectedAxes: ["authority-legitimacy","liberty-noninterference","centralization-preference"],
+         },
+         {
+            philosophy: "Agorism",
+            description: "Counter-economic strategy rejects state reliance for change.",
+            affectedAxes: ["state-action-vs-exit","electoralism-vs-direct-action"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.8,
          'property-legitimacy': 0.6,
@@ -120,6 +171,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Rejects strong private claims over productive property in favor of collective ownership, but pursues that aim through democratic and reformist means rather than rupture.',
       philosophies: ["Marxism","Socialism","Reformism","Social Democracy"],
+      subTheories: ["Bernsteinism","Eduard Bernstein","Revisionism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism","Social Democracy"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Reformism","Social Democracy"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Structural critique of capitalism drives egalitarian commitments.",
+            affectedAxes: ["equality-theory","property-legitimacy"],
+         },
+         {
+            philosophy: "Reformism",
+            description: "Commitment to democratic rather than revolutionary change.",
+            affectedAxes: ["reform-vs-revolution","electoralism-vs-direct-action"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0,
          'property-legitimacy': -0.6,
@@ -157,6 +225,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Rejects private claims over productive property almost entirely and concludes that existing institutions are too captured by propertied interests to be reformed from within.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
+      subTheories: ["Marxism-Leninism","Maoism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Leninism","Vanguardism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Class analysis motivates fundamental restructuring of property relations.",
+            affectedAxes: ["property-legitimacy","equality-theory"],
+         },
+         {
+            philosophy: "Leninism",
+            description: "Vanguard party and revolutionary rupture as method of change.",
+            affectedAxes: ["reform-vs-revolution","centralization-preference","coercion-strategy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': -0.9,
@@ -194,6 +279,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Treats inherited authority and stable hierarchy as legitimate, draws strong boundaries around a particular community, and expects cultural patterns to be resistant to deliberate redesign.',
       philosophies: ["Conservatism","Traditionalism","Paleoconservatism"],
+      subTheories: ["Paleoconservatism","Traditionalist Conservatism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Conservatism","Traditionalism","Paleoconservatism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Conservatism",
+            description: "Skepticism of deliberate social change; deference to inherited institutions.",
+            affectedAxes: ["authority-legitimacy","moral-traditionalism","cultural-plasticity"],
+         },
+         {
+            philosophy: "Traditionalism",
+            description: "Sacred or trans-historical moral order as foundation of legitimate authority.",
+            affectedAxes: ["moral-traditionalism","secularism-religious","political-community-boundary"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.6,
          'property-legitimacy': 0.5,
@@ -232,6 +334,23 @@ export const labels: IdeologyLabel[] = [
          'Trusts centralized expert administration over both markets and electoral majorities, treating state capacity as high and democratic judgment as comparatively unreliable.',
       philosophies: ["Technocracy","Progressivism","Ecomodernism","Techno-Optimism"],
    aliases: ["Noocracy","Scientocracy"],
+      subTheories: ["Managerialism","Elite Theory","Synoptic Planning"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: [],
+      descriptivePhilosophies: ["Techno-Optimism"],
+      prescriptivePhilosophies: ["Technocracy","Progressivism","Ecomodernism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Technocracy",
+            description: "Expert administration as superior to both markets and democratic deliberation.",
+            affectedAxes: ["expert-confidence","democratic-confidence","centralization-preference"],
+         },
+         {
+            philosophy: "Progressivism",
+            description: "Belief in deliberate social improvement through evidence-based reform.",
+            affectedAxes: ["state-capacity-confidence","cultural-plasticity"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.2,
@@ -269,6 +388,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines strong skepticism of concentrated authority with universalist obligations beyond national borders, favoring decentralized, low-regulation arrangements without a strong stance on property as such.',
       philosophies: ["Liberalism","Civil Libertarianism","Cosmopolitanism"],
+      subTheories: ["Left-Libertarianism","Cosmopolitan Liberalism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","Civil Libertarianism","Cosmopolitanism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Civil Libertarianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Liberalism",
+            description: "Commitment to individual liberty and universal rights.",
+            affectedAxes: ["liberty-noninterference","authority-legitimacy"],
+         },
+         {
+            philosophy: "Cosmopolitanism",
+            description: "Universal moral obligations extend beyond borders.",
+            affectedAxes: ["political-community-boundary","anti-domination"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.6,
          'property-legitimacy': 0.3,
@@ -306,6 +442,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Treats exclusive private appropriation of natural opportunities—especially land and resource rents—as the central injustice, while leaving genuinely produced wealth to voluntary exchange; prefers land-value taxation and free migration to state micromanagement.',
       philosophies: ["Libertarianism","Geolibertarianism","Georgism","Lockeanism"],
+      subTheories: ["Georgism","Geoism","Land Value Tax"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Libertarianism","Lockeanism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Libertarianism","Geolibertarianism","Georgism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Libertarianism",
+            description: "Property rights logic applied to natural opportunity.",
+            affectedAxes: ["liberty-noninterference","property-legitimacy"],
+         },
+         {
+            philosophy: "Georgism",
+            description: "Land value taxation and common ownership of natural rent.",
+            affectedAxes: ["equality-theory","redistribution-vs-predistribution","property-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.6,
          'property-legitimacy': -0.5,
@@ -343,6 +496,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Rejects political authority and compulsory public goods provision entirely, treating all legitimate social order as emergent from voluntary contract, private property, and competitive protection and arbitration markets.',
       philosophies: ["Libertarianism","Anarcho-Capitalism","Rothbardianism","Austrian Economics"],
+      subTheories: ["Rothbardian Anarchism","Austrian Anarchism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Libertarianism","Rothbardianism"],
+      descriptivePhilosophies: ["Austrian Economics"],
+      prescriptivePhilosophies: ["Libertarianism","Anarcho-Capitalism","Rothbardianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Libertarianism",
+            description: "Absolute commitment to self-ownership and voluntary association.",
+            affectedAxes: ["authority-legitimacy","liberty-noninterference","property-legitimacy"],
+         },
+         {
+            philosophy: "Austrian Economics",
+            description: "Deep confidence in market process and skepticism of state intervention.",
+            affectedAxes: ["market-process-confidence","public-choice-skepticism","coordination-optimism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.95,
          'property-legitimacy': 0.95,
@@ -380,6 +550,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines social or cooperative ownership of productive capital with market pricing and competition, aiming to disperse economic power without abandoning the coordinating virtues of exchange.',
       philosophies: ["Marxism","Socialism","Market Socialism","Neoclassical Economics"],
+      subTheories: ["Oskar Lange Model","Worker Self-Management","Cooperativism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism","Market Socialism"],
+      descriptivePhilosophies: ["Marxism","Neoclassical Economics"],
+      prescriptivePhilosophies: ["Market Socialism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Critique of capitalist ownership drives social ownership commitment.",
+            affectedAxes: ["property-legitimacy","equality-theory"],
+         },
+         {
+            philosophy: "Market Socialism",
+            description: "Belief in combining social ownership with market allocation.",
+            affectedAxes: ["market-process-confidence","centralization-preference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.2,
          'property-legitimacy': -0.5,
@@ -417,6 +604,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Accepts a mixed economy and parliamentary institutions, then uses them to temper market outcomes through progressive taxation, public services, unions, and steady incremental reform.',
       philosophies: ["Marxism","Socialism","Reformism","Social Democracy"],
+      subTheories: ["Social Democracy","Welfare State","Nordic Model"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism","Social Democracy"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Reformism","Social Democracy"],
+      philosophyInfluences: [
+         {
+            philosophy: "Social Democracy",
+            description: "Mixed economy approach via parliamentary institutions.",
+            affectedAxes: ["reform-vs-revolution","redistribution-vs-predistribution","electoralism-vs-direct-action"],
+         },
+         {
+            philosophy: "Marxism",
+            description: "Background critique of capitalism motivates structural egalitarianism.",
+            affectedAxes: ["equality-theory","property-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': -0.4,
@@ -454,6 +658,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Balances anti-authoritarianism with a cooperative market ethos: opposes rent and hierarchy, favors local federations and mutual credit, and treats both state power and concentrated capital as sources of domination.',
       philosophies: ["Anarchism","Mutualism","Proudhonism"],
+      subTheories: ["Proudhonian Mutualism","Reciprocal Exchange"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anarchism","Proudhonism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Mutualism","Proudhonism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Rejection of coercive authority and state power.",
+            affectedAxes: ["authority-legitimacy","centralization-preference"],
+         },
+         {
+            philosophy: "Mutualism",
+            description: "Cooperative market exchange without rent or hierarchy.",
+            affectedAxes: ["property-legitimacy","market-process-confidence","anti-domination"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': -0.3,
@@ -491,6 +712,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Believes that technological innovation, dense energy, and capable public institutions can decouple human flourishing from ecological harm, and is willing to centralize planning around climate and energy transitions.',
       philosophies: ["Technocracy","Progressivism","Ecomodernism","Techno-Optimism"],
+      subTheories: ["Ecological Modernization","Good Anthropocene"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: [],
+      descriptivePhilosophies: ["Techno-Optimism"],
+      prescriptivePhilosophies: ["Technocracy","Progressivism","Ecomodernism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Ecomodernism",
+            description: "Technological decoupling of human welfare from environmental impact.",
+            affectedAxes: ["human-nature-priority","expert-confidence"],
+         },
+         {
+            philosophy: "Technocracy",
+            description: "Trust in capable institutions and expert-led planning.",
+            affectedAxes: ["state-capacity-confidence","cultural-plasticity"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.1,
@@ -528,6 +766,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Upholds traditional moral and family order within a bounded national community, accepts market economies tempered by social insurance, and prefers incremental, institutionally mediated reform to radical change.',
       philosophies: ["Conservatism","Christian Democracy","Catholic Social Teaching"],
+      subTheories: ["Popular Party","Catholic Social Teaching"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Conservatism","Christian Democracy","Catholic Social Teaching"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Conservatism",
+            description: "Deference to traditional moral and social order.",
+            affectedAxes: ["moral-traditionalism","cultural-plasticity"],
+         },
+         {
+            philosophy: "Christian Democracy",
+            description: "Social market economy with strong family and community orientation.",
+            affectedAxes: ["redistribution-vs-predistribution","gradualism-vs-immediatism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.4,
@@ -565,6 +820,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Subordinates the individual to an organic national community led by a unified will, celebrates hierarchy and tradition, and endorses coercive state action—including paramilitary and exclusionary measures—to restore national greatness.',
       philosophies: ["Authoritarianism","Fascism","Corporatism"],
+      subTheories: ["Italian Fascism","Francoism","Salazarism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Authoritarianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Authoritarianism","Fascism","Corporatism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Authoritarianism",
+            description: "Strong centralized authority and subordination of individual to collective.",
+            affectedAxes: ["authority-legitimacy","liberty-noninterference","centralization-preference"],
+         },
+         {
+            philosophy: "Fascism",
+            description: "Organic nationalism with coercive state power and hierarchy.",
+            affectedAxes: ["moral-traditionalism","political-community-boundary","coercion-strategy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.95,
          'property-legitimacy': 0.2,
@@ -602,6 +874,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that a disciplined vanguard party must seize and wield centralized state power to abolish private capital and direct a planned economy through the transition to communism.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
+      subTheories: ["Stalinism","Maoism","Hoxhaism","Titoism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Leninism","Vanguardism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Capitalist critique and planned economy orientation.",
+            affectedAxes: ["property-legitimacy","equality-theory"],
+         },
+         {
+            philosophy: "Leninism",
+            description: "Vanguard party discipline and revolutionary state power.",
+            affectedAxes: ["centralization-preference","reform-vs-revolution","electoralism-vs-direct-action"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': -0.95,
@@ -639,6 +928,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Rejects both the market and the vanguard party, holding that workers should govern production directly through federated councils rather than a state bureaucracy that would reproduce domination.',
       philosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      subTheories: ["Luxemburgism","Dutch-German Left Communism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Council Communism","Libertarian Socialism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Working class self-emancipation through social ownership.",
+            affectedAxes: ["equality-theory","property-legitimacy"],
+         },
+         {
+            philosophy: "Council Communism",
+            description: "Rejection of both vanguard party and market in favor of workers councils.",
+            affectedAxes: ["centralization-preference","authority-legitimacy","electoralism-vs-direct-action"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': -0.9,
@@ -676,6 +982,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Looks to federated labor unions, not parties or the state, as the vehicle for abolishing capitalism, with production coordinated directly through workers organizations won by direct action.',
       philosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      subTheories: ["Revolutionary Syndicalism","Anarcho-Syndicalism","Industrial Unionism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Council Communism","Libertarian Socialism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Class struggle as engine of socialist transformation.",
+            affectedAxes: ["equality-theory","property-legitimacy"],
+         },
+         {
+            philosophy: "Libertarian Socialism",
+            description: "Anti-state, anti-capitalist direct action through labor unions.",
+            affectedAxes: ["centralization-preference","electoralism-vs-direct-action","state-action-vs-exit"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': -0.8,
@@ -713,6 +1036,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Seeks the immediate abolition of both state and market in favor of stateless communism organized around free association and distribution according to need.',
       philosophies: ["Anarchism","Anarcho-Communism","Kropotkinism"],
+      subTheories: ["Platformism","Synthesis Anarchism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anarchism","Anarcho-Communism","Kropotkinism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Anarcho-Communism","Kropotkinism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Complete rejection of coercive authority.",
+            affectedAxes: ["authority-legitimacy","centralization-preference"],
+         },
+         {
+            philosophy: "Anarcho-Communism",
+            description: "Stateless communist distribution according to need.",
+            affectedAxes: ["property-legitimacy","equality-theory","coordination-optimism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.95,
          'property-legitimacy': -0.95,
@@ -750,6 +1090,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that the state should be shrunk to a minimal night-watchman role limited to police, courts, and defense, retained only because competitive enforcement of rights is judged unworkable.',
       philosophies: ["Libertarianism","Minarchism","Lockeanism","Nozickism"],
+      subTheories: ["Night-Watchman State","Limited Government"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Libertarianism","Lockeanism","Nozickism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Libertarianism","Minarchism","Nozickism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Libertarianism",
+            description: "Strong property rights and individual liberty.",
+            affectedAxes: ["liberty-noninterference","property-legitimacy"],
+         },
+         {
+            philosophy: "Minarchism",
+            description: "State limited to police, courts, and defense only.",
+            affectedAxes: ["authority-legitimacy","state-action-vs-exit","centralization-preference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.4,
          'property-legitimacy': 0.8,
@@ -787,6 +1144,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'A market-anarchist strategy that rejects electoral politics entirely and seeks to dissolve the state through counter-economics: building untaxed, unlicensed black and grey markets and parallel institutions.',
       philosophies: ["Libertarianism","Anarcho-Capitalism","Rothbardianism","Austrian Economics"],
+      subTheories: ["Counter-Economics","Market Anarchism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Libertarianism","Rothbardianism"],
+      descriptivePhilosophies: ["Austrian Economics"],
+      prescriptivePhilosophies: ["Libertarianism","Anarcho-Capitalism","Rothbardianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Libertarianism",
+            description: "Absolute private property and self-ownership.",
+            affectedAxes: ["property-legitimacy","authority-legitimacy"],
+         },
+         {
+            philosophy: "Rothbardianism",
+            description: "Natural law anarchism with counter-economic strategy.",
+            affectedAxes: ["state-action-vs-exit","electoralism-vs-direct-action","coercion-strategy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.95,
          'property-legitimacy': 0.8,
@@ -824,6 +1198,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines market-friendly domestic conservatism with an assertive foreign policy that treats the active projection of military power and promotion of favored values abroad as legitimate and necessary.',
       philosophies: ["Conservatism","Neoconservatism","Straussianism"],
+      subTheories: ["Straussian Neoconservatism","Wilsonianism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Conservatism","Neoconservatism","Straussianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Neoconservatism","Straussianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Conservatism",
+            description: "Traditional values and limited government domestically.",
+            affectedAxes: ["moral-traditionalism","property-legitimacy"],
+         },
+         {
+            philosophy: "Straussianism",
+            description: "Assertive, value-promoting foreign policy orientation.",
+            affectedAxes: ["militarism-pacifism","political-community-boundary"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': 0.6,
@@ -862,6 +1253,23 @@ export const labels: IdeologyLabel[] = [
          'Holds that legitimate public authority and civil law should derive from and enforce religious doctrine, with religious institutions or revealed law taking precedence over secular and pluralist norms.',
       philosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
    aliases: ["Islamic Theocracy"],
+      subTheories: ["Clericalism","Theonomic","Caesaro-Papism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Conservatism",
+            description: "Deference to traditional moral and religious authority.",
+            affectedAxes: ["moral-traditionalism","secularism-religious"],
+         },
+         {
+            philosophy: "Theocracy",
+            description: "Religious law as the foundation of civil authority.",
+            affectedAxes: ["authority-legitimacy","secularism-religious","liberty-noninterference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.8,
          'property-legitimacy': 0.3,
@@ -899,6 +1307,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Treats ecological crisis as inseparable from capitalism, seeking collective ownership and democratic planning of production to serve both human need and ecological limits rather than profit or growth for its own sake.',
       philosophies: ["Environmentalism","Ecologism","Ecosocialism","Marxism"],
+      subTheories: ["Internal Strands"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Environmentalism","Ecologism","Ecosocialism","Marxism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Ecosocialism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Environmentalism",
+            description: "Ecological crisis as central political concern.",
+            affectedAxes: ["human-nature-priority","regulation-vs-deregulation"],
+         },
+         {
+            philosophy: "Marxism",
+            description: "Capitalism as root cause of ecological destruction.",
+            affectedAxes: ["property-legitimacy","equality-theory"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0,
          'property-legitimacy': -0.7,
@@ -936,6 +1361,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that lasting sustainability requires a planned, democratic reduction of throughput in rich economies, rejecting growth as a goal in favor of sufficiency, localism, and a shift from material accumulation to shared well-being.',
       philosophies: ["Environmentalism","Ecologism","Degrowth","Steady-State Economics"],
+      subTheories: ["Post-Growth","Sufficiency Economy","Decommodification"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Environmentalism","Ecologism","Degrowth"],
+      descriptivePhilosophies: ["Steady-State Economics"],
+      prescriptivePhilosophies: ["Degrowth"],
+      philosophyInfluences: [
+         {
+            philosophy: "Environmentalism",
+            description: "Ecological sustainability as overriding priority.",
+            affectedAxes: ["human-nature-priority","market-process-confidence"],
+         },
+         {
+            philosophy: "Degrowth",
+            description: "Planned reduction of throughput in wealthy economies.",
+            affectedAxes: ["regulation-vs-deregulation","centralization-preference","equality-theory"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.2,
          'property-legitimacy': -0.5,
@@ -973,6 +1415,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Grounds national belonging in shared institutions, laws, and civic commitment rather than ancestry, treating the nation as an inclusive political community open to anyone who adopts its constitutional values.',
       philosophies: ["Nationalism","Civic Nationalism","Republicanism"],
+      subTheories: ["Constitutional Patriotism","Liberal Nationalism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Nationalism","Republicanism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Civic Nationalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Nationalism",
+            description: "National community as political organizing principle.",
+            affectedAxes: ["political-community-boundary","centralization-preference"],
+         },
+         {
+            philosophy: "Civic Nationalism",
+            description: "National belonging based on shared institutions and values.",
+            affectedAxes: ["democratic-confidence","authority-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.2,
@@ -1010,6 +1469,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Defines the nation by common descent, culture, and heritage, prioritizing the interests and continuity of that ethnic community and treating membership as inherited rather than chosen.',
       philosophies: ["Nationalism","Ethnic Nationalism","Social Darwinism"],
+      subTheories: ["Volkisch Nationalism","Primordialism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Nationalism"],
+      descriptivePhilosophies: ["Social Darwinism"],
+      prescriptivePhilosophies: ["Ethnic Nationalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Nationalism",
+            description: "Nation as primary political unit.",
+            affectedAxes: ["political-community-boundary","authority-legitimacy"],
+         },
+         {
+            philosophy: "Social Darwinism",
+            description: "Ethnic competition and hierarchy as natural order.",
+            affectedAxes: ["equality-theory","moral-traditionalism","coercion-strategy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.6,
          'property-legitimacy': 0.3,
@@ -1047,6 +1523,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that supreme and largely unchecked authority should rest with a hereditary sovereign, valuing the stability, continuity, and unified will of personal rule over elected and deliberative government.',
       philosophies: ["Authoritarianism","Monarchism","Divine Right"],
+      subTheories: ["Divine Right","Legitimism","Carlism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Authoritarianism","Monarchism","Divine Right"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Authoritarianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Authoritarianism",
+            description: "Unchecked hierarchical authority as legitimate.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","democratic-confidence"],
+         },
+         {
+            philosophy: "Divine Right",
+            description: "Sovereign authority derived from transcendent source.",
+            affectedAxes: ["secularism-religious","moral-traditionalism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.95,
          'property-legitimacy': 0.5,
@@ -1084,6 +1577,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Rejects democracy as unstable and proposes governance modeled on a corporation run by an accountable sovereign-executive, with citizens as customers free to exit to competing sovereign jurisdictions rather than to vote.',
       philosophies: ["Authoritarianism","Neoreaction","Monarchism","Dark Enlightenment"],
+      subTheories: ["Dark Enlightenment","NRx"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Authoritarianism","Neoreaction","Monarchism","Dark Enlightenment"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Authoritarianism","Neoreaction"],
+      philosophyInfluences: [
+         {
+            philosophy: "Authoritarianism",
+            description: "Rejection of democracy in favor of strong executive authority.",
+            affectedAxes: ["authority-legitimacy","democratic-confidence","centralization-preference"],
+         },
+         {
+            philosophy: "Neoreaction",
+            description: "Governance modeled on corporate CEO accountable via exit.",
+            affectedAxes: ["electoralism-vs-direct-action","state-action-vs-exit","property-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': 0.7,
@@ -1121,6 +1631,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Grounds legitimacy in individual negative liberty and constitutionally limited government, treating equal civil and political rights as the sufficiency of justice rather than a mandate for redistribution or expert administration.',
       philosophies: ["Liberalism","Classical Liberalism","Lockeanism"],
+      subTheories: ["Lockean Liberalism","Negative Liberty"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","Classical Liberalism","Lockeanism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Classical Liberalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Liberalism",
+            description: "Rights-based individualist political philosophy.",
+            affectedAxes: ["liberty-noninterference","property-legitimacy"],
+         },
+         {
+            philosophy: "Classical Liberalism",
+            description: "Negative liberty and constitutionally limited government.",
+            affectedAxes: ["authority-legitimacy","reform-vs-revolution"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': 0.6,
@@ -1158,6 +1685,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines confident market-process belief with trust in expert administration and capable state capacity to manage the rules of a globally integrated economy, favoring deregulation and privatization mediated through international institutions.',
       philosophies: ["Liberalism","Neoliberalism","Chicago School","Austrian Economics"],
+      subTheories: ["Washington Consensus","Chicago School","Market Fundamentalism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","Neoliberalism"],
+      descriptivePhilosophies: ["Chicago School","Austrian Economics"],
+      prescriptivePhilosophies: ["Neoliberalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Liberalism",
+            description: "Foundation of individual rights and free exchange.",
+            affectedAxes: ["liberty-noninterference","property-legitimacy"],
+         },
+         {
+            philosophy: "Chicago School",
+            description: "Free market economics with confidence in market allocation.",
+            affectedAxes: ["market-process-confidence","regulation-vs-deregulation","public-choice-skepticism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.7,
@@ -1195,6 +1739,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that a competitive market order is itself a public good requiring a strong constitutional state that enforces competition against cartels and prevents interest-group capture through binding rules rather than discretionary intervention.',
       philosophies: ["Liberalism","Ordoliberalism","German Historical School"],
+      subTheories: ["Freiburg School","Social Market Economy","Rhine Capitalism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","Ordoliberalism"],
+      descriptivePhilosophies: ["German Historical School"],
+      prescriptivePhilosophies: ["Ordoliberalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Liberalism",
+            description: "Individual liberty and competitive markets.",
+            affectedAxes: ["liberty-noninterference","property-legitimacy"],
+         },
+         {
+            philosophy: "Ordoliberalism",
+            description: "Constitutional framework to maintain competition and prevent cartels.",
+            affectedAxes: ["regulation-vs-deregulation","state-capacity-confidence","market-process-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.6,
@@ -1232,6 +1793,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Accepts markets and private property as foundations but bounds them by a positive-liberty commitment to substantive opportunity, using targeted state provision and redistribution so that fair life chances are compatible with individual freedom.',
       philosophies: ["Liberalism","Social Liberalism","Millism","Rawlsianism"],
+      subTheories: ["New Liberalism","Welfare Liberalism","Rawlsianism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","Social Liberalism","Millism","Rawlsianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Social Liberalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Liberalism",
+            description: "Individual rights and equal freedom.",
+            affectedAxes: ["liberty-noninterference","equality-theory"],
+         },
+         {
+            philosophy: "Social Liberalism",
+            description: "Positive liberty through state-provided opportunity.",
+            affectedAxes: ["redistribution-vs-predistribution","state-action-vs-exit"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': 0.3,
@@ -1270,6 +1848,23 @@ export const labels: IdeologyLabel[] = [
          'Pairs confidence in free markets and private property with a deference to inherited moral order and gradual institutional change, seeking to conserve cultural and familial continuity while preserving a market economy under the rule of law.',
       philosophies: ["Liberalism","Conservative Liberalism","Burkeanism"],
    aliases: ["Liberal Conservatism"],
+      subTheories: ["Internal Traditions"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","Conservative Liberalism","Burkeanism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Conservative Liberalism","Burkeanism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Liberalism",
+            description: "Markets and individual liberty as foundations.",
+            affectedAxes: ["property-legitimacy","liberty-noninterference"],
+         },
+         {
+            philosophy: "Conservative Liberalism",
+            description: "Market economy paired with cultural and institutional conservatism.",
+            affectedAxes: ["cultural-plasticity","moral-traditionalism","reform-vs-revolution"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.7,
@@ -1307,6 +1902,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that the self is constituted by shared community and tradition, so that justice must weigh common goods and the social bases of self-respect alongside individual rights, favoring civic participation over either laissez-faire or statist central planning.',
       philosophies: ["Marxism","Socialism","Communitarianism","Social Contract Theory"],
+      subTheories: ["Civic Republicanism","Communicative Ethics"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Marxism","Socialism","Communitarianism","Social Contract Theory"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Communitarianism",
+            description: "The self constituted by shared community, tradition, and mutual obligation.",
+            affectedAxes: ["moral-traditionalism","liberty-noninterference","equality-theory"],
+         },
+         {
+            philosophy: "Social Contract Theory",
+            description: "Justice balances individual rights with social goods.",
+            affectedAxes: ["authority-legitimacy","democratic-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': 0.1,
@@ -1344,6 +1956,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Treats freedom as non-domination rather than mere non-interference, holding that a self-governing civic community must secure its members against arbitrary power through participation, mixed institutions, and the rule of law rather than through material equalization or welfare expansion.',
       philosophies: ["Republicanism","Civic Humanism"],
+      subTheories: ["Civic Republicanism","Neo-Republicanism","Free State"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Republicanism","Civic Humanism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Republicanism",
+            description: "Freedom as non-domination through civic participation.",
+            affectedAxes: ["anti-domination","authority-legitimacy","liberty-noninterference"],
+         },
+         {
+            philosophy: "Civic Humanism",
+            description: "Civic virtue and participation as components of good governance.",
+            affectedAxes: ["democratic-confidence","centralization-preference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.3,
          'property-legitimacy': 0.2,
@@ -1381,6 +2010,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that widespread ownership of productive property by families and local guilds is morally preferable to both concentrated corporate capital and collective state ownership, grounding a decentralized moral economy in subsidiarity and the dignity of small ownership.',
       philosophies: ["Distributism","Catholic Social Teaching"],
+      subTheories: ["Catholic Social Teaching","Subsidiarity","Small Property"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Distributism","Catholic Social Teaching"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Distributism",
+            description: "Widespread ownership of productive property as moral imperative.",
+            affectedAxes: ["property-legitimacy","equality-theory"],
+         },
+         {
+            philosophy: "Catholic Social Teaching",
+            description: "Subsidiarity, dignity, and common good as organizing principles.",
+            affectedAxes: ["authority-legitimacy","moral-traditionalism","centralization-preference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': -0.2,
@@ -1418,6 +2064,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'A broader anti-authoritarian socialism that opposes both capitalist concentration and centralized state socialism, seeking worker self-management and federated anti-hierarchical organization through a mix of reform and direct action rather than vanguard seizure.',
       philosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      subTheories: ["Council Communism","De Leonism","Autonomism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Council Communism","Libertarian Socialism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Class analysis and anti-capitalist orientation.",
+            affectedAxes: ["equality-theory","property-legitimacy"],
+         },
+         {
+            philosophy: "Libertarian Socialism",
+            description: "Anti-authoritarian worker self-management and federation.",
+            affectedAxes: ["centralization-preference","authority-legitimacy","state-action-vs-exit"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.6,
          'property-legitimacy': -0.5,
@@ -1455,6 +2118,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Treats the nonhuman natural world as possessing intrinsic worth independent of human use, holding that ecological integrity requires restructuring social and economic life around biocentric limits rather than greening an essentially anthropocentric growth order.',
       philosophies: ["Environmentalism","Ecologism","Deep Ecology","Biocentrism"],
+      subTheories: ["Biospheric Egalitarianism","Ecocentrism","Gaia Philosophy"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Environmentalism","Ecologism","Deep Ecology","Biocentrism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Environmentalism",
+            description: "Ecological integrity as political and moral priority.",
+            affectedAxes: ["human-nature-priority","regulation-vs-deregulation"],
+         },
+         {
+            philosophy: "Deep Ecology",
+            description: "Intrinsic worth of nonhuman nature independent of human use.",
+            affectedAxes: ["human-nature-priority","market-process-confidence","authority-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.4,
          'property-legitimacy': -0.3,
@@ -1492,6 +2172,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines a strict Rothbardian non-aggression and hard-money economics with a defense of inherited cultural and familial order, seeking a decentralized polity that secures property and liberty while leaving traditional communities free of central cultural engineering.',
       philosophies: ["Libertarianism","Paleolibertarianism","Rothbardianism"],
+      subTheories: ["Old Right Libertarianism","Traditionalist Libertarianism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Libertarianism","Paleolibertarianism","Rothbardianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Libertarianism","Paleolibertarianism","Rothbardianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Libertarianism",
+            description: "Non-aggression principle and strong property rights.",
+            affectedAxes: ["liberty-noninterference","property-legitimacy","authority-legitimacy"],
+         },
+         {
+            philosophy: "Rothbardianism",
+            description: "Natural-law libertarianism with anti-state strategy.",
+            affectedAxes: ["public-choice-skepticism","coercion-strategy","state-action-vs-exit"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': 0.7,
@@ -1529,6 +2226,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Grounds morality in rational egoism and productive achievement, holding that individual rights to life, liberty, property, and the pursuit of happiness are absolute, that laissez-faire capitalism is the only just social system, and that voluntary hierarchy and uncompromising principle forbid redistributive coercion.',
       philosophies: ["Libertarianism","Objectivism","Randianism"],
+      subTheories: ["Randian Objectivism","Rational Egoism","Laissez-Faire"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Libertarianism","Objectivism","Randianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Libertarianism","Objectivism","Randianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Objectivism",
+            description: "Rational egoism and absolute individual rights.",
+            affectedAxes: ["property-legitimacy","liberty-noninterference","equality-theory"],
+         },
+         {
+            philosophy: "Libertarianism",
+            description: "Strong anti-state, pro-market orientation.",
+            affectedAxes: ["authority-legitimacy","regulation-vs-deregulation","market-process-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': 0.95,
@@ -1566,6 +2280,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that deliberate technological enhancement of the human condition is both morally defensible and materially emancipatory, favoring expert-led, capacity-backed institutions that accelerate the deliberate reshaping of human nature, culture, and ecological constraints.',
       philosophies: ["Technocracy","Progressivism","Transhumanism","Futurism","Posthumanism"],
+      subTheories: ["Extropianism","Techno-Progressivism","Singularitarianism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Transhumanism"],
+      descriptivePhilosophies: ["Transhumanism","Futurism","Posthumanism"],
+      prescriptivePhilosophies: ["Technocracy","Progressivism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Progressivism",
+            description: "Social improvement through science and institutional design.",
+            affectedAxes: ["cultural-plasticity","expert-confidence"],
+         },
+         {
+            philosophy: "Transhumanism",
+            description: "Deliberate technological enhancement of the human condition.",
+            affectedAxes: ["human-nature-priority","cultural-plasticity","expert-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.2,
@@ -1603,6 +2334,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines a generous redistributive welfare state with a strictly bounded national membership, holding that social provision is a right of the in-group financed and reserved for citizens, while restricting immigration and access on grounds of national belonging and fiscal sustainability.',
       philosophies: ["Nationalism","Welfare Chauvinism"],
+      subTheories: ["Welfare Nationalism","Social Nationalism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Nationalism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Welfare Chauvinism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Nationalism",
+            description: "National community as boundary for obligation.",
+            affectedAxes: ["political-community-boundary","redistribution-vs-predistribution"],
+         },
+         {
+            philosophy: "Welfare Chauvinism",
+            description: "Social provision reserved for national in-group.",
+            affectedAxes: ["equality-theory","moral-traditionalism","state-action-vs-exit"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': 0.1,
@@ -1640,6 +2388,18 @@ export const labels: IdeologyLabel[] = [
       description:
          'Frames politics as a struggle between a corrupt elite and an authentic people, demanding strongman leadership and direct extra-institutional mobilization to restore national sovereignty, traditional cultural order, and boundaries against outsiders through rupture rather than gradual reform.',
       philosophies: ["Populism"],
+      subTheories: ["Right Populism","National Populism","Illiberal Democracy"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: [],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Populism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Populism",
+            description: "Anti-elite, pro-people framing of political struggle.",
+            affectedAxes: ["democratic-confidence","authority-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': 0.2,
@@ -1677,6 +2437,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Treats concentrated institutional and economic power as a standing threat to self-rule, favoring expansive participation, anti-elite institutional redesign, and democratized authority beyond periodic elections.',
       philosophies: ["Democracy","Radical Democracy","Participatory Democracy"],
+      subTheories: ["Deliberative Democracy","Participatory Democracy"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Democracy","Radical Democracy","Participatory Democracy"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Democracy",
+            description: "Popular sovereignty as the foundation of legitimate governance.",
+            affectedAxes: ["democratic-confidence","authority-legitimacy"],
+         },
+         {
+            philosophy: "Radical Democracy",
+            description: "Expansive participation and anti-elite institutional redesign.",
+            affectedAxes: ["anti-domination","centralization-preference","equality-theory"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.2,
          'property-legitimacy': -0.2,
@@ -1714,6 +2491,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Seeks a participatory economy organized around workers and consumers councils, balanced job complexes, and negotiated planning, rejecting both capitalist ownership and centralized command administration.',
       philosophies: ["Marxism","Socialism","Participism","Participatory Economics"],
+      subTheories: ["Parecon","Participatory Economics"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Participism","Participatory Economics"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Structural critique of capitalist production relations.",
+            affectedAxes: ["property-legitimacy","equality-theory"],
+         },
+         {
+            philosophy: "Participatory Economics",
+            description: "Balanced job complexes and negotiated planning instead of markets.",
+            affectedAxes: ["centralization-preference","market-process-confidence","electoralism-vs-direct-action"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.3,
          'property-legitimacy': -0.7,
@@ -1752,6 +2546,23 @@ export const labels: IdeologyLabel[] = [
          'Defends anti-capitalist freed markets and voluntary exchange while rejecting state privilege, landlord rents, corporate subsidy, and capitalist hierarchy as products of coercive enclosure rather than genuine market freedom.',
       philosophies: ["Anarchism","Left-Wing Market Anarchism","Mutualism"],
    aliases: ["Left-Rothbardianism","Steiner-Vallentyne School"],
+      subTheories: ["Left-Rothbardianism","Steiner-Vallentyne School"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anarchism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Left-Wing Market Anarchism","Mutualism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Anti-state, anti-hierarchy orientation.",
+            affectedAxes: ["authority-legitimacy","centralization-preference"],
+         },
+         {
+            philosophy: "Mutualism",
+            description: "Anti-capitalist freed markets without wage labor or rent.",
+            affectedAxes: ["property-legitimacy","equality-theory","anti-domination"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': 0.3,
@@ -1790,6 +2601,23 @@ export const labels: IdeologyLabel[] = [
          'Centers personal autonomy, voluntary association, and hostility to imposed moral or political authority, rejecting both state power and collectivist demands that subordinate the individual to a planned social whole.',
       philosophies: ["Anarchism","Individualist Anarchism","Stirnerism","Egoism"],
    aliases: ["Egoist Anarchism","Post-Left Anarchism"],
+      subTheories: ["Egoist Anarchism","Post-Left Anarchism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anarchism","Individualist Anarchism","Stirnerism","Egoism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Stirnerism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Rejection of all coercive authority.",
+            affectedAxes: ["authority-legitimacy","centralization-preference"],
+         },
+         {
+            philosophy: "Egoism",
+            description: "The unique individual as sole locus of value.",
+            affectedAxes: ["liberty-noninterference","moral-traditionalism","equality-theory"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.9,
          'property-legitimacy': -0.3,
@@ -1828,6 +2656,23 @@ export const labels: IdeologyLabel[] = [
          'Rejects civilization, industrial technology, and mass organization as sources of domination and ecological collapse, seeking radically decentralized lifeways outside both state and market modernity.',
       philosophies: ["Anarchism","Anarcho-Primitivism","Anti-Civilization"],
    aliases: ["Primitivism"],
+      subTheories: ["Anti-Civilization","Green Anarchism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anarchism","Anarcho-Primitivism","Anti-Civilization"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Anarcho-Primitivism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Complete rejection of state and hierarchical authority.",
+            affectedAxes: ["authority-legitimacy","centralization-preference"],
+         },
+         {
+            philosophy: "Anti-Civilization",
+            description: "Civilization and technology as sources of domination and ecological collapse.",
+            affectedAxes: ["human-nature-priority","market-process-confidence","state-capacity-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.8,
          'property-legitimacy': -0.5,
@@ -1865,6 +2710,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Frames politics as a struggle between ordinary people and entrenched elites, channeling that antagonism toward redistribution, economic democracy, and majoritarian popular sovereignty rather than nationalist exclusion.',
       philosophies: ["Populism","Left-Wing Populism","Socialism"],
+      subTheories: ["Left Populism","Social Populism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Socialism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Populism","Left-Wing Populism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Populism",
+            description: "Anti-elite popular sovereignty framing.",
+            affectedAxes: ["equality-theory","democratic-confidence"],
+         },
+         {
+            philosophy: "Socialism",
+            description: "Economic redistribution and working-class orientation.",
+            affectedAxes: ["property-legitimacy","redistribution-vs-predistribution"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': -0.3,
@@ -1903,6 +2765,23 @@ export const labels: IdeologyLabel[] = [
          'Extends revolutionary state socialism through mass line politics, protracted struggle, anti-revisionism, and peasant or peripheral mobilization, treating revolutionary transformation as a continuing process against bureaucratic restoration.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
    aliases: ["Marxism-Leninism-Maoism","Maoism-Third Worldism"],
+      subTheories: ["Internal Schools"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Leninism","Vanguardism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Class analysis and socialist economic transformation.",
+            affectedAxes: ["property-legitimacy","equality-theory"],
+         },
+         {
+            philosophy: "Leninism",
+            description: "Vanguard party and revolutionary state power.",
+            affectedAxes: ["centralization-preference","reform-vs-revolution","coercion-strategy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': -0.9,
@@ -1940,6 +2819,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines revolutionary socialism with permanent international revolution, anti-Stalinist party politics, and critique of bureaucratic state socialism, rejecting both reformist gradualism and nationalist socialism.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
+      subTheories: ["Internal Schools"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Leninism","Vanguardism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Capitalist critique and planned economy commitment.",
+            affectedAxes: ["equality-theory","property-legitimacy"],
+         },
+         {
+            philosophy: "Leninism",
+            description: "Vanguard party with international revolutionary perspective.",
+            affectedAxes: ["reform-vs-revolution","political-community-boundary","centralization-preference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.1,
          'property-legitimacy': -0.8,
@@ -1977,6 +2873,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Believes that the populace should have the right to choose the form of government (or lack thereof) they live under without having to change their physical residence, envisioning a free market of competing voluntary associations.',
       philosophies: ["Anarchism","Panarchism","Voluntaryism"],
+      subTheories: ["Functional Overlapping Competing Jurisdictions"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anarchism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Panarchism","Voluntaryism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Rejection of compulsory state authority.",
+            affectedAxes: ["authority-legitimacy","liberty-noninterference"],
+         },
+         {
+            philosophy: "Panarchism",
+            description: "Competing voluntary governance jurisdictions based on choice.",
+            affectedAxes: ["state-action-vs-exit","coordination-optimism","property-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.8,
          'property-legitimacy': 0.8,
@@ -2014,6 +2927,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that a single federal world government with democratic constitutional structure and enforceable international law is necessary to secure peace, justice, and human rights across all nations.',
       philosophies: ["Liberalism","World Federalism","Cosmopolitanism","Kantianism"],
+      subTheories: ["Cosmopolitan Democracy","Global Governance"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","World Federalism","Cosmopolitanism","Kantianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["World Federalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Liberalism",
+            description: "Universal rights and individual freedoms.",
+            affectedAxes: ["liberty-noninterference","property-legitimacy"],
+         },
+         {
+            philosophy: "Cosmopolitanism",
+            description: "Moral obligations extend equally to all persons.",
+            affectedAxes: ["political-community-boundary","democratic-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.7,
@@ -2051,6 +2981,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Prioritizes the rights, sovereignty, and cultural preservation of indigenous peoples, combining anti-colonialism, environmental stewardship, and traditional communal governance against imposed state and market structures.',
       philosophies: ["Indigenism","Decolonialism"],
+      subTheories: ["Fourth World Politics","Tribal Sovereignty"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Indigenism","Decolonialism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Indigenism",
+            description: "Indigenous sovereignty, cultural preservation, and land rights.",
+            affectedAxes: ["property-legitimacy","moral-traditionalism","human-nature-priority"],
+         },
+         {
+            philosophy: "Decolonialism",
+            description: "Critique of colonial structures of domination and extraction.",
+            affectedAxes: ["authority-legitimacy","anti-domination","political-community-boundary"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': -0.5,
@@ -2088,6 +3035,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Advocates for worker ownership of the means of production through trade guilds with a contractual relationship to the public, rejecting both capitalist hierarchy and coercive state socialism in favor of decentralized democratic workplaces.',
       philosophies: ["Marxism","Socialism","Guild Socialism","Distributism"],
+      subTheories: ["Guild Socialism","Distributism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism","Distributism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Guild Socialism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Anti-capitalist production relations.",
+            affectedAxes: ["property-legitimacy","equality-theory"],
+         },
+         {
+            philosophy: "Guild Socialism",
+            description: "Worker guilds with contractual relationship to public.",
+            affectedAxes: ["centralization-preference","authority-legitimacy","market-process-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.3,
          'property-legitimacy': -0.6,
@@ -2125,6 +3089,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that diverse cultural traditions can and should coexist peacefully within a single society, valuing cultural pluralism, anti-racism, and inclusive democratic citizenship over assimilation or monocultural nationalism.',
       philosophies: ["Liberalism","Multiculturalism","Cultural Pluralism"],
+      subTheories: ["Cultural Pluralism","Interculturalism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","Multiculturalism","Cultural Pluralism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Liberalism",
+            description: "Individual rights and freedoms as foundation.",
+            affectedAxes: ["liberty-noninterference","equality-theory"],
+         },
+         {
+            philosophy: "Multiculturalism",
+            description: "Cultural diversity and pluralism as positive goods.",
+            affectedAxes: ["moral-traditionalism","political-community-boundary","cultural-plasticity"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.4,
          'property-legitimacy': 0.2,
@@ -2162,6 +3143,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that government should be substantially automated and run by information systems and artificial intelligence, treating algorithmic administration as more efficient, less corruptible, and better suited to complex modern governance than human rule.',
       philosophies: ["Technocracy","Progressivism","Cyberocracy","Cybernetics"],
+      subTheories: ["Algorithmic Governance","Netocracy","Syntheism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Cyberocracy"],
+      descriptivePhilosophies: ["Cybernetics"],
+      prescriptivePhilosophies: ["Technocracy","Progressivism","Cyberocracy"],
+      philosophyInfluences: [
+         {
+            philosophy: "Technocracy",
+            description: "Expert-led, data-driven governance.",
+            affectedAxes: ["expert-confidence","democratic-confidence","state-capacity-confidence"],
+         },
+         {
+            philosophy: "Progressivism",
+            description: "Deliberate institutional and social improvement.",
+            affectedAxes: ["cultural-plasticity","coordination-optimism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': -0.3,
@@ -2199,6 +3197,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that political and economic boundaries should follow natural ecological regions rather than arbitrary borders, advocating sustainable local economies that work in harmony with the environment and reject capitalist exploitation of nature.',
       philosophies: ["Environmentalism","Ecologism","Bioregionalism","Communalism"],
+      subTheories: ["Ecoregionalism","Bioregional Democracy","Permaculture"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Environmentalism","Ecologism","Bioregionalism","Communalism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Bioregionalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Environmentalism",
+            description: "Ecological sustainability as organizing principle.",
+            affectedAxes: ["human-nature-priority","regulation-vs-deregulation"],
+         },
+         {
+            philosophy: "Bioregionalism",
+            description: "Political boundaries aligned with ecological regions.",
+            affectedAxes: ["centralization-preference","authority-legitimacy","market-process-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': -0.8,
@@ -2236,6 +3251,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Treats ecological crisis as the overriding political priority requiring a powerful centralized state—often technocratic or vanguardist—to enforce environmental discipline, irrespective of conventional left-right cultural positioning.',
       philosophies: ["Authoritarianism","Eco-Authoritarianism","Environmentalism"],
+      subTheories: ["Eco-Dictatorship","Green Leviathan"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Authoritarianism","Environmentalism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Authoritarianism","Eco-Authoritarianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Authoritarianism",
+            description: "Strong centralized power for overriding political priority.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","democratic-confidence"],
+         },
+         {
+            philosophy: "Environmentalism",
+            description: "Ecological crisis as primary political imperative.",
+            affectedAxes: ["human-nature-priority","regulation-vs-deregulation","state-capacity-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': -0.2,
@@ -2273,6 +3305,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines fascist ultranationalism and ethnonationalism with deep ecology, holding that population reduction, ethnic homogeneity, and coercive state power are necessary to protect the natural order from industrial civilization.',
       philosophies: ["Authoritarianism","Eco-Fascism","Fascism","Environmentalism"],
+      subTheories: ["Biospheric Fascism","Deep Ecology Fascism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Authoritarianism","Environmentalism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Authoritarianism","Eco-Fascism","Fascism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Authoritarianism",
+            description: "Hierarchical state power as necessary for social order.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","democratic-confidence"],
+         },
+         {
+            philosophy: "Fascism",
+            description: "Ultranationalism with coercive, anti-egalitarian orientation.",
+            affectedAxes: ["political-community-boundary","moral-traditionalism","coercion-strategy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': 0.3,
@@ -2310,6 +3359,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Seeks to define Indian national identity through Hindu culture and values, treating Hinduism as the civilizational and spiritual foundation of the nation rather than a mere religion among equals.',
       philosophies: ["Nationalism","Hindutva","Hindu Nationalism","Integral Humanism"],
+      subTheories: ["Hindu Nationalism","Saffronization","Cultural Nationalism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Nationalism","Hindutva","Hindu Nationalism","Integral Humanism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Nationalism",
+            description: "National identity as primary political commitment.",
+            affectedAxes: ["political-community-boundary","authority-legitimacy"],
+         },
+         {
+            philosophy: "Hindutva",
+            description: "Hindu civilizational identity as foundation of nation.",
+            affectedAxes: ["moral-traditionalism","secularism-religious","cultural-plasticity"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.8,
          'property-legitimacy': 0.4,
@@ -2347,6 +3413,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that national identity should be defined by shared religion and that public institutions should derive their authority from and reflect a particular religious tradition.',
       philosophies: ["Nationalism","Religious Nationalism","Theocracy"],
+      subTheories: ["Christian Nationalism","Islamo-Nationalism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Nationalism","Religious Nationalism","Theocracy"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Nationalism",
+            description: "National sovereignty and identity as paramount.",
+            affectedAxes: ["political-community-boundary","authority-legitimacy"],
+         },
+         {
+            philosophy: "Theocracy",
+            description: "Religious authority as basis for civil law.",
+            affectedAxes: ["secularism-religious","moral-traditionalism","liberty-noninterference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.85,
          'property-legitimacy': 0.5,
@@ -2385,6 +3468,23 @@ export const labels: IdeologyLabel[] = [
          'Holds that the Jewish people are entitled to national self-determination and a sovereign state in their ancestral homeland, combining national identity with democratic institutions and modern statecraft.',
       philosophies: ["Nationalism","Zionism","Jewish Nationalism"],
    aliases: ["Labour Zionism"],
+      subTheories: ["Political Zionism","Labour Zionism","Religious Zionism","Revisionist Zionism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Nationalism","Zionism","Jewish Nationalism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Nationalism",
+            description: "Jewish national self-determination and sovereign state.",
+            affectedAxes: ["political-community-boundary","authority-legitimacy"],
+         },
+         {
+            philosophy: "Zionism",
+            description: "Ancestral homeland and democratic statecraft.",
+            affectedAxes: ["militarism-pacifism","state-capacity-confidence","democratic-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.4,
          'property-legitimacy': 0.7,
@@ -2423,6 +3523,23 @@ export const labels: IdeologyLabel[] = [
          'Fuses radical ultranationalism with Bolshevik-style revolutionary socialism, rejecting both liberal capitalism and liberal democracy in favor of a strong state that commands the economy in the name of national grandeur.',
       philosophies: ["Authoritarianism","National Bolshevism","Conservative Revolution"],
    aliases: ["National Communism"],
+      subTheories: ["National Communism","Strasserism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Authoritarianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Authoritarianism","National Bolshevism","Conservative Revolution"],
+      philosophyInfluences: [
+         {
+            philosophy: "Authoritarianism",
+            description: "Unified centralized command as governing principle.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","liberty-noninterference"],
+         },
+         {
+            philosophy: "National Bolshevism",
+            description: "Fusion of ultranationalism with revolutionary socialism.",
+            affectedAxes: ["property-legitimacy","equality-theory","political-community-boundary"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 1,
          'property-legitimacy': -0.9,
@@ -2461,6 +3578,23 @@ export const labels: IdeologyLabel[] = [
          'A radical, anti-capitalist wing of Nazism that combines ultranationalist authoritarianism with vehement anti-capitalist and socialist economic demands, mass mobilization, and opposition to bourgeois conservatism.',
       philosophies: ["Authoritarianism","Fascism","Corporatism"],
    aliases: ["National Syndicalism"],
+      subTheories: ["National Syndicalism","Strasserist Nazism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Authoritarianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Authoritarianism","Fascism","Corporatism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Authoritarianism",
+            description: "Strong state authority subordinating individual.",
+            affectedAxes: ["authority-legitimacy","centralization-preference"],
+         },
+         {
+            philosophy: "Fascism",
+            description: "Ultranationalist revolutionary anti-capitalism.",
+            affectedAxes: ["property-legitimacy","political-community-boundary","coercion-strategy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.85,
          'property-legitimacy': -0.6,
@@ -2499,6 +3633,23 @@ export const labels: IdeologyLabel[] = [
          'Holds that Catholic faith should be the basis of public law and policy, rejecting the separation of church and state in favor of an organic society where civil authority is subordinate to divine moral order.',
       philosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
    aliases: ["Fourth Theory","Clerical Fascism"],
+      subTheories: ["Clerical Fascism","Fourth Theory","Catholic Integralism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Conservatism",
+            description: "Traditional moral and social hierarchy.",
+            affectedAxes: ["moral-traditionalism","secularism-religious","cultural-plasticity"],
+         },
+         {
+            philosophy: "Integralism",
+            description: "Catholic faith as basis of public law and policy.",
+            affectedAxes: ["authority-legitimacy","secularism-religious","liberty-noninterference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.95,
          'property-legitimacy': 0.6,
@@ -2537,6 +3688,23 @@ export const labels: IdeologyLabel[] = [
          'Rejects centralized state authority in favor of decentralized, bottom-up democracy organized through communes, councils, and confederations, grounded in gender equality, ecology, and pluralistic self-governance.',
       philosophies: ["Democracy","Democratic Confederalism","Communalism","Bookchinism"],
    aliases: ["Libertarian Municipalism"],
+      subTheories: ["Apoite Democracy","Confederalism","Kurdish Democracy"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Democracy","Democratic Confederalism","Communalism","Bookchinism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Democratic Confederalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Democracy",
+            description: "Bottom-up self-governance and popular participation.",
+            affectedAxes: ["democratic-confidence","authority-legitimacy"],
+         },
+         {
+            philosophy: "Bookchinism",
+            description: "Municipal confederalism, social ecology, and anti-statism.",
+            affectedAxes: ["centralization-preference","human-nature-priority","equality-theory"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.6,
          'property-legitimacy': -0.6,
@@ -2574,6 +3742,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'A traditionalist conservatism that emphasizes pre-Enlightenment values, local community, anti-interventionist foreign policy, strict immigration controls, and skepticism toward free trade and globalizing institutions.',
       philosophies: ["Conservatism","Traditionalism","Paleoconservatism"],
+      subTheories: ["Old Right","Paleolibertarianism","Traditionalism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Conservatism","Traditionalism","Paleoconservatism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Conservatism",
+            description: "Deference to inherited institutions and gradual change.",
+            affectedAxes: ["moral-traditionalism","cultural-plasticity","authority-legitimacy"],
+         },
+         {
+            philosophy: "Traditionalism",
+            description: "Pre-Enlightenment values and local community.",
+            affectedAxes: ["political-community-boundary","property-legitimacy","reform-vs-revolution"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.8,
          'property-legitimacy': 0.8,
@@ -2611,6 +3796,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'A paternalistic conservative tradition that accepts a role for the welfare state and moderate state intervention to preserve social cohesion, favoring gradual reform over radical change.',
       philosophies: ["Conservatism","One Nation Conservatism","Burkeanism"],
+      subTheories: ["Tory Democracy","Paternalistic Conservatism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Conservatism","One Nation Conservatism","Burkeanism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["One Nation Conservatism","Burkeanism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Conservatism",
+            description: "Paternalistic acceptance of welfare state for social cohesion.",
+            affectedAxes: ["authority-legitimacy","cultural-plasticity","redistribution-vs-predistribution"],
+         },
+         {
+            philosophy: "Burkeanism",
+            description: "Gradual reform within existing institutions rather than rupture.",
+            affectedAxes: ["reform-vs-revolution","gradualism-vs-immediatism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.6,
@@ -2648,6 +3850,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that democratic governance and popular sovereignty are compatible with and can operate within an Islamic framework, grounding law and policy in Islamic values while maintaining electoral politics.',
       philosophies: ["Conservatism","Islamic Democracy","Islamism"],
+      subTheories: ["Post-Islamism","Muslim Democracy"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Conservatism","Islamic Democracy","Islamism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Conservatism",
+            description: "Traditional values and gradual change.",
+            affectedAxes: ["moral-traditionalism","secularism-religious"],
+         },
+         {
+            philosophy: "Islamic Democracy",
+            description: "Democratic governance within an Islamic framework.",
+            affectedAxes: ["democratic-confidence","secularism-religious","authority-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.4,
@@ -2685,6 +3904,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'A hybrid system of direct and representative democracy in which citizens may vote directly on issues or delegate their voting power to trusted representatives on a per-issue basis.',
       philosophies: ["Democracy","Liquid Democracy","Delegative Democracy"],
+      subTheories: ["Proxy Democracy","Delegative Democracy"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Democracy","Liquid Democracy","Delegative Democracy"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Liquid Democracy","Delegative Democracy"],
+      philosophyInfluences: [
+         {
+            philosophy: "Democracy",
+            description: "Popular sovereignty as legitimate basis for governance.",
+            affectedAxes: ["democratic-confidence","authority-legitimacy"],
+         },
+         {
+            philosophy: "Liquid Democracy",
+            description: "Hybrid direct and delegative democratic system.",
+            affectedAxes: ["electoralism-vs-direct-action","centralization-preference","expert-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.6,
@@ -2722,6 +3958,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that the dynamics of capitalism and technological development should be pushed to their extreme limits to precipitate radical systemic transformation or technological singularity.',
       philosophies: ["Technocracy","Progressivism","Accelerationism","Neo-Reaction"],
+      subTheories: ["Left Accelerationism","Right Accelerationism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Neo-Reaction"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Technocracy","Progressivism","Accelerationism","Neo-Reaction"],
+      philosophyInfluences: [
+         {
+            philosophy: "Technocracy",
+            description: "Technological and expert-led transformation.",
+            affectedAxes: ["expert-confidence","cultural-plasticity"],
+         },
+         {
+            philosophy: "Accelerationism",
+            description: "Pushing capitalist-technological dynamics to precipitating rupture.",
+            affectedAxes: ["reform-vs-revolution","gradualism-vs-immediatism","market-process-confidence"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': -0.2,
@@ -2759,6 +4012,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'A state ideology of national self-reliance emphasizing political independence, economic self-sufficiency, and military self-defense under a highly centralized one-party state with a supreme leader.',
       philosophies: ["Marxism","Socialism","Juche","Stalinism","Confucianism"],
+      subTheories: ["Kimilsungism-Kimjongilism","Songun"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Marxism","Socialism","Confucianism"],
+      descriptivePhilosophies: ["Marxism"],
+      prescriptivePhilosophies: ["Juche","Stalinism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Marxism",
+            description: "Socialist planned economy and anti-capitalism.",
+            affectedAxes: ["property-legitimacy","equality-theory"],
+         },
+         {
+            philosophy: "Stalinism",
+            description: "Highly centralized one-party state with supreme leader.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","liberty-noninterference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': -0.7,
@@ -2796,6 +4066,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Applies advanced technology and decentralized networks to create a stateless, anti-authoritarian society, rejecting centralized control while embracing technological tools for voluntary cooperation and mutual aid.',
       philosophies: ["Anarchism","Techno-Anarchism","Cyber-Libertarianism"],
+      subTheories: ["Cypherpunk","Crypto-Anarchism","Networked Anarchism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anarchism","Techno-Anarchism","Cyber-Libertarianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Techno-Anarchism","Cyber-Libertarianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Anti-authoritarian, anti-state orientation.",
+            affectedAxes: ["authority-legitimacy","centralization-preference"],
+         },
+         {
+            philosophy: "Techno-Anarchism",
+            description: "Decentralized technology as enabler of stateless society.",
+            affectedAxes: ["coordination-optimism","cultural-plasticity","anti-domination"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.85,
          'property-legitimacy': -0.3,
@@ -2833,6 +4120,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Believes in deliberate social improvement through expert-guided institutional reform, empirical social science, and evidence-based policy, favoring systematic intervention over both market and tradition as organizing principles.',
       philosophies: ["Progressivism","Pragmatism","Empiricism","Social Liberalism"],
+      subTheories: ["Social Progressivism","Evidence-Based Policy"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Social Liberalism"],
+      descriptivePhilosophies: ["Pragmatism","Empiricism"],
+      prescriptivePhilosophies: ["Progressivism","Social Liberalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Progressivism",
+            description: "Deliberate social improvement through evidence-based policy.",
+            affectedAxes: ["expert-confidence","state-capacity-confidence","cultural-plasticity"],
+         },
+         {
+            philosophy: "Pragmatism",
+            description: "Empirical, practical approach to social problem-solving.",
+            affectedAxes: ["reform-vs-revolution","coordination-optimism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': -0.1,
@@ -2870,6 +4174,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Seeks gender equality through legal reform, equal rights, and equal opportunity within existing liberal-democratic institutions, emphasizing individual autonomy and formal equality before the law.',
       philosophies: ["Feminism","Liberalism","Egalitarianism"],
+      subTheories: ["Equality Feminism","Liberal Equality Feminism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Feminism","Liberalism","Egalitarianism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Feminism",
+            description: "Gender equality as fundamental moral commitment.",
+            affectedAxes: ["equality-theory","anti-domination"],
+         },
+         {
+            philosophy: "Liberalism",
+            description: "Individual autonomy and equal rights through legal reform.",
+            affectedAxes: ["liberty-noninterference","reform-vs-revolution","moral-traditionalism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0,
          'property-legitimacy': 0.1,
@@ -2908,6 +4229,23 @@ export const labels: IdeologyLabel[] = [
          'Combines extreme ethnic nationalism, racial hierarchy, state-directed economic corporatism, and militarist expansionism with anti-capitalist and anti-communist rhetoric, demanding total subordination of the individual to the racial-national collective.',
       philosophies: ["National Socialism","Fascism","Racialism","Social Darwinism","Totalitarianism"],
    aliases: ["Nazism"],
+      subTheories: ["Nazism","Hitlerism","National Socialist"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: [],
+      descriptivePhilosophies: ["Social Darwinism"],
+      prescriptivePhilosophies: ["National Socialism","Fascism","Racialism","Totalitarianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Fascism",
+            description: "Ultranationalist, anti-egalitarian, coercive governance.",
+            affectedAxes: ["authority-legitimacy","political-community-boundary","coercion-strategy"],
+         },
+         {
+            philosophy: "Social Darwinism",
+            description: "Racial hierarchy and competition as natural order.",
+            affectedAxes: ["equality-theory","moral-traditionalism","militarism-pacifism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': -0.1,
@@ -2945,6 +4283,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Combines national self-determination with anti-colonial, redistributive, and popular-sovereignty commitments, framing national liberation as a precondition for social justice rather than ethnic hierarchy.',
       philosophies: ["Nationalism","Socialism","Anti-Colonialism","Self-Determination"],
+      subTheories: ["Anti-Colonial Nationalism","National Liberation"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Nationalism","Socialism","Anti-Colonialism","Self-Determination"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Nationalism",
+            description: "National self-determination as political framework.",
+            affectedAxes: ["political-community-boundary","authority-legitimacy"],
+         },
+         {
+            philosophy: "Socialism",
+            description: "Anti-colonial redistribution and popular sovereignty.",
+            affectedAxes: ["equality-theory","property-legitimacy","anti-domination"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': -0.4,
@@ -2983,6 +4338,23 @@ export const labels: IdeologyLabel[] = [
          'Applies Christian ethical principles—especially solidarity with the poor, communal obligation, and stewardship—to advocate for social ownership, economic democracy, and structural opposition to exploitative capitalism.',
       philosophies: ["Christian Socialism","Christian Theology","Catholic Social Teaching","Socialism"],
    aliases: ["Liberation Theology","Social Gospel"],
+      subTheories: ["Liberation Theology","Social Gospel"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Christian Socialism","Christian Theology","Catholic Social Teaching","Socialism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Christian Socialism",
+            description: "Christian ethical principles applied to economic justice.",
+            affectedAxes: ["equality-theory","property-legitimacy","anti-domination"],
+         },
+         {
+            philosophy: "Catholic Social Teaching",
+            description: "Solidarity, common good, and option for the poor.",
+            affectedAxes: ["redistribution-vs-predistribution","secularism-religious","authority-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': -0.5,
@@ -3021,6 +4393,23 @@ export const labels: IdeologyLabel[] = [
          'Pre-Marxian tradition that envisions an ideal society based on voluntary association, cooperative production, and rational social organization, appealing to moral persuasion and model communities rather than class struggle.',
       philosophies: ["Utopian Socialism","Socialism","Owenism","Fourierism"],
    aliases: ["Owenism","Fourierism","Saint-Simonianism"],
+      subTheories: ["Fourierism","Owenism","Saint-Simonianism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Socialism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Utopian Socialism","Owenism","Fourierism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Utopian Socialism",
+            description: "Moral persuasion and model communities as method of change.",
+            affectedAxes: ["coercion-strategy","reform-vs-revolution"],
+         },
+         {
+            philosophy: "Socialism",
+            description: "Cooperative production and social ownership.",
+            affectedAxes: ["property-legitimacy","equality-theory","coordination-optimism"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.1,
          'property-legitimacy': -0.3,
@@ -3059,6 +4448,23 @@ export const labels: IdeologyLabel[] = [
          'Holds that all human associations should be voluntary and that the state, as a compulsory monopoly on force, is illegitimate—advocating instead for private defense, dispute resolution, and contractual governance funded by voluntary subscription.',
       philosophies: ["Voluntaryism","Libertarianism","Individualism","Non-Aggression Principle"],
    aliases: ["Voluntarism","Contractual Anarchism"],
+      subTheories: ["Contractual Anarchism","Private Defense Agency"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Libertarianism","Individualism","Non-Aggression Principle"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Voluntaryism","Libertarianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Libertarianism",
+            description: "Voluntary association and self-ownership as absolute principles.",
+            affectedAxes: ["liberty-noninterference","property-legitimacy","authority-legitimacy"],
+         },
+         {
+            philosophy: "Voluntaryism",
+            description: "All human association must be voluntary; the state is illegitimate.",
+            affectedAxes: ["state-action-vs-exit","anti-domination","coercion-strategy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.9,
          'property-legitimacy': 0.7,
@@ -3097,6 +4503,23 @@ export const labels: IdeologyLabel[] = [
          'Centered on Max Stirner\'s philosophy of egoism, rejects all external authorities—state, morality, ideology, God—as spooks (fixed ideas) constraining the unique individual, advocating temporary voluntary associations serving one\'s self-interest.',
       philosophies: ["Stirnerism","Egoism","Individualist Anarchism","Nihilism"],
    aliases: ["Stirnerism","Philosophical Egoism"],
+      subTheories: ["Post-Left Anarchism","Insurrectionary Anarchism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Stirnerism","Egoism","Individualist Anarchism","Nihilism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Stirnerism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Egoism",
+            description: "The unique individual rejects all external constraints as spooks.",
+            affectedAxes: ["authority-legitimacy","moral-traditionalism","liberty-noninterference"],
+         },
+         {
+            philosophy: "Nihilism",
+            description: "Rejection of objective moral authority and fixed ideology.",
+            affectedAxes: ["equality-theory","cultural-plasticity","centralization-preference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.95,
          'property-legitimacy': 0.2,
@@ -3135,6 +4558,23 @@ export const labels: IdeologyLabel[] = [
          'Proposes a confederal network of directly-democratic municipal assemblies as the basis for a stateless, ecological, and ethical society, replacing both state sovereignty and capitalist markets with face-to-face popular governance.',
       philosophies: ["Libertarian Municipalism","Communalism","Bookchinism","Social Ecology"],
    aliases: ["Communalism","Social Ecology"],
+      subTheories: ["Internal Variants"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Libertarian Municipalism","Communalism","Bookchinism","Social Ecology"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Libertarian Municipalism",
+            description: "Confederal directly-democratic assemblies as basis for stateless society.",
+            affectedAxes: ["centralization-preference","authority-legitimacy"],
+         },
+         {
+            philosophy: "Bookchinism",
+            description: "Social ecology and ethical communalism as foundation.",
+            affectedAxes: ["human-nature-priority","equality-theory","anti-domination"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.6,
          'property-legitimacy': -0.5,
@@ -3172,6 +4612,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Organizes society into hierarchical functional groups (corporations) representing economic, professional, and cultural sectors, mediated by a strong state that claims to harmonize interests above class conflict and party politics.',
       philosophies: ["Corporatism","Fascism","Catholic Social Teaching","Traditionalism"],
+      subTheories: ["Internal Branches"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Catholic Social Teaching","Traditionalism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Corporatism","Fascism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Corporatism",
+            description: "Corporatism influences this ideology's axis positions.",
+            affectedAxes: ["authority-legitimacy","property-legitimacy","liberty-noninterference"],
+         },
+         {
+            philosophy: "Fascism",
+            description: "Fascism influences this ideology's axis positions.",
+            affectedAxes: ["authority-legitimacy","property-legitimacy","liberty-noninterference"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.2,
@@ -3210,6 +4667,23 @@ export const labels: IdeologyLabel[] = [
          'A secular, modernizing, and statist nationalist ideology combining republican governance, industrialization, Westernization, populism (as national unity), and assertive secularism (laicism) aimed at rapid catch-up modernization.',
       philosophies: ["Kemalism","Secularism","Nationalism","Modernization Theory","Positivism"],
    aliases: ["Atatürkism","Six Arrows"],
+      subTheories: ["Ataturkism","Six Arrows","Turkish Nationalism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Secularism","Nationalism"],
+      descriptivePhilosophies: ["Modernization Theory","Positivism"],
+      prescriptivePhilosophies: ["Kemalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Kemalism",
+            description: "Secular, modernizing, statist republicanism.",
+            affectedAxes: ["secularism-religious","state-capacity-confidence","cultural-plasticity"],
+         },
+         {
+            philosophy: "Positivism",
+            description: "Scientific expertise and rational social planning.",
+            affectedAxes: ["expert-confidence","cultural-plasticity"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': 0.4,
          'property-legitimacy': 0.1,
@@ -3247,6 +4721,23 @@ export const labels: IdeologyLabel[] = [
       description:
          'Views patriarchy as a fundamental structure of domination interlocking with capitalism and statism, arguing that gender liberation requires abolishing all hierarchical institutions and building decentralized, non-coercive social relations.',
       philosophies: ["Anarcha-Feminism","Feminism","Anarchism","Anti-Patriarchy"],
+      subTheories: ["Radical Feminism","Separatist Feminism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anarcha-Feminism","Feminism","Anarchism","Anti-Patriarchy"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: [],
+      philosophyInfluences: [
+         {
+            philosophy: "Feminism",
+            description: "Patriarchy as fundamental structure of domination.",
+            affectedAxes: ["anti-domination","equality-theory"],
+         },
+         {
+            philosophy: "Anarchism",
+            description: "Abolishing all hierarchical institutions together.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","property-legitimacy"],
+         }
+      ],
       centroid: {
          'authority-legitimacy': -0.85,
          'property-legitimacy': -0.6,
@@ -3274,6 +4765,1572 @@ export const labels: IdeologyLabel[] = [
          'redistribution-vs-predistribution': 0.5,
          'militarism-pacifism': -0.5,
          'secularism-religious': -0.6,
+      },
+   },
+   {
+      id: 'anarcho-syndicalism',
+      name: 'Anarcho-Syndicalism',
+      family: 'anarchist',
+      subfamily: 'social-anarchist',
+      description:
+         'A revolutionary, worker-centered variant of anarchism that seeks to replace capitalism and the state with a decentralized federation of democratically-run worker syndicates and communes, using direct action and solidarity rather than electoral politics.',
+      philosophies: ["Anarchism","Anarcho-Syndicalism","Syndicalism","Socialism"],
+      subTheories: ["Revolutionary Unionism","Dual Power","Industrial Democracy"],
+      ethicalTheory: ["Deontology","Virtue Ethics"],
+      normativePhilosophies: ["Anarchism","Anarcho-Syndicalism","Socialism"],
+      descriptivePhilosophies: ["Anarchism","Syndicalism"],
+      prescriptivePhilosophies: ["Anarcho-Syndicalism","Syndicalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Rejection of state authority and centralized power drives anti-statist commitments.",
+            affectedAxes: ["authority-legitimacy","state-action-vs-exit","centralization-preference"],
+         },
+         {
+            philosophy: "Syndicalism",
+            description: "Belief in worker self-organization through federated unions as the basis of economic democracy.",
+            affectedAxes: ["property-legitimacy","coordination-optimism","state-action-vs-exit"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': -0.6,
+         'property-legitimacy': -0.7,
+         'liberty-noninterference': 0.5,
+         'equality-theory': 0.7,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.5,
+         'anti-domination': 0.8,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': -0.5,
+         'state-capacity-confidence': -0.6,
+         'public-choice-skepticism': 0.4,
+         'democratic-confidence': 0.5,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': 0.4,
+         'coordination-optimism': 0.3,
+         'centralization-preference': -0.6,
+         'reform-vs-revolution': 0.6,
+         'gradualism-vs-immediatism': 0.3,
+         'state-action-vs-exit': -0.5,
+         'electoralism-vs-direct-action': -0.3,
+         'compromise-vs-persistence': 0.1,
+         'coercion-strategy': -0.5,
+         'regulation-vs-deregulation': 0.2,
+         'redistribution-vs-predistribution': 0.6,
+         'militarism-pacifism': -0.4,
+         'secularism-religious': -0.4,
+      },
+   },
+   {
+      id: 'platformism',
+      name: 'Platformism',
+      family: 'anarchist',
+      subfamily: 'social-anarchist',
+      description:
+         'A tendency within anarchism that advocates for a unified, strategic anarchist organization with collective responsibility and tactical unity, rejecting both vanguardism and loose affinity-group models in favor of a disciplined yet decentralized revolutionary mass movement.',
+      philosophies: ["Anarchism","Platformism","Anarcho-Communism"],
+      subTheories: ["Organizational Platform","Anarchist Unity"],
+      ethicalTheory: ["Deontology","Consequentialism"],
+      normativePhilosophies: ["Anarchism","Anarcho-Communism"],
+      descriptivePhilosophies: ["Platformism"],
+      prescriptivePhilosophies: ["Platformism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Core anti-authoritarian and anti-statist commitments.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","equality-theory"],
+         },
+         {
+            philosophy: "Platformism",
+            description: "Emphasis on organizational unity and strategic coordination within anarchist movements.",
+            affectedAxes: ["coordination-optimism","electoralism-vs-direct-action","reform-vs-revolution"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': -0.55,
+         'property-legitimacy': -0.7,
+         'liberty-noninterference': 0.4,
+         'equality-theory': 0.7,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.5,
+         'anti-domination': 0.75,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': -0.5,
+         'state-capacity-confidence': -0.5,
+         'public-choice-skepticism': 0.4,
+         'democratic-confidence': 0.5,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': 0.4,
+         'coordination-optimism': 0.3,
+         'centralization-preference': -0.3,
+         'reform-vs-revolution': 0.3,
+         'gradualism-vs-immediatism': 0.2,
+         'state-action-vs-exit': -0.4,
+         'electoralism-vs-direct-action': -0.2,
+         'compromise-vs-persistence': 0.2,
+         'coercion-strategy': -0.5,
+         'regulation-vs-deregulation': 0.2,
+         'redistribution-vs-predistribution': 0.6,
+         'militarism-pacifism': -0.4,
+         'secularism-religious': -0.4,
+      },
+   },
+   {
+      id: 'fiscal-conservatism',
+      name: 'Fiscal Conservatism',
+      family: 'conservative',
+      subfamily: 'fiscal-conservative',
+      description:
+         'An ideological posture prioritizing balanced budgets, low taxes, reduced public debt, and restrained government spending, grounded in high confidence in market processes and skepticism toward expansive state fiscal intervention.',
+      philosophies: ["Conservatism","Classical Liberalism","Fiscal Conservatism"],
+      subTheories: ["Supply-Side Economics","Austerity"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Conservatism","Classical Liberalism"],
+      descriptivePhilosophies: ["Fiscal Conservatism","Classical Liberalism"],
+      prescriptivePhilosophies: ["Fiscal Conservatism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Classical Liberalism",
+            description: "Preference for limited government and faith in market allocation drives fiscal restraint.",
+            affectedAxes: ["property-legitimacy","market-process-confidence","regulation-vs-deregulation"],
+         },
+         {
+            philosophy: "Conservatism",
+            description: "Cautious approach to change and respect for established fiscal institutions.",
+            affectedAxes: ["authority-legitimacy","reform-vs-revolution"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.3,
+         'property-legitimacy': 0.6,
+         'liberty-noninterference': 0.4,
+         'equality-theory': -0.2,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': 0.3,
+         'anti-domination': 0.2,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': 0.7,
+         'state-capacity-confidence': 0.3,
+         'public-choice-skepticism': 0.5,
+         'democratic-confidence': 0.4,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': -0.1,
+         'coordination-optimism': 0.2,
+         'centralization-preference': 0.2,
+         'reform-vs-revolution': -0.1,
+         'gradualism-vs-immediatism': 0.1,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.4,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.1,
+         'regulation-vs-deregulation': -0.5,
+         'redistribution-vs-predistribution': -0.4,
+         'militarism-pacifism': 0.1,
+         'secularism-religious': 0.2,
+      },
+   },
+   {
+      id: 'social-conservatism',
+      name: 'Social Conservatism',
+      family: 'conservative',
+      subfamily: 'social-conservative',
+      description:
+         'A conservative orientation centered on preserving traditional moral values, social norms, and established institutions, viewing them as essential to social cohesion and human flourishing against progressive cultural change.',
+      philosophies: ["Conservatism","Social Conservatism","Traditionalism","Communitarianism"],
+      subTheories: ["Traditionalist Conservatism","Social Traditionalism"],
+      ethicalTheory: ["Virtue Ethics","Deontology"],
+      normativePhilosophies: ["Conservatism","Social Conservatism","Traditionalism"],
+      descriptivePhilosophies: ["Communitarianism"],
+      prescriptivePhilosophies: ["Social Conservatism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Traditionalism",
+            description: "Deference to inherited moral frameworks and suspicion of cultural change.",
+            affectedAxes: ["moral-traditionalism","cultural-plasticity","secularism-religious"],
+         },
+         {
+            philosophy: "Communitarianism",
+            description: "Emphasis on community cohesion and shared values over individual autonomy.",
+            affectedAxes: ["liberty-noninterference","political-community-boundary","authority-legitimacy"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.5,
+         'property-legitimacy': 0.4,
+         'liberty-noninterference': 0,
+         'equality-theory': -0.1,
+         'political-community-boundary': 0.2,
+         'moral-traditionalism': 0.8,
+         'anti-domination': 0.1,
+         'human-nature-priority': 0.1,
+         'market-process-confidence': 0.4,
+         'state-capacity-confidence': 0.4,
+         'public-choice-skepticism': 0.3,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': -0.5,
+         'coordination-optimism': 0.1,
+         'centralization-preference': 0.3,
+         'reform-vs-revolution': -0.2,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.4,
+         'electoralism-vs-direct-action': 0.3,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': 0,
+         'regulation-vs-deregulation': -0.1,
+         'redistribution-vs-predistribution': -0.1,
+         'militarism-pacifism': 0.2,
+         'secularism-religious': 0.5,
+      },
+   },
+   {
+      id: 'national-conservatism',
+      name: 'National Conservatism',
+      family: 'conservative',
+      subfamily: 'national-conservative',
+      description:
+         'A conservative position that fuses traditional moral and social conservatism with a strong emphasis on national sovereignty, cultural identity, and the nation-state as the primary locus of political community and loyalty.',
+      philosophies: ["Conservatism","Nationalism","Social Conservatism","Realism","National Conservatism"],
+      subTheories: ["National Conservatism","Ethnonationalism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Conservatism","Nationalism","Social Conservatism"],
+      descriptivePhilosophies: ["Realism"],
+      prescriptivePhilosophies: ["National Conservatism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Nationalism",
+            description: "Prioritization of national community and sovereignty over universalist or cosmopolitan commitments.",
+            affectedAxes: ["political-community-boundary","state-capacity-confidence","militarism-pacifism"],
+         },
+         {
+            philosophy: "Social Conservatism",
+            description: "Defense of traditional moral order and cultural norms.",
+            affectedAxes: ["moral-traditionalism","cultural-plasticity","secularism-religious"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.6,
+         'property-legitimacy': 0.3,
+         'liberty-noninterference': -0.2,
+         'equality-theory': -0.1,
+         'political-community-boundary': -0.6,
+         'moral-traditionalism': 0.7,
+         'anti-domination': -0.1,
+         'human-nature-priority': -0.1,
+         'market-process-confidence': 0.3,
+         'state-capacity-confidence': 0.5,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.2,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': -0.5,
+         'coordination-optimism': 0.1,
+         'centralization-preference': 0.4,
+         'reform-vs-revolution': -0.1,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.5,
+         'electoralism-vs-direct-action': 0.2,
+         'compromise-vs-persistence': 0.2,
+         'coercion-strategy': 0.2,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': 0.3,
+         'secularism-religious': 0.3,
+      },
+   },
+   {
+      id: 'liberal-conservatism',
+      name: 'Liberal Conservatism',
+      family: 'conservative',
+      subfamily: 'conservative-liberal',
+      description:
+         'A synthesis of conservative social caution with liberal commitments to individual liberty, limited government, and market economics, seeking to preserve traditional institutions while embracing economic and political liberalism.',
+      philosophies: ["Conservatism","Liberalism","Classical Liberalism","Liberal Conservatism"],
+      subTheories: ["Liberal Conservatism","Conservative Liberalism"],
+      ethicalTheory: ["Deontology","Consequentialism"],
+      normativePhilosophies: ["Conservatism","Liberalism","Classical Liberalism"],
+      descriptivePhilosophies: ["Classical Liberalism"],
+      prescriptivePhilosophies: ["Liberal Conservatism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Classical Liberalism",
+            description: "Commitment to individual liberty, property rights, and free markets.",
+            affectedAxes: ["property-legitimacy","market-process-confidence","regulation-vs-deregulation"],
+         },
+         {
+            philosophy: "Conservatism",
+            description: "Cautious, gradualist approach to change tempered by social continuity.",
+            affectedAxes: ["moral-traditionalism","reform-vs-revolution","cultural-plasticity"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.2,
+         'property-legitimacy': 0.5,
+         'liberty-noninterference': 0.4,
+         'equality-theory': 0.1,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': 0.3,
+         'anti-domination': 0.2,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': 0.5,
+         'state-capacity-confidence': 0.3,
+         'public-choice-skepticism': 0.3,
+         'democratic-confidence': 0.4,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': 0,
+         'coordination-optimism': 0.2,
+         'centralization-preference': 0.1,
+         'reform-vs-revolution': -0.3,
+         'gradualism-vs-immediatism': -0.1,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.4,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.1,
+         'regulation-vs-deregulation': -0.3,
+         'redistribution-vs-predistribution': -0.2,
+         'militarism-pacifism': 0,
+         'secularism-religious': 0.1,
+      },
+   },
+   {
+      id: 'bright-green-environmentalism',
+      name: 'Bright Green Environmentalism',
+      family: 'green',
+      subfamily: 'techno-green',
+      description:
+         'An optimistic, innovation-driven environmentalist orientation that believes technological progress, market mechanisms, and human ingenuity can solve ecological challenges while fostering economic growth and prosperity.',
+      philosophies: ["Environmentalism","Techno-Optimism","Ecomodernism","Market Liberalism"],
+      subTheories: ["Ecomodernism","Green Growth","Technogaianism"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Environmentalism","Ecomodernism"],
+      descriptivePhilosophies: ["Techno-Optimism"],
+      prescriptivePhilosophies: ["Ecomodernism","Market Liberalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Ecomodernism",
+            description: "Belief that intensive technology and urbanization can decouple human welfare from environmental harm.",
+            affectedAxes: ["human-nature-priority","expert-confidence","coordination-optimism"],
+         },
+         {
+            philosophy: "Techno-Optimism",
+            description: "Confidence in technological innovation and market-driven solutions to environmental problems.",
+            affectedAxes: ["market-process-confidence","cultural-plasticity","regulation-vs-deregulation"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0,
+         'property-legitimacy': 0.3,
+         'liberty-noninterference': 0.3,
+         'equality-theory': 0.3,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': -0.2,
+         'anti-domination': 0.3,
+         'human-nature-priority': 0.3,
+         'market-process-confidence': 0.6,
+         'state-capacity-confidence': 0.4,
+         'public-choice-skepticism': 0.1,
+         'democratic-confidence': 0.5,
+         'expert-confidence': 0.6,
+         'cultural-plasticity': 0.4,
+         'coordination-optimism': 0.5,
+         'centralization-preference': 0.1,
+         'reform-vs-revolution': -0.4,
+         'gradualism-vs-immediatism': -0.3,
+         'state-action-vs-exit': 0.4,
+         'electoralism-vs-direct-action': 0.3,
+         'compromise-vs-persistence': 0.4,
+         'coercion-strategy': -0.3,
+         'regulation-vs-deregulation': 0.2,
+         'redistribution-vs-predistribution': 0.1,
+         'militarism-pacifism': -0.2,
+         'secularism-religious': -0.2,
+      },
+   },
+   {
+      id: 'georgism',
+      name: 'Georgism',
+      family: 'libertarian-leaning',
+      subfamily: 'geoist-market',
+      description:
+         'A political and economic philosophy based on the ideas of Henry George, arguing that individuals should own the value they produce but that the economic rent from land and natural resources should belong to the community, typically funding public goods through a single land-value tax.',
+      philosophies: ["Georgism","Classical Liberalism","Libertarianism","Radical Centrism","Geoism"],
+      subTheories: ["Geoism","Single-Tax Theory","Geolibertarianism"],
+      ethicalTheory: ["Deontology","Consequentialism"],
+      normativePhilosophies: ["Georgism","Classical Liberalism","Libertarianism"],
+      descriptivePhilosophies: ["Georgism"],
+      prescriptivePhilosophies: ["Georgism","Geoism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Georgism",
+            description: "Distinction between earned value and unearned land rent drives redistributive land-tax policy.",
+            affectedAxes: ["property-legitimacy","redistribution-vs-predistribution","equality-theory"],
+         },
+         {
+            philosophy: "Classical Liberalism",
+            description: "Commitment to market exchange and individual liberty in productive enterprise.",
+            affectedAxes: ["market-process-confidence","regulation-vs-deregulation","liberty-noninterference"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': -0.1,
+         'property-legitimacy': 0.3,
+         'liberty-noninterference': 0.4,
+         'equality-theory': 0.4,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': -0.1,
+         'anti-domination': 0.4,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': 0.5,
+         'state-capacity-confidence': 0.3,
+         'public-choice-skepticism': 0.3,
+         'democratic-confidence': 0.4,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': 0.2,
+         'coordination-optimism': 0.3,
+         'centralization-preference': 0,
+         'reform-vs-revolution': -0.4,
+         'gradualism-vs-immediatism': -0.3,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.4,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.2,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0.2,
+         'militarism-pacifism': -0.2,
+         'secularism-religious': -0.2,
+      },
+   },
+   {
+      id: 'internationalism',
+      name: 'Internationalism',
+      family: 'liberal',
+      subfamily: 'internationalist',
+      description:
+         'A cosmopolitan political orientation that emphasizes moral obligations extending to all persons globally, supports international institutions and cooperation, and advocates for the protection of universal human rights across national boundaries.',
+      philosophies: ["Liberalism","Cosmopolitanism","Internationalism","Human Rights","Liberal Internationalism"],
+      subTheories: ["Cosmopolitan Liberalism","Global Justice","Liberal Internationalism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Liberalism","Cosmopolitanism","Internationalism"],
+      descriptivePhilosophies: ["Cosmopolitanism"],
+      prescriptivePhilosophies: ["Internationalism","Liberal Internationalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Cosmopolitanism",
+            description: "Universal moral obligations that transcend national and cultural boundaries.",
+            affectedAxes: ["political-community-boundary","equality-theory","militarism-pacifism"],
+         },
+         {
+            philosophy: "Liberalism",
+            description: "Commitment to individual rights, democratic governance, and international cooperation.",
+            affectedAxes: ["democratic-confidence","authority-legitimacy","coordination-optimism"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': 0.4,
+         'equality-theory': 0.4,
+         'political-community-boundary': 0.7,
+         'moral-traditionalism': -0.4,
+         'anti-domination': 0.5,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': 0.2,
+         'state-capacity-confidence': 0.3,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.5,
+         'expert-confidence': 0.4,
+         'cultural-plasticity': 0.5,
+         'coordination-optimism': 0.5,
+         'centralization-preference': 0.2,
+         'reform-vs-revolution': -0.4,
+         'gradualism-vs-immediatism': -0.3,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.4,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.2,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0.2,
+         'militarism-pacifism': -0.4,
+         'secularism-religious': -0.4,
+      },
+   },
+   {
+      id: 'bleeding-heart-libertarianism',
+      name: 'Bleeding-Heart Libertarianism',
+      family: 'liberal',
+      subfamily: 'civil-libertarian',
+      description:
+         'A variant of libertarianism that combines strong commitments to individual liberty, free markets, and limited government with an emphasis on social justice, concern for the disadvantaged, and recognition that systemic inequality can undermine meaningful freedom.',
+      philosophies: ["Libertarianism","Liberalism","Social Justice","Classical Liberalism","Left-Libertarianism"],
+      subTheories: ["Left-Libertarianism","Libertarian Paternalism"],
+      ethicalTheory: ["Deontology","Consequentialism"],
+      normativePhilosophies: ["Libertarianism","Liberalism"],
+      descriptivePhilosophies: ["Classical Liberalism","Social Justice"],
+      prescriptivePhilosophies: ["Libertarianism","Left-Libertarianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Libertarianism",
+            description: "Strong non-aggression principle and presumption against state coercion.",
+            affectedAxes: ["liberty-noninterference","authority-legitimacy","state-action-vs-exit"],
+         },
+         {
+            philosophy: "Social Justice",
+            description: "Concern for material disadvantage and structural inequality tempers pure libertarianism.",
+            affectedAxes: ["equality-theory","anti-domination","redistribution-vs-predistribution"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': -0.2,
+         'property-legitimacy': 0.5,
+         'liberty-noninterference': 0.7,
+         'equality-theory': 0.4,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.3,
+         'anti-domination': 0.6,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': 0.5,
+         'state-capacity-confidence': -0.2,
+         'public-choice-skepticism': 0.4,
+         'democratic-confidence': 0.4,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': 0.4,
+         'coordination-optimism': 0.3,
+         'centralization-preference': -0.3,
+         'reform-vs-revolution': -0.4,
+         'gradualism-vs-immediatism': -0.3,
+         'state-action-vs-exit': 0.2,
+         'electoralism-vs-direct-action': 0.3,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.3,
+         'regulation-vs-deregulation': -0.3,
+         'redistribution-vs-predistribution': -0.1,
+         'militarism-pacifism': -0.3,
+         'secularism-religious': -0.4,
+      },
+   },
+   {
+      id: 'constitutional-monarchism',
+      name: 'Constitutional Monarchism',
+      family: 'authoritarian',
+      subfamily: 'monarchist-reactionary',
+      description:
+         'A political system that maintains a hereditary monarch as head of state within the framework of a written constitution, limiting the sovereign\'s powers while preserving the symbolic and stabilizing role of traditional monarchy in a modern constitutional order.',
+      philosophies: ["Monarchism","Conservatism","Constitutionalism","Traditionalism"],
+      subTheories: ["Constitutional Monarchy","Parliamentary Sovereignty"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Monarchism","Conservatism","Traditionalism"],
+      descriptivePhilosophies: ["Constitutionalism"],
+      prescriptivePhilosophies: ["Monarchism","Constitutionalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Monarchism",
+            description: "Support for hereditary head of state as a stabilizing, unifying institution.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","state-capacity-confidence"],
+         },
+         {
+            philosophy: "Constitutionalism",
+            description: "Belief that sovereign power should be bounded by law and mixed institutions.",
+            affectedAxes: ["democratic-confidence","authority-legitimacy","compromise-vs-persistence"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.5,
+         'property-legitimacy': 0.3,
+         'liberty-noninterference': 0.1,
+         'equality-theory': 0,
+         'political-community-boundary': 0.2,
+         'moral-traditionalism': 0.4,
+         'anti-domination': 0.1,
+         'human-nature-priority': 0.1,
+         'market-process-confidence': 0.3,
+         'state-capacity-confidence': 0.5,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0.4,
+         'cultural-plasticity': -0.1,
+         'coordination-optimism': 0.2,
+         'centralization-preference': 0.5,
+         'reform-vs-revolution': -0.2,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.4,
+         'electoralism-vs-direct-action': 0.3,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': 0.1,
+         'regulation-vs-deregulation': 0,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': 0.1,
+         'secularism-religious': 0.2,
+      },
+   },
+   {
+      id: 'expansionist-nationalism',
+      name: 'Expansionist Nationalism',
+      family: 'nationalist',
+      subfamily: 'imperial-national',
+      description:
+         'A nationalist ideology that asserts the right and duty of a nation to expand its territorial control, influence, and power over other peoples and regions, often invoking historical claims, civilizing missions, or strategic imperatives.',
+      philosophies: ["Nationalism","Imperialism","Realism","Social Darwinism","Expansionism"],
+      subTheories: ["Expansionism","Imperial Nationalism","Irredentism"],
+      ethicalTheory: ["Virtue Ethics","Consequentialism"],
+      normativePhilosophies: ["Nationalism","Imperialism"],
+      descriptivePhilosophies: ["Realism","Social Darwinism"],
+      prescriptivePhilosophies: ["Nationalism","Expansionism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Nationalism",
+            description: "Supreme loyalty to the nation and its destiny abroad.",
+            affectedAxes: ["political-community-boundary","militarism-pacifism","authority-legitimacy"],
+         },
+         {
+            philosophy: "Realism",
+            description: "Pessimistic view of international relations as zero-sum power competition.",
+            affectedAxes: ["coordination-optimism","political-community-boundary","militarism-pacifism"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.5,
+         'property-legitimacy': 0.2,
+         'liberty-noninterference': -0.4,
+         'equality-theory': -0.2,
+         'political-community-boundary': -0.8,
+         'moral-traditionalism': 0.4,
+         'anti-domination': -0.3,
+         'human-nature-priority': -0.1,
+         'market-process-confidence': 0.3,
+         'state-capacity-confidence': 0.6,
+         'public-choice-skepticism': 0,
+         'democratic-confidence': 0.1,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': -0.3,
+         'coordination-optimism': 0.1,
+         'centralization-preference': 0.5,
+         'reform-vs-revolution': 0.1,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.5,
+         'electoralism-vs-direct-action': 0.1,
+         'compromise-vs-persistence': 0,
+         'coercion-strategy': 0.4,
+         'regulation-vs-deregulation': 0,
+         'redistribution-vs-predistribution': -0.1,
+         'militarism-pacifism': 0.6,
+         'secularism-religious': 0.1,
+      },
+   },
+   {
+      id: 'separatist-nationalism',
+      name: 'Separatist Nationalism',
+      family: 'nationalist',
+      subfamily: 'subnational',
+      description:
+         'A nationalist movement seeking self-determination and political independence for a specific region, ethnic group, or cultural community from a larger existing state, often through secession or devolution of sovereignty.',
+      philosophies: ["Nationalism","Separatism","Self-Determination","Federalism"],
+      subTheories: ["Secessionism","Independence Movements","Autonomism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Nationalism","Self-Determination"],
+      descriptivePhilosophies: ["Federalism"],
+      prescriptivePhilosophies: ["Separatism","Self-Determination"],
+      philosophyInfluences: [
+         {
+            philosophy: "Self-Determination",
+            description: "Fundamental right of peoples to govern themselves drives separatist demands.",
+            affectedAxes: ["political-community-boundary","authority-legitimacy","centralization-preference"],
+         },
+         {
+            philosophy: "Nationalism",
+            description: "Emphasis on the primacy of national or ethnic identity as basis for political organization.",
+            affectedAxes: ["political-community-boundary","moral-traditionalism","cultural-plasticity"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.1,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': 0.2,
+         'equality-theory': 0.2,
+         'political-community-boundary': -0.7,
+         'moral-traditionalism': 0.3,
+         'anti-domination': 0.4,
+         'human-nature-priority': 0.1,
+         'market-process-confidence': 0.1,
+         'state-capacity-confidence': 0.2,
+         'public-choice-skepticism': 0.1,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': 0.2,
+         'coordination-optimism': 0.1,
+         'centralization-preference': 0,
+         'reform-vs-revolution': 0.1,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.2,
+         'electoralism-vs-direct-action': 0.2,
+         'compromise-vs-persistence': 0.1,
+         'coercion-strategy': 0,
+         'regulation-vs-deregulation': 0,
+         'redistribution-vs-predistribution': 0.1,
+         'militarism-pacifism': 0.1,
+         'secularism-religious': -0.1,
+      },
+   },
+   {
+      id: 'agrarian-populism',
+      name: 'Agrarian Populism',
+      family: 'populist',
+      subfamily: 'left-populist',
+      description:
+         'A populist movement rooted in rural and farming communities that mobilizes against perceived exploitation by urban elites, financial interests, and corporate monopolies, advocating for economic reforms benefiting small producers and landholders.',
+      philosophies: ["Populism","Agrarianism","Distributism","Economic Nationalism"],
+      subTheories: ["Agrarian Socialism","Rural Populism","Cooperative Movement"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Populism","Agrarianism","Distributism"],
+      descriptivePhilosophies: ["Economic Nationalism"],
+      prescriptivePhilosophies: ["Populism","Agrarianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Populism",
+            description: "Anti-elite mobilization that pits ordinary rural people against entrenched urban and financial interests.",
+            affectedAxes: ["authority-legitimacy","anti-domination","public-choice-skepticism"],
+         },
+         {
+            philosophy: "Distributism",
+            description: "Preference for widely distributed small-property ownership over both corporate capitalism and state collectivism.",
+            affectedAxes: ["property-legitimacy","redistribution-vs-predistribution","centralization-preference"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.1,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': 0.1,
+         'equality-theory': 0.3,
+         'political-community-boundary': 0.2,
+         'moral-traditionalism': 0.4,
+         'anti-domination': 0.4,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': 0.1,
+         'state-capacity-confidence': 0.2,
+         'public-choice-skepticism': 0.3,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0.1,
+         'cultural-plasticity': 0.1,
+         'coordination-optimism': 0.2,
+         'centralization-preference': -0.1,
+         'reform-vs-revolution': -0.2,
+         'gradualism-vs-immediatism': -0.1,
+         'state-action-vs-exit': 0.2,
+         'electoralism-vs-direct-action': 0.2,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.1,
+         'regulation-vs-deregulation': 0,
+         'redistribution-vs-predistribution': 0.3,
+         'militarism-pacifism': -0.1,
+         'secularism-religious': 0.1,
+      },
+   },
+   {
+      id: 'fundamentalist-theocracy',
+      name: 'Fundamentalist Theocracy',
+      family: 'conservative',
+      subfamily: 'religious-conservative',
+      description:
+         'A political system in which religious law and doctrine serve as the supreme authority for governance, with state institutions enforcing a fundamentalist interpretation of sacred texts and suppressing religious pluralism and secular alternatives.',
+      philosophies: ["Theocracy","Religious Fundamentalism","Conservatism","Traditionalism","Dominionism"],
+      subTheories: ["Dominionism","Theonomic Governance"],
+      ethicalTheory: ["Divine Command Theory","Virtue Ethics"],
+      normativePhilosophies: ["Theocracy","Religious Fundamentalism","Traditionalism"],
+      descriptivePhilosophies: ["Religious Fundamentalism"],
+      prescriptivePhilosophies: ["Theocracy","Dominionism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Religious Fundamentalism",
+            description: "Belief in the literal truth of sacred texts and their mandatory application in public life.",
+            affectedAxes: ["secularism-religious","moral-traditionalism","cultural-plasticity"],
+         },
+         {
+            philosophy: "Theocracy",
+            description: "Religious authority as the sole legitimate basis for political and legal order.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","liberty-noninterference"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.8,
+         'property-legitimacy': 0.2,
+         'liberty-noninterference': -0.7,
+         'equality-theory': -0.3,
+         'political-community-boundary': 0,
+         'moral-traditionalism': 0.95,
+         'anti-domination': -0.5,
+         'human-nature-priority': -0.3,
+         'market-process-confidence': 0.1,
+         'state-capacity-confidence': 0.6,
+         'public-choice-skepticism': -0.2,
+         'democratic-confidence': -0.5,
+         'expert-confidence': 0.1,
+         'cultural-plasticity': -0.8,
+         'coordination-optimism': 0,
+         'centralization-preference': 0.6,
+         'reform-vs-revolution': -0.3,
+         'gradualism-vs-immediatism': -0.2,
+         'state-action-vs-exit': 0.5,
+         'electoralism-vs-direct-action': 0.1,
+         'compromise-vs-persistence': -0.3,
+         'coercion-strategy': 0.5,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': 0.1,
+         'secularism-religious': 0.95,
+      },
+   },
+   {
+      id: 'political-islam',
+      name: 'Political Islam',
+      family: 'conservative',
+      subfamily: 'islamic-democratic',
+      description:
+         'A broad movement that seeks to implement Islamic principles and Sharia law in governance, public life, and legislation, ranging from democratic participation in pluralistic systems to more comprehensive Islamist state-building projects.',
+      philosophies: ["Islamism","Political Islam","Conservatism","Anti-Colonialism","Islamic Democracy"],
+      subTheories: ["Islamism","Islamic Democracy","Sharia Governance"],
+      ethicalTheory: ["Divine Command Theory","Virtue Ethics"],
+      normativePhilosophies: ["Political Islam","Conservatism"],
+      descriptivePhilosophies: ["Anti-Colonialism"],
+      prescriptivePhilosophies: ["Islamism","Islamic Democracy"],
+      philosophyInfluences: [
+         {
+            philosophy: "Political Islam",
+            description: "Application of Islamic jurisprudence to governance and public policy.",
+            affectedAxes: ["secularism-religious","moral-traditionalism","authority-legitimacy"],
+         },
+         {
+            philosophy: "Anti-Colonialism",
+            description: "Rejection of Western political and cultural imposition, asserting indigenous Islamic alternatives.",
+            affectedAxes: ["political-community-boundary","cultural-plasticity","militarism-pacifism"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.4,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': -0.3,
+         'equality-theory': 0.1,
+         'political-community-boundary': -0.3,
+         'moral-traditionalism': 0.7,
+         'anti-domination': 0.1,
+         'human-nature-priority': -0.1,
+         'market-process-confidence': 0.1,
+         'state-capacity-confidence': 0.4,
+         'public-choice-skepticism': 0,
+         'democratic-confidence': 0.1,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': -0.4,
+         'coordination-optimism': 0.1,
+         'centralization-preference': 0.3,
+         'reform-vs-revolution': 0,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.2,
+         'compromise-vs-persistence': 0.1,
+         'coercion-strategy': 0.1,
+         'regulation-vs-deregulation': 0,
+         'redistribution-vs-predistribution': 0.1,
+         'militarism-pacifism': 0.2,
+         'secularism-religious': 0.6,
+      },
+   },
+   {
+      id: 'christian-reconstructionism',
+      name: 'Christian Reconstructionism',
+      family: 'conservative',
+      subfamily: 'religious-conservative',
+      description:
+         'A Reformed Calvinist theological and political movement that advocates for the reconstruction of society along Biblical law, seeking to apply Old Testament judicial standards to contemporary civil government and to establish a theonomic Christian commonwealth.',
+      philosophies: ["Christian Reconstructionism","Theonomy","Calvinism","Conservatism"],
+      subTheories: ["Theonomic Ethics","Postmillennialism","Dominion Theology"],
+      ethicalTheory: ["Divine Command Theory"],
+      normativePhilosophies: ["Christian Reconstructionism","Theonomy","Conservatism"],
+      descriptivePhilosophies: ["Calvinism"],
+      prescriptivePhilosophies: ["Christian Reconstructionism","Theonomy"],
+      philosophyInfluences: [
+         {
+            philosophy: "Theonomy",
+            description: "The application of Biblical law as the binding standard for civil legislation.",
+            affectedAxes: ["secularism-religious","moral-traditionalism","authority-legitimacy"],
+         },
+         {
+            philosophy: "Calvinism",
+            description: "Theological framework emphasizing divine sovereignty and the transformative calling of Christians in all spheres of life.",
+            affectedAxes: ["cultural-plasticity","liberty-noninterference","state-capacity-confidence"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.7,
+         'property-legitimacy': 0.4,
+         'liberty-noninterference': -0.5,
+         'equality-theory': -0.2,
+         'political-community-boundary': 0.1,
+         'moral-traditionalism': 0.9,
+         'anti-domination': -0.3,
+         'human-nature-priority': -0.2,
+         'market-process-confidence': 0.4,
+         'state-capacity-confidence': 0.5,
+         'public-choice-skepticism': 0.1,
+         'democratic-confidence': -0.2,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': -0.6,
+         'coordination-optimism': 0.2,
+         'centralization-preference': 0.4,
+         'reform-vs-revolution': -0.2,
+         'gradualism-vs-immediatism': -0.1,
+         'state-action-vs-exit': 0.4,
+         'electoralism-vs-direct-action': 0.1,
+         'compromise-vs-persistence': -0.2,
+         'coercion-strategy': 0.3,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': -0.1,
+         'militarism-pacifism': 0.1,
+         'secularism-religious': 0.9,
+      },
+   },
+   {
+      id: 'dataism',
+      name: 'Dataism',
+      family: 'technocratic',
+      subfamily: 'cyberocratic',
+      description:
+         'A techno-philosophical worldview that elevates data processing and information flows as the ultimate source of value and governance legitimacy, advocating for decision-making optimized through big-data analytics, algorithmic systems, and quantified efficiency metrics.',
+      philosophies: ["Dataism","Technocracy","Transhumanism","Positivism"],
+      subTheories: ["Algorithmic Governance","Quantified Self","Surveillance Capitalism Critique"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Dataism","Technocracy"],
+      descriptivePhilosophies: ["Positivism"],
+      prescriptivePhilosophies: ["Dataism","Technocracy"],
+      philosophyInfluences: [
+         {
+            philosophy: "Technocracy",
+            description: "Expert-led, data-driven governance as the most efficient form of social organization.",
+            affectedAxes: ["expert-confidence","democratic-confidence","centralization-preference"],
+         },
+         {
+            philosophy: "Positivism",
+            description: "Empirical data as the foundation of knowledge and rational decision-making.",
+            affectedAxes: ["cultural-plasticity","coordination-optimism","state-capacity-confidence"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.2,
+         'property-legitimacy': 0.2,
+         'liberty-noninterference': 0,
+         'equality-theory': 0.1,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': -0.4,
+         'anti-domination': 0.1,
+         'human-nature-priority': 0.3,
+         'market-process-confidence': 0.5,
+         'state-capacity-confidence': 0.6,
+         'public-choice-skepticism': 0.1,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0.8,
+         'cultural-plasticity': 0.5,
+         'coordination-optimism': 0.6,
+         'centralization-preference': 0.4,
+         'reform-vs-revolution': -0.3,
+         'gradualism-vs-immediatism': -0.2,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.3,
+         'compromise-vs-persistence': 0.2,
+         'coercion-strategy': -0.1,
+         'regulation-vs-deregulation': 0.2,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': -0.1,
+         'secularism-religious': -0.5,
+      },
+   },
+   {
+      id: 'singularitarianism',
+      name: 'Singularitarianism',
+      family: 'technocratic',
+      subfamily: 'techno-progressive',
+      description:
+         'A futurist ideology focused on accelerating the arrival of the technological singularity through safe artificial intelligence development, human enhancement, and radical life extension, advocating for responsible stewardship of exponentially advancing technologies.',
+      philosophies: ["Transhumanism","Futurism","Techno-Optimism","Longtermism"],
+      subTheories: ["AI Alignment Theory","Accelerando","Morphological Freedom"],
+      ethicalTheory: ["Consequentialism","Longtermism"],
+      normativePhilosophies: ["Transhumanism","Futurism"],
+      descriptivePhilosophies: ["Techno-Optimism"],
+      prescriptivePhilosophies: ["Transhumanism","Longtermism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Transhumanism",
+            description: "Commitment to using technology to enhance human cognitive and physical capacities beyond current biological limits.",
+            affectedAxes: ["human-nature-priority","cultural-plasticity","expert-confidence"],
+         },
+         {
+            philosophy: "Longtermism",
+            description: "Moral prioritization of positively shaping the long-term future of intelligent life.",
+            affectedAxes: ["coordination-optimism","reform-vs-revolution","political-community-boundary"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0,
+         'property-legitimacy': 0.2,
+         'liberty-noninterference': 0.3,
+         'equality-theory': 0.2,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.5,
+         'anti-domination': 0.2,
+         'human-nature-priority': 0.4,
+         'market-process-confidence': 0.4,
+         'state-capacity-confidence': 0.3,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0.7,
+         'cultural-plasticity': 0.6,
+         'coordination-optimism': 0.6,
+         'centralization-preference': 0.1,
+         'reform-vs-revolution': -0.1,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.2,
+         'electoralism-vs-direct-action': 0.2,
+         'compromise-vs-persistence': 0.2,
+         'coercion-strategy': -0.1,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': -0.1,
+         'secularism-religious': -0.4,
+      },
+   },
+   {
+      id: 'universal-basic-income',
+      name: 'Universal Basic Income Advocacy',
+      family: 'social-democratic',
+      subfamily: 'welfare-liberal',
+      description:
+         'Advocacy for a regular, unconditional cash payment from the government to every citizen or resident, intended to provide economic security, reduce poverty, simplify welfare systems, and support individual autonomy in a changing labor market.',
+      philosophies: ["Social Democracy","Liberalism","Distributive Justice","Egalitarianism","Basic Income Guarantee"],
+      subTheories: ["Basic Income Guarantee","Negative Income Tax","Citizen's Dividend"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Social Democracy","Egalitarianism","Liberalism"],
+      descriptivePhilosophies: ["Distributive Justice"],
+      prescriptivePhilosophies: ["Social Democracy","Basic Income Guarantee"],
+      philosophyInfluences: [
+         {
+            philosophy: "Egalitarianism",
+            description: "Commitment to reducing material inequality and ensuring a decent minimum for all.",
+            affectedAxes: ["equality-theory","redistribution-vs-predistribution","property-legitimacy"],
+         },
+         {
+            philosophy: "Social Democracy",
+            description: "Reformist, institutional approach to building a comprehensive social safety net.",
+            affectedAxes: ["state-action-vs-exit","reform-vs-revolution","gradualism-vs-immediatism"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0,
+         'property-legitimacy': -0.1,
+         'liberty-noninterference': 0.3,
+         'equality-theory': 0.5,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.3,
+         'anti-domination': 0.4,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': 0.2,
+         'state-capacity-confidence': 0.4,
+         'public-choice-skepticism': 0.1,
+         'democratic-confidence': 0.4,
+         'expert-confidence': 0.4,
+         'cultural-plasticity': 0.4,
+         'coordination-optimism': 0.3,
+         'centralization-preference': 0.1,
+         'reform-vs-revolution': -0.5,
+         'gradualism-vs-immediatism': -0.4,
+         'state-action-vs-exit': 0.4,
+         'electoralism-vs-direct-action': 0.4,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.2,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0.4,
+         'militarism-pacifism': -0.2,
+         'secularism-religious': -0.3,
+      },
+   },
+   {
+      id: 'fourth-theory',
+      name: 'Fourth Theory',
+      family: 'authoritarian',
+      subfamily: 'monarchist-reactionary',
+      description:
+         'A post-Soviet ideological synthesis proposed by Aleksandr Dugin that rejects liberalism, communism, and fascism as exhausted Western paradigms, advocating instead for a Eurasian empire founded on traditional values, spiritual authority, and a multipolar world order.',
+      philosophies: ["Eurasianism","Traditionalism","Anti-Liberalism","Anti-Colonialism"],
+      subTheories: ["Neo-Eurasianism","Dasein Theory","Russian Civilizationism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Eurasianism","Traditionalism","Anti-Liberalism"],
+      descriptivePhilosophies: ["Anti-Colonialism"],
+      prescriptivePhilosophies: ["Eurasianism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Eurasianism",
+            description: "Russian-centered geopolitical civilization as an alternative to Atlantic liberal hegemony.",
+            affectedAxes: ["political-community-boundary","militarism-pacifism","authority-legitimacy"],
+         },
+         {
+            philosophy: "Traditionalism",
+            description: "Perennial spiritual authority as the basis of political legitimacy over rationalist or popular sovereignty.",
+            affectedAxes: ["secularism-religious","moral-traditionalism","democratic-confidence"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.7,
+         'property-legitimacy': 0,
+         'liberty-noninterference': -0.6,
+         'equality-theory': -0.1,
+         'political-community-boundary': -0.5,
+         'moral-traditionalism': 0.6,
+         'anti-domination': -0.3,
+         'human-nature-priority': -0.2,
+         'market-process-confidence': 0,
+         'state-capacity-confidence': 0.6,
+         'public-choice-skepticism': -0.2,
+         'democratic-confidence': -0.4,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': -0.3,
+         'coordination-optimism': 0.2,
+         'centralization-preference': 0.6,
+         'reform-vs-revolution': 0.3,
+         'gradualism-vs-immediatism': 0.2,
+         'state-action-vs-exit': 0.5,
+         'electoralism-vs-direct-action': -0.1,
+         'compromise-vs-persistence': -0.2,
+         'coercion-strategy': 0.5,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': 0.4,
+         'secularism-religious': 0.2,
+      },
+   },
+   {
+      id: 'anti-imperialism',
+      name: 'Anti-Imperialism',
+      family: 'socialist',
+      subfamily: 'internationalist-solidarity',
+      description:
+         'A political stance fundamentally opposed to imperialism, colonialism, and neocolonial domination, advocating for national self-determination, anti-colonial liberation, and resistance against the economic and military dominance of powerful states over weaker ones.',
+      philosophies: ["Anti-Imperialism","Socialism","Internationalism","Post-Colonialism","Dependency Theory"],
+      subTheories: ["Third Worldism","Dependency Theory","Non-Alignment"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anti-Imperialism","Socialism","Internationalism"],
+      descriptivePhilosophies: ["Post-Colonialism","Dependency Theory"],
+      prescriptivePhilosophies: ["Anti-Imperialism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anti-Imperialism",
+            description: "Fundamental opposition to domination of weaker nations by imperial powers.",
+            affectedAxes: ["political-community-boundary","anti-domination","militarism-pacifism"],
+         },
+         {
+            philosophy: "Socialism",
+            description: "Economic critique of capitalism as the driving force behind imperial expansion.",
+            affectedAxes: ["property-legitimacy","equality-theory","redistribution-vs-predistribution"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0,
+         'property-legitimacy': -0.3,
+         'liberty-noninterference': 0.2,
+         'equality-theory': 0.4,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': -0.2,
+         'anti-domination': 0.6,
+         'human-nature-priority': 0.1,
+         'market-process-confidence': -0.2,
+         'state-capacity-confidence': 0.2,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': 0.3,
+         'coordination-optimism': 0.2,
+         'centralization-preference': 0,
+         'reform-vs-revolution': -0.1,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.2,
+         'electoralism-vs-direct-action': 0.2,
+         'compromise-vs-persistence': 0.2,
+         'coercion-strategy': -0.2,
+         'regulation-vs-deregulation': 0,
+         'redistribution-vs-predistribution': 0.3,
+         'militarism-pacifism': -0.5,
+         'secularism-religious': -0.3,
+      },
+   },
+   {
+      id: 'green-capitalism',
+      name: 'Green Capitalism',
+      family: 'green',
+      subfamily: 'market-green',
+      description:
+         'An approach to environmental protection that works within existing capitalist market structures, promoting green growth, carbon pricing, renewable energy markets, eco-labeling, and corporate sustainability as mechanisms for ecological transition without systemic economic transformation.',
+      philosophies: ["Environmentalism","Market Liberalism","Ecomodernism","Reform Ecology","Green Capitalism","Ecological Modernization"],
+      subTheories: ["Green Growth","Ecological Modernization","Carbon Pricing"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Environmentalism","Market Liberalism"],
+      descriptivePhilosophies: ["Ecomodernism"],
+      prescriptivePhilosophies: ["Green Capitalism","Ecological Modernization"],
+      philosophyInfluences: [
+         {
+            philosophy: "Market Liberalism",
+            description: "Market-based instruments and pricing mechanisms as primary tools for environmental protection.",
+            affectedAxes: ["market-process-confidence","regulation-vs-deregulation","property-legitimacy"],
+         },
+         {
+            philosophy: "Environmentalism",
+            description: "Recognition of ecological limits and need for environmental governance.",
+            affectedAxes: ["human-nature-priority","state-capacity-confidence","coordination-optimism"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.1,
+         'property-legitimacy': 0.4,
+         'liberty-noninterference': 0.3,
+         'equality-theory': 0.1,
+         'political-community-boundary': 0.2,
+         'moral-traditionalism': -0.1,
+         'anti-domination': 0.1,
+         'human-nature-priority': 0.4,
+         'market-process-confidence': 0.6,
+         'state-capacity-confidence': 0.3,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.4,
+         'expert-confidence': 0.5,
+         'cultural-plasticity': 0.3,
+         'coordination-optimism': 0.4,
+         'centralization-preference': 0.1,
+         'reform-vs-revolution': -0.5,
+         'gradualism-vs-immediatism': -0.3,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.4,
+         'compromise-vs-persistence': 0.4,
+         'coercion-strategy': -0.3,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': -0.2,
+         'secularism-religious': -0.1,
+      },
+   },
+   {
+      id: 'radical-centrism',
+      name: 'Radical Centrism',
+      family: 'liberal',
+      subfamily: 'centrist',
+      description:
+         'A political orientation that rejects traditional left-right dichotomies and embraces pragmatic, evidence-based synthesis of ideas from across the spectrum, advocating for balanced fiscal responsibility with social welfare, civil liberties with security, and gradual reform through institutional channels.',
+      philosophies: ["Centrism","Liberalism","Pragmatism","Evidence-Based Policy","Third Way"],
+      subTheories: ["Third Way","Radical Center","Post-Ideological Politics"],
+      ethicalTheory: ["Consequentialism","Pragmatist Ethics"],
+      normativePhilosophies: ["Liberalism","Centrism"],
+      descriptivePhilosophies: ["Pragmatism","Evidence-Based Policy"],
+      prescriptivePhilosophies: ["Centrism","Third Way"],
+      philosophyInfluences: [
+         {
+            philosophy: "Pragmatism",
+            description: "Problem-solving orientation that prioritizes what works over ideological purity.",
+            affectedAxes: ["compromise-vs-persistence","reform-vs-revolution","expert-confidence"],
+         },
+         {
+            philosophy: "Liberalism",
+            description: "Commitment to individual rights, democratic institutions, and gradual reform.",
+            affectedAxes: ["democratic-confidence","liberty-noninterference","electoralism-vs-direct-action"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.1,
+         'property-legitimacy': 0.2,
+         'liberty-noninterference': 0.3,
+         'equality-theory': 0.2,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': 0,
+         'anti-domination': 0.2,
+         'human-nature-priority': 0.1,
+         'market-process-confidence': 0.3,
+         'state-capacity-confidence': 0.3,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.5,
+         'expert-confidence': 0.5,
+         'cultural-plasticity': 0.2,
+         'coordination-optimism': 0.3,
+         'centralization-preference': 0,
+         'reform-vs-revolution': -0.4,
+         'gradualism-vs-immediatism': -0.2,
+         'state-action-vs-exit': 0.2,
+         'electoralism-vs-direct-action': 0.5,
+         'compromise-vs-persistence': 0.5,
+         'coercion-strategy': -0.3,
+         'regulation-vs-deregulation': -0.1,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': -0.1,
+         'secularism-religious': 0,
+      },
+   },
+   {
+      id: 'traditional-monarchist',
+      name: 'Traditional Monarchist',
+      family: 'authoritarian',
+      subfamily: 'monarchist-reactionary',
+      description:
+         'A conservative royalist ideology advocating for absolute or traditional monarchy as the divinely ordained or historically legitimate form of government, rejecting popular sovereignty, democratic representation, and constitutional limits on royal prerogative.',
+      philosophies: ["Monarchism","Absolutism","Traditionalism","Conservatism"],
+      subTheories: ["Divine Right of Kings","Absolute Monarchy","Patrimonialism"],
+      ethicalTheory: ["Virtue Ethics","Divine Command Theory"],
+      normativePhilosophies: ["Monarchism","Traditionalism","Conservatism"],
+      descriptivePhilosophies: ["Absolutism"],
+      prescriptivePhilosophies: ["Monarchism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Monarchism",
+            description: "Hereditary monarch as the legitimate sovereign authority over the nation.",
+            affectedAxes: ["authority-legitimacy","centralization-preference","democratic-confidence"],
+         },
+         {
+            philosophy: "Traditionalism",
+            description: "Deference to inherited hierarchical social order and spiritual foundations of authority.",
+            affectedAxes: ["moral-traditionalism","secularism-religious","cultural-plasticity"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.8,
+         'property-legitimacy': 0.3,
+         'liberty-noninterference': -0.4,
+         'equality-theory': -0.3,
+         'political-community-boundary': 0.2,
+         'moral-traditionalism': 0.7,
+         'anti-domination': -0.3,
+         'human-nature-priority': 0,
+         'market-process-confidence': 0.2,
+         'state-capacity-confidence': 0.5,
+         'public-choice-skepticism': -0.1,
+         'democratic-confidence': -0.1,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': -0.5,
+         'coordination-optimism': 0.1,
+         'centralization-preference': 0.7,
+         'reform-vs-revolution': -0.3,
+         'gradualism-vs-immediatism': -0.1,
+         'state-action-vs-exit': 0.5,
+         'electoralism-vs-direct-action': 0.1,
+         'compromise-vs-persistence': 0.1,
+         'coercion-strategy': 0.3,
+         'regulation-vs-deregulation': 0,
+         'redistribution-vs-predistribution': -0.1,
+         'militarism-pacifism': 0.3,
+         'secularism-religious': 0.5,
+      },
+   },
+   {
+      id: 'regionalism',
+      name: 'Regionalism',
+      family: 'nationalist',
+      subfamily: 'subnational',
+      description:
+         'A political ideology emphasizing the interests, culture, and autonomy of a particular region within a larger state or federation, advocating for greater decentralization, regional self-government, and the protection of regional cultural and economic distinctiveness.',
+      philosophies: ["Regionalism","Federalism","Decentralization","Localism"],
+      subTheories: ["Devolution","Autonomism","Bioregionalism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Regionalism","Federalism","Localism"],
+      descriptivePhilosophies: ["Decentralization"],
+      prescriptivePhilosophies: ["Regionalism","Federalism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Federalism",
+            description: "Division of sovereignty between central and regional governments as the appropriate balance.",
+            affectedAxes: ["centralization-preference","authority-legitimacy","state-capacity-confidence"],
+         },
+         {
+            philosophy: "Localism",
+            description: "Preference for governance and decision-making at the most local level possible.",
+            affectedAxes: ["state-action-vs-exit","electoralism-vs-direct-action","coordination-optimism"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': 0.2,
+         'equality-theory': 0.1,
+         'political-community-boundary': -0.3,
+         'moral-traditionalism': 0.2,
+         'anti-domination': 0.2,
+         'human-nature-priority': 0.1,
+         'market-process-confidence': 0.2,
+         'state-capacity-confidence': 0.2,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.4,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': 0.2,
+         'coordination-optimism': 0.3,
+         'centralization-preference': -0.5,
+         'reform-vs-revolution': -0.3,
+         'gradualism-vs-immediatism': -0.2,
+         'state-action-vs-exit': 0.1,
+         'electoralism-vs-direct-action': 0.4,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.2,
+         'regulation-vs-deregulation': -0.1,
+         'redistribution-vs-predistribution': 0.1,
+         'militarism-pacifism': -0.1,
+         'secularism-religious': -0.1,
+      },
+   },
+   {
+      id: 'cultural-populism',
+      name: 'Cultural Populism',
+      family: 'populist',
+      subfamily: 'right-populist',
+      description:
+         'A populist orientation that frames political conflict primarily in cultural terms, pitting ordinary people against a cosmopolitan, progressive elite that allegedly disrespects traditional values, national identity, and common-sense cultural norms, often emphasizing immigration, identity, and lifestyle issues.',
+      philosophies: ["Populism","Conservatism","Cultural Nationalism","Communitarianism","Cultural Protectionism"],
+      subTheories: ["Right-Wing Populism","Nativism","Cultural Protectionism"],
+      ethicalTheory: ["Virtue Ethics"],
+      normativePhilosophies: ["Populism","Conservatism","Cultural Nationalism"],
+      descriptivePhilosophies: ["Communitarianism"],
+      prescriptivePhilosophies: ["Populism","Cultural Protectionism"],
+      philosophyInfluences: [
+         {
+            philosophy: "Populism",
+            description: "Anti-elite mobilization rooted in cultural grievance and defense of traditional lifeways.",
+            affectedAxes: ["moral-traditionalism","anti-domination","public-choice-skepticism"],
+         },
+         {
+            philosophy: "Cultural Nationalism",
+            description: "Defense of national cultural identity against perceived erosion by global cosmopolitanism.",
+            affectedAxes: ["political-community-boundary","cultural-plasticity","secularism-religious"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.3,
+         'property-legitimacy': 0.2,
+         'liberty-noninterference': -0.1,
+         'equality-theory': 0,
+         'political-community-boundary': -0.4,
+         'moral-traditionalism': 0.6,
+         'anti-domination': 0.3,
+         'human-nature-priority': 0,
+         'market-process-confidence': 0.2,
+         'state-capacity-confidence': 0.3,
+         'public-choice-skepticism': 0.4,
+         'democratic-confidence': 0.1,
+         'expert-confidence': 0,
+         'cultural-plasticity': -0.4,
+         'coordination-optimism': 0.1,
+         'centralization-preference': 0.2,
+         'reform-vs-revolution': -0.1,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.2,
+         'compromise-vs-persistence': 0.1,
+         'coercion-strategy': 0,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0.1,
+         'militarism-pacifism': 0.1,
+         'secularism-religious': 0.3,
+      },
+   },
+   {
+      id: 'social-investment-state',
+      name: 'Social Investment State',
+      family: 'social-democratic',
+      subfamily: 'welfare-liberal',
+      description:
+         'A social democratic approach that reorients the welfare state from passive income maintenance toward active social investment in human capital, education, childcare, lifelong learning, and labor market activation, seeking both economic efficiency and social inclusion.',
+      philosophies: ["Social Democracy","Social Liberalism","Human Capital Theory","Social Investment","Predistribution"],
+      subTheories: ["Active Labor Market Policy","Inclusive Growth","Predistribution"],
+      ethicalTheory: ["Consequentialism"],
+      normativePhilosophies: ["Social Democracy","Social Liberalism"],
+      descriptivePhilosophies: ["Human Capital Theory"],
+      prescriptivePhilosophies: ["Social Investment","Predistribution"],
+      philosophyInfluences: [
+         {
+            philosophy: "Social Democracy",
+            description: "Commitment to universal social provision and reduction of inequality through state action.",
+            affectedAxes: ["equality-theory","state-action-vs-exit","redistribution-vs-predistribution"],
+         },
+         {
+            philosophy: "Social Liberalism",
+            description: "Belief that individual freedom requires genuine opportunity backed by social investment.",
+            affectedAxes: ["liberty-noninterference","state-capacity-confidence","regulation-vs-deregulation"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': 0.2,
+         'property-legitimacy': 0,
+         'liberty-noninterference': 0.2,
+         'equality-theory': 0.6,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': -0.1,
+         'anti-domination': 0.3,
+         'human-nature-priority': 0.1,
+         'market-process-confidence': 0.3,
+         'state-capacity-confidence': 0.5,
+         'public-choice-skepticism': 0,
+         'democratic-confidence': 0.5,
+         'expert-confidence': 0.5,
+         'cultural-plasticity': 0.3,
+         'coordination-optimism': 0.3,
+         'centralization-preference': 0.2,
+         'reform-vs-revolution': -0.5,
+         'gradualism-vs-immediatism': -0.3,
+         'state-action-vs-exit': 0.5,
+         'electoralism-vs-direct-action': 0.5,
+         'compromise-vs-persistence': 0.4,
+         'coercion-strategy': -0.4,
+         'regulation-vs-deregulation': 0.3,
+         'redistribution-vs-predistribution': 0.4,
+         'militarism-pacifism': -0.2,
+         'secularism-religious': -0.1,
+      },
+   },
+   {
+      id: 'queer-anarchism',
+      name: 'Queer Anarchism',
+      family: 'anarchist',
+      subfamily: 'social-anarchist',
+      description:
+         'A synthesis of anarchist and queer theory that views the state, capitalism, and heteronormative institutions as interlocking systems of domination, advocating for the abolition of gender and sexual hierarchies alongside all forms of coercive authority, and building decentralized, affirming communities.',
+      philosophies: ["Anarchism","Queer Theory","Feminism","Anti-Authoritarianism","Queer Liberation"],
+      subTheories: ["Queer Liberation","Gender Abolition","Intersectional Anarchism"],
+      ethicalTheory: ["Deontology"],
+      normativePhilosophies: ["Anarchism","Queer Theory","Feminism"],
+      descriptivePhilosophies: ["Queer Theory"],
+      prescriptivePhilosophies: ["Anarchism","Queer Liberation"],
+      philosophyInfluences: [
+         {
+            philosophy: "Anarchism",
+            description: "Rejection of all coercive hierarchy including heteronormative and patriarchal institutions.",
+            affectedAxes: ["authority-legitimacy","anti-domination","centralization-preference"],
+         },
+         {
+            philosophy: "Queer Theory",
+            description: "Critical deconstruction of gender and sexual categories as socially constructed and politically enforced.",
+            affectedAxes: ["moral-traditionalism","cultural-plasticity","liberty-noninterference"],
+         },
+      ],
+      centroid: {
+         'authority-legitimacy': -0.75,
+         'property-legitimacy': -0.5,
+         'liberty-noninterference': 0.6,
+         'equality-theory': 0.6,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.85,
+         'anti-domination': 0.9,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': -0.4,
+         'state-capacity-confidence': -0.6,
+         'public-choice-skepticism': 0.4,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0,
+         'cultural-plasticity': 0.7,
+         'coordination-optimism': 0.4,
+         'centralization-preference': -0.8,
+         'reform-vs-revolution': 0.3,
+         'gradualism-vs-immediatism': 0.2,
+         'state-action-vs-exit': -0.5,
+         'electoralism-vs-direct-action': -0.2,
+         'compromise-vs-persistence': -0.1,
+         'coercion-strategy': -0.6,
+         'regulation-vs-deregulation': 0.2,
+         'redistribution-vs-predistribution': 0.5,
+         'militarism-pacifism': -0.4,
+         'secularism-religious': -0.7,
       },
    },
 ]

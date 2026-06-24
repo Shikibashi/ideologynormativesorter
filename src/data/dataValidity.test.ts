@@ -157,6 +157,65 @@ describe('labels', () => {
          expect((label.subfamily ?? '').length, `${label.id} has an empty subfamily`).toBeGreaterThan(0)
       }
    })
+
+   it('subTheories, if present, must be a string[]', () => {
+      for (const label of labels) {
+         if (label.subTheories !== undefined) {
+            expect(Array.isArray(label.subTheories), `${label.id}: subTheories must be an array`).toBe(true)
+            for (const st of label.subTheories) {
+               expect(typeof st, `${label.id}: subTheories entry "${String(st)}" is not a string`).toBe('string')
+            }
+         }
+      }
+   })
+
+   it('ethicalTheory, if present, must be a string[]', () => {
+      for (const label of labels) {
+         if (label.ethicalTheory !== undefined) {
+            expect(Array.isArray(label.ethicalTheory), `${label.id}: ethicalTheory must be an array`).toBe(true)
+            for (const et of label.ethicalTheory) {
+               expect(typeof et, `${label.id}: ethicalTheory entry "${String(et)}" is not a string`).toBe('string')
+            }
+         }
+      }
+   })
+
+   it('layer-specific philosophy arrays are subsets of philosophies', () => {
+      for (const label of labels) {
+         const philosophies = label.philosophies ?? []
+         const sets: [string, string[] | undefined][] = [
+            ['normativePhilosophies', label.normativePhilosophies],
+            ['descriptivePhilosophies', label.descriptivePhilosophies],
+            ['prescriptivePhilosophies', label.prescriptivePhilosophies],
+         ]
+         for (const [field, arr] of sets) {
+            if (arr !== undefined) {
+               expect(Array.isArray(arr), `${label.id}: ${field} must be an array`).toBe(true)
+               for (const entry of arr) {
+                  expect(philosophies.includes(entry), `${label.id}: ${field} "${entry}" not found in philosophies`).toBe(true)
+               }
+            }
+         }
+      }
+   })
+
+   it('philosophyInfluences entries have valid structure and axis references', () => {
+      const validAxisIds = new Set(axes.map((a) => a.id))
+      for (const label of labels) {
+         const influences = label.philosophyInfluences
+         if (influences === undefined) continue
+         expect(Array.isArray(influences), `${label.id}: philosophyInfluences must be an array`).toBe(true)
+         for (let i = 0; i < influences.length; i++) {
+            const entry = influences[i]
+            expect(typeof entry.philosophy, `${label.id}: philosophyInfluences[${i}] philosophy is not a string`).toBe('string')
+            expect(typeof entry.description, `${label.id}: philosophyInfluences[${i}] description is not a string`).toBe('string')
+            expect(Array.isArray(entry.affectedAxes), `${label.id}: philosophyInfluences[${i}] affectedAxes must be an array`).toBe(true)
+            for (const axisId of entry.affectedAxes) {
+               expect(validAxisIds.has(axisId), `${label.id}: philosophyInfluences[${i}] references unknown axis "${axisId}"`).toBe(true)
+            }
+         }
+      }
+   })
 })
 
 

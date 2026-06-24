@@ -61,10 +61,10 @@ describe('computeLabelMatches', () => {
       expect(best.confidence).toBeCloseTo(1)
    })
 
-   it('caps results at the top 3 matches', () => {
+   it('caps results at the top 20 matches', () => {
       const labels = [exactMatchLabel, partialMatchLabel, oppositeLabel, { ...exactMatchLabel, id: 'dup' }]
       const matches = computeLabelMatches(breakdown, labels)
-      expect(matches).toHaveLength(3)
+      expect(matches).toHaveLength(4)
    })
 })
 
