@@ -334,3 +334,26 @@
   flex: 0 0 auto;
   padding: 6px 12px;
 }
+
+.resume-banner {
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.resume-banner p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.compass-plot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
