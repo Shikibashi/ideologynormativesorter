@@ -1,0 +1,26 @@
+{
+  "run_id": "019ef6a0-7ae2-7000-8d79-dd87515eaf63",
+  "skill": "ralplan",
+  "active": true,
+  "current_phase": "architect",
+  "version": 2,
+  "updated_at": "2026-06-23T22:37:40.047Z",
+  "receipt": {
+    "version": 1,
+    "skill": "ralplan",
+    "owner": "gjc-runtime",
+    "command": "gjc ralplan persist-run-id",
+    "state_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/sessions/019ef6a0-7ae2-7000-8d79-dd87515eaf63/skill-active-state.json",
+    "storage_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/sessions/019ef6a0-7ae2-7000-8d79-dd87515eaf63/ralplan-state.json",
+    "mutated_at": "2026-06-23T22:37:40.047Z",
+    "fresh_until": "2026-06-23T23:07:40.047Z",
+    "status": "fresh",
+    "mutation_id": "ralplan:2026-06-23T22:37:40.047Z",
+    "content_sha256": {
+      "algorithm": "sha256",
+      "value": "103f901658cf56d423ca24de2a05272bdeedf1c25e309935a41681e9b3634163",
+      "covered_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/_session-019ef6a0-7ae2-7000-8d79-dd87515eaf63/state/ralplan-state.json",
+      "computed_at": "2026-06-23T22:37:40.047Z"
+    }
+  }
+}

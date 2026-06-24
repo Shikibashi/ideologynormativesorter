@@ -44,4 +44,16 @@ export interface Question {
   confidencePrompt?: string
   /** Prompt shown alongside a prescriptive item's priority rating. */
   priorityPrompt?: string
+
+  /** Versioning / lifecycle metadata (optional; absent means current bank + active=true for selection/scoring). */
+  version?: string
+  active?: boolean
+  reviewStatus?: 'approved' | 'draft' | 'needs-rewrite'
+  replacesQuestionId?: QuestionId
+  createdAt?: string
+  updatedAt?: string
+  deprecatedAt?: string
+  deprecationReason?: string
+  sourceStatus?: 'clean_room' | 'original'
+  textHash?: string
 }

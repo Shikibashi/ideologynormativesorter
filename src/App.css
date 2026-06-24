@@ -257,14 +257,55 @@
 
 .gap-list,
 .label-list,
-.confounded-list {
+.conflated-list {
   padding-left: 20px;
 }
 
 .gap-list li,
 .label-list li,
-.confounded-list li {
+.conflated-list li {
   margin-bottom: 8px;
+}
+
+.family-name {
+  margin-bottom: 4px;
+}
+
+.subfamily-group {
+  margin-left: 12px;
+}
+
+.subfamily-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-h, #ddd);
+  margin: 8px 0 2px;
+}
+
+.layer-agreement {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.layer-chip {
+  font-size: 0.78rem;
+  padding: 2px 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: #444;
+  background: #f6f6f6;
+}
+
+.layer-chip.matched {
+  border-color: #555;
+  background: #e8e8e8;
+  font-weight: 600;
+}
+
+.layer-chip.matched::before {
+  content: "\2713 ";
 }
 
 .module-list {

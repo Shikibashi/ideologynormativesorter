@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "active": true,
+  "skill": "ralplan",
+  "keyword": "/skill:ralplan",
+  "phase": "planner",
+  "activated_at": "2026-06-22T01:06:31.042Z",
+  "updated_at": "2026-06-22T01:06:31.042Z",
+  "source": "gjc-skill-invocation",
+  "session_id": "019eeccd-2c0d-7000-99ea-afd0de6c063c",
+  "initialized_mode": "ralplan",
+  "initialized_state_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/sessions/019eeccd-2c0d-7000-99ea-afd0de6c063c/ralplan-state.json",
+  "active_skills": [
+    {
+      "skill": "ralplan",
+      "phase": "planner",
+      "active": true,
+      "activated_at": "2026-06-22T01:06:31.042Z",
+      "updated_at": "2026-06-22T01:06:31.042Z",
+      "session_id": "019eeccd-2c0d-7000-99ea-afd0de6c063c"
+    }
+  ]
+}

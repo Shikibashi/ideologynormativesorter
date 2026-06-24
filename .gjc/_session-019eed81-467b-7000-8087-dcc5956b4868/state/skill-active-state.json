@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "active": true,
+  "skill": "deep-interview",
+  "keyword": "/skill:deep-interview",
+  "phase": "interviewing",
+  "activated_at": "2026-06-22T04:06:55.968Z",
+  "updated_at": "2026-06-22T04:06:55.968Z",
+  "source": "gjc-skill-invocation",
+  "session_id": "019eed81-467b-7000-8087-dcc5956b4868",
+  "initialized_mode": "deep-interview",
+  "initialized_state_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/_session-019eed81-467b-7000-8087-dcc5956b4868/state/deep-interview-state.json",
+  "active_skills": [
+    {
+      "skill": "deep-interview",
+      "phase": "interviewing",
+      "active": true,
+      "activated_at": "2026-06-22T04:06:55.968Z",
+      "updated_at": "2026-06-22T04:06:55.968Z",
+      "session_id": "019eed81-467b-7000-8087-dcc5956b4868"
+    }
+  ],
+  "source_state_revision": 2,
+  "state_revision": 2
+}

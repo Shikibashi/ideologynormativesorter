@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "active": true,
+  "skill": "team",
+  "keyword": "/skill:team",
+  "phase": "starting",
+  "activated_at": "2026-06-23T20:21:59.665Z",
+  "updated_at": "2026-06-23T20:21:59.665Z",
+  "source": "gjc-skill-invocation",
+  "session_id": "019ef624-e39f-7000-8101-8b4c48331dd9",
+  "initialized_mode": "team",
+  "initialized_state_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/_session-019ef624-e39f-7000-8101-8b4c48331dd9/state/team-state.json",
+  "active_skills": [
+    {
+      "skill": "team",
+      "phase": "starting",
+      "active": true,
+      "activated_at": "2026-06-23T20:21:59.665Z",
+      "updated_at": "2026-06-23T20:21:59.665Z",
+      "session_id": "019ef624-e39f-7000-8101-8b4c48331dd9"
+    }
+  ],
+  "source_state_revision": 2,
+  "state_revision": 2
+}

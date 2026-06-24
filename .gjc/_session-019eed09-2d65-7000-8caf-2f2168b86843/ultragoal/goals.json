@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "brief": "Brownfield expansion of the ideologynormativesorter instrument per approved ralplan plan. All new user-facing text original/clean-room. Preserve pure deterministic scoring, existing public APIs, polarity-regression + archetype-sweep tests green. Two ordered items.\n\n@goal: Add subfamily hierarchy (family-tree second level)\nRe-add subfamily?: string to IdeologyLabel type (src/types/label.ts). Assign a subfamily to all 24 existing labels grouping within their family (e.g. socialist -> libertarian-socialist/state-socialist; libertarian-leaning -> minarchist/market-anarchist/geoist; conservative -> traditional/religious/authoritarian-adjacent). Extend the familyTree scoring output (src/scoring/index.ts) to a two-level family -> subfamily -> label structure (or add a familySubtree field), and render it nested in src/components/ResultsScreen.tsx (family group > subfamily group > labels). Add a dataValidity assertion that every label has a subfamily and update familyTree tests for the two-level shape. Verify npm test.\n\n@goal: Add remaining label-family subtypes\nAdd 6 new subtype labels with original clean-room descriptions and 26-axis centroids grounded in SEP/Britannica: monarchist/reactionary family (absolute-monarchist, neoreactionary), green family (ecosocialist, degrowth-green), nationalist family (civic-nationalist, ethnonationalist). Assign each a family + subfamily. Add a calibration archetype for each so archetype-sweep covers all 30 labels (each resolves to self as #1 or documented near-tie). Wire the new subtypes into the relevant faction modules' subtypeLabelIds (green-faction-module, nationalist-faction-module, authoritarian-faction-module). Keep dataValidity centroid-coverage + subtypeLabelIds assertions green. Verify npm test, lint, build, and a browser check.",
+  "gjcGoalMode": "aggregate",
+  "gjcObjective": "Complete the durable ultragoal plan in .gjc/ultragoal/goals.json, including later accepted/appended stories, under the original brief constraints; use .gjc/ultragoal/ledger.jsonl as the audit trail.",
+  "goals": [
+    {
+      "id": "G001",
+      "title": "Add subfamily hierarchy (family-tree second level)",
+      "objective": "Re-add subfamily?: string to IdeologyLabel type (src/types/label.ts). Assign a subfamily to all 24 existing labels grouping within their family (e.g. socialist -> libertarian-socialist/state-socialist; libertarian-leaning -> minarchist/market-anarchist/geoist; conservative -> traditional/religious/authoritarian-adjacent). Extend the familyTree scoring output (src/scoring/index.ts) to a two-level family -> subfamily -> label structure (or add a familySubtree field), and render it nested in src/components/ResultsScreen.tsx (family group > subfamily group > labels). Add a dataValidity assertion that every label has a subfamily and update familyTree tests for the two-level shape. Verify npm test.",
+      "status": "complete",
+      "createdAt": "2026-06-22T18:32:12.965Z",
+      "updatedAt": "2026-06-22T18:42:37.846Z",
+      "startedAt": "2026-06-22T18:32:22.980Z",
+      "completedAt": "2026-06-22T18:42:37.846Z",
+      "evidence": "Subfamily two-level family-tree: subfamily on all 24 labels, familySubtree output, nested render, dataValidity + familySubtree tests. npm test 138/138, tsc clean. Architect CLEAR/APPROVE; LOW finding fixed.",
+      "completionVerification": {
+        "schemaVersion": 1,
+        "receiptId": "9313339e-447e-415b-8698-e7b575ebae41",
+        "verifiedAt": "2026-06-22T18:42:37.846Z",
+        "goalId": "G001",
+        "receiptKind": "per-goal",
+        "goalStatusBeforeCheckpoint": "active",
+        "gjcGoalMode": "aggregate",
+        "gjcObjective": "Complete the durable ultragoal plan in .gjc/ultragoal/goals.json, including later accepted/appended stories, under the original brief constraints; use .gjc/ultragoal/ledger.jsonl as the audit trail.",
+        "qualityGateHash": "9388ccfdde283d6ed27259db3b35a08b215ada7de86cb1823c9ca86c92e5301d",
+        "gjcGoalSnapshotHash": "9c60a8fa8d3a49b304dbdea6ec1ebbdf424afdfd92d6ae1fecd415372446cd94",
+        "planGeneration": "629d05728bc24b3b4aa8940e52ca1b63e5526ba5fc71e50e8f6d9625e9fa5e7c",
+        "basis": {
+          "planHashBeforeCheckpoint": "0e93e752df6ffa84011a70b8adec7380c24a7bfe052ba3bdeebd0835e62ccd9b",
+          "latestRelevantLedgerEventIdBeforeCheckpoint": "203ffef3-d595-4979-b1a6-13e077621b0f",
+          "goalUpdatedAtBeforeCheckpoint": "2026-06-22T18:42:37.846Z",
+          "relevantGoalIdsBeforeCheckpoint": [
+            "G001"
+          ],
+          "requiredGoalSetHashBeforeCheckpoint": "0fd7528f8da24db3e0a7add1069c7fae913268a1d23cc2d611797c5c07521050"
+        },
+        "checkpointLedgerEventId": "e54e4c93-db2f-4975-9b46-ab63eeb5ce98"
+      }
+    },
+    {
+      "id": "G002",
+      "title": "Add remaining label-family subtypes",
+      "objective": "Add 6 new subtype labels with original clean-room descriptions and 26-axis centroids grounded in SEP/Britannica: monarchist/reactionary family (absolute-monarchist, neoreactionary), green family (ecosocialist, degrowth-green), nationalist family (civic-nationalist, ethnonationalist). Assign each a family + subfamily. Add a calibration archetype for each so archetype-sweep covers all 30 labels (each resolves to self as #1 or documented near-tie). Wire the new subtypes into the relevant faction modules' subtypeLabelIds (green-faction-module, nationalist-faction-module, authoritarian-faction-module). Keep dataValidity centroid-coverage + subtypeLabelIds assertions green. Verify npm test, lint, build, and a browser check.",
+      "status": "active",
+      "createdAt": "2026-06-22T18:32:12.965Z",
+      "updatedAt": "2026-06-22T18:42:37.854Z",
+      "startedAt": "2026-06-22T18:42:37.854Z"
+    }
+  ],
+  "createdAt": "2026-06-22T18:32:12.965Z",
+  "updatedAt": "2026-06-22T18:42:37.854Z",
+  "state_revision": 13
+}

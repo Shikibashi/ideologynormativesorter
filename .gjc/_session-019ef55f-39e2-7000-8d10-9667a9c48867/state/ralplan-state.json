@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "skill": "ralplan",
+  "current_phase": "final",
+  "active": true,
+  "handoff_from": "deep-interview",
+  "handoff_at": "2026-06-23T17:12:52.265Z",
+  "updated_at": "2026-06-23T17:22:05.307Z",
+  "receipt": {
+    "version": 1,
+    "skill": "ralplan",
+    "owner": "gjc-runtime",
+    "command": "gjc ralplan persist-run-id",
+    "state_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/sessions/019ef55f-39e2-7000-8d10-9667a9c48867/skill-active-state.json",
+    "storage_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/sessions/019ef55f-39e2-7000-8d10-9667a9c48867/ralplan-state.json",
+    "mutated_at": "2026-06-23T17:22:05.307Z",
+    "fresh_until": "2026-06-23T17:52:05.307Z",
+    "status": "fresh",
+    "mutation_id": "ralplan:2026-06-23T17:22:05.307Z",
+    "content_sha256": {
+      "algorithm": "sha256",
+      "value": "36d4ca969856badc27d68c823ca3f77398c230e2b9eec78f74ac1c9607cfb974",
+      "covered_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/_session-019ef55f-39e2-7000-8d10-9667a9c48867/state/ralplan-state.json",
+      "computed_at": "2026-06-23T17:22:05.307Z"
+    }
+  },
+  "session_id": "019ef55f-39e2-7000-8d10-9667a9c48867",
+  "source_spec": ".gjc/_session-019ef55f-39e2-7000-8d10-9667a9c48867/specs/deep-interview-ideology-expansion-list.md",
+  "mode": "short",
+  "status": "consensus_planning",
+  "state_revision": 2,
+  "run_id": "019ef55f-39e2-7000-8d10-9667a9c48867"
+}

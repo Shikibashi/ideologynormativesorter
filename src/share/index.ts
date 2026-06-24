@@ -3,16 +3,29 @@ import type { Answer, AnswerMap } from '../types'
 type EncodedAnswer = [string, Answer['value'], number?, number?]
 
 const HASH_PREFIX = '#r='
+const SHARE_VERSION = 2
 
-/** No backend: a result is shared by encoding the full answer set into the URL itself. */
-export function encodeAnswers(answers: AnswerMap): string {
+export interface ShareMeta {
+  bankVersion?: string
+  scoringVersion?: string
+}
+
+export function encodeAnswers(answers: AnswerMap, meta?: ShareMeta): string {
   const compact: EncodedAnswer[] = Object.values(answers).map((a) => [a.questionId, a.value, a.confidence, a.priority])
-  return base64UrlEncode(JSON.stringify(compact))
+  const payload = meta ? { v: SHARE_VERSION, bk: meta.bankVersion, sc: meta.scoringVersion, a: compact } : compact
+  return base64UrlEncode(JSON.stringify(payload))
 }
 
 export function decodeAnswers(param: string): AnswerMap | null {
   try {
-    const compact = JSON.parse(base64UrlDecode(param)) as EncodedAnswer[]
+    const decoded = JSON.parse(base64UrlDecode(param))
+    let compact: EncodedAnswer[]
+    if (decoded && typeof decoded === 'object' && 'v' in decoded) {
+      // v2
+      compact = decoded.a
+    } else {
+      compact = decoded
+    }
     const answers: AnswerMap = {}
     for (const [questionId, value, confidence, priority] of compact) {
       const answer: Answer = { questionId, value }
@@ -26,11 +39,23 @@ export function decodeAnswers(param: string): AnswerMap | null {
   }
 }
 
-export function buildShareUrl(answers: AnswerMap): string {
-  return `${window.location.origin}${window.location.pathname}${HASH_PREFIX}${encodeAnswers(answers)}`
+export function buildShareUrl(answers: AnswerMap, meta?: ShareMeta): string {
+  return `${window.location.origin}${window.location.pathname}${HASH_PREFIX}${encodeAnswers(answers, meta)}`
 }
 
-/** Reads a shared result out of the current URL hash, if one is present. */
+export function buildCompareUrl(profile1: AnswerMap, profile2: AnswerMap, meta?: ShareMeta): string {
+  const enc1 = encodeAnswers(profile1, meta)
+  const enc2 = encodeAnswers(profile2)
+  return `${window.location.origin}${window.location.pathname}#r=${enc1}&c=${enc2}`
+}
+
+export function readCompareAnswers(): AnswerMap | null {
+  if (typeof window === 'undefined') return null
+  const { hash } = window.location
+  const cMatch = hash.match(/[?&]c=([^&]+)/)
+  if (!cMatch) return null
+  return decodeAnswers(cMatch[1])
+}
 export function readSharedAnswers(): AnswerMap | null {
   if (typeof window === 'undefined') return null
   const { hash } = window.location

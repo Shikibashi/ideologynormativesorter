@@ -1,12 +1,14 @@
 import type { AxisId, LabelId } from './common'
 
 export interface IdeologyLabel {
-  id: LabelId
-  name: string
-  family: string
-  /** Reference position in axis-space used for nearest-label distance matching. */
-  centroid: Record<AxisId, number>
-  /** Labels this one is commonly mistaken for despite differing cross-layer profiles. */
-  confoundedWith?: LabelId[]
-  description: string
+   id: LabelId
+   name: string
+   family: string
+   /** Optional second-level grouping within a family, used for the family-tree display. */
+   subfamily?: string
+   /** Reference position in axis-space used for nearest-label distance matching. */
+   centroid: Record<AxisId, number>
+   description: string
+   /** Alternate names / grouped child ideologies listed under this parent label. Display-only; not used by scoring. */
+   aliases?: string[]
 }

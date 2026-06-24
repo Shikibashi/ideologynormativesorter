@@ -1,0 +1,41 @@
+{
+  "active": true,
+  "version": 2,
+  "current_phase": "handoff",
+  "skill": "deep-interview",
+  "cwd": "/var/home/tcs/Code/ideologynormativesorter",
+  "updated_at": "2026-06-22T06:03:35.574Z",
+  "session_id": "019eed09-2d65-7000-8caf-2f2168b86843",
+  "threshold": 0.05,
+  "threshold_source": "default",
+  "receipt": {
+    "version": 1,
+    "skill": "deep-interview",
+    "owner": "gjc-state-cli",
+    "command": "gjc state deep-interview write",
+    "state_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/sessions/019eed09-2d65-7000-8caf-2f2168b86843/skill-active-state.json",
+    "storage_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/sessions/019eed09-2d65-7000-8caf-2f2168b86843/deep-interview-state.json",
+    "mutated_at": "2026-06-22T06:03:35.574Z",
+    "fresh_until": "2026-06-22T06:33:35.574Z",
+    "status": "fresh",
+    "mutation_id": "deep-interview:2026-06-22T06:03:35.574Z",
+    "content_sha256": {
+      "algorithm": "sha256",
+      "value": "ee235aba2a8b3f7f57e6f5747d57e4c6417026a093fd11c47f1f0855a3969d13",
+      "covered_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/_session-019eed09-2d65-7000-8caf-2f2168b86843/state/deep-interview-state.json",
+      "computed_at": "2026-06-22T06:03:35.578Z"
+    }
+  },
+  "spec_slug": "label-axis-expansion",
+  "spec_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/_session-019eed09-2d65-7000-8caf-2f2168b86843/specs/deep-interview-label-axis-expansion.md",
+  "spec_sha256": "cdc2c0711fdb133604bdc3e58fe88b25c56cc2828600cb9686bbf3435d22302f",
+  "spec_stage": "final",
+  "spec_persisted_at": "2026-06-22T06:02:59.680Z",
+  "state": {
+    "threshold": 0.05,
+    "threshold_source": "default",
+    "rounds": [],
+    "established_facts": []
+  },
+  "state_revision": 2
+}

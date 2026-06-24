@@ -16,10 +16,12 @@ const TIER_OPTIONS: TierOption[] = [
 interface IntroScreenProps {
   questionCounts: Record<QuizTier, number>
   domainCount: number
+  savedProgress: { tier: QuizTier; answered: number; total: number } | null
+  onResume: () => void
   onStart: (tier: QuizTier) => void
 }
 
-export function IntroScreen({ questionCounts, domainCount, onStart }: IntroScreenProps) {
+export function IntroScreen({ questionCounts, domainCount, savedProgress, onResume, onStart }: IntroScreenProps) {
   const [tier, setTier] = useState<QuizTier>('moderate')
 
   return (
@@ -29,6 +31,31 @@ export function IntroScreen({ questionCounts, domainCount, onStart }: IntroScree
         Most political quizzes collapse three different kinds of judgment into a single left-right score. This one keeps
         them separate.
       </p>
+
+      {savedProgress && (
+        <div className="resume-banner">
+          <p>
+            You have a saved session in progress ({savedProgress.answered} of {savedProgress.total} questions answered in
+            the {savedProgress.tier} test).
+          </p>
+          <div>
+            <button type="button" className="primary-button" onClick={onResume}>
+              Resume
+            </button>
+            <span style={{ margin: '0 0.5rem' }}>or</span>
+            <button
+              type="button"
+              className="back-link"
+              onClick={() => {
+                localStorage.removeItem('ideology-quiz-save')
+                window.location.reload()
+              }}
+            >
+              Start fresh
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="explainer">
         <div className="explainer-item">

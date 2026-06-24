@@ -1,0 +1,45 @@
+{
+  "skill": "deep-interview",
+  "phase": "handoff",
+  "active": false,
+  "activated_at": "2026-06-22T01:34:03.845Z",
+  "updated_at": "2026-06-22T01:34:03.845Z",
+  "session_id": "019eecee-e45d-7000-b9c5-15c4004cd5d1",
+  "handoff_to": "ralplan",
+  "handoff_at": "2026-06-22T01:34:03.845Z",
+  "hud": {
+    "version": 1,
+    "chips": [
+      {
+        "label": "phase",
+        "value": "handoff",
+        "priority": 10
+      },
+      {
+        "label": "ambiguity",
+        "value": "5%",
+        "priority": 20
+      },
+      {
+        "label": "round",
+        "value": "0",
+        "priority": 30
+      }
+    ],
+    "updated_at": "2026-06-22T01:34:03.851Z"
+  },
+  "receipt": {
+    "version": 1,
+    "skill": "deep-interview",
+    "owner": "gjc-state-cli",
+    "command": "gjc state deep-interview handoff --to ralplan",
+    "state_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/sessions/019eecee-e45d-7000-b9c5-15c4004cd5d1/skill-active-state.json",
+    "storage_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/sessions/019eecee-e45d-7000-b9c5-15c4004cd5d1/deep-interview-state.json",
+    "mutated_at": "2026-06-22T01:34:03.845Z",
+    "fresh_until": "2026-06-22T02:04:03.845Z",
+    "status": "fresh",
+    "mutation_id": "deep-interview:handoff:ralplan:2026-06-22T01:34:03.845Z"
+  },
+  "source_state_revision": 3,
+  "state_revision": 3
+}

@@ -1,0 +1,26 @@
+{
+  "run_id": "2026-06-22-0108-772d",
+  "skill": "ralplan",
+  "active": true,
+  "current_phase": "planner",
+  "version": 2,
+  "updated_at": "2026-06-22T01:08:04.836Z",
+  "receipt": {
+    "version": 1,
+    "skill": "ralplan",
+    "owner": "gjc-runtime",
+    "command": "gjc ralplan persist-run-id",
+    "state_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/skill-active-state.json",
+    "storage_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/ralplan-state.json",
+    "mutated_at": "2026-06-22T01:08:04.836Z",
+    "fresh_until": "2026-06-22T01:38:04.836Z",
+    "status": "fresh",
+    "mutation_id": "ralplan:2026-06-22T01:08:04.836Z",
+    "content_sha256": {
+      "algorithm": "sha256",
+      "value": "b73d598144361eb6254620e0d265e39c37c9e1ae348fd59fd7b1f1ca5dc2fd38",
+      "covered_path": "/var/home/tcs/Code/ideologynormativesorter/.gjc/state/ralplan-state.json",
+      "computed_at": "2026-06-22T01:08:04.836Z"
+    }
+  }
+}

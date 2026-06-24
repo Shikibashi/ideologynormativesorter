@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import type { Answer, AnswerMap, Question } from '../types'
-
+import { useEffect, useRef, useState } from 'react'
+import { clearQuizState, saveQuizState } from '../save'
+import type { Answer, AnswerMap, Question, QuizTier } from '../types'
 const SALIENCE_LEVELS: { label: string; value: number }[] = [
   { label: 'Low', value: 1 },
   { label: 'Medium', value: 3 },
@@ -36,19 +36,34 @@ function scaleLabels(responseType: Question['responseType']): Record<number, str
 interface QuizScreenProps {
   questions: Question[]
   onComplete: (answers: AnswerMap) => void
+  /** Tier label for save/display only — no filtering logic. */
+  tier?: string
+  initialAnswers?: AnswerMap
+  initialIndex?: number
 }
 
-export function QuizScreen({ questions, onComplete }: QuizScreenProps) {
-  const [index, setIndex] = useState(0)
-  const [answers, setAnswers] = useState<AnswerMap>({})
+export function QuizScreen({ questions, onComplete, tier, initialAnswers, initialIndex }: QuizScreenProps) {
+  const [index, setIndex] = useState(initialIndex ?? 0)
+  const [answers, setAnswers] = useState<AnswerMap>(initialAnswers ?? {})
   const [pendingValue, setPendingValue] = useState<Answer['value'] | null>(null)
-
   const question = questions[index]
   const selected = answers[question.id]
   const isLast = index === questions.length - 1
 
   const salienceField = question.layer === 'descriptive' ? 'confidence' : question.layer === 'prescriptive' ? 'priority' : null
   const salienceQuestion = pendingValue !== null && pendingValue !== 'dont_know' ? salienceField : null
+
+  // Persist progress on every answer change (skip on first render if restoring)
+  const isRestored = useRef(!!initialAnswers)
+  useEffect(() => {
+    if (isRestored.current) {
+      isRestored.current = false
+      return
+    }
+    if (Object.keys(answers).length > 0 && tier) {
+      saveQuizState({ questions, answers, index, tier: tier as QuizTier })
+    }
+  }, [answers, index])
 
   function commit(value: Answer['value'], rating?: number) {
     const answer: Answer = { questionId: question.id, value }
@@ -60,6 +75,7 @@ export function QuizScreen({ questions, onComplete }: QuizScreenProps) {
     setPendingValue(null)
     if (isLast) {
       onComplete(next)
+      clearQuizState()
     } else {
       setIndex(index + 1)
     }
