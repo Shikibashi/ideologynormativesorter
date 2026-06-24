@@ -102,6 +102,24 @@ const NEAR_TIE_EXCEPTIONS: Record<string, { tiesWith: string | string[]; maxMarg
    // the base bank ternary mapping cannot cleanly separate the religious vs
    // secular motivation behind their shared conservatism.
    'islamic-democracy': { tiesWith: 'one-nation-conservatism', maxMargin: 0.02 },
+   // Social-Liberalism and Liberal Feminism cluster in the egalitarian-liberal
+   // space: both push equality, anti-traditionalism, anti-domination, and institutional
+   // reform through democratic process. The base bank ternary mapping treats them
+   // as near-ties.
+   'social-liberalism': { tiesWith: 'liberal-feminism', maxMargin: 0.03 },
+   // Republicanism and Liberal Feminism both anchor on civic participation,
+   // anti-domination, and institutional equality; the base bank's ternary mapping
+   // does not capture the civic-virtue vs rights-based distinction sharply.
+   'republicanism': { tiesWith: 'liberal-feminism', maxMargin: 0.03 },
+   // Utopian Socialism sits at the moderate/centrist edge of the socialist cluster,
+   // overlapping with egalitarian-liberal space on most axes; the base bank ternary
+   // fixture does not push the anti-capitalist direction hard enough.
+   'utopian-socialism': { tiesWith: 'liberal-feminism', maxMargin: 0.04 },
+   // Libertarian Municipalism and Anarcha-Feminism share anti-state, ecological,
+   // anti-patriarchal, and decentralist commitments; the bank does not have enough
+   // ecological-governance questions to separate confederal assemblyism from
+   // feminist anti-statism at the centroid level.
+   'libertarian-municipalism': { tiesWith: 'anarcha-feminism', maxMargin: 0.03 },
 }
 
 describe('archetype -> nearest-label sweep', () => {

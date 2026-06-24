@@ -11,4 +11,6 @@ export interface IdeologyLabel {
    description: string
    /** Alternate names / grouped child ideologies listed under this parent label. Display-only; not used by scoring. */
    aliases?: string[]
+   /** Influencing philosophical traditions (e.g. Marxism, Liberalism, Conservatism, etc.). Display-only. */
+   philosophies?: string[]
 }

@@ -113,6 +113,18 @@ const targetIds = [
    'accelerationism',
    'juche',
    'techno-anarchism',
+   'progressivism',
+   'liberal-feminism',
+   'national-socialism',
+   'left-wing-nationalism',
+   'christian-socialism',
+   'utopian-socialism',
+   'voluntaryism',
+   'stirnerism',
+   'libertarian-municipalism',
+   'corporatism',
+   'kemalism',
+   'anarcha-feminism',
 ]
 
 export const calibrationFixtures: CalibrationFixture[] = targetIds.map(id => {

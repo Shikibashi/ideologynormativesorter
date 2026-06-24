@@ -8,6 +8,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'reformist-welfare',
       description:
          'Prioritizes material equality and is comfortable using state authority and public provision to achieve it, expecting public institutions to act competently and in good faith.',
+      philosophies: ["Marxism","Socialism","Reformism","Social Democracy"],
       centroid: {
          'authority-legitimacy': 0.4,
          'property-legitimacy': -0.5,
@@ -34,7 +35,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.7,
          'redistribution-vs-predistribution': 0.9,
          'militarism-pacifism': -0.3,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -44,6 +45,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'market-liberal',
       description:
          'Holds market exchange in high empirical confidence, treats private property as strongly legitimate, and favors deregulation pursued through gradual institutional reform.',
+      philosophies: ["Liberalism","Classical Liberalism","Lockeanism"],
       centroid: {
          'authority-legitimacy': 0,
          'property-legitimacy': 0.7,
@@ -70,7 +72,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.8,
          'redistribution-vs-predistribution': -0.7,
          'militarism-pacifism': -0.2,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -80,6 +82,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'decentralist-market',
       description:
          'Combines a strong normative concern for domination and equal standing with deep public-choice skepticism toward the state, concluding that decentralized, market-based exit is the most reliable remedy.',
+      philosophies: ["Libertarianism","Agorism","Rothbardianism"],
       centroid: {
          'authority-legitimacy': -0.8,
          'property-legitimacy': 0.6,
@@ -106,7 +109,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.8,
          'redistribution-vs-predistribution': -0.7,
          'militarism-pacifism': -0.6,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -116,6 +119,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'democratic-market-socialist',
       description:
          'Rejects strong private claims over productive property in favor of collective ownership, but pursues that aim through democratic and reformist means rather than rupture.',
+      philosophies: ["Marxism","Socialism","Reformism","Social Democracy"],
       centroid: {
          'authority-legitimacy': 0,
          'property-legitimacy': -0.6,
@@ -142,7 +146,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.5,
          'redistribution-vs-predistribution': 0.6,
          'militarism-pacifism': -0.4,
-         'secularism-religious': -0.3,
+         'secularism-religious': -0.3
       },
    },
    {
@@ -152,6 +156,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'state-socialist',
       description:
          'Rejects private claims over productive property almost entirely and concludes that existing institutions are too captured by propertied interests to be reformed from within.',
+      philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': -0.9,
@@ -178,7 +183,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.7,
          'redistribution-vs-predistribution': 0.8,
          'militarism-pacifism': 0.2,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -188,6 +193,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'national-conservative',
       description:
          'Treats inherited authority and stable hierarchy as legitimate, draws strong boundaries around a particular community, and expects cultural patterns to be resistant to deliberate redesign.',
+      philosophies: ["Conservatism","Traditionalism","Paleoconservatism"],
       centroid: {
          'authority-legitimacy': 0.6,
          'property-legitimacy': 0.5,
@@ -214,7 +220,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.1,
          'redistribution-vs-predistribution': 0.1,
          'militarism-pacifism': 0.3,
-         'secularism-religious': 0.5,
+         'secularism-religious': 0.5
       },
    },
    {
@@ -222,9 +228,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Technocratic Centralist',
       family: 'technocratic',
       subfamily: 'technocratic',
-      aliases: ['Noocracy', 'Scientocracy'],
       description:
          'Trusts centralized expert administration over both markets and electoral majorities, treating state capacity as high and democratic judgment as comparatively unreliable.',
+      philosophies: ["Technocracy","Progressivism","Ecomodernism","Techno-Optimism"],
+   aliases: ["Noocracy","Scientocracy"],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.2,
@@ -251,7 +258,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.4,
          'redistribution-vs-predistribution': 0.2,
          'militarism-pacifism': -0.1,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -261,6 +268,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'civil-libertarian',
       description:
          'Combines strong skepticism of concentrated authority with universalist obligations beyond national borders, favoring decentralized, low-regulation arrangements without a strong stance on property as such.',
+      philosophies: ["Liberalism","Civil Libertarianism","Cosmopolitanism"],
       centroid: {
          'authority-legitimacy': -0.6,
          'property-legitimacy': 0.3,
@@ -287,7 +295,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.5,
          'redistribution-vs-predistribution': 0,
          'militarism-pacifism': -0.6,
-         'secularism-religious': -0.7,
+         'secularism-religious': -0.7
       },
    },
    {
@@ -297,6 +305,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'geoist-market',
       description:
          'Treats exclusive private appropriation of natural opportunities—especially land and resource rents—as the central injustice, while leaving genuinely produced wealth to voluntary exchange; prefers land-value taxation and free migration to state micromanagement.',
+      philosophies: ["Libertarianism","Geolibertarianism","Georgism","Lockeanism"],
       centroid: {
          'authority-legitimacy': -0.6,
          'property-legitimacy': -0.5,
@@ -323,7 +332,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.4,
          'redistribution-vs-predistribution': -0.8,
          'militarism-pacifism': -0.5,
-         'secularism-religious': -0.6,
+         'secularism-religious': -0.6
       },
    },
    {
@@ -333,6 +342,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'market-anarchist',
       description:
          'Rejects political authority and compulsory public goods provision entirely, treating all legitimate social order as emergent from voluntary contract, private property, and competitive protection and arbitration markets.',
+      philosophies: ["Libertarianism","Anarcho-Capitalism","Rothbardianism","Austrian Economics"],
       centroid: {
          'authority-legitimacy': -0.95,
          'property-legitimacy': 0.95,
@@ -359,7 +369,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.95,
          'redistribution-vs-predistribution': -0.9,
          'militarism-pacifism': -0.8,
-         'secularism-religious': -0.6,
+         'secularism-religious': -0.6
       },
    },
    {
@@ -369,6 +379,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'democratic-market-socialist',
       description:
          'Combines social or cooperative ownership of productive capital with market pricing and competition, aiming to disperse economic power without abandoning the coordinating virtues of exchange.',
+      philosophies: ["Marxism","Socialism","Market Socialism","Neoclassical Economics"],
       centroid: {
          'authority-legitimacy': -0.2,
          'property-legitimacy': -0.5,
@@ -395,7 +406,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0,
          'redistribution-vs-predistribution': 0.1,
          'militarism-pacifism': -0.4,
-         'secularism-religious': -0.3,
+         'secularism-religious': -0.3
       },
    },
    {
@@ -405,6 +416,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'reformist-welfare',
       description:
          'Accepts a mixed economy and parliamentary institutions, then uses them to temper market outcomes through progressive taxation, public services, unions, and steady incremental reform.',
+      philosophies: ["Marxism","Socialism","Reformism","Social Democracy"],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': -0.4,
@@ -431,7 +443,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.5,
          'redistribution-vs-predistribution': 0.6,
          'militarism-pacifism': -0.3,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -441,6 +453,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'social-anarchist',
       description:
          'Balances anti-authoritarianism with a cooperative market ethos: opposes rent and hierarchy, favors local federations and mutual credit, and treats both state power and concentrated capital as sources of domination.',
+      philosophies: ["Anarchism","Mutualism","Proudhonism"],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': -0.3,
@@ -467,7 +480,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.4,
          'redistribution-vs-predistribution': -0.2,
          'militarism-pacifism': -0.6,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -477,6 +490,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'technocratic',
       description:
          'Believes that technological innovation, dense energy, and capable public institutions can decouple human flourishing from ecological harm, and is willing to centralize planning around climate and energy transitions.',
+      philosophies: ["Technocracy","Progressivism","Ecomodernism","Techno-Optimism"],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.1,
@@ -503,7 +517,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.6,
          'redistribution-vs-predistribution': 0.3,
          'militarism-pacifism': -0.2,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -513,6 +527,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'religious-conservative',
       description:
          'Upholds traditional moral and family order within a bounded national community, accepts market economies tempered by social insurance, and prefers incremental, institutionally mediated reform to radical change.',
+      philosophies: ["Conservatism","Christian Democracy","Catholic Social Teaching"],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.4,
@@ -539,7 +554,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.2,
          'redistribution-vs-predistribution': 0.3,
          'militarism-pacifism': -0.2,
-         'secularism-religious': 0.4,
+         'secularism-religious': 0.4
       },
    },
    {
@@ -549,6 +564,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'ultranationalist',
       description:
          'Subordinates the individual to an organic national community led by a unified will, celebrates hierarchy and tradition, and endorses coercive state action—including paramilitary and exclusionary measures—to restore national greatness.',
+      philosophies: ["Authoritarianism","Fascism","Corporatism"],
       centroid: {
          'authority-legitimacy': 0.95,
          'property-legitimacy': 0.2,
@@ -575,7 +591,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.6,
          'redistribution-vs-predistribution': 0.4,
          'militarism-pacifism': 0.8,
-         'secularism-religious': 0.6,
+         'secularism-religious': 0.6
       },
    },
    {
@@ -585,6 +601,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'state-socialist',
       description:
          'Holds that a disciplined vanguard party must seize and wield centralized state power to abolish private capital and direct a planned economy through the transition to communism.',
+      philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': -0.95,
@@ -611,7 +628,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.8,
          'redistribution-vs-predistribution': 0.7,
          'militarism-pacifism': 0.1,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -621,6 +638,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'libertarian-socialist',
       description:
          'Rejects both the market and the vanguard party, holding that workers should govern production directly through federated councils rather than a state bureaucracy that would reproduce domination.',
+      philosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': -0.9,
@@ -647,7 +665,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.2,
          'redistribution-vs-predistribution': 0.4,
          'militarism-pacifism': -0.3,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -657,6 +675,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'libertarian-socialist',
       description:
          'Looks to federated labor unions, not parties or the state, as the vehicle for abolishing capitalism, with production coordinated directly through workers organizations won by direct action.',
+      philosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': -0.8,
@@ -683,7 +702,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.1,
          'redistribution-vs-predistribution': 0.3,
          'militarism-pacifism': -0.3,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -693,6 +712,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'social-anarchist',
       description:
          'Seeks the immediate abolition of both state and market in favor of stateless communism organized around free association and distribution according to need.',
+      philosophies: ["Anarchism","Anarcho-Communism","Kropotkinism"],
       centroid: {
          'authority-legitimacy': -0.95,
          'property-legitimacy': -0.95,
@@ -719,7 +739,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.1,
          'redistribution-vs-predistribution': 0.4,
          'militarism-pacifism': -0.5,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -729,6 +749,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'minarchist',
       description:
          'Holds that the state should be shrunk to a minimal night-watchman role limited to police, courts, and defense, retained only because competitive enforcement of rights is judged unworkable.',
+      philosophies: ["Libertarianism","Minarchism","Lockeanism","Nozickism"],
       centroid: {
          'authority-legitimacy': -0.4,
          'property-legitimacy': 0.8,
@@ -755,7 +776,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.8,
          'redistribution-vs-predistribution': -0.7,
          'militarism-pacifism': 0,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -765,6 +786,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'market-anarchist',
       description:
          'A market-anarchist strategy that rejects electoral politics entirely and seeks to dissolve the state through counter-economics: building untaxed, unlicensed black and grey markets and parallel institutions.',
+      philosophies: ["Libertarianism","Anarcho-Capitalism","Rothbardianism","Austrian Economics"],
       centroid: {
          'authority-legitimacy': -0.95,
          'property-legitimacy': 0.8,
@@ -791,7 +813,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.95,
          'redistribution-vs-predistribution': -0.7,
          'militarism-pacifism': -0.4,
-         'secularism-religious': -0.3,
+         'secularism-religious': -0.3
       },
    },
    {
@@ -801,6 +823,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'national-conservative',
       description:
          'Combines market-friendly domestic conservatism with an assertive foreign policy that treats the active projection of military power and promotion of favored values abroad as legitimate and necessary.',
+      philosophies: ["Conservatism","Neoconservatism","Straussianism"],
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': 0.6,
@@ -827,7 +850,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0,
          'redistribution-vs-predistribution': 0,
          'militarism-pacifism': 0.9,
-         'secularism-religious': 0.2,
+         'secularism-religious': 0.2
       },
    },
    {
@@ -835,9 +858,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Theocrat',
       family: 'conservative',
       subfamily: 'religious-conservative',
-      aliases: ['Islamic Theocracy'],
       description:
          'Holds that legitimate public authority and civil law should derive from and enforce religious doctrine, with religious institutions or revealed law taking precedence over secular and pluralist norms.',
+      philosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
+   aliases: ["Islamic Theocracy"],
       centroid: {
          'authority-legitimacy': 0.8,
          'property-legitimacy': 0.3,
@@ -864,7 +888,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.5,
          'redistribution-vs-predistribution': 0.1,
          'militarism-pacifism': 0.3,
-         'secularism-religious': 0.95,
+         'secularism-religious': 0.95
       },
    },
    {
@@ -874,6 +898,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'red-green',
       description:
          'Treats ecological crisis as inseparable from capitalism, seeking collective ownership and democratic planning of production to serve both human need and ecological limits rather than profit or growth for its own sake.',
+      philosophies: ["Environmentalism","Ecologism","Ecosocialism","Marxism"],
       centroid: {
          'authority-legitimacy': 0,
          'property-legitimacy': -0.7,
@@ -900,7 +925,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.6,
          'redistribution-vs-predistribution': 0.5,
          'militarism-pacifism': -0.5,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -910,6 +935,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'post-growth',
       description:
          'Holds that lasting sustainability requires a planned, democratic reduction of throughput in rich economies, rejecting growth as a goal in favor of sufficiency, localism, and a shift from material accumulation to shared well-being.',
+      philosophies: ["Environmentalism","Ecologism","Degrowth","Steady-State Economics"],
       centroid: {
          'authority-legitimacy': -0.2,
          'property-legitimacy': -0.5,
@@ -936,7 +962,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.7,
          'redistribution-vs-predistribution': 0.5,
          'militarism-pacifism': -0.7,
-         'secularism-religious': -0.3,
+         'secularism-religious': -0.3
       },
    },
    {
@@ -946,6 +972,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'inclusive-national',
       description:
          'Grounds national belonging in shared institutions, laws, and civic commitment rather than ancestry, treating the nation as an inclusive political community open to anyone who adopts its constitutional values.',
+      philosophies: ["Nationalism","Civic Nationalism","Republicanism"],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.2,
@@ -972,7 +999,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.2,
          'redistribution-vs-predistribution': 0.2,
          'militarism-pacifism': 0.2,
-         'secularism-religious': -0.1,
+         'secularism-religious': -0.1
       },
    },
    {
@@ -982,6 +1009,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'ethnic-national',
       description:
          'Defines the nation by common descent, culture, and heritage, prioritizing the interests and continuity of that ethnic community and treating membership as inherited rather than chosen.',
+      philosophies: ["Nationalism","Ethnic Nationalism","Social Darwinism"],
       centroid: {
          'authority-legitimacy': 0.6,
          'property-legitimacy': 0.3,
@@ -1008,7 +1036,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.3,
          'redistribution-vs-predistribution': 0.1,
          'militarism-pacifism': 0.6,
-         'secularism-religious': 0.3,
+         'secularism-religious': 0.3
       },
    },
    {
@@ -1018,6 +1046,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'monarchist-reactionary',
       description:
          'Holds that supreme and largely unchecked authority should rest with a hereditary sovereign, valuing the stability, continuity, and unified will of personal rule over elected and deliberative government.',
+      philosophies: ["Authoritarianism","Monarchism","Divine Right"],
       centroid: {
          'authority-legitimacy': 0.95,
          'property-legitimacy': 0.5,
@@ -1044,7 +1073,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.3,
          'redistribution-vs-predistribution': 0.1,
          'militarism-pacifism': 0.4,
-         'secularism-religious': 0.4,
+         'secularism-religious': 0.4
       },
    },
    {
@@ -1054,6 +1083,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'monarchist-reactionary',
       description:
          'Rejects democracy as unstable and proposes governance modeled on a corporation run by an accountable sovereign-executive, with citizens as customers free to exit to competing sovereign jurisdictions rather than to vote.',
+      philosophies: ["Authoritarianism","Neoreaction","Monarchism","Dark Enlightenment"],
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': 0.7,
@@ -1080,7 +1110,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.2,
          'redistribution-vs-predistribution': -0.5,
          'militarism-pacifism': 0.3,
-         'secularism-religious': 0.1,
+         'secularism-religious': 0.1
       },
    },
    {
@@ -1090,6 +1120,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'classical-liberal',
       description:
          'Grounds legitimacy in individual negative liberty and constitutionally limited government, treating equal civil and political rights as the sufficiency of justice rather than a mandate for redistribution or expert administration.',
+      philosophies: ["Liberalism","Classical Liberalism","Lockeanism"],
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': 0.6,
@@ -1116,7 +1147,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.4,
          'redistribution-vs-predistribution': -0.5,
          'militarism-pacifism': -0.2,
-         'secularism-religious': -0.3,
+         'secularism-religious': -0.3
       },
    },
    {
@@ -1126,6 +1157,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'technocratic-liberal',
       description:
          'Combines confident market-process belief with trust in expert administration and capable state capacity to manage the rules of a globally integrated economy, favoring deregulation and privatization mediated through international institutions.',
+      philosophies: ["Liberalism","Neoliberalism","Chicago School","Austrian Economics"],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.7,
@@ -1152,7 +1184,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.6,
          'redistribution-vs-predistribution': -0.5,
          'militarism-pacifism': 0.1,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -1162,6 +1194,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'rule-bound-market',
       description:
          'Holds that a competitive market order is itself a public good requiring a strong constitutional state that enforces competition against cartels and prevents interest-group capture through binding rules rather than discretionary intervention.',
+      philosophies: ["Liberalism","Ordoliberalism","German Historical School"],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.6,
@@ -1188,7 +1221,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.5,
          'redistribution-vs-predistribution': -0.2,
          'militarism-pacifism': -0.1,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -1198,6 +1231,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'welfare-liberal',
       description:
          'Accepts markets and private property as foundations but bounds them by a positive-liberty commitment to substantive opportunity, using targeted state provision and redistribution so that fair life chances are compatible with individual freedom.',
+      philosophies: ["Liberalism","Social Liberalism","Millism","Rawlsianism"],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': 0.3,
@@ -1224,7 +1258,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.2,
          'redistribution-vs-predistribution': 0.5,
          'militarism-pacifism': -0.2,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -1232,9 +1266,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Conservative Liberalism',
       family: 'liberal',
       subfamily: 'conservative-liberal',
-      aliases: ['Liberal Conservatism'],
       description:
          'Pairs confidence in free markets and private property with a deference to inherited moral order and gradual institutional change, seeking to conserve cultural and familial continuity while preserving a market economy under the rule of law.',
+      philosophies: ["Liberalism","Conservative Liberalism","Burkeanism"],
+   aliases: ["Liberal Conservatism"],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.7,
@@ -1261,7 +1296,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.6,
          'redistribution-vs-predistribution': -0.4,
          'militarism-pacifism': 0.1,
-         'secularism-religious': 0.1,
+         'secularism-religious': 0.1
       },
    },
    {
@@ -1271,6 +1306,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'civic-communitarian',
       description:
          'Holds that the self is constituted by shared community and tradition, so that justice must weigh common goods and the social bases of self-respect alongside individual rights, favoring civic participation over either laissez-faire or statist central planning.',
+      philosophies: ["Marxism","Socialism","Communitarianism","Social Contract Theory"],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': 0.1,
@@ -1297,7 +1333,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.1,
          'redistribution-vs-predistribution': 0.2,
          'militarism-pacifism': -0.2,
-         'secularism-religious': 0,
+         'secularism-religious': 0
       },
    },
    {
@@ -1307,6 +1343,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'civic-republican',
       description:
          'Treats freedom as non-domination rather than mere non-interference, holding that a self-governing civic community must secure its members against arbitrary power through participation, mixed institutions, and the rule of law rather than through material equalization or welfare expansion.',
+      philosophies: ["Republicanism","Civic Humanism"],
       centroid: {
          'authority-legitimacy': -0.3,
          'property-legitimacy': 0.2,
@@ -1333,7 +1370,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.1,
          'redistribution-vs-predistribution': -0.3,
          'militarism-pacifism': -0.1,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -1343,6 +1380,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'catholic-localist',
       description:
          'Holds that widespread ownership of productive property by families and local guilds is morally preferable to both concentrated corporate capital and collective state ownership, grounding a decentralized moral economy in subsidiarity and the dignity of small ownership.',
+      philosophies: ["Distributism","Catholic Social Teaching"],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': -0.2,
@@ -1369,7 +1407,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.2,
          'redistribution-vs-predistribution': -0.3,
          'militarism-pacifism': -0.3,
-         'secularism-religious': 0.2,
+         'secularism-religious': 0.2
       },
    },
    {
@@ -1379,6 +1417,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'libertarian-socialist',
       description:
          'A broader anti-authoritarian socialism that opposes both capitalist concentration and centralized state socialism, seeking worker self-management and federated anti-hierarchical organization through a mix of reform and direct action rather than vanguard seizure.',
+      philosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
       centroid: {
          'authority-legitimacy': -0.6,
          'property-legitimacy': -0.5,
@@ -1405,7 +1444,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.2,
          'redistribution-vs-predistribution': 0.3,
          'militarism-pacifism': -0.4,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -1415,6 +1454,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'ecocentric',
       description:
          'Treats the nonhuman natural world as possessing intrinsic worth independent of human use, holding that ecological integrity requires restructuring social and economic life around biocentric limits rather than greening an essentially anthropocentric growth order.',
+      philosophies: ["Environmentalism","Ecologism","Deep Ecology","Biocentrism"],
       centroid: {
          'authority-legitimacy': -0.4,
          'property-legitimacy': -0.3,
@@ -1441,7 +1481,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.4,
          'redistribution-vs-predistribution': 0.2,
          'militarism-pacifism': -0.6,
-         'secularism-religious': -0.3,
+         'secularism-religious': -0.3
       },
    },
    {
@@ -1451,6 +1491,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'paleolibertarian',
       description:
          'Combines a strict Rothbardian non-aggression and hard-money economics with a defense of inherited cultural and familial order, seeking a decentralized polity that secures property and liberty while leaving traditional communities free of central cultural engineering.',
+      philosophies: ["Libertarianism","Paleolibertarianism","Rothbardianism"],
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': 0.7,
@@ -1477,7 +1518,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.7,
          'redistribution-vs-predistribution': -0.7,
          'militarism-pacifism': 0.1,
-         'secularism-religious': 0.2,
+         'secularism-religious': 0.2
       },
    },
    {
@@ -1487,6 +1528,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'objectivist',
       description:
          'Grounds morality in rational egoism and productive achievement, holding that individual rights to life, liberty, property, and the pursuit of happiness are absolute, that laissez-faire capitalism is the only just social system, and that voluntary hierarchy and uncompromising principle forbid redistributive coercion.',
+      philosophies: ["Libertarianism","Objectivism","Randianism"],
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': 0.95,
@@ -1513,7 +1555,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.95,
          'redistribution-vs-predistribution': -0.85,
          'militarism-pacifism': 0.3,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -1523,6 +1565,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'techno-progressive',
       description:
          'Holds that deliberate technological enhancement of the human condition is both morally defensible and materially emancipatory, favoring expert-led, capacity-backed institutions that accelerate the deliberate reshaping of human nature, culture, and ecological constraints.',
+      philosophies: ["Technocracy","Progressivism","Transhumanism","Futurism","Posthumanism"],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.2,
@@ -1549,7 +1592,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.1,
          'redistribution-vs-predistribution': 0,
          'militarism-pacifism': 0.1,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -1559,6 +1602,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'welfare-chauvinist',
       description:
          'Combines a generous redistributive welfare state with a strictly bounded national membership, holding that social provision is a right of the in-group financed and reserved for citizens, while restricting immigration and access on grounds of national belonging and fiscal sustainability.',
+      philosophies: ["Nationalism","Welfare Chauvinism"],
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': 0.1,
@@ -1585,16 +1629,17 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.4,
          'redistribution-vs-predistribution': 0.6,
          'militarism-pacifism': 0.4,
-         'secularism-religious': 0.3,
+         'secularism-religious': 0.3
       },
    },
    {
       id: 'right-wing-populism',
       name: 'Right-Wing Populism',
-      family: 'nationalist',
+      family: 'populist',
       subfamily: 'right-populist',
       description:
          'Frames politics as a struggle between a corrupt elite and an authentic people, demanding strongman leadership and direct extra-institutional mobilization to restore national sovereignty, traditional cultural order, and boundaries against outsiders through rupture rather than gradual reform.',
+      philosophies: ["Populism"],
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': 0.2,
@@ -1621,7 +1666,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.2,
          'redistribution-vs-predistribution': -0.2,
          'militarism-pacifism': 0.4,
-         'secularism-religious': 0.3,
+         'secularism-religious': 0.3
       },
    },
    {
@@ -1631,6 +1676,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'participatory-democratic',
       description:
          'Treats concentrated institutional and economic power as a standing threat to self-rule, favoring expansive participation, anti-elite institutional redesign, and democratized authority beyond periodic elections.',
+      philosophies: ["Democracy","Radical Democracy","Participatory Democracy"],
       centroid: {
          'authority-legitimacy': -0.2,
          'property-legitimacy': -0.2,
@@ -1657,7 +1703,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.3,
          'redistribution-vs-predistribution': 0.5,
          'militarism-pacifism': -0.4,
-         'secularism-religious': -0.3,
+         'secularism-religious': -0.3
       },
    },
    {
@@ -1667,6 +1713,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'participatory-socialist',
       description:
          'Seeks a participatory economy organized around workers and consumers councils, balanced job complexes, and negotiated planning, rejecting both capitalist ownership and centralized command administration.',
+      philosophies: ["Marxism","Socialism","Participism","Participatory Economics"],
       centroid: {
          'authority-legitimacy': -0.3,
          'property-legitimacy': -0.7,
@@ -1693,7 +1740,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.4,
          'redistribution-vs-predistribution': 0.6,
          'militarism-pacifism': -0.5,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -1701,9 +1748,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Left-Wing Market Anarchism',
       family: 'anarchist',
       subfamily: 'market-anarchist',
-      aliases: ['Left-Rothbardianism', 'Steiner-Vallentyne School'],
       description:
          'Defends anti-capitalist freed markets and voluntary exchange while rejecting state privilege, landlord rents, corporate subsidy, and capitalist hierarchy as products of coercive enclosure rather than genuine market freedom.',
+      philosophies: ["Anarchism","Left-Wing Market Anarchism","Mutualism"],
+   aliases: ["Left-Rothbardianism","Steiner-Vallentyne School"],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': 0.3,
@@ -1730,7 +1778,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.2,
          'redistribution-vs-predistribution': 0.3,
          'militarism-pacifism': -0.6,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -1738,9 +1786,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Individualist Anarchism',
       family: 'anarchist',
       subfamily: 'individualist-anarchist',
-      aliases: ['Egoist Anarchism', 'Post-Left Anarchism'],
       description:
          'Centers personal autonomy, voluntary association, and hostility to imposed moral or political authority, rejecting both state power and collectivist demands that subordinate the individual to a planned social whole.',
+      philosophies: ["Anarchism","Individualist Anarchism","Stirnerism","Egoism"],
+   aliases: ["Egoist Anarchism","Post-Left Anarchism"],
       centroid: {
          'authority-legitimacy': -0.9,
          'property-legitimacy': -0.3,
@@ -1767,7 +1816,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0,
          'redistribution-vs-predistribution': 0,
          'militarism-pacifism': -0.6,
-         'secularism-religious': -0.6,
+         'secularism-religious': -0.6
       },
    },
    {
@@ -1775,9 +1824,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Anarcho-Primitivism',
       family: 'anarchist',
       subfamily: 'anti-civilization',
-      aliases: ['Primitivism'],
       description:
          'Rejects civilization, industrial technology, and mass organization as sources of domination and ecological collapse, seeking radically decentralized lifeways outside both state and market modernity.',
+      philosophies: ["Anarchism","Anarcho-Primitivism","Anti-Civilization"],
+   aliases: ["Primitivism"],
       centroid: {
          'authority-legitimacy': -0.8,
          'property-legitimacy': -0.5,
@@ -1804,7 +1854,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.2,
          'redistribution-vs-predistribution': 0.2,
          'militarism-pacifism': -0.7,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -1814,6 +1864,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'left-populist',
       description:
          'Frames politics as a struggle between ordinary people and entrenched elites, channeling that antagonism toward redistribution, economic democracy, and majoritarian popular sovereignty rather than nationalist exclusion.',
+      philosophies: ["Populism","Left-Wing Populism","Socialism"],
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': -0.3,
@@ -1840,7 +1891,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.4,
          'redistribution-vs-predistribution': 0.6,
          'militarism-pacifism': -0.3,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -1848,9 +1899,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Maoism',
       family: 'socialist',
       subfamily: 'maoist',
-      aliases: ['Marxism-Leninism-Maoism', 'Maoism-Third Worldism'],
       description:
          'Extends revolutionary state socialism through mass line politics, protracted struggle, anti-revisionism, and peasant or peripheral mobilization, treating revolutionary transformation as a continuing process against bureaucratic restoration.',
+      philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
+   aliases: ["Marxism-Leninism-Maoism","Maoism-Third Worldism"],
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': -0.9,
@@ -1877,7 +1929,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.8,
          'redistribution-vs-predistribution': 0.8,
          'militarism-pacifism': 0.3,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -1887,6 +1939,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'trotskyist',
       description:
          'Combines revolutionary socialism with permanent international revolution, anti-Stalinist party politics, and critique of bureaucratic state socialism, rejecting both reformist gradualism and nationalist socialism.',
+      philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
       centroid: {
          'authority-legitimacy': -0.1,
          'property-legitimacy': -0.8,
@@ -1913,7 +1966,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.7,
          'redistribution-vs-predistribution': 0.8,
          'militarism-pacifism': -0.2,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -1923,6 +1976,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'panarchist',
       description:
          'Believes that the populace should have the right to choose the form of government (or lack thereof) they live under without having to change their physical residence, envisioning a free market of competing voluntary associations.',
+      philosophies: ["Anarchism","Panarchism","Voluntaryism"],
       centroid: {
          'authority-legitimacy': -0.8,
          'property-legitimacy': 0.8,
@@ -1949,7 +2003,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.8,
          'redistribution-vs-predistribution': 0,
          'militarism-pacifism': -0.8,
-         'secularism-religious': -0.6,
+         'secularism-religious': -0.6
       },
    },
    {
@@ -1959,6 +2013,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'world-federalist',
       description:
          'Holds that a single federal world government with democratic constitutional structure and enforceable international law is necessary to secure peace, justice, and human rights across all nations.',
+      philosophies: ["Liberalism","World Federalism","Cosmopolitanism","Kantianism"],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.7,
@@ -1985,7 +2040,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.2,
          'redistribution-vs-predistribution': 0.4,
          'militarism-pacifism': -0.5,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -1995,6 +2050,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'indigenist',
       description:
          'Prioritizes the rights, sovereignty, and cultural preservation of indigenous peoples, combining anti-colonialism, environmental stewardship, and traditional communal governance against imposed state and market structures.',
+      philosophies: ["Indigenism","Decolonialism"],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': -0.5,
@@ -2021,7 +2077,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.5,
          'redistribution-vs-predistribution': 0.2,
          'militarism-pacifism': -0.3,
-         'secularism-religious': 0.6,
+         'secularism-religious': 0.6
       },
    },
    {
@@ -2031,6 +2087,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'guild-socialist',
       description:
          'Advocates for worker ownership of the means of production through trade guilds with a contractual relationship to the public, rejecting both capitalist hierarchy and coercive state socialism in favor of decentralized democratic workplaces.',
+      philosophies: ["Marxism","Socialism","Guild Socialism","Distributism"],
       centroid: {
          'authority-legitimacy': -0.3,
          'property-legitimacy': -0.6,
@@ -2057,7 +2114,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.4,
          'redistribution-vs-predistribution': -0.2,
          'militarism-pacifism': -0.5,
-         'secularism-religious': -0.6,
+         'secularism-religious': -0.6
       },
    },
    {
@@ -2067,6 +2124,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'multiculturalist',
       description:
          'Holds that diverse cultural traditions can and should coexist peacefully within a single society, valuing cultural pluralism, anti-racism, and inclusive democratic citizenship over assimilation or monocultural nationalism.',
+      philosophies: ["Liberalism","Multiculturalism","Cultural Pluralism"],
       centroid: {
          'authority-legitimacy': 0.4,
          'property-legitimacy': 0.2,
@@ -2093,7 +2151,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.5,
          'redistribution-vs-predistribution': 0.6,
          'militarism-pacifism': -0.5,
-         'secularism-religious': -0.4,
+         'secularism-religious': -0.4
       },
    },
    {
@@ -2103,6 +2161,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'cyberocratic',
       description:
          'Holds that government should be substantially automated and run by information systems and artificial intelligence, treating algorithmic administration as more efficient, less corruptible, and better suited to complex modern governance than human rule.',
+      philosophies: ["Technocracy","Progressivism","Cyberocracy","Cybernetics"],
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': -0.3,
@@ -2129,7 +2188,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.7,
          'redistribution-vs-predistribution': -0.3,
          'militarism-pacifism': -0.4,
-         'secularism-religious': -0.9,
+         'secularism-religious': -0.9
       },
    },
    {
@@ -2139,6 +2198,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'bioregional',
       description:
          'Holds that political and economic boundaries should follow natural ecological regions rather than arbitrary borders, advocating sustainable local economies that work in harmony with the environment and reject capitalist exploitation of nature.',
+      philosophies: ["Environmentalism","Ecologism","Bioregionalism","Communalism"],
       centroid: {
          'authority-legitimacy': -0.7,
          'property-legitimacy': -0.8,
@@ -2152,7 +2212,7 @@ export const labels: IdeologyLabel[] = [
          'state-capacity-confidence': -0.7,
          'public-choice-skepticism': 0.1,
          'democratic-confidence': 0.7,
-         'expert-confidence': 0.0,
+         'expert-confidence': 0,
          'cultural-plasticity': 0.5,
          'coordination-optimism': 0.7,
          'centralization-preference': -0.8,
@@ -2160,12 +2220,12 @@ export const labels: IdeologyLabel[] = [
          'gradualism-vs-immediatism': -0.2,
          'state-action-vs-exit': 0.3,
          'electoralism-vs-direct-action': 0.3,
-         'compromise-vs-persistence': 0.0,
+         'compromise-vs-persistence': 0,
          'coercion-strategy': -0.8,
          'regulation-vs-deregulation': -0.9,
          'redistribution-vs-predistribution': -0.6,
          'militarism-pacifism': -0.8,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -2175,6 +2235,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'eco-authoritarian',
       description:
          'Treats ecological crisis as the overriding political priority requiring a powerful centralized state—often technocratic or vanguardist—to enforce environmental discipline, irrespective of conventional left-right cultural positioning.',
+      philosophies: ["Authoritarianism","Eco-Authoritarianism","Environmentalism"],
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': -0.2,
@@ -2200,8 +2261,8 @@ export const labels: IdeologyLabel[] = [
          'coercion-strategy': 0.7,
          'regulation-vs-deregulation': -0.8,
          'redistribution-vs-predistribution': -0.3,
-         'militarism-pacifism': 0.0,
-         'secularism-religious': -0.6,
+         'militarism-pacifism': 0,
+         'secularism-religious': -0.6
       },
    },
    {
@@ -2211,6 +2272,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'eco-fascist',
       description:
          'Combines fascist ultranationalism and ethnonationalism with deep ecology, holding that population reduction, ethnic homogeneity, and coercive state power are necessary to protect the natural order from industrial civilization.',
+      philosophies: ["Authoritarianism","Eco-Fascism","Fascism","Environmentalism"],
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': 0.3,
@@ -2237,7 +2299,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.5,
          'redistribution-vs-predistribution': 0.4,
          'militarism-pacifism': 0.8,
-         'secularism-religious': 0.6,
+         'secularism-religious': 0.6
       },
    },
    {
@@ -2247,6 +2309,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'hindutva',
       description:
          'Seeks to define Indian national identity through Hindu culture and values, treating Hinduism as the civilizational and spiritual foundation of the nation rather than a mere religion among equals.',
+      philosophies: ["Nationalism","Hindutva","Hindu Nationalism","Integral Humanism"],
       centroid: {
          'authority-legitimacy': 0.8,
          'property-legitimacy': 0.4,
@@ -2273,7 +2336,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.3,
          'redistribution-vs-predistribution': -0.2,
          'militarism-pacifism': 0.7,
-         'secularism-religious': 0.85,
+         'secularism-religious': 0.85
       },
    },
    {
@@ -2283,13 +2346,14 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'religious-nationalist',
       description:
          'Holds that national identity should be defined by shared religion and that public institutions should derive their authority from and reflect a particular religious tradition.',
+      philosophies: ["Nationalism","Religious Nationalism","Theocracy"],
       centroid: {
          'authority-legitimacy': 0.85,
          'property-legitimacy': 0.5,
          'liberty-noninterference': -0.8,
          'equality-theory': -0.7,
-         'political-community-boundary': -1.0,
-         'moral-traditionalism': 1.0,
+         'political-community-boundary': -1,
+         'moral-traditionalism': 1,
          'anti-domination': -0.6,
          'human-nature-priority': 0.8,
          'market-process-confidence': 0.2,
@@ -2309,7 +2373,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.5,
          'redistribution-vs-predistribution': -0.3,
          'militarism-pacifism': 0.8,
-         'secularism-religious': 1.0,
+         'secularism-religious': 1
       },
    },
    {
@@ -2317,9 +2381,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Zionism',
       family: 'nationalist',
       subfamily: 'zionist',
-      aliases: ['Labour Zionism'],
       description:
          'Holds that the Jewish people are entitled to national self-determination and a sovereign state in their ancestral homeland, combining national identity with democratic institutions and modern statecraft.',
+      philosophies: ["Nationalism","Zionism","Jewish Nationalism"],
+   aliases: ["Labour Zionism"],
       centroid: {
          'authority-legitimacy': 0.4,
          'property-legitimacy': 0.7,
@@ -2346,7 +2411,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.2,
          'redistribution-vs-predistribution': 0.1,
          'militarism-pacifism': 0.7,
-         'secularism-religious': 0.2,
+         'secularism-religious': 0.2
       },
    },
    {
@@ -2354,36 +2419,37 @@ export const labels: IdeologyLabel[] = [
       name: 'National Bolshevism',
       family: 'authoritarian',
       subfamily: 'national-bolshevist',
-      aliases: ['National Communism'],
       description:
          'Fuses radical ultranationalism with Bolshevik-style revolutionary socialism, rejecting both liberal capitalism and liberal democracy in favor of a strong state that commands the economy in the name of national grandeur.',
+      philosophies: ["Authoritarianism","National Bolshevism","Conservative Revolution"],
+   aliases: ["National Communism"],
       centroid: {
-         'authority-legitimacy': 1.0,
+         'authority-legitimacy': 1,
          'property-legitimacy': -0.9,
          'liberty-noninterference': -0.9,
          'equality-theory': 0.9,
          'political-community-boundary': -0.8,
          'moral-traditionalism': 0.6,
-         'anti-domination': 0.0,
+         'anti-domination': 0,
          'human-nature-priority': -0.5,
          'market-process-confidence': -0.9,
-         'state-capacity-confidence': 1.0,
-         'public-choice-skepticism': 1.0,
+         'state-capacity-confidence': 1,
+         'public-choice-skepticism': 1,
          'democratic-confidence': -0.9,
          'expert-confidence': -0.1,
          'cultural-plasticity': 0.3,
-         'coordination-optimism': 1.0,
-         'centralization-preference': 1.0,
+         'coordination-optimism': 1,
+         'centralization-preference': 1,
          'reform-vs-revolution': -0.8,
          'gradualism-vs-immediatism': -0.8,
-         'state-action-vs-exit': 1.0,
+         'state-action-vs-exit': 1,
          'electoralism-vs-direct-action': -0.9,
          'compromise-vs-persistence': -0.8,
-         'coercion-strategy': 1.0,
+         'coercion-strategy': 1,
          'regulation-vs-deregulation': 0.9,
          'redistribution-vs-predistribution': -0.5,
          'militarism-pacifism': 0.9,
-         'secularism-religious': -0.5,
+         'secularism-religious': -0.5
       },
    },
    {
@@ -2391,9 +2457,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Strasserism',
       family: 'authoritarian',
       subfamily: 'strasserist',
-      aliases: ['National Syndicalism'],
       description:
          'A radical, anti-capitalist wing of Nazism that combines ultranationalist authoritarianism with vehement anti-capitalist and socialist economic demands, mass mobilization, and opposition to bourgeois conservatism.',
+      philosophies: ["Authoritarianism","Fascism","Corporatism"],
+   aliases: ["National Syndicalism"],
       centroid: {
          'authority-legitimacy': 0.85,
          'property-legitimacy': -0.6,
@@ -2420,7 +2487,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.6,
          'redistribution-vs-predistribution': -0.5,
          'militarism-pacifism': 0.85,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -2428,16 +2495,17 @@ export const labels: IdeologyLabel[] = [
       name: 'Integralism',
       family: 'conservative',
       subfamily: 'integralist',
-      aliases: ['Fourth Theory', 'Clerical Fascism'],
       description:
          'Holds that Catholic faith should be the basis of public law and policy, rejecting the separation of church and state in favor of an organic society where civil authority is subordinate to divine moral order.',
+      philosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
+   aliases: ["Fourth Theory","Clerical Fascism"],
       centroid: {
          'authority-legitimacy': 0.95,
          'property-legitimacy': 0.6,
          'liberty-noninterference': -0.8,
          'equality-theory': -0.8,
          'political-community-boundary': -0.9,
-         'moral-traditionalism': 1.0,
+         'moral-traditionalism': 1,
          'anti-domination': -0.6,
          'human-nature-priority': 0.9,
          'market-process-confidence': 0.3,
@@ -2445,7 +2513,7 @@ export const labels: IdeologyLabel[] = [
          'public-choice-skepticism': 0.9,
          'democratic-confidence': -0.8,
          'expert-confidence': 0.1,
-         'cultural-plasticity': -1.0,
+         'cultural-plasticity': -1,
          'coordination-optimism': 0.8,
          'centralization-preference': 0.9,
          'reform-vs-revolution': 0.1,
@@ -2457,7 +2525,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.7,
          'redistribution-vs-predistribution': -0.3,
          'militarism-pacifism': 0.8,
-         'secularism-religious': 1.0,
+         'secularism-religious': 1
       },
    },
    {
@@ -2465,9 +2533,10 @@ export const labels: IdeologyLabel[] = [
       name: 'Democratic Confederalism',
       family: 'democratic',
       subfamily: 'confederal-democratic',
-      aliases: ['Libertarian Municipalism'],
       description:
          'Rejects centralized state authority in favor of decentralized, bottom-up democracy organized through communes, councils, and confederations, grounded in gender equality, ecology, and pluralistic self-governance.',
+      philosophies: ["Democracy","Democratic Confederalism","Communalism","Bookchinism"],
+   aliases: ["Libertarian Municipalism"],
       centroid: {
          'authority-legitimacy': -0.6,
          'property-legitimacy': -0.6,
@@ -2494,7 +2563,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.5,
          'redistribution-vs-predistribution': -0.6,
          'militarism-pacifism': -0.6,
-         'secularism-religious': 0.4,
+         'secularism-religious': 0.4
       },
    },
    {
@@ -2504,6 +2573,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'paleoconservative',
       description:
          'A traditionalist conservatism that emphasizes pre-Enlightenment values, local community, anti-interventionist foreign policy, strict immigration controls, and skepticism toward free trade and globalizing institutions.',
+      philosophies: ["Conservatism","Traditionalism","Paleoconservatism"],
       centroid: {
          'authority-legitimacy': 0.8,
          'property-legitimacy': 0.8,
@@ -2530,7 +2600,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.6,
          'redistribution-vs-predistribution': -0.2,
          'militarism-pacifism': -0.3,
-         'secularism-religious': -0.8,
+         'secularism-religious': -0.8
       },
    },
    {
@@ -2540,6 +2610,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'one-nation-conservative',
       description:
          'A paternalistic conservative tradition that accepts a role for the welfare state and moderate state intervention to preserve social cohesion, favoring gradual reform over radical change.',
+      philosophies: ["Conservatism","One Nation Conservatism","Burkeanism"],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.6,
@@ -2549,7 +2620,7 @@ export const labels: IdeologyLabel[] = [
          'moral-traditionalism': 0.8,
          'anti-domination': 0.1,
          'human-nature-priority': 0.5,
-         'market-process-confidence': 0.0,
+         'market-process-confidence': 0,
          'state-capacity-confidence': 0.6,
          'public-choice-skepticism': 0.2,
          'democratic-confidence': 0.5,
@@ -2566,7 +2637,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.4,
          'redistribution-vs-predistribution': 0.4,
          'militarism-pacifism': 0.3,
-         'secularism-religious': -0.3,
+         'secularism-religious': -0.3
       },
    },
    {
@@ -2576,6 +2647,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'islamic-democratic',
       description:
          'Holds that democratic governance and popular sovereignty are compatible with and can operate within an Islamic framework, grounding law and policy in Islamic values while maintaining electoral politics.',
+      philosophies: ["Conservatism","Islamic Democracy","Islamism"],
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.4,
@@ -2602,7 +2674,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.6,
          'redistribution-vs-predistribution': 0.3,
          'militarism-pacifism': 0.3,
-         'secularism-religious': -0.9,
+         'secularism-religious': -0.9
       },
    },
    {
@@ -2612,6 +2684,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'liquid-democratic',
       description:
          'A hybrid system of direct and representative democracy in which citizens may vote directly on issues or delegate their voting power to trusted representatives on a per-issue basis.',
+      philosophies: ["Democracy","Liquid Democracy","Delegative Democracy"],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.6,
@@ -2631,14 +2704,14 @@ export const labels: IdeologyLabel[] = [
          'centralization-preference': -0.5,
          'reform-vs-revolution': -0.4,
          'gradualism-vs-immediatism': -0.3,
-         'state-action-vs-exit': 0.0,
+         'state-action-vs-exit': 0,
          'electoralism-vs-direct-action': 0.5,
          'compromise-vs-persistence': 0.3,
          'coercion-strategy': -0.3,
          'regulation-vs-deregulation': -0.3,
          'redistribution-vs-predistribution': 0.2,
          'militarism-pacifism': -0.2,
-         'secularism-religious': 0.6,
+         'secularism-religious': 0.6
       },
    },
    {
@@ -2648,6 +2721,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'accelerationist',
       description:
          'Holds that the dynamics of capitalism and technological development should be pushed to their extreme limits to precipitate radical systemic transformation or technological singularity.',
+      philosophies: ["Technocracy","Progressivism","Accelerationism","Neo-Reaction"],
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': -0.2,
@@ -2672,9 +2746,9 @@ export const labels: IdeologyLabel[] = [
          'compromise-vs-persistence': 0.7,
          'coercion-strategy': 0.3,
          'regulation-vs-deregulation': -0.8,
-         'redistribution-vs-predistribution': 0.0,
+         'redistribution-vs-predistribution': 0,
          'militarism-pacifism': -0.2,
-         'secularism-religious': 0.7,
+         'secularism-religious': 0.7
       },
    },
    {
@@ -2684,6 +2758,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'juche',
       description:
          'A state ideology of national self-reliance emphasizing political independence, economic self-sufficiency, and military self-defense under a highly centralized one-party state with a supreme leader.',
+      philosophies: ["Marxism","Socialism","Juche","Stalinism","Confucianism"],
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': -0.7,
@@ -2710,7 +2785,7 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': 0.9,
          'redistribution-vs-predistribution': 0.5,
          'militarism-pacifism': 0.9,
-         'secularism-religious': -0.2,
+         'secularism-religious': -0.2
       },
    },
    {
@@ -2720,6 +2795,7 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'techno-anarchist',
       description:
          'Applies advanced technology and decentralized networks to create a stateless, anti-authoritarian society, rejecting centralized control while embracing technological tools for voluntary cooperation and mutual aid.',
+      philosophies: ["Anarchism","Techno-Anarchism","Cyber-Libertarianism"],
       centroid: {
          'authority-legitimacy': -0.85,
          'property-legitimacy': -0.3,
@@ -2746,6 +2822,457 @@ export const labels: IdeologyLabel[] = [
          'regulation-vs-deregulation': -0.6,
          'redistribution-vs-predistribution': 0.1,
          'militarism-pacifism': -0.6,
+         'secularism-religious': -0.6
+      },
+   },
+   {
+      id: 'progressivism',
+      name: 'Progressivism',
+      family: 'liberal',
+      subfamily: 'technocratic-liberal',
+      description:
+         'Believes in deliberate social improvement through expert-guided institutional reform, empirical social science, and evidence-based policy, favoring systematic intervention over both market and tradition as organizing principles.',
+      philosophies: ["Progressivism","Pragmatism","Empiricism","Social Liberalism"],
+      centroid: {
+         'authority-legitimacy': 0.1,
+         'property-legitimacy': -0.1,
+         'liberty-noninterference': 0.1,
+         'equality-theory': 0.5,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': -0.4,
+         'anti-domination': 0.4,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': 0,
+         'state-capacity-confidence': 0.6,
+         'public-choice-skepticism': -0.1,
+         'democratic-confidence': 0.5,
+         'expert-confidence': 0.7,
+         'cultural-plasticity': 0.6,
+         'coordination-optimism': 0.5,
+         'centralization-preference': 0.2,
+         'reform-vs-revolution': -0.8,
+         'gradualism-vs-immediatism': -0.6,
+         'state-action-vs-exit': 0.5,
+         'electoralism-vs-direct-action': 0.6,
+         'compromise-vs-persistence': 0.4,
+         'coercion-strategy': 0,
+         'regulation-vs-deregulation': 0.3,
+         'redistribution-vs-predistribution': 0.3,
+         'militarism-pacifism': -0.2,
+         'secularism-religious': -0.5,
+      },
+   },
+   {
+      id: 'liberal-feminism',
+      name: 'Liberal Feminism',
+      family: 'liberal',
+      subfamily: 'civil-libertarian',
+      description:
+         'Seeks gender equality through legal reform, equal rights, and equal opportunity within existing liberal-democratic institutions, emphasizing individual autonomy and formal equality before the law.',
+      philosophies: ["Feminism","Liberalism","Egalitarianism"],
+      centroid: {
+         'authority-legitimacy': 0,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': 0.5,
+         'equality-theory': 0.7,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.6,
+         'anti-domination': 0.8,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': 0.2,
+         'state-capacity-confidence': 0.3,
+         'public-choice-skepticism': 0.1,
+         'democratic-confidence': 0.5,
+         'expert-confidence': 0.4,
+         'cultural-plasticity': 0.6,
+         'coordination-optimism': 0.3,
+         'centralization-preference': -0.1,
+         'reform-vs-revolution': -0.7,
+         'gradualism-vs-immediatism': -0.5,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.5,
+         'compromise-vs-persistence': 0.4,
+         'coercion-strategy': -0.2,
+         'regulation-vs-deregulation': 0.2,
+         'redistribution-vs-predistribution': 0.4,
+         'militarism-pacifism': -0.3,
+         'secularism-religious': -0.6,
+      },
+   },
+   {
+      id: 'national-socialism',
+      name: 'National Socialism',
+      family: 'authoritarian',
+      subfamily: 'ultranationalist',
+      description:
+         'Combines extreme ethnic nationalism, racial hierarchy, state-directed economic corporatism, and militarist expansionism with anti-capitalist and anti-communist rhetoric, demanding total subordination of the individual to the racial-national collective.',
+      philosophies: ["National Socialism","Fascism","Racialism","Social Darwinism","Totalitarianism"],
+   aliases: ["Nazism"],
+      centroid: {
+         'authority-legitimacy': 0.9,
+         'property-legitimacy': -0.1,
+         'liberty-noninterference': -0.9,
+         'equality-theory': -0.8,
+         'political-community-boundary': -0.95,
+         'moral-traditionalism': 0.5,
+         'anti-domination': -0.7,
+         'human-nature-priority': -0.5,
+         'market-process-confidence': -0.3,
+         'state-capacity-confidence': 0.8,
+         'public-choice-skepticism': -0.5,
+         'democratic-confidence': -0.9,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': -0.7,
+         'coordination-optimism': 0.1,
+         'centralization-preference': 0.9,
+         'reform-vs-revolution': 0.9,
+         'gradualism-vs-immediatism': 0.7,
+         'state-action-vs-exit': 0.8,
+         'electoralism-vs-direct-action': -0.8,
+         'compromise-vs-persistence': -0.7,
+         'coercion-strategy': 0.9,
+         'regulation-vs-deregulation': 0.5,
+         'redistribution-vs-predistribution': 0.1,
+         'militarism-pacifism': 0.9,
+         'secularism-religious': 0,
+      },
+   },
+   {
+      id: 'left-wing-nationalism',
+      name: 'Left-Wing Nationalism',
+      family: 'nationalist',
+      subfamily: 'inclusive-national',
+      description:
+         'Combines national self-determination with anti-colonial, redistributive, and popular-sovereignty commitments, framing national liberation as a precondition for social justice rather than ethnic hierarchy.',
+      philosophies: ["Nationalism","Socialism","Anti-Colonialism","Self-Determination"],
+      centroid: {
+         'authority-legitimacy': 0.1,
+         'property-legitimacy': -0.4,
+         'liberty-noninterference': 0.1,
+         'equality-theory': 0.6,
+         'political-community-boundary': -0.6,
+         'moral-traditionalism': 0,
+         'anti-domination': 0.6,
+         'human-nature-priority': 0.1,
+         'market-process-confidence': -0.3,
+         'state-capacity-confidence': 0.4,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0.1,
+         'cultural-plasticity': 0.2,
+         'coordination-optimism': 0.2,
+         'centralization-preference': 0.2,
+         'reform-vs-revolution': 0.3,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': 0.4,
+         'electoralism-vs-direct-action': 0.1,
+         'compromise-vs-persistence': 0,
+         'coercion-strategy': 0,
+         'regulation-vs-deregulation': 0.4,
+         'redistribution-vs-predistribution': 0.5,
+         'militarism-pacifism': 0.1,
+         'secularism-religious': -0.3,
+      },
+   },
+   {
+      id: 'christian-socialism',
+      name: 'Christian Socialism',
+      family: 'socialist',
+      subfamily: 'democratic-market-socialist',
+      description:
+         'Applies Christian ethical principles—especially solidarity with the poor, communal obligation, and stewardship—to advocate for social ownership, economic democracy, and structural opposition to exploitative capitalism.',
+      philosophies: ["Christian Socialism","Christian Theology","Catholic Social Teaching","Socialism"],
+   aliases: ["Liberation Theology","Social Gospel"],
+      centroid: {
+         'authority-legitimacy': 0.1,
+         'property-legitimacy': -0.5,
+         'liberty-noninterference': 0,
+         'equality-theory': 0.7,
+         'political-community-boundary': 0.2,
+         'moral-traditionalism': 0.1,
+         'anti-domination': 0.5,
+         'human-nature-priority': 0.1,
+         'market-process-confidence': -0.5,
+         'state-capacity-confidence': 0.4,
+         'public-choice-skepticism': 0.1,
+         'democratic-confidence': 0.4,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': 0.2,
+         'coordination-optimism': 0.3,
+         'centralization-preference': 0.1,
+         'reform-vs-revolution': -0.3,
+         'gradualism-vs-immediatism': -0.2,
+         'state-action-vs-exit': 0.5,
+         'electoralism-vs-direct-action': 0.3,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.3,
+         'regulation-vs-deregulation': 0.5,
+         'redistribution-vs-predistribution': 0.7,
+         'militarism-pacifism': -0.5,
+         'secularism-religious': 0.5,
+      },
+   },
+   {
+      id: 'utopian-socialism',
+      name: 'Utopian Socialism',
+      family: 'socialist',
+      subfamily: 'democratic-market-socialist',
+      description:
+         'Pre-Marxian tradition that envisions an ideal society based on voluntary association, cooperative production, and rational social organization, appealing to moral persuasion and model communities rather than class struggle.',
+      philosophies: ["Utopian Socialism","Socialism","Owenism","Fourierism"],
+   aliases: ["Owenism","Fourierism","Saint-Simonianism"],
+      centroid: {
+         'authority-legitimacy': -0.1,
+         'property-legitimacy': -0.3,
+         'liberty-noninterference': 0.3,
+         'equality-theory': 0.6,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.2,
+         'anti-domination': 0.4,
+         'human-nature-priority': 0.3,
+         'market-process-confidence': -0.2,
+         'state-capacity-confidence': 0.2,
+         'public-choice-skepticism': 0.2,
+         'democratic-confidence': 0.5,
+         'expert-confidence': 0.4,
+         'cultural-plasticity': 0.5,
+         'coordination-optimism': 0.6,
+         'centralization-preference': -0.1,
+         'reform-vs-revolution': -0.8,
+         'gradualism-vs-immediatism': -0.6,
+         'state-action-vs-exit': 0.2,
+         'electoralism-vs-direct-action': 0.1,
+         'compromise-vs-persistence': 0.5,
+         'coercion-strategy': -0.5,
+         'regulation-vs-deregulation': 0.3,
+         'redistribution-vs-predistribution': 0.4,
+         'militarism-pacifism': -0.4,
+         'secularism-religious': -0.3,
+      },
+   },
+   {
+      id: 'voluntaryism',
+      name: 'Voluntaryism',
+      family: 'libertarian-leaning',
+      subfamily: 'minarchist',
+      description:
+         'Holds that all human associations should be voluntary and that the state, as a compulsory monopoly on force, is illegitimate—advocating instead for private defense, dispute resolution, and contractual governance funded by voluntary subscription.',
+      philosophies: ["Voluntaryism","Libertarianism","Individualism","Non-Aggression Principle"],
+   aliases: ["Voluntarism","Contractual Anarchism"],
+      centroid: {
+         'authority-legitimacy': -0.9,
+         'property-legitimacy': 0.7,
+         'liberty-noninterference': 0.9,
+         'equality-theory': -0.3,
+         'political-community-boundary': 0.5,
+         'moral-traditionalism': -0.1,
+         'anti-domination': 0.8,
+         'human-nature-priority': 0.3,
+         'market-process-confidence': 0.8,
+         'state-capacity-confidence': -0.8,
+         'public-choice-skepticism': 0.8,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0,
+         'cultural-plasticity': 0.3,
+         'coordination-optimism': 0.5,
+         'centralization-preference': -0.8,
+         'reform-vs-revolution': 0.5,
+         'gradualism-vs-immediatism': 0.3,
+         'state-action-vs-exit': -0.9,
+         'electoralism-vs-direct-action': 0,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': -0.8,
+         'regulation-vs-deregulation': -0.7,
+         'redistribution-vs-predistribution': -0.6,
+         'militarism-pacifism': -0.2,
+         'secularism-religious': -0.1,
+      },
+   },
+   {
+      id: 'stirnerism',
+      name: 'Egoist Anarchism',
+      family: 'anarchist',
+      subfamily: 'individualist-anarchist',
+      description:
+         'Centered on Max Stirner\'s philosophy of egoism, rejects all external authorities—state, morality, ideology, God—as spooks (fixed ideas) constraining the unique individual, advocating temporary voluntary associations serving one\'s self-interest.',
+      philosophies: ["Stirnerism","Egoism","Individualist Anarchism","Nihilism"],
+   aliases: ["Stirnerism","Philosophical Egoism"],
+      centroid: {
+         'authority-legitimacy': -0.95,
+         'property-legitimacy': 0.2,
+         'liberty-noninterference': 0.9,
+         'equality-theory': -0.2,
+         'political-community-boundary': 0.6,
+         'moral-traditionalism': -0.7,
+         'anti-domination': 0.9,
+         'human-nature-priority': 0.4,
+         'market-process-confidence': 0.3,
+         'state-capacity-confidence': -0.9,
+         'public-choice-skepticism': 0.6,
+         'democratic-confidence': 0,
+         'expert-confidence': -0.2,
+         'cultural-plasticity': 0.5,
+         'coordination-optimism': 0,
+         'centralization-preference': -0.9,
+         'reform-vs-revolution': 0.3,
+         'gradualism-vs-immediatism': 0.1,
+         'state-action-vs-exit': -0.8,
+         'electoralism-vs-direct-action': -0.1,
+         'compromise-vs-persistence': -0.3,
+         'coercion-strategy': -0.7,
+         'regulation-vs-deregulation': -0.1,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': -0.1,
+         'secularism-religious': -0.5,
+      },
+   },
+   {
+      id: 'libertarian-municipalism',
+      name: 'Libertarian Municipalism',
+      family: 'democratic',
+      subfamily: 'confederal-democratic',
+      description:
+         'Proposes a confederal network of directly-democratic municipal assemblies as the basis for a stateless, ecological, and ethical society, replacing both state sovereignty and capitalist markets with face-to-face popular governance.',
+      philosophies: ["Libertarian Municipalism","Communalism","Bookchinism","Social Ecology"],
+   aliases: ["Communalism","Social Ecology"],
+      centroid: {
+         'authority-legitimacy': -0.6,
+         'property-legitimacy': -0.5,
+         'liberty-noninterference': 0.4,
+         'equality-theory': 0.6,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.4,
+         'anti-domination': 0.8,
+         'human-nature-priority': 0.3,
+         'market-process-confidence': -0.5,
+         'state-capacity-confidence': -0.3,
+         'public-choice-skepticism': 0.3,
+         'democratic-confidence': 0.7,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': 0.5,
+         'coordination-optimism': 0.5,
+         'centralization-preference': -0.7,
+         'reform-vs-revolution': 0.2,
+         'gradualism-vs-immediatism': 0,
+         'state-action-vs-exit': -0.4,
+         'electoralism-vs-direct-action': -0.3,
+         'compromise-vs-persistence': 0.2,
+         'coercion-strategy': -0.5,
+         'regulation-vs-deregulation': 0.4,
+         'redistribution-vs-predistribution': 0.5,
+         'militarism-pacifism': -0.5,
+         'secularism-religious': -0.4,
+      },
+   },
+   {
+      id: 'corporatism',
+      name: 'Corporatism',
+      family: 'authoritarian',
+      subfamily: 'monarchist-reactionary',
+      description:
+         'Organizes society into hierarchical functional groups (corporations) representing economic, professional, and cultural sectors, mediated by a strong state that claims to harmonize interests above class conflict and party politics.',
+      philosophies: ["Corporatism","Fascism","Catholic Social Teaching","Traditionalism"],
+      centroid: {
+         'authority-legitimacy': 0.7,
+         'property-legitimacy': 0.2,
+         'liberty-noninterference': -0.5,
+         'equality-theory': -0.1,
+         'political-community-boundary': 0.1,
+         'moral-traditionalism': 0.5,
+         'anti-domination': -0.4,
+         'human-nature-priority': -0.2,
+         'market-process-confidence': 0.1,
+         'state-capacity-confidence': 0.7,
+         'public-choice-skepticism': -0.4,
+         'democratic-confidence': -0.4,
+         'expert-confidence': 0.5,
+         'cultural-plasticity': -0.3,
+         'coordination-optimism': 0.4,
+         'centralization-preference': 0.7,
+         'reform-vs-revolution': 0.1,
+         'gradualism-vs-immediatism': 0.1,
+         'state-action-vs-exit': 0.6,
+         'electoralism-vs-direct-action': 0.3,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': 0.6,
+         'regulation-vs-deregulation': 0.5,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': 0.3,
+         'secularism-religious': 0.2,
+      },
+   },
+   {
+      id: 'kemalism',
+      name: 'Kemalism',
+      family: 'nationalist',
+      subfamily: 'civic-republican',
+      description:
+         'A secular, modernizing, and statist nationalist ideology combining republican governance, industrialization, Westernization, populism (as national unity), and assertive secularism (laicism) aimed at rapid catch-up modernization.',
+      philosophies: ["Kemalism","Secularism","Nationalism","Modernization Theory","Positivism"],
+   aliases: ["Atatürkism","Six Arrows"],
+      centroid: {
+         'authority-legitimacy': 0.4,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': -0.1,
+         'equality-theory': 0.2,
+         'political-community-boundary': -0.5,
+         'moral-traditionalism': -0.2,
+         'anti-domination': 0.3,
+         'human-nature-priority': 0.3,
+         'market-process-confidence': 0.1,
+         'state-capacity-confidence': 0.7,
+         'public-choice-skepticism': -0.1,
+         'democratic-confidence': 0.3,
+         'expert-confidence': 0.6,
+         'cultural-plasticity': 0.5,
+         'coordination-optimism': 0.4,
+         'centralization-preference': 0.5,
+         'reform-vs-revolution': -0.4,
+         'gradualism-vs-immediatism': -0.3,
+         'state-action-vs-exit': 0.6,
+         'electoralism-vs-direct-action': 0.4,
+         'compromise-vs-persistence': 0.2,
+         'coercion-strategy': 0.3,
+         'regulation-vs-deregulation': 0.2,
+         'redistribution-vs-predistribution': 0.1,
+         'militarism-pacifism': 0.2,
+         'secularism-religious': -0.9,
+      },
+   },
+   {
+      id: 'anarcha-feminism',
+      name: 'Anarcha-Feminism',
+      family: 'anarchist',
+      subfamily: 'social-anarchist',
+      description:
+         'Views patriarchy as a fundamental structure of domination interlocking with capitalism and statism, arguing that gender liberation requires abolishing all hierarchical institutions and building decentralized, non-coercive social relations.',
+      philosophies: ["Anarcha-Feminism","Feminism","Anarchism","Anti-Patriarchy"],
+      centroid: {
+         'authority-legitimacy': -0.85,
+         'property-legitimacy': -0.6,
+         'liberty-noninterference': 0.6,
+         'equality-theory': 0.7,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': -0.8,
+         'anti-domination': 0.95,
+         'human-nature-priority': 0.2,
+         'market-process-confidence': -0.5,
+         'state-capacity-confidence': -0.7,
+         'public-choice-skepticism': 0.5,
+         'democratic-confidence': 0.4,
+         'expert-confidence': -0.1,
+         'cultural-plasticity': 0.7,
+         'coordination-optimism': 0.4,
+         'centralization-preference': -0.85,
+         'reform-vs-revolution': 0.4,
+         'gradualism-vs-immediatism': 0.2,
+         'state-action-vs-exit': -0.5,
+         'electoralism-vs-direct-action': -0.2,
+         'compromise-vs-persistence': -0.2,
+         'coercion-strategy': -0.7,
+         'regulation-vs-deregulation': 0.3,
+         'redistribution-vs-predistribution': 0.5,
+         'militarism-pacifism': -0.5,
          'secularism-religious': -0.6,
       },
    },
