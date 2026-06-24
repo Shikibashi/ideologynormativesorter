@@ -1,4 +1,4 @@
-import type { AnswerMap, IdeologyLabel } from '../types'
+import type { AnswerMap, AxisWeight, IdeologyLabel, Question } from '../types'
 import { questions } from '../data/questions'
 import { labelById } from '../data/labels'
 
@@ -10,27 +10,61 @@ export interface CalibrationFixture {
    minConfidence: number
 }
 
+export function centroidAlignmentScore(axisWeights: AxisWeight[], centroid: IdeologyLabel['centroid']): number | null {
+   let total = 0
+   let weightSum = 0
+
+   for (const w of axisWeights) {
+      const c = centroid[w.axisId] || 0
+      total += c * w.weight
+      weightSum += Math.abs(w.weight)
+   }
+
+   return weightSum > 0 ? total / weightSum : null
+}
+
+export function centroidAlignedAnswerValue(question: Question, centroid: IdeologyLabel['centroid']): number {
+   if (question.responseType === 'statementChoice') {
+      const statementOptions = question.statementOptions
+
+      if (!statementOptions) {
+         throw new Error(`statementChoice question ${question.id} is missing statementOptions`)
+      }
+
+      if (statementOptions.length === 0) {
+         throw new Error(`statementChoice question ${question.id} has no statementOptions`)
+      }
+
+      let bestIndex = -1
+      let bestScore = Number.NEGATIVE_INFINITY
+
+      statementOptions.forEach((option, index) => {
+         const score = centroidAlignmentScore(option.axisWeights, centroid)
+         if (score !== null && score > bestScore) {
+            bestIndex = index
+            bestScore = score
+         }
+      })
+
+      if (bestIndex < 0) {
+         throw new Error(`statementChoice question ${question.id} has no scorable statementOptions`)
+      }
+
+      return bestIndex
+   }
+
+   const score = centroidAlignmentScore(question.axisWeights, centroid)
+   return score === null ? 0 : Math.sign(score) * 3
+}
+
 function createCentroidAlignedFixture(targetLabel: IdeologyLabel): AnswerMap {
    const answers: AnswerMap = {}
    const centroid = targetLabel.centroid
 
    for (const q of questions) {
-      let total = 0
-      let weightSum = 0
-      for (const w of q.axisWeights) {
-         const c = centroid[w.axisId] || 0
-         total += c * w.weight
-         weightSum += Math.abs(w.weight)
-      }
-      if (weightSum > 0) {
-         const avg = total / weightSum
-         const val = Math.sign(avg) * 3
-         answers[q.id] = {
-            questionId: q.id,
-            value: val as number
-         }
-      } else {
-         answers[q.id] = { questionId: q.id, value: 0 }
+      answers[q.id] = {
+         questionId: q.id,
+         value: centroidAlignedAnswerValue(q, centroid),
       }
    }
    return answers

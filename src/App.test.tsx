@@ -210,9 +210,44 @@ describe('App', () => {
       }
 
       // Each group lists at least one label with a percentage match.
-      const firstGroupLabels = groups[0].querySelectorAll('.label-list li')
-      expect(firstGroupLabels.length).toBeGreaterThanOrEqual(1)
+      const firstGroupCards = groups[0].querySelectorAll('.label-card')
+      expect(firstGroupCards.length).toBeGreaterThanOrEqual(1)
       expect(groups[0].textContent ?? '').toMatch(/%/)
+   })
+
+   it('keeps the full label browser collapsed by default and searches label metadata', () => {
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      window.history.replaceState(null, '', `/#r=${encoded}`)
+
+      render(<App />)
+
+      const browser = document.querySelector<HTMLDetailsElement>('.full-label-browser')
+      expect(browser).toBeInTheDocument()
+      expect(browser!.open).toBe(false)
+
+      fireEvent.click(screen.getByText(/browse all ideology labels/i))
+      expect(browser!.open).toBe(true)
+
+      fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
+         target: { value: 'Marxism' },
+      })
+
+      expect(screen.getByText(/showing \d+ labels/i)).toBeInTheDocument()
+      expect(document.querySelectorAll('.full-label-browser .label-card').length).toBeGreaterThan(0)
+      expect(document.querySelector('.full-label-browser')?.textContent ?? '').toMatch(/Marxism/i)
+   })
+
+   it('renders a compact per-layer Philosophy Explorer with affected axes', () => {
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      window.history.replaceState(null, '', `/#r=${encoded}`)
+
+      render(<App />)
+
+      expect(screen.getByRole('heading', { name: /philosophy explorer/i })).toBeInTheDocument()
+      expect(document.querySelectorAll('.philosophy-card').length).toBeGreaterThan(0)
+      expect(document.querySelectorAll('.philosophy-explorer .axis-chip').length).toBeGreaterThan(0)
+      const renderedLayers = Array.from(document.querySelectorAll('.philosophy-layer h3')).map((heading) => heading.textContent)
+      expect(renderedLayers.length).toBeGreaterThanOrEqual(2)
    })
 
 })

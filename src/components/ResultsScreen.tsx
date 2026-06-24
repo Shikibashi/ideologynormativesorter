@@ -1,18 +1,38 @@
 import { useState } from 'react'
 import { buildShareUrl } from '../share'
-import type { AnswerMap, Axis, Domain, ResultProfile } from '../types'
+import type { AnswerMap, Axis, AxisId, Domain, LabelMatch, Layer, ResultProfile } from '../types'
+import type { IdeologyLabel } from '../types/label'
 import { AxisBar } from './AxisBar'
 import { CompassPlot } from './CompassPlot'
+
+type LabelWithInfluences = IdeologyLabel & {
+   philosophyInfluences?: Array<{
+      philosophy: string
+      description: string
+      affectedAxes: AxisId[]
+   }>
+}
 
 interface ResultsScreenProps {
    result: ResultProfile
    axes: Axis[]
    domains: Domain[]
+   labels: LabelWithInfluences[]
    answers: AnswerMap
    compareResult?: ResultProfile | null
    onRestart: () => void
 }
 
+interface PhilosophyRow {
+   philosophy: string
+   layer: Layer
+   score: number
+   axisIds: AxisId[]
+   labelNames: string[]
+   descriptions: string[]
+}
+
+const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
 
 function formatFamilyName(family: string): string {
    return family
@@ -28,17 +48,130 @@ function topConfidence(subfamilies: Record<string, { confidence: number }[]>): n
    }
    return best
 }
+
 const LAYER_TITLES = {
    normative: 'Normative profile — what you believe is morally legitimate',
    descriptive: 'Descriptive profile — what you believe is empirically true',
    prescriptive: 'Prescriptive profile — what you think should be done now',
 } as const
 
-export function ResultsScreen({ result, axes, domains, answers, compareResult, onRestart }: ResultsScreenProps) {
+const LAYER_LABELS: Record<Layer, string> = {
+   normative: 'Normative',
+   descriptive: 'Descriptive',
+   prescriptive: 'Prescriptive',
+}
+
+function scoreByAxis(result: ResultProfile): Map<AxisId, number> {
+   const entries = LAYERS.flatMap((layer) => result.scores[layer].map((score) => [score.axisId, score.normalized] as const))
+   return new Map(entries)
+}
+
+function alignment(score: number, centroid: number): number {
+   return Math.max(0, 1 - Math.abs(score - centroid) / 2)
+}
+
+function topPhilosophyRows(result: ResultProfile, labels: LabelWithInfluences[], axes: Axis[]): PhilosophyRow[] {
+   const labelById = new Map(labels.map((label) => [label.id, label]))
+   const axisById = new Map(axes.map((axis) => [axis.id, axis]))
+   const userScores = scoreByAxis(result)
+   const conflationByLabel = new Map(result.conflatedLabels.map((flag) => [flag.labelId, flag]))
+   const rows = new Map<string, PhilosophyRow>()
+
+   for (const match of result.nearestLabels) {
+      const label = labelById.get(match.labelId)
+      if (!label?.philosophyInfluences) continue
+      const conflation = conflationByLabel.get(match.labelId)
+
+      for (const influence of label.philosophyInfluences) {
+         for (const layer of LAYERS) {
+            const axisIds = influence.affectedAxes.filter((axisId) => axisById.get(axisId)?.layer === layer)
+            if (axisIds.length === 0) continue
+
+            const axisAlignments = axisIds.map((axisId) => alignment(userScores.get(axisId) ?? 0, label.centroid[axisId] ?? 0))
+            const meanAlignment = axisAlignments.reduce((sum, value) => sum + value, 0) / axisAlignments.length
+            const layerAgreement = conflation?.layerAgreement[layer] ?? match.confidence
+            const score = match.confidence * layerAgreement * meanAlignment
+            const key = `${layer}:${influence.philosophy}`
+            const existing = rows.get(key)
+
+            if (existing) {
+               existing.score += score
+               existing.axisIds = Array.from(new Set([...existing.axisIds, ...axisIds]))
+               existing.labelNames = Array.from(new Set([...existing.labelNames, label.name]))
+               existing.descriptions = Array.from(new Set([...existing.descriptions, influence.description]))
+            } else {
+               rows.set(key, {
+                  philosophy: influence.philosophy,
+                  layer,
+                  score,
+                  axisIds,
+                  labelNames: [label.name],
+                  descriptions: [influence.description],
+               })
+            }
+         }
+      }
+   }
+
+   return LAYERS.flatMap((layer) =>
+      Array.from(rows.values())
+         .filter((row) => row.layer === layer)
+         .sort((a, b) => b.score - a.score)
+         .slice(0, 5),
+   )
+}
+
+function groupLabels(labels: LabelWithInfluences[]): Record<string, Record<string, LabelWithInfluences[]>> {
+   const grouped: Record<string, Record<string, LabelWithInfluences[]>> = {}
+   for (const label of labels) {
+      const family = label.family
+      const subfamily = label.subfamily ?? label.family
+      grouped[family] ??= {}
+      grouped[family][subfamily] ??= []
+      grouped[family][subfamily].push(label)
+   }
+   return grouped
+}
+
+function labelMatchesSearch(label: LabelWithInfluences, query: string): boolean {
+   if (!query) return true
+   const haystack = [
+      label.name,
+      label.family,
+      label.subfamily,
+      label.description,
+      ...(label.aliases ?? []),
+      ...(label.philosophies ?? []),
+   ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase()
+   return haystack.includes(query.toLowerCase())
+}
+
+function LabelCard({ label, match }: { label: LabelWithInfluences; match?: LabelMatch }) {
+   return (
+      <article className="label-card">
+         <h5>{label.name}</h5>
+         {match && <p className="muted">{Math.round(match.confidence * 100)}% match</p>}
+         <p>{label.description}</p>
+         {label.philosophies && label.philosophies.length > 0 && (
+            <p className="muted">Philosophies: {label.philosophies.slice(0, 5).join(', ')}</p>
+         )}
+      </article>
+   )
+}
+
+export function ResultsScreen({ result, axes, domains, labels, answers, compareResult, onRestart }: ResultsScreenProps) {
    const axisById = new Map(axes.map((a) => [a.id, a]))
    const domainById = new Map(domains.map((d) => [d.id, d]))
+   const nearestById = new Map(result.nearestLabels.map((match) => [match.labelId, match]))
+   const philosophyRows = topPhilosophyRows(result, labels, axes)
    const [copied, setCopied] = useState(false)
    const [compareUrlInput, setCompareUrlInput] = useState('')
+   const [labelSearch, setLabelSearch] = useState('')
+   const visibleLabels = labels.filter((label) => labelMatchesSearch(label, labelSearch))
+   const groupedLabels = groupLabels(visibleLabels)
 
    function handleCopyLink() {
       const meta = result.bankVersion ? { bankVersion: result.bankVersion, scoringVersion: result.scoringVersion } : undefined
@@ -97,7 +230,7 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, o
             <h2>Compass</h2>
             <CompassPlot scores={result.scores} compareScores={compareResult?.scores} />
          </div>
-         {(['normative', 'descriptive', 'prescriptive'] as const).map((layer) => (
+         {LAYERS.map((layer) => (
             <div className="result-block" key={layer}>
                <h2>{LAYER_TITLES[layer]}</h2>
                <div className="axis-bar-list">
@@ -113,7 +246,7 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, o
             <div className="result-block">
                <h2>Axis comparison</h2>
                <p className="muted">Your axis scores (left) vs compared profile (right).</p>
-               {(['normative', 'descriptive', 'prescriptive'] as const).map((layer) => (
+               {LAYERS.map((layer) => (
                   <div key={layer}>
                      <h3 style={{ textTransform: 'capitalize' }}>{layer}</h3>
                      <div className="axis-bar-list">
@@ -154,32 +287,66 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, o
             </div>
          )}
 
+         {philosophyRows.length > 0 && (
+            <div className="result-block philosophy-explorer">
+               <h2>Philosophy Explorer</h2>
+               <p className="muted">
+                  Top philosophy influences from your nearest labels, grouped by the layer and axes where your scores align.
+               </p>
+               {LAYERS.map((layer) => {
+                  const rows = philosophyRows.filter((row) => row.layer === layer)
+                  if (rows.length === 0) return null
+                  return (
+                     <div key={layer} className="philosophy-layer">
+                        <h3>{LAYER_LABELS[layer]}</h3>
+                        <div className="philosophy-list">
+                           {rows.map((row) => (
+                              <article key={`${row.layer}:${row.philosophy}`} className="philosophy-card">
+                                 <h4>{row.philosophy}</h4>
+                                 <p>{row.descriptions[0]}</p>
+                                 <p className="muted">Seen in: {row.labelNames.slice(0, 3).join(', ')}</p>
+                                 <div className="axis-chip-list">
+                                    {row.axisIds.map((axisId) => {
+                                       const axis = axisById.get(axisId)
+                                       const score = result.scores[layer].find((s) => s.axisId === axisId)
+                                       return axis ? (
+                                          <span key={axisId} className="axis-chip">
+                                             {axis.name}: {score ? score.normalized.toFixed(2) : '0.00'}
+                                          </span>
+                                       ) : null
+                                    })}
+                                 </div>
+                              </article>
+                           ))}
+                        </div>
+                     </div>
+                  )
+               })}
+            </div>
+         )}
+
          <div className="result-block">
             <h2>Nearest ideology labels</h2>
             {result.familySubtree && Object.keys(result.familySubtree).length > 0 ? (
                Object.entries(result.familySubtree)
                   .sort((a, b) => topConfidence(b[1]) - topConfidence(a[1]))
                   .map(([family, subfamilies]) => (
-                     <div key={family} className="family-group">
-                        <h3 className="family-name">{formatFamilyName(family)}</h3>
+                     <details key={family} className="family-group" open>
+                        <summary className="family-name">{formatFamilyName(family)}</summary>
                         {Object.entries(subfamilies)
                            .sort((a, b) => (b[1][0]?.confidence ?? 0) - (a[1][0]?.confidence ?? 0))
                            .map(([subfamily, matches]) => (
-                              <div key={subfamily} className="subfamily-group">
-                                 {subfamily !== family && (
-                                    <h4 className="subfamily-name">{formatFamilyName(subfamily)}</h4>
-                                 )}
-                                 <ol className="label-list">
-                                    {matches.map((match) => (
-                                       <li key={match.labelId}>
-                                          {match.name}{' '}
-                                          <span className="muted">({Math.round(match.confidence * 100)}% match)</span>
-                                       </li>
-                                    ))}
-                                 </ol>
-                              </div>
+                              <details key={subfamily} className="subfamily-group" open>
+                                 <summary className="subfamily-name">{subfamily !== family ? formatFamilyName(subfamily) : 'Top matches'}</summary>
+                                 <div className="label-card-list">
+                                    {matches.map((match) => {
+                                       const label = labels.find((l) => l.id === match.labelId)
+                                       return label ? <LabelCard key={match.labelId} label={label} match={match} /> : null
+                                    })}
+                                 </div>
+                              </details>
                            ))}
-                     </div>
+                     </details>
                   ))
             ) : (
                <ol className="label-list">
@@ -192,6 +359,43 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, o
             )}
          </div>
 
+         <details className="result-block full-label-browser">
+            <summary>
+               <h2>Browse all ideology labels</h2>
+            </summary>
+            <p className="muted">Search all {labels.length} labels by name, family, subfamily, aliases, or philosophy.</p>
+            <input
+               type="search"
+               className="label-search-input"
+               value={labelSearch}
+               onChange={(e) => setLabelSearch(e.target.value)}
+               placeholder="Search labels, families, aliases, philosophies..."
+               aria-label="Search ideology labels"
+            />
+            <p className="muted">Showing {visibleLabels.length} labels.</p>
+            {Object.entries(groupedLabels)
+               .sort(([a], [b]) => formatFamilyName(a).localeCompare(formatFamilyName(b)))
+               .map(([family, subfamilies]) => (
+                  <details key={family} className="family-group">
+                     <summary className="family-name">{formatFamilyName(family)}</summary>
+                     {Object.entries(subfamilies)
+                        .sort(([a], [b]) => formatFamilyName(a).localeCompare(formatFamilyName(b)))
+                        .map(([subfamily, familyLabels]) => (
+                           <details key={subfamily} className="subfamily-group">
+                              <summary className="subfamily-name">{subfamily !== family ? formatFamilyName(subfamily) : 'Labels'}</summary>
+                              <div className="label-card-list">
+                                 {familyLabels
+                                    .slice()
+                                    .sort((a, b) => a.name.localeCompare(b.name))
+                                    .map((label) => (
+                                       <LabelCard key={label.id} label={label} match={nearestById.get(label.id)} />
+                                    ))}
+                              </div>
+                           </details>
+                        ))}
+                  </details>
+               ))}
+         </details>
 
          {result.conflatedLabels.length > 0 && (
             <div className="result-block">
@@ -204,7 +408,7 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, o
                      <li key={flag.labelId}>
                         {flag.reason}
                         <span className="layer-agreement">
-                           {(['normative', 'descriptive', 'prescriptive'] as const).map((layer) => (
+                           {LAYERS.map((layer) => (
                               <span
                                  key={layer}
                                  className={layer === flag.matchedLayer ? 'layer-chip matched' : 'layer-chip'}
@@ -218,8 +422,6 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, o
                </ul>
             </div>
          )}
-
-
 
          <p className="muted">
             If you found this tool useful, consider starring{' '}

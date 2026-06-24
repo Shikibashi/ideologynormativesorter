@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { axes } from '../data/axes'
 import { labels } from '../data/labels'
 import { questions } from '../data/questions'
-import { allCalibrationFixtures } from './calibration.fixtures'
+import { allCalibrationFixtures, centroidAlignedAnswerValue } from './calibration.fixtures'
 import { buildResultProfile } from './index'
 
 const ALL_SCORABLE = questions
@@ -30,10 +30,71 @@ describe('calibration fixtures (centroid reflexivity)', () => {
          const ids = result.nearestLabels.map((l) => l.labelId)
          expect(ids).toContain(fixture.expectedLabelIds[0])
          const own = result.nearestLabels.find((l) => l.labelId === fixture.expectedLabelIds[0])!
-         expect(own.confidence).toBeGreaterThanOrEqual(0.4)
+         expect(own.confidence).toBeGreaterThanOrEqual(fixture.minConfidence)
          expect(result.nearestLabels[0].confidence - own.confidence).toBeLessThanOrEqual(0.06)
       })
    }
+})
+
+describe('centroid-aligned statementChoice answers', () => {
+   it('chooses the option whose axis weights best match the target centroid', () => {
+      const propertyQuestion = questions.find((q) => q.id === 'sq02')!
+
+      expect(
+         centroidAlignedAnswerValue(propertyQuestion, {
+            'property-legitimacy': -1,
+            'equality-theory': 1,
+         }),
+      ).toBe(1)
+   })
+
+   it('rejects missing statementOptions', () => {
+      const propertyQuestion = questions.find((q) => q.id === 'sq02')!
+
+      expect(() =>
+         centroidAlignedAnswerValue(
+            { ...propertyQuestion, statementOptions: undefined },
+            {
+               'property-legitimacy': -1,
+               'equality-theory': 1,
+            },
+         ),
+      ).toThrow(/statementOptions/)
+   })
+
+   it('rejects empty statementOptions', () => {
+      const propertyQuestion = questions.find((q) => q.id === 'sq02')!
+
+      expect(() =>
+         centroidAlignedAnswerValue(
+            { ...propertyQuestion, statementOptions: [] },
+            {
+               'property-legitimacy': -1,
+               'equality-theory': 1,
+            },
+         ),
+      ).toThrow(/statementOptions/)
+   })
+
+   it('rejects statementOptions with no scorable options', () => {
+      const propertyQuestion = questions.find((q) => q.id === 'sq02')!
+
+      expect(() =>
+         centroidAlignedAnswerValue(
+            {
+               ...propertyQuestion,
+               statementOptions: propertyQuestion.statementOptions!.map((option) => ({
+                  ...option,
+                  axisWeights: [],
+               })),
+            },
+            {
+               'property-legitimacy': -1,
+               'equality-theory': 1,
+            },
+         ),
+      ).toThrow(/scorable statementOptions/)
+   })
 })
 
 /**

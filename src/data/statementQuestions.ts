@@ -446,4 +446,241 @@ export const statementQuestions: Question[] = [
       },
     ],
   },
+  {
+    id: 'sq13',
+    prompt: 'Which claim about property and markets comes closest to your view?',
+    domain: 'property-ownership',
+    layer: 'normative',
+    theoryContext: 'mixed',
+    responseType: 'statementChoice',
+    tier: 'moderate',
+    axisWeights: [],
+    statementOptions: [
+      {
+        id: 'a',
+        text: 'Strong private title is the normal moral baseline for productive property.',
+        axisWeights: [
+          { axisId: 'property-legitimacy', weight: 0.9 },
+          { axisId: 'equality-theory', weight: -0.4 },
+        ],
+      },
+      {
+        id: 'b',
+        text: 'Markets can be legitimate only when freed from state-backed privilege, rent, and monopoly.',
+        axisWeights: [
+          { axisId: 'property-legitimacy', weight: -0.2 },
+          { axisId: 'anti-domination', weight: 0.8 },
+        ],
+      },
+      {
+        id: 'c',
+        text: 'Land and natural opportunities should be treated differently from things people actually produce.',
+        axisWeights: [
+          { axisId: 'property-legitimacy', weight: -0.5 },
+          { axisId: 'equality-theory', weight: 0.4 },
+        ],
+      },
+      {
+        id: 'd',
+        text: 'Collective or cooperative ownership is morally superior for productive capital.',
+        axisWeights: [
+          { axisId: 'property-legitimacy', weight: -0.9 },
+          { axisId: 'equality-theory', weight: 0.8 },
+          { axisId: 'anti-domination', weight: 0.4 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sq14',
+    prompt: 'Which revolutionary or reform strategy seems most justified under non-ideal conditions?',
+    domain: 'strategy-change',
+    layer: 'prescriptive',
+    theoryContext: 'nonideal',
+    responseType: 'statementChoice',
+    tier: 'moderate',
+    priorityPrompt: REFORM_PRIORITY_PROMPT,
+    axisWeights: [],
+    statementOptions: [
+      {
+        id: 'a',
+        text: 'Build power through elections and durable reforms inside existing institutions.',
+        axisWeights: [
+          { axisId: 'reform-vs-revolution', weight: -0.8 },
+          { axisId: 'electoralism-vs-direct-action', weight: 0.8 },
+          { axisId: 'compromise-vs-persistence', weight: 0.5 },
+        ],
+      },
+      {
+        id: 'b',
+        text: 'Use federated councils and assemblies to replace both capitalism and state bureaucracy.',
+        axisWeights: [
+          { axisId: 'centralization-preference', weight: -0.8 },
+          { axisId: 'reform-vs-revolution', weight: 0.7 },
+          { axisId: 'electoralism-vs-direct-action', weight: -0.7 },
+        ],
+      },
+      {
+        id: 'c',
+        text: 'Organized labor and direct industrial action should be the main lever of transformation.',
+        axisWeights: [
+          { axisId: 'electoralism-vs-direct-action', weight: -0.9 },
+          { axisId: 'centralization-preference', weight: -0.5 },
+          { axisId: 'compromise-vs-persistence', weight: -0.4 },
+        ],
+      },
+      {
+        id: 'd',
+        text: 'A disciplined revolutionary organization must coordinate the transition and hold power through it.',
+        axisWeights: [
+          { axisId: 'centralization-preference', weight: 0.8 },
+          { axisId: 'reform-vs-revolution', weight: 0.8 },
+          { axisId: 'coercion-strategy', weight: 0.4 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sq15',
+    prompt: 'Which account of national identity is closest to yours?',
+    domain: 'national-identity-sovereignty',
+    layer: 'normative',
+    theoryContext: 'mixed',
+    responseType: 'statementChoice',
+    tier: 'moderate',
+    axisWeights: [],
+    statementOptions: [
+      {
+        id: 'a',
+        text: 'A nation is an inclusive civic project open to anyone committed to its laws and institutions.',
+        axisWeights: [
+          { axisId: 'political-community-boundary', weight: 0.6 },
+          { axisId: 'moral-traditionalism', weight: -0.3 },
+        ],
+      },
+      {
+        id: 'b',
+        text: 'A nation is rooted in inherited peoplehood, ancestry, and cultural continuity.',
+        axisWeights: [
+          { axisId: 'political-community-boundary', weight: -0.8 },
+          { axisId: 'moral-traditionalism', weight: 0.7 },
+        ],
+      },
+      {
+        id: 'c',
+        text: 'A nation should be organized around a shared religious civilization and public moral order.',
+        axisWeights: [
+          { axisId: 'political-community-boundary', weight: -0.7 },
+          { axisId: 'secularism-religious', weight: 0.9 },
+          { axisId: 'moral-traditionalism', weight: 0.8 },
+        ],
+      },
+      {
+        id: 'd',
+        text: 'National self-determination matters mainly as a shield against empire and external domination.',
+        axisWeights: [
+          { axisId: 'political-community-boundary', weight: 0.1 },
+          { axisId: 'anti-domination', weight: 0.7 },
+          { axisId: 'authority-legitimacy', weight: -0.3 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sq16',
+    prompt: 'Which empirical claim about ecological transition seems most plausible?',
+    domain: 'environment-climate-growth',
+    layer: 'descriptive',
+    theoryContext: 'mixed',
+    responseType: 'statementChoice',
+    tier: 'moderate',
+    axisWeights: [],
+    statementOptions: [
+      {
+        id: 'a',
+        text: 'Expert-led technological deployment can decouple growth from ecological damage.',
+        axisWeights: [
+          { axisId: 'expert-confidence', weight: 0.8 },
+          { axisId: 'state-capacity-confidence', weight: 0.4 },
+          { axisId: 'market-process-confidence', weight: 0.3 },
+        ],
+      },
+      {
+        id: 'b',
+        text: 'Markets will mostly greenwash unless hard public limits force a real transition.',
+        axisWeights: [
+          { axisId: 'market-process-confidence', weight: -0.8 },
+          { axisId: 'state-capacity-confidence', weight: 0.5 },
+          { axisId: 'public-choice-skepticism', weight: 0.3 },
+        ],
+      },
+      {
+        id: 'c',
+        text: 'Central ecological planning can coordinate sacrifices that markets and localism cannot.',
+        axisWeights: [
+          { axisId: 'state-capacity-confidence', weight: 0.8 },
+          { axisId: 'coordination-optimism', weight: -0.4 },
+          { axisId: 'expert-confidence', weight: 0.5 },
+        ],
+      },
+      {
+        id: 'd',
+        text: 'Durable ecological change depends more on local cultural adaptation than national technocratic plans.',
+        axisWeights: [
+          { axisId: 'cultural-plasticity', weight: -0.5 },
+          { axisId: 'coordination-optimism', weight: 0.7 },
+          { axisId: 'state-capacity-confidence', weight: -0.4 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sq17',
+    prompt: 'Which libertarian-leaning strategy for public goods and law is closest to yours?',
+    domain: 'state-legitimacy',
+    layer: 'prescriptive',
+    theoryContext: 'nonideal',
+    responseType: 'statementChoice',
+    tier: 'extensive',
+    priorityPrompt: REFORM_PRIORITY_PROMPT,
+    axisWeights: [],
+    statementOptions: [
+      {
+        id: 'a',
+        text: 'Keep a minimal state for courts, police, and defense, but remove most other state activity.',
+        axisWeights: [
+          { axisId: 'centralization-preference', weight: -0.3 },
+          { axisId: 'state-action-vs-exit', weight: 0.2 },
+          { axisId: 'regulation-vs-deregulation', weight: -0.8 },
+        ],
+      },
+      {
+        id: 'b',
+        text: 'Replace state functions with voluntary private arbitration, defense, and contract institutions.',
+        axisWeights: [
+          { axisId: 'centralization-preference', weight: -0.9 },
+          { axisId: 'state-action-vs-exit', weight: -0.9 },
+          { axisId: 'regulation-vs-deregulation', weight: -0.8 },
+        ],
+      },
+      {
+        id: 'c',
+        text: 'Undermine the state through counter-economics and parallel institutions rather than formal politics.',
+        axisWeights: [
+          { axisId: 'state-action-vs-exit', weight: -0.9 },
+          { axisId: 'electoralism-vs-direct-action', weight: -0.8 },
+          { axisId: 'compromise-vs-persistence', weight: -0.5 },
+        ],
+      },
+      {
+        id: 'd',
+        text: 'Use a state-administered land-value tax to fund common goods while leaving other exchange mostly free.',
+        axisWeights: [
+          { axisId: 'redistribution-vs-predistribution', weight: -0.8 },
+          { axisId: 'state-action-vs-exit', weight: 0.4 },
+          { axisId: 'regulation-vs-deregulation', weight: -0.4 },
+        ],
+      },
+    ],
+  },
 ]

@@ -101,6 +101,7 @@ function App() {
          result={result}
          axes={axes}
          domains={domains}
+         labels={labels}
          answers={answers}
          compareResult={compareResult}
          onRestart={handleRestart}

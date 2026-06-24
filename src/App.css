@@ -308,6 +308,75 @@
   content: "\2713 ";
 }
 
+
+.family-group {
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.family-name,
+.subfamily-name,
+.full-label-browser summary {
+  cursor: pointer;
+}
+
+.label-card-list,
+.philosophy-list {
+  display: grid;
+  gap: 10px;
+  margin: 10px 0 14px;
+}
+
+.label-card,
+.philosophy-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--social-bg);
+  padding: 10px 12px;
+}
+
+.label-card h5,
+.philosophy-card h4 {
+  margin: 0 0 4px;
+}
+
+.label-card p,
+.philosophy-card p {
+  margin: 4px 0;
+}
+
+.philosophy-layer {
+  margin-top: 12px;
+}
+
+.axis-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.axis-chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.78rem;
+}
+
+.full-label-browser summary h2 {
+  display: inline;
+}
+
+.label-search-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 8px 0;
+  background: var(--bg);
+  color: var(--text);
+}
 .module-list {
   list-style: none;
   padding: 0;
