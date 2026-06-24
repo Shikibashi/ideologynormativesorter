@@ -1,7 +1,7 @@
-import type { Answer, AnswerMap, Axis, FactionModule, IdeologyLabel, LabelMatch, ModuleSubtype, Question, QuestionId, ResultProfile, AxisReliability, LabelReliability, Contribution } from '../types'
+import type { Answer, AnswerMap, Axis, IdeologyLabel, LabelMatch, Question, QuestionId, ResultProfile, AxisReliability, LabelReliability, Contribution } from '../types'
 import { computeScoreBreakdown } from './aggregate'
 import { computeIdealNonIdealGaps } from './gap'
-import { computeConflatedLabels, computeLabelMatches, computeModuleSubtype } from './labelMatch'
+import { computeConflatedLabels, computeLabelMatches } from './labelMatch'
 import { detectDivergencesAndContradictions } from './divergence'
 import { computeDomainMiniResults } from './domainResults'
 import { computeReasonBreakdowns } from './reasonDecomposition'
@@ -13,15 +13,14 @@ import { QUESTION_BANK_VERSION, SCORING_VERSION } from '../data/questions'
 export { normalizeAnswer, salienceFactor } from './normalize'
 export { computeAxisScores, computeScoreBreakdown, axisScoreMap } from './aggregate'
 export { computeIdealNonIdealGaps } from './gap'
-export { computeConflatedLabels, computeLabelMatches, computeModuleSubtype } from './labelMatch'
-export { suggestModules } from './moduleSuggestions'
+export { computeConflatedLabels, computeLabelMatches } from './labelMatch'
 export { reliabilityForAxis, reliabilityForLabel } from './reliability'
 export { contributionsForAxis } from './explain'
 export { detectDivergencesAndContradictions } from './divergence'
 export { computeDomainMiniResults } from './domainResults'
 export { computeReasonBreakdowns } from './reasonDecomposition'
 
-export function buildResultProfile(questions: Question[], answers: AnswerMap, axes: Axis[], labels: IdeologyLabel[], completedModules: FactionModule[] = []): ResultProfile {
+export function buildResultProfile(questions: Question[], answers: AnswerMap, axes: Axis[], labels: IdeologyLabel[]): ResultProfile {
    const scores = computeScoreBreakdown(questions, answers, axes)
    const gaps = computeIdealNonIdealGaps(questions, answers)
    const nearestLabels = computeLabelMatches(scores, labels)
@@ -64,21 +63,6 @@ export function buildResultProfile(questions: Question[], answers: AnswerMap, ax
       contributions[ax.id] = contributionsForAxis(ax.id, questions, answers)
    }
 
-   const moduleSubtypes: Record<string, ModuleSubtype> = {}
-   for (const module of completedModules) {
-      const subtype = computeModuleSubtype(scores, module.subtypeLabelIds, labels)
-      if (!subtype) continue
-      moduleSubtypes[module.id] = {
-         moduleId: module.id,
-         moduleName: module.name,
-         labelId: subtype.labelId,
-         name: subtype.name,
-         confidence: subtype.confidence,
-         runnerUpId: subtype.runnerUpId,
-         margin: subtype.margin,
-      }
-   }
-
    return {
       scores,
       gaps,
@@ -94,7 +78,6 @@ export function buildResultProfile(questions: Question[], answers: AnswerMap, ax
       scoringVersion: SCORING_VERSION,
       familyTree,
       familySubtree,
-      moduleSubtypes,
    }
 }
 

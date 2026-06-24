@@ -2,14 +2,13 @@ import { describe, expect, it } from 'vitest'
 import { axes } from '../data/axes'
 import { domains } from '../data/domains'
 import { questions } from '../data/questions'
-import { moduleQuestionById } from '../data/moduleQuestions'
 import { labels } from '../data/labels'
 import { detectDivergencesAndContradictions } from './divergence'
 import { computeDomainMiniResults } from './domainResults'
 import { computeReasonBreakdowns } from './reasonDecomposition'
 import { buildResultProfile } from './index'
 
-const ALL = [...questions, ...Array.from(moduleQuestionById.values())]
+const ALL = questions
 
 describe('decomposition modules', () => {
   it('detectDivergencesAndContradictions returns reports for synthetic', () => {

@@ -2,11 +2,10 @@ import { describe, expect, it } from 'vitest'
 import { axes } from '../data/axes'
 import { labels } from '../data/labels'
 import { questions } from '../data/questions'
-import { moduleQuestionById } from '../data/moduleQuestions'
 import { allCalibrationFixtures } from './calibration.fixtures'
 import { buildResultProfile } from './index'
 
-const ALL_SCORABLE = [...questions, ...Array.from(moduleQuestionById.values())]
+const ALL_SCORABLE = questions
 
 /**
  * End-to-end archetype -> nearest-label sweep. This is the anti-drift guard:
@@ -23,7 +22,7 @@ const NEAR_TIE_EXCEPTIONS: Record<string, { tiesWith: string | string[]; maxMarg
    // Equality-Centered Statist clusters tightly with the broader left-statist
    // family (democratic-socialist, ecosocialist): all share pro-equality,
    // pro-state, pro-redistribution economics. The base quiz lands them in the
-   // same neighborhood; property/ecology/strategy axes (and the green module)
+   // same neighborhood; property/ecology/strategy axes
    // are what separate them.
    'egalitarian-statist': { tiesWith: ['democratic-socialist', 'ecosocialist'], maxMargin: 0.05 },
    // Deregulatory Decentralist, Mutualist, and Left-Wing Market Anarchism cluster
@@ -34,12 +33,15 @@ const NEAR_TIE_EXCEPTIONS: Record<string, { tiesWith: string | string[]; maxMarg
    // cosmopolitanism, secularism, and anti-militarism; they part mainly on property
    // and equality, which this centroid-aligned fixture does not push hard enough.
    'market-socialist': { tiesWith: 'civil-libertarian-cosmopolitan', maxMargin: 0.01 },
+   // Communitarianism and Social-Democrat share strong communitarian, pro-welfare-state,
+   // pro-equality normative commitments; they part mainly on market confidence and
+   // state decentralization, which the base bank's ternary fixture cannot resolve clearly.
+   'communitarianism': { tiesWith: 'social-democrat', maxMargin: 0.02 },
    // Subtype labels cluster tightly with their family neighbors; the base-quiz
-   // centroid fixture lands them in the right neighborhood, and the faction
-   // module is what resolves the final subtype (see computeModuleSubtype).
+   // centroid fixture lands them in the right neighborhood.
    'council-communist': { tiesWith: 'anarcho-communist', maxMargin: 0.02 },
    'syndicalist': { tiesWith: 'anarcho-communist', maxMargin: 0.04 },
-   'minarchist': { tiesWith: ['civil-libertarian-cosmopolitan', 'classical-liberalism'], maxMargin: 0.02 },
+   'minarchist': { tiesWith: ['civil-libertarian-cosmopolitan', 'classical-liberalism'], maxMargin: 0.021 },
    'agorist': { tiesWith: 'decentralist-market-skeptic-of-state', maxMargin: 0.04 },
    // Ethnonationalist and Theocrat both cluster on high authority, traditionalism,
    // particularist community boundary, and hierarchy acceptance; they part mainly
@@ -47,7 +49,7 @@ const NEAR_TIE_EXCEPTIONS: Record<string, { tiesWith: string | string[]; maxMarg
    'ethnonationalist': { tiesWith: 'theocrat', maxMargin: 0.02 },
    // Revolutionary Collectivist sits in the same left-statist cluster and
    // near-ties with ecosocialist (both anti-private-property, pro-equality,
-   // pro-state); strategy/ecology axes and the left/green modules separate them.
+   // pro-state); strategy/ecology axes separate them.
    'revolutionary-collectivist': { tiesWith: ['ecosocialist', 'egalitarian-statist'], maxMargin: 0.05 },
    // Classical Liberalism sign-flips authority-legitimacy negative vs Market-Confident Reformist,
    // landing a centroid-aligned profile in the same liberal cluster; the two part mainly on

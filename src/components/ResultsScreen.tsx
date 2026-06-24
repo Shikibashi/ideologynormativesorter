@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { buildShareUrl } from '../share'
-import type { AnswerMap, Axis, Domain, FactionModule, ResultProfile } from '../types'
+import type { AnswerMap, Axis, Domain, ResultProfile } from '../types'
 import { AxisBar } from './AxisBar'
 import { CompassPlot } from './CompassPlot'
 
@@ -10,8 +10,6 @@ interface ResultsScreenProps {
    domains: Domain[]
    answers: AnswerMap
    compareResult?: ResultProfile | null
-   suggestedModules: FactionModule[]
-   onStartModule: (module: FactionModule) => void
    onRestart: () => void
 }
 
@@ -36,7 +34,7 @@ const LAYER_TITLES = {
    prescriptive: 'Prescriptive profile — what you think should be done now',
 } as const
 
-export function ResultsScreen({ result, axes, domains, answers, compareResult, suggestedModules, onStartModule, onRestart }: ResultsScreenProps) {
+export function ResultsScreen({ result, axes, domains, answers, compareResult, onRestart }: ResultsScreenProps) {
    const axisById = new Map(axes.map((a) => [a.id, a]))
    const domainById = new Map(domains.map((d) => [d.id, d]))
    const [copied, setCopied] = useState(false)
@@ -194,24 +192,6 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, s
             )}
          </div>
 
-         {result.moduleSubtypes && Object.keys(result.moduleSubtypes).length > 0 && (
-            <div className="result-block">
-               <h2>Resolved subtypes</h2>
-               <p className="muted">
-                  Your depth-module answers narrowed each broad cluster to a specific current.
-               </p>
-               <ul className="subtype-list">
-                  {Object.values(result.moduleSubtypes).map((subtype) => (
-                     <li key={subtype.moduleId}>
-                        <strong>{subtype.name}</strong>{' '}
-                        <span className="muted">
-                           ({Math.round(subtype.confidence * 100)}% — {subtype.moduleName})
-                        </span>
-                     </li>
-                  ))}
-               </ul>
-            </div>
-         )}
 
          {result.conflatedLabels.length > 0 && (
             <div className="result-block">
@@ -239,19 +219,6 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, s
             </div>
          )}
 
-         {suggestedModules.length > 0 && (
-            <div className="result-block">
-               <h2>Optional follow-up modules</h2>
-               <p className="muted">These modules dig deeper into a particular cluster of views.</p>
-               <div className="module-list">
-                  {suggestedModules.map((m) => (
-                     <button key={m.id} type="button" className="scale-button" onClick={() => onStartModule(m)}>
-                        {m.name}
-                     </button>
-                  ))}
-               </div>
-            </div>
-         )}
 
 
          <p className="muted">

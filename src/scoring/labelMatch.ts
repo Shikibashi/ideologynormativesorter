@@ -53,45 +53,6 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
    return matches.slice(0, NEAREST_LABEL_COUNT)
 }
 
-/**
- * Resolves a faction module to its nearest sub-label. Given the
- * module-enriched score breakdown and the module's candidate subtypeLabelIds,
- * this ranks ONLY those candidate labels by full-vector centroid distance and
- * returns the best match plus the runner-up margin. This is what turns a broad
- * cluster match (e.g. "socialist") into a resolved subtype (e.g. "Council
- * Communist") using the extra signal from the module's own questions.
- */
-export function computeModuleSubtype(
-   breakdown: ScoreBreakdown,
-   subtypeLabelIds: string[],
-   labels: IdeologyLabel[],
-): { labelId: string; name: string; confidence: number; runnerUpId: string | null; margin: number } | null {
-   const candidates = labels.filter((l) => subtypeLabelIds.includes(l.id))
-   if (candidates.length === 0) return null
-
-   const ranked = computeAllMatches(breakdown, candidates)
-   const best = ranked[0]
-   const runnerUp = ranked[1] ?? null
-   return {
-      labelId: best.labelId,
-      name: best.name,
-      confidence: best.confidence,
-      runnerUpId: runnerUp ? runnerUp.labelId : null,
-      margin: runnerUp ? best.confidence - runnerUp.confidence : best.confidence,
-   }
-}
-
-/** Ranks every supplied label by ascending distance (no top-N slice). */
-function computeAllMatches(breakdown: ScoreBreakdown, labels: IdeologyLabel[]): LabelMatch[] {
-   const scoreMap = normalizedScoreMap(breakdown)
-   return labels
-      .map((label) => {
-         const axisIds = Object.keys(label.centroid) as AxisId[]
-         const distance = distanceOver(scoreMap, label, axisIds)
-         return { labelId: label.id, name: label.name, distance, confidence: closeness(distance, axisIds.length) }
-      })
-      .sort((a, b) => a.distance - b.distance)
-}
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
 
 const LAYER_NOUN: Record<Layer, string> = {

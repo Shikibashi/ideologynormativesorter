@@ -2,10 +2,8 @@ import { describe, expect, it } from 'vitest'
 import type { Layer, QuizTier } from '../types'
 import { axes, axisById } from './axes'
 import { domainById, domains } from './domains'
-import { factionModules } from './factionModules'
-import { labelById, labels } from './labels'
-import { moduleQuestionById, moduleQuestions } from './moduleQuestions'
-import { questionById, questions, questionsForTier } from './questions'
+import { labels } from './labels'
+import { questions, questionsForTier } from './questions'
 
 const TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
 
@@ -161,55 +159,4 @@ describe('labels', () => {
    })
 })
 
-describe('moduleQuestions', () => {
-   it('has no duplicate ids and no overlap with the main bank', () => {
-      expect(new Set(moduleQuestions.map((q) => q.id)).size).toBe(moduleQuestions.length)
-      for (const q of moduleQuestions) {
-         expect(questionById.has(q.id), `${q.id} collides with a main-bank question id`).toBe(false)
-      }
-   })
 
-   it('only references domains and same-layer axes that exist', () => {
-      for (const question of moduleQuestions) {
-         expect(domainById.has(question.domain), `${question.id} references unknown domain ${question.domain}`).toBe(true)
-         for (const weight of question.axisWeights) {
-            const axis = axisById.get(weight.axisId)
-            expect(axis, `${question.id} references unknown axis ${weight.axisId}`).toBeDefined()
-            expect(axis!.layer).toBe(question.layer)
-         }
-      }
-   })
-})
-
-describe('factionModules', () => {
-   it('every triggerLabelId resolves to a real label', () => {
-      for (const module of factionModules) {
-         for (const labelId of module.triggerLabelIds) {
-            expect(labelById.has(labelId), `${module.id} references unknown label ${labelId}`).toBe(true)
-         }
-      }
-   })
-
-   it('every questionId resolves to a real module question', () => {
-      for (const module of factionModules) {
-         expect(module.questionIds.length).toBeGreaterThan(0)
-         for (const questionId of module.questionIds) {
-            expect(moduleQuestionById.has(questionId), `${module.id} references unknown question ${questionId}`).toBe(true)
-         }
-      }
-   })
-
-   it('every subtypeLabelId resolves to a real label and has at least two candidates', () => {
-      for (const module of factionModules) {
-         expect(module.subtypeLabelIds.length, `${module.id} needs >= 2 subtype candidates to resolve between`).toBeGreaterThanOrEqual(2)
-         for (const labelId of module.subtypeLabelIds) {
-            expect(labelById.has(labelId), `${module.id} references unknown subtype label ${labelId}`).toBe(true)
-         }
-         expect(new Set(module.subtypeLabelIds).size, `${module.id} has duplicate subtype candidates`).toBe(module.subtypeLabelIds.length)
-      }
-   })
-
-   it('has no duplicate module ids', () => {
-      expect(new Set(factionModules.map((m) => m.id)).size).toBe(factionModules.length)
-   })
-})

@@ -2,11 +2,10 @@ import { describe, expect, it } from 'vitest'
 import { axes } from '../data/axes'
 import { labels } from '../data/labels'
 import { questions } from '../data/questions'
-import { moduleQuestionById } from '../data/moduleQuestions'
 import { allCalibrationFixtures } from './calibration.fixtures'
 import { buildResultProfile } from './index'
 
-const ALL_SCORABLE = [...questions, ...Array.from(moduleQuestionById.values())]
+const ALL_SCORABLE = questions
 const labelById = new Map(labels.map((l) => [l.id, l]))
 
 describe('familyTree output', () => {

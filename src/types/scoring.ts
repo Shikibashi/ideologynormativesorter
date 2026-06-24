@@ -125,24 +125,4 @@ export interface ResultProfile {
    familyTree?: Record<string, LabelMatch[]>
    /** Nearest labels grouped family -> subfamily -> labels for the two-level family-tree display. */
    familySubtree?: Record<string, Record<string, LabelMatch[]>>
-   /**
-    * Resolved faction-module subtypes, keyed by module id. Present once the
-    * respondent completes a depth module; the module's questions sharpen the
-    * axis scores enough to pick a specific sub-label from the module's
-    * candidate set (see computeModuleSubtype).
-    */
-   moduleSubtypes?: Record<string, ModuleSubtype>
-}
-
-export interface ModuleSubtype {
-   moduleId: string
-   moduleName: string
-   labelId: LabelId
-   name: string
-   /** 0..1 closeness to the chosen subtype centroid. */
-   confidence: number
-   /** Runner-up subtype id, or null when only one candidate exists. */
-   runnerUpId: LabelId | null
-   /** Confidence gap between the chosen subtype and the runner-up. */
-   margin: number
 }
