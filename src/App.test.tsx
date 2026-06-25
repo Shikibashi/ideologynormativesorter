@@ -321,7 +321,7 @@ describe('App', () => {
       const firstGroupCards = groups[0].querySelectorAll('.label-card')
       expect(firstGroupCards.length).toBeGreaterThanOrEqual(1)
       expect(groups[0].textContent ?? '').toMatch(/%/)
-      expect(groups[0].querySelector('.label-evidence')?.textContent ?? '').toMatch(/confidence/)
+      expect(groups[0].querySelector('.label-evidence')?.textContent ?? '').toMatch(/evidence/)
    })
 
    it('keeps the full label browser collapsed by default and searches label metadata', () => {

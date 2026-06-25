@@ -31,8 +31,8 @@ describe('calibration fixtures (centroid reflexivity)', () => {
          const ids = result.nearestLabels.map((l) => l.labelId)
          expect(ids).toContain(fixture.expectedLabelIds[0])
          const own = result.nearestLabels.find((l) => l.labelId === fixture.expectedLabelIds[0])!
-         expect(own.confidence).toBeGreaterThanOrEqual(fixture.minConfidence)
-         expect(result.nearestLabels[0].confidence - own.confidence).toBeLessThanOrEqual(0.07)
+         expect(own.fit).toBeGreaterThanOrEqual(fixture.minFit)
+         expect(result.nearestLabels[0].fit - own.fit).toBeLessThanOrEqual(0.07)
       })
    }
 })

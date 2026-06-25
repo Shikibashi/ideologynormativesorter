@@ -26,18 +26,35 @@ function closeness(distance: number, axisCount: number): number {
    return Math.max(0, 1 - distance / maxDistance)
 }
 
-function distanceOver(scoreMap: Map<AxisId, MeasuredScore>, label: IdeologyLabel, axisIds: AxisId[]): { distance: number; measuredAxisCount: number } {
-   let sumSquares = 0
+function distanceOver(
+   scoreMap: Map<AxisId, MeasuredScore>,
+   label: IdeologyLabel,
+   axisIds: AxisId[],
+): { distance: number; measuredAxisCount: number; totalAxisCount: number; evidenceStrength: number } {
+   let sum = 0
+   let weightSum = 0
    let measuredAxisCount = 0
+   const totalAxisCount = axisIds.length
+
    for (const axisId of axisIds) {
       const score = scoreMap.get(axisId)
       if (!score || score.itemCount === 0) continue
+
+      const evidenceWeight = Math.min(1, score.itemCount / 3)
       const respondent = score.normalized
       const target = label.centroid[axisId] ?? 0
-      sumSquares += (respondent - target) ** 2
+
+      sum += evidenceWeight * (respondent - target) ** 2
+      weightSum += evidenceWeight
       measuredAxisCount++
    }
-   return { distance: measuredAxisCount > 0 ? Math.sqrt(sumSquares) : Number.POSITIVE_INFINITY, measuredAxisCount }
+
+   return {
+      distance: weightSum > 0 ? Math.sqrt(sum / weightSum) : Number.POSITIVE_INFINITY,
+      measuredAxisCount,
+      totalAxisCount,
+      evidenceStrength: totalAxisCount > 0 ? weightSum / totalAxisCount : 0,
+   }
 }
 
 /**
@@ -49,17 +66,41 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
 
    const matches = labels.map((label) => {
       const axisIds = Object.keys(label.centroid) as AxisId[]
-      const { distance, measuredAxisCount } = distanceOver(scoreMap, label, axisIds)
+      const { distance, measuredAxisCount, totalAxisCount, evidenceStrength } = distanceOver(scoreMap, label, axisIds)
+      const fit = measuredAxisCount > 0 ? closeness(distance, measuredAxisCount) : 0
       return {
          labelId: label.id,
          name: label.name,
          distance,
-         confidence: measuredAxisCount > 0 ? closeness(distance, measuredAxisCount) : 0,
+         fit,
+         evidenceStrength,
+         measuredAxisCount,
+         totalAxisCount,
+         runnerUpMargin: undefined as number | undefined,
+         uncertaintyBand: 'high' as 'low' | 'medium' | 'high',
       }
    })
 
    matches.sort((a, b) => a.distance - b.distance)
-   return matches.slice(0, NEAREST_LABEL_COUNT)
+   const top = matches.slice(0, NEAREST_LABEL_COUNT)
+
+   // Set runnerUpMargin for rank 1 only
+   if (top.length >= 2) {
+      top[0].runnerUpMargin = top[0].fit - top[1].fit
+   }
+
+   // Assign uncertainty bands
+   for (const m of top) {
+      if (m.evidenceStrength < 0.4 || (m.runnerUpMargin !== undefined && m.runnerUpMargin < 0.03)) {
+         m.uncertaintyBand = 'high'
+      } else if (m.evidenceStrength < 0.7 || (m.runnerUpMargin !== undefined && m.runnerUpMargin < 0.08)) {
+         m.uncertaintyBand = 'medium'
+      } else {
+         m.uncertaintyBand = 'low'
+      }
+   }
+
+   return top
 }
 
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']

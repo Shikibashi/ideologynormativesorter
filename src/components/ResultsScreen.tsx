@@ -42,10 +42,10 @@ function formatFamilyName(family: string): string {
       .join(' ')
 }
 
-function topConfidence(subfamilies: Record<string, { confidence: number }[]>): number {
+function topFit(subfamilies: Record<string, { fit: number }[]>): number {
    let best = 0
    for (const matches of Object.values(subfamilies)) {
-      for (const m of matches) if (m.confidence > best) best = m.confidence
+      for (const m of matches) if (m.fit > best) best = m.fit
    }
    return best
 }
@@ -103,8 +103,8 @@ function topPhilosophyRows(result: ResultProfile, labels: LabelWithInfluences[],
 
             const axisAlignments = axisIds.map((axisId) => alignment(userScores.get(axisId) ?? 0, label.centroid[axisId] ?? 0))
             const meanAlignment = axisAlignments.reduce((sum, value) => sum + value, 0) / axisAlignments.length
-            const layerAgreement = conflation?.layerAgreement[layer] ?? match.confidence
-            const score = match.confidence * layerAgreement * meanAlignment
+            const layerAgreement = conflation?.layerAgreement[layer] ?? match.fit
+            const score = match.fit * layerAgreement * meanAlignment
             const key = `${layer}:${influence.philosophy}`
             const existing = rows.get(key)
 
@@ -178,8 +178,8 @@ function labelEvidenceSummary(
       .slice(0, 2)
 
    const reliabilityText = labelReliability
-      ? `${labelReliability.band} confidence · ${labelReliability.evidenceCount} contributing answers`
-      : 'confidence unavailable'
+      ? `${labelReliability.band} evidence · ${labelReliability.evidenceCount} contributing answers`
+      : 'evidence unavailable'
    const sparseText = sparseAxes.length > 0 ? ` · sparse axes: ${sparseAxes.join(', ')}` : ''
    return `${reliabilityText}${sparseText}`
 }
@@ -200,7 +200,20 @@ function LabelCard({
    return (
       <article className="label-card">
          <h5>{label.name}</h5>
-         {match && <p className="muted">{Math.round(match.confidence * 100)}% match</p>}
+         {match && (
+            <p className="muted">
+               {Math.round(match.fit * 100)}% fit
+               {match.evidenceStrength < 1 && (
+                  <> · {Math.round(match.evidenceStrength * 100)}% measured</>
+               )}
+               {match.uncertaintyBand !== 'low' && (
+                  <> · {match.uncertaintyBand} uncertainty</>
+               )}
+               {match.runnerUpMargin !== undefined && match.runnerUpMargin < 0.08 && (
+                  <> · near-tie</>
+               )}
+            </p>
+         )}
          {match && (
             <p className="muted label-evidence">
                {labelEvidenceSummary(label, labelReliability, axisReliabilities, axisById)}
@@ -444,12 +457,12 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             <h2>Nearest ideology labels</h2>
             {result.familySubtree && Object.keys(result.familySubtree).length > 0 ? (
                Object.entries(result.familySubtree)
-                  .sort((a, b) => topConfidence(b[1]) - topConfidence(a[1]))
+                  .sort((a, b) => topFit(b[1]) - topFit(a[1]))
                   .map(([family, subfamilies]) => (
                      <details key={family} className="family-group" open>
                         <summary className="family-name">{formatFamilyName(family)}</summary>
                         {Object.entries(subfamilies)
-                           .sort((a, b) => (b[1][0]?.confidence ?? 0) - (a[1][0]?.confidence ?? 0))
+                           .sort((a, b) => (b[1][0]?.fit ?? 0) - (a[1][0]?.fit ?? 0))
                            .map(([subfamily, matches]) => (
                               <details key={subfamily} className="subfamily-group" open>
                                  <summary className="subfamily-name">{subfamily !== family ? formatFamilyName(subfamily) : 'Top matches'}</summary>
@@ -476,7 +489,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                <ol className="label-list">
                   {result.nearestLabels.map((match) => (
                      <li key={match.labelId}>
-                        {match.name} <span className="muted">({Math.round(match.confidence * 100)}% match)</span>
+                        {match.name} <span className="muted">({Math.round(match.fit * 100)}% fit)</span>
                      </li>
                   ))}
                </ol>

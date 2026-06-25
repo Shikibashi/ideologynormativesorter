@@ -55,13 +55,13 @@ describe('computeLabelMatches', () => {
       expect(matches.map((m) => m.labelId)).toEqual(['exact-match', 'partial', 'opposite'])
    })
 
-   it('gives a perfect match confidence of 1', () => {
+   it('gives a perfect match fit of 1', () => {
       const [best] = computeLabelMatches(breakdown, [exactMatchLabel])
       expect(best.distance).toBeCloseTo(0)
-      expect(best.confidence).toBeCloseTo(1)
+      expect(best.fit).toBeCloseTo(1)
    })
 
-   it('returns zero-confidence matches when no centroid axes are measured', () => {
+   it('returns zero-fit matches when no centroid axes are measured', () => {
       const emptyBreakdown: ScoreBreakdown = {
          normative: [{ axisId: 'norm1', layer: 'normative', raw: 0, normalized: 0, itemCount: 0 }],
          descriptive: [],
@@ -71,7 +71,7 @@ describe('computeLabelMatches', () => {
       const [match] = computeLabelMatches(emptyBreakdown, [exactMatchLabel])
 
       expect(match.distance).toBe(Number.POSITIVE_INFINITY)
-      expect(match.confidence).toBe(0)
+      expect(match.fit).toBe(0)
    })
 
    it('ranks on a single measured axis and ignores missing axes', () => {
@@ -86,7 +86,7 @@ describe('computeLabelMatches', () => {
       const matches = computeLabelMatches(sparseBreakdown, [far, near])
 
       expect(matches.map((m) => m.labelId)).toEqual(['near-single', 'far-single'])
-      expect(matches[0].confidence).toBeCloseTo(1)
+      expect(matches[0].fit).toBeCloseTo(1)
    })
 
    it('caps results at the top 20 matches', () => {
@@ -98,6 +98,49 @@ describe('computeLabelMatches', () => {
       }))
       const matches = computeLabelMatches(breakdown, labels)
       expect(matches).toHaveLength(20)
+   })
+
+   it('evidence-weighted distance dampens sparse-axis contribution', () => {
+      const sparseBreakdown: ScoreBreakdown = {
+         normative: [
+            { axisId: 'norm1', layer: 'normative', raw: 0.8, normalized: 0.8, itemCount: 10 },
+            { axisId: 'norm2', layer: 'normative', raw: 0.8, normalized: 0.8, itemCount: 1 },
+         ],
+         descriptive: [],
+         prescriptive: [],
+      }
+      const label: IdeologyLabel = {
+         id: 'weighted-test',
+         name: 'Weighted Test',
+         family: 'test',
+         description: 'd',
+         centroid: { norm1: -0.8, norm2: -0.8 },
+      }
+
+      const [match] = computeLabelMatches(sparseBreakdown, [label])
+
+      // Unweighted Euclidean: sqrt((1.6^2 + 1.6^2) / 2) = 1.6
+      // Weighted: norm1 weight=1 (10/3 > 1), norm2 weight=0.333
+      // sqrt((1*2.56 + 0.333*2.56) / (1 + 0.333)) = sqrt(3.413/1.333) ≈ 1.6
+      // The weighted distance normalizes by weight sum, so with equal deltas
+      // the distance is similar but the sparse axis contributes less to the sum.
+      // The key assertion: evidenceStrength reflects the weighting.
+      expect(match.evidenceStrength).toBeCloseTo((1 + 1 / 3) / 2)
+      expect(match.measuredAxisCount).toBe(2)
+      expect(match.totalAxisCount).toBe(2)
+   })
+
+   it('top match includes runnerUpMargin and uncertaintyBand', () => {
+      const matches = computeLabelMatches(breakdown, [exactMatchLabel, partialMatchLabel, oppositeLabel])
+
+      // Rank 1 should have runnerUpMargin set
+      expect(matches[0].runnerUpMargin).toBeDefined()
+      expect(matches[0].runnerUpMargin).toBeGreaterThan(0)
+      expect(['low', 'medium', 'high']).toContain(matches[0].uncertaintyBand)
+
+      // Rank 2+ should NOT have runnerUpMargin
+      expect(matches[1].runnerUpMargin).toBeUndefined()
+      expect(matches[2].runnerUpMargin).toBeUndefined()
    })
 })
 

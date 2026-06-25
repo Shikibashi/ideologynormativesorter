@@ -25,7 +25,7 @@ describe('reliabilityForAxis', () => {
 
 describe('reliabilityForLabel', () => {
   it('computes evidenceCount from centroid axes', () => {
-    const match: LabelMatch = { labelId: 'test-label', name: 'Test', distance: 0, confidence: 0.9 }
+    const match: LabelMatch = { labelId: 'test-label', name: 'Test', distance: 0, fit: 0.9, evidenceStrength: 1, measuredAxisCount: 2, totalAxisCount: 2, uncertaintyBand: 'low' }
     const axisScores = new Map([
       ['ax1', { axisId: 'ax1', layer: 'normative', raw: 0, normalized: 0, itemCount: 5 } as AxisScore],
       ['ax2', { axisId: 'ax2', layer: 'normative', raw: 0, normalized: 0, itemCount: 7 } as AxisScore],

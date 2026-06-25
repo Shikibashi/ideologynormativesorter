@@ -82,7 +82,7 @@ function collectCurrentNearTies(): Array<{ target: string; top: string; margin: 
       const top = result.nearestLabels[0]
       const own = result.nearestLabels.find((l) => l.labelId === target)
       if (!own || top.labelId === target) return []
-      return [{ target, top: top.labelId, margin: top.confidence - own.confidence }]
+      return [{ target, top: top.labelId, margin: top.fit - own.fit }]
    })
 }
 
@@ -108,7 +108,7 @@ describe('archetype -> nearest-label sweep', () => {
          // The target must at least appear among the nearest matches.
          expect(own, `${target} not in nearest labels`).toBeDefined()
 
-         const margin = top.confidence - (own!.confidence ?? 0)
+         const margin = top.fit - (own!.fit ?? 0)
          expect(margin, `${target} is a distant outlier from itself`).toBeLessThanOrEqual(0.07)
       })
    }

@@ -35,8 +35,18 @@ export interface LabelMatch {
    labelId: LabelId
    name: string
    distance: number
-   /** 0..1, higher means a closer match. */
-   confidence: number
+   /** 0..1, higher means closer to centroid. Formerly "confidence". */
+   fit: number
+   /** 0..1, how much of the label's centroid was actually measured. */
+   evidenceStrength: number
+   /** Number of centroid axes with at least one answered question. */
+   measuredAxisCount: number
+   /** Total axes in the label's centroid. */
+   totalAxisCount: number
+   /** Distance gap between this match and the runner-up (undefined if this is not rank 1). */
+   runnerUpMargin?: number
+   /** Qualitative uncertainty derived from evidenceStrength and runnerUpMargin. */
+   uncertaintyBand: 'low' | 'medium' | 'high'
 }
 
 /**

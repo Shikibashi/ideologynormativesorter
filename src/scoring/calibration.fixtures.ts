@@ -7,7 +7,7 @@ export interface CalibrationFixture {
    description: string
    answers: AnswerMap
    expectedLabelIds: string[]
-   minConfidence: number
+   minFit: number
 }
 
 export function centroidAlignmentScore(axisWeights: AxisWeight[], centroid: IdeologyLabel['centroid']): number | null {
@@ -205,7 +205,7 @@ export const calibrationFixtures: CalibrationFixture[] = targetIds.map(id => {
       description: `Synthetic profile targeting ${label.name}`,
       answers,
       expectedLabelIds: [id],
-      minConfidence: 0.45
+      minFit: 0.45
    }
 })
 

@@ -5,7 +5,7 @@ import { statementQuestions } from './statementQuestions'
 const CONFIDENCE_PROMPT = 'How confident are you in this empirical claim?'
 const PRIORITY_PROMPT = 'How high a priority is this relative to other reforms?'
 export const QUESTION_BANK_VERSION = '2026-06-v3'
-export const SCORING_VERSION = '2026-06-24'
+export const SCORING_VERSION = '2026-06-25'
 
 export function getBankFingerprint(): string {
    return QUESTION_BANK_VERSION // stable for this PR; can be content hash later

@@ -44,7 +44,7 @@ describe('familyTree output', () => {
       const result = buildResultProfile(ALL_SCORABLE, fixture.answers, axes, labels)
       for (const matches of Object.values(result.familyTree ?? {})) {
          for (let i = 1; i < matches.length; i++) {
-            expect(matches[i - 1].confidence).toBeGreaterThanOrEqual(matches[i].confidence)
+            expect(matches[i - 1].fit).toBeGreaterThanOrEqual(matches[i].fit)
          }
       }
    })
