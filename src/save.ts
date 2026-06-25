@@ -9,11 +9,14 @@ export interface QuizSave {
   tier: QuizTier
 }
 
-export function saveQuizState(state: QuizSave): void {
+export type SaveResult = { saved: true } | { saved: false; reason: string }
+
+export function saveQuizState(state: QuizSave): SaveResult {
   try {
     localStorage.setItem(SAVE_KEY, JSON.stringify(state))
+    return { saved: true }
   } catch {
-    // localStorage full or disabled — silently skip
+    return { saved: false, reason: 'Your browser storage is full or disabled. Progress won\'t be saved, but you can still complete the quiz.' }
   }
 }
 
@@ -31,11 +34,12 @@ export function loadQuizState(): QuizSave | null {
   }
 }
 
-export function clearQuizState(): void {
+export function clearQuizState(): boolean {
   try {
     localStorage.removeItem(SAVE_KEY)
+    return true
   } catch {
-    // noop
+    return false
   }
 }
 

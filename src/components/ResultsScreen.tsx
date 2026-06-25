@@ -220,6 +220,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
    const nearestById = new Map(result.nearestLabels.map((match) => [match.labelId, match]))
    const philosophyRows = topPhilosophyRows(result, labels, axes)
    const [copied, setCopied] = useState(false)
+   const [copying, setCopying] = useState(false)
    const [copyError, setCopyError] = useState<string | null>(null)
    const [compareUrlInput, setCompareUrlInput] = useState('')
    const [compareError, setCompareError] = useState<string | null>(null)
@@ -236,14 +237,17 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
          return
       }
 
+      setCopying(true)
       navigator.clipboard.writeText(url).then(
          () => {
             setCopied(true)
             setCopyError(null)
+            setCopying(false)
          },
          () => {
             setCopied(false)
             setCopyError('Sharing is not available in this browser.')
+            setCopying(false)
          },
       )
    }
@@ -269,8 +273,8 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             This test separates your normative values, descriptive beliefs, and prescriptive strategy. Labels are secondary.
          </p>
 
-         <button type="button" className="scale-button copy-link-button" onClick={handleCopyLink}>
-            {copied ? 'Link copied' : 'Copy link to this result'}
+         <button type="button" className="scale-button copy-link-button" onClick={handleCopyLink} disabled={copying}>
+            {copying ? 'Copying...' : copied ? 'Link copied' : 'Copy link to this result'}
          </button>
          {copyError && <p className="muted">{copyError}</p>}
 
@@ -285,6 +289,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                      value={compareUrlInput}
                      onChange={(e) => setCompareUrlInput(e.target.value)}
                      placeholder="Paste shared URL or hash..."
+                     maxLength={5000}
                      style={{ flex: 1, padding: '0.3rem 0.5rem' }}
                   />
                   <button type="button" className="scale-button" onClick={handleCompareLink}>
@@ -469,6 +474,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                type="search"
                className="label-search-input"
                value={labelSearch}
+               maxLength={200}
                onChange={(e) => setLabelSearch(e.target.value)}
                placeholder="Search labels, families, aliases, philosophies..."
                aria-label="Search ideology labels"

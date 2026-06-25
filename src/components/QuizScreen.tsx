@@ -46,6 +46,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
   const [index, setIndex] = useState(initialIndex ?? 0)
   const [answers, setAnswers] = useState<AnswerMap>(initialAnswers ?? {})
   const [pendingValue, setPendingValue] = useState<Answer['value'] | null>(null)
+  const [saveError, setSaveError] = useState<string | null>(null)
   const question = questions[index]
   const selected = answers[question.id]
   const isLast = index === questions.length - 1
@@ -61,7 +62,13 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
       return
     }
     if (Object.keys(answers).length > 0 && tier) {
-      saveQuizState({ questions, answers, index, tier: tier as QuizTier })
+      const result = saveQuizState({ questions, answers, index, tier: tier as QuizTier })
+      if (result.saved === false) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- safe: saveError is not a dep
+        setSaveError(result.reason)
+      } else {
+        setSaveError(null)
+      }
     }
   }, [answers, index])
 
@@ -137,6 +144,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
       </p>
 
       <p className="prompt">{question.prompt}</p>
+      {saveError && <p className="muted error-inline">{saveError}</p>}
 
       {question.responseType === 'statementChoice' ? (
         <div className="statement-list" role="group" aria-label="Which best represents your view">
