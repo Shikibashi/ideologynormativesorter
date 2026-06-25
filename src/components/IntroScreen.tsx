@@ -20,9 +20,11 @@ interface IntroScreenProps {
   onResume: () => void
   onStart: (tier: QuizTier) => void
   onClearSavedProgress: () => void
+  loadError?: string | null
+  onDismissLoadError?: () => void
 }
 
-export function IntroScreen({ questionCounts, domainCount, savedProgress, onResume, onStart, onClearSavedProgress }: IntroScreenProps) {
+export function IntroScreen({ questionCounts, domainCount, savedProgress, onResume, onStart, onClearSavedProgress, loadError, onDismissLoadError }: IntroScreenProps) {
   const [tier, setTier] = useState<QuizTier>('moderate')
 
   return (
@@ -32,6 +34,15 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
         Most political quizzes collapse three different kinds of judgment into a single left-right score. This one keeps
         them separate.
       </p>
+
+      {loadError && (
+        <div className="resume-banner" role="alert">
+          <p>{loadError}</p>
+          <button type="button" className="back-link" onClick={onDismissLoadError}>
+            Dismiss
+          </button>
+        </div>
+      )}
 
       {savedProgress && (
         <div className="resume-banner">

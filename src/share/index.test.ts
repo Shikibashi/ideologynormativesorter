@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import type { AnswerMap } from '../types'
-import { buildShareUrl, decodeAnswers, encodeAnswers, extractEncodedAnswers, readSharedAnswers, readCompareAnswers } from './index'
+import { buildShareUrl, decodeAnswers, encodeAnswers, extractEncodedAnswers, readSharedAnswers, readCompareAnswers, readSharedResult } from './index'
 
 const SAMPLE_ANSWERS: AnswerMap = {
   q0001: { questionId: 'q0001', value: 2 },
@@ -100,5 +100,40 @@ describe('buildShareUrl', () => {
     const url = buildShareUrl(SAMPLE_ANSWERS)
     expect(url).toContain(window.location.origin)
     expect(url).toContain('#r=')
+  })
+})
+
+describe('readSharedResult', () => {
+  it('returns answers and malformed=false for a valid #r= hash', () => {
+    const encoded = encodeAnswers(SAMPLE_ANSWERS)
+    window.history.replaceState(null, '', `/#r=${encoded}`)
+    const result = readSharedResult()
+    expect(result.answers).toEqual(SAMPLE_ANSWERS)
+    expect(result.malformed).toBe(false)
+  })
+
+  it('returns null answers and malformed=false when there is no hash', () => {
+    window.history.replaceState(null, '', '/')
+    expect(readSharedResult()).toEqual({ answers: null, malformed: false })
+  })
+
+  it('returns null answers and malformed=false for a non-share fragment (#about)', () => {
+    window.history.replaceState(null, '', '/#about')
+    expect(readSharedResult()).toEqual({ answers: null, malformed: false })
+  })
+
+  it('returns malformed=true for a non-empty r= value that cannot be decoded', () => {
+    window.history.replaceState(null, '', '/#r=%%%notbase64%%%')
+    const result = readSharedResult()
+    expect(result.answers).toBeNull()
+    expect(result.malformed).toBe(true)
+  })
+
+  it('returns malformed=true for a valid encoding of an empty answer map', () => {
+    const encoded = encodeAnswers({})
+    window.history.replaceState(null, '', `/#r=${encoded}`)
+    const result = readSharedResult()
+    expect(result.answers).toBeNull()
+    expect(result.malformed).toBe(true)
   })
 })

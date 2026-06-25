@@ -76,6 +76,19 @@ export function readSharedAnswers(): AnswerMap | null {
   return encoded ? decodeAnswers(encoded) : null
 }
 
+export function readSharedResult(): { answers: AnswerMap | null; malformed: boolean } {
+  if (typeof window === 'undefined') return { answers: null, malformed: false }
+  const hash = window.location.hash
+  // Only treat as a share attempt when an explicit r= param is present, so arbitrary
+  // fragment anchors (e.g. #about) are never flagged as broken share links.
+  if (!/[#&?]r=/.test(hash)) return { answers: null, malformed: false }
+  const encoded = extractEncodedAnswers(hash, 'r')
+  if (!encoded) return { answers: null, malformed: false }
+  const answers = decodeAnswers(encoded)
+  if (answers && Object.keys(answers).length > 0) return { answers, malformed: false }
+  return { answers: null, malformed: true }
+}
+
 function compactAnswersFromPayload(decoded: unknown): unknown[] | null {
   if (Array.isArray(decoded)) return decoded
   if (decoded && typeof decoded === 'object' && 'v' in decoded) {

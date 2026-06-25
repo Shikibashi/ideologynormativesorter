@@ -8,7 +8,7 @@ import { domains } from './data/domains'
 import { labels } from './data/labels'
 import { questions, questionsForTier } from './data/questions'
 import { buildResultProfile } from './scoring'
-import { readCompareAnswers, readSharedAnswers } from './share'
+import { readCompareAnswers, readSharedResult } from './share'
 import type { AnswerMap, QuizTier, ResultProfile } from './types'
 import { clearQuizState, loadQuizState, getQuizProgress } from './save'
 
@@ -18,7 +18,13 @@ const TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
 
 
 function App() {
-   const [sharedAnswers] = useState<AnswerMap | null>(() => readSharedAnswers())
+   const [shareLoad] = useState(readSharedResult)
+   const sharedAnswers = shareLoad.answers
+   const [loadError, setLoadError] = useState<string | null>(
+      shareLoad.malformed
+         ? "We couldn't open that shared result link — it may be incomplete or out of date. You can start the test below to build your own profile."
+         : null,
+   )
    const [compareAnswers] = useState<AnswerMap | null>(() => readCompareAnswers())
    const [stage, setStage] = useState<Stage>(sharedAnswers ? 'results' : 'intro')
    const [activeQuestions, setActiveQuestions] = useState(questions)
@@ -44,6 +50,7 @@ function App() {
 
 
    function handleStart(tier: QuizTier) {
+      setLoadError(null)
       clearQuizState()
       setSavedProgress(null)
       setActiveQuestions(questionsForTier(tier))
@@ -51,6 +58,7 @@ function App() {
    }
 
    function handleResume() {
+      setLoadError(null)
       const saved = loadQuizState()
       if (!saved) {
          refreshSavedProgress()
@@ -100,6 +108,8 @@ function App() {
             onResume={handleResume}
             onStart={handleStart}
             onClearSavedProgress={handleClearSavedProgress}
+            loadError={loadError}
+            onDismissLoadError={() => setLoadError(null)}
          />
       )
    }

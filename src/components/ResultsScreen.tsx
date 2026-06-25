@@ -225,6 +225,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
    const [compareUrlInput, setCompareUrlInput] = useState('')
    const [compareError, setCompareError] = useState<string | null>(null)
    const [labelSearch, setLabelSearch] = useState('')
+   const [shareUrl, setShareUrl] = useState<string | null>(null)
    const visibleLabels = labels.filter((label) => labelMatchesSearch(label, labelSearch))
    const groupedLabels = groupLabels(visibleLabels)
 
@@ -233,20 +234,23 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
       const url = buildShareUrl(answers, meta)
       if (!navigator.clipboard?.writeText) {
          setCopied(false)
-         setCopyError('Sharing is not available in this browser.')
+         setShareUrl(url)
+         setCopyError("Automatic copying isn't available here. Select the link below and copy it manually.")
          return
       }
-
       setCopying(true)
       navigator.clipboard.writeText(url).then(
          () => {
             setCopied(true)
             setCopyError(null)
+            setShareUrl(null)
             setCopying(false)
          },
-         () => {
+         (err) => {
+            console.error('Clipboard write failed:', err)
             setCopied(false)
-            setCopyError('Sharing is not available in this browser.')
+            setShareUrl(url)
+            setCopyError("We couldn't copy the link automatically. Select the link below and copy it manually.")
             setCopying(false)
          },
       )
@@ -255,8 +259,8 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
    function handleCompareLink() {
       const encoded = extractEncodedAnswers(compareUrlInput, 'r')
       const parsedAnswers = encoded ? decodeAnswers(encoded) : null
-      if (!parsedAnswers) {
-         setCompareError('Could not read that shared result link.')
+      if (!parsedAnswers || Object.keys(parsedAnswers).length === 0) {
+         setCompareError("We couldn't read that link. Paste a full shared result link (it should contain '#r=').")
          return
       }
 
@@ -276,7 +280,18 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
          <button type="button" className="scale-button copy-link-button" onClick={handleCopyLink} disabled={copying}>
             {copying ? 'Copying...' : copied ? 'Link copied' : 'Copy link to this result'}
          </button>
-         {copyError && <p className="muted">{copyError}</p>}
+         {copyError && <p className="muted" role="alert">{copyError}</p>}
+         {shareUrl && (
+            <input
+               type="text"
+               className="compare-url-input"
+               readOnly
+               value={shareUrl}
+               aria-label="Shareable result link"
+               onFocus={(e) => e.currentTarget.select()}
+               style={{ width: '100%', padding: '0.3rem 0.5rem' }}
+            />
+         )}
 
          {!compareResult && (
             <div className="result-block compare-input-area">
@@ -291,12 +306,15 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                      placeholder="Paste shared URL or hash..."
                      maxLength={5000}
                      style={{ flex: 1, padding: '0.3rem 0.5rem' }}
+                     aria-label="Shared result link to compare"
+                     aria-invalid={compareError ? true : undefined}
+                     aria-describedby={compareError ? 'compare-error' : undefined}
                   />
                   <button type="button" className="scale-button" onClick={handleCompareLink}>
                      Compare
                   </button>
                </div>
-               {compareError && <p className="muted">{compareError}</p>}
+               {compareError && <p className="muted" role="alert" id="compare-error">{compareError}</p>}
             </div>
          )}
 

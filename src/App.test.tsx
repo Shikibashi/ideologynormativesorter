@@ -243,7 +243,9 @@ describe('App', () => {
       render(<App />)
 
       fireEvent.click(screen.getByRole('button', { name: /copy link to this result/i }))
-      expect(screen.getByText('Sharing is not available in this browser.')).toBeInTheDocument()
+      expect(screen.getByRole('alert')).toHaveTextContent(/select the link below/i)
+      const linkInput = screen.getByLabelText(/shareable result link/i)
+      expect((linkInput as HTMLInputElement).value).toContain('#r=')
    })
    it('renders the layer-conflation section with agreement chips for a cross-layer profile', () => {
       render(<App />)
@@ -359,4 +361,45 @@ describe('App', () => {
       expect(renderedLayers.length).toBeGreaterThanOrEqual(2)
    })
 
+
+   it('shows a dismissible alert when a broken share link is loaded', () => {
+      window.history.replaceState(null, '', '/#r=%%%notbase64%%%')
+      render(<App />)
+
+      expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
+      const alert = screen.getByRole('alert')
+      expect(alert).toHaveTextContent(/shared result link/i)
+
+      fireEvent.click(screen.getByRole('button', { name: /dismiss/i }))
+      expect(screen.queryByRole('alert')).toBeNull()
+   })
+
+   it('shows actionable error and manual-copy input when clipboard writeText rejects', async () => {
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      window.history.replaceState(null, '', `/#r=${encoded}`)
+      Object.defineProperty(navigator, 'clipboard', {
+         value: { writeText: vi.fn().mockRejectedValue(new Error('denied')) },
+         configurable: true,
+      })
+      render(<App />)
+
+      fireEvent.click(screen.getByRole('button', { name: /copy link to this result/i }))
+      const alert = await screen.findByRole('alert')
+      expect(alert).toHaveTextContent(/select the link below/i)
+      const linkInput = screen.getByLabelText(/shareable result link/i)
+      expect((linkInput as HTMLInputElement).value).toContain('#r=')
+   })
+
+   it('rejects a junk compare input with an actionable error', () => {
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      window.history.replaceState(null, '', `/#r=${encoded}`)
+      render(<App />)
+
+      const compareInput = screen.getByLabelText(/shared result link to compare/i)
+      fireEvent.change(compareInput, { target: { value: 'not a link' } })
+      fireEvent.click(screen.getByRole('button', { name: /^compare$/i }))
+
+      expect(screen.getByRole('alert')).toHaveTextContent(/couldn't read that link/i)
+      expect(screen.queryByRole('heading', { name: /comparison view/i })).toBeNull()
+   })
 })
