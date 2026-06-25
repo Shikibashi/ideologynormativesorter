@@ -19,9 +19,10 @@ interface IntroScreenProps {
   savedProgress: { tier: QuizTier; answered: number; total: number } | null
   onResume: () => void
   onStart: (tier: QuizTier) => void
+  onClearSavedProgress: () => void
 }
 
-export function IntroScreen({ questionCounts, domainCount, savedProgress, onResume, onStart }: IntroScreenProps) {
+export function IntroScreen({ questionCounts, domainCount, savedProgress, onResume, onStart, onClearSavedProgress }: IntroScreenProps) {
   const [tier, setTier] = useState<QuizTier>('moderate')
 
   return (
@@ -46,10 +47,7 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
             <button
               type="button"
               className="back-link"
-              onClick={() => {
-                localStorage.removeItem('ideology-quiz-save')
-                window.location.reload()
-              }}
+              onClick={onClearSavedProgress}
             >
               Start fresh
             </button>

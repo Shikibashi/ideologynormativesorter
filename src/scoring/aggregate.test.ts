@@ -115,7 +115,8 @@ describe('computeAxisScores', () => {
     const lowScore = computeAxisScores(questions, lowConfidence, axes).find((s) => s.axisId === 'desc-axis')!
     const highScore = computeAxisScores(questions, highConfidence, axes).find((s) => s.axisId === 'desc-axis')!
     expect(highScore.normalized).toBeCloseTo(1)
-    expect(lowScore.normalized).toBeCloseTo(1)
+    expect(lowScore.normalized).toBeLessThan(highScore.normalized)
+    expect(lowScore.normalized).toBeCloseTo(0.2)
     expect(lowScore.raw).toBeLessThan(highScore.raw)
     expect(lowScore.avgSalience).toBe(1)
     expect(highScore.avgSalience).toBe(5)
@@ -127,6 +128,9 @@ describe('computeAxisScores', () => {
     const lowScore = computeAxisScores(questions, lowPriority, axes).find((s) => s.axisId === 'presc-axis')!
     const highScore = computeAxisScores(questions, highPriority, axes).find((s) => s.axisId === 'presc-axis')!
     expect(lowScore.raw).toBeLessThan(highScore.raw)
+    expect(highScore.normalized).toBeCloseTo(1)
+    expect(lowScore.normalized).toBeLessThan(highScore.normalized)
+    expect(lowScore.normalized).toBeCloseTo(0.2)
     expect(lowScore.avgSalience).toBe(1)
     expect(highScore.avgSalience).toBe(5)
   })

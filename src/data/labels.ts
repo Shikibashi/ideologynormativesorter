@@ -818,7 +818,7 @@ export const labels: IdeologyLabel[] = [
       family: 'authoritarian',
       subfamily: 'ultranationalist',
       description:
-         'Subordinates the individual to an organic national community led by a unified will, celebrates hierarchy and tradition, and endorses coercive state action—including paramilitary and exclusionary measures—to restore national greatness.',
+         'Centers an organic national community, hierarchical authority, and coordinated state power, including coercive and paramilitary institutions, as means of national renewal.',
       philosophies: ["Authoritarianism","Fascism","Corporatism"],
       subTheories: ["Italian Fascism","Francoism","Salazarism"],
       ethicalTheory: ["Virtue Ethics"],
@@ -1482,7 +1482,7 @@ export const labels: IdeologyLabel[] = [
          },
          {
             philosophy: "Social Darwinism",
-            description: "Ethnic competition and hierarchy as natural order.",
+            description: "Ethnic hierarchy and intergroup competition treated as political premises.",
             affectedAxes: ["equality-theory","moral-traditionalism","coercion-strategy"],
          }
       ],
@@ -1847,7 +1847,6 @@ export const labels: IdeologyLabel[] = [
       description:
          'Pairs confidence in free markets and private property with a deference to inherited moral order and gradual institutional change, seeking to conserve cultural and familial continuity while preserving a market economy under the rule of law.',
       philosophies: ["Liberalism","Conservative Liberalism","Burkeanism"],
-   aliases: ["Liberal Conservatism"],
       subTheories: ["Internal Traditions"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Liberalism","Conservative Liberalism","Burkeanism"],
@@ -2600,8 +2599,8 @@ export const labels: IdeologyLabel[] = [
       description:
          'Centers personal autonomy, voluntary association, and hostility to imposed moral or political authority, rejecting both state power and collectivist demands that subordinate the individual to a planned social whole.',
       philosophies: ["Anarchism","Individualist Anarchism","Stirnerism","Egoism"],
-   aliases: ["Egoist Anarchism","Post-Left Anarchism"],
-      subTheories: ["Egoist Anarchism","Post-Left Anarchism"],
+   aliases: ["Post-Left Anarchism"],
+      subTheories: ["Post-Left Anarchism"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Anarchism","Individualist Anarchism","Stirnerism","Egoism"],
       descriptivePhilosophies: [],
@@ -3303,7 +3302,7 @@ export const labels: IdeologyLabel[] = [
       family: 'authoritarian',
       subfamily: 'eco-fascist',
       description:
-         'Combines fascist ultranationalism and ethnonationalism with deep ecology, holding that population reduction, ethnic homogeneity, and coercive state power are necessary to protect the natural order from industrial civilization.',
+         'Combines fascist ultranationalism and ethnonationalism with ecological politics, treating demographic control, ethnic homogeneity, and coercive state power as conditions for environmental preservation.',
       philosophies: ["Authoritarianism","Eco-Fascism","Fascism","Environmentalism"],
       subTheories: ["Biospheric Fascism","Deep Ecology Fascism"],
       ethicalTheory: ["Virtue Ethics"],
@@ -3632,8 +3631,8 @@ export const labels: IdeologyLabel[] = [
       description:
          'Holds that Catholic faith should be the basis of public law and policy, rejecting the separation of church and state in favor of an organic society where civil authority is subordinate to divine moral order.',
       philosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
-   aliases: ["Fourth Theory","Clerical Fascism"],
-      subTheories: ["Clerical Fascism","Fourth Theory","Catholic Integralism"],
+   aliases: ["Clerical Fascism"],
+      subTheories: ["Clerical Fascism","Catholic Integralism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
       descriptivePhilosophies: [],
@@ -3687,7 +3686,6 @@ export const labels: IdeologyLabel[] = [
       description:
          'Rejects centralized state authority in favor of decentralized, bottom-up democracy organized through communes, councils, and confederations, grounded in gender equality, ecology, and pluralistic self-governance.',
       philosophies: ["Democracy","Democratic Confederalism","Communalism","Bookchinism"],
-   aliases: ["Libertarian Municipalism"],
       subTheories: ["Apoite Democracy","Confederalism","Kurdish Democracy"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Democracy","Democratic Confederalism","Communalism","Bookchinism"],
@@ -4226,7 +4224,7 @@ export const labels: IdeologyLabel[] = [
       family: 'authoritarian',
       subfamily: 'ultranationalist',
       description:
-         'Combines extreme ethnic nationalism, racial hierarchy, state-directed economic corporatism, and militarist expansionism with anti-capitalist and anti-communist rhetoric, demanding total subordination of the individual to the racial-national collective.',
+         'Combines ethnic nationalism, racial hierarchy, state-directed economic corporatism, militarist expansionism, and totalizing racial-national authority with anti-capitalist and anti-communist rhetoric.',
       philosophies: ["National Socialism","Fascism","Racialism","Social Darwinism","Totalitarianism"],
    aliases: ["Nazism"],
       subTheories: ["Nazism","Hitlerism","National Socialist"],
@@ -4242,7 +4240,7 @@ export const labels: IdeologyLabel[] = [
          },
          {
             philosophy: "Social Darwinism",
-            description: "Racial hierarchy and competition as natural order.",
+            description: "Racial hierarchy and competition treated as political premises.",
             affectedAxes: ["equality-theory","moral-traditionalism","militarism-pacifism"],
          }
       ],
@@ -5157,7 +5155,7 @@ export const labels: IdeologyLabel[] = [
       ethicalTheory: ["Deontology","Consequentialism"],
       normativePhilosophies: ["Georgism","Classical Liberalism","Libertarianism"],
       descriptivePhilosophies: ["Georgism"],
-      prescriptivePhilosophies: ["Georgism","Geoism"],
+      prescriptivePhilosophies: ["Georgism","Geoism","Radical Centrism"],
       philosophyInfluences: [
          {
             philosophy: "Georgism",
@@ -5209,7 +5207,7 @@ export const labels: IdeologyLabel[] = [
       philosophies: ["Liberalism","Cosmopolitanism","Internationalism","Human Rights","Liberal Internationalism"],
       subTheories: ["Cosmopolitan Liberalism","Global Justice","Liberal Internationalism"],
       ethicalTheory: ["Deontology"],
-      normativePhilosophies: ["Liberalism","Cosmopolitanism","Internationalism"],
+      normativePhilosophies: ["Liberalism","Cosmopolitanism","Internationalism","Human Rights"],
       descriptivePhilosophies: ["Cosmopolitanism"],
       prescriptivePhilosophies: ["Internationalism","Liberal Internationalism"],
       philosophyInfluences: [
@@ -5377,7 +5375,7 @@ export const labels: IdeologyLabel[] = [
       philosophyInfluences: [
          {
             philosophy: "Nationalism",
-            description: "Supreme loyalty to the nation and its destiny abroad.",
+            description: "National primacy and geopolitical expansion as central political aims.",
             affectedAxes: ["political-community-boundary","militarism-pacifism","authority-legitimacy"],
          },
          {
@@ -5533,7 +5531,7 @@ export const labels: IdeologyLabel[] = [
       philosophies: ["Theocracy","Religious Fundamentalism","Conservatism","Traditionalism","Dominionism"],
       subTheories: ["Dominionism","Theonomic Governance"],
       ethicalTheory: ["Divine Command Theory","Virtue Ethics"],
-      normativePhilosophies: ["Theocracy","Religious Fundamentalism","Traditionalism"],
+      normativePhilosophies: ["Theocracy","Religious Fundamentalism","Traditionalism","Conservatism"],
       descriptivePhilosophies: ["Religious Fundamentalism"],
       prescriptivePhilosophies: ["Theocracy","Dominionism"],
       philosophyInfluences: [
@@ -5695,7 +5693,7 @@ export const labels: IdeologyLabel[] = [
       philosophies: ["Dataism","Technocracy","Transhumanism","Positivism"],
       subTheories: ["Algorithmic Governance","Quantified Self","Surveillance Capitalism Critique"],
       ethicalTheory: ["Consequentialism"],
-      normativePhilosophies: ["Dataism","Technocracy"],
+      normativePhilosophies: ["Dataism","Technocracy","Transhumanism"],
       descriptivePhilosophies: ["Positivism"],
       prescriptivePhilosophies: ["Dataism","Technocracy"],
       philosophyInfluences: [
@@ -5922,7 +5920,7 @@ export const labels: IdeologyLabel[] = [
          },
          {
             philosophy: "Socialism",
-            description: "Economic critique of capitalism as the driving force behind imperial expansion.",
+            description: "Social ownership and egalitarian redistribution applied to anti-imperial political economy.",
             affectedAxes: ["property-legitimacy","equality-theory","redistribution-vs-predistribution"],
          },
       ],
@@ -5967,7 +5965,7 @@ export const labels: IdeologyLabel[] = [
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: ["Environmentalism","Market Liberalism"],
       descriptivePhilosophies: ["Ecomodernism"],
-      prescriptivePhilosophies: ["Green Capitalism","Ecological Modernization"],
+      prescriptivePhilosophies: ["Green Capitalism","Ecological Modernization","Reform Ecology"],
       philosophyInfluences: [
          {
             philosophy: "Market Liberalism",
@@ -6289,7 +6287,7 @@ export const labels: IdeologyLabel[] = [
       philosophies: ["Anarchism","Queer Theory","Feminism","Anti-Authoritarianism","Queer Liberation"],
       subTheories: ["Queer Liberation","Gender Abolition","Intersectional Anarchism"],
       ethicalTheory: ["Deontology"],
-      normativePhilosophies: ["Anarchism","Queer Theory","Feminism"],
+      normativePhilosophies: ["Anarchism","Queer Theory","Feminism","Anti-Authoritarianism"],
       descriptivePhilosophies: ["Queer Theory"],
       prescriptivePhilosophies: ["Anarchism","Queer Liberation"],
       philosophyInfluences: [

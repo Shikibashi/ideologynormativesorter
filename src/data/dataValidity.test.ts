@@ -3,7 +3,8 @@ import type { Layer, QuizTier } from '../types'
 import { axes, axisById } from './axes'
 import { domainById, domains } from './domains'
 import { labels } from './labels'
-import { questions, questionsForTier } from './questions'
+import { allQuestions, questionById, questions, questionsForTier } from './questions'
+import { moduleQuestions } from './moduleQuestions'
 
 const TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
 
@@ -52,6 +53,23 @@ describe('questions', () => {
             expect(axis, `${question.id} references unknown axis ${weight.axisId}`).toBeDefined()
             expect(axis!.layer, `${question.id} (${question.layer}) references ${weight.axisId} (${axis!.layer})`).toBe(question.layer)
          }
+      }
+   })
+
+   it('keeps every question axis weight finite and in range', () => {
+      for (const question of allQuestions) {
+         for (const weight of question.axisWeights) {
+            expect(Number.isFinite(weight.weight), `${question.id}/${weight.axisId} weight is not finite`).toBe(true)
+            expect(weight.weight, `${question.id}/${weight.axisId} weight is below -1`).toBeGreaterThanOrEqual(-1)
+            expect(weight.weight, `${question.id}/${weight.axisId} weight is above 1`).toBeLessThanOrEqual(1)
+         }
+      }
+   })
+
+   it('does not repeat axis ids on a question', () => {
+      for (const question of allQuestions) {
+         const axisIds = question.axisWeights.map((weight) => weight.axisId)
+         expect(new Set(axisIds).size, `${question.id} repeats an axis id`).toBe(axisIds.length)
       }
    })
 
@@ -111,6 +129,20 @@ describe('statementChoice questions', () => {
          expect(new Set(ids).size, `${question.id} has duplicate option ids`).toBe(ids.length)
       }
    })
+
+   it('keeps statement-option weights finite, in range, and non-repeated', () => {
+      for (const question of allQuestions.filter((q) => q.responseType === 'statementChoice')) {
+         for (const option of question.statementOptions ?? []) {
+            const axisIds = option.axisWeights.map((weight) => weight.axisId)
+            expect(new Set(axisIds).size, `${question.id}/${option.id} repeats an axis id`).toBe(axisIds.length)
+            for (const weight of option.axisWeights) {
+               expect(Number.isFinite(weight.weight), `${question.id}/${option.id}/${weight.axisId} weight is not finite`).toBe(true)
+               expect(weight.weight, `${question.id}/${option.id}/${weight.axisId} weight is below -1`).toBeGreaterThanOrEqual(-1)
+               expect(weight.weight, `${question.id}/${option.id}/${weight.axisId} weight is above 1`).toBeLessThanOrEqual(1)
+            }
+         }
+      }
+   })
 })
 
 describe('quiz tiers', () => {
@@ -124,6 +156,21 @@ describe('quiz tiers', () => {
       for (const id of moderate) expect(extensive.has(id)).toBe(true)
    })
 
+   it('keeps module questions out of ordinary tier pools but discoverable explicitly', () => {
+      const tierIds = new Set(TIERS.flatMap((tier) => questionsForTier(tier).map((q) => q.id)))
+
+      for (const question of moduleQuestions) {
+         expect(tierIds.has(question.id), `${question.id} leaked into a tier pool`).toBe(false)
+         expect(allQuestions.some((q) => q.id === question.id), `${question.id} missing from allQuestions`).toBe(true)
+         expect(questionById.get(question.id), `${question.id} missing from questionById`).toBe(question)
+      }
+   })
+
+   it('documents that module questions are data-only until a registry exists', () => {
+      expect(moduleQuestions.length).toBeGreaterThan(0)
+      expect(moduleQuestions.every((q) => typeof q.module === 'string' && q.module.length > 0)).toBe(true)
+   })
+
    it('every domain has at least one item per layer in every tier', () => {
       for (const tier of TIERS) {
          const pool = questionsForTier(tier)
@@ -135,11 +182,27 @@ describe('quiz tiers', () => {
          }
       }
    })
+
 })
 
 describe('labels', () => {
    it('has no duplicate label ids', () => {
       expect(new Set(labels.map((l) => l.id)).size).toBe(labels.length)
+   })
+
+   it('every label centroid has exactly the known axis keys with finite in-range values', () => {
+      const axisIds = axes.map((a) => a.id)
+      const axisIdSet = new Set(axisIds)
+      for (const label of labels) {
+         const centroidIds = Object.keys(label.centroid)
+         expect(new Set(centroidIds), `${label.id} centroid keys differ from axes`).toEqual(axisIdSet)
+         for (const axisId of centroidIds) {
+            const value = label.centroid[axisId]
+            expect(Number.isFinite(value), `${label.id}/${axisId} centroid is not finite`).toBe(true)
+            expect(value, `${label.id}/${axisId} centroid is below -1`).toBeGreaterThanOrEqual(-1)
+            expect(value, `${label.id}/${axisId} centroid is above 1`).toBeLessThanOrEqual(1)
+         }
+      }
    })
 
    it('every centroid covers every axis', () => {
@@ -199,6 +262,44 @@ describe('labels', () => {
       }
    })
 
+   it('all philosophies are classified into at least one layer', () => {
+      for (const label of labels) {
+         const philosophies = label.philosophies ?? []
+         const normative = label.normativePhilosophies ?? []
+         const descriptive = label.descriptivePhilosophies ?? []
+         const prescriptive = label.prescriptivePhilosophies ?? []
+
+         for (const p of philosophies) {
+            const isClassified =
+               normative.includes(p) ||
+               descriptive.includes(p) ||
+               prescriptive.includes(p)
+            expect(
+               isClassified,
+               `${label.id}: philosophy "${p}" is not classified in normativePhilosophies, descriptivePhilosophies, or prescriptivePhilosophies`
+            ).toBe(true)
+         }
+      }
+   })
+
+   it('no label alias matches the name of another label', () => {
+      const allNames = new Set(labels.map((l) => l.name.toLowerCase()))
+      for (const label of labels) {
+         const aliases = label.aliases ?? []
+         for (const alias of aliases) {
+            const aliasLower = alias.toLowerCase()
+            if (allNames.has(aliasLower)) {
+               const otherLabel = labels.find((l) => l.name.toLowerCase() === aliasLower)!
+               if (otherLabel.id !== label.id) {
+                  expect.fail(
+                     `${label.id} has alias "${alias}" which is the name of another label (${otherLabel.id})`
+                  )
+               }
+            }
+         }
+      }
+   })
+
    it('philosophyInfluences entries have valid structure and axis references', () => {
       const validAxisIds = new Set(axes.map((a) => a.id))
       for (const label of labels) {
@@ -215,6 +316,34 @@ describe('labels', () => {
             }
          }
       }
+   })
+
+   it('keeps label portrayal copy descriptive rather than slogan-like', () => {
+      const disallowedPatterns = [
+         /restore national greatness/i,
+         /natural order/i,
+         /demanding total subordination/i,
+         /supreme loyalty/i,
+      ]
+
+      for (const label of labels) {
+         const copy = [
+            label.description,
+            ...(label.philosophyInfluences?.map((influence) => influence.description) ?? []),
+         ].join(' ')
+
+         for (const pattern of disallowedPatterns) {
+            expect(copy, `${label.id} uses loaded portrayal phrase ${pattern}`).not.toMatch(pattern)
+         }
+      }
+   })
+
+   it('does not reduce broad philosophies to one label-specific use case', () => {
+      const antiImperialism = labels.find((label) => label.id === 'anti-imperialism')
+      const socialism = antiImperialism?.philosophyInfluences?.find((influence) => influence.philosophy === 'Socialism')
+
+      expect(socialism?.description).toMatch(/social ownership/i)
+      expect(socialism?.description).not.toMatch(/driving force behind imperial expansion/i)
    })
 })
 

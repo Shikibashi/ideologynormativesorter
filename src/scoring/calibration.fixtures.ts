@@ -11,16 +11,22 @@ export interface CalibrationFixture {
 }
 
 export function centroidAlignmentScore(axisWeights: AxisWeight[], centroid: IdeologyLabel['centroid']): number | null {
-   let total = 0
-   let weightSum = 0
+   let maxProduct = -Infinity
+   let maxW: AxisWeight | null = null
 
    for (const w of axisWeights) {
-      const c = centroid[w.axisId] || 0
-      total += c * w.weight
-      weightSum += Math.abs(w.weight)
+      const centValue = centroid[w.axisId]
+      if (centValue === undefined) continue
+
+      const prod = Math.abs(centValue * w.weight)
+      if (prod > maxProduct) {
+         maxProduct = prod
+         maxW = w
+      }
    }
 
-   return weightSum > 0 ? total / weightSum : null
+   if (!maxW) return null
+   return (centroid[maxW.axisId] ?? 0) * Math.sign(maxW.weight)
 }
 
 export function centroidAlignedAnswerValue(question: Question, centroid: IdeologyLabel['centroid']): number {
@@ -54,7 +60,8 @@ export function centroidAlignedAnswerValue(question: Question, centroid: Ideolog
    }
 
    const score = centroidAlignmentScore(question.axisWeights, centroid)
-   return score === null ? 0 : Math.sign(score) * 3
+   const max = question.responseType === 'likert5' ? 2 : 3
+   return score === null ? 0 : Math.max(-max, Math.min(max, score * max))
 }
 
 function createCentroidAlignedFixture(targetLabel: IdeologyLabel): AnswerMap {

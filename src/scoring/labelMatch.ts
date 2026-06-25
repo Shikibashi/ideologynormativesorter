@@ -10,9 +10,14 @@ const AXIS_DIVERGENCE_GAP = 0.8
 /** Maximum divergent axes named per flag. */
 const MAX_DIVERGENT_AXES = 3
 
-function normalizedScoreMap(breakdown: ScoreBreakdown): Map<AxisId, number> {
+interface MeasuredScore {
+   normalized: number
+   itemCount: number
+}
+
+function measuredScoreMap(breakdown: ScoreBreakdown): Map<AxisId, MeasuredScore> {
    const all = [...breakdown.normative, ...breakdown.descriptive, ...breakdown.prescriptive]
-   return new Map(all.map((s) => [s.axisId, s.normalized]))
+   return new Map(all.map((s) => [s.axisId, { normalized: s.normalized, itemCount: s.itemCount }]))
 }
 
 function closeness(distance: number, axisCount: number): number {
@@ -21,14 +26,18 @@ function closeness(distance: number, axisCount: number): number {
    return Math.max(0, 1 - distance / maxDistance)
 }
 
-function distanceOver(scoreMap: Map<AxisId, number>, label: IdeologyLabel, axisIds: AxisId[]): number {
+function distanceOver(scoreMap: Map<AxisId, MeasuredScore>, label: IdeologyLabel, axisIds: AxisId[]): { distance: number; measuredAxisCount: number } {
    let sumSquares = 0
+   let measuredAxisCount = 0
    for (const axisId of axisIds) {
-      const respondent = scoreMap.get(axisId) ?? 0
+      const score = scoreMap.get(axisId)
+      if (!score || score.itemCount === 0) continue
+      const respondent = score.normalized
       const target = label.centroid[axisId] ?? 0
       sumSquares += (respondent - target) ** 2
+      measuredAxisCount++
    }
-   return Math.sqrt(sumSquares)
+   return { distance: measuredAxisCount > 0 ? Math.sqrt(sumSquares) : Number.POSITIVE_INFINITY, measuredAxisCount }
 }
 
 /**
@@ -36,16 +45,16 @@ function distanceOver(scoreMap: Map<AxisId, number>, label: IdeologyLabel, axisI
  * This is a secondary, illustrative output, not the primary score.
  */
 export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyLabel[]): LabelMatch[] {
-   const scoreMap = normalizedScoreMap(breakdown)
+   const scoreMap = measuredScoreMap(breakdown)
 
    const matches = labels.map((label) => {
       const axisIds = Object.keys(label.centroid) as AxisId[]
-      const distance = distanceOver(scoreMap, label, axisIds)
+      const { distance, measuredAxisCount } = distanceOver(scoreMap, label, axisIds)
       return {
          labelId: label.id,
          name: label.name,
          distance,
-         confidence: closeness(distance, axisIds.length),
+         confidence: measuredAxisCount > 0 ? closeness(distance, measuredAxisCount) : 0,
       }
    })
 
@@ -74,26 +83,32 @@ const LAYER_ADJ: Record<Layer, string> = {
  * not divide by the theoretical maximum distance, so realistic divergences
  * remain visible instead of being compressed toward 1.
  */
-function layerAgreement(scoreMap: Map<AxisId, number>, label: IdeologyLabel, axes: Axis[], layer: Layer): number {
-   const layerAxes = axes.filter((a) => a.layer === layer)
-   if (layerAxes.length === 0) return 0
+function layerAgreement(scoreMap: Map<AxisId, MeasuredScore>, label: IdeologyLabel, axes: Axis[], layer: Layer): number {
+   const layerAxes = axes.filter((a) => a.layer === layer && label.centroid[a.id] !== undefined)
    let sumAbs = 0
+   let measuredAxisCount = 0
    for (const axis of layerAxes) {
-      const respondent = scoreMap.get(axis.id) ?? 0
+      const score = scoreMap.get(axis.id)
+      if (!score || score.itemCount === 0) continue
+      const respondent = score.normalized
       const target = label.centroid[axis.id] ?? 0
       sumAbs += Math.abs(respondent - target)
+      measuredAxisCount++
    }
-   const meanAbsGap = sumAbs / layerAxes.length
+   if (measuredAxisCount === 0) return 0
+   const meanAbsGap = sumAbs / measuredAxisCount
    return Math.max(0, 1 - meanAbsGap / 2)
 }
 
-function divergentAxesFor(scoreMap: Map<AxisId, number>, label: IdeologyLabel, axes: Axis[], layers: Layer[]): AxisId[] {
+function divergentAxesFor(scoreMap: Map<AxisId, MeasuredScore>, label: IdeologyLabel, axes: Axis[], layers: Layer[]): AxisId[] {
    const scored = axes
-      .filter((a) => layers.includes(a.layer))
-      .map((axis) => {
-         const respondent = scoreMap.get(axis.id) ?? 0
+      .filter((a) => layers.includes(a.layer) && label.centroid[a.id] !== undefined)
+      .flatMap((axis) => {
+         const score = scoreMap.get(axis.id)
+         if (!score || score.itemCount === 0) return []
+         const respondent = score.normalized
          const target = label.centroid[axis.id] ?? 0
-         return { id: axis.id, name: axis.name, gap: Math.abs(respondent - target) }
+         return [{ id: axis.id, name: axis.name, gap: Math.abs(respondent - target) }]
       })
       .filter((a) => a.gap >= AXIS_DIVERGENCE_GAP)
       .sort((a, b) => b.gap - a.gap)
@@ -109,7 +124,7 @@ function divergentAxesFor(scoreMap: Map<AxisId, number>, label: IdeologyLabel, a
  * cross-layer divergence this test exists to surface.
  */
 export function computeConflatedLabels(breakdown: ScoreBreakdown, labels: IdeologyLabel[], axes: Axis[]): LabelConflationFlag[] {
-   const scoreMap = normalizedScoreMap(breakdown)
+   const scoreMap = measuredScoreMap(breakdown)
    const axisName = new Map(axes.map((a) => [a.id, a.name]))
    const flags: LabelConflationFlag[] = []
 

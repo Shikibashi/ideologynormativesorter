@@ -1,15 +1,51 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
-import { questionsForTier } from './data/questions'
-import { encodeAnswers } from './share'
-import type { Question } from './types'
+import { questionsForTier, questions } from './data/questions'
+import { encodeAnswers, readCompareAnswers, readSharedAnswers } from './share'
+import type { AnswerMap, Question } from './types'
 
 const quickQuestions = questionsForTier('quick')
+const SAVE_KEY = 'ideology-quiz-save'
+
+function installLocalStorage(): void {
+   const store = new Map<string, string>()
+   const storage = {
+      getItem: vi.fn((key: string) => store.get(key) ?? null),
+      setItem: vi.fn((key: string, value: string) => store.set(key, value)),
+      removeItem: vi.fn((key: string) => store.delete(key)),
+      clear: vi.fn(() => store.clear()),
+      key: vi.fn((index: number) => Array.from(store.keys())[index] ?? null),
+      get length() {
+         return store.size
+      },
+   }
+   Object.defineProperty(globalThis, 'localStorage', { value: storage, configurable: true })
+   Object.defineProperty(window, 'localStorage', { value: storage, configurable: true })
+}
+
+beforeEach(() => {
+   installLocalStorage()
+})
 
 afterEach(() => {
+   cleanup()
    window.history.replaceState(null, '', '/')
+   localStorage.clear()
+   vi.restoreAllMocks()
 })
+
+function storeValidSave(): void {
+   localStorage.setItem(
+      SAVE_KEY,
+      JSON.stringify({
+         questions: quickQuestions,
+         answers: { [quickQuestions[0].id]: { questionId: quickQuestions[0].id, value: 1 } },
+         index: 1,
+         tier: 'quick',
+      }),
+   )
+}
 
 function answerOptionButtons(): HTMLElement[] {
    return Array.from(document.querySelectorAll<HTMLElement>('.scale-button, .statement-button'))
@@ -104,6 +140,7 @@ describe('App', () => {
 
       fireEvent.click(screen.getByRole('button', { name: /start over/i }))
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
+      expect(screen.queryByText(/you have a saved session in progress/i)).not.toBeInTheDocument()
    })
 
    it('lets a descriptive item be answered as "I don\'t know" and still advances', () => {
@@ -145,6 +182,46 @@ describe('App', () => {
       expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
    })
 
+   it('clears malformed saved progress instead of showing a stale resume banner', () => {
+      localStorage.setItem(
+         SAVE_KEY,
+         JSON.stringify({ questions: [], answers: {}, index: 0, tier: 'quick' }),
+      )
+
+      render(<App />)
+
+      expect(screen.queryByText(/you have a saved session in progress/i)).not.toBeInTheDocument()
+      expect(localStorage.getItem(SAVE_KEY)).toBeNull()
+   })
+
+   it('start fresh removes saved progress without reloading', () => {
+      storeValidSave()
+
+      render(<App />)
+      fireEvent.click(screen.getByRole('button', { name: /start fresh/i }))
+
+      expect(screen.queryByText(/you have a saved session in progress/i)).not.toBeInTheDocument()
+      expect(localStorage.getItem(SAVE_KEY)).toBeNull()
+      expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
+   })
+
+   it('compares a pasted shared result without remounting and preserves hash ordering', () => {
+      const current: AnswerMap = { q0001: { questionId: 'q0001', value: 2 } }
+      const compared: AnswerMap = { q0001: { questionId: 'q0001', value: -2 } }
+      window.history.replaceState(null, '', `/#r=${encodeAnswers(current)}`)
+
+      render(<App />)
+      fireEvent.change(screen.getByPlaceholderText(/paste shared url or hash/i), {
+         target: { value: `/#r=${encodeAnswers(compared)}` },
+      })
+      fireEvent.click(screen.getByRole('button', { name: /^compare$/i }))
+
+      expect(screen.getByRole('heading', { name: /comparison view/i })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: /axis comparison/i })).toBeInTheDocument()
+      expect(readSharedAnswers()).toEqual(current)
+      expect(readCompareAnswers()).toEqual(compared)
+   })
+
    it('copies a shareable link to the clipboard from the results screen', async () => {
       const writeText = vi.fn().mockResolvedValue(undefined)
       Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
@@ -156,6 +233,17 @@ describe('App', () => {
       fireEvent.click(screen.getByRole('button', { name: /copy link to this result/i }))
       expect(writeText).toHaveBeenCalledWith(expect.stringContaining('#r='))
       await screen.findByRole('button', { name: /link copied/i })
+   })
+
+   it('shows a sharing fallback when clipboard is unavailable', () => {
+      Object.defineProperty(navigator, 'clipboard', { value: undefined, configurable: true })
+
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      window.history.replaceState(null, '', `/#r=${encoded}`)
+      render(<App />)
+
+      fireEvent.click(screen.getByRole('button', { name: /copy link to this result/i }))
+      expect(screen.getByText('Sharing is not available in this browser.')).toBeInTheDocument()
    })
    it('renders the layer-conflation section with agreement chips for a cross-layer profile', () => {
       render(<App />)
@@ -182,6 +270,24 @@ describe('App', () => {
       expect(chipText).toMatch(/descriptive/i)
       expect(chipText).toMatch(/prescriptive/i)
       expect(chipText).toMatch(/%/)
+   })
+
+   it('renders the divergences section on the results screen when layer divergences exist', () => {
+      const normativeLibertyQ = questions.find(q => q.layer === 'normative' && q.axisWeights.some(w => w.axisId === 'liberty-noninterference'))!
+      const prescriptiveRegQ = questions.find(q => q.layer === 'prescriptive' && q.axisWeights.some(w => w.axisId === 'regulation-vs-deregulation'))!
+
+      const answers = {
+         [normativeLibertyQ.id]: { questionId: normativeLibertyQ.id, value: 3 },
+         [prescriptiveRegQ.id]: { questionId: prescriptiveRegQ.id, value: 3 }
+      }
+
+      const encoded = encodeAnswers(answers)
+      window.history.replaceState(null, '', `/#r=${encoded}`)
+      render(<App />)
+
+      expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: /divergences & strategic compromises/i })).toBeInTheDocument()
+      expect(screen.getAllByText(/layer divergence/i, { exact: false }).length).toBeGreaterThan(0)
    })
 
    it('renders nearest ideology labels grouped into family-tree groups with readable family names', () => {
@@ -213,6 +319,7 @@ describe('App', () => {
       const firstGroupCards = groups[0].querySelectorAll('.label-card')
       expect(firstGroupCards.length).toBeGreaterThanOrEqual(1)
       expect(groups[0].textContent ?? '').toMatch(/%/)
+      expect(groups[0].querySelector('.label-evidence')?.textContent ?? '').toMatch(/confidence/)
    })
 
    it('keeps the full label browser collapsed by default and searches label metadata', () => {
@@ -235,6 +342,7 @@ describe('App', () => {
       expect(screen.getByText(/showing \d+ labels/i)).toBeInTheDocument()
       expect(document.querySelectorAll('.full-label-browser .label-card').length).toBeGreaterThan(0)
       expect(document.querySelector('.full-label-browser')?.textContent ?? '').toMatch(/Marxism/i)
+
    })
 
    it('renders a compact per-layer Philosophy Explorer with affected axes', () => {
@@ -246,6 +354,7 @@ describe('App', () => {
       expect(screen.getByRole('heading', { name: /philosophy explorer/i })).toBeInTheDocument()
       expect(document.querySelectorAll('.philosophy-card').length).toBeGreaterThan(0)
       expect(document.querySelectorAll('.philosophy-explorer .axis-chip').length).toBeGreaterThan(0)
+      expect(document.querySelector('.philosophy-card')?.textContent ?? '').toMatch(/In these matched labels:/)
       const renderedLayers = Array.from(document.querySelectorAll('.philosophy-layer h3')).map((heading) => heading.textContent)
       expect(renderedLayers.length).toBeGreaterThanOrEqual(2)
    })

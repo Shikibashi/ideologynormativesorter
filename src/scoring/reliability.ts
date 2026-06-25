@@ -2,7 +2,7 @@ import type { AxisId, AxisScore, AxisReliability, LabelId, LabelReliability } fr
 
 /**
  * Pragmatic reliability band for an axis score.
- * Bands are heuristics based on itemCount and consistency (sign agreement).
+ * Bands are heuristics based on itemCount (which scales consistency).
  * Not a validated psychometric measure.
  */
 export function reliabilityForAxis(score: AxisScore, options: { minItems?: number } = {}): AxisReliability {

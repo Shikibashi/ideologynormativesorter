@@ -21,8 +21,12 @@ export function loadQuizState(): QuizSave | null {
   try {
     const raw = localStorage.getItem(SAVE_KEY)
     if (!raw) return null
-    return JSON.parse(raw) as QuizSave
+    const parsed = JSON.parse(raw)
+    if (isQuizSave(parsed)) return parsed
+    clearQuizState()
+    return null
   } catch {
+    clearQuizState()
     return null
   }
 }
@@ -38,5 +42,23 @@ export function clearQuizState(): void {
 export function getQuizProgress(): { tier: QuizTier; answered: number; total: number } | null {
   const save = loadQuizState()
   if (!save) return null
-  return { tier: save.tier, answered: save.index, total: save.questions.length }
+  return { tier: save.tier, answered: Math.min(Object.keys(save.answers).length, save.questions.length), total: save.questions.length }
+}
+
+function isQuizSave(value: unknown): value is QuizSave {
+  if (!value || typeof value !== 'object') return false
+  const candidate = value as Partial<QuizSave>
+  const index = candidate.index
+  return (
+    Array.isArray(candidate.questions) &&
+    candidate.questions.length > 0 &&
+    candidate.answers !== null &&
+    typeof candidate.answers === 'object' &&
+    !Array.isArray(candidate.answers) &&
+    Number.isInteger(index) &&
+    typeof index === 'number' &&
+    index >= 0 &&
+    index < candidate.questions.length &&
+    (candidate.tier === 'quick' || candidate.tier === 'moderate' || candidate.tier === 'extensive')
+  )
 }

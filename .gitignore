@@ -24,3 +24,10 @@ dist-ssr
 *.sw?
 
 .slim/deepwork/
+
+# AI session artifacts
+.gjc/
+.omc/
+.omp/
+.omx/
+preview.log

@@ -1,5 +1,17 @@
-import type { AnswerMap, Domain, DomainMiniResult, Question } from '../types'
+import type { Answer, AnswerMap, AxisId, Domain, DomainMiniResult, Question } from '../types'
+import { contributionForQuestionAxis } from './aggregate'
 
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value))
+}
+
+function axisIdsForAnswer(question: Question, answer: Answer): AxisId[] {
+  const weights =
+    question.responseType === 'statementChoice' && typeof answer.value === 'number'
+      ? question.statementOptions?.[answer.value]?.axisWeights
+      : question.axisWeights
+  return Array.from(new Set((weights ?? []).map((weight) => weight.axisId)))
+}
 export function computeDomainMiniResults(questions: Question[], answers: AnswerMap, domains: Domain[]): DomainMiniResult[] {
   const results: DomainMiniResult[] = []
 
@@ -19,11 +31,16 @@ export function computeDomainMiniResults(questions: Question[], answers: AnswerM
       for (const q of qs) {
         const a = answers[q.id]
         if (!a || a.value === 'dont_know') continue
-        const unit = (a.value as number) / (q.responseType === 'likert7' ? 3 : 2)
-        sum += unit * (q.axisWeights[0]?.weight || 1)
+
+        const contributions = axisIdsForAnswer(q, a)
+          .map((axisId) => contributionForQuestionAxis(q, a, axisId))
+          .filter((value): value is number => value !== null)
+        if (contributions.length === 0) continue
+
+        sum += contributions.reduce((total, value) => total + value, 0) / contributions.length
         count++
       }
-      return { mean: count > 0 ? sum / count : 0, itemCount: count }
+      return { mean: count > 0 ? clamp(sum / count, -1, 1) : 0, itemCount: count }
     }
 
     const norm = getMean(byLayer.normative)

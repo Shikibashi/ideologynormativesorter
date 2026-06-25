@@ -18,6 +18,16 @@ function axisWeightFor(question: Question, answer: Answer, axisId: AxisId): Axis
   return question.statementOptions?.[answer.value]?.axisWeights.find((w) => w.axisId === axisId)
 }
 
+export function contributionForQuestionAxis(question: Question, answer: Answer, axisId: AxisId): number | null {
+  const axisWeight = axisWeightFor(question, answer, axisId)
+  if (!axisWeight) return null
+
+  const unit = normalizeAnswer(question, answer)
+  if (unit === null) return null
+
+  return unit * axisWeight.weight * salienceFactor(question, answer)
+}
+
 /**
  * Computes a normalized -1..1 score per axis from the questions/answers that
  * reference it. Axes with no answered items get a normalized score of 0 and
@@ -38,15 +48,14 @@ export function computeAxisScores(questions: Question[], answers: AnswerMap, axe
       const answer = answers[question.id]
       if (!answer) continue
 
+      const contribution = contributionForQuestionAxis(question, answer, axis.id)
+      if (contribution === null) continue
+
       const axisWeight = axisWeightFor(question, answer, axis.id)
       if (!axisWeight) continue
 
-      const unit = normalizeAnswer(question, answer)
-      if (unit === null) continue
-
-      const factor = salienceFactor(question, answer)
-      raw += unit * axisWeight.weight * factor
-      weightSum += Math.abs(axisWeight.weight) * factor
+      raw += contribution
+      weightSum += Math.abs(axisWeight.weight)
       itemCount += 1
 
       const rating = question.layer === 'descriptive' ? answer.confidence : answer.priority

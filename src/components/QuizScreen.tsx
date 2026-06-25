@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { clearQuizState, saveQuizState } from '../save'
+import { saveQuizState } from '../save'
 import type { Answer, AnswerMap, Question, QuizTier } from '../types'
 const SALIENCE_LEVELS: { label: string; value: number }[] = [
   { label: 'Low', value: 1 },
@@ -75,7 +75,6 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
     setPendingValue(null)
     if (isLast) {
       onComplete(next)
-      clearQuizState()
     } else {
       setIndex(index + 1)
     }
@@ -117,6 +116,9 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
             </button>
           ))}
         </div>
+        <button type="button" className="back-link" onClick={() => setPendingValue(null)}>
+          Back
+        </button>
         <button type="button" className="back-link" onClick={() => commit(pendingValue as Answer['value'])}>
           Skip
         </button>

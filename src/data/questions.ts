@@ -6429,13 +6429,17 @@ const baseQuestions: Question[] = [
    },
 ]
 
-export const questions: Question[] = [...baseQuestions, ...statementQuestions, ...moduleQuestions]
+export const coreQuestions: Question[] = [...baseQuestions, ...statementQuestions]
 
-export const questionById = new Map(questions.map((q) => [q.id, q]))
+export const questions: Question[] = coreQuestions
+
+export const allQuestions: Question[] = [...coreQuestions, ...moduleQuestions]
+
+export const questionById = new Map(allQuestions.map((q) => [q.id, q]))
 
 const TIER_RANK: Record<Question['tier'], number> = { quick: 0, moderate: 1, extensive: 2 }
 
-/** Quick is a subset of moderate, which is a subset of extensive (the full bank). */
+/** Quick is a subset of moderate, which is a subset of extensive (the full core bank). */
 export function questionsForTier(tier: Question['tier']): Question[] {
-   return questions.filter((q) => TIER_RANK[q.tier] <= TIER_RANK[tier] && q.active !== false)
+   return coreQuestions.filter((q) => TIER_RANK[q.tier] <= TIER_RANK[tier] && q.active !== false)
 }

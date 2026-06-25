@@ -19,24 +19,40 @@ export function encodeAnswers(answers: AnswerMap, meta?: ShareMeta): string {
 export function decodeAnswers(param: string): AnswerMap | null {
   try {
     const decoded = JSON.parse(base64UrlDecode(param))
-    let compact: EncodedAnswer[]
-    if (decoded && typeof decoded === 'object' && 'v' in decoded) {
-      // v2
-      compact = decoded.a
-    } else {
-      compact = decoded
-    }
+    const compact = compactAnswersFromPayload(decoded)
+    if (!compact) return null
+
     const answers: AnswerMap = {}
-    for (const [questionId, value, confidence, priority] of compact) {
+    for (const entry of compact) {
+      if (!Array.isArray(entry)) return null
+      const [questionId, value, confidence, priority] = entry
+      if (typeof questionId !== 'string' || !isValidAnswerValue(value)) return null
+
       const answer: Answer = { questionId, value }
-      if (confidence != null) answer.confidence = confidence
-      if (priority != null) answer.priority = priority
+      if (isValidSalience(confidence)) answer.confidence = confidence
+      if (isValidSalience(priority)) answer.priority = priority
       answers[questionId] = answer
     }
     return answers
   } catch {
     return null
   }
+}
+
+export function extractEncodedAnswers(input: string, param: 'r' | 'c' = 'r'): string | null {
+  const trimmed = input.trim()
+  if (!trimmed) return null
+
+  const hashIndex = trimmed.indexOf('#')
+  let payload = hashIndex >= 0 ? trimmed.slice(hashIndex + 1) : trimmed
+  if (payload.startsWith('#')) payload = payload.slice(1)
+
+  if (payload.includes('=') || payload.includes('&')) {
+    const params = new URLSearchParams(payload)
+    return params.get(param)
+  }
+
+  return param === 'r' ? trimmed : null
 }
 
 export function buildShareUrl(answers: AnswerMap, meta?: ShareMeta): string {
@@ -51,16 +67,30 @@ export function buildCompareUrl(profile1: AnswerMap, profile2: AnswerMap, meta?:
 
 export function readCompareAnswers(): AnswerMap | null {
   if (typeof window === 'undefined') return null
-  const { hash } = window.location
-  const cMatch = hash.match(/[?&]c=([^&]+)/)
-  if (!cMatch) return null
-  return decodeAnswers(cMatch[1])
+  const encoded = extractEncodedAnswers(window.location.hash, 'c')
+  return encoded ? decodeAnswers(encoded) : null
 }
 export function readSharedAnswers(): AnswerMap | null {
   if (typeof window === 'undefined') return null
-  const { hash } = window.location
-  if (!hash.startsWith(HASH_PREFIX)) return null
-  return decodeAnswers(hash.slice(HASH_PREFIX.length))
+  const encoded = extractEncodedAnswers(window.location.hash, 'r')
+  return encoded ? decodeAnswers(encoded) : null
+}
+
+function compactAnswersFromPayload(decoded: unknown): unknown[] | null {
+  if (Array.isArray(decoded)) return decoded
+  if (decoded && typeof decoded === 'object' && 'v' in decoded) {
+    const payload = decoded as { a?: unknown }
+    return Array.isArray(payload.a) ? payload.a : null
+  }
+  return null
+}
+
+function isValidAnswerValue(value: unknown): value is Answer['value'] {
+  return value === 'dont_know' || (typeof value === 'number' && Number.isFinite(value) && value >= -3 && value <= 3)
+}
+
+function isValidSalience(value: unknown): value is number {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 1 && value <= 5
 }
 
 function base64UrlEncode(input: string): string {

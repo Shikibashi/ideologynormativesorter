@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import './App.css'
 import { IntroScreen } from './components/IntroScreen'
 import { QuizScreen } from './components/QuizScreen'
@@ -26,7 +26,7 @@ function App() {
    const [result, setResult] = useState<ResultProfile | null>(() =>
       sharedAnswers ? buildResultProfile(questions, sharedAnswers, axes, labels) : null,
    )
-   const [compareResult] = useState<ResultProfile | null>(() =>
+   const [compareResult, setCompareResult] = useState<ResultProfile | null>(() =>
       compareAnswers ? buildResultProfile(questions, compareAnswers, axes, labels) : null,
    )
    const [resuming, setResuming] = useState(false)
@@ -36,28 +36,47 @@ function App() {
       () => Object.fromEntries(TIERS.map((tier) => [tier, questionsForTier(tier).length])) as Record<QuizTier, number>,
       [],
    )
-   const savedProgress = useMemo(() => getQuizProgress(), [])
+   const [savedProgress, setSavedProgress] = useState(() => getQuizProgress())
+
+   function refreshSavedProgress(): void {
+      setSavedProgress(getQuizProgress())
+   }
 
 
    function handleStart(tier: QuizTier) {
       clearQuizState()
+      setSavedProgress(null)
       setActiveQuestions(questionsForTier(tier))
       setStage('quiz')
    }
 
-   const handleResume = useCallback(() => {
+   function handleResume() {
       const saved = loadQuizState()
-      if (!saved) return
+      if (!saved) {
+         refreshSavedProgress()
+         return
+      }
       setActiveQuestions(saved.questions)
       setAnswers(saved.answers)
       setResuming(true)
       setStage('quiz')
-   }, [])
+   }
 
    function handleComplete(newAnswers: AnswerMap) {
+      clearQuizState()
+      setSavedProgress(null)
       setAnswers(newAnswers)
       setResult(buildResultProfile(questions, newAnswers, axes, labels))
       setStage('results')
+   }
+
+   function handleCompare(compareAnswers: AnswerMap): void {
+      setCompareResult(buildResultProfile(questions, compareAnswers, axes, labels))
+   }
+
+   function handleClearSavedProgress(): void {
+      clearQuizState()
+      setSavedProgress(null)
    }
 
 
@@ -65,6 +84,7 @@ function App() {
    function handleRestart() {
       if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search)
       clearQuizState()
+      setSavedProgress(null)
       setResult(null)
       setAnswers({})
       setResuming(false)
@@ -79,6 +99,7 @@ function App() {
             savedProgress={savedProgress}
             onResume={handleResume}
             onStart={handleStart}
+            onClearSavedProgress={handleClearSavedProgress}
          />
       )
    }
@@ -104,6 +125,7 @@ function App() {
          labels={labels}
          answers={answers}
          compareResult={compareResult}
+         onCompare={handleCompare}
          onRestart={handleRestart}
       />
    ) : null

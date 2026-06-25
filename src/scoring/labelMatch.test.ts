@@ -61,10 +61,43 @@ describe('computeLabelMatches', () => {
       expect(best.confidence).toBeCloseTo(1)
    })
 
+   it('returns zero-confidence matches when no centroid axes are measured', () => {
+      const emptyBreakdown: ScoreBreakdown = {
+         normative: [{ axisId: 'norm1', layer: 'normative', raw: 0, normalized: 0, itemCount: 0 }],
+         descriptive: [],
+         prescriptive: [],
+      }
+
+      const [match] = computeLabelMatches(emptyBreakdown, [exactMatchLabel])
+
+      expect(match.distance).toBe(Number.POSITIVE_INFINITY)
+      expect(match.confidence).toBe(0)
+   })
+
+   it('ranks on a single measured axis and ignores missing axes', () => {
+      const sparseBreakdown: ScoreBreakdown = {
+         normative: [{ axisId: 'norm1', layer: 'normative', raw: 0.8, normalized: 0.8, itemCount: 1 }],
+         descriptive: [],
+         prescriptive: [],
+      }
+      const near: IdeologyLabel = { ...oppositeLabel, id: 'near-single', name: 'Near Single', centroid: { ...oppositeLabel.centroid, norm1: 0.8 } }
+      const far: IdeologyLabel = { ...exactMatchLabel, id: 'far-single', name: 'Far Single', centroid: { ...exactMatchLabel.centroid, norm1: -0.8 } }
+
+      const matches = computeLabelMatches(sparseBreakdown, [far, near])
+
+      expect(matches.map((m) => m.labelId)).toEqual(['near-single', 'far-single'])
+      expect(matches[0].confidence).toBeCloseTo(1)
+   })
+
    it('caps results at the top 20 matches', () => {
-      const labels = [exactMatchLabel, partialMatchLabel, oppositeLabel, { ...exactMatchLabel, id: 'dup' }]
+      const labels = Array.from({ length: 25 }, (_, index) => ({
+         ...exactMatchLabel,
+         id: `label-${index}`,
+         name: `Label ${index}`,
+         centroid: { ...exactMatchLabel.centroid, norm1: exactMatchLabel.centroid.norm1 - index * 0.01 },
+      }))
       const matches = computeLabelMatches(breakdown, labels)
-      expect(matches).toHaveLength(4)
+      expect(matches).toHaveLength(20)
    })
 })
 

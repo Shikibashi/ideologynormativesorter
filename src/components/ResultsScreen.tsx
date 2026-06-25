@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { buildShareUrl } from '../share'
-import type { AnswerMap, Axis, AxisId, Domain, LabelMatch, Layer, ResultProfile } from '../types'
+import { buildCompareUrl, buildShareUrl, decodeAnswers, extractEncodedAnswers } from '../share'
+import type { AnswerMap, Axis, AxisId, AxisReliability, Domain, LabelMatch, LabelReliability, Layer, ResultProfile } from '../types'
 import type { IdeologyLabel } from '../types/label'
 import { AxisBar } from './AxisBar'
 import { CompassPlot } from './CompassPlot'
@@ -20,6 +20,7 @@ interface ResultsScreenProps {
    labels: LabelWithInfluences[]
    answers: AnswerMap
    compareResult?: ResultProfile | null
+   onCompare: (answers: AnswerMap) => void
    onRestart: () => void
 }
 
@@ -59,6 +60,19 @@ const LAYER_LABELS: Record<Layer, string> = {
    normative: 'Normative',
    descriptive: 'Descriptive',
    prescriptive: 'Prescriptive',
+}
+
+const GENERAL_PHILOSOPHY_DESCRIPTIONS: Record<string, string> = {
+   Socialism: 'Political traditions that emphasize social ownership, economic democracy, or collective claims over productive resources.',
+   Marxism: 'Analysis of class, production relations, and capitalist power as central drivers of political conflict.',
+   Environmentalism: 'Political traditions that treat ecological integrity as a central public and moral concern.',
+   Populism: 'Political framing that contrasts a people or public with entrenched elites or institutions.',
+   Liberalism: 'Political traditions centered on individual rights, legal equality, and constrained public power.',
+   Nationalism: 'Political traditions that give national identity, sovereignty, or self-determination special importance.',
+}
+
+function philosophyOverview(philosophy: string): string {
+   return GENERAL_PHILOSOPHY_DESCRIPTIONS[philosophy] ?? 'A recurring influence among the nearest labels, shown through the specific axes below.'
 }
 
 function scoreByAxis(result: ResultProfile): Map<AxisId, number> {
@@ -149,11 +163,49 @@ function labelMatchesSearch(label: LabelWithInfluences, query: string): boolean 
    return haystack.includes(query.toLowerCase())
 }
 
-function LabelCard({ label, match }: { label: LabelWithInfluences; match?: LabelMatch }) {
+function labelEvidenceSummary(
+   label: LabelWithInfluences,
+   labelReliability?: LabelReliability,
+   axisReliabilities?: Record<AxisId, AxisReliability>,
+   axisById?: Map<AxisId, Axis>,
+): string {
+   const sparseAxes = Object.keys(label.centroid)
+      .filter((axisId): axisId is AxisId => {
+         const reliability = axisReliabilities?.[axisId]
+         return !reliability || reliability.band === 'insufficient' || reliability.itemCount < 3
+      })
+      .map((axisId) => axisById?.get(axisId)?.name ?? axisId)
+      .slice(0, 2)
+
+   const reliabilityText = labelReliability
+      ? `${labelReliability.band} confidence · ${labelReliability.evidenceCount} contributing answers`
+      : 'confidence unavailable'
+   const sparseText = sparseAxes.length > 0 ? ` · sparse axes: ${sparseAxes.join(', ')}` : ''
+   return `${reliabilityText}${sparseText}`
+}
+
+function LabelCard({
+   label,
+   match,
+   labelReliability,
+   axisReliabilities,
+   axisById,
+}: {
+   label: LabelWithInfluences
+   match?: LabelMatch
+   labelReliability?: LabelReliability
+   axisReliabilities?: Record<AxisId, AxisReliability>
+   axisById?: Map<AxisId, Axis>
+}) {
    return (
       <article className="label-card">
          <h5>{label.name}</h5>
          {match && <p className="muted">{Math.round(match.confidence * 100)}% match</p>}
+         {match && (
+            <p className="muted label-evidence">
+               {labelEvidenceSummary(label, labelReliability, axisReliabilities, axisById)}
+            </p>
+         )}
          <p>{label.description}</p>
          {label.philosophies && label.philosophies.length > 0 && (
             <p className="muted">Philosophies: {label.philosophies.slice(0, 5).join(', ')}</p>
@@ -162,13 +214,15 @@ function LabelCard({ label, match }: { label: LabelWithInfluences; match?: Label
    )
 }
 
-export function ResultsScreen({ result, axes, domains, labels, answers, compareResult, onRestart }: ResultsScreenProps) {
+export function ResultsScreen({ result, axes, domains, labels, answers, compareResult, onCompare, onRestart }: ResultsScreenProps) {
    const axisById = new Map(axes.map((a) => [a.id, a]))
    const domainById = new Map(domains.map((d) => [d.id, d]))
    const nearestById = new Map(result.nearestLabels.map((match) => [match.labelId, match]))
    const philosophyRows = topPhilosophyRows(result, labels, axes)
    const [copied, setCopied] = useState(false)
+   const [copyError, setCopyError] = useState<string | null>(null)
    const [compareUrlInput, setCompareUrlInput] = useState('')
+   const [compareError, setCompareError] = useState<string | null>(null)
    const [labelSearch, setLabelSearch] = useState('')
    const visibleLabels = labels.filter((label) => labelMatchesSearch(label, labelSearch))
    const groupedLabels = groupLabels(visibleLabels)
@@ -176,10 +230,36 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
    function handleCopyLink() {
       const meta = result.bankVersion ? { bankVersion: result.bankVersion, scoringVersion: result.scoringVersion } : undefined
       const url = buildShareUrl(answers, meta)
+      if (!navigator.clipboard?.writeText) {
+         setCopied(false)
+         setCopyError('Sharing is not available in this browser.')
+         return
+      }
+
       navigator.clipboard.writeText(url).then(
-         () => setCopied(true),
-         () => setCopied(false),
+         () => {
+            setCopied(true)
+            setCopyError(null)
+         },
+         () => {
+            setCopied(false)
+            setCopyError('Sharing is not available in this browser.')
+         },
       )
+   }
+
+   function handleCompareLink() {
+      const encoded = extractEncodedAnswers(compareUrlInput, 'r')
+      const parsedAnswers = encoded ? decodeAnswers(encoded) : null
+      if (!parsedAnswers) {
+         setCompareError('Could not read that shared result link.')
+         return
+      }
+
+      onCompare(parsedAnswers)
+      setCompareError(null)
+      const meta = result.bankVersion ? { bankVersion: result.bankVersion, scoringVersion: result.scoringVersion } : undefined
+      window.history.replaceState(null, '', buildCompareUrl(answers, parsedAnswers, meta))
    }
 
    return (
@@ -192,6 +272,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
          <button type="button" className="scale-button copy-link-button" onClick={handleCopyLink}>
             {copied ? 'Link copied' : 'Copy link to this result'}
          </button>
+         {copyError && <p className="muted">{copyError}</p>}
 
          {!compareResult && (
             <div className="result-block compare-input-area">
@@ -206,17 +287,11 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                      placeholder="Paste shared URL or hash..."
                      style={{ flex: 1, padding: '0.3rem 0.5rem' }}
                   />
-                  <button
-                     type="button"
-                     className="scale-button"
-                     onClick={() => {
-                        const hash = compareUrlInput.includes('#r=') ? compareUrlInput.split('#r=')[1] : compareUrlInput
-                        if (hash) window.location.hash = `r=${hash}&c=${encodeURIComponent(window.location.hash.slice(3))}`
-                     }}
-                  >
+                  <button type="button" className="scale-button" onClick={handleCompareLink}>
                      Compare
                   </button>
                </div>
+               {compareError && <p className="muted">{compareError}</p>}
             </div>
          )}
 
@@ -287,6 +362,22 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             </div>
          )}
 
+         {result.divergences && result.divergences.length > 0 && (
+            <div className="result-block">
+               <h2>Divergences & Strategic Compromises</h2>
+               <p className="muted">
+                  These reports highlight conflicts or trade-offs between different layers of your views.
+               </p>
+               <ul className="gap-list">
+                  {result.divergences.map((div, i) => (
+                     <li key={i}>
+                        <strong style={{ textTransform: 'capitalize' }}>{div.type.replace('_', ' ')}</strong>: {div.description}
+                     </li>
+                  ))}
+               </ul>
+            </div>
+         )}
+
          {philosophyRows.length > 0 && (
             <div className="result-block philosophy-explorer">
                <h2>Philosophy Explorer</h2>
@@ -303,7 +394,8 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                            {rows.map((row) => (
                               <article key={`${row.layer}:${row.philosophy}`} className="philosophy-card">
                                  <h4>{row.philosophy}</h4>
-                                 <p>{row.descriptions[0]}</p>
+                                 <p>{philosophyOverview(row.philosophy)}</p>
+                                 <p className="muted">In these matched labels: {row.descriptions.slice(0, 2).join('; ')}</p>
                                  <p className="muted">Seen in: {row.labelNames.slice(0, 3).join(', ')}</p>
                                  <div className="axis-chip-list">
                                     {row.axisIds.map((axisId) => {
@@ -341,7 +433,16 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                                  <div className="label-card-list">
                                     {matches.map((match) => {
                                        const label = labels.find((l) => l.id === match.labelId)
-                                       return label ? <LabelCard key={match.labelId} label={label} match={match} /> : null
+                                       return label ? (
+                                          <LabelCard
+                                             key={match.labelId}
+                                             label={label}
+                                             match={match}
+                                             labelReliability={result.labelReliabilities?.[label.id]}
+                                             axisReliabilities={result.axisReliabilities}
+                                             axisById={axisById}
+                                          />
+                                       ) : null
                                     })}
                                  </div>
                               </details>
@@ -388,7 +489,14 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                                     .slice()
                                     .sort((a, b) => a.name.localeCompare(b.name))
                                     .map((label) => (
-                                       <LabelCard key={label.id} label={label} match={nearestById.get(label.id)} />
+                                       <LabelCard
+                                          key={label.id}
+                                          label={label}
+                                          match={nearestById.get(label.id)}
+                                          labelReliability={result.labelReliabilities?.[label.id]}
+                                          axisReliabilities={result.axisReliabilities}
+                                          axisById={axisById}
+                                       />
                                     ))}
                               </div>
                            </details>
