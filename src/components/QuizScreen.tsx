@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
+import { axisById } from '../data/axes'
 import { saveQuizState } from '../save'
-import type { Answer, AnswerMap, Question, QuizTier } from '../types'
+import type { Answer, AnswerMap, AxisWeight, Question, QuizTier } from '../types'
 const SALIENCE_LEVELS: { label: string; value: number }[] = [
   { label: 'Low', value: 1 },
   { label: 'Medium', value: 3 },
@@ -26,37 +27,14 @@ const LIKERT5_LABELS: Record<number, string> = {
 }
 
 const LAYER_HELP: Record<Question['layer'], string> = {
-  normative: 'This question measures what you think is morally justified.',
-  descriptive: 'This question measures what you believe usually happens in practice.',
-  prescriptive: 'This question measures which policy direction or strategy you would prioritize.',
+  normative: 'This question measures what you think is justified',
+  descriptive: 'This question measures what you think usually happens',
+  prescriptive: 'This question measures what approach you would prioritize',
 }
 
 const SALIENCE_HELP: Record<'confidence' | 'priority', string> = {
   confidence: '“Confidence” means how sure you are that your answer is accurate. This rating controls how strongly this empirical answer counts in your result.',
   priority: '“Priority” means how important this reform is compared with other changes. This rating controls how strongly this policy preference counts in your result.',
-}
-
-const DOMAIN_HELP: Record<string, string> = {
-  'state-legitimacy': 'This topic is about when shared institutions have a justified claim to make and enforce rules.',
-  'property-ownership': 'This topic is about who may control, use, transfer or exclude others from resources.',
-  'markets-planning': 'This topic is about how people coordinate production, exchange and allocation.',
-  'redistribution-welfare': 'This topic is about how society should address material need.',
-  'labor-unions-workplace': 'This topic is about authority, bargaining and decision-making at work.',
-  'land-housing-georgism': 'This topic is about land, housing supply, building rules and land-value taxation.',
-  'money-banking': 'This topic is about money, credit, banking and monetary institutions.',
-  'intellectual-property-information': 'This topic is about legal control over copying or using ideas, inventions, creative work or information.',
-  'civil-liberties-speech': 'This topic is about protections for expression, conscience, privacy and due process.',
-  'crime-policing-justice': 'This topic is about public safety, accountability, punishment and repair after harm.',
-  'immigration-borders': 'This topic is about movement, membership and border rules.',
-  'national-identity-sovereignty': 'This topic is about national membership, self-rule and outside involvement.',
-  'religion-secularism': 'This topic is about the relationship between religion and public institutions.',
-  'family-gender-feminism': 'This topic is about family structure, gender roles and sex-based inequality.',
-  'race-ethnicity-multiculturalism': 'This topic is about cultural difference, integration and historical inequity.',
-  'environment-climate-growth': 'This topic is about environmental limits, energy, growth and tradeoffs.',
-  'foreign-policy-war': 'This topic is about diplomacy, alliances and force beyond national borders.',
-  'democracy-expertise-constitutionalism': 'This topic is about decision-making by voters, experts, courts and constitutional rules.',
-  'technology-ai-surveillance': 'This topic is about new technology, data systems, AI and monitoring.',
-  'strategy-change': 'This topic is about how political or institutional change should be pursued.',
 }
 
 function scaleValues(responseType: Question['responseType']): number[] {
@@ -67,9 +45,28 @@ function scaleLabels(responseType: Question['responseType']): Record<number, str
   return responseType === 'likert5' ? LIKERT5_LABELS : LIKERT_LABELS
 }
 
+function cleanSentence(value: string): string {
+  return value.trim().replace(/[.!?]$/, '')
+}
+
+function collectAxisWeights(question: Question): AxisWeight[] {
+  if (question.axisWeights.length > 0) return question.axisWeights
+  return question.statementOptions?.flatMap((option) => option.axisWeights) ?? []
+}
+
+function primaryAxisWeight(question: Question): AxisWeight | undefined {
+  return collectAxisWeights(question).reduce<AxisWeight | undefined>((primary, current) => {
+    if (!primary) return current
+    return Math.abs(current.weight) > Math.abs(primary.weight) ? current : primary
+  }, undefined)
+}
+
 function questionHelpText(question: Question): string {
-  const domainHelp = DOMAIN_HELP[question.domain] ?? 'This topic is about the judgment described in the question.'
-  return `${domainHelp} ${LAYER_HELP[question.layer]}`
+  const primary = primaryAxisWeight(question)
+  const axis = primary ? axisById.get(primary.axisId) : undefined
+  if (!axis) return `${LAYER_HELP[question.layer]} for this topic.`
+
+  return `${LAYER_HELP[question.layer]} through “${axis.name}.” ${cleanSentence(axis.description)}.`
 }
 
 interface QuizScreenProps {
