@@ -559,12 +559,6 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             </div>
          )}
 
-         <p className="muted">
-            If you found this tool useful, consider starring{' '}
-            <a href="https://github.com/Yeachan-Heo/gajae-code" target="_blank" rel="noopener noreferrer">
-               gajae-code on GitHub
-            </a>.
-         </p>
          <button type="button" className="primary-button" onClick={onRestart}>
             Start over
          </button>
