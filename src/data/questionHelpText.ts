@@ -298,10 +298,6 @@ function lowercaseFirst(value: string): string {
   return value.charAt(0).toLowerCase() + value.slice(1)
 }
 
-function plainPrompt(value: string): string {
-  return stripTerminalPunctuation(value).toLowerCase()
-}
-
 function getQuestionSearchText(question: Question): string {
   const optionText = question.statementOptions?.map((option) => option.text).join(' ') ?? ''
   return `${question.prompt} ${optionText}`
@@ -327,23 +323,18 @@ function fallbackDomainDefinition(question: Question): string {
   return `“${domain.name}” means ${lowercaseFirst(stripTerminalPunctuation(domain.description))}.`
 }
 
-function getPlainQuestionFocus(question: Question): string {
-  const prompt = plainPrompt(question.prompt)
-
-  if (question.responseType === 'statementChoice') {
-    if (prompt.startsWith('which ')) return prompt
-    return `which statement best matches your view of ${prompt}`
-  }
-
-  return `whether you agree that ${prompt}`
+function getResponseQualifier(question: Question): string {
+  return question.responseType === 'statementChoice' ? 'which statement you choose' : 'how strongly you agree'
 }
 
 export function getQuestionHelpText(question: Question): string {
   const definitions = findTermDefinitions(question)
   const definitionText = definitions.length > 0 ? definitions.join(' ') : DOMAIN_DEFINITIONS[question.domain] ?? fallbackDomainDefinition(question)
-  const plainFocus = getPlainQuestionFocus(question)
+  const domain = domainById.get(question.domain)
+  const domainPhrase = domain ? domain.name.toLowerCase() : 'this topic'
+  const responseQualifier = getResponseQualifier(question)
 
-  return `${definitionText} This question measures ${LAYER_MEASUREMENT[question.layer]} about ${plainFocus}.`
+  return `${definitionText} This question measures ${LAYER_MEASUREMENT[question.layer]} about ${domainPhrase}, based on ${responseQualifier}.`
 }
 
 export function getSalienceHelpText(kind: 'confidence' | 'priority'): string {

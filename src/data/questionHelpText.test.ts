@@ -23,16 +23,16 @@ const baseQuestion: Question = {
 describe('question help text', () => {
   const allQuestionItems = [...questions, ...moduleQuestions]
 
-  it('defines prompt terms and explains the prompt in plain language', () => {
+  it('defines prompt terms and explains the measurement in plain language without echoing the prompt', () => {
     const helpText = getQuestionHelpText(baseQuestion)
 
     expect(helpText).toContain('“Exit” means')
-    expect(helpText).toContain('This question measures your moral judgment')
-    expect(helpText).toContain('whether you agree that people should have meaningful exit rights from political authority')
+    expect(helpText).toContain('This question measures your moral judgment about state legitimacy, based on how strongly you agree')
+    expect(helpText).not.toContain('people should have meaningful exit rights from political authority')
     expect(helpText).not.toContain('with scoring focused on')
   })
 
-  it('keeps statement-choice help focused on the stem rather than internal axis labels', () => {
+  it('keeps statement-choice help focused on the topic rather than internal axis labels or the literal prompt', () => {
     const helpText = getQuestionHelpText({
       ...baseQuestion,
       prompt: 'Which comes closest to your view of when political authority is justified?',
@@ -45,12 +45,13 @@ describe('question help text', () => {
     })
 
     expect(helpText).not.toContain('with scoring focused on')
-    expect(helpText).toContain('which comes closest to your view of when political authority is justified')
+    expect(helpText).toContain('based on which statement you choose')
+    expect(helpText).not.toContain('which comes closest to your view of when political authority is justified')
     expect(helpText).not.toContain('view of which comes closest')
     expect(helpText).not.toContain('view of which statement')
   })
 
-  it('explains institutional-design prompts without leaking unrelated axis labels', () => {
+  it('explains institutional-design prompts without leaking unrelated axis labels or the literal prompt', () => {
     const helpText = getQuestionHelpText({
       ...baseQuestion,
       prompt: 'Institutional design should assume rulers are ordinary incentive-driven actors, not guardians above politics.',
@@ -62,7 +63,7 @@ describe('question help text', () => {
     })
 
     expect(helpText).toContain('“Institutional design” means')
-    expect(helpText).toContain('whether you agree that institutional design should assume rulers are ordinary incentive-driven actors')
+    expect(helpText).not.toContain('institutional design should assume rulers are ordinary incentive-driven actors')
     expect(helpText).not.toContain('State Action vs Exit')
     expect(helpText).not.toContain('state action vs exit')
   })
@@ -75,7 +76,7 @@ describe('question help text', () => {
     })
 
     expect(helpText).toContain('“Domination” means')
-    expect(helpText).toContain('unchecked domination should matter')
+    expect(helpText).not.toContain('unchecked domination should matter')
   })
 
   it('provides help text for salience follow-up questions', () => {
@@ -89,7 +90,7 @@ describe('question help text', () => {
 
       expect(helpText, `${question.id} is missing a definition`).toMatch(/^“.+”/)
       expect(helpText, `${question.id} is missing a measurement sentence`).toContain('This question measures')
-      expect(helpText).toContain(stripTerminalPunctuation(question.prompt).slice(0, 48).toLowerCase())
+      expect(helpText, `${question.id} should not echo the question prompt`).not.toContain(stripTerminalPunctuation(question.prompt).slice(0, 48).toLowerCase())
       expect(helpText.length, `${question.id} help text is too long`).toBeLessThanOrEqual(650)
     }
   })
@@ -100,7 +101,7 @@ describe('question help text', () => {
 
       expect(helpText, `${question.id} is missing a definition`).toMatch(/^“.+”/)
       expect(helpText, `${question.id} is missing a measurement sentence`).toContain('This question measures')
-      expect(helpText).toContain(stripTerminalPunctuation(question.prompt).slice(0, 48).toLowerCase())
+      expect(helpText, `${question.id} should not echo the question prompt`).not.toContain(stripTerminalPunctuation(question.prompt).slice(0, 48).toLowerCase())
       expect(helpText.length, `${question.id} help text is too long`).toBeLessThanOrEqual(650)
     }
   })
