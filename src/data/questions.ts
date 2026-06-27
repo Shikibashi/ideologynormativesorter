@@ -90,7 +90,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'authority-legitimacy', weight: -1 },
          { axisId: 'anti-domination', weight: 0.8 },
@@ -390,7 +390,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'property-legitimacy', weight: 0.5 },
          { axisId: 'anti-domination', weight: -0.4 },
@@ -691,7 +691,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'liberty-noninterference', weight: 1 },
          { axisId: 'property-legitimacy', weight: 0.8 },
@@ -992,7 +992,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'equality-theory', weight: 1 },
          { axisId: 'anti-domination', weight: 0.8 },
@@ -1293,7 +1293,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'anti-domination', weight: 1 },
          { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1594,7 +1594,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'property-legitimacy', weight: 0.5 },
          { axisId: 'equality-theory', weight: -0.4 },
@@ -1895,7 +1895,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'authority-legitimacy', weight: -1 },
          { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2196,7 +2196,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'property-legitimacy', weight: 0.5 },
          { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -2497,7 +2497,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'liberty-noninterference', weight: 1 },
          { axisId: 'anti-domination', weight: 0.8 },
@@ -2798,7 +2798,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'anti-domination', weight: 1 },
          { axisId: 'equality-theory', weight: 0.8 },
@@ -3099,7 +3099,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'political-community-boundary', weight: 0.5 },
          { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -3400,7 +3400,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'political-community-boundary', weight: 0.5 },
          { axisId: 'anti-domination', weight: -0.4 },
@@ -3706,7 +3706,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'moral-traditionalism', weight: -1 },
          { axisId: 'authority-legitimacy', weight: -0.8 },
@@ -4009,7 +4009,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'moral-traditionalism', weight: -0.5 },
          { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -4310,7 +4310,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'equality-theory', weight: 0.5 },
          { axisId: 'political-community-boundary', weight: -0.4 },
@@ -4611,7 +4611,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'human-nature-priority', weight: 0.5 },
          { axisId: 'equality-theory', weight: -0.4 },
@@ -4917,7 +4917,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'anti-domination', weight: 0.5 },
          { axisId: 'political-community-boundary', weight: -0.4 },
@@ -5220,7 +5220,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'authority-legitimacy', weight: 0.5 },
          { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -5521,7 +5521,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'liberty-noninterference', weight: 1 },
          { axisId: 'anti-domination', weight: 0.8 },
@@ -5822,7 +5822,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'anti-domination', weight: 0.5 },
          { axisId: 'authority-legitimacy', weight: -0.4 },
@@ -6437,7 +6437,7 @@ export const allQuestions: Question[] = [...coreQuestions, ...moduleQuestions]
 
 export const questionById = new Map(allQuestions.map((q) => [q.id, q]))
 
-const TIER_RANK: Record<Question['tier'], number> = { quick: 0, moderate: 1, extensive: 2 }
+const TIER_RANK: Record<Question['tier'], number> = { blitz: 0, quick: 1, moderate: 2, extensive: 3 }
 
 /** Quick is a subset of moderate, which is a subset of extensive (the full core bank). */
 export function questionsForTier(tier: Question['tier']): Question[] {
