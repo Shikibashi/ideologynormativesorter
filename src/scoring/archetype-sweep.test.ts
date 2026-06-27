@@ -16,7 +16,7 @@ const ALL_SCORABLE = questions
  *    discriminator debt against the 20% Phase 2 target, not as success.
  */
 const NEAR_TIE_DEBT_SNAPSHOT: Record<string, { tiesWith: string | string[]; maxMargin: number }> = {
-   'egalitarian-statist': { tiesWith: 'christian-socialism', maxMargin: 0.02 },
+   'egalitarian-statist': { tiesWith: 'anti-imperialism', maxMargin: 0.006 },
    'revolutionary-collectivist': { tiesWith: 'ecosocialist', maxMargin: 0.019 },
    'technocratic-centralist': { tiesWith: 'corporatism', maxMargin: 0.032 },
    'decentralist-market-skeptic-of-state': { tiesWith: 'left-wing-market-anarchism', maxMargin: 0.011 },
