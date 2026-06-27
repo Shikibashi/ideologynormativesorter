@@ -189,4 +189,31 @@ describe('question help text', () => {
 
     expect(helpText).toContain('“Exit” means')
   })
+
+  it('does not attach the unrelated "political authority" definition merely because a prompt says legitimate/legitimacy', () => {
+    const helpText = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'A political order is more legitimate when people can refuse its services without being treated as criminals.',
+    })
+
+    expect(helpText).toContain('“Legitimacy” means')
+    expect(helpText).not.toContain('“Political authority” means')
+  })
+
+  it('defines specific niche jargon instead of falling back to the generic domain definition', () => {
+    const cases: Array<[string, string]> = [
+      ['Occupational licensing often protects incumbent workers more than consumers.', '“Occupational licensing” means'],
+      ['Deposit insurance reduces panic but can weaken discipline on banks if supervision fails.', '“Deposit insurance” means'],
+      ['Qualified immunity and similar shields should be narrowed when officials violate clear rights.', '“Qualified immunity” means'],
+      ['Civil asset forfeiture should require a criminal conviction or be abolished.', '“Asset forfeiture” means'],
+      ['Blasphemy, apostasy, and heresy should not be civil crimes.', '“Blasphemy, apostasy and heresy” means'],
+      ['Referenda should include fiscal notes, rights constraints, and rules against targeting unpopular minorities.', '“Referendum” means'],
+      ['Benefit rules should be designed to avoid cliffs that punish additional earnings.', '“Benefit cliffs” means'],
+    ]
+
+    for (const [prompt, expectedFragment] of cases) {
+      const helpText = getQuestionHelpText({ ...baseQuestion, prompt })
+      expect(helpText, `"${prompt}" should not use the generic domain fallback`).toContain(expectedFragment)
+    }
+  })
 })
