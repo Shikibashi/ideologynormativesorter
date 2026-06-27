@@ -6,7 +6,8 @@ import { labels } from './labels'
 import { allQuestions, questionById, questions, questionsForTier } from './questions'
 import { moduleQuestions } from './moduleQuestions'
 
-const TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
+const TIERS: QuizTier[] = ['blitz', 'quick', 'moderate', 'extensive']
+const FULL_COVERAGE_TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
 
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
 
@@ -146,12 +147,14 @@ describe('statementChoice questions', () => {
 })
 
 describe('quiz tiers', () => {
-   it('nests quick within moderate within extensive', () => {
+   it('nests blitz within quick within moderate within extensive', () => {
+      const blitz = new Set(questionsForTier('blitz').map((q) => q.id))
       const quick = new Set(questionsForTier('quick').map((q) => q.id))
       const moderate = new Set(questionsForTier('moderate').map((q) => q.id))
       const extensive = new Set(questionsForTier('extensive').map((q) => q.id))
 
       expect(extensive.size).toBe(questions.length)
+      for (const id of blitz) expect(quick.has(id)).toBe(true)
       for (const id of quick) expect(moderate.has(id)).toBe(true)
       for (const id of moderate) expect(extensive.has(id)).toBe(true)
    })
@@ -171,8 +174,8 @@ describe('quiz tiers', () => {
       expect(moduleQuestions.every((q) => typeof q.module === 'string' && q.module.length > 0)).toBe(true)
    })
 
-   it('every domain has at least one item per layer in every tier', () => {
-      for (const tier of TIERS) {
+   it('every domain has at least one item per layer in every full-coverage tier', () => {
+      for (const tier of FULL_COVERAGE_TIERS) {
          const pool = questionsForTier(tier)
          for (const domain of domains) {
             for (const layer of LAYERS) {
@@ -180,6 +183,16 @@ describe('quiz tiers', () => {
                expect(count, `${domain.id}/${layer} has no item in the ${tier} tier`).toBeGreaterThan(0)
             }
          }
+      }
+   })
+
+   it('blitz tier has exactly one normative item per domain and 20 items total', () => {
+      const pool = questionsForTier('blitz')
+      expect(pool).toHaveLength(20)
+      for (const domain of domains) {
+         const items = pool.filter((q) => q.domain === domain.id)
+         expect(items, `${domain.id} should have exactly 1 blitz item`).toHaveLength(1)
+         expect(items[0].layer, `${domain.id} blitz item should be normative`).toBe('normative')
       }
    })
 
