@@ -206,7 +206,7 @@ describe('question help text', () => {
       ['Deposit insurance reduces panic but can weaken discipline on banks if supervision fails.', '“Deposit insurance” means'],
       ['Qualified immunity and similar shields should be narrowed when officials violate clear rights.', '“Qualified immunity” means'],
       ['Civil asset forfeiture should require a criminal conviction or be abolished.', '“Asset forfeiture” means'],
-      ['Blasphemy, apostasy, and heresy should not be civil crimes.', '“Blasphemy, apostasy and heresy” means'],
+      ['Blasphemy, apostasy, and heresy should not be civil crimes.', '“Blasphemy” means'],
       ['Referenda should include fiscal notes, rights constraints, and rules against targeting unpopular minorities.', '“Referendum” means'],
       ['Benefit rules should be designed to avoid cliffs that punish additional earnings.', '“Benefit cliffs” means'],
     ]

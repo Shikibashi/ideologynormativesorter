@@ -137,10 +137,6 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Universal transfers” means cash or benefits provided broadly rather than only to narrowly screened groups.',
   },
   {
-    pattern: /\badministrative capacity\b/i,
-    definition: '“Administrative capacity” means an institution’s practical ability to implement rules and deliver services well.',
-  },
-  {
     pattern: /\bpublic choice\b|\bcapture\b|\bcaptured\b/i,
     definition: '“Capture” means agencies or rules serving organized insiders more than the general public.',
   },
@@ -161,7 +157,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Zoning and permitting” means local rules that decide what can be built, where and under what conditions.',
   },
   {
-    pattern: /\bland value\b|\bGeorgism\b/i,
+    pattern: /\bland values?\b|\bGeorgism\b|\bland rents?\b|\brental value of land\b/i,
     definition: '“Land value” means the site value of land apart from buildings or improvements placed on it.',
   },
   {
@@ -237,7 +233,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Militarism and pacifism” means opposing views about whether force is a normal policy tool or nearly always wrong.',
   },
   {
-    pattern: /\bconstitutionalism\b|\bconstitution\b/i,
+    pattern: /\bconstitutionalism\b|\bconstitutions?\b/i,
     definition: '“Constitutionalism” means limiting political power through higher rules that ordinary officials cannot easily override.',
   },
   {
@@ -277,7 +273,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Coercion” means using force, threats or compulsory authority rather than consent.',
   },
   {
-    pattern: /\bcompeting (?:legal systems?|courts?|protection agencies)\b/i,
+    pattern: /\bcompeting (?:legal systems?|courts?|(?:private )?protection agencies)\b|\bmonopolistic courts?\b/i,
     definition: '“Competing legal or protection systems” means several providers of law, courts or protection operating in the same area instead of one monopoly provider.',
   },
   {
@@ -350,7 +346,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\blender[- ]of[- ]last[- ]resort\b/i,
-    definition: '“Lender of last resort” means a central bank’s role of lending to banks in a crisis when no one else will.',
+    definition: '“Lender of last resort” means a central bank’s role of lending, in a crisis, to banks that are short on cash but otherwise solvent, when no one else will.',
   },
   {
     pattern: /\bmutual credit\b/i,
@@ -406,7 +402,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bblasphemy\b|\bapostasy\b|\bheresy\b/i,
-    definition: '“Blasphemy, apostasy and heresy” means speech or belief treated as violating a religion’s official doctrines.',
+    definition: '“Blasphemy” means irreverent speech or action toward what a religion holds sacred; “apostasy” means abandoning that religion entirely; “heresy” means holding beliefs that contradict its orthodoxy while still claiming to belong to it.',
   },
   {
     pattern: /\bcolorblind\b/i,
@@ -442,7 +438,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bqualified immunity\b/i,
-    definition: '“Qualified immunity” means a legal doctrine shielding government officials from civil lawsuits unless they violated a clearly established right.',
+    definition: '“Qualified immunity” means a legal doctrine shielding government officials from civil lawsuits unless their conduct violated a right already clearly established by prior court rulings.',
   },
   {
     pattern: /\bmandatory minimums?\b/i,
@@ -458,7 +454,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\b(?:civil )?asset forfeiture\b/i,
-    definition: '“Asset forfeiture” means the government seizing property it alleges was connected to a crime, sometimes without a conviction.',
+    definition: '“Asset forfeiture” means the government seizing property tied to alleged crime; civil forfeiture can proceed against the property itself without convicting anyone.',
   },
   {
     pattern: /\balgorithmic\b/i,
@@ -557,7 +553,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Stewardship” means responsibly managing and caring for a resource on behalf of others, including future generations.',
   },
   {
-    pattern: /\bnonhuman habitats?\b/i,
+    pattern: /\bnonhuman habitats?\b|\bnon-human species\b/i,
     definition: '“Nonhuman habitats” means natural environments evaluated for their own ecological value, not just their usefulness to people.',
   },
   {
@@ -657,12 +653,112 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Ruling class” means the group that holds dominant political and economic power in a society.',
   },
   {
-    pattern: /\bcryptographic currenc(?:y|ies)\b|\bcrypto-?currenc(?:y|ies)\b/i,
+    pattern: /\bcryptographic\b|\bcrypto-?currenc(?:y|ies)\b/i,
     definition: '“Cryptocurrency” means a digital currency secured by cryptography and typically not issued by a government.',
   },
   {
     pattern: /\bintermediar(?:y|ies)\b/i,
     definition: '“Intermediaries” means institutions, like banks, that stand between savers and borrowers or buyers and sellers.',
+  },
+  {
+    pattern: /\bportable rights?\b/i,
+    definition: '“Portable rights” means legal protections that travel with a person regardless of which local jurisdiction they are in.',
+  },
+  {
+    pattern: /\bnational myths?\b/i,
+    definition: '“National myths” means shared, often selectively remembered stories a nation tells about its own founding or character.',
+  },
+  {
+    pattern: /\borganic whole\b/i,
+    definition: '“Organic whole” means treating a nation or society as a single living entity whose interests can override those of its individual members.',
+  },
+  {
+    pattern: /\bcosmopolitan(?:ism)?\b/i,
+    definition: '“Cosmopolitanism” means treating moral and political obligations as extending equally to all humanity, not just to one’s own nation.',
+  },
+  {
+    pattern: /\bcustody\b/i,
+    definition: '“Custody” means the legal right and responsibility to care for and make decisions for a child.',
+  },
+  {
+    pattern: /\btransmission\b/i,
+    definition: '“Transmission” means the high-voltage power lines and infrastructure that carry electricity from where it is generated to where it is used.',
+  },
+  {
+    pattern: /\blocalism\b/i,
+    definition: '“Localism” means favoring decisions and solutions organized at a local rather than national or global level.',
+  },
+  {
+    pattern: /\bimperial(?:ism)?\b|\bempires?\b/i,
+    definition: '“Imperialism” means one state extending political or economic control over other peoples or territories.',
+  },
+  {
+    pattern: /\bglobalization\b/i,
+    definition: '“Globalization” means the growing economic, cultural and political interconnection of countries worldwide.',
+  },
+  {
+    pattern: /\btariffs?\b|\btrade restrictions?\b/i,
+    definition: '“Trade restrictions” means tariffs, quotas or other barriers that limit imports or exports.',
+  },
+  {
+    pattern: /\blegib(?:le|ility)\b/i,
+    definition: '“Legibility” means making people, behavior or property easier for institutions to observe, categorize and govern.',
+  },
+  {
+    pattern: /\bburden of proof\b/i,
+    definition: '“Burden of proof” means whose responsibility it is to provide evidence to support a claim.',
+  },
+  {
+    pattern: /\bvictimless\b/i,
+    definition: '“Victimless” means an act that violates a law without a clear individual victim who did not consent.',
+  },
+  {
+    pattern: /\bincapacitation\b/i,
+    definition: '“Incapacitation” means physically preventing someone from committing further crimes, typically through imprisonment.',
+  },
+  {
+    pattern: /\binterest on loans?\b/i,
+    definition: '“Interest” means the price charged for borrowing money, normally a percentage of the loan amount over time.',
+  },
+  {
+    pattern: /\bpurchasing power\b/i,
+    definition: '“Purchasing power” means how much goods or services a given amount of money can actually buy.',
+  },
+  {
+    pattern: /\battribution\b/i,
+    definition: '“Attribution” means crediting the original creator of a work.',
+  },
+  {
+    pattern: /\bminimum lot sizes?\b/i,
+    definition: '“Minimum lot sizes” means zoning rules requiring a property to sit on at least a certain amount of land.',
+  },
+  {
+    pattern: /\bparking mandates?\b/i,
+    definition: '“Parking mandates” means zoning rules requiring a minimum number of parking spaces for new buildings.',
+  },
+  {
+    pattern: /\bsingle tax\b/i,
+    definition: '“Single tax” means the historic Georgist proposal to fund government mainly or entirely through a tax on land value.',
+  },
+  {
+    pattern: /\bproducts? of (?:one’s |one's |their |her |his )?labor\b/i,
+    definition: '“Product of one’s labor” means the value a person creates through their own work, a key idea in labor-based theories of property.',
+  },
+  {
+    pattern: /\bcontestab(?:le|ility)\b/i,
+    definition: '“Contestable” means open to challenge or replacement through competition rather than protected from it.',
+  },
+  {
+    pattern: /\badversarial review\b/i,
+    definition: '“Adversarial review” means a process where independent parties can challenge and test a proposal, rather than approving it unopposed.',
+  },
+  {
+    pattern: /\bmarket failures?\b/i,
+    definition: '“Market failure” means a situation where unregulated markets fail to produce an efficient or desirable outcome, such as with pollution or monopoly.',
+  },
+  {
+    pattern: /\bpeaceful resistance\b/i,
+    definition: '“Peaceful resistance” means opposing authority through nonviolent refusal or protest rather than force.',
   },
 ]
 

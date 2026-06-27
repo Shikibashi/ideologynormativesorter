@@ -27,7 +27,7 @@ export const academicTermDictionary: AcademicTermDefinition[] = [
     definition: '“Distributive justice” means how fairly benefits, burdens, income, wealth or opportunities are shared.',
   },
   {
-    pattern: /\bstate capacity\b|\badministrative capacity\b/i,
+    pattern: /\b(?:state|administrative|institutional) capacity\b/i,
     definition: '“State capacity” means how well public institutions can implement rules, collect resources and deliver services.',
   },
   {
