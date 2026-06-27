@@ -184,7 +184,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-capacity-confidence', weight: 1 },
          { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -275,7 +275,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-action-vs-exit', weight: 1 },
          { axisId: 'centralization-preference', weight: -0.8 },
@@ -575,7 +575,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'redistribution-vs-predistribution', weight: 1 },
          { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -691,7 +691,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'liberty-noninterference', weight: 1 },
          { axisId: 'property-legitimacy', weight: 0.8 },
@@ -785,7 +785,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'market-process-confidence', weight: 0.5 },
          { axisId: 'expert-confidence', weight: -0.4 },
@@ -876,7 +876,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'regulation-vs-deregulation', weight: -1 },
          { axisId: 'centralization-preference', weight: -0.8 },
@@ -992,7 +992,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'equality-theory', weight: 1 },
          { axisId: 'anti-domination', weight: 0.8 },
@@ -1086,7 +1086,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-capacity-confidence', weight: 0.5 },
          { axisId: 'public-choice-skepticism', weight: -0.4 },
@@ -1293,7 +1293,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'anti-domination', weight: 1 },
          { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -1594,7 +1594,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'property-legitimacy', weight: 0.5 },
          { axisId: 'equality-theory', weight: -0.4 },
@@ -1895,7 +1895,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'authority-legitimacy', weight: -1 },
          { axisId: 'liberty-noninterference', weight: 0.8 },
@@ -2196,7 +2196,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'property-legitimacy', weight: 0.5 },
          { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -2497,7 +2497,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'liberty-noninterference', weight: 1 },
          { axisId: 'anti-domination', weight: 0.8 },
@@ -2798,7 +2798,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'anti-domination', weight: 1 },
          { axisId: 'equality-theory', weight: 0.8 },
@@ -2983,7 +2983,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-action-vs-exit', weight: 1 },
          { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -3193,7 +3193,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'market-process-confidence', weight: 0.5 },
          { axisId: 'cultural-plasticity', weight: -0.4 },
@@ -3284,7 +3284,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'regulation-vs-deregulation', weight: -1 },
          { axisId: 'centralization-preference', weight: -0.8 },
@@ -3400,7 +3400,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'political-community-boundary', weight: 0.5 },
          { axisId: 'anti-domination', weight: -0.4 },
@@ -4103,7 +4103,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'cultural-plasticity', weight: 0.5 },
          { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -4310,7 +4310,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'equality-theory', weight: 0.5 },
          { axisId: 'political-community-boundary', weight: -0.4 },
@@ -5012,7 +5012,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-capacity-confidence', weight: 0.5 },
          { axisId: 'public-choice-skepticism', weight: 0.4 },
@@ -5220,7 +5220,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'authority-legitimacy', weight: 0.5 },
          { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -5314,7 +5314,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'democratic-confidence', weight: 0.5 },
          { axisId: 'expert-confidence', weight: -0.4 },
@@ -5405,7 +5405,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'centralization-preference', weight: 0.5 },
          { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -5521,7 +5521,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'liberty-noninterference', weight: 1 },
          { axisId: 'anti-domination', weight: 0.8 },
@@ -5822,7 +5822,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'blitz',
+      tier: 'quick',
       axisWeights: [
          { axisId: 'anti-domination', weight: 0.5 },
          { axisId: 'authority-legitimacy', weight: -0.4 },
@@ -6007,7 +6007,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'reform-vs-revolution', weight: 0.5 },
          { axisId: 'gradualism-vs-immediatism', weight: -0.4 },
