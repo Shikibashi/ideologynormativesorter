@@ -3562,6 +3562,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'national-bolshevist',
       description:
          'Fuses radical ultranationalism with Bolshevik-style revolutionary socialism, rejecting both liberal capitalism and liberal democracy in favor of a strong state that commands the economy in the name of national grandeur.',
+      usageNote:
+         'Despite the name, this is generally classified as a far-right, fascist-adjacent current (e.g., Niekisch’s Weimar-era circle, the later Limonov/Dugin variant); it borrows Bolshevik revolutionary aesthetics and anti-capitalist rhetoric rather than continuing Marxist-Leninist class theory.',
       philosophies: ["Authoritarianism","National Bolshevism","Conservative Revolution"],
    aliases: ["National Communism"],
       subTheories: ["National Communism","Strasserism"],
@@ -3674,8 +3676,9 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'integralist',
       description:
          'Holds that Catholic faith should be the basis of public law and policy, rejecting the separation of church and state in favor of an organic society where civil authority is subordinate to divine moral order.',
+      usageNote:
+         'A distinct Catholic political tradition predating fascism (19th-century ultramontanism) and continuing in non-fascist forms today; "clerical fascism" describes one specific 20th-century fusion of integralist and fascist movements, not a synonym for integralism as such.',
       philosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
-   aliases: ["Clerical Fascism"],
       subTheories: ["Clerical Fascism","Catholic Integralism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
@@ -4493,9 +4496,11 @@ export const labels: IdeologyLabel[] = [
       id: 'voluntaryism',
       name: 'Voluntaryism',
       family: 'libertarian-leaning',
-      subfamily: 'minarchist',
+      subfamily: 'market-anarchist',
       description:
-         'Holds that all human associations should be voluntary and that the state, as a compulsory monopoly on force, is illegitimate—advocating instead for private defense, dispute resolution, and contractual governance funded by voluntary subscription.',
+         'Holds that the state is illegitimate and should be dissolved entirely through strictly non-electoral, non-violent means—principled abstention from voting and party politics, persuasion, and building voluntary contractual alternatives—rather than through revolution or participation in the political process.',
+      usageNote:
+         'Distinct from Minarchism, which retains a minimal state; voluntaryism (Auberon Herbert, later the Voluntaryist journal) is anarchist in substance and is defined by its rejection of electoral and political action as a method, which separates it from Agorism’s specific counter-economic strategy.',
       philosophies: ["Voluntaryism","Libertarianism","Individualism","Non-Aggression Principle"],
    aliases: ["Voluntarism","Contractual Anarchism"],
       subTheories: ["Contractual Anarchism","Private Defense Agency"],
@@ -4661,6 +4666,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'monarchist-reactionary',
       description:
          'Organizes society into hierarchical functional groups (corporations) representing economic, professional, and cultural sectors, mediated by a strong state that claims to harmonize interests above class conflict and party politics.',
+      usageNote:
+         'This label captures state or authoritarian corporatism specifically (Schmitter’s term), where the state creates and dominates these groups from above. It is distinct from societal or "neo-corporatism," the tripartite bargaining between labor, business, and the state found in democratic welfare states such as Austria or Sweden, which is not authoritarian.',
       philosophies: ["Corporatism","Fascism","Catholic Social Teaching","Traditionalism"],
       subTheories: ["Internal Branches"],
       ethicalTheory: ["Virtue Ethics"],
@@ -5688,6 +5695,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'religious-conservative',
       description:
          'A Reformed Calvinist theological and political movement that advocates for the reconstruction of society along Biblical law, seeking to apply Old Testament judicial standards to contemporary civil government and to establish a theonomic Christian commonwealth.',
+      usageNote:
+         'A small, specific theonomist current originating with R.J. Rushdoony; it is not representative of mainstream Christian conservatism, evangelicalism, or Christian Democracy, which generally do not seek to impose Mosaic civil law.',
       philosophies: ["Christian Reconstructionism","Theonomy","Calvinism","Conservatism"],
       subTheories: ["Theonomic Ethics","Postmillennialism","Dominion Theology"],
       ethicalTheory: ["Divine Command Theory"],
@@ -5742,6 +5751,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'cyberocratic',
       description:
          'A techno-philosophical worldview that elevates data processing and information flows as the ultimate source of value and governance legitimacy, advocating for decision-making optimized through big-data analytics, algorithmic systems, and quantified efficiency metrics.',
+      usageNote:
+         'A popularizing term (associated with Yuval Noah Harari) for an emerging cultural and philosophical tendency, not an organized political movement or an established academic political-science category like the other labels in this set.',
       philosophies: ["Dataism","Technocracy","Transhumanism","Positivism"],
       subTheories: ["Algorithmic Governance","Quantified Self","Surveillance Capitalism Critique"],
       ethicalTheory: ["Consequentialism"],
@@ -5904,6 +5915,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'monarchist-reactionary',
       description:
          'A post-Soviet ideological synthesis proposed by Aleksandr Dugin that rejects liberalism, communism, and fascism as exhausted Western paradigms, advocating instead for a Eurasian empire founded on traditional values, spiritual authority, and a multipolar world order.',
+      usageNote:
+         'A single-author, non-canonical doctrine, not an established academic category. Although Dugin presents it as rejecting fascism, scholars who study his work (e.g., Anton Shekhovtsov) widely characterize it as fascist-adjacent given its sources, structure, and political alliances.',
       philosophies: ["Eurasianism","Traditionalism","Anti-Liberalism","Anti-Colonialism"],
       subTheories: ["Neo-Eurasianism","Dasein Theory","Russian Civilizationism"],
       ethicalTheory: ["Virtue Ethics"],

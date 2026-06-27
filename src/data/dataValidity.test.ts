@@ -271,6 +271,13 @@ describe('labels', () => {
          ['islamic-democracy', 'Islamic Democratic Constitutionalism'],
          ['accelerationism', 'Accelerationism'],
          ['techno-anarchism', 'Techno-Anarchist / Crypto-Anarchist'],
+         ['voluntaryism', 'Voluntaryism'],
+         ['corporatism', 'Corporatism'],
+         ['fourth-theory', 'Fourth Theory'],
+         ['national-bolshevism', 'National Bolshevism'],
+         ['christian-reconstructionism', 'Christian Reconstructionism'],
+         ['dataism', 'Dataism'],
+         ['integralism', 'Integralism'],
       ])
 
       for (const [labelId, expectedName] of requiredContextById) {
