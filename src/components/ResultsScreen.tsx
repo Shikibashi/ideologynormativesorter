@@ -23,6 +23,17 @@ function formatFamilyName(family: string): string {
       .join(' ')
 }
 
+
+function LabelContext({ match }: { match: { description?: string; cautionNote?: string; usageNote?: string } }) {
+   return (
+      <>
+         {match.description && <p className="label-description">{match.description}</p>}
+         {match.usageNote && <p className="muted label-note">{match.usageNote}</p>}
+         {match.cautionNote && <p className="muted label-note">Note: {match.cautionNote}</p>}
+      </>
+   )
+}
+
 function topConfidence(subfamilies: Record<string, { confidence: number }[]>): number {
    let best = 0
    for (const matches of Object.values(subfamilies)) {
@@ -176,6 +187,7 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, s
                                        <li key={match.labelId}>
                                           {match.name}{' '}
                                           <span className="muted">({Math.round(match.confidence * 100)}% match)</span>
+                                          <LabelContext match={match} />
                                        </li>
                                     ))}
                                  </ol>
@@ -188,6 +200,7 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, s
                   {result.nearestLabels.map((match) => (
                      <li key={match.labelId}>
                         {match.name} <span className="muted">({Math.round(match.confidence * 100)}% match)</span>
+                        <LabelContext match={match} />
                      </li>
                   ))}
                </ol>
@@ -253,13 +266,6 @@ export function ResultsScreen({ result, axes, domains, answers, compareResult, s
             </div>
          )}
 
-
-         <p className="muted">
-            If you found this tool useful, consider starring{' '}
-            <a href="https://github.com/Yeachan-Heo/gajae-code" target="_blank" rel="noopener noreferrer">
-               gajae-code on GitHub
-            </a>.
-         </p>
          <button type="button" className="primary-button" onClick={onRestart}>
             Start over
          </button>

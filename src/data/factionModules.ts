@@ -96,7 +96,7 @@ export const factionModules: FactionModule[] = [
    },
    {
       id: 'geolibertarian-faction-module',
-      name: 'Geolibertarian/Land Depth Module',
+      name: 'Georgist Libertarian/Land Depth Module',
       description: 'Follow-up items on land rent, land-value taxation, and the distinction between land and produced wealth.',
       triggerLabelIds: ['geolibertarian', 'market-liberal', 'decentralist-market-skeptic-of-state'],
       questionIds: ['fm-geolib-1', 'fm-geolib-2', 'fm-geolib-3', 'fm-geolib-4', 'fm-geolib-5'],
@@ -144,7 +144,7 @@ export const factionModules: FactionModule[] = [
    },
    {
       id: 'fascist-authoritarian-faction-module',
-      name: 'Fascist-Authoritarian Depth Module',
+      name: 'Fascist / Palingenetic Ultranationalist Depth Module',
       description: 'Follow-up items on national unity, hierarchy, coercion, and imperial restoration.',
       triggerLabelIds: ['fascist-authoritarian', 'national-traditionalist', 'eco-fascism', 'national-bolshevism', 'strasserism'],
       questionIds: ['fm-fasc-1', 'fm-fasc-2', 'fm-fasc-3', 'fm-fasc-4', 'fm-fasc-5'],

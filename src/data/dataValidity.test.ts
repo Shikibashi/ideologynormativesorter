@@ -3,6 +3,7 @@ import type { Layer, QuizTier } from '../types'
 import { axes, axisById } from './axes'
 import { domainById, domains } from './domains'
 import { factionModules } from './factionModules'
+import { highPriorityLabelPrecisionFollowUps, labelPrecisionFollowUpById, labelPrecisionFollowUps } from './labelPrecisionFollowUps'
 import { labelById, labels } from './labels'
 import { moduleQuestionById, moduleQuestions } from './moduleQuestions'
 import { questionById, questions, questionsForTier } from './questions'
@@ -126,6 +127,14 @@ describe('quiz tiers', () => {
       for (const id of moderate) expect(extensive.has(id)).toBe(true)
    })
 
+   it('varies blitz mode by rotating domains instead of grouping the same topic together', () => {
+      const quickQuestions = questionsForTier('quick')
+
+      for (let index = 1; index < quickQuestions.length; index += 1) {
+         expect(quickQuestions[index].domain, `adjacent quick questions repeat ${quickQuestions[index].domain}`).not.toBe(quickQuestions[index - 1].domain)
+      }
+   })
+
    it('every domain has at least one item per layer in every tier', () => {
       for (const tier of TIERS) {
          const pool = questionsForTier(tier)
@@ -157,6 +166,58 @@ describe('labels', () => {
       for (const label of labels) {
          expect(typeof label.subfamily, `${label.id} is missing a subfamily`).toBe('string')
          expect((label.subfamily ?? '').length, `${label.id} has an empty subfamily`).toBeGreaterThan(0)
+      }
+   })
+
+
+   it('keeps every precision follow-up attached to an existing label', () => {
+      const labelIds = new Set(labels.map((label) => label.id))
+      for (const followUp of labelPrecisionFollowUps) {
+         expect(labelIds.has(followUp.labelId), `${followUp.labelId} follow-up references a missing label`).toBe(true)
+         expect(followUp.issue.length, `${followUp.labelId} follow-up needs an issue`).toBeGreaterThan(0)
+         expect(followUp.recommendedAction.length, `${followUp.labelId} follow-up needs an action`).toBeGreaterThan(0)
+      }
+   })
+
+
+   it('keeps high-priority precision follow-ups visible through label context', () => {
+      for (const followUp of highPriorityLabelPrecisionFollowUps) {
+         const label = labelById.get(followUp.labelId)
+         expect(label, `${followUp.labelId} must exist`).toBeDefined()
+         expect(
+            `${label!.usageNote ?? ''} ${label!.cautionNote ?? ''}`.trim().length,
+            `${followUp.labelId} needs user-facing context while its follow-up remains high priority`,
+         ).toBeGreaterThan(0)
+      }
+   })
+
+   it('indexes precision follow-ups by label id for future UI or centroid work', () => {
+      expect(labelPrecisionFollowUpById.size).toBe(labelPrecisionFollowUps.length)
+      for (const followUp of labelPrecisionFollowUps) {
+         expect(labelPrecisionFollowUpById.get(followUp.labelId)).toBe(followUp)
+      }
+   })
+
+   it('marks narrowed or cautious labels with user-facing context', () => {
+      const requiredContextById = new Map([
+         ['revolutionary-collectivist', 'Revolutionary State Socialist'],
+         ['neoliberalism', 'Market-Governance Liberalism'],
+         ['cyberocracy', 'Cyberocratic Governance'],
+         ['zionism', 'Political Zionism'],
+         ['strasserism', 'Strasserite Fascism'],
+         ['islamic-democracy', 'Islamic Democratic Constitutionalism'],
+         ['accelerationism', 'Accelerationism'],
+         ['techno-anarchism', 'Techno-Anarchist / Crypto-Anarchist'],
+      ])
+
+      for (const [labelId, expectedName] of requiredContextById) {
+         const label = labels.find((l) => l.id === labelId)
+         expect(label, `${labelId} must exist`).toBeDefined()
+         expect(label!.name).toBe(expectedName)
+         expect(
+            `${label!.usageNote ?? ''} ${label!.cautionNote ?? ''}`.trim().length,
+            `${labelId} needs a usage or caution note`,
+         ).toBeGreaterThan(0)
       }
    })
 })

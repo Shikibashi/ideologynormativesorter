@@ -34,6 +34,9 @@ export interface IdealNonIdealGap {
 export interface LabelMatch {
    labelId: LabelId
    name: string
+   description?: string
+   cautionNote?: string
+   usageNote?: string
    distance: number
    /** 0..1, higher means a closer match. */
    confidence: number

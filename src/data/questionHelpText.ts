@@ -1,5 +1,5 @@
-import type { AxisWeight, Question } from '../types'
-import { axisById } from './axes'
+import type { Question } from '../types'
+import { academicTermDictionary } from './academicTermDictionary'
 import { domainById } from './domains'
 
 interface TermDefinition {
@@ -31,6 +31,7 @@ const DOMAIN_DEFINITIONS: Record<string, string> = {
 }
 
 const TERM_DEFINITIONS: TermDefinition[] = [
+  ...academicTermDictionary,
   {
     pattern: /\bexit(?: rights| options|)\b|\bopt[- ]out\b/i,
     definition: '“Exit” means a real ability to leave, opt out or choose another provider.',
@@ -70,6 +71,10 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   {
     pattern: /\bproductive assets?\b/i,
     definition: '“Productive assets” means resources used to produce goods or services, such as land, tools, factories, capital or software.',
+  },
+  {
+    pattern: /\bprivate property\b/i,
+    definition: '“Private property” means enforceable control over resources by individuals, firms or private groups rather than the state or a commons.',
   },
   {
     pattern: /\bproperty claims?\b|\bprivate title\b|\bownership claims?\b/i,
@@ -125,7 +130,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bmeans-tested\b/i,
-    definition: '“Means-tested” programs limit eligibility based on income, assets or other measures of need.',
+    definition: '“Means-tested programs” means benefits or services with eligibility limited by income, assets or other measures of need.',
   },
   {
     pattern: /\buniversal transfers?\b/i,
@@ -142,6 +147,10 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   {
     pattern: /\bcollective bargaining\b/i,
     definition: '“Collective bargaining” means workers negotiating pay, hours or conditions as a group.',
+  },
+  {
+    pattern: /\bunions?\b/i,
+    definition: '“Unions” means worker organizations that bargain collectively with employers over pay, conditions and workplace rules.',
   },
   {
     pattern: /\bworkplace governance\b/i,
@@ -168,8 +177,12 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Diversion” means sending cases away from punishment and toward treatment, supervision, restitution or support.',
   },
   {
+    pattern: /\bdue process\b/i,
+    definition: '“Due process” means fair procedures before the state may punish, restrict or deprive someone of rights or property.',
+  },
+  {
     pattern: /\brestorative\b/i,
-    definition: '“Restorative” approaches focus on repairing harm and accountability rather than only punishment.',
+    definition: '“Restorative approaches” means focusing on repairing harm and accountability rather than only punishment.',
   },
   {
     pattern: /\bincarcerat(?:e|ion)\b|\bsentencing\b/i,
@@ -216,6 +229,10 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Intervention” means using diplomatic, economic or military power to affect conditions outside one’s own country.',
   },
   {
+    pattern: /\bsanctions?\b/i,
+    definition: '“Sanctions” means economic or legal penalties used to pressure another government, group or country.',
+  },
+  {
     pattern: /\bpacifism\b|\bmilitarism\b/i,
     definition: '“Militarism and pacifism” means opposing views about whether force is a normal policy tool or nearly always wrong.',
   },
@@ -229,7 +246,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bmajoritarian\b|\bdemocratic\b/i,
-    definition: '“Majoritarian” decision-making means choices are made mainly by majority vote.',
+    definition: '“Majoritarian decision-making” means choices are made mainly by majority vote.',
   },
   {
     pattern: /\bsurveillance\b/i,
@@ -242,6 +259,10 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   {
     pattern: /\bdirect action\b/i,
     definition: '“Direct action” means trying to create change outside normal electoral or official channels.',
+  },
+  {
+    pattern: /\bcivil disobedience\b/i,
+    definition: '“Civil disobedience” means openly breaking a law or order to protest injustice while accepting public accountability.',
   },
   {
     pattern: /\breform\b|\brevolution\b/i,
@@ -258,9 +279,9 @@ const TERM_DEFINITIONS: TermDefinition[] = [
 ]
 
 const LAYER_MEASUREMENT: Record<Question['layer'], string> = {
-  normative: 'what you think is morally justified',
-  descriptive: 'what you believe usually happens in practice',
-  prescriptive: 'which policy direction or strategy you would prioritize',
+  normative: 'your moral judgment',
+  descriptive: 'your practical belief',
+  prescriptive: 'your preferred policy direction',
 }
 
 const SALIENCE_HELP_TEXT: Record<'confidence' | 'priority', string> = {
@@ -277,8 +298,26 @@ function lowercaseFirst(value: string): string {
   return value.charAt(0).toLowerCase() + value.slice(1)
 }
 
-function findTermDefinition(prompt: string): string | undefined {
-  return TERM_DEFINITIONS.find(({ pattern }) => pattern.test(prompt))?.definition
+function plainPrompt(value: string): string {
+  return stripTerminalPunctuation(value).toLowerCase()
+}
+
+function getQuestionSearchText(question: Question): string {
+  const optionText = question.statementOptions?.map((option) => option.text).join(' ') ?? ''
+  return `${question.prompt} ${optionText}`
+}
+
+function findTermDefinitions(question: Question, limit = 2): string[] {
+  const searchText = getQuestionSearchText(question)
+  const definitions: string[] = []
+
+  for (const { pattern, definition } of TERM_DEFINITIONS) {
+    if (!pattern.test(searchText) || definitions.includes(definition)) continue
+    definitions.push(definition)
+    if (definitions.length >= limit) break
+  }
+
+  return definitions
 }
 
 function fallbackDomainDefinition(question: Question): string {
@@ -288,36 +327,23 @@ function fallbackDomainDefinition(question: Question): string {
   return `“${domain.name}” means ${lowercaseFirst(stripTerminalPunctuation(domain.description))}.`
 }
 
-function collectAxisWeights(question: Question): AxisWeight[] {
-  if (question.axisWeights.length > 0) return question.axisWeights
+function getPlainQuestionFocus(question: Question): string {
+  const prompt = plainPrompt(question.prompt)
 
-  return question.statementOptions?.flatMap((option) => option.axisWeights) ?? []
-}
-
-function getPrimaryAxisWeight(question: Question): AxisWeight | undefined {
-  return collectAxisWeights(question).reduce<AxisWeight | undefined>((primary, current) => {
-    if (!primary) return current
-    return Math.abs(current.weight) > Math.abs(primary.weight) ? current : primary
-  }, undefined)
-}
-
-function getMeasurementFocus(question: Question): string {
-  const primaryAxisWeight = getPrimaryAxisWeight(question)
-  const axis = primaryAxisWeight ? axisById.get(primaryAxisWeight.axisId) : undefined
-
-  if (!axis) {
-    const domain = domainById.get(question.domain)
-    return domain ? lowercaseFirst(domain.name) : 'this topic'
+  if (question.responseType === 'statementChoice') {
+    if (prompt.startsWith('which ')) return prompt
+    return `which statement best matches your view of ${prompt}`
   }
 
-  return `${axis.name.toLowerCase()}: ${lowercaseFirst(stripTerminalPunctuation(axis.description))}`
+  return `whether you agree that ${prompt}`
 }
 
 export function getQuestionHelpText(question: Question): string {
-  const definition = findTermDefinition(question.prompt) ?? DOMAIN_DEFINITIONS[question.domain] ?? fallbackDomainDefinition(question)
-  const measurement = getMeasurementFocus(question)
+  const definitions = findTermDefinitions(question)
+  const definitionText = definitions.length > 0 ? definitions.join(' ') : DOMAIN_DEFINITIONS[question.domain] ?? fallbackDomainDefinition(question)
+  const plainFocus = getPlainQuestionFocus(question)
 
-  return `${definition} This question measures ${LAYER_MEASUREMENT[question.layer]} through ${measurement}.`
+  return `${definitionText} This question measures ${LAYER_MEASUREMENT[question.layer]} about ${plainFocus}.`
 }
 
 export function getSalienceHelpText(kind: 'confidence' | 'priority'): string {

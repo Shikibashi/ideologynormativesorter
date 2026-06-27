@@ -3,11 +3,13 @@ import type { IdeologyLabel } from '../types'
 export const labels: IdeologyLabel[] = [
    {
       id: 'egalitarian-statist',
-      name: 'Equality-Centered Statist',
+      name: 'State-Capacity Egalitarian',
       family: 'social-democratic',
       subfamily: 'reformist-welfare',
       description:
-         'Prioritizes material equality and is comfortable using state authority and public provision to achieve it, expecting public institutions to act competently and in good faith.',
+         'Prioritizes material equality and uses public institutions, state capacity, and social provision to reduce durable inequalities while assuming those institutions can be made competent and accountable.',
+      usageNote:
+         'This label emphasizes egalitarian use of public capacity; it is not a synonym for authoritarian state socialism.',
       centroid: {
          'authority-legitimacy': 0.4,
          'property-legitimacy': -0.5,
@@ -39,11 +41,13 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'market-liberal',
-      name: 'Market-Confident Reformist',
+      name: 'Market Liberal',
       family: 'liberal',
       subfamily: 'market-liberal',
       description:
-         'Holds market exchange in high empirical confidence, treats private property as strongly legitimate, and favors deregulation pursued through gradual institutional reform.',
+         'Emphasizes private property, market coordination, individual liberty, and rule-governed reform, generally preferring competition and limited regulation while accepting constitutional constraints.',
+      usageNote:
+         'This label covers market-liberal reformism and should not be read as social liberalism or neoliberal technocratic governance.',
       centroid: {
          'authority-legitimacy': 0,
          'property-legitimacy': 0.7,
@@ -75,11 +79,13 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'decentralist-market-skeptic-of-state',
-      name: 'Deregulatory Decentralist',
+      name: 'Decentralist Market Liberal',
       family: 'libertarian-leaning',
       subfamily: 'decentralist-market',
       description:
-         'Combines a strong normative concern for domination and equal standing with deep public-choice skepticism toward the state, concluding that decentralized, market-based exit is the most reliable remedy.',
+         'Combines concern about concentrated power with skepticism toward centralized state administration, favoring decentralized market institutions, voluntary association, and exit rights as safeguards.',
+      usageNote:
+         'This label denotes a market-liberal decentralist position, not socialist anarchism or left-wing market anarchism.',
       centroid: {
          'authority-legitimacy': -0.8,
          'property-legitimacy': 0.6,
@@ -115,7 +121,7 @@ export const labels: IdeologyLabel[] = [
       family: 'socialist',
       subfamily: 'democratic-market-socialist',
       description:
-         'Rejects strong private claims over productive property in favor of collective ownership, but pursues that aim through democratic and reformist means rather than rupture.',
+         'Seeks democratic control or social ownership of major productive assets while rejecting authoritarian one-party rule; distinct from social democracy, which usually reforms capitalism rather than replacing ownership structures.',
       centroid: {
          'authority-legitimacy': 0,
          'property-legitimacy': -0.6,
@@ -147,11 +153,13 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'revolutionary-collectivist',
-      name: 'Revolutionary Collectivist',
+      name: 'Revolutionary State Socialist',
       family: 'socialist',
       subfamily: 'state-socialist',
       description:
-         'Rejects private claims over productive property almost entirely and concludes that existing institutions are too captured by propertied interests to be reformed from within.',
+         'Seeks a revolutionary break with capitalist property relations and uses centralized public ownership or state power as the main vehicle for transformation, rather than gradual reform within existing institutions.',
+      usageNote:
+         'This label is narrowed to state-socialist revolutionary politics; council, syndicalist, and libertarian socialist traditions are separate labels.',
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': -0.9,
@@ -187,7 +195,7 @@ export const labels: IdeologyLabel[] = [
       family: 'conservative',
       subfamily: 'national-conservative',
       description:
-         'Treats inherited authority and stable hierarchy as legitimate, draws strong boundaries around a particular community, and expects cultural patterns to be resistant to deliberate redesign.',
+         'Emphasizes national continuity, inherited institutions, social order, and cultural tradition while remaining analytically distinct from ethnonationalism and fascist ultranationalism.',
       centroid: {
          'authority-legitimacy': 0.6,
          'property-legitimacy': 0.5,
@@ -292,7 +300,7 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'geolibertarian',
-      name: 'Geolibertarian',
+      name: 'Georgist Libertarian',
       family: 'libertarian-leaning',
       subfamily: 'geoist-market',
       description:
@@ -333,6 +341,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'market-anarchist',
       description:
          'Rejects political authority and compulsory public goods provision entirely, treating all legitimate social order as emergent from voluntary contract, private property, and competitive protection and arbitration markets.',
+      cautionNote:
+         'This is a right-libertarian market doctrine and is contested within anarchist studies because it accepts private property and market provision of law.',
       centroid: {
          'authority-legitimacy': -0.95,
          'property-legitimacy': 0.95,
@@ -476,7 +486,9 @@ export const labels: IdeologyLabel[] = [
       family: 'technocratic',
       subfamily: 'technocratic',
       description:
-         'Believes that technological innovation, dense energy, and capable public institutions can decouple human flourishing from ecological harm, and is willing to centralize planning around climate and energy transitions.',
+         'Argues that technological innovation, high-density energy, urbanization, and capable institutions can reduce ecological harm while supporting human flourishing; distinct from degrowth, deep ecology, and ecosocialist critiques of growth.',
+      usageNote:
+         'This label is about ecological decoupling through technology and institutions, not generic technocracy or all market environmentalism.',
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.1,
@@ -512,7 +524,7 @@ export const labels: IdeologyLabel[] = [
       family: 'conservative',
       subfamily: 'religious-conservative',
       description:
-         'Upholds traditional moral and family order within a bounded national community, accepts market economies tempered by social insurance, and prefers incremental, institutionally mediated reform to radical change.',
+         'Draws on Christian social thought, subsidiarity, social-market economics, family and civil-society institutions, and democratic constitutionalism, combining moral traditionalism with welfare and labor protections.',
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.4,
@@ -544,11 +556,13 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'fascist-authoritarian',
-      name: 'Fascist-Authoritarian',
+      name: 'Fascist / Palingenetic Ultranationalist',
       family: 'authoritarian',
       subfamily: 'ultranationalist',
       description:
-         'Subordinates the individual to an organic national community led by a unified will, celebrates hierarchy and tradition, and endorses coercive state action—including paramilitary and exclusionary measures—to restore national greatness.',
+         'Centers palingenetic ultranationalism: the idea of national rebirth through authoritarian mobilization, hierarchy, anti-liberal politics, and exclusionary or coercive state power. This is narrower than generic authoritarianism.',
+      cautionNote:
+         'Use narrowly: fascism here means palingenetic ultranationalist politics, not generic authoritarianism or ordinary conservatism.',
       centroid: {
          'authority-legitimacy': 0.95,
          'property-legitimacy': 0.2,
@@ -800,7 +814,7 @@ export const labels: IdeologyLabel[] = [
       family: 'conservative',
       subfamily: 'national-conservative',
       description:
-         'Combines market-friendly domestic conservatism with an assertive foreign policy that treats the active projection of military power and promotion of favored values abroad as legitimate and necessary.',
+         'Combines conservative or market-liberal domestic policy with an assertive international posture, including willingness to use American or allied power to defend strategic interests and promote liberal-democratic institutions abroad.',
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': 0.6,
@@ -832,12 +846,14 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'theocrat',
-      name: 'Theocrat',
+      name: 'Theocratic Politics',
       family: 'conservative',
       subfamily: 'religious-conservative',
       aliases: ['Islamic Theocracy'],
       description:
          'Holds that legitimate public authority and civil law should derive from and enforce religious doctrine, with religious institutions or revealed law taking precedence over secular and pluralist norms.',
+      cautionNote:
+         'This identifies theocratic political ordering, not personal religious belief or religiously inspired democratic politics.',
       centroid: {
          'authority-legitimacy': 0.8,
          'property-legitimacy': 0.3,
@@ -1054,6 +1070,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'monarchist-reactionary',
       description:
          'Rejects democracy as unstable and proposes governance modeled on a corporation run by an accountable sovereign-executive, with citizens as customers free to exit to competing sovereign jurisdictions rather than to vote.',
+      cautionNote:
+         'A niche internet-era anti-democratic current; use cautiously and do not treat it as a settled academic tradition.',
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': 0.7,
@@ -1089,7 +1107,7 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'classical-liberal',
       description:
-         'Grounds legitimacy in individual negative liberty and constitutionally limited government, treating equal civil and political rights as the sufficiency of justice rather than a mandate for redistribution or expert administration.',
+         'Grounds legitimacy in individual liberty, civic equality, rule of law, constitutional limits, and mixed government, with republican concern for preventing domination by arbitrary power.',
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': 0.6,
@@ -1121,11 +1139,13 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'neoliberalism',
-      name: 'Neoliberalism',
+      name: 'Market-Governance Liberalism',
       family: 'liberal',
       subfamily: 'technocratic-liberal',
       description:
-         'Combines confident market-process belief with trust in expert administration and capable state capacity to manage the rules of a globally integrated economy, favoring deregulation and privatization mediated through international institutions.',
+         'Describes a market-oriented liberal approach to governing capitalism through competition policy, privatization or outsourcing, independent expert institutions, and international economic rules; the term “neoliberalism” is broader and often polemical.',
+      cautionNote:
+         'The term neoliberalism is contested and often polemical; this label uses the narrower sense of market-governance liberalism.',
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.7,
@@ -1307,6 +1327,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'civic-republican',
       description:
          'Treats freedom as non-domination rather than mere non-interference, holding that a self-governing civic community must secure its members against arbitrary power through participation, mixed institutions, and the rule of law rather than through material equalization or welfare expansion.',
+      usageNote:
+         'This means the political-theory tradition of civic self-government and non-domination, not a contemporary party label.',
       centroid: {
          'authority-legitimacy': -0.3,
          'property-legitimacy': 0.2,
@@ -1451,6 +1473,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'paleolibertarian',
       description:
          'Combines a strict Rothbardian non-aggression and hard-money economics with a defense of inherited cultural and familial order, seeking a decentralized polity that secures property and liberty while leaving traditional communities free of central cultural engineering.',
+      cautionNote:
+         'A niche fusion of Rothbardian libertarian economics with cultural traditionalism; not the same as mainstream libertarianism.',
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': 0.7,
@@ -1522,7 +1546,7 @@ export const labels: IdeologyLabel[] = [
       family: 'technocratic',
       subfamily: 'techno-progressive',
       description:
-         'Holds that deliberate technological enhancement of the human condition is both morally defensible and materially emancipatory, favoring expert-led, capacity-backed institutions that accelerate the deliberate reshaping of human nature, culture, and ecological constraints.',
+         'Supports using science and technology to improve human capacities, health, longevity, and well-being, while debating democratic oversight, safety, access, and whether enhancement should be market-led, state-supported, or decentralized.',
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': 0.2,
@@ -1595,6 +1619,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'right-populist',
       description:
          'Frames politics as a struggle between a corrupt elite and an authentic people, demanding strongman leadership and direct extra-institutional mobilization to restore national sovereignty, traditional cultural order, and boundaries against outsiders through rupture rather than gradual reform.',
+      cautionNote:
+         'Populism is a thin ideology or political style that divides a virtuous people from elites; it is not a complete doctrine by itself.',
       centroid: {
          'authority-legitimacy': 0.5,
          'property-legitimacy': 0.2,
@@ -1667,6 +1693,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'participatory-socialist',
       description:
          'Seeks a participatory economy organized around workers and consumers councils, balanced job complexes, and negotiated planning, rejecting both capitalist ownership and centralized command administration.',
+      cautionNote:
+         'A specific participatory-economics proposal rather than a broad name for all participatory democracy or socialism.',
       centroid: {
          'authority-legitimacy': -0.3,
          'property-legitimacy': -0.7,
@@ -1814,6 +1842,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'left-populist',
       description:
          'Frames politics as a struggle between ordinary people and entrenched elites, channeling that antagonism toward redistribution, economic democracy, and majoritarian popular sovereignty rather than nationalist exclusion.',
+      cautionNote:
+         'Populism is a thin ideology or political style that divides a virtuous people from elites; this variant combines it with egalitarian or anti-oligarchic politics.',
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': -0.3,
@@ -1923,6 +1953,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'panarchist',
       description:
          'Believes that the populace should have the right to choose the form of government (or lack thereof) they live under without having to change their physical residence, envisioning a free market of competing voluntary associations.',
+      cautionNote:
+         'A niche and highly theoretical doctrine of voluntary, overlapping governance systems; not a mainstream anarchist consensus.',
       centroid: {
          'authority-legitimacy': -0.8,
          'property-legitimacy': 0.8,
@@ -2098,11 +2130,13 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'cyberocracy',
-      name: 'Cyberocracy',
+      name: 'Cyberocratic Governance',
       family: 'technocratic',
       subfamily: 'cyberocratic',
       description:
-         'Holds that government should be substantially automated and run by information systems and artificial intelligence, treating algorithmic administration as more efficient, less corruptible, and better suited to complex modern governance than human rule.',
+         'Treats information systems, networked administration, and algorithmic decision-support as central tools of governance, while leaving open whether human officials, democratic bodies, or automated systems retain final authority.',
+      cautionNote:
+         'An emerging and speculative governance concept with limited settled academic usage; read it as experimental rather than as a canonical ideology like liberalism or socialism.',
       centroid: {
          'authority-legitimacy': 0.2,
          'property-legitimacy': -0.3,
@@ -2175,6 +2209,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'eco-authoritarian',
       description:
          'Treats ecological crisis as the overriding political priority requiring a powerful centralized state—often technocratic or vanguardist—to enforce environmental discipline, irrespective of conventional left-right cultural positioning.',
+      cautionNote:
+         'This label refers to authoritarian environmental governance, not ecomodernism, ecosocialism, or ordinary climate policy.',
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': -0.2,
@@ -2211,6 +2247,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'eco-fascist',
       description:
          'Combines fascist ultranationalism and ethnonationalism with deep ecology, holding that population reduction, ethnic homogeneity, and coercive state power are necessary to protect the natural order from industrial civilization.',
+      cautionNote:
+         'Use narrowly for ecological themes joined to fascist or exclusionary ultranationalist politics, not for strong environmental regulation.',
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': 0.3,
@@ -2247,6 +2285,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'hindutva',
       description:
          'Seeks to define Indian national identity through Hindu culture and values, treating Hinduism as the civilizational and spiritual foundation of the nation rather than a mere religion among equals.',
+      cautionNote:
+         'Hindutva is a Hindu-nationalist political ideology, not Hinduism as a religion.',
       centroid: {
          'authority-legitimacy': 0.8,
          'property-legitimacy': 0.4,
@@ -2314,12 +2354,14 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'zionism',
-      name: 'Zionism',
+      name: 'Political Zionism',
       family: 'nationalist',
       subfamily: 'zionist',
       aliases: ['Labour Zionism'],
       description:
-         'Holds that the Jewish people are entitled to national self-determination and a sovereign state in their ancestral homeland, combining national identity with democratic institutions and modern statecraft.',
+         'Identifies Jewish national self-determination and statehood in the Land of Israel as a political aim, without treating liberal, socialist, religious, revisionist, or territorial positions within Zionism as the same doctrine.',
+      cautionNote:
+         'Political Zionism is internally diverse and historically contested; this label does not imply one view on borders, religion, minority rights, or any current government.',
       centroid: {
          'authority-legitimacy': 0.4,
          'property-legitimacy': 0.7,
@@ -2388,12 +2430,14 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'strasserism',
-      name: 'Strasserism',
+      name: 'Strasserite Fascism',
       family: 'authoritarian',
       subfamily: 'strasserist',
       aliases: ['National Syndicalism'],
       description:
-         'A radical, anti-capitalist wing of Nazism that combines ultranationalist authoritarianism with vehement anti-capitalist and socialist economic demands, mass mobilization, and opposition to bourgeois conservatism.',
+         'A radical fascist current within Nazism that combines palingenetic ultranationalism, authoritarian mass mobilization, and anti-capitalist rhetoric or demands; it should not be classified as socialism despite its historical use of socialist language.',
+      cautionNote:
+         'Use narrowly as a fascist far-right current; anti-capitalist rhetoric here does not make the label socialist in the academic sense.',
       centroid: {
          'authority-legitimacy': 0.85,
          'property-legitimacy': -0.6,
@@ -2571,11 +2615,13 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'islamic-democracy',
-      name: 'Islamic Democracy',
+      name: 'Islamic Democratic Constitutionalism',
       family: 'conservative',
       subfamily: 'islamic-democratic',
       description:
-         'Holds that democratic governance and popular sovereignty are compatible with and can operate within an Islamic framework, grounding law and policy in Islamic values while maintaining electoral politics.',
+         'Argues that electoral government, constitutional limits, and public accountability can operate within an Islamic ethical or legal framework, while remaining distinct from clerical theocracy and from purely secular liberal democracy.',
+      cautionNote:
+         'A contested family of ideas about democracy within Islamic constitutional or political frameworks; not identical to theocracy, and not reducible to any single country or party.',
       centroid: {
          'authority-legitimacy': 0.7,
          'property-legitimacy': 0.4,
@@ -2647,7 +2693,9 @@ export const labels: IdeologyLabel[] = [
       family: 'technocratic',
       subfamily: 'accelerationist',
       description:
-         'Holds that the dynamics of capitalism and technological development should be pushed to their extreme limits to precipitate radical systemic transformation or technological singularity.',
+         'Uses acceleration as a strategy or diagnosis: intensifying technological, capitalist, or modernizing forces to force systemic transformation. The current centroid is closest to technology-centered accelerationism, not the full left/right accelerationist family.',
+      cautionNote:
+         'Accelerationism has incompatible left, right, and technology-centered variants; this result is provisional until those variants receive separate centroids.',
       centroid: {
          'authority-legitimacy': -0.5,
          'property-legitimacy': -0.2,
@@ -2684,6 +2732,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'juche',
       description:
          'A state ideology of national self-reliance emphasizing political independence, economic self-sufficiency, and military self-defense under a highly centralized one-party state with a supreme leader.',
+      cautionNote:
+         'This is the DPRK/Kimist state ideology of self-reliance and leader-centered sovereignty, not generic socialism.',
       centroid: {
          'authority-legitimacy': 0.9,
          'property-legitimacy': -0.7,
@@ -2715,11 +2765,13 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'techno-anarchism',
-      name: 'Techno-Anarchism',
+      name: 'Techno-Anarchist / Crypto-Anarchist',
       family: 'anarchist',
       subfamily: 'techno-anarchist',
       description:
-         'Applies advanced technology and decentralized networks to create a stateless, anti-authoritarian society, rejecting centralized control while embracing technological tools for voluntary cooperation and mutual aid.',
+         'Uses decentralizing technologies, cryptography, networks, or peer-to-peer infrastructure to reduce state and corporate control and enable voluntary anti-authoritarian coordination.',
+      cautionNote:
+         'A loose emerging current overlapping cypherpunk, crypto-anarchism, and networked anarchism; not a canonical anarchist school equivalent to mutualism or anarcho-communism.',
       centroid: {
          'authority-legitimacy': -0.85,
          'property-legitimacy': -0.3,

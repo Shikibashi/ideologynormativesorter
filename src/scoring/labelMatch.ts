@@ -9,10 +9,30 @@ const DIVERGENCE_DELTA = 0.18
 const AXIS_DIVERGENCE_GAP = 0.8
 /** Maximum divergent axes named per flag. */
 const MAX_DIVERGENT_AXES = 3
+const SUFFICIENT_AXIS_ITEMS = 3
+
+function axisScoreMap(breakdown: ScoreBreakdown): Map<AxisId, { normalized: number; itemCount: number }> {
+   const all = [...breakdown.normative, ...breakdown.descriptive, ...breakdown.prescriptive]
+   return new Map(all.map((s) => [s.axisId, { normalized: s.normalized, itemCount: s.itemCount }]))
+}
 
 function normalizedScoreMap(breakdown: ScoreBreakdown): Map<AxisId, number> {
-   const all = [...breakdown.normative, ...breakdown.descriptive, ...breakdown.prescriptive]
-   return new Map(all.map((s) => [s.axisId, s.normalized]))
+   return new Map([...axisScoreMap(breakdown)].map(([axisId, score]) => [axisId, score.normalized]))
+}
+
+function measuredAxisIds(breakdown: ScoreBreakdown, label: IdeologyLabel): AxisId[] {
+   const scores = axisScoreMap(breakdown)
+   const measured = (Object.keys(label.centroid) as AxisId[]).filter((axisId) => (scores.get(axisId)?.itemCount ?? 0) > 0)
+   return measured.length > 0 ? measured : Object.keys(label.centroid) as AxisId[]
+}
+
+function evidenceFactor(breakdown: ScoreBreakdown, label: IdeologyLabel): number {
+   const scores = axisScoreMap(breakdown)
+   const axisIds = Object.keys(label.centroid) as AxisId[]
+   if (axisIds.length === 0) return 0
+
+   const sufficientlyMeasured = axisIds.filter((axisId) => (scores.get(axisId)?.itemCount ?? 0) >= SUFFICIENT_AXIS_ITEMS).length
+   return Math.sqrt(sufficientlyMeasured / axisIds.length)
 }
 
 function closeness(distance: number, axisCount: number): number {
@@ -32,20 +52,24 @@ function distanceOver(scoreMap: Map<AxisId, number>, label: IdeologyLabel, axisI
 }
 
 /**
- * Ranks ideology labels by Euclidean distance over the full axis vector.
- * This is a secondary, illustrative output, not the primary score.
+ * Ranks ideology labels by Euclidean distance over the axes actually measured
+ * by the respondent's answers. This avoids treating unasked blitz-mode axes as
+ * neutral evidence against labels with non-neutral centroids.
  */
 export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyLabel[]): LabelMatch[] {
    const scoreMap = normalizedScoreMap(breakdown)
 
    const matches = labels.map((label) => {
-      const axisIds = Object.keys(label.centroid) as AxisId[]
+      const axisIds = measuredAxisIds(breakdown, label)
       const distance = distanceOver(scoreMap, label, axisIds)
       return {
          labelId: label.id,
          name: label.name,
+         description: label.description,
+         cautionNote: label.cautionNote,
+         usageNote: label.usageNote,
          distance,
-         confidence: closeness(distance, axisIds.length),
+         confidence: closeness(distance, axisIds.length) * evidenceFactor(breakdown, label),
       }
    })
 
@@ -86,9 +110,17 @@ function computeAllMatches(breakdown: ScoreBreakdown, labels: IdeologyLabel[]): 
    const scoreMap = normalizedScoreMap(breakdown)
    return labels
       .map((label) => {
-         const axisIds = Object.keys(label.centroid) as AxisId[]
+         const axisIds = measuredAxisIds(breakdown, label)
          const distance = distanceOver(scoreMap, label, axisIds)
-         return { labelId: label.id, name: label.name, distance, confidence: closeness(distance, axisIds.length) }
+         return {
+            labelId: label.id,
+            name: label.name,
+            description: label.description,
+            cautionNote: label.cautionNote,
+            usageNote: label.usageNote,
+            distance,
+            confidence: closeness(distance, axisIds.length) * evidenceFactor(breakdown, label),
+         }
       })
       .sort((a, b) => a.distance - b.distance)
 }
@@ -174,7 +206,7 @@ export function computeConflatedLabels(breakdown: ScoreBreakdown, labels: Ideolo
       const conflatedPhrase = conflatedLayers.map((l) => `${LAYER_ADJ[l]} (${LAYER_NOUN[l]})`).join(' and ')
       const axisPhrase = divergentAxes.length > 0
          ? ` Your sharpest divergences are on ${divergentAxes.map((id) => `"${axisName.get(id) ?? id}"`).join(', ')}.`
-         : ''
+         : ' No single divergent axis was strong enough to name.'
       const reason = `You match ${label.name} on ${LAYER_ADJ[matchedLayer]} grounds (${LAYER_NOUN[matchedLayer]}), but a test that assigned this label would conflate that with your ${conflatedPhrase}, where you diverge from it.${axisPhrase}`
 
       flags.push({

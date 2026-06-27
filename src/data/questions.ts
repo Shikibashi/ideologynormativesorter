@@ -3,8 +3,8 @@ import { statementQuestions } from './statementQuestions'
 
 const CONFIDENCE_PROMPT = 'How confident are you in this empirical claim?'
 const PRIORITY_PROMPT = 'How high a priority is this relative to other reforms?'
-export const QUESTION_BANK_VERSION = '2026-06-v2'
-export const SCORING_VERSION = '2026-06-02'
+export const QUESTION_BANK_VERSION = '2026-06-v4'
+export const SCORING_VERSION = '2026-06-04'
 
 export function getBankFingerprint(): string {
    return QUESTION_BANK_VERSION // stable for this PR; can be content hash later
@@ -6136,7 +6136,24 @@ export const questionById = new Map(questions.map((q) => [q.id, q]))
 
 const TIER_RANK: Record<Question['tier'], number> = { quick: 0, moderate: 1, extensive: 2 }
 
+function diversifyQuickOrder(selectedQuestions: Question[]): Question[] {
+   const domainOrder = [...new Set(selectedQuestions.map((q) => q.domain))]
+   const byDomain = new Map(domainOrder.map((domain) => [domain, selectedQuestions.filter((q) => q.domain === domain)]))
+   const maxDomainDepth = Math.max(...[...byDomain.values()].map((domainQuestions) => domainQuestions.length))
+   const diversified: Question[] = []
+
+   for (let depth = 0; depth < maxDomainDepth; depth += 1) {
+      for (const domain of domainOrder) {
+         const question = byDomain.get(domain)?.[depth]
+         if (question) diversified.push(question)
+      }
+   }
+
+   return diversified
+}
+
 /** Quick is a subset of moderate, which is a subset of extensive (the full bank). */
 export function questionsForTier(tier: Question['tier']): Question[] {
-   return questions.filter((q) => TIER_RANK[q.tier] <= TIER_RANK[tier] && q.active !== false)
+   const selectedQuestions = questions.filter((q) => TIER_RANK[q.tier] <= TIER_RANK[tier] && q.active !== false)
+   return tier === 'quick' ? diversifyQuickOrder(selectedQuestions) : selectedQuestions
 }
