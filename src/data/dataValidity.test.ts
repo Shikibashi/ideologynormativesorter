@@ -186,13 +186,12 @@ describe('quiz tiers', () => {
       }
    })
 
-   it('blitz tier has exactly one normative item per domain and 20 items total', () => {
+   it('blitz tier has 21 items: 7 normative, 7 descriptive, 7 prescriptive', () => {
       const pool = questionsForTier('blitz')
-      expect(pool).toHaveLength(20)
-      for (const domain of domains) {
-         const items = pool.filter((q) => q.domain === domain.id)
-         expect(items, `${domain.id} should have exactly 1 blitz item`).toHaveLength(1)
-         expect(items[0].layer, `${domain.id} blitz item should be normative`).toBe('normative')
+      expect(pool).toHaveLength(21)
+      for (const layer of LAYERS) {
+         const layerItems = pool.filter((q) => q.layer === layer)
+         expect(layerItems, `blitz should have 7 ${layer} items`).toHaveLength(7)
       }
    })
 
