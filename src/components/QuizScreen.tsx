@@ -181,7 +181,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
       </p>
 
       <p className="prompt">{question.prompt}</p>
-      <p className="muted question-help">{questionHelpText(question)}</p>
+      <p className="muted question-help help-text">{question.helpText ?? questionHelpText(question)}</p>
       {saveError && <p className="muted error-inline" role="alert">{saveError}</p>}
 
       {question.responseType === 'statementChoice' ? (
