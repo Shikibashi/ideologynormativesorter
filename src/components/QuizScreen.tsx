@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { axisById } from '../data/axes'
+import { getQuestionHelpText, getSalienceHelpText } from '../data/questionHelpText'
 import { saveQuizState } from '../save'
-import type { Answer, AnswerMap, AxisWeight, Question, QuizTier } from '../types'
+import type { Answer, AnswerMap, Question, QuizTier } from '../types'
 const SALIENCE_LEVELS: { label: string; value: number }[] = [
   { label: 'Low', value: 1 },
   { label: 'Medium', value: 3 },
@@ -26,47 +26,12 @@ const LIKERT5_LABELS: Record<number, string> = {
   '2': 'Agree',
 }
 
-const LAYER_HELP: Record<Question['layer'], string> = {
-  normative: 'This question measures what you think is justified',
-  descriptive: 'This question measures what you think usually happens',
-  prescriptive: 'This question measures what approach you would prioritize',
-}
-
-const SALIENCE_HELP: Record<'confidence' | 'priority', string> = {
-  confidence: '“Confidence” means how sure you are that your answer is accurate. This rating controls how strongly this empirical answer counts in your result.',
-  priority: '“Priority” means how important this reform is compared with other changes. This rating controls how strongly this policy preference counts in your result.',
-}
-
 function scaleValues(responseType: Question['responseType']): number[] {
   return responseType === 'likert5' ? [-2, -1, 0, 1, 2] : [-3, -2, -1, 0, 1, 2, 3]
 }
 
 function scaleLabels(responseType: Question['responseType']): Record<number, string> {
   return responseType === 'likert5' ? LIKERT5_LABELS : LIKERT_LABELS
-}
-
-function cleanSentence(value: string): string {
-  return value.trim().replace(/[.!?]$/, '')
-}
-
-function collectAxisWeights(question: Question): AxisWeight[] {
-  if (question.axisWeights.length > 0) return question.axisWeights
-  return question.statementOptions?.flatMap((option) => option.axisWeights) ?? []
-}
-
-function primaryAxisWeight(question: Question): AxisWeight | undefined {
-  return collectAxisWeights(question).reduce<AxisWeight | undefined>((primary, current) => {
-    if (!primary) return current
-    return Math.abs(current.weight) > Math.abs(primary.weight) ? current : primary
-  }, undefined)
-}
-
-function questionHelpText(question: Question): string {
-  const primary = primaryAxisWeight(question)
-  const axis = primary ? axisById.get(primary.axisId) : undefined
-  if (!axis) return `${LAYER_HELP[question.layer]} for this topic.`
-
-  return `${LAYER_HELP[question.layer]} through “${axis.name}.” ${cleanSentence(axis.description)}.`
 }
 
 interface QuizScreenProps {
@@ -106,7 +71,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
         setSaveError(null)
       }
     }
-  }, [answers, index])
+  }, [answers, index, questions, tier])
 
   function commit(value: Answer['value'], rating?: number) {
     const answer: Answer = { questionId: question.id, value }
@@ -138,6 +103,8 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
 
   if (salienceQuestion) {
     const prompt = salienceQuestion === 'confidence' ? question.confidencePrompt : question.priorityPrompt
+    const helpText = getSalienceHelpText(salienceQuestion)
+
     return (
       <section className="screen quiz-screen">
         <div className="progress-track">
@@ -147,7 +114,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
           Question {index + 1} of {questions.length} &middot; {salienceQuestion}
         </p>
         <p className="prompt">{prompt}</p>
-        <p className="muted question-help">{SALIENCE_HELP[salienceQuestion]}</p>
+        <p className="muted question-help">{helpText}</p>
         <div className="scale" role="group" aria-label={`${salienceQuestion} rating`}>
           {SALIENCE_LEVELS.map((level) => (
             <button
@@ -170,6 +137,8 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
     )
   }
 
+  const helpText = question.helpText ?? getQuestionHelpText(question)
+
   return (
     <section className="screen quiz-screen">
       <div className="progress-track">
@@ -181,7 +150,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
       </p>
 
       <p className="prompt">{question.prompt}</p>
-      <p className="muted question-help help-text">{question.helpText ?? questionHelpText(question)}</p>
+      <p className="muted question-help help-text">{helpText}</p>
       {saveError && <p className="muted error-inline" role="alert">{saveError}</p>}
 
       {question.responseType === 'statementChoice' ? (

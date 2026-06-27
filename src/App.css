@@ -275,6 +275,20 @@
   margin-bottom: 8px;
 }
 
+.label-description,
+.label-note {
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+
+.label-description {
+  font-size: 14px;
+}
+
+.label-note {
+  font-size: 13px;
+}
+
 .family-name {
   margin-bottom: 4px;
 }

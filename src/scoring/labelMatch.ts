@@ -9,6 +9,7 @@ const DIVERGENCE_DELTA = 0.18
 const AXIS_DIVERGENCE_GAP = 0.8
 /** Maximum divergent axes named per flag. */
 const MAX_DIVERGENT_AXES = 3
+const SUFFICIENT_AXIS_ITEMS = 3
 
 interface MeasuredScore {
    normalized: number
@@ -26,6 +27,16 @@ function closeness(distance: number, axisCount: number): number {
    return Math.max(0, 1 - distance / maxDistance)
 }
 
+function evidenceFactor(scoreMap: Map<AxisId, MeasuredScore>, axisIds: AxisId[]): number {
+   if (axisIds.length === 0) return 0
+   const evidence = axisIds.reduce((sum, axisId) => {
+      const itemCount = scoreMap.get(axisId)?.itemCount ?? 0
+      return sum + Math.min(itemCount / SUFFICIENT_AXIS_ITEMS, 1)
+   }, 0)
+
+   return Math.sqrt(evidence / axisIds.length)
+}
+
 function distanceOver(scoreMap: Map<AxisId, MeasuredScore>, label: IdeologyLabel, axisIds: AxisId[]): { distance: number; measuredAxisCount: number } {
    let sumSquares = 0
    let measuredAxisCount = 0
@@ -41,8 +52,9 @@ function distanceOver(scoreMap: Map<AxisId, MeasuredScore>, label: IdeologyLabel
 }
 
 /**
- * Ranks ideology labels by Euclidean distance over the full axis vector.
- * This is a secondary, illustrative output, not the primary score.
+ * Ranks ideology labels by Euclidean distance over measured axes.
+ * This avoids treating unasked axes as neutral evidence while still lowering
+ * confidence when the match rests on sparse answers.
  */
 export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyLabel[]): LabelMatch[] {
    const scoreMap = measuredScoreMap(breakdown)
@@ -53,8 +65,11 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
       return {
          labelId: label.id,
          name: label.name,
+         description: label.description,
+         cautionNote: label.cautionNote,
+         usageNote: label.usageNote,
          distance,
-         confidence: measuredAxisCount > 0 ? closeness(distance, measuredAxisCount) : 0,
+         confidence: measuredAxisCount > 0 ? closeness(distance, measuredAxisCount) * evidenceFactor(scoreMap, axisIds) : 0,
       }
    })
 
