@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { getQuestionHelpText, getSalienceHelpText } from '../data/questionHelpText'
 import { clearQuizState, saveQuizState } from '../save'
 import type { Answer, AnswerMap, Question, QuizTier } from '../types'
 const SALIENCE_LEVELS: { label: string; value: number }[] = [
@@ -96,6 +97,8 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
 
   if (salienceQuestion) {
     const prompt = salienceQuestion === 'confidence' ? question.confidencePrompt : question.priorityPrompt
+    const helpText = getSalienceHelpText(salienceQuestion)
+
     return (
       <section className="screen quiz-screen">
         <div className="progress-track">
@@ -105,6 +108,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
           Question {index + 1} of {questions.length} &middot; {salienceQuestion}
         </p>
         <p className="prompt">{prompt}</p>
+        <p className="muted question-help">{helpText}</p>
         <div className="scale" role="group" aria-label={`${salienceQuestion} rating`}>
           {SALIENCE_LEVELS.map((level) => (
             <button
@@ -124,6 +128,8 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
     )
   }
 
+  const helpText = getQuestionHelpText(question)
+
   return (
     <section className="screen quiz-screen">
       <div className="progress-track">
@@ -135,6 +141,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
       </p>
 
       <p className="prompt">{question.prompt}</p>
+      <p className="muted question-help">{helpText}</p>
 
       {question.responseType === 'statementChoice' ? (
         <div className="statement-list" role="group" aria-label="Which best represents your view">
