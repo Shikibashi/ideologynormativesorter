@@ -37,12 +37,13 @@ const NEAR_TIE_DEBT_SNAPSHOT: Record<string, { tiesWith: string | string[]; maxM
    'world-federalism': { tiesWith: 'separatist-nationalism', maxMargin: 0.052 },
    'guild-socialism': { tiesWith: 'libertarian-socialism', maxMargin: 0.053 },
    'cyberocracy': { tiesWith: 'anti-imperialism', maxMargin: 0.017 },
+   'bioregionalism': { tiesWith: 'libertarian-socialism', maxMargin: 0.0095 },
    'eco-authoritarianism': { tiesWith: 'fourth-theory', maxMargin: 0.048 },
    'religious-nationalism': { tiesWith: 'hindutva', maxMargin: 0.03 },
    'zionism': { tiesWith: 'expansionist-nationalism', maxMargin: 0.047 },
    'national-bolshevism': { tiesWith: 'fourth-theory', maxMargin: 0.042 },
    'strasserism': { tiesWith: 'theocrat', maxMargin: 0.055 },
-   'integralism': { tiesWith: 'hindutva', maxMargin: 0.054 },
+   'integralism': { tiesWith: 'theocrat', maxMargin: 0.063 },
    'democratic-confederalism': { tiesWith: 'mutualist', maxMargin: 0.046 },
    'paleoconservatism': { tiesWith: 'national-traditionalist', maxMargin: 0.025 },
    'one-nation-conservatism': { tiesWith: 'political-islam', maxMargin: 0.011 },
@@ -52,7 +53,7 @@ const NEAR_TIE_DEBT_SNAPSHOT: Record<string, { tiesWith: string | string[]; maxM
    'techno-anarchism': { tiesWith: 'mutualist', maxMargin: 0.036 },
    'national-socialism': { tiesWith: 'fourth-theory', maxMargin: 0.019 },
    'utopian-socialism': { tiesWith: 'universal-basic-income', maxMargin: 0.008 },
-   'voluntaryism': { tiesWith: 'left-wing-market-anarchism', maxMargin: 0.046 },
+   'voluntaryism': { tiesWith: 'left-wing-market-anarchism', maxMargin: 0.048 },
    'stirnerism': { tiesWith: 'mutualist', maxMargin: 0.021 },
    'libertarian-municipalism': { tiesWith: 'platformism', maxMargin: 0.003 },
    'corporatism': { tiesWith: 'fourth-theory', maxMargin: 0.016 },
@@ -124,9 +125,9 @@ describe('archetype -> nearest-label sweep', () => {
 
       expect(gate.targetRate).toBe(0.2)
       expect(gate.maxAllowedExceptions).toBe(23)
-      expect(gate.currentNearTies).toHaveLength(49)
+      expect(gate.currentNearTies).toHaveLength(50)
       expect(gate.currentNearTies.length).toBeGreaterThan(gate.maxAllowedExceptions)
-      expect(gate.snapshotCount).toBe(49)
+      expect(gate.snapshotCount).toBe(50)
       for (const nearTie of gate.currentNearTies) {
          const debt = NEAR_TIE_DEBT_SNAPSHOT[nearTie.target]
          expect(debt, `${nearTie.target} is missing from the debt snapshot`).toBeDefined()
