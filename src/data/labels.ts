@@ -176,12 +176,14 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'democratic-market-socialist',
       description:
          'Seeks democratic control or social ownership of major productive assets while rejecting authoritarian one-party rule; distinct from social democracy, which usually reforms capitalism rather than replacing ownership structures.',
-      philosophies: ["Marxism","Socialism","Reformism","Social Democracy"],
-      subTheories: ["Bernsteinism","Eduard Bernstein","Revisionism"],
+      usageNote:
+         'This follows the contemporary (especially U.S.) usage that sharply distinguishes democratic socialism from social democracy. Historically the Socialist International used "democratic socialism" as its own name for what is now usually called social democracy, so the term has shifted meaning over time.',
+      philosophies: ["Marxism","Socialism","Democratic Socialism","Reformism"],
+      subTheories: ["Debsian Socialism","Democratic Socialists of America","Guild Socialism"],
       ethicalTheory: ["Consequentialism"],
-      normativePhilosophies: ["Marxism","Socialism","Social Democracy"],
+      normativePhilosophies: ["Marxism","Socialism"],
       descriptivePhilosophies: ["Marxism"],
-      prescriptivePhilosophies: ["Reformism","Social Democracy"],
+      prescriptivePhilosophies: ["Democratic Socialism","Reformism"],
       philosophyInfluences: [
          {
             philosophy: "Marxism",
@@ -887,6 +889,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'state-socialist',
       description:
          'Holds that a disciplined vanguard party must seize and wield centralized state power to abolish private capital and direct a planned economy through the transition to communism.',
+      usageNote:
+         'Titoism claimed continuity with Marxism-Leninism but is a heterodox/contested case: its market elements, worker self-management, and non-aligned foreign policy broke sharply enough from Soviet orthodoxy that Yugoslavia was expelled from the Cominform in 1948.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
       subTheories: ["Stalinism","Maoism","Hoxhaism","Titoism"],
       ethicalTheory: ["Consequentialism"],
@@ -995,12 +999,14 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'libertarian-socialist',
       description:
          'Looks to federated labor unions, not parties or the state, as the vehicle for abolishing capitalism, with production coordinated directly through workers organizations won by direct action.',
-      philosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      usageNote:
+         'Revolutionary syndicalism\'s lineage (Sorel, the French CGT, Spanish CNT-FAI) is rooted at least as much in anarchism as in Marxism; it is listed here for its overlap with libertarian socialism and council communism, not as a Marxist-derived current.',
+      philosophies: ["Marxism","Socialism","Anarchism","Syndicalism","Council Communism","Libertarian Socialism"],
       subTheories: ["Revolutionary Syndicalism","Anarcho-Syndicalism","Industrial Unionism"],
       ethicalTheory: ["Consequentialism"],
-      normativePhilosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      normativePhilosophies: ["Marxism","Socialism","Anarchism","Council Communism","Libertarian Socialism"],
       descriptivePhilosophies: ["Marxism"],
-      prescriptivePhilosophies: ["Council Communism","Libertarian Socialism"],
+      prescriptivePhilosophies: ["Syndicalism","Council Communism","Libertarian Socialism"],
       philosophyInfluences: [
          {
             philosophy: "Marxism",
@@ -1484,11 +1490,13 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'ethnic-national',
       description:
          'Defines the nation by common descent, culture, and heritage, prioritizing the interests and continuity of that ethnic community and treating membership as inherited rather than chosen.',
-      philosophies: ["Nationalism","Ethnic Nationalism","Social Darwinism"],
+      usageNote:
+         'Ethnonationalism is a descent-based theory of national membership; it does not by itself entail Social Darwinism or any other specific 19th-century racial-science doctrine, which only some ethnonationalist movements have invoked.',
+      philosophies: ["Nationalism","Ethnic Nationalism","Primordialism"],
       subTheories: ["Volkisch Nationalism","Primordialism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Nationalism"],
-      descriptivePhilosophies: ["Social Darwinism"],
+      descriptivePhilosophies: ["Primordialism"],
       prescriptivePhilosophies: ["Ethnic Nationalism"],
       philosophyInfluences: [
          {
@@ -1497,8 +1505,8 @@ export const labels: IdeologyLabel[] = [
             affectedAxes: ["political-community-boundary","authority-legitimacy"],
          },
          {
-            philosophy: "Social Darwinism",
-            description: "Ethnic hierarchy and intergroup competition treated as political premises.",
+            philosophy: "Primordialism",
+            description: "Ethnic identity treated as ancient and fixed rather than socially constructed.",
             affectedAxes: ["equality-theory","moral-traditionalism","coercion-strategy"],
          }
       ],
@@ -1538,6 +1546,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'monarchist-reactionary',
       description:
          'Holds that supreme and largely unchecked authority should rest with a hereditary sovereign, valuing the stability, continuity, and unified will of personal rule over elected and deliberative government.',
+      usageNote:
+         'Centered on the early-modern theoretical claim that sovereign power is by nature indivisible and unconditional (Bossuet, Filmer, the Hobbesian sovereign); compare Traditional Monarchist, which describes the modern royalist movement and identity more broadly.',
       philosophies: ["Authoritarianism","Monarchism","Divine Right"],
       subTheories: ["Divine Right","Legitimism","Carlism"],
       ethicalTheory: ["Virtue Ethics"],
@@ -1866,6 +1876,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'conservative-liberal',
       description:
          'Pairs confidence in free markets and private property with a deference to inherited moral order and gradual institutional change, seeking to conserve cultural and familial continuity while preserving a market economy under the rule of law.',
+      usageNote:
+         'Starts from liberal premises (markets, individual liberty) and adds conservative caution; compare Liberal Conservatism, which starts from conservative premises (tradition, institutions) and adds liberal economic and civil commitments.',
       philosophies: ["Liberalism","Conservative Liberalism","Burkeanism"],
       subTheories: ["Internal Traditions"],
       ethicalTheory: ["Deontology"],
@@ -1920,11 +1932,13 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'civic-communitarian',
       description:
          'Holds that the self is constituted by shared community and tradition, so that justice must weigh common goods and the social bases of self-respect alongside individual rights, favoring civic participation over either laissez-faire or statist central planning.',
-      philosophies: ["Marxism","Socialism","Communitarianism","Social Contract Theory"],
+      usageNote:
+         'Communitarianism is a critique of liberal individualism found across the political spectrum (Sandel, MacIntyre, Etzioni, Taylor); it is not primarily a socialist or Marxist tradition, despite some left-communitarian thinkers drawing on both.',
+      philosophies: ["Communitarianism","Civic Republicanism","Social Contract Theory"],
       subTheories: ["Civic Republicanism","Communicative Ethics"],
       ethicalTheory: ["Virtue Ethics"],
-      normativePhilosophies: ["Marxism","Socialism","Communitarianism","Social Contract Theory"],
-      descriptivePhilosophies: ["Marxism"],
+      normativePhilosophies: ["Communitarianism","Civic Republicanism","Social Contract Theory"],
+      descriptivePhilosophies: ["Communitarianism"],
       prescriptivePhilosophies: [],
       philosophyInfluences: [
          {
@@ -2084,10 +2098,10 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'libertarian-socialist',
       description:
          'A broader anti-authoritarian socialism that opposes both capitalist concentration and centralized state socialism, seeking worker self-management and federated anti-hierarchical organization through a mix of reform and direct action rather than vanguard seizure.',
-      philosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      philosophies: ["Marxism","Socialism","Anarchism","Council Communism","Libertarian Socialism"],
       subTheories: ["Council Communism","De Leonism","Autonomism"],
       ethicalTheory: ["Consequentialism"],
-      normativePhilosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
+      normativePhilosophies: ["Marxism","Socialism","Anarchism","Council Communism","Libertarian Socialism"],
       descriptivePhilosophies: ["Marxism"],
       prescriptivePhilosophies: ["Council Communism","Libertarian Socialism"],
       philosophyInfluences: [
@@ -2571,8 +2585,10 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'market-anarchist',
       description:
          'Defends anti-capitalist freed markets and voluntary exchange while rejecting state privilege, landlord rents, corporate subsidy, and capitalist hierarchy as products of coercive enclosure rather than genuine market freedom.',
+      usageNote:
+         'The Steiner-Vallentyne school is a related but distinct academic left-libertarian tradition in distributive-justice theory; unlike this label, it does not itself entail anarchism and is generally compatible with a redistributive state.',
       philosophies: ["Anarchism","Left-Wing Market Anarchism","Mutualism"],
-   aliases: ["Left-Rothbardianism","Steiner-Vallentyne School"],
+   aliases: ["Left-Rothbardianism"],
       subTheories: ["Left-Rothbardianism","Steiner-Vallentyne School"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Anarchism"],
@@ -2626,8 +2642,9 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'individualist-anarchist',
       description:
          'Centers personal autonomy, voluntary association, and hostility to imposed moral or political authority, rejecting both state power and collectivist demands that subordinate the individual to a planned social whole.',
+      usageNote:
+         'Post-left anarchism is a specific, more recent anti-organizational current influenced by this tradition; it is a sub-current rather than a synonym for the broader 19th-century individualist-anarchist tradition (Tucker, Spooner, Stirner).',
       philosophies: ["Anarchism","Individualist Anarchism","Stirnerism","Egoism"],
-   aliases: ["Post-Left Anarchism"],
       subTheories: ["Post-Left Anarchism"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Anarchism","Individualist Anarchism","Stirnerism","Egoism"],
@@ -4389,8 +4406,9 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'democratic-market-socialist',
       description:
          'Applies Christian ethical principles—especially solidarity with the poor, communal obligation, and stewardship—to advocate for social ownership, economic democracy, and structural opposition to exploitative capitalism.',
+      usageNote:
+         'Liberation Theology (Latin American, explicitly Marxist-influenced) and the Social Gospel (American Protestant, often reformist rather than socialist) are related but distinct movements within this broader tradition, not simple synonyms for it.',
       philosophies: ["Christian Socialism","Christian Theology","Catholic Social Teaching","Socialism"],
-   aliases: ["Liberation Theology","Social Gospel"],
       subTheories: ["Liberation Theology","Social Gospel"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: ["Christian Socialism","Christian Theology","Catholic Social Teaching","Socialism"],
@@ -5101,6 +5119,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'conservative-liberal',
       description:
          'A synthesis of conservative social caution with liberal commitments to individual liberty, limited government, and market economics, seeking to preserve traditional institutions while embracing economic and political liberalism.',
+      usageNote:
+         'Starts from conservative premises (tradition, institutions) and adds liberal economic and civil commitments; compare Conservative Liberalism, which starts from liberal premises and adds conservative caution.',
       philosophies: ["Conservatism","Liberalism","Classical Liberalism","Liberal Conservatism"],
       subTheories: ["Liberal Conservatism","Conservative Liberalism"],
       ethicalTheory: ["Deontology","Consequentialism"],
@@ -6133,6 +6153,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'monarchist-reactionary',
       description:
          'A conservative royalist ideology advocating for absolute or traditional monarchy as the divinely ordained or historically legitimate form of government, rejecting popular sovereignty, democratic representation, and constitutional limits on royal prerogative.',
+      usageNote:
+         'Describes the broader modern royalist movement and identity, which values monarchy chiefly for its historical continuity and legitimacy; compare Absolute Monarchist, which centers the narrower early-modern theoretical claim about indivisible sovereign power.',
       philosophies: ["Monarchism","Absolutism","Traditionalism","Conservatism"],
       subTheories: ["Divine Right of Kings","Absolute Monarchy","Patrimonialism"],
       ethicalTheory: ["Virtue Ethics","Divine Command Theory"],

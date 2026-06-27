@@ -278,6 +278,18 @@ describe('labels', () => {
          ['christian-reconstructionism', 'Christian Reconstructionism'],
          ['dataism', 'Dataism'],
          ['integralism', 'Integralism'],
+         ['democratic-socialist', 'Democratic Socialist'],
+         ['marxist-leninist', 'Marxist-Leninist'],
+         ['syndicalist', 'Syndicalist'],
+         ['ethnonationalist', 'Ethnonationalist'],
+         ['communitarianism', 'Communitarianism'],
+         ['left-wing-market-anarchism', 'Left-Wing Market Anarchism'],
+         ['individualist-anarchism', 'Individualist Anarchism'],
+         ['christian-socialism', 'Christian Socialism'],
+         ['absolute-monarchist', 'Absolute Monarchist'],
+         ['traditional-monarchist', 'Traditional Monarchist'],
+         ['conservative-liberalism', 'Conservative Liberalism'],
+         ['liberal-conservatism', 'Liberal Conservatism'],
       ])
 
       for (const [labelId, expectedName] of requiredContextById) {
