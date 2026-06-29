@@ -9,7 +9,6 @@ const DIVERGENCE_DELTA = 0.18
 const AXIS_DIVERGENCE_GAP = 0.8
 /** Maximum divergent axes named per flag. */
 const MAX_DIVERGENT_AXES = 3
-const SUFFICIENT_AXIS_ITEMS = 3
 
 interface MeasuredScore {
    normalized: number

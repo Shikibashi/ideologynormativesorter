@@ -171,7 +171,6 @@ describe('computeLabelMatches', () => {
       expect(matches[0].labelId).toBe('measured-match')
       expect(matches[0].distance).toBeCloseTo(0)
    })
-   })
 })
 
 describe('computeConflatedLabels', () => {
