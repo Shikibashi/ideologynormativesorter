@@ -32,6 +32,7 @@ describe('reliabilityForLabel', () => {
     ])
     const r = reliabilityForLabel(match.labelId, axisScores, ['ax1', 'ax2'])
     expect(r.evidenceCount).toBe(12)
-    expect(r.band).toBe('high')
+    expect(r.band).toBe('medium')
+    expect(r.reason).toContain('2/2 axes sufficiently measured')
   })
 })

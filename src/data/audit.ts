@@ -66,7 +66,7 @@ export function auditCorpus(input?: Partial<AuditInput>): AuditReport {
     axes,
     domains,
     labels,
-    tierQuestions: ['quick', 'moderate', 'extensive'].flatMap((tier) => questionsForTier(tier as Question['tier'])),
+    tierQuestions: ['blitz', 'quick', 'moderate', 'extensive'].flatMap((tier) => questionsForTier(tier as Question['tier'])),
     hasModuleRegistry: false,
     ...input,
   }

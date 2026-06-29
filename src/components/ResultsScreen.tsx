@@ -154,6 +154,8 @@ function labelMatchesSearch(label: LabelWithInfluences, query: string): boolean 
       label.family,
       label.subfamily,
       label.description,
+      label.usageNote,
+      label.cautionNote,
       ...(label.aliases ?? []),
       ...(label.philosophies ?? []),
    ]
@@ -220,6 +222,8 @@ function LabelCard({
             </p>
          )}
          <p>{label.description}</p>
+         {label.usageNote && <p className="muted label-note">{label.usageNote}</p>}
+         {label.cautionNote && <p className="muted label-note">Note: {label.cautionNote}</p>}
          {label.philosophies && label.philosophies.length > 0 && (
             <p className="muted">Philosophies: {label.philosophies.slice(0, 5).join(', ')}</p>
          )}

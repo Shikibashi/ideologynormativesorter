@@ -63,6 +63,6 @@ function isQuizSave(value: unknown): value is QuizSave {
     typeof index === 'number' &&
     index >= 0 &&
     index < candidate.questions.length &&
-    (candidate.tier === 'quick' || candidate.tier === 'moderate' || candidate.tier === 'extensive')
+    (candidate.tier === 'blitz' || candidate.tier === 'quick' || candidate.tier === 'moderate' || candidate.tier === 'extensive')
   )
 }

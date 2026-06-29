@@ -14,7 +14,7 @@ import { clearQuizState, loadQuizState, getQuizProgress } from './save'
 
 type Stage = 'intro' | 'quiz' | 'results'
 
-const TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
+const TIERS: QuizTier[] = ['blitz', 'quick', 'moderate', 'extensive']
 
 
 function App() {

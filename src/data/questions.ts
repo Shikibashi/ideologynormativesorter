@@ -4,7 +4,7 @@ import { statementQuestions } from './statementQuestions'
 
 const CONFIDENCE_PROMPT = 'How confident are you in this empirical claim?'
 const PRIORITY_PROMPT = 'How high a priority is this relative to other reforms?'
-export const QUESTION_BANK_VERSION = '2026-06-v3'
+export const QUESTION_BANK_VERSION = '2026-06-v4'
 export const SCORING_VERSION = '2026-06-25'
 
 export function getBankFingerprint(): string {
@@ -90,7 +90,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'authority-legitimacy', weight: -1 },
          { axisId: 'anti-domination', weight: 0.8 },
@@ -184,7 +184,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-capacity-confidence', weight: 1 },
          { axisId: 'public-choice-skepticism', weight: -0.8 },
@@ -275,7 +275,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-action-vs-exit', weight: 1 },
          { axisId: 'centralization-preference', weight: -0.8 },
@@ -390,7 +390,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'property-legitimacy', weight: 0.5 },
          { axisId: 'anti-domination', weight: -0.4 },
@@ -575,7 +575,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'redistribution-vs-predistribution', weight: 1 },
          { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -785,7 +785,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'market-process-confidence', weight: 0.5 },
          { axisId: 'expert-confidence', weight: -0.4 },
@@ -876,7 +876,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'regulation-vs-deregulation', weight: -1 },
          { axisId: 'centralization-preference', weight: -0.8 },
@@ -1086,7 +1086,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-capacity-confidence', weight: 0.5 },
          { axisId: 'public-choice-skepticism', weight: -0.4 },
@@ -2983,7 +2983,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-action-vs-exit', weight: 1 },
          { axisId: 'regulation-vs-deregulation', weight: -0.8 },
@@ -3099,7 +3099,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'political-community-boundary', weight: 0.5 },
          { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -3193,7 +3193,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'market-process-confidence', weight: 0.5 },
          { axisId: 'cultural-plasticity', weight: -0.4 },
@@ -3284,7 +3284,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'regulation-vs-deregulation', weight: -1 },
          { axisId: 'centralization-preference', weight: -0.8 },
@@ -3706,7 +3706,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'moral-traditionalism', weight: -1 },
          { axisId: 'authority-legitimacy', weight: -0.8 },
@@ -4009,7 +4009,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'moral-traditionalism', weight: -0.5 },
          { axisId: 'liberty-noninterference', weight: -0.4 },
@@ -4103,7 +4103,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'cultural-plasticity', weight: 0.5 },
          { axisId: 'state-capacity-confidence', weight: -0.4 },
@@ -4611,7 +4611,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'human-nature-priority', weight: 0.5 },
          { axisId: 'equality-theory', weight: -0.4 },
@@ -4917,7 +4917,7 @@ const baseQuestions: Question[] = [
       layer: 'normative',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'anti-domination', weight: 0.5 },
          { axisId: 'political-community-boundary', weight: -0.4 },
@@ -5012,7 +5012,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'state-capacity-confidence', weight: 0.5 },
          { axisId: 'public-choice-skepticism', weight: 0.4 },
@@ -5314,7 +5314,7 @@ const baseQuestions: Question[] = [
       layer: 'descriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'democratic-confidence', weight: 0.5 },
          { axisId: 'expert-confidence', weight: -0.4 },
@@ -5405,7 +5405,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'centralization-preference', weight: 0.5 },
          { axisId: 'state-action-vs-exit', weight: -0.4 },
@@ -6007,7 +6007,7 @@ const baseQuestions: Question[] = [
       layer: 'prescriptive',
       theoryContext: 'mixed',
       responseType: 'likert7',
-      tier: 'quick',
+      tier: 'blitz',
       axisWeights: [
          { axisId: 'reform-vs-revolution', weight: 0.5 },
          { axisId: 'gradualism-vs-immediatism', weight: -0.4 },
@@ -6437,9 +6437,26 @@ export const allQuestions: Question[] = [...coreQuestions, ...moduleQuestions]
 
 export const questionById = new Map(allQuestions.map((q) => [q.id, q]))
 
-const TIER_RANK: Record<Question['tier'], number> = { quick: 0, moderate: 1, extensive: 2 }
+const TIER_RANK: Record<Question['tier'], number> = { blitz: 0, quick: 1, moderate: 2, extensive: 3 }
+
+function diversifyQuickOrder(selectedQuestions: Question[]): Question[] {
+   const domainOrder = [...new Set(selectedQuestions.map((q) => q.domain))]
+   const byDomain = new Map(domainOrder.map((domain) => [domain, selectedQuestions.filter((q) => q.domain === domain)]))
+   const maxDomainDepth = Math.max(...[...byDomain.values()].map((domainQuestions) => domainQuestions.length))
+   const diversified: Question[] = []
+
+   for (let depth = 0; depth < maxDomainDepth; depth += 1) {
+      for (const domain of domainOrder) {
+         const question = byDomain.get(domain)?.[depth]
+         if (question) diversified.push(question)
+      }
+   }
+
+   return diversified
+}
 
 /** Quick is a subset of moderate, which is a subset of extensive (the full core bank). */
 export function questionsForTier(tier: Question['tier']): Question[] {
-   return coreQuestions.filter((q) => TIER_RANK[q.tier] <= TIER_RANK[tier] && q.active !== false)
+   const selectedQuestions = coreQuestions.filter((q) => TIER_RANK[q.tier] <= TIER_RANK[tier] && q.active !== false)
+   return tier === 'quick' ? diversifyQuickOrder(selectedQuestions) : selectedQuestions
 }

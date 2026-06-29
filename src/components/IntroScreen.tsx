@@ -8,6 +8,7 @@ interface TierOption {
 }
 
 const TIER_OPTIONS: TierOption[] = [
+  { tier: 'blitz', label: 'Blitz', blurb: 'Seven items per layer across key domains. A fast snapshot of all three profiles.' },
   { tier: 'quick', label: 'Quick', blurb: 'One item per domain per layer. A fast overview.' },
   { tier: 'moderate', label: 'Moderate', blurb: 'A balanced middle pool with more depth per domain.' },
   { tier: 'extensive', label: 'Extensive', blurb: 'The full item bank, for the most precise profile.' },

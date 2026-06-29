@@ -2,11 +2,13 @@ import { describe, expect, it } from 'vitest'
 import type { Layer, QuizTier } from '../types'
 import { axes, axisById } from './axes'
 import { domainById, domains } from './domains'
-import { labels } from './labels'
+import { highPriorityLabelPrecisionFollowUps, labelPrecisionFollowUpById, labelPrecisionFollowUps } from './labelPrecisionFollowUps'
+import { labelById, labels } from './labels'
 import { allQuestions, questionById, questions, questionsForTier } from './questions'
 import { moduleQuestions } from './moduleQuestions'
 
-const TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
+const TIERS: QuizTier[] = ['blitz', 'quick', 'moderate', 'extensive']
+const FULL_COVERAGE_TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
 
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
 
@@ -146,12 +148,14 @@ describe('statementChoice questions', () => {
 })
 
 describe('quiz tiers', () => {
-   it('nests quick within moderate within extensive', () => {
+   it('nests blitz within quick within moderate within extensive', () => {
+      const blitz = new Set(questionsForTier('blitz').map((q) => q.id))
       const quick = new Set(questionsForTier('quick').map((q) => q.id))
       const moderate = new Set(questionsForTier('moderate').map((q) => q.id))
       const extensive = new Set(questionsForTier('extensive').map((q) => q.id))
 
       expect(extensive.size).toBe(questions.length)
+      for (const id of blitz) expect(quick.has(id)).toBe(true)
       for (const id of quick) expect(moderate.has(id)).toBe(true)
       for (const id of moderate) expect(extensive.has(id)).toBe(true)
    })
@@ -171,8 +175,8 @@ describe('quiz tiers', () => {
       expect(moduleQuestions.every((q) => typeof q.module === 'string' && q.module.length > 0)).toBe(true)
    })
 
-   it('every domain has at least one item per layer in every tier', () => {
-      for (const tier of TIERS) {
+   it('every domain has at least one item per layer in every full-coverage tier', () => {
+      for (const tier of FULL_COVERAGE_TIERS) {
          const pool = questionsForTier(tier)
          for (const domain of domains) {
             for (const layer of LAYERS) {
@@ -180,6 +184,15 @@ describe('quiz tiers', () => {
                expect(count, `${domain.id}/${layer} has no item in the ${tier} tier`).toBeGreaterThan(0)
             }
          }
+      }
+   })
+
+   it('blitz tier has 21 items: 7 normative, 7 descriptive, 7 prescriptive', () => {
+      const pool = questionsForTier('blitz')
+      expect(pool).toHaveLength(21)
+      for (const layer of LAYERS) {
+         const layerItems = pool.filter((q) => q.layer === layer)
+         expect(layerItems, `blitz should have 7 ${layer} items`).toHaveLength(7)
       }
    })
 
@@ -218,6 +231,75 @@ describe('labels', () => {
       for (const label of labels) {
          expect(typeof label.subfamily, `${label.id} is missing a subfamily`).toBe('string')
          expect((label.subfamily ?? '').length, `${label.id} has an empty subfamily`).toBeGreaterThan(0)
+      }
+   })
+
+   it('keeps every precision follow-up attached to an existing label', () => {
+      const labelIds = new Set(labels.map((label) => label.id))
+      for (const followUp of labelPrecisionFollowUps) {
+         expect(labelIds.has(followUp.labelId), `${followUp.labelId} follow-up references a missing label`).toBe(true)
+         expect(followUp.issue.length, `${followUp.labelId} follow-up needs an issue`).toBeGreaterThan(0)
+         expect(followUp.recommendedAction.length, `${followUp.labelId} follow-up needs an action`).toBeGreaterThan(0)
+      }
+   })
+
+   it('keeps high-priority precision follow-ups visible through label context', () => {
+      for (const followUp of highPriorityLabelPrecisionFollowUps) {
+         const label = labelById.get(followUp.labelId)
+         expect(label, `${followUp.labelId} must exist`).toBeDefined()
+         expect(
+            `${label!.usageNote ?? ''} ${label!.cautionNote ?? ''}`.trim().length,
+            `${followUp.labelId} needs user-facing context while its follow-up remains high priority`,
+         ).toBeGreaterThan(0)
+      }
+   })
+
+   it('indexes precision follow-ups by label id for future UI or centroid work', () => {
+      expect(labelPrecisionFollowUpById.size).toBe(labelPrecisionFollowUps.length)
+      for (const followUp of labelPrecisionFollowUps) {
+         expect(labelPrecisionFollowUpById.get(followUp.labelId)).toBe(followUp)
+      }
+   })
+
+   it('marks narrowed or cautious labels with user-facing context', () => {
+      const requiredContextById = new Map([
+         ['revolutionary-collectivist', 'Revolutionary State Socialist'],
+         ['neoliberalism', 'Market-Governance Liberalism'],
+         ['cyberocracy', 'Cyberocratic Governance'],
+         ['zionism', 'Political Zionism'],
+         ['strasserism', 'Strasserite Fascism'],
+         ['islamic-democracy', 'Islamic Democratic Constitutionalism'],
+         ['accelerationism', 'Accelerationism'],
+         ['techno-anarchism', 'Techno-Anarchist / Crypto-Anarchist'],
+         ['voluntaryism', 'Voluntaryism'],
+         ['corporatism', 'Corporatism'],
+         ['fourth-theory', 'Fourth Theory'],
+         ['national-bolshevism', 'National Bolshevism'],
+         ['christian-reconstructionism', 'Christian Reconstructionism'],
+         ['dataism', 'Dataism'],
+         ['integralism', 'Integralism'],
+         ['democratic-socialist', 'Democratic Socialist'],
+         ['marxist-leninist', 'Marxist-Leninist'],
+         ['syndicalist', 'Syndicalist'],
+         ['ethnonationalist', 'Ethnonationalist'],
+         ['communitarianism', 'Communitarianism'],
+         ['left-wing-market-anarchism', 'Left-Wing Market Anarchism'],
+         ['individualist-anarchism', 'Individualist Anarchism'],
+         ['christian-socialism', 'Christian Socialism'],
+         ['absolute-monarchist', 'Absolute Monarchist'],
+         ['traditional-monarchist', 'Traditional Monarchist'],
+         ['conservative-liberalism', 'Conservative Liberalism'],
+         ['liberal-conservatism', 'Liberal Conservatism'],
+      ])
+
+      for (const [labelId, expectedName] of requiredContextById) {
+         const label = labels.find((l) => l.id === labelId)
+         expect(label, `${labelId} must exist`).toBeDefined()
+         expect(label!.name).toBe(expectedName)
+         expect(
+            `${label!.usageNote ?? ''} ${label!.cautionNote ?? ''}`.trim().length,
+            `${labelId} needs a usage or caution note`,
+         ).toBeGreaterThan(0)
       }
    })
 

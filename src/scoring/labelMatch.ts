@@ -9,6 +9,7 @@ const DIVERGENCE_DELTA = 0.18
 const AXIS_DIVERGENCE_GAP = 0.8
 /** Maximum divergent axes named per flag. */
 const MAX_DIVERGENT_AXES = 3
+const SUFFICIENT_AXIS_ITEMS = 3
 
 interface MeasuredScore {
    normalized: number
@@ -58,8 +59,9 @@ function distanceOver(
 }
 
 /**
- * Ranks ideology labels by Euclidean distance over the full axis vector.
- * This is a secondary, illustrative output, not the primary score.
+ * Ranks ideology labels by Euclidean distance over measured axes.
+ * This avoids treating unasked axes as neutral evidence while still lowering
+ * confidence when the match rests on sparse answers.
  */
 export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyLabel[]): LabelMatch[] {
    const scoreMap = measuredScoreMap(breakdown)
@@ -71,6 +73,9 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
       return {
          labelId: label.id,
          name: label.name,
+         description: label.description,
+         cautionNote: label.cautionNote,
+         usageNote: label.usageNote,
          distance,
          fit,
          evidenceStrength,

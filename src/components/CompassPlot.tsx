@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react'
 import type { ScoreBreakdown } from '../types'
 
+const SIZE = 300
+const PAD = 30
+const CX = SIZE / 2
+const CY = SIZE / 2
+
 interface CompassPlotProps {
   scores: ScoreBreakdown
   /** Optional second profile for overlay comparison. */
@@ -40,11 +45,8 @@ export function CompassPlot({ scores, compareScores }: CompassPlotProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const pt = composite(scores)
   const pt2 = compareScores ? composite(compareScores) : null
-
-  const SIZE = 300
-  const PAD = 30
-  const CX = SIZE / 2
-  const CY = SIZE / 2
+  const compareX = pt2?.x
+  const compareY = pt2?.y
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -111,8 +113,8 @@ export function CompassPlot({ scores, compareScores }: CompassPlotProps) {
     }
 
     plotPoint(ctx, pt.x, pt.y, '#2563eb', 'You')
-    if (pt2) plotPoint(ctx, pt2.x, pt2.y, '#dc2626', 'Compare')
-  }, [pt.x, pt.y, pt2?.x, pt2?.y])
+    if (compareX !== undefined && compareY !== undefined) plotPoint(ctx, compareX, compareY, '#dc2626', 'Compare')
+  }, [pt.x, pt.y, compareX, compareY])
 
 
   return (

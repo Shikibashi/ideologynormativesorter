@@ -38,6 +38,8 @@ export interface Question {
   module?: string
   /** Optional note shown in results explaining what the item measures. */
   explanation?: string
+  /** Plain-language help text shown under the question during the quiz. */
+  helpText?: string
   /** Descriptive items may let the respondent decline to guess. */
   allowDontKnow?: boolean
   /** Prompt shown alongside a descriptive item's confidence rating. */

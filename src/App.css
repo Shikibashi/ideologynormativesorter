@@ -112,6 +112,14 @@
   color: var(--text-h);
 }
 
+.help-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-m);
+  margin-top: -0.5rem;
+  font-style: italic;
+}
+
 .scale {
   display: flex;
   flex-direction: column;
@@ -265,6 +273,20 @@
 .label-list li,
 .conflated-list li {
   margin-bottom: 8px;
+}
+
+.label-description,
+.label-note {
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+
+.label-description {
+  font-size: 14px;
+}
+
+.label-note {
+  font-size: 13px;
 }
 
 .family-name {

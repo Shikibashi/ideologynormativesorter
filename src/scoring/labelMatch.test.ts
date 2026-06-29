@@ -142,6 +142,36 @@ describe('computeLabelMatches', () => {
       expect(matches[1].runnerUpMargin).toBeUndefined()
       expect(matches[2].runnerUpMargin).toBeUndefined()
    })
+
+   it('does not penalize blitz results for axes that were not measured', () => {
+      const sparseBreakdown: ScoreBreakdown = {
+         normative: [
+            { axisId: 'norm1', layer: 'normative', raw: 0.8, normalized: 0.8, itemCount: 1 },
+            { axisId: 'norm2', layer: 'normative', raw: 0, normalized: 0, itemCount: 0 },
+         ],
+         descriptive: [{ axisId: 'desc1', layer: 'descriptive', raw: 0, normalized: 0, itemCount: 0 }],
+         prescriptive: [
+            { axisId: 'presc1', layer: 'prescriptive', raw: 0, normalized: 0, itemCount: 0 },
+            { axisId: 'presc2', layer: 'prescriptive', raw: 0, normalized: 0, itemCount: 0 },
+         ],
+      }
+      const measuredMatch: IdeologyLabel = {
+         ...exactMatchLabel,
+         id: 'measured-match',
+         centroid: { norm1: 0.8, norm2: -1, desc1: -1, presc1: -1, presc2: -1 },
+      }
+      const measuredMiss: IdeologyLabel = {
+         ...exactMatchLabel,
+         id: 'measured-miss',
+         centroid: { norm1: -0.8, norm2: 0, desc1: 0, presc1: 0, presc2: 0 },
+      }
+
+      const matches = computeLabelMatches(sparseBreakdown, [measuredMiss, measuredMatch])
+
+      expect(matches[0].labelId).toBe('measured-match')
+      expect(matches[0].distance).toBeCloseTo(0)
+   })
+   })
 })
 
 describe('computeConflatedLabels', () => {
@@ -154,6 +184,7 @@ describe('computeConflatedLabels', () => {
       expect(flags[0].divergentAxes).toContain('presc1')
       expect(flags[0].reason).toContain('normative')
       expect(flags[0].reason).toContain('prescriptive')
+      expect(flags[0].reason).not.toContain('Your sharpest divergences are.')
    })
 
    it('reports per-layer agreement on the native scale', () => {
