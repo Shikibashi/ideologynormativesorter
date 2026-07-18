@@ -26,7 +26,7 @@ export function AxisBar({ axis, score, result }: AxisBarProps) {
       <div className="axis-bar-header">
         <span>{axis.name}</span>
         <span className="muted">{score.itemCount === 0 ? 'unmeasured' : score.normalized.toFixed(2)}</span>
-        {rel && <span className={`reliability ${rel.band}`}>{rel.band}</span>}
+        {rel && <span className={`reliability ${rel.band}`}>{rel.band} coverage</span>}
       </div>
       <div className="axis-bar-track">
         <div className="axis-bar-midline" />
@@ -43,7 +43,7 @@ export function AxisBar({ axis, score, result }: AxisBarProps) {
       )}
       {rel && (
         <p className="axis-bar-reliability muted">
-          Reliability: {rel.band} — {rel.reason}
+          Evidence coverage: {rel.band} — {rel.reason}
         </p>
       )}
       {contribs.length > 0 && (
