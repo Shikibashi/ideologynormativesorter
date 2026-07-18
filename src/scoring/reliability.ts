@@ -1,41 +1,44 @@
 import type { AxisId, AxisScore, AxisReliability, LabelId, LabelReliability } from '../types'
 
 /**
- * Pragmatic reliability band for an axis score.
- * Bands are heuristics based on itemCount (which scales consistency).
- * Not a validated psychometric measure.
+ * Pragmatic evidence-coverage band for an axis score.
+ * Bands are heuristics based on item count. They are not estimates of internal
+ * consistency, test-retest stability, measurement error, or psychometric reliability.
+ * The existing `consistency` field is retained for API compatibility but contains
+ * only the normalized item-count coverage score defined here.
  */
 export function reliabilityForAxis(score: AxisScore, options: { minItems?: number } = {}): AxisReliability {
   const minItems = options.minItems ?? 3
   const itemCount = score.itemCount || 0
-  const consistency = itemCount > 0 ? Math.min(1, itemCount / 12) : 0
+  const coverage = itemCount > 0 ? Math.min(1, itemCount / 12) : 0
 
   let band: AxisReliability['band'] = 'insufficient'
-  if (itemCount < minItems || consistency < 0.5) {
+  if (itemCount < minItems || coverage < 0.5) {
     band = 'insufficient'
-  } else if (itemCount > 10 && consistency >= 0.65) {
+  } else if (itemCount > 10 && coverage >= 0.65) {
     band = 'high'
-  } else if ((itemCount <= 10 && consistency >= 0.65) || (itemCount >= 5 && consistency >= 0.8)) {
+  } else if ((itemCount <= 10 && coverage >= 0.65) || (itemCount >= 5 && coverage >= 0.8)) {
     band = 'medium'
-  } else if (itemCount <= 5 || consistency < 0.65) {
+  } else if (itemCount <= 5 || coverage < 0.65) {
     band = 'low'
   }
 
   const reason = itemCount === 0
     ? 'unmeasured'
-    : `${itemCount} items (consistency ${consistency.toFixed(2)})`
+    : `${itemCount} answered items; coverage ${coverage.toFixed(2)}`
 
   return {
     axisId: score.axisId,
     band,
-    consistency,
+    consistency: coverage,
     itemCount,
     reason
   }
 }
 
 /**
- * Reliability for a label match, based on total evidence count across the label's centroid axes.
+ * Evidence coverage for a label match, based on the number of answered items
+ * across the label's centroid axes. This is not a validated reliability estimate.
  */
 export function reliabilityForLabel(
   labelId: LabelId,
