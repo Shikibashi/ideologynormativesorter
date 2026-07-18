@@ -46,6 +46,7 @@ function App() {
    const [researchStatus, setResearchStatus] = useState<ResearchSubmissionStatus | null>(null)
    const [pendingTier, setPendingTier] = useState<QuizTier>('moderate')
    const [resumeAfterConsent, setResumeAfterConsent] = useState(false)
+   const [resumeIndex, setResumeIndex] = useState(0)
    const [quizStartedAt, setQuizStartedAt] = useState<string | null>(null)
    const [quizCompletedAt, setQuizCompletedAt] = useState<string | null>(null)
    const [wasResumed, setWasResumed] = useState(false)
@@ -86,6 +87,7 @@ function App() {
          : pool
       setActiveQuestions(assigned)
       setPendingTier(tier)
+      setResumeIndex(0)
       setQuizStartedAt(new Date().toISOString())
       setQuizCompletedAt(null)
       setWasResumed(false)
@@ -110,9 +112,22 @@ function App() {
          refreshSavedProgress()
          return
       }
-      setActiveQuestions(saved.questions.map((question) => questionById.get(question.id) ?? question))
+
+      const reviewedQuestions = saved.questions
+         .map((question) => questionById.get(question.id) ?? question)
+         .filter((question) => question.active !== false)
+      if (reviewedQuestions.length === 0) {
+         clearQuizState()
+         refreshSavedProgress()
+         setLoadError('The saved quiz used an older question bank and has no active questions to resume.')
+         return
+      }
+
+      const firstUnanswered = reviewedQuestions.findIndex((question) => saved.answers[question.id] === undefined)
+      setActiveQuestions(reviewedQuestions)
       setAnswers(saved.answers)
       setPendingTier(saved.tier)
+      setResumeIndex(firstUnanswered >= 0 ? firstUnanswered : Math.max(0, reviewedQuestions.length - 1))
       setQuizStartedAt(new Date().toISOString())
       setQuizCompletedAt(null)
       setWasResumed(true)
@@ -200,6 +215,7 @@ function App() {
       setResearchConsent(null)
       setResearchSubmission(null)
       setResearchStatus(null)
+      setResumeIndex(0)
       setQuizStartedAt(null)
       setQuizCompletedAt(null)
       setWasResumed(false)
@@ -234,13 +250,12 @@ function App() {
    }
 
    if (stage === 'quiz') {
-      const saved = resuming ? loadQuizState() : null
       return (
          <QuizScreen
             questions={activeQuestions}
-            tier={resuming ? saved?.tier : pendingTier}
-            initialAnswers={resuming ? saved?.answers : undefined}
-            initialIndex={resuming ? saved?.index : undefined}
+            tier={pendingTier}
+            initialAnswers={resuming ? answers : undefined}
+            initialIndex={resuming ? resumeIndex : undefined}
             onComplete={handleComplete}
          />
       )
