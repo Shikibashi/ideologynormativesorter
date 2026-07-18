@@ -33,6 +33,12 @@ const answers: AnswerMap = {
   'q-test': { questionId: 'q-test', value: 2 },
 }
 
+const timing = {
+  startedAt: '2026-07-18T12:10:00.000Z',
+  completedAt: '2026-07-18T12:20:00.000Z',
+  resumed: false,
+}
+
 describe('research submission', () => {
   it('uses a stable pseudonymous participant id', () => {
     const values = new Map<string, string>()
@@ -46,7 +52,7 @@ describe('research submission', () => {
     expect(second).toBe(first)
   })
 
-  it('builds a versioned record with item metadata and pre-result criterion labels', () => {
+  it('builds a versioned record with item metadata, timing, and pre-result criterion labels', () => {
     const submission = buildResearchSubmission({
       studyId: 'pilot one!',
       participantId: 'p_abc-123',
@@ -60,11 +66,14 @@ describe('research submission', () => {
       answers,
       questions: [question],
       submittedAt: '2026-07-18T12:30:00.000Z',
+      ...timing,
     })
 
     expect(submission.studyId).toBe('pilotone')
     expect(submission.identity.selfLabelId).toBe('market-liberal')
     expect(submission.predictedLabelIds).toEqual(['market-liberal', 'classical-liberalism'])
+    expect(submission.durationMs).toBe(600_000)
+    expect(submission.presentationOrder).toEqual(['q-test'])
     expect(submission.itemMap[0]).toMatchObject({
       questionId: 'q-test',
       reverseScored: false,
@@ -86,12 +95,13 @@ describe('research submission', () => {
       predictedLabelIds: [],
       answers,
       questions: [question],
+      ...timing,
     })
     await expect(submitResearchSubmission(submission, undefined, send)).resolves.toEqual({ status: 'export-only' })
     expect(send).not.toHaveBeenCalled()
   })
 
-  it('posts JSON without credentials to a configured endpoint', async () => {
+  it('posts JSON without credentials to a configured HTTPS endpoint', async () => {
     const send = vi.fn<typeof fetch>().mockResolvedValue(new Response(null, { status: 202 }))
     const submission = buildResearchSubmission({
       studyId: 'pilot',
@@ -105,6 +115,7 @@ describe('research submission', () => {
       predictedLabelIds: [],
       answers,
       questions: [question],
+      ...timing,
     })
 
     await expect(submitResearchSubmission(submission, 'https://study.example.test/submit', send)).resolves.toEqual({
@@ -116,5 +127,28 @@ describe('research submission', () => {
       credentials: 'omit',
       referrerPolicy: 'no-referrer',
     }))
+  })
+
+  it('rejects insecure remote endpoints before sending', async () => {
+    const send = vi.fn<typeof fetch>()
+    const submission = buildResearchSubmission({
+      studyId: 'pilot',
+      participantId: 'p_1',
+      administration: 'test',
+      bankVersion: 'bank-v1',
+      scoringVersion: 'score-v1',
+      tier: 'quick',
+      consent,
+      identity: {},
+      predictedLabelIds: [],
+      answers,
+      questions: [question],
+      ...timing,
+    })
+    await expect(submitResearchSubmission(submission, 'http://study.example.test/submit', send)).resolves.toEqual({
+      status: 'failed',
+      reason: 'Study endpoint must use HTTPS outside local development.',
+    })
+    expect(send).not.toHaveBeenCalled()
   })
 })
