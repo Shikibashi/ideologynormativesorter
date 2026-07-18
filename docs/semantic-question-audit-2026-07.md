@@ -17,7 +17,7 @@ The review is a content and scoring audit. It is not empirical psychometric vali
 
 High-confidence sign inversions, construct mismatches, and template carryover errors are encoded in `src/data/semanticAudit.ts`. The application uses these mappings through `src/data/effectiveQuestions.ts`, leaving the original source bank intact for traceability.
 
-Items that are ambiguous, double-barreled, non-discriminating, or insufficiently operationalized are marked `needs-rewrite`. They are not silently assigned a new interpretation. The psychometric analysis excludes these items until they are rewritten and piloted.
+Items that are ambiguous, double-barreled, non-discriminating, or insufficiently operationalized are marked `needs-rewrite` and deactivated from the public quiz, runtime scoring, research forms, and psychometric estimates. They remain addressable through `questionById` for audit history and old-result interpretation, but they cannot influence a new result until rewritten and reviewed.
 
 The effective bank identifier is `2026-06-v4+2026-07-semantic-v1`; the result-scoring identifier is `2026-07-18-semantic-v3`.
 
@@ -48,28 +48,28 @@ Several domain blocks reused nearly identical weight triples across all items ev
 
 ### Double-barreled item
 
-Some prompts included both a benefit and a cost, making agreement impossible to interpret as one score. These are marked for rewrite into separate items.
+Some prompts included both a benefit and a cost, making agreement impossible to interpret as one score. These are deactivated and must be rewritten into separate items.
 
 ### Non-discriminating item
 
-Some descriptive prompts only said that many factors matter or that outcomes depend on context. Such statements may be true but do not locate a respondent on a directional axis.
+Some descriptive prompts only said that many factors matter or that outcomes depend on context. Such statements may be true but do not locate a respondent on a directional axis. These are deactivated.
 
 ### Underspecified empirical claim
 
-Some prompts lacked a population, timeframe, outcome measure, comparison, or falsifiable scope. These require an operational definition and sources before they can function as empirical items.
+Some prompts lacked a population, timeframe, outcome measure, comparison, or falsifiable scope. These require an operational definition and sources before they can return to an active empirical bank.
 
 ## Forced-choice items
 
 Statement-choice items are treated as ipsative: choosing one option only shows preference relative to the alternatives presented. Options may load on different axes and are not assumed to form a common psychometric scale. They are therefore excluded from Cronbach alpha, item-total correlation, and split-half estimates.
 
-Several empirical forced-choice items are marked for rewrite because their options are not mutually exclusive and span different constructs.
+Several empirical forced-choice items are deactivated because their options are not mutually exclusive and span different constructs.
 
 ## What remains
 
 1. Rewrite every `needs-rewrite` item, then conduct cognitive interviews before returning it to scoring.
 2. Add an operational `evidenceNote` and public `sources` to descriptive items.
 3. Obtain independent content review from reviewers with differing political perspectives.
-4. Pilot the revised bank with real respondents.
+4. Pilot the revised active bank with real respondents.
 5. Examine dimensionality, reliability, temporal stability, criterion agreement, and differential item functioning.
 6. Recalibrate label centroids only after the axis model is empirically supported.
 
