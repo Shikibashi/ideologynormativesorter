@@ -62,6 +62,12 @@ jobs:
             analysis/synthetic/output/submissions.ndjson \
             analysis/synthetic/output/validation
 
+      - name: Run DIF analysis
+        run: |
+          Rscript analysis/run_dif.R \
+            analysis/synthetic/output/submissions.ndjson \
+            analysis/synthetic/output/validation
+
       - name: Verify recovered signals
         run: |
           Rscript analysis/synthetic/check_synthetic_outputs.R \
