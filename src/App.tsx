@@ -22,6 +22,7 @@ import {
    type ResearchSubmission,
    type ResearchSubmissionStatus,
 } from './research'
+import { buildResearchQuestionForm, researchFormSize } from './research/forms'
 import { buildResultProfile } from './scoring'
 import { readCompareAnswers, readSharedResult } from './share'
 import type { AnswerMap, QuizTier, ResultProfile } from './types'
@@ -37,6 +38,7 @@ function App() {
    const initialResearchMode = useMemo(() => isResearchMode(), [])
    const administration = useMemo(() => researchAdministration(), [])
    const studyId = useMemo(() => researchStudyId(), [])
+   const formSize = useMemo(() => researchFormSize(), [])
    const [researchEnabled, setResearchEnabled] = useState(initialResearchMode)
    const [participantId] = useState(() => initialResearchMode ? getOrCreateParticipantId() : '')
    const [researchConsent, setResearchConsent] = useState<ResearchConsent | null>(null)
@@ -44,6 +46,9 @@ function App() {
    const [researchStatus, setResearchStatus] = useState<ResearchSubmissionStatus | null>(null)
    const [pendingTier, setPendingTier] = useState<QuizTier>('moderate')
    const [resumeAfterConsent, setResumeAfterConsent] = useState(false)
+   const [quizStartedAt, setQuizStartedAt] = useState<string | null>(null)
+   const [quizCompletedAt, setQuizCompletedAt] = useState<string | null>(null)
+   const [wasResumed, setWasResumed] = useState(false)
    const [loadError, setLoadError] = useState<string | null>(
       shareLoad.malformed
          ? "We couldn't open that shared result link — it may be incomplete or out of date. You can start the test below to build your own profile."
@@ -72,11 +77,18 @@ function App() {
       setSavedProgress(getQuizProgress())
    }
 
-   function beginQuiz(tier: QuizTier): void {
+   function beginQuiz(tier: QuizTier, researchSession: boolean): void {
       clearQuizState()
       setSavedProgress(null)
-      setActiveQuestions(questionsForTier(tier))
+      const pool = questionsForTier(tier)
+      const assigned = researchSession
+         ? buildResearchQuestionForm(pool, participantId, administration, formSize)
+         : pool
+      setActiveQuestions(assigned)
       setPendingTier(tier)
+      setQuizStartedAt(new Date().toISOString())
+      setQuizCompletedAt(null)
+      setWasResumed(false)
       setResuming(false)
       setStage('quiz')
    }
@@ -88,7 +100,7 @@ function App() {
          setStage('consent')
          return
       }
-      beginQuiz(tier)
+      beginQuiz(tier, false)
    }
 
    function handleResume(): void {
@@ -101,6 +113,9 @@ function App() {
       setActiveQuestions(saved.questions.map((question) => questionById.get(question.id) ?? question))
       setAnswers(saved.answers)
       setPendingTier(saved.tier)
+      setQuizStartedAt(new Date().toISOString())
+      setQuizCompletedAt(null)
+      setWasResumed(true)
       setResuming(true)
       if (researchEnabled) {
          setResumeAfterConsent(true)
@@ -117,7 +132,7 @@ function App() {
          setStage('quiz')
          return
       }
-      beginQuiz(pendingTier)
+      beginQuiz(pendingTier, true)
    }
 
    function handleResearchCancel(): void {
@@ -128,19 +143,23 @@ function App() {
          setStage('quiz')
          return
       }
-      beginQuiz(pendingTier)
+      beginQuiz(pendingTier, false)
    }
 
    function handleComplete(newAnswers: AnswerMap): void {
+      const completedAt = new Date().toISOString()
       clearQuizState()
       setSavedProgress(null)
       setAnswers(newAnswers)
+      setQuizCompletedAt(completedAt)
       setResult(buildResultProfile(questions, newAnswers, axes, labels))
       setStage(researchEnabled && researchConsent ? 'self-identification' : 'results')
    }
 
    async function handleResearchIdentity(identity: ResearchIdentity): Promise<void> {
-      if (!result || !researchConsent) throw new Error('The study record is missing its consent or result context.')
+      if (!result || !researchConsent || !quizStartedAt || !quizCompletedAt) {
+         throw new Error('The study record is missing its consent, timing, or result context.')
+      }
       const submission = buildResearchSubmission({
          studyId,
          participantId,
@@ -153,6 +172,9 @@ function App() {
          predictedLabelIds: result.nearestLabels.slice(0, 5).map((match) => String(match.labelId)),
          answers,
          questions: activeQuestions,
+         startedAt: quizStartedAt,
+         completedAt: quizCompletedAt,
+         resumed: wasResumed,
       })
       const status = await submitResearchSubmission(submission, import.meta.env.VITE_RESEARCH_ENDPOINT)
       setResearchSubmission(submission)
@@ -178,6 +200,9 @@ function App() {
       setResearchConsent(null)
       setResearchSubmission(null)
       setResearchStatus(null)
+      setQuizStartedAt(null)
+      setQuizCompletedAt(null)
+      setWasResumed(false)
       setResuming(false)
       setStage('intro')
    }
