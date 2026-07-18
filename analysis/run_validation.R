@@ -12,6 +12,17 @@ if (length(missing_packages) > 0) {
 
 `%||%` <- function(x, y) if (is.null(x) || length(x) == 0) y else x
 
+bind_rows_fill <- function(rows) {
+  if (length(rows) == 0) return(data.frame())
+  columns <- unique(unlist(lapply(rows, names), use.names = FALSE))
+  normalized <- lapply(rows, function(row) {
+    missing_columns <- setdiff(columns, names(row))
+    for (column in missing_columns) row[[column]] <- NA
+    row[, columns, drop = FALSE]
+  })
+  do.call(rbind, normalized)
+}
+
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) < 2) {
   stop("Usage: Rscript analysis/run_validation.R <submissions.json|jsonl|directory> <output-directory>")
@@ -286,7 +297,10 @@ for (layer_name in sort(unique(metadata$layer))) {
   split_marker <- sample(c(TRUE, FALSE), nrow(layer_data), replace = TRUE)
   development <- layer_data[split_marker, , drop = FALSE]
   holdout <- layer_data[!split_marker, , drop = FALSE]
-  if (nrow(development) < 100 || nrow(holdout) < 100) next
+  if (nrow(development) < 100 || nrow(holdout) < 100) {
+    cfa_rows[[length(cfa_rows) + 1]] <- data.frame(layer = layer_name, status = "insufficient-data", n = nrow(holdout))
+    next
+  }
 
   poly <- tryCatch(psych::polychoric(development, correct = 0.5)$rho, error = function(error) NULL)
   if (!is.null(poly)) {
@@ -309,7 +323,10 @@ for (layer_name in sort(unique(metadata$layer))) {
   factor_groups <- split(metadata$question_id[metadata$question_id %in% selected_ids],
                          metadata$axis_id[metadata$question_id %in% selected_ids])
   factor_groups <- factor_groups[vapply(factor_groups, length, integer(1)) >= 3]
-  if (length(factor_groups) < 1) next
+  if (length(factor_groups) < 1) {
+    cfa_rows[[length(cfa_rows) + 1]] <- data.frame(layer = layer_name, status = "model-unavailable", n = nrow(holdout))
+    next
+  }
   model_lines <- vapply(names(factor_groups), function(axis_id) {
     paste0(sanitize_factor(axis_id), " =~ ", paste(factor_groups[[axis_id]], collapse = " + "))
   }, character(1))
@@ -337,8 +354,8 @@ for (layer_name in sort(unique(metadata$layer))) {
   }
 }
 
-if (length(efa_rows) > 0) utils::write.csv(do.call(rbind, efa_rows), file.path(output_dir, "efa-loadings.csv"), row.names = FALSE)
-if (length(cfa_rows) > 0) utils::write.csv(do.call(rbind, cfa_rows), file.path(output_dir, "cfa-fit.csv"), row.names = FALSE)
+if (length(efa_rows) > 0) utils::write.csv(bind_rows_fill(efa_rows), file.path(output_dir, "efa-loadings.csv"), row.names = FALSE)
+if (length(cfa_rows) > 0) utils::write.csv(bind_rows_fill(cfa_rows), file.path(output_dir, "cfa-fit.csv"), row.names = FALSE)
 
 run_dif <- function(group_name) {
   groups <- vapply(submissions[test_rows], function(record) record$identity[[group_name]] %||% "", character(1))
@@ -356,6 +373,10 @@ run_dif <- function(group_name) {
     axis_data <- axis_data[complete, , drop = FALSE]
     axis_groups <- droplevels(factor(groups[complete]))
     if (nrow(axis_data) < minimum_dif_group_n * 2 || any(table(axis_groups) < minimum_dif_group_n)) next
+    axis_data <- as.data.frame(lapply(axis_data, function(column) {
+      observed_levels <- sort(unique(column))
+      as.integer(match(column, observed_levels) - 1L)
+    }), check.names = FALSE)
     model <- tryCatch(
       mirt::multipleGroup(axis_data, 1, group = axis_groups, itemtype = "graded",
                           invariance = c("slopes", "intercepts", "free_means", "free_var"), verbose = FALSE),
@@ -373,12 +394,12 @@ run_dif <- function(group_name) {
     dif$group_variable <- group_name
     results[[length(results) + 1]] <- dif
   }
-  if (length(results) == 0) data.frame() else do.call(rbind, results)
+  bind_rows_fill(results)
 }
 
 dif_results <- lapply(c("ageBand", "genderGroup"), run_dif)
 dif_results <- dif_results[vapply(dif_results, nrow, integer(1)) > 0]
-if (length(dif_results) > 0) utils::write.csv(do.call(rbind, dif_results), file.path(output_dir, "dif-results.csv"), row.names = FALSE)
+if (length(dif_results) > 0) utils::write.csv(bind_rows_fill(dif_results), file.path(output_dir, "dif-results.csv"), row.names = FALSE)
 
 source_summary <- data.frame(
   descriptive_items = sum(metadata$layer == "descriptive"),
