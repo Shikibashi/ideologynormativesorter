@@ -2,9 +2,17 @@
 
 ## Status
 
-Empirical validation has not yet been established. Synthetic centroid fixtures are software regression tests, not respondent evidence. No reliability, validity, fairness, or accuracy coefficient should be published until a consented respondent dataset has been analyzed.
+The collection and analysis apparatus is implemented, but empirical validation has not yet been established. Synthetic fixtures and software tests are not respondent evidence. No reliability, validity, fairness, or accuracy coefficient should be published until a consented respondent dataset has been collected and analyzed.
 
-The repository now includes `src/validation/psychometrics.ts`. It calculates only what the supplied data supports and otherwise returns `insufficient-data` or `not-applicable`.
+The repository now includes:
+
+- `src/validation/psychometrics.ts` for respondent-grounded classical diagnostics;
+- an opt-in browser research mode with consent and pre-result self-identification;
+- a pseudonymous submission/export schema;
+- a dependency-free reference collector;
+- `analysis/run_validation.R` for omega, bootstrap intervals, held-out EFA/CFA, test-retest, criterion concordance, and DIF.
+
+All analysis paths report insufficient data rather than manufacturing coefficients when sample thresholds are not met.
 
 ## Design principles
 
@@ -41,7 +49,7 @@ For every item, reviewers record:
 - relevance and clarity ratings;
 - whether the item is double-barreled or leading;
 - whether a descriptive item is falsifiable and adequately scoped;
-- whether any wording is likely to have different meanings across political groups.
+- whether wording is likely to have different meanings across political groups.
 
 Report agreement and all unresolved disagreements. Do not resolve disagreement by majority vote alone when the axis definition itself is unclear.
 
@@ -60,21 +68,35 @@ Use this stage to detect:
 
 ### Stage 3 — pilot field study
 
-Use matrix sampling so respondents are not required to answer the entire bank. Aim for at least 150 usable observations per item, with a larger total sample where feasible. The default code threshold of 50 complete cases is only a minimum for producing a provisional coefficient, not a publication standard.
+Use matrix sampling so respondents are not required to answer the entire bank. Aim for at least 150 usable observations per item, with a larger total sample where feasible. The software's lower thresholds are provisional computation gates, not publication standards.
+
+Research mode is enabled explicitly:
+
+```text
+?research=1&study=pilot-2026
+```
+
+A retest administration uses:
+
+```text
+?research=1&study=pilot-2026&administration=retest
+```
+
+The flow requires consent before the quiz, captures optional self-identification and broad demographic groups before showing results, and assigns a stable random participant code in the same browser. It does not request names, email addresses, exact age, precise location, employer, party registration, or contact information.
 
 Capture:
 
-- anonymous study respondent ID;
-- bank and scoring versions;
-- randomized item order or block assignment;
-- answer and optional confidence/priority;
-- optional pre-result self-label from the instrument's label set;
-- optional free-text self-description;
-- completion time and skipped items;
-- consent to research use;
-- optional coarse demographic fields only when necessary for a preregistered fairness analysis.
+- pseudonymous participant ID;
+- test or retest administration;
+- bank, scoring, schema, and consent versions;
+- selected test length;
+- item responses and confidence/priority values;
+- optional pre-result self-label from the instrument label set;
+- optional broad age band and gender group for preregistered DIF analysis;
+- item metadata required to reproduce orientation and exclusions;
+- consent timestamp and version.
 
-Do not collect names, email addresses, precise location, employer, political-party registration, or other directly identifying information in the validation dataset.
+Recruitment contact information, when needed for retest invitations, must be stored separately from response data and linked through a different protected system.
 
 ### Stage 4 — independent confirmation sample
 
@@ -84,7 +106,7 @@ Do not repeatedly tune the model against the holdout sample.
 
 ### Stage 5 — test-retest study
 
-Invite a voluntary subsample to retake the unchanged instrument after a preregistered interval, such as two to four weeks. Target at least 100 matched respondents where feasible. Record major political events or personal changes that could reasonably alter beliefs during the interval.
+Invite a voluntary subsample to retake the unchanged instrument after a preregistered interval, such as two to four weeks. Target at least 100 matched respondents where feasible. Record major political events or personal changes that could reasonably alter beliefs during the interval in a separate study log, not as identifying response fields.
 
 ## Required analyses
 
@@ -94,7 +116,7 @@ Report:
 
 - completion and dropout rates;
 - missing and “I don't know” rates by item;
-- response-time distributions;
+- response-time distributions when timing is collected under the consent protocol;
 - floor and ceiling rates;
 - straight-line or invariant response patterns;
 - duplicate or suspicious submissions under a documented rule.
@@ -105,34 +127,36 @@ For each axis, report positive- and negative-keyed Likert item counts. Balance i
 
 ### Internal consistency
 
-For each axis:
+For each axis report:
 
 - Cronbach alpha;
-- preferably McDonald's omega from an external statistical workflow;
+- McDonald's omega total;
 - corrected item-total correlations;
 - odd-even split-half reliability with Spearman-Brown correction;
-- coefficient confidence intervals by bootstrap.
+- percentile bootstrap confidence intervals.
 
 Do not interpret a high alpha as proof of one-dimensionality. Very high alpha may indicate redundant wording.
 
 ### Dimensionality
 
-Use exploratory factor analysis on the development sample and confirmatory factor analysis on the holdout sample. Compare:
+Use exploratory factor analysis on a development split and confirmatory factor analysis on a held-out split. The checked-in R workflow uses ordinal polychoric correlations and minimum-residual EFA, then WLSMV CFA on a primary-axis specification.
 
-- the proposed 26-axis structure;
+Compare, where sample size permits:
+
+- the proposed axis structure;
 - correlated-factor alternatives;
 - higher-order or bifactor models where theoretically justified;
 - simpler models that may explain the data with fewer dimensions.
 
-Because responses are ordinal, use methods appropriate for ordinal data rather than assuming normal continuous measurements without checking.
+Report loadings, cross-loadings, factor correlations, CFI, TLI, RMSEA, SRMR, convergence problems, and item exclusions. The primary-axis model is a starting specification, not evidence that cross-loadings are zero.
 
 ### Temporal stability
 
-For each axis, report test-retest correlations and score-change distributions. Separate temporal instability from low internal consistency.
+For each axis, report test-retest correlations, bootstrap intervals, and score-change distributions. Separate temporal instability from low internal consistency.
 
 ### Criterion and convergent evidence
 
-Capture optional self-identification before results are shown and report top-1 and top-3 label concordance. Treat this as imperfect criterion evidence because self-labels are themselves ambiguous.
+Capture optional self-identification before results are shown and report top-1 and top-3 label concordance. Treat this as imperfect criterion evidence because self-labels are ambiguous and the label set is not exhaustive.
 
 Where licensing and respondent burden permit, compare relevant axes with established external scales. Predefine expected convergent and discriminant relationships before analysis.
 
@@ -151,9 +175,9 @@ Merge, split, or remove labels that cannot be discriminated reliably. Do not com
 
 ### Fairness and differential item functioning
 
-Only run subgroup analyses when there is adequate, voluntarily supplied sample size and a clear research purpose. Examine differential item functioning rather than comparing raw group means alone.
+Only run subgroup analyses when there is adequate, voluntarily supplied sample size and a clear preregistered research purpose. The external workflow uses graded-response multiple-group models and multiplicity adjustment when each group meets the configured minimum.
 
-Report uncertainty and multiple-testing controls. Do not infer that score differences are bias without item-level evidence, and do not infer fairness from an absence of statistically significant results in small samples.
+Report uncertainty and multiple-testing controls. A DIF flag is a prompt for substantive item review, not proof of bias. An absence of significant flags in a small sample is not evidence of fairness.
 
 ## Provisional decision gates
 
@@ -165,38 +189,54 @@ These are planning gates, not universal scientific laws:
 - no final factor claim is made from the development sample alone;
 - no label is called accurate solely because a centroid-generated synthetic profile maps back to itself;
 - no historical person, political party, or country is placed on the map without a documented and reviewable response-scoring procedure;
-- no short form is promoted until its score agreement and uncertainty are compared with the full form on a holdout sample.
+- no short form is promoted until its score agreement and uncertainty are compared with the full form on a holdout sample;
+- no datasets from changed bank versions are pooled without a linking design.
 
 ## Dataset interchange format
 
-The TypeScript analysis expects records equivalent to:
+Research mode produces a versioned record equivalent to:
 
 ```json
 {
-  "respondentId": "random-study-id",
+  "schemaVersion": "2026-07-v1",
+  "studyId": "pilot-2026",
+  "participantId": "p_random-code",
   "administration": "test",
+  "bankVersion": "2026-06-v4+2026-07-semantic-v1",
+  "scoringVersion": "2026-07-18-semantic-v3",
+  "tier": "moderate",
+  "consent": {
+    "ageConfirmed": true,
+    "voluntaryParticipation": true,
+    "dataUseAccepted": true,
+    "consentVersion": "2026-07-18-v1",
+    "consentedAt": "2026-07-18T12:00:00.000Z"
+  },
+  "identity": {
+    "selfLabelId": "optional-label-id",
+    "ageBand": "optional-broad-band",
+    "genderGroup": "optional-broad-group"
+  },
+  "predictedLabelIds": ["top-label", "runner-up"],
   "answers": {
     "q0001": { "questionId": "q0001", "value": 2 }
   },
-  "selfLabelId": "optional-label-id",
-  "group": "optional-preregistered-group"
+  "itemMap": []
 }
 ```
 
-A retest uses the same `respondentId` and `administration: "retest"`. Study IDs should be randomly generated and stored separately from any recruitment contact information.
+A retest uses the same participant code and `administration: "retest"`. Same-browser linkage is automatic. Any cross-device linkage system must avoid exposing recruitment identity in the response dataset.
 
-## Current code coverage
+## Reproducible workflow
 
-`analyzePsychometricStudy` currently provides:
+Run the external analysis with:
 
-- Cronbach alpha from complete, directionally aligned Likert cases;
-- corrected item-total correlations;
-- odd-even split-half reliability;
-- test-retest Pearson correlations;
-- missingness, floor, and ceiling rates;
-- directional item balance;
-- descriptive-item source and operational-scope coverage;
-- optional pre-result self-label top-1/top-3 concordance;
-- explicit exclusion of statement-choice and `needs-rewrite` items.
+```bash
+Rscript analysis/run_validation.R private-data/submissions.ndjson analysis/output
+```
 
-Exploratory/confirmatory factor analysis, omega, bootstrap intervals, and differential item functioning should be implemented in a dedicated R or Python research workflow and checked into the repository with reproducible inputs and outputs.
+The workflow writes version-specific JSON and CSV outputs for reliability, omega, bootstrap intervals, item-total correlations, test-retest stability, criterion concordance, source coverage, EFA loadings, held-out CFA fit, and DIF. See `analysis/README.md` for dependencies and thresholds.
+
+## Current limitation
+
+The repository is ready to collect and analyze consented records, but it contains no real pilot sample. Until respondents are recruited and the preregistered analyses are run, all public results must continue to describe the instrument as under empirical validation rather than validated.
