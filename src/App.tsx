@@ -3,6 +3,7 @@ import './App.css'
 import { IntroScreen } from './components/IntroScreen'
 import { QuizScreen } from './components/QuizScreen'
 import { ResearchConsentScreen } from './components/ResearchConsentScreen'
+import { ResearchReceipt } from './components/ResearchReceipt'
 import { ResultsScreen } from './components/ResultsScreen'
 import { SelfIdentificationScreen } from './components/SelfIdentificationScreen'
 import { axes } from './data/axes'
@@ -225,18 +226,21 @@ function App() {
    }
 
    return result ? (
-      <ResultsScreen
-         result={result}
-         axes={axes}
-         domains={domains}
-         labels={labels}
-         answers={answers}
-         compareResult={compareResult}
-         researchSubmission={researchSubmission}
-         researchStatus={researchStatus}
-         onCompare={handleCompare}
-         onRestart={handleRestart}
-      />
+      <>
+         {researchSubmission && researchStatus && (
+            <ResearchReceipt submission={researchSubmission} status={researchStatus} />
+         )}
+         <ResultsScreen
+            result={result}
+            axes={axes}
+            domains={domains}
+            labels={labels}
+            answers={answers}
+            compareResult={compareResult}
+            onCompare={handleCompare}
+            onRestart={handleRestart}
+         />
+      </>
    ) : null
 }
 
