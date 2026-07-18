@@ -61,6 +61,32 @@ describe('computeLabelMatches', () => {
       expect(best.fit).toBeCloseTo(1)
    })
 
+   it('gives a maximally opposite profile a zero fit regardless of axis count', () => {
+      const oppositeBreakdown: ScoreBreakdown = {
+         normative: [
+            { axisId: 'norm1', layer: 'normative', raw: 1, normalized: 1, itemCount: 3 },
+            { axisId: 'norm2', layer: 'normative', raw: 1, normalized: 1, itemCount: 3 },
+         ],
+         descriptive: [{ axisId: 'desc1', layer: 'descriptive', raw: 1, normalized: 1, itemCount: 3 }],
+         prescriptive: [
+            { axisId: 'presc1', layer: 'prescriptive', raw: 1, normalized: 1, itemCount: 3 },
+            { axisId: 'presc2', layer: 'prescriptive', raw: 1, normalized: 1, itemCount: 3 },
+         ],
+      }
+      const label: IdeologyLabel = {
+         id: 'max-opposite',
+         name: 'Max Opposite',
+         family: 'test',
+         description: 'd',
+         centroid: { norm1: -1, norm2: -1, desc1: -1, presc1: -1, presc2: -1 },
+      }
+
+      const [match] = computeLabelMatches(oppositeBreakdown, [label])
+
+      expect(match.distance).toBeCloseTo(2)
+      expect(match.fit).toBe(0)
+   })
+
    it('returns zero-fit matches when no centroid axes are measured', () => {
       const emptyBreakdown: ScoreBreakdown = {
          normative: [{ axisId: 'norm1', layer: 'normative', raw: 0, normalized: 0, itemCount: 0 }],
