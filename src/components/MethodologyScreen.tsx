@@ -12,6 +12,12 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
             Labels are secondary outputs. The primary output is your layered profile and divergences.
          </p>
          <p>
+            Label percentages are heuristic profile-similarity scores on the test's own axes. They are not probabilities, diagnoses, or validated estimates of ideological identity.
+         </p>
+         <p>
+            Evidence-coverage bands reflect how many relevant questions were answered. They are not psychometric reliability estimates and do not measure internal consistency, test-retest stability, or measurement error.
+         </p>
+         <p>
             When a label fits one layer of your views but not the others, we flag it as a <em>conflation</em>: a single label that would merge your normative, descriptive, and prescriptive positions into one and hide where they diverge. We name which layer matched, which layers it conflates, and the axes where you part from it.
          </p>
          <p>
