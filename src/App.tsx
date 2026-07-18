@@ -2,23 +2,47 @@ import { useMemo, useState } from 'react'
 import './App.css'
 import { IntroScreen } from './components/IntroScreen'
 import { QuizScreen } from './components/QuizScreen'
+import { ResearchConsentScreen } from './components/ResearchConsentScreen'
 import { ResultsScreen } from './components/ResultsScreen'
+import { SelfIdentificationScreen } from './components/SelfIdentificationScreen'
 import { axes } from './data/axes'
 import { domains } from './data/domains'
 import { questionById, questions, questionsForTier } from './data/effectiveQuestions'
 import { labels } from './data/labels'
+import {
+   buildResearchSubmission,
+   getOrCreateParticipantId,
+   isResearchMode,
+   researchAdministration,
+   researchStudyId,
+   submitResearchSubmission,
+   type ResearchConsent,
+   type ResearchIdentity,
+   type ResearchSubmission,
+   type ResearchSubmissionStatus,
+} from './research'
 import { buildResultProfile } from './scoring'
 import { readCompareAnswers, readSharedResult } from './share'
 import type { AnswerMap, QuizTier, ResultProfile } from './types'
 import { clearQuizState, loadQuizState, getQuizProgress } from './save'
 
-type Stage = 'intro' | 'quiz' | 'results'
+type Stage = 'intro' | 'consent' | 'quiz' | 'self-identification' | 'results'
 
 const TIERS: QuizTier[] = ['blitz', 'quick', 'moderate', 'extensive']
 
 function App() {
    const [shareLoad] = useState(readSharedResult)
    const sharedAnswers = shareLoad.answers
+   const initialResearchMode = useMemo(() => isResearchMode(), [])
+   const administration = useMemo(() => researchAdministration(), [])
+   const studyId = useMemo(() => researchStudyId(), [])
+   const [researchEnabled, setResearchEnabled] = useState(initialResearchMode)
+   const [participantId] = useState(() => initialResearchMode ? getOrCreateParticipantId() : '')
+   const [researchConsent, setResearchConsent] = useState<ResearchConsent | null>(null)
+   const [researchSubmission, setResearchSubmission] = useState<ResearchSubmission | null>(null)
+   const [researchStatus, setResearchStatus] = useState<ResearchSubmissionStatus | null>(null)
+   const [pendingTier, setPendingTier] = useState<QuizTier>('moderate')
+   const [resumeAfterConsent, setResumeAfterConsent] = useState(false)
    const [loadError, setLoadError] = useState<string | null>(
       shareLoad.malformed
          ? "We couldn't open that shared result link — it may be incomplete or out of date. You can start the test below to build your own profile."
@@ -47,15 +71,26 @@ function App() {
       setSavedProgress(getQuizProgress())
    }
 
-   function handleStart(tier: QuizTier) {
-      setLoadError(null)
+   function beginQuiz(tier: QuizTier): void {
       clearQuizState()
       setSavedProgress(null)
       setActiveQuestions(questionsForTier(tier))
+      setPendingTier(tier)
+      setResuming(false)
       setStage('quiz')
    }
 
-   function handleResume() {
+   function handleStart(tier: QuizTier): void {
+      setLoadError(null)
+      setPendingTier(tier)
+      if (researchEnabled) {
+         setStage('consent')
+         return
+      }
+      beginQuiz(tier)
+   }
+
+   function handleResume(): void {
       setLoadError(null)
       const saved = loadQuizState()
       if (!saved) {
@@ -64,20 +99,68 @@ function App() {
       }
       setActiveQuestions(saved.questions.map((question) => questionById.get(question.id) ?? question))
       setAnswers(saved.answers)
+      setPendingTier(saved.tier)
       setResuming(true)
-      setStage('quiz')
+      if (researchEnabled) {
+         setResumeAfterConsent(true)
+         setStage('consent')
+      } else {
+         setStage('quiz')
+      }
    }
 
-   function handleComplete(newAnswers: AnswerMap) {
+   function handleConsent(consent: ResearchConsent): void {
+      setResearchConsent(consent)
+      if (resumeAfterConsent) {
+         setResumeAfterConsent(false)
+         setStage('quiz')
+         return
+      }
+      beginQuiz(pendingTier)
+   }
+
+   function handleResearchCancel(): void {
+      setResearchEnabled(false)
+      setResearchConsent(null)
+      if (resumeAfterConsent) {
+         setResumeAfterConsent(false)
+         setStage('quiz')
+         return
+      }
+      beginQuiz(pendingTier)
+   }
+
+   function handleComplete(newAnswers: AnswerMap): void {
       clearQuizState()
       setSavedProgress(null)
       setAnswers(newAnswers)
       setResult(buildResultProfile(questions, newAnswers, axes, labels))
+      setStage(researchEnabled && researchConsent ? 'self-identification' : 'results')
+   }
+
+   async function handleResearchIdentity(identity: ResearchIdentity): Promise<void> {
+      if (!result || !researchConsent) throw new Error('The study record is missing its consent or result context.')
+      const submission = buildResearchSubmission({
+         studyId,
+         participantId,
+         administration,
+         bankVersion: result.bankVersion,
+         scoringVersion: result.scoringVersion,
+         tier: pendingTier,
+         consent: researchConsent,
+         identity,
+         predictedLabelIds: result.nearestLabels.slice(0, 5).map((match) => String(match.labelId)),
+         answers,
+         questions: activeQuestions,
+      })
+      const status = await submitResearchSubmission(submission, import.meta.env.VITE_RESEARCH_ENDPOINT)
+      setResearchSubmission(submission)
+      setResearchStatus(status)
       setStage('results')
    }
 
-   function handleCompare(compareAnswers: AnswerMap): void {
-      setCompareResult(buildResultProfile(questions, compareAnswers, axes, labels))
+   function handleCompare(newCompareAnswers: AnswerMap): void {
+      setCompareResult(buildResultProfile(questions, newCompareAnswers, axes, labels))
    }
 
    function handleClearSavedProgress(): void {
@@ -85,12 +168,15 @@ function App() {
       setSavedProgress(null)
    }
 
-   function handleRestart() {
+   function handleRestart(): void {
       if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search)
       clearQuizState()
       setSavedProgress(null)
       setResult(null)
       setAnswers({})
+      setResearchConsent(null)
+      setResearchSubmission(null)
+      setResearchStatus(null)
       setResuming(false)
       setStage('intro')
    }
@@ -110,17 +196,32 @@ function App() {
       )
    }
 
+   if (stage === 'consent') {
+      return (
+         <ResearchConsentScreen
+            participantId={participantId}
+            administration={administration}
+            onConsent={handleConsent}
+            onCancel={handleResearchCancel}
+         />
+      )
+   }
+
    if (stage === 'quiz') {
       const saved = resuming ? loadQuizState() : null
       return (
          <QuizScreen
             questions={activeQuestions}
-            tier={resuming ? saved?.tier : undefined}
+            tier={resuming ? saved?.tier : pendingTier}
             initialAnswers={resuming ? saved?.answers : undefined}
             initialIndex={resuming ? saved?.index : undefined}
             onComplete={handleComplete}
          />
       )
+   }
+
+   if (stage === 'self-identification') {
+      return <SelfIdentificationScreen labels={labels} onContinue={handleResearchIdentity} />
    }
 
    return result ? (
@@ -131,6 +232,8 @@ function App() {
          labels={labels}
          answers={answers}
          compareResult={compareResult}
+         researchSubmission={researchSubmission}
+         researchStatus={researchStatus}
          onCompare={handleCompare}
          onRestart={handleRestart}
       />
