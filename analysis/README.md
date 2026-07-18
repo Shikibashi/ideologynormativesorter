@@ -40,10 +40,17 @@ QUALITY_MAXIMUM_INVARIANT_RATE=0.95 \
 Rscript analysis/run_data_quality.R private-data/submissions.ndjson analysis/output
 ```
 
-Set the duration threshold from the preregistered cognitive-pilot timing distribution before examining ideological outcomes. Then run the psychometric workflow on the frozen analysis input:
+Set the duration threshold from the preregistered cognitive-pilot timing distribution before examining ideological outcomes. Then run the reliability, factor, retest, criterion, and source-coverage workflow on the frozen analysis input:
 
 ```bash
 Rscript analysis/run_validation.R private-data/submissions.ndjson analysis/output
+```
+
+Run the dedicated graded-response DIF workflow separately:
+
+```bash
+PSYCH_MINIMUM_DIF_GROUP_N=100 \
+Rscript analysis/run_dif.R private-data/submissions.ndjson analysis/output
 ```
 
 Optional psychometric environment variables:
@@ -65,7 +72,7 @@ The data-quality workflow writes:
 - `item-response-quality.csv`
 - `exclusion-candidates.csv`
 
-The psychometric workflow writes:
+The primary psychometric workflow writes:
 
 - `validation-summary.json`
 - `axis-reliability.csv` with alpha, omega total, and percentile bootstrap intervals
@@ -75,9 +82,17 @@ The psychometric workflow writes:
 - `source-coverage.csv`
 - `efa-loadings.csv` when the development split is estimable
 - `cfa-fit.csv` with held-out CFI, TLI, RMSEA, and SRMR
-- `dif-results.csv` when preregistered groups meet the minimum sample requirement
 
-Likert items are oriented toward their primary axis. Statement-choice items and items marked `needs-rewrite` are excluded from common-scale reliability and factor analyses. CFA uses the primary-axis specification and WLSMV on a held-out split. DIF uses graded-response multiple-group models with multiplicity adjustment.
+The dedicated DIF workflow writes:
+
+- `dif-results.csv` with item-level multiplicity-adjusted tests
+- `dif-diagnostics.csv` with group counts, eligible cases, tested parameters, and model failures
+
+Likert items are oriented toward their primary axis. Statement-choice items and items marked `needs-rewrite` are excluded from common-scale reliability, factor, and DIF analyses. CFA uses the primary-axis specification and WLSMV on a held-out split. DIF uses constrained graded-response multiple-group models with freely estimated focal-group latent means and variances; a flag requires substantive item review and is not itself proof of bias.
+
+## Synthetic recovery testing
+
+`analysis/synthetic/` contains a fixed-seed pipeline-recovery test with known reliability, factor, retest, criterion, DIF, and quality-control signals. Passing that harness validates software behavior against generated data only; it is not respondent evidence.
 
 ## Study governance
 
