@@ -19,7 +19,7 @@ High-confidence sign inversions, construct mismatches, and template carryover er
 
 Items that are ambiguous, double-barreled, non-discriminating, or insufficiently operationalized are marked `needs-rewrite`. They are not silently assigned a new interpretation. The psychometric analysis excludes these items until they are rewritten and piloted.
 
-The current bank identifier is `2026-07-semantic-v1`; the result-scoring identifier is `2026-07-18-semantic-v3`.
+The effective bank identifier is `2026-06-v4+2026-07-semantic-v1`; the result-scoring identifier is `2026-07-18-semantic-v3`.
 
 ## Defect classes
 
