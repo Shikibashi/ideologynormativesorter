@@ -1,6 +1,6 @@
 import type { AnswerMap, Question, QuizTier } from '../types'
 
-export const RESEARCH_SCHEMA_VERSION = '2026-07-v1'
+export const RESEARCH_SCHEMA_VERSION = '2026-07-v2'
 export const RESEARCH_CONSENT_VERSION = '2026-07-18-v1'
 const PARTICIPANT_STORAGE_KEY = 'political-judgment-research-participant-v1'
 
@@ -37,6 +37,11 @@ export interface ResearchSubmission {
   participantId: string
   administration: ResearchAdministration
   submittedAt: string
+  startedAt: string
+  completedAt: string
+  durationMs: number
+  resumed: boolean
+  presentationOrder: string[]
   bankVersion: string
   scoringVersion: string
   tier: QuizTier
@@ -59,6 +64,13 @@ interface StorageLike {
 
 function safeToken(value: string): string {
   return value.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 96)
+}
+
+function durationBetween(startedAt: string, completedAt: string): number {
+  const started = Date.parse(startedAt)
+  const completed = Date.parse(completedAt)
+  if (!Number.isFinite(started) || !Number.isFinite(completed)) return 0
+  return Math.max(0, completed - started)
 }
 
 export function isResearchMode(search = window.location.search): boolean {
@@ -97,6 +109,9 @@ export function buildResearchSubmission(input: {
   predictedLabelIds: string[]
   answers: AnswerMap
   questions: Question[]
+  startedAt: string
+  completedAt: string
+  resumed: boolean
   submittedAt?: string
 }): ResearchSubmission {
   return {
@@ -105,6 +120,11 @@ export function buildResearchSubmission(input: {
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? new Date().toISOString(),
+    startedAt: input.startedAt,
+    completedAt: input.completedAt,
+    durationMs: durationBetween(input.startedAt, input.completedAt),
+    resumed: input.resumed,
+    presentationOrder: input.questions.map((question) => String(question.id)),
     bankVersion: input.bankVersion,
     scoringVersion: input.scoringVersion,
     tier: input.tier,
@@ -131,8 +151,18 @@ export async function submitResearchSubmission(
   send: typeof fetch = fetch,
 ): Promise<ResearchSubmissionStatus> {
   if (!endpoint?.trim()) return { status: 'export-only' }
+  let resolvedEndpoint: URL
   try {
-    const response = await send(endpoint, {
+    resolvedEndpoint = new URL(endpoint, window.location.href)
+  } catch {
+    return { status: 'failed', reason: 'Study endpoint is not a valid URL.' }
+  }
+  const localDevelopment = ['localhost', '127.0.0.1', '[::1]'].includes(resolvedEndpoint.hostname)
+  if (resolvedEndpoint.protocol !== 'https:' && !localDevelopment) {
+    return { status: 'failed', reason: 'Study endpoint must use HTTPS outside local development.' }
+  }
+  try {
+    const response = await send(resolvedEndpoint.toString(), {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(submission),
@@ -140,7 +170,7 @@ export async function submitResearchSubmission(
       referrerPolicy: 'no-referrer',
     })
     if (!response.ok) return { status: 'failed', reason: `Study endpoint returned HTTP ${response.status}.` }
-    return { status: 'submitted', endpoint }
+    return { status: 'submitted', endpoint: resolvedEndpoint.toString() }
   } catch (error) {
     const reason = error instanceof Error ? error.message : 'Unknown network error.'
     return { status: 'failed', reason }
