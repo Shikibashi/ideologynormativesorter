@@ -20,10 +20,13 @@ function measuredScoreMap(breakdown: ScoreBreakdown): Map<AxisId, MeasuredScore>
    return new Map(all.map((s) => [s.axisId, { normalized: s.normalized, itemCount: s.itemCount }]))
 }
 
-function closeness(distance: number, axisCount: number): number {
-   if (axisCount === 0) return 0
-   const maxDistance = Math.sqrt(axisCount * 4)
-   return Math.max(0, 1 - distance / maxDistance)
+/**
+ * Convert root-mean-square distance on the native -1..1 axis scale to [0,1].
+ * RMS distance is already bounded by 2 regardless of axis count, so dividing by
+ * sqrt(axisCount * 4) would incorrectly inflate fits as more axes are measured.
+ */
+function closeness(distance: number): number {
+   return Number.isFinite(distance) ? Math.max(0, 1 - distance / 2) : 0
 }
 
 function distanceOver(
@@ -68,7 +71,7 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
    const matches = labels.map((label) => {
       const axisIds = Object.keys(label.centroid) as AxisId[]
       const { distance, measuredAxisCount, totalAxisCount, evidenceStrength } = distanceOver(scoreMap, label, axisIds)
-      const fit = measuredAxisCount > 0 ? closeness(distance, measuredAxisCount) : 0
+      const fit = measuredAxisCount > 0 ? closeness(distance) : 0
       return {
          labelId: label.id,
          name: label.name,
