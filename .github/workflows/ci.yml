@@ -52,3 +52,6 @@ jobs:
         run: |
           Rscript -e "parse(file='analysis/run_validation.R')"
           Rscript -e "parse(file='analysis/run_data_quality.R')"
+          Rscript -e "parse(file='analysis/run_dif.R')"
+          Rscript -e "parse(file='analysis/synthetic/generate_synthetic_study.R')"
+          Rscript -e "parse(file='analysis/synthetic/check_synthetic_outputs.R')"
