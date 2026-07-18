@@ -7,7 +7,6 @@ import { computeDomainMiniResults } from './domainResults'
 import { contributionsForAxis } from './explain'
 import { computeIdealNonIdealGaps } from './gap'
 import { computeConflatedLabels, computeLabelMatches } from './labelMatch'
-import { detectDivergencesAndContradictions as _detectDivergencesAndContradictions } from './divergence'
 import { computeReasonBreakdowns } from './reasonDecomposition'
 import { reliabilityForAxis, reliabilityForLabel } from './reliability'
 
@@ -20,7 +19,7 @@ export { computeIdealNonIdealGaps } from './gap'
 export { computeConflatedLabels, computeLabelMatches } from './labelMatch'
 export { reliabilityForAxis, reliabilityForLabel } from './reliability'
 export { contributionsForAxis } from './explain'
-export { _detectDivergencesAndContradictions as detectDivergencesAndContradictions }
+export { detectDivergencesAndContradictions } from './divergence'
 export { computeDomainMiniResults } from './domainResults'
 export { computeReasonBreakdowns } from './reasonDecomposition'
 
