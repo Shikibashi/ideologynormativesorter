@@ -5,8 +5,8 @@ import { QuizScreen } from './components/QuizScreen'
 import { ResultsScreen } from './components/ResultsScreen'
 import { axes } from './data/axes'
 import { domains } from './data/domains'
+import { questions, questionsForTier } from './data/effectiveQuestions'
 import { labels } from './data/labels'
-import { questions, questionsForTier } from './data/questions'
 import { buildResultProfile } from './scoring'
 import { readCompareAnswers, readSharedResult } from './share'
 import type { AnswerMap, QuizTier, ResultProfile } from './types'
@@ -15,7 +15,6 @@ import { clearQuizState, loadQuizState, getQuizProgress } from './save'
 type Stage = 'intro' | 'quiz' | 'results'
 
 const TIERS: QuizTier[] = ['blitz', 'quick', 'moderate', 'extensive']
-
 
 function App() {
    const [shareLoad] = useState(readSharedResult)
@@ -47,7 +46,6 @@ function App() {
    function refreshSavedProgress(): void {
       setSavedProgress(getQuizProgress())
    }
-
 
    function handleStart(tier: QuizTier) {
       setLoadError(null)
@@ -86,8 +84,6 @@ function App() {
       clearQuizState()
       setSavedProgress(null)
    }
-
-
 
    function handleRestart() {
       if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search)
