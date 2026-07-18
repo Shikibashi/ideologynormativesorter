@@ -16,11 +16,15 @@ export function getBankFingerprint(): string {
   return `${getRawBankFingerprint()}+${SEMANTIC_AUDIT_VERSION}`
 }
 
+/** All reviewed core items, including deactivated items retained for traceability. */
 export const coreQuestions: Question[] = rawCoreQuestions.map(applySemanticReview)
-export const questions: Question[] = coreQuestions
+/** Active reviewed items used by the public quiz and result scoring. */
+export const questions: Question[] = coreQuestions.filter((question) => question.active !== false)
 export const allQuestions: Question[] = rawAllQuestions.map(applySemanticReview)
 export const questionById = new Map(allQuestions.map((question) => [question.id, question]))
 
 export function questionsForTier(tier: Question['tier']): Question[] {
-  return rawQuestionsForTier(tier).map(applySemanticReview)
+  return rawQuestionsForTier(tier)
+    .map(applySemanticReview)
+    .filter((question) => question.active !== false)
 }
