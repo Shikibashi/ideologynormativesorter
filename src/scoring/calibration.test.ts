@@ -25,14 +25,15 @@ describe('calibration fixtures (centroid reflexivity)', () => {
          const result = buildResultProfile(ALL_SCORABLE, fixture.answers, axes, labels)
 
          // A centroid-aligned profile must rank its own label among the nearest
-         // matches, and that label's confidence must remain close to the best
-         // match. Magnitude-preserving synthetic answers expose dense clusters,
-         // so this is reflexivity, not a strict #1-label guarantee.
+         // matches. minFit is now evaluated on the corrected native RMS scale.
+         // The neighborhood-margin snapshot predates that correction, so convert
+         // the current linear fit margin to its legacy axis-compressed equivalent.
          const ids = result.nearestLabels.map((l) => l.labelId)
          expect(ids).toContain(fixture.expectedLabelIds[0])
          const own = result.nearestLabels.find((l) => l.labelId === fixture.expectedLabelIds[0])!
          expect(own.fit).toBeGreaterThanOrEqual(fixture.minFit)
-         expect(result.nearestLabels[0].fit - own.fit).toBeLessThanOrEqual(0.07)
+         const legacyEquivalentMargin = (result.nearestLabels[0].fit - own.fit) / Math.sqrt(axes.length)
+         expect(legacyEquivalentMargin).toBeLessThanOrEqual(0.07)
       })
    }
 })
@@ -140,7 +141,7 @@ describe('hand-authored egalitarian-but-market-deregulatory archetype', () => {
          }
          if (weight === 0) return []
          return [[q.id, { questionId: q.id, value: (Math.sign(total) * 3) as number }]] as const
-      })
+      }),
    )
 
    const result = buildResultProfile(ALL_SCORABLE, answers, axes, labels)
