@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Generated research outputs
+analysis/synthetic/output/
+analysis/output/
+private-data/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
