@@ -12,6 +12,13 @@ export interface IdeologyAffinity {
   weight: number
 }
 
+export interface QuestionSource {
+  title: string
+  url: string
+  publisher?: string
+  publishedAt?: string
+}
+
 /** One "which best represents your view" option for a statementChoice question. */
 export interface StatementOption {
   id: string
@@ -40,6 +47,10 @@ export interface Question {
   explanation?: string
   /** Plain-language help text shown under the question during the quiz. */
   helpText?: string
+  /** Operational definition or empirical scope for a descriptive item. */
+  evidenceNote?: string
+  /** Public sources supporting the context of a descriptive item; sources do not determine the respondent's answer. */
+  sources?: QuestionSource[]
   /** Descriptive items may let the respondent decline to guess. */
   allowDontKnow?: boolean
   /** Prompt shown alongside a descriptive item's confidence rating. */

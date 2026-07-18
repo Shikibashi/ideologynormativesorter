@@ -1,17 +1,17 @@
 import type { Answer, AnswerMap, Axis, IdeologyLabel, LabelMatch, Question, QuestionId, ResultProfile, AxisReliability, LabelReliability, Contribution } from '../types'
+import { QUESTION_BANK_VERSION } from '../data/effectiveQuestions'
+import { domains } from '../data/domains'
 import { computeScoreBreakdown } from './aggregate'
-import { computeIdealNonIdealGaps } from './gap'
-import { computeConflatedLabels, computeLabelMatches } from './labelMatch'
 import { detectDivergencesAndContradictions } from './divergence'
 import { computeDomainMiniResults } from './domainResults'
+import { contributionsForAxis } from './explain'
+import { computeIdealNonIdealGaps } from './gap'
+import { computeConflatedLabels, computeLabelMatches } from './labelMatch'
 import { computeReasonBreakdowns } from './reasonDecomposition'
 import { reliabilityForAxis, reliabilityForLabel } from './reliability'
-import { contributionsForAxis } from './explain'
-import { domains } from '../data/domains'
-import { QUESTION_BANK_VERSION } from '../data/questions'
 
-/** Bumped because label similarity normalization changed without changing the bank. */
-export const RESULT_SCORING_VERSION = '2026-07-18-fit-v2'
+/** Bumped because the semantic audit changes effective question-to-axis mappings. */
+export const RESULT_SCORING_VERSION = '2026-07-18-semantic-v3'
 
 export { normalizeAnswer, salienceFactor } from './normalize'
 export { computeAxisScores, computeScoreBreakdown, axisScoreMap } from './aggregate'

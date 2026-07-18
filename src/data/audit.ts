@@ -1,9 +1,10 @@
 import type { Axis, AxisWeight, Domain, IdeologyLabel, Question } from '../types'
 import { axes } from './axes'
 import { domains } from './domains'
+import { questions, questionsForTier } from './effectiveQuestions'
 import { labels } from './labels'
 import { moduleQuestions } from './moduleQuestions'
-import { questions, questionsForTier } from './questions'
+
 export interface AuditReport {
   totals: {
     totalQuestions: number
@@ -16,6 +17,11 @@ export interface AuditReport {
     domains: number
     layers: Record<string, number>
     axes: number
+  }
+  review: {
+    corrected: number
+    needsRewrite: number
+    unreviewedMetadata: number
   }
   problems: string[]
 }
@@ -76,7 +82,7 @@ export function auditCorpus(input?: Partial<AuditInput>): AuditReport {
     activeQuestions: activeQuestions.length,
     axes: auditInput.axes.length,
     domains: auditInput.domains.length,
-    labels: auditInput.labels.length
+    labels: auditInput.labels.length,
   }
 
   const problems: string[] = []
@@ -140,8 +146,13 @@ export function auditCorpus(input?: Partial<AuditInput>): AuditReport {
     coverage: {
       domains: referencedDomains.size,
       layers: layerCounts,
-      axes: referencedAxes.size
+      axes: referencedAxes.size,
     },
-    problems
+    review: {
+      corrected: activeQuestions.filter((question) => question.version === '2026-07-semantic-v1' && question.reviewStatus === 'approved').length,
+      needsRewrite: activeQuestions.filter((question) => question.reviewStatus === 'needs-rewrite').length,
+      unreviewedMetadata: activeQuestions.filter((question) => question.reviewStatus === undefined).length,
+    },
+    problems,
   }
 }
