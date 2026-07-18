@@ -1,0 +1,79 @@
+name: Synthetic Validation
+
+on:
+  pull_request:
+    paths:
+      - 'analysis/**'
+      - '.github/workflows/synthetic-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      SYNTHETIC_RANDOM_SEED: '20260718'
+      SYNTHETIC_TEST_N: '600'
+      SYNTHETIC_RETEST_N: '200'
+      QUALITY_MINIMUM_DURATION_MS: '60000'
+      QUALITY_MAXIMUM_MISSING_RATE: '0.40'
+      QUALITY_MAXIMUM_INVARIANT_RATE: '0.95'
+      PSYCH_BOOTSTRAP_REPLICATES: '200'
+      PSYCH_MINIMUM_AXIS_N: '100'
+      PSYCH_MINIMUM_FACTOR_N: '300'
+      PSYCH_MINIMUM_DIF_GROUP_N: '100'
+      PSYCH_RANDOM_SEED: '20260718'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install research dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::jsonlite
+            any::psych
+            any::lavaan
+            any::mirt
+            any::boot
+          cache-version: 1
+
+      - name: Generate synthetic study
+        run: |
+          mkdir -p analysis/synthetic/output/quality analysis/synthetic/output/validation
+          Rscript analysis/synthetic/generate_synthetic_study.R analysis/synthetic/output/submissions.ndjson
+
+      - name: Run data-quality analysis
+        run: |
+          Rscript analysis/run_data_quality.R \
+            analysis/synthetic/output/submissions.ndjson \
+            analysis/synthetic/output/quality
+
+      - name: Run psychometric analysis
+        run: |
+          Rscript analysis/run_validation.R \
+            analysis/synthetic/output/submissions.ndjson \
+            analysis/synthetic/output/validation
+
+      - name: Verify recovered signals
+        run: |
+          Rscript analysis/synthetic/check_synthetic_outputs.R \
+            analysis/synthetic/output/validation \
+            analysis/synthetic/output/quality
+
+      - name: Upload synthetic reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-validation-reports
+          path: |
+            analysis/synthetic/output/quality
+            analysis/synthetic/output/validation
+          retention-days: 14
