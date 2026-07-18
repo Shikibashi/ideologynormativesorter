@@ -5,7 +5,7 @@ import { QuizScreen } from './components/QuizScreen'
 import { ResultsScreen } from './components/ResultsScreen'
 import { axes } from './data/axes'
 import { domains } from './data/domains'
-import { questions, questionsForTier } from './data/effectiveQuestions'
+import { questionById, questions, questionsForTier } from './data/effectiveQuestions'
 import { labels } from './data/labels'
 import { buildResultProfile } from './scoring'
 import { readCompareAnswers, readSharedResult } from './share'
@@ -62,7 +62,7 @@ function App() {
          refreshSavedProgress()
          return
       }
-      setActiveQuestions(saved.questions)
+      setActiveQuestions(saved.questions.map((question) => questionById.get(question.id) ?? question))
       setAnswers(saved.answers)
       setResuming(true)
       setStage('quiz')
