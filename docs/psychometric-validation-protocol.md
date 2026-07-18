@@ -8,9 +8,12 @@ The repository now includes:
 
 - `src/validation/psychometrics.ts` for respondent-grounded classical diagnostics;
 - an opt-in browser research mode with consent and pre-result self-identification;
-- a pseudonymous submission/export schema;
+- deterministic balanced matrix forms and test/retest presentation order;
+- a pseudonymous versioned submission/export schema;
 - a dependency-free reference collector;
-- `analysis/run_validation.R` for omega, bootstrap intervals, held-out EFA/CFA, test-retest, criterion concordance, and DIF.
+- `analysis/run_data_quality.R` for preregistered quality flags;
+- `analysis/run_validation.R` for omega, bootstrap intervals, held-out EFA/CFA, test-retest, criterion concordance, and DIF;
+- a preregistration and recruitment/retest operations plan.
 
 All analysis paths report insufficient data rather than manufacturing coefficients when sample thresholds are not met.
 
@@ -70,26 +73,28 @@ Use this stage to detect:
 
 Use matrix sampling so respondents are not required to answer the entire bank. Aim for at least 150 usable observations per item, with a larger total sample where feasible. The software's lower thresholds are provisional computation gates, not publication standards.
 
-Research mode is enabled explicitly:
+Research mode is enabled explicitly. `formSize` requests a balanced matrix form; omitting it administers every eligible item in the selected tier.
 
 ```text
-?research=1&study=pilot-2026
+?research=1&study=pilot-2026&formSize=120
 ```
 
 A retest administration uses:
 
 ```text
-?research=1&study=pilot-2026&administration=retest
+?research=1&study=pilot-2026&administration=retest&formSize=120
 ```
 
-The flow requires consent before the quiz, captures optional self-identification and broad demographic groups before showing results, and assigns a stable random participant code in the same browser. It does not request names, email addresses, exact age, precise location, employer, party registration, or contact information.
+The flow requires consent before the quiz, captures optional self-identification and broad demographic groups before showing results, and assigns a stable random participant code in the same browser. Test and retest preserve eligible item coverage while using different deterministic presentation orders. It does not request names, email addresses, exact age, precise location, employer, party registration, or contact information.
 
 Capture:
 
 - pseudonymous participant ID;
 - test or retest administration;
 - bank, scoring, schema, and consent versions;
-- selected test length;
+- selected test length and assigned presentation order;
+- start, completion, and submission timestamps;
+- total duration and resume status;
 - item responses and confidence/priority values;
 - optional pre-result self-label from the instrument label set;
 - optional broad age band and gender group for preregistered DIF analysis;
@@ -116,10 +121,13 @@ Report:
 
 - completion and dropout rates;
 - missing and “I don't know” rates by item;
-- response-time distributions when timing is collected under the consent protocol;
+- response-time distributions;
 - floor and ceiling rates;
 - straight-line or invariant response patterns;
-- duplicate or suspicious submissions under a documented rule.
+- duplicate answer vectors and suspicious submissions under a documented rule;
+- resumed-session counts and version incompatibilities.
+
+`analysis/run_data_quality.R` writes quality flags but does not delete records. Exclusions must follow the frozen preregistration and should be reported with sensitivity analyses.
 
 ### Directional balance
 
@@ -198,10 +206,16 @@ Research mode produces a versioned record equivalent to:
 
 ```json
 {
-  "schemaVersion": "2026-07-v1",
+  "schemaVersion": "2026-07-v2",
   "studyId": "pilot-2026",
   "participantId": "p_random-code",
   "administration": "test",
+  "submittedAt": "2026-07-18T12:31:00.000Z",
+  "startedAt": "2026-07-18T12:00:00.000Z",
+  "completedAt": "2026-07-18T12:30:00.000Z",
+  "durationMs": 1800000,
+  "resumed": false,
+  "presentationOrder": ["q0001", "q0037"],
   "bankVersion": "2026-06-v4+2026-07-semantic-v1",
   "scoringVersion": "2026-07-18-semantic-v3",
   "tier": "moderate",
@@ -210,7 +224,7 @@ Research mode produces a versioned record equivalent to:
     "voluntaryParticipation": true,
     "dataUseAccepted": true,
     "consentVersion": "2026-07-18-v1",
-    "consentedAt": "2026-07-18T12:00:00.000Z"
+    "consentedAt": "2026-07-18T11:59:00.000Z"
   },
   "identity": {
     "selfLabelId": "optional-label-id",
@@ -229,13 +243,14 @@ A retest uses the same participant code and `administration: "retest"`. Same-bro
 
 ## Reproducible workflow
 
-Run the external analysis with:
+Run quality flags and the external analysis with:
 
 ```bash
+Rscript analysis/run_data_quality.R private-data/submissions.ndjson analysis/output
 Rscript analysis/run_validation.R private-data/submissions.ndjson analysis/output
 ```
 
-The workflow writes version-specific JSON and CSV outputs for reliability, omega, bootstrap intervals, item-total correlations, test-retest stability, criterion concordance, source coverage, EFA loadings, held-out CFA fit, and DIF. See `analysis/README.md` for dependencies and thresholds.
+The workflows write version-specific JSON and CSV outputs for quality flags, reliability, omega, bootstrap intervals, item-total correlations, test-retest stability, criterion concordance, source coverage, EFA loadings, held-out CFA fit, and DIF. See `analysis/README.md` for dependencies and thresholds.
 
 ## Current limitation
 
