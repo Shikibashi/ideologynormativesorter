@@ -69,7 +69,7 @@ assert_true(length(loading_columns) >= 2, "EFA did not retain at least two synth
 normative_efa <- efa[efa$layer == "normative", , drop = FALSE]
 strongest_factor <- apply(abs(as.matrix(normative_efa[, loading_columns, drop = FALSE])), 1, which.max)
 names(strongest_factor) <- normative_efa$question_id
-mode_value <- function(values) as.integer(names(sort(table(values), decreasing = TRUE)[[1]]))
+mode_value <- function(values) as.integer(names(sort(table(values), decreasing = TRUE))[1])
 liberty_mode <- mode_value(strongest_factor[grepl("^syn_lib_", names(strongest_factor))])
 equality_mode <- mode_value(strongest_factor[grepl("^syn_eq_", names(strongest_factor))])
 assert_true(liberty_mode != equality_mode, "EFA collapsed the two injected normative factors.")
