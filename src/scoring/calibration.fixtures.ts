@@ -1,5 +1,5 @@
 import type { AnswerMap, AxisWeight, IdeologyLabel, Question } from '../types'
-import { questions } from '../data/effectiveQuestions'
+import { questions } from '../data/questions'
 import { labelById } from '../data/labels'
 
 export interface CalibrationFixture {
