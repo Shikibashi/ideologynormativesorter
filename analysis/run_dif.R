@@ -75,6 +75,14 @@ recode_ordinal <- function(data) {
   as.data.frame(result, check.names = FALSE)
 }
 
+sanitize_group_labels <- function(values) {
+  sanitized <- values
+  observed <- unique(values[nzchar(values)])
+  mapping <- setNames(make.names(observed, unique = TRUE), observed)
+  sanitized[nzchar(values)] <- unname(mapping[values[nzchar(values)]])
+  sanitized
+}
+
 submissions <- read_submissions(input_path)
 submissions <- submissions[vapply(submissions, function(record) {
   !is.null(record$schemaVersion) && !is.null(record$participantId) && !is.null(record$answers) &&
@@ -132,12 +140,12 @@ result_rows <- list()
 diagnostic_rows <- list()
 
 for (group_name in c("ageBand", "genderGroup")) {
-  groups <- vapply(submissions, function(record) {
+  raw_groups <- vapply(submissions, function(record) {
     identity <- record$identity %||% list()
     identity[[group_name]] %||% ""
   }, character(1))
-  valid_group <- nzchar(groups)
-  group_counts <- table(groups[valid_group])
+  valid_group <- nzchar(raw_groups)
+  group_counts <- table(raw_groups[valid_group])
   if (length(group_counts) < 2 || any(group_counts < minimum_group_n)) {
     diagnostic_rows[[length(diagnostic_rows) + 1]] <- data.frame(
       group_variable = group_name,
@@ -149,6 +157,7 @@ for (group_name in c("ageBand", "genderGroup")) {
     )
     next
   }
+  groups <- sanitize_group_labels(raw_groups)
 
   for (axis_id in sort(unique(metadata$axis_id))) {
     item_ids <- metadata$question_id[metadata$axis_id == axis_id]
@@ -205,10 +214,26 @@ for (group_name in c("ageBand", "genderGroup")) {
       next
     }
 
+    fitted_parameters <- unique(mirt::mod2values(baseline)$name)
+    threshold_parameters <- grep("^d[0-9]+$", fitted_parameters, value = TRUE)
+    which_parameters <- unique(c("a1", threshold_parameters))
+    which_parameters <- which_parameters[which_parameters %in% fitted_parameters]
+    if (length(which_parameters) < 2) {
+      diagnostic_rows[[length(diagnostic_rows) + 1]] <- data.frame(
+        group_variable = group_name,
+        axis_id = axis_id,
+        status = "parameters-unavailable",
+        usable_n = nrow(axis_data),
+        message = paste("available:", paste(fitted_parameters, collapse = ", ")),
+        stringsAsFactors = FALSE
+      )
+      next
+    }
+
     dif <- tryCatch(
       as.data.frame(mirt::DIF(
         baseline,
-        which.par = c("a1", "d"),
+        which.par = which_parameters,
         items2test = colnames(axis_data),
         scheme = "drop",
         p.adjust = "BH",
@@ -248,7 +273,7 @@ for (group_name in c("ageBand", "genderGroup")) {
       axis_id = axis_id,
       status = "estimated",
       usable_n = nrow(axis_data),
-      message = paste("tested items:", ncol(axis_data)),
+      message = paste("tested items:", ncol(axis_data), "parameters:", paste(which_parameters, collapse = ",")),
       stringsAsFactors = FALSE
     )
   }
