@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { axisById } from './axes'
-import { questionById } from './effectiveQuestions'
+import { questionById, questions, questionsForTier } from './effectiveQuestions'
 import { needsRewriteById, semanticCorrections, SEMANTIC_AUDIT_VERSION } from './semanticAudit'
 
 describe('semantic question audit', () => {
@@ -22,12 +22,16 @@ describe('semantic question audit', () => {
     }
   })
 
-  it('marks ambiguous items for rewrite without silently assigning new weights', () => {
+  it('deactivates ambiguous items without silently assigning new weights', () => {
     for (const questionId of Object.keys(needsRewriteById)) {
       const question = questionById.get(questionId)
       expect(question, `${questionId} review references a missing question`).toBeDefined()
       expect(question!.reviewStatus).toBe('needs-rewrite')
+      expect(question!.active).toBe(false)
       expect(question!.version).toBe(SEMANTIC_AUDIT_VERSION)
+      expect(question!.deprecationReason).toBeTruthy()
+      expect(questions.some((activeQuestion) => activeQuestion.id === questionId)).toBe(false)
+      expect(questionsForTier(question!.tier).some((activeQuestion) => activeQuestion.id === questionId)).toBe(false)
     }
   })
 
