@@ -3,12 +3,13 @@ import {
   allQuestions as rawAllQuestions,
   coreQuestions as rawCoreQuestions,
   getBankFingerprint as getRawBankFingerprint,
+  QUESTION_BANK_VERSION as RAW_QUESTION_BANK_VERSION,
   questionsForTier as rawQuestionsForTier,
   SCORING_VERSION,
 } from './questions'
 import { applySemanticReview, SEMANTIC_AUDIT_VERSION } from './semanticAudit'
 
-export const QUESTION_BANK_VERSION = SEMANTIC_AUDIT_VERSION
+export const QUESTION_BANK_VERSION = `${RAW_QUESTION_BANK_VERSION}+${SEMANTIC_AUDIT_VERSION}`
 export { SCORING_VERSION }
 
 export function getBankFingerprint(): string {
