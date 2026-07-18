@@ -79,7 +79,14 @@ assert_true(sum(strongest_factor[grepl("^syn_eq_", names(strongest_factor))] == 
 dif_path <- file.path(validation_dir, "dif-results.csv")
 assert_true(file.exists(dif_path), "DIF output was not produced for the adequately sized synthetic groups.")
 dif <- utils::read.csv(dif_path, stringsAsFactors = FALSE, check.names = FALSE)
-assert_true("syn_eq_6" %in% dif$question_id, "DIF analysis did not flag the injected group-specific item effect.")
+injected_dif <- dif[
+  dif$question_id == "syn_eq_6" & dif$group_variable == "genderGroup",
+  ,
+  drop = FALSE
+]
+assert_true(nrow(injected_dif) == 1, "DIF analysis did not return the injected gender-group item effect exactly once.")
+assert_true(is.finite(injected_dif$adj_p[[1]]) && injected_dif$adj_p[[1]] < 0.05,
+            "Injected DIF was not significant after multiplicity adjustment.")
 
 quality_summary <- jsonlite::fromJSON(file.path(quality_dir, "data-quality-summary.json"))
 assert_true(quality_summary$exclusionCandidateCount >= 5, "Data-quality analysis did not flag the deliberately malformed records and duplicate pair.")
@@ -99,3 +106,4 @@ cat(sprintf("Omega range: %.3f–%.3f\n", min(axis_reliability$omega_total), max
 cat(sprintf("Retest range: %.3f–%.3f\n", min(retest$test_retest_correlation), max(retest$test_retest_correlation)))
 cat(sprintf("Normative CFA: CFI %.3f, TLI %.3f, RMSEA %.3f, SRMR %.3f\n",
             normative_fit$cfi[[1]], normative_fit$tli[[1]], normative_fit$rmsea[[1]], normative_fit$srmr[[1]]))
+cat(sprintf("Injected gender DIF adjusted p: %.6g\n", injected_dif$adj_p[[1]]))
