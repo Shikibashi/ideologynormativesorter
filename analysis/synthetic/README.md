@@ -26,9 +26,11 @@ PSYCH_MINIMUM_AXIS_N=100 \
 PSYCH_MINIMUM_FACTOR_N=300 \
 PSYCH_MINIMUM_DIF_GROUP_N=100 \
   Rscript analysis/run_validation.R analysis/synthetic/output/submissions.ndjson analysis/synthetic/output/validation
+PSYCH_MINIMUM_DIF_GROUP_N=100 \
+  Rscript analysis/run_dif.R analysis/synthetic/output/submissions.ndjson analysis/synthetic/output/validation
 Rscript analysis/synthetic/check_synthetic_outputs.R analysis/synthetic/output/validation analysis/synthetic/output/quality
 ```
 
-The checker fails unless the pipeline recovers the injected reliability, factor, retest, criterion, source-coverage, DIF, and quality-control signals within predetermined bounds. Random seeds are fixed for reproducibility.
+The checker fails unless the pipeline recovers the injected reliability, factor, retest, criterion, source-coverage, adjusted-significant DIF, and quality-control signals within predetermined bounds. Random seeds are fixed for reproducibility.
 
 Generated records and outputs belong under `analysis/synthetic/output/` and should not be committed.
