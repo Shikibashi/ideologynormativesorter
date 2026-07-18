@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { getQuestionHelpText, getSalienceHelpText } from '../data/questionHelpText'
 import { saveQuizState } from '../save'
 import type { Answer, AnswerMap, Question, QuizTier } from '../types'
+
+const DEFAULT_CONFIDENCE_PROMPT = 'How confident are you in this empirical claim?'
 const SALIENCE_LEVELS: { label: string; value: number }[] = [
   { label: 'Low', value: 1 },
   { label: 'Medium', value: 3 },
@@ -54,6 +56,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
 
   const salienceField = question.layer === 'descriptive' ? 'confidence' : question.layer === 'prescriptive' ? 'priority' : null
   const salienceQuestion = pendingValue !== null && pendingValue !== 'dont_know' ? salienceField : null
+  const canAnswerDontKnow = question.layer === 'descriptive' || question.allowDontKnow === true
 
   // Persist progress on every answer change (skip on first render if restoring)
   const isRestored = useRef(!!initialAnswers)
@@ -102,7 +105,9 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
   }
 
   if (salienceQuestion) {
-    const prompt = salienceQuestion === 'confidence' ? question.confidencePrompt : question.priorityPrompt
+    const prompt = salienceQuestion === 'confidence'
+      ? question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT
+      : question.priorityPrompt
     const helpText = getSalienceHelpText(salienceQuestion)
 
     return (
@@ -181,7 +186,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
         </div>
       )}
 
-      {question.allowDontKnow && (
+      {canAnswerDontKnow && (
         <button
           type="button"
           className={`dont-know-button${selected?.value === 'dont_know' ? ' selected' : ''}`}

@@ -14,6 +14,10 @@ const ALL_SCORABLE = questions
  *    that label, even if a dense neighbor ranks first.
  * 2. Debt snapshot: current non-#1 matches are recorded as unresolved
  *    discriminator debt against the 20% Phase 2 target, not as success.
+ *
+ * Snapshot margins were recorded under the former axis-count-compressed fit
+ * formula. Assertions convert corrected fit margins back to that legacy scale
+ * so this PR changes display calibration without erasing discriminator debt.
  */
 const NEAR_TIE_DEBT_SNAPSHOT: Record<string, { tiesWith: string | string[]; maxMargin: number }> = {
    'egalitarian-statist': { tiesWith: 'anti-imperialism', maxMargin: 0.006 },
@@ -87,6 +91,10 @@ function collectCurrentNearTies(): Array<{ target: string; top: string; margin: 
    })
 }
 
+function legacyEquivalentMargin(margin: number): number {
+   return margin / Math.sqrt(axes.length)
+}
+
 function nearTieGate() {
    return {
       targetRate: NEAR_TIE_TARGET_RATE,
@@ -110,7 +118,7 @@ describe('archetype -> nearest-label sweep', () => {
          expect(own, `${target} not in nearest labels`).toBeDefined()
 
          const margin = top.fit - (own!.fit ?? 0)
-         expect(margin, `${target} is a distant outlier from itself`).toBeLessThanOrEqual(0.07)
+         expect(legacyEquivalentMargin(margin), `${target} is a distant outlier from itself`).toBeLessThanOrEqual(0.07)
       })
    }
 
@@ -132,7 +140,7 @@ describe('archetype -> nearest-label sweep', () => {
          const debt = NEAR_TIE_DEBT_SNAPSHOT[nearTie.target]
          expect(debt, `${nearTie.target} is missing from the debt snapshot`).toBeDefined()
          expect(expectedDebtFor(nearTie.target)).toContain(nearTie.top)
-         expect(nearTie.margin).toBeLessThanOrEqual(debt.maxMargin)
+         expect(legacyEquivalentMargin(nearTie.margin)).toBeLessThanOrEqual(debt.maxMargin)
       }
    })
 })
