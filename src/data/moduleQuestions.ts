@@ -1,11 +1,16 @@
 import type { Question } from '../types'
 
 /**
- * Original follow-up items for faction modules (see factionModules.ts).
- * Kept out of the main questions[] bank so they never surface through
- * questionsForTier(); they only appear when a module is explicitly started.
- * Scoring still works on them unmodified since computeAxisScores reads
- * whatever question list it's given.
+ * Inert follow-up items originally written for a faction-module feature that
+ * was removed from this codebase (see git history: "Integrate module
+ * questions into main bank, remove module system entirely" — deleted
+ * factionModules.ts / types/factionModule.ts). No UI screen or scoring path
+ * currently presents or answers these; they are kept out of the main
+ * questions[] bank so they never surface through questionsForTier(), and
+ * exist only as an audit/data-coverage surface (see
+ * src/validation/mappingAudit for their overlay/finding records).
+ * Scoring would still work on them unmodified since computeAxisScores reads
+ * whatever question list it's given, if a future consumer is built.
  */
 export const moduleQuestions: Question[] = [
    // Socialist/Left Depth Module

@@ -18,3 +18,5 @@ export type {
   SourceCoverageReport,
   ValidationResponse,
 } from './psychometrics'
+
+export * from './mappingAudit'
