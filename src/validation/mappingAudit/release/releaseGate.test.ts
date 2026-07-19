@@ -61,13 +61,36 @@ describe('releaseGate', () => {
     expect(expert?.status).not.toBe('fail')
   })
 
-  it('textual gate reflects real per-claim rollup (not-started, not hardcoded pass)', () => {
+  it('textual gate reflects researched-but-unreviewed rollup (in-review, not hardcoded pass)', () => {
     const summary = latestRelease()!
     const textual = summary.gateStatuses.find((g) => g.gate === 'textual')
     const allClaims = dossiers.flatMap((d) => d.claims)
     expect(allClaims.length).toBeGreaterThan(0)
-    expect(allClaims.every((c) => c.textualStatus === 'not-started')).toBe(true)
-    expect(textual?.status).toBe('not-started')
+    expect(allClaims.every((c) => c.textualStatus === 'in-review')).toBe(true)
+    expect(textual?.status).toBe('in-review')
+    expect(textual?.status).not.toBe('pass')
+    expect(textual?.status).not.toBe('not-started')
+  })
+
+  it('textual in-review does not block release when expert is pass', () => {
+    const summary = buildReleaseSummary()
+    const withExpertPass = {
+      ...summary,
+      gateStatuses: summary.gateStatuses.map((g) =>
+        g.gate === 'expert' ? { ...g, status: 'pass' as const } : g,
+      ),
+    }
+    const textual = withExpertPass.gateStatuses.find((g) => g.gate === 'textual')
+    expect(textual?.status).toBe('in-review')
+    const result = releaseGate(
+      withExpertPass,
+      getBankFingerprint(),
+      RESULT_SCORING_VERSION,
+    )
+    expect(result.pass).toBe(true)
+    expect(result.failures.some((f) => f.toLowerCase().includes('textual'))).toBe(
+      false,
+    )
   })
 
   it('fails freshness check when fingerprint is stale', () => {

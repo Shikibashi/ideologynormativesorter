@@ -15,15 +15,16 @@ const GENERATED_AT = '2026-07-19T12:00:00.000Z'
 
 /**
  * Roll up the textual evidence gate from real per-claim `textualStatus` fields
- * (never hardcode this — it must track claims.ts, which currently seeds every
- * claim as `not-started` pending WP3 wave fill of real primary+scholarly text).
+ * (never hardcode this — it must track claims.ts after claim-fill-v1).
+ * Uniform pass → pass; uniform not-started → not-started; otherwise in-review.
  */
 function aggregateTextualStatus(): GateStatus {
   const allClaims = dossiers.flatMap(d => d.claims)
   if (allClaims.length === 0) return 'not-started'
-  const passCount = allClaims.filter(c => c.textualStatus === 'pass').length
-  if (passCount === allClaims.length) return 'pass'
-  if (passCount === 0) return 'not-started'
+  const statuses = new Set(allClaims.map(c => c.textualStatus))
+  if (statuses.size === 1 && statuses.has('pass')) return 'pass'
+  if (statuses.size === 1 && statuses.has('not-started')) return 'not-started'
+  // Mixed statuses, or uniform in-review / fail / deferred, etc.
   return 'in-review'
 }
 
@@ -32,15 +33,15 @@ function buildGateStatuses(): ValidationGateRecord[] {
   return [
     {
       gate: 'textual',
-      // Truthful: every claim.textualStatus is currently 'not-started' (WP3
-      // dossiers are schema-valid PENDING_CLAIM_STUB scaffolds awaiting wave
-      // fill). Do NOT hardcode 'pass' — that would contradict claims.ts.
+      // Truthful: researched claim-fill sets textualStatus to in-review pending
+      // qualified-expert textual review. Do NOT hardcode 'pass'.
       status: aggregateTextualStatus(),
       subjectId: 'mapping-audit:catalog',
       updatedAt: now,
       evidenceRefs: [
-        'dossiers/claims.ts (every claim.textualStatus === not-started)',
-        'docs/labels-academic-audit.md, docs/ideology-label-review.md, docs/contested-label-research-verification.md, docs/ideology-family-research-verification.md (candidate primary/scholarly sources for wave fill; not yet linked into claim citations)',
+        'dossiers/claims.ts (every claim.textualStatus === in-review after claim-fill-v1)',
+        'citations/familyCatalog.ts (family scholarly baselines linked into scholarlyCiteIds)',
+        'docs/labels-academic-audit.md, docs/ideology-label-review.md, docs/contested-label-research-verification.md, docs/ideology-family-research-verification.md',
         'findings/ledger.ts',
       ],
     },

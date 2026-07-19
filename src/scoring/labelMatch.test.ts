@@ -61,6 +61,25 @@ describe('computeLabelMatches', () => {
       expect(best.fit).toBeCloseTo(1)
    })
 
+   it('attaches reasoning breakdowns for the top matches', () => {
+      const [best, partial, opposite] = computeLabelMatches(breakdown, [exactMatchLabel, partialMatchLabel, oppositeLabel])
+      
+      // Exact match should have strong shared extreme axes and no divergent axes.
+      expect(best.reasoning).toBeDefined()
+      expect(best.reasoning?.sharedExtremeAxes.length).toBeGreaterThan(0)
+      expect(best.reasoning?.divergentAxes).toHaveLength(0)
+      
+      // Partial match has some shared extremes (norm1, norm2) and some strong divergences (presc1, presc2)
+      expect(partial.reasoning).toBeDefined()
+      expect(partial.reasoning?.sharedExtremeAxes.map(a => a.axisId)).toEqual(expect.arrayContaining(['norm1', 'norm2']))
+      expect(partial.reasoning?.divergentAxes.map(a => a.axisId)).toEqual(expect.arrayContaining(['presc1', 'presc2']))
+
+      // Opposite has only divergences and no shared extremes.
+      expect(opposite.reasoning).toBeDefined()
+      expect(opposite.reasoning?.sharedExtremeAxes).toHaveLength(0)
+      expect(opposite.reasoning?.divergentAxes.length).toBeGreaterThan(0)
+   })
+
    it('gives a maximally opposite profile a zero fit regardless of axis count', () => {
       const oppositeBreakdown: ScoreBreakdown = {
          normative: [

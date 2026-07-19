@@ -48,7 +48,7 @@ describe('centroid-aligned statementChoice answers', () => {
             'property-legitimacy': -1,
             'equality-theory': 1,
          }),
-      ).toBe(1)
+      ).toBe(3)
    })
 
    it('rejects missing statementOptions', () => {

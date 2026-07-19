@@ -1,5 +1,10 @@
 import type { CitationRecord } from '../types'
+import {
+  allFamilyScholarlyCitations,
+  scholarlyCiteIdsForFamily,
+} from './familyCatalog'
 
+/** @deprecated Shared stubs retained only for migration tests; live claims use family scholarly cites. */
 export const LABEL_BANK_SCHOLARLY_STUB_IDS = [
   'cite:label-bank-scholarly-stub-1',
   'cite:label-bank-scholarly-stub-2',
@@ -29,7 +34,6 @@ export function normalizeUrl(url: string): string {
 
 /** Generate a citeId from a normalized URL or bibliographic key. */
 export function makeCiteId(normalizedKey: string): string {
-  // Use a simple hash — in production this would be crypto.subtle
   let hash = 0
   for (let i = 0; i < normalizedKey.length; i++) {
     hash = ((hash << 5) - hash + normalizedKey.charCodeAt(i)) | 0
@@ -38,7 +42,7 @@ export function makeCiteId(normalizedKey: string): string {
   return `cite:${hex}`
 }
 
-function upsertCitation(record: CitationRecord): void {
+export function upsertCitation(record: CitationRecord): void {
   const existing = citationRegistry.findIndex((c) => c.citeId === record.citeId)
   if (existing >= 0) {
     citationRegistry[existing] = record
@@ -51,33 +55,44 @@ export function labelBankPrimaryCiteId(labelId: string): string {
   return `cite:label-bank-${labelId}`
 }
 
+export { scholarlyCiteIdsForFamily }
+
 /**
- * Seed secondary-seed citation stubs for WP3 claim matrix minima.
- * Per-label primary placeholders plus two shared scholarly stubs.
- * These are not promoted primary-text/scholarly sources.
+ * Seed citation registry for claim-matrix fill:
+ * - per-label instrument primary (secondary-seed operationalization record)
+ * - family scholarly SEP/IEP/specialist baselines (kind: scholarly)
+ *
+ * Deprecated shared stubs remain registered so older ingress references resolve,
+ * but live claims must use scholarlyCiteIdsForFamily().
  */
 export function ensureLabelBankCitations(labelIds: readonly string[]): void {
   for (const labelId of labelIds) {
     upsertCitation({
       citeId: labelBankPrimaryCiteId(labelId),
       kind: 'secondary-seed',
-      title: `PENDING secondary-seed: live label-bank entry for ${labelId}`,
-      authors: [],
+      title: `Instrument label-bank operationalization for ${labelId} (src/data/labels.ts)`,
+      authors: ['Ideology Normative Sorter catalog'],
+      venue: 'ideologynormativesorter label bank',
     })
   }
 
+  for (const scholarly of allFamilyScholarlyCitations()) {
+    upsertCitation(scholarly)
+  }
+
+  // Keep deprecated stubs resolvable (not used by filled claims).
   upsertCitation({
     citeId: LABEL_BANK_SCHOLARLY_STUB_IDS[0],
     kind: 'secondary-seed',
     title:
-      'PENDING secondary-seed: shared scholarly stub 1 for claim-matrix schema minima',
+      'Deprecated shared scholarly stub 1 (replaced by family scholarly catalog)',
     authors: [],
   })
   upsertCitation({
     citeId: LABEL_BANK_SCHOLARLY_STUB_IDS[1],
     kind: 'secondary-seed',
     title:
-      'PENDING secondary-seed: shared scholarly stub 2 for claim-matrix schema minima',
+      'Deprecated shared scholarly stub 2 (replaced by family scholarly catalog)',
     authors: [],
   })
 }

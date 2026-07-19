@@ -56,7 +56,7 @@ Inventory sets (no double-count):
 - **Contributions:** every selectable response×axis row for effective-active main + module + statement (statement ids also live in main; statement export is a dedicated surface view).
 - **Signed contribution** matches production `normalizeAnswer × weight × salience` (`src/scoring/normalize.ts`, `aggregate.ts`).
 - **Dossiers:** one per live label; claim stubs for `definition`, `family`, and all 26 `centroid.*` axes.
-- **Evidence minima:** primary placeholder + 2 scholarly stubs; perspectives may use `unavailableReason` until researched.
+- **Evidence minima:** per-label instrument primary + ≥2 family scholarly baselines; three researched perspectives per claim; `textualStatus: in-review`.
 - **Findings:** 190 total, 0 unresolved-active. Seeded from main `semanticAudit` (corrections → `correct-overlay` applied; needs-rewrite → `deactivate` applied), module `moduleSemanticAudit` and statement `statementSemanticAudit` overlays (below), plus affinity-quarantine sentinel. Near-duplicate centroid pairs below threshold 0.35: none in live catalog (closest ~0.384).
 
 ## WP4 Review
@@ -88,8 +88,9 @@ Inventory sets (no double-count):
 ## WP8 Release
 
 - `releaseGate()` requires: fingerprint freshness, scoring version match, zero unresolved actives, no `fail` gates, expert gate present and `pass` (qualified-expert), empirical may remain `insufficient-data`/`deferred`, summary not older than last applied disposition. Live overall release is currently **FAIL** because expert is `in-review`.
-- **Textual gate** is computed live from the real per-claim `textualStatus` rollup across all dossier claims (never hardcoded) and is currently `not-started`: every claim in `dossiers/claims.ts` is a schema-valid `PENDING_CLAIM_STUB` scaffold with `textualStatus: 'not-started'`, awaiting WP3 wave fill of real primary+2-scholarly+3-perspective content. `releaseGate()` does not additionally block on `textual` (only `expert`/`fail` gates block per plan), so this does not change the current FAIL outcome, but the summary no longer falsely reports `textual: 'pass'` while zero claims have researched content.
-- Pre-existing repo research (`docs/labels-academic-audit.md`, `docs/ideology-label-review.md`, `docs/contested-label-research-verification.md`, `docs/ideology-family-research-verification.md`) already contains real academic definitions and cited sources (SEP, IEP, Oxford Research Encyclopedia, Griffin, RAND, etc.) for most of the ~117 catalog labels. This is candidate source material for WP3 wave fill but is **not yet linked** into `ClaimMatrixEntry.primaryCiteId`/`scholarlyCiteIds`/`perspectives` — treat as a scoped follow-up, not yet-claimed completion.
+- **Textual gate** is computed live from the real per-claim `textualStatus` rollup across all dossier claims (never hardcoded) and is currently `in-review`: `claim-fill-v1` replaced all `PENDING_CLAIM_STUB` scaffolds with instrument-framed definition/family/centroid statements, family scholarly cite links (`citations/familyCatalog.ts`), and three researched perspectives per claim. Textual status is **not** `pass` (qualified-expert textual review still pending). `releaseGate()` does not block on `textual` (only `expert`/`fail` gates block per plan); overall release remains FAIL because expert is `in-review`.
+- Pre-existing repo research (`docs/labels-academic-audit.md`, `docs/ideology-label-review.md`, `docs/contested-label-research-verification.md`, `docs/ideology-family-research-verification.md`) is now linked into family-level `scholarlyCiteIds` via `citations/familyCatalog.ts`. Family baselines justify tradition boundaries; they do **not** validate exact numeric centroids. Niche/contested labels still warrant specialist follow-up before textual `pass`.
+- Weak family baselines (`green`, `indigenist`, `libertarian-leaning`, `technocratic`, `communitarian`) have been strengthened with direct SEP conceptual boundaries, maintaining honest non-numeric evidence notes.
 - Linked tests live under `src/validation/mappingAudit/**/*.test.ts`.
 
 ## Explicit non-claims
@@ -97,7 +98,7 @@ Inventory sets (no double-count):
 - No empirical validity / respondent accuracy claims.
 - No activation of `ideologyAffinities`.
 - Expert gate remains `in-review` until qualified-expert review (overall release blocked; status is not falsely marked `fail` or `pass`).
-- Claim perspective text may remain `PENDING_PERSPECTIVE` / `unavailableReason` while schema minima hold.
+- Claim perspectives now carry researched sympathetic/critical/neutral text (no `PENDING_PERSPECTIVE`); expert and empirical honesty unchanged.
 
 ## How to verify
 

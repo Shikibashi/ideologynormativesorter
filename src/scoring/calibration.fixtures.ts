@@ -11,22 +11,36 @@ export interface CalibrationFixture {
 }
 
 export function centroidAlignmentScore(axisWeights: AxisWeight[], centroid: IdeologyLabel['centroid']): number | null {
-   let maxProduct = -Infinity
-   let maxW: AxisWeight | null = null
+   let numerator = 0
+   let denominator = 0
 
    for (const w of axisWeights) {
       const centValue = centroid[w.axisId]
       if (centValue === undefined) continue
 
-      const prod = Math.abs(centValue * w.weight)
-      if (prod > maxProduct) {
-         maxProduct = prod
-         maxW = w
-      }
+      numerator += centValue * w.weight
+      denominator += w.weight * w.weight
    }
 
-   if (!maxW) return null
-   return (centroid[maxW.axisId] ?? 0) * Math.sign(maxW.weight)
+   if (denominator === 0) return 0
+   return numerator / denominator
+}
+
+export function statementOptionScore(axisWeights: AxisWeight[], centroid: IdeologyLabel['centroid']): number | null {
+   let score = 0
+   let hasMatch = false
+
+   for (const w of axisWeights) {
+      const centValue = centroid[w.axisId]
+      if (centValue === undefined) continue
+
+      hasMatch = true
+      const diff = centValue - w.weight
+      score -= diff * diff
+   }
+
+   if (!hasMatch) return null
+   return score
 }
 
 export function centroidAlignedAnswerValue(question: Question, centroid: IdeologyLabel['centroid']): number {
@@ -45,7 +59,7 @@ export function centroidAlignedAnswerValue(question: Question, centroid: Ideolog
       let bestScore = Number.NEGATIVE_INFINITY
 
       statementOptions.forEach((option, index) => {
-         const score = centroidAlignmentScore(option.axisWeights, centroid)
+         const score = statementOptionScore(option.axisWeights, centroid)
          if (score !== null && score > bestScore) {
             bestIndex = index
             bestScore = score

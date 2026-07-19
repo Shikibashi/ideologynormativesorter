@@ -48,6 +48,10 @@ export interface LabelMatch {
    totalAxisCount: number
    /** Distance gap between this match and the runner-up (undefined if this is not rank 1). */
    runnerUpMargin?: number
+   reasoning?: {
+      sharedExtremeAxes: { axisId: AxisId; userScore: number; labelScore: number }[]
+      divergentAxes: { axisId: AxisId; userScore: number; labelScore: number }[]
+   }
    /** Qualitative uncertainty derived from evidenceStrength and runnerUpMargin. */
    uncertaintyBand: 'low' | 'medium' | 'high'
 }

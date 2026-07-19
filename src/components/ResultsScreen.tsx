@@ -227,6 +227,35 @@ function LabelCard({
          {label.philosophies && label.philosophies.length > 0 && (
             <p className="muted">Philosophies: {label.philosophies.slice(0, 5).join(', ')}</p>
          )}
+         {match?.reasoning && axisById && (
+            <details className="label-reasoning">
+               <summary>Why did I match this?</summary>
+               {match.reasoning.sharedExtremeAxes.length > 0 && (
+                  <div className="reasoning-group">
+                     <strong>Top Shared Values</strong>
+                     <ul>
+                        {match.reasoning.sharedExtremeAxes.map((s) => (
+                           <li key={s.axisId}>
+                              {axisById.get(s.axisId)?.name}: you ({s.userScore > 0 ? '+' : ''}{s.userScore.toFixed(2)}), {label.name} ({s.labelScore > 0 ? '+' : ''}{s.labelScore.toFixed(2)})
+                           </li>
+                        ))}
+                     </ul>
+                  </div>
+               )}
+               {match.reasoning.divergentAxes.length > 0 && (
+                  <div className="reasoning-group">
+                     <strong>Biggest Differences</strong>
+                     <ul>
+                        {match.reasoning.divergentAxes.map((d) => (
+                           <li key={d.axisId}>
+                              {axisById.get(d.axisId)?.name}: you ({d.userScore > 0 ? '+' : ''}{d.userScore.toFixed(2)}), {label.name} ({d.labelScore > 0 ? '+' : ''}{d.labelScore.toFixed(2)})
+                           </li>
+                        ))}
+                     </ul>
+                  </div>
+               )}
+            </details>
+         )}
       </article>
    )
 }

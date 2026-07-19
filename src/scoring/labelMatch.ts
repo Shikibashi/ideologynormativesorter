@@ -85,6 +85,7 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
          totalAxisCount,
          runnerUpMargin: undefined as number | undefined,
          uncertaintyBand: 'high' as 'low' | 'medium' | 'high',
+         reasoning: undefined as ReturnType<typeof computeLabelMatchReasoning> | undefined,
       }
    })
 
@@ -106,8 +107,51 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
          m.uncertaintyBand = 'low'
       }
    }
+   // Compute reasoning breakdowns for the top matches
+   for (const m of top) {
+      const label = labels.find(l => l.id === m.labelId)
+      if (label) {
+         m.reasoning = computeLabelMatchReasoning(scoreMap, label)
+      }
+   }
 
    return top
+}
+
+function computeLabelMatchReasoning(
+   scoreMap: Map<AxisId, MeasuredScore>,
+   label: IdeologyLabel
+) {
+   const sharedExtremeAxes: { axisId: AxisId; userScore: number; labelScore: number }[] = []
+   const divergentAxes: { axisId: AxisId; userScore: number; labelScore: number }[] = []
+
+   for (const [axisId, target] of Object.entries(label.centroid) as [AxisId, number][]) {
+      const ms = scoreMap.get(axisId)
+      if (!ms) continue
+
+      const userScore = ms.normalized
+
+      // Shared extremes: both in the same direction, and both substantial
+      if (Math.sign(userScore) === Math.sign(target) && Math.abs(userScore) >= 0.25 && Math.abs(target) >= 0.25) {
+         sharedExtremeAxes.push({ axisId, userScore, labelScore: target })
+      }
+      
+      // Divergent: differ significantly in polarity or magnitude
+      if (Math.sign(userScore) !== Math.sign(target) && (Math.abs(userScore) >= 0.2 || Math.abs(target) >= 0.2)) {
+         divergentAxes.push({ axisId, userScore, labelScore: target })
+      }
+   }
+
+   // Sort shared extremes by combined magnitude desc
+   sharedExtremeAxes.sort((a, b) => (Math.abs(b.userScore) + Math.abs(b.labelScore)) - (Math.abs(a.userScore) + Math.abs(a.labelScore)))
+   
+   // Sort divergent by absolute difference desc
+   divergentAxes.sort((a, b) => Math.abs(b.userScore - b.labelScore) - Math.abs(a.userScore - a.labelScore))
+
+   return {
+      sharedExtremeAxes: sharedExtremeAxes.slice(0, 3),
+      divergentAxes: divergentAxes.slice(0, 3)
+   }
 }
 
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']

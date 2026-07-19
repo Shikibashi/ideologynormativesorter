@@ -56,13 +56,15 @@ export function extractEncodedAnswers(input: string, param: 'r' | 'c' = 'r'): st
 }
 
 export function buildShareUrl(answers: AnswerMap, meta?: ShareMeta): string {
-  return `${window.location.origin}${window.location.pathname}${HASH_PREFIX}${encodeAnswers(answers, meta)}`
+  const base = typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : ''
+  return `${base}${HASH_PREFIX}${encodeAnswers(answers, meta)}`
 }
 
 export function buildCompareUrl(profile1: AnswerMap, profile2: AnswerMap, meta?: ShareMeta): string {
   const enc1 = encodeAnswers(profile1, meta)
   const enc2 = encodeAnswers(profile2)
-  return `${window.location.origin}${window.location.pathname}#r=${enc1}&c=${enc2}`
+  const base = typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : ''
+  return `${base}#r=${enc1}&c=${enc2}`
 }
 
 export function readCompareAnswers(): AnswerMap | null {
