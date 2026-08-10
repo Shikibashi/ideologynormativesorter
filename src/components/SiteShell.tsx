@@ -133,7 +133,15 @@ export function SiteShell({ children }: SiteShellProps) {
             <span>SESSION</span>
             <strong>BROWSER</strong>
           </div>
-          <details className="display-control">
+          <details
+            className="display-control"
+            onKeyDown={(event) => {
+              if (event.key !== 'Escape') return
+              event.preventDefault()
+              event.currentTarget.removeAttribute('open')
+              event.currentTarget.querySelector('summary')?.focus()
+            }}
+          >
             <summary>DISPLAY</summary>
             <div className="display-popover">
               <fieldset>

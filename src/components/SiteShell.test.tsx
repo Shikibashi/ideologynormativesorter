@@ -131,4 +131,17 @@ describe('SiteShell appearance control', () => {
 
     expect(document.documentElement.dataset.density).toBe('comfortable')
   })
+
+  it('closes DISPLAY with Escape and returns focus to the disclosure control', () => {
+    render(<SiteShell><p>Application content</p></SiteShell>)
+
+    fireEvent.click(screen.getByText('DISPLAY', { exact: true }))
+    const light = screen.getByRole('radio', { name: 'Light' })
+    light.focus()
+
+    fireEvent.keyDown(light, { key: 'Escape' })
+
+    expect(document.querySelector('details[open]')).not.toBeInTheDocument()
+    expect(document.activeElement).toBe(screen.getByText('DISPLAY', { exact: true }))
+  })
 })
