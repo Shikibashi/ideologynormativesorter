@@ -15,6 +15,7 @@ import { questionById, questions, questionsForTier } from './data/effectiveQuest
 import { primaryScoringLabels, publicCatalogLabels, researchIdentityLabels } from './data/labelTaxonomy'
 import {
    buildResearchSubmission,
+   buildSpecialistDispositionSubmission,
    buildSpecialistResearchSubmission,
    getOrCreateParticipantId,
    isResearchMode,
@@ -25,6 +26,7 @@ import {
    type ResearchIdentity,
    type ResearchSubmission,
    type ResearchSubmissionStatus,
+   type SpecialistDisposition,
    type SpecialistResearchSubmission,
 } from './research'
 import { buildResearchQuestionForm, researchFormSize } from './research/forms'
@@ -314,10 +316,41 @@ function App() {
       setStage('specialist-invite')
    }
 
+   function recordSpecialistDisposition(
+      disposition: SpecialistDisposition,
+      answeredCount: number,
+      startedAt?: string,
+   ): void {
+      if (!researchConsent || !specialistAssignment || !assignedSpecialistModule) return
+      const submission = buildSpecialistDispositionSubmission({
+         studyId,
+         participantId,
+         administration,
+         consent: researchConsent,
+         moduleId: specialistAssignment.moduleId,
+         moduleVersion: assignedSpecialistModule.version,
+         assignment: specialistAssignment,
+         disposition,
+         answeredCount,
+         startedAt,
+      })
+      void submitResearchSubmission(submission, import.meta.env.VITE_RESEARCH_ENDPOINT)
+   }
+
    function handleSkipSpecialist(): void {
+      let answeredCount = 0
+      let startedAt: string | undefined
       if (specialistAssignment) {
+         const saved = loadSpecialistProgress(participantId, administration, specialistAssignment.moduleId)
+         answeredCount = saved ? Object.keys(saved.answers).length : 0
+         startedAt = saved?.startedAt
          clearSpecialistProgress(participantId, administration, specialistAssignment.moduleId)
       }
+      recordSpecialistDisposition(
+         answeredCount > 0 ? 'declined-after-partial' : 'declined-before-start',
+         answeredCount,
+         startedAt,
+      )
       setSpecialistProgress(null)
       setSpecialistQuestions([])
       setSpecialistAnswers({})
@@ -380,6 +413,11 @@ function App() {
    }
 
    function handleDiscardSpecialistAfterCompletion(): void {
+      recordSpecialistDisposition(
+         'declined-after-completion',
+         Object.keys(specialistAnswers).length,
+         specialistStartedAt ?? undefined,
+      )
       setSpecialistQuestions([])
       setSpecialistAnswers({})
       setSpecialistResumeIndex(0)
