@@ -1,38 +1,63 @@
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
 interface SiteShellProps {
   children: ReactNode
 }
 
-type Theme = 'dark' | 'light'
+type Appearance = 'system' | 'dark' | 'light'
+type Theme = Exclude<Appearance, 'system'>
 
-const THEME_STORAGE_KEY = 'political-judgment-theme-v1'
+const APPEARANCE_STORAGE_KEY = 'political-judgment-appearance-v1'
+const LEGACY_THEME_STORAGE_KEY = 'political-judgment-theme-v1'
 
-function readTheme(): Theme {
-  if (typeof window === 'undefined') return 'dark'
+function readAppearance(): Appearance {
+  if (typeof window === 'undefined') return 'system'
 
   try {
-    const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
-    return stored === 'light' || stored === 'dark' ? stored : 'dark'
+    const stored = window.localStorage.getItem(APPEARANCE_STORAGE_KEY)
+      ?? window.localStorage.getItem(LEGACY_THEME_STORAGE_KEY)
+    return stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system'
   } catch {
-    return 'dark'
+    return 'system'
   }
 }
 
+function systemPrefersDark(): boolean {
+  return typeof window === 'undefined' || typeof window.matchMedia !== 'function'
+    ? true
+    : window.matchMedia('(prefers-color-scheme: dark)').matches
+}
+
 export function SiteShell({ children }: SiteShellProps) {
-  const [theme, setTheme] = useState<Theme>(() => readTheme())
+  const [appearance, setAppearance] = useState<Appearance>(() => readAppearance())
+  const [systemDark, setSystemDark] = useState(systemPrefersDark)
+  const theme: Theme = appearance === 'system' ? (systemDark ? 'dark' : 'light') : appearance
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+    const update = () => setSystemDark(media.matches)
+    update()
+    if (media.addEventListener) {
+      media.addEventListener('change', update)
+      return () => media.removeEventListener('change', update)
+    }
+    media.addListener?.(update)
+    return () => media.removeListener?.(update)
+  }, [])
 
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme
+  }, [theme])
+
+  useEffect(() => {
     try {
-      window.localStorage.setItem(THEME_STORAGE_KEY, theme)
+      window.localStorage.setItem(APPEARANCE_STORAGE_KEY, appearance)
     } catch {
       // The visual preference still applies when storage is unavailable.
     }
-  }, [theme])
-
-  const lightMode = theme === 'light'
+  }, [appearance])
 
   return (
     <div className="site-shell" data-theme={theme}>
@@ -49,16 +74,21 @@ export function SiteShell({ children }: SiteShellProps) {
             <span>SESSION</span>
             <strong>BROWSER</strong>
           </div>
-          <button
-            type="button"
-            className="theme-toggle"
-            aria-pressed={lightMode}
-            aria-label={lightMode ? 'Switch to dark mode' : 'Switch to light mode'}
-            onClick={() => setTheme(lightMode ? 'dark' : 'light')}
-          >
-            <span aria-hidden="true">{lightMode ? '☾' : '☀'}</span>
-            {lightMode ? 'Dark mode' : 'Light mode'}
-          </button>
+          <label className="appearance-control">
+            <span>Appearance</span>
+            <select
+              aria-label="Appearance"
+              value={appearance}
+              onChange={(event) => {
+                const value = event.target.value
+                if (value === 'system' || value === 'light' || value === 'dark') setAppearance(value)
+              }}
+            >
+              <option value="system">System</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </label>
         </div>
       </header>
 

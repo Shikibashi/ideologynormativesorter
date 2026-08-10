@@ -123,6 +123,8 @@ describe('App', () => {
       render(<App />)
 
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
+      expect(screen.getByRole('complementary', { name: /session setup/i })).toBeInTheDocument()
+      expect(screen.getByText(/choose the depth of the assessment/i)).toBeInTheDocument()
       fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 

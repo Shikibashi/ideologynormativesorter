@@ -1,26 +1,61 @@
 :root {
-  --web99-bg: #050719;
-  --web99-night: #070a2e;
-  --web99-panel: #12144b;
-  --web99-panel-deep: #0b0d38;
-  --web99-raised: #1c1e67;
-  --web99-ink: #f9f3ff;
-  --web99-muted: #aeb6e9;
-  --web99-border: #6675c8;
-  --web99-cyan: #6ff4ff;
-  --web99-teal: #4ac8d3;
-  --web99-purple: #8d67ff;
-  --web99-logo: #9c68ff;
-  --web99-pink: #ff76d7;
-  --web99-yellow: #ffd45c;
-  --web99-green: #23d5a6;
-  --web99-on-cyan: #050719;
+  --ecw-bg: #050719;
+  --ecw-canvas: #070a2e;
+  --ecw-panel: #12144b;
+  --ecw-panel-deep: #0b0d38;
+  --ecw-panel-raised: #1c1e67;
+  --ecw-ink: #f9f3ff;
+  --ecw-ink-secondary: #dfe6ff;
+  --ecw-muted: #aeb6e9;
+  --ecw-border: #6675c8;
+  --ecw-border-strong: #7787e8;
+  --ecw-rule: #343960;
+  --ecw-link: #6ff4ff;
+  --ecw-link-visited: #c594ff;
+  --ecw-purple: #9c68ff;
+  --ecw-pink: #ff76d7;
+  --ecw-yellow: #ffd45c;
+  --ecw-green: #23d5a6;
+  --ecw-success: #23d5a6;
+  --ecw-warning: #ffd45c;
+  --ecw-error: #ff76a8;
+  --ecw-info: #6ff4ff;
+  --ecw-focus: #ffd45c;
+  --ecw-control-face: #bdbdbd;
+  --ecw-control-highlight: #f6f6f6;
+  --ecw-control-shadow: #666666;
+  --ecw-control-text: #111111;
+  --ecw-teal: #4ac8d3;
+  --ecw-accent-hover: #a184ff;
+  --ecw-accent-bg: #26256f;
+  --ecw-on-cyan: #050719;
+  --ecw-grid-line: rgba(102, 117, 200, 0.08);
+  --ecw-bevel-light: color-mix(in srgb, var(--ecw-control-highlight) 35%, transparent);
+  --ecw-bevel-dark: color-mix(in srgb, var(--ecw-control-shadow) 70%, transparent);
+
+  /* Legacy aliases keep the product vocabulary stable while components use semantic roles. */
+  --web99-bg: var(--ecw-bg);
+  --web99-night: var(--ecw-canvas);
+  --web99-panel: var(--ecw-panel);
+  --web99-panel-deep: var(--ecw-panel-deep);
+  --web99-raised: var(--ecw-panel-raised);
+  --web99-ink: var(--ecw-ink);
+  --web99-muted: var(--ecw-muted);
+  --web99-border: var(--ecw-border);
+  --web99-cyan: var(--ecw-link);
+  --web99-teal: var(--ecw-teal);
+  --web99-purple: var(--ecw-purple);
+  --web99-logo: var(--ecw-purple);
+  --web99-pink: var(--ecw-pink);
+  --web99-yellow: var(--ecw-yellow);
+  --web99-green: var(--ecw-green);
+  --web99-on-cyan: var(--ecw-on-cyan);
 
   --surface: var(--web99-panel);
   --surface-raised: var(--web99-raised);
   --surface-sunken: var(--web99-panel-deep);
   --workspace: var(--web99-night);
-  --text: var(--web99-ink);
+  --text: var(--ecw-ink);
   --text-m: var(--web99-muted);
   --text-h: var(--web99-ink);
   --border: var(--web99-border);
@@ -28,8 +63,8 @@
   --border-dark: var(--web99-purple);
   --code-bg: var(--web99-panel-deep);
   --accent: var(--web99-purple);
-  --accent-hover: #a184ff;
-  --accent-bg: #26256f;
+  --accent-hover: var(--ecw-accent-hover);
+  --accent-bg: var(--ecw-accent-bg);
   --accent-border: var(--web99-cyan);
   --highlight-text: var(--web99-ink);
   --danger: var(--web99-pink);
@@ -50,28 +85,60 @@
 }
 
 :root[data-theme='light'] {
-  --web99-bg: #eef1f8;
-  --web99-night: #f8f9fd;
-  --web99-panel: #fffdf8;
-  --web99-panel-deep: #e9edf8;
-  --web99-raised: #e1e4f7;
-  --web99-ink: #171a34;
-  --web99-muted: #526080;
-  --web99-border: #6375bd;
-  --web99-cyan: #006b7d;
-  --web99-teal: #087d89;
-  --web99-purple: #5a3bc2;
-  --web99-logo: #5a3bc2;
-  --web99-pink: #b42d84;
-  --web99-yellow: #795300;
-  --web99-green: #087d63;
-  --web99-on-cyan: #ffffff;
+  --ecw-bg: #d6d9e8;
+  --ecw-canvas: #c7ccdf;
+  --ecw-panel: #f4f3eb;
+  --ecw-panel-deep: #e1e3ee;
+  --ecw-panel-raised: #ffffff;
+  --ecw-ink: #11132d;
+  --ecw-ink-secondary: #24274a;
+  --ecw-muted: #5e6480;
+  --ecw-border: #626a9c;
+  --ecw-border-strong: #383f78;
+  --ecw-rule: #9da2bd;
+  --ecw-link: #004fa3;
+  --ecw-link-visited: #65349a;
+  --ecw-purple: #5530a3;
+  --ecw-pink: #a82378;
+  --ecw-yellow: #a66c00;
+  --ecw-green: #08775f;
+  --ecw-success: #08775f;
+  --ecw-warning: #8a5900;
+  --ecw-error: #9b245f;
+  --ecw-info: #006f88;
+  --ecw-focus: #5c2aac;
+  --ecw-control-face: #d4d0c8;
+  --ecw-control-highlight: #ffffff;
+  --ecw-control-shadow: #777777;
+  --ecw-control-text: #111111;
+  --ecw-teal: #08775f;
+  --ecw-accent-hover: #6846bb;
+  --ecw-accent-bg: #ddd7f4;
+  --ecw-on-cyan: #ffffff;
+  --ecw-grid-line: rgba(98, 106, 156, 0.14);
 
-  --accent-hover: #7054d8;
-  --accent-bg: #d9ddf7;
+  --web99-bg: var(--ecw-bg);
+  --web99-night: var(--ecw-canvas);
+  --web99-panel: var(--ecw-panel);
+  --web99-panel-deep: var(--ecw-panel-deep);
+  --web99-raised: var(--ecw-panel-raised);
+  --web99-ink: var(--ecw-ink);
+  --web99-muted: var(--ecw-muted);
+  --web99-border: var(--ecw-border);
+  --web99-cyan: var(--ecw-link);
+  --web99-teal: var(--ecw-teal);
+  --web99-purple: var(--ecw-purple);
+  --web99-logo: var(--ecw-purple);
+  --web99-pink: var(--ecw-pink);
+  --web99-yellow: var(--ecw-yellow);
+  --web99-green: var(--ecw-green);
+  --web99-on-cyan: var(--ecw-on-cyan);
+
+  --accent-hover: var(--ecw-accent-hover);
+  --accent-bg: var(--ecw-accent-bg);
   --highlight-text: #ffffff;
   --danger: var(--web99-pink);
-  --code-bg: #e5e9f6;
+  --code-bg: var(--ecw-panel-deep);
 
   color-scheme: light;
 }
@@ -92,15 +159,15 @@ body {
   color: var(--text);
   background-color: var(--web99-bg);
   background-image:
-    linear-gradient(rgba(102, 117, 200, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(102, 117, 200, 0.08) 1px, transparent 1px);
+    linear-gradient(var(--ecw-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ecw-grid-line) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 :root[data-theme='light'] body {
   background-image:
-    linear-gradient(rgba(99, 117, 189, 0.11) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 117, 189, 0.11) 1px, transparent 1px);
+    linear-gradient(var(--ecw-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ecw-grid-line) 1px, transparent 1px);
 }
 
 button,
@@ -199,5 +266,16 @@ code {
     width: 100%;
     min-height: 100svh;
     margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
