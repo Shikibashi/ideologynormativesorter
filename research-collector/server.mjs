@@ -18,19 +18,60 @@ function setCors(response, origin) {
   response.setHeader('x-content-type-options', 'nosniff')
 }
 
-function validSubmission(value) {
+function validCommonRecord(value) {
   return value
     && typeof value === 'object'
     && typeof value.schemaVersion === 'string'
     && typeof value.studyId === 'string'
     && typeof value.participantId === 'string'
     && (value.administration === 'test' || value.administration === 'retest')
+    && typeof value.startedAt === 'string'
+    && typeof value.completedAt === 'string'
     && value.consent?.ageConfirmed === true
     && value.consent?.voluntaryParticipation === true
     && value.consent?.dataUseAccepted === true
     && value.answers
     && typeof value.answers === 'object'
+    && !Array.isArray(value.answers)
     && Array.isArray(value.itemMap)
+    && Array.isArray(value.presentationOrder)
+}
+
+function validCoreRecord(value) {
+  return validCommonRecord(value)
+    && (value.recordType === undefined || value.recordType === 'core')
+    && typeof value.bankVersion === 'string'
+    && typeof value.scoringVersion === 'string'
+    && typeof value.tier === 'string'
+    && value.identity
+    && typeof value.identity === 'object'
+    && Array.isArray(value.predictedLabelIds)
+}
+
+function validSpecialistRecord(value) {
+  return validCommonRecord(value)
+    && value.recordType === 'specialist'
+    && typeof value.moduleId === 'string'
+    && typeof value.moduleVersion === 'string'
+    && typeof value.bankVersion === 'string'
+    && typeof value.scoringVersion === 'string'
+    && value.assignment
+    && typeof value.assignment === 'object'
+    && value.assignment.moduleId === value.moduleId
+    && typeof value.assignment.strategy === 'string'
+    && value.criterion
+    && typeof value.criterion === 'object'
+    && Array.isArray(value.criterion.selectedIds)
+    && typeof value.criterion.noneOrUnsure === 'boolean'
+    && ['low', 'medium', 'high'].includes(value.criterion.confidence)
+    && value.constructScores
+    && typeof value.constructScores === 'object'
+    && !Array.isArray(value.constructScores)
+    && Array.isArray(value.matches)
+}
+
+function validSubmission(value) {
+  return validCoreRecord(value) || validSpecialistRecord(value)
 }
 
 const server = createServer(async (request, response) => {
