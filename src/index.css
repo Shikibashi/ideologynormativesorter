@@ -1,58 +1,50 @@
 :root {
-  --desktop-bg: #63788a;
-  --surface: #d4d0c8;
-  --surface-raised: #e6e3dc;
-  --surface-sunken: #ffffff;
-  --workspace: #f7f7f3;
-  --text: #4b4b47;
-  --text-m: #66665f;
-  --text-h: #101010;
-  --border: #8b8b84;
-  --border-light: #ffffff;
-  --border-dark: #3f3f3a;
-  --code-bg: #eceae4;
-  --accent: #163f91;
-  --accent-hover: #0f2f72;
-  --accent-bg: #dbe5f8;
-  --accent-border: #163f91;
-  --highlight-text: #ffffff;
-  --danger: #8c1d18;
-  --shadow: rgba(0, 0, 0, 0.28) 6px 8px 20px;
+  --web99-bg: #050719;
+  --web99-night: #070a2e;
+  --web99-panel: #12144b;
+  --web99-panel-deep: #0b0d38;
+  --web99-raised: #1c1e67;
+  --web99-ink: #f9f3ff;
+  --web99-muted: #aeb6e9;
+  --web99-border: #6675c8;
+  --web99-cyan: #6ff4ff;
+  --web99-teal: #4ac8d3;
+  --web99-purple: #8d67ff;
+  --web99-logo: #9c68ff;
+  --web99-pink: #ff76d7;
+  --web99-yellow: #ffd45c;
+  --web99-green: #23d5a6;
 
-  --sans: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  --heading: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  --mono: "Cascadia Mono", "Courier New", monospace;
+  --surface: var(--web99-panel);
+  --surface-raised: var(--web99-raised);
+  --surface-sunken: var(--web99-panel-deep);
+  --workspace: var(--web99-night);
+  --text: var(--web99-ink);
+  --text-m: var(--web99-muted);
+  --text-h: var(--web99-ink);
+  --border: var(--web99-border);
+  --border-light: var(--web99-teal);
+  --border-dark: var(--web99-purple);
+  --code-bg: var(--web99-panel-deep);
+  --accent: var(--web99-purple);
+  --accent-hover: #a184ff;
+  --accent-bg: #26256f;
+  --accent-border: var(--web99-cyan);
+  --highlight-text: var(--web99-ink);
+  --danger: var(--web99-pink);
+  --shadow: none;
+
+  --sans: Verdana, Arial, sans-serif;
+  --heading: Georgia, "Times New Roman", serif;
+  --mono: "Courier New", Courier, monospace;
 
   font: 15px/1.45 var(--sans);
   color: var(--text);
-  background: var(--desktop-bg);
+  background: var(--web99-bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --desktop-bg: #20262d;
-    --surface: #35383b;
-    --surface-raised: #414549;
-    --surface-sunken: #17191b;
-    --workspace: #202326;
-    --text: #c2c6c9;
-    --text-m: #a9afb4;
-    --text-h: #f1f3f4;
-    --border: #686d71;
-    --border-light: #757b80;
-    --border-dark: #111315;
-    --code-bg: #292c2f;
-    --accent: #315ea8;
-    --accent-hover: #4273c4;
-    --accent-bg: #243a5e;
-    --accent-border: #79a0df;
-    --highlight-text: #ffffff;
-    --shadow: rgba(0, 0, 0, 0.55) 6px 8px 20px;
-  }
 }
 
 * {
@@ -61,7 +53,7 @@
 
 html {
   min-width: 320px;
-  background: var(--desktop-bg);
+  background: var(--web99-bg);
 }
 
 body {
@@ -69,7 +61,11 @@ body {
   min-width: 320px;
   min-height: 100vh;
   color: var(--text);
-  background: var(--desktop-bg);
+  background-color: var(--web99-bg);
+  background-image:
+    linear-gradient(rgba(102, 117, 200, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(102, 117, 200, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 button,
@@ -88,7 +84,17 @@ summary {
 }
 
 :focus-visible {
-  outline: 2px dotted var(--text-h);
+  outline: 2px dotted var(--web99-yellow);
+  outline-offset: 3px;
+}
+
+a {
+  color: var(--web99-cyan);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--web99-pink);
 }
 
 #root {
@@ -108,22 +114,28 @@ h5 {
 
 h1 {
   margin: 0 0 14px;
-  font-size: clamp(28px, 3vw, 38px);
+  font-size: clamp(28px, 3vw, 40px);
   line-height: 1.12;
-  font-weight: 650;
-  letter-spacing: -0.025em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--web99-logo);
+  text-shadow: 1px 1px 0 var(--web99-panel-deep);
 }
 
 h2 {
   margin: 0 0 8px;
   font-size: 19px;
   line-height: 1.2;
-  font-weight: 650;
+  font-weight: 700;
+  color: var(--web99-ink);
 }
 
 h3 {
   margin: 14px 0 7px;
-  font-size: 16px;
+  font: 700 0.75rem/1.3 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--web99-cyan);
 }
 
 h4,
@@ -152,9 +164,5 @@ code {
     width: 100%;
     min-height: 100svh;
     margin: 0;
-  }
-
-  :root {
-    font-size: 16px;
   }
 }
