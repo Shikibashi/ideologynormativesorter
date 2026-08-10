@@ -45,13 +45,13 @@ describe('centroid-aligned calibration answers', () => {
    })
 
    it('emits the opposite raw response for reverse-scored Likert items', () => {
-      const reverseQuestion = questions.find(
-         (q) => q.responseType !== 'statementChoice' && q.reverseScored && q.axisWeights.length > 0,
+      const baseQuestion = questions.find(
+         (q) => q.responseType !== 'statementChoice' && q.axisWeights.length > 0,
       )!
-      const axisWeight = reverseQuestion.axisWeights[0]
+      const axisWeight = baseQuestion.axisWeights[0]
       const centroid = { [axisWeight.axisId]: Math.sign(axisWeight.weight) || 1 }
-      const reversed = centroidAlignedAnswerValue(reverseQuestion, centroid)
-      const forward = centroidAlignedAnswerValue({ ...reverseQuestion, reverseScored: false }, centroid)
+      const forward = centroidAlignedAnswerValue({ ...baseQuestion, reverseScored: false }, centroid)
+      const reversed = centroidAlignedAnswerValue({ ...baseQuestion, reverseScored: true }, centroid)
 
       expect(reversed).toBe(-forward)
    })
