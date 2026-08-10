@@ -75,7 +75,13 @@ export function centroidAlignedAnswerValue(question: Question, centroid: Ideolog
 
    const score = centroidAlignmentScore(question.axisWeights, centroid)
    const max = question.responseType === 'likert5' ? 2 : 3
-   return score === null ? 0 : Math.max(-max, Math.min(max, score * max))
+   if (score === null) return 0
+
+   // normalizeAnswer reverses reverse-keyed Likert items during production
+   // scoring. Calibration fixtures must therefore emit the opposite raw
+   // response so the scored signal still points toward the target centroid.
+   const rawScore = question.reverseScored ? -score : score
+   return Math.max(-max, Math.min(max, rawScore * max))
 }
 
 function createCentroidAlignedFixture(targetLabel: IdeologyLabel): AnswerMap {
