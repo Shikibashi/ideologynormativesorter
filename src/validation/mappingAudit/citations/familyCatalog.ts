@@ -397,6 +397,52 @@ export const FAMILY_SCHOLARLY_CATALOG: FamilyScholarlyBundle[] = [
       ),
     ],
   },
+  {
+    family: 'monarchist',
+    evidenceNote:
+      'International IDEA establishes that constitutionally limited monarchy includes parliamentary-democratic and symbolic forms; it does not validate a centroid.',
+    scholarly: [
+      scholarlyCite(
+        'idea-constitutional-monarchs',
+        'Constitutional Monarchs in Parliamentary Democracies',
+        ['W. Elliot Bulmer'],
+        2014,
+        'International IDEA',
+        'https://www.idea.int/publications/catalogue/constitutional-monarchs-parliamentary-democracies',
+      ),
+      scholarlyCite(
+        'idea-constitutional-monarchs-primer',
+        'Constitutional Monarchs in Parliamentary Democracies: Primer',
+        ['W. Elliot Bulmer'],
+        2014,
+        'International IDEA',
+        'https://www.idea.int/sites/default/files/publications/constitutional-monarchs-in-parliamentary-democracies-primer.pdf',
+      ),
+    ],
+  },
+  {
+    family: 'religious-political',
+    evidenceNote:
+      'Political-theory and comparative-democracy sources support a distinct religious-political family with internally diverse relationships to democracy, law, and violence.',
+    scholarly: [
+      scholarlyCite(
+        'sep-religion-political',
+        'Religion and Political Theory',
+        [],
+        undefined,
+        SEP,
+        'https://plato.stanford.edu/entries/religion-political/',
+      ),
+      scholarlyCite(
+        'jod-islamist-movements',
+        'Islamist Parties and Democracy: Three Kinds of Movements',
+        ['Tamara Cofman Wittes'],
+        2008,
+        'Journal of Democracy',
+        'https://www.journalofdemocracy.org/articles/islamist-parties-and-democracy-three-kinds-of-movements/',
+      ),
+    ],
+  },
 ]
 
 export const familyScholarlyById = new Map(

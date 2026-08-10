@@ -4,27 +4,81 @@ import {
   coreQuestions as rawCoreQuestions,
   getBankFingerprint as getRawBankFingerprint,
   QUESTION_BANK_VERSION as RAW_QUESTION_BANK_VERSION,
-  questionsForTier as rawQuestionsForTier,
   SCORING_VERSION,
 } from './questions'
 import { applySemanticReview, SEMANTIC_AUDIT_VERSION } from './semanticAudit'
+import {
+  applyStatementSemanticReview,
+  STATEMENT_SEMANTIC_AUDIT_VERSION,
+} from './statementSemanticAudit'
+import {
+  applyRespondentQuestionReview,
+  RESPONDENT_QUESTION_REVIEW_VERSION,
+} from './respondentQuestionReview'
 
-export const QUESTION_BANK_VERSION = `${RAW_QUESTION_BANK_VERSION}+${SEMANTIC_AUDIT_VERSION}`
+export const QUESTION_BANK_VERSION = [
+  RAW_QUESTION_BANK_VERSION,
+  SEMANTIC_AUDIT_VERSION,
+  STATEMENT_SEMANTIC_AUDIT_VERSION,
+  RESPONDENT_QUESTION_REVIEW_VERSION,
+].join('+')
 export { SCORING_VERSION }
 
 export function getBankFingerprint(): string {
-  return `${getRawBankFingerprint()}+${SEMANTIC_AUDIT_VERSION}`
+  return [
+    getRawBankFingerprint(),
+    SEMANTIC_AUDIT_VERSION,
+    STATEMENT_SEMANTIC_AUDIT_VERSION,
+    RESPONDENT_QUESTION_REVIEW_VERSION,
+  ].join('+')
+}
+
+function applyEffectiveReview(question: Question): Question {
+  return applyRespondentQuestionReview(
+    applyStatementSemanticReview(applySemanticReview(question)),
+  )
 }
 
 /** All reviewed core items, including deactivated items retained for traceability. */
-export const coreQuestions: Question[] = rawCoreQuestions.map(applySemanticReview)
+export const coreQuestions: Question[] = rawCoreQuestions.map(applyEffectiveReview)
 /** Active reviewed items used by the public quiz and result scoring. */
 export const questions: Question[] = coreQuestions.filter((question) => question.active !== false)
-export const allQuestions: Question[] = rawAllQuestions.map(applySemanticReview)
+export const allQuestions: Question[] = rawAllQuestions.map(applyEffectiveReview)
 export const questionById = new Map(allQuestions.map((question) => [question.id, question]))
 
+const TIER_RANK: Record<Question['tier'], number> = {
+  blitz: 0,
+  quick: 1,
+  moderate: 2,
+  extensive: 3,
+}
+
+function diversifyQuickOrder(selectedQuestions: Question[]): Question[] {
+  const domainOrder = [...new Set(selectedQuestions.map((question) => question.domain))]
+  const byDomain = new Map(
+    domainOrder.map((domain) => [
+      domain,
+      selectedQuestions.filter((question) => question.domain === domain),
+    ]),
+  )
+  const maxDomainDepth = Math.max(
+    ...[...byDomain.values()].map((domainQuestions) => domainQuestions.length),
+  )
+  const diversified: Question[] = []
+
+  for (let depth = 0; depth < maxDomainDepth; depth += 1) {
+    for (const domain of domainOrder) {
+      const question = byDomain.get(domain)?.[depth]
+      if (question) diversified.push(question)
+    }
+  }
+
+  return diversified
+}
+
 export function questionsForTier(tier: Question['tier']): Question[] {
-  return rawQuestionsForTier(tier)
-    .map(applySemanticReview)
-    .filter((question) => question.active !== false)
+  const selectedQuestions = questions.filter(
+    (question) => TIER_RANK[question.tier] <= TIER_RANK[tier],
+  )
+  return tier === 'quick' ? diversifyQuickOrder(selectedQuestions) : selectedQuestions
 }

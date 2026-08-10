@@ -27,7 +27,7 @@ describe('question help text', () => {
     const helpText = getQuestionHelpText(baseQuestion)
 
     expect(helpText).toContain('“Exit” means')
-    expect(helpText).toContain('This question measures what you think is morally legitimate, fair, or permissible about state legitimacy, based on how strongly you agree')
+    expect(helpText).toContain('This question measures which values and forms of authority you consider morally legitimate about state legitimacy, based on how strongly you agree')
     expect(helpText).not.toContain('people should have meaningful exit rights from political authority')
     expect(helpText).not.toContain('with scoring focused on')
   })
@@ -164,11 +164,16 @@ describe('question help text', () => {
       const lowerHelpText = helpText.toLowerCase()
 
       expect(helpText, `${question.id} should start with a quoted plain-language term`).toMatch(/^“[^”]+” means /)
-      expect(helpText, `${question.id} should include one clear measurement sentence`).toContain(`This question measures ${{
-        normative: 'what you think is morally legitimate, fair, or permissible',
-        descriptive: 'what you think tends to be true in the world',
-        prescriptive: 'what you think should be done under current conditions',
-      }[question.layer]} about `)
+      const expectedMeasurement = question.layer === 'normative'
+        ? 'which values and forms of authority you consider morally legitimate'
+        : question.layer === 'descriptive'
+          ? 'what you think tends to be true in the world'
+          : question.theoryContext === 'ideal'
+            ? 'which policies, institutions, or strategies you would favor under ideal conditions'
+            : question.theoryContext === 'nonideal'
+              ? 'which policies, institutions, or strategies you would favor under current constraints'
+              : 'which practical policy or strategy direction you favor across mixed conditions'
+      expect(helpText, `${question.id} should include one clear measurement sentence`).toContain(`This question measures ${expectedMeasurement} about `)
       expect(lowerHelpText, `${question.id} should not use the generic missing-domain fallback`).not.toContain('general political judgment prompt')
       expect(helpText.length, `${question.id} should stay concise enough to read inline`).toBeLessThanOrEqual(650)
     }
@@ -215,5 +220,45 @@ describe('question help text', () => {
       const helpText = getQuestionHelpText({ ...baseQuestion, prompt })
       expect(helpText, `"${prompt}" should not use the generic domain fallback`).toContain(expectedFragment)
     }
+  })
+
+  it('uses theory context for prescriptive help instead of calling ideal items current policy', () => {
+    const ideal = getQuestionHelpText({ ...baseQuestion, layer: 'prescriptive', theoryContext: 'ideal' })
+    const nonideal = getQuestionHelpText({ ...baseQuestion, layer: 'prescriptive', theoryContext: 'nonideal' })
+
+    expect(ideal).toContain('under ideal conditions')
+    expect(ideal).not.toContain('under current constraints')
+    expect(nonideal).toContain('under current constraints')
+  })
+
+  it('does not attach domain-specific definitions to unrelated uses of the same word', () => {
+    const childWelfare = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Child-welfare intervention should preserve family ties when safety allows.',
+      domain: 'family-gender-feminism',
+    })
+    const employerSanctions = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Employer sanctions can increase off-the-books work.',
+      domain: 'immigration-borders',
+    })
+    const foreignPlanners = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Military interventions often generate local knowledge failures that planners underestimated.',
+      domain: 'foreign-policy-war',
+      layer: 'descriptive',
+    })
+    const threatInflation = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Security agencies can benefit from threat inflation.',
+      domain: 'foreign-policy-war',
+      layer: 'descriptive',
+    })
+
+    expect(childWelfare).not.toContain('conditions outside one’s own country')
+    expect(employerSanctions).not.toContain('pressure another government')
+    expect(foreignPlanners).not.toContain('production or allocation')
+    expect(threatInflation).toContain('exaggerating a danger')
+    expect(threatInflation).not.toContain('general rise in prices')
   })
 })

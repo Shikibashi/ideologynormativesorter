@@ -269,7 +269,7 @@ describe('labels', () => {
          ['zionism', 'Political Zionism'],
          ['strasserism', 'Strasserite Fascism'],
          ['islamic-democracy', 'Islamic Democratic Constitutionalism'],
-         ['accelerationism', 'Accelerationism'],
+         ['accelerationism', 'Technology-Centered Accelerationism'],
          ['techno-anarchism', 'Techno-Anarchist / Crypto-Anarchist'],
          ['voluntaryism', 'Voluntaryism'],
          ['corporatism', 'Corporatism'],
@@ -428,5 +428,4 @@ describe('labels', () => {
       expect(socialism?.description).not.toMatch(/driving force behind imperial expansion/i)
    })
 })
-
 

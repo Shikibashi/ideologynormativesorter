@@ -4,6 +4,11 @@ import { questionById, questions, questionsForTier } from './effectiveQuestions'
 import { needsRewriteById, semanticCorrections, SEMANTIC_AUDIT_VERSION } from './semanticAudit'
 
 describe('semantic question audit', () => {
+  it('does not both correct and deactivate the same item', () => {
+    const overlap = Object.keys(semanticCorrections).filter((questionId) => needsRewriteById[questionId])
+    expect(overlap).toEqual([])
+  })
+
   it('applies every correction to an existing same-layer question', () => {
     for (const [questionId, correction] of Object.entries(semanticCorrections)) {
       const question = questionById.get(questionId)

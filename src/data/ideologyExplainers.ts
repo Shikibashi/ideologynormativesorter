@@ -8,19 +8,19 @@ export interface LayerExplainer {
 
 export const LAYER_EXPLAINERS: Record<Layer, LayerExplainer> = {
    normative: {
-      label: 'Normative / moral commitments',
-      measurement: 'what you think is morally legitimate, fair, or permissible',
-      description: 'This layer asks what a just political order ought to value or allow, independent of whether it is easy to achieve.',
+      label: 'Foundational values / ideal legitimacy',
+      measurement: 'which values and forms of authority you consider morally legitimate',
+      description: 'In this test, this layer asks about foundational moral commitments and what an ideally legitimate political order would value or allow.',
    },
    descriptive: {
-      label: 'Descriptive / empirical beliefs',
+      label: 'Empirical beliefs / how institutions behave',
       measurement: 'what you think tends to be true in the world',
-      description: 'This layer asks what you believe about institutions, incentives, culture, and likely consequences—not what you approve of.',
+      description: 'In this test, this layer asks what you believe about institutions, incentives, culture, and likely consequences—not what you approve of.',
    },
    prescriptive: {
-      label: 'Prescriptive / strategy and policy',
-      measurement: 'what you think should be done under current conditions',
-      description: 'This layer asks which reforms, institutions, or strategies you would prioritize given real constraints and trade-offs.',
+      label: 'Applied policy / strategy',
+      measurement: 'which policies, institutions, or strategies you favor',
+      description: 'In this test, this layer asks what should be done in practice under the ideal, current, or mixed conditions named by the item.',
    },
 }
 
@@ -100,7 +100,7 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
       definition: '“Fascism” refers here to a revolutionary ultranationalist politics of national rebirth, mass mobilization, and authoritarian leadership—not merely any strong government.',
    },
    {
-      pattern: /\btheocrat(?:ic|y)\b/i,
+      pattern: /\btheocr(?:acy|atic)\b|\btheocrat\b/i,
       definition: '“Theocratic politics” treats religious authority or revealed law as a legitimate basis for public rule; it is not a synonym for private religious belief.',
    },
    {
@@ -185,6 +185,57 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
    },
 ]
 
+const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly string[]>> = {
+   'national-socialism': [
+      '“National Socialism” means the Nazi ideology of racial hierarchy, antisemitic exclusion, ultranationalism, dictatorship, and expansion; its anti-capitalist rhetoric does not make it socialism.',
+   ],
+   minarchist: [
+      '“Minarchism” supports a minimal state limited mainly to protecting rights through courts, policing, and defense.',
+   ],
+   'degrowth-green': [
+      '“Degrowth” argues that wealthy economies should deliberately reduce material and energy throughput while organizing for sufficiency and well-being rather than growth as an end in itself.',
+   ],
+   'absolute-monarchist': [
+      '“Absolute monarchy” places supreme governing authority in a hereditary monarch with few effective constitutional limits.',
+   ],
+   neoreactionary: [
+      '“Neoreaction” is an anti-democratic current that favors concentrated sovereign authority, often using corporate governance and competitive exit as political analogies.',
+   ],
+   distributism: [
+      '“Distributism” favors widely dispersed ownership of productive property, especially among families, small firms, cooperatives, and local associations.',
+   ],
+   'deep-ecology': [
+      '“Deep ecology” gives nonhuman life and ecological systems value independent of their usefulness to people and calls for far-reaching social change around that view.',
+   ],
+   paleolibertarianism: [
+      '“Paleolibertarianism” combines radical economic and political libertarianism with culturally traditionalist or paleoconservative commitments.',
+   ],
+   objectivism: [
+      '“Objectivism” is Ayn Rand’s philosophy of reason, rational self-interest, individual rights, and laissez-faire capitalism.',
+   ],
+   'radical-democracy': [
+      '“Radical democracy” seeks to extend democratic participation and contestation beyond periodic elections into institutions where power is concentrated.',
+   ],
+   'eco-authoritarianism': [
+      '“Eco-authoritarianism” gives a powerful centralized authority broad latitude to impose ecological goals, including over ordinary democratic or individual constraints.',
+   ],
+   'democratic-confederalism': [
+      '“Democratic confederalism” organizes self-government through linked local assemblies and councils, emphasizing pluralism, ecology, and gender equality without a centralized nation-state.',
+   ],
+   'libertarian-municipalism': [
+      '“Libertarian municipalism” proposes directly democratic local assemblies joined in confederation as an alternative to centralized state rule.',
+   ],
+   regionalism: [
+      '“Regionalism” gives a subnational region’s identity, interests, or self-government special political importance within or across existing states.',
+   ],
+   ethnonationalist: [
+      '“Ethnonationalism” defines the nation primarily through shared ancestry, ethnicity, or inherited culture rather than equal civic membership alone.',
+   ],
+   ordoliberalism: [
+      '“Ordoliberalism” favors a strong legal and institutional framework that preserves competition and constrains both private monopoly and discretionary economic power.',
+   ],
+}
+
 function firstCharacterLower(value: string): string {
    return value ? value.charAt(0).toLowerCase() + value.slice(1) : value
 }
@@ -200,14 +251,20 @@ function layerPhilosophies(label: IdeologyLabel, layer: Layer): string[] {
  * one name is a complete description of the respondent's whole politics.
  */
 export function getIdeologyLayerSummary(label: IdeologyLabel, axes: Axis[], layer: Layer): string {
-   const layerAxes = axes
+   const rankedLayerAxes = axes
       .filter((axis) => axis.layer === layer)
       .map((axis) => ({ axis, value: label.centroid[axis.id] ?? 0 }))
-      .sort((a, b) => Math.abs(b.value) - Math.abs(a.value))
-      .slice(0, 2)
-
-   const strongestPositions = layerAxes
       .filter(({ value }) => Math.abs(value) >= 0.2)
+      .sort((a, b) => Math.abs(b.value) - Math.abs(a.value) || a.axis.id.localeCompare(b.axis.id))
+
+   const cutoff = rankedLayerAxes[Math.min(1, rankedLayerAxes.length - 1)]
+   const tiedLayerAxes = cutoff
+      ? rankedLayerAxes.filter(({ value }) => Math.abs(value) >= Math.abs(cutoff.value))
+      : []
+   const visibleLayerAxes = tiedLayerAxes.slice(0, 4)
+   const omittedPositionCount = tiedLayerAxes.length - visibleLayerAxes.length
+
+   const strongestPositions = visibleLayerAxes
       .map(({ axis, value }) => firstCharacterLower(value >= 0 ? axis.positivePole : axis.negativePole))
 
    const philosophyNames = layerPhilosophies(label, layer).slice(0, 3)
@@ -215,27 +272,27 @@ export function getIdeologyLayerSummary(label: IdeologyLabel, axes: Axis[], laye
       ? `The catalog associates this layer with ${philosophyNames.join(', ')}.`
       : 'The catalog does not assign a separate named philosophical influence to this layer.'
    const positionText = strongestPositions.length > 0
-      ? `On this test, its strongest distinctions here are ${strongestPositions.join('; ')}.`
+      ? `On this test, its strongest distinctions here are ${strongestPositions.join('; ')}.${omittedPositionCount > 0 ? ` ${omittedPositionCount} equally strong position${omittedPositionCount === 1 ? '' : 's'} omitted for readability.` : ''}`
       : 'On this test, no single pole dominates this layer.'
 
    return `${LAYER_EXPLAINERS[layer].description} ${positionText} ${philosophyText}`
 }
 
 export function getIdeologyTermDefinitions(label: IdeologyLabel, limit = 2): string[] {
+   const directDefinitions = [...(DIRECT_TERM_DEFINITIONS_BY_LABEL_ID[label.id] ?? [])]
+   if (label.id === 'national-socialism') return directDefinitions.slice(0, limit)
+
    const identityText = [
       label.name,
       ...(label.aliases ?? []),
    ].join(' ')
-   const contextText = [label.description, ...(label.philosophies ?? [])].join(' ')
-   const definitions: string[] = []
+   const definitions: string[] = directDefinitions
 
-   for (const searchText of [identityText, contextText]) {
-      for (const { pattern, definition } of IDEOLOGY_TERM_DEFINITIONS) {
-         if (!pattern.test(searchText) || definitions.includes(definition)) continue
-         definitions.push(definition)
-         if (definitions.length >= limit) return definitions
-      }
+   for (const { pattern, definition } of IDEOLOGY_TERM_DEFINITIONS) {
+      if (!pattern.test(identityText) || definitions.includes(definition)) continue
+      definitions.push(definition)
+      if (definitions.length >= limit) return definitions
    }
 
-   return definitions
+   return definitions.slice(0, limit)
 }

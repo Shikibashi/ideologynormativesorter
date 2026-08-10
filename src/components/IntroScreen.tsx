@@ -72,16 +72,16 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
         <div className="intro-information">
           <div className="explainer">
             <div className="explainer-item">
-              <h2>Normative</h2>
-              <p>What you believe is morally legitimate &mdash; who has rightful authority, and what people are owed.</p>
+              <h2>Foundational values <span className="muted">(normative)</span></h2>
+              <p>What you consider morally legitimate in an ideal political order &mdash; who has rightful authority, and what people are owed.</p>
             </div>
             <div className="explainer-item">
-              <h2>Descriptive</h2>
-              <p>What you believe is empirically true &mdash; how markets, states, and institutions actually behave.</p>
+              <h2>Empirical beliefs <span className="muted">(descriptive)</span></h2>
+              <p>What you believe tends to be true &mdash; how markets, states, culture, and institutions actually behave.</p>
             </div>
             <div className="explainer-item">
-              <h2>Prescriptive</h2>
-              <p>What you think should actually be done, given the institutions and constraints we currently have.</p>
+              <h2>Applied policy and strategy <span className="muted">(prescriptive)</span></h2>
+              <p>Which institutions, reforms, or strategies you favor under the ideal, current, or mixed conditions named by an item.</p>
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
           </p>
 
           <p className="muted">
-            At the end you'll see your normative, descriptive, and prescriptive profiles separately, plus the gap between your
+            At the end you'll see your foundational-values, empirical-beliefs, and applied-policy profiles separately, plus the gap between your
             ideal and non-ideal answers. We also surface a few nearby ideology labels for context, but these are a secondary,
             approximate summary &mdash; your three profiles are the actual result, and most real positions don't reduce
             cleanly to one label.

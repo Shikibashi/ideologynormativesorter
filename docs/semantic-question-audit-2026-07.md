@@ -19,7 +19,7 @@ High-confidence sign inversions, construct mismatches, and template carryover er
 
 Items that are ambiguous, double-barreled, non-discriminating, or insufficiently operationalized are marked `needs-rewrite` and deactivated from the public quiz, runtime scoring, research forms, and psychometric estimates. They remain addressable through `questionById` for audit history and old-result interpretation, but they cannot influence a new result until rewritten and reviewed.
 
-The effective bank identifier is `2026-06-v4+2026-07-semantic-v1`; the result-scoring identifier is `2026-07-18-semantic-v3`.
+The current effective bank identifier is `2026-06-v4+2026-07-semantic-v1+2026-07-statement-semantic-v1+2026-08-respondent-v1`; the result-scoring identifier remains `2026-07-18-semantic-v3`. The August follow-up is recorded in `docs/editorial-review-second-pass-2026-08.md`.
 
 ## Defect classes
 

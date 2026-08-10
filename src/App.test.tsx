@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
-import { questionsForTier, questions } from './data/questions'
+import { questionsForTier, questions } from './data/effectiveQuestions'
 import { encodeAnswers, readCompareAnswers, readSharedAnswers } from './share'
 import type { AnswerMap, Question } from './types'
 
@@ -149,9 +149,9 @@ describe('App', () => {
       }
 
       expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
-      expect(screen.getByText(/normative profile/i)).toBeInTheDocument()
-      expect(screen.getByText(/descriptive profile/i)).toBeInTheDocument()
-      expect(screen.getByText(/prescriptive profile/i)).toBeInTheDocument()
+      expect(screen.getByText(/foundational values profile/i)).toBeInTheDocument()
+      expect(screen.getByText(/empirical beliefs profile/i)).toBeInTheDocument()
+      expect(screen.getByText(/applied policy profile/i)).toBeInTheDocument()
       expect(screen.getByText(/nearest ideology labels/i)).toBeInTheDocument()
 
       fireEvent.click(screen.getByRole('button', { name: /start over/i }))

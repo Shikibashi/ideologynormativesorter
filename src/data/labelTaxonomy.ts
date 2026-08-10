@@ -43,7 +43,6 @@ export const PRIMARY_LABEL_IDS = [
   'neoliberalism',
   'progressivism',
   'radical-democracy',
-  'religious-nationalism',
   'republicanism',
   'social-conservatism',
   'social-democrat',
@@ -116,6 +115,7 @@ export const MODIFIER_LABEL_IDS = [
   'left-wing-populism',
   'multiculturalism',
   'regionalism',
+  'religious-nationalism',
   'right-wing-populism',
   'separatist-nationalism',
   'theocrat',
@@ -164,9 +164,7 @@ export function roleForLabel(labelId: LabelId): LabelRole | undefined {
 }
 
 const CANONICAL_NAME_OVERRIDES: Readonly<Record<string, string>> = {
-  'civil-libertarian-cosmopolitan': 'Cosmopolitan Liberalism',
   'fascist-authoritarian': 'Fascism',
-  'technocratic-centralist': 'Technocracy',
 }
 
 function canonicalizeLabel(label: IdeologyLabel): IdeologyLabel {

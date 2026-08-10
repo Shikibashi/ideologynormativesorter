@@ -52,9 +52,9 @@ function topFit(subfamilies: Record<string, { fit: number }[]>): number {
 }
 
 const LAYER_TITLES = {
-   normative: 'Normative profile — what you believe is morally legitimate',
-   descriptive: 'Descriptive profile — what you believe is empirically true',
-   prescriptive: 'Prescriptive profile — what you think should be done now',
+   normative: 'Foundational values profile — ideal legitimacy and moral commitments',
+   descriptive: 'Empirical beliefs profile — how you think institutions behave',
+   prescriptive: 'Applied policy profile — practical institutions and strategy',
 } as const
 
 const LAYER_LABELS: Record<Layer, string> = {

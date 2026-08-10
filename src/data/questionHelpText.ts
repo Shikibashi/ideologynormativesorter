@@ -6,6 +6,7 @@ import { LAYER_EXPLAINERS } from './ideologyExplainers'
 interface TermDefinition {
   pattern: RegExp
   definition: string
+  domains?: string[]
 }
 
 const DOMAIN_DEFINITIONS: Record<string, string> = {
@@ -124,6 +125,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   {
     pattern: /\bcentralized planning\b|\bplanning\b|\bplanners?\b/i,
     definition: '“Planning” means decisions about production or allocation made through administrative direction rather than decentralized exchange.',
+    domains: ['markets-planning'],
   },
   {
     pattern: /\bmarket outcomes?\b/i,
@@ -224,10 +226,12 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   {
     pattern: /\bintervention\b|\bmilitary force\b|\bwar\b/i,
     definition: '“Intervention” means using diplomatic, economic or military power to affect conditions outside one’s own country.',
+    domains: ['foreign-policy-war'],
   },
   {
     pattern: /\bsanctions?\b/i,
     definition: '“Sanctions” means economic or legal penalties used to pressure another government, group or country.',
+    domains: ['foreign-policy-war'],
   },
   {
     pattern: /\bpacifism\b|\bmilitarism\b/i,
@@ -264,6 +268,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   {
     pattern: /\breform\b|\brevolution\b/i,
     definition: '“Reform” means changing existing institutions; “revolution” means replacing them more fundamentally.',
+    domains: ['strategy-change'],
   },
   {
     pattern: /\bcentralization\b|\bdecentralization\b|\bcentralized\b|\bdecentralized\b/i,
@@ -366,8 +371,14 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Credit allocation” means decisions about who receives loans and on what terms.',
   },
   {
+    pattern: /\bthreat inflation\b/i,
+    definition: '“Threat inflation” means exaggerating a danger’s probability or severity to build support for a policy or institution.',
+    domains: ['foreign-policy-war'],
+  },
+  {
     pattern: /\binflation\b/i,
     definition: '“Inflation” means a general rise in prices that reduces the purchasing power of money over time.',
+    domains: ['money-banking'],
   },
   {
     pattern: /\bbailouts?\b/i,
@@ -530,7 +541,11 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Technology-neutral” means rules that target outcomes rather than favoring or banning specific technical methods.',
   },
   {
-    pattern: /\bmaterial (?:intensity|throughput)\b/i,
+    pattern: /\bmaterial intensity\b/i,
+    definition: '“Material intensity” means how much raw material or energy is used for each unit of economic output or service.',
+  },
+  {
+    pattern: /\bmaterial throughput\b/i,
     definition: '“Material throughput” means the total volume of raw materials and energy an economy uses and discards.',
   },
   {
@@ -786,7 +801,8 @@ function findTermDefinitions(question: Question, limit = 2): string[] {
   const searchText = getQuestionSearchText(question)
   const definitions: string[] = []
 
-  for (const { pattern, definition } of TERM_DEFINITIONS) {
+  for (const { pattern, definition, domains } of TERM_DEFINITIONS) {
+    if (domains && !domains.includes(question.domain)) continue
     if (!pattern.test(searchText) || definitions.includes(definition)) continue
     definitions.push(definition)
     if (definitions.length >= limit) break
@@ -806,6 +822,17 @@ function getResponseQualifier(question: Question): string {
   return question.responseType === 'statementChoice' ? 'which statement you choose' : 'how strongly you agree'
 }
 
+function getQuestionMeasurement(question: Question): string {
+  if (question.layer !== 'prescriptive') return LAYER_EXPLAINERS[question.layer].measurement
+  if (question.theoryContext === 'ideal') {
+    return 'which policies, institutions, or strategies you would favor under ideal conditions'
+  }
+  if (question.theoryContext === 'nonideal') {
+    return 'which policies, institutions, or strategies you would favor under current constraints'
+  }
+  return 'which practical policy or strategy direction you favor across mixed conditions'
+}
+
 export function getQuestionHelpText(question: Question): string {
   const definitions = findTermDefinitions(question)
   const definitionText = definitions.length > 0 ? definitions.join(' ') : DOMAIN_DEFINITIONS[question.domain] ?? fallbackDomainDefinition(question)
@@ -813,7 +840,7 @@ export function getQuestionHelpText(question: Question): string {
   const domainPhrase = domain ? domain.name.toLowerCase() : 'this topic'
   const responseQualifier = getResponseQualifier(question)
 
-  return `${definitionText} This question measures ${LAYER_EXPLAINERS[question.layer].measurement} about ${domainPhrase}, based on ${responseQualifier}.`
+  return `${definitionText} This question measures ${getQuestionMeasurement(question)} about ${domainPhrase}, based on ${responseQualifier}.`
 }
 
 export function getSalienceHelpText(kind: 'confidence' | 'priority'): string {

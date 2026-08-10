@@ -8,7 +8,9 @@ describe('ideology explainers', () => {
    it('defines the three layers without collapsing them into one political preference', () => {
       expect(LAYER_EXPLAINERS.normative.measurement).toMatch(/morally legitimate/)
       expect(LAYER_EXPLAINERS.descriptive.measurement).toMatch(/true in the world/)
-      expect(LAYER_EXPLAINERS.prescriptive.measurement).toMatch(/should be done/)
+      expect(LAYER_EXPLAINERS.prescriptive.measurement).toMatch(/policies, institutions, or strategies/)
+      expect(LAYER_EXPLAINERS.normative.label).toMatch(/Foundational values/)
+      expect(LAYER_EXPLAINERS.prescriptive.label).toMatch(/Applied policy/)
       expect(LAYER_EXPLAINERS.normative.measurement).not.toBe(LAYER_EXPLAINERS.prescriptive.measurement)
    })
 
@@ -16,7 +18,7 @@ describe('ideology explainers', () => {
       for (const label of labels) {
          for (const layer of ['normative', 'descriptive', 'prescriptive'] as const) {
             const summary = getIdeologyLayerSummary(label, axes, layer)
-            expect(summary, `${label.id}/${layer} is missing an explainer`).toMatch(/This layer asks/)
+            expect(summary, `${label.id}/${layer} is missing an explainer`).toMatch(/this layer asks/i)
             expect(summary.length, `${label.id}/${layer} explainer is too long`).toBeLessThanOrEqual(700)
          }
       }
@@ -54,5 +56,52 @@ describe('ideology explainers', () => {
       }
 
       expect(getIdeologyLayerSummary(label, axes, 'normative')).toContain('does not assign a separate named philosophical influence')
+   })
+
+   it('does not infer term guides from rejected or comparator traditions in prose', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+
+      expect(getIdeologyTermDefinitions(byId.get('national-traditionalist')!)).not.toEqual(expect.arrayContaining([expect.stringMatching(/Fascism/)]))
+      expect(getIdeologyTermDefinitions(byId.get('fascist-authoritarian')!)).not.toEqual(expect.arrayContaining([expect.stringMatching(/Liberalism/)]))
+      expect(getIdeologyTermDefinitions(byId.get('social-conservatism')!)).not.toEqual(expect.arrayContaining([expect.stringMatching(/Progressivism/)]))
+      expect(getIdeologyTermDefinitions(byId.get('national-bolshevism')!)).not.toEqual(expect.arrayContaining([expect.stringMatching(/Liberalism|Socialism/)]))
+      expect(getIdeologyTermDefinitions(byId.get('fourth-theory')!)).not.toEqual(expect.arrayContaining([expect.stringMatching(/Liberalism|Fascism/)]))
+   })
+
+   it('keeps National Socialism separate from the generic socialism definition', () => {
+      const label = labels.find((candidate) => candidate.id === 'national-socialism')!
+      const definitions = getIdeologyTermDefinitions(label)
+
+      expect(definitions).toHaveLength(1)
+      expect(definitions[0]).toMatch(/Nazi ideology/)
+      expect(definitions[0]).toMatch(/does not make it socialism/)
+   })
+
+   it('defines theocracy and high-confusion labels directly from stable ids', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directCases: Array<[string, RegExp]> = [
+         ['fundamentalist-theocracy', /Theocratic politics/],
+         ['neoreactionary', /anti-democratic current/],
+         ['distributism', /dispersed ownership/],
+         ['deep-ecology', /nonhuman life/],
+         ['objectivism', /Ayn Rand/],
+         ['democratic-confederalism', /local assemblies/],
+         ['libertarian-municipalism', /local assemblies/],
+      ]
+
+      for (const [id, expected] of directCases) {
+         expect(getIdeologyTermDefinitions(byId.get(id)!)[0], id).toMatch(expected)
+      }
+   })
+
+   it('includes cutoff ties deterministically instead of depending on axis order', () => {
+      const label = labels.find((candidate) => candidate.id === 'anarcho-capitalist')!
+      const forward = getIdeologyLayerSummary(label, axes, 'normative')
+      const reversed = getIdeologyLayerSummary(label, [...axes].reverse(), 'normative')
+
+      expect(forward).toBe(reversed)
+      expect(forward).toContain('authority requires constant justification')
+      expect(forward).toContain('private property rights are strongly legitimate')
+      expect(forward).toContain('liberty means non-interference with personal choice')
    })
 })

@@ -11,7 +11,7 @@ describe('wave partition', () => {
     const main = questionWaves().filter((w) => w.corpus === 'main')
     expect(main.length).toBe(10)
     expect(main.slice(0, -1).every((w) => w.subjectIds.length === 40)).toBe(true)
-    expect(main.at(-1)!.subjectIds.length).toBe(3)
+    expect(main.at(-1)!.subjectIds.length).toBe(2)
     expect(main.flatMap((w) => w.subjectIds).sort()).toEqual(
       effectiveActiveQuestions.map((q) => q.id).sort(),
     )

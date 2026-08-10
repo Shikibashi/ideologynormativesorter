@@ -719,18 +719,18 @@ export const labels: IdeologyLabel[] = [
    {
       id: 'ecomodernist',
       name: 'Ecomodernist',
-      family: 'technocratic',
-      subfamily: 'technocratic',
+      family: 'green',
+      subfamily: 'ecomodernist',
       description:
          'Argues that technological innovation, high-density energy, urbanization, and capable institutions can reduce ecological harm while supporting human flourishing; distinct from degrowth, deep ecology, and ecosocialist critiques of growth.',
       usageNote:
          'This label is about ecological decoupling through technology and institutions, not generic technocracy or all market environmentalism.',
-      philosophies: ["Technocracy","Progressivism","Ecomodernism","Techno-Optimism"],
+      philosophies: ["Ecomodernism","Ecological Modernization","Techno-Optimism"],
       subTheories: ["Ecological Modernization","Good Anthropocene"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: [],
-      descriptivePhilosophies: ["Techno-Optimism"],
-      prescriptivePhilosophies: ["Technocracy","Progressivism","Ecomodernism"],
+      descriptivePhilosophies: ["Ecomodernism","Ecological Modernization","Techno-Optimism"],
+      prescriptivePhilosophies: ["Ecomodernism","Ecological Modernization"],
       philosophyInfluences: [
          {
             philosophy: "Ecomodernism",
@@ -738,8 +738,8 @@ export const labels: IdeologyLabel[] = [
             affectedAxes: ["human-nature-priority","expert-confidence"],
          },
          {
-            philosophy: "Technocracy",
-            description: "Trust in capable institutions and expert-led planning.",
+            philosophy: "Ecological Modernization",
+            description: "Institutional and technological change can reduce environmental impact while preserving human development.",
             affectedAxes: ["state-capacity-confidence","cultural-plasticity"],
          }
       ],
@@ -2812,8 +2812,7 @@ export const labels: IdeologyLabel[] = [
       description:
          'Extends revolutionary state socialism through mass line politics, protracted struggle, anti-revisionism, and peasant or peripheral mobilization, treating revolutionary transformation as a continuing process against bureaucratic restoration.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
-   aliases: ["Marxism-Leninism-Maoism","Maoism-Third Worldism"],
-      subTheories: ["Internal Schools"],
+      subTheories: ["Marxism-Leninism-Maoism","Maoism-Third Worldism"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: ["Marxism","Socialism"],
       descriptivePhilosophies: ["Marxism"],
@@ -3474,10 +3473,10 @@ export const labels: IdeologyLabel[] = [
          'Fuses national identity with a particular religious tradition, seeking public institutions that reflect that tradition and treat it as central to political membership or authority.',
       cautionNote:
          'A broad family rather than one doctrine: religious nationalism can range from cultural identity politics to projects that give religious law or institutions formal public authority.',
-      philosophies: ["Nationalism","Religious Nationalism","Theocracy"],
+      philosophies: ["Nationalism","Religious Nationalism"],
       subTheories: ["Christian Nationalism","Islamo-Nationalism"],
       ethicalTheory: ["Virtue Ethics"],
-      normativePhilosophies: ["Nationalism","Religious Nationalism","Theocracy"],
+      normativePhilosophies: ["Nationalism","Religious Nationalism"],
       descriptivePhilosophies: [],
       prescriptivePhilosophies: [],
       philosophyInfluences: [
@@ -3487,8 +3486,8 @@ export const labels: IdeologyLabel[] = [
             affectedAxes: ["political-community-boundary","authority-legitimacy"],
          },
          {
-            philosophy: "Theocracy",
-            description: "Religious authority as basis for civil law.",
+            philosophy: "Religious Nationalism",
+            description: "A religious tradition serves as a source of national identity and may, in some variants, shape civil law.",
             affectedAxes: ["secularism-religious","moral-traditionalism","liberty-noninterference"],
          }
       ],
@@ -3531,7 +3530,6 @@ export const labels: IdeologyLabel[] = [
       cautionNote:
          'Political Zionism is internally diverse and historically contested; this label does not imply one view on borders, religion, minority rights, or any current government.',
       philosophies: ["Nationalism","Zionism","Jewish Nationalism"],
-   aliases: ["Labour Zionism"],
       subTheories: ["Political Zionism","Labour Zionism","Religious Zionism","Revisionist Zionism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Nationalism","Zionism","Jewish Nationalism"],
@@ -3645,8 +3643,7 @@ export const labels: IdeologyLabel[] = [
       cautionNote:
          'Use narrowly as a fascist far-right current; anti-capitalist rhetoric here does not make the label socialist in the academic sense.',
       philosophies: ["Authoritarianism","Fascism","Corporatism"],
-   aliases: ["National Syndicalism"],
-      subTheories: ["National Syndicalism","Strasserist Nazism"],
+      subTheories: ["Strasserist Nazism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Authoritarianism"],
       descriptivePhilosophies: [],
@@ -4022,19 +4019,19 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'accelerationism',
-      name: 'Accelerationism',
+      name: 'Technology-Centered Accelerationism',
       family: 'technocratic',
       subfamily: 'accelerationist',
       description:
          'Uses acceleration as a strategy or diagnosis: intensifying technological, capitalist, or modernizing forces to force systemic transformation. The current centroid is closest to technology-centered accelerationism, not the full left/right accelerationist family.',
       cautionNote:
          'Accelerationism has incompatible left, right, and technology-centered variants; this result is provisional until those variants receive separate centroids.',
-      philosophies: ["Technocracy","Progressivism","Accelerationism","Neo-Reaction"],
-      subTheories: ["Left Accelerationism","Right Accelerationism"],
+      philosophies: ["Technocracy","Progressivism","Accelerationism"],
+      subTheories: ["Technology-Centered Accelerationism"],
       ethicalTheory: ["Consequentialism"],
-      normativePhilosophies: ["Neo-Reaction"],
+      normativePhilosophies: [],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: ["Technocracy","Progressivism","Accelerationism","Neo-Reaction"],
+      prescriptivePhilosophies: ["Technocracy","Progressivism","Accelerationism"],
       philosophyInfluences: [
          {
             philosophy: "Technocracy",
@@ -4642,8 +4639,7 @@ export const labels: IdeologyLabel[] = [
       description:
          'Proposes a confederal network of directly-democratic municipal assemblies as the basis for a stateless, ecological, and ethical society, replacing both state sovereignty and capitalist markets with face-to-face popular governance.',
       philosophies: ["Libertarian Municipalism","Communalism","Bookchinism","Social Ecology"],
-   aliases: ["Communalism","Social Ecology"],
-      subTheories: ["Internal Variants"],
+      subTheories: ["Communalism","Social Ecology"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Libertarian Municipalism","Communalism","Bookchinism","Social Ecology"],
       descriptivePhilosophies: [],
@@ -5243,12 +5239,12 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'geoist-market',
       description:
          'A political and economic philosophy based on Henry George’s distinction between privately created value and socially generated land or resource rent, generally favoring public capture of that rent through land-value taxation; the historic “single tax” is one formulation, not the only one.',
-      philosophies: ["Georgism","Classical Liberalism","Libertarianism","Radical Centrism","Geoism"],
+      philosophies: ["Georgism","Classical Liberalism","Libertarianism","Geoism"],
       subTheories: ["Geoism","Single-Tax Theory","Geolibertarianism"],
       ethicalTheory: ["Deontology","Consequentialism"],
       normativePhilosophies: ["Georgism","Classical Liberalism","Libertarianism"],
       descriptivePhilosophies: ["Georgism"],
-      prescriptivePhilosophies: ["Georgism","Geoism","Radical Centrism"],
+      prescriptivePhilosophies: ["Georgism","Geoism"],
       philosophyInfluences: [
          {
             philosophy: "Georgism",
@@ -5303,7 +5299,7 @@ export const labels: IdeologyLabel[] = [
       subTheories: ["Cosmopolitan Liberalism","Global Justice","Liberal Internationalism"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Liberalism","Cosmopolitanism","Internationalism","Human Rights"],
-      descriptivePhilosophies: ["Cosmopolitanism"],
+      descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Internationalism","Liberal Internationalism"],
       philosophyInfluences: [
          {
@@ -5403,15 +5399,15 @@ export const labels: IdeologyLabel[] = [
    {
       id: 'constitutional-monarchism',
       name: 'Constitutional Monarchism',
-      family: 'authoritarian',
-      subfamily: 'monarchist-reactionary',
+      family: 'monarchist',
+      subfamily: 'constitutional-monarchist',
       description:
-         'A political system that maintains a hereditary monarch as head of state within the framework of a written constitution, limiting the sovereign\'s powers while preserving the symbolic and stabilizing role of traditional monarchy in a modern constitutional order.',
-      philosophies: ["Monarchism","Conservatism","Constitutionalism","Traditionalism"],
-      subTheories: ["Constitutional Monarchy","Parliamentary Sovereignty"],
+         'A political system that retains a hereditary monarch under constitutional rules that limit royal power; variants range from a ceremonial head of state in a parliamentary democracy to a monarch with constrained executive authority.',
+      philosophies: ["Monarchism","Constitutionalism"],
+      subTheories: ["Parliamentary Constitutional Monarchy","Executive Constitutional Monarchy"],
       ethicalTheory: ["Virtue Ethics"],
-      normativePhilosophies: ["Monarchism","Conservatism","Traditionalism"],
-      descriptivePhilosophies: ["Constitutionalism"],
+      normativePhilosophies: ["Monarchism","Constitutionalism"],
+      descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Monarchism","Constitutionalism"],
       philosophyInfluences: [
          {
@@ -5623,12 +5619,12 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'religious-conservative',
       description:
          'A political system in which religious law and doctrine serve as the supreme authority for governance, with state institutions enforcing a fundamentalist interpretation of sacred texts and suppressing religious pluralism and secular alternatives.',
-      philosophies: ["Theocracy","Religious Fundamentalism","Conservatism","Traditionalism","Dominionism"],
+      philosophies: ["Theocracy","Religious Fundamentalism","Conservatism","Traditionalism"],
       subTheories: ["Dominionism","Theonomic Governance"],
       ethicalTheory: ["Divine Command Theory","Virtue Ethics"],
       normativePhilosophies: ["Theocracy","Religious Fundamentalism","Traditionalism","Conservatism"],
       descriptivePhilosophies: ["Religious Fundamentalism"],
-      prescriptivePhilosophies: ["Theocracy","Dominionism"],
+      prescriptivePhilosophies: ["Theocracy"],
       philosophyInfluences: [
          {
             philosophy: "Religious Fundamentalism",
@@ -5673,28 +5669,23 @@ export const labels: IdeologyLabel[] = [
    {
       id: 'political-islam',
       name: 'Political Islam',
-      family: 'conservative',
-      subfamily: 'islamic-democratic',
+      family: 'religious-political',
+      subfamily: 'political-islam',
       description:
-         'A broad movement that seeks to implement Islamic principles and Sharia law in governance, public life, and legislation, ranging from democratic participation in pluralistic systems to more comprehensive Islamist state-building projects.',
+         'A broad family of projects that relates governance and public life to Islamic principles, sometimes including Sharia-based legislation, and ranging from democratic participation in pluralistic systems to more comprehensive Islamist state-building.',
       cautionNote:
          'A broad and internally diverse family of political projects, not a synonym for Islam, Muslim civic participation, or one fixed model of Islamic law and government.',
-      philosophies: ["Islamism","Political Islam","Conservatism","Anti-Colonialism","Islamic Democracy"],
+      philosophies: ["Islamism","Political Islam"],
       subTheories: ["Islamism","Islamic Democracy","Sharia Governance"],
       ethicalTheory: ["Divine Command Theory","Virtue Ethics"],
-      normativePhilosophies: ["Political Islam","Conservatism"],
-      descriptivePhilosophies: ["Anti-Colonialism"],
-      prescriptivePhilosophies: ["Islamism","Islamic Democracy"],
+      normativePhilosophies: ["Political Islam"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Political Islam","Islamism"],
       philosophyInfluences: [
          {
             philosophy: "Political Islam",
             description: "Application of Islamic jurisprudence to governance and public policy.",
             affectedAxes: ["secularism-religious","moral-traditionalism","authority-legitimacy"],
-         },
-         {
-            philosophy: "Anti-Colonialism",
-            description: "Rejection of Western political and cultural imposition, asserting indigenous Islamic alternatives.",
-            affectedAxes: ["political-community-boundary","cultural-plasticity","militarism-pacifism"],
          },
       ],
       centroid: {
@@ -6177,11 +6168,11 @@ export const labels: IdeologyLabel[] = [
          'A conservative royalist movement that treats hereditary monarchy as historically or traditionally legitimate and often favors strong royal prerogative; positions differ on popular sovereignty, democratic representation, and constitutional limits.',
       usageNote:
          'Describes the broader modern royalist movement and identity, which values monarchy chiefly for its historical continuity and legitimacy; compare Absolute Monarchist, which centers the narrower early-modern theoretical claim about indivisible sovereign power.',
-      philosophies: ["Monarchism","Absolutism","Traditionalism","Conservatism"],
+      philosophies: ["Monarchism","Traditionalism","Conservatism"],
       subTheories: ["Divine Right of Kings","Absolute Monarchy","Patrimonialism"],
       ethicalTheory: ["Virtue Ethics","Divine Command Theory"],
       normativePhilosophies: ["Monarchism","Traditionalism","Conservatism"],
-      descriptivePhilosophies: ["Absolutism"],
+      descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Monarchism"],
       philosophyInfluences: [
          {
