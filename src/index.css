@@ -73,6 +73,8 @@
   --ecw-space-panel: 0.75rem;
   --ecw-space-layout: 1rem;
   --ecw-display-1: clamp(2rem, 1.3rem + 2.7vw, 3.25rem);
+  --ecw-shell-gutter: clamp(1rem, 1.25vw, 3rem);
+  --ecw-shell-max: clamp(92rem, 80vw, 160rem);
 
   /* Legacy aliases keep the product vocabulary stable while components use semantic roles. */
   --web99-bg: var(--ecw-bg);
@@ -232,12 +234,16 @@
 html {
   min-width: 320px;
   background: var(--web99-bg);
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  overflow-x: clip;
   color: var(--text);
   background-color: var(--web99-bg);
   background-image:
@@ -283,9 +289,9 @@ a:hover {
 }
 
 #root {
-  width: min(1480px, calc(100% - 32px));
-  min-height: calc(100vh - 32px);
-  margin: 16px auto;
+  width: min(var(--ecw-shell-max), calc(100% - (var(--ecw-shell-gutter) + var(--ecw-shell-gutter))));
+  min-height: calc(100vh - (var(--ecw-shell-gutter) + var(--ecw-shell-gutter)));
+  margin: var(--ecw-shell-gutter) auto;
 }
 
 h1,

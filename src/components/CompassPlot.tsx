@@ -55,10 +55,11 @@ export function CompassPlot({ scores, compareScores }: CompassPlotProps) {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const dpr = window.devicePixelRatio || 1
-    canvas.width = SIZE * dpr
-    canvas.height = SIZE * dpr
-    ctx.scale(dpr, dpr)
+    const draw = () => {
+      const dpr = window.devicePixelRatio || 1
+      canvas.width = Math.max(1, Math.round(SIZE * dpr))
+      canvas.height = Math.max(1, Math.round(SIZE * dpr))
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
     const background = cssColor('--surface-sunken', '#fff')
     const grid = cssColor('--border', '#8b8b84')
@@ -137,15 +138,22 @@ export function CompassPlot({ scores, compareScores }: CompassPlotProps) {
       c.fillText(label, px, py - 12)
     }
 
-    plotPoint(ctx, pt.x, pt.y, userColor, 'You')
-    if (compareX !== undefined && compareY !== undefined) plotPoint(ctx, compareX, compareY, compareColor, 'Compare')
+      plotPoint(ctx, pt.x, pt.y, userColor, 'You')
+      if (compareX !== undefined && compareY !== undefined) plotPoint(ctx, compareX, compareY, compareColor, 'Compare')
+    }
+
+    draw()
+    window.addEventListener('resize', draw)
+    return () => window.removeEventListener('resize', draw)
   }, [pt.x, pt.y, compareX, compareY])
 
   return (
     <div className="compass-plot">
       <canvas
         ref={canvasRef}
-        style={{ width: SIZE, height: SIZE, maxWidth: '100%' }}
+        width={SIZE}
+        height={SIZE}
+        style={{ width: '100%', maxWidth: SIZE, height: 'auto', aspectRatio: '1' }}
         aria-label={`Economic (${pt.x.toFixed(2)}) by authority (${pt.y.toFixed(2)}) compass plot`}
       />
       <p className="muted" style={{ fontSize: '0.8rem' }}>

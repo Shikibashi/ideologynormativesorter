@@ -3,6 +3,8 @@ import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 const css = readFileSync(join(process.cwd(), 'src/index.css'), 'utf8')
+const appCss = readFileSync(join(process.cwd(), 'src/App.css'), 'utf8')
+const compass = readFileSync(join(process.cwd(), 'src/components/CompassPlot.tsx'), 'utf8')
 const html = readFileSync(join(process.cwd(), 'index.html'), 'utf8')
 
 function channel(value: string): number {
@@ -31,6 +33,22 @@ describe('ECW token contracts', () => {
     const compactHitMin = 1.875 * 16
     expect(compactHitMin).toBeGreaterThanOrEqual(24)
     expect(css).toContain('--ecw-hit-min: 1.875rem')
+  })
+
+  it('uses a fluid shell and demotes the masthead before tablet widths', () => {
+    expect(css).toContain('--ecw-shell-max: clamp(92rem, 80vw, 160rem)')
+    expect(css).toContain('width: min(var(--ecw-shell-max)')
+    expect(appCss).toMatch(/@media \(max-width: 900px\) \{[\s\S]*?\.site-masthead \{[\s\S]*?grid-template-columns: 1fr;/)
+    expect(appCss).toMatch(/\.results-screen \{[\s\S]*?max-width: none;[\s\S]*?padding-block-start: clamp\(1rem, 2vw, 1\.5rem\);/)
+    expect(css).toMatch(/html \{[\s\S]*?overflow-x: hidden;[\s\S]*?overflow-x: clip;/)
+    expect(css).toMatch(/body \{[\s\S]*?overflow-x: hidden;[\s\S]*?overflow-x: clip;/)
+  })
+
+  it('keeps the compass square and redraws at the current device pixel ratio', () => {
+    expect(compass).toContain('Math.round(SIZE * dpr)')
+    expect(compass).toContain('ctx.setTransform(dpr, 0, 0, dpr, 0, 0)')
+    expect(compass).toContain("style={{ width: '100%', maxWidth: SIZE, height: 'auto', aspectRatio: '1' }}")
+    expect(appCss).toMatch(/\.compass-plot canvas \{[\s\S]*?height: auto;[\s\S]*?aspect-ratio: 1;/)
   })
 
   it('keeps the two focus colors above the ECW 9:1 contrast rule', () => {

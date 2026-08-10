@@ -1,5 +1,5 @@
 .site-shell {
-  min-height: calc(100vh - 2rem);
+  min-height: calc(100vh - (var(--ecw-shell-gutter) + var(--ecw-shell-gutter)));
   display: flex;
   flex-direction: column;
   background: var(--web99-night);
@@ -25,6 +25,7 @@
   flex-direction: column;
   gap: 10px;
   align-items: stretch;
+  min-width: 0;
 }
 
 .site-actions {
@@ -32,6 +33,7 @@
   justify-content: flex-end;
   align-items: flex-start;
   gap: 8px;
+  min-width: 0;
 }
 
 .site-kicker,
@@ -253,6 +255,7 @@
 
 .site-footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 16px;
   padding: 7px 10px;
@@ -267,10 +270,16 @@
   text-align: end;
 }
 
+.site-footer span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 /* Screens are page sections inside the site shell. */
 .screen {
   width: 100%;
   max-width: 920px;
+  min-width: 0;
   margin: 0 auto;
   padding: var(--ecw-space-layout) clamp(14px, 3vw, 30px) 2rem;
   display: flex;
@@ -703,10 +712,15 @@
 
 .compass-plot {
   width: min(100%, 520px);
+  max-width: 100%;
 }
 
 .compass-plot canvas {
   display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  aspect-ratio: 1;
   background: var(--web99-panel-deep);
   border: 1px solid var(--web99-teal);
 }
@@ -732,6 +746,11 @@
   color: var(--text-h);
   font-size: var(--ecw-font-size-ui);
   font-weight: 650;
+}
+
+.axis-bar-header > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .axis-bar-track {
@@ -786,6 +805,12 @@
   margin-top: 3px;
   color: var(--text-m);
   font-size: var(--ecw-font-size-meta);
+  flex-wrap: wrap;
+}
+
+.axis-bar-poles > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .axis-bar-salience,
@@ -829,9 +854,11 @@
 }
 
 .axis-compare-label {
+  min-width: 0;
   padding-top: 8px;
   color: var(--text-h);
   font-weight: 650;
+  overflow-wrap: anywhere;
 }
 
 .philosophy-list,
@@ -956,6 +983,32 @@
 }
 
 @media (max-width: 900px) {
+  .site-masthead {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .site-title {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .site-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .site-meta {
+    align-self: stretch;
+    min-width: 0;
+    padding-block-start: 8px;
+    padding-inline-start: 0;
+    border-block-start: 1px dotted var(--web99-border);
+    border-inline-start: 0;
+  }
+
   .intro-layout {
     grid-template-columns: 1fr;
   }
@@ -972,6 +1025,14 @@
     display: flex;
     max-width: 920px;
     margin: 0 auto;
+  }
+}
+
+@media (min-width: 1600px) {
+  .intro-screen,
+  .quiz-screen,
+  .methodology-screen {
+    max-width: min(90rem, 100%);
   }
 }
 
@@ -1272,7 +1333,8 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--ecw-space-layout);
-  max-width: 1480px;
+  max-width: none;
+  min-width: 0;
   padding-block-start: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -1293,6 +1355,8 @@
   grid-template-columns: minmax(10rem, 0.22fr) minmax(0, 1fr) minmax(15rem, 0.36fr);
   gap: var(--ecw-space-layout);
   align-items: start;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .results-navigator {
