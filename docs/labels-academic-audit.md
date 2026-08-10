@@ -1,5 +1,9 @@
 # Academic Audit of `src/data/labels.ts`
 
+> This document records the earlier audit that led to several current label
+> names. For the current label-by-label editorial disposition, use
+> `docs/ideology-label-editorial-review-2026-08.md`.
+
 ## Overall quality summary
 
 The file is generally stronger than a simple left/right quiz: it distinguishes social democracy from democratic socialism, Marxism-Leninism from council communism, libertarian socialism from right-libertarianism, civic nationalism from ethnonationalism, and ecomodernism from ecosocialism and degrowth. The main weaknesses are precision and product presentation rather than wholesale conceptual failure: several labels are analytically defensible but too broad for a single centroid, a few names are nonstandard or sound polemical, and several niche/emerging labels need caution notes so users do not read them as canonical traditions. Axis placements appear broadly plausible at the family level, but labels marked “Needs narrowing” or “Use cautiously” should receive a centroid follow-up after naming/description changes because one centroid can currently flatten distinct variants.

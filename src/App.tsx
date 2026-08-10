@@ -112,7 +112,9 @@ function App() {
          : null,
    )
    const [compareAnswers] = useState<AnswerMap | null>(() => readCompareAnswers())
-   const [stage, setStage] = useState<Stage>(sharedAnswers ? 'results' : 'intro')
+   const [stage, setStage] = useState<Stage>(
+      sharedAnswers ? 'results' : initialResearchMode ? 'consent' : 'intro',
+   )
    const [activeQuestions, setActiveQuestions] = useState(questions)
    const [answers, setAnswers] = useState<AnswerMap>(sharedAnswers ?? {})
    const [result, setResult] = useState<ResultProfile | null>(() =>

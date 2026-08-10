@@ -2316,6 +2316,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'techno-progressive',
       description:
          'Supports using science and technology to improve human capacities, health, longevity, and well-being, while debating democratic oversight, safety, access, and whether enhancement should be market-led, state-supported, or decentralized.',
+      usageNote:
+         'A broad family of arguments about human enhancement and technological change, not a single view on markets, state authority, risk, or access.',
       philosophies: ["Technocracy","Progressivism","Transhumanism","Futurism","Posthumanism"],
       subTheories: ["Extropianism","Techno-Progressivism","Singularitarianism"],
       ethicalTheory: ["Consequentialism"],
@@ -2423,7 +2425,7 @@ export const labels: IdeologyLabel[] = [
       family: 'populist',
       subfamily: 'right-populist',
       description:
-         'Frames politics as a struggle between a corrupt elite and an authentic people, demanding strongman leadership and direct extra-institutional mobilization to restore national sovereignty, traditional cultural order, and boundaries against outsiders through rupture rather than gradual reform.',
+         'Frames politics as a struggle between a corrupt elite and an authentic people, often combining majoritarian or extra-institutional mobilization with national sovereignty, traditional cultural order, and tighter boundaries around political membership.',
       cautionNote:
          'Populism is a thin ideology or political style that divides a virtuous people from elites; it is not a complete doctrine by itself.',
       philosophies: ["Populism"],
@@ -2973,7 +2975,7 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'world-federalist',
       description:
-         'Holds that a single federal world government with democratic constitutional structure and enforceable international law is necessary to secure peace, justice, and human rights across all nations.',
+         'Advocates a democratic federal layer of world government and enforceable international law as a way to pursue peace, justice, and human rights across national boundaries.',
       philosophies: ["Liberalism","World Federalism","Cosmopolitanism","Kantianism"],
       subTheories: ["Cosmopolitan Democracy","Global Governance"],
       ethicalTheory: ["Deontology"],
@@ -3027,7 +3029,9 @@ export const labels: IdeologyLabel[] = [
       family: 'indigenist',
       subfamily: 'indigenist',
       description:
-         'Prioritizes the rights, sovereignty, and cultural preservation of indigenous peoples, combining anti-colonialism, environmental stewardship, and traditional communal governance against imposed state and market structures.',
+         'Prioritizes Indigenous peoples’ rights, sovereignty, land and cultural continuity, and decolonial forms of political authority in response to imposed state and market structures.',
+      cautionNote:
+         'An umbrella term covering diverse Indigenous political traditions; it should not imply that Indigenous peoples share one political order or one relationship to markets, states, or tradition.',
       philosophies: ["Indigenism","Decolonialism"],
       subTheories: ["Fourth World Politics","Tribal Sovereignty"],
       ethicalTheory: ["Virtue Ethics"],
@@ -3245,7 +3249,7 @@ export const labels: IdeologyLabel[] = [
       family: 'green',
       subfamily: 'bioregional',
       description:
-         'Holds that political and economic boundaries should follow natural ecological regions rather than arbitrary borders, advocating sustainable local economies that work in harmony with the environment and reject capitalist exploitation of nature.',
+         'Holds that political and economic boundaries should reflect ecological regions rather than only inherited borders, advocating place-based governance, local resilience, and stewardship of shared ecosystems across diverse economic models.',
       philosophies: ["Environmentalism","Ecologism","Bioregionalism","Communalism"],
       subTheories: ["Ecoregionalism","Bioregional Democracy","Permaculture"],
       ethicalTheory: ["Virtue Ethics"],
@@ -3467,7 +3471,9 @@ export const labels: IdeologyLabel[] = [
       family: 'nationalist',
       subfamily: 'religious-nationalist',
       description:
-         'Holds that national identity should be defined by shared religion and that public institutions should derive their authority from and reflect a particular religious tradition.',
+         'Fuses national identity with a particular religious tradition, seeking public institutions that reflect that tradition and treat it as central to political membership or authority.',
+      cautionNote:
+         'A broad family rather than one doctrine: religious nationalism can range from cultural identity politics to projects that give religious law or institutions formal public authority.',
       philosophies: ["Nationalism","Religious Nationalism","Theocracy"],
       subTheories: ["Christian Nationalism","Islamo-Nationalism"],
       ethicalTheory: ["Virtue Ethics"],
@@ -4188,7 +4194,9 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'technocratic-liberal',
       description:
-         'Believes in deliberate social improvement through expert-guided institutional reform, empirical social science, and evidence-based policy, favoring systematic intervention over both market and tradition as organizing principles.',
+         'Seeks deliberate social improvement through institutional reform, empirical inquiry, and public policy, with variants ranging from expert-led administration to participatory and movement-based reform.',
+      usageNote:
+         'A broad and historically changing family: this label should not be read as synonymous with technocracy or one specific contemporary policy platform.',
       philosophies: ["Progressivism","Pragmatism","Empiricism","Social Liberalism"],
       subTheories: ["Social Progressivism","Evidence-Based Policy"],
       ethicalTheory: ["Deontology"],
@@ -4296,7 +4304,9 @@ export const labels: IdeologyLabel[] = [
       family: 'authoritarian',
       subfamily: 'ultranationalist',
       description:
-         'Combines ethnic nationalism, racial hierarchy, state-directed economic corporatism, militarist expansionism, and totalizing racial-national authority with anti-capitalist and anti-communist rhetoric.',
+         'The Nazi ideology of ethnic nationalism, racial hierarchy, antisemitic exclusion, state-directed economic organization, militarist expansionism, and totalizing racial-national authority; its anti-capitalist rhetoric did not make it socialist.',
+      cautionNote:
+         'Use as the historical Nazi ideology and its closely related movements, not as a generic synonym for authoritarianism, nationalism, or state economic intervention.',
       philosophies: ["National Socialism","Fascism","Racialism","Social Darwinism","Totalitarianism"],
    aliases: ["Nazism"],
       subTheories: ["Nazism","Hitlerism","National Socialist"],
@@ -4573,7 +4583,9 @@ export const labels: IdeologyLabel[] = [
       family: 'anarchist',
       subfamily: 'individualist-anarchist',
       description:
-         'Centered on Max Stirner\'s philosophy of egoism, rejects all external authorities—state, morality, ideology, God—as spooks (fixed ideas) constraining the unique individual, advocating temporary voluntary associations serving one\'s self-interest.',
+         'Centers Max Stirner’s philosophy of egoism, which criticizes fixed ideas and externally imposed authority as constraints on the unique individual and leaves room for temporary voluntary associations.',
+      usageNote:
+         'A philosophical current rather than a single organized program; “egoist anarchism” describes its later anarchist reception, not a claim that every Stirnerite shares one policy platform.',
       philosophies: ["Stirnerism","Egoism","Individualist Anarchism","Nihilism"],
    aliases: ["Stirnerism","Philosophical Egoism"],
       subTheories: ["Post-Left Anarchism","Insurrectionary Anarchism"],
@@ -5174,7 +5186,9 @@ export const labels: IdeologyLabel[] = [
       family: 'green',
       subfamily: 'techno-green',
       description:
-         'An optimistic, innovation-driven environmentalist orientation that believes technological progress, market mechanisms, and human ingenuity can solve ecological challenges while fostering economic growth and prosperity.',
+         'An optimistic, innovation-driven environmentalist orientation that treats technological progress, human ingenuity, and sometimes market mechanisms as ways to reduce ecological harm while supporting prosperity.',
+      usageNote:
+         'Distinct from generic technocracy and from ecomodernism’s more specific decoupling thesis; “bright green” is a broad public-facing term rather than one uniform doctrine.',
       philosophies: ["Environmentalism","Techno-Optimism","Ecomodernism","Market Liberalism"],
       subTheories: ["Ecomodernism","Green Growth","Technogaianism"],
       ethicalTheory: ["Consequentialism"],
@@ -5228,7 +5242,7 @@ export const labels: IdeologyLabel[] = [
       family: 'libertarian-leaning',
       subfamily: 'geoist-market',
       description:
-         'A political and economic philosophy based on the ideas of Henry George, arguing that individuals should own the value they produce but that the economic rent from land and natural resources should belong to the community, typically funding public goods through a single land-value tax.',
+         'A political and economic philosophy based on Henry George’s distinction between privately created value and socially generated land or resource rent, generally favoring public capture of that rent through land-value taxation; the historic “single tax” is one formulation, not the only one.',
       philosophies: ["Georgism","Classical Liberalism","Libertarianism","Radical Centrism","Geoism"],
       subTheories: ["Geoism","Single-Tax Theory","Geolibertarianism"],
       ethicalTheory: ["Deontology","Consequentialism"],
@@ -5282,7 +5296,9 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'internationalist',
       description:
-         'A cosmopolitan political orientation that emphasizes moral obligations extending to all persons globally, supports international institutions and cooperation, and advocates for the protection of universal human rights across national boundaries.',
+         'A political orientation that emphasizes cooperation and obligations across national boundaries, supports international institutions, and may draw on universal human-rights or cosmopolitan arguments without requiring one global state.',
+      usageNote:
+         'Internationalism is broader than cosmopolitanism: it can describe cooperation among states, transnational solidarity, or universal rights, depending on the tradition.',
       philosophies: ["Liberalism","Cosmopolitanism","Internationalism","Human Rights","Liberal Internationalism"],
       subTheories: ["Cosmopolitan Liberalism","Global Justice","Liberal Internationalism"],
       ethicalTheory: ["Deontology"],
@@ -5661,6 +5677,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'islamic-democratic',
       description:
          'A broad movement that seeks to implement Islamic principles and Sharia law in governance, public life, and legislation, ranging from democratic participation in pluralistic systems to more comprehensive Islamist state-building projects.',
+      cautionNote:
+         'A broad and internally diverse family of political projects, not a synonym for Islam, Muslim civic participation, or one fixed model of Islamic law and government.',
       philosophies: ["Islamism","Political Islam","Conservatism","Anti-Colonialism","Islamic Democracy"],
       subTheories: ["Islamism","Islamic Democracy","Sharia Governance"],
       ethicalTheory: ["Divine Command Theory","Virtue Ethics"],
@@ -5770,7 +5788,7 @@ export const labels: IdeologyLabel[] = [
       family: 'technocratic',
       subfamily: 'cyberocratic',
       description:
-         'A techno-philosophical worldview that elevates data processing and information flows as the ultimate source of value and governance legitimacy, advocating for decision-making optimized through big-data analytics, algorithmic systems, and quantified efficiency metrics.',
+         'A techno-philosophical worldview that treats data processing and information flows as a central lens for value and governance, favoring decisions informed by analytics, algorithmic systems, and quantified efficiency metrics.',
       usageNote:
          'A popularizing term (associated with Yuval Noah Harari) for an emerging cultural and philosophical tendency, not an organized political movement or an established academic political-science category like the other labels in this set.',
       philosophies: ["Dataism","Technocracy","Transhumanism","Positivism"],
@@ -5826,7 +5844,9 @@ export const labels: IdeologyLabel[] = [
       family: 'technocratic',
       subfamily: 'techno-progressive',
       description:
-         'A futurist ideology focused on accelerating the arrival of the technological singularity through safe artificial intelligence development, human enhancement, and radical life extension, advocating for responsible stewardship of exponentially advancing technologies.',
+         'A futurist movement focused on the possibility of a technological singularity and on accelerating or safely managing advanced artificial intelligence, human enhancement, and radical life extension.',
+      usageNote:
+         'A future-oriented movement and set of arguments rather than a settled political program; views differ sharply on governance, safety, access, and whether acceleration is desirable.',
       philosophies: ["Transhumanism","Futurism","Techno-Optimism","Longtermism"],
       subTheories: ["AI Alignment Theory","Accelerando","Morphological Freedom"],
       ethicalTheory: ["Consequentialism","Longtermism"],
@@ -6098,7 +6118,9 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'centrist',
       description:
-         'A political orientation that rejects traditional left-right dichotomies and embraces pragmatic, evidence-based synthesis of ideas from across the spectrum, advocating for balanced fiscal responsibility with social welfare, civil liberties with security, and gradual reform through institutional channels.',
+         'A political orientation that rejects fixed left-right coalitions and favors pragmatic, evidence-informed synthesis across the spectrum, usually pursuing gradual reform through institutional channels.',
+      usageNote:
+         'A broad and contested political style rather than a single doctrine; “radical” refers to cross-cutting problem-solving, not necessarily to radical institutional change.',
       philosophies: ["Centrism","Liberalism","Pragmatism","Evidence-Based Policy","Third Way"],
       subTheories: ["Third Way","Radical Center","Post-Ideological Politics"],
       ethicalTheory: ["Consequentialism","Pragmatist Ethics"],
@@ -6152,7 +6174,7 @@ export const labels: IdeologyLabel[] = [
       family: 'authoritarian',
       subfamily: 'monarchist-reactionary',
       description:
-         'A conservative royalist ideology advocating for absolute or traditional monarchy as the divinely ordained or historically legitimate form of government, rejecting popular sovereignty, democratic representation, and constitutional limits on royal prerogative.',
+         'A conservative royalist movement that treats hereditary monarchy as historically or traditionally legitimate and often favors strong royal prerogative; positions differ on popular sovereignty, democratic representation, and constitutional limits.',
       usageNote:
          'Describes the broader modern royalist movement and identity, which values monarchy chiefly for its historical continuity and legitimacy; compare Absolute Monarchist, which centers the narrower early-modern theoretical claim about indivisible sovereign power.',
       philosophies: ["Monarchism","Absolutism","Traditionalism","Conservatism"],
@@ -6262,7 +6284,9 @@ export const labels: IdeologyLabel[] = [
       family: 'populist',
       subfamily: 'right-populist',
       description:
-         'A populist orientation that frames political conflict primarily in cultural terms, pitting ordinary people against a cosmopolitan, progressive elite that allegedly disrespects traditional values, national identity, and common-sense cultural norms, often emphasizing immigration, identity, and lifestyle issues.',
+         'A populist orientation that frames political conflict through cultural identity, presenting ordinary people as opposed to distant or cosmopolitan elites and often emphasizing immigration, national identity, and family or lifestyle norms.',
+      cautionNote:
+         'Populism is a thin ideology or political style rather than a complete doctrine; this label describes a right-leaning cultural host, not everyone who defends tradition or restricts immigration.',
       philosophies: ["Populism","Conservatism","Cultural Nationalism","Communitarianism","Cultural Protectionism"],
       subTheories: ["Right-Wing Populism","Nativism","Cultural Protectionism"],
       ethicalTheory: ["Virtue Ethics"],

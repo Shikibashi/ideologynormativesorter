@@ -33,6 +33,27 @@
   --ecw-bevel-light: color-mix(in srgb, var(--ecw-control-highlight) 35%, transparent);
   --ecw-bevel-dark: color-mix(in srgb, var(--ecw-control-shadow) 70%, transparent);
 
+  /* Foundation and semantic ECW tokens. Density changes geometry, never text scale. */
+  --ecw-font-display: Georgia, "Times New Roman", serif;
+  --ecw-font-ui: Verdana, Arial, sans-serif;
+  --ecw-font-system: "Courier New", Courier, monospace;
+  --ecw-font-size-body: 0.9375rem;
+  --ecw-font-size-ui: 0.875rem;
+  --ecw-font-size-meta: 0.8125rem;
+  --ecw-font-size-micro: 0.75rem;
+  --ecw-line-height-body: 1.5;
+  --ecw-line-height-ui: 1.4;
+  --ecw-line-height-meta: 1.35;
+  --ecw-control-block: 1.875rem;
+  --ecw-field-block: 2rem;
+  --ecw-row-block: 1.875rem;
+  --ecw-toolbar-block: 2.25rem;
+  --ecw-control-padding-inline: 0.5rem;
+  --ecw-gap-control: 0.25rem;
+  --ecw-hit-min: 1.875rem;
+  --ecw-space-panel: 0.75rem;
+  --ecw-space-layout: 1rem;
+
   /* Legacy aliases keep the product vocabulary stable while components use semantic roles. */
   --web99-bg: var(--ecw-bg);
   --web99-night: var(--ecw-canvas);
@@ -70,11 +91,11 @@
   --danger: var(--web99-pink);
   --shadow: none;
 
-  --sans: Verdana, Arial, sans-serif;
-  --heading: Georgia, "Times New Roman", serif;
-  --mono: "Courier New", Courier, monospace;
+  --sans: var(--ecw-font-ui);
+  --heading: var(--ecw-font-display);
+  --mono: var(--ecw-font-system);
 
-  font: 15px/1.45 var(--sans);
+  font: var(--ecw-font-size-body)/var(--ecw-line-height-body) var(--sans);
   color: var(--text);
   background: var(--web99-bg);
   color-scheme: dark;
@@ -141,6 +162,26 @@
   --code-bg: var(--ecw-panel-deep);
 
   color-scheme: light;
+}
+
+:root[data-density='compact'] {
+  --ecw-control-block: 1.875rem;
+  --ecw-field-block: 2rem;
+  --ecw-row-block: 1.875rem;
+  --ecw-toolbar-block: 2.25rem;
+  --ecw-control-padding-inline: 0.5rem;
+  --ecw-gap-control: 0.25rem;
+  --ecw-hit-min: 1.875rem;
+}
+
+:root[data-density='comfortable'] {
+  --ecw-control-block: 2.75rem;
+  --ecw-field-block: 2.75rem;
+  --ecw-row-block: 2.5rem;
+  --ecw-toolbar-block: 3rem;
+  --ecw-control-padding-inline: 0.75rem;
+  --ecw-gap-control: 0.5rem;
+  --ecw-hit-min: 2.75rem;
 }
 
 * {
@@ -277,5 +318,59 @@ code {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  body {
+    background: Canvas;
+    background-image: none;
+    color: CanvasText;
+  }
+
+  .site-shell,
+  .result-block,
+  .resume-banner,
+  .philosophy-card,
+  .label-card,
+  .explainer-item,
+  .intro-setup,
+  .research-invite,
+  .prompt,
+  .tier-option,
+  .axis-bar,
+  .label-reasoning,
+  .label-layer-explainer,
+  .label-term-guide {
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+
+  a {
+    color: LinkText;
+  }
+
+  button,
+  select,
+  input,
+  textarea,
+  summary {
+    forced-color-adjust: auto;
+  }
+
+  .primary-button,
+  .scale-button.selected,
+  .statement-button.selected,
+  .dont-know-button.selected,
+  .tier-option.selected {
+    background: Highlight;
+    color: HighlightText;
+    border-color: HighlightText;
+  }
+
+  :focus-visible {
+    outline-color: Highlight;
   }
 }

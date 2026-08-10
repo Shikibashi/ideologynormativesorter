@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { buildCompareUrl, buildShareUrl, decodeAnswers, extractEncodedAnswers } from '../share'
 import type { AnswerMap, Axis, AxisId, AxisReliability, Domain, LabelMatch, LabelReliability, Layer, ResultProfile } from '../types'
 import type { IdeologyLabel } from '../types/label'
+import { getIdeologyLayerSummary, getIdeologyTermDefinitions, LAYER_EXPLAINERS } from '../data/ideologyExplainers'
 import { AxisBar } from './AxisBar'
 import { CompassPlot } from './CompassPlot'
 
@@ -224,6 +225,21 @@ function LabelCard({
          <p>{label.description}</p>
          {label.usageNote && <p className="muted label-note">{label.usageNote}</p>}
          {label.cautionNote && <p className="muted label-note">Note: {label.cautionNote}</p>}
+         <details className="label-layer-explainer">
+            <summary>How this label reads across the three layers</summary>
+            {LAYERS.map((layer) => (
+               <section key={layer} className="label-layer-section">
+                  <h6>{LAYER_EXPLAINERS[layer].label}</h6>
+                  <p>{getIdeologyLayerSummary(label, axisById ? Array.from(axisById.values()) : [], layer)}</p>
+               </section>
+            ))}
+         </details>
+         {getIdeologyTermDefinitions(label).length > 0 && (
+            <details className="label-term-guide">
+               <summary>Term guide</summary>
+               {getIdeologyTermDefinitions(label).map((definition) => <p key={definition}>{definition}</p>)}
+            </details>
+         )}
          {label.philosophies && label.philosophies.length > 0 && (
             <p className="muted">Philosophies: {label.philosophies.slice(0, 5).join(', ')}</p>
          )}

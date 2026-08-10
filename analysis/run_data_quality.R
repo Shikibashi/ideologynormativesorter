@@ -44,12 +44,40 @@ submissions <- submissions[vapply(submissions, function(record) {
 }, logical(1))]
 if (length(submissions) == 0) stop("No valid research submissions were found.")
 
+normalize_self_reported_ideologies <- function(value) {
+  if (is.null(value) || length(value) == 0 || !nzchar(trimws(as.character(value[[1]])))) {
+    return(character(0))
+  }
+  raw <- gsub("[\\r\\n]+", ",", as.character(value[[1]]))
+  candidates <- unlist(strsplit(raw, "[,;|]+"), use.names = FALSE)
+  candidates <- trimws(gsub("\\s+", " ", candidates))
+  candidates <- tolower(candidates)
+  candidates <- gsub("[^[:alnum:]'&/ _-]", "", candidates)
+  candidates <- trimws(candidates)
+  candidates <- candidates[nchar(candidates) >= 2 & nchar(candidates) <= 120]
+  unique(candidates)
+}
+
 answer_rows <- list()
 submission_rows <- list()
 answer_signatures <- character(length(submissions))
+self_reported_ideology_rows <- list()
 
 for (record_index in seq_along(submissions)) {
   record <- submissions[[record_index]]
+  if (identical(record$administration %||% "test", "test")) {
+    identity <- record$identity %||% list()
+    candidates <- normalize_self_reported_ideologies(identity$selfReportedIdeologies)
+    if (length(candidates) > 0) {
+      self_reported_ideology_rows[[length(self_reported_ideology_rows) + 1]] <- data.frame(
+        participant_id = record$participantId,
+        study_id = record$studyId %||% "unknown",
+        bank_version = record$bankVersion %||% "unknown",
+        candidate = candidates,
+        stringsAsFactors = FALSE
+      )
+    }
+  }
   item_ids <- vapply(record$itemMap %||% list(), function(item) item$questionId %||% "", character(1))
   item_ids <- item_ids[nzchar(item_ids)]
   answers <- record$answers
@@ -160,8 +188,41 @@ observed_by_item <- aggregate(value ~ bank_version + question_id + layer, data =
 item_quality <- merge(item_quality, observed_by_item, by = c("bank_version", "question_id", "layer"), all = TRUE)
 names(item_quality)[names(item_quality) == "value"] <- "observed_count"
 
+if (length(self_reported_ideology_rows) > 0) {
+  self_reported_ideologies <- unique(do.call(rbind, self_reported_ideology_rows))
+  self_reported_ideology_summary <- aggregate(
+    participant_id ~ study_id + bank_version + candidate,
+    data = self_reported_ideologies,
+    FUN = function(values) length(unique(values))
+  )
+  names(self_reported_ideology_summary)[names(self_reported_ideology_summary) == "participant_id"] <- "respondent_count"
+  self_reported_ideology_summary <- self_reported_ideology_summary[
+    order(
+      self_reported_ideology_summary$study_id,
+      self_reported_ideology_summary$bank_version,
+      -self_reported_ideology_summary$respondent_count,
+      self_reported_ideology_summary$candidate
+    ),
+    ,
+    drop = FALSE
+  ]
+} else {
+  self_reported_ideology_summary <- data.frame(
+    study_id = character(0),
+    bank_version = character(0),
+    candidate = character(0),
+    respondent_count = integer(0),
+    stringsAsFactors = FALSE
+  )
+}
+
 utils::write.csv(submission_quality, file.path(output_dir, "submission-quality.csv"), row.names = FALSE)
 utils::write.csv(item_quality, file.path(output_dir, "item-response-quality.csv"), row.names = FALSE)
+utils::write.csv(
+  self_reported_ideology_summary,
+  file.path(output_dir, "self-reported-ideology-candidates.csv"),
+  row.names = FALSE
+)
 utils::write.csv(
   submission_quality[submission_quality$exclusion_candidate, , drop = FALSE],
   file.path(output_dir, "exclusion-candidates.csv"),
@@ -174,6 +235,7 @@ summary <- list(
   validConsentCount = sum(submission_quality$consent_valid),
   exclusionCandidateCount = sum(submission_quality$exclusion_candidate),
   duplicateVectorCount = sum(submission_quality$duplicate_answer_vector),
+  selfReportedIdeologyCandidateCount = nrow(self_reported_ideology_summary),
   medianDurationMs = stats::median(submission_quality$duration_ms, na.rm = TRUE),
   medianMissingRate = stats::median(submission_quality$missing_rate, na.rm = TRUE),
   thresholds = list(

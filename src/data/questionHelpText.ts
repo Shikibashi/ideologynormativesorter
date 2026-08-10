@@ -1,6 +1,7 @@
 import type { Question } from '../types'
 import { academicTermDictionary } from './academicTermDictionary'
 import { domainById } from './domains'
+import { LAYER_EXPLAINERS } from './ideologyExplainers'
 
 interface TermDefinition {
   pattern: RegExp
@@ -762,12 +763,6 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
 ]
 
-const LAYER_MEASUREMENT: Record<Question['layer'], string> = {
-  normative: 'your moral judgment',
-  descriptive: 'your practical belief',
-  prescriptive: 'your preferred policy direction',
-}
-
 const SALIENCE_HELP_TEXT: Record<'confidence' | 'priority', string> = {
   confidence: '“Confidence” means how sure you are that your answer is accurate. This rating controls how strongly this empirical answer counts in your result.',
   priority: '“Priority” means how important this reform is compared with other changes. This rating controls how strongly this policy preference counts in your result.',
@@ -818,7 +813,7 @@ export function getQuestionHelpText(question: Question): string {
   const domainPhrase = domain ? domain.name.toLowerCase() : 'this topic'
   const responseQualifier = getResponseQualifier(question)
 
-  return `${definitionText} This question measures ${LAYER_MEASUREMENT[question.layer]} about ${domainPhrase}, based on ${responseQualifier}.`
+  return `${definitionText} This question measures ${LAYER_EXPLAINERS[question.layer].measurement} about ${domainPhrase}, based on ${responseQualifier}.`
 }
 
 export function getSalienceHelpText(kind: 'confidence' | 'priority'): string {

@@ -97,6 +97,7 @@ The data-quality workflow writes:
 - `data-quality-summary.json`
 - `submission-quality.csv`
 - `item-response-quality.csv`
+- `self-reported-ideology-candidates.csv` — private aggregate counts of optional respondent-supplied ideology names from initial administrations; this is a discovery queue, not an automatic taxonomy update.
 - `exclusion-candidates.csv`
 
 The core psychometric workflow writes:

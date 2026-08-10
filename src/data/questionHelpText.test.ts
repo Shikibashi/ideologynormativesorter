@@ -27,7 +27,7 @@ describe('question help text', () => {
     const helpText = getQuestionHelpText(baseQuestion)
 
     expect(helpText).toContain('“Exit” means')
-    expect(helpText).toContain('This question measures your moral judgment about state legitimacy, based on how strongly you agree')
+    expect(helpText).toContain('This question measures what you think is morally legitimate, fair, or permissible about state legitimacy, based on how strongly you agree')
     expect(helpText).not.toContain('people should have meaningful exit rights from political authority')
     expect(helpText).not.toContain('with scoring focused on')
   })
@@ -165,9 +165,9 @@ describe('question help text', () => {
 
       expect(helpText, `${question.id} should start with a quoted plain-language term`).toMatch(/^“[^”]+” means /)
       expect(helpText, `${question.id} should include one clear measurement sentence`).toContain(`This question measures ${{
-        normative: 'your moral judgment',
-        descriptive: 'your practical belief',
-        prescriptive: 'your preferred policy direction',
+        normative: 'what you think is morally legitimate, fair, or permissible',
+        descriptive: 'what you think tends to be true in the world',
+        prescriptive: 'what you think should be done under current conditions',
       }[question.layer]} about `)
       expect(lowerHelpText, `${question.id} should not use the generic missing-domain fallback`).not.toContain('general political judgment prompt')
       expect(helpText.length, `${question.id} should stay concise enough to read inline`).toBeLessThanOrEqual(650)

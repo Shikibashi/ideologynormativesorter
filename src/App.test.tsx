@@ -119,12 +119,26 @@ function handleSalienceIfPresent() {
 }
 
 describe('App', () => {
+   it('opens the public research URL at explicit consent before questions', () => {
+      window.history.replaceState(null, '', '/?research=1&study=pilot-2026&formSize=120')
+
+      render(<App />)
+
+      expect(screen.getByRole('heading', { name: /research participation/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /continue to study/i })).toBeDisabled()
+      expect(screen.queryByText(/question 1 of 120/i)).not.toBeInTheDocument()
+   })
+
    it('walks through intro, the quick quiz, and renders results', () => {
       render(<App />)
 
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
       expect(screen.getByRole('complementary', { name: /session setup/i })).toBeInTheDocument()
       expect(screen.getByText(/choose the depth of the assessment/i)).toBeInTheDocument()
+      expect(screen.getByRole('link', { name: /enter the validation study/i })).toHaveAttribute(
+         'href',
+         '?research=1&study=pilot-2026&formSize=120',
+      )
       fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 

@@ -7,8 +7,9 @@ import type {
   SpecialistOutcome,
 } from '../specialist'
 
-export const RESEARCH_SCHEMA_VERSION = '2026-08-v3'
-export const RESEARCH_CONSENT_VERSION = '2026-08-10-v2'
+export const RESEARCH_SCHEMA_VERSION = '2026-08-v4'
+export const RESEARCH_CONSENT_VERSION = '2026-08-10-v3'
+export const PUBLIC_RESEARCH_ENTRYPOINT = '?research=1&study=pilot-2026&formSize=120'
 const PARTICIPANT_STORAGE_KEY = 'political-judgment-research-participant-v1'
 
 export type ResearchAdministration = 'test' | 'retest'
@@ -24,6 +25,8 @@ export interface ResearchConsent {
 
 export interface ResearchIdentity {
   selfLabelId?: string
+  /** Optional respondent-supplied names of one or more ideologies or traditions. */
+  selfReportedIdeologies?: string
   ageBand?: '18-24' | '25-34' | '35-44' | '45-54' | '55-64' | '65+'
   genderGroup?: 'woman' | 'man' | 'nonbinary-or-another'
 }
@@ -113,6 +116,11 @@ function durationBetween(startedAt: string, completedAt: string): number {
   return Math.max(0, completed - started)
 }
 
+function normalizeSelfReportedIdeologies(value?: string): string | undefined {
+  const normalized = value?.replace(/\s+/g, ' ').trim().slice(0, 240)
+  return normalized || undefined
+}
+
 function buildItemMap(
   questions: Question[],
   constructWeightsByQuestionId?: Record<string, Record<string, number>>,
@@ -188,7 +196,10 @@ export function buildResearchSubmission(input: {
     scoringVersion: input.scoringVersion,
     tier: input.tier,
     consent: input.consent,
-    identity: input.identity,
+    identity: {
+      ...input.identity,
+      selfReportedIdeologies: normalizeSelfReportedIdeologies(input.identity.selfReportedIdeologies),
+    },
     predictedLabelIds: input.predictedLabelIds.slice(0, 5),
     specialistAssignment: input.specialistAssignment,
     answers: input.answers,

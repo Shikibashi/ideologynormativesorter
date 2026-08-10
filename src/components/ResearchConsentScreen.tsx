@@ -33,11 +33,13 @@ export function ResearchConsentScreen({ participantId, administration, onConsent
         Participation is optional. Declining returns you to the ordinary quiz.
       </p>
       <p className="muted">
-        The core study record contains your answers, broad optional demographic groups, a self-selected political label,
-        test versions, and a random participant code. Research mode may also assign you one optional specialist follow-up
-        after the core test. Follow-ups can ask about topics such as gender and family or race, ethnicity, nationalism,
-        colonialism, and Indigenous sovereignty. You may skip an assigned follow-up without losing your main result or
-        withdrawing your core study record.
+        The core study record contains your answers, broad optional demographic groups, an existing self-selected political
+        label, any optional ideology or tradition names you provide, test versions, and a random participant code. Those
+        names are used to find candidate labels for later human review; they do not automatically change scores or add
+        production ideologies. Research mode may also assign you one optional specialist follow-up after the core test.
+        Follow-ups can ask about topics such as gender and family or race, ethnicity, nationalism, colonialism, and
+        Indigenous sovereignty. You may skip an assigned follow-up without losing your main result or withdrawing your core
+        study record.
       </p>
       <p className="muted">
         If you complete a specialist follow-up, its answers, a pre-result self-description from the relevant traditions,

@@ -63,7 +63,11 @@ describe('research submission', () => {
       scoringVersion: 'score-v1',
       tier: 'quick',
       consent,
-      identity: { selfLabelId: 'market-liberal', ageBand: '25-34' },
+      identity: {
+        selfLabelId: 'market-liberal',
+        selfReportedIdeologies: '  Mutualism;  Pan-Africanism  ',
+        ageBand: '25-34',
+      },
       predictedLabelIds: ['market-liberal', 'classical-liberalism'],
       specialistAssignment: { moduleId: 'feminist-faction-module', strategy: 'balanced-hash-v1' },
       answers,
@@ -75,6 +79,7 @@ describe('research submission', () => {
     expect(submission.recordType).toBe('core')
     expect(submission.studyId).toBe('pilotone')
     expect(submission.identity.selfLabelId).toBe('market-liberal')
+    expect(submission.identity.selfReportedIdeologies).toBe('Mutualism; Pan-Africanism')
     expect(submission.predictedLabelIds).toEqual(['market-liberal', 'classical-liberalism'])
     expect(submission.specialistAssignment?.moduleId).toBe('feminist-faction-module')
     expect(submission.durationMs).toBe(600_000)

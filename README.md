@@ -60,6 +60,8 @@ Research mode is never enabled silently. An initial matrix-sampled administratio
 ?research=1&study=pilot-2026&formSize=120
 ```
 
+The ordinary intro screen also exposes this as an explicit opt-in validation-study link. Before results, respondents may optionally provide one or more ideology or tradition names that are not in the current label set. Those names are stored as research metadata and summarized for later human review; they do not automatically alter scoring or add production labels.
+
 A retest uses:
 
 ```text

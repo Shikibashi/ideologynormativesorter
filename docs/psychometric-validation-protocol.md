@@ -97,6 +97,7 @@ Capture:
 - total duration and resume status;
 - item responses and confidence/priority values;
 - optional pre-result self-label from the instrument label set;
+- optional respondent-supplied ideology or tradition names for a private candidate-discovery report;
 - optional broad age band and gender group for preregistered DIF analysis;
 - item metadata required to reproduce orientation and exclusions;
 - consent timestamp and version.
@@ -206,7 +207,7 @@ Research mode produces a versioned record equivalent to:
 
 ```json
 {
-  "schemaVersion": "2026-07-v2",
+  "schemaVersion": "2026-08-v4",
   "studyId": "pilot-2026",
   "participantId": "p_random-code",
   "administration": "test",
@@ -223,11 +224,12 @@ Research mode produces a versioned record equivalent to:
     "ageConfirmed": true,
     "voluntaryParticipation": true,
     "dataUseAccepted": true,
-    "consentVersion": "2026-07-18-v1",
+    "consentVersion": "2026-08-10-v3",
     "consentedAt": "2026-07-18T11:59:00.000Z"
   },
   "identity": {
     "selfLabelId": "optional-label-id",
+    "selfReportedIdeologies": "optional, comma-separated respondent wording",
     "ageBand": "optional-broad-band",
     "genderGroup": "optional-broad-group"
   },

@@ -9,6 +9,7 @@ interface SelfIdentificationScreenProps {
 
 export function SelfIdentificationScreen({ labels, onContinue }: SelfIdentificationScreenProps) {
   const [selfLabelId, setSelfLabelId] = useState('')
+  const [selfReportedIdeologies, setSelfReportedIdeologies] = useState('')
   const [ageBand, setAgeBand] = useState<ResearchIdentity['ageBand']>()
   const [genderGroup, setGenderGroup] = useState<ResearchIdentity['genderGroup']>()
   const [submitting, setSubmitting] = useState(false)
@@ -21,6 +22,7 @@ export function SelfIdentificationScreen({ labels, onContinue }: SelfIdentificat
     try {
       await onContinue({
         selfLabelId: selfLabelId || undefined,
+        selfReportedIdeologies: selfReportedIdeologies.trim() || undefined,
         ageBand,
         genderGroup,
       })
@@ -44,6 +46,20 @@ export function SelfIdentificationScreen({ labels, onContinue }: SelfIdentificat
           <option value="">No label, unsure, other, or prefer not to answer</option>
           {sortedLabels.map((label) => <option key={label.id} value={label.id}>{label.name}</option>)}
         </select>
+      </label>
+
+      <label className="form-field">
+        <span>Other ideology, tradition, or movement you subscribe to (optional)</span>
+        <textarea
+          value={selfReportedIdeologies}
+          maxLength={240}
+          rows={3}
+          aria-describedby="self-reported-ideologies-help"
+          onChange={(event) => setSelfReportedIdeologies(event.target.value)}
+        />
+        <span id="self-reported-ideologies-help" className="muted">
+          List one or more names separated by commas. Please do not include your name, contact details, or other personal information.
+        </span>
       </label>
 
       <label className="form-field">

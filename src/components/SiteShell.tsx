@@ -7,9 +7,12 @@ interface SiteShellProps {
 
 type Appearance = 'system' | 'dark' | 'light'
 type Theme = Exclude<Appearance, 'system'>
+type Density = 'automatic' | 'compact' | 'comfortable'
+type ResolvedDensity = Exclude<Density, 'automatic'>
 
 const APPEARANCE_STORAGE_KEY = 'political-judgment-appearance-v1'
 const LEGACY_THEME_STORAGE_KEY = 'political-judgment-theme-v1'
+const DENSITY_STORAGE_KEY = 'political-judgment-density-v1'
 
 function readAppearance(): Appearance {
   if (typeof window === 'undefined') return 'system'
@@ -29,10 +32,35 @@ function systemPrefersDark(): boolean {
     : window.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
+function readDensity(): Density {
+  if (typeof window === 'undefined') return 'automatic'
+
+  try {
+    const stored = window.localStorage.getItem(DENSITY_STORAGE_KEY)
+    return stored === 'compact' || stored === 'comfortable' || stored === 'automatic' ? stored : 'automatic'
+  } catch {
+    return 'automatic'
+  }
+}
+
+function systemPrefersComfortable(): boolean {
+  if (typeof window === 'undefined') return false
+  const coarsePointer = typeof window.matchMedia === 'function'
+    && window.matchMedia('(pointer: coarse)').matches
+  const noHover = typeof window.matchMedia === 'function'
+    && window.matchMedia('(hover: none)').matches
+  return coarsePointer || noHover || window.innerWidth < 720
+}
+
 export function SiteShell({ children }: SiteShellProps) {
-  const [appearance, setAppearance] = useState<Appearance>(() => readAppearance())
-  const [systemDark, setSystemDark] = useState(systemPrefersDark)
-  const theme: Theme = appearance === 'system' ? (systemDark ? 'dark' : 'light') : appearance
+   const [appearance, setAppearance] = useState<Appearance>(() => readAppearance())
+   const [systemDark, setSystemDark] = useState(systemPrefersDark)
+   const [density, setDensity] = useState<Density>(() => readDensity())
+   const [comfortableInput, setComfortableInput] = useState(systemPrefersComfortable)
+   const theme: Theme = appearance === 'system' ? (systemDark ? 'dark' : 'light') : appearance
+   const resolvedDensity: ResolvedDensity = density === 'automatic'
+      ? comfortableInput ? 'comfortable' : 'compact'
+      : density
 
   useEffect(() => {
     if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return
@@ -47,9 +75,32 @@ export function SiteShell({ children }: SiteShellProps) {
     return () => media.removeListener?.(update)
   }, [])
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const mediaQueries = typeof window.matchMedia === 'function'
+      ? [window.matchMedia('(pointer: coarse)'), window.matchMedia('(hover: none)')]
+      : []
+    const update = () => setComfortableInput(systemPrefersComfortable())
+    update()
+    window.addEventListener('resize', update)
+    mediaQueries.forEach((media) => {
+      if (media.addEventListener) media.addEventListener('change', update)
+      else media.addListener?.(update)
+    })
+    return () => {
+      window.removeEventListener('resize', update)
+      mediaQueries.forEach((media) => {
+        if (media.removeEventListener) media.removeEventListener('change', update)
+        else media.removeListener?.(update)
+      })
+    }
+  }, [])
+
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme
-  }, [theme])
+    document.documentElement.dataset.density = resolvedDensity
+  }, [resolvedDensity, theme])
 
   useEffect(() => {
     try {
@@ -59,12 +110,20 @@ export function SiteShell({ children }: SiteShellProps) {
     }
   }, [appearance])
 
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(DENSITY_STORAGE_KEY, density)
+    } catch {
+      // The visual preference still applies when storage is unavailable.
+    }
+  }, [density])
+
   return (
     <div className="site-shell" data-theme={theme}>
       <header className="site-masthead">
         <div className="site-brand">
           <p className="site-kicker">EDRIFFLES WEB 99 / POLITICAL JUDGMENT LAB</p>
-          <p className="site-title">Political Judgment Decomposition</p>
+          <p className="site-title">Political Judgment Lab</p>
           <p className="site-tagline">A layered profile of values, beliefs, and strategy.</p>
         </div>
         <div className="site-utility">
@@ -74,21 +133,91 @@ export function SiteShell({ children }: SiteShellProps) {
             <span>SESSION</span>
             <strong>BROWSER</strong>
           </div>
-          <label className="appearance-control">
-            <span>Appearance</span>
-            <select
-              aria-label="Appearance"
-              value={appearance}
-              onChange={(event) => {
-                const value = event.target.value
-                if (value === 'system' || value === 'light' || value === 'dark') setAppearance(value)
-              }}
-            >
-              <option value="system">System</option>
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-            </select>
-          </label>
+          <details className="display-control">
+            <summary>DISPLAY</summary>
+            <div className="display-popover">
+              <fieldset>
+                <legend>Appearance</legend>
+                <label className="display-option">
+                  <input
+                    type="radio"
+                    name="appearance"
+                    value="system"
+                    checked={appearance === 'system'}
+                    onChange={() => setAppearance('system')}
+                  />
+                  <span>System</span>
+                </label>
+                <label className="display-option">
+                  <input
+                    type="radio"
+                    name="appearance"
+                    value="light"
+                    checked={appearance === 'light'}
+                    onChange={() => setAppearance('light')}
+                  />
+                  <span>Light</span>
+                </label>
+                <label className="display-option">
+                  <input
+                    type="radio"
+                    name="appearance"
+                    value="dark"
+                    checked={appearance === 'dark'}
+                    onChange={() => setAppearance('dark')}
+                  />
+                  <span>Dark</span>
+                </label>
+                {appearance === 'system' && <p className="display-status">currently {theme}</p>}
+              </fieldset>
+
+              <fieldset>
+                <legend>Density</legend>
+                <label className="display-option">
+                  <input
+                    type="radio"
+                    name="density"
+                    value="automatic"
+                    checked={density === 'automatic'}
+                    onChange={() => setDensity('automatic')}
+                  />
+                  <span>Automatic</span>
+                </label>
+                <label className="display-option">
+                  <input
+                    type="radio"
+                    name="density"
+                    value="compact"
+                    checked={density === 'compact'}
+                    onChange={() => setDensity('compact')}
+                  />
+                  <span>Compact</span>
+                </label>
+                <label className="display-option">
+                  <input
+                    type="radio"
+                    name="density"
+                    value="comfortable"
+                    checked={density === 'comfortable'}
+                    onChange={() => setDensity('comfortable')}
+                  />
+                  <span>Comfortable</span>
+                </label>
+                {density === 'automatic' && <p className="display-status">currently {resolvedDensity}</p>}
+              </fieldset>
+
+              <button
+                type="button"
+                className="display-reset"
+                onClick={() => {
+                  setAppearance('system')
+                  setDensity('automatic')
+                }}
+              >
+                Restore display defaults
+              </button>
+            </div>
+          </details>
         </div>
       </header>
 

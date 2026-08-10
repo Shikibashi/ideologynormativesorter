@@ -9,6 +9,8 @@ export interface ValidationResponse {
   answers: AnswerMap
   /** Optional self-identification captured before results are shown. */
   selfLabelId?: string
+  /** Optional respondent-supplied ideology names kept for candidate discovery, not scoring. */
+  selfReportedIdeologies?: string
   /** Optional coarse group for later fairness analysis. Never require sensitive attributes. */
   group?: string
 }

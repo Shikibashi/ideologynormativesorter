@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { PUBLIC_RESEARCH_ENTRYPOINT } from '../research'
 import type { QuizTier } from '../types'
 
 interface TierOption {
@@ -98,36 +99,53 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
           </p>
         </div>
 
-        <aside className="intro-setup" aria-labelledby="session-setup-heading">
-          <h2 id="session-setup-heading">Session setup</h2>
-          <p className="muted">Choose the depth of the assessment before you begin.</p>
-          <fieldset className="tier-picker">
-            <legend>Choose a length</legend>
-            {TIER_OPTIONS.map((option) => (
-              <label key={option.tier} className={`tier-option${tier === option.tier ? ' selected' : ''}`}>
-                <input
-                  type="radio"
-                  name="tier"
-                  value={option.tier}
-                  checked={tier === option.tier}
-                  onChange={() => setTier(option.tier)}
-                />
-                <span className="tier-option-label">
-                  {option.label} &middot; {questionCounts[option.tier]} questions
-                </span>
-                <span className="tier-option-blurb">{option.blurb}</span>
-              </label>
-            ))}
-          </fieldset>
+        <div className="intro-rail">
+          <aside className="intro-setup" aria-labelledby="session-setup-heading">
+            <h2 id="session-setup-heading">Session setup</h2>
+            <p className="muted">Choose the depth of the assessment before you begin.</p>
+            <fieldset className="tier-picker">
+              <legend>Choose a length</legend>
+              {TIER_OPTIONS.map((option) => (
+                <label key={option.tier} className={`tier-option${tier === option.tier ? ' selected' : ''}`}>
+                  <input
+                    type="radio"
+                    name="tier"
+                    value={option.tier}
+                    checked={tier === option.tier}
+                    onChange={() => setTier(option.tier)}
+                  />
+                  <span className="tier-option-label">
+                    {option.label} &middot; {questionCounts[option.tier]} questions
+                  </span>
+                  <span className="tier-option-blurb">{option.blurb}</span>
+                </label>
+              ))}
+            </fieldset>
 
-          <p className="muted">
-            Covers {domainCount} policy domains. You can answer "I don't know" on empirical items.
-          </p>
+            <p className="muted">
+              Covers {domainCount} policy domains. You can answer "I don't know" on empirical items.
+            </p>
 
-          <button type="button" className="primary-button" onClick={() => onStart(tier)}>
-            Begin assessment
-          </button>
-        </aside>
+            <button type="button" className="primary-button" onClick={() => onStart(tier)}>
+              Begin assessment
+            </button>
+          </aside>
+
+          <section className="research-invite" aria-labelledby="research-invite-heading">
+            <h2 id="research-invite-heading">Help expand the label set</h2>
+            <p>
+              Adults can opt into a separate validation study using a balanced 120-question form. Before seeing the result,
+              you may name one or more ideologies or traditions you subscribe to, including ones not listed here.
+            </p>
+            <p className="muted">
+              Your optional self-description helps us find candidate labels for later human review. It does not automatically
+              change scores or add an ideology to the product. Participation is voluntary and consent appears before questions.
+            </p>
+            <a className="research-link" href={PUBLIC_RESEARCH_ENTRYPOINT}>
+              Enter the validation study
+            </a>
+          </section>
+        </div>
       </div>
     </section>
   )
