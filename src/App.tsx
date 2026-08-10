@@ -9,7 +9,7 @@ import { SelfIdentificationScreen } from './components/SelfIdentificationScreen'
 import { axes } from './data/axes'
 import { domains } from './data/domains'
 import { questionById, questions, questionsForTier } from './data/effectiveQuestions'
-import { labels } from './data/labels'
+import { primaryScoringLabels, publicCatalogLabels, researchIdentityLabels } from './data/labelTaxonomy'
 import {
    buildResearchSubmission,
    getOrCreateParticipantId,
@@ -60,10 +60,10 @@ function App() {
    const [activeQuestions, setActiveQuestions] = useState(questions)
    const [answers, setAnswers] = useState<AnswerMap>(sharedAnswers ?? {})
    const [result, setResult] = useState<ResultProfile | null>(() =>
-      sharedAnswers ? buildResultProfile(questions, sharedAnswers, axes, labels) : null,
+      sharedAnswers ? buildResultProfile(questions, sharedAnswers, axes, primaryScoringLabels) : null,
    )
    const [compareResult, setCompareResult] = useState<ResultProfile | null>(() =>
-      compareAnswers ? buildResultProfile(questions, compareAnswers, axes, labels) : null,
+      compareAnswers ? buildResultProfile(questions, compareAnswers, axes, primaryScoringLabels) : null,
    )
    const [resuming, setResuming] = useState(false)
 
@@ -167,7 +167,7 @@ function App() {
       setSavedProgress(null)
       setAnswers(newAnswers)
       setQuizCompletedAt(completedAt)
-      setResult(buildResultProfile(questions, newAnswers, axes, labels))
+      setResult(buildResultProfile(questions, newAnswers, axes, primaryScoringLabels))
       setStage(researchEnabled && researchConsent ? 'self-identification' : 'results')
    }
 
@@ -198,7 +198,7 @@ function App() {
    }
 
    function handleCompare(newCompareAnswers: AnswerMap): void {
-      setCompareResult(buildResultProfile(questions, newCompareAnswers, axes, labels))
+      setCompareResult(buildResultProfile(questions, newCompareAnswers, axes, primaryScoringLabels))
    }
 
    function handleClearSavedProgress(): void {
@@ -262,7 +262,7 @@ function App() {
    }
 
    if (stage === 'self-identification') {
-      return <SelfIdentificationScreen labels={labels} onContinue={handleResearchIdentity} />
+      return <SelfIdentificationScreen labels={researchIdentityLabels} onContinue={handleResearchIdentity} />
    }
 
    return result ? (
@@ -274,7 +274,7 @@ function App() {
             result={result}
             axes={axes}
             domains={domains}
-            labels={labels}
+            labels={publicCatalogLabels}
             answers={answers}
             compareResult={compareResult}
             onCompare={handleCompare}
