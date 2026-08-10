@@ -8,7 +8,7 @@ import type {
 } from '../specialist'
 
 export const RESEARCH_SCHEMA_VERSION = '2026-08-v3'
-export const RESEARCH_CONSENT_VERSION = '2026-07-18-v1'
+export const RESEARCH_CONSENT_VERSION = '2026-08-10-v2'
 const PARTICIPANT_STORAGE_KEY = 'political-judgment-research-participant-v1'
 
 export type ResearchAdministration = 'test' | 'retest'
