@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import './App.css'
 import { IntroScreen } from './components/IntroScreen'
 import { QuizScreen } from './components/QuizScreen'
@@ -6,12 +6,16 @@ import { ResearchConsentScreen } from './components/ResearchConsentScreen'
 import { ResearchReceipt } from './components/ResearchReceipt'
 import { ResultsScreen } from './components/ResultsScreen'
 import { SelfIdentificationScreen } from './components/SelfIdentificationScreen'
+import { SpecialistCriterionScreen } from './components/SpecialistCriterionScreen'
+import { SpecialistModuleInvite } from './components/SpecialistModuleInvite'
+import { SpecialistModuleResultScreen } from './components/SpecialistModuleResultScreen'
 import { axes } from './data/axes'
 import { domains } from './data/domains'
 import { questionById, questions, questionsForTier } from './data/effectiveQuestions'
 import { primaryScoringLabels, publicCatalogLabels, researchIdentityLabels } from './data/labelTaxonomy'
 import {
    buildResearchSubmission,
+   buildSpecialistResearchSubmission,
    getOrCreateParticipantId,
    isResearchMode,
    researchAdministration,
@@ -21,16 +25,47 @@ import {
    type ResearchIdentity,
    type ResearchSubmission,
    type ResearchSubmissionStatus,
+   type SpecialistResearchSubmission,
 } from './research'
 import { buildResearchQuestionForm, researchFormSize } from './research/forms'
 import { buildResultProfile } from './scoring'
 import { readCompareAnswers, readSharedResult } from './share'
-import type { AnswerMap, QuizTier, ResultProfile } from './types'
+import {
+   assignSpecialistModule,
+   buildSpecialistQuestionForm,
+   scoreSpecialistModule,
+   specialistModuleById,
+   type SpecialistCriterionResponse,
+   type SpecialistOutcome,
+} from './specialist'
+import {
+   clearSpecialistProgress,
+   loadSpecialistProgress,
+   saveSpecialistProgress,
+   type SpecialistProgressSave,
+} from './specialist/save'
+import type { AnswerMap, Question, QuizTier, ResultProfile } from './types'
 import { clearQuizState, loadQuizState, getQuizProgress } from './save'
 
-type Stage = 'intro' | 'consent' | 'quiz' | 'self-identification' | 'results'
+type Stage =
+   | 'intro'
+   | 'consent'
+   | 'quiz'
+   | 'self-identification'
+   | 'specialist-invite'
+   | 'specialist-quiz'
+   | 'specialist-criterion'
+   | 'specialist-result'
+   | 'results'
 
 const TIERS: QuizTier[] = ['blitz', 'quick', 'moderate', 'extensive']
+
+function answersForQuestions(source: AnswerMap, questionList: Question[]): AnswerMap {
+   const allowed = new Set(questionList.map((question) => String(question.id)))
+   return Object.fromEntries(
+      Object.entries(source).filter(([questionId]) => allowed.has(questionId)),
+   ) as AnswerMap
+}
 
 function App() {
    const [shareLoad] = useState(readSharedResult)
@@ -41,9 +76,28 @@ function App() {
    const formSize = useMemo(() => researchFormSize(), [])
    const [researchEnabled, setResearchEnabled] = useState(initialResearchMode)
    const [participantId] = useState(() => initialResearchMode ? getOrCreateParticipantId() : '')
+   const specialistAssignment = useMemo(
+      () => initialResearchMode && participantId ? assignSpecialistModule(participantId, studyId) : null,
+      [initialResearchMode, participantId, studyId],
+   )
+   const assignedSpecialistModule = useMemo(
+      () => specialistAssignment ? specialistModuleById.get(specialistAssignment.moduleId) ?? null : null,
+      [specialistAssignment],
+   )
+
    const [researchConsent, setResearchConsent] = useState<ResearchConsent | null>(null)
    const [researchSubmission, setResearchSubmission] = useState<ResearchSubmission | null>(null)
    const [researchStatus, setResearchStatus] = useState<ResearchSubmissionStatus | null>(null)
+   const [specialistSubmission, setSpecialistSubmission] = useState<SpecialistResearchSubmission | null>(null)
+   const [specialistStatus, setSpecialistStatus] = useState<ResearchSubmissionStatus | null>(null)
+   const [specialistProgress, setSpecialistProgress] = useState<SpecialistProgressSave | null>(null)
+   const [specialistQuestions, setSpecialistQuestions] = useState<Question[]>([])
+   const [specialistAnswers, setSpecialistAnswers] = useState<AnswerMap>({})
+   const [specialistResumeIndex, setSpecialistResumeIndex] = useState(0)
+   const [specialistStartedAt, setSpecialistStartedAt] = useState<string | null>(null)
+   const [specialistResuming, setSpecialistResuming] = useState(false)
+   const [specialistOutcome, setSpecialistOutcome] = useState<SpecialistOutcome | null>(null)
+
    const [pendingTier, setPendingTier] = useState<QuizTier>('moderate')
    const [resumeAfterConsent, setResumeAfterConsent] = useState(false)
    const [resumeIndex, setResumeIndex] = useState(0)
@@ -74,8 +128,35 @@ function App() {
    )
    const [savedProgress, setSavedProgress] = useState(() => getQuizProgress())
 
+   const persistSpecialistProgress = useCallback(
+      ({ answers: currentAnswers, index }: { answers: AnswerMap; index: number }) => {
+         if (!specialistAssignment || !specialistStartedAt) {
+            return { saved: false as const, reason: 'Follow-up progress could not be saved because its session context is missing.' }
+         }
+         return saveSpecialistProgress({
+            participantId,
+            administration,
+            moduleId: specialistAssignment.moduleId,
+            answers: currentAnswers,
+            index,
+            startedAt: specialistStartedAt,
+         })
+      },
+      [administration, participantId, specialistAssignment, specialistStartedAt],
+   )
+
    function refreshSavedProgress(): void {
       setSavedProgress(getQuizProgress())
+   }
+
+   function refreshSpecialistProgress(): SpecialistProgressSave | null {
+      if (!specialistAssignment) {
+         setSpecialistProgress(null)
+         return null
+      }
+      const saved = loadSpecialistProgress(participantId, administration, specialistAssignment.moduleId)
+      setSpecialistProgress(saved)
+      return saved
    }
 
    function beginQuiz(tier: QuizTier, researchSession: boolean): void {
@@ -185,6 +266,7 @@ function App() {
          consent: researchConsent,
          identity,
          predictedLabelIds: result.nearestLabels.slice(0, 5).map((match) => String(match.labelId)),
+         specialistAssignment: specialistAssignment ?? undefined,
          answers,
          questions: activeQuestions,
          startedAt: quizStartedAt,
@@ -194,6 +276,116 @@ function App() {
       const status = await submitResearchSubmission(submission, import.meta.env.VITE_RESEARCH_ENDPOINT)
       setResearchSubmission(submission)
       setResearchStatus(status)
+
+      if (specialistAssignment && assignedSpecialistModule) {
+         refreshSpecialistProgress()
+         setStage('specialist-invite')
+      } else {
+         setStage('results')
+      }
+   }
+
+   function handleStartSpecialist(): void {
+      if (!specialistAssignment || !assignedSpecialistModule) {
+         setStage('results')
+         return
+      }
+      const form = buildSpecialistQuestionForm(specialistAssignment.moduleId, participantId, administration)
+      if (form.length === 0) {
+         setStage('results')
+         return
+      }
+
+      const saved = loadSpecialistProgress(participantId, administration, specialistAssignment.moduleId)
+      const restoredAnswers = saved ? answersForQuestions(saved.answers, form) : {}
+      const firstUnanswered = form.findIndex((question) => restoredAnswers[question.id] === undefined)
+      setSpecialistQuestions(form)
+      setSpecialistAnswers(restoredAnswers)
+      setSpecialistResumeIndex(firstUnanswered >= 0 ? firstUnanswered : Math.max(0, form.length - 1))
+      setSpecialistStartedAt(saved?.startedAt ?? new Date().toISOString())
+      setSpecialistResuming(Boolean(saved))
+      setSpecialistOutcome(null)
+      setSpecialistProgress(saved)
+      setStage('specialist-quiz')
+   }
+
+   function handleExitSpecialistQuiz(): void {
+      refreshSpecialistProgress()
+      setStage('specialist-invite')
+   }
+
+   function handleSkipSpecialist(): void {
+      if (specialistAssignment) {
+         clearSpecialistProgress(participantId, administration, specialistAssignment.moduleId)
+      }
+      setSpecialistProgress(null)
+      setSpecialistQuestions([])
+      setSpecialistAnswers({})
+      setSpecialistResumeIndex(0)
+      setSpecialistStartedAt(null)
+      setSpecialistResuming(false)
+      setSpecialistOutcome(null)
+      setStage('results')
+   }
+
+   function handleSpecialistComplete(newAnswers: AnswerMap): void {
+      if (!specialistAssignment) {
+         setStage('results')
+         return
+      }
+      clearSpecialistProgress(participantId, administration, specialistAssignment.moduleId)
+      setSpecialistProgress(null)
+      setSpecialistAnswers(newAnswers)
+      setSpecialistOutcome(scoreSpecialistModule(specialistAssignment.moduleId, newAnswers))
+      setSpecialistResuming(false)
+      setStage('specialist-criterion')
+   }
+
+   async function handleSpecialistCriterion(criterion: SpecialistCriterionResponse): Promise<void> {
+      if (
+         !result
+         || !researchConsent
+         || !specialistAssignment
+         || !assignedSpecialistModule
+         || !specialistStartedAt
+         || specialistQuestions.length === 0
+      ) {
+         throw new Error('The specialist study record is missing its consent, assignment, timing, or module context.')
+      }
+
+      const outcome = specialistOutcome ?? scoreSpecialistModule(specialistAssignment.moduleId, specialistAnswers)
+      const submission = buildSpecialistResearchSubmission({
+         studyId,
+         participantId,
+         administration,
+         consent: researchConsent,
+         moduleId: specialistAssignment.moduleId,
+         moduleVersion: assignedSpecialistModule.version,
+         assignment: specialistAssignment,
+         bankVersion: result.bankVersion ?? 'unknown-bank',
+         scoringVersion: result.scoringVersion ?? 'unknown-scoring',
+         criterion,
+         answers: specialistAnswers,
+         questions: specialistQuestions,
+         constructWeightsByQuestionId: assignedSpecialistModule.constructWeightsByQuestionId,
+         outcome,
+         startedAt: specialistStartedAt,
+         completedAt: new Date().toISOString(),
+      })
+      const status = await submitResearchSubmission(submission, import.meta.env.VITE_RESEARCH_ENDPOINT)
+      setSpecialistOutcome(outcome)
+      setSpecialistSubmission(submission)
+      setSpecialistStatus(status)
+      setStage('specialist-result')
+   }
+
+   function handleDiscardSpecialistAfterCompletion(): void {
+      setSpecialistQuestions([])
+      setSpecialistAnswers({})
+      setSpecialistResumeIndex(0)
+      setSpecialistStartedAt(null)
+      setSpecialistResuming(false)
+      setSpecialistOutcome(null)
       setStage('results')
    }
 
@@ -209,12 +401,24 @@ function App() {
    function handleRestart(): void {
       if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search)
       clearQuizState()
+      if (specialistAssignment) {
+         clearSpecialistProgress(participantId, administration, specialistAssignment.moduleId)
+      }
       setSavedProgress(null)
       setResult(null)
       setAnswers({})
       setResearchConsent(null)
       setResearchSubmission(null)
       setResearchStatus(null)
+      setSpecialistSubmission(null)
+      setSpecialistStatus(null)
+      setSpecialistProgress(null)
+      setSpecialistQuestions([])
+      setSpecialistAnswers({})
+      setSpecialistResumeIndex(0)
+      setSpecialistStartedAt(null)
+      setSpecialistResuming(false)
+      setSpecialistOutcome(null)
       setResumeIndex(0)
       setQuizStartedAt(null)
       setQuizCompletedAt(null)
@@ -265,10 +469,64 @@ function App() {
       return <SelfIdentificationScreen labels={researchIdentityLabels} onContinue={handleResearchIdentity} />
    }
 
+   if (stage === 'specialist-invite' && assignedSpecialistModule) {
+      return (
+         <SpecialistModuleInvite
+            module={assignedSpecialistModule}
+            answeredCount={specialistProgress ? Object.keys(specialistProgress.answers).length : 0}
+            totalCount={assignedSpecialistModule.questions.length}
+            onStart={handleStartSpecialist}
+            onSkip={handleSkipSpecialist}
+         />
+      )
+   }
+
+   if (stage === 'specialist-quiz' && assignedSpecialistModule && specialistQuestions.length > 0) {
+      return (
+         <QuizScreen
+            questions={specialistQuestions}
+            initialAnswers={specialistResuming ? specialistAnswers : undefined}
+            initialIndex={specialistResuming ? specialistResumeIndex : undefined}
+            contextLabel={assignedSpecialistModule.shortTitle}
+            progressSaver={persistSpecialistProgress}
+            onExit={handleExitSpecialistQuiz}
+            onComplete={handleSpecialistComplete}
+         />
+      )
+   }
+
+   if (stage === 'specialist-criterion' && assignedSpecialistModule) {
+      return (
+         <SpecialistCriterionScreen
+            module={assignedSpecialistModule}
+            onContinue={handleSpecialistCriterion}
+            onSkip={handleDiscardSpecialistAfterCompletion}
+         />
+      )
+   }
+
+   if (stage === 'specialist-result' && assignedSpecialistModule && specialistOutcome) {
+      return (
+         <>
+            {specialistSubmission && specialistStatus && (
+               <ResearchReceipt submission={specialistSubmission} status={specialistStatus} />
+            )}
+            <SpecialistModuleResultScreen
+               module={assignedSpecialistModule}
+               outcome={specialistOutcome}
+               onContinue={() => setStage('results')}
+            />
+         </>
+      )
+   }
+
    return result ? (
       <>
          {researchSubmission && researchStatus && (
             <ResearchReceipt submission={researchSubmission} status={researchStatus} />
+         )}
+         {specialistSubmission && specialistStatus && (
+            <ResearchReceipt submission={specialistSubmission} status={specialistStatus} />
          )}
          <ResultsScreen
             result={result}
