@@ -69,9 +69,10 @@ afterEach(() => {
 })
 
 describe('SiteShell appearance control', () => {
-  it('provides a persistent link back to the application home page', () => {
+  it('provides persistent home links in the branding and navigation', () => {
     render(<SiteShell><p>Application content</p></SiteShell>)
 
+    expect(screen.getByRole('link', { name: 'Political Judgment Lab' })).toHaveAttribute('href', '/')
     expect(screen.getByRole('link', { name: 'HOME' })).toHaveAttribute('href', '/')
   })
 

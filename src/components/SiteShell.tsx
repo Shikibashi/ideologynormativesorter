@@ -123,7 +123,7 @@ export function SiteShell({ children }: SiteShellProps) {
       <header className="site-masthead">
         <div className="site-brand">
           <p className="site-kicker">EDRIFFLES WEB 99 / POLITICAL JUDGMENT LAB</p>
-          <p className="site-title">Political Judgment Lab</p>
+          <a className="site-title" href={import.meta.env.BASE_URL}>Political Judgment Lab</a>
           <p className="site-tagline">A layered profile of values, beliefs, and strategy.</p>
         </div>
         <div className="site-utility">
