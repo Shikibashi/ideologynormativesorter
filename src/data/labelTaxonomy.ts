@@ -1,4 +1,4 @@
-import type { LabelId } from '../types'
+import type { IdeologyLabel, LabelId } from '../types'
 import { labels } from './labels'
 
 /**
@@ -163,14 +163,29 @@ export function roleForLabel(labelId: LabelId): LabelRole | undefined {
   return labelRoleById.get(labelId)
 }
 
+const CANONICAL_NAME_OVERRIDES: Readonly<Record<string, string>> = {
+  'civil-libertarian-cosmopolitan': 'Cosmopolitan Liberalism',
+  'fascist-authoritarian': 'Fascism',
+  'technocratic-centralist': 'Technocracy',
+}
+
+function canonicalizeLabel(label: IdeologyLabel): IdeologyLabel {
+  const name = CANONICAL_NAME_OVERRIDES[label.id]
+  return name ? { ...label, name } : label
+}
+
 /** Labels eligible to be returned directly by the ordinary questionnaire. */
-export const primaryScoringLabels = labels.filter((label) => roleForLabel(label.id) === 'primary')
+export const primaryScoringLabels = labels
+  .filter((label) => roleForLabel(label.id) === 'primary')
+  .map(canonicalizeLabel)
 
 /** Labels worth browsing as political traditions or meaningful cross-cutting descriptors. */
-export const publicCatalogLabels = labels.filter((label) => {
-  const role = roleForLabel(label.id)
-  return role === 'primary' || role === 'specialist' || role === 'modifier'
-})
+export const publicCatalogLabels = labels
+  .filter((label) => {
+    const role = roleForLabel(label.id)
+    return role === 'primary' || role === 'specialist' || role === 'modifier'
+  })
+  .map(canonicalizeLabel)
 
 /** Criterion labels offered before results in research mode. */
 export const researchIdentityLabels = primaryScoringLabels
