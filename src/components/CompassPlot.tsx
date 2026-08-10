@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import type { ScoreBreakdown } from '../types'
 
-const SIZE = 300
-const PAD = 30
+const SIZE = 440
+const PAD = 48
 const CX = SIZE / 2
 const CY = SIZE / 2
 
@@ -20,15 +20,11 @@ function composite(allScores: ScoreBreakdown): { x: number; y: number } {
   const flat = Object.values(allScores).flat()
   const byId = new Map(flat.map((s) => [s.axisId, s]))
 
-  // Economic: positive = right (market confidence, property, deregulation)
-  // Negative = left (equality, redistribution, regulation)
   const econAxes = ['property-legitimacy', 'market-process-confidence', 'regulation-vs-deregulation',
     'redistribution-vs-predistribution', 'equality-theory']
   const econScores = econAxes.map((id) => byId.get(id)?.normalized ?? 0)
   const econ = (econScores[0] - econScores[4] + econScores[1] - econScores[3] - econScores[2]) / 5
 
-  // Authority: positive = authoritarian (authority legitimate, coercion, centralization)
-  // Negative = libertarian (anti-authority, anti-domination, decentralization)
   const authAxes = ['authority-legitimacy', 'anti-domination', 'centralization-preference',
     'coercion-strategy', 'liberty-noninterference']
   const authScores = authAxes.map((id) => byId.get(id)?.normalized ?? 0)
@@ -37,9 +33,14 @@ function composite(allScores: ScoreBreakdown): { x: number; y: number } {
   return { x: clamp(econ, -1, 1), y: clamp(auth, -1, 1) }
 }
 
+function cssColor(name: string, fallback: string): string {
+  const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim()
+  return value || fallback
+}
+
 /**
  * Renders a 2D compass plot: economic left/right on X, authoritarian/libertarian on Y.
- * Averages the relevant axes per layer for a single centroid dot.
+ * Averages the relevant axes per layer for a single centroid marker.
  */
 export function CompassPlot({ scores, compareScores }: CompassPlotProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -59,10 +60,36 @@ export function CompassPlot({ scores, compareScores }: CompassPlotProps) {
     canvas.height = SIZE * dpr
     ctx.scale(dpr, dpr)
 
-    ctx.fillStyle = '#f4f4f4'
+    const background = cssColor('--surface-sunken', '#fff')
+    const grid = cssColor('--border', '#8b8b84')
+    const strongGrid = cssColor('--border-dark', '#3f3f3a')
+    const text = cssColor('--text-h', '#101010')
+    const muted = cssColor('--text-m', '#66665f')
+    const userColor = cssColor('--accent', '#163f91')
+    const compareColor = cssColor('--danger', '#8c1d18')
+
+    ctx.clearRect(0, 0, SIZE, SIZE)
+    ctx.fillStyle = background
     ctx.fillRect(0, 0, SIZE, SIZE)
 
-    ctx.strokeStyle = '#ddd'
+    ctx.strokeStyle = grid
+    ctx.lineWidth = 1
+    ctx.setLineDash([2, 4])
+    for (const value of [-0.5, 0.5]) {
+      const px = CX + value * (SIZE / 2 - PAD)
+      const py = CY - value * (SIZE / 2 - PAD)
+      ctx.beginPath()
+      ctx.moveTo(px, PAD)
+      ctx.lineTo(px, SIZE - PAD)
+      ctx.stroke()
+      ctx.beginPath()
+      ctx.moveTo(PAD, py)
+      ctx.lineTo(SIZE - PAD, py)
+      ctx.stroke()
+    }
+
+    ctx.setLineDash([])
+    ctx.strokeStyle = strongGrid
     ctx.lineWidth = 1
     ctx.beginPath()
     ctx.moveTo(CX, PAD)
@@ -73,49 +100,46 @@ export function CompassPlot({ scores, compareScores }: CompassPlotProps) {
     ctx.lineTo(SIZE - PAD, CY)
     ctx.stroke()
 
-    ctx.fillStyle = '#999'
-    ctx.font = '11px sans-serif'
+    ctx.fillStyle = muted
+    ctx.font = '12px "Segoe UI", Tahoma, sans-serif'
     ctx.textAlign = 'center'
-    ctx.fillText('Left', PAD + 5, CY - 5)
-    ctx.fillText('Right', SIZE - PAD - 5, CY - 5)
-    ctx.fillText('Authoritarian', CX, PAD + 12)
-    ctx.fillText('Libertarian', CX, SIZE - PAD - 5)
+    ctx.fillText('ECONOMIC LEFT', PAD + 48, CY - 9)
+    ctx.fillText('ECONOMIC RIGHT', SIZE - PAD - 50, CY - 9)
+    ctx.fillText('AUTHORITARIAN', CX, PAD - 14)
+    ctx.fillText('LIBERTARIAN', CX, SIZE - PAD + 24)
 
-    for (let v = -0.5; v <= 0.5; v += 0.5) {
-      const px = CX + (v / 1) * (SIZE / 2 - PAD)
-      const py = CY - (v / 1) * (SIZE / 2 - PAD)
-      ctx.beginPath()
-      ctx.arc(px, CY, 2, 0, Math.PI * 2)
-      ctx.fillStyle = '#ccc'
-      ctx.fill()
-      ctx.beginPath()
-      ctx.arc(CX, py, 2, 0, Math.PI * 2)
-      ctx.fillStyle = '#ccc'
-      ctx.fill()
+    ctx.font = '10px "Cascadia Mono", "Courier New", monospace'
+    ctx.fillStyle = muted
+    for (const value of [-1, -0.5, 0, 0.5, 1]) {
+      const px = CX + value * (SIZE / 2 - PAD)
+      const py = CY - value * (SIZE / 2 - PAD)
+      ctx.textAlign = 'center'
+      ctx.fillText(value.toFixed(value === 0 ? 0 : 1), px, CY + 16)
+      if (value !== 0) {
+        ctx.textAlign = 'right'
+        ctx.fillText(value.toFixed(1), CX - 7, py + 3)
+      }
     }
 
     function plotPoint(c: CanvasRenderingContext2D, x: number, y: number, color: string, label: string) {
-      const px = CX + (x / 1) * (SIZE / 2 - PAD)
-      const py = CY - (y / 1) * (SIZE / 2 - PAD)
+      const px = CX + x * (SIZE / 2 - PAD)
+      const py = CY - y * (SIZE / 2 - PAD)
 
-      c.beginPath()
-      c.arc(px, py, 6, 0, Math.PI * 2)
       c.fillStyle = color
-      c.fill()
-      c.strokeStyle = '#333'
+      c.strokeStyle = text
       c.lineWidth = 1.5
-      c.stroke()
+      c.fillRect(px - 6, py - 6, 12, 12)
+      c.strokeRect(px - 6, py - 6, 12, 12)
 
-      c.fillStyle = '#333'
-      c.font = 'bold 12px sans-serif'
+      c.fillStyle = text
+      c.font = '700 12px "Segoe UI", Tahoma, sans-serif'
       c.textAlign = 'center'
       c.fillText(label, px, py - 12)
     }
 
-    plotPoint(ctx, pt.x, pt.y, '#2563eb', 'You')
-    if (compareX !== undefined && compareY !== undefined) plotPoint(ctx, compareX, compareY, '#dc2626', 'Compare')
+    plotPoint(ctx, pt.x, pt.y, userColor, 'You')
+    if (compareX !== undefined && compareY !== undefined) plotPoint(ctx, compareX, compareY, compareColor, 'Compare')
   }, [pt.x, pt.y, compareX, compareY])
-
 
   return (
     <div className="compass-plot">
@@ -125,7 +149,7 @@ export function CompassPlot({ scores, compareScores }: CompassPlotProps) {
         aria-label={`Economic (${pt.x.toFixed(2)}) by authority (${pt.y.toFixed(2)}) compass plot`}
       />
       <p className="muted" style={{ fontSize: '0.8rem' }}>
-        X: Economic left (–1) / right (+1). Y: Authoritarian (+1) / libertarian (–1).
+        X: economic left (−1) to right (+1). Y: libertarian (−1) to authoritarian (+1).
       </p>
     </div>
   )

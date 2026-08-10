@@ -28,9 +28,16 @@ export function AxisBar({ axis, score, result }: AxisBarProps) {
         <span className="muted">{score.itemCount === 0 ? 'unmeasured' : score.normalized.toFixed(2)}</span>
         {rel && <span className={`reliability ${rel.band}`}>{rel.band} coverage</span>}
       </div>
-      <div className="axis-bar-track">
+      <div className="axis-bar-track" aria-hidden="true">
         <div className="axis-bar-midline" />
         {score.itemCount > 0 && <div className="axis-bar-marker" style={{ left: `${percent}%` }} />}
+      </div>
+      <div className="axis-bar-scale" aria-hidden="true">
+        <span>-1.0</span>
+        <span>-0.5</span>
+        <span>0</span>
+        <span>+0.5</span>
+        <span>+1.0</span>
       </div>
       <div className="axis-bar-poles">
         <span>{axis.negativePole}</span>
