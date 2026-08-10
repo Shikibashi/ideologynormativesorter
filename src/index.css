@@ -14,6 +14,7 @@
   --web99-pink: #ff76d7;
   --web99-yellow: #ffd45c;
   --web99-green: #23d5a6;
+  --web99-on-cyan: #050719;
 
   --surface: var(--web99-panel);
   --surface-raised: var(--web99-raised);
@@ -41,10 +42,38 @@
   font: 15px/1.45 var(--sans);
   color: var(--text);
   background: var(--web99-bg);
+  color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='light'] {
+  --web99-bg: #eef1f8;
+  --web99-night: #f8f9fd;
+  --web99-panel: #fffdf8;
+  --web99-panel-deep: #e9edf8;
+  --web99-raised: #e1e4f7;
+  --web99-ink: #171a34;
+  --web99-muted: #526080;
+  --web99-border: #6375bd;
+  --web99-cyan: #006b7d;
+  --web99-teal: #087d89;
+  --web99-purple: #5a3bc2;
+  --web99-logo: #5a3bc2;
+  --web99-pink: #b42d84;
+  --web99-yellow: #795300;
+  --web99-green: #087d63;
+  --web99-on-cyan: #ffffff;
+
+  --accent-hover: #7054d8;
+  --accent-bg: #d9ddf7;
+  --highlight-text: #ffffff;
+  --danger: var(--web99-pink);
+  --code-bg: #e5e9f6;
+
+  color-scheme: light;
 }
 
 * {
@@ -66,6 +95,12 @@ body {
     linear-gradient(rgba(102, 117, 200, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(102, 117, 200, 0.08) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+
+:root[data-theme='light'] body {
+  background-image:
+    linear-gradient(rgba(99, 117, 189, 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 117, 189, 0.11) 1px, transparent 1px);
 }
 
 button,
