@@ -1,10 +1,18 @@
 import type { AnswerMap, Question, QuizTier } from '../types'
+import type {
+  SpecialistCriterionResponse,
+  SpecialistMatch,
+  SpecialistModuleAssignment,
+  SpecialistModuleId,
+  SpecialistOutcome,
+} from '../specialist'
 
-export const RESEARCH_SCHEMA_VERSION = '2026-07-v2'
-export const RESEARCH_CONSENT_VERSION = '2026-07-18-v1'
+export const RESEARCH_SCHEMA_VERSION = '2026-08-v3'
+export const RESEARCH_CONSENT_VERSION = '2026-08-10-v2'
 const PARTICIPANT_STORAGE_KEY = 'political-judgment-research-participant-v1'
 
 export type ResearchAdministration = 'test' | 'retest'
+export type SpecialistDisposition = 'declined-before-start' | 'declined-after-partial' | 'declined-after-completion'
 
 export interface ResearchConsent {
   ageConfirmed: true
@@ -25,13 +33,14 @@ export interface ResearchItemSnapshot {
   layer: Question['layer']
   responseType: Question['responseType']
   axisWeights: Array<{ axisId: string; weight: number }>
+  constructWeights?: Record<string, number>
   reverseScored: boolean
   reviewStatus: Question['reviewStatus']
   evidenceNote?: string
   sourceCount: number
 }
 
-export interface ResearchSubmission {
+interface ResearchRecordBase {
   schemaVersion: string
   studyId: string
   participantId: string
@@ -40,17 +49,48 @@ export interface ResearchSubmission {
   startedAt: string
   completedAt: string
   durationMs: number
+  consent: ResearchConsent
+}
+
+export interface CoreResearchSubmission extends ResearchRecordBase {
+  recordType: 'core'
   resumed: boolean
   presentationOrder: string[]
   bankVersion: string
   scoringVersion: string
   tier: QuizTier
-  consent: ResearchConsent
   identity: ResearchIdentity
   predictedLabelIds: string[]
+  specialistAssignment?: SpecialistModuleAssignment
   answers: AnswerMap
   itemMap: ResearchItemSnapshot[]
 }
+
+export interface SpecialistResearchSubmission extends ResearchRecordBase {
+  recordType: 'specialist'
+  moduleId: SpecialistModuleId
+  moduleVersion: string
+  assignment: SpecialistModuleAssignment
+  presentationOrder: string[]
+  bankVersion: string
+  scoringVersion: string
+  criterion: SpecialistCriterionResponse
+  answers: AnswerMap
+  itemMap: ResearchItemSnapshot[]
+  constructScores: Record<string, number>
+  matches: SpecialistMatch[]
+}
+
+export interface SpecialistDispositionSubmission extends ResearchRecordBase {
+  recordType: 'specialist-disposition'
+  moduleId: SpecialistModuleId
+  moduleVersion: string
+  assignment: SpecialistModuleAssignment
+  disposition: SpecialistDisposition
+  answeredCount: number
+}
+
+export type ResearchSubmission = CoreResearchSubmission | SpecialistResearchSubmission | SpecialistDispositionSubmission
 
 export type ResearchSubmissionStatus =
   | { status: 'submitted'; endpoint: string }
@@ -71,6 +111,23 @@ function durationBetween(startedAt: string, completedAt: string): number {
   const completed = Date.parse(completedAt)
   if (!Number.isFinite(started) || !Number.isFinite(completed)) return 0
   return Math.max(0, completed - started)
+}
+
+function buildItemMap(
+  questions: Question[],
+  constructWeightsByQuestionId?: Record<string, Record<string, number>>,
+): ResearchItemSnapshot[] {
+  return questions.map((question) => ({
+    questionId: String(question.id),
+    layer: question.layer,
+    responseType: question.responseType,
+    axisWeights: question.axisWeights.map((weight) => ({ axisId: String(weight.axisId), weight: weight.weight })),
+    constructWeights: constructWeightsByQuestionId?.[String(question.id)],
+    reverseScored: question.reverseScored === true,
+    reviewStatus: question.reviewStatus,
+    evidenceNote: question.evidenceNote,
+    sourceCount: question.sources?.length ?? 0,
+  }))
 }
 
 export function isResearchMode(search = window.location.search): boolean {
@@ -107,15 +164,17 @@ export function buildResearchSubmission(input: {
   consent: ResearchConsent
   identity: ResearchIdentity
   predictedLabelIds: string[]
+  specialistAssignment?: SpecialistModuleAssignment
   answers: AnswerMap
   questions: Question[]
   startedAt: string
   completedAt: string
   resumed: boolean
   submittedAt?: string
-}): ResearchSubmission {
+}): CoreResearchSubmission {
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
+    recordType: 'core',
     studyId: safeToken(input.studyId) || 'public-pilot',
     participantId: safeToken(input.participantId),
     administration: input.administration,
@@ -131,17 +190,88 @@ export function buildResearchSubmission(input: {
     consent: input.consent,
     identity: input.identity,
     predictedLabelIds: input.predictedLabelIds.slice(0, 5),
+    specialistAssignment: input.specialistAssignment,
     answers: input.answers,
-    itemMap: input.questions.map((question) => ({
-      questionId: String(question.id),
-      layer: question.layer,
-      responseType: question.responseType,
-      axisWeights: question.axisWeights.map((weight) => ({ axisId: String(weight.axisId), weight: weight.weight })),
-      reverseScored: question.reverseScored === true,
-      reviewStatus: question.reviewStatus,
-      evidenceNote: question.evidenceNote,
-      sourceCount: question.sources?.length ?? 0,
-    })),
+    itemMap: buildItemMap(input.questions),
+  }
+}
+
+export function buildSpecialistResearchSubmission(input: {
+  studyId: string
+  participantId: string
+  administration: ResearchAdministration
+  consent: ResearchConsent
+  moduleId: SpecialistModuleId
+  moduleVersion: string
+  assignment: SpecialistModuleAssignment
+  bankVersion: string
+  scoringVersion: string
+  criterion: SpecialistCriterionResponse
+  answers: AnswerMap
+  questions: Question[]
+  constructWeightsByQuestionId: Record<string, Record<string, number>>
+  outcome: SpecialistOutcome
+  startedAt: string
+  completedAt: string
+  submittedAt?: string
+}): SpecialistResearchSubmission {
+  return {
+    schemaVersion: RESEARCH_SCHEMA_VERSION,
+    recordType: 'specialist',
+    studyId: safeToken(input.studyId) || 'public-pilot',
+    participantId: safeToken(input.participantId),
+    administration: input.administration,
+    submittedAt: input.submittedAt ?? new Date().toISOString(),
+    startedAt: input.startedAt,
+    completedAt: input.completedAt,
+    durationMs: durationBetween(input.startedAt, input.completedAt),
+    consent: input.consent,
+    moduleId: input.moduleId,
+    moduleVersion: input.moduleVersion,
+    assignment: input.assignment,
+    presentationOrder: input.questions.map((question) => String(question.id)),
+    bankVersion: input.bankVersion,
+    scoringVersion: input.scoringVersion,
+    criterion: input.criterion,
+    answers: input.answers,
+    itemMap: buildItemMap(input.questions, input.constructWeightsByQuestionId),
+    constructScores: input.outcome.constructScores,
+    matches: input.outcome.matches,
+  }
+}
+
+export function buildSpecialistDispositionSubmission(input: {
+  studyId: string
+  participantId: string
+  administration: ResearchAdministration
+  consent: ResearchConsent
+  moduleId: SpecialistModuleId
+  moduleVersion: string
+  assignment: SpecialistModuleAssignment
+  disposition: SpecialistDisposition
+  answeredCount: number
+  startedAt?: string
+  occurredAt?: string
+  submittedAt?: string
+}): SpecialistDispositionSubmission {
+  const completedAt = input.occurredAt ?? new Date().toISOString()
+  const startedAt = input.startedAt ?? completedAt
+  return {
+    schemaVersion: RESEARCH_SCHEMA_VERSION,
+    recordType: 'specialist-disposition',
+    studyId: safeToken(input.studyId) || 'public-pilot',
+    participantId: safeToken(input.participantId),
+    administration: input.administration,
+    submittedAt: input.submittedAt ?? completedAt,
+    startedAt,
+    completedAt,
+    durationMs: durationBetween(startedAt, completedAt),
+    consent: input.consent,
+    moduleId: input.moduleId,
+    moduleVersion: input.moduleVersion,
+    assignment: input.assignment,
+    disposition: input.disposition,
+    answeredCount: Math.max(0, Math.floor(input.answeredCount)),
   }
 }
 
@@ -178,7 +308,12 @@ export async function submitResearchSubmission(
 }
 
 export function downloadResearchSubmission(submission: ResearchSubmission): void {
-  const filename = `${submission.studyId}-${submission.participantId}-${submission.administration}.json`
+  const suffix = submission.recordType === 'core'
+    ? '-core'
+    : submission.recordType === 'specialist'
+      ? `-${submission.moduleId}`
+      : `-${submission.moduleId}-disposition`
+  const filename = `${submission.studyId}-${submission.participantId}-${submission.administration}${suffix}.json`
   const blob = new Blob([JSON.stringify(submission, null, 2)], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
   const anchor = document.createElement('a')

@@ -1,0 +1,46 @@
+import type { SpecialistModuleDefinition } from '../specialist'
+
+interface SpecialistModuleInviteProps {
+  module: SpecialistModuleDefinition
+  answeredCount?: number
+  totalCount?: number
+  onStart: () => void
+  onSkip: () => void
+}
+
+export function SpecialistModuleInvite({
+  module,
+  answeredCount = 0,
+  totalCount = module.questions.length,
+  onStart,
+  onSkip,
+}: SpecialistModuleInviteProps) {
+  const resuming = answeredCount > 0
+
+  return (
+    <section className="screen intro-screen">
+      <h1>Optional specialist follow-up</h1>
+      <p>
+        You were assigned <strong>{module.title}</strong> for the validation study. Assignment is determined from your
+        pseudonymous participant code so the study does not rely only on people choosing the topics that interest them.
+      </p>
+      <div className="result-block">
+        <h2>{module.shortTitle}</h2>
+        <p>{module.description}</p>
+        <p className="muted">About {module.estimatedMinutes} minutes · {module.questions.length} questions</p>
+        <p className="muted">{module.invitationNote}</p>
+        {resuming && (
+          <p className="muted">
+            Saved follow-up progress: {Math.min(answeredCount, totalCount)} of {totalCount} questions answered.
+          </p>
+        )}
+      </div>
+      <button type="button" className="primary-button" onClick={onStart}>
+        {resuming ? 'Resume assigned follow-up' : 'Start assigned follow-up'}
+      </button>
+      <button type="button" className="back-link" onClick={onSkip}>
+        Skip follow-up and view main results
+      </button>
+    </section>
+  )
+}
