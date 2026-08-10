@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest'
 import type { AnswerMap, Question } from '../types'
 import {
   buildResearchSubmission,
+  buildSpecialistDispositionSubmission,
   buildSpecialistResearchSubmission,
   getOrCreateParticipantId,
   submitResearchSubmission,
@@ -116,6 +117,27 @@ describe('research submission', () => {
     expect(submission.constructScores['legal-equality-reform']).toBe(0.8)
     expect(submission.itemMap[0].constructWeights).toEqual({ 'legal-equality-reform': 1 })
     expect(submission.durationMs).toBe(600_000)
+  })
+
+  it('builds a lightweight specialist disposition record for explicit nonresponse', () => {
+    const submission = buildSpecialistDispositionSubmission({
+      studyId: 'pilot',
+      participantId: 'p_abc-123',
+      administration: 'test',
+      consent,
+      moduleId: 'identity-sovereignty-module',
+      moduleVersion: '2026-08-v1',
+      assignment: { moduleId: 'identity-sovereignty-module', strategy: 'balanced-hash-v1' },
+      disposition: 'declined-after-partial',
+      answeredCount: 4,
+      startedAt: '2026-07-18T12:10:00.000Z',
+      occurredAt: '2026-07-18T12:14:00.000Z',
+    })
+
+    expect(submission.recordType).toBe('specialist-disposition')
+    expect(submission.disposition).toBe('declined-after-partial')
+    expect(submission.answeredCount).toBe(4)
+    expect(submission.durationMs).toBe(240_000)
   })
 
   it('does not transmit when no endpoint is configured', async () => {
