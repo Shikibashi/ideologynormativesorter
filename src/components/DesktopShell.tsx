@@ -29,7 +29,7 @@ export function DesktopShell({ children, status = 'Ready' }: DesktopShellProps) 
       <main className="app-workspace">{children}</main>
       <footer className="app-statusbar">
         <span className="status-panel">{status}</span>
-        <span className="status-panel status-panel-secondary">Local-first · progress saved in this browser</span>
+        <span className="status-panel status-panel-secondary">Browser session · progress saved locally</span>
       </footer>
     </div>
   )
