@@ -36,16 +36,30 @@ function scaleLabels(responseType: Question['responseType']): Record<number, str
   return responseType === 'likert5' ? LIKERT5_LABELS : LIKERT_LABELS
 }
 
+type ProgressSaveResult = { saved: true } | { saved: false; reason: string }
+
 interface QuizScreenProps {
   questions: Question[]
   onComplete: (answers: AnswerMap) => void
-  /** Tier label for save/display only — no filtering logic. */
+  /** Tier label for core-quiz save/display only — no filtering logic. */
   tier?: string
   initialAnswers?: AnswerMap
   initialIndex?: number
+  contextLabel?: string
+  progressSaver?: (state: { answers: AnswerMap; index: number }) => ProgressSaveResult
+  onExit?: () => void
 }
 
-export function QuizScreen({ questions, onComplete, tier, initialAnswers, initialIndex }: QuizScreenProps) {
+export function QuizScreen({
+  questions,
+  onComplete,
+  tier,
+  initialAnswers,
+  initialIndex,
+  contextLabel,
+  progressSaver,
+  onExit,
+}: QuizScreenProps) {
   const [index, setIndex] = useState(initialIndex ?? 0)
   const [answers, setAnswers] = useState<AnswerMap>(initialAnswers ?? {})
   const [pendingValue, setPendingValue] = useState<Answer['value'] | null>(null)
@@ -58,23 +72,28 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
   const salienceQuestion = pendingValue !== null && pendingValue !== 'dont_know' ? salienceField : null
   const canAnswerDontKnow = question.layer === 'descriptive' || question.allowDontKnow === true
 
-  // Persist progress on every answer change (skip on first render if restoring)
+  // Persist progress on every answer change (skip on first render if restoring).
   const isRestored = useRef(!!initialAnswers)
   useEffect(() => {
     if (isRestored.current) {
       isRestored.current = false
       return
     }
-    if (Object.keys(answers).length > 0 && tier) {
-      const result = saveQuizState({ questions, answers, index, tier: tier as QuizTier })
-      if (result.saved === false) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- safe: saveError is not a dep
-        setSaveError(result.reason)
-      } else {
-        setSaveError(null)
-      }
+    if (Object.keys(answers).length === 0) return
+
+    const result = progressSaver
+      ? progressSaver({ answers, index })
+      : tier
+        ? saveQuizState({ questions, answers, index, tier: tier as QuizTier })
+        : null
+
+    if (result?.saved === false) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- safe: saveError is not a dep
+      setSaveError(result.reason)
+    } else if (result?.saved === true) {
+      setSaveError(null)
     }
-  }, [answers, index, questions, tier])
+  }, [answers, index, progressSaver, questions, tier])
 
   function commit(value: Answer['value'], rating?: number) {
     const answer: Answer = { questionId: question.id, value }
@@ -104,6 +123,8 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
     setIndex(index - 1)
   }
 
+  const positionLabel = `${contextLabel ? `${contextLabel} · ` : ''}Question ${index + 1} of ${questions.length}`
+
   if (salienceQuestion) {
     const prompt = salienceQuestion === 'confidence'
       ? question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT
@@ -116,7 +137,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
           <div className="progress-fill" style={{ width: `${((index + 1) / questions.length) * 100}%` }} />
         </div>
         <p className="muted">
-          Question {index + 1} of {questions.length} &middot; {salienceQuestion}
+          {positionLabel} &middot; {salienceQuestion}
         </p>
         <p className="prompt">{prompt}</p>
         <p className="muted question-help">{helpText}</p>
@@ -138,6 +159,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
         <button type="button" className="back-link" onClick={() => commit(pendingValue as Answer['value'])}>
           Skip
         </button>
+        {onExit && <button type="button" className="back-link" onClick={onExit}>Stop follow-up</button>}
       </section>
     )
   }
@@ -150,7 +172,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
         <div className="progress-fill" style={{ width: `${((index + 1) / questions.length) * 100}%` }} />
       </div>
       <p className="muted">
-        Question {index + 1} of {questions.length} &middot; {question.layer}
+        {positionLabel} &middot; {question.layer}
         {question.theoryContext !== 'mixed' ? ` · ${question.theoryContext}` : ''}
       </p>
 
@@ -201,6 +223,7 @@ export function QuizScreen({ questions, onComplete, tier, initialAnswers, initia
           Back
         </button>
       )}
+      {onExit && <button type="button" className="back-link" onClick={onExit}>Stop follow-up</button>}
     </section>
   )
 }
