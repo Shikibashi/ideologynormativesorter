@@ -133,17 +133,19 @@ export function SiteShell({ children }: SiteShellProps) {
             <span>SESSION</span>
             <strong>BROWSER</strong>
           </div>
-          <details
-            className="display-control"
-            onKeyDown={(event) => {
-              if (event.key !== 'Escape') return
-              event.preventDefault()
-              event.currentTarget.removeAttribute('open')
-              event.currentTarget.querySelector('summary')?.focus()
-            }}
-          >
-            <summary>DISPLAY</summary>
-            <div className="display-popover">
+          <nav className="site-actions" aria-label="Site navigation">
+            <a className="site-home-link" href={import.meta.env.BASE_URL}>HOME</a>
+            <details
+              className="display-control"
+              onKeyDown={(event) => {
+                if (event.key !== 'Escape') return
+                event.preventDefault()
+                event.currentTarget.removeAttribute('open')
+                event.currentTarget.querySelector('summary')?.focus()
+              }}
+            >
+              <summary>DISPLAY</summary>
+              <div className="display-popover">
               <fieldset>
                 <legend>Appearance</legend>
                 <label className="display-option">
@@ -224,8 +226,9 @@ export function SiteShell({ children }: SiteShellProps) {
               >
                 Restore display defaults
               </button>
-            </div>
-          </details>
+              </div>
+            </details>
+          </nav>
         </div>
       </header>
 

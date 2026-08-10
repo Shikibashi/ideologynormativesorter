@@ -69,6 +69,12 @@ afterEach(() => {
 })
 
 describe('SiteShell appearance control', () => {
+  it('provides a persistent link back to the application home page', () => {
+    render(<SiteShell><p>Application content</p></SiteShell>)
+
+    expect(screen.getByRole('link', { name: 'HOME' })).toHaveAttribute('href', '/')
+  })
+
   it('defaults to System and persists an explicit Light selection', () => {
     render(<SiteShell><p>Application content</p></SiteShell>)
 
