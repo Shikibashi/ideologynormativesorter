@@ -3,7 +3,7 @@ import type { SpecialistCriterionResponse, SpecialistModuleDefinition } from '..
 
 interface SpecialistCriterionScreenProps {
   module: SpecialistModuleDefinition
-  onContinue: (criterion: SpecialistCriterionResponse) => void
+  onContinue: (criterion: SpecialistCriterionResponse) => Promise<void> | void
   onSkip: () => void
 }
 
@@ -11,18 +11,34 @@ export function SpecialistCriterionScreen({ module, onContinue, onSkip }: Specia
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const [noneOrUnsure, setNoneOrUnsure] = useState(false)
   const [confidence, setConfidence] = useState<SpecialistCriterionResponse['confidence']>('medium')
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   function toggleOption(id: string): void {
+    if (submitting) return
     setNoneOrUnsure(false)
     setSelectedIds((current) => current.includes(id) ? current.filter((value) => value !== id) : [...current, id])
   }
 
   function toggleNone(): void {
+    if (submitting) return
     setSelectedIds([])
     setNoneOrUnsure((current) => !current)
   }
 
-  const canContinue = noneOrUnsure || selectedIds.length > 0
+  async function submitCriterion(): Promise<void> {
+    if (submitting || (!noneOrUnsure && selectedIds.length === 0)) return
+    setSubmitting(true)
+    setSubmitError(null)
+    try {
+      await onContinue({ selectedIds, noneOrUnsure, confidence })
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'The follow-up could not be submitted. Please try again.')
+      setSubmitting(false)
+    }
+  }
+
+  const canContinue = !submitting && (noneOrUnsure || selectedIds.length > 0)
 
   return (
     <section className="screen intro-screen">
@@ -33,7 +49,7 @@ export function SpecialistCriterionScreen({ module, onContinue, onSkip }: Specia
         validation criterion.
       </p>
 
-      <fieldset className="tier-picker">
+      <fieldset className="tier-picker" disabled={submitting}>
         <legend>{module.shortTitle}</legend>
         {module.criterionOptions.map((option) => {
           const selected = selectedIds.includes(option.id)
@@ -59,7 +75,7 @@ export function SpecialistCriterionScreen({ module, onContinue, onSkip }: Specia
         </label>
       </fieldset>
 
-      <fieldset className="tier-picker">
+      <fieldset className="tier-picker" disabled={submitting}>
         <legend>How confident are you in that self-description?</legend>
         {(['low', 'medium', 'high'] as const).map((level) => (
           <label key={level} className={`tier-option${confidence === level ? ' selected' : ''}`}>
@@ -75,15 +91,17 @@ export function SpecialistCriterionScreen({ module, onContinue, onSkip }: Specia
         ))}
       </fieldset>
 
+      {submitError && <p className="muted error-inline" role="alert">{submitError}</p>}
+
       <button
         type="button"
         className="primary-button"
         disabled={!canContinue}
-        onClick={() => onContinue({ selectedIds, noneOrUnsure, confidence })}
+        onClick={submitCriterion}
       >
-        Submit follow-up and show result
+        {submitting ? 'Submitting follow-up…' : 'Submit follow-up and show result'}
       </button>
-      <button type="button" className="back-link" onClick={onSkip}>
+      <button type="button" className="back-link" onClick={onSkip} disabled={submitting}>
         Do not submit this follow-up
       </button>
     </section>
