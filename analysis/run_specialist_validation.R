@@ -52,9 +52,13 @@ core_records <- core_records[vapply(core_records, function(record) {
     !is.null(record$participantId) && !is.null(record$administration)
 }, logical(1))]
 
-specialist_records <- read_records(specialist_input)
-specialist_records <- specialist_records[vapply(specialist_records, function(record) {
+specialist_input_records <- read_records(specialist_input)
+specialist_records <- specialist_input_records[vapply(specialist_input_records, function(record) {
   identical(record$recordType, "specialist") &&
+    !is.null(record$participantId) && !is.null(record$administration) && !is.null(record$moduleId)
+}, logical(1))]
+disposition_records <- specialist_input_records[vapply(specialist_input_records, function(record) {
+  identical(record$recordType, "specialist-disposition") &&
     !is.null(record$participantId) && !is.null(record$administration) && !is.null(record$moduleId)
 }, logical(1))]
 
@@ -87,6 +91,27 @@ completion_rows <- lapply(specialist_records, function(record) {
 })
 completions <- if (length(completion_rows) > 0) unique(do.call(rbind, completion_rows)) else data.frame()
 
+disposition_rows <- lapply(disposition_records, function(record) {
+  data.frame(
+    participant_id = record$participantId,
+    administration = record$administration,
+    module_id = record$moduleId,
+    disposition = record$disposition %||% "unknown",
+    answered_count = as.numeric(record$answeredCount %||% 0),
+    duration_ms = as.numeric(record$durationMs %||% 0),
+    completed_at = record$completedAt %||% "",
+    stringsAsFactors = FALSE
+  )
+})
+dispositions <- if (length(disposition_rows) > 0) do.call(rbind, disposition_rows) else data.frame()
+if (nrow(dispositions) > 0) {
+  utils::write.csv(dispositions, file.path(output_dir, "specialist-dispositions.csv"), row.names = FALSE)
+} else {
+  empty_csv(file.path(output_dir, "specialist-dispositions.csv"), c(
+    "participant_id", "administration", "module_id", "disposition", "answered_count", "duration_ms", "completed_at"
+  ))
+}
+
 if (nrow(assignments) > 0) {
   uptake_rows <- list()
   group_keys <- unique(assignments[, c("administration", "module_id"), drop = FALSE])
@@ -101,21 +126,52 @@ if (nrow(assignments) > 0) {
       completions$administration == administration & completions$module_id == module_id,
       , drop = FALSE
     ] else data.frame()
-    completed_ids <- if (nrow(completed) > 0) completed$participant_id else character(0)
-    completed_n <- sum(assigned$participant_id %in% completed_ids)
+    declined <- if (nrow(dispositions) > 0) dispositions[
+      dispositions$administration == administration & dispositions$module_id == module_id,
+      , drop = FALSE
+    ] else data.frame()
+
+    completed_ids <- if (nrow(completed) > 0) unique(completed$participant_id) else character(0)
+    declined_ids <- if (nrow(declined) > 0) unique(declined$participant_id) else character(0)
+    declined_ids <- setdiff(declined_ids, completed_ids)
+    assigned_ids <- unique(assigned$participant_id)
+    unresolved_ids <- setdiff(assigned_ids, union(completed_ids, declined_ids))
+
     uptake_rows[[length(uptake_rows) + 1]] <- data.frame(
       administration = administration,
       module_id = module_id,
-      assigned_n = nrow(assigned),
-      completed_n = completed_n,
-      completion_rate = if (nrow(assigned) > 0) completed_n / nrow(assigned) else NA_real_,
+      assigned_n = length(assigned_ids),
+      completed_n = sum(assigned_ids %in% completed_ids),
+      explicit_declined_n = sum(assigned_ids %in% declined_ids),
+      unresolved_n = length(unresolved_ids),
+      completion_rate = if (length(assigned_ids) > 0) sum(assigned_ids %in% completed_ids) / length(assigned_ids) else NA_real_,
+      explicit_decline_rate = if (length(assigned_ids) > 0) sum(assigned_ids %in% declined_ids) / length(assigned_ids) else NA_real_,
+      unresolved_rate = if (length(assigned_ids) > 0) length(unresolved_ids) / length(assigned_ids) else NA_real_,
       stringsAsFactors = FALSE
     )
   }
   utils::write.csv(do.call(rbind, uptake_rows), file.path(output_dir, "specialist-module-uptake.csv"), row.names = FALSE)
 } else {
   empty_csv(file.path(output_dir, "specialist-module-uptake.csv"), c(
-    "administration", "module_id", "assigned_n", "completed_n", "completion_rate"
+    "administration", "module_id", "assigned_n", "completed_n", "explicit_declined_n", "unresolved_n",
+    "completion_rate", "explicit_decline_rate", "unresolved_rate"
+  ))
+}
+
+if (nrow(dispositions) > 0) {
+  disposition_summary <- stats::aggregate(
+    list(n = dispositions$participant_id),
+    by = list(
+      administration = dispositions$administration,
+      module_id = dispositions$module_id,
+      disposition = dispositions$disposition
+    ),
+    FUN = length
+  )
+  utils::write.csv(disposition_summary, file.path(output_dir, "specialist-disposition-summary.csv"), row.names = FALSE)
+} else {
+  empty_csv(file.path(output_dir, "specialist-disposition-summary.csv"), c(
+    "administration", "module_id", "disposition", "n"
   ))
 }
 
@@ -287,7 +343,8 @@ safe_alpha <- function(data) {
 }
 
 reliability_rows <- list()
-for (module_id in unique(vapply(specialist_records, function(record) record$moduleId, character(1)))) {
+module_ids <- unique(vapply(specialist_records, function(record) record$moduleId, character(1)))
+for (module_id in module_ids) {
   module_records <- specialist_records[vapply(specialist_records, function(record) {
     identical(record$moduleId, module_id) && identical(record$administration, "test")
   }, logical(1))]
@@ -352,5 +409,6 @@ cat(
   "Specialist validation outputs written to ", normalizePath(output_dir, mustWork = FALSE), "\n",
   "Core assignments: ", nrow(assignments), "\n",
   "Specialist completions: ", nrow(completions), "\n",
+  "Explicit dispositions: ", nrow(dispositions), "\n",
   sep = ""
 )
