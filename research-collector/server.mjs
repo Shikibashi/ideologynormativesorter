@@ -4,10 +4,16 @@ import { dirname, resolve } from 'node:path'
 
 const port = Number(process.env.PORT ?? 8787)
 const outputFile = resolve(process.env.RESEARCH_OUTPUT_FILE ?? './private-data/submissions.ndjson')
+const specialistOutputFile = resolve(
+  process.env.SPECIALIST_RESEARCH_OUTPUT_FILE ?? './private-data/specialist-submissions.ndjson',
+)
 const allowedOrigin = process.env.ALLOWED_ORIGIN ?? 'http://localhost:5173'
 const maximumBodyBytes = Number(process.env.MAXIMUM_BODY_BYTES ?? 2_000_000)
 
-await mkdir(dirname(outputFile), { recursive: true })
+await Promise.all([
+  mkdir(dirname(outputFile), { recursive: true }),
+  mkdir(dirname(specialistOutputFile), { recursive: true }),
+])
 
 function setCors(response, origin) {
   if (origin === allowedOrigin) response.setHeader('access-control-allow-origin', origin)
@@ -123,11 +129,13 @@ const server = createServer(async (request, response) => {
   }
 
   submission.receivedAt = new Date().toISOString()
-  await appendFile(outputFile, `${JSON.stringify(submission)}\n`, { encoding: 'utf8', mode: 0o600 })
+  const targetFile = submission.recordType === 'specialist' ? specialistOutputFile : outputFile
+  await appendFile(targetFile, `${JSON.stringify(submission)}\n`, { encoding: 'utf8', mode: 0o600 })
   response.writeHead(202, { 'content-type': 'application/json' }).end(JSON.stringify({ accepted: true }))
 })
 
 server.listen(port, () => {
   console.log(`Research collector listening on http://localhost:${port}/submit`)
-  console.log(`Writing pseudonymous records to ${outputFile}`)
+  console.log(`Writing core pseudonymous records to ${outputFile}`)
+  console.log(`Writing specialist pseudonymous records to ${specialistOutputFile}`)
 })
