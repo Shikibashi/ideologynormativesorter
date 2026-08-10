@@ -24,7 +24,7 @@ function setCors(response, origin) {
   response.setHeader('x-content-type-options', 'nosniff')
 }
 
-function validCommonRecord(value) {
+function validBaseRecord(value) {
   return value
     && typeof value === 'object'
     && typeof value.schemaVersion === 'string'
@@ -36,6 +36,10 @@ function validCommonRecord(value) {
     && value.consent?.ageConfirmed === true
     && value.consent?.voluntaryParticipation === true
     && value.consent?.dataUseAccepted === true
+}
+
+function validAnsweredRecord(value) {
+  return validBaseRecord(value)
     && value.answers
     && typeof value.answers === 'object'
     && !Array.isArray(value.answers)
@@ -44,7 +48,7 @@ function validCommonRecord(value) {
 }
 
 function validCoreRecord(value) {
-  return validCommonRecord(value)
+  return validAnsweredRecord(value)
     && (value.recordType === undefined || value.recordType === 'core')
     && typeof value.bankVersion === 'string'
     && typeof value.scoringVersion === 'string'
@@ -55,7 +59,7 @@ function validCoreRecord(value) {
 }
 
 function validSpecialistRecord(value) {
-  return validCommonRecord(value)
+  return validAnsweredRecord(value)
     && value.recordType === 'specialist'
     && typeof value.moduleId === 'string'
     && typeof value.moduleVersion === 'string'
@@ -76,8 +80,22 @@ function validSpecialistRecord(value) {
     && Array.isArray(value.matches)
 }
 
+function validSpecialistDisposition(value) {
+  return validBaseRecord(value)
+    && value.recordType === 'specialist-disposition'
+    && typeof value.moduleId === 'string'
+    && typeof value.moduleVersion === 'string'
+    && value.assignment
+    && typeof value.assignment === 'object'
+    && value.assignment.moduleId === value.moduleId
+    && typeof value.assignment.strategy === 'string'
+    && ['declined-before-start', 'declined-after-partial', 'declined-after-completion'].includes(value.disposition)
+    && Number.isInteger(value.answeredCount)
+    && value.answeredCount >= 0
+}
+
 function validSubmission(value) {
-  return validCoreRecord(value) || validSpecialistRecord(value)
+  return validCoreRecord(value) || validSpecialistRecord(value) || validSpecialistDisposition(value)
 }
 
 const server = createServer(async (request, response) => {
@@ -129,7 +147,9 @@ const server = createServer(async (request, response) => {
   }
 
   submission.receivedAt = new Date().toISOString()
-  const targetFile = submission.recordType === 'specialist' ? specialistOutputFile : outputFile
+  const targetFile = submission.recordType === 'specialist' || submission.recordType === 'specialist-disposition'
+    ? specialistOutputFile
+    : outputFile
   await appendFile(targetFile, `${JSON.stringify(submission)}\n`, { encoding: 'utf8', mode: 0o600 })
   response.writeHead(202, { 'content-type': 'application/json' }).end(JSON.stringify({ accepted: true }))
 })
@@ -137,5 +157,5 @@ const server = createServer(async (request, response) => {
 server.listen(port, () => {
   console.log(`Research collector listening on http://localhost:${port}/submit`)
   console.log(`Writing core pseudonymous records to ${outputFile}`)
-  console.log(`Writing specialist pseudonymous records to ${specialistOutputFile}`)
+  console.log(`Writing specialist pseudonymous records and dispositions to ${specialistOutputFile}`)
 })
