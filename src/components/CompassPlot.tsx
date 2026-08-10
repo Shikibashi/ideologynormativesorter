@@ -121,24 +121,24 @@ export function CompassPlot({ scores, compareScores }: CompassPlotProps) {
       }
     }
 
-    function plotPoint(x: number, y: number, color: string, label: string) {
+    function plotPoint(c: CanvasRenderingContext2D, x: number, y: number, color: string, label: string) {
       const px = CX + x * (SIZE / 2 - PAD)
       const py = CY - y * (SIZE / 2 - PAD)
 
-      ctx.fillStyle = color
-      ctx.strokeStyle = text
-      ctx.lineWidth = 1.5
-      ctx.fillRect(px - 6, py - 6, 12, 12)
-      ctx.strokeRect(px - 6, py - 6, 12, 12)
+      c.fillStyle = color
+      c.strokeStyle = text
+      c.lineWidth = 1.5
+      c.fillRect(px - 6, py - 6, 12, 12)
+      c.strokeRect(px - 6, py - 6, 12, 12)
 
-      ctx.fillStyle = text
-      ctx.font = '700 12px "Segoe UI", Tahoma, sans-serif'
-      ctx.textAlign = 'center'
-      ctx.fillText(label, px, py - 12)
+      c.fillStyle = text
+      c.font = '700 12px "Segoe UI", Tahoma, sans-serif'
+      c.textAlign = 'center'
+      c.fillText(label, px, py - 12)
     }
 
-    plotPoint(pt.x, pt.y, userColor, 'You')
-    if (compareX !== undefined && compareY !== undefined) plotPoint(compareX, compareY, compareColor, 'Compare')
+    plotPoint(ctx, pt.x, pt.y, userColor, 'You')
+    if (compareX !== undefined && compareY !== undefined) plotPoint(ctx, compareX, compareY, compareColor, 'Compare')
   }, [pt.x, pt.y, compareX, compareY])
 
   return (
