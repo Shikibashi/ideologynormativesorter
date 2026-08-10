@@ -34,6 +34,10 @@ export function SelfIdentificationScreen({ labels, onContinue }: SelfIdentificat
 
   return (
     <section className="screen intro-screen">
+      <div className="section-band">
+        <span className="section-band-label">VALIDATION STUDY / PROFILE</span>
+        <span className="section-band-status">OPTIONAL FIELDS</span>
+      </div>
       <h1>Before seeing your result</h1>
       <p>
         These optional questions measure whether the instrument agrees with how respondents describe themselves before

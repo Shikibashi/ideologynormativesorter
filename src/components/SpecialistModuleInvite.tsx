@@ -19,6 +19,10 @@ export function SpecialistModuleInvite({
 
   return (
     <section className="screen intro-screen">
+      <div className="section-band">
+        <span className="section-band-label">VALIDATION STUDY / FOLLOW-UP</span>
+        <span className="section-band-status">OPTIONAL MODULE</span>
+      </div>
       <h1>Optional specialist follow-up</h1>
       <p>
         You were assigned <strong>{module.title}</strong> for the validation study. Assignment is determined from your

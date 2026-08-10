@@ -215,10 +215,33 @@ describe('App', () => {
 
       render(<App />)
       fireEvent.click(screen.getByRole('button', { name: /start fresh/i }))
+      expect(screen.getByRole('group', { name: /confirm clearing saved session/i })).toBeInTheDocument()
+      fireEvent.click(screen.getByRole('button', { name: /clear saved session/i }))
 
       expect(screen.queryByText(/you have a saved session in progress/i)).not.toBeInTheDocument()
       expect(localStorage.getItem(SAVE_KEY)).toBeNull()
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
+   })
+
+   it('opens methodology from a URL view and returns through history-aware navigation', () => {
+      window.history.replaceState(null, '', '/?view=methodology')
+
+      render(<App />)
+
+      expect(screen.getByRole('heading', { name: /how this test works/i })).toBeInTheDocument()
+      fireEvent.click(screen.getByRole('button', { name: /back to results/i }))
+
+      expect(window.location.search).toBe('')
+      expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
+   })
+
+   it('prioritizes a shared result hash over a methodology query', () => {
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      window.history.replaceState(null, '', `/?view=methodology#r=${encoded}`)
+
+      render(<App />)
+
+      expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
    })
 
    it('compares a pasted shared result without remounting and preserves hash ordering', () => {

@@ -5,6 +5,7 @@ import type { IdeologyLabel } from '../types/label'
 import { getIdeologyLayerSummary, getIdeologyTermDefinitions, LAYER_EXPLAINERS } from '../data/ideologyExplainers'
 import { AxisBar } from './AxisBar'
 import { CompassPlot } from './CompassPlot'
+import { announceStatus } from '../status'
 
 type LabelWithInfluences = IdeologyLabel & {
    philosophyInfluences?: Array<{
@@ -307,6 +308,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             setCopyError(null)
             setShareUrl(null)
             setCopying(false)
+            announceStatus('Share link copied to the clipboard.')
          },
          (err) => {
             console.error('Clipboard write failed:', err)
@@ -314,6 +316,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             setShareUrl(url)
             setCopyError("We couldn't copy the link automatically. Select the link below and copy it manually.")
             setCopying(false)
+            announceStatus('Share link ready to copy manually.')
          },
       )
    }
@@ -328,6 +331,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
 
       onCompare(parsedAnswers)
       setCompareError(null)
+      announceStatus('Comparison profile loaded.')
       const meta = result.bankVersion ? { bankVersion: result.bankVersion, scoringVersion: result.scoringVersion } : undefined
       window.history.replaceState(null, '', buildCompareUrl(answers, parsedAnswers, meta))
    }
@@ -354,6 +358,17 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                style={{ width: '100%', padding: '0.3rem 0.5rem' }}
             />
          )}
+
+         <div className="results-workbench">
+         <nav className="results-navigator" aria-label="Result sections">
+            <h2>Result index</h2>
+            <a href="#profile">Profile</a>
+            <a href="#layers">Layer scores</a>
+            {result.gaps.length > 0 && <a href="#gaps">Ideal vs. non-ideal</a>}
+            {result.divergences && result.divergences.length > 0 && <a href="#divergences">Divergences</a>}
+            <a href="#labels">Nearest labels</a>
+            <a href={`${import.meta.env.BASE_URL}?view=methodology`}>Methodology</a>
+         </nav>
 
          {!compareResult && (
             <div className="result-block compare-input-area">
@@ -386,12 +401,12 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                <p className="muted">Showing both profiles side by side — your scores on the left, compared profile on the right.</p>
             </div>
          )}
-         <div className="result-block compass-block">
+         <div id="profile" className="result-block compass-block">
             <h2>Compass</h2>
             <CompassPlot scores={result.scores} compareScores={compareResult?.scores} />
          </div>
          {LAYERS.map((layer) => (
-            <div className="result-block" key={layer}>
+            <div id={layer === 'normative' ? 'layers' : undefined} className="result-block" key={layer}>
                <h2>{LAYER_TITLES[layer]}</h2>
                <div className="axis-bar-list">
                   {(result.scores[layer] || []).map((score) => {
@@ -431,7 +446,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
          )}
 
          {result.gaps.length > 0 && (
-            <div className="result-block">
+            <div id="gaps" className="result-block">
                <h2>Ideal vs. non-ideal gap</h2>
                <p className="muted">
                   Large gaps show where your ideal theory diverges from what you prescribe under current conditions.
@@ -448,7 +463,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
          )}
 
          {result.divergences && result.divergences.length > 0 && (
-            <div className="result-block">
+            <div id="divergences" className="result-block">
                <h2>Divergences & Strategic Compromises</h2>
                <p className="muted">
                   These reports highlight conflicts or trade-offs between different layers of your views.
@@ -502,7 +517,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             </div>
          )}
 
-         <div className="result-block">
+         <div id="labels" className="result-block results-inspector-block">
             <h2>Nearest ideology labels</h2>
             {result.familySubtree && Object.keys(result.familySubtree).length > 0 ? (
                Object.entries(result.familySubtree)
@@ -545,7 +560,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             )}
          </div>
 
-         <details className="result-block full-label-browser">
+         <details className="result-block full-label-browser results-inspector-block">
             <summary>
                <h2>Browse all ideology labels</h2>
             </summary>
@@ -592,7 +607,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
          </details>
 
          {result.conflatedLabels.length > 0 && (
-            <div className="result-block">
+            <div className="result-block results-inspector-block">
                <h2>Labels that conflate your layers</h2>
                <p className="muted">
                   These labels fit one layer of your views but would conflate it with the others, where you diverge.
@@ -616,6 +631,8 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                </ul>
             </div>
          )}
+
+         </div>
 
          <button type="button" className="primary-button" onClick={onRestart}>
             Start over

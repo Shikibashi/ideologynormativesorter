@@ -27,6 +27,10 @@ export function ResearchConsentScreen({ participantId, administration, onConsent
 
   return (
     <section className="screen intro-screen">
+      <div className="section-band">
+        <span className="section-band-label">VALIDATION STUDY / CONSENT</span>
+        <span className="section-band-status">NO ACCOUNT REQUIRED</span>
+      </div>
       <h1>Research participation</h1>
       <p>
         This is the {administration === 'retest' ? 'retest' : 'initial test'} administration of an instrument-validation study.

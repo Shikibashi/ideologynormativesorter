@@ -4,6 +4,7 @@
   --ecw-panel: #12144b;
   --ecw-panel-deep: #0b0d38;
   --ecw-panel-raised: #1c1e67;
+  --ecw-panel-recessed: #02030d;
   --ecw-ink: #f9f3ff;
   --ecw-ink-secondary: #dfe6ff;
   --ecw-muted: #aeb6e9;
@@ -13,6 +14,7 @@
   --ecw-link: #6ff4ff;
   --ecw-link-visited: #c594ff;
   --ecw-purple: #9c68ff;
+  --ecw-purple-on-accent: #050719;
   --ecw-pink: #ff76d7;
   --ecw-yellow: #ffd45c;
   --ecw-green: #23d5a6;
@@ -20,7 +22,24 @@
   --ecw-warning: #ffd45c;
   --ecw-error: #ff76a8;
   --ecw-info: #6ff4ff;
-  --ecw-focus: #ffd45c;
+  --ecw-success-text: #23d5a6;
+  --ecw-success-accent: #23d5a6;
+  --ecw-success-border: #23d5a6;
+  --ecw-success-on-accent: #050719;
+  --ecw-warning-text: #ffd45c;
+  --ecw-warning-accent: #ffd45c;
+  --ecw-warning-border: #ffd45c;
+  --ecw-warning-on-accent: #050719;
+  --ecw-error-text: #ff76a8;
+  --ecw-error-accent: #ff76a8;
+  --ecw-error-border: #ff76a8;
+  --ecw-error-on-accent: #050719;
+  --ecw-info-text: #6ff4ff;
+  --ecw-info-accent: #6ff4ff;
+  --ecw-info-border: #6ff4ff;
+  --ecw-info-on-accent: #050719;
+  --ecw-focus-outer: #ffd45c;
+  --ecw-focus-inner: #050719;
   --ecw-control-face: #bdbdbd;
   --ecw-control-highlight: #f6f6f6;
   --ecw-control-shadow: #666666;
@@ -34,9 +53,9 @@
   --ecw-bevel-dark: color-mix(in srgb, var(--ecw-control-shadow) 70%, transparent);
 
   /* Foundation and semantic ECW tokens. Density changes geometry, never text scale. */
-  --ecw-font-display: Georgia, "Times New Roman", serif;
-  --ecw-font-ui: Verdana, Arial, sans-serif;
-  --ecw-font-system: "Courier New", Courier, monospace;
+  --ecw-font-display: Georgia, "Noto Serif", "DejaVu Serif", "Times New Roman", "Liberation Serif", serif;
+  --ecw-font-ui: Verdana, "DejaVu Sans", Tahoma, "Noto Sans", Arial, sans-serif;
+  --ecw-font-system: "Courier New", "Liberation Mono", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
   --ecw-font-size-body: 0.9375rem;
   --ecw-font-size-ui: 0.875rem;
   --ecw-font-size-meta: 0.8125rem;
@@ -53,6 +72,7 @@
   --ecw-hit-min: 1.875rem;
   --ecw-space-panel: 0.75rem;
   --ecw-space-layout: 1rem;
+  --ecw-display-1: clamp(2rem, 1.3rem + 2.7vw, 3.25rem);
 
   /* Legacy aliases keep the product vocabulary stable while components use semantic roles. */
   --web99-bg: var(--ecw-bg);
@@ -60,6 +80,7 @@
   --web99-panel: var(--ecw-panel);
   --web99-panel-deep: var(--ecw-panel-deep);
   --web99-raised: var(--ecw-panel-raised);
+  --web99-recessed: var(--ecw-panel-recessed);
   --web99-ink: var(--ecw-ink);
   --web99-muted: var(--ecw-muted);
   --web99-border: var(--ecw-border);
@@ -111,6 +132,7 @@
   --ecw-panel: #f4f3eb;
   --ecw-panel-deep: #e1e3ee;
   --ecw-panel-raised: #ffffff;
+  --ecw-panel-recessed: #d4d6df;
   --ecw-ink: #11132d;
   --ecw-ink-secondary: #24274a;
   --ecw-muted: #5e6480;
@@ -120,6 +142,7 @@
   --ecw-link: #004fa3;
   --ecw-link-visited: #65349a;
   --ecw-purple: #5530a3;
+  --ecw-purple-on-accent: #ffffff;
   --ecw-pink: #a82378;
   --ecw-yellow: #a66c00;
   --ecw-green: #08775f;
@@ -127,7 +150,24 @@
   --ecw-warning: #8a5900;
   --ecw-error: #9b245f;
   --ecw-info: #006f88;
-  --ecw-focus: #5c2aac;
+  --ecw-success-text: #055c49;
+  --ecw-success-accent: #23d5a6;
+  --ecw-success-border: #055c49;
+  --ecw-success-on-accent: #11132d;
+  --ecw-warning-text: #6b4600;
+  --ecw-warning-accent: #ffd45c;
+  --ecw-warning-border: #6b4600;
+  --ecw-warning-on-accent: #11132d;
+  --ecw-error-text: #9b245f;
+  --ecw-error-accent: #ff76a8;
+  --ecw-error-border: #9b245f;
+  --ecw-error-on-accent: #11132d;
+  --ecw-info-text: #005a6e;
+  --ecw-info-accent: #6ff4ff;
+  --ecw-info-border: #005a6e;
+  --ecw-info-on-accent: #11132d;
+  --ecw-focus-outer: #522598;
+  --ecw-focus-inner: #ffffff;
   --ecw-control-face: #d4d0c8;
   --ecw-control-highlight: #ffffff;
   --ecw-control-shadow: #777777;
@@ -143,6 +183,7 @@
   --web99-panel: var(--ecw-panel);
   --web99-panel-deep: var(--ecw-panel-deep);
   --web99-raised: var(--ecw-panel-raised);
+  --web99-recessed: var(--ecw-panel-recessed);
   --web99-ink: var(--ecw-ink);
   --web99-muted: var(--ecw-muted);
   --web99-border: var(--ecw-border);
@@ -227,8 +268,9 @@ summary {
 }
 
 :focus-visible {
-  outline: 2px dotted var(--web99-yellow);
-  outline-offset: 3px;
+  outline: 2px solid var(--ecw-focus-inner);
+  outline-offset: 0;
+  box-shadow: 0 0 0 4px var(--ecw-focus-outer);
 }
 
 a {
@@ -303,6 +345,11 @@ code {
 }
 
 @media (max-width: 760px) {
+  html,
+  body {
+    min-width: 0;
+  }
+
   #root {
     width: 100%;
     min-height: 100svh;
@@ -319,6 +366,37 @@ code {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  *,
+  *::before,
+  *::after {
+    backdrop-filter: none !important;
+  }
+
+  body {
+    background-image: none;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  body {
+    background-image: none;
+  }
+}
+
+:root:lang(ja) {
+  --ecw-font-ui: Verdana, "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", sans-serif;
+}
+
+:root:lang(ko) {
+  --ecw-font-ui: Verdana, "DejaVu Sans", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+}
+
+:root:lang(ar),
+:root:lang(he) {
+  --ecw-font-ui: Verdana, "Noto Sans Arabic", "Segoe UI", "DejaVu Sans", sans-serif;
 }
 
 @media (forced-colors: active) {
@@ -371,6 +449,16 @@ code {
   }
 
   :focus-visible {
-    outline-color: Highlight;
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .scale-button.selected:focus-visible,
+  .statement-button.selected:focus-visible,
+  .dont-know-button.selected:focus-visible,
+  .tier-option.selected:focus-within {
+    outline-color: HighlightText;
+    outline-offset: -2px;
   }
 }

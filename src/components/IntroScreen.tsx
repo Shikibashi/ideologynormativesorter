@@ -28,9 +28,14 @@ interface IntroScreenProps {
 
 export function IntroScreen({ questionCounts, domainCount, savedProgress, onResume, onStart, onClearSavedProgress, loadError, onDismissLoadError }: IntroScreenProps) {
   const [tier, setTier] = useState<QuizTier>('moderate')
+  const [confirmingClear, setConfirmingClear] = useState(false)
 
   return (
     <section className="screen intro-screen">
+      <div className="section-band">
+        <span className="section-band-label">ASSESSMENT / START</span>
+        <span className="section-band-status">LOCAL SESSION</span>
+      </div>
       <h1>Political Judgment Decomposition</h1>
       <p className="lede">
         Most political quizzes collapse three different kinds of judgment into a single left-right score. This one keeps
@@ -47,23 +52,31 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
       )}
 
       {savedProgress && (
-        <div className="resume-banner">
+        <div className="resume-banner" aria-labelledby="saved-session-heading">
+          <h2 id="saved-session-heading">Saved session available</h2>
           <p>
             You have a saved session in progress ({savedProgress.answered} of {savedProgress.total} questions answered in
             the {savedProgress.tier} test).
           </p>
-          <div>
+          <div className="resume-actions">
             <button type="button" className="primary-button" onClick={onResume}>
               Resume
             </button>
-            <span style={{ margin: '0 0.5rem' }}>or</span>
-            <button
-              type="button"
-              className="back-link"
-              onClick={onClearSavedProgress}
-            >
-              Start fresh
-            </button>
+            {!confirmingClear ? (
+              <button type="button" className="back-link" onClick={() => setConfirmingClear(true)}>
+                Start fresh
+              </button>
+            ) : (
+              <div className="confirm-reset" role="group" aria-label="Confirm clearing saved session">
+                <span className="muted">This removes the saved answers from this browser.</span>
+                <button type="button" className="back-link" onClick={() => { onClearSavedProgress(); setConfirmingClear(false) }}>
+                  Clear saved session
+                </button>
+                <button type="button" className="back-link" onClick={() => setConfirmingClear(false)}>
+                  Cancel
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

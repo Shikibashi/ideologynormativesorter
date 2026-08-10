@@ -20,6 +20,10 @@ export function SpecialistModuleResultScreen({ module, outcome, onContinue }: Sp
 
   return (
     <section className="screen results-screen">
+      <div className="section-band">
+        <span className="section-band-label">VALIDATION STUDY / EXPERIMENT</span>
+        <span className="section-band-status">MAIN RESULT UNCHANGED</span>
+      </div>
       <h1>Experimental follow-up result</h1>
       <p>
         This is a research-stage result for <strong>{module.title}</strong>. It is being collected to test whether these

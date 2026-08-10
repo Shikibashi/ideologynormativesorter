@@ -42,6 +42,10 @@ export function SpecialistCriterionScreen({ module, onContinue, onSkip }: Specia
 
   return (
     <section className="screen intro-screen">
+      <div className="section-band">
+        <span className="section-band-label">VALIDATION STUDY / SELF-DESCRIPTION</span>
+        <span className="section-band-status">INDEPENDENT CRITERION</span>
+      </div>
       <h1>Before seeing the follow-up result</h1>
       <p>
         Which of these traditions, if any, do you already use to describe your own political outlook? Select all that

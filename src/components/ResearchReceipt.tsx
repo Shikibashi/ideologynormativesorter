@@ -18,6 +18,10 @@ export function ResearchReceipt({ submission, status }: ResearchReceiptProps) {
 
   return (
     <section className="screen methodology-screen" aria-label="Research submission status">
+      <div className="section-band">
+        <span className="section-band-label">VALIDATION STUDY / RECEIPT</span>
+        <span className="section-band-status">RECORD {status.status}</span>
+      </div>
       <h2>{recordLabel}</h2>
       <p>{message}</p>
       <p className="muted">

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { getQuestionHelpText, getSalienceHelpText } from '../data/questionHelpText'
 import { saveQuizState } from '../save'
+import { announceStatus } from '../status'
 import type { Answer, AnswerMap, Question, QuizTier } from '../types'
 
 const DEFAULT_CONFIDENCE_PROMPT = 'How confident are you in this empirical claim?'
@@ -90,8 +91,10 @@ export function QuizScreen({
     if (result?.saved === false) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- safe: saveError is not a dep
       setSaveError(result.reason)
+      announceStatus(result.reason)
     } else if (result?.saved === true) {
       setSaveError(null)
+      announceStatus('Assessment progress saved locally.')
     }
   }, [answers, index, progressSaver, questions, tier])
 
@@ -103,6 +106,7 @@ export function QuizScreen({
     const next: AnswerMap = { ...answers, [question.id]: answer }
     setAnswers(next)
     setPendingValue(null)
+    announceStatus(isLast ? 'Answer recorded. Assessment complete.' : `Answer recorded. Question ${index + 2} of ${questions.length}.`)
     if (isLast) {
       onComplete(next)
     } else {
@@ -133,10 +137,22 @@ export function QuizScreen({
 
     return (
       <section className="screen quiz-screen">
-        <div className="progress-track">
+        <div className="section-band">
+          <span className="section-band-label">ASSESSMENT / FOLLOW-UP</span>
+          <span className="section-band-status">ANSWER REVIEW</span>
+        </div>
+        <div
+          className="progress-track"
+          role="progressbar"
+          aria-label="Assessment progress"
+          aria-valuemin={1}
+          aria-valuemax={questions.length}
+          aria-valuenow={index + 1}
+          aria-valuetext={`${positionLabel}`}
+        >
           <div className="progress-fill" style={{ width: `${((index + 1) / questions.length) * 100}%` }} />
         </div>
-        <p className="muted">
+        <p className="muted question-context">
           {positionLabel} &middot; {salienceQuestion}
         </p>
         <p className="prompt">{prompt}</p>
@@ -168,10 +184,22 @@ export function QuizScreen({
 
   return (
     <section className="screen quiz-screen">
-      <div className="progress-track">
+      <div className="section-band">
+        <span className="section-band-label">ASSESSMENT / QUESTION</span>
+        <span className="section-band-status">LOCAL SAVE ENABLED</span>
+      </div>
+      <div
+        className="progress-track"
+        role="progressbar"
+        aria-label="Assessment progress"
+        aria-valuemin={1}
+        aria-valuemax={questions.length}
+        aria-valuenow={index + 1}
+        aria-valuetext={positionLabel}
+      >
         <div className="progress-fill" style={{ width: `${((index + 1) / questions.length) * 100}%` }} />
       </div>
-      <p className="muted">
+      <p className="muted question-context">
         {positionLabel} &middot; {question.layer}
         {question.theoryContext !== 'mixed' ? ` · ${question.theoryContext}` : ''}
       </p>

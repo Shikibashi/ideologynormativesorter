@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
 import type { ReactNode } from 'react'
+import { StatusAnnouncer } from './StatusAnnouncer'
 
 interface SiteShellProps {
   children: ReactNode
@@ -57,10 +58,14 @@ export function SiteShell({ children }: SiteShellProps) {
    const [systemDark, setSystemDark] = useState(systemPrefersDark)
    const [density, setDensity] = useState<Density>(() => readDensity())
    const [comfortableInput, setComfortableInput] = useState(systemPrefersComfortable)
+   const [locationKey, setLocationKey] = useState(() => typeof window === 'undefined'
+      ? ''
+      : `${window.location.pathname}${window.location.search}${window.location.hash}`)
    const theme: Theme = appearance === 'system' ? (systemDark ? 'dark' : 'light') : appearance
    const resolvedDensity: ResolvedDensity = density === 'automatic'
       ? comfortableInput ? 'comfortable' : 'compact'
       : density
+   const isMethodology = locationKey.includes('view=methodology') && !/(?:^|[#&?])r=/.test(locationKey)
 
   useEffect(() => {
     if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return
@@ -73,6 +78,16 @@ export function SiteShell({ children }: SiteShellProps) {
     }
     media.addListener?.(update)
     return () => media.removeListener?.(update)
+  }, [])
+
+  useEffect(() => {
+    const updateLocation = () => setLocationKey(`${window.location.pathname}${window.location.search}${window.location.hash}`)
+    window.addEventListener('popstate', updateLocation)
+    window.addEventListener('hashchange', updateLocation)
+    return () => {
+      window.removeEventListener('popstate', updateLocation)
+      window.removeEventListener('hashchange', updateLocation)
+    }
   }, [])
 
   useEffect(() => {
@@ -134,7 +149,12 @@ export function SiteShell({ children }: SiteShellProps) {
             <strong>BROWSER</strong>
           </div>
           <nav className="site-actions" aria-label="Site navigation">
-            <a className="site-home-link" href={import.meta.env.BASE_URL}>HOME</a>
+            <a className="site-home-link" href={import.meta.env.BASE_URL} aria-current={!isMethodology ? 'page' : undefined}>
+              <span aria-hidden="true">[ </span>HOME<span aria-hidden="true"> ]</span>
+            </a>
+            <a className="site-methodology-link" href={`${import.meta.env.BASE_URL}?view=methodology`} aria-current={isMethodology ? 'page' : undefined}>
+              <span aria-hidden="true">[ </span>METHODOLOGY<span aria-hidden="true"> ]</span>
+            </a>
             <details
               className="display-control"
               onKeyDown={(event) => {
@@ -144,7 +164,7 @@ export function SiteShell({ children }: SiteShellProps) {
                 event.currentTarget.querySelector('summary')?.focus()
               }}
             >
-              <summary>DISPLAY</summary>
+              <summary><span aria-hidden="true">[ </span>DISPLAY<span aria-hidden="true"> ]</span></summary>
               <div className="display-popover">
               <fieldset>
                 <legend>Appearance</legend>
@@ -247,12 +267,19 @@ export function SiteShell({ children }: SiteShellProps) {
         </div>
       </aside>
 
+      <div className="app-status-bar" aria-label="Application status">
+        <span><strong>STATUS</strong> Ready</span>
+        <span><strong>INPUT</strong> Keyboard or pointer</span>
+        <span><strong>RECOVERY</strong> Local progress enabled</span>
+      </div>
+
       <main id="app-content" className="app-workspace">{children}</main>
 
       <footer className="site-footer">
         <span>Political Judgment Decomposition</span>
         <span>No account required · local browser storage</span>
       </footer>
+      <StatusAnnouncer />
     </div>
   )
 }

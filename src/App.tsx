@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import './App.css'
 import { IntroScreen } from './components/IntroScreen'
+import { MethodologyScreen } from './components/MethodologyScreen'
 import { QuizScreen } from './components/QuizScreen'
 import { ResearchConsentScreen } from './components/ResearchConsentScreen'
 import { ResearchReceipt } from './components/ResearchReceipt'
@@ -48,9 +49,11 @@ import {
 } from './specialist/save'
 import type { AnswerMap, Question, QuizTier, ResultProfile } from './types'
 import { clearQuizState, loadQuizState, getQuizProgress } from './save'
+import { announceStatus } from './status'
 
 type Stage =
    | 'intro'
+   | 'methodology'
    | 'consent'
    | 'quiz'
    | 'self-identification'
@@ -67,6 +70,12 @@ function answersForQuestions(source: AnswerMap, questionList: Question[]): Answe
    return Object.fromEntries(
       Object.entries(source).filter(([questionId]) => allowed.has(questionId)),
    ) as AnswerMap
+}
+
+function requestedMethodology(): boolean {
+   if (typeof window === 'undefined') return false
+   return new URLSearchParams(window.location.search).get('view') === 'methodology'
+      && !/(?:^|[#&?])r=/.test(window.location.hash)
 }
 
 function App() {
@@ -113,7 +122,7 @@ function App() {
    )
    const [compareAnswers] = useState<AnswerMap | null>(() => readCompareAnswers())
    const [stage, setStage] = useState<Stage>(
-      sharedAnswers ? 'results' : initialResearchMode ? 'consent' : 'intro',
+      sharedAnswers ? 'results' : requestedMethodology() ? 'methodology' : initialResearchMode ? 'consent' : 'intro',
    )
    const [activeQuestions, setActiveQuestions] = useState(questions)
    const [answers, setAnswers] = useState<AnswerMap>(sharedAnswers ?? {})
@@ -131,6 +140,19 @@ function App() {
       [],
    )
    const [savedProgress, setSavedProgress] = useState(() => getQuizProgress())
+
+   useEffect(() => {
+      function handleHistoryChange(): void {
+         if (requestedMethodology()) {
+            setStage('methodology')
+         } else if (stage === 'methodology') {
+            setStage(result ? 'results' : 'intro')
+         }
+      }
+
+      window.addEventListener('popstate', handleHistoryChange)
+      return () => window.removeEventListener('popstate', handleHistoryChange)
+   }, [result, stage])
 
    const persistSpecialistProgress = useCallback(
       ({ answers: currentAnswers, index }: { answers: AnswerMap; index: number }) => {
@@ -178,6 +200,7 @@ function App() {
       setWasResumed(false)
       setResuming(false)
       setStage('quiz')
+      announceStatus(`Started ${tier} assessment.`)
    }
 
    function handleStart(tier: QuizTier): void {
@@ -222,6 +245,7 @@ function App() {
          setStage('consent')
       } else {
          setStage('quiz')
+         announceStatus('Resumed saved assessment progress.')
       }
    }
 
@@ -254,6 +278,7 @@ function App() {
       setQuizCompletedAt(completedAt)
       setResult(buildResultProfile(questions, newAnswers, axes, primaryScoringLabels))
       setStage(researchEnabled && researchConsent ? 'self-identification' : 'results')
+      announceStatus('Assessment complete. Results are ready.')
    }
 
    async function handleResearchIdentity(identity: ResearchIdentity): Promise<void> {
@@ -280,6 +305,7 @@ function App() {
       const status = await submitResearchSubmission(submission, import.meta.env.VITE_RESEARCH_ENDPOINT)
       setResearchSubmission(submission)
       setResearchStatus(status)
+      announceStatus(status.status === 'failed' ? 'Research record could not be submitted.' : 'Research record prepared.')
 
       if (specialistAssignment && assignedSpecialistModule) {
          refreshSpecialistProgress()
@@ -374,6 +400,7 @@ function App() {
       setSpecialistOutcome(scoreSpecialistModule(specialistAssignment.moduleId, newAnswers))
       setSpecialistResuming(false)
       setStage('specialist-criterion')
+      announceStatus('Specialist follow-up complete. Self-description is ready.')
    }
 
    async function handleSpecialistCriterion(criterion: SpecialistCriterionResponse): Promise<void> {
@@ -412,6 +439,7 @@ function App() {
       setSpecialistSubmission(submission)
       setSpecialistStatus(status)
       setStage('specialist-result')
+      announceStatus(status.status === 'failed' ? 'Specialist follow-up could not be submitted.' : 'Specialist follow-up submitted.')
    }
 
    function handleDiscardSpecialistAfterCompletion(): void {
@@ -436,6 +464,14 @@ function App() {
    function handleClearSavedProgress(): void {
       clearQuizState()
       setSavedProgress(null)
+      announceStatus('Saved assessment progress cleared.')
+   }
+
+   function handleMethodologyBack(): void {
+      const url = new URL(window.location.href)
+      url.searchParams.delete('view')
+      window.history.pushState({}, '', `${url.pathname}${url.search}${url.hash}`)
+      window.dispatchEvent(new PopStateEvent('popstate'))
    }
 
    function handleRestart(): void {
@@ -480,6 +516,10 @@ function App() {
             onDismissLoadError={() => setLoadError(null)}
          />
       )
+   }
+
+   if (stage === 'methodology') {
+      return <MethodologyScreen onBack={handleMethodologyBack} />
    }
 
    if (stage === 'consent') {

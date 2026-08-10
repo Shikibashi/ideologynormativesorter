@@ -1,6 +1,7 @@
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { SiteShell } from './SiteShell'
+import { announceStatus } from '../status'
 
 const APPEARANCE_STORAGE_KEY = 'political-judgment-appearance-v1'
 const DENSITY_STORAGE_KEY = 'political-judgment-density-v1'
@@ -74,6 +75,17 @@ describe('SiteShell appearance control', () => {
 
     expect(screen.getByRole('link', { name: 'Political Judgment Lab' })).toHaveAttribute('href', '/')
     expect(screen.getByRole('link', { name: 'HOME' })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: 'METHODOLOGY' })).toHaveAttribute('href', '/?view=methodology')
+    expect(screen.getByRole('link', { name: 'HOME' })).toHaveAttribute('aria-current', 'page')
+  })
+
+  it('marks the methodology destination as the current page', () => {
+    window.history.replaceState(null, '', '/?view=methodology')
+
+    render(<SiteShell><p>Application content</p></SiteShell>)
+
+    expect(screen.getByRole('link', { name: 'METHODOLOGY' })).toHaveAttribute('aria-current', 'page')
+    expect(screen.getByRole('link', { name: 'HOME' })).not.toHaveAttribute('aria-current')
   })
 
   it('defaults to System and persists an explicit Light selection', () => {
@@ -150,5 +162,17 @@ describe('SiteShell appearance control', () => {
 
     expect(document.querySelector('details[open]')).not.toBeInTheDocument()
     expect(document.activeElement).toBe(screen.getByText('DISPLAY', { exact: true }))
+  })
+
+  it('keeps persistent status out of live regions and announces discrete events separately', () => {
+    render(<SiteShell><p>Application content</p></SiteShell>)
+
+    expect(screen.getByLabelText('Application status')).not.toHaveAttribute('aria-live')
+    const announcer = document.querySelector('.sr-status-announcer')
+    expect(announcer).toHaveAttribute('aria-live', 'polite')
+
+    act(() => announceStatus('Assessment progress saved locally.'))
+
+    expect(announcer).toHaveTextContent('Assessment progress saved locally.')
   })
 })
