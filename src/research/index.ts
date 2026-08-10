@@ -12,6 +12,7 @@ export const RESEARCH_CONSENT_VERSION = '2026-08-10-v2'
 const PARTICIPANT_STORAGE_KEY = 'political-judgment-research-participant-v1'
 
 export type ResearchAdministration = 'test' | 'retest'
+export type SpecialistDisposition = 'declined-before-start' | 'declined-after-partial' | 'declined-after-completion'
 
 export interface ResearchConsent {
   ageConfirmed: true
@@ -80,7 +81,16 @@ export interface SpecialistResearchSubmission extends ResearchRecordBase {
   matches: SpecialistMatch[]
 }
 
-export type ResearchSubmission = CoreResearchSubmission | SpecialistResearchSubmission
+export interface SpecialistDispositionSubmission extends ResearchRecordBase {
+  recordType: 'specialist-disposition'
+  moduleId: SpecialistModuleId
+  moduleVersion: string
+  assignment: SpecialistModuleAssignment
+  disposition: SpecialistDisposition
+  answeredCount: number
+}
+
+export type ResearchSubmission = CoreResearchSubmission | SpecialistResearchSubmission | SpecialistDispositionSubmission
 
 export type ResearchSubmissionStatus =
   | { status: 'submitted'; endpoint: string }
@@ -230,6 +240,41 @@ export function buildSpecialistResearchSubmission(input: {
   }
 }
 
+export function buildSpecialistDispositionSubmission(input: {
+  studyId: string
+  participantId: string
+  administration: ResearchAdministration
+  consent: ResearchConsent
+  moduleId: SpecialistModuleId
+  moduleVersion: string
+  assignment: SpecialistModuleAssignment
+  disposition: SpecialistDisposition
+  answeredCount: number
+  startedAt?: string
+  occurredAt?: string
+  submittedAt?: string
+}): SpecialistDispositionSubmission {
+  const completedAt = input.occurredAt ?? new Date().toISOString()
+  const startedAt = input.startedAt ?? completedAt
+  return {
+    schemaVersion: RESEARCH_SCHEMA_VERSION,
+    recordType: 'specialist-disposition',
+    studyId: safeToken(input.studyId) || 'public-pilot',
+    participantId: safeToken(input.participantId),
+    administration: input.administration,
+    submittedAt: input.submittedAt ?? completedAt,
+    startedAt,
+    completedAt,
+    durationMs: durationBetween(startedAt, completedAt),
+    consent: input.consent,
+    moduleId: input.moduleId,
+    moduleVersion: input.moduleVersion,
+    assignment: input.assignment,
+    disposition: input.disposition,
+    answeredCount: Math.max(0, Math.floor(input.answeredCount)),
+  }
+}
+
 export async function submitResearchSubmission(
   submission: ResearchSubmission,
   endpoint: string | undefined,
@@ -263,7 +308,11 @@ export async function submitResearchSubmission(
 }
 
 export function downloadResearchSubmission(submission: ResearchSubmission): void {
-  const suffix = submission.recordType === 'specialist' ? `-${submission.moduleId}` : '-core'
+  const suffix = submission.recordType === 'core'
+    ? '-core'
+    : submission.recordType === 'specialist'
+      ? `-${submission.moduleId}`
+      : `-${submission.moduleId}-disposition`
   const filename = `${submission.studyId}-${submission.participantId}-${submission.administration}${suffix}.json`
   const blob = new Blob([JSON.stringify(submission, null, 2)], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
