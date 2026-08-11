@@ -569,6 +569,8 @@ describe('ideology explainers', () => {
          ['maoism', 'descriptive', /agrarian or peripheral societies.*peasant mobilization.*protracted struggle.*mass-line leadership/],
          ['trotskyism', 'descriptive', /socialism isolated within one country.*bureaucratic degeneration.*international or “permanent” revolution/],
          ['guild-socialism', 'descriptive', /capitalist industrial hierarchy.*workers democratic control.*public ownership and worker guilds/],
+         ['paleoconservatism', 'descriptive', /liberal internationalism.*mass immigration.*multiculturalism.*national cohesion.*economic nationalism/],
+         ['one-nation-conservatism', 'descriptive', /social division and insecurity.*national cohesion.*paternalist welfare.*competitive enterprise/],
          ['anarcho-capitalist', 'descriptive', /private providers.*law, protection, and arbitration.*equal access to law/],
          ['anarcho-capitalist', 'prescriptive', /competitive private provision of law/],
          ['market-socialist', 'descriptive', /markets and prices to coordinate dispersed information/],

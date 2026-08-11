@@ -1037,9 +1037,11 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors an assertive U.S. or allied international role using alliances, pressure, and sometimes military force to defend strategic interests and promote liberal-democratic institutions abroad.',
    },
    paleoconservatism: {
+      descriptive: 'Expects liberal internationalism, mass immigration, and multiculturalism to weaken national cohesion and cultural continuity, while localism, economic nationalism, and non-intervention can protect the republic; paleoconservative currents vary and the label can overlap with nativist politics.',
       prescriptive: 'Generally favors local or national control, immigration restriction, economic nationalism or skepticism toward free trade, and a less interventionist foreign policy than neoconservatism.',
    },
    'one-nation-conservatism': {
+      descriptive: 'Expects social division and insecurity to threaten national cohesion, while paternalist welfare and moderate state intervention can bind classes together without abolishing competitive enterprise; the tradition varies over how much welfare and state action are compatible with conservatism.',
       prescriptive: 'Accepts cost-conscious welfare provision and moderate state intervention to preserve social cohesion, security, and opportunity within existing institutions rather than pursue egalitarian transformation.',
    },
    'fiscal-conservatism': {
