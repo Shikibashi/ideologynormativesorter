@@ -31,14 +31,28 @@ function answerMap(questionList: Question[], value: AnswerMap[string]['value']):
 }
 
 export function standardResumeStorage(): Record<string, string> {
-  const form = questionsForTier('blitz')
+  const form = questionsForTier('moderate')
   const answered = form.slice(0, 2)
   return {
     'ideology-quiz-save': JSON.stringify({
       questions: form,
       answers: answerMap(answered, 0),
       index: 2,
-      tier: 'blitz',
+      tier: 'moderate',
+      startedAt: '2026-08-10T12:00:00.000Z',
+    }),
+  }
+}
+
+export function almostCompletedStandardStorage(): Record<string, string> {
+  const form = questionsForTier('moderate')
+  const answered = form.slice(0, -1)
+  return {
+    'ideology-quiz-save': JSON.stringify({
+      questions: form,
+      answers: answerMap(answered, 0),
+      index: Math.max(0, form.length - 1),
+      tier: 'moderate',
       startedAt: '2026-08-10T12:00:00.000Z',
     }),
   }

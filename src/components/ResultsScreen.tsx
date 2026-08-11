@@ -30,6 +30,7 @@ interface ResultsScreenProps {
 
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
 const RESULT_SECTION_IDS = new Set(['profile', 'layers', 'gaps', 'divergences', 'labels'])
+const NEAREST_LABEL_PREVIEW_COUNT = 5
 
 function activeResultSection(hash: string): string {
    const fragment = hash.startsWith('#') ? hash.slice(1) : hash
@@ -60,6 +61,26 @@ function topFit(subfamilies: Record<string, { fit: number }[]>): number {
       for (const m of matches) if (m.fit > best) best = m.fit
    }
    return best
+}
+
+function selectFamilySubtree(
+   subtree: Record<string, Record<string, LabelMatch[]>> | undefined,
+   matches: LabelMatch[],
+): Record<string, Record<string, LabelMatch[]>> {
+   if (!subtree) return {}
+   const selectedIds = new Set(matches.map((match) => match.labelId))
+   const selected: Record<string, Record<string, LabelMatch[]>> = {}
+
+   for (const [family, subfamilies] of Object.entries(subtree)) {
+      for (const [subfamily, familyMatches] of Object.entries(subfamilies)) {
+         const visibleMatches = familyMatches.filter((match) => selectedIds.has(match.labelId))
+         if (visibleMatches.length === 0) continue
+         selected[family] ??= {}
+         selected[family][subfamily] = visibleMatches
+      }
+   }
+
+   return selected
 }
 
 const LAYER_TITLES = {
@@ -274,6 +295,8 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
       relatedTraditionMatchesSearch(candidate, labelSearch),
    )
    const groupedLabels = groupLabels(visibleLabels)
+   const nearestPreview = result.nearestLabels.slice(0, NEAREST_LABEL_PREVIEW_COUNT)
+   const nearestPreviewSubtree = selectFamilySubtree(result.familySubtree, nearestPreview)
 
    useEffect(() => {
       const update = () => {
@@ -367,6 +390,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             <a href={resultSectionHref('labels')} aria-current={activeSection === '#labels' ? 'location' : undefined}><span className="navigator-marker" aria-hidden="true">›</span>Nearest labels</a>
             <a href={`${import.meta.env.BASE_URL}?view=methodology`}><span className="navigator-marker" aria-hidden="true">›</span>Methodology</a>
          </nav>
+         <div className="results-primary-column">
          <div id="profile" className="result-block compass-block">
             <h2>Compass</h2>
             <CompassPlot scores={result.scores} compareScores={compareResult?.scores} />
@@ -487,6 +511,9 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             </div>
          )}
 
+         </div>
+         <aside className="results-inspector-column" aria-label="Comparison and label references">
+
          {!compareResult && (
             <div className="result-block compare-input-area">
                <h2>Compare with another result</h2>
@@ -525,8 +552,13 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                These are the closest reference profiles among the scored labels, not claims that you subscribe to them.
                Proximity can coexist with important disagreements; open “Why is this nearby?” to compare directions.
             </p>
-            {result.familySubtree && Object.keys(result.familySubtree).length > 0 ? (
-               Object.entries(result.familySubtree)
+            {result.nearestLabels.length > NEAREST_LABEL_PREVIEW_COUNT && (
+               <p className="muted nearest-preview-note">
+                  Showing the five closest profiles. Browse the full catalog below to inspect every label.
+               </p>
+            )}
+            {Object.keys(nearestPreviewSubtree).length > 0 ? (
+               Object.entries(nearestPreviewSubtree)
                   .sort((a, b) => topFit(b[1]) - topFit(a[1]))
                   .map(([family, subfamilies]) => (
                      <details key={family} className="family-group" open>
@@ -557,7 +589,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                   ))
             ) : (
                <ol className="label-list">
-                  {result.nearestLabels.map((match) => (
+                  {nearestPreview.map((match) => (
                      <li key={match.labelId}>
                         {match.name} <span className="muted">({labelProximityLabel(match.fit).toLowerCase()})</span>
                      </li>
@@ -675,6 +707,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             </div>
          )}
 
+         </aside>
          </div>
 
          <button type="button" className="primary-button" onClick={onRestart}>

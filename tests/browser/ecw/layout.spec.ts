@@ -92,3 +92,29 @@ test('Workbench container independently demotes through three, two, and one colu
   expect(await page.locator('.results-navigator a').allTextContents()).toEqual(focusOrder)
   await expectNoConcealedOverflow(page)
 })
+
+test('Result cards remain readable and the nearest-label inspector stays bounded', async ({ page }) => {
+  await page.setViewportSize({ width: 1920, height: 1080 })
+  await page.goto(resultPath())
+  await expect(page.getByRole('heading', { name: 'Your results' })).toBeVisible()
+
+  const metrics = await page.evaluate(() => {
+    const axisNames = [...document.querySelectorAll<HTMLElement>('.axis-bar-name')]
+      .map((element) => {
+        const rect = element.getBoundingClientRect()
+        return { width: rect.width, height: rect.height }
+      })
+    return {
+      axisNames,
+      labelCards: document.querySelectorAll('#labels .label-card').length,
+      pageHeight: document.documentElement.scrollHeight,
+    }
+  })
+
+  expect(metrics.axisNames.length).toBeGreaterThan(0)
+  expect(Math.min(...metrics.axisNames.map(({ width }) => width))).toBeGreaterThan(240)
+  expect(Math.max(...metrics.axisNames.map(({ height }) => height))).toBeLessThan(64)
+  expect(metrics.labelCards).toBeLessThanOrEqual(5)
+  expect(metrics.pageHeight).toBeLessThan(9000)
+  await expectNoConcealedOverflow(page)
+})

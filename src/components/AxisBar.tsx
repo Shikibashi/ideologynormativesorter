@@ -25,8 +25,8 @@ export function AxisBar({ axis, score, result }: AxisBarProps) {
   return (
     <div className="axis-bar">
       <div className="axis-bar-header">
-        <span>{axis.name}</span>
-        <span className="muted">{score.itemCount === 0 ? 'unmeasured' : axisPositionLabel(score.normalized, axis)}</span>
+        <span className="axis-bar-name">{axis.name}</span>
+        <span className="axis-bar-position muted">{score.itemCount === 0 ? 'unmeasured' : axisPositionLabel(score.normalized, axis)}</span>
         {rel && <span className={`reliability ${rel.band}`}>{coverageLabel(rel.band)}</span>}
       </div>
       <div className="axis-bar-track" aria-hidden="true">

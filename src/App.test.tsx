@@ -7,7 +7,7 @@ import { RESULT_SCORING_VERSION } from './scoring'
 import { encodeAnswers, readCompareAnswers, readSharedAnswers } from './share'
 import type { AnswerMap, Question } from './types'
 
-const quickQuestions = questionsForTier('quick')
+const moderateQuestions = questionsForTier('moderate')
 const SAVE_KEY = 'ideology-quiz-save'
 const PARTICIPANT_KEY = 'political-judgment-research-participant-v1:pilot-2026'
 const SHARE_META = { bankVersion: QUESTION_BANK_VERSION, scoringVersion: RESULT_SCORING_VERSION }
@@ -43,10 +43,10 @@ function storeValidSave(): void {
    localStorage.setItem(
       SAVE_KEY,
       JSON.stringify({
-         questions: quickQuestions,
-         answers: { [quickQuestions[0].id]: { questionId: quickQuestions[0].id, value: 1 } },
+         questions: moderateQuestions,
+         answers: { [moderateQuestions[0].id]: { questionId: moderateQuestions[0].id, value: 1 } },
          index: 1,
-         tier: 'quick',
+         tier: 'moderate',
       }),
    )
 }
@@ -208,7 +208,7 @@ describe('App', () => {
       expect(Object.keys(saved.answers)).toHaveLength(12)
    })
 
-   it('walks through intro, the quick quiz, and renders results', () => {
+   it('walks through intro, the moderate quiz, and renders results', () => {
       render(<App />)
 
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
@@ -218,11 +218,13 @@ describe('App', () => {
          'href',
          '?contribute=1&collection=community-2026&formSize=120',
       )
-      fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
+      expect(screen.queryByRole('radio', { name: /blitz/i })).not.toBeInTheDocument()
+      expect(screen.queryByRole('radio', { name: /quick/i })).not.toBeInTheDocument()
+      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
-      for (let i = 0; i < quickQuestions.length; i++) {
-         expect(screen.getByText(`Question ${i + 1} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
+      for (let i = 0; i < moderateQuestions.length; i++) {
+         expect(screen.getByText(`Question ${i + 1} of ${moderateQuestions.length}`, { exact: false })).toBeInTheDocument()
          const optionButtons = answerOptionButtons()
          clickScaleAndAnySalienceFollowUp(Math.floor(optionButtons.length / 2))
       }
@@ -236,36 +238,36 @@ describe('App', () => {
       fireEvent.click(screen.getByRole('button', { name: /start over/i }))
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
       expect(screen.queryByText(/you have a saved session in progress/i)).not.toBeInTheDocument()
-   })
+   }, 15_000)
 
    it('lets a descriptive item be answered as "I don\'t know" and still advances', () => {
       render(<App />)
-      fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
+      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
-      const firstDescriptiveIndex = quickQuestions.findIndex((q) => q.allowDontKnow)
+      const firstDescriptiveIndex = moderateQuestions.findIndex((q) => q.allowDontKnow)
       for (let i = 0; i < firstDescriptiveIndex; i++) {
          clickScaleAndAnySalienceFollowUp(0)
       }
 
-      expect(screen.getByText(`Question ${firstDescriptiveIndex + 1} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
+      expect(screen.getByText(`Question ${firstDescriptiveIndex + 1} of ${moderateQuestions.length}`, { exact: false })).toBeInTheDocument()
       fireEvent.click(screen.getByRole('button', { name: /i don't know/i }))
-      expect(screen.getByText(`Question ${firstDescriptiveIndex + 2} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
+      expect(screen.getByText(`Question ${firstDescriptiveIndex + 2} of ${moderateQuestions.length}`, { exact: false })).toBeInTheDocument()
    })
 
    it('lets a confidence/priority rating be skipped with explicit result-exclusion wording', () => {
       render(<App />)
-      fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
+      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
-      const ratedIndex = quickQuestions.findIndex((q) => q.layer !== 'normative')
+      const ratedIndex = moderateQuestions.findIndex((q) => q.layer !== 'normative')
       for (let i = 0; i < ratedIndex; i++) {
          clickScaleAndAnySalienceFollowUp(0)
       }
 
       fireEvent.click(answerOptionButtons()[0])
       fireEvent.click(screen.getByRole('button', { name: /skip rating and exclude this answer from my result/i }))
-      expect(screen.getByText(`Question ${ratedIndex + 2} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
+      expect(screen.getByText(`Question ${ratedIndex + 2} of ${moderateQuestions.length}`, { exact: false })).toBeInTheDocument()
    })
 
    it('lands directly on results when loaded with a shared #r= link', () => {
@@ -379,12 +381,12 @@ describe('App', () => {
    })
    it('renders the layer-conflation section with agreement chips for a cross-layer profile', () => {
       render(<App />)
-      fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
+      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
-      for (let i = 0; i < quickQuestions.length; i++) {
-         expect(screen.getByText(`Question ${i + 1} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
-         answerByIntent(quickQuestions[i])
+      for (let i = 0; i < moderateQuestions.length; i++) {
+         expect(screen.getByText(`Question ${i + 1} of ${moderateQuestions.length}`, { exact: false })).toBeInTheDocument()
+         answerByIntent(moderateQuestions[i])
          handleSalienceIfPresent()
       }
 
@@ -425,17 +427,19 @@ describe('App', () => {
 
    it('renders nearest ideology labels grouped into family-tree groups with readable family names', () => {
       render(<App />)
-      fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
+      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
-      for (let i = 0; i < quickQuestions.length; i++) {
-         answerByIntent(quickQuestions[i])
+      for (let i = 0; i < moderateQuestions.length; i++) {
+         answerByIntent(moderateQuestions[i])
          handleSalienceIfPresent()
       }
 
       expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
       expect(screen.getByRole('heading', { name: /nearest catalog labels/i })).toBeInTheDocument()
       expect(screen.getByText(/not claims that you subscribe to them/i)).toBeInTheDocument()
+      expect(screen.getByText(/showing the five closest profiles/i)).toBeInTheDocument()
+      expect(document.querySelectorAll('#labels .label-card')).toHaveLength(5)
 
       // The family-tree grouping must render at least one family group.
       const groups = Array.from(document.querySelectorAll('.family-group'))

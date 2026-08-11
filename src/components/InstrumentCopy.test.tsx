@@ -6,7 +6,7 @@ import { MethodologyScreen } from './MethodologyScreen'
 afterEach(cleanup)
 
 describe('respondent-facing instrument copy', () => {
-  it('describes short forms without stale per-layer coverage guarantees', () => {
+  it('offers only the moderate and extensive public assessments', () => {
     render(
       <IntroScreen
         questionCounts={{ blitz: 19, quick: 56, moderate: 158, extensive: 336 }}
@@ -19,10 +19,10 @@ describe('respondent-facing instrument copy', () => {
       />,
     )
 
-    expect(screen.getByText(/a short snapshot spanning all three layers/i)).toBeInTheDocument()
-    expect(screen.getByText(/some layer\/domain gaps under editorial review/i)).toBeInTheDocument()
-    expect(screen.queryByText(/seven items per layer/i)).not.toBeInTheDocument()
-    expect(screen.queryByText(/one item per domain per layer/i)).not.toBeInTheDocument()
+    expect(screen.getByRole('radio', { name: /moderate/i })).toBeInTheDocument()
+    expect(screen.getByRole('radio', { name: /extensive/i })).toBeInTheDocument()
+    expect(screen.queryByRole('radio', { name: /blitz/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('radio', { name: /quick/i })).not.toBeInTheDocument()
   })
 
   it('accurately describes the active agreement scale and skipped-rating behavior', () => {

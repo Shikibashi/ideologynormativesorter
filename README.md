@@ -79,6 +79,8 @@ VITE_RESEARCH_ENDPOINT=https://research.example.org/submit npm run build
 
 For GitHub Pages deployment, set the repository variables `RESEARCH_ENDPOINT`, `RESEARCH_CONTACT`, and `RESEARCH_RETENTION_NOTICE`. The deployment workflow maps them to the frontend build. Without `RESEARCH_ENDPOINT`, the public contribution link is disabled and no record is transmitted; local development still allows an explicitly labeled preview.
 
+GitHub Pages cannot store submissions by itself. A deployable Cloudflare Worker/D1 collector and the complete activation procedure are provided in [`docs/github-pages-contribution-deployment.md`](docs/github-pages-contribution-deployment.md). Keep the Pages frontend disabled until that private endpoint, a public site-owner contact, and a retention statement are configured.
+
 Website contributions form an open opt-in, nonprobability pool. They are useful for improving this site but cannot estimate population prevalence or support a sampling margin of error. No population weights are applied.
 
 ## Reference collector

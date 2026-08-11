@@ -58,7 +58,7 @@ test('links, buttons, fields, and Display receive canonical two-band focus', asy
 
 test('selected answer and tier states remain visible while focused', async ({ page }) => {
   await page.goto('/')
-  const tier = page.getByRole('radio', { name: /Blitz/ })
+  const tier = page.getByRole('radio', { name: /Moderate/ })
   await tier.check()
   await focusWithKeyboard(tier)
   await expect(tier).toBeFocused()
@@ -110,7 +110,7 @@ test('Dark mode keeps keyboard focus visible on Page and Workbench controls', as
 test('forced colors preserve selected focus and structural borders', async ({ page }) => {
   await page.emulateMedia({ forcedColors: 'active' })
   await page.goto('/')
-  const tier = page.getByRole('radio', { name: /Blitz/ })
+  const tier = page.getByRole('radio', { name: /Moderate/ })
   await tier.check()
   await tier.focus()
   const style = await tier.locator('..').evaluate((element) => {

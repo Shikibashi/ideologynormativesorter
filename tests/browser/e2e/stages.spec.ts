@@ -9,6 +9,7 @@ import {
 import {
   completedContributionStorage,
   CONTRIBUTION_PATH,
+  almostCompletedStandardStorage,
   resultPath,
   standardResumeStorage,
 } from '../fixtures/states'
@@ -21,14 +22,16 @@ test('intro starts a standard quiz with dynamic passive status', async ({ page }
   await expect(page.getByLabel('Application status')).toContainText('STAGE START')
   await expect(page.getByLabel('Application status')).not.toHaveAttribute('aria-live')
 
-  await page.getByRole('radio', { name: /Blitz/ }).check()
-  await expect(page.getByLabel('Application status')).toContainText('LENGTH blitz')
+  await expect(page.getByRole('radio', { name: /Blitz/ })).toHaveCount(0)
+  await expect(page.getByRole('radio', { name: /Quick/ })).toHaveCount(0)
+  await page.getByRole('radio', { name: /Moderate/ }).check()
+  await expect(page.getByLabel('Application status')).toContainText('LENGTH moderate')
   await page.getByRole('button', { name: 'Begin assessment' }).click()
 
   await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuenow', '1')
   await expect(page.getByLabel('Application status')).toContainText('PROGRESS 1 /')
   let messages = await page.evaluate(() => (window as unknown as { __ECW_STATUS_MESSAGES__: string[] }).__ECW_STATUS_MESSAGES__)
-  expect(messages).toContain('Started blitz assessment.')
+  expect(messages).toContain('Started moderate assessment.')
   await answerCurrentQuestion(page)
   await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuenow', '2')
   messages = await page.evaluate(() => (window as unknown as { __ECW_STATUS_MESSAGES__: string[] }).__ECW_STATUS_MESSAGES__)
@@ -93,10 +96,10 @@ test('completed contribution traverses self-identification and the specialist mo
 test('completion, share-copy, and comparison events are announced discretely', async ({ page, context }) => {
   await installStatusRecorder(page)
   await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: 'http://127.0.0.1:4173' })
+  await seedStorage(page, almostCompletedStandardStorage())
   await page.goto('/')
-  await page.getByRole('radio', { name: /Blitz/ }).check()
-  await page.getByRole('button', { name: 'Begin assessment' }).click()
-  for (let index = 0; index < 19; index += 1) await answerCurrentQuestion(page)
+  await page.getByRole('button', { name: 'Resume' }).click()
+  await answerCurrentQuestion(page)
   await expect(page.getByRole('heading', { name: 'Your results' })).toBeVisible()
 
   await page.getByRole('button', { name: 'Copy link to this result' }).click()

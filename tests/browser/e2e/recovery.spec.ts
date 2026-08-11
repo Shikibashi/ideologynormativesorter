@@ -26,7 +26,7 @@ test('local save failure stays visible and is announced', async ({ page }) => {
     }
   })
   await page.goto('/')
-  await page.getByRole('radio', { name: /Blitz/ }).check()
+  await page.getByRole('radio', { name: /Moderate/ }).check()
   await page.getByRole('button', { name: 'Begin assessment' }).click()
   await answerCurrentQuestion(page)
 

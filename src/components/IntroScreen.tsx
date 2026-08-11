@@ -9,8 +9,6 @@ interface TierOption {
 }
 
 const TIER_OPTIONS: TierOption[] = [
-  { tier: 'blitz', label: 'Blitz', blurb: 'A short snapshot spanning all three layers and key domains.' },
-  { tier: 'quick', label: 'Quick', blurb: 'A broader overview spanning all domains, with some layer/domain gaps under editorial review.' },
   { tier: 'moderate', label: 'Moderate', blurb: 'A balanced middle pool with more depth per domain.' },
   { tier: 'extensive', label: 'Extensive', blurb: 'The full item bank, for the most precise profile.' },
 ]

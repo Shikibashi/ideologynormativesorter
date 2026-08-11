@@ -12,7 +12,8 @@
     "test:e2e": "playwright test --project=e2e",
     "test:a11y": "playwright test --project=a11y",
     "test:ecw": "playwright test --project=ecw",
-    "test:browser": "playwright test"
+    "test:browser": "playwright test",
+    "test:worker": "node --test research-worker/worker.test.mjs"
   },
   "dependencies": {
     "react": "^19.2.6",
