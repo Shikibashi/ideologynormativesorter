@@ -17,8 +17,8 @@ The audit uses academic political theory and intellectual history as the inclusi
 | Religious politics | Christian Democracy and Religious Nationalism plus Islamic, integralist, reconstructionist, theocratic and other specialists | Broadly covered | Avoid multiplying religion-specific labels unless a module can distinguish them |
 | Feminist traditions | Liberal Feminism is primary; Anarcha-Feminism is specialist | Previously undermeasured | **In progress in PR #15:** dedicated feminist specialist instrument for liberal, radical, socialist/Marxist and anarcha-feminist profiles |
 | Multicultural / recognition politics | Multiculturalism is currently a modifier | Role deserves review | Test whether recognition, accommodation and group-differentiated rights form a sufficiently independent measured profile |
-| Black self-determination / Black nationalism | No scored family endpoint; old backlog lists Black Nationalism only as speculative | Genuine breadth gap | Build a self-determination module before adding any label |
-| Indigenous / decolonial sovereignty | Indigenism exists as a specialist but is routed through the generic nationalist module | Label present, measurement inadequate | Build a dedicated Indigenous-sovereignty/decolonization module rather than treating it as ordinary nationalism |
+| Black self-determination / Black nationalism | Public related-tradition entry with a focused identity-sovereignty module; no general-quiz endpoint | Genuine breadth gap with an honest non-scored surface | Validate the focused module before any scored promotion |
+| Indigenous / decolonial sovereignty | Indigenism exists as a specialist in the focused identity-sovereignty module | Label and construct coverage present; respondent validation absent | Keep it outside ordinary nationalism and validate the dedicated module |
 
 ## Priority 1: feminist traditions
 
@@ -43,15 +43,15 @@ A future specialist module should therefore distinguish at least:
 - **emancipatory solidarity versus exclusionary ethnic hierarchy**;
 - **domestic community nationalism versus Pan-African/transnational orientation**.
 
-Until those distinctions exist, `black-nationalism` should remain a measurement candidate rather than be added to the ordinary nationalist pool.
+Those distinctions now exist in the focused identity-sovereignty module, so `black-nationalism` is visible as a related tradition with a focused follow-up. It remains outside the ordinary nationalist pool and has no global-axis centroid.
 
 ### Pan-Africanism
 
-Pan-Africanism should initially be treated as a related specialist candidate, not an automatic separate primary ideology. Its transnational and anti-colonial dimensions are not captured well by a domestic community-boundary axis. A Black self-determination module should include enough transnational-liberation content to determine whether Pan-African profiles form a reliably separate subtype.
+Pan-Africanism is treated as a related specialist candidate, not an automatic separate primary ideology. Its transnational and anti-colonial dimensions are not captured well by a domestic community-boundary axis. The focused identity-sovereignty module includes Pan-African solidarity and unity constructs so later respondent evidence can test whether the profile behaves as a specialist ideology, modifier, or broader orientation.
 
 ## Priority 3: Indigenous sovereignty and decolonial political thought
 
-`indigenism` already exists as a specialist label, so the immediate problem is not catalog breadth. The problem is its current measurement home: the generic nationalist module.
+`indigenism` already exists as a specialist label, so the immediate problem is not catalog breadth. It is now attached to the dedicated identity-sovereignty module rather than the generic nationalist module.
 
 Recent Indigenous political theory emphasizes that Indigenous claims may contest the assumptions of modern state sovereignty itself. Land, treaty relations, colonial authority, collective self-determination, reciprocal relations and alternative conceptions of political ordering are not equivalent to simply scoring high on nationalism or localism.
 
@@ -94,8 +94,8 @@ In particular:
 ## Proposed sequence
 
 1. Finish and validate the feminist specialist instrument.
-2. Design a Black self-determination / minority-autonomy module with Black nationalism and Pan-Africanism as candidate outcomes.
-3. Replace the generic nationalist mapping for Indigenism with an Indigenous-sovereignty/decolonization measurement module.
+2. Validate the focused identity-sovereignty module with Black Nationalism and Pan-Africanism as non-exclusive candidate outcomes.
+3. Validate the Indigenous-sovereignty/decolonization profiles now attached to that module.
 4. Run a multiculturalism role experiment against its nearest liberal, communitarian and civic-nationalist neighbors.
 5. Re-run the primary-pool and hand-authored archetype gates after every promotion.
 

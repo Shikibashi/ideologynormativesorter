@@ -164,7 +164,7 @@ function focusedFeministTradition(candidate: FeministSpecialistCandidate): Brows
 }
 
 function catalogCandidateTradition(candidate: CatalogRelatedTradition): BrowserRelatedTradition {
-   return { ...candidate, availability: 'catalog-candidate' }
+   return { ...candidate, availability: candidate.status }
 }
 
 function labelEvidenceSummary(
