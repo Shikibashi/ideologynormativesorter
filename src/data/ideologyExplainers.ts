@@ -1017,12 +1017,15 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors worker self-management, social ownership, and federated institutions without a centralized party-state; traditions vary over markets and the balance between reform and direct action.',
    },
    maoism: {
+      descriptive: 'Maoist revolutionary strategies often expect predominantly agrarian or peripheral societies to depend on peasant mobilization, protracted struggle, mass-line leadership, and continuing opposition to bureaucratic restoration; movements adapt these ideas differently across countries and periods.',
       prescriptive: 'Favors mass-line organizing, peasant or peripheral mobilization, protracted revolutionary struggle, and continuing campaigns against bureaucratic or capitalist restoration.',
    },
    trotskyism: {
+      descriptive: 'Expects socialism isolated within one country to be vulnerable to bureaucratic degeneration and sees international or “permanent” revolution led by the working class as necessary for durable transformation; Trotskyist currents differ over strategy and adaptation.',
       prescriptive: 'Favors permanent international revolution led by a revolutionary party, opposing both reformist gradualism and an isolated bureaucratic socialism in one country.',
    },
    'guild-socialism': {
+      descriptive: 'Expects capitalist industrial hierarchy to deny workers democratic control, while public ownership and worker guilds can organize production through industrial democracy and self-government; the balance among guild autonomy, consumer interests, and state coordination remains contested.',
       prescriptive: 'Favors public ownership of industry combined with democratic worker guilds that administer production and represent producers alongside political institutions representing citizens.',
    },
    'utopian-socialism': {
