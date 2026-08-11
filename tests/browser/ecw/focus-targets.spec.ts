@@ -58,7 +58,7 @@ test('links, buttons, fields, and Display receive canonical two-band focus', asy
 
 test('selected answer and tier states remain visible while focused', async ({ page }) => {
   await page.goto('/')
-  const tier = page.getByRole('radio', { name: /Moderate/ })
+  const tier = page.getByRole('radio', { name: /Balanced profile/ })
   await tier.check()
   await focusWithKeyboard(tier)
   await expect(tier).toBeFocused()
@@ -96,7 +96,7 @@ test('Dark mode keeps keyboard focus visible on Page and Workbench controls', as
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   await focusWithKeyboard(page.getByRole('link', { name: 'METHODOLOGY' }))
   await expectTwoBandFocus(page.getByRole('link', { name: 'METHODOLOGY' }), false)
-  const tier = page.getByRole('radio', { name: /Moderate/ })
+  const tier = page.getByRole('radio', { name: /Balanced profile/ })
   await focusWithKeyboard(tier)
   const tierShadow = await tier.locator('..').evaluate((element) => getComputedStyle(element).boxShadow)
   expect(tierShadow).not.toBe('none')
@@ -110,7 +110,7 @@ test('Dark mode keeps keyboard focus visible on Page and Workbench controls', as
 test('forced colors preserve selected focus and structural borders', async ({ page }) => {
   await page.emulateMedia({ forcedColors: 'active' })
   await page.goto('/')
-  const tier = page.getByRole('radio', { name: /Moderate/ })
+  const tier = page.getByRole('radio', { name: /Balanced profile/ })
   await tier.check()
   await tier.focus()
   const style = await tier.locator('..').evaluate((element) => {

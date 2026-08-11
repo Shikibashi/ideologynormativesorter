@@ -41,6 +41,7 @@ import {
    researchFormSize,
 } from './research/forms'
 import { buildResultProfile, RESULT_SCORING_VERSION } from './scoring'
+import { quizTierLabel } from './quizTiers'
 import { readCompareAnswers, readSharedResult } from './share'
 import {
    assignSpecialistModule,
@@ -317,7 +318,7 @@ function App() {
          save: 'current',
       })
       setStage('quiz')
-      announceStatus(`Started ${tier} assessment.`)
+      announceStatus(`Started the ${quizTierLabel(tier).toLowerCase()}.`)
    }
 
    function handleStart(tier: QuizTier): void {
@@ -720,7 +721,7 @@ function App() {
       if (stage === 'intro') {
          statusItems = [
             { label: 'STAGE', value: 'START' },
-            { label: 'LENGTH', value: pendingTier },
+            { label: 'LENGTH', value: quizTierLabel(pendingTier) },
             { label: 'SAVE', value: savedProgress ? 'RESUMABLE' : 'LOCAL' },
             { label: 'MODE', value: 'STANDARD' },
          ]

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { PUBLIC_RESEARCH_ENTRYPOINT } from '../research'
+import { quizTierLabel } from '../quizTiers'
 import type { QuizTier } from '../types'
 
 interface TierOption {
@@ -9,8 +10,8 @@ interface TierOption {
 }
 
 const TIER_OPTIONS: TierOption[] = [
-  { tier: 'moderate', label: 'Moderate', blurb: 'A balanced middle pool with more depth per domain.' },
-  { tier: 'extensive', label: 'Extensive', blurb: 'The full item bank, for the most precise profile.' },
+  { tier: 'moderate', label: quizTierLabel('moderate'), blurb: 'Covers every domain with a balanced selection of questions.' },
+  { tier: 'extensive', label: quizTierLabel('extensive'), blurb: 'Uses the entire question bank for the most detailed profile.' },
 ]
 
 interface IntroScreenProps {
@@ -67,7 +68,7 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
           <h2 id="saved-session-heading">Saved session available</h2>
           <p>
             You have a saved session in progress ({savedProgress.answered} of {savedProgress.total} questions answered in
-            the {savedProgress.tier} test).
+            the {quizTierLabel(savedProgress.tier).toLowerCase()}).
           </p>
           <div className="resume-actions">
             <button type="button" className="primary-button" onClick={onResume}>

@@ -6,7 +6,7 @@ import { MethodologyScreen } from './MethodologyScreen'
 afterEach(cleanup)
 
 describe('respondent-facing instrument copy', () => {
-  it('offers only the moderate and extensive public assessments', () => {
+  it('offers only outcome-oriented balanced and full-depth public assessments', () => {
     render(
       <IntroScreen
         questionCounts={{ blitz: 19, quick: 56, moderate: 158, extensive: 336 }}
@@ -19,8 +19,10 @@ describe('respondent-facing instrument copy', () => {
       />,
     )
 
-    expect(screen.getByRole('radio', { name: /moderate/i })).toBeInTheDocument()
-    expect(screen.getByRole('radio', { name: /extensive/i })).toBeInTheDocument()
+    expect(screen.getByRole('radio', { name: /balanced profile/i })).toBeInTheDocument()
+    expect(screen.getByRole('radio', { name: /full-depth profile/i })).toBeInTheDocument()
+    expect(screen.queryByRole('radio', { name: /^moderate\b/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('radio', { name: /^extensive\b/i })).not.toBeInTheDocument()
     expect(screen.queryByRole('radio', { name: /blitz/i })).not.toBeInTheDocument()
     expect(screen.queryByRole('radio', { name: /quick/i })).not.toBeInTheDocument()
   })

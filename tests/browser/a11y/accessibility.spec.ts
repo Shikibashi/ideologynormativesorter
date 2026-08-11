@@ -86,7 +86,7 @@ test('self-identification and specialist module pass automated WCAG checks', asy
 test('passive status and polite announcements remain separate without save chatter', async ({ page }) => {
   await installStatusRecorder(page)
   await page.goto('/')
-  await page.getByRole('radio', { name: /Moderate/ }).check()
+  await page.getByRole('radio', { name: /Balanced profile/ }).check()
   await page.getByRole('button', { name: 'Begin assessment' }).click()
   for (let index = 0; index < 4; index += 1) await answerCurrentQuestion(page)
 
@@ -107,7 +107,7 @@ test('selected controls expose state and compare errors are associated', async (
   await expect(compareInput).toHaveAttribute('aria-describedby', 'compare-error')
 
   await page.goto('/')
-  await page.getByRole('radio', { name: /Moderate/ }).check()
+  await page.getByRole('radio', { name: /Balanced profile/ }).check()
   await page.getByRole('button', { name: 'Begin assessment' }).click()
   const answer = page.locator('[data-answer-value="0"]').first()
   await answerCurrentQuestion(page)

@@ -220,7 +220,7 @@ describe('App', () => {
       )
       expect(screen.queryByRole('radio', { name: /blitz/i })).not.toBeInTheDocument()
       expect(screen.queryByRole('radio', { name: /quick/i })).not.toBeInTheDocument()
-      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
+      fireEvent.click(screen.getByRole('radio', { name: /balanced profile/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
       for (let i = 0; i < moderateQuestions.length; i++) {
@@ -242,7 +242,7 @@ describe('App', () => {
 
    it('lets a descriptive item be answered as "I don\'t know" and still advances', () => {
       render(<App />)
-      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
+      fireEvent.click(screen.getByRole('radio', { name: /balanced profile/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
       const firstDescriptiveIndex = moderateQuestions.findIndex((q) => q.allowDontKnow)
@@ -257,7 +257,7 @@ describe('App', () => {
 
    it('lets a confidence/priority rating be skipped with explicit result-exclusion wording', () => {
       render(<App />)
-      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
+      fireEvent.click(screen.getByRole('radio', { name: /balanced profile/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
       const ratedIndex = moderateQuestions.findIndex((q) => q.layer !== 'normative')
@@ -381,7 +381,7 @@ describe('App', () => {
    })
    it('renders the layer-conflation section with agreement chips for a cross-layer profile', () => {
       render(<App />)
-      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
+      fireEvent.click(screen.getByRole('radio', { name: /balanced profile/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
       for (let i = 0; i < moderateQuestions.length; i++) {
@@ -427,7 +427,7 @@ describe('App', () => {
 
    it('renders nearest ideology labels grouped into family-tree groups with readable family names', () => {
       render(<App />)
-      fireEvent.click(screen.getByRole('radio', { name: /moderate/i }))
+      fireEvent.click(screen.getByRole('radio', { name: /balanced profile/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
 
       for (let i = 0; i < moderateQuestions.length; i++) {

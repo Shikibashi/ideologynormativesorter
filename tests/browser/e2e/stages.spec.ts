@@ -24,14 +24,14 @@ test('intro starts a standard quiz with dynamic passive status', async ({ page }
 
   await expect(page.getByRole('radio', { name: /Blitz/ })).toHaveCount(0)
   await expect(page.getByRole('radio', { name: /Quick/ })).toHaveCount(0)
-  await page.getByRole('radio', { name: /Moderate/ }).check()
-  await expect(page.getByLabel('Application status')).toContainText('LENGTH moderate')
+  await page.getByRole('radio', { name: /Balanced profile/ }).check()
+  await expect(page.getByLabel('Application status')).toContainText('LENGTH Balanced profile')
   await page.getByRole('button', { name: 'Begin assessment' }).click()
 
   await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuenow', '1')
   await expect(page.getByLabel('Application status')).toContainText('PROGRESS 1 /')
   let messages = await page.evaluate(() => (window as unknown as { __ECW_STATUS_MESSAGES__: string[] }).__ECW_STATUS_MESSAGES__)
-  expect(messages).toContain('Started moderate assessment.')
+  expect(messages).toContain('Started the balanced profile.')
   await answerCurrentQuestion(page)
   await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuenow', '2')
   messages = await page.evaluate(() => (window as unknown as { __ECW_STATUS_MESSAGES__: string[] }).__ECW_STATUS_MESSAGES__)
