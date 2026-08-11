@@ -42,6 +42,10 @@ describe('ideology explainers', () => {
          ['transhumanism', /broad family of arguments/],
          ['dataism', /emerging techno-philosophical term/],
          ['world-federalism', /democratic federal layer/],
+         ['council-communist', /workers’ councils/],
+         ['syndicalist', /worker-run unions and direct action/],
+         ['anarcho-syndicalism', /anti-state aims to syndicalist labor organization/],
+         ['platformism', /theoretical and tactical unity/],
       ]
 
       for (const [id, expected] of cases) {
@@ -93,6 +97,23 @@ describe('ideology explainers', () => {
       expect(islamicDemocracy).toHaveLength(1)
       expect(islamicDemocracy[0]).toMatch(/electoral government, constitutional limits/)
       expect(islamicDemocracy[0]).not.toMatch(/broad family of projects/)
+   })
+
+   it('distinguishes council, syndicalist, and platformist organization instead of showing only parent-family guides', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['council-communist', /rather than parliament or a vanguard party/],
+         ['syndicalist', /institutional basis for workers’ control afterward/],
+         ['anarcho-syndicalism', /abolish capitalism and the state/],
+         ['platformism', /collective responsibility, and federalism/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
    })
 
    it('defines theocracy and high-confusion labels directly from stable ids', () => {

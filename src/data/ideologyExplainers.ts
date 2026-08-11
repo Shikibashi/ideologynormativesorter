@@ -240,12 +240,28 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    ordoliberalism: [
       '“Ordoliberalism” favors a strong legal and institutional framework that preserves competition and constrains both private monopoly and discretionary economic power.',
    ],
+   'council-communist': [
+      '“Council communism” is a left-communist tradition that treats democratically organized workers’ councils, rather than parliament or a vanguard party, as the organs of workers’ political power and control of production.',
+   ],
+   syndicalist: [
+      '“Revolutionary syndicalism” treats worker-run unions and direct action, especially strikes, as both the means of overcoming capitalism and the institutional basis for workers’ control afterward.',
+   ],
+   'anarcho-syndicalism': [
+      '“Anarcho-syndicalism” joins anarchism’s anti-state aims to syndicalist labor organization, using federated unions and direct action to abolish capitalism and the state and establish workers’ self-management.',
+   ],
+   platformism: [
+      '“Platformism” is an anarchist-communist organizational tendency, originating in the 1926 Organisational Platform, that emphasizes theoretical and tactical unity, collective responsibility, and federalism.',
+   ],
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'national-socialism',
    'corporatism',
    'islamic-democracy',
+   'council-communist',
+   'syndicalist',
+   'anarcho-syndicalism',
+   'platformism',
 ])
 
 /**
