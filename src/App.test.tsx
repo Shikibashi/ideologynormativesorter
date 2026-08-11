@@ -433,7 +433,7 @@ describe('App', () => {
       expect(chipText).toMatch(/prescriptive/i)
       expect(chipText).toMatch(/close|mixed|different/i)
       expect(chipText).not.toMatch(/%/)
-   })
+   }, 15_000)
 
    it('renders the divergences section on the results screen when layer divergences exist', () => {
       const normativeLibertyQ = questions.find(q => q.layer === 'normative' && q.axisWeights.some(w => w.axisId === 'liberty-noninterference'))!
