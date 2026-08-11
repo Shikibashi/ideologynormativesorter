@@ -1018,6 +1018,16 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects prices, investment, firms, and innovation within capitalism to redirect production and consumption toward lower ecological harm, while critics challenge the sufficiency of that mechanism.',
       prescriptive: 'Favors carbon pricing, renewable-energy markets, eco-labeling, and corporate sustainability as mechanisms of ecological transition.',
    },
+   'deep-ecology': {
+      normative: 'Treats nonhuman life and ecological systems as possessing value independent of their usefulness to people, and regards ecological integrity as a condition of a flourishing world.',
+      descriptive: 'Expects anthropocentric industrial practices, pollution, and resource depletion to damage an interdependent biosphere, while treating human beings as embedded in ecological relationships rather than separate from nature.',
+      prescriptive: 'Favors restraint in human impacts, respect for ecological diversity and complexity, decentralization, and far-reaching social change around biocentric limits; it does not prescribe one population or economic policy.',
+   },
+   'eco-authoritarianism': {
+      normative: 'Treats ecological protection as an overriding political priority and accepts concentrated authority, restricted participation, or reduced individual discretion as possible means to secure it.',
+      descriptive: 'Expects ecological crisis and the perceived slowness or fragmentation of democratic and market institutions to justify centralized expertise, command, and coercive environmental enforcement; real-world environmental authoritarianism varies across regimes and policies.',
+      prescriptive: 'Favors powerful centralized authority, expert or vanguard direction, and command-and-control environmental rules that can override ordinary democratic or individual constraints.',
+   },
    corporatism: {
       prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate represented interests.',
    },
