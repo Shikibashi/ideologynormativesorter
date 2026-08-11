@@ -1014,11 +1014,13 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate represented interests.',
    },
    'anarcho-syndicalism': {
-      descriptive: 'The catalog does not currently provide a curated empirical-belief summary for this label.',
+      normative: 'Treats worker solidarity, self-management, and freedom from both capitalist and state domination as central goods, with labor organization serving as a vehicle for collective autonomy.',
+      descriptive: 'Expects industrial unions, direct action, and federated worker organization to build class power and provide a basis for social coordination, while historical movements differed over reform, revolution, and union structure.',
       prescriptive: 'Favors replacing capitalism and the state with federated worker organizations, using direct action rather than electoral politics.',
    },
    platformism: {
-      descriptive: 'The catalog does not currently provide a curated empirical-belief summary for this label.',
+      normative: 'Treats anarchist-communist emancipation and coordinated collective action as compatible with anti-authoritarian politics, while rejecting disorganization as an adequate basis for durable movement power.',
+      descriptive: 'Expects a shared political program, tactical coordination, collective responsibility, and federal organization to make anarchist movements more coherent and effective; the tendency originates in the 1926 Organisational Platform and remains contested within anarchism.',
       prescriptive: 'Favors a unified but decentralized anarchist organization with collective responsibility and tactical coordination.',
    },
    'bright-green-environmentalism': {
