@@ -993,6 +993,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors recognition, accommodation, or group-differentiated rights for minority cultural communities within a shared constitutional order; it does not prescribe separatism or one fixed model of integration.',
    },
    'christian-socialism': {
+      descriptive: 'Often expects industrial capitalism’s concentration of wealth and power to damage solidarity and the standing of poor and working people, while Christian moral commitments and collective organization can support a more just social order; currents differ over cooperation, reform, and social ownership.',
       prescriptive: 'Favors some combination of cooperative organization, labor protection, social provision, regulation, or social ownership to subordinate economic power to solidarity and the needs of poor and working people; currents disagree over ownership and strategy.',
    },
    'revolutionary-collectivist': {

@@ -779,6 +779,7 @@ describe('ideology explainers', () => {
          ['national-bolshevism', 'descriptive', /strong, anti-liberal state.*national power/],
          ['fourth-theory', 'descriptive', /civilizational pluralism and multipolar great spaces/],
          ['zionism', 'descriptive', /Jewish national self-determination.*collective survival/],
+         ['christian-socialism', 'descriptive', /industrial capitalism’s concentration of wealth and power/],
       ]
 
       for (const [id, layer, expected] of cases) {
