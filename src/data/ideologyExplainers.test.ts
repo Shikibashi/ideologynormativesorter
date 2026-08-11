@@ -736,6 +736,7 @@ describe('ideology explainers', () => {
          ['bioregionalism', 'prescriptive', /governance, land use, and resource management organized around ecological regions/],
          ['political-islam', 'normative', /Islamic principles as relevant to public authority, law/],
          ['political-islam', 'prescriptive', /public role for Islamic normative or legal principles/],
+         ['islamic-democracy', 'descriptive', /elected government, constitutional rights, and Islamic ethical or legal review/],
          ['world-federalism', 'normative', /shared political institutions capable of securing peace/],
          ['world-federalism', 'descriptive', /problems that cross borders/],
          ['multiculturalism', 'normative', /cultural membership and the ability to maintain distinctive identities/],
@@ -754,6 +755,7 @@ describe('ideology explainers', () => {
          ['singularitarianism', 'prescriptive', /safety or alignment work/],
          ['bright-green-environmentalism', 'prescriptive', /clean energy, efficient infrastructure/],
          ['green-capitalism', 'descriptive', /prices, investment, firms, and innovation/],
+         ['welfare-chauvinism', 'descriptive', /bounded national or ethnic welfare community/],
       ]
 
       for (const [id, layer, expected] of cases) {

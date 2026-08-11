@@ -717,6 +717,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects modern political order to be interpreted or reformed through Islamic concepts, with movements adapting differently to elections, constitutionalism, authoritarian rule, social activism, and state-building; the broad label does not imply one strategy or level of coercion.',
       prescriptive: 'Favors some public role for Islamic normative or legal principles, ranging from democratic constitutional participation to comprehensive Islamist state-building; it does not settle one interpretation of Sharia, church-state separation, minority rights, or political violence.',
    },
+   'islamic-democracy': {
+      descriptive: 'Expects elected government, constitutional rights, and Islamic ethical or legal review to require institutional reconciliation rather than a single settled formula; models differ over judicial authority, popular sovereignty, minority protection, and the scope of religious interpretation.',
+   },
    'national-traditionalist': {
       normative: 'Treats national continuity, inherited institutions, cultural tradition, and social order as important goods, with legitimacy grounded partly in historical belonging and established authority.',
       descriptive: 'Expects rapid redesign and abstract universalism to weaken cohesion, while national-traditionalist positions vary over democracy, markets, welfare, religion, and membership boundaries.',
@@ -1039,6 +1042,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       normative: 'Treats grassroots self-government, pluralism, ecological responsibility, gender equality, and freedom from centralized domination as mutually reinforcing political goods.',
       descriptive: 'Expects local communities and assemblies, linked through delegated coordination, to handle social decisions more democratically than a centralized nation-state, with ecology, feminism, and multicultural coexistence shaping the model.',
       prescriptive: 'Favors linked local assemblies and councils with limited coordinating bodies, participatory self-administration, and a non-state or post-nation-state political horizon.',
+   },
+   'welfare-chauvinism': {
+      descriptive: 'Expects a bounded national or ethnic welfare community to preserve solidarity by limiting out-groups’ access, with judgments shaped by perceived deservingness, contribution, insecurity, and the design of benefits; research finds these patterns vary across groups and contexts.',
    },
    corporatism: {
       prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate represented interests.',
