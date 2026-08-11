@@ -852,7 +852,13 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    geolibertarian: {
       normative: 'Combines self-ownership and voluntary exchange with an equal claim to the value of land and natural opportunities.',
+      descriptive: 'Expects self-ownership and market exchange to coexist with equal claims to natural opportunities, treating land value as socially generated and land rent as a candidate for public capture; variants differ over revenue use and state scope.',
       prescriptive: 'Favors secure private use of land while collecting land or resource rent for public revenue or equal compensation, usually through a land-value tax.',
+   },
+   minarchist: {
+      normative: 'Treats individual rights in life, liberty, property, and contract as primary constraints on political authority, while allowing a narrowly limited state to protect those rights.',
+      descriptive: 'Expects a public system of police, courts, and defense to protect against force, fraud, and rights violations more reliably than a wholly stateless arrangement, while remaining skeptical of government expansion.',
+      prescriptive: 'Favors a minimal state limited mainly to protecting rights through courts, policing, and defense.',
    },
    'anarcho-communist': {
       prescriptive: 'Favors stateless federations of freely associated communities, common control of productive resources, and distribution according to need rather than markets or centralized state planning.',
@@ -870,6 +876,8 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors dispersing productive property among families, small firms, guilds, cooperatives, and local associations rather than concentrating it in corporations or the state.',
    },
    mutualist: {
+      normative: 'Treats reciprocity, worker autonomy, equal exchange, and voluntary association as safeguards against both capitalist privilege and centralized state administration.',
+      descriptive: 'Expects cooperative markets and mutual-credit institutions to widen access to productive resources and reduce exploitation, while historical and contemporary implementations differ over property, exchange, and institutional scale.',
       prescriptive: 'Favors mutual credit, cooperative exchange, possession or use-based claims, and federated voluntary institutions instead of state administration or concentrated capitalist ownership.',
    },
    'civic-nationalist': {
