@@ -48,7 +48,7 @@ describe('editorial third pass', () => {
     expect(labelById.get('bleeding-heart-libertarianism')!.subTheories).toBeUndefined()
     expect(labelById.get('dataism')!.subTheories).toBeUndefined()
     expect(labelById.get('singularitarianism')!.subTheories).toBeUndefined()
-    expect(labelById.get('paleoconservatism')!.subTheories).toEqual(['Old Right', 'Traditionalism'])
+    expect(labelById.get('paleoconservatism')!.subTheories).toBeUndefined()
     expect(labelById.get('traditional-monarchist')!.subTheories).toBeUndefined()
     expect(labelById.get('civic-nationalist')!.subTheories).toEqual(['Liberal Nationalism'])
   })

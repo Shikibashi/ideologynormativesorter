@@ -70,6 +70,14 @@ describe('ideology explainers', () => {
          ['guild-socialism', /public ownership with democratic worker guilds/],
          ['christian-socialism', /diverse family applying Christian teachings/],
          ['utopian-socialism', /retrospective label/],
+         ['neoconservative', /modern U\.S\. current/],
+         ['paleoconservatism', /U\.S\. current named in the 1980s/],
+         ['one-nation-conservatism', /British paternalist tradition/],
+         ['fiscal-conservatism', /thin budget-policy orientation/],
+         ['social-conservatism', /inherited moral norms and institutions/],
+         ['national-conservatism', /national sovereignty, cultural continuity/],
+         ['conservative-liberalism', /liberal-family synthesis/],
+         ['liberal-conservatism', /conservative-family synthesis/],
       ]
 
       for (const [id, expected] of cases) {
@@ -191,6 +199,30 @@ describe('ideology explainers', () => {
       expect(getIdeologyTermDefinitions(byId.get('utopian-socialism')!)[0]).toMatch(/not one doctrine/)
    })
 
+   it('distinguishes conservative traditions instead of substituting one generic conservatism guide', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases = [
+         'neoconservative',
+         'paleoconservatism',
+         'one-nation-conservatism',
+         'fiscal-conservatism',
+         'social-conservatism',
+         'national-conservatism',
+         'conservative-liberalism',
+         'liberal-conservatism',
+      ]
+
+      for (const id of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+      }
+
+      expect(getIdeologyTermDefinitions(byId.get('neoconservative')!)[0]).toMatch(/not simply any hawkish conservatism/)
+      expect(getIdeologyTermDefinitions(byId.get('fiscal-conservatism')!)[0]).toMatch(/does not determine social or foreign policy/)
+      expect(getIdeologyTermDefinitions(byId.get('conservative-liberalism')!)[0]).toMatch(/historically variable and overlaps/)
+      expect(getIdeologyTermDefinitions(byId.get('liberal-conservatism')!)[0]).toMatch(/historically variable and overlaps/)
+   })
+
    it('defines theocracy and high-confusion labels directly from stable ids', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directCases: Array<[string, RegExp]> = [
@@ -268,6 +300,19 @@ describe('ideology explainers', () => {
          ['trotskyism', 'prescriptive', /permanent international revolution/],
          ['guild-socialism', 'prescriptive', /public ownership of industry.*democratic worker guilds/],
          ['utopian-socialism', 'prescriptive', /moral persuasion, model communities/],
+         ['neoconservative', 'normative', /liberal-democratic institutions/],
+         ['neoconservative', 'prescriptive', /assertive U\.S\. or allied international role/],
+         ['paleoconservatism', 'prescriptive', /less interventionist foreign policy than neoconservatism/],
+         ['one-nation-conservatism', 'prescriptive', /cost-conscious welfare provision/],
+         ['fiscal-conservatism', 'prescriptive', /sustainable public finances/],
+         ['social-conservatism', 'normative', /inherited moral norms and institutions/],
+         ['social-conservatism', 'prescriptive', /preserving or reinforcing traditional social institutions/],
+         ['national-conservatism', 'normative', /national sovereignty, cultural continuity/],
+         ['national-conservatism', 'prescriptive', /strengthening the nation-state/],
+         ['conservative-liberalism', 'normative', /liberal rights, rule of law/],
+         ['conservative-liberalism', 'prescriptive', /constitutional market order and gradual reform/],
+         ['liberal-conservatism', 'normative', /conservative concern for continuity/],
+         ['liberal-conservatism', 'prescriptive', /cautious reform, a market economy/],
       ]
 
       for (const [id, layer, expected] of cases) {

@@ -1214,22 +1214,18 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'national-conservative',
       description:
          'Combines conservative or market-liberal domestic policy with an assertive international posture, including willingness to use American or allied power to defend strategic interests and promote liberal-democratic institutions abroad.',
-      philosophies: ["Conservatism","Neoconservatism","Straussianism"],
-      subTheories: ["Straussian Neoconservatism","Wilsonianism"],
+      usageNote:
+         'This catalog uses the modern U.S. current, whose roots include Cold War liberal and anti-communist circles. Some neoconservatives were influenced by Leo Strauss or Straussians, but Straussian philosophy is not a definition or subtype of neoconservatism.',
+      philosophies: ["Conservatism","Neoconservatism"],
       ethicalTheory: ["Virtue Ethics"],
-      normativePhilosophies: ["Conservatism","Neoconservatism","Straussianism"],
+      normativePhilosophies: ["Conservatism","Neoconservatism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: ["Neoconservatism","Straussianism"],
+      prescriptivePhilosophies: ["Neoconservatism"],
       philosophyInfluences: [
          {
             philosophy: "Conservatism",
-            description: "Traditional values and limited government domestically.",
-            affectedAxes: ["moral-traditionalism","property-legitimacy"],
-         },
-         {
-            philosophy: "Straussianism",
-            description: "Assertive, value-promoting foreign policy orientation.",
-            affectedAxes: ["militarism-pacifism","political-community-boundary"],
+            description: "Defense of liberal-democratic order paired with skepticism toward radical social engineering and moral relativism.",
+            affectedAxes: ["democratic-confidence","cultural-plasticity","moral-traditionalism"],
          }
       ],
       centroid: {
@@ -1870,9 +1866,9 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'conservative-liberal',
       description:
-         'Pairs confidence in free markets and private property with a deference to inherited moral order and gradual institutional change, seeking to conserve cultural and familial continuity while preserving a market economy under the rule of law.',
+         'A liberal-family synthesis that pairs rights, rule of law, private property, and markets with conservative prudence, inherited institutions, and gradual change.',
       usageNote:
-         'Starts from liberal premises (markets, individual liberty) and adds conservative caution; compare Liberal Conservatism, which starts from conservative premises (tradition, institutions) and adds liberal economic and civil commitments.',
+         'This catalog uses the name for the liberal-family side of an overlapping liberal-conservative field. Academic and party usage varies by country and period, so the word order is not a universal taxonomy; compare the catalog’s conservative-family Liberal Conservatism label.',
       philosophies: ["Liberalism","Conservative Liberalism","Burkeanism"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Liberalism","Conservative Liberalism","Burkeanism"],
@@ -3785,13 +3781,14 @@ export const labels: IdeologyLabel[] = [
       family: 'conservative',
       subfamily: 'paleoconservative',
       description:
-         'A traditionalist conservatism that emphasizes pre-Enlightenment values, local community, anti-interventionist foreign policy, strict immigration controls, and skepticism toward free trade and globalizing institutions.',
+         'A U.S. current named in the 1980s to revive parts of the Old Right against neoconservatism and neoliberalism, combining cultural traditionalism and nationalism with localism, immigration restriction, skepticism toward free trade, and a generally non-interventionist foreign policy.',
+      usageNote:
+         'This is a specific modern U.S. movement, not a generic name for every old, traditional, or pre-Enlightenment conservative position.',
       philosophies: ["Conservatism","Traditionalism","Paleoconservatism"],
-      subTheories: ["Old Right","Traditionalism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","Traditionalism","Paleoconservatism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Paleoconservatism"],
       philosophyInfluences: [
          {
             philosophy: "Conservatism",
@@ -3800,7 +3797,7 @@ export const labels: IdeologyLabel[] = [
          },
          {
             philosophy: "Traditionalism",
-            description: "Pre-Enlightenment values and local community.",
+            description: "Cultural continuity and the authority of local and inherited community institutions.",
             affectedAxes: ["political-community-boundary","property-legitimacy","reform-vs-revolution"],
          }
       ],
@@ -3841,7 +3838,6 @@ export const labels: IdeologyLabel[] = [
       description:
          'A paternalistic conservative tradition that accepts a role for the welfare state and moderate state intervention to preserve social cohesion, favoring gradual reform over radical change.',
       philosophies: ["Conservatism","One Nation Conservatism","Burkeanism"],
-      subTheories: ["Tory Democracy","Paternalistic Conservatism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","One Nation Conservatism","Burkeanism"],
       descriptivePhilosophies: [],
@@ -4997,24 +4993,13 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'fiscal-conservative',
       description:
          'Prioritizes limiting budget deficits and public debt, usually through spending restraint, tax policy, or both. It does not by itself determine views on social issues, monetary policy, or the overall size of government.',
-      philosophies: ["Conservatism","Classical Liberalism","Fiscal Conservatism"],
-      subTheories: ["Supply-Side Economics","Austerity"],
+      usageNote:
+         'This is a thin, historically variable fiscal orientation rather than a complete conservative ideology. Supply-side tax policy and austerity are possible strategies, not subtypes or necessary commitments.',
+      philosophies: ["Fiscal Conservatism"],
       ethicalTheory: ["Deontology"],
-      normativePhilosophies: ["Conservatism","Classical Liberalism"],
-      descriptivePhilosophies: ["Fiscal Conservatism","Classical Liberalism"],
+      normativePhilosophies: [],
+      descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Fiscal Conservatism"],
-      philosophyInfluences: [
-         {
-            philosophy: "Classical Liberalism",
-            description: "Preference for limited government and faith in market allocation drives fiscal restraint.",
-            affectedAxes: ["property-legitimacy","market-process-confidence","regulation-vs-deregulation"],
-         },
-         {
-            philosophy: "Conservatism",
-            description: "Cautious approach to change and respect for established fiscal institutions.",
-            affectedAxes: ["authority-legitimacy","reform-vs-revolution"],
-         },
-      ],
       centroid: {
          'authority-legitimacy': 0.3,
          'property-legitimacy': 0.6,
@@ -5051,11 +5036,12 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'social-conservative',
       description:
          'A conservative orientation centered on preserving traditional moral values, social norms, and established institutions, viewing them as essential to social cohesion and human flourishing against progressive cultural change.',
+      usageNote:
+         'This is a social and moral orientation, not a complete economic or foreign-policy program; socially conservative positions can coexist with different views of markets, welfare, and international affairs.',
       philosophies: ["Conservatism","Social Conservatism","Traditionalism","Communitarianism"],
-      subTheories: ["Traditionalist Conservatism","Social Traditionalism"],
       ethicalTheory: ["Virtue Ethics","Deontology"],
-      normativePhilosophies: ["Conservatism","Social Conservatism","Traditionalism"],
-      descriptivePhilosophies: ["Communitarianism"],
+      normativePhilosophies: ["Conservatism","Social Conservatism","Traditionalism","Communitarianism"],
+      descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Social Conservatism"],
       philosophyInfluences: [
          {
@@ -5105,10 +5091,12 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'national-conservative',
       description:
          'A conservative position that fuses traditional moral and social conservatism with a strong emphasis on national sovereignty, cultural identity, and the nation-state as the primary locus of political community and loyalty.',
-      philosophies: ["Conservatism","Nationalism","Social Conservatism","Realism","National Conservatism"],
+      cautionNote:
+         'A broad and contested contemporary family: it is not automatically ethnonationalist or fascist, but some movements described by the term reject liberal constraints. Economic and foreign-policy positions vary across cases.',
+      philosophies: ["Conservatism","Nationalism","Social Conservatism","National Conservatism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","Nationalism","Social Conservatism"],
-      descriptivePhilosophies: ["Realism"],
+      descriptivePhilosophies: [],
       prescriptivePhilosophies: ["National Conservatism"],
       philosophyInfluences: [
          {
@@ -5157,13 +5145,13 @@ export const labels: IdeologyLabel[] = [
       family: 'conservative',
       subfamily: 'conservative-liberal',
       description:
-         'A synthesis of conservative social caution with liberal commitments to individual liberty, limited government, and market economics, seeking to preserve traditional institutions while embracing economic and political liberalism.',
+         'A conservative-family synthesis that pairs social continuity and cautious reform with liberal constitutionalism, civil liberty, limited government, and a market economy.',
       usageNote:
-         'Starts from conservative premises (tradition, institutions) and adds liberal economic and civil commitments; compare Conservative Liberalism, which starts from liberal premises and adds conservative caution.',
+         'This catalog uses the name for the conservative-family side of an overlapping liberal-conservative field. Academic and party usage varies by country and period, so the word order is not a universal taxonomy; compare the catalog’s liberal-family Conservative Liberalism label.',
       philosophies: ["Conservatism","Liberalism","Classical Liberalism","Liberal Conservatism"],
       ethicalTheory: ["Deontology","Consequentialism"],
       normativePhilosophies: ["Conservatism","Liberalism","Classical Liberalism"],
-      descriptivePhilosophies: ["Classical Liberalism"],
+      descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Liberal Conservatism"],
       philosophyInfluences: [
          {

@@ -138,6 +138,30 @@ describe('ideology taxonomy', () => {
     expect(labelById.get('anti-imperialism')?.family).toBe('anti-colonial')
   })
 
+  it('keeps conservative traditions distinct from thin positions, influences, and catalog-specific hybrids', () => {
+    const labelById = new Map(labels.map((label) => [label.id, label]))
+    const neoconservative = labelById.get('neoconservative')!
+    const fiscalConservatism = labelById.get('fiscal-conservatism')!
+    const nationalConservatism = labelById.get('national-conservatism')!
+
+    expect(neoconservative.philosophies).not.toContain('Straussianism')
+    expect(neoconservative.subTheories).toBeUndefined()
+    expect(neoconservative.usageNote).toMatch(/not a definition or subtype/)
+    expect(labelById.get('paleoconservatism')?.subTheories).toBeUndefined()
+    expect(labelById.get('paleoconservatism')?.prescriptivePhilosophies).toContain('Paleoconservatism')
+    expect(labelById.get('one-nation-conservatism')?.subTheories).toBeUndefined()
+    expect(fiscalConservatism.philosophies).toEqual(['Fiscal Conservatism'])
+    expect(fiscalConservatism.normativePhilosophies).toEqual([])
+    expect(fiscalConservatism.descriptivePhilosophies).toEqual([])
+    expect(labelById.get('social-conservatism')?.subTheories).toBeUndefined()
+    expect(labelById.get('social-conservatism')?.descriptivePhilosophies).toEqual([])
+    expect(nationalConservatism.philosophies).not.toContain('Realism')
+    expect(nationalConservatism.descriptivePhilosophies).toEqual([])
+    expect(labelById.get('liberal-conservatism')?.descriptivePhilosophies).toEqual([])
+    expect(labelById.get('conservative-liberalism')?.usageNote).toMatch(/not a universal taxonomy/)
+    expect(labelById.get('liberal-conservatism')?.usageNote).toMatch(/not a universal taxonomy/)
+  })
+
   it('does not score policy proposals, futurist concepts, or governance mechanisms as primary ideologies', () => {
     for (const labelId of NON_IDEOLOGY_ENDPOINTS) {
       expect(roleForLabel(labelId), `${labelId} should not be primary`).not.toBe('primary')

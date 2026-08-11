@@ -324,6 +324,30 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    'utopian-socialism': [
       '“Utopian socialism” is a retrospective label most often grouping the distinct projects of Saint-Simon, Fourier, Owen, and their followers; it is not one doctrine, and the term reflects a later Marxist classification.',
    ],
+   neoconservative: [
+      '“Neoconservatism” here means the modern U.S. current that grew from Cold War liberal and anti-communist circles and later emphasized American or allied power, democracy promotion, and a willingness to use military force; it is not simply any hawkish conservatism or a synonym for Leo Strauss’s philosophy.',
+   ],
+   paleoconservatism: [
+      '“Paleoconservatism” is a U.S. current named in the 1980s to revive parts of the Old Right against neoconservatism and neoliberalism, combining cultural traditionalism and nationalism with localism, immigration restriction, and a generally non-interventionist foreign policy.',
+   ],
+   'one-nation-conservatism': [
+      '“One-Nation Conservatism” is a British paternalist tradition that accepts limited welfare provision and state intervention to preserve social cohesion, security, and opportunity without pursuing egalitarian socialism.',
+   ],
+   'fiscal-conservatism': [
+      '“Fiscal conservatism” is a thin budget-policy orientation concerned with deficits, debt, and sustainable public finances; it can support different combinations of spending restraint, taxes, and fiscal rules and does not determine social or foreign policy.',
+   ],
+   'social-conservatism': [
+      '“Social conservatism” centers the preservation of inherited moral norms and institutions such as family, religion, and community; it does not by itself determine economic, fiscal, or foreign policy.',
+   ],
+   'national-conservatism': [
+      '“National conservatism” prioritizes national sovereignty, cultural continuity, traditional institutions, and the nation-state over cosmopolitan or supranational authority; contemporary currents vary over markets, welfare, democracy, and foreign policy.',
+   ],
+   'conservative-liberalism': [
+      'In this catalog, “Conservative Liberalism” is the liberal-family synthesis: individual rights, rule of law, private property, and markets tempered by conservative prudence and respect for inherited institutions. The name is historically variable and overlaps with “liberal conservatism.”',
+   ],
+   'liberal-conservatism': [
+      'In this catalog, “Liberal Conservatism” is the conservative-family synthesis: social continuity and cautious reform combined with liberal constitutionalism, civil liberty, and a market economy. The name is historically variable and overlaps with “conservative liberalism.”',
+   ],
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
@@ -358,6 +382,14 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'guild-socialism',
    'christian-socialism',
    'utopian-socialism',
+   'neoconservative',
+   'paleoconservatism',
+   'one-nation-conservatism',
+   'fiscal-conservatism',
+   'social-conservatism',
+   'national-conservatism',
+   'conservative-liberalism',
+   'liberal-conservatism',
 ])
 
 /**
@@ -435,6 +467,35 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'utopian-socialism': {
       prescriptive: 'Historically favored moral persuasion, model communities, cooperative experiments, or rational industrial reorganization; the projects grouped under this later label differed substantially.',
+   },
+   neoconservative: {
+      normative: 'Defends liberal-democratic institutions against totalitarian or authoritarian threats while often rejecting moral relativism; adherents have differed substantially over domestic policy.',
+      prescriptive: 'Favors an assertive U.S. or allied international role using alliances, pressure, and sometimes military force to defend strategic interests and promote liberal-democratic institutions abroad.',
+   },
+   paleoconservatism: {
+      prescriptive: 'Generally favors local or national control, immigration restriction, economic nationalism or skepticism toward free trade, and a less interventionist foreign policy than neoconservatism.',
+   },
+   'one-nation-conservatism': {
+      prescriptive: 'Accepts cost-conscious welfare provision and moderate state intervention to preserve social cohesion, security, and opportunity within existing institutions rather than pursue egalitarian transformation.',
+   },
+   'fiscal-conservatism': {
+      prescriptive: 'Prioritizes sustainable public finances and restraint of deficits or debt; possible means include spending limits, revenue changes, or fiscal rules, so the label does not prescribe one tax level or social program.',
+   },
+   'social-conservatism': {
+      normative: 'Gives inherited moral norms and institutions such as family, religion, and community special weight in sustaining social order and human flourishing.',
+      prescriptive: 'Favors preserving or reinforcing traditional social institutions through law, public policy, or civil society; positions on markets, welfare, and foreign policy remain separate questions.',
+   },
+   'national-conservatism': {
+      normative: 'Gives national sovereignty, cultural continuity, and inherited institutions priority over cosmopolitan or supranational commitments.',
+      prescriptive: 'Favors strengthening the nation-state and protecting national institutions or culture; contemporary currents vary over economic intervention, welfare provision, democracy, and external power.',
+   },
+   'conservative-liberalism': {
+      normative: 'Combines liberal rights, rule of law, and private property with conservative prudence, social continuity, and respect for inherited institutions.',
+      prescriptive: 'Favors a constitutional market order and gradual reform that preserves the legal and social institutions on which liberty is understood to depend.',
+   },
+   'liberal-conservatism': {
+      normative: 'Combines conservative concern for continuity and social order with liberal commitments to constitutional government and civil liberty.',
+      prescriptive: 'Favors cautious reform, a market economy, limited constitutional government, and preservation of established institutions rather than either reaction or radical reconstruction.',
    },
    'green-capitalism': {
       normative: 'Values ecological protection alongside human prosperity and continued material development.',
