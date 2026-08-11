@@ -671,7 +671,9 @@ describe('ideology explainers', () => {
          ['voluntaryism', 'normative', /consent, individual liberty, and voluntary support/],
          ['voluntaryism', 'prescriptive', /voluntarily funded minimal state/],
          ['stirnerism', 'normative', /fixed moral, political, or social abstractions/],
+         ['stirnerism', 'descriptive', /fixed ideas.*independent authorities.*unions of egoists/],
          ['stirnerism', 'prescriptive', /no single institutional blueprint/],
+         ['utopian-socialism', 'descriptive', /deliberate social reconstruction.*model communities.*cooperative experiments.*Saint-Simonian, Fourierist, and Owenite/],
          ['anarcha-feminism', 'normative', /patriarchy and gender subordination/],
          ['anarcha-feminism', 'descriptive', /patriarchy, gendered divisions of labor, sexual regulation/],
          ['anarcha-feminism', 'prescriptive', /intimate life, work, political organization/],
@@ -850,12 +852,14 @@ describe('ideology explainers', () => {
       expect(getIdeologyLayerSummary(byId.get('voluntaryism')!, axes, 'prescriptive')).toMatch(/voluntarily funded minimal state/i)
    })
 
-   it('keeps intentional descriptive-layer holds explicit', () => {
+   it('keeps conceptual and heterogeneous descriptive summaries qualified', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
 
-      expect(CURATED_IDEOLOGY_LAYER_SUMMARIES.stirnerism?.descriptive).toBeUndefined()
-      expect(CURATED_IDEOLOGY_LAYER_SUMMARIES['utopian-socialism']?.descriptive).toBeUndefined()
-      expect(getIdeologyLayerSummary(byId.get('stirnerism')!, axes, 'descriptive')).toMatch(/does not currently provide a curated summary/i)
-      expect(getIdeologyLayerSummary(byId.get('utopian-socialism')!, axes, 'descriptive')).toMatch(/does not currently provide a curated summary/i)
+      expect(CURATED_IDEOLOGY_LAYER_SUMMARIES.stirnerism?.descriptive).toMatch(/fixed ideas/)
+      expect(CURATED_IDEOLOGY_LAYER_SUMMARIES['utopian-socialism']?.descriptive).toMatch(/model communities/)
+      expect(getIdeologyLayerSummary(byId.get('stirnerism')!, axes, 'descriptive')).toMatch(/philosophical account, not a settled empirical model/i)
+      expect(getIdeologyLayerSummary(byId.get('utopian-socialism')!, axes, 'descriptive')).toMatch(/Saint-Simonian, Fourierist, and Owenite projects differed substantially/i)
+      expect(getIdeologyLayerSummary(byId.get('stirnerism')!, axes, 'descriptive')).not.toMatch(/does not currently provide/i)
+      expect(getIdeologyLayerSummary(byId.get('utopian-socialism')!, axes, 'descriptive')).not.toMatch(/does not currently provide/i)
    })
 })

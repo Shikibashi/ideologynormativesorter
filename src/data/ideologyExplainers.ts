@@ -964,6 +964,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    stirnerism: {
       normative: 'Resists treating fixed moral, political, or social abstractions as obligations that override the self-directed unique individual.',
+      descriptive: 'Expects people to become dominated when fixed ideas—such as Humanity, the State, or morality—are treated as independent authorities, while contingent unions of egoists can coordinate around participants’ own purposes; this is a philosophical account, not a settled empirical model of social behavior.',
       prescriptive: 'Allows contingent, voluntary unions formed for participants’ purposes but supplies no single institutional blueprint, property system, or public-policy program.',
    },
    'anarcha-feminism': {
@@ -1030,6 +1031,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors public ownership of industry combined with democratic worker guilds that administer production and represent producers alongside political institutions representing citizens.',
    },
    'utopian-socialism': {
+      descriptive: 'Expects deliberate social reconstruction through model communities, cooperative experiments, and a more scientific or rational understanding of society to demonstrate alternatives to competitive industrial order; Saint-Simonian, Fourierist, and Owenite projects differed substantially in mechanisms and endpoints.',
       prescriptive: 'Historically favored moral persuasion, model communities, cooperative experiments, or rational industrial reorganization; the projects grouped under this later label differed substantially.',
    },
    neoconservative: {
