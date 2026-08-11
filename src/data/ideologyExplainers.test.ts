@@ -140,6 +140,31 @@ describe('ideology explainers', () => {
       expect(getIdeologyLayerSummary(byId.get('libertarian-municipalism')!, axes, 'prescriptive')).not.toMatch(/does not imply/i)
    })
 
+   it('replaces false missing-summary fallbacks where label metadata already states the layer doctrine', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const cases: Array<[string, 'normative' | 'descriptive' | 'prescriptive', RegExp]> = [
+         ['ecomodernist', 'normative', /human flourishing and ecological protection/],
+         ['anarcho-capitalist', 'prescriptive', /competitive private provision of law/],
+         ['market-socialist', 'descriptive', /market pricing and competition/],
+         ['christian-democrat', 'prescriptive', /subsidiarity, social-market institutions/],
+         ['republicanism', 'prescriptive', /checks on arbitrary power/],
+         ['distributism', 'prescriptive', /dispersing productive property/],
+         ['world-federalism', 'prescriptive', /federal layer of world government/],
+         ['radical-democracy', 'prescriptive', /beyond periodic elections/],
+         ['christian-socialism', 'prescriptive', /social ownership, economic democracy/],
+         ['green-capitalism', 'normative', /ecological protection while retaining capitalist/],
+         ['green-capitalism', 'prescriptive', /carbon pricing, renewable-energy markets/],
+         ['corporatism', 'prescriptive', /under strong state direction/],
+         ['liberal-feminism', 'prescriptive', /legal reform, equal rights/],
+      ]
+
+      for (const [id, layer, expected] of cases) {
+         const summary = getIdeologyLayerSummary(byId.get(id)!, axes, layer)
+         expect(summary, `${id}/${layer}`).toMatch(expected)
+         expect(summary, `${id}/${layer}`).not.toMatch(/does not currently provide/i)
+      }
+   })
+
    it('does not invent unrelated layer doctrine for broad or cross-cutting labels', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const cases: Array<[string, 'normative' | 'descriptive' | 'prescriptive', RegExp]> = [

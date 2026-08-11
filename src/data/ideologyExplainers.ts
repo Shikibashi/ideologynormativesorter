@@ -253,6 +253,43 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
  * otherwise conflate values, empirical expectations, and practical strategy.
  */
 export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<Record<Layer, string>>>> = {
+   ecomodernist: {
+      normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
+   },
+   'anarcho-capitalist': {
+      prescriptive: 'Favors replacing compulsory public provision with voluntary contract and competitive private provision of law, protection, and arbitration.',
+   },
+   'market-socialist': {
+      descriptive: 'Expects market pricing and competition to retain coordinating value under social or cooperative ownership.',
+   },
+   'christian-democrat': {
+      prescriptive: 'Favors subsidiarity, social-market institutions, welfare and labor protections, and support for family and civil-society institutions within democratic constitutionalism.',
+   },
+   republicanism: {
+      prescriptive: 'Favors civic self-government, rule of law, accountable institutions, and effective checks on arbitrary power.',
+   },
+   distributism: {
+      prescriptive: 'Favors dispersing productive property among families, small firms, guilds, cooperatives, and local associations rather than concentrating it in corporations or the state.',
+   },
+   'world-federalism': {
+      prescriptive: 'Favors a democratic federal layer of world government and enforceable international law above nation-states.',
+   },
+   'radical-democracy': {
+      prescriptive: 'Favors expanding participation and redesigning institutions so concentrated political and economic power remains contestable beyond periodic elections.',
+   },
+   'christian-socialism': {
+      prescriptive: 'Favors social ownership, economic democracy, and structural constraints on exploitative capitalist power.',
+   },
+   'green-capitalism': {
+      normative: 'Values ecological protection while retaining capitalist market institutions rather than requiring systemic economic replacement.',
+      prescriptive: 'Favors carbon pricing, renewable-energy markets, eco-labeling, and corporate sustainability as mechanisms of ecological transition.',
+   },
+   corporatism: {
+      prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate interests and suppress independent class conflict.',
+   },
+   'liberal-feminism': {
+      prescriptive: 'Favors legal reform, equal rights, and equal-opportunity measures within existing liberal-democratic institutions.',
+   },
    'anarcho-syndicalism': {
       descriptive: 'The catalog does not currently provide a curated empirical-belief summary for this label.',
       prescriptive: 'Favors replacing capitalism and the state with federated worker organizations, using direct action rather than electoral politics.',
