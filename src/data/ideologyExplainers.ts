@@ -186,6 +186,18 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
 ]
 
 const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly string[]>> = {
+   'democratic-socialist': [
+      '“Democratic Socialism” seeks democratic control or social ownership of major productive assets through democratic institutions and movements, aiming to transform capitalist ownership rather than merely regulate a mixed economy; this catalog keeps its stronger ownership distinction from social democracy explicit.',
+   ],
+   'market-socialist': [
+      '“Market Socialism” combines social, public, or worker-cooperative ownership of productive assets with market allocation or pricing; it differs from both private-capitalist ownership and command planning, and models vary over firm governance and the public role.',
+   ],
+   'socialist-feminism': [
+      '“Socialist and Marxist Feminist Traditions” analyze gender domination together with capitalism, class, labor, property, and social reproduction; this combined catalog label covers overlapping traditions without claiming they are identical or that economic change alone resolves patriarchy.',
+   ],
+   juche: [
+      '“Juche” is the DPRK/Kimist state ideology of political independence, economic self-reliance, and military self-defense, organized around a centralized party-state and supreme-leader sovereignty; it is a specific national state ideology, not generic socialism or a general philosophy of personal self-reliance.',
+   ],
    'egalitarian-statist': [
       '“State-Capacity Egalitarian” is a social-democratic orientation that treats capable, accountable public institutions and social provision as means to reduce durable material inequalities; it is distinct from authoritarian state socialism and from generic egalitarianism without a state-capacity commitment.',
    ],
@@ -471,6 +483,10 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
+   'democratic-socialist',
+   'market-socialist',
+   'socialist-feminism',
+   'juche',
    'egalitarian-statist',
    'social-democrat',
    'universal-basic-income',
@@ -561,6 +577,26 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
       prescriptive: 'Favors technological innovation, resource-efficient infrastructure, conservation, and active public institutions to reduce ecological harm while supporting human development.',
    },
+   'democratic-socialist': {
+      normative: 'Treats democratic control of economic power and social ownership as necessary to extend political equality into production, not merely as a supplement to a capitalist mixed economy.',
+      descriptive: 'Expects private ownership of major productive assets to reproduce class power and limit democratic agency, while democratic-socialist currents differ over reform, worker ownership, public ownership, and transition.',
+      prescriptive: 'Favors democratic social ownership or control of major productive assets through elections, movements, cooperatives, public institutions, or workplace democracy; it does not prescribe authoritarian one-party rule.',
+   },
+   'market-socialist': {
+      normative: 'Treats social or worker ownership as needed to prevent private capital from dominating economic life while retaining some value in decentralized exchange and choice.',
+      descriptive: 'Expects markets and prices to coordinate dispersed information even when firms or capital are socially owned, while models differ over investment, competition, surplus distribution, and planning.',
+      prescriptive: 'Favors combining social, public, or cooperative ownership with market pricing or competition; it rejects both unqualified private capitalist ownership and the assumption that socialism requires command planning.',
+   },
+   'socialist-feminism': {
+      normative: 'Treats gender liberation and the transformation of class and property relations as connected political goods, including freedom from domination in paid and unpaid reproductive labor.',
+      descriptive: 'Expects capitalism, patriarchy, household organization, paid work, unpaid care, and social reproduction to interact in producing gendered dependence; socialist and Marxist feminists disagree over the relation between these structures.',
+      prescriptive: 'Favors collective action against patriarchy and capitalist exploitation through changes to ownership, labor, care, reproduction, and social institutions; the combined catalog label does not prescribe one feminist strategy.',
+   },
+   juche: {
+      normative: 'Treats political autonomy, national self-reliance, collective discipline, and the sovereignty of the Korean revolutionary state as central political goods.',
+      descriptive: 'Expects foreign dependence and ideological deviation to threaten national independence, while assigning a centralized party-state and supreme leader a guiding role in mobilizing the people.',
+      prescriptive: 'Favors political independence, economic self-reliance, military self-defense, centralized party leadership, and leader-centered state authority in the DPRK/Kimist model; it is not a general endorsement of personal self-sufficiency.',
+   },
    'egalitarian-statist': {
       normative: 'Treats material equality and effective public provision as political goods, while regarding capable and accountable state institutions as legitimate tools for reducing durable disadvantage.',
       descriptive: 'Expects unequal outcomes to be reproduced by market and social structures and assumes public institutions can implement redistributive and universal services competently when designed and held accountable.',
@@ -649,9 +685,6 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'christian-reconstructionism': {
       prescriptive: 'Favors reconstructing civil institutions under theonomic biblical law rather than maintaining a religiously neutral legal order.',
-   },
-   'market-socialist': {
-      descriptive: 'Expects market pricing and competition to retain coordinating value under social or cooperative ownership.',
    },
    'christian-democrat': {
       prescriptive: 'Favors subsidiarity, social-market institutions, welfare and labor protections, and support for family and civil-society institutions within democratic constitutionalism.',

@@ -32,6 +32,10 @@ describe('ideology explainers', () => {
    it('uses the intended definitions for high-confusion ideology terms', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const cases: Array<[string, RegExp]> = [
+         ['democratic-socialist', /social ownership of major productive assets/],
+         ['market-socialist', /social, public, or worker-cooperative ownership/],
+         ['socialist-feminism', /gender domination together with capitalism, class, labor/],
+         ['juche', /DPRK\/Kimist state ideology of political independence/],
          ['egalitarian-statist', /capable, accountable public institutions/],
          ['social-democrat', /mixed economy, welfare provision, labor rights/],
          ['universal-basic-income', /periodic cash payment delivered individually/],
@@ -310,6 +314,23 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('distinguishes socialist variants instead of substituting the generic socialism guide', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['democratic-socialist', /stronger ownership distinction from social democracy/],
+         ['market-socialist', /differs from both private-capitalist ownership and command planning/],
+         ['socialist-feminism', /without claiming they are identical/],
+         ['juche', /not generic socialism/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
+   })
+
    it('distinguishes conservative traditions instead of substituting one generic conservatism guide', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directOnlyCases = [
@@ -437,7 +458,7 @@ describe('ideology explainers', () => {
       const cases: Array<[string, 'normative' | 'descriptive' | 'prescriptive', RegExp]> = [
          ['ecomodernist', 'normative', /human flourishing and ecological protection/],
          ['anarcho-capitalist', 'prescriptive', /competitive private provision of law/],
-         ['market-socialist', 'descriptive', /market pricing and competition/],
+         ['market-socialist', 'descriptive', /markets and prices to coordinate dispersed information/],
          ['christian-democrat', 'prescriptive', /subsidiarity, social-market institutions/],
          ['republicanism', 'prescriptive', /checks on arbitrary power/],
          ['distributism', 'prescriptive', /dispersing productive property/],
@@ -509,6 +530,14 @@ describe('ideology explainers', () => {
          ['expansionist-nationalism', 'prescriptive', /territorial acquisition, imperial administration/],
          ['separatist-nationalism', 'normative', /distinct national or regional community’s self-government/],
          ['separatist-nationalism', 'prescriptive', /autonomy, federal reorganization, or secession/],
+         ['democratic-socialist', 'normative', /democratic control of economic power and social ownership/],
+         ['democratic-socialist', 'prescriptive', /democratic social ownership or control of major productive assets/],
+         ['market-socialist', 'normative', /social or worker ownership/],
+         ['market-socialist', 'prescriptive', /social, public, or cooperative ownership with market pricing/],
+         ['socialist-feminism', 'normative', /gender liberation and the transformation of class and property relations/],
+         ['socialist-feminism', 'prescriptive', /collective action against patriarchy and capitalist exploitation/],
+         ['juche', 'normative', /political autonomy, national self-reliance, collective discipline/],
+         ['juche', 'prescriptive', /political independence, economic self-reliance, military self-defense/],
          ['egalitarian-statist', 'normative', /material equality and effective public provision/],
          ['egalitarian-statist', 'prescriptive', /progressive redistribution, broad social provision/],
          ['social-democrat', 'normative', /freedom and equality as requiring democratic control/],
