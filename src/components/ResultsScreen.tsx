@@ -133,6 +133,7 @@ interface BrowserRelatedTradition {
    subfamily?: string
    aliases?: readonly string[]
    description: string
+   sourceUrls?: readonly string[]
    availability: 'focused-follow-up' | 'catalog-candidate'
 }
 
@@ -165,6 +166,10 @@ function focusedFeministTradition(candidate: FeministSpecialistCandidate): Brows
 
 function catalogCandidateTradition(candidate: CatalogRelatedTradition): BrowserRelatedTradition {
    return { ...candidate, availability: candidate.status }
+}
+
+function sourceHost(url: string): string {
+   return new URL(url).hostname.replace(/^www\./, '')
 }
 
 function labelEvidenceSummary(
@@ -600,11 +605,11 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
 
          <details className="result-block full-label-browser results-inspector-block">
             <summary>
-               <h2>Browse all ideology labels</h2>
+               <h2>Browse the public label catalog</h2>
             </summary>
             <p className="muted">
-               Search scored catalog labels by name, family, subfamily, aliases, or philosophy. Related
-               traditions are listed separately and never treated as general-quiz matches.
+               Search primary scored labels, specialist labels, and cross-cutting modifiers by name, family,
+               subfamily, aliases, or philosophy. Related traditions are listed separately and are not general-quiz matches.
             </p>
             <input
                type="search"
@@ -616,7 +621,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                aria-label="Search ideology labels"
             />
             <p className="muted">
-               Search results include scored labels and clearly marked related traditions.
+               Search results include public catalog labels and clearly marked related traditions.
             </p>
             {Object.entries(groupedLabels)
                .sort(([a], [b]) => formatFamilyName(a).localeCompare(formatFamilyName(b)))
@@ -673,6 +678,18 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                            <p>{candidate.description}</p>
                            {candidate.aliases && candidate.aliases.length > 0 && (
                               <p className="muted">Also called: {candidate.aliases.join(', ')}</p>
+                           )}
+                           {candidate.sourceUrls && candidate.sourceUrls.length > 0 && (
+                              <details className="label-source-disclosure">
+                                 <summary>Sources for this catalog summary</summary>
+                                 <ul>
+                                    {candidate.sourceUrls.map((url) => (
+                                       <li key={url}>
+                                          <a href={url} target="_blank" rel="noreferrer">{sourceHost(url)}</a>
+                                       </li>
+                                    ))}
+                                 </ul>
+                              </details>
                            )}
                         </article>
                      ))}

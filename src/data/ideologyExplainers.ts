@@ -248,6 +248,41 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'islamic-democracy',
 ])
 
+/**
+ * Layer-specific editorial summaries for labels whose general influence notes
+ * otherwise conflate values, empirical expectations, and practical strategy.
+ */
+export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<Record<Layer, string>>>> = {
+   'anarcho-syndicalism': {
+      descriptive: 'The catalog does not currently provide a curated empirical-belief summary for this label.',
+      prescriptive: 'Favors replacing capitalism and the state with federated worker organizations, using direct action rather than electoral politics.',
+   },
+   platformism: {
+      descriptive: 'The catalog does not currently provide a curated empirical-belief summary for this label.',
+      prescriptive: 'Favors a unified but decentralized anarchist organization with collective responsibility and tactical coordination.',
+   },
+   georgism: {
+      normative: 'Distinguishes value created through labor and improvements from land or resource rent, treating the latter as subject to common claims.',
+      prescriptive: 'Generally favors public capture of land or resource rent through land-value taxation.',
+   },
+   'bright-green-environmentalism': {
+      normative: 'Values ecological protection alongside human prosperity and accepts technology-intensive routes to both.',
+      descriptive: 'Expects technology, urbanization, and sometimes markets to reduce ecological harm without ending prosperity.',
+   },
+   'national-socialism': {
+      normative: 'Treats racial hierarchy, antisemitic exclusion, ultranationalism, and totalizing racial-national authority as foundational commitments.',
+   },
+   'technocratic-centralist': {
+      descriptive: 'Assumes centralized expert administration has high capacity and that markets and electoral majorities are comparatively unreliable.',
+   },
+   theocrat: {
+      prescriptive: 'Favors civil law and public authority derived from and enforcing religious doctrine.',
+   },
+   'libertarian-municipalism': {
+      prescriptive: 'Favors directly democratic local assemblies joined in confederation instead of centralized state rule.',
+   },
+}
+
 function layerPhilosophies(label: IdeologyLabel, layer: Layer): string[] {
    if (layer === 'normative') return label.normativePhilosophies ?? []
    if (layer === 'descriptive') return label.descriptivePhilosophies ?? []
@@ -259,6 +294,9 @@ function layerPhilosophies(label: IdeologyLabel, layer: Layer): string[] {
  * one name is a complete description of the respondent's whole politics.
  */
 export function getIdeologyLayerSummary(label: IdeologyLabel, axes: Axis[], layer: Layer): string {
+   const curatedSummary = CURATED_IDEOLOGY_LAYER_SUMMARIES[label.id]?.[layer]
+   if (curatedSummary) return `${LAYER_EXPLAINERS[layer].description} ${curatedSummary}`
+
    const layerAxisIds = new Set(axes.filter((axis) => axis.layer === layer).map((axis) => axis.id))
    const philosophyNames = layerPhilosophies(label, layer)
    const philosophyNameSet = new Set(philosophyNames)
@@ -274,10 +312,10 @@ export function getIdeologyLayerSummary(label: IdeologyLabel, axes: Axis[], laye
    }
 
    if (philosophyNames.length > 0) {
-      return `${LAYER_EXPLAINERS[layer].description} Related traditions include ${philosophyNames.slice(0, 3).join(', ')}, but this label does not imply one more specific shared position in this layer.`
+      return `${LAYER_EXPLAINERS[layer].description} Related traditions include ${philosophyNames.slice(0, 3).join(', ')}. The catalog does not currently provide a more specific curated summary for this label in this layer.`
    }
 
-   return `${LAYER_EXPLAINERS[layer].description} This label does not imply one distinct shared position in this layer.`
+   return `${LAYER_EXPLAINERS[layer].description} The catalog does not currently provide a curated summary for this label in this layer.`
 }
 
 export function getIdeologyTermDefinitions(label: IdeologyLabel, limit = 2): string[] {

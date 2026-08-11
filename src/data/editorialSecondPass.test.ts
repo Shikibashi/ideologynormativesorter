@@ -42,7 +42,7 @@ describe('editorial second pass', () => {
   })
 
   it('keeps revised pole wording inside its declared conceptual layer', () => {
-    expect(axisById.get('militarism-pacifism')!.positivePole).toMatch(/morally justified under limited conditions/)
+    expect(axisById.get('militarism-pacifism')!.positivePole).toMatch(/morally justified under specified conditions/)
     expect(axisById.get('coercion-strategy')!.positivePole).toMatch(/^Change may be pursued/)
     expect(axisById.get('anti-domination')!.negativePole).not.toMatch(/normal feature/)
   })

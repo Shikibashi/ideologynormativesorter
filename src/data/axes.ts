@@ -54,9 +54,9 @@ export const axes: Axis[] = [
       id: 'anti-domination',
       layer: 'normative',
       name: 'Anti-Domination vs Hierarchy Acceptance',
-      negativePole: 'Legitimately established hierarchies can be morally acceptable',
-      positivePole: 'Power over others requires strong checks and justification',
-      description: 'Whether hierarchical power can be morally acceptable when legitimately established, or should remain presumptively suspect without strong checks and justification.',
+      negativePole: 'Established hierarchies may remain legitimate without continuing contestability',
+      positivePole: 'Hierarchy requires continuing checks, contestability, and justification',
+      description: 'Whether established hierarchy is entitled to continuing deference or must remain open to challenge and effective checks.',
    },
    {
       id: 'human-nature-priority',
@@ -69,10 +69,10 @@ export const axes: Axis[] = [
    {
       id: 'militarism-pacifism',
       layer: 'normative',
-      name: 'Conditional Military Force vs Pacifism',
-      negativePole: 'Military force is almost never morally justified',
-      positivePole: 'Military force can be morally justified under limited conditions',
-      description: 'Whether war can ever be morally justified; this axis does not measure whether military institutions should dominate public life.',
+      name: 'Pacifism vs Conditional Use of Force',
+      negativePole: 'Military force is never morally justified',
+      positivePole: 'Military force can be morally justified under specified conditions',
+      description: 'Whether military force can ever be morally justified; this does not measure support for frequent intervention or military dominance.',
    },
    {
       id: 'secularism-religious',

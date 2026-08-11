@@ -499,14 +499,14 @@ describe('App', () => {
       expect(browser).toBeInTheDocument()
       expect(browser!.open).toBe(false)
 
-      fireEvent.click(screen.getByText(/browse all ideology labels/i))
+      fireEvent.click(screen.getByText(/browse the public label catalog/i))
       expect(browser!.open).toBe(true)
 
       fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
          target: { value: 'Marxism' },
       })
 
-      expect(screen.getByText(/search results include scored labels and clearly marked related traditions/i)).toBeInTheDocument()
+      expect(screen.getByText(/search results include public catalog labels and clearly marked related traditions/i)).toBeInTheDocument()
       expect(document.querySelectorAll('.full-label-browser .label-card').length).toBeGreaterThan(0)
       expect(document.querySelector('.full-label-browser')?.textContent ?? '').toMatch(/Marxism/i)
 

@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import type { IdeologyLabel } from '../types'
 import { axes } from './axes'
-import { getIdeologyLayerSummary, getIdeologyTermDefinitions, LAYER_EXPLAINERS } from './ideologyExplainers'
+import {
+   CURATED_IDEOLOGY_LAYER_SUMMARIES,
+   getIdeologyLayerSummary,
+   getIdeologyTermDefinitions,
+   LAYER_EXPLAINERS,
+} from './ideologyExplainers'
 import { labels } from './labels'
 
 describe('ideology explainers', () => {
@@ -55,7 +60,7 @@ describe('ideology explainers', () => {
          centroid: Object.fromEntries(axes.map((axis) => [axis.id, 0])),
       }
 
-      expect(getIdeologyLayerSummary(label, axes, 'normative')).toContain('does not imply one distinct shared position')
+      expect(getIdeologyLayerSummary(label, axes, 'normative')).toContain('does not currently provide a curated summary')
    })
 
    it('does not infer term guides from rejected or comparator traditions in prose', () => {
@@ -116,6 +121,23 @@ describe('ideology explainers', () => {
       expect(forward).toContain('self-ownership and voluntary association')
       expect(forward).not.toContain('strongest distinctions')
       expect(forward).not.toContain('equally strong positions omitted')
+   })
+
+   it('uses explicit layer-keyed copy where general influence notes would conflate values, beliefs, and strategy', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+
+      for (const [id, summaries] of Object.entries(CURATED_IDEOLOGY_LAYER_SUMMARIES)) {
+         const label = byId.get(id)
+         expect(label, `${id} must exist`).toBeDefined()
+         for (const [layer, expected] of Object.entries(summaries)) {
+            expect(getIdeologyLayerSummary(label!, axes, layer as 'normative' | 'descriptive' | 'prescriptive')).toContain(expected)
+         }
+      }
+
+      expect(getIdeologyLayerSummary(byId.get('national-socialism')!, axes, 'normative')).not.toMatch(/does not imply/i)
+      expect(getIdeologyLayerSummary(byId.get('technocratic-centralist')!, axes, 'descriptive')).not.toMatch(/does not imply/i)
+      expect(getIdeologyLayerSummary(byId.get('theocrat')!, axes, 'prescriptive')).not.toMatch(/does not imply/i)
+      expect(getIdeologyLayerSummary(byId.get('libertarian-municipalism')!, axes, 'prescriptive')).not.toMatch(/does not imply/i)
    })
 
    it('does not invent unrelated layer doctrine for broad or cross-cutting labels', () => {

@@ -31,6 +31,16 @@ describe('axes', () => {
    it('has no duplicate axis ids', () => {
       expect(new Set(axes.map((a) => a.id)).size).toBe(axes.length)
    })
+
+   it('uses exclusive consumer-facing poles for corrected normative axes', () => {
+      const antiDomination = axisById.get('anti-domination')!
+      const force = axisById.get('militarism-pacifism')!
+
+      expect(antiDomination.negativePole).toMatch(/without continuing contestability/)
+      expect(antiDomination.positivePole).toMatch(/continuing checks, contestability/)
+      expect(force.negativePole).toBe('Military force is never morally justified')
+      expect(force.positivePole).toMatch(/can be morally justified/)
+   })
 })
 
 describe('questions', () => {

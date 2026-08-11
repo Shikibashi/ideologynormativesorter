@@ -250,7 +250,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Constitutionalism” means limiting political power through higher rules that ordinary officials cannot easily override.',
   },
   {
-    pattern: /\btechnocrats?\b|\btechnocracy\b|\bexpert\b/i,
+    pattern: /\btechnocrats?\b|\btechnocracy\b/i,
     definition: '“Technocrats” means officials or advisers chosen for specialized expertise rather than electoral representation.',
   },
   {
@@ -339,7 +339,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Industrial democracy” means giving workers a formal voice or vote in how their workplace is run.',
   },
   {
-    pattern: /\boccupational licensing\b/i,
+    pattern: /\boccupational[- ]licensing\b/i,
     definition: '“Occupational licensing” means government permission required before someone may legally work in a trade or profession.',
   },
   {
@@ -803,14 +803,24 @@ const SALIENCE_HELP_TEXT: Record<'confidence' | 'priority', string> = {
 /** Context-specific definitions for ordinary words that would otherwise
  * trigger a different specialist meaning. */
 const QUESTION_DEFINITION_OVERRIDES: Readonly<Record<string, string>> = {
+  q0094: '“Occupational licensing” means government permission required before someone may legally work in a trade or profession.',
+  q0104: '“Asset prices” means the market value of homes and other assets.',
   q0152: '“Artistic patronage” means financial support for creators from donors, institutions, customers, or sponsors.',
   q0179: '“Political equality” means equal standing as a citizen, including freedom to hold mistaken or unpopular views.',
   q0238: '“Civic equality” means equal legal and political standing regardless of ancestry or cultural background.',
+  q0259: '“Delegating conscience” means allowing another person or institution to determine what one must believe or accept as morally binding.',
   q0270: '“Workplace equality policy” means rules intended to reduce unequal treatment or opportunity at work.',
   q0282: '“Equal citizenship” means equal legal and political standing without requiring everyone to share one culture.',
+  q0302: '“Price” means the amount paid or received in an exchange.',
   q0334: '“Exit criteria” means the stated conditions for ending a military operation. “Intervention” means using diplomatic, economic, or military power to influence events in another country.',
+  q0342: '“Expert knowledge” means specialized knowledge used to inform a decision; it does not by itself determine who should have final authority.',
   q0365: '“Contestable decision” means one a person can understand, challenge, and appeal before an independent reviewer.',
   q0400: '“Institutional capacity” means a movement’s ability to organize people, make decisions, obtain resources, and carry out plans over time.',
+}
+
+const QUESTION_MEASUREMENT_OVERRIDES: Readonly<Record<string, string>> = {
+  q0104: 'how much moral weight you give homeowners’ financial interests when they conflict with newcomers’ access to housing',
+  q0302: 'how you weigh nonhuman moral standing against owners’ economic claims',
 }
 
 function stripTerminalPunctuation(value: string): string {
@@ -868,9 +878,11 @@ export function getQuestionHelpText(question: Question): string {
     ?? (definitions.length > 0 ? definitions.join(' ') : DOMAIN_DEFINITIONS[question.domain] ?? fallbackDomainDefinition(question))
   const domain = domainById.get(question.domain)
   const domainPhrase = domain ? domain.name.toLowerCase() : 'this topic'
+  const measurement = QUESTION_MEASUREMENT_OVERRIDES[String(question.id)]
+    ?? `${getQuestionMeasurement(question)} about ${domainPhrase}`
   const responseQualifier = getResponseQualifier(question)
 
-  return `${definitionText} This question measures ${getQuestionMeasurement(question)} about ${domainPhrase}, based on ${responseQualifier}.`
+  return `${definitionText} This question measures ${measurement}, based on ${responseQualifier}.`
 }
 
 export function getSalienceHelpText(kind: 'confidence' | 'priority'): string {

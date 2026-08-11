@@ -28,6 +28,11 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
             Consumer label explainers use curated tradition notes. The site does not turn a synthetic comparison coordinate into a claim that every member of a tradition must hold that doctrine.
          </p>
          <p>
+            Label descriptions are editorial summaries of contested traditions. Where a related-tradition entry has
+            configured source links, the label browser exposes them. The browser does not yet provide claim-level citations
+            for every scored label, so those summaries should not be treated as definitive definitions.
+         </p>
+         <p>
             Answer-coverage descriptions reflect whether enough relevant questions were answered. They do not measure certainty or
             prove that a label is correct.
          </p>

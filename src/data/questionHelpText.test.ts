@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { Question } from '../types'
 import { axes } from './axes'
+import { questions as effectiveQuestions } from './effectiveQuestions'
 import { moduleQuestions } from './moduleQuestions'
 import { getQuestionHelpText, getSalienceHelpText } from './questionHelpText'
 import { questions } from './questions'
@@ -159,21 +160,26 @@ describe('question help text', () => {
   })
 
   it('uses a consistent definition-plus-measurement structure for every generated explainer', () => {
+    const measurementOverrides: Readonly<Record<string, string>> = {
+      q0104: 'how much moral weight you give homeowners’ financial interests when they conflict with newcomers’ access to housing',
+      q0302: 'how you weigh nonhuman moral standing against owners’ economic claims',
+    }
+
     for (const question of allQuestionItems) {
       const helpText = getQuestionHelpText(question)
       const lowerHelpText = helpText.toLowerCase()
 
       expect(helpText, `${question.id} should start with a quoted plain-language term`).toMatch(/^“[^”]+” means /)
-      const expectedMeasurement = question.layer === 'normative'
-        ? 'which values and forms of authority you consider morally legitimate'
+      const expectedMeasurement = measurementOverrides[String(question.id)] ?? (question.layer === 'normative'
+        ? `which values and forms of authority you consider morally legitimate about `
         : question.layer === 'descriptive'
-          ? 'what you think tends to be true in the world'
+          ? `what you think tends to be true in the world about `
           : question.theoryContext === 'ideal'
-            ? 'which policies, institutions, or strategies you would favor under ideal conditions'
+            ? `which policies, institutions, or strategies you would favor under ideal conditions about `
             : question.theoryContext === 'nonideal'
-              ? 'which policies, institutions, or strategies you would favor under current constraints'
-            : 'which practical policy or strategy direction you favor under the conditions named in the question'
-      expect(helpText, `${question.id} should include one clear measurement sentence`).toContain(`This question measures ${expectedMeasurement} about `)
+              ? `which policies, institutions, or strategies you would favor under current constraints about `
+            : `which practical policy or strategy direction you favor under the conditions named in the question about `)
+      expect(helpText, `${question.id} should include one clear measurement sentence`).toContain(`This question measures ${expectedMeasurement}`)
       expect(lowerHelpText, `${question.id} should not use the generic missing-domain fallback`).not.toContain('general political judgment prompt')
       expect(helpText.length, `${question.id} should stay concise enough to read inline`).toBeLessThanOrEqual(650)
     }
@@ -223,6 +229,33 @@ describe('question help text', () => {
       const helpText = getQuestionHelpText({ ...baseQuestion, prompt })
       expect(helpText, `"${prompt}" should not use the generic domain fallback`).toContain(expectedFragment)
     }
+  })
+
+  it('handles hyphenated licensing and distinguishes expertise from technocracy', () => {
+    const byId = new Map(effectiveQuestions.map((question) => [question.id, question]))
+    const licensing = getQuestionHelpText(byId.get('q0094')!)
+    const conscience = getQuestionHelpText(byId.get('q0259')!)
+    const expertise = getQuestionHelpText(byId.get('q0342')!)
+
+    expect(licensing).toContain('“Occupational licensing” means')
+    expect(conscience).toContain('“Delegating conscience” means')
+    expect(expertise).toContain('“Expert knowledge” means')
+    expect(conscience).not.toContain('Technocrats')
+    expect(expertise).not.toContain('Technocrats')
+
+    const technocracy = getQuestionHelpText({ ...baseQuestion, prompt: 'Technocracy should replace elected control.' })
+    expect(technocracy).toContain('“Technocrats” means')
+  })
+
+  it('uses item-specific topics instead of injecting every subject named by a broad domain', () => {
+    const byId = new Map(effectiveQuestions.map((question) => [question.id, question]))
+    const housing = getQuestionHelpText(byId.get('q0104')!)
+    const nonhumanStanding = getQuestionHelpText(byId.get('q0302')!)
+
+    expect(housing).toContain('homeowners’ financial interests')
+    expect(housing).not.toMatch(/georgism/i)
+    expect(nonhumanStanding).toContain('nonhuman moral standing')
+    expect(nonhumanStanding).not.toMatch(/nuclear power/i)
   })
 
   it('uses theory context for prescriptive help instead of calling ideal items current policy', () => {
