@@ -32,7 +32,10 @@ describe('ideology explainers', () => {
    it('uses the intended definitions for high-confusion ideology terms', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const cases: Array<[string, RegExp]> = [
-         ['right-wing-populism', /thin-centered/],
+         ['right-wing-populism', /people-versus-elite antagonism/],
+         ['left-wing-populism', /egalitarian, socialist, redistributive/],
+         ['agrarian-populism', /rural producers or “people of the land/],
+         ['cultural-populism', /defines the people and the elite through cultural identity/],
          ['zionism', /Jewish national self-determination/],
          ['civic-nationalist', /shared citizenship, political institutions/],
          ['indigenism', /Indigenous peoples’ authority/],
@@ -269,6 +272,23 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('distinguishes populist variants instead of substituting the generic populism guide', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['right-wing-populism', /right-leaning host such as nationalism/],
+         ['left-wing-populism', /distinct from social democracy/],
+         ['agrarian-populism', /can be progressive, conservative, socialist, or pro-market/],
+         ['cultural-populism', /not identical to right-wing populism/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/thin-centered|broad family of traditions|family of theories/)
+      }
+   })
+
    it('distinguishes conservative traditions instead of substituting one generic conservatism guide', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directOnlyCases = [
@@ -468,6 +488,14 @@ describe('ideology explainers', () => {
          ['expansionist-nationalism', 'prescriptive', /territorial acquisition, imperial administration/],
          ['separatist-nationalism', 'normative', /distinct national or regional community’s self-government/],
          ['separatist-nationalism', 'prescriptive', /autonomy, federal reorganization, or secession/],
+         ['right-wing-populism', 'normative', /authentic or national people as the rightful source/],
+         ['right-wing-populism', 'prescriptive', /majoritarian, anti-establishment, nationalist/],
+         ['left-wing-populism', 'normative', /ordinary people, especially subordinated or working groups/],
+         ['left-wing-populism', 'prescriptive', /redistribution, public control, or economic democracy/],
+         ['agrarian-populism', 'normative', /small producers, rural communities, land-based livelihoods/],
+         ['agrarian-populism', 'prescriptive', /producer protections, cooperative or distributed ownership/],
+         ['cultural-populism', 'normative', /cultural belonging, everyday norms, or community recognition/],
+         ['cultural-populism', 'prescriptive', /protect or restore a preferred cultural order/],
          ['market-liberal', 'normative', /private property, individual liberty, legal equality/],
          ['market-liberal', 'prescriptive', /competitive markets, secure private property/],
          ['decentralist-market-skeptic-of-state', 'normative', /concentrated authority and dependence on centralized administration/],

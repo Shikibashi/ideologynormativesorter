@@ -186,6 +186,18 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
 ]
 
 const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly string[]>> = {
+   'right-wing-populism': [
+      '“Right-Wing Populism” combines populism’s moralized people-versus-elite antagonism and popular sovereignty with a right-leaning host such as nationalism, nativism, traditionalism, or market conservatism; it is not a synonym for all conservatism or anti-elite rhetoric.',
+   ],
+   'left-wing-populism': [
+      '“Left-Wing Populism” combines the people-versus-elite and popular-sovereignty frame with egalitarian, socialist, redistributive, or anti-oligarchic commitments; it is distinct from social democracy, socialism, and generic anti-elite rhetoric.',
+   ],
+   'agrarian-populism': [
+      '“Agrarian Populism” is a populist current organized around rural producers or “people of the land,” framing urban, financial, corporate, or state elites as exploiting them; agrarian populist movements can be progressive, conservative, socialist, or pro-market.',
+   ],
+   'cultural-populism': [
+      '“Cultural Populism” is a catalog term for populist politics that defines the people and the elite through cultural identity, often presenting ordinary or traditional communities against distant, cosmopolitan, or institutionally powerful elites; it is not identical to right-wing populism or every defense of tradition.',
+   ],
    'market-liberal': [
       '“Market Liberal” is a market-oriented liberal position centered on private property, individual rights, competitive exchange, rule of law, and limited but constitutional government; it is distinct from social liberalism’s stronger emphasis on public capability provision and from neoliberalism’s market-governance usage.',
    ],
@@ -447,6 +459,10 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
+   'right-wing-populism',
+   'left-wing-populism',
+   'agrarian-populism',
+   'cultural-populism',
    'market-liberal',
    'decentralist-market-skeptic-of-state',
    'civil-libertarian-cosmopolitan',
@@ -528,6 +544,26 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
       prescriptive: 'Favors technological innovation, resource-efficient infrastructure, conservation, and active public institutions to reduce ecological harm while supporting human development.',
+   },
+   'right-wing-populism': {
+      normative: 'Treats an authentic or national people as the rightful source of political authority and often gives cohesion, order, or bounded membership priority over pluralist or cosmopolitan claims.',
+      descriptive: 'Expects established elites and institutions to be corrupt or detached from the authentic people, while right-wing hosts interpret who belongs and what threatens the community through national, cultural, or nativist frames.',
+      prescriptive: 'Favors restoring popular control through majoritarian, anti-establishment, nationalist, nativist, or culturally traditional policies; specific economic and institutional programs vary by host.',
+   },
+   'left-wing-populism': {
+      normative: 'Treats ordinary people, especially subordinated or working groups, as entitled to political voice and economic equality against oligarchic domination.',
+      descriptive: 'Expects concentrated wealth and entrenched elites to distort democracy and sees broad popular mobilization and redistribution as ways to reopen political agency; movements define people and elite differently.',
+      prescriptive: 'Favors majoritarian or participatory mobilization, redistribution, public control, or economic democracy against oligarchic power; it does not prescribe one route between elections, movements, and institutions.',
+   },
+   'agrarian-populism': {
+      normative: 'Treats small producers, rural communities, land-based livelihoods, or the people of the land as politically and morally undervalued by urban or financial power.',
+      descriptive: 'Expects rural producers to be disadvantaged by concentrated land, credit, commodity, or political power, while agrarian populism can build cross-class alliances with divergent outcomes.',
+      prescriptive: 'Favors producer protections, cooperative or distributed ownership, land or credit reform, and stronger rural representation; no single economic ideology follows from the label.',
+   },
+   'cultural-populism': {
+      normative: 'Treats cultural belonging, everyday norms, or community recognition as politically important and sees distant elite authority as suspect.',
+      descriptive: 'Expects cultural conflict and perceived status loss to mobilize anti-elite politics, with the people defined through national, religious, family, lifestyle, or other cultural boundaries.',
+      prescriptive: 'Favors policies or political strategies that protect or restore a preferred cultural order and transfer authority from distant elites toward the culturally defined people; concrete positions on economy and state power vary.',
    },
    'market-liberal': {
       normative: 'Treats private property, individual liberty, legal equality, and predictable rule of law as central goods, with a presumption against concentrated public power.',
