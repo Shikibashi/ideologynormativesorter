@@ -186,6 +186,30 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
 ]
 
 const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly string[]>> = {
+   'technocratic-centralist': [
+      '“Technocratic Centralism” gives centralized expert administration, scientific or technical knowledge, and state capacity priority over markets and ordinary electoral judgment; it is stronger than using experts within democratic institutions and does not determine one economic policy.',
+   ],
+   transhumanism: [
+      '“Transhumanism” is a family of philosophical and movement views that support using science and technology to expand human health, longevity, cognition, or other capacities beyond current biological limits; variants disagree over safety, access, equality, governance, and whether enhancement should be pursued. It is not simply any enthusiasm for technology and is distinct from posthumanism, although some currents overlap.',
+   ],
+   cyberocracy: [
+      '“Cyberocracy” is a speculative theory of governance in which electronic information and communications infrastructures, networks, and computational systems reshape or potentially supersede bureaucracy; possible forms range from democratic to authoritarian or hybrid, so it is not synonymous with digital democracy or algorithmic governance.',
+   ],
+   accelerationism: [
+      '“Accelerationism” is a contested family of views that treats intensifying capitalism, technology, or modernity as a route to systemic transformation; left, right, and technology-centered variants have sharply different ends and strategies, so it is not simply faster policy or generic radicalism.',
+   ],
+   dataism: [
+      '“Dataism” is an emerging, contested techno-philosophical term that treats data generation, processing, and flows as central to knowledge, value, and governance; it is not a settled political movement or a claim that data are automatically neutral or objective.',
+   ],
+   singularitarianism: [
+      '“Singularitarianism” is a futurist current centered on the possibility of a technological singularity—rapid, potentially transformative artificial-intelligence progress—and on accelerating, preparing for, or safely managing that possibility; it is not a synonym for all AI optimism or transhumanism.',
+   ],
+   'bright-green-environmentalism': [
+      '“Bright Green Environmentalism” is a technology- and design-optimist environmental current that seeks ecological protection through innovation, clean infrastructure, urban design, and social or market transformation while retaining human prosperity; it is broader than ecomodernism and not identical to green capitalism.',
+   ],
+   'green-capitalism': [
+      '“Green Capitalism” is a family of views that seeks ecological protection through capitalist market institutions, private investment, pricing, innovation, and corporate activity; it treats capitalism as a vehicle for ecological transition rather than requiring its abolition, though critics dispute whether growth and profit incentives can resolve ecological crisis.',
+   ],
    'national-socialism': [
       '“National Socialism” means the Nazi ideology of racial hierarchy, antisemitic exclusion, ultranationalism, dictatorship, and expansion; its anti-capitalist rhetoric does not make it socialism.',
    ],
@@ -399,6 +423,14 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
+   'technocratic-centralist',
+   'transhumanism',
+   'cyberocracy',
+   'accelerationism',
+   'dataism',
+   'singularitarianism',
+   'bright-green-environmentalism',
+   'green-capitalism',
    'national-socialism',
    'corporatism',
    'islamic-democracy',
@@ -627,6 +659,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'green-capitalism': {
       normative: 'Values ecological protection alongside human prosperity and continued material development.',
+      descriptive: 'Expects prices, investment, firms, and innovation within capitalism to redirect production and consumption toward lower ecological harm, while critics challenge the sufficiency of that mechanism.',
       prescriptive: 'Favors carbon pricing, renewable-energy markets, eco-labeling, and corporate sustainability as mechanisms of ecological transition.',
    },
    corporatism: {
@@ -650,12 +683,40 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    'bright-green-environmentalism': {
       normative: 'Values ecological protection alongside human prosperity and accepts technology-intensive routes to both.',
       descriptive: 'Expects technology, urbanization, and sometimes markets to reduce ecological harm without ending prosperity.',
+      prescriptive: 'Favors technological innovation, clean energy, efficient infrastructure, urban redesign, and scalable policy or market instruments to reduce ecological harm while preserving or expanding prosperity.',
    },
    'national-socialism': {
       normative: 'Treats racial hierarchy, antisemitic exclusion, ultranationalism, and totalizing racial-national authority as foundational commitments.',
    },
    'technocratic-centralist': {
+      normative: 'Treats expert competence, administrative capacity, and coordinated problem-solving as important grounds of political legitimacy, with less confidence in unmediated electoral judgment.',
       descriptive: 'Assumes centralized expert administration has high capacity and that markets and electoral majorities are comparatively unreliable.',
+      prescriptive: 'Favors centralized expert agencies, planning, and evidence-guided administration insulated from short-term electoral pressure; the label leaves open how accountability and popular participation are secured.',
+   },
+   transhumanism: {
+      normative: 'Values human flourishing, autonomy, and the possibility of overcoming disease, aging, or inherited biological limits through enhancement.',
+      descriptive: 'Expects biomedical, computational, and cybernetic technologies to make human capacities more alterable and to create new conflicts over risk, access, and governance.',
+      prescriptive: 'Favors research, development, regulation, and access pathways for human enhancement, with internal disagreement over limits, safety, equality, and public or private control.',
+   },
+   cyberocracy: {
+      normative: 'Treats effective information circulation, adaptive coordination, and institutional capacity as important political goods, without fixing whether authority should remain human, democratic, or automated.',
+      descriptive: 'Expects electronic information infrastructures and computation to reshape bureaucracy and potentially produce democratic, authoritarian, or hybrid governing forms.',
+      prescriptive: 'Favors building and using networked information systems and computational decision support in public administration; the label alone does not settle who controls them or how they are held accountable.',
+   },
+   accelerationism: {
+      normative: 'Treats intensification or acceleration of technological, capitalist, or modernizing dynamics as potentially transformative rather than assuming stability or gradualism is inherently preferable.',
+      descriptive: 'Expects crises or transformations to emerge from escalating technical, economic, or social processes; left, right, and technology-centered variants make different causal and political claims.',
+      prescriptive: 'Favors strategically intensifying, redirecting, or removing constraints on selected processes to force systemic change; the concrete program varies so widely that the label does not identify one policy package.',
+   },
+   dataism: {
+      normative: 'Treats data generation, processing, and circulation as unusually central to knowledge, value, and social organization, while the term remains contested rather than a settled moral doctrine.',
+      descriptive: 'Expects analytics, quantification, and algorithmic systems to increasingly shape decisions and institutions, with disagreements over whether this improves knowledge or reproduces bias and power.',
+      prescriptive: 'Favors expanding data collection, measurement, optimization, and data-driven governance as tools of social coordination; privacy, ownership, accountability, and the status of human judgment remain open disputes.',
+   },
+   singularitarianism: {
+      normative: 'Treats the possibility of radical artificial-intelligence-driven transformation as a major horizon of human concern, hope, or risk.',
+      descriptive: 'Expects advanced artificial intelligence could become self-reinforcing or socially discontinuous enough to outpace ordinary forecasting and institutions.',
+      prescriptive: 'Favors some combination of artificial-intelligence research, safety or alignment work, preparation, and enhancement; singularitarian currents diverge over whether acceleration or restraint should take priority.',
    },
    theocrat: {
       prescriptive: 'Favors civil law and public authority derived from and enforcing religious doctrine.',

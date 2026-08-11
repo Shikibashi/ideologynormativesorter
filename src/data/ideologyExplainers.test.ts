@@ -41,13 +41,18 @@ describe('ideology explainers', () => {
          ['left-wing-nationalism', /national self-determination or popular sovereignty/],
          ['expansionist-nationalism', /territorial enlargement, imperial influence/],
          ['separatist-nationalism', /autonomy, federal reorganization, or independence/],
+         ['technocratic-centralist', /centralized expert administration/],
          ['accelerationism', /left, right, and technology-centered/],
+         ['cyberocracy', /speculative theory of governance/],
+         ['bright-green-environmentalism', /technology- and design-optimist environmental current/],
+         ['green-capitalism', /capitalist market institutions/],
          ['fascist-authoritarian', /nationalist politics of national rebirth/],
          ['national-socialism', /Nazi ideology of racial hierarchy/],
          ['indigenism', /Indigenous self-determination/],
          ['political-islam', /broad family of projects/],
-         ['transhumanism', /broad family of arguments/],
-         ['dataism', /emerging techno-philosophical term/],
+         ['transhumanism', /family of philosophical and movement views/],
+         ['dataism', /emerging, contested techno-philosophical term/],
+         ['singularitarianism', /futurist current centered on the possibility/],
          ['world-federalism', /democratic federal layer/],
          ['council-communist', /workers’ councils/],
          ['syndicalist', /worker-run unions and direct action/],
@@ -212,6 +217,27 @@ describe('ideology explainers', () => {
       expect(getIdeologyTermDefinitions(byId.get('libertarian-socialism')!)[0]).toMatch(/distinct from right-libertarian/)
       expect(getIdeologyTermDefinitions(byId.get('christian-socialism')!)[0]).toMatch(/disagree over markets, ownership/)
       expect(getIdeologyTermDefinitions(byId.get('utopian-socialism')!)[0]).toMatch(/not one doctrine/)
+   })
+
+   it('distinguishes technocratic, futurist, and green-technology labels instead of substituting broad parent guides', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['technocratic-centralist', /ordinary electoral judgment/],
+         ['transhumanism', /distinct from posthumanism/],
+         ['cyberocracy', /democratic to authoritarian or hybrid/],
+         ['accelerationism', /not simply faster policy/],
+         ['dataism', /not a settled political movement/],
+         ['singularitarianism', /not a synonym for all AI optimism/],
+         ['bright-green-environmentalism', /not identical to green capitalism/],
+         ['green-capitalism', /rather than requiring its abolition/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
    })
 
    it('distinguishes conservative traditions instead of substituting one generic conservatism guide', () => {
@@ -413,6 +439,20 @@ describe('ideology explainers', () => {
          ['expansionist-nationalism', 'prescriptive', /territorial acquisition, imperial administration/],
          ['separatist-nationalism', 'normative', /distinct national or regional community’s self-government/],
          ['separatist-nationalism', 'prescriptive', /autonomy, federal reorganization, or secession/],
+         ['technocratic-centralist', 'normative', /expert competence, administrative capacity/],
+         ['technocratic-centralist', 'prescriptive', /centralized expert agencies, planning/],
+         ['transhumanism', 'normative', /human flourishing, autonomy/],
+         ['transhumanism', 'prescriptive', /human enhancement/],
+         ['cyberocracy', 'descriptive', /electronic information infrastructures/],
+         ['cyberocracy', 'prescriptive', /networked information systems/],
+         ['accelerationism', 'normative', /intensification or acceleration/],
+         ['accelerationism', 'prescriptive', /strategically intensifying/],
+         ['dataism', 'normative', /data generation, processing, and circulation/],
+         ['dataism', 'prescriptive', /data collection, measurement, optimization/],
+         ['singularitarianism', 'descriptive', /advanced artificial intelligence/],
+         ['singularitarianism', 'prescriptive', /safety or alignment work/],
+         ['bright-green-environmentalism', 'prescriptive', /clean energy, efficient infrastructure/],
+         ['green-capitalism', 'descriptive', /prices, investment, firms, and innovation/],
       ]
 
       for (const [id, layer, expected] of cases) {
