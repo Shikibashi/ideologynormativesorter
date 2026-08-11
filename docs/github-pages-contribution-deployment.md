@@ -11,52 +11,66 @@ The production design is therefore:
 3. A private D1 database stores the validated JSON records.
 4. The public Pages build receives only the Worker's HTTPS URL through `RESEARCH_ENDPOINT`.
 
-The Worker in `research-worker/` restricts browser requests to the production origin, validates the expected schema, consent, 120-item core form and answer coverage, caps payload size, applies an edge rate limit, and deduplicates retries by submission ID. It does not expose a public read endpoint.
+The Worker in `research-worker/` restricts browser requests to the production origin, validates the expected schema,
+consent, complete Balanced (158-item) or Full-depth (336-item) profile and answer coverage, caps payload size, applies an
+edge rate limit, and deduplicates retries by submission ID. It also accepts the explicitly configured 120-item matrix
+form used by controlled research links. It does not expose a public read endpoint.
+
+## Current production resources
+
+- Worker: `political-judgment-contributions`
+- Endpoint: `https://political-judgment-contributions.hiramurayuki.workers.dev/submit`
+- Health route: `https://political-judgment-contributions.hiramurayuki.workers.dev/health`
+- D1 database: `political-judgment-contributions` (`5681f1c3-960b-4872-b0ea-396a590d3708`)
+- Region: ENAM
+
+The Worker, schema, D1 binding, 20-request-per-minute rate limit, origin restriction, and live end-to-end persistence path were verified on 2026-08-10. The synthetic verification record was deleted and the database returned to zero rows. GitHub Pages collection is active with the repository URL as the public contact and a published 24-month retention period.
 
 ## One-time Cloudflare setup
 
-Cloudflare recommends a project-local Wrangler CLI. These commands pin the version reviewed for this setup:
+Wrangler `4.120.1` is pinned as a project development dependency. Authenticate the local CLI before future account operations:
 
 ```bash
-npx wrangler@4.120.1 login
-npx wrangler@4.120.1 d1 create political-judgment-contributions
+npx wrangler login
 ```
 
-Copy the example configuration and replace `REPLACE_WITH_D1_DATABASE_ID` with the database ID returned by `d1 create`:
+The production resource identifiers are tracked in `research-worker/wrangler.jsonc`; they are not credentials. No Cloudflare API token or other secret belongs in that file. To create a replacement database, start from `research-worker/wrangler.example.jsonc`, create the database, and insert its returned ID.
+
+Validate, migrate, and deploy with the repository scripts:
 
 ```bash
-cp research-worker/wrangler.example.jsonc research-worker/wrangler.jsonc
+npm run worker:check
+npm run worker:migrate
+npm run worker:deploy
 ```
 
-The D1 database ID identifies a resource but is not a secret. The configuration can be committed after it contains the real ID. Do not add Cloudflare API tokens or other credentials to the file.
-
-Create the production table and deploy the Worker:
+Verify the read-only health route after each deployment:
 
 ```bash
-npx wrangler@4.120.1 d1 migrations apply political-judgment-contributions --remote --config research-worker/wrangler.jsonc
-npx wrangler@4.120.1 deploy --config research-worker/wrangler.jsonc
-```
-
-Wrangler prints a `workers.dev` URL. Verify the read-only health route:
-
-```bash
-curl https://YOUR-WORKER.workers.dev/health
+curl https://political-judgment-contributions.hiramurayuki.workers.dev/health
 ```
 
 The expected response is `{"ok":true}`. A custom API subdomain can be added later, but it is not required for collection.
 
 ## Activate the GitHub Pages frontend
 
-Choose and publish a real site-owner contact and retention statement before enabling collection. Then configure the repository variables; these are public build settings, not secrets:
+The current public build settings are:
+
+- contact: `https://github.com/Shikibashi/ideologynormativesorter`
+- retention: `Contributions are retained for up to 24 months for question and label review, then deleted.`
+
+These settings and the endpoint are repository variables, not secrets. To replace them, update the variables and redeploy:
 
 ```bash
-gh variable set RESEARCH_ENDPOINT --body 'https://YOUR-WORKER.workers.dev/submit'
+gh variable set RESEARCH_ENDPOINT --body 'https://political-judgment-contributions.hiramurayuki.workers.dev/submit'
 gh variable set RESEARCH_CONTACT --body 'YOUR PUBLIC CONTACT'
 gh variable set RESEARCH_RETENTION_NOTICE --body 'YOUR RETENTION AND DELETION STATEMENT'
 gh workflow run deploy.yml
 ```
 
-After the Pages deployment succeeds, the home-page invitation changes from unavailable status to the `Contribute responses` link. The consent screen will state that records are transmitted, and accepted contributions will receive a submission receipt.
+After the Pages deployment succeeds, the home-page profile selector enables the optional contribution checkbox. The
+consent screen states that the chosen profile doubles as the contribution, and accepted contributions receive a
+submission receipt.
 
 ## Private access and operations
 

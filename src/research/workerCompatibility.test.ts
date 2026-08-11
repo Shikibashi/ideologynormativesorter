@@ -11,7 +11,7 @@ import {
   RESEARCH_SCHEMA_VERSION,
   type ResearchConsent,
 } from './index'
-import { buildResearchQuestionForm, RESEARCH_FORM_VERSION } from './forms'
+import { buildContributionQuestionForm, RESEARCH_FORM_VERSION } from './forms'
 import {
   buildSpecialistQuestionForm,
   scoreSpecialistModule,
@@ -26,7 +26,9 @@ const collectorEnvironment = {
   EXPECTED_CONSENT_VERSION: RESEARCH_CONSENT_VERSION,
   EXPECTED_QUALITY_RULE_VERSION: RESEARCH_QUALITY_RULE_VERSION,
   EXPECTED_FORM_VERSION: RESEARCH_FORM_VERSION,
-  EXPECTED_CORE_ITEM_COUNT: '120',
+  EXPECTED_MODERATE_ITEM_COUNT: '158',
+  EXPECTED_EXTENSIVE_ITEM_COUNT: '336',
+  ALLOWED_MATRIX_ITEM_COUNTS: '120',
 }
 
 function endpointConsent(): ResearchConsent {
@@ -46,8 +48,11 @@ function endpointConsent(): ResearchConsent {
 }
 
 describe('Cloudflare contribution collector compatibility', () => {
-  it('accepts the real balanced 120-item submission produced by the frontend', () => {
-    const form = buildResearchQuestionForm(questionsForTier('moderate'), 'p_compatibility', 'test', 120)
+  it.each([
+    ['moderate', 158],
+    ['extensive', 336],
+  ] as const)('accepts the complete %s profile produced by the frontend', (tier, expectedCount) => {
+    const form = buildContributionQuestionForm(questionsForTier(tier), 'p_compatibility', 'test', null)
     const answers = Object.fromEntries(form.map((question) => [
       question.id,
       { questionId: question.id, value: 'prefer_not_to_answer' },
@@ -58,7 +63,7 @@ describe('Cloudflare contribution collector compatibility', () => {
       administration: 'test',
       bankVersion: QUESTION_BANK_VERSION,
       scoringVersion: RESULT_SCORING_VERSION,
-      tier: 'moderate',
+      tier,
       consent: endpointConsent(),
       identity: { selfReportedIdeologies: 'A tradition not yet listed' },
       predictedLabelIds: [],
@@ -68,13 +73,14 @@ describe('Cloudflare contribution collector compatibility', () => {
       completedAt: '2026-08-10T12:20:00.000Z',
       submittedAt: '2026-08-10T12:20:00.000Z',
       resumed: false,
-      requestedFormSize: 120,
+      requestedFormSize: null,
       recruitmentSource: 'direct-or-unknown',
       locale: 'en-US',
-      submissionId: 'submission_compatibility',
+      submissionId: `submission_compatibility_${tier}`,
     })
 
-    expect(form).toHaveLength(120)
+    expect(form).toHaveLength(expectedCount)
+    expect(JSON.stringify(submission).length).toBeLessThan(2_000_000)
     expect(validateSubmission(submission, collectorEnvironment)).toBe(true)
   })
 

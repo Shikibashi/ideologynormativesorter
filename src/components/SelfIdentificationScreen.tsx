@@ -5,9 +5,10 @@ import type { ResearchIdentity } from '../research'
 interface SelfIdentificationScreenProps {
   labels: IdeologyLabel[]
   onContinue: (identity: ResearchIdentity) => Promise<void>
+  onSkip: () => void
 }
 
-export function SelfIdentificationScreen({ labels, onContinue }: SelfIdentificationScreenProps) {
+export function SelfIdentificationScreen({ labels, onContinue, onSkip }: SelfIdentificationScreenProps) {
   const [selfLabelId, setSelfLabelId] = useState('')
   const [selfReportedIdeologies, setSelfReportedIdeologies] = useState('')
   const [ageBand, setAgeBand] = useState<ResearchIdentity['ageBand']>()
@@ -45,8 +46,8 @@ export function SelfIdentificationScreen({ labels, onContinue }: SelfIdentificat
         independent baseline criterion. Leaving any field blank does not prevent you from continuing.
       </p>
       <p className="muted">
-        The next button submits this pseudonymous contribution through the website. Your result still appears even if
-        the optional fields above are left blank.
+        “Submit contribution and see result” sends the pseudonymous contribution through the website. “Skip contribution
+        and see result” discards it. Your result appears either way, and every field below may be left blank.
       </p>
 
       <label className="form-field">
@@ -99,7 +100,10 @@ export function SelfIdentificationScreen({ labels, onContinue }: SelfIdentificat
 
       {error && <p role="alert" className="muted error-inline">{error}</p>}
       <button type="button" className="primary-button" disabled={submitting} onClick={continueToResults}>
-        {submitting ? 'Submitting contribution…' : 'Submit contribution and continue'}
+        {submitting ? 'Submitting contribution…' : 'Submit contribution and see result'}
+      </button>
+      <button type="button" className="back-link" disabled={submitting} onClick={onSkip}>
+        Skip contribution and see result
       </button>
     </section>
   )

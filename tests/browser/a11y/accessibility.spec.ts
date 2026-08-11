@@ -37,7 +37,7 @@ test('intro, methodology, consent, and standard quiz pass automated WCAG checks'
 
   await page.goto(CONTRIBUTION_PATH)
   await expectNoAutomatedViolations(page, testInfo)
-  await page.getByRole('button', { name: 'Use ordinary quiz instead' }).click()
+  await page.getByRole('button', { name: 'Continue without contributing' }).click()
   await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toBeVisible()
   await expectNoAutomatedViolations(page, testInfo)
 })
@@ -76,7 +76,7 @@ test('self-identification and specialist module pass automated WCAG checks', asy
   await acceptContributionConsent(page)
   await expectNoAutomatedViolations(page, testInfo)
 
-  await page.getByRole('button', { name: 'Submit contribution and continue' }).click()
+  await page.getByRole('button', { name: 'Submit contribution and see result' }).click()
   await expect(page.getByRole('heading', { name: 'Optional specialist follow-up' })).toBeVisible()
   await expectNoAutomatedViolations(page, testInfo)
   await page.getByRole('button', { name: 'Start assigned follow-up' }).click()

@@ -45,10 +45,12 @@ function environment(overrides = {}) {
     ALLOWED_ORIGIN: ORIGIN,
     EXPECTED_STUDY_ID: 'community-2026',
     EXPECTED_SCHEMA_VERSION: '2026-08-v5',
-    EXPECTED_CONSENT_VERSION: '2026-08-10-v5',
+    EXPECTED_CONSENT_VERSION: '2026-08-10-v6',
     EXPECTED_QUALITY_RULE_VERSION: 'data-quality-v2',
-    EXPECTED_FORM_VERSION: 'balanced-matrix-v2',
-    EXPECTED_CORE_ITEM_COUNT: '1',
+    EXPECTED_FORM_VERSION: 'profile-form-v3',
+    EXPECTED_MODERATE_ITEM_COUNT: '1',
+    EXPECTED_EXTENSIVE_ITEM_COUNT: '2',
+    ALLOWED_MATRIX_ITEM_COUNTS: '1',
     MAXIMUM_BODY_BYTES: '2000000',
     DB: new FakeDatabase(),
     RESEARCH_RATE_LIMITER: { limit: async () => ({ success: true }) },
@@ -85,7 +87,7 @@ function coreSubmission(overrides = {}) {
       ageConfirmed: true,
       voluntaryParticipation: true,
       dataUseAccepted: true,
-      consentVersion: '2026-08-10-v5',
+      consentVersion: '2026-08-10-v6',
       consentedAt: '2026-08-10T12:00:00.000Z',
       disclosureSnapshot: {
         endpointConfigured: true,
@@ -99,8 +101,8 @@ function coreSubmission(overrides = {}) {
     resumed: false,
     presentationOrder: ['q0001'],
     form: {
-      algorithmVersion: 'balanced-matrix-v2',
-      requestedItemCount: 1,
+      algorithmVersion: 'profile-form-v3',
+      requestedItemCount: null,
       assignedItemCount: 1,
       fingerprint: researchFormFingerprint(itemMap),
     },
@@ -151,6 +153,36 @@ describe('research contribution Worker', () => {
     assert.equal(retry.status, 202)
     assert.equal((await retry.json()).deduplicated, true)
     assert.equal(env.DB.rows.size, 1)
+  })
+
+  it('accepts the configured full-depth profile and a controlled matrix form', async () => {
+    const env = environment()
+    const base = coreSubmission()
+    const secondItem = { ...base.itemMap[0], questionId: 'q0002' }
+    const fullItemMap = [base.itemMap[0], secondItem]
+    const full = coreSubmission({
+      submissionId: 'submission_full',
+      tier: 'extensive',
+      itemMap: fullItemMap,
+      presentationOrder: ['q0001', 'q0002'],
+      answers: {
+        q0001: { questionId: 'q0001', value: 1 },
+        q0002: { questionId: 'q0002', value: 1 },
+      },
+      form: {
+        algorithmVersion: 'profile-form-v3',
+        requestedItemCount: null,
+        assignedItemCount: 2,
+        fingerprint: researchFormFingerprint(fullItemMap),
+      },
+    })
+    const matrix = coreSubmission({
+      submissionId: 'submission_matrix',
+      form: { ...base.form, requestedItemCount: 1 },
+    })
+
+    assert.equal((await handleRequest(postRequest(full), env)).status, 202)
+    assert.equal((await handleRequest(postRequest(matrix), env)).status, 202)
   })
 
   it('rejects a conflicting payload that reuses a submission ID', async () => {

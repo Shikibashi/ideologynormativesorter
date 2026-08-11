@@ -123,13 +123,14 @@ function handleSalienceIfPresent() {
 }
 
 describe('App', () => {
-   it('opens the public contribution URL at explicit consent before questions', () => {
+   it('upgrades an old public 120-item link to the complete Balanced profile at consent', () => {
       window.history.replaceState(null, '', '/?contribute=1&collection=community-2026&formSize=120')
 
       render(<App />)
 
-      expect(screen.getByRole('heading', { name: /contribute responses/i })).toBeInTheDocument()
-      expect(screen.getByRole('button', { name: /start contribution form/i })).toBeDisabled()
+      expect(screen.getByRole('heading', { name: /optional profile contribution/i })).toBeInTheDocument()
+      expect(screen.getByText(/selected profile contains 158 questions/i)).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /continue to balanced profile/i })).toBeDisabled()
       expect(screen.queryByText(/question 1 of 120/i)).not.toBeInTheDocument()
    })
 
@@ -157,7 +158,7 @@ describe('App', () => {
 
       render(<App />)
       for (const checkbox of screen.getAllByRole('checkbox')) fireEvent.click(checkbox)
-      fireEvent.click(screen.getByRole('button', { name: /start contribution form/i }))
+      fireEvent.click(screen.getByRole('button', { name: /continue to balanced profile/i }))
 
       expect(screen.getByText(`Question 2 of ${assigned.length}`, { exact: false })).toBeInTheDocument()
       expect(screen.getByText(assigned[1].prompt)).toBeInTheDocument()
@@ -187,7 +188,7 @@ describe('App', () => {
 
       render(<App />)
       for (const checkbox of screen.getAllByRole('checkbox')) fireEvent.click(checkbox)
-      fireEvent.click(screen.getByRole('button', { name: /start contribution form/i }))
+      fireEvent.click(screen.getByRole('button', { name: /continue to balanced profile/i }))
 
       expect(screen.getByText('Question 1 of 100', { exact: false })).toBeInTheDocument()
    })
@@ -196,7 +197,7 @@ describe('App', () => {
       window.history.replaceState(null, '', '/?research=1&study=pilot-2026&formSize=12')
       render(<App />)
       for (const checkbox of screen.getAllByRole('checkbox')) fireEvent.click(checkbox)
-      fireEvent.click(screen.getByRole('button', { name: /start contribution form/i }))
+      fireEvent.click(screen.getByRole('button', { name: /continue to balanced profile/i }))
 
       for (let index = 0; index < 12; index += 1) {
          clickScaleAndAnySalienceFollowUp(0)
@@ -214,10 +215,8 @@ describe('App', () => {
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
       expect(screen.getByRole('complementary', { name: /session setup/i })).toBeInTheDocument()
       expect(screen.getByText(/choose the depth of the assessment/i)).toBeInTheDocument()
-      expect(screen.getByRole('link', { name: /contribute responses/i })).toHaveAttribute(
-         'href',
-         '?contribute=1&collection=community-2026&formSize=120',
-      )
+      expect(screen.getByRole('checkbox', { name: /optionally contribute this balanced profile/i })).not.toBeChecked()
+      expect(screen.getByText(/same 158-question profile, not a separate test/i)).toBeInTheDocument()
       expect(screen.queryByRole('radio', { name: /blitz/i })).not.toBeInTheDocument()
       expect(screen.queryByRole('radio', { name: /quick/i })).not.toBeInTheDocument()
       fireEvent.click(screen.getByRole('radio', { name: /balanced profile/i }))
@@ -239,6 +238,35 @@ describe('App', () => {
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
       expect(screen.queryByText(/you have a saved session in progress/i)).not.toBeInTheDocument()
    }, 15_000)
+
+   it('attaches optional collection to either selected profile instead of opening a separate test', () => {
+      render(<App />)
+
+      fireEvent.click(screen.getByRole('radio', { name: /full-depth profile/i }))
+      fireEvent.click(screen.getByRole('checkbox', { name: /optionally contribute this full-depth profile/i }))
+      expect(screen.getByText(/same 336-question profile, not a separate test/i)).toBeInTheDocument()
+      fireEvent.click(screen.getByRole('button', { name: /review contribution details/i }))
+
+      expect(screen.getByRole('heading', { name: /optional profile contribution/i })).toBeInTheDocument()
+      expect(screen.getByText(/selected profile contains 336 questions/i)).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /continue to full-depth profile/i })).toBeDisabled()
+      fireEvent.click(screen.getByRole('button', { name: /continue without contributing/i }))
+
+      expect(screen.getByText('Question 1 of 336', { exact: false })).toBeInTheDocument()
+   })
+
+   it('allows a completed respondent to skip upload and see the result', () => {
+      window.history.replaceState(null, '', '/?research=1&study=pilot-2026&formSize=12')
+      render(<App />)
+      for (const checkbox of screen.getAllByRole('checkbox')) fireEvent.click(checkbox)
+      fireEvent.click(screen.getByRole('button', { name: /continue to balanced profile/i }))
+
+      for (let index = 0; index < 12; index += 1) clickScaleAndAnySalienceFollowUp(0)
+      fireEvent.click(screen.getByRole('button', { name: /skip contribution and see result/i }))
+
+      expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
+      expect(localStorage.getItem(SAVE_KEY)).toBeNull()
+   })
 
    it('lets a descriptive item be answered as "I don\'t know" and still advances', () => {
       render(<App />)
@@ -510,6 +538,27 @@ describe('App', () => {
 
       expect(screen.getByRole('heading', { name: /ujamaa \/ nyerereism/i })).toBeInTheDocument()
       expect(screen.getByText(/african socialist/i)).toBeInTheDocument()
+
+      fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
+         target: { value: 'Market Libertarianism' },
+      })
+
+      expect(screen.getByRole('heading', { name: /market \/ right-libertarianism/i })).toBeInTheDocument()
+      expect(screen.getByText(/liberal · market libertarian · not ranked by the general quiz/i)).toBeInTheDocument()
+
+      fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
+         target: { value: 'Black Political Nationalism' },
+      })
+
+      expect(screen.getByRole('heading', { name: /^black nationalism$/i })).toBeInTheDocument()
+      expect(screen.getByText(/nationalist · black self determination · focused follow-up available/i)).toBeInTheDocument()
+
+      fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
+         target: { value: 'Pan-African Unity' },
+      })
+
+      expect(screen.getByRole('heading', { name: /^pan-africanism$/i })).toBeInTheDocument()
+      expect(screen.getByText(/anti colonial · pan african · focused follow-up available/i)).toBeInTheDocument()
    })
 
    it('renders a compact per-layer Philosophy Explorer with affected axes', () => {

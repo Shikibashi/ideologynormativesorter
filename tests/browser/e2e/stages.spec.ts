@@ -38,6 +38,20 @@ test('intro starts a standard quiz with dynamic passive status', async ({ page }
   expect(messages.some((message) => message.includes('advanced to item 2'))).toBe(true)
 })
 
+test('optional collection stays attached to the selected Full-depth profile', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('radio', { name: /Full-depth profile/ }).check()
+  await page.getByRole('checkbox', { name: /Optionally contribute this full-depth profile/ }).check()
+  await page.getByRole('button', { name: 'Review contribution details' }).click()
+
+  await expect(page.getByRole('heading', { name: 'Optional profile contribution' })).toBeVisible()
+  await expect(page.getByText('The selected profile contains 336 questions', { exact: false })).toBeVisible()
+  await page.getByRole('button', { name: 'Continue without contributing' }).click()
+
+  await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuemax', '336')
+  await expect(page.getByLabel('Application status')).toContainText('PROGRESS 1 / 336')
+})
+
 test('saved session can be resumed and exposes recovery state', async ({ page }) => {
   await seedStorage(page, standardResumeStorage())
   await page.goto('/')
@@ -52,7 +66,7 @@ test('saved session can be resumed and exposes recovery state', async ({ page })
 
 test('contribution consent reaches the research quiz without changing refusal semantics', async ({ page }) => {
   await page.goto(CONTRIBUTION_PATH)
-  await expect(page.getByRole('heading', { name: 'Contribute responses' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Optional profile contribution' })).toBeVisible()
   await expect(page.getByLabel('Application context')).toContainText('COLLECTION community-2026')
   await expect(page.getByLabel('Application status')).toContainText('SUBMISSION NOT SENT')
 
@@ -71,7 +85,7 @@ test('completed contribution traverses self-identification and the specialist mo
   await acceptContributionConsent(page)
 
   await expect(page.getByRole('heading', { name: 'Before seeing your result' })).toBeVisible()
-  await page.getByRole('button', { name: 'Submit contribution and continue' }).click()
+  await page.getByRole('button', { name: 'Submit contribution and see result' }).click()
   await expect(page.getByRole('heading', { name: 'Optional specialist follow-up' })).toBeVisible()
   let messages = await page.evaluate(() => (window as unknown as { __ECW_STATUS_MESSAGES__: string[] }).__ECW_STATUS_MESSAGES__)
   expect(messages).toContain('Contribution prepared.')

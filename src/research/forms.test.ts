@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import type { Question } from '../types'
-import { buildResearchQuestionForm, researchFormFingerprint, researchFormSize } from './forms'
+import {
+  buildContributionQuestionForm,
+  buildResearchQuestionForm,
+  researchFormFingerprint,
+  researchFormSize,
+} from './forms'
 
 function question(id: string, layer: Question['layer'], axisId: string, reviewStatus: Question['reviewStatus'] = 'approved'): Question {
   return {
@@ -32,6 +37,13 @@ describe('research forms', () => {
     expect(researchFormSize('?research=1&formSize=24')).toBe(24)
     expect(researchFormSize('?research=1&formSize=5')).toBeNull()
     expect(researchFormSize('?research=1&formSize=abc')).toBeNull()
+    expect(researchFormSize('?contribute=1&formSize=24')).toBeNull()
+  })
+
+  it('uses the exact selected profile when no controlled matrix size is requested', () => {
+    const form = buildContributionQuestionForm(pool, 'p_1', 'test', null)
+    expect(form).toEqual(pool)
+    expect(form).not.toBe(pool)
   })
 
   it('is stable for the same participant and administration', () => {

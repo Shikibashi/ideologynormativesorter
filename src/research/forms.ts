@@ -1,7 +1,7 @@
 import type { Question } from '../types'
 import type { ResearchAdministration } from './index'
 
-export const RESEARCH_FORM_VERSION = 'balanced-matrix-v2'
+export const RESEARCH_FORM_VERSION = 'profile-form-v3'
 
 function hash32(value: string): number {
   let hash = 2166136261
@@ -29,10 +29,27 @@ function shuffled<T>(values: T[], seed: string, key: (value: T) => string): T[] 
 }
 
 export function researchFormSize(search = window.location.search): number | null {
-  const raw = new URLSearchParams(search).get('formSize')
+  const params = new URLSearchParams(search)
+  // Public contribution links now use the complete profile selected on the
+  // ordinary start screen. Keep explicit matrix sizes only for controlled
+  // research URLs so an old public link cannot silently launch a short form.
+  if (params.get('research') !== '1') return null
+  const raw = params.get('formSize')
   if (!raw) return null
   const parsed = Number.parseInt(raw, 10)
   return Number.isFinite(parsed) && parsed >= 12 ? parsed : null
+}
+
+export function buildContributionQuestionForm(
+  questionPool: Question[],
+  participantId: string,
+  administration: ResearchAdministration,
+  requestedSize: number | null,
+): Question[] {
+  // With no explicit research matrix size, contribution mode is an optional
+  // layer on the exact selected consumer profile, not a separate assessment.
+  if (requestedSize === null) return [...questionPool]
+  return buildResearchQuestionForm(questionPool, participantId, administration, requestedSize)
 }
 
 export function buildResearchQuestionForm(

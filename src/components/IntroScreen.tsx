@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { PUBLIC_RESEARCH_ENTRYPOINT } from '../research'
 import { quizTierLabel } from '../quizTiers'
 import type { QuizTier } from '../types'
 
@@ -19,7 +18,7 @@ interface IntroScreenProps {
   domainCount: number
   savedProgress: { tier: QuizTier; answered: number; total: number } | null
   onResume: () => void
-  onStart: (tier: QuizTier) => void
+  onStart: (tier: QuizTier, contribute: boolean) => void
   onTierChange?: (tier: QuizTier) => void
   onClearSavedProgress: () => void
   contributionAvailable: boolean
@@ -29,6 +28,7 @@ interface IntroScreenProps {
 
 export function IntroScreen({ questionCounts, domainCount, savedProgress, onResume, onStart, onTierChange, onClearSavedProgress, contributionAvailable, loadError, onDismissLoadError }: IntroScreenProps) {
   const [tier, setTier] = useState<QuizTier>('moderate')
+  const [contribute, setContribute] = useState(false)
   const [confirmingClear, setConfirmingClear] = useState(false)
   const startFreshRef = useRef<HTMLButtonElement>(null)
   const confirmClearRef = useRef<HTMLButtonElement>(null)
@@ -167,27 +167,35 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
               Covers {domainCount} policy domains. You can answer "I don't know" on empirical items.
             </p>
 
-            <button type="button" className="primary-button" onClick={() => onStart(tier)}>
-              Begin assessment
+            <section className="research-invite" aria-labelledby="research-invite-heading">
+              <h2 id="research-invite-heading">Help expand the label set</h2>
+              <label className={`tier-option contribution-option${contribute ? ' selected' : ''}`}>
+                <input
+                  type="checkbox"
+                  checked={contribute}
+                  disabled={!contributionAvailable}
+                  onChange={(event) => setContribute(event.target.checked)}
+                />
+                <span className="tier-option-label">Optionally contribute this {quizTierLabel(tier).toLowerCase()}</span>
+                <span className="tier-option-blurb">
+                  This uses the same {questionCounts[tier]}-question profile, not a separate test. After answering, you may
+                  name ideologies or traditions you subscribe to before seeing your result.
+                </span>
+              </label>
+              <p className="muted">
+                With your consent, the site sends pseudonymous answers and optional self-description to help the site owner
+                review questions and candidate labels. It never changes your score or adds an ideology automatically, and
+                you can still skip submission before seeing your result.
+              </p>
+              {!contributionAvailable && (
+                <p className="muted" role="status">Contribution collection is not configured in this build.</p>
+              )}
+            </section>
+
+            <button type="button" className="primary-button" onClick={() => onStart(tier, contribute)}>
+              {contribute ? 'Review contribution details' : 'Begin assessment'}
             </button>
           </aside>
-
-          <section className="research-invite" aria-labelledby="research-invite-heading">
-            <h2 id="research-invite-heading">Help expand the label set</h2>
-            <p>
-              Adults can contribute a separate balanced 120-question response through this website. Before seeing the result,
-              you may name ideologies or traditions you subscribe to, including ones not listed here.
-            </p>
-            <p className="muted">
-              Your optional self-description helps the site owner find candidate labels to review. It never changes scores or
-              adds an ideology automatically.
-            </p>
-            {contributionAvailable ? (
-              <a className="research-link" href={PUBLIC_RESEARCH_ENTRYPOINT}>Contribute responses</a>
-            ) : (
-              <p className="muted" role="status">Website contributions are temporarily unavailable.</p>
-            )}
-          </section>
         </div>
       </div>
     </section>

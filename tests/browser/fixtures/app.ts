@@ -15,7 +15,7 @@ export async function mockResearchEndpoint(page: Page, status = 200): Promise<vo
 export async function acceptContributionConsent(page: Page): Promise<void> {
   const choices = page.getByRole('checkbox')
   for (let index = 0; index < await choices.count(); index += 1) await choices.nth(index).check()
-  await page.getByRole('button', { name: 'Start contribution form' }).click()
+  await page.getByRole('button', { name: 'Continue to Balanced profile' }).click()
 }
 
 export async function answerCurrentQuestion(page: Page): Promise<void> {

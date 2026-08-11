@@ -29,6 +29,13 @@ function configuredInteger(value, fallback) {
   return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback
 }
 
+function configuredIntegerSet(value) {
+  if (typeof value !== 'string') return new Set()
+  return new Set(value.split(',')
+    .map((entry) => Number(entry.trim()))
+    .filter((entry) => Number.isInteger(entry) && entry > 0))
+}
+
 function validConsent(consent, env) {
   return isObject(consent)
     && consent.ageConfirmed === true
@@ -133,7 +140,7 @@ function hash32(value) {
   return hash >>> 0
 }
 
-export function researchFormFingerprint(itemMap, formVersion = 'balanced-matrix-v2') {
+export function researchFormFingerprint(itemMap, formVersion = 'profile-form-v3') {
   const canonicalIds = itemMap.map((item) => item.questionId).sort().join('|')
   return `rf_${hash32(`${formVersion}:${canonicalIds}`).toString(16).padStart(8, '0')}`
 }
@@ -148,11 +155,22 @@ function validIdentity(identity) {
 }
 
 function validCoreRecord(submission, env) {
-  const expectedCount = configuredInteger(env.EXPECTED_CORE_ITEM_COUNT, 120)
+  const expectedProfileCount = submission.tier === 'moderate'
+    ? configuredInteger(env.EXPECTED_MODERATE_ITEM_COUNT, 158)
+    : submission.tier === 'extensive'
+      ? configuredInteger(env.EXPECTED_EXTENSIVE_ITEM_COUNT, 336)
+      : null
+  const assignedCount = submission.itemMap?.length
+  const requestedCount = submission.form?.requestedItemCount
+  const allowedMatrixCounts = configuredIntegerSet(env.ALLOWED_MATRIX_ITEM_COUNTS)
+  const validProfileForm = requestedCount === null && assignedCount === expectedProfileCount
+  const validMatrixForm = Number.isInteger(requestedCount)
+    && requestedCount === assignedCount
+    && allowedMatrixCounts.has(requestedCount)
   return submission.recordType === 'core'
     && validAnsweredRecord(submission)
-    && submission.itemMap.length === expectedCount
     && (submission.tier === 'moderate' || submission.tier === 'extensive')
+    && (validProfileForm || validMatrixForm)
     && typeof submission.resumed === 'boolean'
     && validString(submission.bankVersion, 512)
     && validString(submission.scoringVersion, 512)
@@ -163,8 +181,7 @@ function validCoreRecord(submission, env) {
     && new Set(submission.predictedLabelIds).size === submission.predictedLabelIds.length
     && isObject(submission.form)
     && submission.form.algorithmVersion === env.EXPECTED_FORM_VERSION
-    && submission.form.requestedItemCount === expectedCount
-    && submission.form.assignedItemCount === expectedCount
+    && submission.form.assignedItemCount === assignedCount
     && submission.form.fingerprint === researchFormFingerprint(submission.itemMap, env.EXPECTED_FORM_VERSION)
     && submission.sampling?.design === 'open-opt-in-nonprobability'
     && submission.sampling?.populationInference === false

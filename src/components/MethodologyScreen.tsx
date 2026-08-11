@@ -26,10 +26,11 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
          <h2>Question and form design</h2>
          <p>
             The current interface uses ordered seven-point agreement scales, statement-choice items where the
-            alternatives are substantively distinct, “I don’t know” for empirical uncertainty, and a separate contribution-form
+            alternatives are substantively distinct, “I don’t know” for empirical uncertainty, and a contribution-only
             refusal option. Confidence and priority follow-ups control how strongly an answer counts; skipping that rating
-            excludes the answer from the result. Contribution forms are balanced across layer and primary axis, and the
-            presented questions and wording version are recorded with each contribution.
+            excludes the answer from the result. An optional contribution uses the same complete Balanced or Full-depth
+            profile selected for the result. Controlled matrix forms remain available for instrument analysis, and the exact
+            presented questions and wording version are recorded with every contribution.
          </p>
          <p>
             Randomization distributes order effects; it does not remove them. Agreement formats can also invite

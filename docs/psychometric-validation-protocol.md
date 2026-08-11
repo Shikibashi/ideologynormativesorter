@@ -73,7 +73,8 @@ Use this stage to detect:
 
 Use matrix sampling so respondents are not required to answer the entire bank. Aim for at least 150 usable observations per item, with a larger total sample where feasible. The software's lower thresholds are provisional computation gates, not publication standards.
 
-Research mode is enabled explicitly. `formSize` requests a balanced matrix form; omitting it administers every eligible item in the selected tier.
+Contribution mode is enabled explicitly. The public flow omits `formSize` and uses the complete selected consumer
+profile. A controlled `research=1` URL may request a balanced matrix form with `formSize`.
 
 ```text
 ?research=1&study=pilot-2026&formSize=120
@@ -225,7 +226,7 @@ Research mode produces a versioned record equivalent to:
   "resumed": false,
   "presentationOrder": ["q0001", "q0037"],
   "form": {
-    "algorithmVersion": "balanced-matrix-v2",
+    "algorithmVersion": "profile-form-v3",
     "requestedItemCount": 120,
     "assignedItemCount": 120,
     "fingerprint": "rf_example"
@@ -244,7 +245,7 @@ Research mode produces a versioned record equivalent to:
     "ageConfirmed": true,
     "voluntaryParticipation": true,
     "dataUseAccepted": true,
-    "consentVersion": "2026-08-10-v5",
+    "consentVersion": "2026-08-10-v6",
     "consentedAt": "2026-07-18T11:59:00.000Z",
     "disclosureSnapshot": {
       "endpointConfigured": true,

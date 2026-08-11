@@ -5,6 +5,7 @@ interface ResearchConsentScreenProps {
   participantId: string
   administration: ResearchAdministration
   expectedCoreItemCount: number
+  profileLabel: string
   endpointConfigured: boolean
   allowOfflinePreview?: boolean
   researchContact?: string
@@ -17,6 +18,7 @@ export function ResearchConsentScreen({
   participantId,
   administration,
   expectedCoreItemCount,
+  profileLabel,
   endpointConfigured,
   allowOfflinePreview = false,
   researchContact,
@@ -59,13 +61,14 @@ export function ResearchConsentScreen({
         <span className="section-band-label">COMMUNITY INPUT / PRIVACY</span>
         <span className="section-band-status">NO ACCOUNT REQUIRED</span>
       </div>
-      <h1>Contribute responses</h1>
+      <h1>Optional profile contribution</h1>
       <p>
-        This optional {administration === 'retest' ? 'follow-up' : 'initial'} contribution helps improve the website’s
-        question bank and identify missing ideology labels. Declining returns you to the ordinary quiz.
+        You selected the {profileLabel.toLowerCase()}. This optional {administration === 'retest' ? 'follow-up' : 'initial'}{' '}
+        contribution uses that same assessment and result; it is not a separate test. Declining continues with the selected
+        profile without sending a contribution.
       </p>
       <p className="muted">
-        The form contains {expectedCoreItemCount} questions, optional profile fields, and possibly one optional topic
+        The selected profile contains {expectedCoreItemCount} questions, optional profile fields, and possibly one optional topic
         follow-up. It is long, and some political or identity questions may be uncomfortable. You can stop or choose
         “Prefer not to answer” at any time.
       </p>
@@ -106,9 +109,9 @@ export function ResearchConsentScreen({
       </fieldset>
 
       <button type="button" className="primary-button" disabled={!complete || (!endpointConfigured && !allowOfflinePreview)} onClick={continueToStudy}>
-        Start contribution form
+        Continue to {profileLabel}
       </button>
-      <button type="button" className="back-link" onClick={onCancel}>Use ordinary quiz instead</button>
+      <button type="button" className="back-link" onClick={onCancel}>Continue without contributing</button>
     </section>
   )
 }

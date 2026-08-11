@@ -9,10 +9,12 @@
     "ALLOWED_ORIGIN": "https://ideologynormativesorter.edriffles.us",
     "EXPECTED_STUDY_ID": "community-2026",
     "EXPECTED_SCHEMA_VERSION": "2026-08-v5",
-    "EXPECTED_CONSENT_VERSION": "2026-08-10-v5",
+    "EXPECTED_CONSENT_VERSION": "2026-08-10-v6",
     "EXPECTED_QUALITY_RULE_VERSION": "data-quality-v2",
-    "EXPECTED_FORM_VERSION": "balanced-matrix-v2",
-    "EXPECTED_CORE_ITEM_COUNT": "120",
+    "EXPECTED_FORM_VERSION": "profile-form-v3",
+    "EXPECTED_MODERATE_ITEM_COUNT": "158",
+    "EXPECTED_EXTENSIVE_ITEM_COUNT": "336",
+    "ALLOWED_MATRIX_ITEM_COUNTS": "120",
     "MAXIMUM_BODY_BYTES": "2000000"
   },
   "d1_databases": [

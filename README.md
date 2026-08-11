@@ -54,19 +54,17 @@ High-confidence sign or construct corrections are applied through the overlay. A
 
 ## Community contributions
 
-The ordinary intro screen links to a separate, optional contribution form:
+The ordinary intro screen lets an adult optionally contribute the same Balanced or Full-depth profile they select for
+their result. Contribution is not a separate test: the selected profile keeps its complete 158- or 336-question form,
+and the respondent can continue without contributing at consent or skip submission after answering.
 
-```text
-?contribute=1&collection=community-2026&formSize=120
-```
-
-Before results, contributors may optionally provide one or more ideology or tradition names that are not in the current label set. Those names are stored as contribution metadata and summarized for later manual review; they do not automatically alter scoring or add production labels. The legacy `research=1&study=...` query remains accepted so old links and saved sessions are not broken.
+Before results, contributors may optionally provide one or more ideology or tradition names that are not in the current label set. Those names are stored as contribution metadata and summarized for later manual review; they do not automatically alter scoring or add production labels. Controlled `research=1&study=...` links remain available for explicitly sized matrix forms. Incompatible saves from older form or consent versions are not resumed as current contributions.
 
 The flow:
 
 1. requires explicit adult, voluntary-participation, and data-use consent;
 2. assigns a stable pseudonymous participant code in the same browser;
-3. creates a balanced deterministic form;
+3. uses the complete selected consumer profile, while controlled `research=1` links may still request a deterministic matrix form;
 4. records answers, distinct uncertainty/refusal/skipped-salience states, versions, timing, resume status, form fingerprint, and exact presented item text/options;
 5. captures optional post-questionnaire self-identification before results are shown;
 6. posts only to the configured HTTPS website endpoint.
@@ -77,9 +75,9 @@ Set the endpoint during the frontend build:
 VITE_RESEARCH_ENDPOINT=https://research.example.org/submit npm run build
 ```
 
-For GitHub Pages deployment, set the repository variables `RESEARCH_ENDPOINT`, `RESEARCH_CONTACT`, and `RESEARCH_RETENTION_NOTICE`. The deployment workflow maps them to the frontend build. Without `RESEARCH_ENDPOINT`, the public contribution link is disabled and no record is transmitted; local development still allows an explicitly labeled preview.
+For GitHub Pages deployment, set the repository variables `RESEARCH_ENDPOINT`, `RESEARCH_CONTACT`, and `RESEARCH_RETENTION_NOTICE`. The deployment workflow maps them to the frontend build. Without `RESEARCH_ENDPOINT`, the optional contribution control is disabled and no record is transmitted; local development still allows an explicitly labeled preview.
 
-GitHub Pages cannot store submissions by itself. A deployable Cloudflare Worker/D1 collector and the complete activation procedure are provided in [`docs/github-pages-contribution-deployment.md`](docs/github-pages-contribution-deployment.md). Keep the Pages frontend disabled until that private endpoint, a public site-owner contact, and a retention statement are configured.
+GitHub Pages cannot store submissions by itself. The production Cloudflare Worker/D1 collector and its operating procedure are documented in [`docs/github-pages-contribution-deployment.md`](docs/github-pages-contribution-deployment.md). The backend and Pages contribution flow are active; the public project URL is the contact point and the published retention period is 24 months.
 
 Website contributions form an open opt-in, nonprobability pool. They are useful for improving this site but cannot estimate population prevalence or support a sampling margin of error. No population weights are applied.
 

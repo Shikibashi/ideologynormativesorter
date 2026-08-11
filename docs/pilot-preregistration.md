@@ -5,8 +5,8 @@ This document is a study template. It must be dated, assigned an immutable versi
 ## Instrument versions
 
 - Research schema: `2026-08-v5`
-- Consent text: `2026-08-10-v5`
-- Form algorithm: `balanced-matrix-v2`
+- Consent text: `2026-08-10-v6`
+- Form algorithm: `profile-form-v3`
 - Question bank: `2026-06-v4+2026-07-semantic-v1+2026-07-statement-semantic-v1+2026-08-respondent-v3`
 - Scoring: `2026-08-10-method-v4`
 

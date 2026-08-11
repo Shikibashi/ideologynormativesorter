@@ -13,7 +13,10 @@
     "test:a11y": "playwright test --project=a11y",
     "test:ecw": "playwright test --project=ecw",
     "test:browser": "playwright test",
-    "test:worker": "node --test research-worker/worker.test.mjs"
+    "test:worker": "node --test research-worker/worker.test.mjs",
+    "worker:check": "wrangler deploy --dry-run --config research-worker/wrangler.jsonc",
+    "worker:migrate": "wrangler d1 migrations apply political-judgment-contributions --remote --config research-worker/wrangler.jsonc",
+    "worker:deploy": "wrangler deploy --config research-worker/wrangler.jsonc"
   },
   "dependencies": {
     "react": "^19.2.6",
@@ -37,6 +40,7 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.9",
+    "wrangler": "4.120.1"
   }
 }

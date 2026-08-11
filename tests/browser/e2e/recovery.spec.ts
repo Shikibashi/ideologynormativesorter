@@ -45,7 +45,7 @@ test('failed contribution is retained locally and restored after reload', async 
   await mockResearchEndpoint(page, 503)
   await page.goto(CONTRIBUTION_PATH)
   await acceptContributionConsent(page)
-  await page.getByRole('button', { name: 'Submit contribution and continue' }).click()
+  await page.getByRole('button', { name: 'Submit contribution and see result' }).click()
   await expect(page.getByRole('heading', { name: 'Optional specialist follow-up' })).toBeVisible()
   const messages = await page.evaluate(() => (window as unknown as { __ECW_STATUS_MESSAGES__: string[] }).__ECW_STATUS_MESSAGES__)
   expect(messages).toContain('Contribution could not be submitted.')

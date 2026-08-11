@@ -35,7 +35,7 @@ import {
    type SpecialistResearchSubmission,
 } from './research'
 import {
-   buildResearchQuestionForm,
+   buildContributionQuestionForm,
    RESEARCH_FORM_VERSION,
    researchFormFingerprint,
    researchFormSize,
@@ -110,11 +110,20 @@ function App() {
    const studyId = useMemo(() => researchStudyId(), [])
    const recruitmentSource = useMemo(() => researchRecruitmentSource(), [])
    const formSize = useMemo(() => researchFormSize(), [])
-   const [researchEnabled, setResearchEnabled] = useState(initialResearchMode)
-   const [participantId] = useState(() => initialResearchMode
-      ? getOrCreateParticipantId(window.localStorage, undefined, studyId)
-      : '')
+   const contributionAvailable = Boolean(import.meta.env.VITE_RESEARCH_ENDPOINT?.trim()) || import.meta.env.DEV
+   const [loadedInitialQuiz] = useState(loadQuizState)
    const [loadedPendingResearch] = useState(loadPendingResearchRecord)
+   const initialContributionMode = !sharedAnswers && (
+      initialResearchMode
+      || Boolean(loadedInitialQuiz?.research)
+      || loadedPendingResearch?.submission.recordType === 'core'
+   )
+   const [researchEnabled, setResearchEnabled] = useState(initialContributionMode)
+   const [participantId, setParticipantId] = useState(() => {
+      if (loadedInitialQuiz?.research?.participantId) return loadedInitialQuiz.research.participantId
+      if (loadedPendingResearch?.submission.recordType === 'core') return loadedPendingResearch.submission.participantId
+      return initialResearchMode ? getOrCreateParticipantId(window.localStorage, undefined, studyId) : ''
+   })
    const pendingCoreResearch = !sharedAnswers
       && loadedPendingResearch?.submission.recordType === 'core'
       && loadedPendingResearch.submission.schemaVersion === RESEARCH_SCHEMA_VERSION
@@ -129,8 +138,8 @@ function App() {
       ? pendingCoreResearch.submission
       : null
    const specialistAssignment = useMemo(
-      () => initialResearchMode && participantId ? assignSpecialistModule(participantId, studyId) : null,
-      [initialResearchMode, participantId, studyId],
+      () => researchEnabled && participantId ? assignSpecialistModule(participantId, studyId) : null,
+      [participantId, researchEnabled, studyId],
    )
    const assignedSpecialistModule = useMemo(
       () => specialistAssignment ? specialistModuleById.get(specialistAssignment.moduleId) ?? null : null,
@@ -154,7 +163,7 @@ function App() {
    const [specialistResuming, setSpecialistResuming] = useState(false)
    const [specialistOutcome, setSpecialistOutcome] = useState<SpecialistOutcome | null>(null)
 
-   const [pendingTier, setPendingTier] = useState<QuizTier>('moderate')
+   const [pendingTier, setPendingTier] = useState<QuizTier>(loadedInitialQuiz?.tier ?? 'moderate')
    const [resumeAfterConsent, setResumeAfterConsent] = useState<'quiz' | 'self-identification' | null>(null)
    const [resumeIndex, setResumeIndex] = useState(0)
    const [quizStartedAt, setQuizStartedAt] = useState<string | null>(null)
@@ -198,7 +207,7 @@ function App() {
       [],
    )
    const expectedResearchItemCount = useMemo(
-      () => buildResearchQuestionForm(questionsForTier(pendingTier), participantId, administration, formSize).length,
+      () => buildContributionQuestionForm(questionsForTier(pendingTier), participantId, administration, formSize).length,
       [administration, formSize, participantId, pendingTier],
    )
    const [savedProgress, setSavedProgress] = useState(() => getQuizProgress())
@@ -302,7 +311,7 @@ function App() {
       setSavedProgress(null)
       const pool = questionsForTier(tier)
       const assigned = researchSession
-         ? buildResearchQuestionForm(pool, participantId, administration, formSize)
+         ? buildContributionQuestionForm(pool, participantId, administration, formSize)
          : pool
       setActiveQuestions(assigned)
       setPendingTier(tier)
@@ -321,19 +330,25 @@ function App() {
       announceStatus(`Started the ${quizTierLabel(tier).toLowerCase()}.`)
    }
 
-   function handleStart(tier: QuizTier): void {
+   function handleStart(tier: QuizTier, contribute: boolean): void {
       setLoadError(null)
       setPendingTier(tier)
-      if (researchEnabled) {
+      if (contribute && contributionAvailable) {
+         if (!participantId) {
+            setParticipantId(getOrCreateParticipantId(window.localStorage, undefined, studyId))
+         }
+         setResearchEnabled(true)
          setStage('consent')
          return
       }
+      setResearchEnabled(false)
+      setResearchConsent(null)
       beginQuiz(tier, false)
    }
 
    function restoreSavedQuiz(saved: QuizSave): RestoreOutcome {
       const expectedResearchQuestions = saved.research
-         ? buildResearchQuestionForm(
+         ? buildContributionQuestionForm(
             questionsForTier(saved.tier),
             participantId,
             administration,
@@ -508,6 +523,18 @@ function App() {
       } else {
          setStage('results')
       }
+   }
+
+   function handleSkipResearchSubmission(): void {
+      clearQuizState()
+      clearPendingResearchRecord()
+      setSavedProgress(null)
+      setResearchEnabled(false)
+      setResearchConsent(null)
+      setResearchSubmission(null)
+      setResearchStatus(null)
+      setStage('results')
+      announceStatus('Contribution skipped. Results are ready.')
    }
 
    function handleStartSpecialist(): void {
@@ -819,7 +846,7 @@ function App() {
             onStart={handleStart}
             onTierChange={setPendingTier}
             onClearSavedProgress={handleClearSavedProgress}
-            contributionAvailable={Boolean(import.meta.env.VITE_RESEARCH_ENDPOINT?.trim()) || import.meta.env.DEV}
+            contributionAvailable={contributionAvailable}
             loadError={loadError}
             onDismissLoadError={() => setLoadError(null)}
          />
@@ -836,6 +863,7 @@ function App() {
             participantId={participantId}
             administration={administration}
             expectedCoreItemCount={expectedResearchItemCount}
+            profileLabel={quizTierLabel(pendingTier)}
             endpointConfigured={Boolean(import.meta.env.VITE_RESEARCH_ENDPOINT?.trim())}
             allowOfflinePreview={import.meta.env.DEV}
             researchContact={import.meta.env.VITE_RESEARCH_CONTACT}
@@ -862,7 +890,13 @@ function App() {
    }
 
    if (stage === 'self-identification') {
-      return <SelfIdentificationScreen labels={researchIdentityLabels} onContinue={handleResearchIdentity} />
+      return (
+         <SelfIdentificationScreen
+            labels={researchIdentityLabels}
+            onContinue={handleResearchIdentity}
+            onSkip={handleSkipResearchSubmission}
+         />
+      )
    }
 
    if (stage === 'specialist-invite' && assignedSpecialistModule) {
