@@ -186,6 +186,18 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
 ]
 
 const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly string[]>> = {
+   'christian-democrat': [
+      '“Christian Democracy” combines Christian social thought with democratic constitutionalism, subsidiarity, solidarity, social-market economics, and family or civil-society institutions; it is not equivalent to theocracy or a single church-state model.',
+   ],
+   theocrat: [
+      '“Theocratic Politics” makes religious authority or revealed law the ultimate source of civil legitimacy and public law; it is a form of political ordering, not merely personal faith or every religiously inspired democratic movement.',
+   ],
+   integralism: [
+      '“Integralism” here means Catholic integralism: a tradition that subordinates public order to a Catholic conception of the common good and divine moral authority, rejecting liberal church-state separation; it is distinct from Christian democracy and not synonymous with every clerical-fascist movement.',
+   ],
+   'fundamentalist-theocracy': [
+      '“Fundamentalist Theocracy” combines theocratic rule with a fundamentalist claim that a strict or literal authoritative interpretation of sacred texts should govern public institutions, narrowing religious pluralism and secular alternatives; it is more specific than theocracy and not a synonym for religious conservatism.',
+   ],
    'democratic-socialist': [
       '“Democratic Socialism” seeks democratic control or social ownership of major productive assets through democratic institutions and movements, aiming to transform capitalist ownership rather than merely regulate a mixed economy; this catalog keeps its stronger ownership distinction from social democracy explicit.',
    ],
@@ -483,6 +495,10 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
+   'christian-democrat',
+   'theocrat',
+   'integralism',
+   'fundamentalist-theocracy',
    'democratic-socialist',
    'market-socialist',
    'socialist-feminism',
@@ -576,6 +592,26 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
       prescriptive: 'Favors technological innovation, resource-efficient infrastructure, conservation, and active public institutions to reduce ecological harm while supporting human development.',
+   },
+   'christian-democrat': {
+      normative: 'Treats human dignity, solidarity, family and civil society, and a layered social order as important goods while accepting constitutional democracy and limits on centralized power.',
+      descriptive: 'Expects institutions between the individual and the state and decentralized authority to support social cohesion; it accepts markets but sees them as requiring moral and social correction and welfare provision.',
+      prescriptive: 'Favors democratic constitutionalism, subsidiarity, social-market institutions, social provision, labor protections, and support for family and civil society; it does not prescribe direct clerical rule.',
+   },
+   theocrat: {
+      normative: 'Treats religious authority, divine law, or revealed moral order as superior sources of public legitimacy to secular pluralist law.',
+      descriptive: 'Expects secular autonomy and pluralism to permit moral disorder or violate religious truth, while models differ over whether clerics, religious law, or state institutions hold authority.',
+      prescriptive: 'Favors public law and state authority derived from or enforcing religious doctrine; the label does not identify one religion or one institutional form.',
+   },
+   integralism: {
+      normative: 'Treats Catholic truth, the common good, and ordered social authority as requiring public power to recognize and remain subordinate to divine moral order.',
+      descriptive: 'Expects liberal separation and individualistic neutrality to fragment social order, while integralist movements differ over church-state arrangements and political strategy.',
+      prescriptive: 'Favors Catholicly informed public law and a subordinate temporal authority rather than liberal church-state separation; clerical-fascist alliances are one historical variant, not the whole term.',
+   },
+   'fundamentalist-theocracy': {
+      normative: 'Treats strict or literal fidelity to authoritative scripture as necessary to legitimate moral and political order and gives religious conformity priority over secular pluralism.',
+      descriptive: 'Expects modern secularism, doctrinal accommodation, and reinterpretation to corrupt or weaken sacred order, while fundamentalism has distinct histories across religions.',
+      prescriptive: 'Favors religious law and state institutions enforcing a strict sacred-text interpretation, limiting pluralist and secular alternatives; it is more specific than generic religious conservatism or theocracy.',
    },
    'democratic-socialist': {
       normative: 'Treats democratic control of economic power and social ownership as necessary to extend political equality into production, not merely as a supplement to a capitalist mixed economy.',
@@ -685,9 +721,6 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'christian-reconstructionism': {
       prescriptive: 'Favors reconstructing civil institutions under theonomic biblical law rather than maintaining a religiously neutral legal order.',
-   },
-   'christian-democrat': {
-      prescriptive: 'Favors subsidiarity, social-market institutions, welfare and labor protections, and support for family and civil-society institutions within democratic constitutionalism.',
    },
    republicanism: {
       prescriptive: 'Favors civic self-government, rule of law, accountable institutions, and effective checks on arbitrary power.',
@@ -891,9 +924,6 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       normative: 'Treats the possibility of radical artificial-intelligence-driven transformation as a major horizon of human concern, hope, or risk.',
       descriptive: 'Expects advanced artificial intelligence could become self-reinforcing or socially discontinuous enough to outpace ordinary forecasting and institutions.',
       prescriptive: 'Favors some combination of artificial-intelligence research, safety or alignment work, preparation, and enhancement; singularitarian currents diverge over whether acceleration or restraint should take priority.',
-   },
-   theocrat: {
-      prescriptive: 'Favors civil law and public authority derived from and enforcing religious doctrine.',
    },
    'libertarian-municipalism': {
       prescriptive: 'Favors directly democratic local assemblies joined in confederation instead of centralized state rule.',

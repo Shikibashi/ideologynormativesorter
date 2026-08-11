@@ -32,6 +32,10 @@ describe('ideology explainers', () => {
    it('uses the intended definitions for high-confusion ideology terms', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const cases: Array<[string, RegExp]> = [
+         ['christian-democrat', /Christian social thought with democratic constitutionalism/],
+         ['theocrat', /religious authority or revealed law/],
+         ['integralism', /Catholic integralism/],
+         ['fundamentalist-theocracy', /strict or literal authoritative interpretation of sacred texts/],
          ['democratic-socialist', /social ownership of major productive assets/],
          ['market-socialist', /social, public, or worker-cooperative ownership/],
          ['socialist-feminism', /gender domination together with capitalism, class, labor/],
@@ -331,6 +335,23 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('distinguishes religious-authority variants instead of substituting a generic religious guide', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['christian-democrat', /not equivalent to theocracy/],
+         ['theocrat', /not merely personal faith/],
+         ['integralism', /not synonymous with every clerical-fascist movement/],
+         ['fundamentalist-theocracy', /more specific than theocracy/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
+   })
+
    it('distinguishes conservative traditions instead of substituting one generic conservatism guide', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directOnlyCases = [
@@ -411,7 +432,7 @@ describe('ideology explainers', () => {
    it('defines theocracy and high-confusion labels directly from stable ids', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directCases: Array<[string, RegExp]> = [
-         ['fundamentalist-theocracy', /Theocratic politics/],
+         ['fundamentalist-theocracy', /strict or literal authoritative interpretation/],
          ['neoreactionary', /anti-democratic current/],
          ['distributism', /dispersed ownership/],
          ['deep-ecology', /nonhuman life/],
@@ -530,6 +551,14 @@ describe('ideology explainers', () => {
          ['expansionist-nationalism', 'prescriptive', /territorial acquisition, imperial administration/],
          ['separatist-nationalism', 'normative', /distinct national or regional community’s self-government/],
          ['separatist-nationalism', 'prescriptive', /autonomy, federal reorganization, or secession/],
+         ['christian-democrat', 'normative', /human dignity, solidarity, family and civil society/],
+         ['christian-democrat', 'prescriptive', /democratic constitutionalism, subsidiarity, social-market institutions/],
+         ['theocrat', 'normative', /religious authority, divine law, or revealed moral order/],
+         ['theocrat', 'prescriptive', /public law and state authority derived from or enforcing religious doctrine/],
+         ['integralism', 'normative', /Catholic truth, the common good, and ordered social authority/],
+         ['integralism', 'prescriptive', /Catholicly informed public law/],
+         ['fundamentalist-theocracy', 'normative', /strict or literal fidelity to authoritative scripture/],
+         ['fundamentalist-theocracy', 'prescriptive', /religious law and state institutions enforcing a strict sacred-text interpretation/],
          ['democratic-socialist', 'normative', /democratic control of economic power and social ownership/],
          ['democratic-socialist', 'prescriptive', /democratic social ownership or control of major productive assets/],
          ['market-socialist', 'normative', /social or worker ownership/],
