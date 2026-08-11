@@ -288,6 +288,18 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    'traditional-monarchist': [
       '“Traditional Monarchist” is a conservative royalist orientation that treats hereditary monarchy as historically or traditionally legitimate and often favors meaningful royal prerogative; it differs from constitutional monarchism’s limited head-of-state model and absolute monarchism’s stronger theory of indivisible sovereign power.',
    ],
+   communitarianism: [
+      '“Communitarianism” holds that persons’ identities and moral judgments are formed through constitutive communities, traditions, and social relations; it gives common goods and communal obligations weight alongside individual rights and is not one socialist or anti-liberal state program.',
+   ],
+   republicanism: [
+      '“Republicanism” is a political-theory tradition centered on civic self-government and freedom as non-domination—security against arbitrary or uncontrolled power—through rule of law and accountable institutions; it is not a contemporary party label or one regime template.',
+   ],
+   bioregionalism: [
+      '“Bioregionalism” organizes political, cultural, and economic life around ecologically defined places—often watersheds and connected human-environment relationships—rather than only inherited state borders; it is a place-based environmental philosophy, not simple localism or one economic model.',
+   ],
+   'political-islam': [
+      '“Political Islam” is a broad, contested family of movements and projects that makes Islamic principles a reference for public authority, law, or political identity; it includes democratic, constitutional, electoral, activist, state-building, and violent currents and is not synonymous with Islam, Muslim civic participation, or one model of Sharia.',
+   ],
    'world-federalism': [
       '“World Federalism” advocates a democratic federal layer of global government with shared authority between world institutions and nations; it is stronger than international cooperation alone but does not require abolishing national governments or choosing one economic system.',
    ],
@@ -565,6 +577,10 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'constitutional-monarchism',
    'anti-imperialism',
    'traditional-monarchist',
+   'communitarianism',
+   'republicanism',
+   'bioregionalism',
+   'political-islam',
    'world-federalism',
    'multiculturalism',
    'technocratic-centralist',
@@ -680,6 +696,26 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       normative: 'Treats dynastic continuity, inherited authority, social hierarchy, and historical or religious legitimacy as important political goods, while monarchist traditions differ over divine right, nation, religion, and constitutional limits.',
       descriptive: 'Expects established institutions and hereditary succession to preserve continuity, authority, and national representation better than abstract redesign or purely electoral competition, though claims about monarchy’s effects vary.',
       prescriptive: 'Favors preserving or restoring a hereditary monarchy with a meaningful royal role and prerogative; it can support constitutional limits and does not automatically entail absolute monarchy, rejection of all representation, or one religious doctrine.',
+   },
+   communitarianism: {
+      normative: 'Treats shared community, social membership, tradition, and common goods as morally important sources of identity and obligation alongside individual rights and autonomy.',
+      descriptive: 'Expects abstract individualism and universal rules to miss how social context, inherited practices, and relationships shape judgment, identity, and the social bases of self-respect; communitarian views differ over pluralism and the reach of community.',
+      prescriptive: 'Favors civic participation, institutions that sustain community and mutual obligation, and policies attentive to common goods and social relationships; it does not prescribe socialism, nationalism, or one level of state intervention.',
+   },
+   republicanism: {
+      normative: 'Treats civic self-government, equal civic standing, rule of law, and freedom from arbitrary or uncontrolled power as central political goods.',
+      descriptive: 'Expects domination to persist whenever people or groups remain dependent on uncontrolled power even without constant interference, and sees stable public rules and civic participation as ways to reduce that vulnerability.',
+      prescriptive: 'Favors accountable self-government, checks on arbitrary power, civic participation, anti-corruption measures, and public institutions that keep both rulers and private actors contestable; it is compatible with multiple constitutional and economic arrangements.',
+   },
+   bioregionalism: {
+      normative: 'Treats ecological integrity, place-based belonging, stewardship, and reciprocal human-environment relationships as important goods for political and economic life.',
+      descriptive: 'Expects inherited political boundaries and centralized management to misalign with ecological processes, while local knowledge, citizen engagement, and coordination within watersheds or other bioregions can improve stewardship.',
+      prescriptive: 'Favors governance, land use, and resource management organized around ecological regions, local resilience, and participatory stewardship across existing borders; it does not require isolation, one ownership system, or rejection of all larger institutions.',
+   },
+   'political-islam': {
+      normative: 'Treats Islamic principles as relevant to public authority, law, political identity, or the common good, while movements differ over sovereignty, jurisprudence, pluralism, democracy, and the role of religious institutions.',
+      descriptive: 'Expects modern political order to be interpreted or reformed through Islamic concepts, with movements adapting differently to elections, constitutionalism, authoritarian rule, social activism, and state-building; the broad label does not imply one strategy or level of coercion.',
+      prescriptive: 'Favors some public role for Islamic normative or legal principles, ranging from democratic constitutional participation to comprehensive Islamist state-building; it does not settle one interpretation of Sharia, church-state separation, minority rights, or political violence.',
    },
    'national-traditionalist': {
       normative: 'Treats national continuity, inherited institutions, cultural tradition, and social order as important goods, with legitimacy grounded partly in historical belonging and established authority.',
@@ -829,9 +865,6 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'christian-reconstructionism': {
       prescriptive: 'Favors reconstructing civil institutions under theonomic biblical law rather than maintaining a religiously neutral legal order.',
-   },
-   republicanism: {
-      prescriptive: 'Favors civic self-government, rule of law, accountable institutions, and effective checks on arbitrary power.',
    },
    distributism: {
       prescriptive: 'Favors dispersing productive property among families, small firms, guilds, cooperatives, and local associations rather than concentrating it in corporations or the state.',

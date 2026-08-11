@@ -84,7 +84,10 @@ describe('ideology explainers', () => {
          ['fascist-authoritarian', /revolutionary ultranationalism promising national rebirth/],
          ['national-socialism', /Nazi ideology of racial hierarchy/],
          ['indigenism', /Indigenous self-determination/],
-         ['political-islam', /broad family of projects/],
+         ['political-islam', /broad, contested family of movements and projects/],
+         ['communitarianism', /identities and moral judgments are formed through constitutive communities/],
+         ['republicanism', /freedom as non-domination/],
+         ['bioregionalism', /ecologically defined places/],
          ['transhumanism', /family of philosophical and movement views/],
          ['dataism', /emerging, contested techno-philosophical term/],
          ['singularitarianism', /futurist current centered on the possibility/],
@@ -399,6 +402,23 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('distinguishes community, civic, ecological, and religious-political traditions from generic family guides', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['communitarianism', /not one socialist or anti-liberal state program/],
+         ['republicanism', /not a contemporary party label or one regime template/],
+         ['bioregionalism', /not simple localism or one economic model/],
+         ['political-islam', /not synonymous with Islam, Muslim civic participation/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
+   })
+
    it('distinguishes monarchist forms and anti-imperialism from neighboring traditions', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directOnlyCases: Array<[string, RegExp]> = [
@@ -683,6 +703,14 @@ describe('ideology explainers', () => {
          ['anti-imperialism', 'prescriptive', /decolonization, national or popular self-government/],
          ['traditional-monarchist', 'normative', /dynastic continuity, inherited authority/],
          ['traditional-monarchist', 'prescriptive', /preserving or restoring a hereditary monarchy/],
+         ['communitarianism', 'normative', /shared community, social membership, tradition/],
+         ['communitarianism', 'prescriptive', /civic participation, institutions that sustain community/],
+         ['republicanism', 'normative', /civic self-government, equal civic standing/],
+         ['republicanism', 'descriptive', /domination to persist whenever people or groups remain dependent/],
+         ['bioregionalism', 'normative', /ecological integrity, place-based belonging/],
+         ['bioregionalism', 'prescriptive', /governance, land use, and resource management organized around ecological regions/],
+         ['political-islam', 'normative', /Islamic principles as relevant to public authority, law/],
+         ['political-islam', 'prescriptive', /public role for Islamic normative or legal principles/],
          ['world-federalism', 'normative', /shared political institutions capable of securing peace/],
          ['world-federalism', 'descriptive', /problems that cross borders/],
          ['multiculturalism', 'normative', /cultural membership and the ability to maintain distinctive identities/],
