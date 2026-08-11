@@ -561,6 +561,7 @@ describe('ideology explainers', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const cases: Array<[string, 'normative' | 'descriptive' | 'prescriptive', RegExp]> = [
          ['ecomodernist', 'normative', /human flourishing and ecological protection/],
+         ['ecomodernist', 'descriptive', /technological modernization, urbanization, and intensified production.*global, fast-enough absolute form remains unestablished/],
          ['anarcho-capitalist', 'descriptive', /private providers.*law, protection, and arbitration.*equal access to law/],
          ['anarcho-capitalist', 'prescriptive', /competitive private provision of law/],
          ['market-socialist', 'descriptive', /markets and prices to coordinate dispersed information/],
@@ -603,6 +604,7 @@ describe('ideology explainers', () => {
          ['minarchist', 'descriptive', /public system of police, courts, and defense/],
          ['minarchist', 'prescriptive', /minimal state limited mainly to protecting rights/],
          ['ecomodernist', 'prescriptive', /technological innovation, resource-efficient infrastructure/],
+         ['ecosocialist', 'descriptive', /capitalist accumulation and profit-driven growth.*collective ownership and democratic planning/],
          ['ecosocialist', 'prescriptive', /social ownership and democratic planning/],
          ['geolibertarian', 'normative', /equal claim to the value of land/],
          ['geolibertarian', 'prescriptive', /land or resource rent/],

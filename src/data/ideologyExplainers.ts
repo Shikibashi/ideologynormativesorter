@@ -655,6 +655,7 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
 export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<Record<Layer, string>>>> = {
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
+      descriptive: 'Expects technological modernization, urbanization, and intensified production to decouple human well-being from environmental impacts and spare land for nature; evidence reviews distinguish relative from absolute decoupling and find the global, fast-enough absolute form remains unestablished.',
       prescriptive: 'Favors technological innovation, resource-efficient infrastructure, conservation, and active public institutions to reduce ecological harm while supporting human development.',
    },
    progressivism: {
@@ -982,6 +983,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects territorial monopoly to be unnecessary for legitimate government, with voluntary nonterritorial states and exit allowing multiple governance arrangements; feasibility, coordination, and unequal bargaining power remain unresolved theoretical questions.',
    },
    ecosocialist: {
+      descriptive: 'Expects capitalist accumulation and profit-driven growth to conflict structurally with ecological limits, so collective ownership and democratic planning can align production with social needs and ecological equilibrium; approaches differ over technology, scale, and transition strategy.',
       prescriptive: 'Favors social ownership and democratic planning of production around human need, equality, and ecological limits rather than profit or growth as ends in themselves.',
    },
    'world-federalism': {
