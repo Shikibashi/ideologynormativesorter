@@ -627,6 +627,7 @@ describe('ideology explainers', () => {
          ['social-conservatism', 'prescriptive', /preserving or reinforcing traditional social institutions/],
          ['national-conservatism', 'normative', /national sovereignty, cultural continuity/],
          ['national-conservatism', 'prescriptive', /strengthening the nation-state/],
+         ['national-socialism', 'descriptive', /leader-centered state power.*territorial expansion.*secure the survival/],
          ['conservative-liberalism', 'normative', /liberal rights, rule of law/],
          ['conservative-liberalism', 'prescriptive', /constitutional market order and gradual reform/],
          ['liberal-conservatism', 'normative', /conservative concern for continuity/],

@@ -1104,6 +1104,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'national-socialism': {
       normative: 'Treats racial hierarchy, antisemitic exclusion, ultranationalism, and totalizing racial-national authority as foundational commitments.',
+      descriptive: 'Expects racial hierarchy, leader-centered state power, and territorial expansion to secure the survival and regeneration of a racially defined German national community; these were Nazi ideological claims, not valid findings about human societies.',
    },
    'technocratic-centralist': {
       normative: 'Treats expert competence, administrative capacity, and coordinated problem-solving as important grounds of political legitimacy, with less confidence in unmediated electoral judgment.',
