@@ -839,4 +839,13 @@ describe('ideology explainers', () => {
 
       expect(getIdeologyLayerSummary(byId.get('voluntaryism')!, axes, 'prescriptive')).toMatch(/voluntarily funded minimal state/i)
    })
+
+   it('keeps intentional descriptive-layer holds explicit', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+
+      expect(CURATED_IDEOLOGY_LAYER_SUMMARIES.stirnerism?.descriptive).toBeUndefined()
+      expect(CURATED_IDEOLOGY_LAYER_SUMMARIES['utopian-socialism']?.descriptive).toBeUndefined()
+      expect(getIdeologyLayerSummary(byId.get('stirnerism')!, axes, 'descriptive')).toMatch(/does not currently provide a curated summary/i)
+      expect(getIdeologyLayerSummary(byId.get('utopian-socialism')!, axes, 'descriptive')).toMatch(/does not currently provide a curated summary/i)
+   })
 })
