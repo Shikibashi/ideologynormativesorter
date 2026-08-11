@@ -1006,9 +1006,11 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors some combination of cooperative organization, labor protection, social provision, regulation, or social ownership to subordinate economic power to solidarity and the needs of poor and working people; currents disagree over ownership and strategy.',
    },
    'revolutionary-collectivist': {
+      descriptive: 'Expects capitalist property relations to reproduce class domination and treats revolutionary seizure plus centralized collective ownership as a plausible transition to socialism; because this is a catalog umbrella, views on party rule, democracy, and the endpoint vary substantially.',
       prescriptive: 'Favors a revolutionary break with capitalist property relations and centralized public ownership or state power as the main transition mechanism.',
    },
    'marxist-leninist': {
+      descriptive: 'Expects capitalist class power and crisis to require a disciplined vanguard party and centralized state power to direct a transition toward planned social ownership and communism; national Marxist-Leninist traditions differ in institutions and policies.',
       prescriptive: 'Favors a disciplined vanguard party taking state power, abolishing private control of major productive assets, and directing a planned transition toward communism.',
    },
    'libertarian-socialism': {

@@ -564,6 +564,8 @@ describe('ideology explainers', () => {
          ['ecomodernist', 'descriptive', /technological modernization, urbanization, and intensified production.*global, fast-enough absolute form remains unestablished/],
          ['kemalism', 'descriptive', /secular, scientifically modernizing republic.*unified Turkish national identity.*Kemalist currents differ/],
          ['christian-reconstructionism', 'descriptive', /secular legal neutrality.*theonomic biblical norms.*Christian social order/],
+         ['revolutionary-collectivist', 'descriptive', /capitalist property relations.*class domination.*revolutionary seizure.*centralized collective ownership/],
+         ['marxist-leninist', 'descriptive', /capitalist class power and crisis.*disciplined vanguard party.*planned social ownership/],
          ['anarcho-capitalist', 'descriptive', /private providers.*law, protection, and arbitration.*equal access to law/],
          ['anarcho-capitalist', 'prescriptive', /competitive private provision of law/],
          ['market-socialist', 'descriptive', /markets and prices to coordinate dispersed information/],
