@@ -36,7 +36,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   ...academicTermDictionary,
   {
     pattern: /\bexit(?: rights| options|)\b|\bopt[- ]out\b/i,
-    definition: '“Exit” means a real ability to leave, opt out or choose another provider.',
+    definition: '“Exit” means leaving a relationship, organization, jurisdiction, or provider, or choosing an alternative. It describes a different response from trying to change the institution from within.',
   },
   {
     pattern: /\bpolitical authority\b/i,
@@ -267,7 +267,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bdirect action\b/i,
-    definition: '“Direct action” means trying to create change outside normal electoral or official channels.',
+    definition: '“Direct action” means pursuing change without relying on elected or administrative intermediaries—for example through strikes, boycotts, occupations, or building alternatives; it is not necessarily violent.',
   },
   {
     pattern: /\bcivil disobedience\b/i,

@@ -343,6 +343,26 @@ describe('question help text', () => {
     expect(helpText).not.toContain('signals that reflect')
   })
 
+  it('defines exit across institutional settings and does not imply that direct action is necessarily violent', () => {
+    const exit = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Build exit options before relying on a single institution.',
+      domain: 'strategy-change',
+      layer: 'prescriptive',
+    })
+    const directAction = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Direct action can be appropriate when official channels are closed.',
+      domain: 'strategy-change',
+      layer: 'prescriptive',
+    })
+
+    expect(exit).toContain('relationship, organization, jurisdiction, or provider')
+    expect(exit).toContain('different response from trying to change the institution from within')
+    expect(directAction).toContain('without relying on elected or administrative intermediaries')
+    expect(directAction).toContain('not necessarily violent')
+  })
+
   it('keeps context-specific ordinary words from triggering unrelated specialist definitions', () => {
     const byId = new Map([...questions, ...moduleQuestions].map((question) => [question.id, question]))
 
