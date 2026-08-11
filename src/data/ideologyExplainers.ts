@@ -886,6 +886,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors reconstructing civil institutions under theonomic biblical law rather than maintaining a religiously neutral legal order.',
    },
    distributism: {
+      descriptive: 'Expects concentrated ownership to weaken economic independence and political freedom, while widely dispersed productive property and local associations can support autonomy and human dignity; contemporary scholarship treats these as a political-economic research program, not settled evidence.',
       prescriptive: 'Favors dispersing productive property among families, small firms, guilds, cooperatives, and local associations rather than concentrating it in corporations or the state.',
    },
    mutualist: {
@@ -894,6 +895,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors mutual credit, cooperative exchange, possession or use-based claims, and federated voluntary institutions instead of state administration or concentrated capitalist ownership.',
    },
    'civic-nationalist': {
+      descriptive: 'Expects shared citizenship, common political institutions, and commitment to public principles to build solidarity across ancestry or religion, while scholarship finds the civic/ethnic distinction blurred and civic criteria can still be exclusionary in practice.',
       normative: 'Treats shared civic membership, political self-government, and a common public culture as important grounds of national belonging rather than inherited ancestry alone.',
       prescriptive: 'Favors inclusive citizenship, common political institutions, constitutional participation, and public nation-building while leaving room for cultural and historical identities within the civic community.',
    },
@@ -931,6 +933,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'individualist-anarchism': {
       normative: 'Gives individual self-direction and voluntary association priority over compulsory state authority or demands that subordinate persons to an abstract collective good.',
+      descriptive: 'Expects compulsory authority and group claims to threaten individual autonomy, while voluntary cooperation can preserve autonomy without requiring one market or communal model; disputes remain over whether such cooperation yields market, mutualist, or sharing arrangements.',
       prescriptive: 'Favors stateless, voluntary forms of association while leaving substantial disagreement among natural-rights, mutualist, and egoist currents over property, exchange, and durable organization.',
    },
    'anarcho-primitivism': {
@@ -960,6 +963,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       normative: 'Prioritizes privacy, autonomy, and resistance to centralized information control while treating technology as a possible anti-authoritarian tool rather than an authority in itself.',
       descriptive: 'Expects encryption, anonymity, distributed trust, and peer-to-peer networks to reduce the leverage of centralized surveillance or gatekeepers, while actual systems can create new forms of concentration and the current has no settled institutional model.',
       prescriptive: 'Favors encryption, anonymity systems, peer-to-peer protocols, and decentralized networks that make surveillance, censorship, or centralized control harder; it is a loose current rather than one settled institutional program.',
+   },
+   panarchism: {
+      descriptive: 'Expects territorial monopoly to be unnecessary for legitimate government, with voluntary nonterritorial states and exit allowing multiple governance arrangements; feasibility, coordination, and unequal bargaining power remain unresolved theoretical questions.',
    },
    ecosocialist: {
       prescriptive: 'Favors social ownership and democratic planning of production around human need, equality, and ecological limits rather than profit or growth as ends in themselves.',
