@@ -915,6 +915,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors public institutions that recognize or advance a nation’s religious tradition, with variants ranging from cultural preference to religiously informed law or formal religious authority.',
    },
    zionism: {
+      descriptive: 'Expects Jewish national self-determination and a state or secure national home to safeguard Jewish collective survival and cultural continuity, while Zionist currents differ over state form, territory, religion, socialism, and relations with Palestinians.',
       normative: 'Treats the Jewish people as a nation entitled to Jewish national self-determination and a secure political and cultural home.',
       prescriptive: 'Favors institutions capable of maintaining Jewish national self-determination in the Land of Israel; liberal, socialist, religious, revisionist, and other currents disagree over borders, state structure, religion, and relations with Palestinians.',
    },
