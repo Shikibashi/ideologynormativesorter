@@ -252,6 +252,30 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    platformism: [
       '“Platformism” is an anarchist-communist organizational tendency, originating in the 1926 Organisational Platform, that emphasizes theoretical and tactical unity, collective responsibility, and federalism.',
    ],
+   mutualist: [
+      '“Mutualism” is a Proudhonian anarchist tradition centered on reciprocity, cooperative exchange, and mutual credit as alternatives to both capitalist privilege and state administration.',
+   ],
+   agorist: [
+      '“Agorism” is Samuel Edward Konkin III’s market-anarchist strategy of building a counter-economy through voluntary exchange outside state licensing and taxation rather than pursuing electoral power.',
+   ],
+   'welfare-chauvinism': [
+      '“Welfare chauvinism” supports social provision for a national or ethnic in-group while restricting immigrants’ or other out-groups’ access to benefits and services.',
+   ],
+   participism: [
+      '“Participism” refers here to participatory economics: social ownership, democratic worker and consumer councils, balanced job complexes, and decentralized participatory planning instead of markets or central planning.',
+   ],
+   panarchism: [
+      '“Panarchism” is a niche theory of voluntary, nonterritorial government in which multiple governments coexist and people choose among them without changing physical residence.',
+   ],
+   'liquid-democracy': [
+      '“Liquid democracy” is delegable proxy voting: a person may vote directly or delegate a vote to someone who may pass that delegation onward.',
+   ],
+   ecomodernist: [
+      '“Ecomodernism” argues that technological change and capable institutions can decouple human development from environmental harm while leaving more room for nature.',
+   ],
+   ecosocialist: [
+      '“Ecosocialism” combines ecological politics with anti-capitalist socialist transformation, seeking social control of production oriented toward human need and ecological limits rather than profit and growth.',
+   ],
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
@@ -262,6 +286,14 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'syndicalist',
    'anarcho-syndicalism',
    'platformism',
+   'mutualist',
+   'agorist',
+   'welfare-chauvinism',
+   'participism',
+   'panarchism',
+   'liquid-democracy',
+   'ecomodernist',
+   'ecosocialist',
 ])
 
 /**
@@ -271,6 +303,7 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
 export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<Record<Layer, string>>>> = {
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
+      prescriptive: 'Favors technological innovation, resource-efficient infrastructure, conservation, and active public institutions to reduce ecological harm while supporting human development.',
    },
    'anarcho-capitalist': {
       prescriptive: 'Favors replacing compulsory public provision with voluntary contract and competitive private provision of law, protection, and arbitration.',
@@ -286,6 +319,12 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    distributism: {
       prescriptive: 'Favors dispersing productive property among families, small firms, guilds, cooperatives, and local associations rather than concentrating it in corporations or the state.',
+   },
+   mutualist: {
+      prescriptive: 'Favors mutual credit, cooperative exchange, possession or use-based claims, and federated voluntary institutions instead of state administration or concentrated capitalist ownership.',
+   },
+   ecosocialist: {
+      prescriptive: 'Favors social ownership and democratic planning of production around human need, equality, and ecological limits rather than profit or growth as ends in themselves.',
    },
    'world-federalism': {
       prescriptive: 'Favors a democratic federal layer of world government and enforceable international law above nation-states.',

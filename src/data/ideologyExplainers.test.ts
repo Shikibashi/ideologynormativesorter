@@ -46,6 +46,14 @@ describe('ideology explainers', () => {
          ['syndicalist', /worker-run unions and direct action/],
          ['anarcho-syndicalism', /anti-state aims to syndicalist labor organization/],
          ['platformism', /theoretical and tactical unity/],
+         ['mutualist', /reciprocity, cooperative exchange, and mutual credit/],
+         ['agorist', /building a counter-economy/],
+         ['welfare-chauvinism', /restricting immigrants’ or other out-groups’ access/],
+         ['participism', /balanced job complexes/],
+         ['panarchism', /voluntary, nonterritorial government/],
+         ['liquid-democracy', /delegable proxy voting/],
+         ['ecomodernist', /decouple human development from environmental harm/],
+         ['ecosocialist', /anti-capitalist socialist transformation/],
       ]
 
       for (const [id, expected] of cases) {
@@ -116,6 +124,26 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('defines unfamiliar compound labels without substituting a broader parent-family guide', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases = [
+         'mutualist',
+         'agorist',
+         'welfare-chauvinism',
+         'participism',
+         'panarchism',
+         'liquid-democracy',
+         'ecomodernist',
+         'ecosocialist',
+      ]
+
+      for (const id of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
+   })
+
    it('defines theocracy and high-confusion labels directly from stable ids', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directCases: Array<[string, RegExp]> = [
@@ -177,6 +205,9 @@ describe('ideology explainers', () => {
          ['green-capitalism', 'prescriptive', /carbon pricing, renewable-energy markets/],
          ['corporatism', 'prescriptive', /under strong state direction to mediate represented interests/],
          ['liberal-feminism', 'prescriptive', /legal reform, equal rights/],
+         ['mutualist', 'prescriptive', /mutual credit, cooperative exchange/],
+         ['ecomodernist', 'prescriptive', /technological innovation, resource-efficient infrastructure/],
+         ['ecosocialist', 'prescriptive', /social ownership and democratic planning/],
       ]
 
       for (const [id, layer, expected] of cases) {
