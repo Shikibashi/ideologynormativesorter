@@ -1072,6 +1072,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects a bounded national or ethnic welfare community to preserve solidarity by limiting out-groups’ access, with judgments shaped by perceived deservingness, contribution, insecurity, and the design of benefits; research finds these patterns vary across groups and contexts.',
    },
    corporatism: {
+      descriptive: 'Expects recognized occupational bodies under state direction to mediate class and sectoral conflict more effectively than pluralist party competition, while scholarship distinguishes authoritarian state corporatism from autonomous societal or neo-corporatism and does not treat them as the same system.',
       prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate represented interests.',
    },
    'anarcho-syndicalism': {

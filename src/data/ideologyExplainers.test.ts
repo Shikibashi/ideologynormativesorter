@@ -588,6 +588,7 @@ describe('ideology explainers', () => {
          ['democratic-confederalism', 'descriptive', /local communities and assemblies, linked through delegated coordination/],
          ['democratic-confederalism', 'prescriptive', /linked local assemblies and councils/],
          ['corporatism', 'prescriptive', /under strong state direction to mediate represented interests/],
+         ['corporatism', 'descriptive', /occupational bodies under state direction.*authoritarian state corporatism/],
          ['anarcho-syndicalism', 'normative', /worker solidarity, self-management/],
          ['anarcho-syndicalism', 'descriptive', /industrial unions, direct action, and federated worker organization/],
          ['platformism', 'normative', /anarchist-communist emancipation and coordinated collective action/],
