@@ -17,6 +17,11 @@ import {
   seventhPassReplacementRequiredById,
   seventhPassRewritesById,
 } from './editorialSeventhPass'
+import {
+  EDITORIAL_EIGHTH_PASS_VERSION,
+  eighthPassReplacementRequiredById,
+  eighthPassRewritesById,
+} from './editorialEighthPass'
 import { needsRewriteById, semanticCorrections, SEMANTIC_AUDIT_VERSION } from './semanticAudit'
 
 describe('semantic question audit', () => {
@@ -35,14 +40,25 @@ describe('semantic question audit', () => {
       const fifthPassWording = fifthPassWordingCorrectionsById[questionId]
       const seventhPassReplacement = seventhPassReplacementRequiredById[questionId]
       const seventhPassRewrite = seventhPassRewritesById[questionId]
-      const expectedWeights = seventhPassRewrite
+      const eighthPassReplacement = eighthPassReplacementRequiredById[questionId]
+      const eighthPassRewrite = eighthPassRewritesById[questionId]
+      const expectedWeights = eighthPassRewrite
+        ? eighthPassRewrite.axisWeights
+        : seventhPassRewrite
         ? seventhPassRewrite.axisWeights
         : !respondentReplacement && !fifthPassReplacement && fifthPassMapping
           ? fifthPassMapping.axisWeights
           : correction.axisWeights
       expect(question!.axisWeights).toEqual(expectedWeights)
 
-      if (seventhPassReplacement) {
+      if (eighthPassReplacement) {
+        expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('needs-rewrite')
+        expect(question!.active).toBe(false)
+      } else if (eighthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (seventhPassReplacement) {
         expect(question!.version).toBe(EDITORIAL_SEVENTH_PASS_VERSION)
         expect(question!.reviewStatus).toBe('needs-rewrite')
         expect(question!.active).toBe(false)

@@ -24,6 +24,7 @@ import { applySemanticReview } from './semanticAudit'
 import { DEFAULT_CONFIDENCE_PROMPT, DEFAULT_PRIORITY_PROMPT } from '../questionPresentation'
 import { fifthPassReplacementRequiredById } from './editorialFifthPass'
 import { seventhPassReplacementRequiredById } from './editorialSeventhPass'
+import { eighthPassReplacementRequiredById } from './editorialEighthPass'
 
 const LAYERS = ['normative', 'descriptive', 'prescriptive'] as const
 
@@ -32,7 +33,7 @@ describe('respondent-facing question review', () => {
     for (const [questionId, promotion] of Object.entries(tierPromotionsById)) {
       const question = questionById.get(questionId)
       expect(question, `${questionId} promotion references a missing item`).toBeDefined()
-      if (seventhPassReplacementRequiredById[questionId]) {
+      if (seventhPassReplacementRequiredById[questionId] || eighthPassReplacementRequiredById[questionId]) {
         expect(question!.active).toBe(false)
       } else {
         expect(question!.active, `${questionId} promotion references an inactive item`).not.toBe(false)
@@ -140,6 +141,7 @@ describe('respondent-facing question review', () => {
       'labor-unions-workplace/normative',
       'labor-unions-workplace/descriptive',
       'land-housing-georgism/prescriptive',
+      'civil-liberties-speech/descriptive',
       'immigration-borders/prescriptive',
       'national-identity-sovereignty/prescriptive',
       'race-ethnicity-multiculturalism/normative',

@@ -45,11 +45,11 @@ test('optional collection stays attached to the selected Full-depth profile', as
   await page.getByRole('button', { name: 'Review contribution details' }).click()
 
   await expect(page.getByRole('heading', { name: 'Optional profile contribution' })).toBeVisible()
-  await expect(page.getByText('The selected profile contains 286 questions', { exact: false })).toBeVisible()
+  await expect(page.getByText('The selected profile contains 285 questions', { exact: false })).toBeVisible()
   await page.getByRole('button', { name: 'Continue without contributing' }).click()
 
-  await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuemax', '286')
-  await expect(page.getByLabel('Application status')).toContainText('PROGRESS 1 / 286')
+  await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuemax', '285')
+  await expect(page.getByLabel('Application status')).toContainText('PROGRESS 1 / 285')
 })
 
 test('saved session can be resumed and exposes recovery state', async ({ page }) => {

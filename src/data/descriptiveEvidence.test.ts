@@ -29,8 +29,8 @@ describe('descriptive evidence context', () => {
     const sourced = activeDescriptive.filter((question) => (question.sources?.length ?? 0) > 0)
     const operationalized = activeDescriptive.filter((question) => Boolean(question.evidenceNote?.trim()))
 
-    expect(activeDescriptive).toHaveLength(36)
-    expect(sourced).toHaveLength(36)
-    expect(operationalized).toHaveLength(36)
+    expect(activeDescriptive).toHaveLength(34)
+    expect(sourced).toHaveLength(34)
+    expect(operationalized).toHaveLength(34)
   })
 })

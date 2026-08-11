@@ -11,6 +11,11 @@ import {
   seventhPassReplacementRequiredById,
   seventhPassRewritesById,
 } from './editorialSeventhPass'
+import {
+  EDITORIAL_EIGHTH_PASS_VERSION,
+  eighthPassReplacementRequiredById,
+  eighthPassRewritesById,
+} from './editorialEighthPass'
 import { allQuestions, QUESTION_BANK_VERSION, questionById, questionsForTier } from './effectiveQuestions'
 
 const axisIds = new Set(axes.map((axis) => axis.id))
@@ -25,7 +30,16 @@ describe('fifth editorial pass', () => {
       expect(fifthPassReplacementRequiredById[id], `${id} cannot be mapped and quarantined together`).toBeUndefined()
       const seventhRewrite = seventhPassRewritesById[id]
       const seventhReplacement = seventhPassReplacementRequiredById[id]
-      if (seventhReplacement) {
+      const eighthRewrite = eighthPassRewritesById[id]
+      const eighthReplacement = eighthPassReplacementRequiredById[id]
+      if (eighthReplacement) {
+        expect(question!.active).toBe(false)
+        expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION)
+      } else if (eighthRewrite) {
+        expect(question!.active).not.toBe(false)
+        expect(question!.axisWeights).toEqual(eighthRewrite.axisWeights)
+        expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION)
+      } else if (seventhReplacement) {
         expect(question!.active).toBe(false)
         expect(question!.version).toBe(EDITORIAL_SEVENTH_PASS_VERSION)
       } else if (seventhRewrite) {
@@ -56,7 +70,16 @@ describe('fifth editorial pass', () => {
       expect(fifthPassReplacementRequiredById[id], `${id} cannot be rewritten and quarantined together`).toBeUndefined()
       const seventhRewrite = seventhPassRewritesById[id]
       const seventhReplacement = seventhPassReplacementRequiredById[id]
-      if (seventhReplacement) {
+      const eighthRewrite = eighthPassRewritesById[id]
+      const eighthReplacement = eighthPassReplacementRequiredById[id]
+      if (eighthReplacement) {
+        expect(question!.active).toBe(false)
+        expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION)
+      } else if (eighthRewrite) {
+        expect(question!.prompt).toBe(eighthRewrite.prompt)
+        expect(question!.active).not.toBe(false)
+        expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION)
+      } else if (seventhReplacement) {
         expect(question!.active).toBe(false)
         expect(question!.version).toBe(EDITORIAL_SEVENTH_PASS_VERSION)
       } else if (seventhRewrite) {
@@ -78,10 +101,19 @@ describe('fifth editorial pass', () => {
       expect(question, `${id} quarantine references a missing item`).toBeDefined()
       expect(fifthPassMappingCorrectionsById[id], `${id} cannot be quarantined and remapped together`).toBeUndefined()
       expect(fifthPassWordingCorrectionsById[id], `${id} cannot be quarantined and rewritten together`).toBeUndefined()
-      expect(question!.active).toBe(false)
-      expect(question!.reviewStatus).toBe('needs-rewrite')
-      expect(question!.version).toBe(EDITORIAL_FIFTH_PASS_VERSION)
-      expect(questionsForTier(question!.tier).some((item) => item.id === id)).toBe(false)
+      const eighthRewrite = eighthPassRewritesById[id]
+      if (eighthRewrite) {
+        expect(question!.active).toBe(true)
+        expect(question!.reviewStatus).toBe('approved')
+        expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION)
+        expect(question!.prompt).toBe(eighthRewrite.prompt)
+        expect(question!.axisWeights).toEqual(eighthRewrite.axisWeights)
+      } else {
+        expect(question!.active).toBe(false)
+        expect(question!.reviewStatus).toBe('needs-rewrite')
+        expect(question!.version).toBe(EDITORIAL_FIFTH_PASS_VERSION)
+        expect(questionsForTier(question!.tier).some((item) => item.id === id)).toBe(false)
+      }
       expect(finding.rationale.length).toBeGreaterThan(20)
       expect(finding.proposedReplacement.length).toBeGreaterThan(20)
     }
