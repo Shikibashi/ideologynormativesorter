@@ -1010,6 +1010,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Historically favored moral persuasion, model communities, cooperative experiments, or rational industrial reorganization; the projects grouped under this later label differed substantially.',
    },
    neoconservative: {
+      descriptive: 'Expects authoritarian or totalitarian threats and anti-communist adversaries to endanger liberal-democratic order, while national security, military power, and democracy promotion are treated as instruments of resistance; internal currents and historical periods differ.',
       normative: 'Defends liberal-democratic institutions against totalitarian or authoritarian threats while often rejecting moral relativism; adherents have differed substantially over domestic policy.',
       prescriptive: 'Favors an assertive U.S. or allied international role using alliances, pressure, and sometimes military force to defend strategic interests and promote liberal-democratic institutions abroad.',
    },

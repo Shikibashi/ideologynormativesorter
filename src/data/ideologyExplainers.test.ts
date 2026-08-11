@@ -618,6 +618,7 @@ describe('ideology explainers', () => {
          ['guild-socialism', 'prescriptive', /public ownership of industry.*democratic worker guilds/],
          ['utopian-socialism', 'prescriptive', /moral persuasion, model communities/],
          ['neoconservative', 'normative', /liberal-democratic institutions/],
+         ['neoconservative', 'descriptive', /authoritarian or totalitarian threats.*national security, military power/],
          ['neoconservative', 'prescriptive', /assertive U\.S\. or allied international role/],
          ['paleoconservatism', 'prescriptive', /less interventionist foreign policy than neoconservatism/],
          ['one-nation-conservatism', 'prescriptive', /cost-conscious welfare provision/],
