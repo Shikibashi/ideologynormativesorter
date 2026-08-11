@@ -32,6 +32,10 @@ describe('ideology explainers', () => {
    it('uses the intended definitions for high-confusion ideology terms', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const cases: Array<[string, RegExp]> = [
+         ['egalitarian-statist', /capable, accountable public institutions/],
+         ['social-democrat', /mixed economy, welfare provision, labor rights/],
+         ['universal-basic-income', /periodic cash payment delivered individually/],
+         ['social-investment-state', /building and maintaining human capabilities/],
          ['right-wing-populism', /people-versus-elite antagonism/],
          ['left-wing-populism', /egalitarian, socialist, redistributive/],
          ['agrarian-populism', /rural producers or “people of the land/],
@@ -289,6 +293,23 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('distinguishes social-democratic variants instead of substituting the generic welfare guide', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['egalitarian-statist', /distinct from authoritarian state socialism/],
+         ['social-democrat', /does not by itself require abolishing capitalism/],
+         ['universal-basic-income', /without a means test or work requirement/],
+         ['social-investment-state', /not a synonym for passive income maintenance/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
+   })
+
    it('distinguishes conservative traditions instead of substituting one generic conservatism guide', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directOnlyCases = [
@@ -488,6 +509,14 @@ describe('ideology explainers', () => {
          ['expansionist-nationalism', 'prescriptive', /territorial acquisition, imperial administration/],
          ['separatist-nationalism', 'normative', /distinct national or regional community’s self-government/],
          ['separatist-nationalism', 'prescriptive', /autonomy, federal reorganization, or secession/],
+         ['egalitarian-statist', 'normative', /material equality and effective public provision/],
+         ['egalitarian-statist', 'prescriptive', /progressive redistribution, broad social provision/],
+         ['social-democrat', 'normative', /freedom and equality as requiring democratic control/],
+         ['social-democrat', 'prescriptive', /mixed-economy reform through elections/],
+         ['universal-basic-income', 'normative', /unconditional income floor/],
+         ['universal-basic-income', 'prescriptive', /periodic cash payment to all individuals/],
+         ['social-investment-state', 'normative', /capabilities across the life course/],
+         ['social-investment-state', 'prescriptive', /build, mobilize, and preserve capabilities/],
          ['right-wing-populism', 'normative', /authentic or national people as the rightful source/],
          ['right-wing-populism', 'prescriptive', /majoritarian, anti-establishment, nationalist/],
          ['left-wing-populism', 'normative', /ordinary people, especially subordinated or working groups/],

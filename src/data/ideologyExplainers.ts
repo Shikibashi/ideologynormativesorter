@@ -186,6 +186,18 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
 ]
 
 const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly string[]>> = {
+   'egalitarian-statist': [
+      '“State-Capacity Egalitarian” is a social-democratic orientation that treats capable, accountable public institutions and social provision as means to reduce durable material inequalities; it is distinct from authoritarian state socialism and from generic egalitarianism without a state-capacity commitment.',
+   ],
+   'social-democrat': [
+      '“Social Democrat” supports democratic collective action to pursue freedom and equality through a mixed economy, welfare provision, labor rights, progressive taxation, and gradual reform; it does not by itself require abolishing capitalism or adopting one socialist ownership model.',
+   ],
+   'universal-basic-income': [
+      '“Universal Basic Income Advocacy” supports a periodic cash payment delivered individually and unconditionally to all, without a means test or work requirement; proposals vary over payment level, funding, eligibility, interaction with services, and whether other benefits remain.',
+   ],
+   'social-investment-state': [
+      '“Social Investment State” reorients welfare policy toward building and maintaining human capabilities across the life course through education, childcare, training, employment support, and protective buffers; it is not a synonym for passive income maintenance or market deregulation.',
+   ],
    'right-wing-populism': [
       '“Right-Wing Populism” combines populism’s moralized people-versus-elite antagonism and popular sovereignty with a right-leaning host such as nationalism, nativism, traditionalism, or market conservatism; it is not a synonym for all conservatism or anti-elite rhetoric.',
    ],
@@ -459,6 +471,10 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
+   'egalitarian-statist',
+   'social-democrat',
+   'universal-basic-income',
+   'social-investment-state',
    'right-wing-populism',
    'left-wing-populism',
    'agrarian-populism',
@@ -544,6 +560,26 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
       prescriptive: 'Favors technological innovation, resource-efficient infrastructure, conservation, and active public institutions to reduce ecological harm while supporting human development.',
+   },
+   'egalitarian-statist': {
+      normative: 'Treats material equality and effective public provision as political goods, while regarding capable and accountable state institutions as legitimate tools for reducing durable disadvantage.',
+      descriptive: 'Expects unequal outcomes to be reproduced by market and social structures and assumes public institutions can implement redistributive and universal services competently when designed and held accountable.',
+      prescriptive: 'Favors progressive redistribution, broad social provision, labor protections, and investment in capable public administration; it does not prescribe authoritarian state socialism.',
+   },
+   'social-democrat': {
+      normative: 'Treats freedom and equality as requiring democratic control over social and economic conditions shaped by capitalism, while preserving pluralist political institutions.',
+      descriptive: 'Expects markets to provide useful coordination but also to produce durable inequality and worker insecurity, so democratic governments, unions, and welfare institutions can temper market outcomes.',
+      prescriptive: 'Favors mixed-economy reform through elections, progressive taxation, public services, collective bargaining, and social insurance rather than revolutionary abolition of existing institutions.',
+   },
+   'universal-basic-income': {
+      normative: 'Treats an unconditional income floor as a means of securing basic economic freedom, security, or equal standing without making subsistence depend on proving need or work.',
+      descriptive: 'Expects regular individual cash transfers to reduce poverty or insecurity and simplify or complement welfare, while funding, level, labor effects, and relations to services remain contested.',
+      prescriptive: 'Favors a periodic cash payment to all individuals without a means test or work requirement; proposals diverge over taxation, citizenship or residency, payment level, and whether existing benefits are retained.',
+   },
+   'social-investment-state': {
+      normative: 'Treats capabilities across the life course and inclusive participation as social goods, making human development and resilience central to welfare policy.',
+      descriptive: 'Expects education, childcare, health, skills, work-life supports, and protective buffers to improve both social inclusion and economic performance, while scholarship differs on how far social investment should replace compensatory protection.',
+      prescriptive: 'Favors policies that build, mobilize, and preserve capabilities—especially early education, care, training, employment support, and life-course protection—rather than relying only on passive income maintenance.',
    },
    'right-wing-populism': {
       normative: 'Treats an authentic or national people as the rightful source of political authority and often gives cohesion, order, or bounded membership priority over pluralist or cosmopolitan claims.',
