@@ -1014,6 +1014,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors a disciplined vanguard party taking state power, abolishing private control of major productive assets, and directing a planned transition toward communism.',
    },
    'libertarian-socialism': {
+      descriptive: 'Expects both capitalist concentration and centralized party-state control to reproduce domination, while worker self-management, voluntary federation, and social ownership can coordinate production without vanguard seizure; traditions vary over markets, reform, and direct action.',
       prescriptive: 'Favors worker self-management, social ownership, and federated institutions without a centralized party-state; traditions vary over markets and the balance between reform and direct action.',
    },
    maoism: {
@@ -1157,6 +1158,15 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    'libertarian-municipalism': {
       descriptive: 'Expects face-to-face local assemblies and confederated municipalities to make political power more accountable and responsive than centralized state administration, while municipalist practice ranges from reformist participation within states to stateless communalism.',
       prescriptive: 'Favors directly democratic local assemblies joined in confederation instead of centralized state rule.',
+   },
+   'council-communist': {
+      descriptive: 'Expects capitalist and party-state hierarchies to block workers’ self-emancipation, while workers’ councils and federated direct control can coordinate production and political power; council-communist currents differ over transitional institutions and scale.',
+   },
+   syndicalist: {
+      descriptive: 'Expects autonomous worker organizations and direct action, especially strikes, to build class power more effectively than electoral parties or state administration, and sees federated unions as a basis for post-capitalist coordination; syndicalist currents vary over tactics and post-revolutionary institutions.',
+   },
+   participism: {
+      descriptive: 'Expects participatory worker and consumer councils, balanced job complexes, and negotiated planning to coordinate production and consumption more equitably than markets or command planning; the model is a specific proposal, not every participatory or libertarian-socialist tradition.',
    },
 }
 
