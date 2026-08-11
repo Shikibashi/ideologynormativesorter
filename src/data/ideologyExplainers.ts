@@ -1054,14 +1054,17 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors preserving or reinforcing traditional social institutions through law, public policy, or civil society; positions on markets, welfare, and foreign policy remain separate questions.',
    },
    'national-conservatism': {
+      descriptive: 'Expects cosmopolitan or supranational institutions, liberal universalism, and rapid cultural change to weaken national solidarity and inherited institutions, while national sovereignty and culturally continuous communities are expected to restore political cohesion; contemporary currents vary over religion, markets, welfare, and democracy.',
       normative: 'Gives national sovereignty, cultural continuity, and inherited institutions priority over cosmopolitan or supranational commitments.',
       prescriptive: 'Favors strengthening the nation-state and protecting national institutions or culture; contemporary currents vary over economic intervention, welfare provision, democracy, and external power.',
    },
    'conservative-liberalism': {
+      descriptive: 'Expects constitutional rules, prudent public authority, and a competitive market order to preserve liberty better than either unregulated market power or centralized economic direction; conservative-liberal currents differ over how strongly the state should discipline markets and democracy.',
       normative: 'Combines liberal rights, rule of law, and private property with conservative prudence, social continuity, and respect for inherited institutions.',
       prescriptive: 'Favors a constitutional market order and gradual reform that preserves the legal and social institutions on which liberty is understood to depend.',
    },
    'liberal-conservatism': {
+      descriptive: 'Expects abrupt social redesign to unsettle inherited institutions and social order, while constitutional rights, cautious reform, and a market economy can preserve continuity without restoring a pre-modern order; currents differ over state intervention and the content of inherited institutions.',
       normative: 'Combines conservative concern for continuity and social order with liberal commitments to constitutional government and civil liberty.',
       prescriptive: 'Favors cautious reform, a market economy, limited constitutional government, and preservation of established institutions rather than either reaction or radical reconstruction.',
    },
