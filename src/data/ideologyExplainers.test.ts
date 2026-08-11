@@ -66,6 +66,11 @@ describe('ideology explainers', () => {
          ['classical-liberalism', /broad liberal tradition centered on individual liberty/],
          ['neoliberalism', /catalog’s narrower use/],
          ['social-liberalism', /individual rights and equal citizenship/],
+         ['progressivism', /broad and historically changing reform tradition/],
+         ['liberal-feminism', /gender equality through individual autonomy/],
+         ['georgism', /socially generated value of land/],
+         ['internationalism', /cooperation and obligations across national boundaries/],
+         ['radical-centrism', /contested political style that rejects fixed left-right coalitions/],
          ['world-federalism', /democratic federal layer of global government/],
          ['multiculturalism', /family of normative views that rejects forced assimilation/],
          ['technocratic-centralist', /centralized expert administration/],
@@ -373,6 +378,24 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('distinguishes liberal-family variants instead of substituting generic liberalism', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['progressivism', /not synonymous with technocracy/],
+         ['liberal-feminism', /distinct from feminist traditions/],
+         ['georgism', /historic single tax is one formulation/],
+         ['internationalism', /broader than cosmopolitanism/],
+         ['radical-centrism', /contested political style/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
+   })
+
    it('distinguishes conservative traditions instead of substituting one generic conservatism guide', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directOnlyCases = [
@@ -624,6 +647,17 @@ describe('ideology explainers', () => {
          ['neoliberalism', 'prescriptive', /competition policy, market mechanisms/],
          ['social-liberalism', 'normative', /individual liberty and equal citizenship/],
          ['social-liberalism', 'prescriptive', /rights-based public provision, social insurance/],
+         ['progressivism', 'normative', /deliberate social improvement, equal civic standing/],
+         ['progressivism', 'descriptive', /empirical inquiry, public administration, and institutional experimentation/],
+         ['progressivism', 'prescriptive', /evidence-informed institutional reform, public programs/],
+         ['liberal-feminism', 'normative', /equal rights, autonomy, legal status, and opportunity/],
+         ['liberal-feminism', 'prescriptive', /legal reform, equal rights, anti-discrimination protections/],
+         ['georgism', 'normative', /value created by their labor and improvements/],
+         ['georgism', 'prescriptive', /public capture of land or resource rent/],
+         ['internationalism', 'normative', /obligations, cooperation, and rights across national boundaries/],
+         ['internationalism', 'prescriptive', /international cooperation, institutions, treaties/],
+         ['radical-centrism', 'normative', /practical problem-solving, pluralist compromise/],
+         ['radical-centrism', 'prescriptive', /pragmatic cross-cutting coalitions/],
          ['world-federalism', 'normative', /shared political institutions capable of securing peace/],
          ['world-federalism', 'descriptive', /problems that cross borders/],
          ['multiculturalism', 'normative', /cultural membership and the ability to maintain distinctive identities/],

@@ -264,6 +264,21 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    'social-liberalism': [
       '“Social Liberalism” combines individual rights and equal citizenship with public action to secure capabilities, opportunity, and protection from severe deprivation; it does not imply socialism or one fixed level of welfare or state ownership.',
    ],
+   progressivism: [
+      '“Progressivism” is a broad and historically changing reform tradition that seeks deliberate social improvement through empirical inquiry, institutional experimentation, public policy, and sometimes participatory movements; it is not synonymous with technocracy or one contemporary policy platform.',
+   ],
+   'liberal-feminism': [
+      '“Liberal Feminism” seeks gender equality through individual autonomy, equal rights, legal reform, and equal opportunity within liberal-democratic institutions; it is distinct from feminist traditions that center capitalist property, social reproduction, or patriarchy as structures requiring broader transformation.',
+   ],
+   georgism: [
+      '“Georgism” distinguishes privately created improvements from the socially generated value of land and natural opportunities, generally favoring public capture of land or resource rent through land-value taxation; the historic single tax is one formulation, not the whole tradition.',
+   ],
+   internationalism: [
+      '“Internationalism” emphasizes cooperation and obligations across national boundaries through international institutions, transnational solidarity, or universal rights; it is broader than cosmopolitanism and does not require one world government.',
+   ],
+   'radical-centrism': [
+      '“Radical Centrism” is a contested political style that rejects fixed left-right coalitions and seeks pragmatic, evidence-informed synthesis and institutional reform across the spectrum; “radical” refers to cross-cutting problem-solving, not necessarily rupture or one policy program.',
+   ],
    'world-federalism': [
       '“World Federalism” advocates a democratic federal layer of global government with shared authority between world institutions and nations; it is stronger than international cooperation alone but does not require abolishing national governments or choosing one economic system.',
    ],
@@ -533,6 +548,11 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'classical-liberalism',
    'neoliberalism',
    'social-liberalism',
+   'progressivism',
+   'liberal-feminism',
+   'georgism',
+   'internationalism',
+   'radical-centrism',
    'world-federalism',
    'multiculturalism',
    'technocratic-centralist',
@@ -608,6 +628,31 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
       prescriptive: 'Favors technological innovation, resource-efficient infrastructure, conservation, and active public institutions to reduce ecological harm while supporting human development.',
+   },
+   progressivism: {
+      normative: 'Treats deliberate social improvement, equal civic standing, and solving remediable social problems as legitimate public aims, with openness to revising inherited institutions.',
+      descriptive: 'Expects empirical inquiry, public administration, and institutional experimentation to improve social conditions, while progressivist movements vary between expert-led and participatory approaches.',
+      prescriptive: 'Favors evidence-informed institutional reform, public programs, regulation, and sometimes movement-led democratic change; it does not prescribe technocracy or one current policy bundle.',
+   },
+   'liberal-feminism': {
+      normative: 'Treats individuals of all genders as entitled to equal rights, autonomy, legal status, and opportunity.',
+      descriptive: 'Expects discriminatory law, unequal access, and gendered social expectations to restrict agency, so legal reform and institutional access can expand equality; it does not reduce gender domination to one economic cause.',
+      prescriptive: 'Favors legal reform, equal rights, anti-discrimination protections, equal opportunity, autonomy, and reform of institutions within liberal-democratic constitutionalism; it does not prescribe socialist ownership or one theory of patriarchy.',
+   },
+   georgism: {
+      normative: 'Treats people as entitled to the value created by their labor and improvements while treating socially generated land and natural-resource rent as subject to common claims.',
+      descriptive: 'Expects private capture of land rent to create unearned inequality and distort access, while competitive use of land and capital can remain compatible with individual enterprise.',
+      prescriptive: 'Favors public capture of land or resource rent, usually through land-value taxation, while leaving the single-tax formulation, other taxes, and service design open to variation.',
+   },
+   internationalism: {
+      normative: 'Treats obligations, cooperation, and rights across national boundaries as politically important without denying all value to national self-government.',
+      descriptive: 'Expects transnational problems and interdependence to exceed what states can manage alone and sees international institutions or solidarity as ways to coordinate responses.',
+      prescriptive: 'Favors international cooperation, institutions, treaties, transnational solidarity, or universal rights; it does not require abolishing states or creating one global government.',
+   },
+   'radical-centrism': {
+      normative: 'Treats practical problem-solving, pluralist compromise, effective institutions, and outcomes over ideological purity as political goods.',
+      descriptive: 'Expects fixed left-right coalitions and doctrinal polarization to block workable solutions, while evidence, experimentation, and cross-partisan synthesis can widen the feasible policy space.',
+      prescriptive: 'Favors pragmatic cross-cutting coalitions, evidence-informed reform, and institutional experimentation; the label does not identify one economic program or imply indifference to substantive values.',
    },
    'national-traditionalist': {
       normative: 'Treats national continuity, inherited institutions, cultural tradition, and social order as important goods, with legitimacy grounded partly in historical belonging and established authority.',
@@ -908,9 +953,6 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    corporatism: {
       prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate represented interests.',
    },
-   'liberal-feminism': {
-      prescriptive: 'Favors legal reform, equal rights, and equal-opportunity measures within existing liberal-democratic institutions.',
-   },
    'anarcho-syndicalism': {
       descriptive: 'The catalog does not currently provide a curated empirical-belief summary for this label.',
       prescriptive: 'Favors replacing capitalism and the state with federated worker organizations, using direct action rather than electoral politics.',
@@ -918,10 +960,6 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    platformism: {
       descriptive: 'The catalog does not currently provide a curated empirical-belief summary for this label.',
       prescriptive: 'Favors a unified but decentralized anarchist organization with collective responsibility and tactical coordination.',
-   },
-   georgism: {
-      normative: 'Distinguishes value created through labor and improvements from land or resource rent, treating the latter as subject to common claims.',
-      prescriptive: 'Generally favors public capture of land or resource rent through land-value taxation.',
    },
    'bright-green-environmentalism': {
       normative: 'Values ecological protection alongside human prosperity and accepts technology-intensive routes to both.',
