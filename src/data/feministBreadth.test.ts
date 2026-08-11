@@ -121,7 +121,7 @@ describe('feminist breadth module', () => {
 
     expect(catalogIds.has('liberal-feminism')).toBe(true)
     expect(catalogIds.has('anarcha-feminism')).toBe(true)
-    expect(primaryIds.has('liberal-feminism')).toBe(true)
+    expect(primaryIds.has('liberal-feminism')).toBe(false)
     expect(primaryIds.has('anarcha-feminism')).toBe(false)
 
     expect(candidateById.get('socialist-feminism')?.status).toBe('existing-specialist')

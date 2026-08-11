@@ -172,7 +172,7 @@ describe('question help text', () => {
             ? 'which policies, institutions, or strategies you would favor under ideal conditions'
             : question.theoryContext === 'nonideal'
               ? 'which policies, institutions, or strategies you would favor under current constraints'
-              : 'which practical policy or strategy direction you favor across mixed conditions'
+            : 'which practical policy or strategy direction you favor under the conditions named in the question'
       expect(helpText, `${question.id} should include one clear measurement sentence`).toContain(`This question measures ${expectedMeasurement} about `)
       expect(lowerHelpText, `${question.id} should not use the generic missing-domain fallback`).not.toContain('general political judgment prompt')
       expect(helpText.length, `${question.id} should stay concise enough to read inline`).toBeLessThanOrEqual(650)
@@ -204,7 +204,7 @@ describe('question help text', () => {
       prompt: 'A political order is more legitimate when people can refuse its services without being treated as criminals.',
     })
 
-    expect(helpText).toContain('“Legitimacy” means')
+    expect(helpText).toContain('“Political legitimacy” means')
     expect(helpText).not.toContain('“Political authority” means')
   })
 
@@ -308,5 +308,29 @@ describe('question help text', () => {
 
     expect(helpText).toContain('“Price” means the amount paid or received')
     expect(helpText).not.toContain('signals that reflect')
+  })
+
+  it('keeps context-specific ordinary words from triggering unrelated specialist definitions', () => {
+    const byId = new Map([...questions, ...moduleQuestions].map((question) => [question.id, question]))
+
+    expect(getQuestionHelpText(byId.get('q0150')!)).not.toContain('“Political legitimacy”')
+    expect(getQuestionHelpText(byId.get('q0152')!)).toContain('“Artistic patronage”')
+    expect(getQuestionHelpText(byId.get('q0179')!)).toContain('“Political equality”')
+    expect(getQuestionHelpText(byId.get('q0282')!)).not.toContain('“Price”')
+    expect(getQuestionHelpText(byId.get('q0334')!)).toContain('“Exit criteria”')
+    expect(getQuestionHelpText(byId.get('q0334')!)).not.toContain('“Exit” means a real ability')
+    expect(getQuestionHelpText(byId.get('q0400')!)).not.toContain('“State capacity”')
+  })
+
+  it('distinguishes adjacent technical concepts instead of merging them into one definition', () => {
+    const monopsony = getQuestionHelpText({ ...baseQuestion, id: 'monopsony', prompt: 'Worker exit can be limited by monopsony.', domain: 'labor-unions-workplace', layer: 'descriptive' })
+    const patent = getQuestionHelpText({ ...baseQuestion, id: 'patent', prompt: 'Patents can affect entry.', domain: 'intellectual-property-information', layer: 'descriptive' })
+    const copyright = getQuestionHelpText({ ...baseQuestion, id: 'copyright', prompt: 'Copyright can affect creative work.', domain: 'intellectual-property-information', layer: 'descriptive' })
+
+    expect(monopsony).toContain('“Monopsony”')
+    expect(patent).toContain('“Patent”')
+    expect(patent).not.toContain('Patent and copyright')
+    expect(copyright).toContain('“Copyright”')
+    expect(copyright).not.toContain('Patent and copyright')
   })
 })

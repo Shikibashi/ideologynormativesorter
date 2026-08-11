@@ -44,7 +44,7 @@ export const domains: Domain[] = [
   {
     id: 'civil-liberties-speech',
     name: 'Civil Liberties and Speech',
-    description: 'The scope and limits of individual expression and conscience against collective interests.',
+    description: 'Protections for expression, conscience, privacy, association, and fair legal process, including when public safety or other collective goals are invoked.',
   },
   {
     id: 'crime-policing-justice',
@@ -74,7 +74,7 @@ export const domains: Domain[] = [
   {
     id: 'race-ethnicity-multiculturalism',
     name: 'Race, Ethnicity, Multiculturalism, and Assimilation',
-    description: 'How a society should handle ethnic and racial difference, historical inequities, and the integration of distinct cultural groups.',
+    description: 'Equal citizenship, racial and ethnic inequality, cultural pluralism, assimilation, and remedies for historical exclusion.',
   },
   {
     id: 'environment-climate-growth',
@@ -89,7 +89,7 @@ export const domains: Domain[] = [
   {
     id: 'democracy-expertise-constitutionalism',
     name: 'Democracy, Expertise, and Constitutionalism',
-    description: 'How collective decisions should be made and constrained — by majorities, by experts, or by entrenched constitutional rules.',
+    description: 'How voting, expertise, courts, and constitutional limits should share authority in collective decisions.',
   },
   {
     id: 'technology-ai-surveillance',

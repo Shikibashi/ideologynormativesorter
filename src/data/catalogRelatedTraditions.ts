@@ -24,7 +24,7 @@ export const catalogRelatedTraditions: readonly CatalogRelatedTradition[] = [
     family: 'liberal',
     subfamily: 'market-libertarian',
     status: 'catalog-candidate',
-    aliases: ['Libertarianism', 'Right-Libertarianism', 'Market Libertarianism'],
+    aliases: ['Right-Libertarianism', 'Market Libertarianism'],
     description:
       'The modern market-oriented libertarian family links robust personal freedom to private property, voluntary exchange, and strict limits on state coercion. It sits in the liberal tradition here; libertarian-socialist and anarchist uses remain in their own families rather than being folded into this label.',
     sourceUrls: [
@@ -38,7 +38,7 @@ export const catalogRelatedTraditions: readonly CatalogRelatedTradition[] = [
     family: 'socialist',
     subfamily: 'marxian-socialist',
     status: 'catalog-candidate',
-    aliases: ['Non-Leninist Marxian Socialism', 'Democratic Marxism', 'Non-Leninist Marxism'],
+    aliases: ['Non-Leninist Marxian Socialism', 'Non-Leninist Marxism'],
     description:
       'An umbrella for socialist positions that use Marxian class and capitalist-relations analysis while rejecting Leninist party-state doctrine. Its democratic and anti-authoritarian variants require more specific questions before they can be separated from adjacent socialist traditions.',
     sourceUrls: ['https://plato.stanford.edu/entries/socialism/'],
@@ -49,7 +49,6 @@ export const catalogRelatedTraditions: readonly CatalogRelatedTradition[] = [
     family: 'socialist',
     subfamily: 'democratic-communist',
     status: 'catalog-candidate',
-    aliases: ['Democratic Communism', 'Pluralist Communism'],
     description:
       'A Western European communist current associated with parliamentary democracy, political pluralism, and independence from the Soviet model while retaining a communist identity.',
     sourceUrls: [

@@ -634,6 +634,28 @@
   font-style: normal;
 }
 
+.question-evidence {
+  margin: 4px 0 10px;
+  padding: 8px 10px;
+  color: var(--ecw-text-muted);
+  background: var(--ecw-surface-recessed);
+  border: 1px solid var(--ecw-border-structural);
+  font-size: var(--ecw-font-size-meta);
+  line-height: 1.45;
+}
+
+.question-evidence > summary {
+  color: var(--ecw-link);
+  cursor: pointer;
+  font-family: var(--ecw-font-system);
+  font-weight: 700;
+}
+
+.question-evidence p,
+.question-evidence ul {
+  margin-block: 8px 0;
+}
+
 .scale {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));

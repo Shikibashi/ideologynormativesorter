@@ -55,7 +55,7 @@ describe('ideology explainers', () => {
          centroid: Object.fromEntries(axes.map((axis) => [axis.id, 0])),
       }
 
-      expect(getIdeologyLayerSummary(label, axes, 'normative')).toContain('does not assign a separate named philosophical influence')
+      expect(getIdeologyLayerSummary(label, axes, 'normative')).toContain('does not imply one distinct shared position')
    })
 
    it('does not infer term guides from rejected or comparator traditions in prose', () => {
@@ -107,14 +107,31 @@ describe('ideology explainers', () => {
       }
    })
 
-   it('includes cutoff ties deterministically instead of depending on axis order', () => {
+   it('uses curated influences deterministically instead of converting centroid poles into doctrine', () => {
       const label = labels.find((candidate) => candidate.id === 'anarcho-capitalist')!
       const forward = getIdeologyLayerSummary(label, axes, 'normative')
       const reversed = getIdeologyLayerSummary(label, [...axes].reverse(), 'normative')
 
       expect(forward).toBe(reversed)
-      expect(forward).toContain('authority requires constant justification')
-      expect(forward).toContain('private property rights are strongly legitimate')
-      expect(forward).toContain('liberty means non-interference with personal choice')
+      expect(forward).toContain('self-ownership and voluntary association')
+      expect(forward).not.toContain('strongest distinctions')
+      expect(forward).not.toContain('equally strong positions omitted')
+   })
+
+   it('does not invent unrelated layer doctrine for broad or cross-cutting labels', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const cases: Array<[string, 'normative' | 'descriptive' | 'prescriptive', RegExp]> = [
+         ['multiculturalism', 'normative', /own nation/i],
+         ['panarchism', 'prescriptive', /state action and public provision/i],
+         ['eco-authoritarianism', 'prescriptive', /exit into private/i],
+         ['transhumanism', 'prescriptive', /electoral channels/i],
+         ['voluntaryism', 'prescriptive', /the state is illegitimate/i],
+      ]
+
+      for (const [id, layer, forbidden] of cases) {
+         expect(getIdeologyLayerSummary(byId.get(id)!, axes, layer), `${id}/${layer}`).not.toMatch(forbidden)
+      }
+
+      expect(getIdeologyLayerSummary(byId.get('voluntaryism')!, axes, 'prescriptive')).toMatch(/voluntarily funded minimal state/i)
    })
 })

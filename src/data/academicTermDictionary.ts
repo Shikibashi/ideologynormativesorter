@@ -11,8 +11,8 @@ export interface AcademicTermDefinition {
 
 export const academicTermDictionary: AcademicTermDefinition[] = [
   {
-    pattern: /\blegitima(?:te|cy)\b|\bpolitical authority\b/i,
-    definition: '“Legitimacy” means whether power is accepted as having a justified right to make and enforce rules.',
+    pattern: /\bpolitical legitimacy\b|\blegitimacy of (?:political )?(?:authority|rule|government|the state)\b|\bpolitical authority\b/i,
+    definition: '“Political legitimacy” means having a justified right to make and enforce rules; it does not merely mean that people accept the authority.',
   },
   {
     pattern: /\bdomination\b|\bdominat(?:e|ion)\b/i,
@@ -23,7 +23,7 @@ export const academicTermDictionary: AcademicTermDefinition[] = [
     definition: '“Non-interference” means freedom from others blocking, forcing or controlling your choices.',
   },
   {
-    pattern: /\bdistributive justice\b|\bequality\b|\binequality\b/i,
+    pattern: /\bdistributive justice\b|\b(?:material|income|wealth|economic) (?:equality|inequality)\b/i,
     definition: '“Distributive justice” means how fairly benefits, burdens, income, wealth or opportunities are shared.',
   },
   {

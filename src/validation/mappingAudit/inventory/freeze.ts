@@ -23,20 +23,20 @@ import type { InventorySnapshot } from '../types'
  * Tests fail if live bank drifts without regenerating this freeze.
  */
 export const WP0_FREEZE = {
-  frozenAt: '2026-08-10T00:00:00.000Z',
+  frozenAt: '2026-08-11T00:00:00.000Z',
   rawMainQuestionCount: 443,
-  effectiveActiveQuestionCount: 336,
+  effectiveActiveQuestionCount: 309,
   effectiveRetainedQuestionCount: 443,
   moduleQuestionCount: 123,
   statementQuestionCount: 17,
   labelCount: 118,
   axisCount: 26,
   familyCount: 19,
-  subfamilyPairCount: 84,
+  subfamilyPairCount: 85,
   overlayCorrectionCount: 101,
   needsRewriteCount: 80,
   rawMainContributionCardinality: 9591,
-  effectiveActiveContributionCardinality: 7250,
+  effectiveActiveContributionCardinality: 5874,
   moduleContributionCardinality: 1481,
   statementContributionCardinality: 120,
   families: [

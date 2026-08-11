@@ -129,7 +129,7 @@ describe('App', () => {
       render(<App />)
 
       expect(screen.getByRole('heading', { name: /optional profile contribution/i })).toBeInTheDocument()
-      expect(screen.getByText(/selected profile contains 158 questions/i)).toBeInTheDocument()
+      expect(screen.getByText(/selected profile contains 149 questions/i)).toBeInTheDocument()
       expect(screen.getByRole('button', { name: /continue to balanced profile/i })).toBeDisabled()
       expect(screen.queryByText(/question 1 of 120/i)).not.toBeInTheDocument()
    })
@@ -216,7 +216,7 @@ describe('App', () => {
       expect(screen.getByRole('complementary', { name: /session setup/i })).toBeInTheDocument()
       expect(screen.getByText(/choose the depth of the assessment/i)).toBeInTheDocument()
       expect(screen.getByRole('checkbox', { name: /optionally contribute this balanced profile/i })).not.toBeChecked()
-      expect(screen.getByText(/same 158-question profile, not a separate test/i)).toBeInTheDocument()
+      expect(screen.getByText(/same 149-question profile, not a separate test/i)).toBeInTheDocument()
       expect(screen.queryByRole('radio', { name: /blitz/i })).not.toBeInTheDocument()
       expect(screen.queryByRole('radio', { name: /quick/i })).not.toBeInTheDocument()
       fireEvent.click(screen.getByRole('radio', { name: /balanced profile/i }))
@@ -244,15 +244,15 @@ describe('App', () => {
 
       fireEvent.click(screen.getByRole('radio', { name: /full-depth profile/i }))
       fireEvent.click(screen.getByRole('checkbox', { name: /optionally contribute this full-depth profile/i }))
-      expect(screen.getByText(/same 336-question profile, not a separate test/i)).toBeInTheDocument()
+      expect(screen.getByText(/same 309-question profile, not a separate test/i)).toBeInTheDocument()
       fireEvent.click(screen.getByRole('button', { name: /review contribution details/i }))
 
       expect(screen.getByRole('heading', { name: /optional profile contribution/i })).toBeInTheDocument()
-      expect(screen.getByText(/selected profile contains 336 questions/i)).toBeInTheDocument()
+      expect(screen.getByText(/selected profile contains 309 questions/i)).toBeInTheDocument()
       expect(screen.getByRole('button', { name: /continue to full-depth profile/i })).toBeDisabled()
       fireEvent.click(screen.getByRole('button', { name: /continue without contributing/i }))
 
-      expect(screen.getByText('Question 1 of 336', { exact: false })).toBeInTheDocument()
+      expect(screen.getByText('Question 1 of 309', { exact: false })).toBeInTheDocument()
    })
 
    it('allows a completed respondent to skip upload and see the result', () => {
@@ -514,7 +514,7 @@ describe('App', () => {
          target: { value: 'Socialist Feminism' },
       })
 
-      expect(screen.getByRole('heading', { name: /socialist \/ marxist feminism/i })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: /socialist and marxist feminist traditions/i })).toBeInTheDocument()
       expect(screen.queryByRole('heading', { name: /^related traditions$/i })).not.toBeInTheDocument()
 
       fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {

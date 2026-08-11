@@ -31,7 +31,7 @@ describe('editorial second pass', () => {
   it('keeps broad synthetic display-name overrides out of the public catalog', () => {
     const publicById = new Map(publicCatalogLabels.map((label) => [label.id, label]))
     expect(publicById.get('technocratic-centralist')!.name).toBe('Technocratic Centralist')
-    expect(publicById.get('civil-libertarian-cosmopolitan')!.name).toBe('Civil-Libertarian Cosmopolitan')
+    expect(publicById.has('civil-libertarian-cosmopolitan')).toBe(false)
   })
 
   it('keeps subtype names out of aliases', () => {
@@ -42,7 +42,7 @@ describe('editorial second pass', () => {
   })
 
   it('keeps revised pole wording inside its declared conceptual layer', () => {
-    expect(axisById.get('militarism-pacifism')!.positivePole).toMatch(/legitimate instrument/)
+    expect(axisById.get('militarism-pacifism')!.positivePole).toMatch(/morally justified under limited conditions/)
     expect(axisById.get('coercion-strategy')!.positivePole).toMatch(/^Change may be pursued/)
     expect(axisById.get('anti-domination')!.negativePole).not.toMatch(/normal feature/)
   })

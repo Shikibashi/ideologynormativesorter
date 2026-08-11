@@ -77,7 +77,7 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
    },
    {
       pattern: /\banarch(?:ism|ist|o[- ]communism|o[- ]capitalism)\b/i,
-      definition: '“Anarchism” broadly rejects unaccountable hierarchy and centralized coercive authority, but includes distinct socialist, mutualist, individualist, and market traditions.',
+      definition: '“Anarchism” subjects political authority, centralized coercion, and hierarchy to radical criticism; socialist, mutualist, individualist, and market strands disagree about property and social organization.',
    },
    {
       pattern: /\bconservat(?:ism|ive)\b/i,
@@ -125,7 +125,7 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
    },
    {
       pattern: /\bindigenism\b/i,
-      definition: '“Indigenism” is a broad family of political currents centering Indigenous self-determination, land, cultural continuity, and decolonial governance without prescribing one shared political order.',
+      definition: '“Indigenous self-determination and sovereignty” centers Indigenous authority, land, cultural continuity, and decolonial governance without implying that Indigenous peoples share one political order.',
    },
    {
       pattern: /\bbioregionalism\b/i,
@@ -248,10 +248,6 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'islamic-democracy',
 ])
 
-function firstCharacterLower(value: string): string {
-   return value ? value.charAt(0).toLowerCase() + value.slice(1) : value
-}
-
 function layerPhilosophies(label: IdeologyLabel, layer: Layer): string[] {
    if (layer === 'normative') return label.normativePhilosophies ?? []
    if (layer === 'descriptive') return label.descriptivePhilosophies ?? []
@@ -263,31 +259,25 @@ function layerPhilosophies(label: IdeologyLabel, layer: Layer): string[] {
  * one name is a complete description of the respondent's whole politics.
  */
 export function getIdeologyLayerSummary(label: IdeologyLabel, axes: Axis[], layer: Layer): string {
-   const rankedLayerAxes = axes
-      .filter((axis) => axis.layer === layer)
-      .map((axis) => ({ axis, value: label.centroid[axis.id] ?? 0 }))
-      .filter(({ value }) => Math.abs(value) >= 0.2)
-      .sort((a, b) => Math.abs(b.value) - Math.abs(a.value) || a.axis.id.localeCompare(b.axis.id))
+   const layerAxisIds = new Set(axes.filter((axis) => axis.layer === layer).map((axis) => axis.id))
+   const philosophyNames = layerPhilosophies(label, layer)
+   const philosophyNameSet = new Set(philosophyNames)
+   const relevantInfluences = (label.philosophyInfluences ?? [])
+      .filter((influence) => philosophyNameSet.has(influence.philosophy))
+      .filter((influence) => influence.affectedAxes.some((axisId) => layerAxisIds.has(axisId)))
+      .map((influence) => influence.description.trim())
+      .filter((description, index, descriptions) => descriptions.indexOf(description) === index)
+      .slice(0, 2)
 
-   const cutoff = rankedLayerAxes[Math.min(1, rankedLayerAxes.length - 1)]
-   const tiedLayerAxes = cutoff
-      ? rankedLayerAxes.filter(({ value }) => Math.abs(value) >= Math.abs(cutoff.value))
-      : []
-   const visibleLayerAxes = tiedLayerAxes.slice(0, 4)
-   const omittedPositionCount = tiedLayerAxes.length - visibleLayerAxes.length
+   if (relevantInfluences.length > 0) {
+      return `${LAYER_EXPLAINERS[layer].description} ${relevantInfluences.join(' ')}`
+   }
 
-   const strongestPositions = visibleLayerAxes
-      .map(({ axis, value }) => firstCharacterLower(value >= 0 ? axis.positivePole : axis.negativePole))
+   if (philosophyNames.length > 0) {
+      return `${LAYER_EXPLAINERS[layer].description} Related traditions include ${philosophyNames.slice(0, 3).join(', ')}, but this label does not imply one more specific shared position in this layer.`
+   }
 
-   const philosophyNames = layerPhilosophies(label, layer).slice(0, 3)
-   const philosophyText = philosophyNames.length > 0
-      ? `The catalog associates this layer with ${philosophyNames.join(', ')}.`
-      : 'The catalog does not assign a separate named philosophical influence to this layer.'
-   const positionText = strongestPositions.length > 0
-      ? `On this test, its strongest distinctions here are ${strongestPositions.join('; ')}.${omittedPositionCount > 0 ? ` ${omittedPositionCount} equally strong position${omittedPositionCount === 1 ? '' : 's'} omitted for readability.` : ''}`
-      : 'On this test, no single pole dominates this layer.'
-
-   return `${LAYER_EXPLAINERS[layer].description} ${positionText} ${philosophyText}`
+   return `${LAYER_EXPLAINERS[layer].description} This label does not imply one distinct shared position in this layer.`
 }
 
 export function getIdeologyTermDefinitions(label: IdeologyLabel, limit = 2): string[] {

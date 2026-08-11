@@ -40,7 +40,7 @@ function prototypeRanking(label: IdeologyLabel): string[] {
  * items. Keep this list exact so a miss cannot disappear into a looser global
  * threshold or be "fixed" by silently tuning a centroid.
  */
-const KNOWN_TOP_FIVE_GAPS = ['anarcho-communist'] as const
+const KNOWN_TOP_FIVE_GAPS: readonly string[] = []
 
 /**
  * Internal geometry guard only. These profiles are generated from centroids and
@@ -75,7 +75,7 @@ describe('primary ideology separability', () => {
   for (const label of primaryScoringLabels) {
     it(`${label.id} has its top-five prototype status recorded`, () => {
       const topFive = prototypeRanking(label).slice(0, 5)
-      if (KNOWN_TOP_FIVE_GAPS.includes(label.id as (typeof KNOWN_TOP_FIVE_GAPS)[number])) {
+      if (KNOWN_TOP_FIVE_GAPS.includes(label.id)) {
         expect(topFive, `${label.id} unexpectedly became synthetically separable`).not.toContain(label.id)
       } else {
         expect(topFive, `${label.id} prototype resolved to ${topFive.join(', ')}`).toContain(label.id)

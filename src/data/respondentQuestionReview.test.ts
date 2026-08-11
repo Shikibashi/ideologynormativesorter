@@ -22,6 +22,7 @@ import {
 } from './statementSemanticAudit'
 import { applySemanticReview } from './semanticAudit'
 import { DEFAULT_CONFIDENCE_PROMPT, DEFAULT_PRIORITY_PROMPT } from '../questionPresentation'
+import { fifthPassReplacementRequiredById } from './editorialFifthPass'
 
 const LAYERS = ['normative', 'descriptive', 'prescriptive'] as const
 
@@ -86,7 +87,7 @@ describe('respondent-facing question review', () => {
     expect(nearDuplicateFindings).toHaveLength(6)
     for (const finding of nearDuplicateFindings) {
       for (const questionId of finding.questionIds) {
-        if (replacementRequiredById[questionId]) {
+        if (replacementRequiredById[questionId] || fifthPassReplacementRequiredById[questionId]) {
           expect(questionById.get(questionId)?.active).toBe(false)
         } else {
           expect(questionById.get(questionId)?.active).not.toBe(false)

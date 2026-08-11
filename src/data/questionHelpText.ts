@@ -48,7 +48,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bpublic goods?\b/i,
-    definition: '“Public goods” means benefits that are hard to limit to paying users, such as national defense or clean air.',
+    definition: '“Public goods” means benefits that are difficult to exclude people from and that one person can use without substantially reducing others’ use, such as national defense.',
   },
   {
     pattern: /\bjurisdictions?\b/i,
@@ -104,7 +104,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bmutual[- ]aid\b/i,
-    definition: '“Mutual aid” means voluntary support networks where people help one another without relying on a central agency.',
+    definition: '“Mutual aid” means people supporting one another through reciprocal, cooperative networks, usually organized by the participants themselves.',
   },
   {
     pattern: /\bpredistribution\b/i,
@@ -124,7 +124,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bcentralized planning\b|\bplanning\b|\bplanners?\b/i,
-    definition: '“Planning” means decisions about production or allocation made through administrative direction rather than decentralized exchange.',
+    definition: '“Economic planning” means deliberately coordinating production or allocation through collective or administrative decisions; it can be centralized or decentralized.',
     domains: ['markets-planning'],
   },
   {
@@ -152,6 +152,10 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Unions” means worker organizations that bargain collectively with employers over pay, conditions and workplace rules.',
   },
   {
+    pattern: /\bmonopson(?:y|istic)\b/i,
+    definition: '“Monopsony” means a market in which workers or sellers face only one buyer, or too few buyers to bargain on equal terms.',
+  },
+  {
     pattern: /\bworkplace governance\b/i,
     definition: '“Workplace governance” means who has authority and voice over decisions inside a workplace.',
   },
@@ -168,8 +172,12 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Intellectual property” means legal control over copying or using ideas, inventions, software, art or information.',
   },
   {
-    pattern: /\bpatents?\b|\bcopyright\b/i,
-    definition: '“Patent and copyright” means legal exclusivity over inventions or creative works for a limited period.',
+    pattern: /\bpatents?\b/i,
+    definition: '“Patent” means a time-limited legal right to exclude others from making or using a claimed invention.',
+  },
+  {
+    pattern: /\bcopyright\b/i,
+    definition: '“Copyright” means legal control over copying and specified uses of an original creative work for a limited period.',
   },
   {
     pattern: /\bdiversion\b/i,
@@ -263,7 +271,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bcivil disobedience\b/i,
-    definition: '“Civil disobedience” means openly breaking a law or order to protest injustice while accepting public accountability.',
+    definition: '“Civil disobedience” means a deliberate, usually public breach of law intended to protest or change an injustice; traditions disagree about whether accepting punishment is required.',
   },
   {
     pattern: /\breform\b|\brevolution\b/i,
@@ -304,7 +312,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bexploitation\b/i,
-    definition: '“Exploitation” means extracting value from someone’s labor or position unfairly, especially when they lack a real alternative.',
+    definition: '“Exploitation” means a contested accusation that one party benefits from another under unfair terms. Traditions disagree about what makes the terms unfair.',
   },
   {
     pattern: /\bwealth tax(?:es)?\b/i,
@@ -356,7 +364,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bmutual credit\b/i,
-    definition: '“Mutual credit” means a system where members extend each other interest-free credit that nets out within the group, without a bank.',
+    definition: '“Mutual credit” means members create reciprocal credits and debts within a shared accounting system; designs differ on fees, interest, governance, and intermediaries.',
   },
   {
     pattern: /\bcompet(?:ing|itive) (?:currenc(?:y|ies)|monies)\b/i,
@@ -431,6 +439,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   {
     pattern: /\bpatronage\b/i,
     definition: '“Patronage” means distributing jobs, contracts or favors based on political loyalty rather than merit.',
+    domains: ['democracy-expertise-constitutionalism', 'strategy-change'],
   },
   {
     pattern: /\bcare work\b/i,
@@ -438,7 +447,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bdegrowth\b/i,
-    definition: '“Degrowth” means deliberately shrinking material production and consumption rather than pursuing continued economic growth.',
+    definition: '“Degrowth” means a planned reduction of energy and material use—especially in wealthy economies—while protecting well-being and reducing inequality.',
   },
   {
     pattern: /\bcommand[- ]and[- ]control\b/i,
@@ -482,7 +491,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bdigital identity\b/i,
-    definition: '“Digital identity” means government- or platform-issued electronic credentials used to verify who someone is online.',
+    definition: '“Digital identity” means electronic information or credentials used to establish or verify who someone is online; governments, organizations, platforms, or users may issue or control it.',
   },
   {
     pattern: /\b(?:data )?minimization\b/i,
@@ -613,8 +622,16 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Anti-circumvention law” means rules banning people from bypassing digital locks, even for otherwise lawful purposes.',
   },
   {
-    pattern: /\bopen[- ](?:access|standards?|protocols?|source)\b/i,
-    definition: '“Open access and open-source” means knowledge, standards or software made freely available for anyone to use, copy or build on.',
+    pattern: /\bopen[- ]access\b/i,
+    definition: '“Open access” means research or other published material is available to read without a subscription or price barrier.',
+  },
+  {
+    pattern: /\bopen[- ]standards?\b|\bopen[- ]protocols?\b/i,
+    definition: '“Open standards” means publicly documented technical rules that different products or services may implement.',
+  },
+  {
+    pattern: /\bopen[- ]source\b/i,
+    definition: '“Open-source” means software whose source code is available under a license that permits inspection, modification, and redistribution.',
   },
   {
     pattern: /\btrademarks?\b/i,
@@ -690,7 +707,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bcosmopolitan(?:ism)?\b/i,
-    definition: '“Cosmopolitanism” means treating moral and political obligations as extending equally to all humanity, not just to one’s own nation.',
+    definition: '“Cosmopolitanism” means holding that every person matters morally regardless of nationality; it does not require every duty to be identical across all relationships.',
   },
   {
     pattern: /\bcustody\b/i,
@@ -770,7 +787,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bmarket failures?\b/i,
-    definition: '“Market failure” means a situation where unregulated markets fail to produce an efficient or desirable outcome, such as with pollution or monopoly.',
+    definition: '“Market failure” means a condition—such as market power, externalities, public goods, or severe information problems—in which unregulated exchange does not allocate resources efficiently.',
   },
   {
     pattern: /\bpeaceful resistance\b/i,
@@ -781,6 +798,19 @@ const TERM_DEFINITIONS: TermDefinition[] = [
 const SALIENCE_HELP_TEXT: Record<'confidence' | 'priority', string> = {
   confidence: '“Confidence” means how sure you are that your answer is accurate. This rating controls how strongly this empirical answer counts in your result. Skipping the rating excludes the answer from your result.',
   priority: '“Priority” means how important this policy or strategy is compared with other changes. This rating controls how strongly this preference counts in your result. Skipping the rating excludes the answer from your result.',
+}
+
+/** Context-specific definitions for ordinary words that would otherwise
+ * trigger a different specialist meaning. */
+const QUESTION_DEFINITION_OVERRIDES: Readonly<Record<string, string>> = {
+  q0152: '“Artistic patronage” means financial support for creators from donors, institutions, customers, or sponsors.',
+  q0179: '“Political equality” means equal standing as a citizen, including freedom to hold mistaken or unpopular views.',
+  q0238: '“Civic equality” means equal legal and political standing regardless of ancestry or cultural background.',
+  q0270: '“Workplace equality policy” means rules intended to reduce unequal treatment or opportunity at work.',
+  q0282: '“Equal citizenship” means equal legal and political standing without requiring everyone to share one culture.',
+  q0334: '“Exit criteria” means the stated conditions for ending a military operation. “Intervention” means using diplomatic, economic, or military power to influence events in another country.',
+  q0365: '“Contestable decision” means one a person can understand, challenge, and appeal before an independent reviewer.',
+  q0400: '“Institutional capacity” means a movement’s ability to organize people, make decisions, obtain resources, and carry out plans over time.',
 }
 
 function stripTerminalPunctuation(value: string): string {
@@ -829,12 +859,13 @@ function getQuestionMeasurement(question: Question): string {
   if (question.theoryContext === 'nonideal') {
     return 'which policies, institutions, or strategies you would favor under current constraints'
   }
-  return 'which practical policy or strategy direction you favor across mixed conditions'
+  return 'which practical policy or strategy direction you favor under the conditions named in the question'
 }
 
 export function getQuestionHelpText(question: Question): string {
   const definitions = findTermDefinitions(question)
-  const definitionText = definitions.length > 0 ? definitions.join(' ') : DOMAIN_DEFINITIONS[question.domain] ?? fallbackDomainDefinition(question)
+  const definitionText = QUESTION_DEFINITION_OVERRIDES[String(question.id)]
+    ?? (definitions.length > 0 ? definitions.join(' ') : DOMAIN_DEFINITIONS[question.domain] ?? fallbackDomainDefinition(question))
   const domain = domainById.get(question.domain)
   const domainPhrase = domain ? domain.name.toLowerCase() : 'this topic'
   const responseQualifier = getResponseQualifier(question)

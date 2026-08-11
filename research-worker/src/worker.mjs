@@ -156,9 +156,9 @@ function validIdentity(identity) {
 
 function validCoreRecord(submission, env) {
   const expectedProfileCount = submission.tier === 'moderate'
-    ? configuredInteger(env.EXPECTED_MODERATE_ITEM_COUNT, 158)
+    ? configuredInteger(env.EXPECTED_MODERATE_ITEM_COUNT, 149)
     : submission.tier === 'extensive'
-      ? configuredInteger(env.EXPECTED_EXTENSIVE_ITEM_COUNT, 336)
+      ? configuredInteger(env.EXPECTED_EXTENSIVE_ITEM_COUNT, 309)
       : null
   const assignedCount = submission.itemMap?.length
   const requestedCount = submission.form?.requestedItemCount

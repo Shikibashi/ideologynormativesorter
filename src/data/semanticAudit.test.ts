@@ -4,7 +4,14 @@ import { questionById, questions, questionsForTier } from './effectiveQuestions'
 import {
   RESPONDENT_QUESTION_REVIEW_VERSION,
   replacementRequiredById,
+  wordingCorrectionsById,
 } from './respondentQuestionReview'
+import {
+  EDITORIAL_FIFTH_PASS_VERSION,
+  fifthPassMappingCorrectionsById,
+  fifthPassReplacementRequiredById,
+  fifthPassWordingCorrectionsById,
+} from './editorialFifthPass'
 import { needsRewriteById, semanticCorrections, SEMANTIC_AUDIT_VERSION } from './semanticAudit'
 
 describe('semantic question audit', () => {
@@ -17,12 +24,29 @@ describe('semantic question audit', () => {
     for (const [questionId, correction] of Object.entries(semanticCorrections)) {
       const question = questionById.get(questionId)
       expect(question, `${questionId} correction references a missing question`).toBeDefined()
-      expect(question!.axisWeights).toEqual(correction.axisWeights)
+      const respondentReplacement = replacementRequiredById[questionId]
+      const fifthPassReplacement = fifthPassReplacementRequiredById[questionId]
+      const fifthPassMapping = fifthPassMappingCorrectionsById[questionId]
+      const fifthPassWording = fifthPassWordingCorrectionsById[questionId]
+      const expectedWeights = !respondentReplacement && !fifthPassReplacement && fifthPassMapping
+        ? fifthPassMapping.axisWeights
+        : correction.axisWeights
+      expect(question!.axisWeights).toEqual(expectedWeights)
 
-      if (replacementRequiredById[questionId]) {
+      if (fifthPassReplacement) {
+        expect(question!.version).toBe(EDITORIAL_FIFTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('needs-rewrite')
+        expect(question!.active).toBe(false)
+      } else if (respondentReplacement) {
         expect(question!.version).toBe(RESPONDENT_QUESTION_REVIEW_VERSION)
         expect(question!.reviewStatus).toBe('needs-rewrite')
         expect(question!.active).toBe(false)
+      } else if (fifthPassMapping || fifthPassWording) {
+        expect(question!.version).toBe(EDITORIAL_FIFTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (wordingCorrectionsById[questionId]) {
+        expect(question!.version).toBe(RESPONDENT_QUESTION_REVIEW_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
       } else if (question!.layer !== 'normative') {
         expect(question!.version).toBe(RESPONDENT_QUESTION_REVIEW_VERSION)
         expect(question!.reviewStatus).toBe('approved')
@@ -47,7 +71,12 @@ describe('semantic question audit', () => {
       expect(question, `${questionId} review references a missing question`).toBeDefined()
       expect(question!.reviewStatus).toBe('needs-rewrite')
       expect(question!.active).toBe(false)
-      expect(question!.version).toBe(SEMANTIC_AUDIT_VERSION)
+      const expectedVersion = fifthPassReplacementRequiredById[questionId]
+        ? EDITORIAL_FIFTH_PASS_VERSION
+        : replacementRequiredById[questionId]
+          ? RESPONDENT_QUESTION_REVIEW_VERSION
+          : SEMANTIC_AUDIT_VERSION
+      expect(question!.version).toBe(expectedVersion)
       expect(question!.deprecationReason).toBeTruthy()
       expect(questions.some((activeQuestion) => activeQuestion.id === questionId)).toBe(false)
       expect(questionsForTier(question!.tier).some((activeQuestion) => activeQuestion.id === questionId)).toBe(false)

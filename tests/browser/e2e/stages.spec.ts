@@ -45,11 +45,11 @@ test('optional collection stays attached to the selected Full-depth profile', as
   await page.getByRole('button', { name: 'Review contribution details' }).click()
 
   await expect(page.getByRole('heading', { name: 'Optional profile contribution' })).toBeVisible()
-  await expect(page.getByText('The selected profile contains 336 questions', { exact: false })).toBeVisible()
+  await expect(page.getByText('The selected profile contains 309 questions', { exact: false })).toBeVisible()
   await page.getByRole('button', { name: 'Continue without contributing' }).click()
 
-  await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuemax', '336')
-  await expect(page.getByLabel('Application status')).toContainText('PROGRESS 1 / 336')
+  await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuemax', '309')
+  await expect(page.getByLabel('Application status')).toContainText('PROGRESS 1 / 309')
 })
 
 test('saved session can be resumed and exposes recovery state', async ({ page }) => {
@@ -147,7 +147,7 @@ test('shared results, comparison, and the label browser are addressable', async 
   await expect(labelBrowser.locator('summary.family-name')).toContainText('Liberal')
 
   await search.fill('Socialist Feminism')
-  await expect(labelBrowser.getByRole('heading', { name: 'Socialist / Marxist Feminism' })).toBeVisible()
+  await expect(labelBrowser.getByRole('heading', { name: 'Socialist and Marxist Feminist Traditions' })).toBeVisible()
   await expect(labelBrowser.locator('summary.family-name')).toContainText('Socialist')
   await expect(labelBrowser.getByRole('heading', { name: 'Related traditions' })).toHaveCount(0)
 

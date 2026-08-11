@@ -216,6 +216,22 @@ export function QuizScreen({
 
       <p className="prompt">{question.prompt}</p>
       <p className="muted question-help help-text">{helpText}</p>
+      {question.layer === 'descriptive' && question.evidenceNote && (question.sources?.length ?? 0) > 0 && (
+        <details key={question.id} className="question-evidence">
+          <summary>Context and sources</summary>
+          <p>{question.evidenceNote}</p>
+          <p className="muted">Background only; these sources do not determine how you should answer.</p>
+          <ul>
+            {question.sources!.map((item) => (
+              <li key={item.url}>
+                <a href={item.url} target="_blank" rel="noreferrer">
+                  {item.title}{item.publisher ? ` — ${item.publisher}` : ''}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
       {saveError && <p className="muted error-inline" role="alert">{saveError}</p>}
 
       {question.responseType === 'statementChoice' ? (

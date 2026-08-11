@@ -15,12 +15,22 @@ import {
   applyRespondentQuestionReview,
   RESPONDENT_QUESTION_REVIEW_VERSION,
 } from './respondentQuestionReview'
+import {
+  applyEditorialFifthPass,
+  EDITORIAL_FIFTH_PASS_VERSION,
+} from './editorialFifthPass'
+import {
+  applyDescriptiveEvidence,
+  DESCRIPTIVE_EVIDENCE_VERSION,
+} from './descriptiveEvidence'
 
 export const QUESTION_BANK_VERSION = [
   RAW_QUESTION_BANK_VERSION,
   SEMANTIC_AUDIT_VERSION,
   STATEMENT_SEMANTIC_AUDIT_VERSION,
   RESPONDENT_QUESTION_REVIEW_VERSION,
+  EDITORIAL_FIFTH_PASS_VERSION,
+  DESCRIPTIVE_EVIDENCE_VERSION,
 ].join('+')
 export { SCORING_VERSION }
 
@@ -30,12 +40,18 @@ export function getBankFingerprint(): string {
     SEMANTIC_AUDIT_VERSION,
     STATEMENT_SEMANTIC_AUDIT_VERSION,
     RESPONDENT_QUESTION_REVIEW_VERSION,
+    EDITORIAL_FIFTH_PASS_VERSION,
+    DESCRIPTIVE_EVIDENCE_VERSION,
   ].join('+')
 }
 
 function applyEffectiveReview(question: Question): Question {
-  return applyRespondentQuestionReview(
-    applyStatementSemanticReview(applySemanticReview(question)),
+  return applyDescriptiveEvidence(
+    applyEditorialFifthPass(
+      applyRespondentQuestionReview(
+        applyStatementSemanticReview(applySemanticReview(question)),
+      ),
+    ),
   )
 }
 

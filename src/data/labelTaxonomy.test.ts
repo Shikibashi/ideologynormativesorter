@@ -196,6 +196,13 @@ describe('ideology taxonomy', () => {
     expect(specialistModuleByLabel['socialist-feminism']).toBe('feminist-faction-module')
   })
 
+  it('routes labels according to what the current instrument can actually distinguish', () => {
+    expect(roleForLabel('liberal-feminism')).toBe('specialist')
+    expect(specialistModuleByLabel['liberal-feminism']).toBe('feminist-faction-module')
+    expect(roleForLabel('constitutional-monarchism')).toBe('context')
+    expect(roleForLabel('civil-libertarian-cosmopolitan')).toBe('retired')
+  })
+
   it('does not route world federalism through nationalist discriminators', () => {
     expect(PROVISIONAL_SPECIALIST_LABEL_IDS).toContain('world-federalism')
     expect(specialistModuleByLabel['world-federalism']).toBeUndefined()

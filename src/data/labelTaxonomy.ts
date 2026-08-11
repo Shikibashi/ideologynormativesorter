@@ -20,7 +20,6 @@ export const PRIMARY_LABEL_IDS = [
   'anarcho-communist',
   'christian-democrat',
   'civic-nationalist',
-  'civil-libertarian-cosmopolitan',
   'classical-liberalism',
   'communitarianism',
   'deep-ecology',
@@ -34,7 +33,6 @@ export const PRIMARY_LABEL_IDS = [
   'georgism',
   'individualist-anarchism',
   'liberal-conservatism',
-  'liberal-feminism',
   'libertarian-socialism',
   'market-socialist',
   'marxist-leninist',
@@ -64,7 +62,6 @@ export const SPECIALIST_LABEL_IDS = [
   'bright-green-environmentalism',
   'christian-reconstructionism',
   'christian-socialism',
-  'constitutional-monarchism',
   'conservative-liberalism',
   'corporatism',
   'council-communist',
@@ -80,6 +77,7 @@ export const SPECIALIST_LABEL_IDS = [
   'juche',
   'kemalism',
   'left-wing-market-anarchism',
+  'liberal-feminism',
   'libertarian-municipalism',
   'maoism',
   'national-bolshevism',
@@ -127,6 +125,7 @@ export const MODIFIER_LABEL_IDS = [
 
 export const CONTEXT_LABEL_IDS = [
   'accelerationism',
+  'constitutional-monarchism',
   'cyberocracy',
   'dataism',
   'fundamentalist-theocracy',
@@ -140,6 +139,7 @@ export const CONTEXT_LABEL_IDS = [
 ] as const satisfies readonly LabelId[]
 
 export const RETIRED_LABEL_IDS = [
+  'civil-libertarian-cosmopolitan',
   'cultural-populism',
   'decentralist-market-skeptic-of-state',
   'egalitarian-statist',
@@ -200,6 +200,7 @@ export const specialistModuleByLabel: Readonly<Partial<Record<
   typeof FEMINIST_MODULE_ID | typeof IDENTITY_SOVEREIGNTY_MODULE_ID
 >>> = {
   'anarcha-feminism': FEMINIST_MODULE_ID,
+  'liberal-feminism': FEMINIST_MODULE_ID,
   'socialist-feminism': FEMINIST_MODULE_ID,
   'indigenism': IDENTITY_SOVEREIGNTY_MODULE_ID,
 }

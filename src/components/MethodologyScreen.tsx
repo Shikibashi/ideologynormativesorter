@@ -1,4 +1,9 @@
+import { coreQuestions } from '../data/effectiveQuestions'
+
 export function MethodologyScreen({ onBack }: { onBack: () => void }) {
+   const activeDescriptive = coreQuestions.filter((question) => question.active !== false && question.layer === 'descriptive')
+   const sourcedDescriptive = activeDescriptive.filter((question) => (question.sources?.length ?? 0) > 0 && Boolean(question.evidenceNote?.trim()))
+
    return (
       <section className="screen methodology-screen page-mode" aria-labelledby="methodology-heading">
          <div className="section-band">
@@ -18,6 +23,9 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
          </p>
          <p>
             Label comparisons are qualitative summaries of profile distance on the test's own axes. They are not probabilities, diagnoses, accuracy rates, or validated estimates of ideological identity.
+         </p>
+         <p>
+            Consumer label explainers use curated tradition notes. The site does not turn a synthetic comparison coordinate into a claim that every member of a tradition must hold that doctrine.
          </p>
          <p>
             Answer-coverage descriptions reflect whether enough relevant questions were answered. They do not measure certainty or
@@ -61,8 +69,7 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
             post-questionnaire self-description is a comparison point, not proof that a score or label is correct.
          </p>
          <p>
-            Source coverage for descriptive items is incomplete and tracked as a bank-quality limitation. A cited source
-            explains a claim’s context; it does not dictate how a respondent should answer or validate the item itself.
+            {sourcedDescriptive.length} of {activeDescriptive.length} active descriptive items currently include both an operational scope and public background sources. The remaining items are explicitly tracked as incomplete source coverage. A cited source explains a claim’s context; it does not dictate how a respondent should answer or validate the item itself.
          </p>
          <p>
             When a label fits one layer of your views but not the others, we flag it as a <em>conflation</em>: a single label that would merge your normative, descriptive, and prescriptive positions into one and hide where they diverge. We name which layer matched, which layers it conflates, and the axes where you part from it.

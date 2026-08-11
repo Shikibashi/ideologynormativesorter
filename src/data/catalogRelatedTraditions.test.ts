@@ -39,7 +39,8 @@ describe('related ideology traditions', () => {
       subfamily: 'market-libertarian',
       status: 'catalog-candidate',
     })
-    expect(marketLibertarian?.aliases).toContain('Libertarianism')
+    expect(marketLibertarian?.aliases).not.toContain('Libertarianism')
+    expect(marketLibertarian?.aliases).toContain('Right-Libertarianism')
     expect(marketLibertarian?.description).toMatch(/libertarian-socialist and anarchist uses/i)
 
     const moduleCandidateIds = new Set(

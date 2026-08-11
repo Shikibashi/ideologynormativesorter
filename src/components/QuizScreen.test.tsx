@@ -43,6 +43,49 @@ const prescriptiveChoice: Question = {
 afterEach(cleanup)
 
 describe('QuizScreen descriptive questions', () => {
+  it('keeps empirical context collapsed and states that sources do not supply the answer', () => {
+    render(
+      <QuizScreen
+        questions={[{
+          ...descriptiveChoice,
+          evidenceNote: 'Scope to a named institution and observable outcome.',
+          sources: [{ title: 'A public source', publisher: 'Example Institute', url: 'https://example.com/source' }],
+        }]}
+        onComplete={vi.fn()}
+      />,
+    )
+
+    const details = screen.getByText('Context and sources').closest('details')
+    expect(details).not.toHaveAttribute('open')
+    fireEvent.click(screen.getByText('Context and sources'))
+    expect(screen.getByText(/do not determine how you should answer/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /a public source/i })).toHaveAttribute('href', 'https://example.com/source')
+  })
+
+  it('collapses empirical context when advancing to the next sourced item', () => {
+    const sourcedQuestion = {
+      ...descriptiveChoice,
+      evidenceNote: 'Scope to a named institution and observable outcome.',
+      sources: [{ title: 'A public source', publisher: 'Example Institute', url: 'https://example.com/source' }],
+    }
+    render(
+      <QuizScreen
+        questions={[
+          { ...sourcedQuestion, id: 'first-sourced-item' },
+          { ...sourcedQuestion, id: 'second-sourced-item', prompt: 'Does the second empirical claim fit the evidence?' },
+        ]}
+        onComplete={vi.fn()}
+      />,
+    )
+
+    fireEvent.click(screen.getByText('Context and sources'))
+    expect(screen.getByText('Context and sources').closest('details')).toHaveAttribute('open')
+    fireEvent.click(screen.getByRole('button', { name: /i don't know/i }))
+
+    expect(screen.getByText('Does the second empirical claim fit the evidence?')).toBeInTheDocument()
+    expect(screen.getByText('Context and sources').closest('details')).not.toHaveAttribute('open')
+  })
+
   it('offers I do not know even when the data item omits allowDontKnow', () => {
     const onComplete = vi.fn()
     render(<QuizScreen questions={[descriptiveChoice]} onComplete={onComplete} />)

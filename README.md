@@ -55,7 +55,7 @@ High-confidence sign or construct corrections are applied through the overlay. A
 ## Community contributions
 
 The ordinary intro screen lets an adult optionally contribute the same Balanced or Full-depth profile they select for
-their result. Contribution is not a separate test: the selected profile keeps its complete 158- or 336-question form,
+their result. Contribution is not a separate test: the selected profile keeps its complete 149- or 309-question form,
 and the respondent can continue without contributing at consent or skip submission after answering.
 
 Before results, contributors may optionally provide one or more ideology or tradition names that are not in the current label set. Those names are stored as contribution metadata and summarized for later manual review; they do not automatically alter scoring or add production labels. Controlled `research=1&study=...` links remain available for explicitly sized matrix forms. Incompatible saves from older form or consent versions are not resumed as current contributions.
