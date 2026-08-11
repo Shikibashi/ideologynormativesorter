@@ -853,6 +853,12 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    'anarcho-capitalist': {
       prescriptive: 'Favors replacing compulsory public provision with voluntary contract and competitive private provision of law, protection, and arbitration.',
    },
+   objectivism: {
+      descriptive: 'Expects objective reality to constrain thought and reason to provide reliable knowledge, while treating productive individual agency and voluntary exchange as capable of coordinating social life; these remain Objectivist philosophical claims, not settled social-science findings.',
+   },
+   neoreactionary: {
+      descriptive: 'Expects electoral democracy to produce instability, elite capture, or short-termism, and treats concentrated executive or corporate governance plus exit as more accountable; this is a niche, author-specific critique rather than an established empirical consensus.',
+   },
    geolibertarian: {
       normative: 'Combines self-ownership and voluntary exchange with an equal claim to the value of land and natural opportunities.',
       descriptive: 'Expects self-ownership and market exchange to coexist with equal claims to natural opportunities, treating land value as socially generated and land rent as a candidate for public capture; variants differ over revenue use and state scope.',
