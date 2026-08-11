@@ -966,6 +966,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors decentralized and non-coercive social relations that challenge gender hierarchy across intimate life, work, political organization, and other institutions rather than seeking representation within hierarchy alone.',
    },
    'queer-anarchism': {
+      descriptive: 'Expects rigid sexual and gender norms to reinforce wider political, economic, and social hierarchies, while queer and anarchist practices can open forms of autonomy and collective freedom; approaches vary over identity, family, and gender abolition.',
       normative: 'Opposes coercive sexual and gender hierarchy together with the wider political and social structures that enforce conformity and domination.',
       prescriptive: 'Favors autonomous, decentralized forms of queer liberation and resistance to institutions that police gender or sexuality; the current does not impose one universal account of identity, family, or gender abolition.',
    },

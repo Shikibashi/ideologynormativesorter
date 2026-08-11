@@ -781,6 +781,7 @@ describe('ideology explainers', () => {
          ['zionism', 'descriptive', /Jewish national self-determination.*collective survival/],
          ['christian-socialism', 'descriptive', /industrial capitalism’s concentration of wealth and power/],
          ['left-wing-market-anarchism', 'descriptive', /legal privilege and state-backed corporate power/],
+         ['queer-anarchism', 'descriptive', /rigid sexual and gender norms.*wider political, economic, and social hierarchies/],
       ]
 
       for (const [id, layer, expected] of cases) {
