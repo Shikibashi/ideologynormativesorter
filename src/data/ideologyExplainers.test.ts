@@ -32,6 +32,10 @@ describe('ideology explainers', () => {
    it('uses the intended definitions for high-confusion ideology terms', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const cases: Array<[string, RegExp]> = [
+         ['national-traditionalist', /national continuity, inherited institutions/],
+         ['fascist-authoritarian', /revolutionary ultranationalism promising national rebirth/],
+         ['eco-fascism', /fascist or exclusionary ultranationalism with ecological politics/],
+         ['strasserism', /radical fascist current associated with the Strasser brothers/],
          ['christian-democrat', /Christian social thought with democratic constitutionalism/],
          ['theocrat', /religious authority or revealed law/],
          ['integralism', /Catholic integralism/],
@@ -69,7 +73,7 @@ describe('ideology explainers', () => {
          ['cyberocracy', /speculative theory of governance/],
          ['bright-green-environmentalism', /technology- and design-optimist environmental current/],
          ['green-capitalism', /capitalist market institutions/],
-         ['fascist-authoritarian', /nationalist politics of national rebirth/],
+         ['fascist-authoritarian', /revolutionary ultranationalism promising national rebirth/],
          ['national-socialism', /Nazi ideology of racial hierarchy/],
          ['indigenism', /Indigenous self-determination/],
          ['political-islam', /broad family of projects/],
@@ -352,6 +356,23 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('distinguishes authoritarian-nationalist variants instead of substituting generic authoritarianism', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['national-traditionalist', /distinct from ethnonationalism and fascist ultranationalism/],
+         ['fascist-authoritarian', /not generic authoritarianism/],
+         ['eco-fascism', /strong environmental regulation or environmental concern alone is not eco-fascism/],
+         ['strasserism', /does not make it socialism or generic market socialism/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
+   })
+
    it('distinguishes conservative traditions instead of substituting one generic conservatism guide', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directOnlyCases = [
@@ -559,6 +580,14 @@ describe('ideology explainers', () => {
          ['integralism', 'prescriptive', /Catholicly informed public law/],
          ['fundamentalist-theocracy', 'normative', /strict or literal fidelity to authoritative scripture/],
          ['fundamentalist-theocracy', 'prescriptive', /religious law and state institutions enforcing a strict sacred-text interpretation/],
+         ['national-traditionalist', 'normative', /national continuity, inherited institutions, cultural tradition/],
+         ['national-traditionalist', 'prescriptive', /protecting national institutions, inherited practices/],
+         ['fascist-authoritarian', 'normative', /organic national unity, rebirth, hierarchy/],
+         ['fascist-authoritarian', 'prescriptive', /authoritarian mass mobilization, centralized leadership/],
+         ['eco-fascism', 'normative', /ecological integrity or territorial nature/],
+         ['eco-fascism', 'prescriptive', /authoritarian or exclusionary ecological measures/],
+         ['strasserism', 'normative', /national rebirth, revolutionary hierarchy and discipline/],
+         ['strasserism', 'prescriptive', /fascist mass mobilization and a strong state/],
          ['democratic-socialist', 'normative', /democratic control of economic power and social ownership/],
          ['democratic-socialist', 'prescriptive', /democratic social ownership or control of major productive assets/],
          ['market-socialist', 'normative', /social or worker ownership/],

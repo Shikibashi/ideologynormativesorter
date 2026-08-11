@@ -186,6 +186,18 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
 ]
 
 const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly string[]>> = {
+   'national-traditionalist': [
+      '“National Traditionalism” is a conservative orientation that gives national continuity, inherited institutions, social order, and cultural tradition priority while remaining distinct from ethnonationalism and fascist ultranationalism; it does not by itself specify one economic program or reject all democratic institutions.',
+   ],
+   'fascist-authoritarian': [
+      '“Fascist / Palingenetic Ultranationalist” names fascism in this catalog’s narrow sense: revolutionary ultranationalism promising national rebirth through authoritarian mass mobilization, hierarchy, anti-liberal politics, and coercive state power; it is not generic authoritarianism or ordinary conservatism.',
+   ],
+   'eco-fascism': [
+      '“Eco-Fascism” combines fascist or exclusionary ultranationalism with ecological politics, treating ecological preservation as tied to demographic control, ethnic or national homogeneity, or coercive state power; strong environmental regulation or environmental concern alone is not eco-fascism.',
+   ],
+   strasserism: [
+      '“Strasserite Fascism” is a radical fascist current associated with the Strasser brothers and the Nazi movement, combining palingenetic ultranationalism and authoritarian mass mobilization with anti-capitalist or anti-finance rhetoric; that rhetoric does not make it socialism or generic market socialism.',
+   ],
    'christian-democrat': [
       '“Christian Democracy” combines Christian social thought with democratic constitutionalism, subsidiarity, solidarity, social-market economics, and family or civil-society institutions; it is not equivalent to theocracy or a single church-state model.',
    ],
@@ -495,6 +507,10 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
+   'national-traditionalist',
+   'fascist-authoritarian',
+   'eco-fascism',
+   'strasserism',
    'christian-democrat',
    'theocrat',
    'integralism',
@@ -592,6 +608,26 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
       prescriptive: 'Favors technological innovation, resource-efficient infrastructure, conservation, and active public institutions to reduce ecological harm while supporting human development.',
+   },
+   'national-traditionalist': {
+      normative: 'Treats national continuity, inherited institutions, cultural tradition, and social order as important goods, with legitimacy grounded partly in historical belonging and established authority.',
+      descriptive: 'Expects rapid redesign and abstract universalism to weaken cohesion, while national-traditionalist positions vary over democracy, markets, welfare, religion, and membership boundaries.',
+      prescriptive: 'Favors protecting national institutions, inherited practices, cultural continuity, and cautious reform; it does not prescribe racial exclusion, fascist rupture, or one economic model.',
+   },
+   'fascist-authoritarian': {
+      normative: 'Treats organic national unity, rebirth, hierarchy, discipline, and collective mobilization as superior to liberal individualism and pluralist compromise.',
+      descriptive: 'Expects liberal democracy, perceived decadence, and internal enemies to block national renewal, while fascist movements use mythic rebirth, mass politics, and coercive state power.',
+      prescriptive: 'Favors authoritarian mass mobilization, centralized leadership, coercive state power, and an anti-liberal national-rebirth project; economic arrangements vary and remain subordinate to political-national goals.',
+   },
+   'eco-fascism': {
+      normative: 'Treats ecological integrity or territorial nature as valuable but subordinates universal human equality to a bounded national or ethnic community and social order.',
+      descriptive: 'Expects environmental crisis to be caused or worsened by demographic mixing, outsiders, liberalism, or disorder, and presents coercive collective control as a remedy; the term is contested and used variously.',
+      prescriptive: 'Favors authoritarian or exclusionary ecological measures, demographic control, territorial protection, or coercive state power in service of a national or ethnic ecology; strong regulation alone is not enough for the label.',
+   },
+   strasserism: {
+      normative: 'Treats national rebirth, revolutionary hierarchy and discipline, and anti-finance or anti-bourgeois politics as compatible within a fascist order, subordinating individual equality to an organic national community.',
+      descriptive: 'Expects liberal capitalism, finance, Marxist internationalism, and parliamentary pluralism to block national renewal, while Strasserist currents differed over economic organization and their relationship to Nazi leadership.',
+      prescriptive: 'Favors fascist mass mobilization and a strong state with anti-capitalist or corporatist measures subordinate to ultranationalism; it is not democratic socialism or socialism as such.',
    },
    'christian-democrat': {
       normative: 'Treats human dignity, solidarity, family and civil society, and a layered social order as important goods while accepting constitutional democracy and limits on centralized power.',
