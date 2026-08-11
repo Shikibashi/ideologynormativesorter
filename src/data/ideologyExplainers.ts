@@ -279,6 +279,15 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    'radical-centrism': [
       '“Radical Centrism” is a contested political style that rejects fixed left-right coalitions and seeks pragmatic, evidence-informed synthesis and institutional reform across the spectrum; “radical” refers to cross-cutting problem-solving, not necessarily rupture or one policy program.',
    ],
+   'constitutional-monarchism': [
+      '“Constitutional Monarchism” supports a hereditary monarch as head of state within constitutional rules that limit royal power; parliamentary variants make the monarch largely ceremonial, while executive constitutional monarchies retain constrained governing authority. It is a regime form, not a synonym for traditional or absolute monarchy.',
+   ],
+   'anti-imperialism': [
+      '“Anti-Imperialism” opposes colonial rule, external domination, and unequal political dependence, generally supporting the self-determination of subordinated peoples; it is a cross-cutting orientation that can coexist with socialist, nationalist, liberal, non-aligned, or other programs.',
+   ],
+   'traditional-monarchist': [
+      '“Traditional Monarchist” is a conservative royalist orientation that treats hereditary monarchy as historically or traditionally legitimate and often favors meaningful royal prerogative; it differs from constitutional monarchism’s limited head-of-state model and absolute monarchism’s stronger theory of indivisible sovereign power.',
+   ],
    'world-federalism': [
       '“World Federalism” advocates a democratic federal layer of global government with shared authority between world institutions and nations; it is stronger than international cooperation alone but does not require abolishing national governments or choosing one economic system.',
    ],
@@ -553,6 +562,9 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'georgism',
    'internationalism',
    'radical-centrism',
+   'constitutional-monarchism',
+   'anti-imperialism',
+   'traditional-monarchist',
    'world-federalism',
    'multiculturalism',
    'technocratic-centralist',
@@ -653,6 +665,21 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       normative: 'Treats practical problem-solving, pluralist compromise, effective institutions, and outcomes over ideological purity as political goods.',
       descriptive: 'Expects fixed left-right coalitions and doctrinal polarization to block workable solutions, while evidence, experimentation, and cross-partisan synthesis can widen the feasible policy space.',
       prescriptive: 'Favors pragmatic cross-cutting coalitions, evidence-informed reform, and institutional experimentation; the label does not identify one economic program or imply indifference to substantive values.',
+   },
+   'constitutional-monarchism': {
+      normative: 'Treats hereditary continuity or a nonpartisan head of state as compatible with constitutional rule, lawful government, and democratic self-government; variants differ over how much independent authority the crown should retain.',
+      descriptive: 'Expects constitutional rules, conventions, and elected institutions to channel royal authority, while the monarch may continue to serve as a national figurehead even when day-to-day political power is limited.',
+      prescriptive: 'Favors retaining or establishing a hereditary crown bounded by constitutional rules, with parliamentary ceremonial and executive constrained-monarchy models representing different institutional choices.',
+   },
+   'anti-imperialism': {
+      normative: 'Treats peoples as entitled to political equality, self-determination, and freedom from colonial domination, military subordination, and exploitative external control.',
+      descriptive: 'Expects imperial power to reproduce unequal dependence through colonial administration, military intervention, or political and economic influence, while the mechanisms and historical targets vary across anti-imperialist traditions.',
+      prescriptive: 'Favors decolonization, national or popular self-government, non-intervention, anti-colonial solidarity, and sometimes non-alignment or economic sovereignty; it does not prescribe one economic system or one strategy of resistance.',
+   },
+   'traditional-monarchist': {
+      normative: 'Treats dynastic continuity, inherited authority, social hierarchy, and historical or religious legitimacy as important political goods, while monarchist traditions differ over divine right, nation, religion, and constitutional limits.',
+      descriptive: 'Expects established institutions and hereditary succession to preserve continuity, authority, and national representation better than abstract redesign or purely electoral competition, though claims about monarchy’s effects vary.',
+      prescriptive: 'Favors preserving or restoring a hereditary monarchy with a meaningful royal role and prerogative; it can support constitutional limits and does not automatically entail absolute monarchy, rejection of all representation, or one religious doctrine.',
    },
    'national-traditionalist': {
       normative: 'Treats national continuity, inherited institutions, cultural tradition, and social order as important goods, with legitimacy grounded partly in historical belonging and established authority.',

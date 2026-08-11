@@ -71,6 +71,9 @@ describe('ideology explainers', () => {
          ['georgism', /socially generated value of land/],
          ['internationalism', /cooperation and obligations across national boundaries/],
          ['radical-centrism', /contested political style that rejects fixed left-right coalitions/],
+         ['constitutional-monarchism', /hereditary monarch as head of state within constitutional rules/],
+         ['anti-imperialism', /opposes colonial rule, external domination/],
+         ['traditional-monarchist', /conservative royalist orientation/],
          ['world-federalism', /democratic federal layer of global government/],
          ['multiculturalism', /family of normative views that rejects forced assimilation/],
          ['technocratic-centralist', /centralized expert administration/],
@@ -396,6 +399,22 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('distinguishes monarchist forms and anti-imperialism from neighboring traditions', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['constitutional-monarchism', /not a synonym for traditional or absolute monarchy/],
+         ['anti-imperialism', /cross-cutting orientation/],
+         ['traditional-monarchist', /differs from constitutional monarchism/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
+   })
+
    it('distinguishes conservative traditions instead of substituting one generic conservatism guide', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directOnlyCases = [
@@ -658,6 +677,12 @@ describe('ideology explainers', () => {
          ['internationalism', 'prescriptive', /international cooperation, institutions, treaties/],
          ['radical-centrism', 'normative', /practical problem-solving, pluralist compromise/],
          ['radical-centrism', 'prescriptive', /pragmatic cross-cutting coalitions/],
+         ['constitutional-monarchism', 'normative', /hereditary continuity or a nonpartisan head of state/],
+         ['constitutional-monarchism', 'prescriptive', /hereditary crown bounded by constitutional rules/],
+         ['anti-imperialism', 'normative', /political equality, self-determination/],
+         ['anti-imperialism', 'prescriptive', /decolonization, national or popular self-government/],
+         ['traditional-monarchist', 'normative', /dynastic continuity, inherited authority/],
+         ['traditional-monarchist', 'prescriptive', /preserving or restoring a hereditary monarchy/],
          ['world-federalism', 'normative', /shared political institutions capable of securing peace/],
          ['world-federalism', 'descriptive', /problems that cross borders/],
          ['multiculturalism', 'normative', /cultural membership and the ability to maintain distinctive identities/],
