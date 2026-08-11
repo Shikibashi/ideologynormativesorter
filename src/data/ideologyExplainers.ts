@@ -904,10 +904,12 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors Indigenous governance, land and resource rights, language and cultural institutions, and decolonial changes to imposed state or market structures; traditions differ over institutional form and territorial scope.',
    },
    hindutva: {
+      descriptive: 'Expects a culturally unified Hindu nation to organize political identity and public life in India, while scholarship treats Hindutva as a modern, historically developing discourse whose relations to Hindu religiosity, state power, and minority inclusion vary across organizations and periods.',
       normative: 'Treats Hindu civilizational or national identity as central to the political meaning of India and to the boundaries of national belonging.',
       prescriptive: 'Favors public institutions and national membership organized around a Hindu-nationalist conception of India; programs vary over secularism, minority rights, citizenship, and the role of the state.',
    },
    'religious-nationalism': {
+      descriptive: 'Expects shared religious identity to strengthen national solidarity and political legitimacy, while comparative scholarship shows that religious-nationalist movements differ in how they connect faith, state authority, law, citizenship, and minority inclusion.',
       normative: 'Treats a religious tradition and the national community as mutually reinforcing sources of identity, obligation, and political legitimacy.',
       prescriptive: 'Favors public institutions that recognize or advance a nation’s religious tradition, with variants ranging from cultural preference to religiously informed law or formal religious authority.',
    },
