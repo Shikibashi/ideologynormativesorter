@@ -186,6 +186,30 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
 ]
 
 const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly string[]>> = {
+   'market-liberal': [
+      '“Market Liberal” is a market-oriented liberal position centered on private property, individual rights, competitive exchange, rule of law, and limited but constitutional government; it is distinct from social liberalism’s stronger emphasis on public capability provision and from neoliberalism’s market-governance usage.',
+   ],
+   'decentralist-market-skeptic-of-state': [
+      '“Decentralist Market Liberal” is a market-liberal position that treats concentrated state power as a central danger and favors decentralized exchange, voluntary association, and exit; it is distinct from socialist anarchism and left-wing market anarchism rather than a synonym for any anti-state politics.',
+   ],
+   'civil-libertarian-cosmopolitan': [
+      '“Civil-Libertarian Cosmopolitanism” combines strong civil-libertarian skepticism of concentrated authority with cosmopolitan obligations beyond national borders; it does not by itself settle property, market, or global institutional questions.',
+   ],
+   'classical-liberalism': [
+      '“Classical Liberalism” is a broad liberal tradition centered on individual liberty, private property, freedom of contract, rule of law, and constitutionally limited government; historical versions vary over welfare, democracy, and the state’s economic role, so it is not identical to contemporary libertarianism.',
+   ],
+   neoliberalism: [
+      '“Market-Governance Liberalism” is this catalog’s narrower use of “neoliberalism”: a market-oriented liberal approach that governs capitalism through competition, privatization or outsourcing, expert institutions, and international rules; the broader term remains historically contested and often polemical.',
+   ],
+   'social-liberalism': [
+      '“Social Liberalism” combines individual rights and equal citizenship with public action to secure capabilities, opportunity, and protection from severe deprivation; it does not imply socialism or one fixed level of welfare or state ownership.',
+   ],
+   'world-federalism': [
+      '“World Federalism” advocates a democratic federal layer of global government with shared authority between world institutions and nations; it is stronger than international cooperation alone but does not require abolishing national governments or choosing one economic system.',
+   ],
+   multiculturalism: [
+      '“Multiculturalism” is a family of normative views that rejects forced assimilation and supports recognition, accommodation, or group-differentiated rights for distinct cultural, ethnic, national, or religious communities within a shared political order; it is not simply the demographic fact of diversity and variants disagree over liberal limits and common citizenship.',
+   ],
    'technocratic-centralist': [
       '“Technocratic Centralism” gives centralized expert administration, scientific or technical knowledge, and state capacity priority over markets and ordinary electoral judgment; it is stronger than using experts within democratic institutions and does not determine one economic policy.',
    ],
@@ -423,6 +447,14 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
+   'market-liberal',
+   'decentralist-market-skeptic-of-state',
+   'civil-libertarian-cosmopolitan',
+   'classical-liberalism',
+   'neoliberalism',
+   'social-liberalism',
+   'world-federalism',
+   'multiculturalism',
    'technocratic-centralist',
    'transhumanism',
    'cyberocracy',
@@ -496,6 +528,36 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
       prescriptive: 'Favors technological innovation, resource-efficient infrastructure, conservation, and active public institutions to reduce ecological harm while supporting human development.',
+   },
+   'market-liberal': {
+      normative: 'Treats private property, individual liberty, legal equality, and predictable rule of law as central goods, with a presumption against concentrated public power.',
+      descriptive: 'Expects competitive markets and secure property rights to coordinate dispersed knowledge and incentives better than extensive administrative direction, while leaving room for failures and regulation.',
+      prescriptive: 'Favors competitive markets, secure private property, limited and constitutional government, and rule-governed reform; it does not prescribe one tax, welfare, or foreign-policy program.',
+   },
+   'decentralist-market-skeptic-of-state': {
+      normative: 'Treats concentrated authority and dependence on centralized administration as major threats to liberty, valuing voluntary association, exit, and dispersed power.',
+      descriptive: 'Expects decentralized exchange and voluntary institutions to reveal local knowledge and constrain abuse better than centralized state provision, though coordination and public-good limits remain contested.',
+      prescriptive: 'Favors decentralizing provision, expanding exit and voluntary association, and reducing reliance on centralized administration; its market orientation distinguishes it from socialist anarchism.',
+   },
+   'civil-libertarian-cosmopolitan': {
+      normative: 'Treats individual civil liberty and moral concern beyond national borders as jointly important, with universal obligations not exhausted by citizenship.',
+      descriptive: 'Expects concentrated authority and closed national boundaries to create risks of domination, while transnational norms and decentralized institutions can widen protection.',
+      prescriptive: 'Favors strong civil liberties, decentralized institutions, and cosmopolitan rights or obligations; it leaves economic property and global institutional design open.',
+   },
+   'classical-liberalism': {
+      normative: 'Treats individual liberty, private property, voluntary exchange, rule of law, and constitutional limits on public power as central to a legitimate order.',
+      descriptive: 'Expects dispersed decisions protected by property and legal constraints to check arbitrary power and support social coordination, while versions differ over welfare and state capacity.',
+      prescriptive: 'Favors constitutionally limited government, civil and economic liberty, secure property, and rule-governed reform; it does not dictate a single libertarian or laissez-faire program.',
+   },
+   neoliberalism: {
+      normative: 'Values liberal rights and market coordination while treating a competitive capitalist order and credible rules as important conditions for prosperity and institutional stability.',
+      descriptive: 'Expects competition, price signals, expert regulation, and international economic rules to improve coordination, while scholars and critics dispute the term’s effects and boundaries.',
+      prescriptive: 'Favors competition policy, market mechanisms, selective privatization or outsourcing, independent expert institutions, and international economic rules; this is a catalog-specific, contested use of neoliberalism.',
+   },
+   'social-liberalism': {
+      normative: 'Treats individual liberty and equal citizenship as compatible with public responsibility for capabilities, opportunity, and protection from severe deprivation.',
+      descriptive: 'Expects public services, regulation, and social insurance to expand effective freedom and stabilize a market society without requiring social ownership of production.',
+      prescriptive: 'Favors rights-based public provision, social insurance, regulation, and opportunity-enhancing reform within a liberal constitutional order rather than socialism by definition.',
    },
    'anarcho-capitalist': {
       prescriptive: 'Favors replacing compulsory public provision with voluntary contract and competitive private provision of law, protection, and arbitration.',
@@ -599,7 +661,14 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors social ownership and democratic planning of production around human need, equality, and ecological limits rather than profit or growth as ends in themselves.',
    },
    'world-federalism': {
-      prescriptive: 'Favors a democratic federal layer of world government and enforceable international law above nation-states.',
+      normative: 'Treats humanity as entitled to shared political institutions capable of securing peace, rights, and justice across borders while preserving self-government at appropriate levels.',
+      descriptive: 'Expects problems that cross borders to exceed the capacity of sovereign states acting alone and to require accountable institutions with global scope.',
+      prescriptive: 'Favors a democratic federal layer of world government with divided powers and enforceable international law above nation-states, while retaining national and local authority in other domains.',
+   },
+   multiculturalism: {
+      normative: 'Treats cultural membership and the ability to maintain distinctive identities and practices as compatible with equal citizenship, rather than requiring a single assimilated public culture.',
+      descriptive: 'Expects forced assimilation to reproduce unequal status and sees recognition or accommodation as possible tools for inclusion, though group rights can create tensions within and across communities.',
+      prescriptive: 'Favors recognition, accommodation, or group-differentiated rights for minority cultural communities within a shared constitutional order; it does not prescribe separatism or one fixed model of integration.',
    },
    'radical-democracy': {
       prescriptive: 'Favors expanding participation and redesigning institutions so concentrated political and economic power remains contestable beyond periodic elections.',

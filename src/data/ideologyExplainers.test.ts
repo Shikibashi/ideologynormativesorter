@@ -41,6 +41,14 @@ describe('ideology explainers', () => {
          ['left-wing-nationalism', /national self-determination or popular sovereignty/],
          ['expansionist-nationalism', /territorial enlargement, imperial influence/],
          ['separatist-nationalism', /autonomy, federal reorganization, or independence/],
+         ['market-liberal', /market-oriented liberal position/],
+         ['decentralist-market-skeptic-of-state', /market-liberal position that treats concentrated state power/],
+         ['civil-libertarian-cosmopolitan', /civil-libertarian skepticism of concentrated authority/],
+         ['classical-liberalism', /broad liberal tradition centered on individual liberty/],
+         ['neoliberalism', /catalog’s narrower use/],
+         ['social-liberalism', /individual rights and equal citizenship/],
+         ['world-federalism', /democratic federal layer of global government/],
+         ['multiculturalism', /family of normative views that rejects forced assimilation/],
          ['technocratic-centralist', /centralized expert administration/],
          ['accelerationism', /left, right, and technology-centered/],
          ['cyberocracy', /speculative theory of governance/],
@@ -230,6 +238,27 @@ describe('ideology explainers', () => {
          ['singularitarianism', /not a synonym for all AI optimism/],
          ['bright-green-environmentalism', /not identical to green capitalism/],
          ['green-capitalism', /rather than requiring its abolition/],
+      ]
+
+      for (const [id, expected] of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).toMatch(expected)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|family of theories/)
+      }
+   })
+
+   it('distinguishes liberal and cosmopolitan variants instead of substituting generic liberalism', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases: Array<[string, RegExp]> = [
+         ['market-liberal', /distinct from social liberalism/],
+         ['decentralist-market-skeptic-of-state', /distinct from socialist anarchism/],
+         ['civil-libertarian-cosmopolitan', /does not by itself settle property/],
+         ['classical-liberalism', /not identical to contemporary libertarianism/],
+         ['neoliberalism', /broader term remains historically contested/],
+         ['social-liberalism', /does not imply socialism/],
+         ['world-federalism', /stronger than international cooperation alone/],
+         ['multiculturalism', /not simply the demographic fact of diversity/],
       ]
 
       for (const [id, expected] of directOnlyCases) {
@@ -439,6 +468,22 @@ describe('ideology explainers', () => {
          ['expansionist-nationalism', 'prescriptive', /territorial acquisition, imperial administration/],
          ['separatist-nationalism', 'normative', /distinct national or regional community’s self-government/],
          ['separatist-nationalism', 'prescriptive', /autonomy, federal reorganization, or secession/],
+         ['market-liberal', 'normative', /private property, individual liberty, legal equality/],
+         ['market-liberal', 'prescriptive', /competitive markets, secure private property/],
+         ['decentralist-market-skeptic-of-state', 'normative', /concentrated authority and dependence on centralized administration/],
+         ['decentralist-market-skeptic-of-state', 'prescriptive', /decentralizing provision, expanding exit/],
+         ['civil-libertarian-cosmopolitan', 'normative', /individual civil liberty and moral concern beyond national borders/],
+         ['civil-libertarian-cosmopolitan', 'prescriptive', /strong civil liberties, decentralized institutions/],
+         ['classical-liberalism', 'normative', /individual liberty, private property, voluntary exchange/],
+         ['classical-liberalism', 'prescriptive', /constitutionally limited government/],
+         ['neoliberalism', 'descriptive', /competition, price signals, expert regulation/],
+         ['neoliberalism', 'prescriptive', /competition policy, market mechanisms/],
+         ['social-liberalism', 'normative', /individual liberty and equal citizenship/],
+         ['social-liberalism', 'prescriptive', /rights-based public provision, social insurance/],
+         ['world-federalism', 'normative', /shared political institutions capable of securing peace/],
+         ['world-federalism', 'descriptive', /problems that cross borders/],
+         ['multiculturalism', 'normative', /cultural membership and the ability to maintain distinctive identities/],
+         ['multiculturalism', 'prescriptive', /recognition, accommodation, or group-differentiated rights/],
          ['technocratic-centralist', 'normative', /expert competence, administrative capacity/],
          ['technocratic-centralist', 'prescriptive', /centralized expert agencies, planning/],
          ['transhumanism', 'normative', /human flourishing, autonomy/],
