@@ -957,9 +957,6 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects forced assimilation to reproduce unequal status and sees recognition or accommodation as possible tools for inclusion, though group rights can create tensions within and across communities.',
       prescriptive: 'Favors recognition, accommodation, or group-differentiated rights for minority cultural communities within a shared constitutional order; it does not prescribe separatism or one fixed model of integration.',
    },
-   'radical-democracy': {
-      prescriptive: 'Favors expanding participation and redesigning institutions so concentrated political and economic power remains contestable beyond periodic elections.',
-   },
    'christian-socialism': {
       prescriptive: 'Favors some combination of cooperative organization, labor protection, social provision, regulation, or social ownership to subordinate economic power to solidarity and the needs of poor and working people; currents disagree over ownership and strategy.',
    },
@@ -1027,6 +1024,21 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       normative: 'Treats ecological protection as an overriding political priority and accepts concentrated authority, restricted participation, or reduced individual discretion as possible means to secure it.',
       descriptive: 'Expects ecological crisis and the perceived slowness or fragmentation of democratic and market institutions to justify centralized expertise, command, and coercive environmental enforcement; real-world environmental authoritarianism varies across regimes and policies.',
       prescriptive: 'Favors powerful centralized authority, expert or vanguard direction, and command-and-control environmental rules that can override ordinary democratic or individual constraints.',
+   },
+   'radical-democracy': {
+      normative: 'Treats democratic equality, active participation, and the contestability of concentrated power as central goods, while regarding pluralism and legitimate political conflict as compatible with democratic life.',
+      descriptive: 'Expects settled representative institutions and dominant hegemonies to exclude voices or depoliticize conflict, while social movements, counter-hegemonic struggles, and public contestation can reopen political participation.',
+      prescriptive: 'Favors expanding participation and redesigning institutions so concentrated political and economic power remains contestable beyond periodic elections.',
+   },
+   'liquid-democracy': {
+      normative: 'Treats voter autonomy and flexible participation as compatible: people should be able to decide directly on issues or authorize another person to decide for them without surrendering ongoing control.',
+      descriptive: 'Expects a mixture of direct voting and voluntary, revisable proxy delegation to combine issue-specific participation with access to trusted expertise or representation; delegation can also create new risks of concentration and manipulation.',
+      prescriptive: 'Favors delegable proxy voting that lets participants vote directly or transfer their vote to a chosen proxy, usually with the ability to revise or withdraw the delegation.',
+   },
+   'democratic-confederalism': {
+      normative: 'Treats grassroots self-government, pluralism, ecological responsibility, gender equality, and freedom from centralized domination as mutually reinforcing political goods.',
+      descriptive: 'Expects local communities and assemblies, linked through delegated coordination, to handle social decisions more democratically than a centralized nation-state, with ecology, feminism, and multicultural coexistence shaping the model.',
+      prescriptive: 'Favors linked local assemblies and councils with limited coordinating bodies, participatory self-administration, and a non-state or post-nation-state political horizon.',
    },
    corporatism: {
       prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate represented interests.',
