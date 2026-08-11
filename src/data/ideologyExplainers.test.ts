@@ -561,6 +561,7 @@ describe('ideology explainers', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const cases: Array<[string, 'normative' | 'descriptive' | 'prescriptive', RegExp]> = [
          ['ecomodernist', 'normative', /human flourishing and ecological protection/],
+         ['anarcho-capitalist', 'descriptive', /private providers.*law, protection, and arbitration.*equal access to law/],
          ['anarcho-capitalist', 'prescriptive', /competitive private provision of law/],
          ['market-socialist', 'descriptive', /markets and prices to coordinate dispersed information/],
          ['christian-democrat', 'prescriptive', /subsidiarity, social-market institutions/],
@@ -608,6 +609,7 @@ describe('ideology explainers', () => {
          ['anarcho-communist', 'prescriptive', /stateless federations/],
          ['anarcho-communist', 'descriptive', /decentralized communal production and sharing/],
          ['bleeding-heart-libertarianism', 'normative', /individual liberty and social justice/],
+         ['bleeding-heart-libertarianism', 'descriptive', /market mechanisms, voluntary cooperation, and property rights.*vulnerable or least-advantaged people/],
          ['kemalism', 'prescriptive', /Six Arrows program/],
          ['christian-reconstructionism', 'prescriptive', /theonomic biblical law/],
          ['revolutionary-collectivist', 'prescriptive', /centralized public ownership or state power/],

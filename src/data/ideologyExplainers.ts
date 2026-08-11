@@ -851,6 +851,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors rights-based public provision, social insurance, regulation, and opportunity-enhancing reform within a liberal constitutional order rather than socialism by definition.',
    },
    'anarcho-capitalist': {
+      descriptive: 'Expects private property, voluntary contracts, and competition among private providers to supply law, protection, and arbitration more responsively than a territorial state; critics dispute whether such systems can secure equal access to law and effective remedies.',
       prescriptive: 'Favors replacing compulsory public provision with voluntary contract and competitive private provision of law, protection, and arbitration.',
    },
    objectivism: {
@@ -878,6 +879,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'bleeding-heart-libertarianism': {
       normative: 'Treats individual liberty and social justice, especially effects on disadvantaged people, as joint standards for assessing institutions.',
+      descriptive: 'Expects market mechanisms, voluntary cooperation, and property rights to contribute to the well-being of vulnerable or least-advantaged people while preserving individual liberty; proponents disagree over how far social justice permits redistribution or institutional intervention.',
    },
    kemalism: {
       prescriptive: 'Favors the Six Arrows program of republicanism, nationalism, populism, statism, laicism, and continuing reform or revolutionism.',
