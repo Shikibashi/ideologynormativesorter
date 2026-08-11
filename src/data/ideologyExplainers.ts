@@ -864,6 +864,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors a minimal state limited mainly to protecting rights through courts, policing, and defense.',
    },
    'anarcho-communist': {
+      descriptive: 'Expects decentralized communal production and sharing to meet needs and distribute socially generated wealth without centralized state control, while feasibility, coordination, and the balance between individual and community remain contested questions.',
       prescriptive: 'Favors stateless federations of freely associated communities, common control of productive resources, and distribution according to need rather than markets or centralized state planning.',
    },
    'bleeding-heart-libertarianism': {
@@ -945,6 +946,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'techno-anarchism': {
       normative: 'Prioritizes privacy, autonomy, and resistance to centralized information control while treating technology as a possible anti-authoritarian tool rather than an authority in itself.',
+      descriptive: 'Expects encryption, anonymity, distributed trust, and peer-to-peer networks to reduce the leverage of centralized surveillance or gatekeepers, while actual systems can create new forms of concentration and the current has no settled institutional model.',
       prescriptive: 'Favors encryption, anonymity systems, peer-to-peer protocols, and decentralized networks that make surveillance, censorship, or centralized control harder; it is a loose current rather than one settled institutional program.',
    },
    ecosocialist: {
