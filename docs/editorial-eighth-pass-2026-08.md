@@ -24,4 +24,4 @@ This pass independently reviewed the cumulative v7 question and explainer change
 - Every Full-depth axis has at least three contributing items.
 - All 34 active descriptive items have an operational evidence note and at least one public source.
 - Public profiles contain 140 Balanced and 285 Full-depth items.
-- The collector accepts the current counts while temporarily preserving the previous 149/309 profiles for already-open sessions.
+- The collector accepts the current counts while temporarily preserving the preceding 158/336 and 149/309 profiles for already-open sessions.

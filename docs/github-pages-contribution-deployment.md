@@ -16,8 +16,9 @@ consent, complete Balanced (140-item) or Full-depth (285-item) profile and answe
 edge rate limit, and deduplicates retries by submission ID. It also accepts the explicitly configured 120-item matrix
 form used by controlled research links. It does not expose a public read endpoint.
 
-Current profile counts are pinned separately from temporary legacy allowances. The Worker accepts 149/309-item
-profiles only so sessions opened before this bank revision can still finish; new Pages sessions use 140/285.
+Current profile counts are pinned separately from temporary legacy allowances. The Worker accepts 158/336- and
+149/309-item profiles only so sessions opened under the two preceding bank revisions can still finish; new Pages
+sessions use 140/285.
 
 ## Current production resources
 
