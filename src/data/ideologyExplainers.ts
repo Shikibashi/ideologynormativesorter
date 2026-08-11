@@ -900,6 +900,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors inclusive citizenship, common political institutions, constitutional participation, and public nation-building while leaving room for cultural and historical identities within the civic community.',
    },
    indigenism: {
+      descriptive: 'Expects imposed state or market institutions to have disrupted Indigenous authority, land relationships, cultural continuity, and self-government, while Indigenous political traditions differ over sovereignty, territory, state recognition, and relations with non-Indigenous institutions.',
       normative: 'Treats Indigenous collective self-determination, cultural continuity, land relationships, and authority over community affairs as central goods in a decolonial political order.',
       prescriptive: 'Favors Indigenous governance, land and resource rights, language and cultural institutions, and decolonial changes to imposed state or market structures; traditions differ over institutional form and territorial scope.',
    },
@@ -918,6 +919,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors institutions capable of maintaining Jewish national self-determination in the Land of Israel; liberal, socialist, religious, revisionist, and other currents disagree over borders, state structure, religion, and relations with Palestinians.',
    },
    'left-wing-nationalism': {
+      descriptive: 'Expects imperial domination and unequal international integration to block social equality and self-government, while national liberation and popular sovereignty can create conditions for redistribution or anti-colonial transformation; historical trajectories differ and nationalism can conflict with internationalism or minority claims.',
       normative: 'Treats national self-determination and popular sovereignty as compatible with social equality, anti-colonial solidarity, and opposition to imperial domination.',
       prescriptive: 'Favors national liberation, redistributive or socialist policy, and popular control of the post-colonial state or nation; movements differ over internationalism, class politics, and minority membership.',
    },
@@ -926,6 +928,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors territorial acquisition, imperial administration, or irredentist expansion justified through security, historical, civilizing, or strategic claims; it is not a policy-neutral theory of international relations.',
    },
    'separatist-nationalism': {
+      descriptive: 'Expects a distinct regional or national community to gain greater self-government through autonomy, federal reorganization, or independence, while comparative research finds the relationship between autonomy and secession conditional: lost or static autonomy can intensify separatism, whereas adaptable autonomy can reduce it.',
       normative: 'Treats a distinct national or regional community’s self-government as more important than preserving the existing state’s territorial unity.',
       prescriptive: 'Favors autonomy, federal reorganization, or secession as routes to self-government, with the preferred route depending on the movement and its political conditions rather than following automatically from the label.',
    },
