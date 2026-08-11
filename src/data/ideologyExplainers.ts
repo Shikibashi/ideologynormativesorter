@@ -856,6 +856,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    objectivism: {
       descriptive: 'Expects objective reality to constrain thought and reason to provide reliable knowledge, while treating productive individual agency and voluntary exchange as capable of coordinating social life; these remain Objectivist philosophical claims, not settled social-science findings.',
    },
+   paleolibertarianism: {
+      descriptive: 'Expects welfare-state expansion, interventionist foreign policy, and culturally egalitarian state projects to undermine liberty and inherited social authority, while free markets and local intermediary institutions can preserve order; the historical coalition was brief and internally divided over the state’s role.',
+   },
    neoreactionary: {
       descriptive: 'Expects electoral democracy to produce instability, elite capture, or short-termism, and treats concentrated executive or corporate governance plus exit as more accountable; this is a niche, author-specific critique rather than an established empirical consensus.',
    },
@@ -932,6 +935,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'anarcho-primitivism': {
       normative: 'Treats autonomy, ecological integrity, and freedom from civilizational domination as more important than maintaining industrial scale, technological dependence, or specialized hierarchy.',
+      descriptive: 'Expects domestication, agriculture, symbolic systems, division of labor, and industrial technology to intensify alienation, hierarchy, and ecological harm; adherents vary over which tools and communities fit, and the anthropological claims remain contested.',
       prescriptive: 'Favors radical decentralization, deindustrialization, rewilding, and reducing dependence on domestication, specialized labor, and large technical systems; adherents differ over transition and acceptable tools.',
    },
    voluntaryism: {

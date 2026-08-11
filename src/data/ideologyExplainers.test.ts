@@ -633,6 +633,7 @@ describe('ideology explainers', () => {
          ['individualist-anarchism', 'normative', /individual self-direction and voluntary association/],
          ['individualist-anarchism', 'prescriptive', /natural-rights, mutualist, and egoist currents/],
          ['anarcho-primitivism', 'normative', /freedom from civilizational domination/],
+         ['anarcho-primitivism', 'descriptive', /domestication, agriculture, symbolic systems, division of labor/],
          ['anarcho-primitivism', 'prescriptive', /deindustrialization, rewilding/],
          ['voluntaryism', 'normative', /consent, individual liberty, and voluntary support/],
          ['voluntaryism', 'prescriptive', /voluntarily funded minimal state/],
@@ -759,6 +760,7 @@ describe('ideology explainers', () => {
          ['green-capitalism', 'descriptive', /prices, investment, firms, and innovation/],
          ['objectivism', 'descriptive', /objective reality to constrain thought and reason to provide reliable knowledge/],
          ['neoreactionary', 'descriptive', /electoral democracy to produce instability, elite capture, or short-termism/],
+         ['paleolibertarianism', 'descriptive', /welfare-state expansion, interventionist foreign policy/],
          ['welfare-chauvinism', 'descriptive', /bounded national or ethnic welfare community/],
       ]
 
