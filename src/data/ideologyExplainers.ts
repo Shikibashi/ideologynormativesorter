@@ -934,6 +934,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors autonomy, federal reorganization, or secession as routes to self-government, with the preferred route depending on the movement and its political conditions rather than following automatically from the label.',
    },
    'left-wing-market-anarchism': {
+      descriptive: 'Expects legal privilege and state-backed corporate power to distort markets and sustain economic domination, while a genuinely freed market could reduce exploitation through voluntary exchange and more egalitarian access; currents differ over how property, labor, and mutual provision would work.',
       normative: 'Combines individual liberty and voluntary exchange with opposition to state privilege, exploitation, and concentrated economic domination.',
       prescriptive: 'Favors stateless freed markets and voluntary institutions while dismantling legal privileges that sustain corporate concentration; currents differ over property, wage labor, rent, and the balance among firms, cooperatives, and mutual provision.',
    },

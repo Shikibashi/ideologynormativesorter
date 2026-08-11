@@ -780,6 +780,7 @@ describe('ideology explainers', () => {
          ['fourth-theory', 'descriptive', /civilizational pluralism and multipolar great spaces/],
          ['zionism', 'descriptive', /Jewish national self-determination.*collective survival/],
          ['christian-socialism', 'descriptive', /industrial capitalism’s concentration of wealth and power/],
+         ['left-wing-market-anarchism', 'descriptive', /legal privilege and state-backed corporate power/],
       ]
 
       for (const [id, layer, expected] of cases) {
