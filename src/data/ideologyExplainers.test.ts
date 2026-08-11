@@ -776,6 +776,8 @@ describe('ideology explainers', () => {
          ['welfare-chauvinism', 'descriptive', /bounded national or ethnic welfare community/],
          ['libertarian-municipalism', 'descriptive', /face-to-face local assemblies and confederated municipalities/],
          ['voluntaryism', 'descriptive', /compulsory taxation and state direction to create intrusion/],
+         ['national-bolshevism', 'descriptive', /strong, anti-liberal state.*national power/],
+         ['fourth-theory', 'descriptive', /civilizational pluralism and multipolar great spaces/],
       ]
 
       for (const [id, layer, expected] of cases) {

@@ -941,6 +941,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects compulsory authority and group claims to threaten individual autonomy, while voluntary cooperation can preserve autonomy without requiring one market or communal model; disputes remain over whether such cooperation yields market, mutualist, or sharing arrangements.',
       prescriptive: 'Favors stateless, voluntary forms of association while leaving substantial disagreement among natural-rights, mutualist, and egoist currents over property, exchange, and durable organization.',
    },
+   'national-bolshevism': {
+      descriptive: 'Expects a strong, anti-liberal state to unify national power through a synthesis of nationalism and revolutionary-socialist mobilization, while historical versions differ—from interwar German currents to the post-Soviet Limonov–Dugin milieu—and do not form one settled doctrine.',
+   },
    'anarcho-primitivism': {
       normative: 'Treats autonomy, ecological integrity, and freedom from civilizational domination as more important than maintaining industrial scale, technological dependence, or specialized hierarchy.',
       descriptive: 'Expects domestication, agriculture, symbolic systems, division of labor, and industrial technology to intensify alienation, hierarchy, and ecological harm; adherents vary over which tools and communities fit, and the anthropological claims remain contested.',
@@ -979,6 +982,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       normative: 'Treats humanity as entitled to shared political institutions capable of securing peace, rights, and justice across borders while preserving self-government at appropriate levels.',
       descriptive: 'Expects problems that cross borders to exceed the capacity of sovereign states acting alone and to require accountable institutions with global scope.',
       prescriptive: 'Favors a democratic federal layer of world government with divided powers and enforceable international law above nation-states, while retaining national and local authority in other domains.',
+   },
+   'fourth-theory': {
+      descriptive: 'Expects civilizational pluralism and multipolar great spaces to provide a viable alternative to liberal universalism and a unipolar order, while Dugin presents the project as incomplete and scholars dispute whether its claimed break with fascism is substantive.',
    },
    multiculturalism: {
       normative: 'Treats cultural membership and the ability to maintain distinctive identities and practices as compatible with equal citizenship, rather than requiring a single assimilated public culture.',
