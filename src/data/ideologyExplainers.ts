@@ -883,9 +883,11 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects market mechanisms, voluntary cooperation, and property rights to contribute to the well-being of vulnerable or least-advantaged people while preserving individual liberty; proponents disagree over how far social justice permits redistribution or institutional intervention.',
    },
    kemalism: {
+      descriptive: 'Expects a secular, scientifically modernizing republic and a unified Turkish national identity to overcome Ottoman and religious-political legacies; Kemalist currents differ over citizenship, pluralism, and how strongly the state should guide modernization.',
       prescriptive: 'Favors the Six Arrows program of republicanism, nationalism, populism, statism, laicism, and continuing reform or revolutionism.',
    },
    'christian-reconstructionism': {
+      descriptive: 'Treats secular legal neutrality as weakening public moral order and expects theonomic biblical norms applied to civil institutions to restore a Christian social order; Reconstructionist currents differ over how literally and comprehensively biblical law should govern public life.',
       prescriptive: 'Favors reconstructing civil institutions under theonomic biblical law rather than maintaining a religiously neutral legal order.',
    },
    distributism: {

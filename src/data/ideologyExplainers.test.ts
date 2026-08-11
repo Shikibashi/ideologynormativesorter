@@ -562,6 +562,8 @@ describe('ideology explainers', () => {
       const cases: Array<[string, 'normative' | 'descriptive' | 'prescriptive', RegExp]> = [
          ['ecomodernist', 'normative', /human flourishing and ecological protection/],
          ['ecomodernist', 'descriptive', /technological modernization, urbanization, and intensified production.*global, fast-enough absolute form remains unestablished/],
+         ['kemalism', 'descriptive', /secular, scientifically modernizing republic.*unified Turkish national identity.*Kemalist currents differ/],
+         ['christian-reconstructionism', 'descriptive', /secular legal neutrality.*theonomic biblical norms.*Christian social order/],
          ['anarcho-capitalist', 'descriptive', /private providers.*law, protection, and arbitration.*equal access to law/],
          ['anarcho-capitalist', 'prescriptive', /competitive private provision of law/],
          ['market-socialist', 'descriptive', /markets and prices to coordinate dispersed information/],
