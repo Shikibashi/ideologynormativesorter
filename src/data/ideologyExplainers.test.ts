@@ -62,6 +62,14 @@ describe('ideology explainers', () => {
          ['kemalism', /Six Arrows/],
          ['christian-reconstructionism', /Reformed Protestant theonomic movement/],
          ['fourth-theory', /Aleksandr Dugin’s anti-liberal project/],
+         ['revolutionary-collectivist', /catalog umbrella/],
+         ['marxist-leninist', /Soviet tradition codified under Stalin/],
+         ['libertarian-socialism', /anti-capitalist and anti-authoritarian family/],
+         ['maoism', /mass line, peasant mobilization/],
+         ['trotskyism', /permanent and international revolution/],
+         ['guild-socialism', /public ownership with democratic worker guilds/],
+         ['christian-socialism', /diverse family applying Christian teachings/],
+         ['utopian-socialism', /retrospective label/],
       ]
 
       for (const [id, expected] of cases) {
@@ -160,6 +168,29 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('distinguishes socialist traditions instead of substituting one generic socialism or Marxism guide', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases = [
+         'revolutionary-collectivist',
+         'marxist-leninist',
+         'libertarian-socialism',
+         'maoism',
+         'trotskyism',
+         'guild-socialism',
+         'christian-socialism',
+         'utopian-socialism',
+      ]
+
+      for (const id of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+      }
+
+      expect(getIdeologyTermDefinitions(byId.get('libertarian-socialism')!)[0]).toMatch(/distinct from right-libertarian/)
+      expect(getIdeologyTermDefinitions(byId.get('christian-socialism')!)[0]).toMatch(/disagree over markets, ownership/)
+      expect(getIdeologyTermDefinitions(byId.get('utopian-socialism')!)[0]).toMatch(/not one doctrine/)
+   })
+
    it('defines theocracy and high-confusion labels directly from stable ids', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directCases: Array<[string, RegExp]> = [
@@ -216,7 +247,7 @@ describe('ideology explainers', () => {
          ['distributism', 'prescriptive', /dispersing productive property/],
          ['world-federalism', 'prescriptive', /federal layer of world government/],
          ['radical-democracy', 'prescriptive', /beyond periodic elections/],
-         ['christian-socialism', 'prescriptive', /social ownership, economic democracy/],
+         ['christian-socialism', 'prescriptive', /cooperative organization, labor protection/],
          ['green-capitalism', 'normative', /ecological protection alongside human prosperity/],
          ['green-capitalism', 'prescriptive', /carbon pricing, renewable-energy markets/],
          ['corporatism', 'prescriptive', /under strong state direction to mediate represented interests/],
@@ -230,6 +261,13 @@ describe('ideology explainers', () => {
          ['bleeding-heart-libertarianism', 'normative', /individual liberty and social justice/],
          ['kemalism', 'prescriptive', /Six Arrows program/],
          ['christian-reconstructionism', 'prescriptive', /theonomic biblical law/],
+         ['revolutionary-collectivist', 'prescriptive', /centralized public ownership or state power/],
+         ['marxist-leninist', 'prescriptive', /disciplined vanguard party taking state power/],
+         ['libertarian-socialism', 'prescriptive', /worker self-management, social ownership/],
+         ['maoism', 'prescriptive', /mass-line organizing, peasant or peripheral mobilization/],
+         ['trotskyism', 'prescriptive', /permanent international revolution/],
+         ['guild-socialism', 'prescriptive', /public ownership of industry.*democratic worker guilds/],
+         ['utopian-socialism', 'prescriptive', /moral persuasion, model communities/],
       ]
 
       for (const [id, layer, expected] of cases) {

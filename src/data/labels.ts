@@ -889,7 +889,7 @@ export const labels: IdeologyLabel[] = [
       usageNote:
          'Titoism claimed continuity with Marxism-Leninism but is a heterodox/contested case: its market elements, worker self-management, and non-aligned foreign policy broke sharply enough from Soviet orthodoxy that Yugoslavia was expelled from the Cominform in 1948.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
-      subTheories: ["Stalinism","Maoism","Hoxhaism","Titoism"],
+      subTheories: ["Stalinism","Maoism","Hoxhaism"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: ["Marxism","Socialism"],
       descriptivePhilosophies: ["Marxism"],
@@ -2802,12 +2802,12 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'maoist',
       description:
          'Extends revolutionary state socialism through mass line politics, protracted struggle, anti-revisionism, and peasant or peripheral mobilization, treating revolutionary transformation as a continuing process against bureaucratic restoration.',
-      philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
+      philosophies: ["Marxism","Socialism","Leninism","Vanguardism","Maoism"],
       subTheories: ["Marxism-Leninism-Maoism","Maoism-Third Worldism"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: ["Marxism","Socialism"],
       descriptivePhilosophies: ["Marxism"],
-      prescriptivePhilosophies: ["Leninism","Vanguardism"],
+      prescriptivePhilosophies: ["Leninism","Vanguardism","Maoism"],
       philosophyInfluences: [
          {
             philosophy: "Marxism",
@@ -2856,11 +2856,11 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'trotskyist',
       description:
          'Combines revolutionary socialism with permanent international revolution, anti-Stalinist party politics, and critique of bureaucratic state socialism, rejecting both reformist gradualism and nationalist socialism.',
-      philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
+      philosophies: ["Marxism","Socialism","Leninism","Vanguardism","Trotskyism"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: ["Marxism","Socialism"],
       descriptivePhilosophies: ["Marxism"],
-      prescriptivePhilosophies: ["Leninism","Vanguardism"],
+      prescriptivePhilosophies: ["Leninism","Vanguardism","Trotskyism"],
       philosophyInfluences: [
          {
             philosophy: "Marxism",
@@ -3075,9 +3075,9 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'guild-socialist',
       description:
          'Advocates industrial self-government through democratic worker guilds that control production and negotiate with the public; historical proposals differed over whether ultimate ownership should be public, guild-based, or otherwise socialized.',
-      philosophies: ["Marxism","Socialism","Guild Socialism","Distributism"],
+      philosophies: ["Marxism","Socialism","Guild Socialism"],
       ethicalTheory: ["Consequentialism"],
-      normativePhilosophies: ["Marxism","Socialism","Distributism"],
+      normativePhilosophies: ["Marxism","Socialism"],
       descriptivePhilosophies: ["Marxism"],
       prescriptivePhilosophies: ["Guild Socialism"],
       philosophyInfluences: [
@@ -4449,11 +4449,10 @@ export const labels: IdeologyLabel[] = [
       family: 'socialist',
       subfamily: 'religious-socialist',
       description:
-         'Applies Christian ethical principles—especially solidarity with the poor, communal obligation, and stewardship—to advocate for social ownership, economic democracy, and structural opposition to exploitative capitalism.',
+         'Applies Christian teachings about solidarity, justice, communal obligation, and concern for poor and working people to industrial capitalism; its currents have favored different combinations of cooperatives, labor reform, social provision, regulation, and social ownership.',
       usageNote:
-         'Liberation Theology (Latin American, explicitly Marxist-influenced) and the Social Gospel (American Protestant, often reformist rather than socialist) are related but distinct movements within this broader tradition, not simple synonyms for it.',
+         'Liberation Theology and the Social Gospel overlap with parts of this history but are related movements, not simple synonyms or subtypes. Christian Democracy is also distinct: it generally accepts a social-market economy rather than identifying as socialist.',
       philosophies: ["Christian Socialism","Christian Theology","Catholic Social Teaching","Socialism"],
-      subTheories: ["Liberation Theology","Social Gospel"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: ["Christian Socialism","Christian Theology","Catholic Social Teaching","Socialism"],
       descriptivePhilosophies: [],
@@ -4505,7 +4504,7 @@ export const labels: IdeologyLabel[] = [
       family: 'socialist',
       subfamily: 'early-socialist',
       description:
-         'A pre-Marxian family of projects for ideal social reconstruction. Owenite and Fourierist currents emphasized cooperative communities, while Saint-Simonian currents placed more weight on expert-led industrial organization and rational administration.',
+         'A retrospective label for diverse early socialist projects. Owenite and Fourierist currents emphasized cooperative communities, while Saint-Simonian currents placed more weight on expert-led industrial organization and rational administration.',
       philosophies: ["Utopian Socialism","Socialism","Owenism","Fourierism"],
       subTheories: ["Fourierism","Owenism","Saint-Simonianism"],
       ethicalTheory: ["Consequentialism"],

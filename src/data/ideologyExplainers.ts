@@ -300,6 +300,30 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    'fourth-theory': [
       '“Fourth Political Theory” is Aleksandr Dugin’s anti-liberal project claiming to move beyond liberalism, communism, and fascism toward civilizational pluralism, traditionalism, and multipolarity; it is not a settled academic ideology, and its claimed break with fascism is disputed.',
    ],
+   'revolutionary-collectivist': [
+      '“Revolutionary State Socialist” is a catalog umbrella for socialist strategies that seek a revolutionary break and use centralized public ownership or state power as the main transition mechanism; it is not one historical school or a synonym for every revolutionary socialist.',
+   ],
+   'marxist-leninist': [
+      '“Marxism-Leninism” is the Soviet tradition codified under Stalin around a disciplined vanguard party, centralized revolutionary state power, and planned social ownership during a transition toward communism; later national variants did not form one uniform practice.',
+   ],
+   'libertarian-socialism': [
+      '“Libertarian socialism” is a broad anti-capitalist and anti-authoritarian family favoring worker self-management, federation, and social ownership without a centralized party-state; it is distinct from right-libertarian market doctrines.',
+   ],
+   maoism: [
+      '“Maoism” is a Marxist-Leninist tradition emphasizing the mass line, peasant mobilization, protracted people’s war, and continuing revolution against bureaucratic or capitalist restoration.',
+   ],
+   trotskyism: [
+      '“Trotskyism” is a Marxist revolutionary tradition centered on permanent and international revolution, opposition to “socialism in one country,” and criticism of Soviet bureaucratic degeneration.',
+   ],
+   'guild-socialism': [
+      '“Guild socialism” is an early twentieth-century British tradition proposing public ownership with democratic worker guilds administering industries and representing producers, rather than direct state bureaucracy or private capital.',
+   ],
+   'christian-socialism': [
+      '“Christian socialism” is a diverse family applying Christian teachings about solidarity, justice, and obligations to poor and working people to the problems of industrial capitalism; its currents disagree over markets, ownership, state action, and reform strategy.',
+   ],
+   'utopian-socialism': [
+      '“Utopian socialism” is a retrospective label most often grouping the distinct projects of Saint-Simon, Fourier, Owen, and their followers; it is not one doctrine, and the term reflects a later Marxist classification.',
+   ],
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
@@ -326,6 +350,14 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'kemalism',
    'christian-reconstructionism',
    'fourth-theory',
+   'revolutionary-collectivist',
+   'marxist-leninist',
+   'libertarian-socialism',
+   'maoism',
+   'trotskyism',
+   'guild-socialism',
+   'christian-socialism',
+   'utopian-socialism',
 ])
 
 /**
@@ -381,7 +413,28 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors expanding participation and redesigning institutions so concentrated political and economic power remains contestable beyond periodic elections.',
    },
    'christian-socialism': {
-      prescriptive: 'Favors social ownership, economic democracy, and structural constraints on exploitative capitalist power.',
+      prescriptive: 'Favors some combination of cooperative organization, labor protection, social provision, regulation, or social ownership to subordinate economic power to solidarity and the needs of poor and working people; currents disagree over ownership and strategy.',
+   },
+   'revolutionary-collectivist': {
+      prescriptive: 'Favors a revolutionary break with capitalist property relations and centralized public ownership or state power as the main transition mechanism.',
+   },
+   'marxist-leninist': {
+      prescriptive: 'Favors a disciplined vanguard party taking state power, abolishing private control of major productive assets, and directing a planned transition toward communism.',
+   },
+   'libertarian-socialism': {
+      prescriptive: 'Favors worker self-management, social ownership, and federated institutions without a centralized party-state; traditions vary over markets and the balance between reform and direct action.',
+   },
+   maoism: {
+      prescriptive: 'Favors mass-line organizing, peasant or peripheral mobilization, protracted revolutionary struggle, and continuing campaigns against bureaucratic or capitalist restoration.',
+   },
+   trotskyism: {
+      prescriptive: 'Favors permanent international revolution led by a revolutionary party, opposing both reformist gradualism and an isolated bureaucratic socialism in one country.',
+   },
+   'guild-socialism': {
+      prescriptive: 'Favors public ownership of industry combined with democratic worker guilds that administer production and represent producers alongside political institutions representing citizens.',
+   },
+   'utopian-socialism': {
+      prescriptive: 'Historically favored moral persuasion, model communities, cooperative experiments, or rational industrial reorganization; the projects grouped under this later label differed substantially.',
    },
    'green-capitalism': {
       normative: 'Values ecological protection alongside human prosperity and continued material development.',
