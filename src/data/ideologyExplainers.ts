@@ -925,6 +925,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors national liberation, redistributive or socialist policy, and popular control of the post-colonial state or nation; movements differ over internationalism, class politics, and minority membership.',
    },
    'expansionist-nationalism': {
+      descriptive: 'Often expects territorial enlargement or external influence to restore national strength, security, status, or historical unity, while research on imperial and irredentist projects shows that expansion can instead intensify conflict and undermine security; rationales and outcomes vary by case.',
       normative: 'Treats territorial enlargement, external influence, and national power as legitimate or necessary expressions of the nation’s political purpose.',
       prescriptive: 'Favors territorial acquisition, imperial administration, or irredentist expansion justified through security, historical, civilizing, or strategic claims; it is not a policy-neutral theory of international relations.',
    },
