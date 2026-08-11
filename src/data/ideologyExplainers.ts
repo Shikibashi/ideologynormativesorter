@@ -276,6 +276,30 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    ecosocialist: [
       '“Ecosocialism” combines ecological politics with anti-capitalist socialist transformation, seeking social control of production oriented toward human need and ecological limits rather than profit and growth.',
    ],
+   geolibertarian: [
+      '“Georgist libertarianism” combines libertarian self-ownership and voluntary exchange with an equal claim to the value of land and natural opportunities, generally using land-value charges to compensate those excluded.',
+   ],
+   'anarcho-capitalist': [
+      '“Anarcho-capitalism” is a right-libertarian doctrine that would replace the state with private property, voluntary contract, and competing providers of law, protection, and arbitration; its status as a form of anarchism is disputed.',
+   ],
+   'anarcho-communist': [
+      '“Anarcho-communism” seeks a stateless, classless order based on common control of productive resources, free association, and distribution according to need; unlike anarcho-capitalism, it rejects capitalist property and wage labor.',
+   ],
+   'bleeding-heart-libertarianism': [
+      '“Bleeding-heart libertarianism,” also called neoclassical liberalism by some academic proponents, combines civil liberties and market institutions with explicit concern for social justice and the interests of the least advantaged.',
+   ],
+   'national-bolshevism': [
+      '“National Bolshevism” names historically varied attempts to combine radical nationalism with Bolshevik or revolutionary-socialist ideas; this catalog models the post-Soviet authoritarian nationalist current, not orthodox Marxism-Leninism.',
+   ],
+   kemalism: [
+      '“Kemalism,” or “Atatürkism,” is the founding republican ideology of modern Turkey, conventionally summarized by the Six Arrows: republicanism, nationalism, populism, statism, laicism, and reformism.',
+   ],
+   'christian-reconstructionism': [
+      '“Christian Reconstructionism” is a small Reformed Protestant theonomic movement that treats biblical law, including continuing Old Testament civil norms, as authoritative for public institutions; it is not generic Christian conservatism or Christian democracy.',
+   ],
+   'fourth-theory': [
+      '“Fourth Political Theory” is Aleksandr Dugin’s anti-liberal project claiming to move beyond liberalism, communism, and fascism toward civilizational pluralism, traditionalism, and multipolarity; it is not a settled academic ideology, and its claimed break with fascism is disputed.',
+   ],
 }
 
 const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
@@ -294,6 +318,14 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'liquid-democracy',
    'ecomodernist',
    'ecosocialist',
+   'geolibertarian',
+   'anarcho-capitalist',
+   'anarcho-communist',
+   'bleeding-heart-libertarianism',
+   'national-bolshevism',
+   'kemalism',
+   'christian-reconstructionism',
+   'fourth-theory',
 ])
 
 /**
@@ -307,6 +339,22 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'anarcho-capitalist': {
       prescriptive: 'Favors replacing compulsory public provision with voluntary contract and competitive private provision of law, protection, and arbitration.',
+   },
+   geolibertarian: {
+      normative: 'Combines self-ownership and voluntary exchange with an equal claim to the value of land and natural opportunities.',
+      prescriptive: 'Favors secure private use of land while collecting land or resource rent for public revenue or equal compensation, usually through a land-value tax.',
+   },
+   'anarcho-communist': {
+      prescriptive: 'Favors stateless federations of freely associated communities, common control of productive resources, and distribution according to need rather than markets or centralized state planning.',
+   },
+   'bleeding-heart-libertarianism': {
+      normative: 'Treats individual liberty and social justice, especially effects on disadvantaged people, as joint standards for assessing institutions.',
+   },
+   kemalism: {
+      prescriptive: 'Favors the Six Arrows program of republicanism, nationalism, populism, statism, laicism, and continuing reform or revolutionism.',
+   },
+   'christian-reconstructionism': {
+      prescriptive: 'Favors reconstructing civil institutions under theonomic biblical law rather than maintaining a religiously neutral legal order.',
    },
    'market-socialist': {
       descriptive: 'Expects market pricing and competition to retain coordinating value under social or cooperative ownership.',

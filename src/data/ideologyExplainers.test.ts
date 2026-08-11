@@ -54,6 +54,14 @@ describe('ideology explainers', () => {
          ['liquid-democracy', /delegable proxy voting/],
          ['ecomodernist', /decouple human development from environmental harm/],
          ['ecosocialist', /anti-capitalist socialist transformation/],
+         ['geolibertarian', /equal claim to the value of land/],
+         ['anarcho-capitalist', /competing providers of law, protection, and arbitration/],
+         ['anarcho-communist', /common control of productive resources/],
+         ['bleeding-heart-libertarianism', /social justice and the interests of the least advantaged/],
+         ['national-bolshevism', /historically varied attempts/],
+         ['kemalism', /Six Arrows/],
+         ['christian-reconstructionism', /Reformed Protestant theonomic movement/],
+         ['fourth-theory', /Aleksandr Dugin’s anti-liberal project/],
       ]
 
       for (const [id, expected] of cases) {
@@ -135,6 +143,14 @@ describe('ideology explainers', () => {
          'liquid-democracy',
          'ecomodernist',
          'ecosocialist',
+         'geolibertarian',
+         'anarcho-capitalist',
+         'anarcho-communist',
+         'bleeding-heart-libertarianism',
+         'national-bolshevism',
+         'kemalism',
+         'christian-reconstructionism',
+         'fourth-theory',
       ]
 
       for (const id of directOnlyCases) {
@@ -208,6 +224,12 @@ describe('ideology explainers', () => {
          ['mutualist', 'prescriptive', /mutual credit, cooperative exchange/],
          ['ecomodernist', 'prescriptive', /technological innovation, resource-efficient infrastructure/],
          ['ecosocialist', 'prescriptive', /social ownership and democratic planning/],
+         ['geolibertarian', 'normative', /equal claim to the value of land/],
+         ['geolibertarian', 'prescriptive', /land or resource rent/],
+         ['anarcho-communist', 'prescriptive', /stateless federations/],
+         ['bleeding-heart-libertarianism', 'normative', /individual liberty and social justice/],
+         ['kemalism', 'prescriptive', /Six Arrows program/],
+         ['christian-reconstructionism', 'prescriptive', /theonomic biblical law/],
       ]
 
       for (const [id, layer, expected] of cases) {
@@ -215,6 +237,18 @@ describe('ideology explainers', () => {
          expect(summary, `${id}/${layer}`).toMatch(expected)
          expect(summary, `${id}/${layer}`).not.toMatch(/does not currently provide/i)
       }
+   })
+
+   it('scopes historically variable or author-specific radical-right labels', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const nationalBolshevism = byId.get('national-bolshevism')!
+      const fourthTheory = byId.get('fourth-theory')!
+
+      expect(nationalBolshevism.description).toMatch(/historically variable/)
+      expect(nationalBolshevism.description).toMatch(/post-Soviet authoritarian nationalist current/)
+      expect(nationalBolshevism.usageNote).toMatch(/distinct interwar German currents/)
+      expect(fourthTheory.description).toMatch(/does not provide one settled economic program/)
+      expect(fourthTheory.usageNote).toMatch(/claimed break.*disputes|disputes.*claimed break/)
    })
 
    it('does not invent unrelated layer doctrine for broad or cross-cutting labels', () => {

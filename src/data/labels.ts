@@ -3565,9 +3565,9 @@ export const labels: IdeologyLabel[] = [
       family: 'authoritarian',
       subfamily: 'national-bolshevist',
       description:
-         'Fuses radical ultranationalism with Bolshevik-style revolutionary socialism, rejecting both liberal capitalism and liberal democracy in favor of a strong state that commands the economy in the name of national grandeur.',
+         'A historically variable attempt to combine radical nationalism with Bolshevik or revolutionary-socialist ideas. This catalog models the post-Soviet authoritarian nationalist current associated with Limonov’s movement and Dugin’s early milieu.',
       usageNote:
-         'Despite the name, this is generally classified as a far-right, fascist-adjacent current (e.g., Niekisch’s Weimar-era circle, the later Limonov/Dugin variant); it borrows Bolshevik revolutionary aesthetics and anti-capitalist rhetoric rather than continuing Marxist-Leninist class theory.',
+         'The name has also described distinct interwar German currents, so it should not be read as one invariant doctrine. The post-Soviet form modeled here is commonly studied with the radical right and is not orthodox Marxism-Leninism.',
       philosophies: ["Authoritarianism","National Bolshevism","Conservative Revolution"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Authoritarianism"],
@@ -5968,9 +5968,9 @@ export const labels: IdeologyLabel[] = [
       family: 'authoritarian',
       subfamily: 'neo-eurasian-radical-right',
       description:
-         'A post-Soviet ideological synthesis proposed by Aleksandr Dugin that rejects liberalism, communism, and fascism as exhausted Western paradigms, advocating instead for a Eurasian empire founded on traditional values, spiritual authority, and a multipolar world order.',
+         'Aleksandr Dugin’s post-Soviet project declaring liberalism, communism, and fascism exhausted and seeking a traditionalist, anti-liberal alternative organized around distinct civilizations and a multipolar world. In Dugin’s formulation it overlaps with Neo-Eurasianism but does not provide one settled economic program.',
       usageNote:
-         'A single-author, non-canonical doctrine, not an established academic category. Although Dugin presents it as rejecting fascism, scholars who study his work (e.g., Anton Shekhovtsov) widely characterize it as fascist-adjacent given its sources, structure, and political alliances.',
+         'A single-author, non-canonical project rather than an established academic category. Dugin presents it as rejecting fascism; scholarship disputes that claimed break and generally locates the project on the radical right.',
       philosophies: ["Eurasianism","Traditionalism","Anti-Liberalism"],
       subTheories: ["Neo-Eurasianism","Russian Civilizationism"],
       ethicalTheory: ["Virtue Ethics"],
