@@ -1045,9 +1045,11 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Accepts cost-conscious welfare provision and moderate state intervention to preserve social cohesion, security, and opportunity within existing institutions rather than pursue egalitarian transformation.',
    },
    'fiscal-conservatism': {
+      descriptive: 'Expects persistent deficits, debt accumulation, and expansive public budgets to reduce fiscal room or burden future taxpayers, while spending restraint, revenue changes, or fiscal rules can preserve sustainable public finances; evidence and preferred policy mixes remain contested.',
       prescriptive: 'Prioritizes sustainable public finances and restraint of deficits or debt; possible means include spending limits, revenue changes, or fiscal rules, so the label does not prescribe one tax level or social program.',
    },
    'social-conservatism': {
+      descriptive: 'Expects rapid changes in family, gender, sexual, or religious norms to weaken social cohesion and moral formation, while inherited institutions and traditional authority can stabilize community life; the content of “tradition” varies across religious and national contexts.',
       normative: 'Gives inherited moral norms and institutions such as family, religion, and community special weight in sustaining social order and human flourishing.',
       prescriptive: 'Favors preserving or reinforcing traditional social institutions through law, public policy, or civil society; positions on markets, welfare, and foreign policy remain separate questions.',
    },
