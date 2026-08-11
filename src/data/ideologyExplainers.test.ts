@@ -640,6 +640,7 @@ describe('ideology explainers', () => {
          ['stirnerism', 'normative', /fixed moral, political, or social abstractions/],
          ['stirnerism', 'prescriptive', /no single institutional blueprint/],
          ['anarcha-feminism', 'normative', /patriarchy and gender subordination/],
+         ['anarcha-feminism', 'descriptive', /patriarchy, gendered divisions of labor, sexual regulation/],
          ['anarcha-feminism', 'prescriptive', /intimate life, work, political organization/],
          ['queer-anarchism', 'normative', /coercive sexual and gender hierarchy/],
          ['queer-anarchism', 'prescriptive', /does not impose one universal account/],
@@ -762,6 +763,8 @@ describe('ideology explainers', () => {
          ['neoreactionary', 'descriptive', /electoral democracy to produce instability, elite capture, or short-termism/],
          ['paleolibertarianism', 'descriptive', /welfare-state expansion, interventionist foreign policy/],
          ['welfare-chauvinism', 'descriptive', /bounded national or ethnic welfare community/],
+         ['libertarian-municipalism', 'descriptive', /face-to-face local assemblies and confederated municipalities/],
+         ['voluntaryism', 'descriptive', /compulsory taxation and state direction to create intrusion/],
       ]
 
       for (const [id, layer, expected] of cases) {

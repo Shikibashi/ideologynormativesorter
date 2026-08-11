@@ -940,6 +940,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    voluntaryism: {
       normative: 'Treats consent, individual liberty, and voluntary support as the standards by which political institutions and social relationships should be judged.',
+      descriptive: 'Expects compulsory taxation and state direction to create intrusion, dependency, and distorted incentives, while voluntary funding and association can sustain public functions or a limited state; historical Voluntaryists disagree over how far this logic requires statelessness.',
       prescriptive: 'Favors voluntarily funded and joined institutions; Herbert retained a voluntarily funded minimal state, while later Voluntaryists have favored competing or stateless arrangements.',
    },
    stirnerism: {
@@ -948,6 +949,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    'anarcha-feminism': {
       normative: 'Treats patriarchy and gender subordination as forms of coercive hierarchy inseparable from a broader commitment to autonomy, equality, and freedom from domination.',
+      descriptive: 'Expects patriarchy, gendered divisions of labor, sexual regulation, and other coercive hierarchies to reinforce one another, while gender equality requires changing intimate and social relations as well as formal law; currents differ over the causal links.',
       prescriptive: 'Favors decentralized and non-coercive social relations that challenge gender hierarchy across intimate life, work, political organization, and other institutions rather than seeking representation within hierarchy alone.',
    },
    'queer-anarchism': {
@@ -1110,6 +1112,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors some combination of artificial-intelligence research, safety or alignment work, preparation, and enhancement; singularitarian currents diverge over whether acceleration or restraint should take priority.',
    },
    'libertarian-municipalism': {
+      descriptive: 'Expects face-to-face local assemblies and confederated municipalities to make political power more accountable and responsive than centralized state administration, while municipalist practice ranges from reformist participation within states to stateless communalism.',
       prescriptive: 'Favors directly democratic local assemblies joined in confederation instead of centralized state rule.',
    },
 }
