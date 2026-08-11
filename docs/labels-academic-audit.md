@@ -3,6 +3,11 @@
 > This document records the earlier audit that led to several current label
 > names. For the current label-by-label editorial disposition, use
 > `docs/ideology-label-editorial-review-2026-08.md`.
+>
+> Taxonomy note (2026-08-10): rows below that show the former
+> `libertarian-leaning` family are historical snapshots. The live catalog now
+> groups market and right-libertarian traditions under the `liberal` lineage,
+> while socialist and anarchist uses of “libertarian” remain in those families.
 
 ## Overall quality summary
 

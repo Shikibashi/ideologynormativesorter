@@ -369,7 +369,7 @@ function selfLabelEstimate(
     return {
       status: 'insufficient-data',
       n: usable.length,
-      reason: `Requires at least ${minimumCases} test records with a recognized pre-result self-label; ${usable.length} are available.`,
+      reason: `Requires at least ${minimumCases} test records with a recognized post-questionnaire, pre-result-display self-label; ${usable.length} are available.`,
     }
   }
   let top1 = 0

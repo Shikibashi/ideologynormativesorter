@@ -4,18 +4,18 @@ The browser application computes descriptive and classical diagnostics only when
 
 ## Inputs
 
-Use consented schema-v3 records produced by research mode. A balanced matrix form can be requested with `formSize`; omit it to administer every eligible core item in the chosen tier.
+Use consented schema `2026-08-v5` records produced by research mode. A balanced matrix form can be requested with `formSize`; omit it to administer every eligible core item in the chosen tier.
 
 ```text
 https://your-site.example/?research=1&study=pilot-2026&formSize=120
 https://your-site.example/?research=1&study=pilot-2026&administration=retest&formSize=120
 ```
 
-The same browser keeps a stable random participant code. Test and retest core forms preserve eligible coverage but use a different deterministic presentation order. Research participants are also deterministically assigned one optional specialist module. The same participant receives the same specialist module at test and retest, while specialist item order changes by administration.
+The same browser keeps a stable random participant code. Test and retest core forms preserve the same participant-specific item membership but use a different deterministic presentation order. The record stores the form algorithm version, membership fingerprint, exact presented wording/options, and open-opt-in recruitment source. Research participants are also deterministically assigned one optional specialist module. The same participant receives the same specialist module at test and retest, while specialist item order changes by administration.
 
 Core records and specialist records share `studyId`, `participantId`, and `administration`, so they can be joined without storing names, email addresses, exact ages, or precise locations. The core record includes the assigned specialist module even when the respondent declines it, which provides a denominator for follow-up uptake analysis.
 
-Set `VITE_RESEARCH_ENDPOINT` at build time to transmit records. Without it, participants can download submitted core or completed specialist JSON records. The included reference collector accepts the records and keeps core psychometric data separate from specialist follow-ups:
+Set `VITE_RESEARCH_ENDPOINT` at build time to transmit records through the website. Without it, the deployed site disables the contribution entry point. The included reference collector accepts the records and keeps core psychometric data separate from specialist follow-ups:
 
 ```bash
 ALLOWED_ORIGIN=http://localhost:5173 \
@@ -40,15 +40,20 @@ First generate quality flags without deleting any records:
 
 ```bash
 QUALITY_MINIMUM_DURATION_MS=0 \
+QUALITY_MINIMUM_MS_PER_ITEM=0 \
 QUALITY_MAXIMUM_MISSING_RATE=0.40 \
 QUALITY_MAXIMUM_INVARIANT_RATE=0.95 \
+QUALITY_REQUIRED_CONSENT_VERSION=2026-08-10-v5 \
 Rscript analysis/run_data_quality.R private-data/submissions.ndjson analysis/output
 ```
 
-Set the duration threshold from the preregistered cognitive-pilot timing distribution before examining ideological outcomes. Then run the core psychometric workflow on the frozen analysis input:
+Set absolute or per-assigned-item duration thresholds from the frozen cognitive-pilot rule before examining ideological outcomes. Straightlining is computed only across observed five- and seven-point Likert items; categorical statement-choice indices are excluded. The quality workflow writes `analysis-inclusion-manifest.csv`, keyed by `submission_id`; explicitly resolve every `review-required` decision and freeze the manifest. For duplicate participant administrations with different IDs, include at most the documented valid record and exclude the others. Exact duplicate `submissionId` values must be deduplicated before validation. Then run the core workflow:
 
 ```bash
-Rscript analysis/run_validation.R private-data/submissions.ndjson analysis/output
+Rscript analysis/run_validation.R \
+  private-data/submissions.ndjson \
+  analysis/output \
+  analysis/output/analysis-inclusion-manifest.csv
 ```
 
 Optional core psychometric environment variables:
@@ -59,6 +64,11 @@ PSYCH_MINIMUM_AXIS_N=100
 PSYCH_MINIMUM_FACTOR_N=300
 PSYCH_MINIMUM_DIF_GROUP_N=100
 PSYCH_RANDOM_SEED=20260718
+PSYCH_REQUIRED_CONSENT_VERSION=2026-08-10-v5
+PSYCH_REQUIRED_FORM_VERSION=balanced-matrix-v2
+PSYCH_REQUIRED_QUALITY_RULE_VERSION=data-quality-v2
+# Also set PSYCH_REQUIRED_BANK_VERSION and PSYCH_REQUIRED_SCORING_VERSION
+# to the frozen cohort values for field analysis.
 ```
 
 ## Run specialist validation
@@ -83,7 +93,7 @@ The specialist workflow currently evaluates:
 
 - assignment uptake by module and administration;
 - explicit decline versus unresolved attrition;
-- pre-result self-identification criterion concordance;
+- post-questionnaire, pre-result-display self-identification concordance;
 - construct score distributions;
 - construct-level internal consistency when enough respondents exist;
 - construct-level test-retest correlations when enough paired respondents exist.
@@ -99,17 +109,21 @@ The data-quality workflow writes:
 - `item-response-quality.csv`
 - `self-reported-ideology-candidates.csv` — private aggregate counts of optional respondent-supplied ideology names from initial administrations; this is a discovery queue, not an automatic taxonomy update.
 - `exclusion-candidates.csv`
+- `analysis-inclusion-manifest.csv` — keyed by `submission_id`; clean rows start as `include`, and flagged rows must be explicitly resolved before validation runs.
 
 The core psychometric workflow writes:
 
 - `validation-summary.json`
 - `axis-reliability.csv` with alpha, omega total, and percentile bootstrap intervals
-- `item-total-correlations.csv`
-- `test-retest.csv` with bootstrap intervals
+- `item-total-correlations.csv` with the observed pair count and a corrected correlation against the respondent's available mean across the remaining axis items
+- `test-retest.csv` with rank-order correlation, concordance, and change distributions for the primary-axis item model
+- `production-axis-scores.csv` reconstructed with every production weight and confidence/priority multiplier
+- `production-score-test-retest.csv` with agreement and change distributions for the exact production score contract
+- `form-incidence-summary.csv`, `item-assignment-counts.csv`, `item-pair-overlap.csv`, and `item-position-distribution.csv` for auditing achieved matrix-form connectivity and order balance
 - `criterion-concordance.csv`
 - `source-coverage.csv`
 - `efa-loadings.csv` when the development split is estimable
-- `cfa-fit.csv` with held-out CFI, TLI, RMSEA, and SRMR
+- `cfa-fit.csv` with internally held-out CFI, TLI, RMSEA, and SRMR; this is not a substitute for a separately recruited confirmation sample
 - `dif-results.csv` when preregistered groups meet the minimum sample requirement
 
 The specialist workflow writes:
@@ -124,7 +138,9 @@ The specialist workflow writes:
 - `specialist-construct-reliability.csv`
 - `specialist-test-retest.csv`
 
-Core Likert items are oriented toward their primary axis. Statement-choice items and items marked `needs-rewrite` are excluded from common-scale reliability and factor analyses. CFA uses the primary-axis specification and WLSMV on a held-out split. DIF uses graded-response multiple-group models with multiplicity adjustment.
+Core Likert items are oriented toward their primary axis for an item measurement model. That model is not the production result score. Statement-choice items and items marked `needs-rewrite` are excluded from common-scale reliability and factor analyses. The production-score outputs separately retain every axis weight, statement-option weight, and salience multiplier. CFA uses the primary-axis specification, pairwise planned-missing handling, and WLSMV on an internal split. DIF uses graded-response multiple-group models with multiplicity adjustment.
+
+The validation script fails closed on unresolved inclusion decisions, duplicate submission IDs, more than one included record per participant administration, incompatible method versions, inconsistent form fingerprints or item snapshots, invalid response/salience states, and test/retest fingerprint mismatches. Analyze changed versions separately unless a linking design was frozen in advance.
 
 Specialist reliability is computed only inside each module and construct. Specialist items never enter the core axis reliability or factor models.
 

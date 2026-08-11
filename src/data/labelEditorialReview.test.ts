@@ -30,7 +30,7 @@ const revisedCopyExpectations: Array<[string, RegExp]> = [
 
 describe('label editorial review', () => {
    it('tracks every current label in the dated review ledger', () => {
-      expect(labels).toHaveLength(117)
+      expect(labels).toHaveLength(118)
       for (const label of labels) {
          expect(reviewLedger, `${label.id} is missing from the review ledger`).toContain(`| ${label.id} |`)
       }

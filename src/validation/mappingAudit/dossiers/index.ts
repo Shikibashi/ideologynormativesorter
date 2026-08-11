@@ -1,4 +1,5 @@
 import { labels } from '../../../data/labels'
+import { roleForLabel } from '../../../data/labelTaxonomy'
 import { axes } from '../../../data/axes'
 import type { IdeologyDossier } from '../types'
 import { isMatchPoolMember } from '../predicates'
@@ -39,7 +40,7 @@ export function buildDossiers(): IdeologyDossier[] {
       centroidRationales,
       cautionNote: label.cautionNote,
       usageNote: label.usageNote,
-      matchPoolMember: true,
+      matchPoolMember: roleForLabel(label.id) === 'primary',
       linkedFindingIds: [],
       linkedTestIds: [],
       provisionalExpertOnly: true,
@@ -47,7 +48,7 @@ export function buildDossiers(): IdeologyDossier[] {
 
     dossier.matchPoolMember = isMatchPoolMember({
       ...dossier,
-      matchPoolMember: true,
+      matchPoolMember: dossier.matchPoolMember,
     })
 
     return dossier

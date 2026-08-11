@@ -1,43 +1,25 @@
 import { useEffect, useRef, useState } from 'react'
 import { getQuestionHelpText, getSalienceHelpText } from '../data/questionHelpText'
+import {
+  DEFAULT_CONFIDENCE_PROMPT,
+  DEFAULT_PRIORITY_PROMPT,
+  SALIENCE_LEVELS,
+  SKIP_SALIENCE_LABEL,
+  scaleLabel,
+  scaleValues,
+} from '../questionPresentation'
 import { saveQuizState } from '../save'
 import { announceStatus } from '../status'
 import type { Answer, AnswerMap, Question, QuizTier } from '../types'
 
-const DEFAULT_CONFIDENCE_PROMPT = 'How confident are you in this empirical claim?'
-const SALIENCE_LEVELS: { label: string; value: number }[] = [
-  { label: 'Low', value: 1 },
-  { label: 'Medium', value: 3 },
-  { label: 'High', value: 5 },
-]
-
-const LIKERT_LABELS: Record<number, string> = {
-  '-3': 'Strongly disagree',
-  '-2': 'Disagree',
-  '-1': 'Somewhat disagree',
-  '0': 'Neutral',
-  '1': 'Somewhat agree',
-  '2': 'Agree',
-  '3': 'Strongly agree',
-}
-
-const LIKERT5_LABELS: Record<number, string> = {
-  '-2': 'Disagree',
-  '-1': 'Somewhat disagree',
-  '0': 'Neutral',
-  '1': 'Somewhat agree',
-  '2': 'Agree',
-}
-
-function scaleValues(responseType: Question['responseType']): number[] {
-  return responseType === 'likert5' ? [-2, -1, 0, 1, 2] : [-3, -2, -1, 0, 1, 2, 3]
-}
-
-function scaleLabels(responseType: Question['responseType']): Record<number, string> {
-  return responseType === 'likert5' ? LIKERT5_LABELS : LIKERT_LABELS
-}
-
 type ProgressSaveResult = { saved: true } | { saved: false; reason: string }
+
+export interface QuizScreenStatus {
+  current: number
+  total: number
+  layer: Question['layer']
+  save: 'current' | 'unavailable'
+}
 
 interface QuizScreenProps {
   questions: Question[]
@@ -49,6 +31,9 @@ interface QuizScreenProps {
   contextLabel?: string
   progressSaver?: (state: { answers: AnswerMap; index: number }) => ProgressSaveResult
   onExit?: () => void
+  /** Research-only refusal option. Kept separate from empirical uncertainty. */
+  allowRefusal?: boolean
+  onStatusChange?: (status: QuizScreenStatus) => void
 }
 
 export function QuizScreen({
@@ -60,26 +45,33 @@ export function QuizScreen({
   contextLabel,
   progressSaver,
   onExit,
+  allowRefusal = false,
+  onStatusChange,
 }: QuizScreenProps) {
   const [index, setIndex] = useState(initialIndex ?? 0)
   const [answers, setAnswers] = useState<AnswerMap>(initialAnswers ?? {})
   const [pendingValue, setPendingValue] = useState<Answer['value'] | null>(null)
   const [saveError, setSaveError] = useState<string | null>(null)
+  const [saveState, setSaveState] = useState<QuizScreenStatus['save']>('current')
   const question = questions[index]
   const selected = answers[question.id]
   const isLast = index === questions.length - 1
 
   const salienceField = question.layer === 'descriptive' ? 'confidence' : question.layer === 'prescriptive' ? 'priority' : null
-  const salienceQuestion = pendingValue !== null && pendingValue !== 'dont_know' ? salienceField : null
+  const salienceQuestion = typeof pendingValue === 'number' ? salienceField : null
   const canAnswerDontKnow = question.layer === 'descriptive' || question.allowDontKnow === true
+  const saveSuccessAnnounced = useRef(false)
 
-  // Persist progress on every answer change (skip on first render if restoring).
-  const isRestored = useRef(!!initialAnswers)
   useEffect(() => {
-    if (isRestored.current) {
-      isRestored.current = false
-      return
-    }
+    onStatusChange?.({ current: index + 1, total: questions.length, layer: question.layer, save: saveState })
+  }, [index, onStatusChange, question.layer, questions.length, saveState])
+
+  // Persist only when the answer object changes. This also avoids Strict Mode
+  // replaying a save announcement for an untouched restored session.
+  const lastPersistedAnswers = useRef(answers)
+  useEffect(() => {
+    if (lastPersistedAnswers.current === answers) return
+    lastPersistedAnswers.current = answers
     if (Object.keys(answers).length === 0) return
 
     const result = progressSaver
@@ -91,22 +83,28 @@ export function QuizScreen({
     if (result?.saved === false) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- safe: saveError is not a dep
       setSaveError(result.reason)
+      setSaveState('unavailable')
       announceStatus(result.reason)
     } else if (result?.saved === true) {
       setSaveError(null)
-      announceStatus('Assessment progress saved locally.')
+      setSaveState('current')
+      if (!saveSuccessAnnounced.current) {
+        saveSuccessAnnounced.current = true
+        announceStatus('Assessment progress saved locally.')
+      }
     }
   }, [answers, index, progressSaver, questions, tier])
 
-  function commit(value: Answer['value'], rating?: number) {
+  function commit(value: Answer['value'], rating?: number, salienceSkipped = false) {
     const answer: Answer = { questionId: question.id, value }
     if (salienceField === 'confidence' && rating !== undefined) answer.confidence = rating
     if (salienceField === 'priority' && rating !== undefined) answer.priority = rating
+    if (salienceSkipped) answer.salienceSkipped = true
 
     const next: AnswerMap = { ...answers, [question.id]: answer }
     setAnswers(next)
     setPendingValue(null)
-    announceStatus(isLast ? 'Answer recorded. Assessment complete.' : `Answer recorded. Question ${index + 2} of ${questions.length}.`)
+    announceStatus(isLast ? 'Answer recorded. Assessment complete.' : `Answer recorded; advanced to item ${index + 2} of ${questions.length}.`)
     if (isLast) {
       onComplete(next)
     } else {
@@ -115,7 +113,7 @@ export function QuizScreen({
   }
 
   function chooseValue(value: Answer['value']) {
-    if (value !== 'dont_know' && salienceField) {
+    if (typeof value === 'number' && salienceField) {
       setPendingValue(value)
     } else {
       commit(value)
@@ -131,12 +129,17 @@ export function QuizScreen({
 
   if (salienceQuestion) {
     const prompt = salienceQuestion === 'confidence'
-      ? question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT
-      : question.priorityPrompt
+      ? DEFAULT_CONFIDENCE_PROMPT
+      : DEFAULT_PRIORITY_PROMPT
     const helpText = getSalienceHelpText(salienceQuestion)
 
     return (
-      <section className="screen quiz-screen">
+      <section
+        className="screen quiz-screen"
+        data-question-id={question.id}
+        data-question-index={index}
+        data-layer={question.layer}
+      >
         <div className="section-band">
           <span className="section-band-label">ASSESSMENT / FOLLOW-UP</span>
           <span className="section-band-status">ANSWER REVIEW</span>
@@ -172,8 +175,8 @@ export function QuizScreen({
         <button type="button" className="back-link" onClick={() => setPendingValue(null)}>
           Back
         </button>
-        <button type="button" className="back-link" onClick={() => commit(pendingValue as Answer['value'])}>
-          Skip
+        <button type="button" className="back-link" onClick={() => commit(pendingValue as Answer['value'], undefined, true)}>
+          {SKIP_SALIENCE_LABEL}
         </button>
         {onExit && <button type="button" className="back-link" onClick={onExit}>Stop follow-up</button>}
       </section>
@@ -183,10 +186,17 @@ export function QuizScreen({
   const helpText = question.helpText ?? getQuestionHelpText(question)
 
   return (
-    <section className="screen quiz-screen">
+    <section
+      className="screen quiz-screen"
+      data-question-id={question.id}
+      data-question-index={index}
+      data-layer={question.layer}
+    >
       <div className="section-band">
         <span className="section-band-label">ASSESSMENT / QUESTION</span>
-        <span className="section-band-status">LOCAL SAVE ENABLED</span>
+        <span className="section-band-status">
+          {saveState === 'current' ? 'LOCAL SAVE ENABLED' : 'LOCAL SAVE UNAVAILABLE'}
+        </span>
       </div>
       <div
         className="progress-track"
@@ -215,6 +225,8 @@ export function QuizScreen({
               key={option.id}
               type="button"
               className={`statement-button${selected?.value === optionIndex ? ' selected' : ''}`}
+              data-answer-value={optionIndex}
+              aria-pressed={selected?.value === optionIndex}
               onClick={() => chooseValue(optionIndex)}
             >
               {option.text}
@@ -228,9 +240,11 @@ export function QuizScreen({
               key={value}
               type="button"
               className={`scale-button${selected?.value === value ? ' selected' : ''}`}
+              data-answer-value={value}
+              aria-pressed={selected?.value === value}
               onClick={() => chooseValue(value)}
             >
-              {scaleLabels(question.responseType)[value]}
+              {scaleLabel(question.responseType, value)}
             </button>
           ))}
         </div>
@@ -240,9 +254,23 @@ export function QuizScreen({
         <button
           type="button"
           className={`dont-know-button${selected?.value === 'dont_know' ? ' selected' : ''}`}
+          data-answer-value="dont_know"
+          aria-pressed={selected?.value === 'dont_know'}
           onClick={() => chooseValue('dont_know')}
         >
           I don't know
+        </button>
+      )}
+
+      {allowRefusal && (
+        <button
+          type="button"
+          className={`dont-know-button${selected?.value === 'prefer_not_to_answer' ? ' selected' : ''}`}
+          data-answer-value="prefer_not_to_answer"
+          aria-pressed={selected?.value === 'prefer_not_to_answer'}
+          onClick={() => chooseValue('prefer_not_to_answer')}
+        >
+          Prefer not to answer
         </button>
       )}
 

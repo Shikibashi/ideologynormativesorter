@@ -1,10 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { axisById } from './axes'
 import { questionById, questions, questionsForTier } from './effectiveQuestions'
+import {
+  RESPONDENT_QUESTION_REVIEW_VERSION,
+  replacementRequiredById,
+} from './respondentQuestionReview'
 import { needsRewriteById, semanticCorrections, SEMANTIC_AUDIT_VERSION } from './semanticAudit'
 
 describe('semantic question audit', () => {
-  it('does not both correct and deactivate the same item', () => {
+  it('does not both correct and deactivate an item in the same semantic-review pass', () => {
     const overlap = Object.keys(semanticCorrections).filter((questionId) => needsRewriteById[questionId])
     expect(overlap).toEqual([])
   })
@@ -13,9 +17,19 @@ describe('semantic question audit', () => {
     for (const [questionId, correction] of Object.entries(semanticCorrections)) {
       const question = questionById.get(questionId)
       expect(question, `${questionId} correction references a missing question`).toBeDefined()
-      expect(question!.version).toBe(SEMANTIC_AUDIT_VERSION)
-      expect(question!.reviewStatus).toBe('approved')
       expect(question!.axisWeights).toEqual(correction.axisWeights)
+
+      if (replacementRequiredById[questionId]) {
+        expect(question!.version).toBe(RESPONDENT_QUESTION_REVIEW_VERSION)
+        expect(question!.reviewStatus).toBe('needs-rewrite')
+        expect(question!.active).toBe(false)
+      } else if (question!.layer !== 'normative') {
+        expect(question!.version).toBe(RESPONDENT_QUESTION_REVIEW_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else {
+        expect(question!.version).toBe(SEMANTIC_AUDIT_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      }
 
       for (const weight of correction.axisWeights) {
         const axis = axisById.get(weight.axisId)

@@ -3,9 +3,11 @@ import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 const css = readFileSync(join(process.cwd(), 'src/index.css'), 'utf8')
+const tokens = readFileSync(join(process.cwd(), 'src/styles/ecw-tokens.css'), 'utf8')
 const appCss = readFileSync(join(process.cwd(), 'src/App.css'), 'utf8')
 const compass = readFileSync(join(process.cwd(), 'src/components/CompassPlot.tsx'), 'utf8')
 const html = readFileSync(join(process.cwd(), 'index.html'), 'utf8')
+const prepaint = readFileSync(join(process.cwd(), 'public/ecw-prepaint.js'), 'utf8')
 
 function channel(value: string): number {
   const normalized = value.length === 1 ? `${value}${value}` : value
@@ -24,29 +26,32 @@ function contrast(first: string, second: string): number {
 
 describe('ECW token contracts', () => {
   it('declares named fallbacks before generic families', () => {
-    expect(css).toMatch(/--ecw-font-display:\s*Georgia,\s*"Noto Serif".*serif;/s)
-    expect(css).toMatch(/--ecw-font-ui:\s*Verdana,\s*"DejaVu Sans".*sans-serif;/s)
-    expect(css).toMatch(/--ecw-font-system:\s*"Courier New",\s*"Liberation Mono".*monospace;/s)
+    expect(tokens).toMatch(/--ecw-font-display:\s*Georgia,\s*"Noto Serif".*serif;/s)
+    expect(tokens).toMatch(/--ecw-font-ui:\s*Verdana,\s*"DejaVu Sans".*sans-serif;/s)
+    expect(tokens).toMatch(/--ecw-font-system:\s*"Courier New",\s*"Liberation Mono".*monospace;/s)
   })
 
   it('keeps the ECW hit-target floor above 24 CSS pixels at the default root size', () => {
     const compactHitMin = 1.875 * 16
     expect(compactHitMin).toBeGreaterThanOrEqual(24)
-    expect(css).toContain('--ecw-hit-min: 1.875rem')
+    expect(tokens).toContain('--ecw-hit-min: 1.875rem')
   })
 
   it('uses a fluid shell and demotes the masthead before tablet widths', () => {
-    expect(css).toContain('--ecw-shell-max: clamp(92rem, 80vw, 160rem)')
+    expect(tokens).toContain('--ecw-shell-max: clamp(92rem, 80vw, 160rem)')
     expect(css).toContain('width: min(var(--ecw-shell-max)')
     expect(appCss).toMatch(/@media \(max-width: 900px\) \{[\s\S]*?\.site-masthead \{[\s\S]*?grid-template-columns: 1fr;/)
     expect(appCss).toMatch(/\.results-screen \{[\s\S]*?max-width: none;[\s\S]*?padding-block-start: clamp\(1rem, 2vw, 1\.5rem\);/)
-    expect(css).toMatch(/html \{[\s\S]*?overflow-x: hidden;[\s\S]*?overflow-x: clip;/)
-    expect(css).toMatch(/body \{[\s\S]*?overflow-x: hidden;[\s\S]*?overflow-x: clip;/)
+    expect(css).not.toMatch(/(?:html|body)\s*\{[^}]*overflow-x:\s*(?:hidden|clip)/s)
   })
 
   it('keeps the compass square and redraws at the current device pixel ratio', () => {
-    expect(compass).toContain('Math.round(SIZE * dpr)')
+    expect(compass).toContain('Math.round(size * dpr)')
     expect(compass).toContain('ctx.setTransform(dpr, 0, 0, dpr, 0, 0)')
+    expect(compass).toContain('new ResizeObserver(draw)')
+    expect(compass).toContain("attributeFilter: ['data-theme', 'data-contrast']")
+    expect(compass).toContain("window.matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`)")
+    expect(compass).toContain("cssLengthPx('--ecw-font-size-micro', 12)")
     expect(compass).toContain("style={{ width: '100%', maxWidth: SIZE, height: 'auto', aspectRatio: '1' }}")
     expect(appCss).toMatch(/\.compass-plot canvas \{[\s\S]*?height: auto;[\s\S]*?aspect-ratio: 1;/)
   })
@@ -54,17 +59,19 @@ describe('ECW token contracts', () => {
   it('keeps the two focus colors above the ECW 9:1 contrast rule', () => {
     expect(contrast('#ffd45c', '#050719')).toBeGreaterThanOrEqual(9)
     expect(contrast('#522598', '#ffffff')).toBeGreaterThanOrEqual(9)
-    expect(css).toContain('--ecw-focus-outer')
-    expect(css).toContain('--ecw-focus-inner')
+    expect(tokens).toContain('--ecw-focus-outer')
+    expect(tokens).toContain('--ecw-focus-inner')
     expect(css).toMatch(/:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--ecw-focus-inner\);[^}]*box-shadow:\s*0 0 0 4px var\(--ecw-focus-outer\);/s)
   })
 
   it('defines explicit status foregrounds for accent fills', () => {
-    expect(css).toContain('--ecw-warning-on-accent')
-    expect(css).toContain('--ecw-success-on-accent')
-    expect(css).toContain('--ecw-info-on-accent')
-    expect(css).toContain('--ecw-error-on-accent')
-    expect(css).toContain('--ecw-purple-on-accent')
+    for (const status of ['warning', 'success', 'info', 'error']) {
+      expect(tokens).toContain(`--ecw-status-${status}-text`)
+      expect(tokens).toContain(`--ecw-status-${status}-accent`)
+      expect(tokens).toContain(`--ecw-status-${status}-border`)
+      expect(tokens).toContain(`--ecw-status-${status}-on-accent`)
+    }
+    expect(tokens).toContain('--ecw-selection-text')
   })
 
   it('keeps status accent foreground pairs above the normal text contrast floor', () => {
@@ -88,14 +95,34 @@ describe('ECW token contracts', () => {
 
   it('resolves appearance before first paint using the canonical preference keys', () => {
     expect(html).toContain('<meta name="color-scheme" content="light dark" />')
-    expect(html).toContain('political-judgment-appearance-v1')
-    expect(html).toContain('political-judgment-theme-v1')
-    expect(html).toContain("document.documentElement.dataset.theme")
+    expect(html).toContain('<script src="/ecw-prepaint.js"></script>')
+    expect(html).not.toMatch(/<script>\s*[\s\S]+?<\/script>/)
+    expect(prepaint).toContain('political-judgment-appearance-v1')
+    expect(prepaint).toContain('political-judgment-density-v1')
+    expect(prepaint).toContain('political-judgment-contrast-v1')
+    expect(prepaint).toContain('root.dataset.theme')
+    expect(prepaint).toContain('root.dataset.density')
+    expect(prepaint).toContain('root.dataset.contrast')
   })
 
   it('preserves selected-focus handling when forced colors replaces authored colors', () => {
     expect(css).toContain('@media (forced-colors: active)')
     expect(css).toContain('.scale-button.selected:focus-visible')
     expect(css).toContain('outline-color: HighlightText')
+  })
+
+  it('keeps compatibility aliases out of active component rules', () => {
+    expect(tokens).toContain('--web99-bg: var(--ecw-canvas)')
+    expect(appCss).not.toContain('--web99-')
+    expect(css).not.toContain('--web99-')
+    const legacyRoleUse = /var\(--(?:surface(?:-raised|-sunken)?|workspace|text(?:-m|-h)?|border(?:-light|-dark)?|code-bg|accent(?:-hover|-bg|-border)?|highlight-text|danger|shadow|sans|heading|mono)\)/
+    expect(appCss).not.toMatch(legacyRoleUse)
+    expect(css).not.toMatch(legacyRoleUse)
+  })
+
+  it('does not generate navigator text or use ten-pixel functional text', () => {
+    expect(appCss).not.toMatch(/\.results-navigator\s+a::before/)
+    expect(appCss).not.toMatch(/font(?:-size|):[^;{}]*10px/)
+    expect(compass).not.toMatch(/font\s*=\s*['"`]10px/)
   })
 })

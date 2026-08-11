@@ -1,9 +1,9 @@
 import type { Answer, AnswerMap } from '../types'
 
-type EncodedAnswer = [string, Answer['value'], number?, number?]
+type EncodedAnswer = [string, Answer['value'], number?, number?, true?]
 
 const HASH_PREFIX = '#r='
-const SHARE_VERSION = 2
+const SHARE_VERSION = 3
 
 export interface ShareMeta {
   bankVersion?: string
@@ -11,32 +11,44 @@ export interface ShareMeta {
 }
 
 export function encodeAnswers(answers: AnswerMap, meta?: ShareMeta): string {
-  const compact: EncodedAnswer[] = Object.values(answers).map((a) => [a.questionId, a.value, a.confidence, a.priority])
-  const payload = meta ? { v: SHARE_VERSION, bk: meta.bankVersion, sc: meta.scoringVersion, a: compact } : compact
+  const compact: EncodedAnswer[] = Object.values(answers).map((answer) => [
+    answer.questionId,
+    answer.value,
+    answer.confidence,
+    answer.priority,
+    answer.salienceSkipped === true ? true : undefined,
+  ])
+  const payload = { v: SHARE_VERSION, bk: meta?.bankVersion, sc: meta?.scoringVersion, a: compact }
   return base64UrlEncode(JSON.stringify(payload))
 }
 
 export function decodeAnswers(param: string): AnswerMap | null {
   try {
     const decoded = JSON.parse(base64UrlDecode(param))
-    const compact = compactAnswersFromPayload(decoded)
-    if (!compact) return null
+    return decodePayload(decoded)?.answers ?? null
+  } catch {
+    return null
+  }
+}
+
+function decodePayload(decoded: unknown): { answers: AnswerMap; meta: ShareMeta | null } | null {
+    const payload = compactAnswersFromPayload(decoded)
+    if (!payload) return null
 
     const answers: AnswerMap = {}
-    for (const entry of compact) {
+    for (const entry of payload.compact) {
       if (!Array.isArray(entry)) return null
-      const [questionId, value, confidence, priority] = entry
+      const [questionId, value, confidence, priority, salienceSkipped] = entry
       if (typeof questionId !== 'string' || !isValidAnswerValue(value)) return null
+      if (salienceSkipped !== undefined && salienceSkipped !== null && salienceSkipped !== true) return null
 
       const answer: Answer = { questionId, value }
       if (isValidSalience(confidence)) answer.confidence = confidence
       if (isValidSalience(priority)) answer.priority = priority
+      if (salienceSkipped === true) answer.salienceSkipped = true
       answers[questionId] = answer
     }
-    return answers
-  } catch {
-    return null
-  }
+    return { answers, meta: payload.meta }
 }
 
 export function extractEncodedAnswers(input: string, param: 'r' | 'c' = 'r'): string | null {
@@ -62,23 +74,23 @@ export function buildShareUrl(answers: AnswerMap, meta?: ShareMeta): string {
 
 export function buildCompareUrl(profile1: AnswerMap, profile2: AnswerMap, meta?: ShareMeta): string {
   const enc1 = encodeAnswers(profile1, meta)
-  const enc2 = encodeAnswers(profile2)
+  const enc2 = encodeAnswers(profile2, meta)
   const base = typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : ''
   return `${base}#r=${enc1}&c=${enc2}`
 }
 
-export function readCompareAnswers(): AnswerMap | null {
+export function readCompareAnswers(expectedMeta?: ShareMeta): AnswerMap | null {
   if (typeof window === 'undefined') return null
   const encoded = extractEncodedAnswers(window.location.hash, 'c')
-  return encoded ? decodeAnswers(encoded) : null
+  return encoded ? decodeCompatibleAnswers(encoded, expectedMeta) : null
 }
-export function readSharedAnswers(): AnswerMap | null {
+export function readSharedAnswers(expectedMeta?: ShareMeta): AnswerMap | null {
   if (typeof window === 'undefined') return null
   const encoded = extractEncodedAnswers(window.location.hash, 'r')
-  return encoded ? decodeAnswers(encoded) : null
+  return encoded ? decodeCompatibleAnswers(encoded, expectedMeta) : null
 }
 
-export function readSharedResult(): { answers: AnswerMap | null; malformed: boolean } {
+export function readSharedResult(expectedMeta?: ShareMeta): { answers: AnswerMap | null; malformed: boolean } {
   if (typeof window === 'undefined') return { answers: null, malformed: false }
   const hash = window.location.hash
   // Only treat as a share attempt when an explicit r= param is present, so arbitrary
@@ -86,22 +98,50 @@ export function readSharedResult(): { answers: AnswerMap | null; malformed: bool
   if (!/[#&?]r=/.test(hash)) return { answers: null, malformed: false }
   const encoded = extractEncodedAnswers(hash, 'r')
   if (!encoded) return { answers: null, malformed: false }
-  const answers = decodeAnswers(encoded)
+  const answers = decodeCompatibleAnswers(encoded, expectedMeta)
   if (answers && Object.keys(answers).length > 0) return { answers, malformed: false }
   return { answers: null, malformed: true }
 }
 
-function compactAnswersFromPayload(decoded: unknown): unknown[] | null {
-  if (Array.isArray(decoded)) return decoded
+export function decodeCompatibleAnswers(encoded: string, expectedMeta?: ShareMeta): AnswerMap | null {
+  try {
+    const decoded = decodePayload(JSON.parse(base64UrlDecode(encoded)))
+    if (!decoded) return null
+    if (expectedMeta && !metadataMatches(decoded.meta, expectedMeta)) return null
+    return decoded.answers
+  } catch {
+    return null
+  }
+}
+
+function metadataMatches(actual: ShareMeta | null, expected: ShareMeta): boolean {
+  if (!actual) return false
+  return (!expected.bankVersion || actual.bankVersion === expected.bankVersion)
+    && (!expected.scoringVersion || actual.scoringVersion === expected.scoringVersion)
+}
+
+function compactAnswersFromPayload(decoded: unknown): { compact: unknown[]; meta: ShareMeta | null } | null {
+  if (Array.isArray(decoded)) return { compact: decoded, meta: null }
   if (decoded && typeof decoded === 'object' && 'v' in decoded) {
-    const payload = decoded as { a?: unknown }
-    return Array.isArray(payload.a) ? payload.a : null
+    const payload = decoded as { v?: unknown; bk?: unknown; sc?: unknown; a?: unknown }
+    if (payload.v !== 2 && payload.v !== SHARE_VERSION) return null
+    if (!Array.isArray(payload.a)) return null
+    if (payload.bk !== undefined && typeof payload.bk !== 'string') return null
+    if (payload.sc !== undefined && typeof payload.sc !== 'string') return null
+    return {
+      compact: payload.a,
+      meta: payload.bk || payload.sc
+        ? { bankVersion: payload.bk as string | undefined, scoringVersion: payload.sc as string | undefined }
+        : null,
+    }
   }
   return null
 }
 
 function isValidAnswerValue(value: unknown): value is Answer['value'] {
-  return value === 'dont_know' || (typeof value === 'number' && Number.isFinite(value) && value >= -3 && value <= 3)
+  return value === 'dont_know'
+    || value === 'prefer_not_to_answer'
+    || (typeof value === 'number' && Number.isFinite(value) && value >= -3 && value <= 3)
 }
 
 function isValidSalience(value: unknown): value is number {

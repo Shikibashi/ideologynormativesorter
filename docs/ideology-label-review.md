@@ -1,6 +1,6 @@
 # Ideology Label Academic Review
 
-> This is the historical baseline audit. The current 117-label disposition,
+> This is the historical baseline audit. The current 118-label disposition,
 > including post-audit renames and copy decisions, is tracked in
 > `docs/ideology-label-editorial-review-2026-08.md`.
 

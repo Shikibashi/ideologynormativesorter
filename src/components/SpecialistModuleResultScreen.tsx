@@ -1,4 +1,5 @@
 import type { SpecialistModuleDefinition, SpecialistOutcome } from '../specialist'
+import { constructSignalLabel, labelProximityLabel } from '../resultLanguage'
 
 interface SpecialistModuleResultScreenProps {
   module: SpecialistModuleDefinition
@@ -21,17 +22,16 @@ export function SpecialistModuleResultScreen({ module, outcome, onContinue }: Sp
   return (
     <section className="screen results-screen">
       <div className="section-band">
-        <span className="section-band-label">VALIDATION STUDY / EXPERIMENT</span>
+        <span className="section-band-label">COMMUNITY INPUT / EXPERIMENT</span>
         <span className="section-band-status">MAIN RESULT UNCHANGED</span>
       </div>
       <h1>Experimental follow-up result</h1>
       <p>
-        This is a research-stage result for <strong>{module.title}</strong>. It is being collected to test whether these
-        distinctions work with real respondents. It does not alter your main ideology result.
+        This is an early result for <strong>{module.title}</strong>. Contributions help the site owner see whether these
+        finer distinctions are useful. It does not alter your main ideology result.
       </p>
       <p className="muted">
-        Candidate and specialist matches below are measurement hypotheses. A close fit is evidence for future validation,
-        not a claim that the test has already established your political identity.
+        The matches below are experimental comparisons, not authoritative claims about your political identity.
       </p>
 
       <div className="result-block">
@@ -41,12 +41,12 @@ export function SpecialistModuleResultScreen({ module, outcome, onContinue }: Sp
             {visibleMatches.map((match) => (
               <article className="label-card" key={`${match.id}:${match.variant ?? ''}`}>
                 <h5>{match.name}{match.variant ? ` — ${match.variant}` : ''}</h5>
-                <p className="muted">{Math.round(match.fit * 100)}% experimental fit · {match.status.replaceAll('-', ' ')}</p>
+                <p className="muted">{labelProximityLabel(match.fit)} · experimental candidate comparison</p>
               </article>
             ))}
           </div>
         ) : (
-          <p className="muted">No candidate profile was a strong fit. That is useful validation data too.</p>
+          <p className="muted">No candidate profile was a strong fit. That is useful feedback too.</p>
         )}
       </div>
 
@@ -57,9 +57,9 @@ export function SpecialistModuleResultScreen({ module, outcome, onContinue }: Sp
             <div className="axis-row" key={constructId}>
               <div className="axis-label">
                 <span>{formatConstructName(constructId)}</span>
-                <span>{score > 0 ? '+' : ''}{score.toFixed(2)}</span>
+                <span>{constructSignalLabel(score)}</span>
               </div>
-              <div className="progress-track" aria-label={`${formatConstructName(constructId)} ${score.toFixed(2)}`}>
+              <div className="progress-track" aria-label={`${formatConstructName(constructId)}: ${constructSignalLabel(score)}`}>
                 <div className="progress-fill" style={{ width: `${Math.abs(score) * 100}%` }} />
               </div>
             </div>

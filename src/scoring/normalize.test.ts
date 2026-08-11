@@ -61,9 +61,10 @@ describe('salienceFactor', () => {
     expect(salienceFactor(question, { questionId: 'q1', value: 1, priority: 1 })).toBeCloseTo(0.2)
   })
 
-  it('defaults to full weight when unrated or normative', () => {
+  it('preserves legacy unrated answers but excludes an explicitly skipped salience rating', () => {
     const descriptive = makeQuestion({ layer: 'descriptive' })
     expect(salienceFactor(descriptive, { questionId: 'q1', value: 1 })).toBe(1)
+    expect(salienceFactor(descriptive, { questionId: 'q1', value: 1, salienceSkipped: true })).toBe(0)
 
     const normative = makeQuestion({ layer: 'normative' })
     expect(salienceFactor(normative, { questionId: 'q1', value: 1, confidence: 1 })).toBe(1)

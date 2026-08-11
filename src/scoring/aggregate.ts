@@ -24,8 +24,10 @@ export function contributionForQuestionAxis(question: Question, answer: Answer, 
 
   const unit = normalizeAnswer(question, answer)
   if (unit === null) return null
+  if (answer.salienceSkipped === true && question.layer !== 'normative') return null
 
-  return unit * axisWeight.weight * salienceFactor(question, answer)
+  const salience = salienceFactor(question, answer)
+  return unit * axisWeight.weight * salience
 }
 
 /**

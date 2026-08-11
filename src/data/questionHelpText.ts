@@ -120,7 +120,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
   },
   {
     pattern: /\bprices?\b/i,
-    definition: '“Prices” means signals that reflect what people are willing to pay or accept for goods, services or resources.',
+    definition: '“Price” means the amount paid or received for a good, service or resource in an exchange.',
   },
   {
     pattern: /\bcentralized planning\b|\bplanning\b|\bplanners?\b/i,
@@ -140,7 +140,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Universal transfers” means cash or benefits provided broadly rather than only to narrowly screened groups.',
   },
   {
-    pattern: /\bpublic choice\b|\bcapture\b|\bcaptured\b/i,
+    pattern: /\b(?:regulatory|agency|bureaucratic) capture\b|\banti-capture\b|\bcaptured (?:agency|regulator|regulation)\b/i,
     definition: '“Capture” means agencies or rules serving organized insiders more than the general public.',
   },
   {
@@ -156,7 +156,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Workplace governance” means who has authority and voice over decisions inside a workplace.',
   },
   {
-    pattern: /\bzoning\b|\bpermitting\b/i,
+    pattern: /\bzoning\b|\b(?:building|construction|development|land[- ]use) permits?\b|\bpermit(?:ting)? (?:housing|construction|development)\b/i,
     definition: '“Zoning and permitting” means local rules that decide what can be built, where and under what conditions.',
   },
   {
@@ -246,7 +246,7 @@ const TERM_DEFINITIONS: TermDefinition[] = [
     definition: '“Technocrats” means officials or advisers chosen for specialized expertise rather than electoral representation.',
   },
   {
-    pattern: /\bmajoritarian\b|\bdemocratic\b/i,
+    pattern: /\bmajoritarian\b|\bmajority (?:rule|vote|voting)\b/i,
     definition: '“Majoritarian decision-making” means choices are made mainly by majority vote.',
   },
   {
@@ -779,8 +779,8 @@ const TERM_DEFINITIONS: TermDefinition[] = [
 ]
 
 const SALIENCE_HELP_TEXT: Record<'confidence' | 'priority', string> = {
-  confidence: '“Confidence” means how sure you are that your answer is accurate. This rating controls how strongly this empirical answer counts in your result.',
-  priority: '“Priority” means how important this reform is compared with other changes. This rating controls how strongly this policy preference counts in your result.',
+  confidence: '“Confidence” means how sure you are that your answer is accurate. This rating controls how strongly this empirical answer counts in your result. Skipping the rating excludes the answer from your result.',
+  priority: '“Priority” means how important this policy or strategy is compared with other changes. This rating controls how strongly this preference counts in your result. Skipping the rating excludes the answer from your result.',
 }
 
 function stripTerminalPunctuation(value: string): string {
@@ -793,8 +793,7 @@ function lowercaseFirst(value: string): string {
 }
 
 function getQuestionSearchText(question: Question): string {
-  const optionText = question.statementOptions?.map((option) => option.text).join(' ') ?? ''
-  return `${question.prompt} ${optionText}`
+  return question.prompt
 }
 
 function findTermDefinitions(question: Question, limit = 2): string[] {

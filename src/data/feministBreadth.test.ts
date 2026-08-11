@@ -115,7 +115,7 @@ describe('feminist breadth module', () => {
     expect(minimumDistance, `closest feminist specialist pair: ${closestPair}`).toBeGreaterThanOrEqual(0.4)
   })
 
-  it('preserves existing catalog labels while quarantining new candidates', () => {
+  it('keeps specialist traditions out of primary scoring and quarantines the unlisted candidate', () => {
     const catalogIds = new Set(labels.map((label) => label.id))
     const primaryIds = new Set(primaryScoringLabels.map((label) => label.id))
 
@@ -124,11 +124,13 @@ describe('feminist breadth module', () => {
     expect(primaryIds.has('liberal-feminism')).toBe(true)
     expect(primaryIds.has('anarcha-feminism')).toBe(false)
 
-    for (const candidateId of ['radical-feminism', 'socialist-feminism']) {
-      expect(candidateById.get(candidateId)?.status).toBe('candidate-specialist')
-      expect(catalogIds.has(candidateId), `${candidateId} was promoted before validation`).toBe(false)
-      expect(primaryIds.has(candidateId), `${candidateId} leaked into the primary pool`).toBe(false)
-    }
+    expect(candidateById.get('socialist-feminism')?.status).toBe('existing-specialist')
+    expect(catalogIds.has('socialist-feminism')).toBe(true)
+    expect(primaryIds.has('socialist-feminism')).toBe(false)
+
+    expect(candidateById.get('radical-feminism')?.status).toBe('candidate-specialist')
+    expect(catalogIds.has('radical-feminism'), 'radical-feminism was promoted before validation').toBe(false)
+    expect(primaryIds.has('radical-feminism'), 'radical-feminism leaked into the primary pool').toBe(false)
   })
 
   for (const archetype of ARCHETYPES) {

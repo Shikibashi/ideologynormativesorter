@@ -13,7 +13,7 @@ export interface IdeologyLabel {
    cautionNote?: string
    /** Plain-language clarification shown with the label when extra context helps users interpret it. */
    usageNote?: string
-   /** Alternate names / grouped child ideologies listed under this parent label. Display-only; not used by scoring. */
+   /** Alternate names for this same label. Child or neighboring ideologies belong in subTheories or separate labels. */
    aliases?: string[]
    /** Influencing philosophical traditions (e.g. Marxism, Liberalism, Conservatism, etc.). Display-only. */
    philosophies?: string[]

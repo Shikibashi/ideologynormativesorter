@@ -20,13 +20,13 @@ export function SpecialistModuleInvite({
   return (
     <section className="screen intro-screen">
       <div className="section-band">
-        <span className="section-band-label">VALIDATION STUDY / FOLLOW-UP</span>
+        <span className="section-band-label">COMMUNITY INPUT / FOLLOW-UP</span>
         <span className="section-band-status">OPTIONAL MODULE</span>
       </div>
       <h1>Optional specialist follow-up</h1>
       <p>
-        You were assigned <strong>{module.title}</strong> for the validation study. Assignment is determined from your
-        pseudonymous participant code so the study does not rely only on people choosing the topics that interest them.
+        You were assigned <strong>{module.title}</strong> as an optional contribution follow-up. Your random contribution
+        code spreads different topics across contributors instead of asking everyone to choose a favorite topic.
       </p>
       <div className="result-block">
         <h2>{module.shortTitle}</h2>

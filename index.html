@@ -6,21 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <title>Political Judgment Decomposition</title>
-    <!-- If a strict CSP is introduced, protect this pre-paint resolver with a matching nonce or hash. -->
-    <script>
-      (() => {
-        try {
-          const stored = localStorage.getItem('political-judgment-appearance-v1')
-            || localStorage.getItem('political-judgment-theme-v1')
-          const appearance = stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system'
-          const systemDark = typeof window.matchMedia !== 'function'
-            || window.matchMedia('(prefers-color-scheme: dark)').matches
-          document.documentElement.dataset.theme = appearance === 'system' ? (systemDark ? 'dark' : 'light') : appearance
-        } catch {
-          document.documentElement.dataset.theme = 'dark'
-        }
-      })()
-    </script>
+    <script src="/ecw-prepaint.js"></script>
   </head>
   <body>
     <div id="root"></div>

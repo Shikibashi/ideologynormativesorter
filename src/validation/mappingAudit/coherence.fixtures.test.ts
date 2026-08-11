@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
-import { labels } from '../../data/labels'
+import { primaryScoringLabels } from '../../data/labelTaxonomy'
 import { allCalibrationFixtures } from '../../scoring/calibration.fixtures'
 import { dossiers } from './dossiers/index'
 import { isMatchPoolMember } from './predicates'
@@ -25,7 +25,7 @@ describe('coherence.fixtures', () => {
       ).toBe(true)
     }
 
-    expect(matchPool.length).toBe(labels.length)
+    expect(matchPool.length).toBe(primaryScoringLabels.length)
   })
 
   it('calibration fixture module documents synthetic/coherence-only intent', () => {

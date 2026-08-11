@@ -11,7 +11,7 @@ import { computeReasonBreakdowns } from './reasonDecomposition'
 import { reliabilityForAxis, reliabilityForLabel } from './reliability'
 
 /** Bumped because the semantic audit changes effective question-to-axis mappings. */
-export const RESULT_SCORING_VERSION = '2026-07-18-semantic-v3'
+export const RESULT_SCORING_VERSION = '2026-08-10-method-v4'
 
 export { normalizeAnswer, salienceFactor } from './normalize'
 export { computeAxisScores, computeScoreBreakdown, axisScoreMap } from './aggregate'

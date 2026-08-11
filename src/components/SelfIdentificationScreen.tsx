@@ -28,20 +28,25 @@ export function SelfIdentificationScreen({ labels, onContinue }: SelfIdentificat
       })
     } catch (cause) {
       setSubmitting(false)
-      setError(cause instanceof Error ? cause.message : 'The research record could not be prepared.')
+      setError(cause instanceof Error ? cause.message : 'The contribution could not be prepared.')
     }
   }
 
   return (
     <section className="screen intro-screen">
       <div className="section-band">
-        <span className="section-band-label">VALIDATION STUDY / PROFILE</span>
+        <span className="section-band-label">COMMUNITY INPUT / PROFILE</span>
         <span className="section-band-status">OPTIONAL FIELDS</span>
       </div>
       <h1>Before seeing your result</h1>
       <p>
-        These optional questions measure whether the instrument agrees with how respondents describe themselves before
-        seeing its output. Leaving any field blank does not prevent you from continuing.
+        These optional questions provide a post-questionnaire, pre-result comparison with how respondents describe
+        themselves. Because the questions you just answered may influence that description, it is not treated as an
+        independent baseline criterion. Leaving any field blank does not prevent you from continuing.
+      </p>
+      <p className="muted">
+        The next button submits this pseudonymous contribution through the website. Your result still appears even if
+        the optional fields above are left blank.
       </p>
 
       <label className="form-field">
@@ -94,7 +99,7 @@ export function SelfIdentificationScreen({ labels, onContinue }: SelfIdentificat
 
       {error && <p role="alert" className="muted error-inline">{error}</p>}
       <button type="button" className="primary-button" disabled={submitting} onClick={continueToResults}>
-        {submitting ? 'Preparing record…' : 'Continue to results'}
+        {submitting ? 'Submitting contribution…' : 'Submit contribution and continue'}
       </button>
     </section>
   )

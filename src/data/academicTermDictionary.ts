@@ -31,8 +31,8 @@ export const academicTermDictionary: AcademicTermDefinition[] = [
     definition: '“State capacity” means how well public institutions can implement rules, collect resources and deliver services.',
   },
   {
-    pattern: /\bpublic choice\b|\bcapture\b|\bcaptured\b/i,
-    definition: '“Public choice” means analyzing government actors as people with incentives, limits and organized pressures, not as neutral problem-solvers.',
+    pattern: /\bpublic choice\b/i,
+    definition: '“Public choice” means studying how incentives, constraints and organized interests affect decisions by political actors and institutions.',
   },
   {
     pattern: /\bcoordination\b|\bcollective action\b/i,

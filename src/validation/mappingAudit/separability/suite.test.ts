@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { labels } from '../../../data/labels'
+import { primaryScoringLabels } from '../../../data/labelTaxonomy'
 import type { IdeologyDossier } from '../types'
 import { dossiers } from '../dossiers/index'
 import { isMatchPoolMember } from '../predicates'
@@ -40,7 +41,7 @@ describe('separability.suite', () => {
   })
 
   it('runs diagnostics for all match-pool labels', () => {
-    expect(matchPool.length).toBe(labels.length)
+    expect(matchPool.length).toBe(primaryScoringLabels.length)
 
     const coherence = separabilityDiagnostics.filter(
       (d) => d.analysisType === 'cluster-coherence',

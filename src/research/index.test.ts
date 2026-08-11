@@ -15,6 +15,12 @@ const consent: ResearchConsent = {
   dataUseAccepted: true,
   consentVersion: 'test-consent',
   consentedAt: '2026-07-18T12:00:00.000Z',
+  disclosureSnapshot: {
+    endpointConfigured: false,
+    transferAndWithdrawalNotice: 'No endpoint.',
+    retentionNotice: 'No retention notice.',
+    contactNotice: 'No contact configured.',
+  },
 }
 
 const question: Question = {
@@ -54,6 +60,20 @@ describe('research submission', () => {
     expect(second).toBe(first)
   })
 
+  it('uses separate participant ids for separate studies', () => {
+    const values = new Map<string, string>()
+    const storage = {
+      getItem: (key: string) => values.get(key) ?? null,
+      setItem: (key: string, value: string) => values.set(key, value),
+    }
+
+    const firstStudy = getOrCreateParticipantId(storage, () => 'study-one-id', 'study-one')
+    const secondStudy = getOrCreateParticipantId(storage, () => 'study-two-id', 'study-two')
+
+    expect(firstStudy).toBe('p_study-one-id')
+    expect(secondStudy).toBe('p_study-two-id')
+  })
+
   it('builds a versioned core record with item metadata, timing, criterion labels, and specialist assignment', () => {
     const submission = buildResearchSubmission({
       studyId: 'pilot one!',
@@ -84,10 +104,29 @@ describe('research submission', () => {
     expect(submission.specialistAssignment?.moduleId).toBe('feminist-faction-module')
     expect(submission.durationMs).toBe(600_000)
     expect(submission.presentationOrder).toEqual(['q-test'])
+    expect(submission.form).toMatchObject({
+      assignedItemCount: 1,
+      requestedItemCount: null,
+    })
+    expect(submission.form.fingerprint).toMatch(/^rf_[0-9a-f]{8}$/)
+    expect(submission.sampling).toEqual({
+      design: 'open-opt-in-nonprobability',
+      populationInference: false,
+      weighting: 'none',
+      recruitmentSource: 'direct-or-unknown',
+      recruitmentSourceProvenance: 'url-parameter-unverified',
+    })
     expect(submission.itemMap[0]).toMatchObject({
       questionId: 'q-test',
+      prompt: 'Test prompt',
+      domain: 'test-domain',
+      theoryContext: 'mixed',
       reverseScored: false,
       sourceCount: 1,
+    })
+    expect(submission.itemMap[0].responseOptions).toContainEqual({
+      value: 'prefer_not_to_answer',
+      label: 'Prefer not to answer',
     })
   })
 
@@ -165,6 +204,23 @@ describe('research submission', () => {
     expect(send).not.toHaveBeenCalled()
   })
 
+  it('rejects a record whose answers do not match its assigned instrument', () => {
+    expect(() => buildResearchSubmission({
+      studyId: 'pilot',
+      participantId: 'p_1',
+      administration: 'test',
+      bankVersion: 'bank-v1',
+      scoringVersion: 'score-v1',
+      tier: 'quick',
+      consent,
+      identity: {},
+      predictedLabelIds: [],
+      answers: {},
+      questions: [question],
+      ...timing,
+    })).toThrow(/answer coverage mismatch/i)
+  })
+
   it('posts JSON without credentials to a configured HTTPS endpoint', async () => {
     const send = vi.fn<typeof fetch>().mockResolvedValue(new Response(null, { status: 202 }))
     const submission = buildResearchSubmission({
@@ -211,7 +267,7 @@ describe('research submission', () => {
     })
     await expect(submitResearchSubmission(submission, 'http://study.example.test/submit', send)).resolves.toEqual({
       status: 'failed',
-      reason: 'Study endpoint must use HTTPS outside local development.',
+      reason: 'The website collection endpoint must use HTTPS.',
     })
     expect(send).not.toHaveBeenCalled()
   })

@@ -1,6 +1,6 @@
 # Ideology label editorial review — 2026-08
 
-This is the full editorial disposition for the 117-label catalog in src/data/labels.ts. It reviews user-facing name, description, family/subfamily scope, usage/caution context, and fit with the three-layer instrument. It does not validate numeric centroids against respondents and does not authorize automatic label promotion from self-reported ideology names.
+This is the full editorial disposition for the 118-label catalog in src/data/labels.ts. It reviews user-facing name, description, family/subfamily scope, usage/caution context, and fit with the three-layer instrument. It does not validate numeric centroids against respondents and does not authorize automatic label promotion from self-reported ideology names.
 
 ## Rubric
 
@@ -12,13 +12,14 @@ Each label was checked for:
 - fit with normative, descriptive, and prescriptive interpretation;
 - a visible caveat when the term is contested, niche, historically specific, internally diverse, or easy to conflate.
 
-The review preserves every label ID and every centroid. Copy changes are contained to names/descriptions/usage notes/caution notes.
+The review preserves existing label IDs and centroids. This continuation adds Socialist / Marxist Feminism as a specialist catalog label tied to the existing construct-matched feminist follow-up rather than to the primary scoring pool.
 
 ## Disposition summary
 
-- 117 labels reviewed.
+- 118 labels reviewed.
 - 18 labels revised in this pass.
 - 99 labels retained after review.
+- 1 specialist label added from an existing construct-matched follow-up.
 - Existing precision follow-ups remain deferred for respondent evidence or dedicated modules, especially accelerationism, Zionism, Hindutva, Islamic democratic variants, cyberocracy, techno-anarchism, and revolutionary state-socialist subtypes.
 - “Retained” means the current wording passed this editorial screen; it is not a claim of empirical validity or a claim that the centroid is validated.
 
@@ -104,6 +105,7 @@ The review preserves every label ID and every centroid. Copy changes are contain
 | techno-anarchism | Techno-Anarchist / Crypto-Anarchist | Retained | Reviewed; no copy change required in this pass. |
 | progressivism | Progressivism | Revised | Broadened the description beyond expert-led technocracy and added historical/usage scope. |
 | liberal-feminism | Liberal Feminism | Retained | Reviewed; no copy change required in this pass. |
+| socialist-feminism | Socialist / Marxist Feminism | Added | Added as a socialist specialist label tied to the feminist follow-up; the combined name preserves the current module's resolution without claiming that Marxist and socialist feminism are identical. |
 | national-socialism | National Socialism | Revised | Named the Nazi historical referent, racial hierarchy, antisemitic exclusion, and non-socialist status. |
 | left-wing-nationalism | Left-Wing Nationalism | Retained | Reviewed; no copy change required in this pass. |
 | christian-socialism | Christian Socialism | Retained | Reviewed; no copy change required in this pass. |

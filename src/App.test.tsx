@@ -1,12 +1,16 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
-import { questionsForTier, questions } from './data/effectiveQuestions'
+import { QUESTION_BANK_VERSION, questionsForTier, questions } from './data/effectiveQuestions'
+import { buildResearchQuestionForm, RESEARCH_FORM_VERSION, researchFormFingerprint } from './research/forms'
+import { RESULT_SCORING_VERSION } from './scoring'
 import { encodeAnswers, readCompareAnswers, readSharedAnswers } from './share'
 import type { AnswerMap, Question } from './types'
 
 const quickQuestions = questionsForTier('quick')
 const SAVE_KEY = 'ideology-quiz-save'
+const PARTICIPANT_KEY = 'political-judgment-research-participant-v1:pilot-2026'
+const SHARE_META = { bankVersion: QUESTION_BANK_VERSION, scoringVersion: RESULT_SCORING_VERSION }
 
 function installLocalStorage(): void {
    const store = new Map<string, string>()
@@ -119,14 +123,89 @@ function handleSalienceIfPresent() {
 }
 
 describe('App', () => {
-   it('opens the public research URL at explicit consent before questions', () => {
-      window.history.replaceState(null, '', '/?research=1&study=pilot-2026&formSize=120')
+   it('opens the public contribution URL at explicit consent before questions', () => {
+      window.history.replaceState(null, '', '/?contribute=1&collection=community-2026&formSize=120')
 
       render(<App />)
 
-      expect(screen.getByRole('heading', { name: /research participation/i })).toBeInTheDocument()
-      expect(screen.getByRole('button', { name: /continue to study/i })).toBeDisabled()
+      expect(screen.getByRole('heading', { name: /contribute responses/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /start contribution form/i })).toBeDisabled()
       expect(screen.queryByText(/question 1 of 120/i)).not.toBeInTheDocument()
+   })
+
+   it('resumes a matching research form after renewed consent without changing item membership', () => {
+      const participantId = 'p_resume'
+      const assigned = buildResearchQuestionForm(questionsForTier('moderate'), participantId, 'test', 120)
+      localStorage.setItem(PARTICIPANT_KEY, participantId)
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+         questions: assigned,
+         answers: { [assigned[0].id]: { questionId: assigned[0].id, value: 1 } },
+         index: 1,
+         tier: 'moderate',
+         startedAt: '2026-08-10T12:00:00.000Z',
+         research: {
+            participantId,
+            studyId: 'pilot-2026',
+            administration: 'test',
+            bankVersion: QUESTION_BANK_VERSION,
+            formVersion: RESEARCH_FORM_VERSION,
+            formFingerprint: researchFormFingerprint(assigned),
+            requestedItemCount: 120,
+         },
+      }))
+      window.history.replaceState(null, '', '/?research=1&study=pilot-2026&formSize=120')
+
+      render(<App />)
+      for (const checkbox of screen.getAllByRole('checkbox')) fireEvent.click(checkbox)
+      fireEvent.click(screen.getByRole('button', { name: /start contribution form/i }))
+
+      expect(screen.getByText(`Question 2 of ${assigned.length}`, { exact: false })).toBeInTheDocument()
+      expect(screen.getByText(assigned[1].prompt)).toBeInTheDocument()
+   })
+
+   it('does not resume a saved research form under a different requested form size', () => {
+      const participantId = 'p_resume'
+      const assigned = buildResearchQuestionForm(questionsForTier('moderate'), participantId, 'test', 120)
+      localStorage.setItem(PARTICIPANT_KEY, participantId)
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+         questions: assigned,
+         answers: { [assigned[0].id]: { questionId: assigned[0].id, value: 1 } },
+         index: 1,
+         tier: 'moderate',
+         startedAt: '2026-08-10T12:00:00.000Z',
+         research: {
+            participantId,
+            studyId: 'pilot-2026',
+            administration: 'test',
+            bankVersion: QUESTION_BANK_VERSION,
+            formVersion: RESEARCH_FORM_VERSION,
+            formFingerprint: researchFormFingerprint(assigned),
+            requestedItemCount: 120,
+         },
+      }))
+      window.history.replaceState(null, '', '/?research=1&study=pilot-2026&formSize=100')
+
+      render(<App />)
+      for (const checkbox of screen.getAllByRole('checkbox')) fireEvent.click(checkbox)
+      fireEvent.click(screen.getByRole('button', { name: /start contribution form/i }))
+
+      expect(screen.getByText('Question 1 of 100', { exact: false })).toBeInTheDocument()
+   })
+
+   it('keeps a completed research response recoverable until its record is prepared', () => {
+      window.history.replaceState(null, '', '/?research=1&study=pilot-2026&formSize=12')
+      render(<App />)
+      for (const checkbox of screen.getAllByRole('checkbox')) fireEvent.click(checkbox)
+      fireEvent.click(screen.getByRole('button', { name: /start contribution form/i }))
+
+      for (let index = 0; index < 12; index += 1) {
+         clickScaleAndAnySalienceFollowUp(0)
+      }
+
+      expect(screen.getByRole('heading', { name: /before seeing your result/i })).toBeInTheDocument()
+      const saved = JSON.parse(localStorage.getItem(SAVE_KEY) ?? 'null')
+      expect(saved.completedAt).toMatch(/^2026-|^20/)
+      expect(Object.keys(saved.answers)).toHaveLength(12)
    })
 
    it('walks through intro, the quick quiz, and renders results', () => {
@@ -135,9 +214,9 @@ describe('App', () => {
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
       expect(screen.getByRole('complementary', { name: /session setup/i })).toBeInTheDocument()
       expect(screen.getByText(/choose the depth of the assessment/i)).toBeInTheDocument()
-      expect(screen.getByRole('link', { name: /enter the validation study/i })).toHaveAttribute(
+      expect(screen.getByRole('link', { name: /contribute responses/i })).toHaveAttribute(
          'href',
-         '?research=1&study=pilot-2026&formSize=120',
+         '?contribute=1&collection=community-2026&formSize=120',
       )
       fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
@@ -152,7 +231,7 @@ describe('App', () => {
       expect(screen.getByText(/foundational values profile/i)).toBeInTheDocument()
       expect(screen.getByText(/empirical beliefs profile/i)).toBeInTheDocument()
       expect(screen.getByText(/applied policy profile/i)).toBeInTheDocument()
-      expect(screen.getByText(/nearest ideology labels/i)).toBeInTheDocument()
+      expect(screen.getByText(/nearest catalog labels/i)).toBeInTheDocument()
 
       fireEvent.click(screen.getByRole('button', { name: /start over/i }))
       expect(screen.getByRole('heading', { name: /political judgment decomposition/i })).toBeInTheDocument()
@@ -174,7 +253,7 @@ describe('App', () => {
       expect(screen.getByText(`Question ${firstDescriptiveIndex + 2} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
    })
 
-   it('lets a confidence/priority rating be skipped without losing the primary answer', () => {
+   it('lets a confidence/priority rating be skipped with explicit result-exclusion wording', () => {
       render(<App />)
       fireEvent.click(screen.getByRole('radio', { name: /quick/i }))
       fireEvent.click(screen.getByRole('button', { name: /begin/i }))
@@ -185,15 +264,27 @@ describe('App', () => {
       }
 
       fireEvent.click(answerOptionButtons()[0])
-      fireEvent.click(screen.getByRole('button', { name: /^skip$/i }))
+      fireEvent.click(screen.getByRole('button', { name: /skip rating and exclude this answer from my result/i }))
       expect(screen.getByText(`Question ${ratedIndex + 2} of ${quickQuestions.length}`, { exact: false })).toBeInTheDocument()
    })
 
    it('lands directly on results when loaded with a shared #r= link', () => {
-      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
       window.history.replaceState(null, '', `/#r=${encoded}`)
 
       render(<App />)
+
+      expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
+      expect(screen.getByLabelText(/application context/i)).toHaveTextContent(/labels reference only/i)
+      expect(screen.getByLabelText(/application context/i)).not.toHaveTextContent(/2026-/i)
+   })
+
+   it('opens a shared result when its hash is applied to the current document', () => {
+      render(<App />)
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
+
+      window.history.pushState(null, '', `/#r=${encoded}`)
+      fireEvent(window, new HashChangeEvent('hashchange'))
 
       expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
    })
@@ -236,7 +327,7 @@ describe('App', () => {
    })
 
    it('prioritizes a shared result hash over a methodology query', () => {
-      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
       window.history.replaceState(null, '', `/?view=methodology#r=${encoded}`)
 
       render(<App />)
@@ -247,11 +338,11 @@ describe('App', () => {
    it('compares a pasted shared result without remounting and preserves hash ordering', () => {
       const current: AnswerMap = { q0001: { questionId: 'q0001', value: 2 } }
       const compared: AnswerMap = { q0001: { questionId: 'q0001', value: -2 } }
-      window.history.replaceState(null, '', `/#r=${encodeAnswers(current)}`)
+      window.history.replaceState(null, '', `/#r=${encodeAnswers(current, SHARE_META)}`)
 
       render(<App />)
       fireEvent.change(screen.getByPlaceholderText(/paste shared url or hash/i), {
-         target: { value: `/#r=${encodeAnswers(compared)}` },
+         target: { value: `/#r=${encodeAnswers(compared, SHARE_META)}` },
       })
       fireEvent.click(screen.getByRole('button', { name: /^compare$/i }))
 
@@ -265,7 +356,7 @@ describe('App', () => {
       const writeText = vi.fn().mockResolvedValue(undefined)
       Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
 
-      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
       window.history.replaceState(null, '', `/#r=${encoded}`)
       render(<App />)
 
@@ -277,7 +368,7 @@ describe('App', () => {
    it('shows a sharing fallback when clipboard is unavailable', () => {
       Object.defineProperty(navigator, 'clipboard', { value: undefined, configurable: true })
 
-      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
       window.history.replaceState(null, '', `/#r=${encoded}`)
       render(<App />)
 
@@ -310,7 +401,8 @@ describe('App', () => {
       expect(chipText).toMatch(/normative/i)
       expect(chipText).toMatch(/descriptive/i)
       expect(chipText).toMatch(/prescriptive/i)
-      expect(chipText).toMatch(/%/)
+      expect(chipText).toMatch(/close|mixed|different/i)
+      expect(chipText).not.toMatch(/%/)
    })
 
    it('renders the divergences section on the results screen when layer divergences exist', () => {
@@ -322,7 +414,7 @@ describe('App', () => {
          [prescriptiveRegQ.id]: { questionId: prescriptiveRegQ.id, value: 3 }
       }
 
-      const encoded = encodeAnswers(answers)
+      const encoded = encodeAnswers(answers, SHARE_META)
       window.history.replaceState(null, '', `/#r=${encoded}`)
       render(<App />)
 
@@ -342,7 +434,8 @@ describe('App', () => {
       }
 
       expect(screen.getByRole('heading', { name: /your results/i })).toBeInTheDocument()
-      expect(screen.getByRole('heading', { name: /nearest ideology labels/i })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: /nearest catalog labels/i })).toBeInTheDocument()
+      expect(screen.getByText(/not claims that you subscribe to them/i)).toBeInTheDocument()
 
       // The family-tree grouping must render at least one family group.
       const groups = Array.from(document.querySelectorAll('.family-group'))
@@ -356,15 +449,16 @@ describe('App', () => {
          expect(name[0]).toBe(name[0]?.toUpperCase())
       }
 
-      // Each group lists at least one label with a percentage match.
+      // Each group lists at least one label with consumer-readable comparison language.
       const firstGroupCards = groups[0].querySelectorAll('.label-card')
       expect(firstGroupCards.length).toBeGreaterThanOrEqual(1)
-      expect(groups[0].textContent ?? '').toMatch(/%/)
-      expect(groups[0].querySelector('.label-evidence')?.textContent ?? '').toMatch(/evidence/)
+      expect(groups[0].textContent ?? '').toMatch(/axis profile|axis overlap/i)
+      expect(groups[0].textContent ?? '').not.toMatch(/axis proximity\s+-?\d/i)
+      expect(groups[0].querySelector('.label-evidence')?.textContent ?? '').toMatch(/answer coverage/i)
    })
 
    it('keeps the full label browser collapsed by default and searches label metadata', () => {
-      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
       window.history.replaceState(null, '', `/#r=${encoded}`)
 
       render(<App />)
@@ -380,14 +474,42 @@ describe('App', () => {
          target: { value: 'Marxism' },
       })
 
-      expect(screen.getByText(/showing \d+ labels/i)).toBeInTheDocument()
+      expect(screen.getByText(/search results include scored labels and clearly marked related traditions/i)).toBeInTheDocument()
       expect(document.querySelectorAll('.full-label-browser .label-card').length).toBeGreaterThan(0)
       expect(document.querySelector('.full-label-browser')?.textContent ?? '').toMatch(/Marxism/i)
 
+      fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
+         target: { value: 'Socialist Feminism' },
+      })
+
+      expect(screen.getByRole('heading', { name: /socialist \/ marxist feminism/i })).toBeInTheDocument()
+      expect(screen.queryByRole('heading', { name: /^related traditions$/i })).not.toBeInTheDocument()
+
+      fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
+         target: { value: 'Radical Feminism' },
+      })
+
+      expect(screen.getByRole('heading', { name: /^related traditions$/i })).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: /radical feminism/i })).toBeInTheDocument()
+      expect(screen.getByText(/not ranked by the general quiz/i)).toBeInTheDocument()
+
+      fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
+         target: { value: 'Non-Leninist Marxism' },
+      })
+
+      expect(screen.getByRole('heading', { name: /marxian socialism \(non-leninist\)/i })).toBeInTheDocument()
+      expect(document.querySelectorAll('.full-label-browser .family-group')).toHaveLength(0)
+
+      fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
+         target: { value: 'Nyerereism' },
+      })
+
+      expect(screen.getByRole('heading', { name: /ujamaa \/ nyerereism/i })).toBeInTheDocument()
+      expect(screen.getByText(/african socialist/i)).toBeInTheDocument()
    })
 
    it('renders a compact per-layer Philosophy Explorer with affected axes', () => {
-      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
       window.history.replaceState(null, '', `/#r=${encoded}`)
 
       render(<App />)
@@ -397,7 +519,8 @@ describe('App', () => {
       expect(document.querySelectorAll('.philosophy-explorer .axis-chip').length).toBeGreaterThan(0)
       expect(document.querySelector('.philosophy-card')?.textContent ?? '').toMatch(/In these matched labels:/)
       const renderedLayers = Array.from(document.querySelectorAll('.philosophy-layer h3')).map((heading) => heading.textContent)
-      expect(renderedLayers.length).toBeGreaterThanOrEqual(2)
+      expect(renderedLayers.length).toBeGreaterThanOrEqual(1)
+      expect(document.querySelector('.philosophy-explorer')?.textContent ?? '').not.toMatch(/: 0\.00/)
    })
 
 
@@ -414,7 +537,7 @@ describe('App', () => {
    })
 
    it('shows actionable error and manual-copy input when clipboard writeText rejects', async () => {
-      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
       window.history.replaceState(null, '', `/#r=${encoded}`)
       Object.defineProperty(navigator, 'clipboard', {
          value: { writeText: vi.fn().mockRejectedValue(new Error('denied')) },
@@ -430,7 +553,7 @@ describe('App', () => {
    })
 
    it('rejects a junk compare input with an actionable error', () => {
-      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } })
+      const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
       window.history.replaceState(null, '', `/#r=${encoded}`)
       render(<App />)
 

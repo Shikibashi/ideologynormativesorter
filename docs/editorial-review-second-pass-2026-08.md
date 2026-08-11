@@ -32,7 +32,7 @@ This remains an editorial and content-validity review, not empirical psychometri
 ### Effective question bank
 
 - The statement-only `sq04` review is now applied to the same effective bank used by the app and scoring.
-- Ten additional items are recorded as replacement-required: `q0002`, `q0078`, `q0103`, `q0109`, `q0143`, `q0196`, `q0277`, `q0409`, `sq11`, and `sq12`. They contain a clear layer mismatch, incompatible forced-choice construct, or multiple independently answerable propositions. A trial deactivation regressed the primary-label separability guard, so they remain active until balanced reviewed replacements exist; this is explicit measurement debt, not an approval of their wording.
+- Ten additional items were recorded as replacement-required: `q0002`, `q0078`, `q0103`, `q0109`, `q0143`, `q0196`, `q0277`, `q0409`, `sq11`, and `sq12`. The third-pass methodology review supersedes the temporary coverage-preserving decision: these items are now quarantined until separately identified replacements pass expert review and cognitive testing.
 - Already-approved active items were promoted into the short forms without changing prompts or weights. Blitz is again 21 items with 7 normative, 7 descriptive, and 7 prescriptive items. Quick is 65 active items and has at least one item in every domain/layer pair.
 - The effective bank version now includes the main semantic review, statement semantic review, and respondent-tier review versions.
 

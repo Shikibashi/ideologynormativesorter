@@ -9,9 +9,11 @@ import { WP0_FREEZE } from '../inventory/freeze'
 describe('wave partition', () => {
   it('partitions effective-active main into chunks of 40 (last may be smaller)', () => {
     const main = questionWaves().filter((w) => w.corpus === 'main')
-    expect(main.length).toBe(10)
+    expect(main.length).toBe(Math.ceil(WP0_FREEZE.effectiveActiveQuestionCount / 40))
     expect(main.slice(0, -1).every((w) => w.subjectIds.length === 40)).toBe(true)
-    expect(main.at(-1)!.subjectIds.length).toBe(2)
+    expect(main.at(-1)!.subjectIds.length).toBe(
+      WP0_FREEZE.effectiveActiveQuestionCount % 40 || 40,
+    )
     expect(main.flatMap((w) => w.subjectIds).sort()).toEqual(
       effectiveActiveQuestions.map((q) => q.id).sort(),
     )

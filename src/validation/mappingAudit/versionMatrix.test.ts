@@ -33,9 +33,9 @@ describe('version matrix', () => {
     expect(typeof RESULT_SCORING_VERSION).toBe('string')
     expect(RESULT_SCORING_VERSION.length).toBeGreaterThan(0)
 
-    // SHARE_VERSION is module-private; assert the constant exists in source and is wired as v2.
+    // SHARE_VERSION is module-private; assert the current metadata-and-salience format is wired as v3.
     const shareSource = readFileSync('src/share/index.ts', 'utf8')
-    expect(shareSource).toMatch(/\bconst\s+SHARE_VERSION\s*=\s*2\b/)
+    expect(shareSource).toMatch(/\bconst\s+SHARE_VERSION\s*=\s*3\b/)
   })
 
   it('freeze.versions matches live recount versions', () => {
@@ -61,16 +61,16 @@ describe('version matrix', () => {
     }
 
     expect(payload).toMatchObject({
-      v: 2,
+      v: 3,
       bk: QUESTION_BANK_VERSION,
       sc: RESULT_SCORING_VERSION,
     })
     expect(Array.isArray(payload.a)).toBe(true)
     expect(decodeAnswers(withMeta)).toEqual(SAMPLE_ANSWERS)
 
-    // Legacy path (no meta) remains a bare answer array and still round-trips.
+    // The v3 envelope also works without optional bank/scoring metadata.
     const legacy = encodeAnswers(SAMPLE_ANSWERS)
-    expect(Array.isArray(decodeSharePayload(legacy))).toBe(true)
+    expect(decodeSharePayload(legacy)).toMatchObject({ v: 3 })
     expect(decodeAnswers(legacy)).toEqual(SAMPLE_ANSWERS)
   })
 })

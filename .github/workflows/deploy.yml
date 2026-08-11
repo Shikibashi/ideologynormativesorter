@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_RESEARCH_ENDPOINT: ${{ vars.RESEARCH_ENDPOINT }}
+      VITE_RESEARCH_CONTACT: ${{ vars.RESEARCH_CONTACT }}
+      VITE_RESEARCH_RETENTION_NOTICE: ${{ vars.RESEARCH_RETENTION_NOTICE }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

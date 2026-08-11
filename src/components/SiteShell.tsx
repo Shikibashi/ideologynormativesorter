@@ -1,121 +1,134 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
+import {
+  APPEARANCE_STORAGE_KEY,
+  CONTRAST_STORAGE_KEY,
+  DENSITY_STORAGE_KEY,
+  browserCapabilities,
+  readAppearance,
+  readContrast,
+  readDensity,
+  resolveContrast,
+  resolveDensity,
+  resolveTheme,
+  type Appearance,
+  type Contrast,
+  type Density,
+} from '../displayPreferences'
 import { StatusAnnouncer } from './StatusAnnouncer'
+
+export interface ShellItem {
+  label: string
+  value: string
+  title?: string
+}
+
+export interface ShellContext {
+  stage: string
+  composition: 'page' | 'workbench'
+  contextItems: ShellItem[]
+  statusItems: ShellItem[]
+}
 
 interface SiteShellProps {
   children: ReactNode
-}
-
-type Appearance = 'system' | 'dark' | 'light'
-type Theme = Exclude<Appearance, 'system'>
-type Density = 'automatic' | 'compact' | 'comfortable'
-type ResolvedDensity = Exclude<Density, 'automatic'>
-
-const APPEARANCE_STORAGE_KEY = 'political-judgment-appearance-v1'
-const LEGACY_THEME_STORAGE_KEY = 'political-judgment-theme-v1'
-const DENSITY_STORAGE_KEY = 'political-judgment-density-v1'
-
-function readAppearance(): Appearance {
-  if (typeof window === 'undefined') return 'system'
-
-  try {
-    const stored = window.localStorage.getItem(APPEARANCE_STORAGE_KEY)
-      ?? window.localStorage.getItem(LEGACY_THEME_STORAGE_KEY)
-    return stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system'
-  } catch {
-    return 'system'
-  }
+  context: ShellContext
 }
 
 function systemPrefersDark(): boolean {
   return typeof window === 'undefined' || typeof window.matchMedia !== 'function'
-    ? true
+    ? false
     : window.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
-function readDensity(): Density {
-  if (typeof window === 'undefined') return 'automatic'
-
-  try {
-    const stored = window.localStorage.getItem(DENSITY_STORAGE_KEY)
-    return stored === 'compact' || stored === 'comfortable' || stored === 'automatic' ? stored : 'automatic'
-  } catch {
-    return 'automatic'
-  }
+function systemPrefersMoreContrast(): boolean {
+  return typeof window !== 'undefined'
+    && typeof window.matchMedia === 'function'
+    && window.matchMedia('(prefers-contrast: more)').matches
 }
 
-function systemPrefersComfortable(): boolean {
-  if (typeof window === 'undefined') return false
-  const coarsePointer = typeof window.matchMedia === 'function'
-    && window.matchMedia('(pointer: coarse)').matches
-  const noHover = typeof window.matchMedia === 'function'
-    && window.matchMedia('(hover: none)').matches
-  return coarsePointer || noHover || window.innerWidth < 720
-}
-
-export function SiteShell({ children }: SiteShellProps) {
-   const [appearance, setAppearance] = useState<Appearance>(() => readAppearance())
+export function SiteShell({ children, context }: SiteShellProps) {
+   const shellRef = useRef<HTMLDivElement>(null)
+   const [appearance, setAppearance] = useState<Appearance>(() => readAppearance(window.localStorage))
    const [systemDark, setSystemDark] = useState(systemPrefersDark)
-   const [density, setDensity] = useState<Density>(() => readDensity())
-   const [comfortableInput, setComfortableInput] = useState(systemPrefersComfortable)
-   const [locationKey, setLocationKey] = useState(() => typeof window === 'undefined'
-      ? ''
-      : `${window.location.pathname}${window.location.search}${window.location.hash}`)
-   const theme: Theme = appearance === 'system' ? (systemDark ? 'dark' : 'light') : appearance
-   const resolvedDensity: ResolvedDensity = density === 'automatic'
-      ? comfortableInput ? 'comfortable' : 'compact'
-      : density
-   const isMethodology = locationKey.includes('view=methodology') && !/(?:^|[#&?])r=/.test(locationKey)
+   const [density, setDensity] = useState<Density>(() => readDensity(window.localStorage))
+   const [contrast, setContrast] = useState<Contrast>(() => readContrast(window.localStorage))
+   const [systemMoreContrast, setSystemMoreContrast] = useState(systemPrefersMoreContrast)
+   const [shellWidth, setShellWidth] = useState(() => typeof window === 'undefined' ? 1024 : window.innerWidth)
+   const [, setCapabilityRevision] = useState(0)
+   const theme = resolveTheme(appearance, systemDark)
+   const capabilities = browserCapabilities(shellWidth)
+   const resolvedDensity = resolveDensity(density, capabilities)
+   const resolvedContrast = resolveContrast(contrast, systemMoreContrast)
 
   useEffect(() => {
     if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return
-    const media = window.matchMedia('(prefers-color-scheme: dark)')
-    const update = () => setSystemDark(media.matches)
+    const colorMedia = window.matchMedia('(prefers-color-scheme: dark)')
+    const contrastMedia = window.matchMedia('(prefers-contrast: more)')
+    const update = () => {
+      setSystemDark(colorMedia.matches)
+      setSystemMoreContrast(contrastMedia.matches)
+    }
     update()
-    if (media.addEventListener) {
-      media.addEventListener('change', update)
-      return () => media.removeEventListener('change', update)
-    }
-    media.addListener?.(update)
-    return () => media.removeListener?.(update)
-  }, [])
-
-  useEffect(() => {
-    const updateLocation = () => setLocationKey(`${window.location.pathname}${window.location.search}${window.location.hash}`)
-    window.addEventListener('popstate', updateLocation)
-    window.addEventListener('hashchange', updateLocation)
-    return () => {
-      window.removeEventListener('popstate', updateLocation)
-      window.removeEventListener('hashchange', updateLocation)
-    }
+    const mediaQueries = [colorMedia, contrastMedia]
+    mediaQueries.forEach((media) => {
+      if (media.addEventListener) media.addEventListener('change', update)
+      else media.addListener?.(update)
+    })
+    return () => mediaQueries.forEach((media) => {
+      if (media.removeEventListener) media.removeEventListener('change', update)
+      else media.removeListener?.(update)
+    })
   }, [])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
 
     const mediaQueries = typeof window.matchMedia === 'function'
-      ? [window.matchMedia('(pointer: coarse)'), window.matchMedia('(hover: none)')]
+      ? [
+          window.matchMedia('(any-pointer: fine)'),
+          window.matchMedia('(any-hover: hover)'),
+          window.matchMedia('(pointer: coarse)'),
+          window.matchMedia('(hover: none)'),
+        ]
       : []
-    const update = () => setComfortableInput(systemPrefersComfortable())
-    update()
-    window.addEventListener('resize', update)
+    const updateWidth = () => {
+      const measured = shellRef.current?.getBoundingClientRect().width ?? 0
+      setShellWidth(measured > 0 ? measured : window.innerWidth)
+    }
+    const updateCapabilities = () => {
+      updateWidth()
+      setCapabilityRevision((current) => current + 1)
+    }
+    updateWidth()
+    const resizeObserver = typeof ResizeObserver === 'function' && shellRef.current
+      ? new ResizeObserver(updateWidth)
+      : null
+    if (shellRef.current) resizeObserver?.observe(shellRef.current)
+    if (!resizeObserver) window.addEventListener('resize', updateWidth)
     mediaQueries.forEach((media) => {
-      if (media.addEventListener) media.addEventListener('change', update)
-      else media.addListener?.(update)
+      if (media.addEventListener) media.addEventListener('change', updateCapabilities)
+      else media.addListener?.(updateCapabilities)
     })
     return () => {
-      window.removeEventListener('resize', update)
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', updateWidth)
       mediaQueries.forEach((media) => {
-        if (media.removeEventListener) media.removeEventListener('change', update)
-        else media.removeListener?.(update)
+        if (media.removeEventListener) media.removeEventListener('change', updateCapabilities)
+        else media.removeListener?.(updateCapabilities)
       })
     }
   }, [])
 
   useLayoutEffect(() => {
-    document.documentElement.dataset.theme = theme
-    document.documentElement.dataset.density = resolvedDensity
-  }, [resolvedDensity, theme])
+    const root = document.documentElement
+    root.dataset.appearance = appearance
+    root.dataset.theme = theme
+    root.dataset.densityPreference = density
+    root.dataset.density = resolvedDensity
+    root.dataset.contrastPreference = contrast
+    root.dataset.contrast = resolvedContrast
+  }, [appearance, contrast, density, resolvedContrast, resolvedDensity, theme])
 
   useEffect(() => {
     try {
@@ -133,26 +146,40 @@ export function SiteShell({ children }: SiteShellProps) {
     }
   }, [density])
 
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(CONTRAST_STORAGE_KEY, contrast)
+    } catch {
+      // The visual preference still applies when storage is unavailable.
+    }
+  }, [contrast])
+
   return (
-    <div className="site-shell" data-theme={theme}>
+    <div
+      ref={shellRef}
+      className="site-shell"
+      data-theme={theme}
+      data-stage={context.stage}
+      data-composition={context.composition}
+    >
       <header className="site-masthead">
         <div className="site-brand">
-          <p className="site-kicker">EDRIFFLES WEB 99 / POLITICAL JUDGMENT LAB</p>
+          <p className="site-kicker">EDRIFFLES COMPUTER WEB / POLITICAL JUDGMENT LAB</p>
           <a className="site-title" href={import.meta.env.BASE_URL}>Political Judgment Lab</a>
           <p className="site-tagline">A layered profile of values, beliefs, and strategy.</p>
         </div>
         <div className="site-utility">
           <div className="site-meta" aria-label="Application information">
-            <span>FORMAT</span>
-            <strong>WEB 99</strong>
+            <span>INSTRUMENT</span>
+            <strong>PJD</strong>
             <span>SESSION</span>
-            <strong>BROWSER</strong>
+            <strong>LOCAL</strong>
           </div>
           <nav className="site-actions" aria-label="Site navigation">
-            <a className="site-home-link" href={import.meta.env.BASE_URL} aria-current={!isMethodology ? 'page' : undefined}>
+            <a className="site-home-link" href={import.meta.env.BASE_URL} aria-current={context.stage === 'intro' ? 'page' : undefined}>
               <span aria-hidden="true">[ </span>HOME<span aria-hidden="true"> ]</span>
             </a>
-            <a className="site-methodology-link" href={`${import.meta.env.BASE_URL}?view=methodology`} aria-current={isMethodology ? 'page' : undefined}>
+            <a className="site-methodology-link" href={`${import.meta.env.BASE_URL}?view=methodology`} aria-current={context.stage === 'methodology' ? 'page' : undefined}>
               <span aria-hidden="true">[ </span>METHODOLOGY<span aria-hidden="true"> ]</span>
             </a>
             <details
@@ -236,12 +263,48 @@ export function SiteShell({ children }: SiteShellProps) {
                 {density === 'automatic' && <p className="display-status">currently {resolvedDensity}</p>}
               </fieldset>
 
+              <fieldset>
+                <legend>Contrast</legend>
+                <label className="display-option">
+                  <input
+                    type="radio"
+                    name="contrast"
+                    value="automatic"
+                    checked={contrast === 'automatic'}
+                    onChange={() => setContrast('automatic')}
+                  />
+                  <span>Automatic</span>
+                </label>
+                <label className="display-option">
+                  <input
+                    type="radio"
+                    name="contrast"
+                    value="standard"
+                    checked={contrast === 'standard'}
+                    onChange={() => setContrast('standard')}
+                  />
+                  <span>Standard</span>
+                </label>
+                <label className="display-option">
+                  <input
+                    type="radio"
+                    name="contrast"
+                    value="more"
+                    checked={contrast === 'more'}
+                    onChange={() => setContrast('more')}
+                  />
+                  <span>More</span>
+                </label>
+                {contrast === 'automatic' && <p className="display-status">currently {resolvedContrast}</p>}
+              </fieldset>
+
               <button
                 type="button"
                 className="display-reset"
                 onClick={() => {
                   setAppearance('system')
                   setDensity('automatic')
+                  setContrast('automatic')
                 }}
               >
                 Restore display defaults
@@ -253,27 +316,21 @@ export function SiteShell({ children }: SiteShellProps) {
       </header>
 
       <aside className="app-context" aria-label="Application context">
-        <div className="context-item">
-          <span className="context-label">MODE</span>
-          <strong>Assessment</strong>
-        </div>
-        <div className="context-item">
-          <span className="context-label">STORAGE</span>
-          <strong>Browser local</strong>
-        </div>
-        <div className="context-item">
-          <span className="context-label">OUTPUT</span>
-          <strong>Three-layer profile</strong>
-        </div>
+        {context.contextItems.map((item) => (
+          <div className="context-item" key={item.label}>
+            <span className="context-label">{item.label}</span>{' '}
+            <strong title={item.title}>{item.value}</strong>
+          </div>
+        ))}
       </aside>
 
       <div className="app-status-bar" aria-label="Application status">
-        <span><strong>STATUS</strong> Ready</span>
-        <span><strong>INPUT</strong> Keyboard or pointer</span>
-        <span><strong>RECOVERY</strong> Local progress enabled</span>
+        {context.statusItems.map((item) => (
+          <span key={item.label} title={item.title}><strong>{item.label}</strong> {item.value}</span>
+        ))}
       </div>
 
-      <main id="app-content" className="app-workspace">{children}</main>
+      <main id="app-content" className="app-workspace" tabIndex={-1}>{children}</main>
 
       <footer className="site-footer">
         <span>Political Judgment Decomposition</span>

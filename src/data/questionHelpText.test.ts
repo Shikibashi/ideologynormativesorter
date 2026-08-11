@@ -179,7 +179,7 @@ describe('question help text', () => {
     }
   })
 
-  it('uses term definitions from statement-choice options as well as the stem', () => {
+  it('does not privilege selected statement-choice options with uneven helper definitions', () => {
     const helpText = getQuestionHelpText({
       ...baseQuestion,
       prompt: 'Which comes closest to your view?',
@@ -192,7 +192,10 @@ describe('question help text', () => {
       ],
     })
 
-    expect(helpText).toContain('“Exit” means')
+    expect(helpText).not.toContain('“Exit” means')
+    expect(helpText).not.toContain('“Public goods” means')
+    expect(helpText).not.toContain('“Institutional design” means')
+    expect(helpText).toContain('“Political legitimacy” means')
   })
 
   it('does not attach the unrelated "political authority" definition merely because a prompt says legitimate/legitimacy', () => {
@@ -260,5 +263,50 @@ describe('question help text', () => {
     expect(foreignPlanners).not.toContain('production or allocation')
     expect(threatInflation).toContain('exaggerating a danger')
     expect(threatInflation).not.toContain('general rise in prices')
+  })
+
+  it('does not mistake ordinary capture, permitting, or democratic language for specialist terms', () => {
+    const landCapture = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Infrastructure finance should capture rising land values rather than taxing unrelated activity.',
+      domain: 'land-housing-georgism',
+      layer: 'prescriptive',
+    })
+    const culturalPermission = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Public institutions should avoid ancestry-based privilege while permitting voluntary cultural association.',
+      domain: 'national-identity-sovereignty',
+      layer: 'prescriptive',
+    })
+    const democraticPolitics = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Democratic politics can set social priorities.',
+      domain: 'democracy-expertise-constitutionalism',
+      layer: 'descriptive',
+    })
+    const antiCapture = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Environmental subsidies should include sunset clauses and anti-capture review.',
+      domain: 'environment-climate-growth',
+      layer: 'prescriptive',
+    })
+
+    expect(landCapture).not.toContain('“Public choice” means')
+    expect(landCapture).not.toContain('“Capture” means')
+    expect(culturalPermission).not.toContain('“Zoning and permitting” means')
+    expect(democraticPolitics).not.toContain('“Majoritarian decision-making” means')
+    expect(antiCapture).toContain('“Capture” means')
+  })
+
+  it('defines prices without supplying the information-signaling claim being tested', () => {
+    const helpText = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: 'Prices can coordinate plans among strangers.',
+      domain: 'markets-planning',
+      layer: 'descriptive',
+    })
+
+    expect(helpText).toContain('“Price” means the amount paid or received')
+    expect(helpText).not.toContain('signals that reflect')
   })
 })

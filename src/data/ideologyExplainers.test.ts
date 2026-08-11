@@ -77,6 +77,19 @@ describe('ideology explainers', () => {
       expect(definitions[0]).toMatch(/does not make it socialism/)
    })
 
+   it('keeps narrowed catalog labels separate from broader family definitions', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const corporatism = getIdeologyTermDefinitions(byId.get('corporatism')!)
+      const islamicDemocracy = getIdeologyTermDefinitions(byId.get('islamic-democracy')!)
+
+      expect(corporatism).toHaveLength(1)
+      expect(corporatism[0]).toMatch(/State corporatism/)
+      expect(corporatism[0]).toMatch(/distinct from democratic societal/)
+      expect(islamicDemocracy).toHaveLength(1)
+      expect(islamicDemocracy[0]).toMatch(/electoral government, constitutional limits/)
+      expect(islamicDemocracy[0]).not.toMatch(/broad family of projects/)
+   })
+
    it('defines theocracy and high-confusion labels directly from stable ids', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directCases: Array<[string, RegExp]> = [

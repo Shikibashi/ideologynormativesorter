@@ -1,12 +1,14 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import type { AnswerMap } from '../types'
-import { buildShareUrl, decodeAnswers, encodeAnswers, extractEncodedAnswers, readSharedAnswers, readCompareAnswers, readSharedResult } from './index'
+import { buildShareUrl, decodeAnswers, decodeCompatibleAnswers, encodeAnswers, extractEncodedAnswers, readSharedAnswers, readCompareAnswers, readSharedResult } from './index'
 
 const SAMPLE_ANSWERS: AnswerMap = {
   q0001: { questionId: 'q0001', value: 2 },
   q0002: { questionId: 'q0002', value: 'dont_know' },
   q0003: { questionId: 'q0003', value: -1, confidence: 4 },
   q0004: { questionId: 'q0004', value: 3, priority: 2 },
+  q0005: { questionId: 'q0005', value: 'prefer_not_to_answer' },
+  q0006: { questionId: 'q0006', value: 1, salienceSkipped: true },
 }
 
 function encodePayload(payload: unknown): string {
@@ -39,6 +41,17 @@ describe('encodeAnswers / decodeAnswers', () => {
     expect(decodeAnswers(encodePayload({ v: 2, a: {} }))).toBeNull()
     expect(decodeAnswers(encodePayload({ v: 2 }))).toBeNull()
     expect(decodeAnswers(encodePayload({ a: [['q0001', 1]] }))).toBeNull()
+  })
+
+  it('rejects missing or mismatched version metadata when compatibility is required', () => {
+    const expected = { bankVersion: 'bank-v1', scoringVersion: 'score-v1' }
+    const compatible = encodeAnswers(SAMPLE_ANSWERS, expected)
+    const stale = encodeAnswers(SAMPLE_ANSWERS, { bankVersion: 'bank-v0', scoringVersion: 'score-v1' })
+    const legacy = encodePayload([['q0001', 1]])
+
+    expect(decodeCompatibleAnswers(compatible, expected)).toEqual(SAMPLE_ANSWERS)
+    expect(decodeCompatibleAnswers(stale, expected)).toBeNull()
+    expect(decodeCompatibleAnswers(legacy, expected)).toBeNull()
   })
 
   it('rejects invalid answer values', () => {

@@ -2,9 +2,22 @@ import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { SiteShell } from './SiteShell'
 import { announceStatus } from '../status'
+import type { ShellContext } from './SiteShell'
 
 const APPEARANCE_STORAGE_KEY = 'political-judgment-appearance-v1'
 const DENSITY_STORAGE_KEY = 'political-judgment-density-v1'
+const TEST_CONTEXT: ShellContext = {
+  stage: 'intro',
+  composition: 'page',
+  contextItems: [
+    { label: 'MODE', value: 'ASSESSMENT' },
+    { label: 'STORAGE', value: 'BROWSER LOCAL' },
+  ],
+  statusItems: [
+    { label: 'STAGE', value: 'START' },
+    { label: 'SAVE', value: 'LOCAL' },
+  ],
+}
 
 function installLocalStorage(): Map<string, string> {
   const store = new Map<string, string>()
@@ -23,11 +36,20 @@ function installLocalStorage(): Map<string, string> {
   return store
 }
 
-function installMatchMedia(initialDark: boolean, initialCoarse = false) {
+function installMatchMedia(initialDark: boolean, initialCoarse = false, initialFine = false, initialHover = false) {
   let darkMatches = initialDark
   let coarseMatches = initialCoarse
+  let fineMatches = initialFine
+  let hoverMatches = initialHover
   const listeners = new Map<string, Set<() => void>>()
-  const matchesFor = (query: string) => query === '(prefers-color-scheme: dark)' ? darkMatches : coarseMatches
+  const matchesFor = (query: string) => {
+    if (query === '(prefers-color-scheme: dark)') return darkMatches
+    if (query === '(any-pointer: fine)') return fineMatches
+    if (query === '(any-hover: hover)') return hoverMatches
+    if (query === '(pointer: coarse)') return coarseMatches
+    if (query === '(hover: none)') return coarseMatches && !hoverMatches
+    return false
+  }
   const mediaFor = (query: string) => {
     const queryListeners = listeners.get(query) ?? new Set<() => void>()
     listeners.set(query, queryListeners)
@@ -54,6 +76,13 @@ function installMatchMedia(initialDark: boolean, initialCoarse = false) {
       listeners.get('(pointer: coarse)')?.forEach((listener) => listener())
       listeners.get('(hover: none)')?.forEach((listener) => listener())
     },
+    setHybrid(next: boolean) {
+      fineMatches = next
+      hoverMatches = next
+      listeners.get('(any-pointer: fine)')?.forEach((listener) => listener())
+      listeners.get('(any-hover: hover)')?.forEach((listener) => listener())
+      listeners.get('(hover: none)')?.forEach((listener) => listener())
+    },
   }
 }
 
@@ -61,17 +90,19 @@ beforeEach(() => {
   installLocalStorage()
   installMatchMedia(true)
   document.documentElement.removeAttribute('data-theme')
+  document.documentElement.removeAttribute('data-contrast')
 })
 
 afterEach(() => {
   cleanup()
   document.documentElement.removeAttribute('data-theme')
   document.documentElement.removeAttribute('data-density')
+  document.documentElement.removeAttribute('data-contrast')
 })
 
 describe('SiteShell appearance control', () => {
   it('provides persistent home links in the branding and navigation', () => {
-    render(<SiteShell><p>Application content</p></SiteShell>)
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
 
     expect(screen.getByRole('link', { name: 'Political Judgment Lab' })).toHaveAttribute('href', '/')
     expect(screen.getByRole('link', { name: 'HOME' })).toHaveAttribute('href', '/')
@@ -81,15 +112,24 @@ describe('SiteShell appearance control', () => {
 
   it('marks the methodology destination as the current page', () => {
     window.history.replaceState(null, '', '/?view=methodology')
+    const methodologyContext = { ...TEST_CONTEXT, stage: 'methodology' }
 
-    render(<SiteShell><p>Application content</p></SiteShell>)
+    render(<SiteShell context={methodologyContext}><p>Application content</p></SiteShell>)
 
     expect(screen.getByRole('link', { name: 'METHODOLOGY' })).toHaveAttribute('aria-current', 'page')
     expect(screen.getByRole('link', { name: 'HOME' })).not.toHaveAttribute('aria-current')
   })
 
+  it('does not mark Home current for a results workbench', () => {
+    const resultsContext = { ...TEST_CONTEXT, stage: 'results', composition: 'workbench' as const }
+    render(<SiteShell context={resultsContext}><p>Application content</p></SiteShell>)
+
+    expect(screen.getByRole('link', { name: 'HOME' })).not.toHaveAttribute('aria-current')
+    expect(screen.getByRole('link', { name: 'METHODOLOGY' })).not.toHaveAttribute('aria-current')
+  })
+
   it('defaults to System and persists an explicit Light selection', () => {
-    render(<SiteShell><p>Application content</p></SiteShell>)
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
 
     const system = screen.getByRole('radio', { name: 'System' })
     expect(system).toBeChecked()
@@ -103,9 +143,10 @@ describe('SiteShell appearance control', () => {
   })
 
   it('persists an explicit Comfortable density without changing the appearance choice', () => {
-    render(<SiteShell><p>Application content</p></SiteShell>)
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
 
-    expect(screen.getByRole('radio', { name: 'Automatic' })).toBeChecked()
+    expect(screen.getAllByRole('radio', { name: 'Automatic' })).toHaveLength(2)
+    screen.getAllByRole('radio', { name: 'Automatic' }).forEach((control) => expect(control).toBeChecked())
     expect(document.documentElement.dataset.density).toBe('compact')
 
     fireEvent.click(screen.getByRole('radio', { name: 'Comfortable' }))
@@ -121,7 +162,7 @@ describe('SiteShell appearance control', () => {
     store.set(APPEARANCE_STORAGE_KEY, 'light')
     store.set(DENSITY_STORAGE_KEY, 'comfortable')
 
-    render(<SiteShell><p>Application content</p></SiteShell>)
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
 
     expect(screen.getByRole('radio', { name: 'Light' })).toBeChecked()
     expect(screen.getByRole('radio', { name: 'Comfortable' })).toBeChecked()
@@ -129,9 +170,18 @@ describe('SiteShell appearance control', () => {
     expect(document.documentElement.dataset.density).toBe('comfortable')
   })
 
+  it('persists and applies an explicit increased-contrast preference', () => {
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
+
+    fireEvent.click(screen.getByRole('radio', { name: 'More' }))
+
+    expect(document.documentElement.dataset.contrast).toBe('more')
+    expect(localStorage.getItem('political-judgment-contrast-v1')).toBe('more')
+  })
+
   it('tracks operating-system changes while System is selected', () => {
     const media = installMatchMedia(true)
-    render(<SiteShell><p>Application content</p></SiteShell>)
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
 
     expect(document.documentElement.dataset.theme).toBe('dark')
 
@@ -142,7 +192,7 @@ describe('SiteShell appearance control', () => {
 
   it('resolves Automatic density from coarse input capability', () => {
     const media = installMatchMedia(true, false)
-    render(<SiteShell><p>Application content</p></SiteShell>)
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
 
     expect(document.documentElement.dataset.density).toBe('compact')
 
@@ -151,8 +201,15 @@ describe('SiteShell appearance control', () => {
     expect(document.documentElement.dataset.density).toBe('comfortable')
   })
 
+  it('keeps Automatic density compact on hybrid hardware with fine input and hover', () => {
+    installMatchMedia(true, true, true, true)
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
+
+    expect(document.documentElement.dataset.density).toBe('compact')
+  })
+
   it('closes DISPLAY with Escape and returns focus to the disclosure control', () => {
-    render(<SiteShell><p>Application content</p></SiteShell>)
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
 
     fireEvent.click(screen.getByText('DISPLAY', { exact: true }))
     const light = screen.getByRole('radio', { name: 'Light' })
@@ -165,7 +222,7 @@ describe('SiteShell appearance control', () => {
   })
 
   it('keeps persistent status out of live regions and announces discrete events separately', () => {
-    render(<SiteShell><p>Application content</p></SiteShell>)
+    render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
 
     expect(screen.getByLabelText('Application status')).not.toHaveAttribute('aria-live')
     const announcer = document.querySelector('.sr-status-announcer')

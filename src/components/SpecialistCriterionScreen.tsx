@@ -43,14 +43,14 @@ export function SpecialistCriterionScreen({ module, onContinue, onSkip }: Specia
   return (
     <section className="screen intro-screen">
       <div className="section-band">
-        <span className="section-band-label">VALIDATION STUDY / SELF-DESCRIPTION</span>
-        <span className="section-band-status">INDEPENDENT CRITERION</span>
+        <span className="section-band-label">COMMUNITY INPUT / SELF-DESCRIPTION</span>
+        <span className="section-band-status">BEFORE YOUR RESULT</span>
       </div>
       <h1>Before seeing the follow-up result</h1>
       <p>
         Which of these traditions, if any, do you already use to describe your own political outlook? Select all that
-        genuinely fit. This answer is collected before showing the module score so it can serve as an independent
-        validation criterion.
+        genuinely fit. This answer is saved before showing the follow-up result so the site owner can compare your own
+        description with the experimental match.
       </p>
 
       <fieldset className="tier-picker" disabled={submitting}>

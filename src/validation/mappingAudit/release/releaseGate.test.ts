@@ -48,7 +48,11 @@ describe('releaseGate', () => {
     expect(summary.totalDossiers).toBe(WP0_FREEZE.labelCount)
     expect(summary.totalFindings).toBe(findings.length)
     expect(summary.totalFindings).toBeGreaterThan(100)
-    expect(summary.totalContributions).toBeGreaterThan(9000)
+    expect(summary.totalContributions).toBe(
+      WP0_FREEZE.effectiveActiveContributionCardinality
+        + WP0_FREEZE.moduleContributionCardinality
+        + WP0_FREEZE.statementContributionCardinality,
+    )
   })
 
   it('empirical gate is insufficient-data; expert gate is in-review (not fail, not pass)', () => {

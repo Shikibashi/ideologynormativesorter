@@ -180,6 +180,7 @@ const targetIds = [
    'left-wing-nationalism',
    'christian-socialism',
    'utopian-socialism',
+   'socialist-feminism',
    'voluntaryism',
    'stirnerism',
    'libertarian-municipalism',

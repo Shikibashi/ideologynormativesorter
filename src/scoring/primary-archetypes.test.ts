@@ -39,7 +39,7 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'market-anarchist-right-libertarian', targetLabelId: 'anarcho-capitalist', expectedFamily: 'libertarian-leaning',
+    id: 'market-anarchist-right-libertarian', targetLabelId: 'anarcho-capitalist', expectedFamily: 'liberal',
     intent: {
       'authority-legitimacy': -1, 'property-legitimacy': 1, 'liberty-noninterference': 1, 'equality-theory': -0.5,
       'market-process-confidence': 1, 'state-capacity-confidence': -0.8, 'public-choice-skepticism': 1,

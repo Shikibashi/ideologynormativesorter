@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Axis, AxisScore, Contribution, ResultProfile } from '../types'
+import { axisPositionLabel, coverageLabel } from '../resultLanguage'
 
 interface AxisBarProps {
   axis: Axis
@@ -25,22 +26,16 @@ export function AxisBar({ axis, score, result }: AxisBarProps) {
     <div className="axis-bar">
       <div className="axis-bar-header">
         <span>{axis.name}</span>
-        <span className="muted">{score.itemCount === 0 ? 'unmeasured' : score.normalized.toFixed(2)}</span>
-        {rel && <span className={`reliability ${rel.band}`}>{rel.band} coverage</span>}
+        <span className="muted">{score.itemCount === 0 ? 'unmeasured' : axisPositionLabel(score.normalized, axis)}</span>
+        {rel && <span className={`reliability ${rel.band}`}>{coverageLabel(rel.band)}</span>}
       </div>
       <div className="axis-bar-track" aria-hidden="true">
         <div className="axis-bar-midline" />
         {score.itemCount > 0 && <div className="axis-bar-marker" style={{ left: `${percent}%` }} />}
       </div>
       <div className="axis-bar-scale" aria-hidden="true">
-        <span>-1.0</span>
-        <span>-0.5</span>
-        <span>0</span>
-        <span>+0.5</span>
-        <span>+1.0</span>
-      </div>
-      <div className="axis-bar-poles">
         <span>{axis.negativePole}</span>
+        <span>Midpoint</span>
         <span>{axis.positivePole}</span>
       </div>
       {salienceLabel && score.avgSalience !== undefined && (
@@ -50,7 +45,7 @@ export function AxisBar({ axis, score, result }: AxisBarProps) {
       )}
       {rel && (
         <p className="axis-bar-reliability muted">
-          Evidence coverage: {rel.band} — {rel.reason}
+          Result confidence: {coverageLabel(rel.band)}.
         </p>
       )}
       {contribs.length > 0 && (
@@ -62,7 +57,7 @@ export function AxisBar({ axis, score, result }: AxisBarProps) {
         <ul className="why-list">
           {contribs.slice(0, 3).map((c: Contribution) => (
             <li key={c.questionId}>
-              {c.prompt.slice(0, 80)}... → {c.contribution.toFixed(2)} ({c.layer})
+              {c.prompt.slice(0, 80)}... → toward {c.toward === 'positive' ? axis.positivePole : axis.negativePole} ({c.layer})
             </li>
           ))}
         </ul>

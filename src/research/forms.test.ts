@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Question } from '../types'
-import { buildResearchQuestionForm, researchFormSize } from './forms'
+import { buildResearchQuestionForm, researchFormFingerprint, researchFormSize } from './forms'
 
 function question(id: string, layer: Question['layer'], axisId: string, reviewStatus: Question['reviewStatus'] = 'approved'): Question {
   return {
@@ -41,11 +41,17 @@ describe('research forms', () => {
   })
 
   it('changes presentation order for a retest while preserving eligible coverage', () => {
-    const testForm = buildResearchQuestionForm(pool, 'p_1', 'test', null).map((item) => item.id)
-    const retestForm = buildResearchQuestionForm(pool, 'p_1', 'retest', null).map((item) => item.id)
+    const testForm = buildResearchQuestionForm(pool, 'p_1', 'test', 6).map((item) => item.id)
+    const retestForm = buildResearchQuestionForm(pool, 'p_1', 'retest', 6).map((item) => item.id)
     expect(new Set(retestForm)).toEqual(new Set(testForm))
     expect(retestForm).not.toEqual(testForm)
     expect(testForm).not.toContain('rewrite')
+  })
+
+  it('fingerprints item membership independently of presentation order', () => {
+    const testForm = buildResearchQuestionForm(pool, 'p_1', 'test', 6)
+    const retestForm = buildResearchQuestionForm(pool, 'p_1', 'retest', 6)
+    expect(researchFormFingerprint(retestForm)).toBe(researchFormFingerprint(testForm))
   })
 
   it('round-robins across layer and primary-axis groups before taking second items', () => {

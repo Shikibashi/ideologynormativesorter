@@ -24,7 +24,7 @@ The audit uses academic political theory and intellectual history as the inclusi
 
 The first measurement gap is addressed by `src/data/feministBreadth.ts`.
 
-The instrument deliberately keeps two proposed specialist IDs — `radical-feminism` and `socialist-feminism` — outside the production catalog. It first tests whether legal-equality reform, structural patriarchy, class/social reproduction and anti-hierarchical strategy can distinguish four broad feminist traditions.
+The instrument keeps `radical-feminism` outside the production catalog while exposing `socialist-feminism` as a specialist tied to the focused feminist module. Neither is an ordinary primary result. The module tests whether legal-equality reform, structural patriarchy, class/social reproduction and anti-hierarchical strategy can distinguish four broad feminist traditions.
 
 This is the model for future breadth work: identify the missing construct first, create an isolated specialist measurement surface, demonstrate internal separability, collect respondent evidence, and only then promote labels.
 

@@ -24,6 +24,7 @@ export function contributionsForAxis(
 
     const unit = normalizeAnswer(question, answer)
     if (unit === null) continue
+    if (answer.salienceSkipped === true && question.layer !== 'normative') continue
 
     const factor = salienceFactor(question, answer)
     const contribution = unit * axisWeight.weight * factor

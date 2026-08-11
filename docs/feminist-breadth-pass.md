@@ -32,7 +32,7 @@ Each construct is measured by multiple items. Every item also retains ordinary g
 
 ## Promotion quarantine
 
-`radical-feminism` and `socialist-feminism` are candidate IDs only. Tests require that they remain absent from both the production catalog and the primary scoring pool.
+`radical-feminism` remains a candidate ID outside the production catalog. `socialist-feminism` is now a catalog specialist connected to this focused module, but tests require that it remain outside the primary scoring pool.
 
 Promotion requires, in order:
 

@@ -1,4 +1,12 @@
 import type { AnswerMap, Question, QuizTier } from '../types'
+import { getQuestionHelpText, getSalienceHelpText } from '../data/questionHelpText'
+import {
+  DEFAULT_CONFIDENCE_PROMPT,
+  SALIENCE_LEVELS,
+  presentedResponseOptions,
+  type PresentedResponseOption,
+} from '../questionPresentation'
+import { RESEARCH_FORM_VERSION, researchFormFingerprint } from './forms'
 import type {
   SpecialistCriterionResponse,
   SpecialistMatch,
@@ -7,9 +15,10 @@ import type {
   SpecialistOutcome,
 } from '../specialist'
 
-export const RESEARCH_SCHEMA_VERSION = '2026-08-v4'
-export const RESEARCH_CONSENT_VERSION = '2026-08-10-v3'
-export const PUBLIC_RESEARCH_ENTRYPOINT = '?research=1&study=pilot-2026&formSize=120'
+export const RESEARCH_SCHEMA_VERSION = '2026-08-v5'
+export const RESEARCH_CONSENT_VERSION = '2026-08-10-v5'
+export const RESEARCH_QUALITY_RULE_VERSION = 'data-quality-v2'
+export const PUBLIC_RESEARCH_ENTRYPOINT = '?contribute=1&collection=community-2026&formSize=120'
 const PARTICIPANT_STORAGE_KEY = 'political-judgment-research-participant-v1'
 
 export type ResearchAdministration = 'test' | 'retest'
@@ -21,6 +30,12 @@ export interface ResearchConsent {
   dataUseAccepted: true
   consentVersion: string
   consentedAt: string
+  disclosureSnapshot: {
+    endpointConfigured: boolean
+    transferAndWithdrawalNotice: string
+    retentionNotice: string
+    contactNotice: string
+  }
 }
 
 export interface ResearchIdentity {
@@ -33,11 +48,29 @@ export interface ResearchIdentity {
 
 export interface ResearchItemSnapshot {
   questionId: string
+  prompt: string
+  helpText: string
+  domain: string
   layer: Question['layer']
+  theoryContext: Question['theoryContext']
   responseType: Question['responseType']
+  responseOptions: PresentedResponseOption[]
   axisWeights: Array<{ axisId: string; weight: number }>
+  statementOptions?: Array<{
+    id: string
+    text: string
+    axisWeights: Array<{ axisId: string; weight: number }>
+  }>
   constructWeights?: Record<string, number>
   reverseScored: boolean
+  confidencePrompt?: string
+  priorityPrompt?: string
+  salience?: {
+    kind: 'confidence' | 'priority'
+    prompt: string
+    helpText: string
+    options: Array<{ value: number | 'skipped'; label: string }>
+  }
   reviewStatus: Question['reviewStatus']
   evidenceNote?: string
   sourceCount: number
@@ -45,6 +78,7 @@ export interface ResearchItemSnapshot {
 
 interface ResearchRecordBase {
   schemaVersion: string
+  submissionId: string
   studyId: string
   participantId: string
   administration: ResearchAdministration
@@ -53,12 +87,31 @@ interface ResearchRecordBase {
   completedAt: string
   durationMs: number
   consent: ResearchConsent
+  locale: string
+  qualityRuleVersion: string
+}
+
+export interface ResearchFormMetadata {
+  algorithmVersion: string
+  requestedItemCount: number | null
+  assignedItemCount: number
+  fingerprint: string
+}
+
+export interface ResearchSamplingMetadata {
+  design: 'open-opt-in-nonprobability'
+  populationInference: false
+  weighting: 'none'
+  recruitmentSource: string
+  recruitmentSourceProvenance: 'url-parameter-unverified'
 }
 
 export interface CoreResearchSubmission extends ResearchRecordBase {
   recordType: 'core'
   resumed: boolean
   presentationOrder: string[]
+  form: ResearchFormMetadata
+  sampling: ResearchSamplingMetadata
   bankVersion: string
   scoringVersion: string
   tier: QuizTier
@@ -121,17 +174,58 @@ function normalizeSelfReportedIdeologies(value?: string): string | undefined {
   return normalized || undefined
 }
 
+function normalizeLocale(value?: string): string {
+  return value?.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 32) || 'und'
+}
+
+function validateAnswerCoverage(answers: AnswerMap, questions: Question[]): void {
+  const questionIds = new Set(questions.map((question) => String(question.id)))
+  const answerIds = Object.keys(answers)
+  const missing = [...questionIds].filter((questionId) => answers[questionId] === undefined)
+  const unexpected = answerIds.filter((questionId) => !questionIds.has(questionId))
+  if (missing.length > 0 || unexpected.length > 0) {
+    throw new Error(`Research answer coverage mismatch: ${missing.length} missing and ${unexpected.length} unexpected item(s).`)
+  }
+}
+
 function buildItemMap(
   questions: Question[],
   constructWeightsByQuestionId?: Record<string, Record<string, number>>,
 ): ResearchItemSnapshot[] {
   return questions.map((question) => ({
     questionId: String(question.id),
+    prompt: question.prompt,
+    helpText: question.helpText ?? getQuestionHelpText(question),
+    domain: String(question.domain),
     layer: question.layer,
+    theoryContext: question.theoryContext,
     responseType: question.responseType,
+    responseOptions: presentedResponseOptions(question, true),
     axisWeights: question.axisWeights.map((weight) => ({ axisId: String(weight.axisId), weight: weight.weight })),
+    statementOptions: question.statementOptions?.map((option) => ({
+      id: option.id,
+      text: option.text,
+      axisWeights: option.axisWeights.map((weight) => ({ axisId: String(weight.axisId), weight: weight.weight })),
+    })),
     constructWeights: constructWeightsByQuestionId?.[String(question.id)],
     reverseScored: question.reverseScored === true,
+    confidencePrompt: question.layer === 'descriptive'
+      ? question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT
+      : undefined,
+    priorityPrompt: question.priorityPrompt,
+    salience: question.layer === 'descriptive' || question.layer === 'prescriptive'
+      ? {
+          kind: question.layer === 'descriptive' ? 'confidence' : 'priority',
+          prompt: question.layer === 'descriptive'
+            ? question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT
+            : question.priorityPrompt ?? '',
+          helpText: getSalienceHelpText(question.layer === 'descriptive' ? 'confidence' : 'priority'),
+          options: [
+            ...SALIENCE_LEVELS.map((level) => ({ value: level.value, label: level.label })),
+            { value: 'skipped' as const, label: 'Skip rating' },
+          ],
+        }
+      : undefined,
     reviewStatus: question.reviewStatus,
     evidenceNote: question.evidenceNote,
     sourceCount: question.sources?.length ?? 0,
@@ -139,7 +233,8 @@ function buildItemMap(
 }
 
 export function isResearchMode(search = window.location.search): boolean {
-  return new URLSearchParams(search).get('research') === '1'
+  const params = new URLSearchParams(search)
+  return params.get('contribute') === '1' || params.get('research') === '1'
 }
 
 export function researchAdministration(search = window.location.search): ResearchAdministration {
@@ -147,18 +242,26 @@ export function researchAdministration(search = window.location.search): Researc
 }
 
 export function researchStudyId(search = window.location.search): string {
-  const configured = safeToken(new URLSearchParams(search).get('study') ?? '')
-  return configured || 'public-pilot'
+  const params = new URLSearchParams(search)
+  const configured = safeToken(params.get('collection') ?? params.get('study') ?? '')
+  return configured || 'community-2026'
+}
+
+export function researchRecruitmentSource(search = window.location.search): string {
+  const configured = safeToken(new URLSearchParams(search).get('source') ?? '')
+  return configured || 'direct-or-unknown'
 }
 
 export function getOrCreateParticipantId(
   storage: StorageLike = window.localStorage,
-  createId: () => string = () => crypto.randomUUID(),
+  createId: (() => string) | undefined = undefined,
+  studyId = 'community-2026',
 ): string {
-  const existing = storage.getItem(PARTICIPANT_STORAGE_KEY)
+  const storageKey = `${PARTICIPANT_STORAGE_KEY}:${safeToken(studyId) || 'community-2026'}`
+  const existing = storage.getItem(storageKey)
   if (existing) return existing
-  const participantId = `p_${safeToken(createId())}`
-  storage.setItem(PARTICIPANT_STORAGE_KEY, participantId)
+  const participantId = `p_${safeToken((createId ?? (() => crypto.randomUUID()))())}`
+  storage.setItem(storageKey, participantId)
   return participantId
 }
 
@@ -178,12 +281,18 @@ export function buildResearchSubmission(input: {
   startedAt: string
   completedAt: string
   resumed: boolean
+  requestedFormSize?: number | null
+  recruitmentSource?: string
+  locale?: string
+  submissionId?: string
   submittedAt?: string
 }): CoreResearchSubmission {
+  validateAnswerCoverage(input.answers, input.questions)
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
+    submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: 'core',
-    studyId: safeToken(input.studyId) || 'public-pilot',
+    studyId: safeToken(input.studyId) || 'community-2026',
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? new Date().toISOString(),
@@ -196,12 +305,27 @@ export function buildResearchSubmission(input: {
     scoringVersion: input.scoringVersion,
     tier: input.tier,
     consent: input.consent,
+    locale: normalizeLocale(input.locale),
+    qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
     identity: {
       ...input.identity,
       selfReportedIdeologies: normalizeSelfReportedIdeologies(input.identity.selfReportedIdeologies),
     },
     predictedLabelIds: input.predictedLabelIds.slice(0, 5),
     specialistAssignment: input.specialistAssignment,
+    form: {
+      algorithmVersion: RESEARCH_FORM_VERSION,
+      requestedItemCount: input.requestedFormSize ?? null,
+      assignedItemCount: input.questions.length,
+      fingerprint: researchFormFingerprint(input.questions),
+    },
+    sampling: {
+      design: 'open-opt-in-nonprobability',
+      populationInference: false,
+      weighting: 'none',
+      recruitmentSource: safeToken(input.recruitmentSource ?? '') || 'direct-or-unknown',
+      recruitmentSourceProvenance: 'url-parameter-unverified',
+    },
     answers: input.answers,
     itemMap: buildItemMap(input.questions),
   }
@@ -225,11 +349,15 @@ export function buildSpecialistResearchSubmission(input: {
   startedAt: string
   completedAt: string
   submittedAt?: string
+  locale?: string
+  submissionId?: string
 }): SpecialistResearchSubmission {
+  validateAnswerCoverage(input.answers, input.questions)
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
+    submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: 'specialist',
-    studyId: safeToken(input.studyId) || 'public-pilot',
+    studyId: safeToken(input.studyId) || 'community-2026',
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? new Date().toISOString(),
@@ -237,6 +365,8 @@ export function buildSpecialistResearchSubmission(input: {
     completedAt: input.completedAt,
     durationMs: durationBetween(input.startedAt, input.completedAt),
     consent: input.consent,
+    locale: normalizeLocale(input.locale),
+    qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
     moduleId: input.moduleId,
     moduleVersion: input.moduleVersion,
     assignment: input.assignment,
@@ -264,13 +394,16 @@ export function buildSpecialistDispositionSubmission(input: {
   startedAt?: string
   occurredAt?: string
   submittedAt?: string
+  locale?: string
+  submissionId?: string
 }): SpecialistDispositionSubmission {
   const completedAt = input.occurredAt ?? new Date().toISOString()
   const startedAt = input.startedAt ?? completedAt
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
+    submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: 'specialist-disposition',
-    studyId: safeToken(input.studyId) || 'public-pilot',
+    studyId: safeToken(input.studyId) || 'community-2026',
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? completedAt,
@@ -278,6 +411,8 @@ export function buildSpecialistDispositionSubmission(input: {
     completedAt,
     durationMs: durationBetween(startedAt, completedAt),
     consent: input.consent,
+    locale: normalizeLocale(input.locale),
+    qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
     moduleId: input.moduleId,
     moduleVersion: input.moduleVersion,
     assignment: input.assignment,
@@ -296,11 +431,11 @@ export async function submitResearchSubmission(
   try {
     resolvedEndpoint = new URL(endpoint, window.location.href)
   } catch {
-    return { status: 'failed', reason: 'Study endpoint is not a valid URL.' }
+    return { status: 'failed', reason: 'The website collection endpoint is not a valid URL.' }
   }
   const localDevelopment = ['localhost', '127.0.0.1', '[::1]'].includes(resolvedEndpoint.hostname)
   if (resolvedEndpoint.protocol !== 'https:' && !localDevelopment) {
-    return { status: 'failed', reason: 'Study endpoint must use HTTPS outside local development.' }
+    return { status: 'failed', reason: 'The website collection endpoint must use HTTPS.' }
   }
   try {
     const response = await send(resolvedEndpoint.toString(), {
@@ -310,26 +445,10 @@ export async function submitResearchSubmission(
       credentials: 'omit',
       referrerPolicy: 'no-referrer',
     })
-    if (!response.ok) return { status: 'failed', reason: `Study endpoint returned HTTP ${response.status}.` }
+    if (!response.ok) return { status: 'failed', reason: `The website could not receive the contribution (HTTP ${response.status}).` }
     return { status: 'submitted', endpoint: resolvedEndpoint.toString() }
   } catch (error) {
     const reason = error instanceof Error ? error.message : 'Unknown network error.'
     return { status: 'failed', reason }
   }
-}
-
-export function downloadResearchSubmission(submission: ResearchSubmission): void {
-  const suffix = submission.recordType === 'core'
-    ? '-core'
-    : submission.recordType === 'specialist'
-      ? `-${submission.moduleId}`
-      : `-${submission.moduleId}-disposition`
-  const filename = `${submission.studyId}-${submission.participantId}-${submission.administration}${suffix}.json`
-  const blob = new Blob([JSON.stringify(submission, null, 2)], { type: 'application/json' })
-  const url = URL.createObjectURL(blob)
-  const anchor = document.createElement('a')
-  anchor.href = url
-  anchor.download = filename
-  anchor.click()
-  URL.revokeObjectURL(url)
 }

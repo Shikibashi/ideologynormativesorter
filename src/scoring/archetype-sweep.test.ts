@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { axes } from '../data/axes'
 import { labels } from '../data/labels'
+import { primaryScoringLabels } from '../data/labelTaxonomy'
 import { questions } from '../data/questions'
 import { allCalibrationFixtures } from './calibration.fixtures'
 import { buildResultProfile } from './index'
@@ -112,10 +113,10 @@ describe('archetype -> nearest-label sweep', () => {
       })
    }
 
-   it('every label has a calibration archetype (no unverified labels)', () => {
+   it('every ordinary scoring label has a calibration archetype', () => {
       const covered = new Set(allCalibrationFixtures.map((f) => f.expectedLabelIds[0]))
-      const uncovered = labels.map((l) => l.id).filter((id) => !covered.has(id))
-      expect(uncovered, `labels with no archetype sweep coverage: ${uncovered.join(', ')}`).toEqual([])
+      const uncovered = primaryScoringLabels.map((label) => label.id).filter((id) => !covered.has(id))
+      expect(uncovered, `scoring labels with no archetype sweep coverage: ${uncovered.join(', ')}`).toEqual([])
    })
 
    it('reports the current near-tie gate reproducibly without enforcing Phase 2 early', () => {

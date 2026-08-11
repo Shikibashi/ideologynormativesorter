@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { PUBLIC_RESEARCH_ENTRYPOINT } from '../research'
 import type { QuizTier } from '../types'
 
@@ -9,8 +9,8 @@ interface TierOption {
 }
 
 const TIER_OPTIONS: TierOption[] = [
-  { tier: 'blitz', label: 'Blitz', blurb: 'Seven items per layer across key domains. A fast snapshot of all three profiles.' },
-  { tier: 'quick', label: 'Quick', blurb: 'One item per domain per layer. A fast overview.' },
+  { tier: 'blitz', label: 'Blitz', blurb: 'A short snapshot spanning all three layers and key domains.' },
+  { tier: 'quick', label: 'Quick', blurb: 'A broader overview spanning all domains, with some layer/domain gaps under editorial review.' },
   { tier: 'moderate', label: 'Moderate', blurb: 'A balanced middle pool with more depth per domain.' },
   { tier: 'extensive', label: 'Extensive', blurb: 'The full item bank, for the most precise profile.' },
 ]
@@ -21,14 +21,27 @@ interface IntroScreenProps {
   savedProgress: { tier: QuizTier; answered: number; total: number } | null
   onResume: () => void
   onStart: (tier: QuizTier) => void
+  onTierChange?: (tier: QuizTier) => void
   onClearSavedProgress: () => void
+  contributionAvailable: boolean
   loadError?: string | null
   onDismissLoadError?: () => void
 }
 
-export function IntroScreen({ questionCounts, domainCount, savedProgress, onResume, onStart, onClearSavedProgress, loadError, onDismissLoadError }: IntroScreenProps) {
+export function IntroScreen({ questionCounts, domainCount, savedProgress, onResume, onStart, onTierChange, onClearSavedProgress, contributionAvailable, loadError, onDismissLoadError }: IntroScreenProps) {
   const [tier, setTier] = useState<QuizTier>('moderate')
   const [confirmingClear, setConfirmingClear] = useState(false)
+  const startFreshRef = useRef<HTMLButtonElement>(null)
+  const confirmClearRef = useRef<HTMLButtonElement>(null)
+  const setupHeadingRef = useRef<HTMLHeadingElement>(null)
+
+  useEffect(() => {
+    onTierChange?.(tier)
+  }, [onTierChange, tier])
+
+  useEffect(() => {
+    if (confirmingClear) confirmClearRef.current?.focus()
+  }, [confirmingClear])
 
   return (
     <section className="screen intro-screen">
@@ -63,16 +76,32 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
               Resume
             </button>
             {!confirmingClear ? (
-              <button type="button" className="back-link" onClick={() => setConfirmingClear(true)}>
+              <button ref={startFreshRef} type="button" className="back-link" onClick={() => setConfirmingClear(true)}>
                 Start fresh
               </button>
             ) : (
               <div className="confirm-reset" role="group" aria-label="Confirm clearing saved session">
                 <span className="muted">This removes the saved answers from this browser.</span>
-                <button type="button" className="back-link" onClick={() => { onClearSavedProgress(); setConfirmingClear(false) }}>
+                <button
+                  ref={confirmClearRef}
+                  type="button"
+                  className="back-link"
+                  onClick={() => {
+                    onClearSavedProgress()
+                    setConfirmingClear(false)
+                    requestAnimationFrame(() => setupHeadingRef.current?.focus())
+                  }}
+                >
                   Clear saved session
                 </button>
-                <button type="button" className="back-link" onClick={() => setConfirmingClear(false)}>
+                <button
+                  type="button"
+                  className="back-link"
+                  onClick={() => {
+                    setConfirmingClear(false)
+                    requestAnimationFrame(() => startFreshRef.current?.focus())
+                  }}
+                >
                   Cancel
                 </button>
               </div>
@@ -114,7 +143,7 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
 
         <div className="intro-rail">
           <aside className="intro-setup" aria-labelledby="session-setup-heading">
-            <h2 id="session-setup-heading">Session setup</h2>
+            <h2 ref={setupHeadingRef} id="session-setup-heading" tabIndex={-1}>Session setup</h2>
             <p className="muted">Choose the depth of the assessment before you begin.</p>
             <fieldset className="tier-picker">
               <legend>Choose a length</legend>
@@ -147,16 +176,18 @@ export function IntroScreen({ questionCounts, domainCount, savedProgress, onResu
           <section className="research-invite" aria-labelledby="research-invite-heading">
             <h2 id="research-invite-heading">Help expand the label set</h2>
             <p>
-              Adults can opt into a separate validation study using a balanced 120-question form. Before seeing the result,
-              you may name one or more ideologies or traditions you subscribe to, including ones not listed here.
+              Adults can contribute a separate balanced 120-question response through this website. Before seeing the result,
+              you may name ideologies or traditions you subscribe to, including ones not listed here.
             </p>
             <p className="muted">
-              Your optional self-description helps us find candidate labels for later human review. It does not automatically
-              change scores or add an ideology to the product. Participation is voluntary and consent appears before questions.
+              Your optional self-description helps the site owner find candidate labels to review. It never changes scores or
+              adds an ideology automatically.
             </p>
-            <a className="research-link" href={PUBLIC_RESEARCH_ENTRYPOINT}>
-              Enter the validation study
-            </a>
+            {contributionAvailable ? (
+              <a className="research-link" href={PUBLIC_RESEARCH_ENTRYPOINT}>Contribute responses</a>
+            ) : (
+              <p className="muted" role="status">Website contributions are temporarily unavailable.</p>
+            )}
           </section>
         </div>
       </div>

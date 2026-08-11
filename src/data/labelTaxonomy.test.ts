@@ -6,6 +6,7 @@ import {
   LABEL_IDS_BY_ROLE,
   MODIFIER_LABEL_IDS,
   PRIMARY_LABEL_IDS,
+  PROVISIONAL_SPECIALIST_LABEL_IDS,
   RETIRED_LABEL_IDS,
   SPECIALIST_LABEL_IDS,
   primaryScoringLabels,
@@ -15,7 +16,7 @@ import {
   specialistModuleByLabel,
 } from './labelTaxonomy'
 import { labels } from './labels'
-import { moduleQuestions } from './moduleQuestions'
+import { specialistModuleDefinitions } from '../specialist'
 
 const MAJOR_PRIMARY_FAMILIES = [
   'anarchist',
@@ -26,7 +27,6 @@ const MAJOR_PRIMARY_FAMILIES = [
   'distributist',
   'green',
   'liberal',
-  'libertarian-leaning',
   'nationalist',
   'republican',
   'social-democratic',
@@ -61,6 +61,18 @@ const THIN_OR_CROSS_CUTTING_ENDPOINTS = [
   'welfare-chauvinism',
 ]
 
+const LIBERAL_LIBERTARIAN_LABEL_IDS = [
+  'decentralist-market-skeptic-of-state',
+  'geolibertarian',
+  'anarcho-capitalist',
+  'minarchist',
+  'agorist',
+  'paleolibertarianism',
+  'objectivism',
+  'voluntaryism',
+  'georgism',
+] as const
+
 function centroidDistance(a: Record<string, number>, b: Record<string, number>): number {
   return Math.sqrt(
     axes.reduce((sum, axis) => {
@@ -92,6 +104,30 @@ describe('ideology taxonomy', () => {
     for (const family of MAJOR_PRIMARY_FAMILIES) {
       expect(families.has(family), `primary scoring pool is missing ${family}`).toBe(true)
     }
+  })
+
+  it('places market and right-libertarian traditions in the liberal lineage without absorbing socialist or anarchist uses', () => {
+    const labelById = new Map(labels.map((label) => [label.id, label]))
+
+    for (const labelId of LIBERAL_LIBERTARIAN_LABEL_IDS) {
+      expect(labelById.get(labelId)?.family, `${labelId} should be grouped under liberal`).toBe('liberal')
+    }
+
+    expect(labelById.get('libertarian-socialism')?.family).toBe('socialist')
+    expect(labelById.get('left-wing-market-anarchism')?.family).toBe('anarchist')
+    expect(labelById.get('libertarian-municipalism')?.family).not.toBe('liberal')
+  })
+
+  it('keeps socialist lineages broad without forcing adjacent traditions into Marxism or one generic subfamily', () => {
+    const labelById = new Map(labels.map((label) => [label.id, label]))
+    const socialDemocrat = labelById.get('social-democrat')!
+
+    expect(socialDemocrat.philosophies).not.toContain('Marxism')
+    expect(socialDemocrat.descriptivePhilosophies).toEqual([])
+    expect(labelById.get('council-communist')?.subTheories).not.toContain('Luxemburgism')
+    expect(labelById.get('christian-socialism')?.subfamily).toBe('religious-socialist')
+    expect(labelById.get('utopian-socialism')?.subfamily).toBe('early-socialist')
+    expect(labelById.get('anti-imperialism')?.family).toBe('anti-colonial')
   })
 
   it('does not score policy proposals, futurist concepts, or governance mechanisms as primary ideologies', () => {
@@ -126,19 +162,43 @@ describe('ideology taxonomy', () => {
     expect(researchIdentityLabels.map((label) => label.id)).toEqual(primaryScoringLabels.map((label) => label.id))
   })
 
-  it('requires every specialist label to have an existing, substantive depth module', () => {
-    const moduleCounts = new Map<string, number>()
-    for (const question of moduleQuestions) {
-      if (!question.module) continue
-      moduleCounts.set(question.module, (moduleCounts.get(question.module) ?? 0) + 1)
-    }
+  it('requires every non-provisional specialist label to have an existing, substantive depth module', () => {
+    const moduleCounts = new Map<string, number>(
+      specialistModuleDefinitions.map((module) => [module.id, module.questions.length]),
+    )
+    const provisionalSpecialists = new Set<string>(PROVISIONAL_SPECIALIST_LABEL_IDS)
 
-    expect(Object.keys(specialistModuleByLabel)).toHaveLength(SPECIALIST_LABEL_IDS.length)
+    expect(Object.keys(specialistModuleByLabel)).toHaveLength(
+      SPECIALIST_LABEL_IDS.length - provisionalSpecialists.size,
+    )
     for (const labelId of SPECIALIST_LABEL_IDS) {
       const moduleId = specialistModuleByLabel[labelId]
+      if (provisionalSpecialists.has(labelId)) {
+        expect(moduleId, `${labelId} must remain unmapped until it has a dedicated module`).toBeUndefined()
+        continue
+      }
       expect(moduleId, `${labelId} has no depth-module mapping`).toBeTruthy()
       expect(moduleCounts.get(moduleId!) ?? 0, `${labelId} maps to a missing or tiny module ${moduleId}`).toBeGreaterThanOrEqual(4)
     }
+  })
+
+  it('does not present inert audit-only faction items as active specialist modules', () => {
+    expect(specialistModuleByLabel['council-communist']).toBeUndefined()
+    expect(specialistModuleByLabel['maoism']).toBeUndefined()
+    expect(specialistModuleByLabel['trotskyism']).toBeUndefined()
+    expect(PROVISIONAL_SPECIALIST_LABEL_IDS).toContain('council-communist')
+  })
+
+  it('exposes socialist feminism only through its construct-matched specialist module', () => {
+    expect(roleForLabel('socialist-feminism')).toBe('specialist')
+    expect(primaryScoringLabels.some((label) => label.id === 'socialist-feminism')).toBe(false)
+    expect(publicCatalogLabels.some((label) => label.id === 'socialist-feminism')).toBe(true)
+    expect(specialistModuleByLabel['socialist-feminism']).toBe('feminist-faction-module')
+  })
+
+  it('does not route world federalism through nationalist discriminators', () => {
+    expect(PROVISIONAL_SPECIALIST_LABEL_IDS).toContain('world-federalism')
+    expect(specialistModuleByLabel['world-federalism']).toBeUndefined()
   })
 
   it('measures the strongest distinctions between every primary label and its nearest primary neighbor', () => {

@@ -228,6 +228,12 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    regionalism: [
       '“Regionalism” gives a subnational region’s identity, interests, or self-government special political importance within or across existing states.',
    ],
+   corporatism: [
+      '“State corporatism” organizes recognized occupational or sectoral bodies under strong state direction, distinct from democratic societal or neo-corporatist bargaining.',
+   ],
+   'islamic-democracy': [
+      '“Islamic democratic constitutionalism” combines electoral government, constitutional limits, and public accountability with an Islamic ethical or legal framework.',
+   ],
    ethnonationalist: [
       '“Ethnonationalism” defines the nation primarily through shared ancestry, ethnicity, or inherited culture rather than equal civic membership alone.',
    ],
@@ -235,6 +241,12 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“Ordoliberalism” favors a strong legal and institutional framework that preserves competition and constrains both private monopoly and discretionary economic power.',
    ],
 }
+
+const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
+   'national-socialism',
+   'corporatism',
+   'islamic-democracy',
+])
 
 function firstCharacterLower(value: string): string {
    return value ? value.charAt(0).toLowerCase() + value.slice(1) : value
@@ -280,7 +292,7 @@ export function getIdeologyLayerSummary(label: IdeologyLabel, axes: Axis[], laye
 
 export function getIdeologyTermDefinitions(label: IdeologyLabel, limit = 2): string[] {
    const directDefinitions = [...(DIRECT_TERM_DEFINITIONS_BY_LABEL_ID[label.id] ?? [])]
-   if (label.id === 'national-socialism') return directDefinitions.slice(0, limit)
+   if (DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS.has(label.id)) return directDefinitions.slice(0, limit)
 
    const identityText = [
       label.name,

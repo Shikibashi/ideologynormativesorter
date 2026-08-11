@@ -26,7 +26,7 @@ describe('SelfIdentificationScreen', () => {
     fireEvent.change(screen.getByLabelText(/other ideology, tradition, or movement/i), {
       target: { value: 'Mutualism, Pan-Africanism' },
     })
-    fireEvent.click(screen.getByRole('button', { name: /continue to results/i }))
+    fireEvent.click(screen.getByRole('button', { name: /submit contribution and continue/i }))
 
     expect(onContinue).toHaveBeenCalledWith({
       selfReportedIdeologies: 'Mutualism, Pan-Africanism',

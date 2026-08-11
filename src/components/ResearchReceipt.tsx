@@ -1,4 +1,4 @@
-import { downloadResearchSubmission, type ResearchSubmission, type ResearchSubmissionStatus } from '../research'
+import type { ResearchSubmission, ResearchSubmissionStatus } from '../research'
 
 interface ResearchReceiptProps {
   submission: ResearchSubmission
@@ -6,30 +6,27 @@ interface ResearchReceiptProps {
 }
 
 export function ResearchReceipt({ submission, status }: ResearchReceiptProps) {
-  const recordLabel = submission.recordType === 'specialist' ? 'Specialist follow-up record' : 'Core study record'
+  const recordLabel = submission.recordType === 'specialist' ? 'Topic follow-up' : 'Main contribution'
   const message = status.status === 'submitted'
-    ? 'Your pseudonymous study record was submitted successfully.'
+    ? 'Your pseudonymous contribution was received. Thank you for helping improve the site.'
     : status.status === 'export-only'
-      ? 'No study endpoint is configured. The record has not left this browser.'
-      : `The study record was not submitted: ${status.reason}`
+      ? 'Local preview only: this contribution was not sent to the website.'
+      : `The contribution was not received: ${status.reason}`
   const detail = submission.recordType === 'specialist'
     ? ` · module: ${submission.moduleId}`
     : ''
 
   return (
-    <section className="screen methodology-screen" aria-label="Research submission status">
+    <section className="screen methodology-screen" aria-label="Contribution submission status">
       <div className="section-band">
-        <span className="section-band-label">VALIDATION STUDY / RECEIPT</span>
+        <span className="section-band-label">COMMUNITY INPUT / RECEIPT</span>
         <span className="section-band-status">RECORD {status.status}</span>
       </div>
       <h2>{recordLabel}</h2>
       <p>{message}</p>
       <p className="muted">
-        Participant code: <code>{submission.participantId}</code> · administration: {submission.administration} · study: {submission.studyId}{detail}
+        Contribution code: <code>{submission.participantId}</code>{detail}
       </p>
-      <button type="button" className="scale-button" onClick={() => downloadResearchSubmission(submission)}>
-        Download {submission.recordType === 'specialist' ? 'follow-up' : 'core'} record
-      </button>
     </section>
   )
 }

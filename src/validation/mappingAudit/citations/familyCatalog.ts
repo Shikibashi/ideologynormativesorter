@@ -40,8 +40,24 @@ const IEP = 'Internet Encyclopedia of Philosophy'
 
 export const FAMILY_SCHOLARLY_CATALOG: FamilyScholarlyBundle[] = [
   {
+    family: 'anti-colonial',
+    evidenceNote:
+      'Strong SEP colonialism baseline for anti-imperial and anti-colonial politics as cross-tradition positions; does not imply a socialist lineage.',
+    scholarly: [
+      scholarlyCite(
+        'sep-colonialism',
+        'Colonialism',
+        [],
+        undefined,
+        SEP,
+        'https://plato.stanford.edu/entries/colonialism/',
+      ),
+    ],
+  },
+  {
     family: 'liberal',
-    evidenceNote: 'Strong SEP baseline for liberalism and cosmopolitanism.',
+    evidenceNote:
+      'Strong SEP baseline for liberalism, libertarianism, and cosmopolitanism. Market and right-libertarian schools are grouped here as liberal-lineage traditions; socialist and anarchist uses remain in their own families.',
     scholarly: [
       scholarlyCite(
         'sep-liberalism',
@@ -50,6 +66,14 @@ export const FAMILY_SCHOLARLY_CATALOG: FamilyScholarlyBundle[] = [
         undefined,
         SEP,
         'https://plato.stanford.edu/entries/liberalism/',
+      ),
+      scholarlyCite(
+        'sep-libertarianism',
+        'Libertarianism',
+        [],
+        undefined,
+        SEP,
+        'https://plato.stanford.edu/entries/libertarianism/',
       ),
       scholarlyCite(
         'sep-cosmopolitanism',
@@ -102,29 +126,6 @@ export const FAMILY_SCHOLARLY_CATALOG: FamilyScholarlyBundle[] = [
         undefined,
         IEP,
         'https://iep.utm.edu/socialis/',
-      ),
-    ],
-  },
-  {
-    family: 'libertarian-leaning',
-    evidenceNote:
-      'Solid SEP libertarianism baseline delineating boundary from classical liberalism. Does not validate numeric coordinates for variants.',
-    scholarly: [
-      scholarlyCite(
-        'sep-libertarianism',
-        'Libertarianism',
-        [],
-        undefined,
-        SEP,
-        'https://plato.stanford.edu/entries/libertarianism/',
-      ),
-      scholarlyCite(
-        'sep-liberalism-libertarian',
-        'Liberalism',
-        [],
-        undefined,
-        SEP,
-        'https://plato.stanford.edu/entries/liberalism/',
       ),
     ],
   },

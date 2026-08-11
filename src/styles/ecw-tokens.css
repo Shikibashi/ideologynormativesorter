@@ -1,0 +1,253 @@
+:root {
+  /* ECW 3.2 semantic color roles. Components consume these names directly. */
+  --ecw-canvas: #050719;
+  --ecw-workspace: #070a2e;
+  --ecw-surface: #12144b;
+  --ecw-surface-raised: #1c1e67;
+  --ecw-surface-recessed: #0b0d38;
+  --ecw-surface-input: #02030d;
+  --ecw-text: #f9f3ff;
+  --ecw-text-strong: #f9f3ff;
+  --ecw-text-secondary: #dfe6ff;
+  --ecw-text-muted: #aeb6e9;
+  --ecw-border-structural: #6675c8;
+  --ecw-border-strong: #7787e8;
+  --ecw-rule-decorative: #343960;
+  --ecw-link: #6ff4ff;
+  --ecw-link-hover: #ff76d7;
+  --ecw-link-visited: #c594ff;
+  --ecw-selection: #9c68ff;
+  --ecw-selection-text: #050719;
+  --ecw-accent-hover: #a184ff;
+  --ecw-accent-surface: #26256f;
+  --ecw-focus-outer: #ffd45c;
+  --ecw-focus-inner: #050719;
+  --ecw-marker: #ff76d7;
+  --ecw-marker-border: #ffd45c;
+  --ecw-success: #23d5a6;
+  --ecw-warning: #ffd45c;
+  --ecw-error: #ff76a8;
+  --ecw-info: #6ff4ff;
+
+  /* Status roles are quartets so accent fills never imply their foreground. */
+  --ecw-status-success-text: #23d5a6;
+  --ecw-status-success-accent: #23d5a6;
+  --ecw-status-success-border: #23d5a6;
+  --ecw-status-success-on-accent: #050719;
+  --ecw-status-warning-text: #ffd45c;
+  --ecw-status-warning-accent: #ffd45c;
+  --ecw-status-warning-border: #ffd45c;
+  --ecw-status-warning-on-accent: #050719;
+  --ecw-status-error-text: #ff76a8;
+  --ecw-status-error-accent: #ff76a8;
+  --ecw-status-error-border: #ff76a8;
+  --ecw-status-error-on-accent: #050719;
+  --ecw-status-info-text: #6ff4ff;
+  --ecw-status-info-accent: #6ff4ff;
+  --ecw-status-info-border: #6ff4ff;
+  --ecw-status-info-on-accent: #050719;
+
+  /* Neutral system controls remain distinct from product identity colors. */
+  --ecw-control-face: #bdbdbd;
+  --ecw-control-highlight: #f6f6f6;
+  --ecw-control-shadow: #666666;
+  --ecw-control-text: #111111;
+  --ecw-control-disabled-face: #8d8d8d;
+  --ecw-control-disabled-text: #343434;
+  --ecw-grid-line: rgba(102, 117, 200, 0.08);
+  --ecw-bevel-light: color-mix(in srgb, var(--ecw-control-highlight) 80%, transparent);
+  --ecw-bevel-dark: color-mix(in srgb, var(--ecw-control-shadow) 85%, transparent);
+
+  /* Named fallbacks precede generic families; density never changes text scale. */
+  --ecw-font-display: Georgia, "Noto Serif", "DejaVu Serif", "Times New Roman", "Liberation Serif", serif;
+  --ecw-font-ui: Verdana, "DejaVu Sans", Tahoma, "Noto Sans", Arial, sans-serif;
+  --ecw-font-system: "Courier New", "Liberation Mono", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
+  --ecw-font-size-body: 0.9375rem;
+  --ecw-font-size-ui: 0.875rem;
+  --ecw-font-size-meta: 0.8125rem;
+  --ecw-font-size-micro: 0.75rem;
+  --ecw-line-height-body: 1.5;
+  --ecw-line-height-ui: 1.4;
+  --ecw-line-height-meta: 1.35;
+  --ecw-control-block: 1.875rem;
+  --ecw-field-block: 2rem;
+  --ecw-row-block: 1.875rem;
+  --ecw-toolbar-block: 2.25rem;
+  --ecw-control-padding-inline: 0.5rem;
+  --ecw-gap-control: 0.25rem;
+  --ecw-hit-min: 1.875rem;
+  --ecw-space-panel: 0.75rem;
+  --ecw-space-layout: 1rem;
+  --ecw-display-1: clamp(2rem, 1.3rem + 2.7vw, 3.25rem);
+  --ecw-shell-gutter: clamp(1rem, 1.25vw, 3rem);
+  --ecw-shell-max: clamp(92rem, 80vw, 160rem);
+
+  /* Generic role aliases used by scoring visualizations and legacy helpers. */
+  --surface: var(--ecw-surface);
+  --surface-raised: var(--ecw-surface-raised);
+  --surface-sunken: var(--ecw-surface-recessed);
+  --workspace: var(--ecw-workspace);
+  --text: var(--ecw-text);
+  --text-m: var(--ecw-text-muted);
+  --text-h: var(--ecw-text-strong);
+  --border: var(--ecw-border-structural);
+  --border-light: var(--ecw-border-strong);
+  --border-dark: var(--ecw-border-strong);
+  --code-bg: var(--ecw-surface-recessed);
+  --accent: var(--ecw-selection);
+  --accent-hover: var(--ecw-accent-hover);
+  --accent-bg: var(--ecw-accent-surface);
+  --accent-border: var(--ecw-link);
+  --highlight-text: var(--ecw-selection-text);
+  --danger: var(--ecw-status-error-text);
+  --shadow: none;
+  --sans: var(--ecw-font-ui);
+  --heading: var(--ecw-font-display);
+  --mono: var(--ecw-font-system);
+
+  /* Temporary migration aliases. Active component styles must not consume these. */
+  --ecw-bg: var(--ecw-canvas);
+  --ecw-panel: var(--ecw-surface);
+  --ecw-panel-deep: var(--ecw-surface-recessed);
+  --ecw-panel-raised: var(--ecw-surface-raised);
+  --ecw-panel-recessed: var(--ecw-surface-input);
+  --ecw-ink: var(--ecw-text);
+  --ecw-ink-secondary: var(--ecw-text-secondary);
+  --ecw-muted: var(--ecw-text-muted);
+  --ecw-border: var(--ecw-border-structural);
+  --ecw-rule: var(--ecw-rule-decorative);
+  --ecw-purple: var(--ecw-selection);
+  --ecw-purple-on-accent: var(--ecw-selection-text);
+  --ecw-pink: var(--ecw-marker);
+  --ecw-yellow: var(--ecw-marker-border);
+  --ecw-green: var(--ecw-success);
+  --ecw-teal: var(--ecw-border-strong);
+  --ecw-on-cyan: var(--ecw-selection-text);
+  --ecw-accent-bg: var(--ecw-accent-surface);
+  --ecw-success-text: var(--ecw-status-success-text);
+  --ecw-success-accent: var(--ecw-status-success-accent);
+  --ecw-success-border: var(--ecw-status-success-border);
+  --ecw-success-on-accent: var(--ecw-status-success-on-accent);
+  --ecw-warning-text: var(--ecw-status-warning-text);
+  --ecw-warning-accent: var(--ecw-status-warning-accent);
+  --ecw-warning-border: var(--ecw-status-warning-border);
+  --ecw-warning-on-accent: var(--ecw-status-warning-on-accent);
+  --ecw-error-text: var(--ecw-status-error-text);
+  --ecw-error-accent: var(--ecw-status-error-accent);
+  --ecw-error-border: var(--ecw-status-error-border);
+  --ecw-error-on-accent: var(--ecw-status-error-on-accent);
+  --ecw-info-text: var(--ecw-status-info-text);
+  --ecw-info-accent: var(--ecw-status-info-accent);
+  --ecw-info-border: var(--ecw-status-info-border);
+  --ecw-info-on-accent: var(--ecw-status-info-on-accent);
+  --web99-bg: var(--ecw-canvas);
+  --web99-night: var(--ecw-workspace);
+  --web99-panel: var(--ecw-surface);
+  --web99-panel-deep: var(--ecw-surface-recessed);
+  --web99-raised: var(--ecw-surface-raised);
+  --web99-recessed: var(--ecw-surface-input);
+  --web99-ink: var(--ecw-text);
+  --web99-muted: var(--ecw-text-muted);
+  --web99-border: var(--ecw-border-structural);
+  --web99-border-strong: var(--ecw-border-strong);
+  --web99-cyan: var(--ecw-link);
+  --web99-teal: var(--ecw-border-strong);
+  --web99-purple: var(--ecw-selection);
+  --web99-logo: var(--ecw-selection);
+  --web99-pink: var(--ecw-marker);
+  --web99-yellow: var(--ecw-marker-border);
+  --web99-green: var(--ecw-success);
+  --web99-on-cyan: var(--ecw-selection-text);
+
+  font-family: var(--ecw-font-ui);
+  color: var(--ecw-text);
+  background: var(--ecw-canvas);
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='light'] {
+  --ecw-canvas: #d6d9e8;
+  --ecw-workspace: #c7ccdf;
+  --ecw-surface: #f4f3eb;
+  --ecw-surface-raised: #ffffff;
+  --ecw-surface-recessed: #e1e3ee;
+  --ecw-surface-input: #d4d6df;
+  --ecw-text: #11132d;
+  --ecw-text-strong: #11132d;
+  --ecw-text-secondary: #24274a;
+  --ecw-text-muted: #4f5570;
+  --ecw-border-structural: #626a9c;
+  --ecw-border-strong: #383f78;
+  --ecw-rule-decorative: #9da2bd;
+  --ecw-link: #004fa3;
+  --ecw-link-hover: #a82378;
+  --ecw-link-visited: #65349a;
+  --ecw-selection: #5530a3;
+  --ecw-selection-text: #ffffff;
+  --ecw-accent-hover: #6846bb;
+  --ecw-accent-surface: #ddd7f4;
+  --ecw-focus-outer: #522598;
+  --ecw-focus-inner: #ffffff;
+  --ecw-marker: #a82378;
+  --ecw-marker-border: #8a5900;
+  --ecw-success: #08775f;
+  --ecw-warning: #8a5900;
+  --ecw-error: #9b245f;
+  --ecw-info: #005a6e;
+  --ecw-status-success-text: #055c49;
+  --ecw-status-success-accent: #23d5a6;
+  --ecw-status-success-border: #055c49;
+  --ecw-status-success-on-accent: #11132d;
+  --ecw-status-warning-text: #6b4600;
+  --ecw-status-warning-accent: #ffd45c;
+  --ecw-status-warning-border: #6b4600;
+  --ecw-status-warning-on-accent: #11132d;
+  --ecw-status-error-text: #9b245f;
+  --ecw-status-error-accent: #ff76a8;
+  --ecw-status-error-border: #9b245f;
+  --ecw-status-error-on-accent: #11132d;
+  --ecw-status-info-text: #005a6e;
+  --ecw-status-info-accent: #6ff4ff;
+  --ecw-status-info-border: #005a6e;
+  --ecw-status-info-on-accent: #11132d;
+  --ecw-grid-line: rgba(98, 106, 156, 0.14);
+  color-scheme: light;
+}
+
+:root[data-contrast='more'][data-theme='dark'] {
+  --ecw-border-structural: #aab5ff;
+  --ecw-border-strong: #d1d7ff;
+  --ecw-rule-decorative: #6d78bd;
+  --ecw-text-muted: #d8ddff;
+}
+
+:root[data-contrast='more'][data-theme='light'] {
+  --ecw-border-structural: #3b467b;
+  --ecw-border-strong: #1d285e;
+  --ecw-rule-decorative: #747da3;
+  --ecw-text-muted: #3f496b;
+}
+
+:root[data-density='compact'] {
+  --ecw-control-block: 1.875rem;
+  --ecw-field-block: 2rem;
+  --ecw-row-block: 1.875rem;
+  --ecw-toolbar-block: 2.25rem;
+  --ecw-control-padding-inline: 0.5rem;
+  --ecw-gap-control: 0.25rem;
+  --ecw-hit-min: 1.875rem;
+}
+
+:root[data-density='comfortable'] {
+  --ecw-control-block: 2.75rem;
+  --ecw-field-block: 2.75rem;
+  --ecw-row-block: 2.5rem;
+  --ecw-toolbar-block: 3rem;
+  --ecw-control-padding-inline: 0.75rem;
+  --ecw-gap-control: 0.5rem;
+  --ecw-hit-min: 2.75rem;
+}

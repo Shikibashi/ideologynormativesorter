@@ -19,8 +19,8 @@ The instrument is **under empirical validation**. The repository contains:
 - an opt-in consented research mode;
 - deterministic balanced matrix forms and test/retest order;
 - a pseudonymous collector and local JSON export;
-- preregistered data-quality rules;
-- R workflows for alpha, omega, bootstrap intervals, EFA, held-out CFA, test-retest analysis, criterion concordance, and DIF.
+- draft preregistration-ready data-quality rules;
+- R workflows for item-model alpha/omega/EFA/CFA, exact production-score reconstruction, test-retest agreement, criterion concordance, and DIF.
 
 No real pilot dataset is included, so the repository does not claim established reliability, factor structure, temporal stability, criterion validity, or subgroup invariance.
 
@@ -52,30 +52,24 @@ The original source bank remains in `src/data/questions.ts` for traceability. Ru
 
 High-confidence sign or construct corrections are applied through the overlay. Ambiguous items are marked `needs-rewrite` rather than assigned a speculative interpretation. Bank and scoring versions are embedded in result and research records.
 
-## Research mode
+## Community contributions
 
-Research mode is never enabled silently. An initial matrix-sampled administration can be launched with:
-
-```text
-?research=1&study=pilot-2026&formSize=120
-```
-
-The ordinary intro screen also exposes this as an explicit opt-in validation-study link. Before results, respondents may optionally provide one or more ideology or tradition names that are not in the current label set. Those names are stored as research metadata and summarized for later human review; they do not automatically alter scoring or add production labels.
-
-A retest uses:
+The ordinary intro screen links to a separate, optional contribution form:
 
 ```text
-?research=1&study=pilot-2026&administration=retest&formSize=120
+?contribute=1&collection=community-2026&formSize=120
 ```
+
+Before results, contributors may optionally provide one or more ideology or tradition names that are not in the current label set. Those names are stored as contribution metadata and summarized for later manual review; they do not automatically alter scoring or add production labels. The legacy `research=1&study=...` query remains accepted so old links and saved sessions are not broken.
 
 The flow:
 
 1. requires explicit adult, voluntary-participation, and data-use consent;
 2. assigns a stable pseudonymous participant code in the same browser;
-3. creates a balanced deterministic form and randomized presentation order;
-4. records answers, confidence/priority, versions, timing, resume status, and item metadata;
-5. captures optional self-identification before results are shown;
-6. posts only to a configured HTTPS endpoint or lets the participant download the JSON record.
+3. creates a balanced deterministic form;
+4. records answers, distinct uncertainty/refusal/skipped-salience states, versions, timing, resume status, form fingerprint, and exact presented item text/options;
+5. captures optional post-questionnaire self-identification before results are shown;
+6. posts only to the configured HTTPS website endpoint.
 
 Set the endpoint during the frontend build:
 
@@ -83,7 +77,9 @@ Set the endpoint during the frontend build:
 VITE_RESEARCH_ENDPOINT=https://research.example.org/submit npm run build
 ```
 
-Without that variable, no record is transmitted.
+For GitHub Pages deployment, set the repository variables `RESEARCH_ENDPOINT`, `RESEARCH_CONTACT`, and `RESEARCH_RETENTION_NOTICE`. The deployment workflow maps them to the frontend build. Without `RESEARCH_ENDPOINT`, the public contribution link is disabled and no record is transmitted; local development still allows an explicitly labeled preview.
+
+Website contributions form an open opt-in, nonprobability pool. They are useful for improving this site but cannot estimate population prevalence or support a sampling margin of error. No population weights are applied.
 
 ## Reference collector
 
@@ -92,8 +88,13 @@ The repository includes a minimal dependency-free collector for controlled deplo
 ```bash
 ALLOWED_ORIGIN=http://localhost:5173 \
 RESEARCH_OUTPUT_FILE=./private-data/submissions.ndjson \
+RESEARCH_STUDY_ID=pilot-2026 \
+RESEARCH_BANK_VERSION='the-frozen-bank-version' \
+RESEARCH_SCORING_VERSION='the-frozen-scoring-version' \
 node research-collector/server.mjs
 ```
+
+The collector validates the schema, consent, quality-rule and form versions; recomputes matrix-form fingerprints; enforces timestamp, response-option and confidence/priority consistency; and treats `submissionId` as a persistent idempotency key. An exact retry is acknowledged without a second append, while reuse of an ID for different content is rejected. Set the optional study, bank, and scoring variables above for a frozen field deployment; the schema, consent, quality-rule, and form variables have current-version defaults and can also be overridden explicitly.
 
 This reference service is not production-hardening by itself. Production use requires HTTPS, rate limiting, encrypted storage and backups, restricted access, retention/deletion controls, monitoring, incident response, and the applicable ethics/privacy review. Raw records must never be committed to Git.
 
@@ -105,16 +106,19 @@ Install the R dependencies:
 install.packages(c("jsonlite", "psych", "lavaan", "mirt", "boot"))
 ```
 
-Run preregistered data-quality flags:
+Generate data-quality flags and a reviewable inclusion manifest:
 
 ```bash
 Rscript analysis/run_data_quality.R private-data/submissions.ndjson analysis/output
 ```
 
-Run psychometric analyses:
+Resolve every `review-required` manifest row to `include` or `exclude`, freeze that file, then run psychometric analyses:
 
 ```bash
-Rscript analysis/run_validation.R private-data/submissions.ndjson analysis/output
+Rscript analysis/run_validation.R \
+  private-data/submissions.ndjson \
+  analysis/output \
+  analysis/output/analysis-inclusion-manifest.csv
 ```
 
 Detailed inputs, thresholds, and outputs are documented in `analysis/README.md`.
@@ -130,7 +134,7 @@ Freeze the preregistration, instrument versions, quality rules, and code revisio
 
 ## Design reference
 
-The validation design takes limited product inspiration from Find My Politics: multiple test lengths, directional item-balance monitoring, contextual sources, pre-result self-identification, and presenting labels as nearby neighborhoods. No question wording, scoring model, historical-person placement, country placement, or validation claim is copied.
+The validation design takes limited product inspiration from Find My Politics: multiple test lengths, directional item-balance monitoring, contextual sources, pre-result display suppression for self-identification, and presenting labels as nearby neighborhoods. No question wording, scoring model, historical-person placement, country placement, or validation claim is copied. The self-identification measure occurs after the questionnaire, so it is treated as a post-questionnaire convergent comparison rather than an independent baseline criterion.
 
 ## Privacy
 

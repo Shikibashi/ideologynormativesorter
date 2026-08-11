@@ -210,9 +210,10 @@ export const feministModuleItems: FeministModuleItem[] = [
 export const feministModuleQuestions: Question[] = feministModuleItems.map((item) => item.question)
 
 /**
- * Candidate centroids are hypotheses for specialist-module validation, not
- * additions to the production ideology catalog. Marxist and socialist feminism
- * are intentionally grouped at this stage to avoid an unsupported micro-split.
+ * Specialist construct profiles are hypotheses for follow-up scoring. Marxist
+ * and socialist feminism are intentionally grouped at this stage to avoid an
+ * unsupported micro-split; the combined tradition is cataloged as a specialist,
+ * not promoted into the ordinary questionnaire's primary scoring pool.
  */
 export const feministSpecialistCandidates: FeministSpecialistCandidate[] = [
   {
@@ -244,7 +245,7 @@ export const feministSpecialistCandidates: FeministSpecialistCandidate[] = [
   {
     id: 'socialist-feminism',
     name: 'Socialist / Marxist Feminism',
-    status: 'candidate-specialist',
+    status: 'existing-specialist',
     aliases: ['Marxist Feminism', 'Socialist Feminism', 'Social Reproduction Feminism'],
     description:
       'Explains gender domination through the interaction of patriarchy with class, property, paid labor, unpaid care work, and social reproduction.',

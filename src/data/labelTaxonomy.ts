@@ -1,4 +1,6 @@
 import type { IdeologyLabel, LabelId } from '../types'
+import { FEMINIST_MODULE_ID } from './feministBreadth'
+import { IDENTITY_SOVEREIGNTY_MODULE_ID } from './identitySovereigntyBreadth'
 import { labels } from './labels'
 
 /**
@@ -94,6 +96,7 @@ export const SPECIALIST_LABEL_IDS = [
   'political-islam',
   'stirnerism',
   'strasserism',
+  'socialist-feminism',
   'syndicalist',
   'traditional-monarchist',
   'trotskyism',
@@ -189,60 +192,19 @@ export const publicCatalogLabels = labels
 export const researchIdentityLabels = primaryScoringLabels
 
 /**
- * Every specialist must be paired with a real depth module before it can be
- * promoted from a nearby subtype to a scored specialist result.
+ * A specialist must be paired with a real, construct-matched depth module
+ * before it can be promoted from a nearby subtype to a scored specialist result.
  */
-export const specialistModuleByLabel: Readonly<Record<string, string>> = {
-  'absolute-monarchist': 'authoritarian-faction-module',
-  'agorist': 'market-faction-module',
-  'agrarian-populism': 'nationalist-faction-module',
-  'anarcha-feminism': 'anarchist-faction-module',
-  'anarcho-primitivism': 'anarchist-faction-module',
-  'anarcho-syndicalism': 'anarchist-faction-module',
-  'bioregionalism': 'green-faction-module',
-  'bleeding-heart-libertarianism': 'market-faction-module',
-  'bright-green-environmentalism': 'green-faction-module',
-  'christian-reconstructionism': 'religious-faction-module',
-  'christian-socialism': 'left-faction-module',
-  'constitutional-monarchism': 'right-faction-module',
-  'conservative-liberalism': 'right-faction-module',
-  'corporatism': 'authoritarian-faction-module',
-  'council-communist': 'left-faction-module',
-  'democratic-confederalism': 'left-faction-module',
-  'eco-fascism': 'authoritarian-faction-module',
-  'geolibertarian': 'georgist-faction-module',
-  'green-capitalism': 'green-faction-module',
-  'guild-socialism': 'left-faction-module',
-  'hindutva': 'nationalist-faction-module',
-  'indigenism': 'nationalist-faction-module',
-  'integralism': 'religious-faction-module',
-  'islamic-democracy': 'religious-faction-module',
-  'juche': 'authoritarian-faction-module',
-  'kemalism': 'nationalist-faction-module',
-  'left-wing-market-anarchism': 'anarchist-faction-module',
-  'libertarian-municipalism': 'anarchist-faction-module',
-  'maoism': 'left-faction-module',
-  'national-bolshevism': 'authoritarian-faction-module',
-  'national-socialism': 'authoritarian-faction-module',
-  'neoreactionary': 'authoritarian-faction-module',
-  'objectivism': 'market-faction-module',
-  'one-nation-conservatism': 'right-faction-module',
-  'ordoliberalism': 'market-faction-module',
-  'paleoconservatism': 'right-faction-module',
-  'paleolibertarianism': 'market-faction-module',
-  'panarchism': 'anarchist-faction-module',
-  'participism': 'left-faction-module',
-  'platformism': 'anarchist-faction-module',
-  'political-islam': 'religious-faction-module',
-  'stirnerism': 'anarchist-faction-module',
-  'strasserism': 'authoritarian-faction-module',
-  'syndicalist': 'left-faction-module',
-  'traditional-monarchist': 'authoritarian-faction-module',
-  'trotskyism': 'left-faction-module',
-  'utopian-socialism': 'left-faction-module',
-  'voluntaryism': 'market-faction-module',
-  'world-federalism': 'nationalist-faction-module',
-  'zionism': 'nationalist-faction-module',
-  'fourth-theory': 'authoritarian-faction-module',
-  'queer-anarchism': 'anarchist-faction-module',
+export const specialistModuleByLabel: Readonly<Partial<Record<
+  LabelId,
+  typeof FEMINIST_MODULE_ID | typeof IDENTITY_SOVEREIGNTY_MODULE_ID
+>>> = {
+  'anarcha-feminism': FEMINIST_MODULE_ID,
+  'socialist-feminism': FEMINIST_MODULE_ID,
+  'indigenism': IDENTITY_SOVEREIGNTY_MODULE_ID,
 }
+
+/** Specialist labels awaiting a respondent-facing, construct-matched depth module. */
+export const PROVISIONAL_SPECIALIST_LABEL_IDS: readonly LabelId[] = SPECIALIST_LABEL_IDS.filter(
+  (labelId) => specialistModuleByLabel[labelId] === undefined,
+)

@@ -7,10 +7,10 @@ const LIKERT_MAX: Record<'likert5' | 'likert7', number> = {
 
 /**
  * Converts a raw Likert answer into a -1..1 unit value, honoring reverseScored.
- * Returns null for "I don't know" answers, which are excluded from aggregation.
+ * Returns null for non-substantive answers, which are excluded from aggregation.
  */
 export function normalizeAnswer(question: Question, answer: Answer): number | null {
-  if (answer.value === 'dont_know') return null
+  if (typeof answer.value !== 'number') return null
   if (question.responseType === 'statementChoice') return 1
 
   const max = LIKERT_MAX[question.responseType]
@@ -29,6 +29,7 @@ export function normalizeAnswer(question: Question, answer: Answer): number | nu
  * weight (1).
  */
 export function salienceFactor(question: Question, answer: Answer): number {
+  if (answer.salienceSkipped === true && question.layer !== 'normative') return 0
   const rating = question.layer === 'descriptive' ? answer.confidence : question.layer === 'prescriptive' ? answer.priority : undefined
   if (rating === undefined) return 1
   return clampUnit(rating / 5)

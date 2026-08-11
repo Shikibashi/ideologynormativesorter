@@ -47,7 +47,7 @@ Inventory sets (no double-count):
 ## WP0 Freeze (live recount)
 
 - Main raw / effective-active / retained: see `WP0_FREEZE`
-- Module: 123 · Statement: 17 · Labels: 117 · Axes: 26 · Families: 16
+- Module: 123 · Statement: 17 · Labels: 118 · Axes: 26 · Families: 19
 - Overlay corrections: 101 · Needs-rewrite deactivated: 80
 - Versions: `QUESTION_BANK_VERSION=2026-06-v4`, `SEMANTIC_AUDIT_VERSION=2026-07-semantic-v1`, effective bank `2026-06-v4+2026-07-semantic-v1`, `RESULT_SCORING_VERSION=2026-07-18-semantic-v3`
 
@@ -76,7 +76,7 @@ Inventory sets (no double-count):
 ## WP6 Robustness (coherence-only)
 
 - Separability diagnostics for all match-pool labels.
-- Synthetic calibration fixtures cover all 117 labels (`src/scoring/calibration.fixtures.ts`).
+- Synthetic calibration fixtures cover all 118 labels (`src/scoring/calibration.fixtures.ts`).
 - Fixtures are **coherence / reflexivity** checks — **not** respondent accuracy.
 
 ## WP7 Share / copy
@@ -90,7 +90,7 @@ Inventory sets (no double-count):
 - `releaseGate()` requires: fingerprint freshness, scoring version match, zero unresolved actives, no `fail` gates, expert gate present and `pass` (qualified-expert), empirical may remain `insufficient-data`/`deferred`, summary not older than last applied disposition. Live overall release is currently **FAIL** because expert is `in-review`.
 - **Textual gate** is computed live from the real per-claim `textualStatus` rollup across all dossier claims (never hardcoded) and is currently `in-review`: `claim-fill-v1` replaced all `PENDING_CLAIM_STUB` scaffolds with instrument-framed definition/family/centroid statements, family scholarly cite links (`citations/familyCatalog.ts`), and three researched perspectives per claim. Textual status is **not** `pass` (qualified-expert textual review still pending). `releaseGate()` does not block on `textual` (only `expert`/`fail` gates block per plan); overall release remains FAIL because expert is `in-review`.
 - Pre-existing repo research (`docs/labels-academic-audit.md`, `docs/ideology-label-review.md`, `docs/contested-label-research-verification.md`, `docs/ideology-family-research-verification.md`) is now linked into family-level `scholarlyCiteIds` via `citations/familyCatalog.ts`. Family baselines justify tradition boundaries; they do **not** validate exact numeric centroids. Niche/contested labels still warrant specialist follow-up before textual `pass`.
-- Weak family baselines (`green`, `indigenist`, `libertarian-leaning`, `technocratic`, `communitarian`) have been strengthened with direct SEP conceptual boundaries, maintaining honest non-numeric evidence notes.
+- Weak family baselines (`green`, `indigenist`, `technocratic`, `communitarian`) and the liberal/libertarian boundary have been strengthened with direct SEP conceptual sources, maintaining honest non-numeric evidence notes.
 - Linked tests live under `src/validation/mappingAudit/**/*.test.ts`.
 
 ## Explicit non-claims

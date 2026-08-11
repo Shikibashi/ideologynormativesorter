@@ -13,7 +13,7 @@ export function computeReasonBreakdowns(
 
   for (const q of presQuestions) {
     const answer = answers[q.id]
-    if (answer.value === 'dont_know') continue
+    if (typeof answer.value !== 'number') continue
 
     const contributions = prescriptiveAxes
       .map((axis) => ({ axisId: axis.id, contribution: contributionForQuestionAxis(q, answer, axis.id) }))

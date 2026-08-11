@@ -1,6 +1,8 @@
 import type { Question } from '../types'
 import type { ResearchAdministration } from './index'
 
+export const RESEARCH_FORM_VERSION = 'balanced-matrix-v2'
+
 function hash32(value: string): number {
   let hash = 2166136261
   for (let index = 0; index < value.length; index += 1) {
@@ -40,7 +42,11 @@ export function buildResearchQuestionForm(
   requestedSize: number | null,
 ): Question[] {
   const eligible = questionPool.filter((question) => question.active !== false && question.reviewStatus !== 'needs-rewrite')
-  const seed = `${participantId}:${administration}`
+  // Item assignment must stay fixed between test and retest. Administration is
+  // used only for presentation order so stability is not confounded with two
+  // different matrix forms.
+  const assignmentSeed = `${RESEARCH_FORM_VERSION}:${participantId}:assignment`
+  const presentationSeed = `${RESEARCH_FORM_VERSION}:${participantId}:${administration}:presentation`
   const targetSize = requestedSize === null ? eligible.length : Math.min(requestedSize, eligible.length)
 
   const groups = new Map<string, Question[]>()
@@ -51,8 +57,8 @@ export function buildResearchQuestionForm(
     groups.set(key, group)
   }
 
-  const orderedGroups = shuffled([...groups.entries()], seed, ([key]) => key)
-    .map(([key, values]) => [key, shuffled(values, `${seed}:${key}`, (question) => String(question.id))] as const)
+  const orderedGroups = shuffled([...groups.entries()], assignmentSeed, ([key]) => key)
+    .map(([key, values]) => [key, shuffled(values, `${assignmentSeed}:${key}`, (question) => String(question.id))] as const)
   const selected: Question[] = []
   let depth = 0
   while (selected.length < targetSize) {
@@ -68,5 +74,10 @@ export function buildResearchQuestionForm(
     depth += 1
   }
 
-  return shuffled(selected, `${seed}:presentation`, (question) => String(question.id))
+  return shuffled(selected, presentationSeed, (question) => String(question.id))
+}
+
+export function researchFormFingerprint(questions: Question[]): string {
+  const canonical = questions.map((question) => String(question.id)).sort().join('|')
+  return `rf_${hash32(`${RESEARCH_FORM_VERSION}:${canonical}`).toString(16).padStart(8, '0')}`
 }

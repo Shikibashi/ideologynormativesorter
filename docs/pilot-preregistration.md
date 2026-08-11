@@ -1,13 +1,14 @@
-# Pilot validation preregistration
+# Draft pilot validation preregistration
 
 This document is a study template. It must be dated, assigned an immutable version, and registered before inspecting outcome-dependent pilot results.
 
 ## Instrument versions
 
-- Research schema: `2026-07-v2`
-- Consent text: `2026-07-18-v1`
-- Question bank: `2026-06-v4+2026-07-semantic-v1`
-- Scoring: `2026-07-18-semantic-v3`
+- Research schema: `2026-08-v5`
+- Consent text: `2026-08-10-v5`
+- Form algorithm: `balanced-matrix-v2`
+- Question bank: `2026-06-v4+2026-07-semantic-v1+2026-07-statement-semantic-v1+2026-08-respondent-v3`
+- Scoring: `2026-08-10-method-v4`
 
 Any change to item wording, item-to-axis mapping, eligibility, label centroid, or scoring creates a new analysis cohort unless a linking design is specified in advance.
 
@@ -35,7 +36,7 @@ Do not run a preregistered group comparison unless every included group has at l
 
 ## Recruitment and sampling
 
-Recruit across multiple channels rather than a single political community. Record recruitment channel separately from response data. Use quotas or targeted supplementation to reduce severe imbalance in age bands, gender groups, political self-label families, and test length.
+Recruit across multiple channels rather than a single political community. Record a privacy-safe recruitment source in the response record and keep invitation/contact operations separate. The open public link is a nonprobability convenience channel. Quotas or targeted supplementation may improve heterogeneity but do not make it representative.
 
 The study estimates instrument behavior in its achieved sample. It does not claim population prevalence or representative political distributions unless probability sampling and weights are separately justified.
 
@@ -45,7 +46,7 @@ The study estimates instrument behavior in its achieved sample. It does not clai
 - explicit consent to pseudonymous research use;
 - completion of the assigned form;
 - compatible schema, bank, and scoring versions;
-- no duplicate completed record for the same participant and administration, except a documented replacement caused by technical failure.
+- no duplicate completed record for the same participant and administration, except a documented replacement caused by technical failure; adjudication is keyed by the immutable `submissionId`, with at most one included record per administration.
 
 ## Exclusion rules
 
@@ -57,7 +58,7 @@ Apply rules without reference to ideology-label outcome:
 - invariant responding on at least 95% of non-missing Likert items, unless the response pattern is substantively plausible and passes manual review under a blinded identifier;
 - more than 40% missing or `dont_know` responses on the assigned form;
 - incompatible item metadata or unknown question IDs;
-- exact duplicate answer vectors submitted from the same participant code and administration.
+- duplicate `submissionId` values, and duplicate completed records for the same study, participant code, and administration; distinct-ID technical replacements are resolved in the frozen manifest, while identical answer patterns from different respondents are diagnostic rather than automatic duplicates.
 
 Report counts under every exclusion rule and repeat primary analyses with and without timing/response-pattern exclusions.
 
@@ -66,8 +67,8 @@ Report counts under every exclusion rule and repeat primary analyses with and wi
 1. Retained items assigned to the same primary axis will show positive corrected item-total correlations after directional alignment.
 2. Each retained axis with at least three functioning items will have omega total and alpha estimates above the preregistered minimum for low-stakes group description; coefficients will not be used as proof of unidimensionality.
 3. A held-out correlated-factor CFA based on the frozen primary-axis specification will fit better than a one-factor model within each layer.
-4. Test-retest correlations will be positive and meaningfully larger than zero for every retained axis.
-5. Pre-result self-label will appear in the model's top three nearby labels more often than a frequency-matched null assignment.
+4. Test-retest rank-order correlation and absolute agreement will be evaluated separately for the primary-axis item model and exact production score.
+5. The post-questionnaire, pre-result-display self-label will appear in the model's top three nearby labels more often than a frequency-matched null assignment; it is convergent evidence, not an independent baseline.
 6. Shorter forms will preserve rank-order axis scores relative to the extensive form, with uncertainty reported by axis.
 
 Numeric decision thresholds for retention must be registered before outcome analysis. Borderline items should be reviewed using confidence intervals, loadings, content coverage, and cross-group behavior rather than one coefficient alone.
@@ -76,11 +77,11 @@ Numeric decision thresholds for retention must be registered before outcome anal
 
 - item missingness, `dont_know`, floor, ceiling, and duration distributions;
 - directional item balance;
-- corrected item-total correlations;
+- corrected item-total correlations using the observed item and the respondent's available mean across remaining same-axis items under planned matrix missingness;
 - alpha, omega total, odd-even split-half, and percentile bootstrap intervals;
 - ordinal EFA on the development split using polychoric correlations and parallel analysis;
 - WLSMV CFA on the untouched confirmation or holdout sample;
-- test-retest correlations and bootstrap intervals;
+- test-retest correlations, concordance, mean change, and score-difference distributions;
 - top-1 and top-3 self-label concordance;
 - graded-response multiple-group DIF with multiplicity adjustment;
 - short-form/full-form agreement and score uncertainty;
@@ -94,7 +95,7 @@ No modification index from the confirmation sample may be used to change the pri
 
 ## Missing data
 
-Treat `dont_know` as missing for common-scale factor and reliability estimates. Do not numerically place it at the neutral midpoint. Report confidence/priority missingness separately. Use the estimator's documented ordinal missing-data handling or a preregistered imputation sensitivity analysis; do not select an approach based on which improves fit.
+Treat `dont_know` and `prefer_not_to_answer` as distinct nonresponse categories and as missing for common-scale factor and reliability estimates. Do not numerically place either at the neutral midpoint. Report explicitly skipped confidence/priority ratings separately and exclude those items from salience-weighted production scores. Distinguish planned matrix-form omission from respondent nonresponse. Use a frozen ordinal missing-data strategy and sensitivity analysis; do not select an approach based on which improves fit.
 
 ## DIF interpretation
 

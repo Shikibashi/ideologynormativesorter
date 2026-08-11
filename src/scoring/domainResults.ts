@@ -30,7 +30,7 @@ export function computeDomainMiniResults(questions: Question[], answers: AnswerM
       let count = 0
       for (const q of qs) {
         const a = answers[q.id]
-        if (!a || a.value === 'dont_know') continue
+        if (!a || typeof a.value !== 'number') continue
 
         const contributions = axisIdsForAnswer(q, a)
           .map((axisId) => contributionForQuestionAxis(q, a, axisId))

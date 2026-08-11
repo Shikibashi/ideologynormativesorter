@@ -272,7 +272,7 @@ describe('labels', () => {
          ['accelerationism', 'Technology-Centered Accelerationism'],
          ['techno-anarchism', 'Techno-Anarchist / Crypto-Anarchist'],
          ['voluntaryism', 'Voluntaryism'],
-         ['corporatism', 'Corporatism'],
+         ['corporatism', 'State Corporatism'],
          ['fourth-theory', 'Fourth Theory'],
          ['national-bolshevism', 'National Bolshevism'],
          ['christian-reconstructionism', 'Christian Reconstructionism'],
@@ -420,12 +420,11 @@ describe('labels', () => {
       }
    })
 
-   it('does not reduce broad philosophies to one label-specific use case', () => {
+   it('keeps anti-imperialism cross-cutting rather than treating it as inherently socialist', () => {
       const antiImperialism = labels.find((label) => label.id === 'anti-imperialism')
-      const socialism = antiImperialism?.philosophyInfluences?.find((influence) => influence.philosophy === 'Socialism')
 
-      expect(socialism?.description).toMatch(/social ownership/i)
-      expect(socialism?.description).not.toMatch(/driving force behind imperial expansion/i)
+      expect(antiImperialism?.family).toBe('anti-colonial')
+      expect(antiImperialism?.philosophies).not.toContain('Socialism')
+      expect(antiImperialism?.philosophyInfluences?.some((influence) => influence.philosophy === 'Socialism')).toBe(false)
    })
 })
-

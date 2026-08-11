@@ -2,17 +2,17 @@
 
 ## Status
 
-The collection and analysis apparatus is implemented, but empirical validation has not yet been established. Synthetic fixtures and software tests are not respondent evidence. No reliability, validity, fairness, or accuracy coefficient should be published until a consented respondent dataset has been collected and analyzed.
+The collection and analysis apparatus is implemented, but empirical validation has not been established. This is a single-maintainer project; no external expert panel, cognitive-interview program, independent confirmation sample, or test-retest study is currently scheduled. The stages below state what stronger evidence would require, not a promised fieldwork program. Synthetic fixtures and software tests are not respondent evidence. No reliability, validity, fairness, or accuracy coefficient should be published until an appropriate consented respondent dataset has been collected and analyzed.
 
 The repository now includes:
 
 - `src/validation/psychometrics.ts` for respondent-grounded classical diagnostics;
-- an opt-in browser research mode with consent and pre-result self-identification;
-- deterministic balanced matrix forms and test/retest presentation order;
+- an opt-in browser research mode with consent and post-questionnaire, pre-result-display self-identification;
+- deterministic balanced matrix forms with fixed test/retest item membership and changed presentation order;
 - a pseudonymous versioned submission/export schema;
 - a dependency-free reference collector;
-- `analysis/run_data_quality.R` for preregistered quality flags;
-- `analysis/run_validation.R` for omega, bootstrap intervals, held-out EFA/CFA, test-retest, criterion concordance, and DIF;
+- `analysis/run_data_quality.R` for draft-rule quality flags and a resolvable inclusion manifest;
+- `analysis/run_validation.R` for an item measurement model, exact production-score reconstruction, internal EFA/CFA diagnostics, test-retest agreement, criterion concordance, and DIF;
 - a preregistration and recruitment/retest operations plan.
 
 All analysis paths report insufficient data rather than manufacturing coefficients when sample thresholds are not met.
@@ -34,7 +34,7 @@ These are design practices, not borrowed validation evidence. Historical-figure 
 1. Do items assigned to an axis behave as a coherent scale among real respondents?
 2. Does the proposed 26-axis structure fit better than simpler or alternative structures?
 3. Are scores stable when the same respondent retakes the instrument after a reasonable interval?
-4. Do results agree, within expected limits, with pre-result self-identification and established external measures?
+4. Do results agree, within expected limits, with post-questionnaire self-identification and established external measures?
 5. Do items behave differently across groups after controlling for the underlying trait?
 6. Are short forms sufficiently precise for their intended low-stakes use?
 7. Are ideology-label matches stable under resampling, item omission, and modest scoring perturbations?
@@ -85,7 +85,9 @@ A retest administration uses:
 ?research=1&study=pilot-2026&administration=retest&formSize=120
 ```
 
-The flow requires consent before the quiz, captures optional self-identification and broad demographic groups before showing results, and assigns a stable random participant code in the same browser. Test and retest preserve eligible item coverage while using different deterministic presentation orders. It does not request names, email addresses, exact age, precise location, employer, party registration, or contact information.
+The flow requires consent before the quiz, captures optional self-identification and broad demographic groups after the questionnaire but before showing results, and assigns a stable random participant code in the same browser. Test and retest preserve identical participant-specific item membership while using different deterministic presentation orders. It does not request names, email addresses, exact age, precise location, employer, party registration, or contact information.
+
+The reference collector validates the frozen method contract before append: exact schema, consent, quality-rule and form versions; internally consistent timestamps and duration; ordered item/answer membership; recomputed form fingerprint; and layer-appropriate confidence, priority, refusal, and skipped-salience states. Optional deployment variables can additionally pin the study, bank, and scoring versions.
 
 Capture:
 
@@ -96,10 +98,12 @@ Capture:
 - start, completion, and submission timestamps;
 - total duration and resume status;
 - item responses and confidence/priority values;
-- optional pre-result self-label from the instrument label set;
+- optional post-questionnaire, pre-result-display self-label from the instrument label set;
 - optional respondent-supplied ideology or tradition names for a private candidate-discovery report;
 - optional broad age band and gender group for preregistered DIF analysis;
-- item metadata required to reproduce orientation and exclusions;
+- exact respondent-visible item text, help, response options, item mappings, and form fingerprint;
+- separate `dont_know`, `prefer_not_to_answer`, and skipped-salience states;
+- open-opt-in sampling design and privacy-safe recruitment source;
 - consent timestamp and version.
 
 Recruitment contact information, when needed for retest invitations, must be stored separately from response data and linked through a different protected system.
@@ -125,7 +129,7 @@ Report:
 - response-time distributions;
 - floor and ceiling rates;
 - straight-line or invariant response patterns;
-- duplicate answer vectors and suspicious submissions under a documented rule;
+- duplicate participant-administration records, shared answer-vector diagnostics, and suspicious submissions under a documented rule;
 - resumed-session counts and version incompatibilities.
 
 `analysis/run_data_quality.R` writes quality flags but does not delete records. Exclusions must follow the frozen preregistration and should be reported with sensitivity analyses.
@@ -148,7 +152,9 @@ Do not interpret a high alpha as proof of one-dimensionality. Very high alpha ma
 
 ### Dimensionality
 
-Use exploratory factor analysis on a development split and confirmatory factor analysis on a held-out split. The checked-in R workflow uses ordinal polychoric correlations and minimum-residual EFA, then WLSMV CFA on a primary-axis specification.
+Use exploratory factor analysis on a development split and confirmatory factor analysis on an internally held-out split for exploratory software output only. A separately recruited frozen cohort would be needed for independent confirmation. The checked-in R workflow uses ordinal polychoric correlations and minimum-residual EFA, then WLSMV CFA with pairwise planned-missing handling on a primary-axis specification.
+
+The primary-axis factor model is an item measurement model; it does not reproduce the multidimensional score shown to users. The workflow therefore emits a separate production score using every axis weight, statement-option weight, and confidence/priority multiplier. Evidence about one model must not be presented as evidence about the other.
 
 Compare, where sample size permits:
 
@@ -161,11 +167,11 @@ Report loadings, cross-loadings, factor correlations, CFI, TLI, RMSEA, SRMR, con
 
 ### Temporal stability
 
-For each axis, report test-retest correlations, bootstrap intervals, and score-change distributions. Separate temporal instability from low internal consistency.
+For each axis, report rank-order test-retest correlation, concordance, bootstrap intervals where defined, and score-change distributions. Report the primary-axis item model separately from the exact production score. Separate temporal instability from low internal consistency.
 
 ### Criterion and convergent evidence
 
-Capture optional self-identification before results are shown and report top-1 and top-3 label concordance. Treat this as imperfect criterion evidence because self-labels are ambiguous and the label set is not exhaustive.
+Capture optional self-identification after the questionnaire but before results are shown and report top-1 and top-3 label concordance. Treat this only as post-questionnaire convergent evidence: the preceding questions may prime self-description, self-labels are ambiguous, and the label set is not exhaustive.
 
 Where licensing and respondent burden permit, compare relevant axes with established external scales. Predefine expected convergent and discriminant relationships before analysis.
 
@@ -176,7 +182,7 @@ Labels should be calibrated only after the axis measurement model is supported. 
 - nearest-label stability under bootstrap resampling;
 - top-label changes when low-information items are removed;
 - runner-up margins;
-- confusion matrices against pre-result self-labels;
+- confusion matrices against post-questionnaire, pre-result-display self-labels;
 - performance by test length;
 - labels that remain empirically indistinguishable.
 
@@ -207,7 +213,8 @@ Research mode produces a versioned record equivalent to:
 
 ```json
 {
-  "schemaVersion": "2026-08-v4",
+  "schemaVersion": "2026-08-v5",
+  "submissionId": "random-idempotency-key",
   "studyId": "pilot-2026",
   "participantId": "p_random-code",
   "administration": "test",
@@ -217,15 +224,34 @@ Research mode produces a versioned record equivalent to:
   "durationMs": 1800000,
   "resumed": false,
   "presentationOrder": ["q0001", "q0037"],
-  "bankVersion": "2026-06-v4+2026-07-semantic-v1",
-  "scoringVersion": "2026-07-18-semantic-v3",
+  "form": {
+    "algorithmVersion": "balanced-matrix-v2",
+    "requestedItemCount": 120,
+    "assignedItemCount": 120,
+    "fingerprint": "rf_example"
+  },
+  "sampling": {
+    "design": "open-opt-in-nonprobability",
+    "populationInference": false,
+    "weighting": "none",
+    "recruitmentSource": "direct-or-unknown",
+    "recruitmentSourceProvenance": "url-parameter-unverified"
+  },
+  "bankVersion": "2026-06-v4+2026-07-semantic-v1+2026-07-statement-semantic-v1+2026-08-respondent-v3",
+  "scoringVersion": "2026-08-10-method-v4",
   "tier": "moderate",
   "consent": {
     "ageConfirmed": true,
     "voluntaryParticipation": true,
     "dataUseAccepted": true,
-    "consentVersion": "2026-08-10-v3",
-    "consentedAt": "2026-07-18T11:59:00.000Z"
+    "consentVersion": "2026-08-10-v5",
+    "consentedAt": "2026-07-18T11:59:00.000Z",
+    "disclosureSnapshot": {
+      "endpointConfigured": true,
+      "transferAndWithdrawalNotice": "the exact notice shown",
+      "retentionNotice": "the exact retention notice shown",
+      "contactNotice": "the exact contact notice shown"
+    }
   },
   "identity": {
     "selfLabelId": "optional-label-id",
@@ -237,9 +263,13 @@ Research mode produces a versioned record equivalent to:
   "answers": {
     "q0001": { "questionId": "q0001", "value": 2 }
   },
-  "itemMap": []
+  "locale": "en-US",
+  "qualityRuleVersion": "data-quality-v2",
+  "itemMap": [{ "questionId": "q0001", "prompt": "Exact presented prompt", "responseOptions": [] }]
 }
 ```
+
+`submissionId` is the immutable record key. The collector loads prior IDs from both NDJSON stores at startup, acknowledges an exact retry without appending it again, and rejects reuse of an ID for different content. Quality and inclusion manifests retain this ID so a documented technical replacement with a different ID can be adjudicated without conflating both records.
 
 A retest uses the same participant code and `administration: "retest"`. Same-browser linkage is automatic. Any cross-device linkage system must avoid exposing recruitment identity in the response dataset.
 
@@ -249,11 +279,11 @@ Run quality flags and the external analysis with:
 
 ```bash
 Rscript analysis/run_data_quality.R private-data/submissions.ndjson analysis/output
-Rscript analysis/run_validation.R private-data/submissions.ndjson analysis/output
+Rscript analysis/run_validation.R private-data/submissions.ndjson analysis/output analysis/output/analysis-inclusion-manifest.csv
 ```
 
 The workflows write version-specific JSON and CSV outputs for quality flags, reliability, omega, bootstrap intervals, item-total correlations, test-retest stability, criterion concordance, source coverage, EFA loadings, held-out CFA fit, and DIF. See `analysis/README.md` for dependencies and thresholds.
 
 ## Current limitation
 
-The repository is ready to collect and analyze consented records, but it contains no real pilot sample. Until respondents are recruited and the preregistered analyses are run, all public results must continue to describe the instrument as under empirical validation rather than validated.
+The software can prepare and analyze consented exploratory records, but the repository contains no real pilot sample and the study template is not an immutable preregistration. Public results must continue to describe the instrument as unvalidated. Any future diagnostics are version-specific evidence about the achieved opt-in sample, not population estimates.
