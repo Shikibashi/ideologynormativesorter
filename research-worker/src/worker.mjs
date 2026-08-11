@@ -158,12 +158,18 @@ function validCoreRecord(submission, env) {
   const expectedProfileCount = submission.tier === 'moderate'
     ? configuredInteger(env.EXPECTED_MODERATE_ITEM_COUNT, 140)
     : submission.tier === 'extensive'
-      ? configuredInteger(env.EXPECTED_EXTENSIVE_ITEM_COUNT, 286)
+      ? configuredInteger(env.EXPECTED_EXTENSIVE_ITEM_COUNT, 285)
       : null
+  const legacyProfileCounts = submission.tier === 'moderate'
+    ? configuredIntegerSet(env.ALLOWED_LEGACY_MODERATE_ITEM_COUNTS)
+    : submission.tier === 'extensive'
+      ? configuredIntegerSet(env.ALLOWED_LEGACY_EXTENSIVE_ITEM_COUNTS)
+      : new Set()
+  if (expectedProfileCount !== null) legacyProfileCounts.add(expectedProfileCount)
   const assignedCount = submission.itemMap?.length
   const requestedCount = submission.form?.requestedItemCount
   const allowedMatrixCounts = configuredIntegerSet(env.ALLOWED_MATRIX_ITEM_COUNTS)
-  const validProfileForm = requestedCount === null && assignedCount === expectedProfileCount
+  const validProfileForm = requestedCount === null && legacyProfileCounts.has(assignedCount)
   const validMatrixForm = Number.isInteger(requestedCount)
     && requestedCount === assignedCount
     && allowedMatrixCounts.has(requestedCount)

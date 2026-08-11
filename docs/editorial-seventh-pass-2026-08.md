@@ -10,19 +10,21 @@ Evidence overlay: `2026-08-descriptive-evidence-v2`
 
 This pass reviewed the 32 active descriptive items that did not yet have both an operational evidence note and a public background source. Each item was checked for one answerable empirical claim, a direct fit with an existing descriptive axis, and source language that did not overstate association as causation.
 
-The result is nine scoped rewrites and 23 quarantines. Together with the 27 first-pass evidence records, all 36 descriptive items that remain active now expose an operational scope and at least one public source. Quarantined records remain addressable by ID for version history but no longer enter new forms or scores.
+The result was nine scoped rewrites and 23 quarantines. The subsequent independent v8 review superseded three of those rewrites and restored one separately sourced item; all 34 descriptive items that now remain active expose an operational scope and at least one public source. Quarantined records remain addressable by ID for version history but no longer enter new forms or scores.
 
-## Active scoped rewrites
+## Scoped v7 rewrites
+
+The v8 release review later quarantined `q0049`, `q0168`, and `q0210`; the table records what v7 changed rather than their current scoring status.
 
 | Item | Editorial action | Public basis |
 | --- | --- | --- |
 | `q0007` | Replaced a hypothetical competitive-government claim with a scoped finding from U.S. metropolitan police studies; mapped only to decentralized coordination. | [Elinor Ostrom, “Beyond Markets and States”](https://www.nobelprize.org/prizes/economic-sciences/2009/ostrom/lecture/) |
-| `q0049` | Replaced three bundled missing-market conditions with one observed Superfund price-incidence result; mapped only to market-process confidence. | [Fullerton and Tsang, NBER Working Paper 4418](https://www.nber.org/papers/w4418) |
+| `q0049` | Replaced three bundled missing-market conditions with one observed Superfund price-incidence result; v8 later quarantined the item because the tax-design evidence did not directly measure market-process confidence. | [Fullerton and Tsang, NBER Working Paper 4418](https://www.nber.org/papers/w4418) |
 | `q0067` | Replaced a value-laden program comparison with a measured SNAP recertification burden; mapped only to state capacity. | [Homonoff and Somerville, NBER Working Paper 27311](https://www.nber.org/papers/w27311) |
-| `q0168` | Replaced an unspecified censorship-slippage claim with documented use of broad counterterrorism laws against legitimate expression; mapped only to public-choice skepticism. | [UN Human Rights Council, A/HRC/40/52](https://www.ohchr.org/sites/default/files/Documents/Issues/Terrorism/SR/A_HRC_40_52_EN.pdf) |
+| `q0168` | Replaced an unspecified censorship-slippage claim with documented use of broad counterterrorism laws against legitimate expression; v8 later quarantined the item because the available axis measures insider capture rather than civil-liberties enforcement. | [UN Human Rights Council, A/HRC/40/52](https://www.ohchr.org/sites/default/files/Documents/Issues/Terrorism/SR/A_HRC_40_52_EN.pdf) |
 | `q0207` | Replaced a migration-and-cooperation bundle with the qualified result of a randomized-contact review; mapped only to cultural plasticity. | [Paluck, Green, and Green, “The Contact Hypothesis Re-evaluated”](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5) |
 | `q0208` | Replaced a bargaining-power assertion with an industry-level association between lobbying and migration barriers; mapped only to public-choice skepticism. | [Facchini, Mayda, and Mishra, “Do Interest Groups Affect Immigration?”](https://www.iza.org/en/publications/dp/3183/do-interest-groups-affect-immigration) |
-| `q0210` | Replaced a housing-law bundle with a scoped municipal service-capacity constraint during rapid refugee inflows; mapped only to state capacity. | [World Bank, “Coping with the Influx”](https://documents1.worldbank.org/curated/en/585111595352295241/pdf/Coping-with-the-Influx-Service-Delivery-to-Syrian-Refugees-and-Hosts-in-Jordan-Lebanon-and-Kurdistan-Iraq.pdf) |
+| `q0210` | Replaced a housing-law bundle with a scoped municipal service-capacity condition; v8 later quarantined the item because the conditional statement could not discriminate state-capacity confidence. | [World Bank, “Coping with the Influx”](https://documents1.worldbank.org/curated/en/585111595352295241/pdf/Coping-with-the-Influx-Service-Delivery-to-Syrian-Refugees-and-Hosts-in-Jordan-Lebanon-and-Kurdistan-Iraq.pdf) |
 | `q0227` | Replaced an undefined civic-ritual claim with paired-city evidence on interethnic associations and communal violence; mapped only to decentralized coordination. | [Varshney, “Ethnic Conflict and Civil Society”](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/2F8EEAACC16E9A8366A9914C0301F08D/S0043887100020165a.pdf/ethnic-conflict-and-civil-society-india-and-beyond.pdf) |
 | `q0329` | Replaced a causal threat-inflation claim with a noncausal association between lobbying and defense contract awards; mapped only to public-choice skepticism. | [Ağca and Igan, BIS Working Paper 1058](https://www.bis.org/publ/work1058.htm) |
 
@@ -42,7 +44,7 @@ Two proposed rewrites were rejected during source comparison rather than accepte
 
 ## Runtime integration
 
-- The public profiles now contain 140 Balanced items and 286 Full-depth items.
+- As finalized by v8, the public profiles contain 140 Balanced items and 285 Full-depth items.
 - The frontend, Worker defaults, Wrangler environments, compatibility tests, README, and deployment documentation use those same versioned counts.
 - Controlled 120-item matrix forms remain supported.
 - Sources are background context, not answer keys or evidence that an item has psychometric validity.

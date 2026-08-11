@@ -12,9 +12,12 @@ The production design is therefore:
 4. The public Pages build receives only the Worker's HTTPS URL through `RESEARCH_ENDPOINT`.
 
 The Worker in `research-worker/` restricts browser requests to the production origin, validates the expected schema,
-consent, complete Balanced (140-item) or Full-depth (286-item) profile and answer coverage, caps payload size, applies an
+consent, complete Balanced (140-item) or Full-depth (285-item) profile and answer coverage, caps payload size, applies an
 edge rate limit, and deduplicates retries by submission ID. It also accepts the explicitly configured 120-item matrix
 form used by controlled research links. It does not expose a public read endpoint.
+
+Current profile counts are pinned separately from temporary legacy allowances. The Worker accepts 149/309-item
+profiles only so sessions opened before this bank revision can still finish; new Pages sessions use 140/285.
 
 ## Current production resources
 

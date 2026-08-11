@@ -244,15 +244,15 @@ describe('App', () => {
 
       fireEvent.click(screen.getByRole('radio', { name: /full-depth profile/i }))
       fireEvent.click(screen.getByRole('checkbox', { name: /optionally contribute this full-depth profile/i }))
-      expect(screen.getByText(/same 286-question profile, not a separate test/i)).toBeInTheDocument()
+      expect(screen.getByText(/same 285-question profile, not a separate test/i)).toBeInTheDocument()
       fireEvent.click(screen.getByRole('button', { name: /review contribution details/i }))
 
       expect(screen.getByRole('heading', { name: /optional profile contribution/i })).toBeInTheDocument()
-      expect(screen.getByText(/selected profile contains 286 questions/i)).toBeInTheDocument()
+      expect(screen.getByText(/selected profile contains 285 questions/i)).toBeInTheDocument()
       expect(screen.getByRole('button', { name: /continue to full-depth profile/i })).toBeDisabled()
       fireEvent.click(screen.getByRole('button', { name: /continue without contributing/i }))
 
-      expect(screen.getByText('Question 1 of 286', { exact: false })).toBeInTheDocument()
+      expect(screen.getByText('Question 1 of 285', { exact: false })).toBeInTheDocument()
    })
 
    it('allows a completed respondent to skip upload and see the result', () => {

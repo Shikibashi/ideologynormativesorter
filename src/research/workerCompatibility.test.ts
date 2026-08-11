@@ -27,7 +27,9 @@ const collectorEnvironment = {
   EXPECTED_QUALITY_RULE_VERSION: RESEARCH_QUALITY_RULE_VERSION,
   EXPECTED_FORM_VERSION: RESEARCH_FORM_VERSION,
   EXPECTED_MODERATE_ITEM_COUNT: '140',
-  EXPECTED_EXTENSIVE_ITEM_COUNT: '286',
+  EXPECTED_EXTENSIVE_ITEM_COUNT: '285',
+  ALLOWED_LEGACY_MODERATE_ITEM_COUNTS: '149',
+  ALLOWED_LEGACY_EXTENSIVE_ITEM_COUNTS: '309',
   ALLOWED_MATRIX_ITEM_COUNTS: '120',
 }
 
@@ -50,7 +52,7 @@ function endpointConsent(): ResearchConsent {
 describe('Cloudflare contribution collector compatibility', () => {
   it.each([
     ['moderate', 140],
-    ['extensive', 286],
+    ['extensive', 285],
   ] as const)('accepts the complete %s profile produced by the frontend', (tier, expectedCount) => {
     const form = buildContributionQuestionForm(questionsForTier(tier), 'p_compatibility', 'test', null)
     const answers = Object.fromEntries(form.map((question) => [

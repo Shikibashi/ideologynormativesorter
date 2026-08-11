@@ -281,11 +281,11 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors social ownership, economic democracy, and structural constraints on exploitative capitalist power.',
    },
    'green-capitalism': {
-      normative: 'Values ecological protection while retaining capitalist market institutions rather than requiring systemic economic replacement.',
+      normative: 'Values ecological protection alongside human prosperity and continued material development.',
       prescriptive: 'Favors carbon pricing, renewable-energy markets, eco-labeling, and corporate sustainability as mechanisms of ecological transition.',
    },
    corporatism: {
-      prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate interests and suppress independent class conflict.',
+      prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate represented interests.',
    },
    'liberal-feminism': {
       prescriptive: 'Favors legal reform, equal rights, and equal-opportunity measures within existing liberal-democratic institutions.',

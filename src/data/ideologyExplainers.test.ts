@@ -152,9 +152,9 @@ describe('ideology explainers', () => {
          ['world-federalism', 'prescriptive', /federal layer of world government/],
          ['radical-democracy', 'prescriptive', /beyond periodic elections/],
          ['christian-socialism', 'prescriptive', /social ownership, economic democracy/],
-         ['green-capitalism', 'normative', /ecological protection while retaining capitalist/],
+         ['green-capitalism', 'normative', /ecological protection alongside human prosperity/],
          ['green-capitalism', 'prescriptive', /carbon pricing, renewable-energy markets/],
-         ['corporatism', 'prescriptive', /under strong state direction/],
+         ['corporatism', 'prescriptive', /under strong state direction to mediate represented interests/],
          ['liberal-feminism', 'prescriptive', /legal reform, equal rights/],
       ]
 

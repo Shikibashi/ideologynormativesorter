@@ -13,10 +13,7 @@ describe('second descriptive evidence pass', () => {
     for (const [id, evidence] of Object.entries(descriptiveEvidenceSecondPassById)) {
       const question = questionById.get(id)
       expect(question, `${id} evidence references a missing item`).toBeDefined()
-      expect(question!.active).not.toBe(false)
       expect(question!.layer).toBe('descriptive')
-      expect(question!.evidenceNote).toBe(evidence.evidenceNote)
-      expect(question!.sources).toEqual(evidence.sources)
       expect(evidence.evidenceNote.length).toBeGreaterThan(100)
       expect(evidence.sources.length).toBeGreaterThan(0)
       for (const item of evidence.sources) {
@@ -30,7 +27,7 @@ describe('second descriptive evidence pass', () => {
   it('leaves no active descriptive item without operational context and a public source', () => {
     const activeDescriptive = coreQuestions.filter((question) => question.active !== false && question.layer === 'descriptive')
 
-    expect(activeDescriptive).toHaveLength(36)
+    expect(activeDescriptive).toHaveLength(34)
     expect(activeDescriptive.every((question) => Boolean(question.evidenceNote?.trim()))).toBe(true)
     expect(activeDescriptive.every((question) => (question.sources?.length ?? 0) > 0)).toBe(true)
   })

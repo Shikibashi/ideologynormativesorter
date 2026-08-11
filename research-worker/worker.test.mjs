@@ -50,6 +50,8 @@ function environment(overrides = {}) {
     EXPECTED_FORM_VERSION: 'profile-form-v3',
     EXPECTED_MODERATE_ITEM_COUNT: '1',
     EXPECTED_EXTENSIVE_ITEM_COUNT: '2',
+    ALLOWED_LEGACY_MODERATE_ITEM_COUNTS: '3',
+    ALLOWED_LEGACY_EXTENSIVE_ITEM_COUNTS: '1',
     ALLOWED_MATRIX_ITEM_COUNTS: '1',
     MAXIMUM_BODY_BYTES: '2000000',
     DB: new FakeDatabase(),
@@ -180,9 +182,14 @@ describe('research contribution Worker', () => {
       submissionId: 'submission_matrix',
       form: { ...base.form, requestedItemCount: 1 },
     })
+    const legacyFull = coreSubmission({
+      submissionId: 'submission_legacy_full',
+      tier: 'extensive',
+    })
 
     assert.equal((await handleRequest(postRequest(full), env)).status, 202)
     assert.equal((await handleRequest(postRequest(matrix), env)).status, 202)
+    assert.equal((await handleRequest(postRequest(legacyFull), env)).status, 202)
   })
 
   it('rejects a conflicting payload that reuses a submission ID', async () => {

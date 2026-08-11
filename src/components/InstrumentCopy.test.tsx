@@ -9,7 +9,7 @@ describe('respondent-facing instrument copy', () => {
   it('offers only outcome-oriented balanced and full-depth public assessments', () => {
     render(
       <IntroScreen
-        questionCounts={{ blitz: 17, quick: 51, moderate: 140, extensive: 286 }}
+        questionCounts={{ blitz: 17, quick: 50, moderate: 140, extensive: 285 }}
         domainCount={20}
         contributionAvailable
         savedProgress={null}

@@ -24,6 +24,10 @@ import {
   EDITORIAL_SEVENTH_PASS_VERSION,
 } from './editorialSeventhPass'
 import {
+  applyEditorialEighthPass,
+  EDITORIAL_EIGHTH_PASS_VERSION,
+} from './editorialEighthPass'
+import {
   applyDescriptiveEvidence,
   DESCRIPTIVE_EVIDENCE_VERSION,
 } from './descriptiveEvidence'
@@ -31,6 +35,10 @@ import {
   applyDescriptiveEvidenceSecondPass,
   DESCRIPTIVE_EVIDENCE_SECOND_PASS_VERSION,
 } from './descriptiveEvidenceSecondPass'
+import {
+  applyDescriptiveEvidenceThirdPass,
+  DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
+} from './descriptiveEvidenceThirdPass'
 
 export const QUESTION_BANK_VERSION = [
   RAW_QUESTION_BANK_VERSION,
@@ -39,8 +47,10 @@ export const QUESTION_BANK_VERSION = [
   RESPONDENT_QUESTION_REVIEW_VERSION,
   EDITORIAL_FIFTH_PASS_VERSION,
   EDITORIAL_SEVENTH_PASS_VERSION,
+  EDITORIAL_EIGHTH_PASS_VERSION,
   DESCRIPTIVE_EVIDENCE_VERSION,
   DESCRIPTIVE_EVIDENCE_SECOND_PASS_VERSION,
+  DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
 ].join('+')
 export { SCORING_VERSION }
 
@@ -52,18 +62,24 @@ export function getBankFingerprint(): string {
     RESPONDENT_QUESTION_REVIEW_VERSION,
     EDITORIAL_FIFTH_PASS_VERSION,
     EDITORIAL_SEVENTH_PASS_VERSION,
+    EDITORIAL_EIGHTH_PASS_VERSION,
     DESCRIPTIVE_EVIDENCE_VERSION,
     DESCRIPTIVE_EVIDENCE_SECOND_PASS_VERSION,
+    DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
   ].join('+')
 }
 
 function applyEffectiveReview(question: Question): Question {
-  return applyDescriptiveEvidenceSecondPass(
-    applyDescriptiveEvidence(
-      applyEditorialSeventhPass(
-        applyEditorialFifthPass(
-          applyRespondentQuestionReview(
-            applyStatementSemanticReview(applySemanticReview(question)),
+  return applyDescriptiveEvidenceThirdPass(
+    applyDescriptiveEvidenceSecondPass(
+      applyDescriptiveEvidence(
+        applyEditorialEighthPass(
+          applyEditorialSeventhPass(
+            applyEditorialFifthPass(
+              applyRespondentQuestionReview(
+                applyStatementSemanticReview(applySemanticReview(question)),
+              ),
+            ),
           ),
         ),
       ),
