@@ -74,7 +74,7 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
             post-questionnaire self-description is a comparison point, not proof that a score or label is correct.
          </p>
          <p>
-            {sourcedDescriptive.length} of {activeDescriptive.length} active descriptive items currently include both an operational scope and public background sources. The remaining items are explicitly tracked as incomplete source coverage. A cited source explains a claim’s context; it does not dictate how a respondent should answer or validate the item itself.
+            {sourcedDescriptive.length} of {activeDescriptive.length} active descriptive items currently include both an operational scope and public background sources. Items without that support are quarantined from current scoring until they can be rewritten and sourced. A cited source explains a claim’s context; it does not dictate how a respondent should answer or validate the item itself.
          </p>
          <p>
             When a label fits one layer of your views but not the others, we flag it as a <em>conflation</em>: a single label that would merge your normative, descriptive, and prescriptive positions into one and hide where they diverge. We name which layer matched, which layers it conflates, and the axes where you part from it.

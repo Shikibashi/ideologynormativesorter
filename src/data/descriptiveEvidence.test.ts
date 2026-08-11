@@ -24,13 +24,13 @@ describe('descriptive evidence context', () => {
     }
   })
 
-  it('reports partial source coverage rather than pretending every remaining descriptive item is operationalized', () => {
+  it('preserves first-pass evidence while the effective bank reaches complete active-item coverage', () => {
     const activeDescriptive = coreQuestions.filter((question) => question.active !== false && question.layer === 'descriptive')
     const sourced = activeDescriptive.filter((question) => (question.sources?.length ?? 0) > 0)
     const operationalized = activeDescriptive.filter((question) => Boolean(question.evidenceNote?.trim()))
 
-    expect(activeDescriptive).toHaveLength(59)
-    expect(sourced).toHaveLength(27)
-    expect(operationalized).toHaveLength(27)
+    expect(activeDescriptive).toHaveLength(36)
+    expect(sourced).toHaveLength(36)
+    expect(operationalized).toHaveLength(36)
   })
 })

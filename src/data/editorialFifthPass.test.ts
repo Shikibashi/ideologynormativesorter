@@ -6,6 +6,11 @@ import {
   fifthPassReplacementRequiredById,
   fifthPassWordingCorrectionsById,
 } from './editorialFifthPass'
+import {
+  EDITORIAL_SEVENTH_PASS_VERSION,
+  seventhPassReplacementRequiredById,
+  seventhPassRewritesById,
+} from './editorialSeventhPass'
 import { allQuestions, QUESTION_BANK_VERSION, questionById, questionsForTier } from './effectiveQuestions'
 
 const axisIds = new Set(axes.map((axis) => axis.id))
@@ -18,9 +23,20 @@ describe('fifth editorial pass', () => {
       const question = questionById.get(id)
       expect(question, `${id} mapping references a missing item`).toBeDefined()
       expect(fifthPassReplacementRequiredById[id], `${id} cannot be mapped and quarantined together`).toBeUndefined()
-      expect(question!.active, `${id} mapping references an inactive item`).not.toBe(false)
-      expect(question!.axisWeights).toEqual(correction.axisWeights)
-      expect(question!.version).toBe(EDITORIAL_FIFTH_PASS_VERSION)
+      const seventhRewrite = seventhPassRewritesById[id]
+      const seventhReplacement = seventhPassReplacementRequiredById[id]
+      if (seventhReplacement) {
+        expect(question!.active).toBe(false)
+        expect(question!.version).toBe(EDITORIAL_SEVENTH_PASS_VERSION)
+      } else if (seventhRewrite) {
+        expect(question!.active).not.toBe(false)
+        expect(question!.axisWeights).toEqual(seventhRewrite.axisWeights)
+        expect(question!.version).toBe(EDITORIAL_SEVENTH_PASS_VERSION)
+      } else {
+        expect(question!.active, `${id} mapping references an inactive item`).not.toBe(false)
+        expect(question!.axisWeights).toEqual(correction.axisWeights)
+        expect(question!.version).toBe(EDITORIAL_FIFTH_PASS_VERSION)
+      }
       expect(correction.rationale.length).toBeGreaterThan(20)
 
       const seen = new Set<string>()
@@ -38,9 +54,20 @@ describe('fifth editorial pass', () => {
       const question = questionById.get(id)
       expect(question, `${id} wording references a missing item`).toBeDefined()
       expect(fifthPassReplacementRequiredById[id], `${id} cannot be rewritten and quarantined together`).toBeUndefined()
-      expect(question!.prompt).toBe(correction.prompt)
-      expect(question!.active).not.toBe(false)
-      expect(question!.version).toBe(EDITORIAL_FIFTH_PASS_VERSION)
+      const seventhRewrite = seventhPassRewritesById[id]
+      const seventhReplacement = seventhPassReplacementRequiredById[id]
+      if (seventhReplacement) {
+        expect(question!.active).toBe(false)
+        expect(question!.version).toBe(EDITORIAL_SEVENTH_PASS_VERSION)
+      } else if (seventhRewrite) {
+        expect(question!.prompt).toBe(seventhRewrite.prompt)
+        expect(question!.active).not.toBe(false)
+        expect(question!.version).toBe(EDITORIAL_SEVENTH_PASS_VERSION)
+      } else {
+        expect(question!.prompt).toBe(correction.prompt)
+        expect(question!.active).not.toBe(false)
+        expect(question!.version).toBe(EDITORIAL_FIFTH_PASS_VERSION)
+      }
       expect(correction.rationale.length).toBeGreaterThan(20)
     }
   })

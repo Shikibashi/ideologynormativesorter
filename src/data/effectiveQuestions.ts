@@ -20,9 +20,17 @@ import {
   EDITORIAL_FIFTH_PASS_VERSION,
 } from './editorialFifthPass'
 import {
+  applyEditorialSeventhPass,
+  EDITORIAL_SEVENTH_PASS_VERSION,
+} from './editorialSeventhPass'
+import {
   applyDescriptiveEvidence,
   DESCRIPTIVE_EVIDENCE_VERSION,
 } from './descriptiveEvidence'
+import {
+  applyDescriptiveEvidenceSecondPass,
+  DESCRIPTIVE_EVIDENCE_SECOND_PASS_VERSION,
+} from './descriptiveEvidenceSecondPass'
 
 export const QUESTION_BANK_VERSION = [
   RAW_QUESTION_BANK_VERSION,
@@ -30,7 +38,9 @@ export const QUESTION_BANK_VERSION = [
   STATEMENT_SEMANTIC_AUDIT_VERSION,
   RESPONDENT_QUESTION_REVIEW_VERSION,
   EDITORIAL_FIFTH_PASS_VERSION,
+  EDITORIAL_SEVENTH_PASS_VERSION,
   DESCRIPTIVE_EVIDENCE_VERSION,
+  DESCRIPTIVE_EVIDENCE_SECOND_PASS_VERSION,
 ].join('+')
 export { SCORING_VERSION }
 
@@ -41,15 +51,21 @@ export function getBankFingerprint(): string {
     STATEMENT_SEMANTIC_AUDIT_VERSION,
     RESPONDENT_QUESTION_REVIEW_VERSION,
     EDITORIAL_FIFTH_PASS_VERSION,
+    EDITORIAL_SEVENTH_PASS_VERSION,
     DESCRIPTIVE_EVIDENCE_VERSION,
+    DESCRIPTIVE_EVIDENCE_SECOND_PASS_VERSION,
   ].join('+')
 }
 
 function applyEffectiveReview(question: Question): Question {
-  return applyDescriptiveEvidence(
-    applyEditorialFifthPass(
-      applyRespondentQuestionReview(
-        applyStatementSemanticReview(applySemanticReview(question)),
+  return applyDescriptiveEvidenceSecondPass(
+    applyDescriptiveEvidence(
+      applyEditorialSeventhPass(
+        applyEditorialFifthPass(
+          applyRespondentQuestionReview(
+            applyStatementSemanticReview(applySemanticReview(question)),
+          ),
+        ),
       ),
     ),
   )

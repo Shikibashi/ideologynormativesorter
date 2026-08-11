@@ -25,7 +25,7 @@ import type { InventorySnapshot } from '../types'
 export const WP0_FREEZE = {
   frozenAt: '2026-08-11T00:00:00.000Z',
   rawMainQuestionCount: 443,
-  effectiveActiveQuestionCount: 309,
+  effectiveActiveQuestionCount: 286,
   effectiveRetainedQuestionCount: 443,
   moduleQuestionCount: 123,
   statementQuestionCount: 17,
@@ -36,7 +36,7 @@ export const WP0_FREEZE = {
   overlayCorrectionCount: 101,
   needsRewriteCount: 80,
   rawMainContributionCardinality: 9591,
-  effectiveActiveContributionCardinality: 5874,
+  effectiveActiveContributionCardinality: 5362,
   moduleContributionCardinality: 1481,
   statementContributionCardinality: 120,
   families: [

@@ -23,15 +23,20 @@ import {
 import { applySemanticReview } from './semanticAudit'
 import { DEFAULT_CONFIDENCE_PROMPT, DEFAULT_PRIORITY_PROMPT } from '../questionPresentation'
 import { fifthPassReplacementRequiredById } from './editorialFifthPass'
+import { seventhPassReplacementRequiredById } from './editorialSeventhPass'
 
 const LAYERS = ['normative', 'descriptive', 'prescriptive'] as const
 
 describe('respondent-facing question review', () => {
-  it('applies every reviewed tier promotion to an active existing item', () => {
+  it('applies every reviewed tier promotion before any later-pass quarantine', () => {
     for (const [questionId, promotion] of Object.entries(tierPromotionsById)) {
       const question = questionById.get(questionId)
       expect(question, `${questionId} promotion references a missing item`).toBeDefined()
-      expect(question!.active, `${questionId} promotion references an inactive item`).not.toBe(false)
+      if (seventhPassReplacementRequiredById[questionId]) {
+        expect(question!.active).toBe(false)
+      } else {
+        expect(question!.active, `${questionId} promotion references an inactive item`).not.toBe(false)
+      }
       expect(question!.tier).toBe(promotion.tier)
       expect(promotion.rationale).toBeTruthy()
     }
@@ -133,12 +138,16 @@ describe('respondent-facing question review', () => {
     expect(gaps).toEqual([
       'redistribution-welfare/prescriptive',
       'labor-unions-workplace/normative',
+      'labor-unions-workplace/descriptive',
       'land-housing-georgism/prescriptive',
       'immigration-borders/prescriptive',
       'national-identity-sovereignty/prescriptive',
       'race-ethnicity-multiculturalism/normative',
+      'race-ethnicity-multiculturalism/descriptive',
       'race-ethnicity-multiculturalism/prescriptive',
       'democracy-expertise-constitutionalism/normative',
+      'technology-ai-surveillance/descriptive',
+      'strategy-change/descriptive',
     ])
   })
 
