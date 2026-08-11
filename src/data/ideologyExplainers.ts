@@ -1168,6 +1168,15 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    participism: {
       descriptive: 'Expects participatory worker and consumer councils, balanced job complexes, and negotiated planning to coordinate production and consumption more equitably than markets or command planning; the model is a specific proposal, not every participatory or libertarian-socialist tradition.',
    },
+   agorist: {
+      descriptive: 'Expects counter-economics—voluntary exchange outside state licensing and taxation—to erode state legitimacy and build parallel institutions, with agorist currents differing over acceptable forms of exchange and transition.',
+   },
+   'degrowth-green': {
+      descriptive: 'Expects indefinite growth and high-throughput production in wealthy economies to conflict with ecological limits and equitable well-being, while planned reductions in energy and resource use, sufficiency, and democratic redistribution can improve ecological conditions and social welfare; degrowth research remains diverse about scale and transition.',
+   },
+   ordoliberalism: {
+      descriptive: 'Expects unregulated competition to produce monopoly and interest-group capture, while a strong rule-bound state can construct and maintain a competitive market order; ordoliberal currents differ over democracy, welfare, and the scope of intervention.',
+   },
 }
 
 function layerPhilosophies(label: IdeologyLabel, layer: Layer): string[] {
