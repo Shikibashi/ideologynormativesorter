@@ -1177,6 +1177,15 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    ordoliberalism: {
       descriptive: 'Expects unregulated competition to produce monopoly and interest-group capture, while a strong rule-bound state can construct and maintain a competitive market order; ordoliberal currents differ over democracy, welfare, and the scope of intervention.',
    },
+   ethnonationalist: {
+      descriptive: 'Expects shared descent, inherited culture, and ethnic boundaries to provide stronger national solidarity and continuity than voluntary civic membership; ethnonationalist currents differ over how ethnicity is defined and how state membership should be enforced, and the model can be exclusionary.',
+   },
+   'absolute-monarchist': {
+      descriptive: 'Expects concentrated hereditary sovereignty to secure political unity and continuity more reliably than divided constitutional authority, while historical absolutist theories differed over whether the sovereign remained bound by law and over the institutions needed to exercise power.',
+   },
+   regionalism: {
+      descriptive: 'Expects regional self-rule and institutions closer to local identities and interests to represent communities more responsively than centralized administration; regionalist currents differ over cultural protection, federal autonomy, shared rule, and independence.',
+   },
 }
 
 function layerPhilosophies(label: IdeologyLabel, layer: Layer): string[] {
