@@ -177,6 +177,21 @@ describe('ideology taxonomy', () => {
     expect(labelById.get('liberal-conservatism')?.usageNote).toMatch(/not a universal taxonomy/)
   })
 
+  it('keeps nationalist membership and sovereignty traditions distinct from required subtypes and explanatory theories', () => {
+    const labelById = new Map(labels.map((label) => [label.id, label]))
+
+    expect(labelById.get('civic-nationalist')?.normativePhilosophies).toContain('Civic Nationalism')
+    expect(labelById.get('indigenism')?.prescriptivePhilosophies).toContain('Indigenism')
+    expect(labelById.get('hindutva')?.prescriptivePhilosophies).toContain('Hindutva')
+    expect(labelById.get('religious-nationalism')?.prescriptivePhilosophies).toContain('Religious Nationalism')
+    expect(labelById.get('zionism')?.prescriptivePhilosophies).toContain('Zionism')
+    expect(labelById.get('left-wing-nationalism')?.prescriptivePhilosophies).toContain('Anti-Colonialism')
+    expect(labelById.get('expansionist-nationalism')?.philosophies).not.toContain('Realism')
+    expect(labelById.get('expansionist-nationalism')?.philosophies).not.toContain('Social Darwinism')
+    expect(labelById.get('expansionist-nationalism')?.descriptivePhilosophies).toEqual([])
+    expect(labelById.get('separatist-nationalism')?.usageNote).toMatch(/does not by itself establish a right to unilateral secession/)
+  })
+
   it('does not score policy proposals, futurist concepts, or governance mechanisms as primary ideologies', () => {
     for (const labelId of NON_IDEOLOGY_ENDPOINTS) {
       expect(roleForLabel(labelId), `${labelId} should not be primary`).not.toBe('primary')

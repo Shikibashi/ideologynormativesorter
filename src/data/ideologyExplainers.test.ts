@@ -34,6 +34,13 @@ describe('ideology explainers', () => {
       const cases: Array<[string, RegExp]> = [
          ['right-wing-populism', /thin-centered/],
          ['zionism', /Jewish national self-determination/],
+         ['civic-nationalist', /shared citizenship, political institutions/],
+         ['indigenism', /Indigenous peoples’ authority/],
+         ['hindutva', /Hindu-nationalist political ideology/],
+         ['religious-nationalism', /fuses national identity or sovereignty/],
+         ['left-wing-nationalism', /national self-determination or popular sovereignty/],
+         ['expansionist-nationalism', /territorial enlargement, imperial influence/],
+         ['separatist-nationalism', /autonomy, federal reorganization, or independence/],
          ['accelerationism', /left, right, and technology-centered/],
          ['fascist-authoritarian', /nationalist politics of national rebirth/],
          ['national-socialism', /Nazi ideology of racial hierarchy/],
@@ -257,6 +264,33 @@ describe('ideology explainers', () => {
       expect(getIdeologyTermDefinitions(byId.get('techno-anarchism')!)[0]).toMatch(/not a synonym for blockchain advocacy/)
    })
 
+   it('distinguishes nationalist membership and sovereignty traditions instead of substituting generic nationalism', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases = [
+         'civic-nationalist',
+         'indigenism',
+         'hindutva',
+         'religious-nationalism',
+         'zionism',
+         'left-wing-nationalism',
+         'expansionist-nationalism',
+         'separatist-nationalism',
+      ]
+
+      for (const id of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).not.toMatch(/broad family of traditions|subjects political authority/)
+      }
+
+      expect(getIdeologyTermDefinitions(byId.get('civic-nationalist')!)[0]).toMatch(/does not guarantee liberal democracy/)
+      expect(getIdeologyTermDefinitions(byId.get('indigenism')!)[0]).toMatch(/not one uniform political program/)
+      expect(getIdeologyTermDefinitions(byId.get('hindutva')!)[0]).toMatch(/not the same as Hinduism as a religion/)
+      expect(getIdeologyTermDefinitions(byId.get('zionism')!)[0]).toMatch(/not a synonym for any one government/)
+      expect(getIdeologyTermDefinitions(byId.get('expansionist-nationalism')!)[0]).toMatch(/distinct from nationalism in general/)
+      expect(getIdeologyTermDefinitions(byId.get('separatist-nationalism')!)[0]).toMatch(/does not by itself settle/)
+   })
+
    it('defines theocracy and high-confusion labels directly from stable ids', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directCases: Array<[string, RegExp]> = [
@@ -363,6 +397,22 @@ describe('ideology explainers', () => {
          ['queer-anarchism', 'prescriptive', /does not impose one universal account/],
          ['techno-anarchism', 'normative', /privacy, autonomy, and resistance/],
          ['techno-anarchism', 'prescriptive', /encryption, anonymity systems, peer-to-peer protocols/],
+         ['civic-nationalist', 'normative', /shared civic membership, political self-government/],
+         ['civic-nationalist', 'prescriptive', /inclusive citizenship, common political institutions/],
+         ['indigenism', 'normative', /Indigenous collective self-determination/],
+         ['indigenism', 'prescriptive', /Indigenous governance, land and resource rights/],
+         ['hindutva', 'normative', /Hindu civilizational or national identity/],
+         ['hindutva', 'prescriptive', /Hindu-nationalist conception of India/],
+         ['religious-nationalism', 'normative', /religious tradition and the national community/],
+         ['religious-nationalism', 'prescriptive', /religiously informed law/],
+         ['zionism', 'normative', /Jewish national self-determination/],
+         ['zionism', 'prescriptive', /Land of Israel/],
+         ['left-wing-nationalism', 'normative', /social equality, anti-colonial solidarity/],
+         ['left-wing-nationalism', 'prescriptive', /national liberation, redistributive or socialist policy/],
+         ['expansionist-nationalism', 'normative', /territorial enlargement, external influence/],
+         ['expansionist-nationalism', 'prescriptive', /territorial acquisition, imperial administration/],
+         ['separatist-nationalism', 'normative', /distinct national or regional community’s self-government/],
+         ['separatist-nationalism', 'prescriptive', /autonomy, federal reorganization, or secession/],
       ]
 
       for (const [id, layer, expected] of cases) {

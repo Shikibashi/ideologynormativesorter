@@ -237,6 +237,30 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    ethnonationalist: [
       '“Ethnonationalism” defines the nation primarily through shared ancestry, ethnicity, or inherited culture rather than equal civic membership alone.',
    ],
+   'civic-nationalist': [
+      '“Civic nationalism” defines national membership primarily through shared citizenship, political institutions, and commitment to a common public culture rather than inherited ancestry; in practice civic and cultural identities can overlap, and the label does not guarantee liberal democracy or equal inclusion.',
+   ],
+   indigenism: [
+      '“Indigenous self-determination and sovereignty” centers Indigenous peoples’ authority to govern their affairs, maintain land relationships, cultures, languages, and institutions, and pursue decolonial self-determined development; it is a broad catalog heading, not one uniform political program or a synonym for state-led indigenismo.',
+   ],
+   hindutva: [
+      '“Hindutva” is a Hindu-nationalist political ideology that presents India as a Hindu nation or civilizational community; it is not the same as Hinduism as a religion, and its interpretations vary over citizenship, minorities, secularism, and state power.',
+   ],
+   'religious-nationalism': [
+      '“Religious nationalism” fuses national identity or sovereignty with a religious tradition, treating that tradition as central to public belonging or authority; variants range from cultural identity projects to movements seeking religiously informed law, so it is not one religion or single regime.',
+   ],
+   zionism: [
+      '“Political Zionism” is a diverse Jewish national movement seeking Jewish national self-determination through a national home or state in the Land of Israel; its liberal, socialist, religious, revisionist, and other currents disagree over borders, institutions, religion, and relations with Palestinians, so it is not a synonym for any one government or policy.',
+   ],
+   'left-wing-nationalism': [
+      '“Left-wing nationalism” combines national self-determination or popular sovereignty with egalitarian, anti-colonial, socialist, or redistributive commitments; it is a diverse family that can conflict with both cosmopolitan internationalism and exclusionary chauvinism.',
+   ],
+   'expansionist-nationalism': [
+      '“Expansionist nationalism” makes territorial enlargement, imperial influence, or irredentist claims part of national power and political purpose; it is distinct from nationalism in general and from realism as an explanatory theory, though movements may invoke security or civilizing rationales.',
+   ],
+   'separatist-nationalism': [
+      '“Separatist nationalism” seeks self-government for a national or regional community through autonomy, federal reorganization, or independence; self-determination does not by itself settle whether secession is justified or require ethnic exclusion or violence.',
+   ],
    ordoliberalism: [
       '“Ordoliberalism” favors a strong legal and institutional framework that preserves competition and constrains both private monopoly and discretionary economic power.',
    ],
@@ -392,6 +416,14 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'anarcha-feminism',
    'queer-anarchism',
    'techno-anarchism',
+   'civic-nationalist',
+   'indigenism',
+   'hindutva',
+   'religious-nationalism',
+   'zionism',
+   'left-wing-nationalism',
+   'expansionist-nationalism',
+   'separatist-nationalism',
    'welfare-chauvinism',
    'participism',
    'panarchism',
@@ -466,6 +498,38 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    mutualist: {
       prescriptive: 'Favors mutual credit, cooperative exchange, possession or use-based claims, and federated voluntary institutions instead of state administration or concentrated capitalist ownership.',
+   },
+   'civic-nationalist': {
+      normative: 'Treats shared civic membership, political self-government, and a common public culture as important grounds of national belonging rather than inherited ancestry alone.',
+      prescriptive: 'Favors inclusive citizenship, common political institutions, constitutional participation, and public nation-building while leaving room for cultural and historical identities within the civic community.',
+   },
+   indigenism: {
+      normative: 'Treats Indigenous collective self-determination, cultural continuity, land relationships, and authority over community affairs as central goods in a decolonial political order.',
+      prescriptive: 'Favors Indigenous governance, land and resource rights, language and cultural institutions, and decolonial changes to imposed state or market structures; traditions differ over institutional form and territorial scope.',
+   },
+   hindutva: {
+      normative: 'Treats Hindu civilizational or national identity as central to the political meaning of India and to the boundaries of national belonging.',
+      prescriptive: 'Favors public institutions and national membership organized around a Hindu-nationalist conception of India; programs vary over secularism, minority rights, citizenship, and the role of the state.',
+   },
+   'religious-nationalism': {
+      normative: 'Treats a religious tradition and the national community as mutually reinforcing sources of identity, obligation, and political legitimacy.',
+      prescriptive: 'Favors public institutions that recognize or advance a nation’s religious tradition, with variants ranging from cultural preference to religiously informed law or formal religious authority.',
+   },
+   zionism: {
+      normative: 'Treats the Jewish people as a nation entitled to Jewish national self-determination and a secure political and cultural home.',
+      prescriptive: 'Favors institutions capable of maintaining Jewish national self-determination in the Land of Israel; liberal, socialist, religious, revisionist, and other currents disagree over borders, state structure, religion, and relations with Palestinians.',
+   },
+   'left-wing-nationalism': {
+      normative: 'Treats national self-determination and popular sovereignty as compatible with social equality, anti-colonial solidarity, and opposition to imperial domination.',
+      prescriptive: 'Favors national liberation, redistributive or socialist policy, and popular control of the post-colonial state or nation; movements differ over internationalism, class politics, and minority membership.',
+   },
+   'expansionist-nationalism': {
+      normative: 'Treats territorial enlargement, external influence, and national power as legitimate or necessary expressions of the nation’s political purpose.',
+      prescriptive: 'Favors territorial acquisition, imperial administration, or irredentist expansion justified through security, historical, civilizing, or strategic claims; it is not a policy-neutral theory of international relations.',
+   },
+   'separatist-nationalism': {
+      normative: 'Treats a distinct national or regional community’s self-government as more important than preserving the existing state’s territorial unity.',
+      prescriptive: 'Favors autonomy, federal reorganization, or secession as routes to self-government, with the preferred route depending on the movement and its political conditions rather than following automatically from the label.',
    },
    'left-wing-market-anarchism': {
       normative: 'Combines individual liberty and voluntary exchange with opposition to state privilege, exploitation, and concentrated economic domination.',

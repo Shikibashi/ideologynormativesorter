@@ -1429,7 +1429,7 @@ export const labels: IdeologyLabel[] = [
       philosophies: ["Nationalism","Civic Nationalism","Republicanism"],
       subTheories: ["Liberal Nationalism"],
       ethicalTheory: ["Virtue Ethics"],
-      normativePhilosophies: ["Nationalism","Republicanism"],
+      normativePhilosophies: ["Nationalism","Civic Nationalism","Republicanism"],
       descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Civic Nationalism"],
       philosophyInfluences: [
@@ -3024,7 +3024,7 @@ export const labels: IdeologyLabel[] = [
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Indigenism","Decolonialism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Indigenism"],
       philosophyInfluences: [
          {
             philosophy: "Indigenism",
@@ -3403,7 +3403,7 @@ export const labels: IdeologyLabel[] = [
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Nationalism","Hindutva","Hindu Nationalism","Integral Humanism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Hindutva"],
       philosophyInfluences: [
          {
             philosophy: "Nationalism",
@@ -3459,7 +3459,7 @@ export const labels: IdeologyLabel[] = [
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Nationalism","Religious Nationalism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Religious Nationalism"],
       philosophyInfluences: [
          {
             philosophy: "Nationalism",
@@ -3515,7 +3515,7 @@ export const labels: IdeologyLabel[] = [
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Nationalism","Zionism","Jewish Nationalism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Zionism"],
       philosophyInfluences: [
          {
             philosophy: "Nationalism",
@@ -4399,7 +4399,7 @@ export const labels: IdeologyLabel[] = [
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Nationalism","Socialism","Anti-Colonialism","Self-Determination"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Nationalism","Anti-Colonialism","Self-Determination"],
       philosophyInfluences: [
          {
             philosophy: "Nationalism",
@@ -5477,22 +5477,19 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'imperial-national',
       description:
          'A nationalist ideology that asserts the right and duty of a nation to expand its territorial control, influence, and power over other peoples and regions, often invoking historical claims, civilizing missions, or strategic imperatives.',
-      philosophies: ["Nationalism","Imperialism","Realism","Social Darwinism","Expansionism"],
+      usageNote:
+         'Expansionist nationalism is not synonymous with realism or Social Darwinism. Those may be invoked by some movements, but they are not required parts of the label; territorial expansion, imperial influence, or irredentist claims are the defining commitments.',
+      philosophies: ["Nationalism","Imperialism","Expansionism"],
       subTheories: ["Expansionism","Imperial Nationalism","Irredentism"],
       ethicalTheory: ["Virtue Ethics","Consequentialism"],
       normativePhilosophies: ["Nationalism","Imperialism"],
-      descriptivePhilosophies: ["Realism","Social Darwinism"],
+      descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Nationalism","Expansionism"],
       philosophyInfluences: [
          {
             philosophy: "Nationalism",
             description: "National primacy and geopolitical expansion as central political aims.",
             affectedAxes: ["political-community-boundary","militarism-pacifism","authority-legitimacy"],
-         },
-         {
-            philosophy: "Realism",
-            description: "Pessimistic view of international relations as zero-sum power competition.",
-            affectedAxes: ["coordination-optimism","political-community-boundary","militarism-pacifism"],
          },
       ],
       centroid: {
@@ -5531,6 +5528,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'subnational',
       description:
          'A nationalist movement seeking self-determination and political independence for a specific region, ethnic group, or cultural community from a larger existing state, often through secession or devolution of sovereignty.',
+      usageNote:
+         'Separatist nationalism can seek autonomy, federal reorganization, or independence. The label does not by itself establish a right to unilateral secession, ethnic exclusion, or violent strategy.',
       philosophies: ["Nationalism","Separatism","Self-Determination","Federalism"],
       subTheories: ["Secessionism","Independence Movements","Autonomism"],
       ethicalTheory: ["Deontology"],
