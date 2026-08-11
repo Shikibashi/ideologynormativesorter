@@ -258,6 +258,30 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    agorist: [
       '“Agorism” is Samuel Edward Konkin III’s market-anarchist strategy of building a counter-economy through voluntary exchange outside state licensing and taxation rather than pursuing electoral power.',
    ],
+   'left-wing-market-anarchism': [
+      '“Left-wing market anarchism” is an anti-capitalist market-anarchist umbrella that defends exchange in freed markets while arguing that state privilege sustains corporate power and exploitation; it is not a synonym for anarcho-capitalism, and its currents disagree over property, wage labor, and rent.',
+   ],
+   'individualist-anarchism': [
+      '“Individualist anarchism” is a historically diverse anarchist family centered on individual autonomy and voluntary association; its natural-rights, mutualist, and egoist currents disagree over morality, property, and markets, so it is not a synonym for egoist anarchism or anarcho-capitalism.',
+   ],
+   'anarcho-primitivism': [
+      '“Anarcho-primitivism” is an anarchist critique of civilization that links domestication, specialized division of labor, industrial technology, and large-scale organization to domination and ecological harm; it is more specific than environmentalism and is not a synonym for every anti-technology view.',
+   ],
+   voluntaryism: [
+      '“Voluntaryism” is a historical libertarian family organized around voluntary political association: Auberon Herbert retained a voluntarily funded minimal state, while later currents developed anti-state variants, so the term does not automatically mean anarchism or anarcho-capitalism.',
+   ],
+   stirnerism: [
+      '“Egoist anarchism” refers here to the anarchist reception of Max Stirner’s radical egoism, which rejects binding fixed abstractions and allows contingent “unions of egoists”; it is not ordinary selfishness, standard ethical egoism, or one complete policy program.',
+   ],
+   'anarcha-feminism': [
+      '“Anarcha-feminism” combines anarchist criticism of coercive hierarchy with feminist analysis of gender domination, connecting freedom in intimate, economic, and political life rather than treating access to existing authority as sufficient liberation.',
+   ],
+   'queer-anarchism': [
+      '“Queer anarchism” brings anarchist opposition to domination into queer resistance to enforced sexual and gender norms; it is a diverse theoretical and activist current, not one required position on identity, family, or gender abolition.',
+   ],
+   'techno-anarchism': [
+      '“Techno-anarchist / crypto-anarchist” refers here to loose currents using encryption, anonymity, peer-to-peer systems, or decentralized networks to resist surveillance, censorship, and centralized control; it is not a synonym for blockchain advocacy or a settled anarchist school.',
+   ],
    'welfare-chauvinism': [
       '“Welfare chauvinism” supports social provision for a national or ethnic in-group while restricting immigrants’ or other out-groups’ access to benefits and services.',
    ],
@@ -360,6 +384,14 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'platformism',
    'mutualist',
    'agorist',
+   'left-wing-market-anarchism',
+   'individualist-anarchism',
+   'anarcho-primitivism',
+   'voluntaryism',
+   'stirnerism',
+   'anarcha-feminism',
+   'queer-anarchism',
+   'techno-anarchism',
    'welfare-chauvinism',
    'participism',
    'panarchism',
@@ -434,6 +466,38 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    },
    mutualist: {
       prescriptive: 'Favors mutual credit, cooperative exchange, possession or use-based claims, and federated voluntary institutions instead of state administration or concentrated capitalist ownership.',
+   },
+   'left-wing-market-anarchism': {
+      normative: 'Combines individual liberty and voluntary exchange with opposition to state privilege, exploitation, and concentrated economic domination.',
+      prescriptive: 'Favors stateless freed markets and voluntary institutions while dismantling legal privileges that sustain corporate concentration; currents differ over property, wage labor, rent, and the balance among firms, cooperatives, and mutual provision.',
+   },
+   'individualist-anarchism': {
+      normative: 'Gives individual self-direction and voluntary association priority over compulsory state authority or demands that subordinate persons to an abstract collective good.',
+      prescriptive: 'Favors stateless, voluntary forms of association while leaving substantial disagreement among natural-rights, mutualist, and egoist currents over property, exchange, and durable organization.',
+   },
+   'anarcho-primitivism': {
+      normative: 'Treats autonomy, ecological integrity, and freedom from civilizational domination as more important than maintaining industrial scale, technological dependence, or specialized hierarchy.',
+      prescriptive: 'Favors radical decentralization, deindustrialization, rewilding, and reducing dependence on domestication, specialized labor, and large technical systems; adherents differ over transition and acceptable tools.',
+   },
+   voluntaryism: {
+      normative: 'Treats consent, individual liberty, and voluntary support as the standards by which political institutions and social relationships should be judged.',
+      prescriptive: 'Favors voluntarily funded and joined institutions; Herbert retained a voluntarily funded minimal state, while later Voluntaryists have favored competing or stateless arrangements.',
+   },
+   stirnerism: {
+      normative: 'Resists treating fixed moral, political, or social abstractions as obligations that override the self-directed unique individual.',
+      prescriptive: 'Allows contingent, voluntary unions formed for participants’ purposes but supplies no single institutional blueprint, property system, or public-policy program.',
+   },
+   'anarcha-feminism': {
+      normative: 'Treats patriarchy and gender subordination as forms of coercive hierarchy inseparable from a broader commitment to autonomy, equality, and freedom from domination.',
+      prescriptive: 'Favors decentralized and non-coercive social relations that challenge gender hierarchy across intimate life, work, political organization, and other institutions rather than seeking representation within hierarchy alone.',
+   },
+   'queer-anarchism': {
+      normative: 'Opposes coercive sexual and gender hierarchy together with the wider political and social structures that enforce conformity and domination.',
+      prescriptive: 'Favors autonomous, decentralized forms of queer liberation and resistance to institutions that police gender or sexuality; the current does not impose one universal account of identity, family, or gender abolition.',
+   },
+   'techno-anarchism': {
+      normative: 'Prioritizes privacy, autonomy, and resistance to centralized information control while treating technology as a possible anti-authoritarian tool rather than an authority in itself.',
+      prescriptive: 'Favors encryption, anonymity systems, peer-to-peer protocols, and decentralized networks that make surveillance, censorship, or centralized control harder; it is a loose current rather than one settled institutional program.',
    },
    ecosocialist: {
       prescriptive: 'Favors social ownership and democratic planning of production around human need, equality, and ecological limits rather than profit or growth as ends in themselves.',

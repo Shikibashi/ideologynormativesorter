@@ -78,6 +78,14 @@ describe('ideology explainers', () => {
          ['national-conservatism', /national sovereignty, cultural continuity/],
          ['conservative-liberalism', /liberal-family synthesis/],
          ['liberal-conservatism', /conservative-family synthesis/],
+         ['left-wing-market-anarchism', /anti-capitalist market-anarchist umbrella/],
+         ['individualist-anarchism', /historically diverse anarchist family/],
+         ['anarcho-primitivism', /critique of civilization/],
+         ['voluntaryism', /voluntarily funded minimal state/],
+         ['stirnerism', /unions of egoists/],
+         ['anarcha-feminism', /feminist analysis of gender domination/],
+         ['queer-anarchism', /resistance to enforced sexual and gender norms/],
+         ['techno-anarchism', /encryption, anonymity, peer-to-peer systems/],
       ]
 
       for (const [id, expected] of cases) {
@@ -223,6 +231,32 @@ describe('ideology explainers', () => {
       expect(getIdeologyTermDefinitions(byId.get('liberal-conservatism')!)[0]).toMatch(/historically variable and overlaps/)
    })
 
+   it('distinguishes anarchist and anti-state currents instead of substituting generic anarchism', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const directOnlyCases = [
+         'left-wing-market-anarchism',
+         'individualist-anarchism',
+         'anarcho-primitivism',
+         'voluntaryism',
+         'stirnerism',
+         'anarcha-feminism',
+         'queer-anarchism',
+         'techno-anarchism',
+      ]
+
+      for (const id of directOnlyCases) {
+         const definitions = getIdeologyTermDefinitions(byId.get(id)!)
+         expect(definitions, id).toHaveLength(1)
+         expect(definitions[0], id).not.toMatch(/subjects political authority|socialist, mutualist, individualist/)
+      }
+
+      expect(getIdeologyTermDefinitions(byId.get('left-wing-market-anarchism')!)[0]).toMatch(/not a synonym for anarcho-capitalism/)
+      expect(getIdeologyTermDefinitions(byId.get('individualist-anarchism')!)[0]).toMatch(/not a synonym for egoist anarchism/)
+      expect(getIdeologyTermDefinitions(byId.get('voluntaryism')!)[0]).toMatch(/does not automatically mean anarchism/)
+      expect(getIdeologyTermDefinitions(byId.get('stirnerism')!)[0]).toMatch(/not ordinary selfishness/)
+      expect(getIdeologyTermDefinitions(byId.get('techno-anarchism')!)[0]).toMatch(/not a synonym for blockchain advocacy/)
+   })
+
    it('defines theocracy and high-confusion labels directly from stable ids', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const directCases: Array<[string, RegExp]> = [
@@ -313,6 +347,22 @@ describe('ideology explainers', () => {
          ['conservative-liberalism', 'prescriptive', /constitutional market order and gradual reform/],
          ['liberal-conservatism', 'normative', /conservative concern for continuity/],
          ['liberal-conservatism', 'prescriptive', /cautious reform, a market economy/],
+         ['left-wing-market-anarchism', 'normative', /opposition to state privilege, exploitation/],
+         ['left-wing-market-anarchism', 'prescriptive', /stateless freed markets/],
+         ['individualist-anarchism', 'normative', /individual self-direction and voluntary association/],
+         ['individualist-anarchism', 'prescriptive', /natural-rights, mutualist, and egoist currents/],
+         ['anarcho-primitivism', 'normative', /freedom from civilizational domination/],
+         ['anarcho-primitivism', 'prescriptive', /deindustrialization, rewilding/],
+         ['voluntaryism', 'normative', /consent, individual liberty, and voluntary support/],
+         ['voluntaryism', 'prescriptive', /voluntarily funded minimal state/],
+         ['stirnerism', 'normative', /fixed moral, political, or social abstractions/],
+         ['stirnerism', 'prescriptive', /no single institutional blueprint/],
+         ['anarcha-feminism', 'normative', /patriarchy and gender subordination/],
+         ['anarcha-feminism', 'prescriptive', /intimate life, work, political organization/],
+         ['queer-anarchism', 'normative', /coercive sexual and gender hierarchy/],
+         ['queer-anarchism', 'prescriptive', /does not impose one universal account/],
+         ['techno-anarchism', 'normative', /privacy, autonomy, and resistance/],
+         ['techno-anarchism', 'prescriptive', /encryption, anonymity systems, peer-to-peer protocols/],
       ]
 
       for (const [id, layer, expected] of cases) {

@@ -2576,15 +2576,15 @@ export const labels: IdeologyLabel[] = [
       family: 'anarchist',
       subfamily: 'market-anarchist',
       description:
-         'Defends anti-capitalist freed markets and voluntary exchange while rejecting state privilege, landlord rents, corporate subsidy, and capitalist hierarchy as products of coercive enclosure rather than genuine market freedom.',
+         'An anti-capitalist market-anarchist umbrella that defends voluntary exchange in freed markets while arguing that state privilege helps sustain concentrated corporate power and exploitation.',
       usageNote:
-         'The Steiner-Vallentyne school is a related but distinct academic left-libertarian tradition in distributive-justice theory; unlike this label, it does not itself entail anarchism and is generally compatible with a redistributive state.',
-      philosophies: ["Anarchism","Left-Wing Market Anarchism","Mutualism"],
+         'Currents disagree over property, wage labor, rent, and preferred institutions. The label overlaps with mutualist, agorist, and left-Rothbardian currents but is not synonymous with any one of them or with anarcho-capitalism.',
+      philosophies: ["Anarchism","Left-Wing Market Anarchism"],
       subTheories: ["Left-Rothbardianism"],
       ethicalTheory: ["Deontology"],
-      normativePhilosophies: ["Anarchism"],
+      normativePhilosophies: ["Anarchism","Left-Wing Market Anarchism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: ["Left-Wing Market Anarchism","Mutualism"],
+      prescriptivePhilosophies: ["Left-Wing Market Anarchism"],
       philosophyInfluences: [
          {
             philosophy: "Anarchism",
@@ -2592,8 +2592,8 @@ export const labels: IdeologyLabel[] = [
             affectedAxes: ["authority-legitimacy","centralization-preference"],
          },
          {
-            philosophy: "Mutualism",
-            description: "Anti-capitalist freed markets without wage labor or rent.",
+            philosophy: "Left-Wing Market Anarchism",
+            description: "Anti-capitalist freed markets without state-secured corporate privilege.",
             affectedAxes: ["property-legitimacy","equality-theory","anti-domination"],
          }
       ],
@@ -2632,15 +2632,15 @@ export const labels: IdeologyLabel[] = [
       family: 'anarchist',
       subfamily: 'individualist-anarchist',
       description:
-         'Centers personal autonomy, voluntary association, and hostility to imposed moral or political authority, rejecting both state power and collectivist demands that subordinate the individual to a planned social whole.',
+         'A historically diverse anarchist family that centers individual autonomy and voluntary association while rejecting the state’s claim to compulsory political authority.',
       usageNote:
-         'Post-left anarchism is a specific, more recent anti-organizational current influenced by this tradition; it is a sub-current rather than a synonym for the broader 19th-century individualist-anarchist tradition (Tucker, Spooner, Stirner).',
-      philosophies: ["Anarchism","Individualist Anarchism","Stirnerism","Egoism"],
-      subTheories: ["Post-Left Anarchism"],
-      ethicalTheory: ["Deontology"],
-      normativePhilosophies: ["Anarchism","Individualist Anarchism","Stirnerism","Egoism"],
+         'The natural-rights, mutualist, and egoist currents associated with figures such as Warren, Spooner, Tucker, and Stirner disagree over morality, property, and markets; the label is not a synonym for egoist anarchism, post-left anarchism, or anarcho-capitalism.',
+      philosophies: ["Anarchism","Individualist Anarchism"],
+      subTheories: [],
+      ethicalTheory: [],
+      normativePhilosophies: ["Anarchism","Individualist Anarchism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: ["Stirnerism"],
+      prescriptivePhilosophies: ["Individualist Anarchism"],
       philosophyInfluences: [
          {
             philosophy: "Anarchism",
@@ -2648,8 +2648,8 @@ export const labels: IdeologyLabel[] = [
             affectedAxes: ["authority-legitimacy","centralization-preference"],
          },
          {
-            philosophy: "Egoism",
-            description: "The unique individual as sole locus of value.",
+            philosophy: "Individualist Anarchism",
+            description: "Individual self-direction and voluntary association without compulsory political authority.",
             affectedAxes: ["liberty-noninterference","moral-traditionalism","equality-theory"],
          }
       ],
@@ -2689,6 +2689,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'anti-civilization',
       description:
          'Rejects civilization, industrial technology, and mass organization as sources of domination and ecological collapse, seeking radically decentralized lifeways outside both state and market modernity.',
+      usageNote:
+         'This is a specific anti-civilization current, not a generic name for environmentalism, simple technology skepticism, Indigenous lifeways, or Theodore Kaczynski’s distinct anti-technology ideology.',
       philosophies: ["Anarchism","Anarcho-Primitivism","Anti-Civilization"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Anarchism","Anarcho-Primitivism","Anti-Civilization"],
@@ -4111,12 +4113,12 @@ export const labels: IdeologyLabel[] = [
          'Uses decentralizing technologies, cryptography, networks, or peer-to-peer infrastructure to reduce state and corporate control and enable voluntary anti-authoritarian coordination.',
       cautionNote:
          'A loose emerging current overlapping cypherpunk, crypto-anarchism, and networked anarchism; not a canonical anarchist school equivalent to mutualism or anarcho-communism.',
-      philosophies: ["Anarchism","Techno-Anarchism","Cyber-Libertarianism"],
-      subTheories: ["Cypherpunk","Crypto-Anarchism","Networked Anarchism"],
+      philosophies: ["Anarchism","Techno-Anarchism","Cypherpunk"],
+      subTheories: [],
       ethicalTheory: ["Deontology"],
-      normativePhilosophies: ["Anarchism","Techno-Anarchism","Cyber-Libertarianism"],
+      normativePhilosophies: ["Anarchism","Techno-Anarchism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: ["Techno-Anarchism","Cyber-Libertarianism"],
+      prescriptivePhilosophies: ["Techno-Anarchism","Cypherpunk"],
       philosophyInfluences: [
          {
             philosophy: "Anarchism",
@@ -4125,7 +4127,7 @@ export const labels: IdeologyLabel[] = [
          },
          {
             philosophy: "Techno-Anarchism",
-            description: "Decentralized technology as enabler of stateless society.",
+            description: "Encryption and decentralized networks as tools against surveillance and centralized control.",
             affectedAxes: ["coordination-optimism","cultural-plasticity","anti-domination"],
          }
       ],
@@ -4558,7 +4560,6 @@ export const labels: IdeologyLabel[] = [
       usageNote:
          'Do not collapse Herbert’s voluntary-state theory into later anti-state Voluntaryism. The label covers a historical lineage whose members disagree about whether any minimal state remains legitimate.',
       philosophies: ["Voluntaryism","Libertarianism","Individualism","Non-Aggression Principle"],
-   aliases: ["Contractual Anarchism"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Libertarianism","Individualism","Non-Aggression Principle"],
       descriptivePhilosophies: [],
@@ -4566,7 +4567,7 @@ export const labels: IdeologyLabel[] = [
       philosophyInfluences: [
          {
             philosophy: "Libertarianism",
-            description: "Voluntary association and self-ownership as absolute principles.",
+            description: "Consent, individual liberty, and voluntary association as central principles.",
             affectedAxes: ["liberty-noninterference","property-legitimacy","authority-legitimacy"],
          },
          {
@@ -4613,11 +4614,11 @@ export const labels: IdeologyLabel[] = [
          'Centers Max Stirner’s philosophy of egoism, which criticizes fixed ideas and externally imposed authority as constraints on the unique individual and leaves room for temporary voluntary associations.',
       usageNote:
          'A philosophical current rather than a single organized program; “egoist anarchism” describes its later anarchist reception, not a claim that every Stirnerite shares one policy platform.',
-      philosophies: ["Stirnerism","Egoism","Individualist Anarchism","Nihilism"],
-   aliases: ["Stirnerism","Philosophical Egoism"],
-      subTheories: ["Post-Left Anarchism","Insurrectionary Anarchism"],
+      philosophies: ["Stirnerism","Egoism","Individualist Anarchism"],
+      aliases: ["Stirnerism"],
+      subTheories: [],
       ethicalTheory: [],
-      normativePhilosophies: ["Stirnerism","Egoism","Individualist Anarchism","Nihilism"],
+      normativePhilosophies: ["Stirnerism","Egoism","Individualist Anarchism"],
       descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Stirnerism"],
       philosophyInfluences: [
@@ -4627,8 +4628,8 @@ export const labels: IdeologyLabel[] = [
             affectedAxes: ["authority-legitimacy","moral-traditionalism","liberty-noninterference"],
          },
          {
-            philosophy: "Nihilism",
-            description: "Rejection of objective moral authority and fixed ideology.",
+            philosophy: "Individualist Anarchism",
+            description: "Contingent unions of egoists without a compulsory collective program.",
             affectedAxes: ["equality-theory","cultural-plasticity","centralization-preference"],
          }
       ],
@@ -4831,12 +4832,14 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'social-anarchist',
       description:
          'Views patriarchy as a fundamental structure of domination interlocking with capitalism and statism, arguing that gender liberation requires abolishing all hierarchical institutions and building decentralized, non-coercive social relations.',
+      usageNote:
+         'A diverse feminist-anarchist tradition rather than one fixed theory of gender or organization; it addresses domination in intimate and economic life as well as access to formal political authority.',
       philosophies: ["Anarcha-Feminism","Feminism","Anarchism","Anti-Patriarchy"],
       subTheories: [],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Anarcha-Feminism","Feminism","Anarchism","Anti-Patriarchy"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Anarcha-Feminism"],
       philosophyInfluences: [
          {
             philosophy: "Feminism",
@@ -6389,13 +6392,15 @@ export const labels: IdeologyLabel[] = [
       family: 'anarchist',
       subfamily: 'social-anarchist',
       description:
-         'A synthesis of anarchist and queer theory that views the state, capitalism, and heteronormative institutions as interlocking systems of domination, advocating for the abolition of gender and sexual hierarchies alongside all forms of coercive authority, and building decentralized, affirming communities.',
-      philosophies: ["Anarchism","Queer Theory","Feminism","Anti-Authoritarianism","Queer Liberation"],
-      subTheories: ["Queer Liberation","Gender Abolition","Intersectional Anarchism"],
+         'A diverse theoretical and activist current connecting anarchist opposition to domination with queer resistance to institutions and norms that enforce sexual or gender conformity.',
+      usageNote:
+         'Queer anarchists do not share one required position on identity, family, gender abolition, or organization; the label identifies a shared anti-authoritarian orientation rather than a single program.',
+      philosophies: ["Anarchism","Queer Anarchism","Queer Theory","Queer Liberation"],
+      subTheories: [],
       ethicalTheory: ["Deontology"],
-      normativePhilosophies: ["Anarchism","Queer Theory","Feminism","Anti-Authoritarianism"],
+      normativePhilosophies: ["Anarchism","Queer Liberation"],
       descriptivePhilosophies: ["Queer Theory"],
-      prescriptivePhilosophies: ["Anarchism","Queer Liberation"],
+      prescriptivePhilosophies: ["Queer Anarchism","Queer Liberation"],
       philosophyInfluences: [
          {
             philosophy: "Anarchism",
@@ -6404,7 +6409,7 @@ export const labels: IdeologyLabel[] = [
          },
          {
             philosophy: "Queer Theory",
-            description: "Critical deconstruction of gender and sexual categories as socially constructed and politically enforced.",
+            description: "Analysis of how norms and institutions produce and police gender and sexual categories.",
             affectedAxes: ["moral-traditionalism","cultural-plasticity","liberty-noninterference"],
          },
       ],

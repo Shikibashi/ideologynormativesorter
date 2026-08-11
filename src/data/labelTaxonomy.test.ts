@@ -118,6 +118,21 @@ describe('ideology taxonomy', () => {
     expect(labelById.get('libertarian-municipalism')?.family).not.toBe('liberal')
   })
 
+  it('keeps adjacent anarchist and anti-state labels from inheriting narrower doctrines as required subtypes', () => {
+    const labelById = new Map(labels.map((label) => [label.id, label]))
+
+    expect(labelById.get('left-wing-market-anarchism')?.prescriptivePhilosophies).not.toContain('Mutualism')
+    expect(labelById.get('individualist-anarchism')?.philosophies).not.toEqual(expect.arrayContaining(['Stirnerism', 'Egoism']))
+    expect(labelById.get('individualist-anarchism')?.subTheories).not.toContain('Post-Left Anarchism')
+    expect(labelById.get('voluntaryism')?.aliases ?? []).not.toContain('Contractual Anarchism')
+    expect(labelById.get('stirnerism')?.philosophies).not.toContain('Nihilism')
+    expect(labelById.get('stirnerism')?.subTheories).toEqual([])
+    expect(labelById.get('techno-anarchism')?.philosophies).not.toContain('Cyber-Libertarianism')
+    expect(labelById.get('techno-anarchism')?.subTheories).toEqual([])
+    expect(labelById.get('queer-anarchism')?.subTheories).not.toContain('Gender Abolition')
+    expect(labelById.get('anarcha-feminism')?.prescriptivePhilosophies).toContain('Anarcha-Feminism')
+  })
+
   it('keeps socialist lineages broad without forcing adjacent traditions into Marxism or one generic subfamily', () => {
     const labelById = new Map(labels.map((label) => [label.id, label]))
     const socialDemocrat = labelById.get('social-democrat')!
