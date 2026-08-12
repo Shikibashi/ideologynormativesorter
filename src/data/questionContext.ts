@@ -39,6 +39,11 @@ export const questionContextSources: Readonly<Record<string, QuestionSource>> = 
     url: 'https://plato.stanford.edu/entries/justice-distributive/index.html',
     publisher: 'Stanford Encyclopedia of Philosophy',
   },
+  housingSupply: {
+    title: 'The Impact of Zoning on Housing Affordability',
+    url: 'https://www.nber.org/papers/w8835',
+    publisher: 'National Bureau of Economic Research',
+  },
   markets: {
     title: 'Markets',
     url: 'https://plato.stanford.edu/entries/markets/',
@@ -246,9 +251,57 @@ const DOMAIN_CONTEXT_NOTES: Readonly<Record<string, string>> = {
 
 /** Explicit notes keep the highest-risk existing pilot items more specific. */
 export const questionContextById: Readonly<Record<string, QuestionContextRecord>> = {
+  q0033: {
+    contextNote: 'This item asks whether a property regime should distinguish among personal possession, productive capital, land rents, and legally created privileges. Those categories can have different justifications and policy tools; agreement is not a single verdict on all private property.',
+    sourceIds: ['property', 'distributiveJustice'],
+  },
+  q0075: {
+    contextNote: 'This item tests one sequencing preference: whether governments should remove legal or supply-side barriers before adding tax-funded benefits. It does not claim that every basic good has the same cost mechanism or that every benefit should wait.',
+    sourceIds: ['distributiveJustice', 'housingSupply'],
+  },
+  q0093: {
+    contextNote: 'This item compares the legal standing of employment, freelancing, cooperatives, unions, and partnerships. It does not assume that these forms have identical bargaining power, ownership, or workplace outcomes.',
+    sourceIds: ['labour', 'labourRights'],
+  },
+  q0114: {
+    contextNote: 'This item compares supply-side legalization of housing forms with demand-side subsidies. The relevant tradeoffs include construction capacity, infrastructure, tenure, displacement, and who receives the subsidy.',
+    sourceIds: ['housingSupply', 'distributiveJustice'],
+  },
   q0222: {
     contextNote: 'This item contrasts civic membership with inherited or ascriptive membership. Nationalism scholarship distinguishes these models; it does not assume that every cultural nation demands an independent state.',
     sourceIds: ['nationalism', 'ethnonationalism'],
+  },
+  q0173: {
+    contextNote: 'This item treats several civil liberties as a default-protection regime. Speech, encryption, association, religion, and due process have different legal tests; agreement does not imply that their limits should be identical.',
+    sourceIds: ['civilPoliticalRights', 'liberalism'],
+  },
+  q0193: {
+    contextNote: 'This item prioritizes three justice functions—repair, prevention, and restraint of serious danger. It does not treat them as interchangeable or imply that incapacitation is justified whenever it is administratively convenient.',
+    sourceIds: ['legalPunishment', 'civilPoliticalRights'],
+  },
+  q0215: {
+    contextNote: 'This item asks whether lawful migration should remain open while housing and labor markets adjust. It does not assume that admission policy, housing supply, and labor-market rules are one instrument or that adjustment costs are distributed equally.',
+    sourceIds: ['immigration', 'housingSupply', 'labour'],
+  },
+  q0274: {
+    contextNote: 'This item reduces several examples to one construct: whether adults can exit unwanted legal or economic dependency in intimate life. Divorce, contraception, adoption, and independent work involve different institutions and should not be treated as one empirical outcome.',
+    sourceIds: ['feministPolitics', 'feministEthics', 'labour'],
+  },
+  q0314: {
+    contextNote: 'This item asks about a general regulatory stance toward low-carbon deployment. Technologies and infrastructure have distinct safety, land-use, and distributional issues; agreement is not a claim that one policy works everywhere.',
+    sourceIds: ['climateAssessment', 'environmentalEthics', 'housingSupply'],
+  },
+  q0354: {
+    contextNote: 'This item treats expert-agency accountability as a package of safeguards—transparency, appeal, review, and alternatives. These safeguards can be evaluated separately; agreement does not imply that every agency needs the same institutional design.',
+    sourceIds: ['democracy', 'electoralJustice'],
+  },
+  q0376: {
+    contextNote: 'This item asks whether public algorithms should be contestable across three high-impact settings. Benefits, policing, and immigration involve different legal authorities and error costs, so auditability and appealability should be assessed for each use.',
+    sourceIds: ['aiEthics', 'aiRisk', 'civilPoliticalRights'],
+  },
+  q0411: {
+    contextNote: 'This item combines an economic-governance setting with an organizational strategy: federated workplace and neighborhood councils rather than a party-state bureaucracy. It does not claim that workplace and neighborhood governance are identical or that federation solves every coordination problem.',
+    sourceIds: ['revolution', 'labour', 'democracy'],
   },
   q0225: {
     contextNote: 'This item isolates a normative question about coercive assimilation. Cultural continuity, minority self-government, and voluntary association are distinct policy possibilities rather than interchangeable claims.',

@@ -1,6 +1,6 @@
 # Active-question context and source register
 
-Date: 2026-08-11
+Date: 2026-08-12
 
 ## Coverage target
 
@@ -27,6 +27,7 @@ Descriptive `evidenceNote` values and their existing source arrays remain separa
 
 - [Authority](https://plato.stanford.edu/entries/authority/) and [Political Obligation](https://plato.stanford.edu/entries/political-obligation/) — legitimacy, coercion, obligation, and the right to rule.
 - [Property and Ownership](https://plato.stanford.edu/entries/property/index.html) and [Distributive Justice](https://plato.stanford.edu/entries/justice-distributive/index.html) — ownership claims, distribution, and institutional justice.
+- [The Impact of Zoning on Housing Affordability](https://www.nber.org/papers/w8835) — housing supply, land-use barriers, and the distinction between supply-side rules and demand-side assistance.
 - [Markets](https://plato.stanford.edu/entries/markets/) and [Socialism](https://plato.stanford.edu/archives/fall2025/entries/socialism/) — exchange, ownership, planning, information, and worker control.
 - [Collective Bargaining and Labour Relations](https://www.ilo.org/topics-and-sectors/collective-bargaining-and-labour-relations) and the [ILO business and collective-bargaining helpdesk](https://www.ilo.org/resource/other/ilo-helpdesk-business-and-collective-bargaining) — labor organization and workplace bargaining.
 - [Monetary Policy](https://www.federalreserve.gov/aboutthefed/fedexplained/monetary-policy.htm) — central-bank transmission, prices, employment, and financial conditions.
@@ -51,7 +52,9 @@ Descriptive `evidenceNote` values and their existing source arrays remain separa
 
 ## Implementation and review rules
 
-The overlay in `src/data/questionContext.ts` is applied after the existing effective-bank review overlays and directly to both specialist module registries. It copies sources before attaching them, preserves descriptive evidence metadata, and contributes its version to the question-bank fingerprint. `RESEARCH_SCHEMA_VERSION` and both specialist module versions change because the presented instrument metadata changed.
+The overlay in `src/data/questionContext.ts` is applied after the existing effective-bank review overlays and directly to both specialist module registries. It copies sources before attaching them, preserves descriptive evidence metadata, and contributes its version to the question-bank fingerprint. The ninth editorial pass adds bespoke cross-domain notes for property/redistribution, housing/migration/labour, family/work, climate deployment, algorithmic administration, and post-capitalist institutional design. `RESEARCH_SCHEMA_VERSION` and both specialist module versions change because the presented instrument metadata changed.
+
+The three specialist descriptive items also receive operational evidence scopes in `src/data/specialistDescriptiveEvidence.ts`; those evidence records remain distinct from neutral context notes.
 
 All disclosures stay collapsed in the quiz UI and say that sources do not determine the respondent’s answer. The source catalog is a context aid, not a claim that every linked work endorses the item or validates its axis mapping. Future revisions should replace generic domain context with bespoke item context when a question is unusually contested, high-risk, or likely to be misunderstood.
 

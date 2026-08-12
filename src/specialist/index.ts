@@ -1,5 +1,7 @@
 import type { AnswerMap, Question } from '../types'
 import { applyQuestionContext } from '../data/questionContext'
+import { applyEditorialNinthPass } from '../data/editorialNinthPass'
+import { applySpecialistDescriptiveEvidence } from '../data/specialistDescriptiveEvidence'
 import {
   FEMINIST_MODULE_ID,
   feministModuleItems,
@@ -115,7 +117,7 @@ const identityCriterionOptions: SpecialistCriterionOption[] = identitySovereignt
 const specialistModules: SpecialistModuleDefinition[] = [
   {
     id: FEMINIST_MODULE_ID,
-    version: '2026-08-v2',
+    version: '2026-08-v3',
     title: 'Feminist political traditions',
     shortTitle: 'Feminist traditions',
     description:
@@ -123,7 +125,9 @@ const specialistModules: SpecialistModuleDefinition[] = [
     invitationNote:
       'Questions concern gender, family, work, hierarchy, and political strategy. You may skip the module without affecting your main result or study participation.',
     estimatedMinutes: 3,
-    questions: feministModuleQuestions.map(applyQuestionContext),
+    questions: feministModuleQuestions.map((question) =>
+      applyQuestionContext(applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question))),
+    ),
     criterionOptions: feministCriterionOptions,
     constructWeightsByQuestionId: copyConstructWeights(feministModuleItems),
     score: (answers) => ({
@@ -139,7 +143,7 @@ const specialistModules: SpecialistModuleDefinition[] = [
   },
   {
     id: IDENTITY_SOVEREIGNTY_MODULE_ID,
-    version: '2026-08-v2',
+    version: '2026-08-v3',
     title: 'Identity, nationalism, and sovereignty',
     shortTitle: 'Identity and sovereignty',
     description:
@@ -147,7 +151,9 @@ const specialistModules: SpecialistModuleDefinition[] = [
     invitationNote:
       'Questions concern race, ethnicity, nationhood, colonialism, Indigenous sovereignty, Black political autonomy, and Pan-Africanism. You may skip the module without affecting your main result or study participation.',
     estimatedMinutes: 6,
-    questions: identitySovereigntyModuleQuestions.map(applyQuestionContext),
+    questions: identitySovereigntyModuleQuestions.map((question) =>
+      applyQuestionContext(applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question))),
+    ),
     criterionOptions: identityCriterionOptions,
     constructWeightsByQuestionId: copyConstructWeights(identitySovereigntyModuleItems),
     score: (answers) => ({

@@ -4,7 +4,7 @@ The browser application computes descriptive and classical diagnostics only when
 
 ## Inputs
 
-Use consented schema `2026-08-v6` records produced by contribution mode. The public flow omits `formSize` and contributes
+Use consented schema `2026-08-v7` records produced by contribution mode. The public flow omits `formSize` and contributes
 the complete selected Balanced or Full-depth profile. A controlled `research=1` URL can request a balanced matrix form
 with `formSize` for instrument analysis.
 
@@ -45,7 +45,7 @@ QUALITY_MINIMUM_DURATION_MS=0 \
 QUALITY_MINIMUM_MS_PER_ITEM=0 \
 QUALITY_MAXIMUM_MISSING_RATE=0.40 \
 QUALITY_MAXIMUM_INVARIANT_RATE=0.95 \
-QUALITY_REQUIRED_CONSENT_VERSION=2026-08-10-v6 \
+QUALITY_REQUIRED_CONSENT_VERSION=2026-08-12-v7 \
 Rscript analysis/run_data_quality.R private-data/submissions.ndjson analysis/output
 ```
 
@@ -66,7 +66,7 @@ PSYCH_MINIMUM_AXIS_N=100
 PSYCH_MINIMUM_FACTOR_N=300
 PSYCH_MINIMUM_DIF_GROUP_N=100
 PSYCH_RANDOM_SEED=20260718
-PSYCH_REQUIRED_CONSENT_VERSION=2026-08-10-v6
+PSYCH_REQUIRED_CONSENT_VERSION=2026-08-12-v7
 PSYCH_REQUIRED_FORM_VERSION=profile-form-v3
 PSYCH_REQUIRED_QUALITY_RULE_VERSION=data-quality-v2
 # Also set PSYCH_REQUIRED_BANK_VERSION and PSYCH_REQUIRED_SCORING_VERSION

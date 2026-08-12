@@ -39,6 +39,11 @@ import {
   applyDescriptiveEvidenceThirdPass,
   DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
 } from './descriptiveEvidenceThirdPass'
+import {
+  applyEditorialNinthPass,
+  EDITORIAL_NINTH_PASS_VERSION,
+} from './editorialNinthPass'
+import { SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION } from './specialistDescriptiveEvidence'
 import { applyQuestionContext, QUESTION_CONTEXT_VERSION } from './questionContext'
 
 export const QUESTION_BANK_VERSION = [
@@ -52,6 +57,8 @@ export const QUESTION_BANK_VERSION = [
   DESCRIPTIVE_EVIDENCE_VERSION,
   DESCRIPTIVE_EVIDENCE_SECOND_PASS_VERSION,
   DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
+  SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION,
+  EDITORIAL_NINTH_PASS_VERSION,
   QUESTION_CONTEXT_VERSION,
 ].join('+')
 export { SCORING_VERSION }
@@ -68,20 +75,24 @@ export function getBankFingerprint(): string {
     DESCRIPTIVE_EVIDENCE_VERSION,
     DESCRIPTIVE_EVIDENCE_SECOND_PASS_VERSION,
     DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
+    SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION,
+    EDITORIAL_NINTH_PASS_VERSION,
     QUESTION_CONTEXT_VERSION,
   ].join('+')
 }
 
 function applyEffectiveReview(question: Question): Question {
   return applyQuestionContext(
-    applyDescriptiveEvidenceThirdPass(
-      applyDescriptiveEvidenceSecondPass(
-        applyDescriptiveEvidence(
-          applyEditorialEighthPass(
-            applyEditorialSeventhPass(
-              applyEditorialFifthPass(
-                applyRespondentQuestionReview(
-                  applyStatementSemanticReview(applySemanticReview(question)),
+    applyEditorialNinthPass(
+      applyDescriptiveEvidenceThirdPass(
+        applyDescriptiveEvidenceSecondPass(
+          applyDescriptiveEvidence(
+            applyEditorialEighthPass(
+              applyEditorialSeventhPass(
+                applyEditorialFifthPass(
+                  applyRespondentQuestionReview(
+                    applyStatementSemanticReview(applySemanticReview(question)),
+                  ),
                 ),
               ),
             ),

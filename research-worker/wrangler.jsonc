@@ -8,8 +8,8 @@
   "vars": {
     "ALLOWED_ORIGIN": "https://ideologynormativesorter.edriffles.us",
     "EXPECTED_STUDY_ID": "community-2026",
-    "EXPECTED_SCHEMA_VERSION": "2026-08-v6",
-    "EXPECTED_CONSENT_VERSION": "2026-08-10-v6",
+    "EXPECTED_SCHEMA_VERSION": "2026-08-v7",
+    "EXPECTED_CONSENT_VERSION": "2026-08-12-v7",
     "EXPECTED_QUALITY_RULE_VERSION": "data-quality-v2",
     "EXPECTED_FORM_VERSION": "profile-form-v3",
     "EXPECTED_MODERATE_ITEM_COUNT": "140",

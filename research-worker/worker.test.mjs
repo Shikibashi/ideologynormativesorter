@@ -44,8 +44,8 @@ function environment(overrides = {}) {
   return {
     ALLOWED_ORIGIN: ORIGIN,
     EXPECTED_STUDY_ID: 'community-2026',
-    EXPECTED_SCHEMA_VERSION: '2026-08-v6',
-    EXPECTED_CONSENT_VERSION: '2026-08-10-v6',
+    EXPECTED_SCHEMA_VERSION: '2026-08-v7',
+    EXPECTED_CONSENT_VERSION: '2026-08-12-v7',
     EXPECTED_QUALITY_RULE_VERSION: 'data-quality-v2',
     EXPECTED_FORM_VERSION: 'profile-form-v3',
     EXPECTED_MODERATE_ITEM_COUNT: '1',
@@ -75,7 +75,7 @@ function coreSubmission(overrides = {}) {
     ],
   }]
   return {
-    schemaVersion: '2026-08-v6',
+    schemaVersion: '2026-08-v7',
     submissionId: 'submission_1',
     recordType: 'core',
     studyId: 'community-2026',
@@ -89,7 +89,7 @@ function coreSubmission(overrides = {}) {
       ageConfirmed: true,
       voluntaryParticipation: true,
       dataUseAccepted: true,
-      consentVersion: '2026-08-10-v6',
+      consentVersion: '2026-08-12-v7',
       consentedAt: '2026-08-10T12:00:00.000Z',
       disclosureSnapshot: {
         endpointConfigured: true,

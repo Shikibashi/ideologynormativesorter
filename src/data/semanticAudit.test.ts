@@ -23,6 +23,11 @@ import {
   eighthPassRewritesById,
 } from './editorialEighthPass'
 import { needsRewriteById, semanticCorrections, SEMANTIC_AUDIT_VERSION } from './semanticAudit'
+import {
+  EDITORIAL_NINTH_PASS_VERSION,
+  ninthPassRewritesById,
+  ninthPassStatementRewritesById,
+} from './editorialNinthPass'
 
 describe('semantic question audit', () => {
   it('does not both correct and deactivate an item in the same semantic-review pass', () => {
@@ -42,6 +47,7 @@ describe('semantic question audit', () => {
       const seventhPassRewrite = seventhPassRewritesById[questionId]
       const eighthPassReplacement = eighthPassReplacementRequiredById[questionId]
       const eighthPassRewrite = eighthPassRewritesById[questionId]
+      const ninthPassRewrite = ninthPassRewritesById[questionId] ?? ninthPassStatementRewritesById[questionId]
       const expectedWeights = eighthPassRewrite
         ? eighthPassRewrite.axisWeights
         : seventhPassRewrite
@@ -51,7 +57,10 @@ describe('semantic question audit', () => {
           : correction.axisWeights
       expect(question!.axisWeights).toEqual(expectedWeights)
 
-      if (eighthPassReplacement) {
+      if (ninthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_NINTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (eighthPassReplacement) {
         expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION)
         expect(question!.reviewStatus).toBe('needs-rewrite')
         expect(question!.active).toBe(false)

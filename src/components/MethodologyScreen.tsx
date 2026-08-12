@@ -2,7 +2,10 @@ import { coreQuestions } from '../data/effectiveQuestions'
 import { specialistModuleDefinitions } from '../specialist'
 
 export function MethodologyScreen({ onBack }: { onBack: () => void }) {
-   const activeDescriptive = coreQuestions.filter((question) => question.active !== false && question.layer === 'descriptive')
+   const activeDescriptive = [
+      ...coreQuestions.filter((question) => question.active !== false && question.layer === 'descriptive'),
+      ...specialistModuleDefinitions.flatMap((module) => module.questions.filter((question) => question.active !== false && question.layer === 'descriptive')),
+   ]
    const sourcedDescriptive = activeDescriptive.filter((question) => (question.sources?.length ?? 0) > 0 && Boolean(question.evidenceNote?.trim()))
    const activeContextItems = [
       ...coreQuestions.filter((question) => question.active !== false),
@@ -80,7 +83,7 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
             post-questionnaire self-description is a comparison point, not proof that a score or label is correct.
          </p>
          <p>
-            {sourcedDescriptive.length} of {activeDescriptive.length} active descriptive items currently include both an operational scope and public background sources. Items without that support are quarantined from current scoring until they can be rewritten and sourced. A cited source explains a claim’s context; it does not dictate how a respondent should answer or validate the item itself.
+            {sourcedDescriptive.length} of {activeDescriptive.length} active core and specialist descriptive items currently include both an operational scope and public background sources. Items without that support are quarantined from current scoring until they can be rewritten and sourced. A cited source explains a claim’s context; it does not dictate how a respondent should answer or validate the item itself.
          </p>
          <p>
             Some normative and prescriptive items also include a collapsed context disclosure when a source helps clarify a contested term or institutional distinction. Those sources are interpretive background, not empirical evidence or answer keys; the prompt, layer, and scoring weights remain unchanged.
