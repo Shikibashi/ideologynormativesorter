@@ -58,7 +58,6 @@ export function expectedContributionCardinality(questions: Question[]): number {
 
 export function corpusForQuestion(question: Question, explicit?: CorpusId): CorpusId {
   if (explicit) return explicit
-  if (question.module) return 'module'
   if (question.responseType === 'statementChoice' && question.id.startsWith('stmt-')) {
     return 'statement'
   }

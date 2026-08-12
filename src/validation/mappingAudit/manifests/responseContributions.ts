@@ -4,9 +4,7 @@ import {
   coreQuestions as effectiveRetainedQuestions,
   QUESTION_BANK_VERSION as EFFECTIVE_BANK_VERSION,
 } from '../../../data/effectiveQuestions'
-import { moduleQuestions } from '../../../data/moduleQuestions'
 import { statementQuestions } from '../../../data/statementQuestions'
-import { MODULE_SEMANTIC_AUDIT_VERSION } from '../../../data/moduleSemanticAudit'
 import { STATEMENT_SEMANTIC_AUDIT_VERSION } from '../../../data/statementSemanticAudit'
 import { SEMANTIC_AUDIT_VERSION } from '../../../data/semanticAudit'
 import type { Disposition, ResponseContributionRecord } from '../types'
@@ -27,7 +25,6 @@ function splitAnnotations(questions: Parameters<typeof buildAnnotationMap>[0]) {
 const mainActiveAnn = splitAnnotations(effectiveActiveQuestions)
 const mainRawAnn = splitAnnotations(rawMainQuestions)
 const mainRetainedAnn = splitAnnotations(effectiveRetainedQuestions)
-const moduleAnn = splitAnnotations(moduleQuestions)
 const statementAnn = splitAnnotations(statementQuestions)
 
 /** Effective-active main corpus — public quiz/scoring pool (release coverage). */
@@ -62,16 +59,6 @@ export const effectiveRetainedContributions: ResponseContributionRecord[] =
     dispositions: mainRetainedAnn.dispositions,
   })
 
-/** Module corpus (raw until module overlay applied). */
-export const moduleContributions: ResponseContributionRecord[] =
-  buildContributionRecords(moduleQuestions, {
-    corpus: 'module',
-    inventorySet: 'raw',
-    overlayVersion: MODULE_SEMANTIC_AUDIT_VERSION,
-    rationales: moduleAnn.rationales,
-    dispositions: moduleAnn.dispositions,
-  })
-
 /**
  * Statement corpus view. All statementQuestions ids also live in the main bank;
  * this export audits the statementQuestions surface with statement overlay versioning.
@@ -88,14 +75,13 @@ export const statementContributions: ResponseContributionRecord[] =
 export function contributionById(id: string): ResponseContributionRecord | undefined {
   return (
     responseContributions.find((r) => r.id === id) ??
-    moduleContributions.find((r) => r.id === id) ??
     statementContributions.find((r) => r.id === id) ??
     effectiveRetainedContributions.find((r) => r.id === id) ??
     rawMainContributions.find((r) => r.id === id)
   )
 }
 
-/** Disjoint audit pool used for uniqueness/release cardinality (main + module). */
+/** Main audit pool used for uniqueness/release cardinality. */
 export function allCorpusContributions(): ResponseContributionRecord[] {
-  return [...responseContributions, ...moduleContributions]
+  return [...responseContributions]
 }

@@ -64,14 +64,14 @@ describe('ninth editorial pass', () => {
 
   it('stamps every previously unversioned active core and specialist item without erasing earlier pass history', () => {
     expect(activeCoreQuestions).toHaveLength(285)
-    expect(specialistQuestions).toHaveLength(26)
+    expect(specialistQuestions).toHaveLength(58)
     for (const question of [...activeCoreQuestions, ...specialistQuestions]) {
       expect(question.reviewStatus, `${question.id} review status`).toBe('approved')
       expect(question.version, `${question.id} review version`).toBeTruthy()
       expect(question.updatedAt, `${question.id} updatedAt`).toBeTruthy()
     }
 
-    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_NINTH_PASS_VERSION)).toHaveLength(88)
-    expect(specialistQuestions.every((question) => question.version === EDITORIAL_NINTH_PASS_VERSION)).toBe(true)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_NINTH_PASS_VERSION)).toHaveLength(86)
+    expect(specialistQuestions.every((question) => question.version === EDITORIAL_NINTH_PASS_VERSION || question.version === '2026-08-specialist-v1')).toBe(true)
   })
 })

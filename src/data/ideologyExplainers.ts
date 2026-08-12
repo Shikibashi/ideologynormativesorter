@@ -169,7 +169,7 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
    },
    {
       pattern: /\bcorporatism\b/i,
-      definition: '“Corporatism” organizes representation through recognized occupational or sectoral bodies; it is distinct from ordinary corporate ownership and has democratic and authoritarian variants.',
+      definition: '“Corporatism” organizes representation through recognized occupational or sectoral bodies; it is distinct from ordinary corporate ownership and includes democratic or societal variants as well as the state-directed authoritarian form represented by this label.',
    },
    {
       pattern: /\bradical centrism\b/i,
@@ -373,13 +373,13 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“Regionalism” gives a subnational region’s identity, interests, or self-government special political importance within or across existing states.',
    ],
    corporatism: [
-      '“State corporatism” organizes recognized occupational or sectoral bodies under strong state direction, distinct from democratic societal or neo-corporatist bargaining.',
+      '“State corporatism” is the state-directed form of a wider corporatist family: recognized occupational or sectoral bodies are organized or controlled from above. It is distinct from democratic societal or neo-corporatist bargaining, which is a neighboring form rather than what this authoritarian label denotes.',
    ],
    'islamic-democracy': [
-      '“Islamic democratic constitutionalism” combines electoral government, constitutional limits, and public accountability with an Islamic ethical or legal framework.',
+      '“Islamic democratic constitutionalism” combines electoral government, constitutional limits, and public accountability with an Islamic ethical or legal framework; variants disagree over popular sovereignty, constitutional review, religious interpretation, clerical authority, minority rights, and party competition.',
    ],
    ethnonationalist: [
-      '“Ethnonationalism” defines the nation primarily through shared ancestry, ethnicity, or inherited culture rather than equal civic membership alone.',
+      '“Ethnonationalism” treats shared ancestry, ethnicity, or inherited culture as central to national membership rather than relying on equal civic membership alone; it does not by itself determine one rule for exclusion, assimilation, racial hierarchy, or self-determination.',
    ],
    'civic-nationalist': [
       '“Civic nationalism” defines national membership primarily through shared citizenship, political institutions, and commitment to a common public culture rather than inherited ancestry; in practice civic and cultural identities can overlap, and the label does not guarantee liberal democracy or equal inclusion.',
@@ -484,13 +484,13 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“National Bolshevism” names historically varied attempts to combine radical nationalism with Bolshevik or revolutionary-socialist ideas; this catalog models the post-Soviet authoritarian nationalist current, not orthodox Marxism-Leninism.',
    ],
    kemalism: [
-      '“Kemalism,” or “Atatürkism,” is the founding republican ideology of modern Turkey, conventionally summarized by the Six Arrows: republicanism, nationalism, populism, statism, laicism, and reformism.',
+      '“Kemalism,” or “Atatürkism,” is the founding republican ideology of modern Turkey, conventionally summarized by the Six Arrows: republicanism, nationalism, peopleism (halkçılık), statism, laicism, and reformism. Peopleism here is a Kemalist claim about national unity and popular sovereignty, not a synonym for every contemporary populist movement.',
    ],
    'christian-reconstructionism': [
       '“Christian Reconstructionism” is a small Reformed Protestant theonomic movement that treats biblical law, including continuing Old Testament civil norms, as authoritative for public institutions; it is not generic Christian conservatism or Christian democracy.',
    ],
    'fourth-theory': [
-      '“Fourth Political Theory” is Aleksandr Dugin’s anti-liberal project claiming to move beyond liberalism, communism, and fascism toward civilizational pluralism, traditionalism, and multipolarity; it is not a settled academic ideology, and its claimed break with fascism is disputed.',
+      '“Dugin’s Fourth Political Theory” is Aleksandr Dugin’s anti-liberal project claiming to move beyond liberalism, communism, and fascism toward civilizational pluralism, traditionalism, and multipolarity; it is an author-specific, incomplete, non-canonical project, and its claimed break with fascism is disputed.',
    ],
    'revolutionary-collectivist': [
       '“Revolutionary State Socialist” is a catalog umbrella for socialist strategies that seek a revolutionary break and use centralized public ownership or state power as the main transition mechanism; it is not one historical school or a synonym for every revolutionary socialist.',
@@ -526,7 +526,7 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“One-Nation Conservatism” is a British paternalist tradition that accepts limited welfare provision and state intervention to preserve social cohesion, security, and opportunity without pursuing egalitarian socialism.',
    ],
    'fiscal-conservatism': [
-      '“Fiscal conservatism” is a thin budget-policy orientation concerned with deficits, debt, and sustainable public finances; it can support different combinations of spending restraint, taxes, and fiscal rules and does not determine social or foreign policy.',
+      '“Fiscal conservatism” is a thin budget-policy orientation concerned with sustainable public finances, deficits, debt, fiscal rules, and the distribution of burdens across taxpayers and generations; it can support different combinations of spending, taxes, balanced-budget rules, and austerity and does not determine social or foreign policy.',
    ],
    'social-conservatism': [
       '“Social conservatism” centers the preservation of inherited moral norms and institutions such as family, religion, and community; it does not by itself determine economic, fiscal, or foreign policy.',
@@ -539,6 +539,21 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
    ],
    'liberal-conservatism': [
       'In this catalog, “Liberal Conservatism” is the conservative-family synthesis: social continuity and cautious reform combined with liberal constitutionalism, civil liberty, and a market economy. The name is historically variable and overlaps with “conservative liberalism.”',
+   ],
+   conservative: [
+      '“Conservative / Prudential Conservative” is the broad family anchor for political arguments that value institutional continuity, practical judgment, inherited knowledge, and cautious change; it does not by itself imply social conservatism, nationalism, Christian democracy, or small government.',
+   ],
+   'green-politics': [
+      '“Green Politics / Political Ecology” is a broad ecological family that treats environmental limits and human relationships with the nonhuman world as politically central; growth, markets, technology, governance, and strategy remain open dimensions rather than hidden subtype assumptions.',
+   ],
+   'social-anarchism': [
+      '“Social / Communal Anarchism” is a broad anti-authoritarian family centered on voluntary association, opposition to imposed hierarchy, and decentralized communal or federated organization; it does not settle the distinct questions of property, markets, technology, or political strategy.',
+   ],
+   'market-right-libertarianism': [
+      '“Market / Right-Libertarianism” is a broad market-oriented and anti-statist neighborhood emphasizing voluntary exchange and personal liberty; anarcho-capitalism, minarchism, Georgism, and other variants differ over property, public goods, and whether any state is legitimate.',
+   ],
+   'marxian-socialism': [
+      '“Marxian Socialism (Non-Leninist)” is a broad Marxian family focused on class power and social or worker control of production without assuming Leninist party-state organization; democratic, council, syndicalist, and other strategies remain distinct.',
    ],
 }
 
@@ -646,6 +661,11 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'national-conservatism',
    'conservative-liberalism',
    'liberal-conservatism',
+   'conservative',
+   'green-politics',
+   'social-anarchism',
+   'market-right-libertarianism',
+   'marxian-socialism',
 ])
 
 /**
@@ -653,6 +673,31 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
  * otherwise conflate values, empirical expectations, and practical strategy.
  */
 export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<Record<Layer, string>>>> = {
+   conservative: {
+      normative: 'Treats continuity, inherited institutional knowledge, social order, and practical judgment as legitimate political goods, while leaving economic and cultural policy open to different conservative traditions.',
+      descriptive: 'Expects institutions and practices formed over time to contain knowledge that abstract redesign can miss, while recognizing that inherited arrangements can also preserve injustice or require correction.',
+      prescriptive: 'Favors cautious, evidence-aware reform that preserves workable institutions, adapts rather than discards inherited arrangements, and changes pace when consequences are uncertain; it does not prescribe small government or social traditionalism.',
+   },
+   'green-politics': {
+      normative: 'Treats ecological integrity, environmental limits, and the conditions of nonhuman and human flourishing as politically important without fixing one theory of intrinsic value or one economic order.',
+      descriptive: 'Expects ecological harms to arise from the interaction of production, consumption, technology, institutions, and power, so green traditions disagree about growth, expertise, markets, and governance.',
+      prescriptive: 'Favors ecological protection and transition strategies whose concrete form may include regulation, public investment, degrowth, technological innovation, democratic decentralization, or market instruments; the broad label does not choose among them.',
+   },
+   'social-anarchism': {
+      normative: 'Treats imposed hierarchy, concentrated coercive authority, and domination as requiring strong justification, while valuing voluntary association, mutual aid, autonomy, and communal self-government.',
+      descriptive: 'Expects centralized authority and economic dependence to reproduce domination, while decentralized federations, mutual aid, and direct organization may coordinate social life; anarchist currents disagree over feasibility and institutional scale.',
+      prescriptive: 'Favors dismantling or sharply limiting imposed political hierarchy through voluntary association, direct participation, mutual aid, and federated organization, without deciding whether social ownership, mutual exchange, or another economic form is best.',
+   },
+   'market-right-libertarianism': {
+      normative: 'Treats individual liberty, voluntary exchange, secure property or use rights, and restraint on coercive authority as central political goods, while leaving the justification and extent of property rights contested.',
+      descriptive: 'Expects decentralized market exchange and voluntary coordination to use dispersed knowledge and incentives better than extensive central direction, while variants differ over public goods, inequality, market power, and state legitimacy.',
+      prescriptive: 'Favors expanding voluntary exchange and limiting centralized political intervention, with possible commitments ranging from a minimal protective state to stateless market order, land-rent approaches, or other specialist designs.',
+   },
+   'marxian-socialism': {
+      normative: 'Treats class domination, private control of productive assets, and alienated labor as central injustices and values social or worker control over the conditions of production.',
+      descriptive: 'Expects capitalist ownership and class relations to shape political power, distribution, and social conflict, while non-Leninist Marxian traditions disagree about the roles of markets, planning, democracy, parties, and revolution.',
+      prescriptive: 'Favors transforming capitalist property and class relations through democratic, worker, council, syndicalist, or other socialist strategies without importing Leninist party-state organization into the broad anchor.',
+   },
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
       descriptive: 'Expects technological modernization, urbanization, and intensified production to decouple human well-being from environmental impacts and spare land for nature; evidence reviews distinguish relative from absolute decoupling and find the global, fast-enough absolute form remains unestablished.',
@@ -719,6 +764,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors some public role for Islamic normative or legal principles, ranging from democratic constitutional participation to comprehensive Islamist state-building; it does not settle one interpretation of Sharia, church-state separation, minority rights, or political violence.',
    },
    'islamic-democracy': {
+      normative: 'Treats electoral accountability, constitutional limits, and public authority grounded partly in Islamic ethical or legal reasoning as potentially compatible goods, while leaving sovereignty, rights, religious interpretation, and clerical authority contested rather than settled by the label.',
       prescriptive: 'Favors electoral and constitutional government with public accountability alongside an Islamic ethical or legal framework, while leaving contested questions of interpretation, judicial authority, popular sovereignty, minority rights, and enforcement to institutional design; it is not one settled Sharia model.',
       descriptive: 'Expects elected government, constitutional rights, and Islamic ethical or legal review to require institutional reconciliation rather than a single settled formula; models differ over judicial authority, popular sovereignty, minority protection, and the scope of religious interpretation.',
    },
@@ -886,7 +932,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
    kemalism: {
       normative: 'Treats republican sovereignty, secular public authority, national unity, scientific modernization, and state-led reform as central political goods, as expressed in the Six Arrows; Kemalist currents differ over pluralism, citizenship, and how much authority the state should exercise.',
       descriptive: 'Expects a secular, scientifically modernizing republic and a unified Turkish national identity to overcome Ottoman and religious-political legacies; Kemalist currents differ over citizenship, pluralism, and how strongly the state should guide modernization.',
-      prescriptive: 'Favors the Six Arrows program of republicanism, nationalism, populism, statism, laicism, and continuing reform or revolutionism.',
+      prescriptive: 'Favors the Six Arrows program of republicanism, nationalism, peopleism (halkçılık), statism, laicism, and continuing reformism; this historical program should not be read as a generic contemporary populist platform.',
    },
    'christian-reconstructionism': {
       descriptive: 'Treats secular legal neutrality as weakening public moral order and expects theonomic biblical norms applied to civil institutions to restore a Christian social order; Reconstructionist currents differ over how literally and comprehensively biblical law should govern public life.',
@@ -997,6 +1043,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors a democratic federal layer of world government with divided powers and enforceable international law above nation-states, while retaining national and local authority in other domains.',
    },
    'fourth-theory': {
+      normative: 'Treats civilizational particularity, traditionalism, and resistance to liberal universalism as political goods in Dugin’s project; this is an author-specific ideological claim, not a settled or neutral account of political legitimacy.',
       prescriptive: 'Favors building an autonomous post-liberal political model organized around civilizational plurality and multipolar coordination rather than liberal universalism; because Dugin’s project is author-specific, incomplete, and contested, the label does not provide one settled institutional blueprint.',
       descriptive: 'Expects civilizational pluralism and multipolar great spaces to provide a viable alternative to liberal universalism and a unipolar order, while Dugin presents the project as incomplete and scholars dispute whether its claimed break with fascism is substantive.',
    },
@@ -1109,7 +1156,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects a bounded national or ethnic welfare community to preserve solidarity by limiting out-groups’ access, with judgments shaped by perceived deservingness, contribution, insecurity, and the design of benefits; research finds these patterns vary across groups and contexts.',
    },
    corporatism: {
-      normative: 'Treats organized occupational and sectoral representation, social harmony, and coordinated public direction as more legitimate than adversarial pluralist competition; the state-corporatist model subordinates independent association to recognized bodies and does not imply one ownership system.',
+      normative: 'Treats organized occupational and sectoral representation, social harmony, and coordinated public direction as more legitimate than adversarial pluralist competition; this label’s state-corporatist variant subordinates independent association to recognized bodies, while wider corporatism also includes democratic and societal forms.',
       descriptive: 'Expects recognized occupational bodies under state direction to mediate class and sectoral conflict more effectively than pluralist party competition, while scholarship distinguishes authoritarian state corporatism from autonomous societal or neo-corporatism and does not treat them as the same system.',
       prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate represented interests.',
    },
@@ -1185,6 +1232,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects unregulated competition to produce monopoly and interest-group capture, while a strong rule-bound state can construct and maintain a competitive market order; ordoliberal currents differ over democracy, welfare, and the scope of intervention.',
    },
    ethnonationalist: {
+      normative: 'Treats an ethnic or inherited cultural community’s continuity, solidarity, and self-rule as politically important, giving that community’s membership claims priority over a purely civic account of national belonging; this does not by itself settle exclusion, hierarchy, or territorial separation.',
       prescriptive: 'Favors state institutions and policies that protect an inherited ethnic or cultural nation’s continuity, membership boundaries, and political predominance; possible strategies range from preferential citizenship or assimilation to autonomy or separation, so the label does not specify one level of coercion or one territorial outcome.',
       descriptive: 'Expects shared descent, inherited culture, and ethnic boundaries to provide stronger national solidarity and continuity than voluntary civic membership; ethnonationalist currents differ over how ethnicity is defined and how state membership should be enforced, and the model can be exclusionary.',
    },

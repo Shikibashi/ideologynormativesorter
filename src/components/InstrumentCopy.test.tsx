@@ -32,7 +32,7 @@ describe('respondent-facing instrument copy', () => {
 
     expect(screen.getByText(/ordered seven-point agreement scales/i)).toBeInTheDocument()
     expect(screen.getByText(/skipping that rating excludes the answer from the result/i)).toBeInTheDocument()
-    expect(screen.getByText(/does not yet provide claim-level citations for every scored label/i)).toBeInTheDocument()
+    expect(screen.getByText(/scored label cards now expose curated definition, boundary/i)).toBeInTheDocument()
     expect(screen.queryByText(/five- or seven-point agreement scales/i)).not.toBeInTheDocument()
   })
 })

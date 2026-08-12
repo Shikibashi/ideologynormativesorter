@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { coreQuestions, allQuestions, QUESTION_BANK_VERSION } from './effectiveQuestions'
+import { coreQuestions, QUESTION_BANK_VERSION } from './effectiveQuestions'
 import {
   applyQuestionContext,
   isQuestionContextTarget,
@@ -17,8 +17,8 @@ describe('question context overlay', () => {
   it('versions and covers every active core and specialist question', () => {
     expect(QUESTION_BANK_VERSION).toContain(QUESTION_CONTEXT_VERSION)
     expect(activeCoreQuestions).toHaveLength(285)
-    expect(specialistQuestions).toHaveLength(26)
-    expect(new Set(contextTargets.map((question) => question.id)).size).toBe(311)
+    expect(specialistQuestions).toHaveLength(58)
+    expect(new Set(contextTargets.map((question) => question.id)).size).toBe(343)
 
     for (const question of contextTargets) {
       expect(isQuestionContextTarget(question), `${question.id} must be an overlay target`).toBe(true)
@@ -63,12 +63,6 @@ describe('question context overlay', () => {
       expect(contextualized.evidenceNote).toBe(evidenceNote)
       expect(contextualized.sources).toEqual(sources)
     }
-  })
-
-  it('does not leak context into the inert legacy module-question audit surface', () => {
-    const legacyModuleQuestion = allQuestions.find((question) => question.id === 'fm-left-1')
-    expect(legacyModuleQuestion).toBeDefined()
-    expect(legacyModuleQuestion?.contextNote).toBeUndefined()
   })
 
   it('keeps explicit high-risk records resolvable', () => {

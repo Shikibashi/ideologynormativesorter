@@ -10,8 +10,8 @@ const specialistOutputFile = resolve(
 )
 const allowedOrigin = process.env.ALLOWED_ORIGIN ?? 'http://localhost:5173'
 const maximumBodyBytes = Number(process.env.MAXIMUM_BODY_BYTES ?? 2_000_000)
-const expectedSchemaVersion = process.env.RESEARCH_SCHEMA_VERSION ?? '2026-08-v7'
-const expectedConsentVersion = process.env.RESEARCH_CONSENT_VERSION ?? '2026-08-12-v7'
+const expectedSchemaVersion = process.env.RESEARCH_SCHEMA_VERSION ?? '2026-08-v10'
+const expectedConsentVersion = process.env.RESEARCH_CONSENT_VERSION ?? '2026-08-12-v8'
 const expectedQualityRuleVersion = process.env.RESEARCH_QUALITY_RULE_VERSION ?? 'data-quality-v2'
 const expectedFormVersion = process.env.RESEARCH_FORM_VERSION ?? 'profile-form-v3'
 const expectedStudyId = process.env.RESEARCH_STUDY_ID?.trim() || null
@@ -295,12 +295,22 @@ function validCoreRecord(value) {
     && typeof value.resumed === 'boolean'
     && validVersion(value.bankVersion, expectedBankVersion)
     && validVersion(value.scoringVersion, expectedScoringVersion)
+    && validToken(value.taxonomyVersion, 128)
+    && Array.isArray(value.primaryLabelIds)
+    && value.primaryLabelIds.length > 0
+    && value.primaryLabelIds.every((labelId) => validToken(labelId, 128))
+    && Array.isArray(value.modifierLabelIds)
+    && value.modifierLabelIds.every((labelId) => validToken(labelId, 128))
     && TIERS.has(value.tier)
     && validIdentity(value.identity)
     && Array.isArray(value.predictedLabelIds)
     && value.predictedLabelIds.length <= 5
     && value.predictedLabelIds.every((labelId) => validToken(labelId, 128))
     && new Set(value.predictedLabelIds).size === value.predictedLabelIds.length
+    && Array.isArray(value.predictedModifierIds)
+    && value.predictedModifierIds.length <= 5
+    && value.predictedModifierIds.every((labelId) => validToken(labelId, 128))
+    && new Set(value.predictedModifierIds).size === value.predictedModifierIds.length
     && isObject(value.form)
     && value.form.algorithmVersion === expectedFormVersion
     && (value.form.requestedItemCount === null

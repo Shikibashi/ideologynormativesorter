@@ -4,6 +4,8 @@
 
 This pass follows `2026-08-respondent-v3` and is encoded as `2026-08-respondent-v4` in the effective question-bank overlay. It addresses respondent-flow wording, remaining high-confidence item defects, specialist-module layer wording, and false or leading generated helpers.
 
+The legacy `fm-*` faction-module records named in the historical findings below were later retired and removed. They are not the current feminist or identity/sovereignty specialist registries.
+
 The raw item corpus remains inspectable. No question axis weight, axis definition, centroid, label taxonomy, or scoring direction changed. Items that could not be repaired safely by wording alone were marked `needs-rewrite` and excluded from the effective active bank. Proposed replacements are review notes, not active scored items.
 
 ## Newly quarantined items
@@ -12,11 +14,11 @@ Core items quarantined as double-barreled, mismatched, or non-discriminating:
 
 - `q0086`, `q0113`, `q0118`, `q0218`, `q0237`, `q0273`, `q0286`, `q0333`, `q0353`, and `q0393`.
 
-Retained faction-module corpus items quarantined as mismatched or double-barreled:
+Historical faction-module items quarantined as mismatched or double-barreled:
 
 - `fm-green-6`, `fm-market-4`, `fm-geolib-3`, and `fm-fasc-3`.
 
-The duplicate intrinsic-value item `fm-green-8` was also quarantined because `fm-green-1` already asks the same substantive question in the same retained corpus. These `fm-*` records are not the separate feminist and identity/sovereignty specialist follow-ups currently presented by the research UI; the corrections preserve the audited corpus for any future consumer.
+The duplicate intrinsic-value item `fm-green-8` was also quarantined because `fm-green-1` already asked the same substantive question in that historical corpus. These records were later removed; they are not the separate feminist and identity/sovereignty specialist follow-ups presented by the research UI.
 
 These decisions intentionally accept reduced synthetic coverage. Replacement proposals must receive expert review and cognitive testing under new question IDs before entering scoring.
 

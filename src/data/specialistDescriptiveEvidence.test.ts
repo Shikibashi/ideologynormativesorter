@@ -33,7 +33,7 @@ describe('specialist descriptive evidence', () => {
       .flatMap((module) => module.questions)
       .filter((question) => question.layer === 'descriptive' && question.active !== false)
 
-    expect(descriptive).toHaveLength(3)
+    expect(descriptive).toHaveLength(7)
     expect(descriptive.every((question) => Boolean(question.evidenceNote?.trim()))).toBe(true)
     expect(descriptive.every((question) => (question.sources?.length ?? 0) > 0)).toBe(true)
   })

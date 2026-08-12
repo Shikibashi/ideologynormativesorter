@@ -1,20 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { questions } from '../../data/questions'
-import { moduleQuestions } from '../../data/moduleQuestions'
 import { statementQuestions } from '../../data/statementQuestions'
 
 describe('ideologyAffinities quarantine', () => {
   it('no main bank question populates ideologyAffinities', () => {
     for (const q of questions) {
-      expect(
-        q.ideologyAffinities === undefined || q.ideologyAffinities.length === 0,
-        `question ${q.id} has populated ideologyAffinities`,
-      ).toBe(true)
-    }
-  })
-
-  it('no module question populates ideologyAffinities', () => {
-    for (const q of moduleQuestions) {
       expect(
         q.ideologyAffinities === undefined || q.ideologyAffinities.length === 0,
         `question ${q.id} has populated ideologyAffinities`,

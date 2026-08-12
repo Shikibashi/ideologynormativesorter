@@ -31,7 +31,6 @@ const MAJOR_PRIMARY_FAMILIES = [
   'republican',
   'social-democratic',
   'socialist',
-  'technocratic',
 ]
 
 const NON_IDEOLOGY_ENDPOINTS = [
@@ -94,7 +93,7 @@ describe('ideology taxonomy', () => {
   })
 
   it('keeps the default scoring pool broad but bounded', () => {
-    expect(primaryScoringLabels.length).toBeGreaterThanOrEqual(25)
+    expect(primaryScoringLabels.length).toBeGreaterThanOrEqual(20)
     expect(primaryScoringLabels.length).toBeLessThanOrEqual(45)
     expect(primaryScoringLabels).toHaveLength(PRIMARY_LABEL_IDS.length)
   })
@@ -213,10 +212,11 @@ describe('ideology taxonomy', () => {
     }
   })
 
-  it('keeps context-only concepts out of both scoring and the public label browser', () => {
+  it('keeps context-only concepts out of scoring while keeping them browsable', () => {
     for (const labelId of CONTEXT_LABEL_IDS) {
       expect(primaryScoringLabels.some((label) => label.id === labelId)).toBe(false)
-      expect(publicCatalogLabels.some((label) => label.id === labelId)).toBe(false)
+      expect(publicCatalogLabels.some((label) => label.id === labelId)).toBe(true)
+      expect(publicCatalogLabels.find((label) => label.id === labelId)?.taxonomy.measurementStatus).toBe('context-only')
     }
   })
 
@@ -244,11 +244,11 @@ describe('ideology taxonomy', () => {
     }
   })
 
-  it('does not present inert audit-only faction items as active specialist modules', () => {
-    expect(specialistModuleByLabel['council-communist']).toBeUndefined()
-    expect(specialistModuleByLabel['maoism']).toBeUndefined()
-    expect(specialistModuleByLabel['trotskyism']).toBeUndefined()
-    expect(PROVISIONAL_SPECIALIST_LABEL_IDS).toContain('council-communist')
+  it('promotes the first specialist module wave without adding those labels to primary scoring', () => {
+    expect(specialistModuleByLabel['council-communist']).toBe('socialist-families-module')
+    expect(specialistModuleByLabel['maoism']).toBe('socialist-families-module')
+    expect(specialistModuleByLabel['trotskyism']).toBe('socialist-families-module')
+    expect(PROVISIONAL_SPECIALIST_LABEL_IDS).not.toContain('council-communist')
   })
 
   it('exposes socialist feminism only through its construct-matched specialist module', () => {
@@ -266,7 +266,9 @@ describe('ideology taxonomy', () => {
   })
 
   it('does not route world federalism through nationalist discriminators', () => {
-    expect(PROVISIONAL_SPECIALIST_LABEL_IDS).toContain('world-federalism')
+    expect(roleForLabel('world-federalism')).toBe('context')
+    expect(publicCatalogLabels.find((label) => label.id === 'world-federalism')?.taxonomy.measurementStatus).toBe('context-only')
+    expect(PROVISIONAL_SPECIALIST_LABEL_IDS).not.toContain('world-federalism')
     expect(specialistModuleByLabel['world-federalism']).toBeUndefined()
   })
 

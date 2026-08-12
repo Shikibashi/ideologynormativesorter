@@ -98,6 +98,11 @@ function createCentroidAlignedFixture(targetLabel: IdeologyLabel): AnswerMap {
 }
 
 const targetIds = [
+   'conservative',
+   'green-politics',
+   'social-anarchism',
+   'market-right-libertarianism',
+   'marxian-socialism',
    'egalitarian-statist',
    'market-liberal',
    'democratic-socialist',

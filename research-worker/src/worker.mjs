@@ -180,11 +180,21 @@ function validCoreRecord(submission, env) {
     && typeof submission.resumed === 'boolean'
     && validString(submission.bankVersion, 512)
     && validString(submission.scoringVersion, 512)
+    && validString(submission.taxonomyVersion, 128)
+    && Array.isArray(submission.primaryLabelIds)
+    && submission.primaryLabelIds.length > 0
+    && submission.primaryLabelIds.every((id) => validToken(id))
+    && Array.isArray(submission.modifierLabelIds)
+    && submission.modifierLabelIds.every((id) => validToken(id))
     && validIdentity(submission.identity)
     && Array.isArray(submission.predictedLabelIds)
     && submission.predictedLabelIds.length <= 5
     && submission.predictedLabelIds.every((id) => validToken(id))
     && new Set(submission.predictedLabelIds).size === submission.predictedLabelIds.length
+    && Array.isArray(submission.predictedModifierIds)
+    && submission.predictedModifierIds.length <= 5
+    && submission.predictedModifierIds.every((id) => validToken(id))
+    && new Set(submission.predictedModifierIds).size === submission.predictedModifierIds.length
     && isObject(submission.form)
     && submission.form.algorithmVersion === env.EXPECTED_FORM_VERSION
     && submission.form.assignedItemCount === assignedCount

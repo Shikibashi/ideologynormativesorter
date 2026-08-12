@@ -26,7 +26,7 @@ minimum_duration_ms <- as.numeric(Sys.getenv("QUALITY_MINIMUM_DURATION_MS", "0")
 minimum_ms_per_item <- as.numeric(Sys.getenv("QUALITY_MINIMUM_MS_PER_ITEM", "0"))
 maximum_missing_rate <- as.numeric(Sys.getenv("QUALITY_MAXIMUM_MISSING_RATE", "0.40"))
 maximum_invariant_rate <- as.numeric(Sys.getenv("QUALITY_MAXIMUM_INVARIANT_RATE", "0.95"))
-required_consent_version <- Sys.getenv("QUALITY_REQUIRED_CONSENT_VERSION", "2026-08-12-v7")
+required_consent_version <- Sys.getenv("QUALITY_REQUIRED_CONSENT_VERSION", "2026-08-12-v8")
 
 read_json_file <- function(path) {
   parsed <- jsonlite::fromJSON(path, simplifyVector = FALSE)

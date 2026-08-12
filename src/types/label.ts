@@ -1,5 +1,25 @@
 import type { AxisId, LabelId } from './common'
 
+export type IdeologyLabelSourceKind = 'primary-text' | 'scholarly' | 'reference'
+export type IdeologyLabelSourceScope =
+   | 'definition'
+   | 'normative'
+   | 'descriptive'
+   | 'prescriptive'
+   | 'boundary'
+
+/** Public background source attached to a label explanation. */
+export interface IdeologyLabelSource {
+   sourceId: string
+   title: string
+   publisher?: string
+   url: string
+   kind: IdeologyLabelSourceKind
+   supports: readonly IdeologyLabelSourceScope[]
+   /** Explains what the source supports and what it does not establish. */
+   note: string
+}
+
 export interface IdeologyLabel {
    id: LabelId
    name: string
@@ -13,6 +33,8 @@ export interface IdeologyLabel {
    cautionNote?: string
    /** Plain-language clarification shown with the label when extra context helps users interpret it. */
    usageNote?: string
+   /** Public interpretive sources for the label's definition or layer-specific explanation. */
+   sources?: readonly IdeologyLabelSource[]
    /** Alternate names for this same label. Child or neighboring ideologies belong in subTheories or separate labels. */
    aliases?: string[]
    /** Influencing philosophical traditions (e.g. Marxism, Liberalism, Conservatism, etc.). Display-only. */

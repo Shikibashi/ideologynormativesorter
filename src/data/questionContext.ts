@@ -6,7 +6,7 @@ import { domainById } from './domains'
  * active public or specialist item a neutral construct frame and source trail
  * without editing the scored question objects themselves.
  */
-export const QUESTION_CONTEXT_VERSION = '2026-08-question-context-v2'
+export const QUESTION_CONTEXT_VERSION = '2026-08-question-context-v5'
 
 export interface QuestionContextRecord {
   contextNote?: string
@@ -16,6 +16,13 @@ export interface QuestionContextRecord {
 const SPECIALIST_MODULE_IDS = new Set([
   'feminist-faction-module',
   'identity-sovereignty-module',
+  'anarchist-families-module',
+  'green-morphology-module',
+  'socialist-families-module',
+  'conservative-variants-module',
+  'religious-national-politics-module',
+  'technology-governance-module',
+  'monarchist-municipal-module',
 ])
 
 export const questionContextSources: Readonly<Record<string, QuestionSource>> = {
@@ -312,8 +319,12 @@ export const questionContextById: Readonly<Record<string, QuestionContextRecord>
     sourceIds: ['islamicConstitutionalism', 'islamicDemocracy'],
   },
   q0406: {
-    contextNote: 'This item asks about the public justification of coercive law, not whether religious citizens may participate in politics. Constitutional arrangements differ over how religious reasons, public reasons, and institutional authority relate.',
+    contextNote: 'This item asks whether a religious institution may hold final legal authority over people who reject its doctrines. That institutional question is distinct from whether religious citizens may participate in public reasoning or offer religious arguments for a law.',
     sourceIds: ['islamicConstitutionalism', 'civilPoliticalRights'],
+  },
+  q0242: {
+    contextNote: 'This item asks about the justificatory standard for coercive law: whether citizens must be able to assess the justification without accepting one religious authority. That is distinct from whether a religious institution may hold final legal power.',
+    sourceIds: ['secularism', 'civilPoliticalRights'],
   },
   q0414: {
     contextNote: 'This item tests a claim about the hierarchy between civil law and revealed religious law. It does not by itself identify one school of jurisprudence, one constitutional mechanism, or one answer about minority rights.',
@@ -326,6 +337,42 @@ export const questionContextById: Readonly<Record<string, QuestionContextRecord>
   q0417: {
     contextNote: 'This item asks whether preserving inherited cultural continuity should justify a policy cost in openness. It does not determine whether the continuity is ethnic, religious, linguistic, or civic, nor which immigration instrument would follow.',
     sourceIds: ['nationalism', 'immigration'],
+  },
+  'fm-fem-1': {
+    contextNote: 'This item measures an institutional reform orientation, not whether formal equality is the only valid feminist diagnosis. A respondent can support equal rights while also believing that structural patriarchy or material dependence requires additional analysis.',
+    sourceIds: ['feministPolitics', 'civilPoliticalRights'],
+  },
+  'fm-fem-5': {
+    contextNote: 'This item asks whether gender liberation requires changes to ownership, workplace power, and social reproduction. It is a prescriptive materialist objective and should not be read as a denial that legal anti-discrimination reforms can also matter.',
+    sourceIds: ['feministPolitics', 'labour', 'socialism'],
+  },
+  'fm-fem-6': {
+    contextNote: 'This item measures the strategic value assigned to legislation, courts, and public institutions. It separates institutional strategy from a diagnosis of patriarchy and from the broader goal of gender equality.',
+    sourceIds: ['feministPolitics', 'democracy', 'civilPoliticalRights'],
+  },
+  'fm-fem-7': {
+    contextNote: 'This item asks whether permanent centralized hierarchy is compatible with liberation. It measures an anti-hierarchical strategy preference and does not imply that every state action, public institution, or temporary coordination structure has the same status.',
+    sourceIds: ['feministPolitics', 'authority', 'democracy'],
+  },
+  'fm-id-5': {
+    contextNote: 'This item isolates language and cultural accommodation as one form of pluralist citizenship. It does not also ask about religious exemptions, reserved representation, self-government, or territorial separation; those are measured separately.',
+    sourceIds: ['multiculturalism', 'civilPoliticalRights'],
+  },
+  'fm-id-19': {
+    contextNote: 'This item isolates conscience or religious exemptions and adds a harm-limiting condition. It does not imply that every claimed exemption is justified or that exemptions settle questions about representation, self-government, or clerical authority.',
+    sourceIds: ['multiculturalism', 'civilPoliticalRights', 'secularism'],
+  },
+  'fm-id-20': {
+    contextNote: 'This item isolates guaranteed or reserved representation as a possible equality remedy. Representation is distinct from language accommodation, individual exemption, autonomy, and territorial sovereignty, and its justification can depend on institutional history and design.',
+    sourceIds: ['multiculturalism', 'democracy', 'civilPoliticalRights'],
+  },
+  'fm-id-21': {
+    contextNote: 'This item measures whether formal recognition and treaty implementation can strengthen Indigenous authority. It is separate from the descriptive claim that colonial dispossession continues and from the prescriptive possibility of rebuilding institutions without waiting for recognition.',
+    sourceIds: ['nationalism', 'multiculturalism', 'civilPoliticalRights'],
+  },
+  'fm-id-22': {
+    contextNote: 'This item measures autonomous resurgence as an institutional strategy. It is not the opposite of every negotiated agreement: Indigenous movements can pursue autonomous institution-building while also using treaties, recognition, or other forms of external engagement.',
+    sourceIds: ['nationalism', 'revolution', 'civilPoliticalRights'],
   },
 }
 

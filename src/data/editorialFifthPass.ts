@@ -153,7 +153,6 @@ export const fifthPassWordingCorrectionsById: Readonly<Record<string, FifthPassW
   q0407: { prompt: 'Productive assets should be owned or governed collectively by the people who work with them rather than by outside private owners.', rationale: 'Make the competing ownership forms explicit.' },
   q0413: { prompt: 'Anti-authoritarian movements should use standing coordinating bodies rather than rely only on autonomous affinity groups.', rationale: 'Isolate organizational centralization from electoral and compromise constructs.' },
   q0421: { prompt: 'Gender and sexual hierarchies remain unjust even when everyone has equal formal legal rights.', rationale: 'Keep a normative equality judgment in the normative layer.' },
-  'fm-christ-3': { prompt: 'When both levels are competent, public decisions should remain with the lowest level of government.', rationale: 'Replace a tautological definition of subsidiarity with a preference.' },
 }
 
 /** Items whose defect requires a split, a new construct, or a redesigned choice set. */
@@ -185,28 +184,6 @@ export const fifthPassReplacementRequiredById: Readonly<Record<string, FifthPass
   sq09: { issue: 'forced-choice-mismatch', rationale: 'Zoning, assistance, land taxation, and tenant protection are compatible policies.', proposedReplacement: 'Present the four policies as separate priority ratings.' },
   sq14: { issue: 'forced-choice-mismatch', rationale: 'Every option bundles organizational form, reform strategy, action type, centralization, and compromise.', proposedReplacement: 'Use one forced choice per strategy axis.' },
   sq17: { issue: 'forced-choice-mismatch', rationale: 'The stem restricts all respondents to libertarian-leaning strategies and each option bundles independent policies.', proposedReplacement: 'Move label-specific strategies to an optional specialist module and rate them separately.' },
-  'fm-auth-3': { issue: 'underspecified', rationale: 'The claim lacks a defined threshold for emergency authority.', proposedReplacement: 'Name the emergency, duration, review rule, and power at issue.' },
-  'fm-auth-8': { issue: 'construct-mismatch', rationale: 'The prompt does not cleanly identify the assigned descriptive constructs.', proposedReplacement: 'Ask one operational claim about centralized authority and one observable outcome.' },
-  'fm-religious-2': { issue: 'underspecified', rationale: 'The item makes a value-laden empirical claim without operational scope.', proposedReplacement: 'Name the institution, jurisdiction, period, and observable outcome.' },
-  'fm-religious-3': { issue: 'double-barreled', rationale: 'Schools, charities, family arbitration, regulation, and exit are separable choices.', proposedReplacement: 'Split organizational autonomy from voluntary family arbitration.' },
-  'fm-nat-2': { issue: 'underspecified', rationale: 'The item makes a value-laden empirical claim without operational scope.', proposedReplacement: 'Name the institution, jurisdiction, period, and observable outcome.' },
-  'fm-nat-4': { issue: 'double-barreled', rationale: 'Forcefulness and unilateral action are independent policy choices.', proposedReplacement: 'Ask separately about willingness to use force and multilateral coordination.' },
-  'fm-market-2': { issue: 'double-barreled', rationale: 'The item combines distinct mechanisms and outcomes.', proposedReplacement: 'Ask about one market mechanism and one observable outcome.' },
-  'fm-market-6': { issue: 'underspecified', rationale: 'The item makes a value-laden empirical claim without operational scope.', proposedReplacement: 'Name the market, period, comparator, and observable outcome.' },
-  'fm-tech-2': { issue: 'double-barreled', rationale: 'The item combines distinct technology mechanisms and outcomes.', proposedReplacement: 'Ask about one technology institution and one observable outcome.' },
-  'fm-tech-5': { issue: 'double-barreled', rationale: 'The item combines independent technology policy choices.', proposedReplacement: 'Split the policy choices into separate items.' },
-  'fm-tech-8': { issue: 'underspecified', rationale: 'The item makes a value-laden empirical claim without operational scope.', proposedReplacement: 'Name the technology, period, comparator, and observable outcome.' },
-  'fm-antiip-2': { issue: 'double-barreled', rationale: 'The item combines distinct information-policy mechanisms and outcomes.', proposedReplacement: 'Ask about one rule and one observable outcome.' },
-  'fm-antiip-8': { issue: 'double-barreled', rationale: 'Software quality and security are separate empirical outcomes.', proposedReplacement: 'Ask separately about software quality and time to find and fix security flaws.' },
-  'fm-anar-8': { issue: 'double-barreled', rationale: 'The item combines distinct institutional mechanisms and outcomes.', proposedReplacement: 'Ask about one institution and one observable outcome.' },
-  'fm-geolib-4': { issue: 'double-barreled', rationale: 'The item combines distinct policy commitments.', proposedReplacement: 'Split the commitments into separate prescriptive items.' },
-  'fm-georgist-2': { issue: 'construct-mismatch', rationale: 'The prompt does not cleanly identify the assigned descriptive constructs.', proposedReplacement: 'Ask one operational claim about land taxation and one observable outcome.' },
-  'fm-green-7': { issue: 'underspecified', rationale: 'Growth is ambiguous between GDP, welfare, and physical throughput.', proposedReplacement: 'In wealthy economies, continued GDP growth is unlikely to remain compatible with sustained reductions in total material and energy use.' },
-  'fm-eco-2': { issue: 'construct-mismatch', rationale: 'The prompt does not cleanly identify the assigned descriptive constructs.', proposedReplacement: 'Ask one operational environmental claim and one observable outcome.' },
-  'fm-socdem-5': { issue: 'construct-mismatch', rationale: 'The prompt does not cleanly identify the assigned descriptive constructs.', proposedReplacement: 'Ask one operational welfare-state claim and one observable outcome.' },
-  'fm-ancap-2': { issue: 'underspecified', rationale: 'The item makes an unanswerable value-laden empirical claim.', proposedReplacement: 'Name the institution, period, comparator, and observable outcome.' },
-  'fm-ancap-5': { issue: 'underspecified', rationale: 'The item makes an unanswerable value-laden empirical claim.', proposedReplacement: 'Name the institution, period, comparator, and observable outcome.' },
-  'fm-ancap-3': { issue: 'underspecified', rationale: 'Children’s contractual capacity, guardianship, age, and safety conditions are undefined.', proposedReplacement: 'Parents should be allowed to contract with private education providers without prior state approval, subject to child-safety rules.' },
 }
 
 export function applyEditorialFifthPass(question: Question): Question {

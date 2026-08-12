@@ -14,14 +14,21 @@ const w = (axisId: AxisWeight['axisId'], weight: number): AxisWeight => ({ axisI
 const specialistModules = new Set([
   'feminist-faction-module',
   'identity-sovereignty-module',
+  'anarchist-families-module',
+  'green-morphology-module',
+  'socialist-families-module',
+  'conservative-variants-module',
+  'religious-national-politics-module',
+  'technology-governance-module',
+  'monarchist-municipal-module',
 ])
 
 /**
  * Items in the respondent-facing core and specialist registries are checked
  * here. Previously unversioned active items receive explicit sign-off metadata;
  * items that already carry an earlier review record retain that provenance.
- * Legacy data-only module items remain outside this pass until a real registry
- * consumes them.
+ * Retired legacy module items are no longer part of the question corpus; only
+ * the two current specialist registries are eligible for this pass.
  */
 export function isEditorialNinthPassTarget(question: Question): boolean {
   return question.module === undefined || specialistModules.has(String(question.module))

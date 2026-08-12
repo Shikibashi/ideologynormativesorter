@@ -162,31 +162,6 @@ export const replacementRequiredById: Record<string, ReplacementRequiredFinding>
     rationale: 'Testing alternative institutions and minimizing domination during a transition are separate strategic judgments, while “liberatory” presumes the item’s evaluation.',
     proposedReplacement: 'Political movements should build and test alternative institutions during a transition.',
   },
-  'fm-green-6': {
-    issue: 'forced-choice-mismatch',
-    rationale: 'Local land management and global carbon markets are different instruments at different scales, not mutually exclusive alternatives.',
-    proposedReplacement: 'Environmental land-management authority should be local rather than national.',
-  },
-  'fm-market-4': {
-    issue: 'double-barreled',
-    rationale: 'The item combines an empirical performance claim with willingness to accept more bank failures and bundles multiple banking rules.',
-    proposedReplacement: 'Banking should face fewer capital-reserve mandates than it does now.',
-  },
-  'fm-geolib-3': {
-    issue: 'double-barreled',
-    rationale: 'Free trade, open migration, and land-value taxation are three separable policy commitments, while “natural complements” is not a prescriptive choice.',
-    proposedReplacement: 'Migration rules should remain open in an economy funded by land-value taxation.',
-  },
-  'fm-fasc-3': {
-    issue: 'layer-mismatch',
-    rationale: 'The stem asks whether coercion is morally legitimate, not which strategy should be used, and leaves “internal enemies” undefined.',
-    proposedReplacement: 'Government should be permitted to suppress organized violent threats by force when necessary to preserve public order.',
-  },
-  'fm-green-8': {
-    issue: 'duplicate',
-    rationale: 'The same retained faction-module corpus already asks the substantively equivalent intrinsic-value claim in fm-green-1.',
-    proposedReplacement: 'No replacement is required; retain fm-green-1 as the single intrinsic-value item.',
-  },
 }
 
 /** Neutral wording edits that preserve each item's construct, layer, and score mapping. */
@@ -202,42 +177,6 @@ export const wordingCorrectionsById: Record<string, WordingCorrection> = {
   q0165: {
     prompt: 'Due process should protect guilty and innocent people alike.',
     rationale: 'Remove the separate empirical premise about official trustworthiness from the normative due-process judgment.',
-  },
-  'fm-left-1': {
-    prompt: 'Left movements should build new worker-controlled institutions rather than rely primarily on reforming current state institutions.',
-    rationale: 'Ask for a strategy preference rather than predicting that reform cannot work.',
-  },
-  'fm-left-2': {
-    prompt: 'Economic coordination should rely on federated elected workplace councils rather than a single centralized planning ministry.',
-    rationale: 'Ask for an institutional preference rather than making an empirical “works best” claim.',
-  },
-  'fm-left-4': {
-    prompt: 'Left-wing movements should prioritize elections and formal office over strikes, occupations, and other direct action.',
-    rationale: 'Ask for a strategy preference rather than comparative empirical reliability.',
-  },
-  'fm-auth-1': {
-    prompt: 'Local police and courts should answer to a single national chain of command rather than independent local authorities.',
-    rationale: 'Ask for centralization preference rather than claiming centralized enforcement is most effective.',
-  },
-  'fm-anar-3': {
-    prompt: 'Communities should meet material needs through self-run mutual-aid networks rather than a state welfare agency.',
-    rationale: 'Ask for an institutional preference rather than comparative empirical reliability.',
-  },
-  'fm-market-3': {
-    prompt: 'Dispute resolution should be open to competing private providers and arbitration rather than reserved to a state monopoly.',
-    rationale: 'Ask for a single institutional policy preference rather than bundling security with an empirical performance claim.',
-  },
-  'fm-socdem-1': {
-    prompt: 'Universal public services should be favored over means-tested welfare.',
-    rationale: 'Ask for a welfare-policy preference rather than asserting a comparative effect on stigma.',
-  },
-  'fm-georgist-8': {
-    prompt: 'Natural-resource rents should be used to fund a universal basic income.',
-    rationale: 'Ask for a funding policy preference rather than mere feasibility.',
-  },
-  'fm-eco-3': {
-    prompt: 'Climate policy should rely more on national or global coordination than on localism.',
-    rationale: 'Ask for a coordination preference rather than asserting that localism is too slow.',
   },
 }
 
@@ -256,21 +195,6 @@ export const nearDuplicateFindings: NearDuplicateFinding[] = [
     questionIds: ['q0238', 'q0298'],
     rationale: 'Both prescriptive items substantially overlap on equal legal status across cultural groups while bundling that principle with a second pluralism claim.',
     recommendedAction: 'Replace them with distinct single-construct items, then retain both only if pilot evidence shows that national civic status and cultural pluralism are empirically separable.',
-  },
-  {
-    questionIds: ['q0089', 'fm-market-5'],
-    rationale: 'Both descriptive items claim that occupational licensing protects incumbents more than consumers.',
-    recommendedAction: 'Do not administer both to the same respondent unless they are intentionally designated as a repeated-item study.',
-  },
-  {
-    questionIds: ['fm-green-1', 'fm-green-8'],
-    rationale: 'Both items ask whether ecosystems have intrinsic value independent of human use.',
-    recommendedAction: 'Retain fm-green-1 and quarantine the later duplicate fm-green-8 in the retained faction-module corpus.',
-  },
-  {
-    questionIds: ['q0408', 'fm-geolib-1'],
-    rationale: 'Both items assign the moral claim to unimproved land value to the community rather than the individual improver.',
-    recommendedAction: 'Avoid co-administration unless the pair is intentionally designated for repeated-item analysis.',
   },
 ]
 

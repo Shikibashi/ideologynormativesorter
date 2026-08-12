@@ -28,6 +28,10 @@ import {
   ninthPassRewritesById,
   ninthPassStatementRewritesById,
 } from './editorialNinthPass'
+import {
+  EDITORIAL_TENTH_PASS_VERSION,
+  tenthPassRewritesById,
+} from './editorialTenthPass'
 
 describe('semantic question audit', () => {
   it('does not both correct and deactivate an item in the same semantic-review pass', () => {
@@ -48,6 +52,7 @@ describe('semantic question audit', () => {
       const eighthPassReplacement = eighthPassReplacementRequiredById[questionId]
       const eighthPassRewrite = eighthPassRewritesById[questionId]
       const ninthPassRewrite = ninthPassRewritesById[questionId] ?? ninthPassStatementRewritesById[questionId]
+      const tenthPassRewrite = tenthPassRewritesById[questionId]
       const expectedWeights = eighthPassRewrite
         ? eighthPassRewrite.axisWeights
         : seventhPassRewrite
@@ -57,7 +62,10 @@ describe('semantic question audit', () => {
           : correction.axisWeights
       expect(question!.axisWeights).toEqual(expectedWeights)
 
-      if (ninthPassRewrite) {
+      if (tenthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_TENTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (ninthPassRewrite) {
         expect(question!.version).toBe(EDITORIAL_NINTH_PASS_VERSION)
         expect(question!.reviewStatus).toBe('approved')
       } else if (eighthPassReplacement) {

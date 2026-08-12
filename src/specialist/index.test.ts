@@ -19,7 +19,7 @@ describe('specialist module registry', () => {
     expect(specialistModuleDefinitions.length).toBeGreaterThanOrEqual(2)
     expect(new Set(specialistModuleDefinitions.map((module) => module.id)).size).toBe(specialistModuleDefinitions.length)
     for (const module of specialistModuleDefinitions) {
-      expect(module.questions.length).toBeGreaterThanOrEqual(8)
+      expect(module.questions.length).toBeGreaterThanOrEqual(4)
       expect(module.criterionOptions.length).toBeGreaterThanOrEqual(4)
       expect(module.estimatedMinutes).toBeGreaterThan(0)
     }
@@ -70,6 +70,28 @@ describe('specialist module registry', () => {
     )
     expect(outcome.matches[0]?.id).toBe('liberal-feminism')
     expect(outcome.constructScores['legal-equality-reform']).toBeGreaterThan(0)
+  })
+
+  it('exposes an abstention state when a follow-up has no answered evidence', () => {
+    const outcome = scoreSpecialistModule('feminist-faction-module', answerMap({}))
+
+    expect(outcome.evidence?.status).toBe('insufficient-evidence')
+    expect(outcome.matches.every((match) => match.insufficientEvidence && match.fit === 0)).toBe(true)
+  })
+
+  it('keeps experimental module matches separate and evidence-aware', () => {
+    const module = specialistModuleById.get('green-morphology-module')
+    expect(module).toBeDefined()
+
+    const empty = scoreSpecialistModule('green-morphology-module', answerMap({}))
+    expect(empty.evidence?.status).toBe('insufficient-evidence')
+    expect(empty.matches.every((match) => match.status === 'insufficient evidence')).toBe(true)
+
+    const answered = answerMap(Object.fromEntries(module!.questions.map((question) => [String(question.id), 3])))
+    const outcome = scoreSpecialistModule('green-morphology-module', answered)
+    expect(outcome.evidence?.status).toBe('sufficient')
+    expect(outcome.matches[0]?.status).toBe('experimental')
+    expect(outcome.matches.every((match) => match.evidenceStatus === 'sufficient')).toBe(true)
   })
 
   it('keeps identity criterion variants distinct without multiplying tradition ids', () => {

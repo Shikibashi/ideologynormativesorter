@@ -21,22 +21,24 @@ const ALL_SCORABLE = questions
  * so this PR changes display calibration without erasing discriminator debt.
  */
 const NEAR_TIE_DEBT_SNAPSHOT: Record<string, { tiesWith: string | string[]; maxMargin: number }> = {
+   'marxian-socialism': { tiesWith: 'anti-imperialism', maxMargin: 0.002 },
    'egalitarian-statist': { tiesWith: 'anti-imperialism', maxMargin: 0.002 },
    'decentralist-market-skeptic-of-state': { tiesWith: 'mutualist', maxMargin: 0.001 },
    'anarcho-capitalist': { tiesWith: 'decentralist-market-skeptic-of-state', maxMargin: 0.004 },
    'social-democrat': { tiesWith: 'universal-basic-income', maxMargin: 0.002 },
    'council-communist': { tiesWith: 'syndicalist', maxMargin: 0.002 },
    'anarcho-communist': { tiesWith: 'syndicalist', maxMargin: 0.003 },
-   'minarchist': { tiesWith: 'classical-liberalism', maxMargin: 0.005 },
+   'minarchist': { tiesWith: 'market-right-libertarianism', maxMargin: 0.006 },
    'absolute-monarchist': { tiesWith: 'theocrat', maxMargin: 0.007 },
    'neoliberalism': { tiesWith: 'radical-centrism', maxMargin: 0.005 },
    'social-liberalism': { tiesWith: 'georgism', maxMargin: 0.001 },
+   'objectivism': { tiesWith: 'market-right-libertarianism', maxMargin: 0.003 },
    'individualist-anarchism': { tiesWith: 'left-wing-market-anarchism', maxMargin: 0.001 },
    'anarcho-primitivism': { tiesWith: 'deep-ecology', maxMargin: 0.001 },
    'maoism': { tiesWith: 'revolutionary-collectivist', maxMargin: 0.004 },
    'world-federalism': { tiesWith: 'multiculturalism', maxMargin: 0.009 },
    'guild-socialism': { tiesWith: 'anti-imperialism', maxMargin: 0.008 },
-   'bioregionalism': { tiesWith: 'anti-imperialism', maxMargin: 0.002 },
+   'bioregionalism': { tiesWith: 'green-politics', maxMargin: 0.002 },
    'eco-authoritarianism': { tiesWith: 'fourth-theory', maxMargin: 0.001 },
    'religious-nationalism': { tiesWith: 'hindutva', maxMargin: 0.009 },
    'zionism': { tiesWith: 'expansionist-nationalism', maxMargin: 0.009 },
@@ -45,21 +47,24 @@ const NEAR_TIE_DEBT_SNAPSHOT: Record<string, { tiesWith: string | string[]; maxM
    'integralism': { tiesWith: 'theocrat', maxMargin: 0.012 },
    'democratic-confederalism': { tiesWith: 'libertarian-socialism', maxMargin: 0.006 },
    'paleoconservatism': { tiesWith: 'distributism', maxMargin: 0.004 },
-   'one-nation-conservatism': { tiesWith: 'cultural-populism', maxMargin: 0.003 },
-   'islamic-democracy': { tiesWith: 'cultural-populism', maxMargin: 0.006 },
+   'one-nation-conservatism': { tiesWith: 'conservative', maxMargin: 0.007 },
+   'islamic-democracy': { tiesWith: 'conservative', maxMargin: 0.009 },
    'liquid-democracy': { tiesWith: 'regionalism', maxMargin: 0.008 },
    'juche': { tiesWith: 'fourth-theory', maxMargin: 0.012 },
-   'techno-anarchism': { tiesWith: 'mutualist', maxMargin: 0.001 },
+   'techno-anarchism': { tiesWith: 'social-anarchism', maxMargin: 0.003 },
    'progressivism': { tiesWith: 'universal-basic-income', maxMargin: 0.002 },
    'national-socialism': { tiesWith: 'fourth-theory', maxMargin: 0.001 },
+   'left-wing-nationalism': { tiesWith: 'green-politics', maxMargin: 0.001 },
    'utopian-socialism': { tiesWith: 'universal-basic-income', maxMargin: 0.003 },
    'libertarian-municipalism': { tiesWith: 'platformism', maxMargin: 0.002 },
    'anarcha-feminism': { tiesWith: 'queer-anarchism', maxMargin: 0.004 },
    'anarcho-syndicalism': { tiesWith: 'platformism', maxMargin: 0.001 },
    'fiscal-conservatism': { tiesWith: 'liberal-conservatism', maxMargin: 0.005 },
+   'social-conservatism': { tiesWith: 'conservative', maxMargin: 0.002 },
    'national-conservatism': { tiesWith: 'political-islam', maxMargin: 0.003 },
    'bright-green-environmentalism': { tiesWith: 'georgism', maxMargin: 0.004 },
    'fundamentalist-theocracy': { tiesWith: 'theocrat', maxMargin: 0.001 },
+   'constitutional-monarchism': { tiesWith: 'conservative', maxMargin: 0.006 },
    'social-investment-state': { tiesWith: 'universal-basic-income', maxMargin: 0.003 },
 }
 
@@ -123,10 +128,10 @@ describe('archetype -> nearest-label sweep', () => {
       const gate = nearTieGate()
 
       expect(gate.targetRate).toBe(0.2)
-      expect(gate.maxAllowedExceptions).toBe(23)
-      expect(gate.currentNearTies).toHaveLength(40)
+      expect(gate.maxAllowedExceptions).toBe(25)
+      expect(gate.currentNearTies).toHaveLength(45)
       expect(gate.currentNearTies.length).toBeGreaterThan(gate.maxAllowedExceptions)
-      expect(gate.snapshotCount).toBe(40)
+      expect(gate.snapshotCount).toBe(45)
       for (const nearTie of gate.currentNearTies) {
          const debt = NEAR_TIE_DEBT_SNAPSHOT[nearTie.target]
          expect(debt, `${nearTie.target} is missing from the debt snapshot`).toBeDefined()

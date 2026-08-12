@@ -3,7 +3,7 @@
 This pass reviewed the effective runtime output, not only the source arrays:
 
 - 118 ideology labels and their family, role, subtype, influence, and explainer metadata;
-- 443 retained core questions, 17 statement-choice records, and 123 retained module questions;
+- 443 retained core questions, 17 statement-choice records, and 123 module questions in the historical pre-retirement snapshot;
 - generated question helpers and all three generated layer summaries for every label;
 - operational scope and public-source feasibility for all 76 descriptive core items that were active before this pass.
 
@@ -28,3 +28,5 @@ The review standard was one construct per question, neutral and concrete wording
 - Provisional specialist labels without construct-matched modules remain unscored.
 
 Passing software tests establish data and implementation invariants only. They do not establish psychometric validity or make a political label objectively correct.
+
+The historical `fm-*` module corpus described in this pass was subsequently retired and removed. It is retained in this document only as provenance for the earlier audit decisions.

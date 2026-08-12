@@ -145,6 +145,14 @@ The review preserves existing label IDs and centroids. This continuation adds So
 | cultural-populism | Cultural Populism | Revised | Removed accusatory wording and added a thin-ideology/host-tradition caveat. |
 | social-investment-state | Social Investment State | Retained | Reviewed; no copy change required in this pass. |
 | queer-anarchism | Queer Anarchism | Retained | Reviewed; no copy change required in this pass. |
+| conservative | Conservative / Prudential Conservative | Added | Added as the broad conservative family anchor; distinguished from social conservatism, national conservatism, Christian democracy, and small-government claims. |
+| green-politics | Green Politics / Political Ecology | Added | Added as a multidimensional ecological family anchor rather than treating one green subtype as the family default. |
+| social-anarchism | Social / Communal Anarchism | Added | Added as a broad anti-authoritarian neighborhood distinct from anarcho-communism, syndicalism, mutualism, and market variants. |
+| market-right-libertarianism | Market / Right-Libertarianism | Added | Added as a broad market and anti-statist neighborhood distinct from anarcho-capitalism and minarchism. |
+| marxian-socialism | Non-Leninist Marxian Socialism | Added | Added as a broad Marxian family anchor separate from Marxism-Leninism and specialist revolutionary variants. |
+| technocratic-orientation | Technocratic Orientation | Added | Added as a cross-cutting expertise and administration modifier distinct from technocratic centralism. |
+| black-nationalism | Black Nationalism | Added | Added as a provisional identity-sovereignty specialist with community-nationalist and separatist variants. |
+| pan-africanism | Pan-Africanism | Added | Added as a provisional transnational solidarity specialist distinct from generic ethnonationalism and Black separatism. |
 
 ## Three-layer editorial rule
 

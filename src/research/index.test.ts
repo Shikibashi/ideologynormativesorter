@@ -90,6 +90,7 @@ describe('research submission', () => {
         ageBand: '25-34',
       },
       predictedLabelIds: ['market-liberal', 'classical-liberalism'],
+      predictedModifierIds: ['religious-nationalism', 'progressivism'],
       specialistAssignment: { moduleId: 'feminist-faction-module', strategy: 'balanced-hash-v1' },
       answers,
       questions: [question],
@@ -102,6 +103,10 @@ describe('research submission', () => {
     expect(submission.identity.selfLabelId).toBe('market-liberal')
     expect(submission.identity.selfReportedIdeologies).toBe('Mutualism; Pan-Africanism')
     expect(submission.predictedLabelIds).toEqual(['market-liberal', 'classical-liberalism'])
+    expect(submission.predictedModifierIds).toEqual(['religious-nationalism', 'progressivism'])
+    expect(submission.taxonomyVersion).toMatch(/^2026-08-taxonomy-v1$/)
+    expect(submission.primaryLabelIds).toContain('conservative')
+    expect(submission.modifierLabelIds).toContain('technocratic-orientation')
     expect(submission.specialistAssignment?.moduleId).toBe('feminist-faction-module')
     expect(submission.durationMs).toBe(600_000)
     expect(submission.presentationOrder).toEqual(['q-test'])

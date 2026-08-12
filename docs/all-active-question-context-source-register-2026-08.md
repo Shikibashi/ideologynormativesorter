@@ -4,9 +4,9 @@ Date: 2026-08-12
 
 ## Coverage target
 
-The effective public bank currently contains 285 active core questions. The respondent-facing specialist registry contains 8 feminist questions and 18 identity, nationalism, and sovereignty questions. This register covers all 311 active core and specialist items.
+The effective public bank currently contains 285 active core questions. The respondent-facing specialist registry contains 8 feminist questions and 22 identity, nationalism, and sovereignty questions. This register covers all 315 active core and specialist items.
 
-The older `src/data/moduleQuestions.ts` collection contains inert audit items from a removed module system. It is not presented by the application or specialist registry and is intentionally excluded from this coverage claim.
+The retired legacy faction-module corpus was removed from the source tree and validation inventory. The two current specialist registries are the only specialist question surfaces covered here.
 
 ## What each item receives
 
@@ -52,7 +52,7 @@ Descriptive `evidenceNote` values and their existing source arrays remain separa
 
 ## Implementation and review rules
 
-The overlay in `src/data/questionContext.ts` is applied after the existing effective-bank review overlays and directly to both specialist module registries. It copies sources before attaching them, preserves descriptive evidence metadata, and contributes its version to the question-bank fingerprint. The ninth editorial pass adds bespoke cross-domain notes for property/redistribution, housing/migration/labour, family/work, climate deployment, algorithmic administration, and post-capitalist institutional design. `RESEARCH_SCHEMA_VERSION` and both specialist module versions change because the presented instrument metadata changed.
+The overlay in `src/data/questionContext.ts` is applied after the existing effective-bank review overlays and directly to both specialist module registries. It copies sources before attaching them, preserves descriptive evidence metadata, and contributes its version to the question-bank fingerprint. The ninth and tenth editorial passes add bespoke cross-domain notes for property/redistribution, housing/migration/labour, family/work, climate deployment, algorithmic administration, post-capitalist institutional design, and religion/public-law justification versus institutional authority. The identity module's multiculturalism bundle is now split into language/cultural accommodation, conscience exemptions, and representation items; recognition and autonomous resurgence are separate constructs. `RESEARCH_SCHEMA_VERSION` changes because the presented core instrument metadata changed; specialist module versions are `2026-08-v4`.
 
 The three specialist descriptive items also receive operational evidence scopes in `src/data/specialistDescriptiveEvidence.ts`; those evidence records remain distinct from neutral context notes.
 

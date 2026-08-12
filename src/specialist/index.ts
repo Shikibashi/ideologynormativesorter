@@ -3,23 +3,35 @@ import { applyQuestionContext } from '../data/questionContext'
 import { applyEditorialNinthPass } from '../data/editorialNinthPass'
 import { applySpecialistDescriptiveEvidence } from '../data/specialistDescriptiveEvidence'
 import {
+  experimentalSpecialistModuleSpecs,
+  type ExperimentalSpecialistModuleSpec,
+} from '../data/experimentalSpecialists'
+import {
+  profileDistanceConstructIds,
+  profileEvidence,
+  summarizeSpecialistEvidence,
+} from '../data/specialistEvidence'
+import {
   FEMINIST_MODULE_ID,
   feministModuleItems,
   feministModuleQuestions,
+  feministSpecialistEvidence,
   feministSpecialistCandidates,
   scoreFeministConstructs,
   scoreFeministSpecialists,
 } from '../data/feministBreadth'
+import type { SpecialistEvidenceSummary } from '../data/specialistEvidence'
 import {
   IDENTITY_SOVEREIGNTY_MODULE_ID,
   identitySovereigntyModuleItems,
   identitySovereigntyModuleQuestions,
+  identitySovereigntySpecialistEvidence,
   identitySovereigntyTraditionProfiles,
   scoreIdentitySovereigntyConstructs,
   scoreIdentitySovereigntyTraditions,
 } from '../data/identitySovereigntyBreadth'
 
-export type SpecialistModuleId = typeof FEMINIST_MODULE_ID | typeof IDENTITY_SOVEREIGNTY_MODULE_ID
+export type SpecialistModuleId = typeof FEMINIST_MODULE_ID | typeof IDENTITY_SOVEREIGNTY_MODULE_ID | typeof experimentalSpecialistModuleSpecs[number]['id']
 export type SpecialistCriterionConfidence = 'low' | 'medium' | 'high'
 
 export interface SpecialistCriterionOption {
@@ -42,12 +54,18 @@ export interface SpecialistMatch {
   variant?: string
   status: string
   fit: number
+  evidenceStatus?: 'sufficient' | 'insufficient-evidence'
+  insufficientEvidence?: boolean
+  evidenceCoverage?: number
+  coveredConstructCount?: number
+  requiredConstructCount?: number
 }
 
 export interface SpecialistOutcome {
   moduleId: SpecialistModuleId
   constructScores: Record<string, number>
   matches: SpecialistMatch[]
+  evidence?: SpecialistEvidenceSummary
 }
 
 export interface SpecialistModuleDefinition {
@@ -66,10 +84,11 @@ export interface SpecialistModuleDefinition {
 
 export interface SpecialistModuleAssignment {
   moduleId: SpecialistModuleId
-  strategy: typeof SPECIALIST_ASSIGNMENT_STRATEGY
+  strategy: SpecialistAssignmentStrategy
 }
 
-export const SPECIALIST_ASSIGNMENT_STRATEGY = 'balanced-hash-v1' as const
+export type SpecialistAssignmentStrategy = 'balanced-hash-v1' | 'balanced-hash-v2'
+export const SPECIALIST_ASSIGNMENT_STRATEGY = 'balanced-hash-v2' as const
 
 function numericAnswers(answers: AnswerMap): Record<string, number | undefined> {
   return Object.fromEntries(
@@ -117,7 +136,7 @@ const identityCriterionOptions: SpecialistCriterionOption[] = identitySovereignt
 const specialistModules: SpecialistModuleDefinition[] = [
   {
     id: FEMINIST_MODULE_ID,
-    version: '2026-08-v3',
+    version: '2026-08-v4',
     title: 'Feminist political traditions',
     shortTitle: 'Feminist traditions',
     description:
@@ -130,20 +149,26 @@ const specialistModules: SpecialistModuleDefinition[] = [
     ),
     criterionOptions: feministCriterionOptions,
     constructWeightsByQuestionId: copyConstructWeights(feministModuleItems),
-    score: (answers) => ({
-      moduleId: FEMINIST_MODULE_ID,
-      constructScores: scoreFeministConstructs(numericAnswers(answers)),
-      matches: scoreFeministSpecialists(numericAnswers(answers)).map((match) => ({
-        id: match.id,
-        name: match.name,
-        status: match.status,
-        fit: match.fit,
-      })),
-    }),
+    score: (answers) => {
+      const numeric = numericAnswers(answers)
+      const matches = scoreFeministSpecialists(numeric)
+      return {
+        moduleId: FEMINIST_MODULE_ID,
+        constructScores: scoreFeministConstructs(numeric),
+        evidence: feministSpecialistEvidence(numeric),
+        matches: matches.map((match) => ({
+          id: match.id,
+          name: match.name,
+          status: match.status,
+          fit: match.fit,
+          ...match.evidence,
+        })),
+      }
+    },
   },
   {
     id: IDENTITY_SOVEREIGNTY_MODULE_ID,
-    version: '2026-08-v3',
+    version: '2026-08-v4',
     title: 'Identity, nationalism, and sovereignty',
     shortTitle: 'Identity and sovereignty',
     description:
@@ -156,19 +181,108 @@ const specialistModules: SpecialistModuleDefinition[] = [
     ),
     criterionOptions: identityCriterionOptions,
     constructWeightsByQuestionId: copyConstructWeights(identitySovereigntyModuleItems),
-    score: (answers) => ({
-      moduleId: IDENTITY_SOVEREIGNTY_MODULE_ID,
-      constructScores: scoreIdentitySovereigntyConstructs(numericAnswers(answers)),
-      matches: scoreIdentitySovereigntyTraditions(numericAnswers(answers)).map((match) => ({
-        id: match.id,
-        name: match.name,
-        variant: match.variant,
-        status: match.status,
-        fit: match.fit,
-      })),
-    }),
+    score: (answers) => {
+      const numeric = numericAnswers(answers)
+      const matches = scoreIdentitySovereigntyTraditions(numeric)
+      return {
+        moduleId: IDENTITY_SOVEREIGNTY_MODULE_ID,
+        constructScores: scoreIdentitySovereigntyConstructs(numeric),
+        evidence: identitySovereigntySpecialistEvidence(numeric),
+        matches: matches.map((match) => ({
+          id: match.id,
+          name: match.name,
+          variant: match.variant,
+          status: match.status,
+          fit: match.fit,
+          ...match.evidence,
+        })),
+      }
+    },
   },
 ]
+
+function scoreExperimentalModule(spec: ExperimentalSpecialistModuleSpec, answers: AnswerMap): SpecialistOutcome {
+  const numericAnswers: Record<string, number | undefined> = Object.fromEntries(
+    Object.entries(answers).map(([questionId, answer]) => [
+      questionId,
+      typeof answer.value === 'number' ? answer.value / 3 : undefined,
+    ]),
+  )
+  const summary = summarizeSpecialistEvidence(
+    spec.questions.map((question) => ({
+      question,
+      constructWeights: spec.constructWeightsByQuestionId[String(question.id)] ?? {},
+    })),
+    numericAnswers,
+    spec.constructIds,
+  )
+  const constructScores: Record<string, number> = {}
+  for (const constructId of spec.constructIds) {
+    let weighted = 0
+    let weightTotal = 0
+    for (const question of spec.questions) {
+      const weight = spec.constructWeightsByQuestionId[String(question.id)]?.[constructId]
+      const answer = numericAnswers[String(question.id)]
+      if (typeof weight !== 'number' || typeof answer !== 'number') continue
+      weighted += answer * weight
+      weightTotal += Math.abs(weight)
+    }
+    constructScores[constructId] = weightTotal > 0 ? Math.max(-1, Math.min(1, weighted / weightTotal)) : 0
+  }
+
+  const matches = spec.candidates.map((candidate) => {
+    const covered = profileDistanceConstructIds(summary, candidate.signals)
+    const distance = covered.length === 0
+      ? Number.POSITIVE_INFINITY
+      : Math.sqrt(covered.reduce((sum, constructId) => sum + (constructScores[constructId] - candidate.signals[constructId]) ** 2, 0) / covered.length)
+    const evidence = profileEvidence(summary, candidate.signals)
+    return {
+      id: candidate.id,
+      name: candidate.name,
+      status: evidence.insufficientEvidence ? 'insufficient evidence' : 'experimental',
+      fit: covered.length > 0 ? Math.max(0, 1 - distance / 2) : 0,
+      evidence,
+      distance,
+      description: candidate.description,
+    }
+  }).sort((left, right) => right.fit - left.fit)
+
+  return {
+    moduleId: spec.id,
+    constructScores,
+    matches: matches.map((match) => ({
+      id: match.id,
+      name: match.name,
+      status: match.status,
+      fit: match.fit,
+      ...match.evidence,
+    })),
+    evidence: summary,
+  }
+}
+
+for (const spec of experimentalSpecialistModuleSpecs) {
+  specialistModules.push({
+    id: spec.id,
+    version: spec.version,
+    title: spec.title,
+    shortTitle: spec.shortTitle,
+    description: spec.description,
+    invitationNote: spec.invitationNote,
+    estimatedMinutes: spec.estimatedMinutes,
+    questions: spec.questions.map((question) =>
+      applyQuestionContext(applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question))),
+    ),
+    criterionOptions: spec.candidates.map((candidate) => ({
+      id: candidate.id,
+      traditionId: candidate.id,
+      label: candidate.name,
+      description: candidate.description,
+    })),
+    constructWeightsByQuestionId: spec.constructWeightsByQuestionId,
+    score: (answers) => scoreExperimentalModule(spec, answers),
+  })
+}
 
 export const specialistModuleDefinitions: readonly SpecialistModuleDefinition[] = specialistModules
 export const specialistModuleById = new Map(specialistModules.map((module) => [module.id, module]))

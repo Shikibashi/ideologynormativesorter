@@ -1,7 +1,9 @@
 import type { Axis, AxisId, AxisScore, Layer, ResultProfile } from '../types'
 import type { IdeologyLabel } from '../types/label'
+import type { LabelTaxonomyMetadata } from '../data/labelTaxonomy'
 
 export type LabelWithInfluences = IdeologyLabel & {
+  taxonomy?: LabelTaxonomyMetadata
   philosophyInfluences?: Array<{
     philosophy: string
     description: string

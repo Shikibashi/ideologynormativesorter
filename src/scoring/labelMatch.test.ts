@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Axis, IdeologyLabel, ScoreBreakdown } from '../types'
-import { computeConflatedLabels, computeLabelMatches } from './labelMatch'
+import { computeConflatedLabels, computeLabelMatches, computeModifierMatches } from './labelMatch'
 
 const axes: Axis[] = [
    { id: 'norm1', layer: 'normative', name: 'Norm One', positivePole: 'p', negativePole: 'n', description: 'd' },
@@ -215,6 +215,50 @@ describe('computeLabelMatches', () => {
 
       expect(matches[0].labelId).toBe('measured-match')
       expect(matches[0].distance).toBeCloseTo(0)
+   })
+})
+
+describe('computeModifierMatches', () => {
+   it('keeps only sufficiently supported modifiers and caps the public list at five', () => {
+      const strongBreakdown: ScoreBreakdown = {
+         normative: breakdown.normative.map((score) => ({ ...score, itemCount: 3 })),
+         descriptive: breakdown.descriptive.map((score) => ({ ...score, itemCount: 3 })),
+         prescriptive: breakdown.prescriptive.map((score) => ({ ...score, itemCount: 3 })),
+      }
+      const labels: IdeologyLabel[] = Array.from({ length: 7 }, (_, index) => ({
+         id: `modifier-${index}`,
+         name: `Modifier ${index}`,
+         family: 'modifier',
+         description: 'd',
+         centroid: { ...exactMatchLabel.centroid, norm1: 0.8 - index * 0.17 },
+      }))
+
+      const matches = computeModifierMatches(strongBreakdown, labels)
+
+      expect(matches).toHaveLength(5)
+      expect(matches.map((match) => match.labelId)).toEqual([
+         'modifier-0',
+         'modifier-1',
+         'modifier-2',
+         'modifier-3',
+         'modifier-4',
+      ])
+      expect(matches.every((match) => match.fit >= 0.65)).toBe(true)
+      expect(matches.every((match) => match.evidenceStrength >= 0.4)).toBe(true)
+      expect(matches.every((match) => match.uncertaintyBand !== 'high')).toBe(true)
+   })
+
+   it('abstains when a modifier has sparse evidence even if its measured fit is exact', () => {
+      const sparseExact = computeModifierMatches(
+         {
+            normative: [{ axisId: 'norm1', layer: 'normative', raw: 0.8, normalized: 0.8, itemCount: 1 }],
+            descriptive: [],
+            prescriptive: [],
+         },
+         [{ ...exactMatchLabel, id: 'sparse-modifier' }],
+      )
+
+      expect(sparseExact).toEqual([])
    })
 })
 

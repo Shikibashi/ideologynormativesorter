@@ -129,6 +129,8 @@ export interface ResultProfile {
    scores: ScoreBreakdown
    gaps: IdealNonIdealGap[]
    nearestLabels: LabelMatch[]
+   /** Independently measured cross-cutting orientations, capped and thresholded. */
+   modifierMatches?: LabelMatch[]
    conflatedLabels: LabelConflationFlag[]
    axisReliabilities?: Record<AxisId, AxisReliability>
    labelReliabilities?: Record<LabelId, LabelReliability>

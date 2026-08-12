@@ -1,6 +1,5 @@
 import { createHash } from 'node:crypto'
 import { questions, QUESTION_BANK_VERSION } from '../../../data/questions'
-import { moduleQuestions } from '../../../data/moduleQuestions'
 import { statementQuestions } from '../../../data/statementQuestions'
 import { axes } from '../../../data/axes'
 import { labels } from '../../../data/labels'
@@ -16,7 +15,6 @@ import type { InventorySnapshot } from '../types'
 export function getBankFingerprint(): string {
   const allQuestionIds = [
     ...questions.map(q => q.id),
-    ...moduleQuestions.map(q => q.id),
     ...statementQuestions.map(q => q.id),
   ].sort()
 
@@ -32,8 +30,8 @@ export function getBankFingerprint(): string {
 }
 
 /**
- * Generate raw inventory snapshots for each corpus and the catalog (labels + axes).
- * Returns four snapshots: raw-main, raw-module, raw-statement, raw-catalog.
+ * Generate raw inventory snapshots for the main and statement views plus the catalog.
+ * Returns three snapshots: raw-main, raw-statement, raw-catalog.
  */
 export function generateInventorySnapshots(): InventorySnapshot[] {
   const now = new Date().toISOString()
@@ -47,17 +45,6 @@ export function generateInventorySnapshots(): InventorySnapshot[] {
     corpus: 'main',
     generatedAt: now,
     questionCount: questions.length,
-    bankVersion: QUESTION_BANK_VERSION,
-    scoringVersion: RESULT_SCORING_VERSION,
-    fingerprint,
-  }
-
-  const moduleSnapshot: InventorySnapshot = {
-    snapshotId: `inv:raw:module:${now}`,
-    inventorySet: 'raw',
-    corpus: 'module',
-    generatedAt: now,
-    questionCount: moduleQuestions.length,
     bankVersion: QUESTION_BANK_VERSION,
     scoringVersion: RESULT_SCORING_VERSION,
     fingerprint,
@@ -88,5 +75,5 @@ export function generateInventorySnapshots(): InventorySnapshot[] {
     fingerprint,
   }
 
-  return [mainSnapshot, moduleSnapshot, statementSnapshot, catalogSnapshot]
+  return [mainSnapshot, statementSnapshot, catalogSnapshot]
 }

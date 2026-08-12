@@ -44,8 +44,8 @@ function environment(overrides = {}) {
   return {
     ALLOWED_ORIGIN: ORIGIN,
     EXPECTED_STUDY_ID: 'community-2026',
-    EXPECTED_SCHEMA_VERSION: '2026-08-v7',
-    EXPECTED_CONSENT_VERSION: '2026-08-12-v7',
+    EXPECTED_SCHEMA_VERSION: '2026-08-v10',
+    EXPECTED_CONSENT_VERSION: '2026-08-12-v8',
     EXPECTED_QUALITY_RULE_VERSION: 'data-quality-v2',
     EXPECTED_FORM_VERSION: 'profile-form-v3',
     EXPECTED_MODERATE_ITEM_COUNT: '1',
@@ -75,7 +75,7 @@ function coreSubmission(overrides = {}) {
     ],
   }]
   return {
-    schemaVersion: '2026-08-v7',
+      schemaVersion: '2026-08-v10',
     submissionId: 'submission_1',
     recordType: 'core',
     studyId: 'community-2026',
@@ -89,7 +89,7 @@ function coreSubmission(overrides = {}) {
       ageConfirmed: true,
       voluntaryParticipation: true,
       dataUseAccepted: true,
-      consentVersion: '2026-08-12-v7',
+      consentVersion: '2026-08-12-v8',
       consentedAt: '2026-08-10T12:00:00.000Z',
       disclosureSnapshot: {
         endpointConfigured: true,
@@ -117,9 +117,13 @@ function coreSubmission(overrides = {}) {
     },
     bankVersion: 'bank-v1',
     scoringVersion: 'scoring-v1',
+    taxonomyVersion: 'taxonomy-v1',
+    primaryLabelIds: ['conservative'],
+    modifierLabelIds: ['progressivism'],
     tier: 'moderate',
     identity: {},
     predictedLabelIds: [],
+    predictedModifierIds: [],
     answers: { q0001: { questionId: 'q0001', value: 1 } },
     itemMap,
     ...overrides,

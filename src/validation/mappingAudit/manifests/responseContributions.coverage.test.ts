@@ -1,11 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import { questions as effectiveActiveQuestions } from '../../../data/effectiveQuestions'
-import { moduleQuestions } from '../../../data/moduleQuestions'
 import { statementQuestions } from '../../../data/statementQuestions'
 import { expectedContributionCardinality } from './expand'
 import {
   responseContributions,
-  moduleContributions,
   statementContributions,
   allCorpusContributions,
 } from './responseContributions'
@@ -18,12 +16,6 @@ describe('responseContributions.coverage', () => {
     expect(responseContributions.length).toBe(expected)
   })
 
-  it('module cardinality equals expansion(module set)', () => {
-    const expected = expectedContributionCardinality(moduleQuestions)
-    expect(expected).toBe(WP0_FREEZE.moduleContributionCardinality)
-    expect(moduleContributions.length).toBe(expected)
-  })
-
   it('statement cardinality equals expansion(statement set)', () => {
     const expected = expectedContributionCardinality(statementQuestions)
     expect(expected).toBe(WP0_FREEZE.statementContributionCardinality)
@@ -33,7 +25,6 @@ describe('responseContributions.coverage', () => {
   it('contribution ids are unique within each corpus export', () => {
     for (const [name, rows] of [
       ['main', responseContributions],
-      ['module', moduleContributions],
       ['statement', statementContributions],
     ] as const) {
       const ids = rows.map((r) => r.id)
@@ -41,12 +32,6 @@ describe('responseContributions.coverage', () => {
         ids.length,
       )
     }
-  })
-
-  it('main and module contribution ids are disjoint', () => {
-    const mainIds = new Set(responseContributions.map((r) => r.id))
-    const overlap = moduleContributions.filter((r) => mainIds.has(r.id))
-    expect(overlap).toEqual([])
   })
 
   it('statement corpus aliases main statementChoice ids (same rc keys)', () => {
@@ -57,7 +42,7 @@ describe('responseContributions.coverage', () => {
     expect(aliased.length).toBeLessThanOrEqual(statementContributions.length)
   })
 
-  it('combined main+module audit pool has unique ids', () => {
+  it('main audit pool has unique ids', () => {
     const ids = allCorpusContributions().map((r) => r.id)
     expect(new Set(ids).size).toBe(ids.length)
   })
@@ -65,7 +50,6 @@ describe('responseContributions.coverage', () => {
   it('every contribution id matches rc:{questionId}:{responseKey}:{axisId}', () => {
     for (const row of [
       ...responseContributions,
-      ...moduleContributions,
       ...statementContributions,
     ]) {
       expect(row.id).toBe(`rc:${row.questionId}:${row.responseKey}:${row.axisId}`)

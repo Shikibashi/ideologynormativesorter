@@ -44,7 +44,7 @@ describe('respondent-facing question review', () => {
   })
 
   it('quarantines replacement-required defects from public and research forms', () => {
-    expect(Object.keys(replacementRequiredById)).toHaveLength(31)
+    expect(Object.keys(replacementRequiredById)).toHaveLength(26)
     for (const [questionId, finding] of Object.entries(replacementRequiredById)) {
       const question = questionById.get(questionId)
       const raw = rawQuestionById.get(questionId)
@@ -68,7 +68,7 @@ describe('respondent-facing question review', () => {
   })
 
   it('applies neutral wording corrections without changing scoring metadata', () => {
-    expect(Object.keys(wordingCorrectionsById)).toHaveLength(12)
+    expect(Object.keys(wordingCorrectionsById)).toHaveLength(3)
 
     for (const [questionId, correction] of Object.entries(wordingCorrectionsById)) {
       const raw = rawQuestionById.get(questionId)
@@ -90,7 +90,7 @@ describe('respondent-facing question review', () => {
   })
 
   it('records near-duplicate pairs and preserves any independent quarantine decision', () => {
-    expect(nearDuplicateFindings).toHaveLength(6)
+    expect(nearDuplicateFindings).toHaveLength(3)
     for (const finding of nearDuplicateFindings) {
       for (const questionId of finding.questionIds) {
         if (replacementRequiredById[questionId] || fifthPassReplacementRequiredById[questionId]) {

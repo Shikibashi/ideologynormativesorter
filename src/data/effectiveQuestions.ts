@@ -43,6 +43,10 @@ import {
   applyEditorialNinthPass,
   EDITORIAL_NINTH_PASS_VERSION,
 } from './editorialNinthPass'
+import {
+  applyEditorialTenthPass,
+  EDITORIAL_TENTH_PASS_VERSION,
+} from './editorialTenthPass'
 import { SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION } from './specialistDescriptiveEvidence'
 import { applyQuestionContext, QUESTION_CONTEXT_VERSION } from './questionContext'
 
@@ -59,6 +63,7 @@ export const QUESTION_BANK_VERSION = [
   DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
   SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION,
   EDITORIAL_NINTH_PASS_VERSION,
+  EDITORIAL_TENTH_PASS_VERSION,
   QUESTION_CONTEXT_VERSION,
 ].join('+')
 export { SCORING_VERSION }
@@ -77,21 +82,24 @@ export function getBankFingerprint(): string {
     DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
     SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION,
     EDITORIAL_NINTH_PASS_VERSION,
+    EDITORIAL_TENTH_PASS_VERSION,
     QUESTION_CONTEXT_VERSION,
   ].join('+')
 }
 
 function applyEffectiveReview(question: Question): Question {
   return applyQuestionContext(
-    applyEditorialNinthPass(
-      applyDescriptiveEvidenceThirdPass(
-        applyDescriptiveEvidenceSecondPass(
-          applyDescriptiveEvidence(
-            applyEditorialEighthPass(
-              applyEditorialSeventhPass(
-                applyEditorialFifthPass(
-                  applyRespondentQuestionReview(
-                    applyStatementSemanticReview(applySemanticReview(question)),
+    applyEditorialTenthPass(
+      applyEditorialNinthPass(
+        applyDescriptiveEvidenceThirdPass(
+          applyDescriptiveEvidenceSecondPass(
+            applyDescriptiveEvidence(
+              applyEditorialEighthPass(
+                applyEditorialSeventhPass(
+                  applyEditorialFifthPass(
+                    applyRespondentQuestionReview(
+                      applyStatementSemanticReview(applySemanticReview(question)),
+                    ),
                   ),
                 ),
               ),

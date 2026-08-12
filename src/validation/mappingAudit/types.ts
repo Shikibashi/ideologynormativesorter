@@ -4,7 +4,7 @@ import type { AxisId, LabelId, QuestionId, ResponseType, Layer, TheoryContext } 
 // Union-type enums
 // ---------------------------------------------------------------------------
 
-export type CorpusId = 'main' | 'module' | 'statement'
+export type CorpusId = 'main' | 'statement'
 
 export type InventorySetId =
   | 'raw'

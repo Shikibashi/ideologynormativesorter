@@ -190,8 +190,11 @@ criterion_summary_rows <- list()
 for (record in specialist_records) {
   selected_ids <- unlist(record$criterion$selectedIds %||% list(), use.names = FALSE)
   matches <- record$matches %||% list()
-  match_option_ids <- vapply(matches, match_option_id, character(1))
-  match_tradition_ids <- vapply(matches, function(match) match$id %||% "", character(1))
+  eligible_matches <- matches[vapply(matches, function(match) {
+    !isTRUE(match$insufficientEvidence) && !identical(match$evidenceStatus, "insufficient-evidence")
+  }, logical(1))]
+  match_option_ids <- vapply(eligible_matches, match_option_id, character(1))
+  match_tradition_ids <- vapply(eligible_matches, function(match) match$id %||% "", character(1))
   selected_tradition_ids <- unique(sub(":.*$", "", selected_ids))
 
   criterion_summary_rows[[length(criterion_summary_rows) + 1]] <- data.frame(
@@ -237,6 +240,154 @@ if (length(criterion_summary_rows) > 0) {
 } else {
   empty_csv(file.path(output_dir, "specialist-criterion-response.csv"), c(
     "participant_id", "administration", "module_id", "none_or_unsure", "confidence", "selected_count"
+  ))
+}
+
+evidence_rows <- lapply(specialist_records, function(record) {
+  evidence <- record$evidence %||% list()
+  data.frame(
+    participant_id = record$participantId,
+    administration = record$administration,
+    module_id = record$moduleId,
+    answered_item_count = as.numeric(evidence$answeredItemCount %||% NA),
+    total_item_count = as.numeric(evidence$totalItemCount %||% NA),
+    answered_coverage = as.numeric(evidence$answeredCoverage %||% NA),
+    weighted_answered_coverage = as.numeric(evidence$weightedAnsweredCoverage %||% NA),
+    effective_item_count = as.numeric(evidence$effectiveItemCount %||% NA),
+    evidence_status = evidence$status %||% "legacy-unknown",
+    stringsAsFactors = FALSE
+  )
+})
+if (length(evidence_rows) > 0) {
+  utils::write.csv(do.call(rbind, evidence_rows), file.path(output_dir, "specialist-evidence.csv"), row.names = FALSE)
+} else {
+  empty_csv(file.path(output_dir, "specialist-evidence.csv"), c(
+    "participant_id", "administration", "module_id", "answered_item_count", "total_item_count",
+    "answered_coverage", "weighted_answered_coverage", "effective_item_count", "evidence_status"
+  ))
+}
+
+safe_ratio <- function(numerator, denominator) {
+  if (denominator > 0) numerator / denominator else NA_real_
+}
+
+multilabel_rows <- list()
+label_metric_rows <- list()
+coidentification_rows <- list()
+for (record in specialist_records) {
+  selected_ids <- unique(unlist(record$criterion$selectedIds %||% list(), use.names = FALSE))
+  if (length(selected_ids) == 0) next
+  matches <- record$matches %||% list()
+  eligible_matches <- matches[vapply(matches, function(match) {
+    !isTRUE(match$insufficientEvidence) && !identical(match$evidenceStatus, "insufficient-evidence")
+  }, logical(1))]
+  ranked_ids <- unique(vapply(eligible_matches, match_option_id, character(1)))
+  for (cutoff in c(1L, 3L)) {
+    predicted_ids <- head(ranked_ids, cutoff)
+    true_positive <- length(intersect(selected_ids, predicted_ids))
+    false_positive <- length(setdiff(predicted_ids, selected_ids))
+    false_negative <- length(setdiff(selected_ids, predicted_ids))
+    precision <- safe_ratio(true_positive, length(predicted_ids))
+    recall <- safe_ratio(true_positive, length(selected_ids))
+    f1 <- if (is.na(precision) || is.na(recall) || precision + recall == 0) NA_real_ else 2 * precision * recall / (precision + recall)
+    union_count <- length(union(selected_ids, predicted_ids))
+    multilabel_rows[[length(multilabel_rows) + 1]] <- data.frame(
+      participant_id = record$participantId,
+      administration = record$administration,
+      module_id = record$moduleId,
+      cutoff = cutoff,
+      selected_count = length(selected_ids),
+      predicted_count = length(predicted_ids),
+      true_positive = true_positive,
+      false_positive = false_positive,
+      false_negative = false_negative,
+      precision = precision,
+      recall = recall,
+      f1 = f1,
+      jaccard = safe_ratio(true_positive, union_count),
+      exact_set_match = setequal(selected_ids, predicted_ids),
+      stringsAsFactors = FALSE
+    )
+    for (label_id in union(selected_ids, predicted_ids)) {
+      label_metric_rows[[length(label_metric_rows) + 1]] <- data.frame(
+        module_id = record$moduleId,
+        cutoff = cutoff,
+        label_id = label_id,
+        truth = label_id %in% selected_ids,
+        predicted = label_id %in% predicted_ids,
+        stringsAsFactors = FALSE
+      )
+    }
+  }
+  if (length(selected_ids) >= 2) {
+    pairs <- combn(sort(selected_ids), 2, simplify = FALSE)
+    for (pair in pairs) {
+      coidentification_rows[[length(coidentification_rows) + 1]] <- data.frame(
+        module_id = record$moduleId,
+        first_label_id = pair[[1]],
+        second_label_id = pair[[2]],
+        stringsAsFactors = FALSE
+      )
+    }
+  }
+}
+if (length(multilabel_rows) > 0) {
+  multilabel_data <- do.call(rbind, multilabel_rows)
+  utils::write.csv(multilabel_data, file.path(output_dir, "specialist-criterion-multilabel.csv"), row.names = FALSE)
+} else {
+  empty_csv(file.path(output_dir, "specialist-criterion-multilabel.csv"), c(
+    "participant_id", "administration", "module_id", "cutoff", "selected_count", "predicted_count",
+    "true_positive", "false_positive", "false_negative", "precision", "recall", "f1", "jaccard", "exact_set_match"
+  ))
+}
+if (length(label_metric_rows) > 0) {
+  label_metric_data <- do.call(rbind, label_metric_rows)
+  label_groups <- unique(label_metric_data[, c("module_id", "cutoff", "label_id"), drop = FALSE])
+  label_summary_rows <- lapply(seq_len(nrow(label_groups)), function(row_index) {
+    group <- label_groups[row_index, , drop = FALSE]
+    subset_rows <- label_metric_data[
+      label_metric_data$module_id == group$module_id[[1]] &
+        label_metric_data$cutoff == group$cutoff[[1]] &
+        label_metric_data$label_id == group$label_id[[1]],
+      , drop = FALSE
+    ]
+    true_positive <- sum(subset_rows$truth & subset_rows$predicted)
+    false_positive <- sum(!subset_rows$truth & subset_rows$predicted)
+    false_negative <- sum(subset_rows$truth & !subset_rows$predicted)
+    precision <- safe_ratio(true_positive, true_positive + false_positive)
+    recall <- safe_ratio(true_positive, true_positive + false_negative)
+    data.frame(
+      module_id = group$module_id[[1]],
+      cutoff = group$cutoff[[1]],
+      label_id = group$label_id[[1]],
+      support = sum(subset_rows$truth),
+      true_positive = true_positive,
+      false_positive = false_positive,
+      false_negative = false_negative,
+      precision = precision,
+      recall = recall,
+      f1 = if (is.na(precision) || is.na(recall) || precision + recall == 0) NA_real_ else 2 * precision * recall / (precision + recall),
+      stringsAsFactors = FALSE
+    )
+  })
+  utils::write.csv(do.call(rbind, label_summary_rows), file.path(output_dir, "specialist-label-metrics.csv"), row.names = FALSE)
+} else {
+  empty_csv(file.path(output_dir, "specialist-label-metrics.csv"), c(
+    "module_id", "cutoff", "label_id", "support", "true_positive", "false_positive", "false_negative",
+    "precision", "recall", "f1"
+  ))
+}
+if (length(coidentification_rows) > 0) {
+  coidentification_data <- do.call(rbind, coidentification_rows)
+  coidentification_summary <- stats::aggregate(
+    list(coidentification_count = coidentification_data$first_label_id),
+    by = coidentification_data[, c("module_id", "first_label_id", "second_label_id"), drop = FALSE],
+    FUN = length
+  )
+  utils::write.csv(coidentification_summary, file.path(output_dir, "specialist-criterion-coidentification.csv"), row.names = FALSE)
+} else {
+  empty_csv(file.path(output_dir, "specialist-criterion-coidentification.csv"), c(
+    "module_id", "first_label_id", "second_label_id", "coidentification_count"
   ))
 }
 
@@ -342,6 +493,15 @@ safe_alpha <- function(data) {
   )
 }
 
+primary_construct_for_item <- function(item) {
+  weights <- unlist(item$constructWeights %||% list(), use.names = TRUE)
+  numeric_weights <- as.numeric(weights)
+  valid <- is.finite(numeric_weights) & numeric_weights != 0
+  if (!any(valid)) return(NA_character_)
+  weights <- weights[valid]
+  names(weights)[which.max(abs(as.numeric(weights)))]
+}
+
 reliability_rows <- list()
 module_ids <- unique(vapply(specialist_records, function(record) record$moduleId, character(1)))
 for (module_id in module_ids) {
@@ -358,11 +518,31 @@ for (module_id in module_ids) {
   }
   construct_ids <- unique(unlist(lapply(item_registry, function(item) names(item$constructWeights %||% list())), use.names = FALSE))
   for (construct_id in construct_ids) {
-    item_ids <- names(item_registry)[vapply(item_registry, function(item) {
+    all_item_ids <- names(item_registry)[vapply(item_registry, function(item) {
       weight <- as.numeric((item$constructWeights %||% list())[[construct_id]] %||% 0)
       is.finite(weight) && weight != 0
     }, logical(1))]
-    if (length(item_ids) < 2) next
+    primary_item_ids <- all_item_ids[vapply(all_item_ids, function(item_id) {
+      identical(primary_construct_for_item(item_registry[[item_id]]), construct_id)
+    }, logical(1))]
+    secondary_item_count <- length(setdiff(all_item_ids, primary_item_ids))
+    if (length(primary_item_ids) < 2) {
+      reliability_rows[[length(reliability_rows) + 1]] <- data.frame(
+        module_id = module_id,
+        construct_id = construct_id,
+        item_count = length(primary_item_ids),
+        primary_item_count = length(primary_item_ids),
+        secondary_item_count = secondary_item_count,
+        respondent_n = length(module_records),
+        complete_case_n = 0,
+        alpha = NA_real_,
+        indicator_policy = "primary-largest-absolute-loading",
+        status = "insufficient-primary-indicators",
+        stringsAsFactors = FALSE
+      )
+      next
+    }
+    item_ids <- primary_item_ids
 
     matrix_values <- matrix(
       NA_real_,
@@ -389,10 +569,13 @@ for (module_id in module_ids) {
       module_id = module_id,
       construct_id = construct_id,
       item_count = length(item_ids),
+      primary_item_count = length(primary_item_ids),
+      secondary_item_count = secondary_item_count,
       respondent_n = nrow(matrix_values),
       complete_case_n = sum(stats::complete.cases(matrix_values)),
       alpha = alpha,
-      status = if (nrow(matrix_values) < minimum_reliability_n) "insufficient-data" else "estimated",
+      indicator_policy = "primary-largest-absolute-loading",
+      status = if (nrow(matrix_values) < minimum_reliability_n) "insufficient-data" else if (is.na(alpha)) "estimation-failed" else "estimated",
       stringsAsFactors = FALSE
     )
   }
@@ -401,7 +584,8 @@ if (length(reliability_rows) > 0) {
   utils::write.csv(do.call(rbind, reliability_rows), file.path(output_dir, "specialist-construct-reliability.csv"), row.names = FALSE)
 } else {
   empty_csv(file.path(output_dir, "specialist-construct-reliability.csv"), c(
-    "module_id", "construct_id", "item_count", "respondent_n", "complete_case_n", "alpha", "status"
+    "module_id", "construct_id", "item_count", "primary_item_count", "secondary_item_count",
+    "respondent_n", "complete_case_n", "alpha", "indicator_policy", "status"
   ))
 }
 

@@ -75,7 +75,7 @@ const ARCHETYPES: Archetype[] = [
       'fm-id-5': 2, 'fm-id-6': -2, 'fm-id-7': 3, 'fm-id-8': -3,
       'fm-id-9': 1, 'fm-id-10': 1, 'fm-id-11': 0, 'fm-id-12': 2,
       'fm-id-13': 3, 'fm-id-14': 3, 'fm-id-15': 3, 'fm-id-16': -1,
-      'fm-id-17': 0, 'fm-id-18': 0,
+      'fm-id-17': 0, 'fm-id-18': 0, 'fm-id-21': 3, 'fm-id-22': -1,
     },
   },
   {
@@ -87,7 +87,7 @@ const ARCHETYPES: Archetype[] = [
       'fm-id-5': 1, 'fm-id-6': -1, 'fm-id-7': 3, 'fm-id-8': -3,
       'fm-id-9': 2, 'fm-id-10': 1, 'fm-id-11': 0, 'fm-id-12': 1,
       'fm-id-13': 3, 'fm-id-14': 3, 'fm-id-15': -3, 'fm-id-16': 3,
-      'fm-id-17': 0, 'fm-id-18': 0,
+      'fm-id-17': 0, 'fm-id-18': 0, 'fm-id-21': -3, 'fm-id-22': 3,
     },
   },
   {
@@ -108,8 +108,8 @@ const profileById = (id: string) => identitySovereigntyTraditionProfiles.filter(
 
 describe('identity and sovereignty breadth module', () => {
   it('keeps the specialist measurement surface isolated and well formed', () => {
-    expect(identitySovereigntyModuleItems).toHaveLength(18)
-    expect(new Set(identitySovereigntyModuleItems.map((item) => item.question.id)).size).toBe(18)
+    expect(identitySovereigntyModuleItems).toHaveLength(22)
+    expect(new Set(identitySovereigntyModuleItems.map((item) => item.question.id)).size).toBe(22)
 
     for (const item of identitySovereigntyModuleItems) {
       expect(item.question.module).toBe(IDENTITY_SOVEREIGNTY_MODULE_ID)
@@ -132,6 +132,14 @@ describe('identity and sovereignty breadth module', () => {
     }
   })
 
+  it('splits multicultural accommodation into independent policy dimensions', () => {
+    const prompts = identitySovereigntyModuleItems.map((item) => item.question.prompt)
+    expect(prompts.find((prompt) => prompt.includes('language rights'))).toBeUndefined()
+    expect(prompts.some((prompt) => prompt.includes('minority languages'))).toBe(true)
+    expect(prompts.some((prompt) => prompt.includes('religious exemptions'))).toBe(true)
+    expect(prompts.some((prompt) => prompt.includes('guaranteed or reserved political representation'))).toBe(true)
+  })
+
   it('preserves current production roles and quarantines unvalidated additions', () => {
     const catalogIds = new Set(labels.map((label) => label.id))
     const primaryIds = new Set(primaryScoringLabels.map((label) => label.id))
@@ -148,8 +156,9 @@ describe('identity and sovereignty breadth module', () => {
     expect(primaryIds.has('indigenism')).toBe(false)
 
     for (const candidateId of ['black-nationalism', 'pan-africanism']) {
-      expect(catalogIds.has(candidateId), `${candidateId} was promoted before validation`).toBe(false)
+      expect(catalogIds.has(candidateId), `${candidateId} is missing from the specialist catalog`).toBe(true)
       expect(primaryIds.has(candidateId), `${candidateId} leaked into the primary pool`).toBe(false)
+      expect(roleForLabel(candidateId)).toBe('specialist')
     }
     expect(profileById('black-nationalism').every((profile) => profile.status === 'candidate-specialist')).toBe(true)
     expect(profileById('pan-africanism').every((profile) => profile.status === 'candidate-role-review')).toBe(true)

@@ -1,4 +1,11 @@
 import type { Question } from '../types'
+import {
+  profileDistanceConstructIds,
+  profileEvidence,
+  summarizeSpecialistEvidence,
+  type SpecialistEvidenceSummary,
+  type SpecialistProfileEvidence,
+} from './specialistEvidence'
 
 export const FEMINIST_MODULE_ID = 'feminist-faction-module'
 
@@ -28,6 +35,7 @@ export interface FeministSpecialistMatch {
   status: FeministSpecialistCandidate['status']
   distance: number
   fit: number
+  evidence: SpecialistProfileEvidence
 }
 
 export const FEMINIST_CONSTRUCT_IDS: readonly FeministConstructId[] = [
@@ -67,9 +75,6 @@ export const feministModuleItems: FeministModuleItem[] = [
     },
     constructWeights: {
       'legal-equality-reform': 1,
-      'structural-patriarchy': -0.4,
-      'class-social-reproduction': -0.3,
-      'anti-hierarchy-strategy': -0.3,
     },
   },
   {
@@ -144,7 +149,6 @@ export const feministModuleItems: FeministModuleItem[] = [
     },
     constructWeights: {
       'class-social-reproduction': 1,
-      'legal-equality-reform': -0.3,
       'structural-patriarchy': 0.3,
     },
   },
@@ -183,7 +187,6 @@ export const feministModuleItems: FeministModuleItem[] = [
     },
     constructWeights: {
       'anti-hierarchy-strategy': 1,
-      'legal-equality-reform': -0.3,
     },
   },
   {
@@ -302,26 +305,38 @@ export function scoreFeministConstructs(answers: FeministModuleAnswers): Record<
 export function feministConstructDistance(
   left: Record<FeministConstructId, number>,
   right: Record<FeministConstructId, number>,
+  constructIds: readonly FeministConstructId[] = FEMINIST_CONSTRUCT_IDS,
 ): number {
-  const meanSquared = FEMINIST_CONSTRUCT_IDS.reduce((sum, constructId) => {
+  if (constructIds.length === 0) return 2
+  const meanSquared = constructIds.reduce((sum, constructId) => {
     const delta = left[constructId] - right[constructId]
     return sum + delta * delta
-  }, 0) / FEMINIST_CONSTRUCT_IDS.length
+  }, 0) / constructIds.length
   return Math.sqrt(meanSquared)
+}
+
+export function feministSpecialistEvidence(answers: FeministModuleAnswers): SpecialistEvidenceSummary {
+  return summarizeSpecialistEvidence(feministModuleItems, answers, FEMINIST_CONSTRUCT_IDS)
 }
 
 export function scoreFeministSpecialists(answers: FeministModuleAnswers): FeministSpecialistMatch[] {
   const profile = scoreFeministConstructs(answers)
+  const evidence = feministSpecialistEvidence(answers)
 
   return feministSpecialistCandidates
     .map((candidate) => {
-      const distance = feministConstructDistance(profile, candidate.centroid)
+      const candidateEvidence = profileEvidence(evidence, candidate.centroid)
+      const distanceConstructIds = profileDistanceConstructIds(evidence, candidate.centroid)
+      const distance = candidateEvidence.insufficientEvidence
+        ? 2
+        : feministConstructDistance(profile, candidate.centroid, distanceConstructIds as FeministConstructId[])
       return {
         id: candidate.id,
         name: candidate.name,
         status: candidate.status,
         distance,
-        fit: Math.max(0, Math.min(1, 1 - distance / 2)),
+        fit: candidateEvidence.insufficientEvidence ? 0 : Math.max(0, Math.min(1, 1 - distance / 2)),
+        evidence: candidateEvidence,
       }
     })
     .sort((left, right) => left.distance - right.distance)

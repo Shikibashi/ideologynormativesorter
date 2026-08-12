@@ -1,5 +1,4 @@
 import { questions as effectiveActiveQuestions } from '../../../data/effectiveQuestions'
-import { moduleQuestions } from '../../../data/moduleQuestions'
 import { statementQuestions } from '../../../data/statementQuestions'
 import { labels } from '../../../data/labels'
 import type { CorpusId } from '../types'
@@ -38,7 +37,7 @@ function chunkPreservingOrder(
   return waves
 }
 
-/** Question waves: main/module chunk 40; statement chunk 20. */
+/** Question waves: main chunk 40; statement chunk 20. */
 export function questionWaves(): AuditWave[] {
   return [
     ...chunkSortedIds(
@@ -47,7 +46,6 @@ export function questionWaves(): AuditWave[] {
       'WQ-MAIN',
       'main',
     ),
-    ...chunkSortedIds(moduleQuestions.map((q) => q.id), 40, 'WQ-MOD', 'module'),
     ...chunkSortedIds(
       statementQuestions.map((q) => q.id),
       20,

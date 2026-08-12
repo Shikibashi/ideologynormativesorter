@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
 import { QUESTION_BANK_VERSION, questionsForTier, questions } from './data/effectiveQuestions'
@@ -487,6 +487,7 @@ describe('App', () => {
       expect(groups[0].textContent ?? '').toMatch(/axis profile|axis overlap/i)
       expect(groups[0].textContent ?? '').not.toMatch(/axis proximity\s+-?\d/i)
       expect(groups[0].querySelector('.label-evidence')?.textContent ?? '').toMatch(/answer coverage/i)
+      expect(groups[0].querySelector('.label-source-disclosure')?.textContent ?? '').toMatch(/background sources/i)
    })
 
    it('keeps the full label browser collapsed by default and searches label metadata', () => {
@@ -530,7 +531,7 @@ describe('App', () => {
       })
 
       expect(screen.getByRole('heading', { name: /marxian socialism \(non-leninist\)/i })).toBeInTheDocument()
-      expect(document.querySelectorAll('.full-label-browser .family-group')).toHaveLength(0)
+      expect(document.querySelectorAll('.full-label-browser .family-group')).toHaveLength(1)
 
       fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
          target: { value: 'Nyerereism' },
@@ -543,22 +544,22 @@ describe('App', () => {
          target: { value: 'Market Libertarianism' },
       })
 
-      expect(screen.getByRole('heading', { name: /market \/ right-libertarianism/i })).toBeInTheDocument()
-      expect(screen.getByText(/liberal · market libertarian · not ranked by the general quiz/i)).toBeInTheDocument()
+      expect(within(browser!).getByRole('heading', { name: /market \/ right-libertarianism/i })).toBeInTheDocument()
+      expect(within(browser!).getByText(/primary scored family/i)).toBeInTheDocument()
 
       fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
          target: { value: 'Black Political Nationalism' },
       })
 
-      expect(screen.getByRole('heading', { name: /^black nationalism$/i })).toBeInTheDocument()
-      expect(screen.getByText(/nationalist · black self determination · focused follow-up available/i)).toBeInTheDocument()
+      expect(within(browser!).getByRole('heading', { name: /^black nationalism$/i })).toBeInTheDocument()
+      expect(browser!.querySelector('.label-taxonomy-status')).toHaveTextContent(/provisional specialist/i)
 
       fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
          target: { value: 'Pan-African Unity' },
       })
 
-      expect(screen.getByRole('heading', { name: /^pan-africanism$/i })).toBeInTheDocument()
-      expect(screen.getByText(/anti colonial · pan african · focused follow-up available/i)).toBeInTheDocument()
+      expect(within(browser!).getByRole('heading', { name: /^pan-africanism$/i })).toBeInTheDocument()
+      expect(browser!.querySelector('.label-taxonomy-status')).toHaveTextContent(/provisional specialist/i)
    })
 
    it('renders a compact per-layer Philosophy Explorer with affected axes', () => {

@@ -12,7 +12,6 @@ describe('WP0 freeze inventory', () => {
     expect(live.effectiveRetainedQuestionCount).toBe(
       WP0_FREEZE.effectiveRetainedQuestionCount,
     )
-    expect(live.moduleQuestionCount).toBe(WP0_FREEZE.moduleQuestionCount)
     expect(live.statementQuestionCount).toBe(WP0_FREEZE.statementQuestionCount)
     expect(live.labelCount).toBe(WP0_FREEZE.labelCount)
     expect(live.axisCount).toBe(WP0_FREEZE.axisCount)
@@ -26,9 +25,6 @@ describe('WP0 freeze inventory', () => {
     expect(live.effectiveActiveContributionCardinality).toBe(
       WP0_FREEZE.effectiveActiveContributionCardinality,
     )
-    expect(live.moduleContributionCardinality).toBe(
-      WP0_FREEZE.moduleContributionCardinality,
-    )
     expect(live.statementContributionCardinality).toBe(
       WP0_FREEZE.statementContributionCardinality,
     )
@@ -40,7 +36,6 @@ describe('WP0 freeze inventory', () => {
     const snapshots = generateFullInventorySnapshots()
     const sets = new Set(snapshots.map((s) => `${s.inventorySet}:${s.corpus}`))
     expect(sets.has('raw:main')).toBe(true)
-    expect(sets.has('raw:module')).toBe(true)
     expect(sets.has('raw:statement')).toBe(true)
     expect(sets.has('raw:catalog')).toBe(true)
     expect(sets.has('effective-active:main')).toBe(true)

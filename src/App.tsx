@@ -14,7 +14,7 @@ import { SiteShell, type ShellContext } from './components/SiteShell'
 import { axes } from './data/axes'
 import { domains } from './data/domains'
 import { QUESTION_BANK_VERSION, questionById, questions, questionsForTier } from './data/effectiveQuestions'
-import { primaryScoringLabels, publicCatalogLabels, researchIdentityLabels } from './data/labelTaxonomy'
+import { modifierScoringLabels, primaryScoringLabels, publicCatalogLabels, researchIdentityLabels } from './data/labelTaxonomy'
 import {
    buildResearchSubmission,
    buildSpecialistDispositionSubmission,
@@ -193,11 +193,11 @@ function App() {
    const [answers, setAnswers] = useState<AnswerMap>(initialAnswers)
    const [result, setResult] = useState<ResultProfile | null>(() =>
       sharedAnswers || pendingCoreSubmission
-         ? buildResultProfile(questions, initialAnswers, axes, primaryScoringLabels)
+         ? buildResultProfile(questions, initialAnswers, axes, primaryScoringLabels, modifierScoringLabels)
          : null,
    )
    const [compareResult, setCompareResult] = useState<ResultProfile | null>(() =>
-      compareAnswers ? buildResultProfile(questions, compareAnswers, axes, primaryScoringLabels) : null,
+      compareAnswers ? buildResultProfile(questions, compareAnswers, axes, primaryScoringLabels, modifierScoringLabels) : null,
    )
    const [resuming, setResuming] = useState(false)
 
@@ -224,9 +224,9 @@ function App() {
          if (nextSharedResult.answers) {
             const nextCompareAnswers = readCompareAnswers(shareMeta)
             setAnswers(nextSharedResult.answers)
-            setResult(buildResultProfile(questions, nextSharedResult.answers, axes, primaryScoringLabels))
+            setResult(buildResultProfile(questions, nextSharedResult.answers, axes, primaryScoringLabels, modifierScoringLabels))
             setCompareResult(nextCompareAnswers
-               ? buildResultProfile(questions, nextCompareAnswers, axes, primaryScoringLabels)
+               ? buildResultProfile(questions, nextCompareAnswers, axes, primaryScoringLabels, modifierScoringLabels)
                : null)
             setLoadError(null)
             setStage('results')
@@ -390,7 +390,7 @@ function App() {
       setWasResumed(true)
       setResuming(!saved.completedAt)
       if (saved.completedAt) {
-         setResult(buildResultProfile(questions, saved.answers, axes, primaryScoringLabels))
+         setResult(buildResultProfile(questions, saved.answers, axes, primaryScoringLabels, modifierScoringLabels))
          return 'completed'
       }
       return 'in-progress'
@@ -472,7 +472,7 @@ function App() {
       }
       setAnswers(newAnswers)
       setQuizCompletedAt(completedAt)
-      setResult(buildResultProfile(questions, newAnswers, axes, primaryScoringLabels))
+      setResult(buildResultProfile(questions, newAnswers, axes, primaryScoringLabels, modifierScoringLabels))
       setStage(researchEnabled && researchConsent ? 'self-identification' : 'results')
       announceStatus('Assessment complete. Results are ready.')
    }
@@ -491,6 +491,7 @@ function App() {
          consent: researchConsent,
          identity,
          predictedLabelIds: result.nearestLabels.slice(0, 5).map((match) => String(match.labelId)),
+         predictedModifierIds: (result.modifierMatches ?? []).slice(0, 5).map((match) => String(match.labelId)),
          specialistAssignment: specialistAssignment ?? undefined,
          answers,
          questions: activeQuestions,
@@ -681,7 +682,7 @@ function App() {
    }
 
    function handleCompare(newCompareAnswers: AnswerMap): void {
-      setCompareResult(buildResultProfile(questions, newCompareAnswers, axes, primaryScoringLabels))
+      setCompareResult(buildResultProfile(questions, newCompareAnswers, axes, primaryScoringLabels, modifierScoringLabels))
    }
 
    function handleClearSavedProgress(): void {

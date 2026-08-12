@@ -1,7 +1,6 @@
 import { questionWaves, labelWaves, type AuditWave } from './partition'
 import {
   responseContributions,
-  moduleContributions,
   statementContributions,
 } from '../manifests/responseContributions'
 import { dossiers } from '../dossiers/index'
@@ -26,7 +25,6 @@ export interface WaveStatusRecord {
 
 function poolForWave(wave: AuditWave) {
   if (wave.corpus === 'main') return responseContributions
-  if (wave.corpus === 'module') return moduleContributions
   if (wave.corpus === 'statement') return statementContributions
   return []
 }
@@ -67,9 +65,7 @@ function questionWaveStatus(wave: AuditWave): WaveStatusRecord {
     notes:
       wave.corpus === 'main'
         ? `Main wave; overlay issues tracked for ${[...knownMainIssues].filter((id) => wave.subjectIds.includes(id)).length} subjects in wave.`
-        : wave.corpus === 'module'
-          ? 'Module wave: axis-derived rationales complete; overlay remains v0 (no high-confidence corrections).'
-          : 'Statement wave: shared with main bank ids; rewrite set handled via main semanticAudit.',
+        : 'Statement wave: shared with main bank ids; rewrite set handled via main semanticAudit.',
   }
 }
 

@@ -29,7 +29,7 @@ interface ResultsScreenProps {
 }
 
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
-const RESULT_SECTION_IDS = new Set(['profile', 'layers', 'gaps', 'divergences', 'labels'])
+const RESULT_SECTION_IDS = new Set(['profile', 'layers', 'gaps', 'divergences', 'labels', 'modifiers'])
 const NEAREST_LABEL_PREVIEW_COUNT = 5
 
 function activeResultSection(hash: string): string {
@@ -95,6 +95,14 @@ const LAYER_LABELS: Record<Layer, string> = {
    prescriptive: 'Prescriptive',
 }
 
+const SOURCE_SCOPE_LABELS = {
+   definition: 'Definition',
+   normative: 'Normative interpretation',
+   descriptive: 'Descriptive interpretation',
+   prescriptive: 'Prescriptive interpretation',
+   boundary: 'Boundary or distinction',
+} as const
+
 function groupLabels(labels: LabelWithInfluences[]): Record<string, Record<string, LabelWithInfluences[]>> {
    const grouped: Record<string, Record<string, LabelWithInfluences[]>> = {}
    for (const label of labels) {
@@ -150,6 +158,16 @@ function relatedTraditionMatchesSearch(candidate: BrowserRelatedTradition, query
       .join(' ')
       .toLowerCase()
    return haystack.includes(query.toLowerCase())
+}
+
+function taxonomyStatusLabel(taxonomy?: LabelWithInfluences['taxonomy']): string | null {
+   if (!taxonomy) return null
+   if (taxonomy.measurementStatus === 'core-primary') return 'primary scored family'
+   if (taxonomy.measurementStatus === 'modifier-scored') return 'modifier scored independently'
+   if (taxonomy.measurementStatus === 'validated-specialist') return 'validated specialist follow-up'
+   if (taxonomy.measurementStatus === 'provisional-specialist') return 'provisional specialist'
+   if (taxonomy.measurementStatus === 'context-only') return 'context / institution'
+   return 'compatibility alias'
 }
 
 function focusedFeministTradition(candidate: FeministSpecialistCandidate): BrowserRelatedTradition {
@@ -209,6 +227,9 @@ function LabelCard({
    return (
       <article className="label-card">
          <h5>{label.name}</h5>
+         {taxonomyStatusLabel(label.taxonomy) && (
+            <p className="muted label-taxonomy-status">{taxonomyStatusLabel(label.taxonomy)}</p>
+         )}
          {match && (
             <p className="muted">
                {labelProximityLabel(match.fit)} · {comparisonStabilityLabel(match.uncertaintyBand)}
@@ -238,6 +259,27 @@ function LabelCard({
             <details className="label-term-guide">
                <summary>Term guide</summary>
                {getIdeologyTermDefinitions(label).map((definition) => <p key={definition}>{definition}</p>)}
+            </details>
+         )}
+         {label.sources && label.sources.length > 0 && (
+            <details className="label-source-disclosure">
+               <summary>Sources and scope</summary>
+               <p className="muted">
+                  These are public background sources for interpreting the label. They do not validate your score,
+                  the label centroid, or the claim that you hold the tradition.
+               </p>
+               <ul>
+                  {label.sources.map((source) => (
+                     <li key={source.sourceId}>
+                        <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
+                        {source.publisher && <span className="muted"> · {source.publisher}</span>}
+                        <div className="muted label-source-scope">
+                           Supports: {source.supports.map((scope) => SOURCE_SCOPE_LABELS[scope]).join(', ')}
+                        </div>
+                        <div className="muted">{source.note}</div>
+                     </li>
+                  ))}
+               </ul>
             </details>
          )}
          {label.philosophies && label.philosophies.length > 0 && (
@@ -280,6 +322,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
    const axisById = new Map(axes.map((a) => [a.id, a]))
    const domainById = new Map(domains.map((d) => [d.id, d]))
    const nearestById = new Map(result.nearestLabels.map((match) => [match.labelId, match]))
+   const modifierMatches = result.modifierMatches ?? []
    const philosophyRows = buildPhilosophyRows(result, labels, axes)
    const [copied, setCopied] = useState(false)
    const [copying, setCopying] = useState(false)
@@ -392,6 +435,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             <a href={resultSectionHref('layers')} aria-current={activeSection === '#layers' ? 'location' : undefined}><span className="navigator-marker" aria-hidden="true">›</span>Layer scores</a>
             {result.gaps.length > 0 && <a href={resultSectionHref('gaps')} aria-current={activeSection === '#gaps' ? 'location' : undefined}><span className="navigator-marker" aria-hidden="true">›</span>Ideal vs. non-ideal</a>}
             {result.divergences && result.divergences.length > 0 && <a href={resultSectionHref('divergences')} aria-current={activeSection === '#divergences' ? 'location' : undefined}><span className="navigator-marker" aria-hidden="true">›</span>Divergences</a>}
+            {modifierMatches.length > 0 && <a href={resultSectionHref('modifiers')} aria-current={activeSection === '#modifiers' ? 'location' : undefined}><span className="navigator-marker" aria-hidden="true">›</span>Orientations</a>}
             <a href={resultSectionHref('labels')} aria-current={activeSection === '#labels' ? 'location' : undefined}><span className="navigator-marker" aria-hidden="true">›</span>Nearest labels</a>
             <a href={`${import.meta.env.BASE_URL}?view=methodology`}><span className="navigator-marker" aria-hidden="true">›</span>Methodology</a>
          </nav>
@@ -544,6 +588,30 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
             </div>
          )}
 
+         {modifierMatches.length > 0 && (
+            <div id="modifiers" className="result-block results-inspector-block">
+               <h2>Orientations and modifiers</h2>
+               <p className="muted">
+                  These are independently measured cross-cutting tendencies, not primary ideology claims. A modifier can coexist with several different political families.
+               </p>
+               <div className="label-card-list">
+                  {modifierMatches.map((match) => {
+                     const label = labels.find((candidate) => candidate.id === match.labelId)
+                     return label ? (
+                        <LabelCard
+                           key={match.labelId}
+                           label={label}
+                           match={match}
+                           labelReliability={result.labelReliabilities?.[label.id]}
+                           axisReliabilities={result.axisReliabilities}
+                           axisById={axisById}
+                        />
+                     ) : null
+                  })}
+               </div>
+            </div>
+         )}
+
          {compareResult && (
             <div className="result-block compare-banner">
                <h2>Comparison view</h2>
@@ -608,8 +676,9 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                <h2>Browse the public label catalog</h2>
             </summary>
             <p className="muted">
-               Search primary scored labels, specialist labels, and cross-cutting modifiers by name, family,
-               subfamily, aliases, or philosophy. Related traditions are listed separately and are not general-quiz matches.
+               Search primary scored labels, specialist labels, cross-cutting modifiers, and context or institutional
+               entries by name, family, subfamily, aliases, or philosophy. Related traditions are listed separately and
+               are not general-quiz matches.
             </p>
             <input
                type="search"

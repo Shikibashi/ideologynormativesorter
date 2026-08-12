@@ -1,6 +1,9 @@
 import type { Axis, AxisId, IdeologyLabel, LabelConflationFlag, LabelMatch, Layer, ScoreBreakdown } from '../types'
 
 const NEAREST_LABEL_COUNT = 20
+export const MODIFIER_MATCH_LIMIT = 5
+export const MODIFIER_FIT_THRESHOLD = 0.65
+export const MODIFIER_EVIDENCE_THRESHOLD = 0.4
 /** A layer must agree at least this well to count as the "matched" layer. */
 const MATCH_FLOOR = 0.7
 /** Spread between best and worst layer agreement that counts as conflation. */
@@ -116,6 +119,19 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
    }
 
    return top
+}
+
+/**
+ * Returns only independently supported cross-cutting orientations. Modifiers
+ * never compete with primary labels and weak or high-uncertainty matches are
+ * intentionally omitted from the public result.
+ */
+export function computeModifierMatches(breakdown: ScoreBreakdown, labels: IdeologyLabel[]): LabelMatch[] {
+   return computeLabelMatches(breakdown, labels)
+      .filter((match) => match.fit >= MODIFIER_FIT_THRESHOLD)
+      .filter((match) => match.evidenceStrength >= MODIFIER_EVIDENCE_THRESHOLD)
+      .filter((match) => match.uncertaintyBand !== 'high')
+      .slice(0, MODIFIER_MATCH_LIMIT)
 }
 
 function computeLabelMatchReasoning(

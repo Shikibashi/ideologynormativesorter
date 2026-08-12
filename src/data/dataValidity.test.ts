@@ -4,10 +4,8 @@ import { axes, axisById } from './axes'
 import { domainById, domains } from './domains'
 import { highPriorityLabelPrecisionFollowUps, labelPrecisionFollowUpById, labelPrecisionFollowUps } from './labelPrecisionFollowUps'
 import { labelById, labels } from './labels'
-import { allQuestions, questionById, questions, questionsForTier } from './questions'
-import { moduleQuestions } from './moduleQuestions'
+import { allQuestions, questions, questionsForTier } from './questions'
 
-const TIERS: QuizTier[] = ['blitz', 'quick', 'moderate', 'extensive']
 const FULL_COVERAGE_TIERS: QuizTier[] = ['quick', 'moderate', 'extensive']
 
 const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
@@ -170,21 +168,6 @@ describe('quiz tiers', () => {
       for (const id of moderate) expect(extensive.has(id)).toBe(true)
    })
 
-   it('keeps module questions out of ordinary tier pools but discoverable explicitly', () => {
-      const tierIds = new Set(TIERS.flatMap((tier) => questionsForTier(tier).map((q) => q.id)))
-
-      for (const question of moduleQuestions) {
-         expect(tierIds.has(question.id), `${question.id} leaked into a tier pool`).toBe(false)
-         expect(allQuestions.some((q) => q.id === question.id), `${question.id} missing from allQuestions`).toBe(true)
-         expect(questionById.get(question.id), `${question.id} missing from questionById`).toBe(question)
-      }
-   })
-
-   it('documents that module questions are data-only until a registry exists', () => {
-      expect(moduleQuestions.length).toBeGreaterThan(0)
-      expect(moduleQuestions.every((q) => typeof q.module === 'string' && q.module.length > 0)).toBe(true)
-   })
-
    it('every domain has at least one item per layer in every full-coverage tier', () => {
       for (const tier of FULL_COVERAGE_TIERS) {
          const pool = questionsForTier(tier)
@@ -283,7 +266,7 @@ describe('labels', () => {
          ['techno-anarchism', 'Techno-Anarchist / Crypto-Anarchist'],
          ['voluntaryism', 'Voluntaryism'],
          ['corporatism', 'State Corporatism'],
-         ['fourth-theory', 'Fourth Theory'],
+         ['fourth-theory', 'Dugin’s Fourth Political Theory'],
          ['national-bolshevism', 'National Bolshevism'],
          ['christian-reconstructionism', 'Christian Reconstructionism'],
          ['dataism', 'Dataism'],

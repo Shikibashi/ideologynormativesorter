@@ -4,7 +4,6 @@ import {
   coreQuestions as effectiveRetainedQuestions,
   QUESTION_BANK_VERSION as EFFECTIVE_BANK_VERSION,
 } from '../../../data/effectiveQuestions'
-import { moduleQuestions } from '../../../data/moduleQuestions'
 import { statementQuestions } from '../../../data/statementQuestions'
 import { axes } from '../../../data/axes'
 import { labels } from '../../../data/labels'
@@ -27,17 +26,15 @@ export const WP0_FREEZE = {
   rawMainQuestionCount: 443,
   effectiveActiveQuestionCount: 285,
   effectiveRetainedQuestionCount: 443,
-  moduleQuestionCount: 123,
   statementQuestionCount: 17,
-  labelCount: 118,
+  labelCount: 126,
   axisCount: 26,
   familyCount: 19,
-  subfamilyPairCount: 85,
+  subfamilyPairCount: 92,
   overlayCorrectionCount: 101,
   needsRewriteCount: 80,
   rawMainContributionCardinality: 9591,
   effectiveActiveContributionCardinality: 5353,
-  moduleContributionCardinality: 1481,
   statementContributionCardinality: 120,
   families: [
     'anarchist',
@@ -79,7 +76,6 @@ export function liveFreezeMetrics() {
     rawMainQuestionCount: rawMainQuestions.length,
     effectiveActiveQuestionCount: effectiveActiveQuestions.length,
     effectiveRetainedQuestionCount: effectiveRetainedQuestions.length,
-    moduleQuestionCount: moduleQuestions.length,
     statementQuestionCount: statementQuestions.length,
     labelCount: labels.length,
     axisCount: axes.length,
@@ -91,7 +87,6 @@ export function liveFreezeMetrics() {
     effectiveActiveContributionCardinality: expectedContributionCardinality(
       effectiveActiveQuestions,
     ),
-    moduleContributionCardinality: expectedContributionCardinality(moduleQuestions),
     statementContributionCardinality: expectedContributionCardinality(statementQuestions),
     families,
     versions: {

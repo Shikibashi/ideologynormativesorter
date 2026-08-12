@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { questionWaves, labelWaves, allWaves } from './partition'
 import { questions as effectiveActiveQuestions } from '../../../data/effectiveQuestions'
-import { moduleQuestions } from '../../../data/moduleQuestions'
 import { statementQuestions } from '../../../data/statementQuestions'
 import { labels } from '../../../data/labels'
 import { WP0_FREEZE } from '../inventory/freeze'
@@ -16,14 +15,6 @@ describe('wave partition', () => {
     )
     expect(main.flatMap((w) => w.subjectIds).sort()).toEqual(
       effectiveActiveQuestions.map((q) => q.id).sort(),
-    )
-  })
-
-  it('partitions module into chunks of 40', () => {
-    const mod = questionWaves().filter((w) => w.corpus === 'module')
-    expect(mod.length).toBe(4)
-    expect(mod.flatMap((w) => w.subjectIds).sort()).toEqual(
-      moduleQuestions.map((q) => q.id).sort(),
     )
   })
 

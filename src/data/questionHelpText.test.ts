@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest'
 import type { Question } from '../types'
 import { axes } from './axes'
 import { questions as effectiveQuestions } from './effectiveQuestions'
-import { moduleQuestions } from './moduleQuestions'
 import { getQuestionHelpText, getSalienceHelpText } from './questionHelpText'
 import { questions } from './questions'
 
@@ -22,7 +21,7 @@ const baseQuestion: Question = {
 }
 
 describe('question help text', () => {
-  const allQuestionItems = [...questions, ...moduleQuestions]
+  const allQuestionItems = questions
 
   it('defines prompt terms and explains the measurement in plain language without echoing the prompt', () => {
     const helpText = getQuestionHelpText(baseQuestion)
@@ -87,17 +86,6 @@ describe('question help text', () => {
 
   it('generates concise customer-facing help text for every core questionnaire item', () => {
     for (const question of questions) {
-      const helpText = getQuestionHelpText(question)
-
-      expect(helpText, `${question.id} is missing a definition`).toMatch(/^“.+”/)
-      expect(helpText, `${question.id} is missing a measurement sentence`).toContain('This question measures')
-      expect(helpText, `${question.id} should not echo the question prompt`).not.toContain(stripTerminalPunctuation(question.prompt).slice(0, 48).toLowerCase())
-      expect(helpText.length, `${question.id} help text is too long`).toBeLessThanOrEqual(650)
-    }
-  })
-
-  it('also generates customer-facing help text for module questionnaire items', () => {
-    for (const question of moduleQuestions) {
       const helpText = getQuestionHelpText(question)
 
       expect(helpText, `${question.id} is missing a definition`).toMatch(/^“.+”/)
@@ -364,7 +352,7 @@ describe('question help text', () => {
   })
 
   it('keeps context-specific ordinary words from triggering unrelated specialist definitions', () => {
-    const byId = new Map([...questions, ...moduleQuestions].map((question) => [question.id, question]))
+    const byId = new Map(questions.map((question) => [question.id, question]))
 
     expect(getQuestionHelpText(byId.get('q0150')!)).not.toContain('“Political legitimacy”')
     expect(getQuestionHelpText(byId.get('q0152')!)).toContain('“Artistic patronage”')

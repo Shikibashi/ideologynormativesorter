@@ -1,4 +1,3 @@
-import { moduleQuestions } from './moduleQuestions'
 import type { Question } from '../types'
 import { statementQuestions } from './statementQuestions'
 
@@ -6433,7 +6432,7 @@ export const coreQuestions: Question[] = [...baseQuestions, ...statementQuestion
 
 export const questions: Question[] = coreQuestions
 
-export const allQuestions: Question[] = [...coreQuestions, ...moduleQuestions]
+export const allQuestions: Question[] = [...coreQuestions]
 
 export const questionById = new Map(allQuestions.map((q) => [q.id, q]))
 

@@ -1,4 +1,11 @@
 import type { Question } from '../types'
+import {
+  profileDistanceConstructIds,
+  profileEvidence,
+  summarizeSpecialistEvidence,
+  type SpecialistEvidenceSummary,
+  type SpecialistProfileEvidence,
+} from './specialistEvidence'
 
 export const IDENTITY_SOVEREIGNTY_MODULE_ID = 'identity-sovereignty-module'
 
@@ -10,7 +17,8 @@ export type IdentitySovereigntyConstructId =
   | 'community-autonomy'
   | 'territorial-separatism'
   | 'decolonial-land-sovereignty'
-  | 'recognition-vs-refusal'
+  | 'institutional-recognition'
+  | 'autonomous-resurgence'
   | 'pan-african-solidarity'
 
 export interface IdentitySovereigntyModuleItem {
@@ -41,6 +49,7 @@ export interface IdentitySovereigntyTraditionMatch {
   variant: string
   distance: number
   fit: number
+  evidence: SpecialistProfileEvidence
 }
 
 export const IDENTITY_SOVEREIGNTY_CONSTRUCT_IDS: readonly IdentitySovereigntyConstructId[] = [
@@ -51,7 +60,8 @@ export const IDENTITY_SOVEREIGNTY_CONSTRUCT_IDS: readonly IdentitySovereigntyCon
   'community-autonomy',
   'territorial-separatism',
   'decolonial-land-sovereignty',
-  'recognition-vs-refusal',
+  'institutional-recognition',
+  'autonomous-resurgence',
   'pan-african-solidarity',
 ]
 
@@ -141,7 +151,7 @@ export const identitySovereigntyModuleItems: IdentitySovereigntyModuleItem[] = [
     question: {
       id: 'fm-id-5',
       prompt:
-        'Equal citizenship can require group-differentiated accommodations such as language rights, exemptions, or guaranteed representation for minority communities.',
+        'Equal citizenship can require public recognition and accommodation of minority languages and cultural practices.',
       layer: 'normative',
       ...raceQuestionFields,
       axisWeights: [
@@ -150,6 +160,63 @@ export const identitySovereigntyModuleItems: IdentitySovereigntyModuleItem[] = [
       ],
     },
     constructWeights: { 'pluralist-accommodation': 1 },
+  },
+  {
+    question: {
+      id: 'fm-id-19',
+      prompt:
+        'Equal citizenship can require narrowly tailored conscience or religious exemptions when uniform rules would burden a minority practice without protecting others from harm.',
+      layer: 'normative',
+      ...raceQuestionFields,
+      axisWeights: [
+        { axisId: 'anti-domination', weight: 0.5 },
+        { axisId: 'equality-theory', weight: 0.3 },
+      ],
+    },
+    constructWeights: { 'pluralist-accommodation': 1 },
+  },
+  {
+    question: {
+      id: 'fm-id-20',
+      prompt:
+        'In some institutions, guaranteed or reserved political representation for minority communities can be justified as a condition of equal citizenship.',
+      layer: 'normative',
+      ...raceQuestionFields,
+      axisWeights: [
+        { axisId: 'anti-domination', weight: 0.6 },
+        { axisId: 'equality-theory', weight: 0.3 },
+      ],
+    },
+    constructWeights: { 'pluralist-accommodation': 1 },
+  },
+  {
+    question: {
+      id: 'fm-id-21',
+      prompt:
+        'Treaty implementation and formal recognition by state institutions can materially strengthen the durability of Indigenous political authority.',
+      layer: 'normative',
+      ...nationalQuestionFields,
+      axisWeights: [
+        { axisId: 'anti-domination', weight: 0.4 },
+        { axisId: 'reform-vs-revolution', weight: -0.3 },
+      ],
+    },
+    constructWeights: { 'institutional-recognition': 1 },
+  },
+  {
+    question: {
+      id: 'fm-id-22',
+      prompt:
+        'Indigenous political renewal should prioritize rebuilding autonomous legal and political institutions even when state recognition is delayed or contested.',
+      layer: 'prescriptive',
+      ...nationalQuestionFields,
+      priorityPrompt: 'How important is this institutional strategy to your overall outlook?',
+      axisWeights: [
+        { axisId: 'electoralism-vs-direct-action', weight: -0.4 },
+        { axisId: 'state-action-vs-exit', weight: -0.4 },
+      ],
+    },
+    constructWeights: { 'autonomous-resurgence': 1 },
   },
   {
     question: {
@@ -300,7 +367,7 @@ export const identitySovereigntyModuleItems: IdentitySovereigntyModuleItem[] = [
       ],
     },
     constructWeights: {
-      'recognition-vs-refusal': -1,
+      'institutional-recognition': 1,
       'minority-self-government': 0.5,
     },
   },
@@ -319,7 +386,7 @@ export const identitySovereigntyModuleItems: IdentitySovereigntyModuleItem[] = [
       ],
     },
     constructWeights: {
-      'recognition-vs-refusal': 1,
+      'autonomous-resurgence': 1,
       'decolonial-land-sovereignty': 0.5,
     },
   },
@@ -387,7 +454,7 @@ export const identitySovereigntyTraditionProfiles: IdentitySovereigntyTraditionP
   },
   {
     id: 'black-nationalism',
-    name: 'Black Nationalism',
+      name: 'Black community-autonomy orientation',
     status: 'candidate-specialist',
     variant: 'community nationalism',
     description:
@@ -401,7 +468,7 @@ export const identitySovereigntyTraditionProfiles: IdentitySovereigntyTraditionP
   },
   {
     id: 'black-nationalism',
-    name: 'Black Nationalism',
+      name: 'Black separatist self-determination orientation',
     status: 'candidate-specialist',
     variant: 'separatist nationalism',
     description:
@@ -415,7 +482,7 @@ export const identitySovereigntyTraditionProfiles: IdentitySovereigntyTraditionP
   },
   {
     id: 'indigenism',
-    name: 'Indigenous Sovereignty / Indigenism',
+    name: 'Indigenous sovereignty and resurgence',
     status: 'existing-specialist',
     variant: 'institutional self-government',
     description:
@@ -423,13 +490,13 @@ export const identitySovereigntyTraditionProfiles: IdentitySovereigntyTraditionP
     constructSignals: {
       'minority-self-government': 0.9,
       'decolonial-land-sovereignty': 0.85,
-      'recognition-vs-refusal': -0.55,
+      'institutional-recognition': 0.55,
       'pluralist-accommodation': 0.4,
     },
   },
   {
     id: 'indigenism',
-    name: 'Indigenous Sovereignty / Indigenism',
+    name: 'Indigenous sovereignty and resurgence',
     status: 'existing-specialist',
     variant: 'resurgence and refusal',
     description:
@@ -437,13 +504,13 @@ export const identitySovereigntyTraditionProfiles: IdentitySovereigntyTraditionP
     constructSignals: {
       'minority-self-government': 0.8,
       'decolonial-land-sovereignty': 0.95,
-      'recognition-vs-refusal': 0.95,
+      'autonomous-resurgence': 0.95,
       'community-autonomy': 0.4,
     },
   },
   {
     id: 'pan-africanism',
-    name: 'Pan-Africanism',
+    name: 'Pan-African solidarity and unity',
     status: 'candidate-role-review',
     variant: 'transnational solidarity and unity',
     description:
@@ -487,11 +554,21 @@ export function scoreIdentitySovereigntyConstructs(
   ) as Record<IdentitySovereigntyConstructId, number>
 }
 
+export function identitySovereigntySpecialistEvidence(
+  answers: IdentitySovereigntyAnswers,
+): SpecialistEvidenceSummary {
+  return summarizeSpecialistEvidence(identitySovereigntyModuleItems, answers, IDENTITY_SOVEREIGNTY_CONSTRUCT_IDS)
+}
+
 export function identitySovereigntySignalDistance(
   profile: Record<IdentitySovereigntyConstructId, number>,
   signals: Partial<Record<IdentitySovereigntyConstructId, number>>,
+  constructIds?: readonly IdentitySovereigntyConstructId[],
 ): number {
-  const entries = Object.entries(signals) as Array<[IdentitySovereigntyConstructId, number]>
+  const entries = (constructIds
+    ? constructIds.map((constructId) => [constructId, signals[constructId]] as const)
+    : Object.entries(signals) as Array<[IdentitySovereigntyConstructId, number]>)
+    .filter((entry): entry is [IdentitySovereigntyConstructId, number] => typeof entry[1] === 'number')
   if (entries.length === 0) return 2
 
   const meanSquared = entries.reduce((sum, [constructId, target]) => {
@@ -511,17 +588,27 @@ export function scoreIdentitySovereigntyTraditions(
   answers: IdentitySovereigntyAnswers,
 ): IdentitySovereigntyTraditionMatch[] {
   const profile = scoreIdentitySovereigntyConstructs(answers)
+  const evidence = identitySovereigntySpecialistEvidence(answers)
   const bestById = new Map<string, IdentitySovereigntyTraditionMatch>()
 
   for (const tradition of identitySovereigntyTraditionProfiles) {
-    const distance = identitySovereigntySignalDistance(profile, tradition.constructSignals)
+    const candidateEvidence = profileEvidence(evidence, tradition.constructSignals)
+    const distanceConstructIds = profileDistanceConstructIds(evidence, tradition.constructSignals)
+    const distance = candidateEvidence.insufficientEvidence
+      ? 2
+      : identitySovereigntySignalDistance(
+          profile,
+          tradition.constructSignals,
+          distanceConstructIds as IdentitySovereigntyConstructId[],
+        )
     const match: IdentitySovereigntyTraditionMatch = {
       id: tradition.id,
       name: tradition.name,
       status: tradition.status,
       variant: tradition.variant,
       distance,
-      fit: Math.max(0, Math.min(1, 1 - distance / 2)),
+      fit: candidateEvidence.insufficientEvidence ? 0 : Math.max(0, Math.min(1, 1 - distance / 2)),
+      evidence: candidateEvidence,
     }
 
     const existing = bestById.get(tradition.id)

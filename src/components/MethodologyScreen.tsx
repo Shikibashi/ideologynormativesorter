@@ -31,15 +31,25 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
             Labels are secondary outputs. The primary output is your layered profile and divergences.
          </p>
          <p>
+            The label catalog now separates broad primary families, independently measured cross-cutting modifiers,
+            context or institutional forms, and narrower specialist traditions. Provisional specialists remain
+            browsable but are not presented as ordinary quiz matches until a construct-matched follow-up exists.
+            Modifier matches are capped at five and require sufficient fit and answer coverage.
+            The opt-in specialist roster currently contains anarchist, green, socialist, conservative, religious-national,
+            technology-governance, and monarchist/municipal experimental waves; assignment alone does not validate a
+            specialist label or promote it into ordinary scoring.
+         </p>
+         <p>
             Label comparisons are qualitative summaries of profile distance on the test's own axes. They are not probabilities, diagnoses, accuracy rates, or validated estimates of ideological identity.
          </p>
          <p>
             Consumer label explainers use curated tradition notes. The site does not turn a synthetic comparison coordinate into a claim that every member of a tradition must hold that doctrine.
          </p>
          <p>
-            Label descriptions are editorial summaries of contested traditions. Where a related-tradition entry has
-            configured source links, the label browser exposes them. The browser does not yet provide claim-level citations
-            for every scored label, so those summaries should not be treated as definitive definitions.
+            Label descriptions are editorial summaries of contested traditions. Scored label cards now expose curated
+            definition, boundary, and—where reviewed—layer-scoped background sources. Those sources explain the
+            tradition and its distinctions; they do not validate numeric centroids, respondent identity, or every claim
+            associated with a historical movement.
          </p>
          <p>
             Answer-coverage descriptions reflect whether enough relevant questions were answered. They do not measure certainty or

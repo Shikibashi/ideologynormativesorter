@@ -7,6 +7,12 @@ import {
   type PresentedResponseOption,
 } from '../questionPresentation'
 import { RESEARCH_FORM_VERSION, researchFormFingerprint } from './forms'
+import {
+  canonicalLabelId,
+  modifierScoringLabels,
+  primaryScoringLabels,
+  TAXONOMY_VERSION,
+} from '../data/labelTaxonomy'
 import type {
   SpecialistCriterionResponse,
   SpecialistMatch,
@@ -15,8 +21,8 @@ import type {
   SpecialistOutcome,
 } from '../specialist'
 
-export const RESEARCH_SCHEMA_VERSION = '2026-08-v7'
-export const RESEARCH_CONSENT_VERSION = '2026-08-12-v7'
+export const RESEARCH_SCHEMA_VERSION = '2026-08-v10'
+export const RESEARCH_CONSENT_VERSION = '2026-08-12-v8'
 export const RESEARCH_QUALITY_RULE_VERSION = 'data-quality-v2'
 export const PUBLIC_RESEARCH_ENTRYPOINT = '?contribute=1&collection=community-2026'
 const PARTICIPANT_STORAGE_KEY = 'political-judgment-research-participant-v1'
@@ -115,9 +121,13 @@ export interface CoreResearchSubmission extends ResearchRecordBase {
   sampling: ResearchSamplingMetadata
   bankVersion: string
   scoringVersion: string
+  taxonomyVersion: string
+  primaryLabelIds: string[]
+  modifierLabelIds: string[]
   tier: QuizTier
   identity: ResearchIdentity
   predictedLabelIds: string[]
+  predictedModifierIds: string[]
   specialistAssignment?: SpecialistModuleAssignment
   answers: AnswerMap
   itemMap: ResearchItemSnapshot[]
@@ -136,6 +146,7 @@ export interface SpecialistResearchSubmission extends ResearchRecordBase {
   itemMap: ResearchItemSnapshot[]
   constructScores: Record<string, number>
   matches: SpecialistMatch[]
+  evidence?: SpecialistOutcome['evidence']
 }
 
 export interface SpecialistDispositionSubmission extends ResearchRecordBase {
@@ -277,6 +288,7 @@ export function buildResearchSubmission(input: {
   consent: ResearchConsent
   identity: ResearchIdentity
   predictedLabelIds: string[]
+  predictedModifierIds?: string[]
   specialistAssignment?: SpecialistModuleAssignment
   answers: AnswerMap
   questions: Question[]
@@ -305,15 +317,20 @@ export function buildResearchSubmission(input: {
     presentationOrder: input.questions.map((question) => String(question.id)),
     bankVersion: input.bankVersion,
     scoringVersion: input.scoringVersion,
+    taxonomyVersion: TAXONOMY_VERSION,
+    primaryLabelIds: primaryScoringLabels.map((label) => label.id),
+    modifierLabelIds: modifierScoringLabels.map((label) => label.id),
     tier: input.tier,
     consent: input.consent,
     locale: normalizeLocale(input.locale),
     qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
     identity: {
       ...input.identity,
+      selfLabelId: input.identity.selfLabelId ? canonicalLabelId(input.identity.selfLabelId) : undefined,
       selfReportedIdeologies: normalizeSelfReportedIdeologies(input.identity.selfReportedIdeologies),
     },
-    predictedLabelIds: input.predictedLabelIds.slice(0, 5),
+    predictedLabelIds: input.predictedLabelIds.slice(0, 5).map(canonicalLabelId),
+    predictedModifierIds: (input.predictedModifierIds ?? []).slice(0, 5),
     specialistAssignment: input.specialistAssignment,
     form: {
       algorithmVersion: RESEARCH_FORM_VERSION,
@@ -380,6 +397,7 @@ export function buildSpecialistResearchSubmission(input: {
     itemMap: buildItemMap(input.questions, input.constructWeightsByQuestionId),
     constructScores: input.outcome.constructScores,
     matches: input.outcome.matches,
+    evidence: input.outcome.evidence,
   }
 }
 

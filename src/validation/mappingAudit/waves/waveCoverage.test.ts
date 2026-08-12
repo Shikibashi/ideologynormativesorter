@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest'
 import { questionWaves } from './partition'
 import {
   responseContributions,
-  moduleContributions,
   statementContributions,
 } from '../manifests/responseContributions'
 import { findingsForSubject, findings } from '../findings/ledger'
@@ -15,9 +14,7 @@ function contributionsForWave(waveId: string) {
   const pool =
     wave.corpus === 'main'
       ? responseContributions
-      : wave.corpus === 'module'
-        ? moduleContributions
-        : statementContributions
+      : statementContributions
   return pool.filter((r) => wave.subjectIds.includes(r.questionId))
 }
 

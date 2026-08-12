@@ -3,9 +3,9 @@ import type { Axis, Domain, Question } from '../types'
 import { auditCorpus } from './audit'
 
 describe('auditCorpus', () => {
-  it('real corpus has no structural problems except the missing module registry research item', () => {
+  it('real corpus has no structural problems', () => {
     const report = auditCorpus()
-    expect(report.problems).toEqual(['module registry missing for module question validation'])
+    expect(report.problems).toEqual([])
     expect(report.totals.totalQuestions).toBeGreaterThan(30)
   })
 
@@ -27,12 +27,9 @@ describe('auditCorpus', () => {
 
     const report = auditCorpus({
       questions: [syntheticQuestion],
-      moduleQuestions: [],
       axes: syntheticAxes,
       domains: syntheticDomains,
       labels: [],
-      tierQuestions: [syntheticQuestion],
-      hasModuleRegistry: true,
     })
 
     expect(report.coverage.domains).toBe(1)

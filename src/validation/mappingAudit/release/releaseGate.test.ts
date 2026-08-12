@@ -50,7 +50,6 @@ describe('releaseGate', () => {
     expect(summary.totalFindings).toBeGreaterThan(100)
     expect(summary.totalContributions).toBe(
       WP0_FREEZE.effectiveActiveContributionCardinality
-        + WP0_FREEZE.moduleContributionCardinality
         + WP0_FREEZE.statementContributionCardinality,
     )
   })

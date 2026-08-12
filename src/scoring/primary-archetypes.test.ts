@@ -39,7 +39,7 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'market-anarchist-right-libertarian', targetLabelId: 'anarcho-capitalist', expectedFamily: 'liberal',
+    id: 'market-anarchist-right-libertarian', targetLabelId: 'market-right-libertarianism', expectedFamily: 'liberal',
     intent: {
       'authority-legitimacy': -1, 'property-legitimacy': 1, 'liberty-noninterference': 1, 'equality-theory': -0.5,
       'market-process-confidence': 1, 'state-capacity-confidence': -0.8, 'public-choice-skepticism': 1,
@@ -76,20 +76,12 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'degrowth-ecologist', targetLabelId: 'degrowth-green', expectedFamily: 'green',
+    id: 'degrowth-ecologist', targetLabelId: 'green-politics', expectedFamily: 'green',
     intent: {
       'human-nature-priority': 0.9, 'equality-theory': 0.7, 'market-process-confidence': -0.6,
       'coordination-optimism': -0.5, 'centralization-preference': -0.2, 'state-action-vs-exit': 0.5,
       'coercion-strategy': -0.5, 'regulation-vs-deregulation': 0.7, 'redistribution-vs-predistribution': 0.5,
       'militarism-pacifism': -0.7,
-    },
-  },
-  {
-    id: 'technocratic-governance', targetLabelId: 'technocratic-centralist', expectedFamily: 'technocratic',
-    intent: {
-      'authority-legitimacy': 0.6, 'state-capacity-confidence': 0.9, 'public-choice-skepticism': -0.4,
-      'democratic-confidence': -0.8, 'expert-confidence': 1, 'cultural-plasticity': 0.6,
-      'centralization-preference': 0.9, 'state-action-vs-exit': 0.8, 'regulation-vs-deregulation': 0.5,
     },
   },
   {
@@ -113,7 +105,7 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'mutualist-market-anarchist', targetLabelId: 'mutualist', expectedFamily: 'anarchist',
+    id: 'mutualist-market-anarchist', targetLabelId: 'social-anarchism', expectedFamily: 'anarchist',
     intent: {
       'authority-legitimacy': -0.9, 'property-legitimacy': -0.3, 'liberty-noninterference': 0.8,
       'equality-theory': 0.5, 'anti-domination': 1, 'market-process-confidence': 0.5,

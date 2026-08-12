@@ -1,13 +1,11 @@
 import type { AuditFinding } from '../types'
 import { seedFindingsFromSemanticAudit } from './seedFromSemanticAudit'
 import { seedSeparabilityFindings } from './seedSeparability'
-import { seedModuleFindings } from './seedModuleAudit'
 import { seedStatementFindings } from './seedStatementAudit'
 import { seedProvisionalReviews } from '../reviews/seedProvisional'
 
 const seeded = seedProvisionalReviews([
   ...seedFindingsFromSemanticAudit(),
-  ...seedModuleFindings(),
   ...seedStatementFindings(),
   ...seedSeparabilityFindings(),
 ])

@@ -1,9 +1,8 @@
 import type { Axis, AxisWeight, Domain, IdeologyLabel, Question } from '../types'
 import { axes } from './axes'
 import { domains } from './domains'
-import { questions, questionsForTier } from './effectiveQuestions'
+import { questions } from './effectiveQuestions'
 import { labels } from './labels'
-import { moduleQuestions } from './moduleQuestions'
 
 export interface AuditReport {
   totals: {
@@ -28,12 +27,9 @@ export interface AuditReport {
 
 interface AuditInput {
   questions: Question[]
-  moduleQuestions: Question[]
   axes: Axis[]
   domains: Domain[]
   labels: IdeologyLabel[]
-  tierQuestions: Question[]
-  hasModuleRegistry: boolean
 }
 
 function isFiniteUnit(value: number): boolean {
@@ -68,12 +64,9 @@ function auditAxisWeights(
 export function auditCorpus(input?: Partial<AuditInput>): AuditReport {
   const auditInput: AuditInput = {
     questions,
-    moduleQuestions,
     axes,
     domains,
     labels,
-    tierQuestions: ['blitz', 'quick', 'moderate', 'extensive'].flatMap((tier) => questionsForTier(tier as Question['tier'])),
-    hasModuleRegistry: false,
     ...input,
   }
   const activeQuestions = auditInput.questions.filter(q => q.active !== false)
@@ -130,15 +123,6 @@ export function auditCorpus(input?: Partial<AuditInput>): AuditReport {
     for (const axis of auditInput.axes) {
       if (label.centroid[axis.id] === undefined) problems.push(`label centroid missing axis: ${label.id} -> ${axis.id}`)
     }
-  }
-
-  const tierQuestionIds = new Set(auditInput.tierQuestions.map((q) => q.id))
-  for (const q of auditInput.moduleQuestions) {
-    if (!q.module || q.module.trim().length === 0) problems.push(`module question missing module: ${q.id}`)
-    if (tierQuestionIds.has(q.id)) problems.push(`module question in tier pool: ${q.id}`)
-  }
-  if (auditInput.moduleQuestions.length > 0 && !auditInput.hasModuleRegistry) {
-    problems.push('module registry missing for module question validation')
   }
 
   return {

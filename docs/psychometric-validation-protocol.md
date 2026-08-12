@@ -214,7 +214,7 @@ Research mode produces a versioned record equivalent to:
 
 ```json
 {
-  "schemaVersion": "2026-08-v7",
+  "schemaVersion": "2026-08-v9",
   "submissionId": "random-idempotency-key",
   "studyId": "pilot-2026",
   "participantId": "p_random-code",
@@ -245,7 +245,7 @@ Research mode produces a versioned record equivalent to:
     "ageConfirmed": true,
     "voluntaryParticipation": true,
     "dataUseAccepted": true,
-    "consentVersion": "2026-08-12-v7",
+    "consentVersion": "2026-08-12-v8",
     "consentedAt": "2026-07-18T11:59:00.000Z",
     "disclosureSnapshot": {
       "endpointConfigured": true,

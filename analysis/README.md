@@ -4,7 +4,7 @@ The browser application computes descriptive and classical diagnostics only when
 
 ## Inputs
 
-Use consented schema `2026-08-v7` records produced by contribution mode. The public flow omits `formSize` and contributes
+Use consented schema `2026-08-v9` records produced by contribution mode. The public flow omits `formSize` and contributes
 the complete selected Balanced or Full-depth profile. A controlled `research=1` URL can request a balanced matrix form
 with `formSize` for instrument analysis.
 
@@ -45,7 +45,7 @@ QUALITY_MINIMUM_DURATION_MS=0 \
 QUALITY_MINIMUM_MS_PER_ITEM=0 \
 QUALITY_MAXIMUM_MISSING_RATE=0.40 \
 QUALITY_MAXIMUM_INVARIANT_RATE=0.95 \
-QUALITY_REQUIRED_CONSENT_VERSION=2026-08-12-v7 \
+QUALITY_REQUIRED_CONSENT_VERSION=2026-08-12-v8 \
 Rscript analysis/run_data_quality.R private-data/submissions.ndjson analysis/output
 ```
 
@@ -66,7 +66,7 @@ PSYCH_MINIMUM_AXIS_N=100
 PSYCH_MINIMUM_FACTOR_N=300
 PSYCH_MINIMUM_DIF_GROUP_N=100
 PSYCH_RANDOM_SEED=20260718
-PSYCH_REQUIRED_CONSENT_VERSION=2026-08-12-v7
+PSYCH_REQUIRED_CONSENT_VERSION=2026-08-12-v8
 PSYCH_REQUIRED_FORM_VERSION=profile-form-v3
 PSYCH_REQUIRED_QUALITY_RULE_VERSION=data-quality-v2
 # Also set PSYCH_REQUIRED_BANK_VERSION and PSYCH_REQUIRED_SCORING_VERSION
@@ -96,7 +96,9 @@ The specialist workflow currently evaluates:
 - assignment uptake by module and administration;
 - explicit decline versus unresolved attrition;
 - post-questionnaire, pre-result-display self-identification concordance;
+- multi-affinity precision, recall, F1, Jaccard, label-specific counts, false positives, and co-identification;
 - construct score distributions;
+- evidence-aware coverage and abstention states for sparse specialist responses;
 - construct-level internal consistency when enough respondents exist;
 - construct-level test-retest correlations when enough paired respondents exist.
 
@@ -135,16 +137,24 @@ The specialist workflow writes:
 - `specialist-disposition-summary.csv`
 - `specialist-criterion-response.csv`
 - `specialist-criterion-concordance.csv`
+- `specialist-criterion-multilabel.csv`
+- `specialist-label-metrics.csv`
+- `specialist-criterion-coidentification.csv`
 - `specialist-construct-scores.csv`
 - `specialist-construct-summary.csv`
 - `specialist-construct-reliability.csv`
 - `specialist-test-retest.csv`
+- `specialist-evidence.csv` with answered coverage, weighted coverage, and effective item count
 
 Core Likert items are oriented toward their primary axis for an item measurement model. That model is not the production result score. Statement-choice items and items marked `needs-rewrite` are excluded from common-scale reliability and factor analyses. The production-score outputs separately retain every axis weight, statement-option weight, and salience multiplier. CFA uses the primary-axis specification, pairwise planned-missing handling, and WLSMV on an internal split. DIF uses graded-response multiple-group models with multiplicity adjustment.
 
 The validation script fails closed on unresolved inclusion decisions, duplicate submission IDs, more than one included record per participant administration, incompatible method versions, inconsistent form fingerprints or item snapshots, invalid response/salience states, and test/retest fingerprint mismatches. Analyze changed versions separately unless a linking design was frozen in advance.
 
-Specialist reliability is computed only inside each module and construct. Specialist items never enter the core axis reliability or factor models.
+Specialist reliability is computed only inside each module and construct. The reliability workflow uses each item's
+largest-absolute-loading construct as its primary indicator; secondary cross-loadings are reported but are not treated
+as independent evidence. Specialist items never enter the core axis reliability or factor models. Sparse specialist
+responses are retained for audit but excluded from candidate-match concordance when the browser marks them
+`insufficient-evidence`.
 
 ## Study governance
 

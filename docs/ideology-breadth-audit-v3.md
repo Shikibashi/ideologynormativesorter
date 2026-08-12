@@ -1,4 +1,6 @@
-# Ideology breadth audit v3
+# Ideology breadth audit v3 (historical)
+
+> Superseded by [ideology breadth and validation audit v4](./ideology-breadth-audit-v4.md). This file remains as the pre-human-validation design record.
 
 This audit asks a different question from the old expansion backlog. It does **not** ask how many named ideologies can be added. It asks whether the sorter covers the major political traditions it claims to classify, and whether each tradition has enough distinctive measurement content to justify its current role.
 

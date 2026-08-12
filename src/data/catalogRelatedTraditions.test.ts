@@ -31,28 +31,26 @@ describe('related ideology traditions', () => {
   })
 
   it('keeps broad libertarianism qualified and links focused candidates to a real module', () => {
-    const marketLibertarian = catalogRelatedTraditions.find(
-      (tradition) => tradition.id === 'market-right-libertarianism',
+    const marketLibertarian = publicCatalogLabels.find(
+      (label) => label.id === 'market-right-libertarianism',
     )
     expect(marketLibertarian).toMatchObject({
+      id: 'market-right-libertarianism',
       family: 'liberal',
-      subfamily: 'market-libertarian',
-      status: 'catalog-candidate',
+      subfamily: 'market-right-libertarian',
     })
     expect(marketLibertarian?.aliases).not.toContain('Libertarianism')
     expect(marketLibertarian?.aliases).toContain('Right-Libertarianism')
-    expect(marketLibertarian?.description).toMatch(/libertarian-socialist and anarchist uses/i)
+    expect(marketLibertarian?.description).toMatch(/market-oriented anti-statist neighborhood/i)
 
-    const moduleCandidateIds = new Set(
-      identitySovereigntyTraditionProfiles
-        .filter((profile) => profile.status === 'candidate-specialist' || profile.status === 'candidate-role-review')
-        .map((profile) => profile.id),
-    )
     const focusedCandidateIds = catalogRelatedTraditions
       .filter((tradition) => tradition.status === 'focused-follow-up')
       .map((tradition) => tradition.id)
 
-    expect(focusedCandidateIds).toEqual(['black-nationalism', 'pan-africanism'])
-    expect(focusedCandidateIds.every((id) => moduleCandidateIds.has(id))).toBe(true)
+    expect(focusedCandidateIds).toEqual([])
+    for (const id of ['black-nationalism', 'pan-africanism']) {
+      expect(publicCatalogLabels.find((label) => label.id === id)?.taxonomy.measurementStatus).toBe('provisional-specialist')
+      expect(identitySovereigntyTraditionProfiles.some((profile) => profile.id === id)).toBe(true)
+    }
   })
 })

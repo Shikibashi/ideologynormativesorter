@@ -15,7 +15,9 @@ function formatConstructName(value: string): string {
 }
 
 export function SpecialistModuleResultScreen({ module, outcome, onContinue }: SpecialistModuleResultScreenProps) {
-  const visibleMatches = outcome.matches.filter((match) => match.fit >= 0.35).slice(0, 5)
+  const visibleMatches = outcome.matches
+    .filter((match) => !match.insufficientEvidence && match.fit >= 0.35)
+    .slice(0, 5)
   const constructs = Object.entries(outcome.constructScores)
     .sort((left, right) => Math.abs(right[1]) - Math.abs(left[1]))
 
@@ -33,6 +35,17 @@ export function SpecialistModuleResultScreen({ module, outcome, onContinue }: Sp
       <p className="muted">
         The matches below are experimental comparisons, not authoritative claims about your political identity.
       </p>
+      {outcome.evidence?.status === 'insufficient-evidence' ? (
+        <p className="notice-card" role="status">
+          Overall module coverage is sparse. Any match shown below is limited to a profile with enough defining
+          construct evidence; unanswered dimensions remain unclassified.
+        </p>
+      ) : outcome.evidence ? (
+        <p className="muted">
+          Evidence coverage: {Math.round(outcome.evidence.answeredCoverage * 100)}% of items answered;
+          {' '}{Math.round(outcome.evidence.weightedAnsweredCoverage * 100)}% weighted coverage.
+        </p>
+      ) : null}
 
       <div className="result-block">
         <h2>Closest experimental matches</h2>
