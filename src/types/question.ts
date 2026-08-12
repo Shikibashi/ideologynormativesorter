@@ -49,8 +49,10 @@ export interface Question {
   helpText?: string
   /** Operational definition or empirical scope for a descriptive item. */
   evidenceNote?: string
-  /** Public sources supporting the context of a descriptive item; sources do not determine the respondent's answer. */
+  /** Public sources supporting the context of an item; sources do not determine the respondent's answer. */
   sources?: QuestionSource[]
+  /** Neutral background context for any layer; descriptive items use evidenceNote for empirical scope. */
+  contextNote?: string
   /** Descriptive items may let the respondent decline to guess. */
   allowDontKnow?: boolean
   /** Prompt shown alongside a descriptive item's confidence rating. */

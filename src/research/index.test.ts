@@ -35,6 +35,7 @@ const question: Question = {
   reviewStatus: 'approved',
   sources: [{ title: 'Source', url: 'https://example.test/source' }],
   evidenceNote: 'Adults in a defined population over one year.',
+  contextNote: 'This is neutral background context for interpreting the item without changing its wording or scoring.',
 }
 
 const answers: AnswerMap = {
@@ -122,6 +123,7 @@ describe('research submission', () => {
       domain: 'test-domain',
       theoryContext: 'mixed',
       reverseScored: false,
+      contextNote: 'This is neutral background context for interpreting the item without changing its wording or scoring.',
       sourceCount: 1,
     })
     expect(submission.itemMap[0].responseOptions).toContainEqual({

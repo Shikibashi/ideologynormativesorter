@@ -73,6 +73,7 @@ export interface ResearchItemSnapshot {
   }
   reviewStatus: Question['reviewStatus']
   evidenceNote?: string
+  contextNote?: string
   sourceCount: number
 }
 
@@ -228,6 +229,7 @@ function buildItemMap(
       : undefined,
     reviewStatus: question.reviewStatus,
     evidenceNote: question.evidenceNote,
+    contextNote: question.contextNote,
     sourceCount: question.sources?.length ?? 0,
   }))
 }

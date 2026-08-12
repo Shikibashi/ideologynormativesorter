@@ -719,6 +719,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors some public role for Islamic normative or legal principles, ranging from democratic constitutional participation to comprehensive Islamist state-building; it does not settle one interpretation of Sharia, church-state separation, minority rights, or political violence.',
    },
    'islamic-democracy': {
+      prescriptive: 'Favors electoral and constitutional government with public accountability alongside an Islamic ethical or legal framework, while leaving contested questions of interpretation, judicial authority, popular sovereignty, minority rights, and enforcement to institutional design; it is not one settled Sharia model.',
       descriptive: 'Expects elected government, constitutional rights, and Islamic ethical or legal review to require institutional reconciliation rather than a single settled formula; models differ over judicial authority, popular sovereignty, minority protection, and the scope of religious interpretation.',
    },
    'national-traditionalist': {
@@ -883,6 +884,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects market mechanisms, voluntary cooperation, and property rights to contribute to the well-being of vulnerable or least-advantaged people while preserving individual liberty; proponents disagree over how far social justice permits redistribution or institutional intervention.',
    },
    kemalism: {
+      normative: 'Treats republican sovereignty, secular public authority, national unity, scientific modernization, and state-led reform as central political goods, as expressed in the Six Arrows; Kemalist currents differ over pluralism, citizenship, and how much authority the state should exercise.',
       descriptive: 'Expects a secular, scientifically modernizing republic and a unified Turkish national identity to overcome Ottoman and religious-political legacies; Kemalist currents differ over citizenship, pluralism, and how strongly the state should guide modernization.',
       prescriptive: 'Favors the Six Arrows program of republicanism, nationalism, populism, statism, laicism, and continuing reform or revolutionism.',
    },
@@ -995,6 +997,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors a democratic federal layer of world government with divided powers and enforceable international law above nation-states, while retaining national and local authority in other domains.',
    },
    'fourth-theory': {
+      prescriptive: 'Favors building an autonomous post-liberal political model organized around civilizational plurality and multipolar coordination rather than liberal universalism; because Dugin’s project is author-specific, incomplete, and contested, the label does not provide one settled institutional blueprint.',
       descriptive: 'Expects civilizational pluralism and multipolar great spaces to provide a viable alternative to liberal universalism and a unipolar order, while Dugin presents the project as incomplete and scholars dispute whether its claimed break with fascism is substantive.',
    },
    multiculturalism: {
@@ -1048,6 +1051,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Accepts cost-conscious welfare provision and moderate state intervention to preserve social cohesion, security, and opportunity within existing institutions rather than pursue egalitarian transformation.',
    },
    'fiscal-conservatism': {
+      normative: 'Treats sustainable public finances, restraint of deficits or debt, and fairness across present and future taxpayers as important political goods; it does not by itself settle the preferred mix of taxes, spending, social insurance, or fiscal rules.',
       descriptive: 'Expects persistent deficits, debt accumulation, and expansive public budgets to reduce fiscal room or burden future taxpayers, while spending restraint, revenue changes, or fiscal rules can preserve sustainable public finances; evidence and preferred policy mixes remain contested.',
       prescriptive: 'Prioritizes sustainable public finances and restraint of deficits or debt; possible means include spending limits, revenue changes, or fiscal rules, so the label does not prescribe one tax level or social program.',
    },
@@ -1105,6 +1109,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects a bounded national or ethnic welfare community to preserve solidarity by limiting out-groups’ access, with judgments shaped by perceived deservingness, contribution, insecurity, and the design of benefits; research finds these patterns vary across groups and contexts.',
    },
    corporatism: {
+      normative: 'Treats organized occupational and sectoral representation, social harmony, and coordinated public direction as more legitimate than adversarial pluralist competition; the state-corporatist model subordinates independent association to recognized bodies and does not imply one ownership system.',
       descriptive: 'Expects recognized occupational bodies under state direction to mediate class and sectoral conflict more effectively than pluralist party competition, while scholarship distinguishes authoritarian state corporatism from autonomous societal or neo-corporatism and does not treat them as the same system.',
       prescriptive: 'Favors organizing recognized occupational and sectoral bodies under strong state direction to mediate represented interests.',
    },
@@ -1180,6 +1185,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects unregulated competition to produce monopoly and interest-group capture, while a strong rule-bound state can construct and maintain a competitive market order; ordoliberal currents differ over democracy, welfare, and the scope of intervention.',
    },
    ethnonationalist: {
+      prescriptive: 'Favors state institutions and policies that protect an inherited ethnic or cultural nation’s continuity, membership boundaries, and political predominance; possible strategies range from preferential citizenship or assimilation to autonomy or separation, so the label does not specify one level of coercion or one territorial outcome.',
       descriptive: 'Expects shared descent, inherited culture, and ethnic boundaries to provide stronger national solidarity and continuity than voluntary civic membership; ethnonationalist currents differ over how ethnicity is defined and how state membership should be enforced, and the model can be exclusionary.',
    },
    'absolute-monarchist': {

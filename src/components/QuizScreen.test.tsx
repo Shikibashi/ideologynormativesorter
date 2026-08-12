@@ -127,6 +127,28 @@ describe('QuizScreen descriptive questions', () => {
   })
 })
 
+describe('QuizScreen cross-layer context', () => {
+  it('keeps normative context collapsed and labels sources as background', () => {
+    render(
+      <QuizScreen
+        questions={[{
+          ...prescriptiveChoice,
+          contextNote: 'This context distinguishes a contested strategy from one fixed institutional blueprint.',
+          sources: [{ title: 'A public context source', publisher: 'Example Institute', url: 'https://example.com/context' }],
+        }]}
+        onComplete={vi.fn()}
+      />,
+    )
+
+    const details = screen.getByText('Context and sources').closest('details')
+    expect(details).not.toHaveAttribute('open')
+    fireEvent.click(screen.getByText('Context and sources'))
+    expect(screen.getByText(/contested strategy/i)).toBeInTheDocument()
+    expect(screen.getByText(/do not determine how you should answer/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /a public context source/i })).toHaveAttribute('href', 'https://example.com/context')
+  })
+})
+
 describe('QuizScreen research nonresponse', () => {
   it('offers a distinct refusal only when research mode enables it', () => {
     const onComplete = vi.fn()

@@ -216,10 +216,13 @@ export function QuizScreen({
 
       <p className="prompt">{question.prompt}</p>
       <p className="muted question-help help-text">{helpText}</p>
-      {question.layer === 'descriptive' && question.evidenceNote && (question.sources?.length ?? 0) > 0 && (
+      {(question.contextNote || question.evidenceNote) && (question.sources?.length ?? 0) > 0 && (
         <details key={question.id} className="question-evidence">
           <summary>Context and sources</summary>
-          <p>{question.evidenceNote}</p>
+          {question.contextNote && <p>{question.contextNote}</p>}
+          {question.evidenceNote && (
+            <p>{question.contextNote ? <><strong>Evidence scope:</strong> {question.evidenceNote}</> : question.evidenceNote}</p>
+          )}
           <p className="muted">Background only; these sources do not determine how you should answer.</p>
           <ul>
             {question.sources!.map((item) => (

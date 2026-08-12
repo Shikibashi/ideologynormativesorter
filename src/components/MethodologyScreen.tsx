@@ -77,6 +77,9 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
             {sourcedDescriptive.length} of {activeDescriptive.length} active descriptive items currently include both an operational scope and public background sources. Items without that support are quarantined from current scoring until they can be rewritten and sourced. A cited source explains a claim’s context; it does not dictate how a respondent should answer or validate the item itself.
          </p>
          <p>
+            Some normative and prescriptive items also include a collapsed context disclosure when a source helps clarify a contested term or institutional distinction. Those sources are interpretive background, not empirical evidence or answer keys; the prompt, layer, and scoring weights remain unchanged.
+         </p>
+         <p>
             When a label fits one layer of your views but not the others, we flag it as a <em>conflation</em>: a single label that would merge your normative, descriptive, and prescriptive positions into one and hide where they diverge. We name which layer matched, which layers it conflates, and the axes where you part from it.
          </p>
          <p>
