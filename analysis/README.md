@@ -4,7 +4,7 @@ The browser application computes descriptive and classical diagnostics only when
 
 ## Inputs
 
-Use consented schema `2026-08-v5` records produced by contribution mode. The public flow omits `formSize` and contributes
+Use consented schema `2026-08-v6` records produced by contribution mode. The public flow omits `formSize` and contributes
 the complete selected Balanced or Full-depth profile. A controlled `research=1` URL can request a balanced matrix form
 with `formSize` for instrument analysis.
 

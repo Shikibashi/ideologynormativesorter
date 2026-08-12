@@ -44,7 +44,7 @@ function environment(overrides = {}) {
   return {
     ALLOWED_ORIGIN: ORIGIN,
     EXPECTED_STUDY_ID: 'community-2026',
-    EXPECTED_SCHEMA_VERSION: '2026-08-v5',
+    EXPECTED_SCHEMA_VERSION: '2026-08-v6',
     EXPECTED_CONSENT_VERSION: '2026-08-10-v6',
     EXPECTED_QUALITY_RULE_VERSION: 'data-quality-v2',
     EXPECTED_FORM_VERSION: 'profile-form-v3',
@@ -75,7 +75,7 @@ function coreSubmission(overrides = {}) {
     ],
   }]
   return {
-    schemaVersion: '2026-08-v5',
+    schemaVersion: '2026-08-v6',
     submissionId: 'submission_1',
     recordType: 'core',
     studyId: 'community-2026',

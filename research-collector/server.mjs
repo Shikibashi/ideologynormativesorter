@@ -10,7 +10,7 @@ const specialistOutputFile = resolve(
 )
 const allowedOrigin = process.env.ALLOWED_ORIGIN ?? 'http://localhost:5173'
 const maximumBodyBytes = Number(process.env.MAXIMUM_BODY_BYTES ?? 2_000_000)
-const expectedSchemaVersion = process.env.RESEARCH_SCHEMA_VERSION ?? '2026-08-v5'
+const expectedSchemaVersion = process.env.RESEARCH_SCHEMA_VERSION ?? '2026-08-v6'
 const expectedConsentVersion = process.env.RESEARCH_CONSENT_VERSION ?? '2026-08-10-v6'
 const expectedQualityRuleVersion = process.env.RESEARCH_QUALITY_RULE_VERSION ?? 'data-quality-v2'
 const expectedFormVersion = process.env.RESEARCH_FORM_VERSION ?? 'profile-form-v3'

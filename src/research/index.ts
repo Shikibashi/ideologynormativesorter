@@ -15,7 +15,7 @@ import type {
   SpecialistOutcome,
 } from '../specialist'
 
-export const RESEARCH_SCHEMA_VERSION = '2026-08-v5'
+export const RESEARCH_SCHEMA_VERSION = '2026-08-v6'
 export const RESEARCH_CONSENT_VERSION = '2026-08-10-v6'
 export const RESEARCH_QUALITY_RULE_VERSION = 'data-quality-v2'
 export const PUBLIC_RESEARCH_ENTRYPOINT = '?contribute=1&collection=community-2026'

@@ -1,4 +1,5 @@
 import type { AnswerMap, Question } from '../types'
+import { applyQuestionContext } from '../data/questionContext'
 import {
   FEMINIST_MODULE_ID,
   feministModuleItems,
@@ -114,7 +115,7 @@ const identityCriterionOptions: SpecialistCriterionOption[] = identitySovereignt
 const specialistModules: SpecialistModuleDefinition[] = [
   {
     id: FEMINIST_MODULE_ID,
-    version: '2026-08-v1',
+    version: '2026-08-v2',
     title: 'Feminist political traditions',
     shortTitle: 'Feminist traditions',
     description:
@@ -122,7 +123,7 @@ const specialistModules: SpecialistModuleDefinition[] = [
     invitationNote:
       'Questions concern gender, family, work, hierarchy, and political strategy. You may skip the module without affecting your main result or study participation.',
     estimatedMinutes: 3,
-    questions: feministModuleQuestions,
+    questions: feministModuleQuestions.map(applyQuestionContext),
     criterionOptions: feministCriterionOptions,
     constructWeightsByQuestionId: copyConstructWeights(feministModuleItems),
     score: (answers) => ({
@@ -138,7 +139,7 @@ const specialistModules: SpecialistModuleDefinition[] = [
   },
   {
     id: IDENTITY_SOVEREIGNTY_MODULE_ID,
-    version: '2026-08-v1',
+    version: '2026-08-v2',
     title: 'Identity, nationalism, and sovereignty',
     shortTitle: 'Identity and sovereignty',
     description:
@@ -146,7 +147,7 @@ const specialistModules: SpecialistModuleDefinition[] = [
     invitationNote:
       'Questions concern race, ethnicity, nationhood, colonialism, Indigenous sovereignty, Black political autonomy, and Pan-Africanism. You may skip the module without affecting your main result or study participation.',
     estimatedMinutes: 6,
-    questions: identitySovereigntyModuleQuestions,
+    questions: identitySovereigntyModuleQuestions.map(applyQuestionContext),
     criterionOptions: identityCriterionOptions,
     constructWeightsByQuestionId: copyConstructWeights(identitySovereigntyModuleItems),
     score: (answers) => ({

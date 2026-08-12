@@ -1,8 +1,14 @@
 import { coreQuestions } from '../data/effectiveQuestions'
+import { specialistModuleDefinitions } from '../specialist'
 
 export function MethodologyScreen({ onBack }: { onBack: () => void }) {
    const activeDescriptive = coreQuestions.filter((question) => question.active !== false && question.layer === 'descriptive')
    const sourcedDescriptive = activeDescriptive.filter((question) => (question.sources?.length ?? 0) > 0 && Boolean(question.evidenceNote?.trim()))
+   const activeContextItems = [
+      ...coreQuestions.filter((question) => question.active !== false),
+      ...specialistModuleDefinitions.flatMap((module) => module.questions.filter((question) => question.active !== false)),
+   ]
+   const sourcedContextItems = activeContextItems.filter((question) => Boolean(question.contextNote?.trim()) && (question.sources?.length ?? 0) > 0)
 
    return (
       <section className="screen methodology-screen page-mode" aria-labelledby="methodology-heading">
@@ -78,6 +84,9 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
          </p>
          <p>
             Some normative and prescriptive items also include a collapsed context disclosure when a source helps clarify a contested term or institutional distinction. Those sources are interpretive background, not empirical evidence or answer keys; the prompt, layer, and scoring weights remain unchanged.
+         </p>
+         <p>
+            {sourcedContextItems.length} of {activeContextItems.length} active core and specialist items currently include a substantive construct context and public sources. This coverage describes the conceptual terrain around each question; it does not turn a source into an answer key or establish that the question itself is empirically valid.
          </p>
          <p>
             When a label fits one layer of your views but not the others, we flag it as a <em>conflation</em>: a single label that would merge your normative, descriptive, and prescriptive positions into one and hide where they diverge. We name which layer matched, which layers it conflates, and the axes where you part from it.

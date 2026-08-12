@@ -65,7 +65,7 @@ bootstrap_replicates <- as.integer(Sys.getenv("PSYCH_BOOTSTRAP_REPLICATES", "100
 minimum_axis_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_AXIS_N", "100"))
 minimum_factor_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_FACTOR_N", "300"))
 minimum_dif_group_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_DIF_GROUP_N", "100"))
-required_schema_version <- Sys.getenv("PSYCH_REQUIRED_SCHEMA_VERSION", "2026-08-v5")
+required_schema_version <- Sys.getenv("PSYCH_REQUIRED_SCHEMA_VERSION", "2026-08-v6")
 required_consent_version <- Sys.getenv("PSYCH_REQUIRED_CONSENT_VERSION", "2026-08-10-v6")
 required_form_version <- Sys.getenv("PSYCH_REQUIRED_FORM_VERSION", "profile-form-v3")
 required_quality_rule_version <- Sys.getenv("PSYCH_REQUIRED_QUALITY_RULE_VERSION", "data-quality-v2")

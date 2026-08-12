@@ -214,7 +214,7 @@ Research mode produces a versioned record equivalent to:
 
 ```json
 {
-  "schemaVersion": "2026-08-v5",
+  "schemaVersion": "2026-08-v6",
   "submissionId": "random-idempotency-key",
   "studyId": "pilot-2026",
   "participantId": "p_random-code",
