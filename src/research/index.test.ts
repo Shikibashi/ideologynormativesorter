@@ -15,6 +15,7 @@ import {
   SPECIALIST_ASSIGNMENT_STRATEGY,
 } from '../specialist'
 import { TAXONOMY_VERSION } from '../data/labelTaxonomy'
+import { PRIMARY_MEASUREMENT_VERSION } from '../data/primaryMeasurement'
 import { MODIFIER_MEASUREMENT_VERSION } from '../data/modifierMeasurement'
 
 const consent: ResearchConsent = {
@@ -117,6 +118,7 @@ describe('research submission', () => {
     expect(submission.predictedLabelIds).toEqual(['market-liberal', 'classical-liberalism'])
     expect(submission.predictedModifierIds).toEqual(['religious-nationalism', 'progressivism'])
     expect(submission.taxonomyVersion).toBe(TAXONOMY_VERSION)
+    expect(submission.primaryMeasurementVersion).toBe(PRIMARY_MEASUREMENT_VERSION)
     expect(submission.modifierMeasurementVersion).toBe(MODIFIER_MEASUREMENT_VERSION)
     expect(submission.primaryLabelIds).toContain('conservative')
     expect(submission.modifierLabelIds).toContain('technocratic-orientation')

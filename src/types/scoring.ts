@@ -43,11 +43,11 @@ export interface LabelMatch {
    /** 0..1, how much of the label's centroid was actually measured. */
    evidenceStrength: number
   /**
-   * Number of measured comparison dimensions. This is centroid axes for
-   * primary-label matching and direct items for modifier-construct matching.
+   * Number of measured comparison dimensions. This is source-backed primary
+   * scope axes (or legacy centroid axes) and direct modifier indicators.
    */
   measuredAxisCount: number
-  /** Total comparison dimensions (centroid axes or direct construct items). */
+  /** Total comparison dimensions in the active primary scope or direct construct. */
   totalAxisCount: number
    /** Distance gap between this match and the runner-up (undefined if this is not rank 1). */
    runnerUpMargin?: number
@@ -64,6 +64,8 @@ export interface LabelMatch {
    uncertaintyBand: 'low' | 'medium' | 'high'
   /** Whether a constitutive gate was passed before this label was exposed. */
   compoundGateStatus?: 'passed' | 'blocked' | 'insufficient-evidence'
+  /** Whether source-backed primary core constructs were all measured before this label was exposed. */
+  coreGateStatus?: 'passed' | 'insufficient-evidence'
   /**
    * Present only for a cross-cutting modifier matched from direct core items.
    * This makes the construct boundary explicit and prevents a modifier card

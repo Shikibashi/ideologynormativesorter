@@ -160,6 +160,43 @@ describe('computeLabelMatches', () => {
       expect(matches[0].fit).toBeCloseTo(1)
    })
 
+   it('uses a label scoring scope and withholds it until every required core construct is measured', () => {
+      const scoped: IdeologyLabel = {
+         ...exactMatchLabel,
+         id: 'scoped',
+         centroid: { ...exactMatchLabel.centroid, norm1: 0.8, desc1: -1 },
+         scoringScope: {
+            version: 'test',
+            axisIds: ['norm1'],
+            requiredAxisIds: ['norm1'],
+            sourceIds: ['test-source'],
+            rationale: 'Test-only scope.',
+         },
+      }
+
+      const unmeasured = computeLabelMatches({
+         normative: [{ axisId: 'norm1', layer: 'normative', raw: 0, normalized: 0, itemCount: 0 }],
+         descriptive: [{ axisId: 'desc1', layer: 'descriptive', raw: -1, normalized: -1, itemCount: 3 }],
+         prescriptive: [],
+      }, [scoped], axes)
+      expect(unmeasured).toEqual([])
+
+      const measured = computeLabelMatches({
+         normative: [{ axisId: 'norm1', layer: 'normative', raw: 0.8, normalized: 0.8, itemCount: 3 }],
+         descriptive: [{ axisId: 'desc1', layer: 'descriptive', raw: -1, normalized: -1, itemCount: 3 }],
+         prescriptive: [],
+      }, [scoped], axes)
+      expect(measured[0]).toMatchObject({
+         labelId: 'scoped',
+         coreGateStatus: 'passed',
+         measuredAxisCount: 1,
+         totalAxisCount: 1,
+         fit: 1,
+      })
+      expect(measured[0].reasoning?.sharedExtremeAxes.map((axis) => axis.axisId)).toEqual(['norm1'])
+      expect(measured[0].layerEvidence?.descriptive.fit).toBeNull()
+   })
+
    it('caps results at the top 20 matches', () => {
       const labels = Array.from({ length: 25 }, (_, index) => ({
          ...exactMatchLabel,
@@ -372,5 +409,29 @@ describe('computeConflatedLabels', () => {
 
    it('does not flag a label that is far away on every layer', () => {
       expect(computeConflatedLabels(breakdown, [oppositeLabel], axes)).toHaveLength(0)
+   })
+
+   it('does not turn a scoped label’s unmeasured layer into a false divergence', () => {
+      const sparseBreakdown: ScoreBreakdown = {
+         normative: [{ axisId: 'norm1', layer: 'normative', raw: 0.8, normalized: 0.8, itemCount: 1 }],
+         descriptive: [],
+         prescriptive: [],
+      }
+      const scopedLabel: IdeologyLabel = {
+         id: 'scoped-one-layer',
+         name: 'Scoped one-layer label',
+         family: 'test',
+         description: 'd',
+         centroid: { norm1: 0.8, presc1: 0.8 },
+         scoringScope: {
+            version: 'test-primary-scope',
+            axisIds: ['norm1', 'presc1'],
+            requiredAxisIds: ['norm1'],
+            sourceIds: ['test-source'],
+            rationale: 'Test only.',
+         },
+      }
+
+      expect(computeConflatedLabels(sparseBreakdown, [scopedLabel], axes)).toEqual([])
    })
 })

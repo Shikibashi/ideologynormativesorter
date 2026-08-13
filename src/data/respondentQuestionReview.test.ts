@@ -125,6 +125,19 @@ describe('respondent-facing question review', () => {
     expect(blitz.every((question) => question.reviewStatus !== 'needs-rewrite')).toBe(true)
   })
 
+  it('puts two direct ecological-standing items in the short forms before Green Politics can be scored', () => {
+    const blitzIds = new Set(questionsForTier('blitz').map((question) => question.id))
+    const quickIds = new Set(questionsForTier('quick').map((question) => question.id))
+
+    for (const id of ['q0418', 'q0447']) {
+      const question = questionById.get(id)
+      expect(question?.tier).toBe('blitz')
+      expect(question?.axisWeights).toEqual([{ axisId: 'human-nature-priority', weight: 1 }])
+      expect(blitzIds).toContain(id)
+      expect(quickIds).toContain(id)
+    }
+  })
+
   it('reports rather than conceals any Quick coverage lost to quarantine', () => {
     const quick = questionsForTier('quick')
     const gaps: string[] = []

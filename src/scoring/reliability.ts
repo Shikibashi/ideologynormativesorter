@@ -43,7 +43,7 @@ export function reliabilityForAxis(score: AxisScore, options: { minItems?: numbe
 export function reliabilityForLabel(
   labelId: LabelId,
   axisScores: Map<AxisId, AxisScore>,
-  labelCentroidAxes: AxisId[]
+  labelCentroidAxes: readonly AxisId[]
 ): LabelReliability {
   let evidenceCount = 0
   let measuredAxisCount = 0

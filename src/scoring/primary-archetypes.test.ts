@@ -14,6 +14,13 @@ interface PrimaryArchetype {
   intent: AxisIntent
 }
 
+interface BoundaryArchetype {
+  id: string
+  excludedLabelId: string
+  omittedCoreAxisIds: readonly string[]
+  intent: AxisIntent
+}
+
 /**
  * Hand-authored profiles written independently of labels.ts centroids.
  * These exercise questionnaire -> axis aggregation -> ideology matching and
@@ -116,19 +123,9 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'civic-nationalist', targetLabelId: 'republicanism', expectedFamily: 'republican',
-    intent: {
-      'authority-legitimacy': 0.2, 'liberty-noninterference': 0.3, 'equality-theory': 0.2,
-      'political-community-boundary': -0.45, 'moral-traditionalism': 0.1, 'democratic-confidence': 0.7,
-      'cultural-plasticity': 0.2, 'centralization-preference': 0, 'reform-vs-revolution': -0.7,
-      'electoralism-vs-direct-action': 0.7, 'coercion-strategy': -0.5, 'militarism-pacifism': 0,
-      'secularism-religious': -0.2,
-    },
-  },
-  {
     id: 'civic-republican', targetLabelId: 'republicanism', expectedFamily: 'republican',
     intent: {
-      'authority-legitimacy': 0.2, 'property-legitimacy': 0.1, 'liberty-noninterference': 0.3,
+      'authority-legitimacy': 0.2, 'property-legitimacy': 0.1, 'liberty-noninterference': -0.5,
       'equality-theory': -0.2, 'anti-domination': 1, 'democratic-confidence': 0.8, 'expert-confidence': 0,
       'centralization-preference': -0.2, 'reform-vs-revolution': -0.6, 'state-action-vs-exit': 0,
       'electoralism-vs-direct-action': 0.7, 'compromise-vs-persistence': 0.4, 'coercion-strategy': -0.5,
@@ -136,12 +133,11 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'communitarian', targetLabelId: 'conservative', expectedFamily: 'conservative',
+    id: 'prudential-conservative', targetLabelId: 'conservative', expectedFamily: 'conservative',
     intent: {
-      'authority-legitimacy': 0.3, 'liberty-noninterference': -0.2, 'equality-theory': 0.3,
-      'political-community-boundary': -0.2, 'moral-traditionalism': 0.4, 'anti-domination': 0.2,
-      'state-capacity-confidence': 0.3, 'democratic-confidence': 0.6, 'centralization-preference': -0.2,
-      'reform-vs-revolution': -0.7, 'state-action-vs-exit': 0.3, 'coercion-strategy': -0.3,
+      'authority-legitimacy': 0.2, 'cultural-plasticity': -0.7,
+      'reform-vs-revolution': -0.7, 'gradualism-vs-immediatism': -0.8,
+      'state-action-vs-exit': 0.1,
     },
   },
   {
@@ -153,6 +149,32 @@ const ARCHETYPES: PrimaryArchetype[] = [
       'democratic-confidence': 0.5, 'centralization-preference': -0.5, 'reform-vs-revolution': -0.7,
       'state-action-vs-exit': 0.2, 'regulation-vs-deregulation': 0.2, 'redistribution-vs-predistribution': -0.4,
       'secularism-religious': 0.5,
+    },
+  },
+]
+
+const BOUNDARY_ARCHETYPES: BoundaryArchetype[] = [
+  {
+    id: 'civic-nationalist-without-non-domination',
+    excludedLabelId: 'republicanism',
+    omittedCoreAxisIds: ['anti-domination'],
+    intent: {
+      'authority-legitimacy': 0.2, 'liberty-noninterference': 0.3, 'equality-theory': 0.2,
+      'political-community-boundary': -0.45, 'moral-traditionalism': 0.1, 'democratic-confidence': 0.7,
+      'cultural-plasticity': 0.2, 'centralization-preference': 0, 'reform-vs-revolution': -0.7,
+      'electoralism-vs-direct-action': 0.7, 'coercion-strategy': -0.5, 'militarism-pacifism': 0,
+      'secularism-religious': -0.2,
+    },
+  },
+  {
+    id: 'communitarian-without-prudential-change-constructs',
+    excludedLabelId: 'conservative',
+    omittedCoreAxisIds: ['cultural-plasticity', 'gradualism-vs-immediatism'],
+    intent: {
+      'authority-legitimacy': 0.3, 'liberty-noninterference': -0.2, 'equality-theory': 0.3,
+      'political-community-boundary': -0.2, 'moral-traditionalism': 0.4, 'anti-domination': 0.2,
+      'state-capacity-confidence': 0.3, 'democratic-confidence': 0.6, 'centralization-preference': -0.2,
+      'reform-vs-revolution': -0.7, 'state-action-vs-exit': 0.3, 'coercion-strategy': -0.3,
     },
   },
 ]
@@ -197,9 +219,16 @@ function likertValue(question: Question, intent: AxisIntent): number | null {
   return rawDirection * max
 }
 
-function answersForIntent(intent: AxisIntent): AnswerMap {
+function questionTouchesAnyAxis(question: Question, axisIds: ReadonlySet<string>): boolean {
+  return question.axisWeights.some((weight) => axisIds.has(weight.axisId))
+    || question.statementOptions?.some((option) => option.axisWeights.some((weight) => axisIds.has(weight.axisId))) === true
+}
+
+function answersForIntent(intent: AxisIntent, omittedAxisIds: readonly string[] = []): AnswerMap {
   const answers: AnswerMap = {}
+  const omitted = new Set(omittedAxisIds)
   for (const question of questions) {
+    if (questionTouchesAnyAxis(question, omitted)) continue
     const value = question.responseType === 'statementChoice'
       ? statementChoiceValue(question, intent)
       : likertValue(question, intent)
@@ -237,6 +266,17 @@ describe('hand-authored primary ideology archetypes', () => {
         topFiveIds,
         `${archetype.id} top five were ${topFiveIds.join(', ')}`,
       ).toContain(archetype.targetLabelId)
+    })
+  }
+
+  for (const archetype of BOUNDARY_ARCHETYPES) {
+    it(`${archetype.id} does not infer an unmeasured neighboring primary`, () => {
+      const answers = answersForIntent(archetype.intent, archetype.omittedCoreAxisIds)
+      const result = buildResultProfile(questions, answers, axes, primaryScoringLabels)
+      const labelIds = result.nearestLabels.map((match) => match.labelId)
+
+      expect(Object.keys(answers).length, `${archetype.id} has too little question coverage`).toBeGreaterThanOrEqual(20)
+      expect(labelIds, `${archetype.id} should abstain from ${archetype.excludedLabelId}`).not.toContain(archetype.excludedLabelId)
     })
   }
 })

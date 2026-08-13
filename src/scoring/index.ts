@@ -12,7 +12,7 @@ import { computeReasonBreakdowns } from './reasonDecomposition'
 import { reliabilityForAxis, reliabilityForLabel } from './reliability'
 
 /** Bumped when ordinary output eligibility changes or research cohorts must remain distinct. */
-export const RESULT_SCORING_VERSION = '2026-08-13-taxonomy-v7'
+export const RESULT_SCORING_VERSION = '2026-08-13-taxonomy-v8'
 
 export { normalizeAnswer, salienceFactor } from './normalize'
 export { computeAxisScores, computeScoreBreakdown, axisScoreMap } from './aggregate'
@@ -47,7 +47,7 @@ export function buildResultProfile(
 
    const labelReliabilities: Record<string, LabelReliability> = {}
    for (const l of labels) {
-      const centroidAxes = Object.keys(l.centroid || {})
+      const centroidAxes = l.scoringScope?.axisIds ?? Object.keys(l.centroid || {})
       labelReliabilities[l.id] = reliabilityForLabel(l.id, axisScoresMap, centroidAxes)
    }
 

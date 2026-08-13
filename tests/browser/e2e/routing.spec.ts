@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { TAXONOMY_VERSION } from '../../../src/data/labelTaxonomy'
 import { resultPath } from '../fixtures/states'
 
 test('methodology uses browser-native history and current-page semantics', async ({ page }) => {
@@ -6,7 +7,7 @@ test('methodology uses browser-native history and current-page semantics', async
   await page.getByRole('link', { name: 'METHODOLOGY' }).click()
   await expect(page).toHaveURL(/\?view=methodology$/)
   await expect(page.getByRole('link', { name: 'METHODOLOGY', exact: true })).toHaveAttribute('aria-current', 'page')
-  await expect(page.getByTestId('instrument-version')).toContainText('2026-08-taxonomy-v7')
+  await expect(page.getByTestId('instrument-version')).toContainText(TAXONOMY_VERSION)
   await expect(page.getByTestId('instrument-version')).toContainText('2026-08-editorial-v16')
 
   await page.goBack()

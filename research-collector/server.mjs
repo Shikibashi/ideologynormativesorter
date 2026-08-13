@@ -10,17 +10,18 @@ const specialistOutputFile = resolve(
 )
 const allowedOrigin = process.env.ALLOWED_ORIGIN ?? 'http://localhost:5173'
 const maximumBodyBytes = Number(process.env.MAXIMUM_BODY_BYTES ?? 2_000_000)
-const expectedSchemaVersion = process.env.RESEARCH_SCHEMA_VERSION ?? '2026-08-v14'
+const expectedSchemaVersion = process.env.RESEARCH_SCHEMA_VERSION ?? '2026-08-v15'
 const expectedConsentVersion = process.env.RESEARCH_CONSENT_VERSION ?? '2026-08-12-v8'
 const expectedQualityRuleVersion = process.env.RESEARCH_QUALITY_RULE_VERSION ?? 'data-quality-v2'
 const expectedFormVersion = process.env.RESEARCH_FORM_VERSION ?? 'profile-form-v3'
 const expectedStudyId = process.env.RESEARCH_STUDY_ID?.trim() || null
 const expectedBankVersion = process.env.RESEARCH_BANK_VERSION?.trim() || null
 const expectedScoringVersion = process.env.RESEARCH_SCORING_VERSION?.trim() || null
-const expectedTaxonomyVersion = process.env.RESEARCH_TAXONOMY_VERSION ?? '2026-08-taxonomy-v12'
+const expectedTaxonomyVersion = process.env.RESEARCH_TAXONOMY_VERSION ?? '2026-08-taxonomy-v13'
+const expectedPrimaryMeasurementVersion = process.env.RESEARCH_PRIMARY_MEASUREMENT_VERSION ?? '2026-08-primary-core-v1'
 const expectedModifierMeasurementVersion = process.env.RESEARCH_MODIFIER_MEASUREMENT_VERSION ?? '2026-08-modifier-construct-v1'
-const expectedPrimaryLabelRosterFingerprint = process.env.RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT ?? 'lr_6082ca47'
-const expectedModifierLabelRosterFingerprint = process.env.RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT ?? 'lr_1e8211b7'
+const expectedPrimaryLabelRosterFingerprint = process.env.RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT ?? 'lr_3cc0f435'
+const expectedModifierLabelRosterFingerprint = process.env.RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT ?? 'lr_eb26ed76'
 const expectedSpecialistAssignmentStrategy = process.env.RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY ?? 'balanced-hash-v2'
 const expectedSpecialistAssignmentRosterVersion = process.env.RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION ?? '2026-08-specialist-roster-v1'
 const expectedSpecialistAssignmentModuleIds = process.env.RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS ?? 'feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module'
@@ -154,10 +155,10 @@ function researchFormFingerprint(itemMap) {
   return `rf_${hash32(`${expectedFormVersion}:${canonical}`).toString(16).padStart(8, '0')}`
 }
 
-function labelRosterFingerprint(role, labelIds, taxonomyVersion, modifierMeasurementVersion = 'not-applicable') {
+function labelRosterFingerprint(role, labelIds, taxonomyVersion, measurementVersion = 'not-applicable') {
   if (!Array.isArray(labelIds)) return ''
   const canonicalIds = [...new Set(labelIds)].sort().join('|')
-  const payload = `${taxonomyVersion}:${role}:${modifierMeasurementVersion}:${canonicalIds}`
+  const payload = `${taxonomyVersion}:${role}:${measurementVersion}:${canonicalIds}`
   return `lr_${hash32(payload).toString(16).padStart(8, '0')}`
 }
 
@@ -322,6 +323,7 @@ function validCoreRecord(value) {
     && validVersion(value.bankVersion, expectedBankVersion)
     && validVersion(value.scoringVersion, expectedScoringVersion)
     && validVersion(value.taxonomyVersion, expectedTaxonomyVersion)
+    && validVersion(value.primaryMeasurementVersion, expectedPrimaryMeasurementVersion)
     && validVersion(value.modifierMeasurementVersion, expectedModifierMeasurementVersion)
     && Array.isArray(value.primaryLabelIds)
     && value.primaryLabelIds.length > 0
@@ -336,6 +338,7 @@ function validCoreRecord(value) {
       'primary',
       value.primaryLabelIds,
       value.taxonomyVersion,
+      value.primaryMeasurementVersion,
     )
     && value.modifierLabelRosterFingerprint === labelRosterFingerprint(
       'modifier',

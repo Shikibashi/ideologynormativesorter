@@ -77,13 +77,13 @@ Contribution mode is enabled explicitly. The public flow omits `formSize` and us
 profile. A controlled `research=1` URL may request a balanced matrix form with `formSize`.
 
 ```text
-?research=1&study=community-2026-v4&formSize=120
+?research=1&study=community-2026-v5&formSize=120
 ```
 
 A retest administration uses:
 
 ```text
-?research=1&study=community-2026-v4&administration=retest&formSize=120
+?research=1&study=community-2026-v5&administration=retest&formSize=120
 ```
 
 The flow requires consent before the quiz, captures optional self-identification and broad demographic groups after the questionnaire but before showing results, and assigns a stable random participant code in the same browser. Test and retest preserve identical participant-specific item membership while using different deterministic presentation orders. It does not request names, email addresses, exact age, precise location, employer, party registration, or contact information.
@@ -214,9 +214,9 @@ Research mode produces a versioned record equivalent to:
 
 ```json
 {
-  "schemaVersion": "2026-08-v14",
+  "schemaVersion": "2026-08-v15",
   "submissionId": "random-idempotency-key",
-  "studyId": "community-2026-v4",
+  "studyId": "community-2026-v5",
   "participantId": "p_random-code",
   "administration": "test",
   "submittedAt": "2026-07-18T12:31:00.000Z",
@@ -238,12 +238,13 @@ Research mode produces a versioned record equivalent to:
     "recruitmentSource": "direct-or-unknown",
     "recruitmentSourceProvenance": "url-parameter-unverified"
   },
-  "bankVersion": "2026-06-v4+2026-08-confidence-coverage-v1+2026-08-confidence-coverage-v3+2026-07-semantic-v1+2026-07-statement-semantic-v1+2026-08-respondent-v4+2026-08-editorial-v5+2026-08-editorial-v7.1+2026-08-editorial-v8+2026-08-descriptive-evidence-v1+2026-08-descriptive-evidence-v2+2026-08-descriptive-evidence-v3+2026-08-specialist-descriptive-v3+2026-08-editorial-v9+2026-08-editorial-v11+2026-08-editorial-v12+2026-08-editorial-v13+2026-08-editorial-v14+2026-08-editorial-v15+2026-08-editorial-v16+2026-08-editorial-v17+2026-08-editorial-v18+2026-08-editorial-v19+2026-08-editorial-v20+2026-08-editorial-v21+2026-08-editorial-v22+2026-08-editorial-v23+2026-08-editorial-v24+2026-08-editorial-v25+2026-08-editorial-v26+2026-08-editorial-v27+2026-08-editorial-v28+2026-08-descriptive-evidence-v4+2026-08-descriptive-evidence-v5+2026-08-question-context-v33",
-  "scoringVersion": "2026-08-13-taxonomy-v7",
-  "taxonomyVersion": "2026-08-taxonomy-v12",
+  "bankVersion": "2026-06-v4+2026-08-confidence-coverage-v1+2026-08-confidence-coverage-v3+2026-08-confidence-coverage-v4+2026-07-semantic-v1+2026-07-statement-semantic-v1+2026-08-respondent-v5+2026-08-editorial-v5+2026-08-editorial-v7.1+2026-08-editorial-v8+2026-08-descriptive-evidence-v1+2026-08-descriptive-evidence-v2+2026-08-descriptive-evidence-v3+2026-08-specialist-descriptive-v3+2026-08-editorial-v9+2026-08-editorial-v11+2026-08-editorial-v12+2026-08-editorial-v13+2026-08-editorial-v14+2026-08-editorial-v15+2026-08-editorial-v16+2026-08-editorial-v17+2026-08-editorial-v18+2026-08-editorial-v19+2026-08-editorial-v20+2026-08-editorial-v21+2026-08-editorial-v22+2026-08-editorial-v23+2026-08-editorial-v24+2026-08-editorial-v25+2026-08-editorial-v26+2026-08-editorial-v27+2026-08-editorial-v28+2026-08-descriptive-evidence-v4+2026-08-descriptive-evidence-v5+2026-08-question-context-v33",
+  "scoringVersion": "2026-08-13-taxonomy-v8",
+  "taxonomyVersion": "2026-08-taxonomy-v13",
+  "primaryMeasurementVersion": "2026-08-primary-core-v1",
   "modifierMeasurementVersion": "2026-08-modifier-construct-v1",
-  "primaryLabelRosterFingerprint": "lr_6082ca47",
-  "modifierLabelRosterFingerprint": "lr_1e8211b7",
+  "primaryLabelRosterFingerprint": "lr_3cc0f435",
+  "modifierLabelRosterFingerprint": "lr_eb26ed76",
   "tier": "moderate",
   "consent": {
     "ageConfirmed": true,

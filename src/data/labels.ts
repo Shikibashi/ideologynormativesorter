@@ -1899,7 +1899,7 @@ export const labels: IdeologyLabel[] = [
       centroid: {
          'authority-legitimacy': 0.1,
          'property-legitimacy': 0.3,
-         'liberty-noninterference': 0.4,
+         'liberty-noninterference': -0.4,
          'equality-theory': 0.5,
          'political-community-boundary': 0.5,
          'moral-traditionalism': -0.1,
@@ -2064,13 +2064,13 @@ export const labels: IdeologyLabel[] = [
          {
             philosophy: "Civic Humanism",
             description: "Civic virtue and participation as components of good governance.",
-            affectedAxes: ["democratic-confidence","centralization-preference"],
+            affectedAxes: ["authority-legitimacy","anti-domination"],
          }
       ],
       centroid: {
          'authority-legitimacy': -0.3,
          'property-legitimacy': 0.2,
-         'liberty-noninterference': 0.3,
+         'liberty-noninterference': -0.5,
          'equality-theory': 0.2,
          'political-community-boundary': -0.2,
          'moral-traditionalism': 0.2,
@@ -2079,7 +2079,7 @@ export const labels: IdeologyLabel[] = [
          'market-process-confidence': 0.2,
          'state-capacity-confidence': 0.3,
          'public-choice-skepticism': 0.2,
-         'democratic-confidence': 0.7,
+         'democratic-confidence': 0,
          'expert-confidence': 0.1,
          'cultural-plasticity': 0.2,
          'coordination-optimism': 0.1,
@@ -2570,7 +2570,7 @@ export const labels: IdeologyLabel[] = [
          {
             philosophy: "Democracy",
             description: "Popular sovereignty as the foundation of legitimate governance.",
-            affectedAxes: ["democratic-confidence","authority-legitimacy"],
+            affectedAxes: ["authority-legitimacy","equality-theory","anti-domination"],
          },
          {
             philosophy: "Radical Democracy",
@@ -2590,7 +2590,7 @@ export const labels: IdeologyLabel[] = [
          'market-process-confidence': -0.2,
          'state-capacity-confidence': 0.1,
          'public-choice-skepticism': 0.4,
-         'democratic-confidence': 0.85,
+         'democratic-confidence': 0,
          'expert-confidence': -0.2,
          'cultural-plasticity': 0.4,
          'coordination-optimism': 0.2,

@@ -43,16 +43,17 @@ class FakeDatabase {
 function environment(overrides = {}) {
   return {
     ALLOWED_ORIGIN: ORIGIN,
-    EXPECTED_STUDY_ID: 'community-2026-v4',
-    EXPECTED_SCHEMA_VERSION: '2026-08-v14',
+    EXPECTED_STUDY_ID: 'community-2026-v5',
+    EXPECTED_SCHEMA_VERSION: '2026-08-v15',
     EXPECTED_CONSENT_VERSION: '2026-08-12-v8',
     EXPECTED_QUALITY_RULE_VERSION: 'data-quality-v2',
     EXPECTED_FORM_VERSION: 'profile-form-v3',
     EXPECTED_BANK_VERSION: 'bank-v1',
     EXPECTED_SCORING_VERSION: 'scoring-v1',
     EXPECTED_TAXONOMY_VERSION: 'taxonomy-v1',
+    EXPECTED_PRIMARY_MEASUREMENT_VERSION: 'primary-measurement-v1',
     EXPECTED_MODIFIER_MEASUREMENT_VERSION: 'modifier-measurement-v1',
-    EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT: 'lr_f8266296',
+    EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT: 'lr_6e7558bc',
     EXPECTED_MODIFIER_LABEL_ROSTER_FINGERPRINT: 'lr_28f0d466',
     EXPECTED_SPECIALIST_ASSIGNMENT_STRATEGY: 'balanced-hash-v2',
     EXPECTED_SPECIALIST_ASSIGNMENT_ROSTER_VERSION: '2026-08-specialist-roster-v1',
@@ -84,10 +85,10 @@ function coreSubmission(overrides = {}) {
     ],
   }]
   return {
-    schemaVersion: '2026-08-v14',
+    schemaVersion: '2026-08-v15',
     submissionId: 'submission_1',
     recordType: 'core',
-    studyId: 'community-2026-v4',
+    studyId: 'community-2026-v5',
     participantId: 'p_test',
     administration: 'test',
     submittedAt: '2026-08-10T12:02:00.000Z',
@@ -127,10 +128,11 @@ function coreSubmission(overrides = {}) {
     bankVersion: 'bank-v1',
     scoringVersion: 'scoring-v1',
     taxonomyVersion: 'taxonomy-v1',
+    primaryMeasurementVersion: 'primary-measurement-v1',
     modifierMeasurementVersion: 'modifier-measurement-v1',
     primaryLabelIds: ['conservative'],
     modifierLabelIds: ['progressivism'],
-    primaryLabelRosterFingerprint: 'lr_f8266296',
+    primaryLabelRosterFingerprint: 'lr_6e7558bc',
     modifierLabelRosterFingerprint: 'lr_28f0d466',
     tier: 'moderate',
     identity: {},
@@ -180,6 +182,7 @@ describe('research contribution Worker', () => {
       'bankVersion',
       'scoringVersion',
       'taxonomyVersion',
+      'primaryMeasurementVersion',
       'modifierMeasurementVersion',
       'primaryLabelRosterFingerprint',
       'modifierLabelRosterFingerprint',
@@ -208,7 +211,7 @@ describe('research contribution Worker', () => {
   it('accepts only the frozen balanced-hash specialist assignment', async () => {
     const env = environment()
     const assignment = {
-      moduleId: 'socialist-families-module',
+      moduleId: 'anarchist-families-module',
       strategy: 'balanced-hash-v2',
       rosterVersion: '2026-08-specialist-roster-v1',
     }
@@ -221,7 +224,7 @@ describe('research contribution Worker', () => {
     for (const [suffix, invalidAssignment] of [
       ['strategy', { ...assignment, strategy: 'balanced-hash-v1' }],
       ['roster', { ...assignment, rosterVersion: 'stale-roster' }],
-      ['module', { ...assignment, moduleId: 'anarchist-families-module' }],
+      ['module', { ...assignment, moduleId: 'socialist-families-module' }],
     ]) {
       assert.equal((await handleRequest(postRequest(coreSubmission({
         submissionId: `submission_assigned_${suffix}`,

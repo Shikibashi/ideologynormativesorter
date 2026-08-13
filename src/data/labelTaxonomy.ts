@@ -5,6 +5,7 @@ import { attachIdeologyLabelSources } from './labelSources'
 import { labels } from './labels'
 import { ideologyScaleMetadataForLabel, IDEOLOGY_SCALE_VERSION, type IdeologyScaleMetadata } from './ideologyScales'
 import { modifierMeasurementForLabel } from './modifierMeasurement'
+import { attachPrimaryScoringScope } from './primaryMeasurement'
 
 /**
  * Product taxonomy for ideology labels.
@@ -76,7 +77,7 @@ export interface LabelRelation {
 
 export type CatalogLabel = IdeologyLabel & { taxonomy: LabelTaxonomyMetadata }
 
-export const TAXONOMY_VERSION = '2026-08-taxonomy-v12'
+export const TAXONOMY_VERSION = '2026-08-taxonomy-v13'
 
 export const PRIMARY_LABEL_IDS = [
   'conservative',
@@ -544,6 +545,7 @@ function canonicalizeLabel(label: IdeologyLabel): CatalogLabel {
 export const primaryScoringLabels = labels
   .filter((label) => roleForLabel(label.id) === 'primary')
   .map(canonicalizeLabel)
+  .map(attachPrimaryScoringScope)
   .map((label) => attachIdeologyLabelSources(label, true))
 
 /** Labels worth browsing as political traditions or meaningful cross-cutting descriptors. */
@@ -553,6 +555,7 @@ export const publicCatalogLabels = labels
   return role === 'primary' || role === 'specialist' || role === 'modifier' || role === 'context'
   })
   .map(canonicalizeLabel)
+  .map((label) => roleForLabel(label.id) === 'primary' ? attachPrimaryScoringScope(label) : label)
   .map((label) => attachIdeologyLabelSources(label, roleForLabel(label.id) === 'primary' || roleForLabel(label.id) === 'modifier'))
 
 /** Criterion labels offered before results in research mode. */
@@ -577,6 +580,7 @@ export const specialistModuleByLabel: Readonly<Partial<Record<LabelId, string>>>
    'pan-africanism': IDENTITY_SOVEREIGNTY_MODULE_ID,
    'anarcho-capitalist': 'anarchist-families-module',
    'anarcho-communist': 'anarchist-families-module',
+   'social-anarchism': 'anarchist-families-module',
    'individualist-anarchism': 'anarchist-families-module',
    'anarcho-syndicalism': 'anarchist-families-module',
    'market-anarchism': 'anarchist-families-module',

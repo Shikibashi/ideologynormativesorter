@@ -61,9 +61,9 @@ function hash32(value) {
   return hash >>> 0
 }
 
-function labelRosterFingerprint(role, labelIds, taxonomyVersion, modifierMeasurementVersion = 'not-applicable') {
+function labelRosterFingerprint(role, labelIds, taxonomyVersion, measurementVersion = 'not-applicable') {
   const canonicalIds = [...new Set(labelIds)].sort().join('|')
-  const payload = `${taxonomyVersion}:${role}:${modifierMeasurementVersion}:${canonicalIds}`
+  const payload = `${taxonomyVersion}:${role}:${measurementVersion}:${canonicalIds}`
   return `lr_${hash32(payload).toString(16).padStart(8, '0')}`
 }
 
@@ -75,6 +75,7 @@ function assertEqual(name, expected, actual) {
 
 const research = await read('src/research/index.ts')
 const taxonomy = await read('src/data/labelTaxonomy.ts')
+const primaryMeasurement = await read('src/data/primaryMeasurement.ts')
 const modifierMeasurement = await read('src/data/modifierMeasurement.ts')
 const forms = await read('src/research/forms.ts')
 const specialist = await read('src/specialist/index.ts')
@@ -88,6 +89,7 @@ const retestOperations = await read('docs/recruitment-and-retest-operations.md')
 const protocol = await read('docs/psychometric-validation-protocol.md')
 
 const taxonomyVersion = constant(taxonomy, 'TAXONOMY_VERSION')
+const primaryMeasurementVersion = constant(primaryMeasurement, 'PRIMARY_MEASUREMENT_VERSION')
 const modifierMeasurementVersion = constant(modifierMeasurement, 'MODIFIER_MEASUREMENT_VERSION')
 const primaryLabelIds = sourceStringList(
   taxonomy,
@@ -98,7 +100,12 @@ const scoredModifierIds = [...modifierMeasurement.matchAll(/coreConstruct\(\s*['
 if (scoredModifierIds.length === 0 || new Set(scoredModifierIds).size !== scoredModifierIds.length) {
   throw new Error('core-construct modifier roster is empty or contains duplicate IDs')
 }
-const primaryLabelRosterFingerprint = labelRosterFingerprint('primary', primaryLabelIds, taxonomyVersion)
+const primaryLabelRosterFingerprint = labelRosterFingerprint(
+  'primary',
+  primaryLabelIds,
+  taxonomyVersion,
+  primaryMeasurementVersion,
+)
 const modifierLabelRosterFingerprint = labelRosterFingerprint(
   'modifier',
   scoredModifierIds,
@@ -111,6 +118,7 @@ const contract = {
   schema: constant(research, 'RESEARCH_SCHEMA_VERSION'),
   consent: constant(research, 'RESEARCH_CONSENT_VERSION'),
   quality: constant(research, 'RESEARCH_QUALITY_RULE_VERSION'),
+  primaryMeasurement: primaryMeasurementVersion,
   form: constant(forms, 'RESEARCH_FORM_VERSION'),
   assignment: constant(specialist, 'SPECIALIST_ASSIGNMENT_STRATEGY'),
   assignmentRoster: constant(specialist, 'SPECIALIST_ASSIGNMENT_ROSTER_VERSION'),
@@ -129,6 +137,9 @@ function documentedVersion(source, label) {
 const documentedBankVersion = documentedVersion(preregistration, 'Question bank')
 const documentedScoringVersion = documentedVersion(preregistration, 'Scoring')
 const documentedTaxonomyVersion = documentedVersion(preregistration, 'Taxonomy registry')
+const documentedPrimaryMeasurementVersion = documentedVersion(preregistration, 'Primary measurement registry')
+
+assertEqual('Documented primary measurement', primaryMeasurementVersion, documentedPrimaryMeasurementVersion)
 
 if (!constant(research, 'PUBLIC_RESEARCH_ENTRYPOINT').includes(`collection=${contract.study}`)) {
   throw new Error(`Public research entrypoint does not use Worker study ${contract.study}`)
@@ -141,6 +152,7 @@ assertEqual('Worker form', contract.form, configuredVar(worker, 'EXPECTED_FORM_V
 assertEqual('Worker bank', documentedBankVersion, configuredVar(worker, 'EXPECTED_BANK_VERSION'))
 assertEqual('Worker scoring', documentedScoringVersion, configuredVar(worker, 'EXPECTED_SCORING_VERSION'))
 assertEqual('Worker taxonomy', documentedTaxonomyVersion, configuredVar(worker, 'EXPECTED_TAXONOMY_VERSION'))
+assertEqual('Worker primary measurement', primaryMeasurementVersion, configuredVar(worker, 'EXPECTED_PRIMARY_MEASUREMENT_VERSION'))
 assertEqual('Worker modifier measurement', modifierMeasurementVersion, configuredVar(worker, 'EXPECTED_MODIFIER_MEASUREMENT_VERSION'))
 assertEqual('Worker primary-label roster', primaryLabelRosterFingerprint, configuredVar(worker, 'EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT'))
 assertEqual('Worker modifier-label roster', modifierLabelRosterFingerprint, configuredVar(worker, 'EXPECTED_MODIFIER_LABEL_ROSTER_FINGERPRINT'))
@@ -152,6 +164,7 @@ assertEqual('Collector consent', contract.consent, collectorDefault(collector, '
 assertEqual('Collector quality rules', contract.quality, collectorDefault(collector, 'RESEARCH_QUALITY_RULE_VERSION'))
 assertEqual('Collector form', contract.form, collectorDefault(collector, 'RESEARCH_FORM_VERSION'))
 assertEqual('Collector taxonomy', documentedTaxonomyVersion, collectorDefault(collector, 'RESEARCH_TAXONOMY_VERSION'))
+assertEqual('Collector primary measurement', primaryMeasurementVersion, collectorDefault(collector, 'RESEARCH_PRIMARY_MEASUREMENT_VERSION'))
 assertEqual('Collector modifier measurement', modifierMeasurementVersion, collectorDefault(collector, 'RESEARCH_MODIFIER_MEASUREMENT_VERSION'))
 assertEqual('Collector primary-label roster', primaryLabelRosterFingerprint, collectorDefault(collector, 'RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT'))
 assertEqual('Collector modifier-label roster', modifierLabelRosterFingerprint, collectorDefault(collector, 'RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT'))
@@ -167,6 +180,11 @@ assertEqual(
   'Analysis modifier measurement',
   modifierMeasurementVersion,
   analysisDefault(validation, 'required_modifier_measurement_version', 'PSYCH_REQUIRED_MODIFIER_MEASUREMENT_VERSION'),
+)
+assertEqual(
+  'Analysis primary measurement',
+  primaryMeasurementVersion,
+  analysisDefault(validation, 'required_primary_measurement_version', 'PSYCH_REQUIRED_PRIMARY_MEASUREMENT_VERSION'),
 )
 assertEqual(
   'Analysis primary-label roster',

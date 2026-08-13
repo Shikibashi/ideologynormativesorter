@@ -102,12 +102,14 @@ export function buildPhilosophyRows(
     const label = labelById.get(match.labelId)
     if (!label?.philosophyInfluences) continue
     const conflation = conflationByLabel.get(match.labelId)
+    const comparisonAxisIds = new Set(label.scoringScope?.axisIds ?? Object.keys(label.centroid))
 
     for (const influence of label.philosophyInfluences) {
       for (const layer of LAYERS) {
         if (!philosophiesForLayer(label, layer).includes(influence.philosophy)) continue
 
         const axisIds = influence.affectedAxes.filter((axisId) => {
+          if (!comparisonAxisIds.has(axisId)) return false
           if (axisById.get(axisId)?.layer !== layer) return false
           const score = userScores.get(axisId)
           if (!score || score.itemCount === 0) return false

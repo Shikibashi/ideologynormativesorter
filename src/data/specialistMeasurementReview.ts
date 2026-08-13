@@ -46,7 +46,7 @@ export const specialistMeasurementReviews: readonly SpecialistMeasurementReview[
    {
       id: 'anarchist-families',
       status: 'experimental-module',
-      labelIds: ['anarcho-communist', 'individualist-anarchism', 'mutualist', 'anarcho-syndicalism', 'anarcho-capitalist', 'minarchist'],
+      labelIds: ['social-anarchism', 'anarcho-communist', 'individualist-anarchism', 'market-anarchism', 'mutualist', 'anarcho-syndicalism', 'anarcho-capitalist', 'minarchist'],
       moduleId: 'anarchist-families-module',
       constructs: [
          'anti-authority',
@@ -54,7 +54,7 @@ export const specialistMeasurementReviews: readonly SpecialistMeasurementReview[
          'property regime',
          'direct federation and strategy',
       ],
-      measurementCaution: 'The module distinguishes family-level affinities; it does not establish a single identity, historical affiliation, or settled boundary between anarchism and minarchism. In particular, its present four constructs cannot distinguish Proudhonian mutualism, the Tuckerite and Labadie lines within American individualist anarchism, Swartz’s later restatement, or contemporary mutualist and C4SS-adjacent left-market-anarchist work.',
+      measurementCaution: 'The module distinguishes family-level affinities; it does not establish a single identity, historical affiliation, or settled boundary between anarchism and minarchism. Its Social / Communal Anarchism result is an experimental family signal, not a parent of mutualism or market anarchism. In particular, its present four constructs cannot distinguish Proudhonian mutualism, the Tuckerite and Labadie lines within American individualist anarchism, Swartz’s later restatement, or contemporary mutualist and C4SS-adjacent left-market-anarchist work.',
       nextGate: 'Before naming mutualist lineages, add and expert-review separate constructs for property or possession claims, anti-rent and monopoly analysis, mutual-credit or cooperative provision, individual sovereignty versus federation, and counter-economic strategy; then evaluate coverage, internal structure, test-retest stability, and false-positive separation with respondent data.',
    },
    {

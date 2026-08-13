@@ -214,7 +214,8 @@ function labelEvidenceSummary(
       return `direct ${name} coverage: ${answeredQuestionIds.length} of ${indicatorQuestionIds.length} indicators answered (minimum ${minimumAnsweredItems}) · not inferred from the full ${label.name} profile`
    }
 
-   const sparseAxes = Object.keys(label.centroid)
+   const comparisonAxes = label.scoringScope?.axisIds ?? Object.keys(label.centroid)
+   const sparseAxes = comparisonAxes
       .filter((axisId): axisId is AxisId => {
          const reliability = axisReliabilities?.[axisId]
          return !reliability || reliability.band === 'insufficient' || reliability.itemCount < 3
@@ -225,8 +226,11 @@ function labelEvidenceSummary(
    const reliabilityText = labelReliability
       ? coverageLabel(labelReliability.band)
       : 'answer coverage unavailable'
+   const scopeText = label.scoringScope
+      ? `primary core comparison: ${match?.measuredAxisCount ?? 0} of ${label.scoringScope.axisIds.length} constructs measured · `
+      : ''
    const sparseText = sparseAxes.length > 0 ? ` · less certain on ${sparseAxes.join(', ')}` : ''
-   return `${reliabilityText}${sparseText}`
+   return `${scopeText}${reliabilityText}${sparseText}`
 }
 
 function LabelCard({
@@ -308,6 +312,36 @@ function LabelCard({
                      </li>
                   ))}
                </ul>
+            </details>
+         )}
+         {label.scoringScope && (
+            <details className="label-scale-disclosure">
+               <summary>Ordinary scoring construct scope</summary>
+               <p className="muted">
+                  This broad-primary comparison uses only its named core constructs. It does not use the rest of the catalog centroid as a proxy for beliefs the instrument did not measure.
+               </p>
+               <p className="muted">{label.scoringScope.rationale}</p>
+               <ul>
+                  {label.scoringScope.axisIds.map((axisId) => (
+                     <li key={axisId}>
+                        {axisById?.get(axisId)?.name ?? axisId}
+                        {label.scoringScope!.requiredAxisIds.includes(axisId) && (
+                           <span className="muted">
+                              {' '}· {label.scoringScope!.minimumItemCounts?.[axisId] ?? 1} direct response{(label.scoringScope!.minimumItemCounts?.[axisId] ?? 1) === 1 ? '' : 's'} required before this label can be shown
+                           </span>
+                        )}
+                     </li>
+                  ))}
+               </ul>
+               {label.scoringScope.limitation && <p className="muted">Current limit: {label.scoringScope.limitation}</p>}
+               {label.sources && (
+                  <p className="muted">
+                     Scope sources: {label.sources
+                        .filter((source) => label.scoringScope!.sourceIds.includes(source.sourceId))
+                        .map((source) => source.title)
+                        .join(', ')}.
+                  </p>
+               )}
             </details>
          )}
          <details className="label-layer-explainer">

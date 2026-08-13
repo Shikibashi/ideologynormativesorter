@@ -19,13 +19,13 @@ Never put email addresses, names, phone numbers, recruitment-platform IDs, IP ad
 Initial administration:
 
 ```text
-https://SITE/?research=1&study=community-2026-v4&formSize=120
+https://SITE/?research=1&study=community-2026-v5&formSize=120
 ```
 
 Retest administration:
 
 ```text
-https://SITE/?research=1&study=community-2026-v4&administration=retest&formSize=120
+https://SITE/?research=1&study=community-2026-v5&administration=retest&formSize=120
 ```
 
 The same browser retains the pseudonymous participant code. Cross-device retest linkage requires a separate random linking token managed outside the response collector. Do not use an email address as the participant code.

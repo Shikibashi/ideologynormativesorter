@@ -14,6 +14,7 @@ import {
   TAXONOMY_VERSION,
 } from '../data/labelTaxonomy'
 import { MODIFIER_MEASUREMENT_VERSION } from '../data/modifierMeasurement'
+import { PRIMARY_MEASUREMENT_VERSION } from '../data/primaryMeasurement'
 import { labelRosterFingerprint } from './taxonomyMetadata'
 import type {
   SpecialistCriterionResponse,
@@ -23,16 +24,17 @@ import type {
   SpecialistOutcome,
 } from '../specialist'
 
-export const RESEARCH_SCHEMA_VERSION = '2026-08-v14'
+export const RESEARCH_SCHEMA_VERSION = '2026-08-v15'
 export const RESEARCH_CONSENT_VERSION = '2026-08-12-v8'
 export const RESEARCH_QUALITY_RULE_VERSION = 'data-quality-v2'
 /** A new cohort isolates taxonomy and specialist-construct revisions from prior submissions. */
-export const RESEARCH_STUDY_ID = 'community-2026-v4'
-export const PUBLIC_RESEARCH_ENTRYPOINT = '?contribute=1&collection=community-2026-v4'
+export const RESEARCH_STUDY_ID = 'community-2026-v5'
+export const PUBLIC_RESEARCH_ENTRYPOINT = '?contribute=1&collection=community-2026-v5'
 export const PRIMARY_LABEL_ROSTER_FINGERPRINT = labelRosterFingerprint(
   'primary',
   primaryScoringLabels.map((label) => label.id),
   TAXONOMY_VERSION,
+  PRIMARY_MEASUREMENT_VERSION,
 )
 export const MODIFIER_LABEL_ROSTER_FINGERPRINT = labelRosterFingerprint(
   'modifier',
@@ -137,6 +139,8 @@ export interface CoreResearchSubmission extends ResearchRecordBase {
   bankVersion: string
   scoringVersion: string
   taxonomyVersion: string
+  /** Version of the source-backed primary core-comparison registry. */
+  primaryMeasurementVersion: string
   /** Version of the direct-construct eligibility registry for modifiers. */
   modifierMeasurementVersion: string
   primaryLabelIds: string[]
@@ -337,6 +341,7 @@ export function buildResearchSubmission(input: {
     bankVersion: input.bankVersion,
     scoringVersion: input.scoringVersion,
     taxonomyVersion: TAXONOMY_VERSION,
+    primaryMeasurementVersion: PRIMARY_MEASUREMENT_VERSION,
     modifierMeasurementVersion: MODIFIER_MEASUREMENT_VERSION,
     primaryLabelIds: primaryScoringLabels.map((label) => label.id),
     modifierLabelIds: modifierScoringLabels.map((label) => label.id),

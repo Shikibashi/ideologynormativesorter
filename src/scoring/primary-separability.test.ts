@@ -6,111 +6,75 @@ import type { AnswerMap, IdeologyLabel } from '../types'
 import { centroidAlignedAnswerValue } from './calibration.fixtures'
 import { buildResultProfile } from './index'
 
-function centroidDistance(a: IdeologyLabel, b: IdeologyLabel): number {
-  return Math.sqrt(
-    axes.reduce((sum, axis) => {
-      const delta = a.centroid[axis.id] - b.centroid[axis.id]
-      return sum + delta * delta
-    }, 0),
-  )
-}
+function scopedCentroidAnswers(label: IdeologyLabel): AnswerMap {
+  const scope = label.scoringScope
+  if (!scope) throw new Error(`${label.id} has no source-backed primary scoring scope`)
 
-function centroidAnswers(label: IdeologyLabel): AnswerMap {
+  const axisIds = new Set(scope.axisIds)
   return Object.fromEntries(
-    questions.map((question) => [
-      question.id,
-      {
-        questionId: question.id,
-        value: centroidAlignedAnswerValue(question, label.centroid),
-        ...(question.layer === 'descriptive' ? { confidence: 3 } : {}),
-        ...(question.layer === 'prescriptive' ? { priority: 3 } : {}),
-      },
-    ]),
+    questions
+      .filter((question) => question.axisWeights.some((weight) => axisIds.has(weight.axisId)))
+      .map((question) => [
+        question.id,
+        {
+          questionId: question.id,
+          value: centroidAlignedAnswerValue(question, label.centroid),
+          ...(question.layer === 'descriptive' ? { confidence: 3 } : {}),
+          ...(question.layer === 'prescriptive' ? { priority: 3 } : {}),
+        },
+      ]),
   )
 }
 
 function prototypeRanking(label: IdeologyLabel): string[] {
-  return buildResultProfile(questions, centroidAnswers(label), axes, primaryScoringLabels)
+  return buildResultProfile(questions, scopedCentroidAnswers(label), axes, primaryScoringLabels)
     .nearestLabels
     .map((match) => String(match.labelId))
 }
 
-/**
- * Explicit synthetic-geometry debt after quarantining defective respondent
- * items. Keep this list exact so a miss cannot disappear into a looser global
- * threshold or be "fixed" by silently tuning a centroid.
- */
-const KNOWN_TOP_FIVE_GAPS: readonly string[] = []
+function scopedSignature(label: IdeologyLabel): string {
+  const scope = label.scoringScope
+  if (!scope) throw new Error(`${label.id} has no source-backed primary scoring scope`)
+  return scope.axisIds
+    .map((axisId) => `${axisId}:${label.centroid[axisId]}`)
+    .sort()
+    .join('|')
+}
 
 /**
- * Internal geometry guard only. These profiles are generated from centroids and
- * therefore cannot establish external or construct validity. Their purpose is
- * to stop the primary result pool from becoming so crowded that even its own
- * declared prototypes are not distinguishable by the active questionnaire.
- *
- * Thresholds deliberately freeze measured performance rather than asserting an
- * idealized level of precision the current bank has not demonstrated: every
- * primary must remain in its prototype's top five, at least 85% must remain in
- * the top three, and at least 65% must remain rank one.
+ * These are construct-scoped synthetic profiles, not empirical accuracy
+ * evidence. They verify a narrower contract than the retired full-centroid
+ * rank-one geometry: every primary has enough measured core evidence to remain
+ * in its own nearby neighborhood, while related broad traditions may overlap.
  */
 describe('primary ideology separability', () => {
-  it('keeps primary centroids outside the near-duplicate floor', () => {
-    let closest: { pair: string; distance: number } | null = null
+  it('gives every primary a distinct source-backed comparison signature', () => {
+    const signatures = new Map<string, string[]>()
 
-    for (let i = 0; i < primaryScoringLabels.length; i++) {
-      for (let j = i + 1; j < primaryScoringLabels.length; j++) {
-        const left = primaryScoringLabels[i]
-        const right = primaryScoringLabels[j]
-        const distance = centroidDistance(left, right)
-        if (!closest || distance < closest.distance) {
-          closest = { pair: `${left.id} / ${right.id}`, distance }
-        }
-      }
+    for (const label of primaryScoringLabels) {
+      const signature = scopedSignature(label)
+      signatures.set(signature, [...(signatures.get(signature) ?? []), label.id])
     }
 
-    expect(closest).not.toBeNull()
-    expect(closest!.distance, `closest primary pair: ${closest!.pair}`).toBeGreaterThanOrEqual(0.35)
+    const duplicates = [...signatures.values()].filter((ids) => ids.length > 1)
+    expect(duplicates).toEqual([])
   })
 
   for (const label of primaryScoringLabels) {
-    it(`${label.id} has its top-five prototype status recorded`, () => {
-      const topFive = prototypeRanking(label).slice(0, 5)
-      if (KNOWN_TOP_FIVE_GAPS.includes(label.id)) {
-        expect(topFive, `${label.id} unexpectedly became synthetically separable`).not.toContain(label.id)
-      } else {
-        expect(topFive, `${label.id} prototype resolved to ${topFive.join(', ')}`).toContain(label.id)
-      }
+    it(`${label.id} has measured evidence for every required core construct in its prototype`, () => {
+      const answers = scopedCentroidAnswers(label)
+      const result = buildResultProfile(questions, answers, axes, primaryScoringLabels)
+      const own = result.nearestLabels.find((match) => match.labelId === label.id)
+
+      expect(Object.keys(answers).length, `${label.id} has no effective scoped items`).toBeGreaterThan(0)
+      expect(own, `${label.id} was withheld despite a complete scoped prototype`).toBeDefined()
+      expect(own!.coreGateStatus).toBe('passed')
+      expect(own!.measuredAxisCount).toBeGreaterThanOrEqual(label.scoringScope!.requiredAxisIds.length)
+    })
+
+    it(`${label.id} remains within its own top-three scoped prototype neighborhood`, () => {
+      const topThree = prototypeRanking(label).slice(0, 3)
+      expect(topThree, `${label.id} prototype resolved to ${topThree.join(', ')}`).toContain(label.id)
     })
   }
-
-  it('keeps the synthetic top-five gap ledger exact', () => {
-    const observed = primaryScoringLabels
-      .filter((label) => !prototypeRanking(label).slice(0, 5).includes(label.id))
-      .map((label) => label.id)
-      .sort()
-
-    expect(observed).toEqual([...KNOWN_TOP_FIVE_GAPS].sort())
-  })
-
-  it('keeps at least 85% of primary prototypes in the top three', () => {
-    const topThreeCount = primaryScoringLabels.filter((label) =>
-      prototypeRanking(label).slice(0, 3).includes(label.id),
-    ).length
-    const rate = topThreeCount / primaryScoringLabels.length
-
-    expect(
-      rate,
-      `${topThreeCount}/${primaryScoringLabels.length} primary prototypes were top three`,
-    ).toBeGreaterThanOrEqual(0.85)
-  })
-
-  it('keeps at least 65% of primary prototypes as rank-one matches', () => {
-    const rankOneCount = primaryScoringLabels.filter((label) => prototypeRanking(label)[0] === label.id).length
-    const rate = rankOneCount / primaryScoringLabels.length
-
-    expect(
-      rate,
-      `${rankOneCount}/${primaryScoringLabels.length} primary prototypes were rank one`,
-    ).toBeGreaterThanOrEqual(0.65)
-  })
 })

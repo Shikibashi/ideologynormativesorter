@@ -12,13 +12,13 @@ describe('research taxonomy roster fingerprints', () => {
     expect(canonical).toMatch(/^lr_[0-9a-f]{8}$/)
   })
 
-  it('freezes the active v12 roster fingerprints used by the collector contract', async () => {
+  it('freezes the active v13 roster fingerprints used by the collector contract', async () => {
     const {
       MODIFIER_LABEL_ROSTER_FINGERPRINT,
       PRIMARY_LABEL_ROSTER_FINGERPRINT,
     } = await import('./index')
 
-    expect(PRIMARY_LABEL_ROSTER_FINGERPRINT).toBe('lr_6082ca47')
-    expect(MODIFIER_LABEL_ROSTER_FINGERPRINT).toBe('lr_1e8211b7')
+    expect(PRIMARY_LABEL_ROSTER_FINGERPRINT).toBe('lr_3cc0f435')
+    expect(MODIFIER_LABEL_ROSTER_FINGERPRINT).toBe('lr_eb26ed76')
   })
 })

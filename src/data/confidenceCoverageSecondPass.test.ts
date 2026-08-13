@@ -6,14 +6,16 @@ import {
 } from './confidenceCoverageSecondPass'
 
 describe('second confidence coverage pass', () => {
-  it('versions and activates only single-axis balanced items', () => {
+  it('versions and activates only single-axis direct-construct items', () => {
     expect(QUESTION_BANK_VERSION).toContain(CONFIDENCE_COVERAGE_SECOND_PASS_VERSION)
     expect(confidenceCoverageSecondPassQuestions).toHaveLength(28)
 
     for (const question of confidenceCoverageSecondPassQuestions) {
       const effective = questionById.get(question.id)
       expect(effective, `${question.id} must be in the effective bank`).toBeDefined()
-      expect(effective?.tier).toBe('moderate')
+      expect(effective?.tier).toBe(
+        question.id === 'q0418' || question.id === 'q0447' ? 'blitz' : 'moderate',
+      )
       expect(effective?.active).not.toBe(false)
       expect(effective?.axisWeights).toHaveLength(1)
       if (effective?.layer === 'descriptive') {
@@ -28,9 +30,9 @@ describe('second confidence coverage pass', () => {
     }
   })
 
-  it('raises the previously sparse balanced axes without changing legacy short forms', () => {
-    expect(questionsForTier('blitz')).toHaveLength(17)
-    expect(questionsForTier('quick')).toHaveLength(50)
+  it('raises the previously sparse balanced axes and restores ecological standing to short forms', () => {
+    expect(questionsForTier('blitz')).toHaveLength(19)
+    expect(questionsForTier('quick')).toHaveLength(52)
 
     const balanced = questionsForTier('moderate')
     const expectedCounts: Record<string, number> = {

@@ -16,10 +16,10 @@ export function labelRosterFingerprint(
   role: 'primary' | 'modifier',
   labelIds: readonly string[],
   taxonomyVersion: string,
-  modifierMeasurementVersion?: string,
+  measurementVersion?: string,
 ): string {
   const canonicalIds = [...new Set(labelIds)].sort().join('|')
-  const measurementScope = modifierMeasurementVersion ?? 'not-applicable'
+  const measurementScope = measurementVersion ?? 'not-applicable'
   const payload = `${taxonomyVersion}:${role}:${measurementScope}:${canonicalIds}`
   return `lr_${hash32(payload).toString(16).padStart(8, '0')}`
 }

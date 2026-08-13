@@ -66,6 +66,29 @@ const DEFINING_CONSTRUCT_SPECIALIST_ENDPOINTS = [
   'welfare-chauvinism',
 ] as const
 
+/**
+ * These labels are historically important or narrow enough that generic
+ * neighboring agreement must never promote them to ordinary result output.
+ * Marxism-Leninism is the one exception because its bounded primary path has
+ * a constitutive gate and a source-backed core scope.
+ */
+const HIGH_RISK_NON_ORDINARY_RESULT_IDS = [
+  'fascist-authoritarian',
+  'national-socialism',
+  'strasserism',
+  'eco-fascism',
+  'ethnonationalist',
+  'maoism',
+  'national-bolshevism',
+  'christian-reconstructionism',
+  'fundamentalist-theocracy',
+  'political-islam',
+  'anarcho-capitalist',
+  'anarcho-communist',
+  'welfare-chauvinism',
+  'geolibertarian',
+] as const
+
 const LIBERAL_LIBERTARIAN_LABEL_IDS = [
   'decentralist-market-skeptic-of-state',
   'geolibertarian',
@@ -288,6 +311,21 @@ describe('ideology taxonomy', () => {
     expect(PROVISIONAL_SPECIALIST_LABEL_IDS).not.toContain('theocrat')
   })
 
+  it('keeps every named high-risk tradition out of ordinary results except gated Marxism-Leninism', () => {
+    const ordinaryResultIds = new Set([
+      ...primaryScoringLabels.map((label) => label.id),
+      ...modifierScoringLabels.map((label) => label.id),
+    ])
+
+    expect(ordinaryResultIds).toContain('marxist-leninist')
+    expect(compoundGateByLabelId.get('marxist-leninist')).toBeDefined()
+    expect(modifierMeasurementForLabel('ethnonationalist')?.availability).toBe('focused-follow-up')
+
+    for (const labelId of HIGH_RISK_NON_ORDINARY_RESULT_IDS) {
+      expect(ordinaryResultIds, `${labelId} must require a specialist or focused follow-up`).not.toContain(labelId)
+    }
+  })
+
   it('keeps retired synthetic labels out of both scoring and the public label browser', () => {
     for (const labelId of RETIRED_LABEL_IDS) {
       expect(primaryScoringLabels.some((label) => label.id === labelId)).toBe(false)
@@ -350,6 +388,8 @@ describe('ideology taxonomy', () => {
     expect(roleForLabel('market-anarchism')).toBe('specialist')
     expect(publicCatalogLabels.find((label) => label.id === 'market-anarchism')?.family).toBe('anarchist')
     expect(taxonomyForLabel('market-anarchism')?.parentId).toBeUndefined()
+    expect(specialistModuleByLabel['social-anarchism']).toBe('anarchist-families-module')
+    expect(PROVISIONAL_SPECIALIST_LABEL_IDS).not.toContain('social-anarchism')
     expect(taxonomyForLabel('georgism')?.parentId).toBeUndefined()
     expect(taxonomyForLabel('market-socialist')?.parentId).toBeUndefined()
     expect(taxonomyForLabel('black-nationalism')?.parentId).toBeUndefined()

@@ -41,6 +41,33 @@ function compoundGateStatus(
    return insufficient ? 'insufficient-evidence' : 'passed'
 }
 
+function comparisonAxisIdsFor(label: IdeologyLabel): AxisId[] {
+   return label.scoringScope
+      ? [...label.scoringScope.axisIds] as AxisId[]
+      : Object.keys(label.centroid) as AxisId[]
+}
+
+/**
+ * A broad primary must not be exposed when an unmeasured constitutive
+ * construct would otherwise be silently filled in by agreement on unrelated
+ * axes. This is intentionally an evidence gate, not a requirement that the
+ * respondent already agrees with every core commitment.
+ */
+function scoringScopeGateStatus(
+   breakdown: ScoreBreakdown,
+   label: IdeologyLabel,
+): LabelMatch['coreGateStatus'] {
+   const scope = label.scoringScope
+   if (!scope) return undefined
+
+   const scoreMap = measuredScoreMap(breakdown)
+   const missing = scope.requiredAxisIds.some((axisId) => {
+      const minimumItemCount = scope.minimumItemCounts?.[axisId] ?? 1
+      return (scoreMap.get(axisId)?.itemCount ?? 0) < minimumItemCount
+   })
+   return missing ? 'insufficient-evidence' : 'passed'
+}
+
 function measuredScoreMap(breakdown: ScoreBreakdown): Map<AxisId, MeasuredScore> {
    const all = [...breakdown.normative, ...breakdown.descriptive, ...breakdown.prescriptive]
    return new Map(all.map((s) => [s.axisId, { normalized: s.normalized, itemCount: s.itemCount }]))
@@ -95,10 +122,12 @@ function layerEvidenceFor(
    scoreMap: Map<AxisId, MeasuredScore>,
    label: IdeologyLabel,
    axes: readonly Axis[],
+   comparisonAxisIds: readonly AxisId[],
 ): Record<Layer, LabelLayerEvidence> {
+   const comparisonAxisIdSet = new Set(comparisonAxisIds)
    return Object.fromEntries(LAYERS.map((layer) => {
       const axisIds = axes
-         .filter((axis) => axis.layer === layer && label.centroid[axis.id] !== undefined)
+         .filter((axis) => axis.layer === layer && comparisonAxisIdSet.has(axis.id) && label.centroid[axis.id] !== undefined)
          .map((axis) => axis.id)
       const { distance, measuredAxisCount, totalAxisCount, evidenceStrength } = distanceOver(scoreMap, label, axisIds)
       return [layer, {
@@ -123,7 +152,7 @@ export function computeLabelMatches(
    const scoreMap = measuredScoreMap(breakdown)
 
    const matches = labels.map((label) => {
-      const axisIds = Object.keys(label.centroid) as AxisId[]
+      const axisIds = comparisonAxisIdsFor(label)
       const { distance, measuredAxisCount, totalAxisCount, evidenceStrength } = distanceOver(scoreMap, label, axisIds)
       const fit = measuredAxisCount > 0 ? closeness(distance) : 0
       return {
@@ -140,17 +169,20 @@ export function computeLabelMatches(
          runnerUpMargin: undefined as number | undefined,
          uncertaintyBand: 'high' as 'low' | 'medium' | 'high',
          compoundGateStatus: compoundGateStatus(breakdown, label),
+         coreGateStatus: scoringScopeGateStatus(breakdown, label),
          reasoning: undefined as ReturnType<typeof computeLabelMatchReasoning> | undefined,
-         layerEvidence: axes ? layerEvidenceFor(scoreMap, label, axes) : undefined,
+         layerEvidence: axes ? layerEvidenceFor(scoreMap, label, axes, axisIds) : undefined,
       }
    })
 
-   // A compound label cannot be a nearest result when its defining
-   // commitment was either contradicted or not measured. This is the point at
-   // which the taxonomy's “necessary component” semantics become scoring
-   // behavior rather than explanatory prose.
+   // A compound label cannot be a nearest result when its defining commitment
+   // was either contradicted or not measured. A primary with a source-backed
+   // scoring scope likewise cannot be exposed until each required core
+   // construct is measured. These are eligibility boundaries, not claims that
+   // the remaining centroid values are empirically validated.
    const eligibleMatches = matches.filter((match) =>
-      match.compoundGateStatus === undefined || match.compoundGateStatus === 'passed',
+      (match.compoundGateStatus === undefined || match.compoundGateStatus === 'passed')
+      && (match.coreGateStatus === undefined || match.coreGateStatus === 'passed'),
    )
 
    eligibleMatches.sort((a, b) => a.distance - b.distance)
@@ -175,7 +207,7 @@ export function computeLabelMatches(
    for (const m of top) {
       const label = labels.find(l => l.id === m.labelId)
       if (label) {
-         m.reasoning = computeLabelMatchReasoning(scoreMap, label)
+         m.reasoning = computeLabelMatchReasoning(scoreMap, label, comparisonAxisIdsFor(label))
       }
    }
 
@@ -201,12 +233,15 @@ export function computeModifierMatches(
 
 function computeLabelMatchReasoning(
    scoreMap: Map<AxisId, MeasuredScore>,
-   label: IdeologyLabel
+   label: IdeologyLabel,
+   comparisonAxisIds: readonly AxisId[],
 ) {
    const sharedExtremeAxes: { axisId: AxisId; userScore: number; labelScore: number }[] = []
    const divergentAxes: { axisId: AxisId; userScore: number; labelScore: number }[] = []
 
-   for (const [axisId, target] of Object.entries(label.centroid) as [AxisId, number][]) {
+   for (const axisId of comparisonAxisIds) {
+      const target = label.centroid[axisId]
+      if (target === undefined) continue
       const ms = scoreMap.get(axisId)
       if (!ms) continue
 
@@ -255,7 +290,8 @@ const LAYER_ADJ: Record<Layer, string> = {
  * remain visible instead of being compressed toward 1.
  */
 function layerAgreement(scoreMap: Map<AxisId, MeasuredScore>, label: IdeologyLabel, axes: Axis[], layer: Layer): number {
-   const layerAxes = axes.filter((a) => a.layer === layer && label.centroid[a.id] !== undefined)
+   const comparisonAxisIds = new Set(comparisonAxisIdsFor(label))
+   const layerAxes = axes.filter((a) => a.layer === layer && comparisonAxisIds.has(a.id) && label.centroid[a.id] !== undefined)
    let sumAbs = 0
    let measuredAxisCount = 0
    for (const axis of layerAxes) {
@@ -271,9 +307,25 @@ function layerAgreement(scoreMap: Map<AxisId, MeasuredScore>, label: IdeologyLab
    return Math.max(0, 1 - meanAbsGap / 2)
 }
 
+function hasMeasuredLayerEvidence(
+   scoreMap: Map<AxisId, MeasuredScore>,
+   label: IdeologyLabel,
+   axes: Axis[],
+   layer: Layer,
+): boolean {
+   const comparisonAxisIds = new Set(comparisonAxisIdsFor(label))
+   return axes.some((axis) =>
+      axis.layer === layer
+      && comparisonAxisIds.has(axis.id)
+      && label.centroid[axis.id] !== undefined
+      && (scoreMap.get(axis.id)?.itemCount ?? 0) > 0,
+   )
+}
+
 function divergentAxesFor(scoreMap: Map<AxisId, MeasuredScore>, label: IdeologyLabel, axes: Axis[], layers: Layer[]): AxisId[] {
+   const comparisonAxisIds = new Set(comparisonAxisIdsFor(label))
    const scored = axes
-      .filter((a) => layers.includes(a.layer) && label.centroid[a.id] !== undefined)
+      .filter((a) => layers.includes(a.layer) && comparisonAxisIds.has(a.id) && label.centroid[a.id] !== undefined)
       .flatMap((axis) => {
          const score = scoreMap.get(axis.id)
          if (!score || score.itemCount === 0) return []
@@ -300,20 +352,26 @@ export function computeConflatedLabels(breakdown: ScoreBreakdown, labels: Ideolo
    const flags: LabelConflationFlag[] = []
 
    for (const label of labels) {
+      const comparableLayers = LAYERS.filter((layer) => hasMeasuredLayerEvidence(scoreMap, label, axes, layer))
+      // Do not manufacture a cross-layer disagreement when this label's scope
+      // (or the respondent's answers) supplies evidence in only one layer.
+      // A scope omission is a measurement limit, not a substantive divergence.
+      if (comparableLayers.length < 2) continue
+
       const agreement = {
          normative: layerAgreement(scoreMap, label, axes, 'normative'),
          descriptive: layerAgreement(scoreMap, label, axes, 'descriptive'),
          prescriptive: layerAgreement(scoreMap, label, axes, 'prescriptive'),
       } as Record<Layer, number>
 
-      let matchedLayer: Layer = 'normative'
-      for (const layer of LAYERS) {
+      let matchedLayer: Layer = comparableLayers[0]
+      for (const layer of comparableLayers) {
          if (agreement[layer] > agreement[matchedLayer]) matchedLayer = layer
       }
       const best = agreement[matchedLayer]
       if (best < MATCH_FLOOR) continue
 
-      const conflatedLayers = LAYERS.filter((l) => l !== matchedLayer && best - agreement[l] >= DIVERGENCE_DELTA)
+      const conflatedLayers = comparableLayers.filter((l) => l !== matchedLayer && best - agreement[l] >= DIVERGENCE_DELTA)
       if (conflatedLayers.length === 0) continue
 
       const divergentAxes = divergentAxesFor(scoreMap, label, axes, conflatedLayers)

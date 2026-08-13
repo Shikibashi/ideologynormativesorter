@@ -20,6 +20,27 @@ export interface IdeologyLabelSource {
    note: string
 }
 
+/**
+ * A deliberately narrow set of constructs used to compare a broad primary
+ * tradition. It prevents a family label from inheriting a score from every
+ * empirical or strategic stereotype encoded in a legacy full centroid.
+ */
+export interface LabelScoringScope {
+   version: string
+   /** Axis dimensions that are doctrinally relevant to this comparison. */
+   axisIds: readonly AxisId[]
+   /** Every required construct must have respondent evidence before a primary match is exposed. */
+   requiredAxisIds: readonly AxisId[]
+   /** Minimum direct responses needed for a required construct when one item would be too thin. */
+   minimumItemCounts?: Readonly<Partial<Record<AxisId, number>>>
+   /** Public label-source records used to select this scope. */
+   sourceIds: readonly string[]
+   /** Why these axes are constitutive enough for an ordinary family-level comparison. */
+   rationale: string
+   /** Important core constructs the current ordinary bank does not yet distinguish. */
+   limitation?: string
+}
+
 export interface IdeologyLabel {
    id: LabelId
    name: string
@@ -28,6 +49,8 @@ export interface IdeologyLabel {
    subfamily?: string
    /** Reference position in axis-space used for nearest-label distance matching. */
    centroid: Record<AxisId, number>
+   /** Optional source-backed restriction for an ordinary primary comparison. */
+   scoringScope?: LabelScoringScope
    description: string
    /** Short user-facing note for labels whose academic usage is contested, niche, or easily conflated. */
    cautionNote?: string

@@ -230,10 +230,16 @@ describe('specialist module registry', () => {
   })
 
   it('keeps the ordered specialist waves broad enough to include the new family anchors', () => {
+    const anarchist = specialistModuleDefinitions.find((module) => module.id === 'anarchist-families-module')
     const green = specialistModuleDefinitions.find((module) => module.id === 'green-morphology-module')
     const socialist = specialistModuleDefinitions.find((module) => module.id === 'socialist-families-module')
     const religious = specialistModuleDefinitions.find((module) => module.id === 'religious-national-politics-module')
 
+    expect(anarchist?.criterionOptions.map((option) => option.traditionId)).toEqual(expect.arrayContaining([
+      'social-anarchism',
+      'market-anarchism',
+      'mutualist',
+    ]))
     expect(green?.criterionOptions.map((option) => option.traditionId)).toContain('ecomodernist')
     expect(socialist?.criterionOptions.map((option) => option.traditionId)).toEqual(expect.arrayContaining([
       'democratic-socialist',

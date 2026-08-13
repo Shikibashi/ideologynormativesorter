@@ -5,11 +5,12 @@ Review artifact accompanying the 15 new `IdeologyLabel` entries added to
 one of the 26 axes, the centroid value assigned (range −1..1), and a one-line
 rationale citing the axis pole from `src/data/axes.ts`.
 
-Centroid values were authored to (a) self-resolve in the archetype sweep or (b)
-fall under a documented `NEAR_TIE_EXCEPTIONS` entry in
-`src/scoring/archetype-sweep.test.ts`. One genuine near-tie remains:
-`market-liberal`/`classical-liberalism` (margin 0.006); `minarchist`'s existing
-near-tie was extended to include `classical-liberalism`.
+Centroid values were originally authored to self-resolve in a full-centroid
+archetype sweep or to fall under a documented near-tie exception. That was a
+catalog-geometry check, not respondent validation. The source-backed
+primary-core migration now treats full-centroid rank order as historical
+diagnostic evidence only; ordinary primary matching uses each tradition's
+declared construct scope and abstains when a required construct is unmeasured.
 
 Pole abbreviations used below: neg = negativePole, pos = positivePole.
 
@@ -510,10 +511,12 @@ Pole abbreviations used below: neg = negativePole, pos = positivePole.
 
 ---
 
-## Documented near-ties
+## Historical full-centroid near-ties
 
-One genuine near-tie remains (per the authoring rubric, conservative-on-conflict):
+The following entries are preserved as historical authoring notes. They do not
+define current ordinary-result eligibility or rank order after the
+source-backed primary-core migration:
 
-- **market-liberal ↔ classical-liberalism** (margin 0.006). Both occupy the constitutional civil-libertarian liberal cluster; the base bank heavily probes market-process-confidence, on which they agree in sign. Documented at `NEAR_TIE_EXCEPTIONS['market-liberal'] = { tiesWith: 'classical-liberalism', maxMargin: 0.01 }`.
+- **market-liberal ↔ classical-liberalism** (margin 0.006 in the historical full-centroid sweep). Both occupy the constitutional civil-libertarian liberal cluster; the base bank heavily probes market-process-confidence, on which they agree in sign.
 
-Additionally, **minarchist**'s existing near-tie (with `civil-libertarian-cosmopolitan`) was extended to include `classical-liberalism`, since the new classical-liberalism centroid pulls minarchist's fixture toward the civil-libertarian cluster. All other existing near-ties continue to hold at their documented margins.
+Additionally, **minarchist**'s historical near-tie (with `civil-libertarian-cosmopolitan`) was extended to include `classical-liberalism`, since the new classical-liberalism centroid pulled its fixture toward the civil-libertarian cluster. Current specialist and context labels do not compete in ordinary primary scoring.

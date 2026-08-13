@@ -55,7 +55,7 @@ High-confidence sign or construct corrections are applied through the overlay. A
 ## Community contributions
 
 The ordinary intro screen lets an adult optionally contribute the same Balanced or Full-depth profile they select for
-their result. Contribution is not a separate test: the selected profile keeps its complete 140- or 285-question form,
+their result. Contribution is not a separate test: the selected profile keeps its complete 206- or 338-question form,
 and the respondent can continue without contributing at consent or skip submission after answering.
 
 Before results, contributors may optionally provide one or more ideology or tradition names that are not in the current label set. Those names are stored as contribution metadata and summarized for later manual review; they do not automatically alter scoring or add production labels. Controlled `research=1&study=...` links remain available for explicitly sized matrix forms. Incompatible saves from older form or consent versions are not resumed as current contributions.
@@ -88,20 +88,21 @@ The repository includes a minimal dependency-free collector for controlled deplo
 ```bash
 ALLOWED_ORIGIN=http://localhost:5173 \
 RESEARCH_OUTPUT_FILE=./private-data/submissions.ndjson \
-RESEARCH_STUDY_ID=community-2026-v4 \
+RESEARCH_STUDY_ID=community-2026-v5 \
 RESEARCH_BANK_VERSION='the-frozen-bank-version' \
 RESEARCH_SCORING_VERSION='the-frozen-scoring-version' \
-RESEARCH_TAXONOMY_VERSION=2026-08-taxonomy-v12 \
+RESEARCH_TAXONOMY_VERSION=2026-08-taxonomy-v13 \
+RESEARCH_PRIMARY_MEASUREMENT_VERSION=2026-08-primary-core-v1 \
 RESEARCH_MODIFIER_MEASUREMENT_VERSION=2026-08-modifier-construct-v1 \
-RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT=lr_6082ca47 \
-RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT=lr_1e8211b7 \
+RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT=lr_3cc0f435 \
+RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT=lr_eb26ed76 \
 RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY=balanced-hash-v2 \
 RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION=2026-08-specialist-roster-v1 \
 RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS=feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module \
 node research-collector/server.mjs
 ```
 
-The collector validates the schema, consent, quality-rule, form, and taxonomy versions; recomputes matrix-form fingerprints; enforces timestamp, response-option and confidence/priority consistency; validates deterministic specialist assignments against the configured strategy, roster version, and module list; and treats `submissionId` as a persistent idempotency key. An exact retry is acknowledged without a second append, while reuse of an ID for different content is rejected. Set the study, bank, scoring, taxonomy, and specialist-assignment variables above for a frozen field deployment; the schema, consent, quality-rule, and form variables have current-version defaults and can also be overridden explicitly.
+The collector validates the schema, consent, quality-rule, form, taxonomy, and primary/modifier measurement versions; recomputes matrix-form fingerprints; enforces timestamp, response-option and confidence/priority consistency; validates deterministic specialist assignments against the configured strategy, roster version, and module list; and treats `submissionId` as a persistent idempotency key. An exact retry is acknowledged without a second append, while reuse of an ID for different content is rejected. Set the study, bank, scoring, taxonomy, measurement, and specialist-assignment variables above for a frozen field deployment; the schema, consent, quality-rule, and form variables have current-version defaults and can also be overridden explicitly.
 
 This reference service is not production-hardening by itself. Production use requires HTTPS, rate limiting, encrypted storage and backups, restricted access, retention/deletion controls, monitoring, incident response, and the applicable ethics/privacy review. Raw records must never be committed to Git.
 
@@ -133,6 +134,7 @@ Detailed inputs, thresholds, and outputs are documented in `analysis/README.md`.
 ## Study documents
 
 - `docs/semantic-question-audit-2026-07.md`
+- `docs/primary-core-measurement-audit-2026-08.md`
 - `docs/psychometric-validation-protocol.md`
 - `docs/pilot-preregistration.md`
 - `docs/recruitment-and-retest-operations.md`

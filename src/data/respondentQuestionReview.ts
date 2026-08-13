@@ -1,8 +1,8 @@
 import type { Question } from '../types'
 import { DEFAULT_CONFIDENCE_PROMPT, DEFAULT_PRIORITY_PROMPT } from '../questionPresentation'
 
-export const RESPONDENT_QUESTION_REVIEW_VERSION = '2026-08-respondent-v4'
-export const RESPONDENT_QUESTION_REVIEW_DATE = '2026-08-10'
+export const RESPONDENT_QUESTION_REVIEW_VERSION = '2026-08-respondent-v5'
+export const RESPONDENT_QUESTION_REVIEW_DATE = '2026-08-13'
 
 export interface TierPromotion {
   tier: Question['tier']
@@ -220,6 +220,8 @@ export const tierPromotionsById: Record<string, TierPromotion> = {
   q0269: { tier: 'quick', rationale: 'Restore family-policy descriptive coverage in Quick.' },
   q0289: { tier: 'quick', rationale: 'Restore race-and-ethnicity descriptive coverage in Quick with a single-construct retained item.' },
   q0307: { tier: 'blitz', rationale: 'Restore environmental descriptive coverage in Blitz and Quick.' },
+  q0418: { tier: 'blitz', rationale: 'Restore a direct ecological-tradeoff judgment needed to avoid scoring the Green Politics anchor without its core moral construct.' },
+  q0447: { tier: 'blitz', rationale: 'Restore a direct intrinsic-nonhuman-standing judgment needed to avoid scoring the Green Politics anchor without its core moral construct.' },
   q0328: { tier: 'quick', rationale: 'Restore foreign-policy descriptive coverage in Quick.' },
   q0348: { tier: 'quick', rationale: 'Restore democratic-process descriptive coverage in Quick.' },
   q0367: { tier: 'blitz', rationale: 'Restore technology-governance descriptive coverage in Blitz and Quick.' },

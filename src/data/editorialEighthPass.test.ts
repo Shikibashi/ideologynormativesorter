@@ -55,8 +55,8 @@ describe('eighth editorial pass', () => {
   })
 
   it('updates the exact versioned profile cardinalities', () => {
-    expect(questionsForTier('blitz')).toHaveLength(17)
-    expect(questionsForTier('quick')).toHaveLength(50)
+    expect(questionsForTier('blitz')).toHaveLength(19)
+    expect(questionsForTier('quick')).toHaveLength(52)
     expect(questionsForTier('moderate')).toHaveLength(206)
     expect(questionsForTier('extensive')).toHaveLength(338)
   })

@@ -159,10 +159,10 @@ export function researchFormFingerprint(itemMap, formVersion = 'profile-form-v3'
   return `rf_${hash32(`${formVersion}:${canonicalIds}`).toString(16).padStart(8, '0')}`
 }
 
-function labelRosterFingerprint(role, labelIds, taxonomyVersion, modifierMeasurementVersion = 'not-applicable') {
+function labelRosterFingerprint(role, labelIds, taxonomyVersion, measurementVersion = 'not-applicable') {
   if (!Array.isArray(labelIds)) return ''
   const canonicalIds = [...new Set(labelIds)].sort().join('|')
-  const payload = `${taxonomyVersion}:${role}:${modifierMeasurementVersion}:${canonicalIds}`
+  const payload = `${taxonomyVersion}:${role}:${measurementVersion}:${canonicalIds}`
   return `lr_${hash32(payload).toString(16).padStart(8, '0')}`
 }
 
@@ -202,6 +202,7 @@ function validCoreRecord(submission, env) {
     && validVersion(submission.bankVersion, env.EXPECTED_BANK_VERSION)
     && validVersion(submission.scoringVersion, env.EXPECTED_SCORING_VERSION)
     && validVersion(submission.taxonomyVersion, env.EXPECTED_TAXONOMY_VERSION)
+    && validVersion(submission.primaryMeasurementVersion, env.EXPECTED_PRIMARY_MEASUREMENT_VERSION)
     && validVersion(submission.modifierMeasurementVersion, env.EXPECTED_MODIFIER_MEASUREMENT_VERSION)
     && Array.isArray(submission.primaryLabelIds)
     && submission.primaryLabelIds.length > 0
@@ -216,6 +217,7 @@ function validCoreRecord(submission, env) {
       'primary',
       submission.primaryLabelIds,
       submission.taxonomyVersion,
+      submission.primaryMeasurementVersion,
     )
     && submission.modifierLabelRosterFingerprint === labelRosterFingerprint(
       'modifier',

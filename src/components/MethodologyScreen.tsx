@@ -60,6 +60,9 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
             Label comparisons are qualitative summaries of profile distance on the test's own axes. They are not probabilities, diagnoses, accuracy rates, or validated estimates of ideological identity.
          </p>
          <p>
+            Broad primary labels use only their published, source-backed core constructs. If a required core construct was not measured, the label is withheld rather than inferred from agreement on nearby axes; the result card identifies the constructs, limits, and background sources for every ordinary primary comparison.
+         </p>
+         <p>
             The catalog also records analytical scale guidance (<code>{IDEOLOGY_SCALE_VERSION}</code>). Macro refers to
             doctrine, social order, or society-wide patterns; meso refers to movements, parties, organizations,
             coalitions, regimes, and public discourse; micro refers to individual, local, household, or interactional
