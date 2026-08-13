@@ -13,10 +13,10 @@ The summaries use “expects” to preserve the distinction between a movement's
 
 ## Source basis
 
-- Jussi Backman, “Radical conservatism and the Heideggerian right: Heidegger, de Benoist, Dugin,” *Frontiers in Political Science* 4 (2022), describes Fourth Political Theory as an alternative to liberalism, communism, and fascism, and discusses its communitarian, particularistic, traditionalist, and multipolar claims: https://doi.org/10.3389/fpos.2022.941799
-- Jacob W. Kipp, “Aleksandr Dugin and the ideology of national revival: Geopolitics, Eurasianism and the conservative revolution,” *European Security* 11, no. 3 (2002), traces Dugin's movement from the National Bolshevik Party toward Neo-Eurasianism: https://doi.org/10.1080/09662830208407539
-- Daniele Bernardini, “Una ‘Fatalità tedesca’,” *Società e Storia* 142 (2013), treats interwar National Bolshevism as a heterogeneous movement rather than one uniform doctrine: https://doi.org/10.3280/SS2013-142003
-- Matthew Sharpe, “Old wine in a postmodern bottle: Aleksandr Dugin’s ‘Fourth political theory’ and Aurel Kolnai’s *War against the West*,” *Studies in East European Thought* 78 (2026), reconstructs Dugin's claims and argues that the theory's novelty and claimed break with fascism require critical assessment: https://doi.org/10.1007/s11212-025-09703-3
+- Jussi Backman, “Radical conservatism and the Heideggerian right: Heidegger, de Benoist, Dugin,” _Frontiers in Political Science_ 4 (2022), describes Fourth Political Theory as an alternative to liberalism, communism, and fascism, and discusses its communitarian, particularistic, traditionalist, and multipolar claims: https://doi.org/10.3389/fpos.2022.941799
+- Jacob W. Kipp, “Aleksandr Dugin and the ideology of national revival: Geopolitics, Eurasianism and the conservative revolution,” _European Security_ 11, no. 3 (2002), traces Dugin's movement from the National Bolshevik Party toward Neo-Eurasianism: https://doi.org/10.1080/09662830208407539
+- Daniele Bernardini, “Una ‘Fatalità tedesca’,” _Società e Storia_ 142 (2013), treats interwar National Bolshevism as a heterogeneous movement rather than one uniform doctrine: https://doi.org/10.3280/SS2013-142003
+- Matthew Sharpe, “Old wine in a postmodern bottle: Aleksandr Dugin’s ‘Fourth political theory’ and Aurel Kolnai’s _War against the West_,” _Studies in East European Thought_ 78 (2026), reconstructs Dugin's claims and argues that the theory's novelty and claimed break with fascism require critical assessment: https://doi.org/10.1007/s11212-025-09703-3
 - Stanford University's Freeman Spogli Institute summarizes the National Bolshevik Party's 1993 formation, its Limonov–Dugin leadership, and its German National Bolshevik influences: https://fsi.stanford.edu/docs/aleksandr-dugins-foundations-geopolitics
 
 ## Validation intent

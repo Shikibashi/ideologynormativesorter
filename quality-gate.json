@@ -7,7 +7,12 @@
   "verification": {
     "status": "passed",
     "evidence": "npm test 110/110, lint 0 errors, build success. New labels, axes, faction modules, and family-tree output verified with browser preview.",
-    "commands": ["npm test", "npm run lint", "npm run build", "npm run preview + browser check"],
+    "commands": [
+      "npm test",
+      "npm run lint",
+      "npm run build",
+      "npm run preview + browser check"
+    ],
     "npm test": "14 files, 110 tests passed",
     "npm run lint": "clean (0 errors)",
     "npm run build": "success, bundle ok",

@@ -39,25 +39,25 @@ violent strategy.
 
 ## Source basis
 
-- Adom Getachew, “A Political Theory of Decolonization,” in *Worldmaking after
-  Empire* (Princeton University Press, 2019), on anticolonial nationalism,
+- Adom Getachew, “A Political Theory of Decolonization,” in _Worldmaking after
+  Empire_ (Princeton University Press, 2019), on anticolonial nationalism,
   empire, unequal international integration, and projects of political
   worldmaking:
   https://doi.org/10.23943/princeton/9780691179155.003.0002
 - Sarah A. B. Prout and others, “Indigenous Sovereignty and Political Science:
-  Building an Indigenous Politics Subfield,” *Annual Review of Political
-  Science* 27 (2024), on Indigenous understandings of settler colonialism,
+  Building an Indigenous Politics Subfield,” _Annual Review of Political
+  Science_ 27 (2024), on Indigenous understandings of settler colonialism,
   sovereignty, authority, and the limits of disciplinary exclusion:
   https://doi.org/10.1146/annurev-polisci-041322-050512
 - Heidi Kiiwetinepinesiik Stark, “The Two Row Wampum: Decolonizing and
-  Indigenizing Democratic Autonomy,” *Polity* 54, no. 2 (2022), on relational
+  Indigenizing Democratic Autonomy,” _Polity_ 54, no. 2 (2022), on relational
   Indigenous autonomy and plural political arrangements:
   https://doi.org/10.1086/718331
 - André Lecours, “Nationalism and Secessionism: Autonomy, Static and Dynamic,”
-  in *Nationalism, Secessionism, and Autonomy* (Oxford University Press, 2021),
+  in _Nationalism, Secessionism, and Autonomy_ (Oxford University Press, 2021),
   on how changing forms of autonomy can shape secessionist pressure:
   https://doi.org/10.1093/oso/9780192846754.003.0002
 - David S. Siroky and John Cuffe, “Lost Autonomy, Nationalism and Separatism,”
-  *Comparative Political Studies* 48, no. 1 (2015), on the conditional effects
+  _Comparative Political Studies_ 48, no. 1 (2015), on the conditional effects
   of current, absent, and lost autonomous arrangements:
   https://doi.org/10.1177/0010414013516927

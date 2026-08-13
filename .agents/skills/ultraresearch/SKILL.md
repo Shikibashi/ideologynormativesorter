@@ -23,6 +23,7 @@ Use this skill when correctness depends on facts outside the current model conte
 
 ```markdown
 ## Research answer
+
 Finding:
 Sources checked:
 Current version / date sensitivity:

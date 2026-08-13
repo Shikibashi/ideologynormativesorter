@@ -56,28 +56,28 @@ proposal using one of these names has the same complete program.
 
 ## Source basis
 
-- Ben Jackson, “Social Democracy,” *The Oxford Handbook of Political
-  Ideologies*, on social democracy as democratic collective action extending
+- Ben Jackson, “Social Democracy,” _The Oxford Handbook of Political
+  Ideologies_, on social democracy as democratic collective action extending
   freedom and equality into economic and social organization:
   https://www.history.ox.ac.uk/publication/631813/manual
-- David Miller, “European Social Democracy,” *Oxford Bibliographies in
-  Political Science*, on the movement’s gradualist or revisionist reform of
+- David Miller, “European Social Democracy,” _Oxford Bibliographies in
+  Political Science_, on the movement’s gradualist or revisionist reform of
   capitalism through democratic institutions and its connection to welfare
   institutions:
   https://academic.oup.com/reference/62402/reference-article-abstract/555456429?login=false
 - Basic Income Earth Network, “About basic income,” on periodic, cash,
   individual, universal, and unconditional payments:
   https://basicincome.org/about-basic-income/
-- Anton Hemerijck, “Social investment as a policy paradigm,” *Journal of
-  European Public Policy* 25.6 (2018), on social investment as a welfare-state
+- Anton Hemerijck, “Social investment as a policy paradigm,” _Journal of
+  European Public Policy_ 25.6 (2018), on social investment as a welfare-state
   paradigm:
   https://doi.org/10.1080/13501763.2017.1401111
 - Anton Hemerijck and Séverine Ronchi, “Recent developments: social
-  investment reform in the twenty-first century,” *The Oxford Handbook of
-  Welfare States* (2021), on lifelong human-capital stocks, work-life flows,
+  investment reform in the twenty-first century,” _The Oxford Handbook of
+  Welfare States_ (2021), on lifelong human-capital stocks, work-life flows,
   and inclusive buffers:
   https://doi.org/10.1093/oxfordhb/9780198828389.013.7
-- Francis Fukuyama, “What Is Governance?”, *Governance* 26.3 (2013), for the
+- Francis Fukuyama, “What Is Governance?”, _Governance_ 26.3 (2013), for the
   state-capacity and public-goods context used in the State-Capacity
   Egalitarian synthesis:
   https://doi.org/10.1111/gove.12035

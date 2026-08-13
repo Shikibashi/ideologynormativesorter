@@ -37,13 +37,13 @@ centroids, infer respondent identity, or establish psychometric performance.
 - Carlo Invernizzi Accetti, “Subsidiarity: A Theory of the State and
   Internationalism,” Cambridge University Press:
   https://www.cambridge.org/core/services/aop-cambridge-core/content/view/A45D69108C43C58BC7AE0601172F3D49/9781108421669c4_111-138.pdf/subsidiarity.pdf
-- “Social Democracy,” *Routledge Encyclopedia of Philosophy*:
+- “Social Democracy,” _Routledge Encyclopedia of Philosophy_:
   https://www.rep.routledge.com/articles/thematic/social-democracy
 - Roger Griffin, “The Sacred Synthesis: The Ideological Cohesion of Fascist
-  Cultural Policy,” *Modern Italy*:
+  Cultural Policy,” _Modern Italy_:
   https://www.cambridge.org/core/journals/modern-italy/article/abs/sacred-synthesis-the-ideological-cohesion-of-fascist-cultural-policy/392447EBCA4C9338A520EAE33F452147
-- “From Constitutional to Civic Patriotism,” *British Journal of Political
-  Science*:
+- “From Constitutional to Civic Patriotism,” _British Journal of Political
+  Science_:
   https://www.cambridge.org/core/journals/british-journal-of-political-science/article/abs/from-constitutional-to-civic-patriotism/9C7723CE5D8DE5AF316783A224D1BB16
-- “Anarchism,” *Stanford Encyclopedia of Philosophy*:
+- “Anarchism,” _Stanford Encyclopedia of Philosophy_:
   https://plato.stanford.edu/entries/anarchism/

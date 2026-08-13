@@ -33,6 +33,7 @@ A usable plan must include:
 
 ```markdown
 ## Implementation plan
+
 Context found:
 Files to inspect/use:
 Files likely to change:

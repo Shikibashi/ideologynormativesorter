@@ -34,15 +34,15 @@ program.
 
 ## Source basis
 
-- “Anarchism,” *Routledge Encyclopedia of Modernism*, on anarcho-syndicalism’s
+- “Anarchism,” _Routledge Encyclopedia of Modernism_, on anarcho-syndicalism’s
   focus on trade unions as agents of social transformation and foundations of
   post-state social organization:
   https://www.rem.routledge.com/articles/anarchism
-- Hobart A. Spalding, “Anarchism and Anarchosyndicalism,” *Encyclopedia of
-  Latin American History and Culture*, on direct action, strikes, boycotts,
+- Hobart A. Spalding, “Anarchism and Anarchosyndicalism,” _Encyclopedia of
+  Latin American History and Culture_, on direct action, strikes, boycotts,
   federated unions, and the variation of anarchosyndicalist practice over time:
   https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/anarchism-and-anarchosyndicalism
-- Dielo Truda, *Organisational Platform of the Libertarian Communists* (1926),
+- Dielo Truda, _Organisational Platform of the Libertarian Communists_ (1926),
   on the proposed anarchist organization and its principles of theoretical
   unity, tactical unity, collective responsibility, and federalism:
   https://theanarchistlibrary.org/library/dielo-truda-workers-cause-organisational-platform-of-the-libertarian-communists

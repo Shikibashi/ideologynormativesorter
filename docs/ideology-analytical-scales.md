@@ -32,18 +32,18 @@ interaction cannot be inferred to express a complete ideology.
 
 ## Evidence and limits
 
-Humphrey, Laycock, and Umbach’s introduction to a *Journal of Political
-Ideologies* special issue distinguishes related macro, meso, and micro routes
+Humphrey, Laycock, and Umbach’s introduction to a _Journal of Political
+Ideologies_ special issue distinguishes related macro, meso, and micro routes
 through which ideological discourse is canonically defined, politically used,
 and taken up in everyday concepts:
 <https://doi.org/10.1080/13569317.2019.1589961>.
 
-Ylikoski’s *Synthese* discussion cautions that micro, meso, and macro are
+Ylikoski’s _Synthese_ discussion cautions that micro, meso, and macro are
 context-dependent and that the same entity can occupy different scales in
 different explanatory settings:
 <https://link.springer.com/article/10.1007/s11229-024-04841-3>.
 
-Leader Maynard’s chapter in the *Routledge Handbook of Ideology Analysis*
+Leader Maynard’s chapter in the _Routledge Handbook of Ideology Analysis_
 proposes a four-level matrix—macro environment, meso group, micro individual,
 and nano sub-individual—and distinguishes this analytic vocabulary from the
 different macro/meso/micro purpose used by Humphrey, Laycock, and Umbach:

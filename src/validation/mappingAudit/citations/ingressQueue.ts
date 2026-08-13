@@ -1,12 +1,12 @@
-import type { CitationRecord } from '../types'
-import { allFamilyScholarlyCitations } from './familyCatalog'
-import { LABEL_BANK_SCHOLARLY_STUB_IDS } from './registry'
+import type { CitationRecord } from "../types";
+import { allFamilyScholarlyCitations } from "./familyCatalog";
+import { LABEL_BANK_SCHOLARLY_STUB_IDS } from "./registry";
 
 export type IngressCitation = CitationRecord & {
-  promotedTo?: 'primary-text' | 'scholarly'
-  cleanRoomChecked: boolean
-  independenceChecked: boolean
-}
+  promotedTo?: "primary-text" | "scholarly";
+  cleanRoomChecked: boolean;
+  independenceChecked: boolean;
+};
 
 /**
  * Peer-research / secondary seeds enter here.
@@ -18,27 +18,27 @@ export const ingressQueue: IngressCitation[] = [
   ...allFamilyScholarlyCitations().map(
     (c): IngressCitation => ({
       ...c,
-      promotedTo: 'scholarly',
+      promotedTo: "scholarly",
       cleanRoomChecked: true,
       independenceChecked: true,
     }),
   ),
   {
     citeId: LABEL_BANK_SCHOLARLY_STUB_IDS[0],
-    kind: 'secondary-seed',
+    kind: "secondary-seed",
     title:
-      'Deprecated secondary-seed: shared scholarly stub 1 (unused by filled claims)',
+      "Deprecated secondary-seed: shared scholarly stub 1 (unused by filled claims)",
     authors: [],
     cleanRoomChecked: false,
     independenceChecked: false,
   },
   {
     citeId: LABEL_BANK_SCHOLARLY_STUB_IDS[1],
-    kind: 'secondary-seed',
+    kind: "secondary-seed",
     title:
-      'Deprecated secondary-seed: shared scholarly stub 2 (unused by filled claims)',
+      "Deprecated secondary-seed: shared scholarly stub 2 (unused by filled claims)",
     authors: [],
     cleanRoomChecked: false,
     independenceChecked: false,
   },
-]
+];

@@ -31,16 +31,16 @@ approach has one uniform historical program.
 
 ## Source basis
 
-- “Anarchism,” *Stanford Encyclopedia of Philosophy*, revised December 2025,
+- “Anarchism,” _Stanford Encyclopedia of Philosophy_, revised December 2025,
   on communist anarchism’s decentralized social organization, communal sharing,
   and the historical or empirical claims made about whether social life can be
   arranged without state intervention:
   https://plato.stanford.edu/entries/anarchism/
-- Peter Kropotkin, *The Conquest of Bread* (1892), a primary anarcho-communist
+- Peter Kropotkin, _The Conquest of Bread_ (1892), a primary anarcho-communist
   statement on communal production, social wealth, and distribution by need:
   https://theanarchistlibrary.org/library/petr-kropotkin-the-conquest-of-bread
 - Enrico Beltramini, “The Cryptoanarchist Character of Bitcoin’s Digital
-  Governance,” *Anarchist Studies* 29, no. 2 (2021), on autonomy, anonymity,
+  Governance,” _Anarchist Studies_ 29, no. 2 (2021), on autonomy, anonymity,
   distributed trust, and cryptoanarchist digital governance:
   https://doi.org/10.3898/AS.29.2.03
 - Kevin Werbach, “The Blockchain and the New Architecture of Trust,” on the

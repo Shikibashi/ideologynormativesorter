@@ -26,8 +26,8 @@ uniform institutional effect.
 
 ## Source basis
 
-- Ming-Sho Ho, “State Corporatism,” *The Wiley Blackwell Encyclopedia of Race,
-  Ethnicity, and Nationalism* (2015), on state corporatism as authoritarian
+- Ming-Sho Ho, “State Corporatism,” _The Wiley Blackwell Encyclopedia of Race,
+  Ethnicity, and Nationalism_ (2015), on state corporatism as authoritarian
   interest organization in which the government creates exclusive associations
   claiming representative authority:
   https://doi.org/10.1002/9781118663202.wberen366

@@ -51,8 +51,8 @@ No candidate above should receive a production centroid merely because its histo
 - Stanford Encyclopedia of Philosophy, “Rosa Luxemburg”: https://plato.stanford.edu/entries/luxemburg/
 - Stanford Encyclopedia of Philosophy, “Feminist Political Philosophy”: https://plato.stanford.edu/entries/feminism-political/
 - Stanford Encyclopedia of Philosophy, “Feminist Perspectives on Class and Work”: https://plato.stanford.edu/entries/feminism-class/
-- *European Journal of Political Research*, “Eurocommunism: Four Years On”: https://www.cambridge.org/core/journals/european-journal-of-political-research/article/abs/eurocommunism-four-years-on/575D703F043F9C4D51ECCBB0A6FC96D3
+- _European Journal of Political Research_, “Eurocommunism: Four Years On”: https://www.cambridge.org/core/journals/european-journal-of-political-research/article/abs/eurocommunism-four-years-on/575D703F043F9C4D51ECCBB0A6FC96D3
 - Oxford Academic, “Ujamaa: Socialism from Above”: https://academic.oup.com/edited-volume/61663/chapter/553407677
-- *The Cambridge History of Socialism*, “Arab Socialism”: https://www.cambridge.org/core/books/abs/cambridge-history-of-socialism/arab-socialism/C0CC111E2F8E7DB698326B03385240CF
+- _The Cambridge History of Socialism_, “Arab Socialism”: https://www.cambridge.org/core/books/abs/cambridge-history-of-socialism/arab-socialism/C0CC111E2F8E7DB698326B03385240CF
 - Fabian Society, “About us”: https://fabians.org.uk/about-us/
 - Wiley, “Autonomism”: https://onlinelibrary.wiley.com/doi/abs/10.1002/9781405198073.wbierp0152

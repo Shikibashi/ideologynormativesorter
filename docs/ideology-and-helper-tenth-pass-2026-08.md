@@ -27,13 +27,13 @@ These are documentary summaries of the catalog labels. Empirical-belief layers r
 
 ## Source basis
 
-- Javier Lloveras, Gary Warnaby, and Lee Quinn, “Mutualism as market practice,” *Marketing Theory* 20, no. 3 (2020): https://doi.org/10.1177/1470593119885172
-- Samuel Edward Konkin III, *New Libertarian Manifesto* (1980), primary statement of agorism and counter-economics: https://agorism.eu.org/docs/NewLibertarianManifesto.pdf
-- William L. Allen, Mariña Fernández-Reino, and Isabel Ruiz, “Immigration and the welfare state,” *Oxford Review of Economic Policy* 41, no. 1 (2025), on welfare chauvinism as restricting welfare access to national or ethnic in-groups: https://doi.org/10.1093/oxrep/graf014
-- Michael Albert and Robin Hahnel, *The Political Economy of Participatory Economics* (Princeton University Press, 1991), on worker and consumer councils, balanced job complexes, and decentralized planning: https://participatoryeconomy.org/book/the-political-economy-of-participatory-economics/
-- Davide Saracino, “The birth of panarchism,” *European Journal of Political Theory* (2025), on voluntary nonterritorial government: https://doi.org/10.1177/14748851251327155
+- Javier Lloveras, Gary Warnaby, and Lee Quinn, “Mutualism as market practice,” _Marketing Theory_ 20, no. 3 (2020): https://doi.org/10.1177/1470593119885172
+- Samuel Edward Konkin III, _New Libertarian Manifesto_ (1980), primary statement of agorism and counter-economics: https://agorism.eu.org/docs/NewLibertarianManifesto.pdf
+- William L. Allen, Mariña Fernández-Reino, and Isabel Ruiz, “Immigration and the welfare state,” _Oxford Review of Economic Policy_ 41, no. 1 (2025), on welfare chauvinism as restricting welfare access to national or ethnic in-groups: https://doi.org/10.1093/oxrep/graf014
+- Michael Albert and Robin Hahnel, _The Political Economy of Participatory Economics_ (Princeton University Press, 1991), on worker and consumer councils, balanced job complexes, and decentralized planning: https://participatoryeconomy.org/book/the-political-economy-of-participatory-economics/
+- Davide Saracino, “The birth of panarchism,” _European Journal of Political Theory_ (2025), on voluntary nonterritorial government: https://doi.org/10.1177/14748851251327155
 - Daan Bloembergen, Davide Grossi, and Martin Lackner, “On Rational Delegations in Liquid Democracy” (AAAI 2019), on delegable proxy voting: https://arxiv.org/abs/1802.08020
-- *An Ecomodernist Manifesto* (2015), primary statement on technological and institutional decoupling: https://www.ecomodernism.org/manifesto1
-- Michael Löwy, “The Ecosocialist Alternative,” in *The Cambridge Handbook of Environmental Sociology* (2020): https://doi.org/10.1017/9781108554510.011
-- Albert O. Hirschman, *Exit, Voice, and Loyalty* (Harvard University Press, 1970), on leaving and internal voice as distinct responses to institutional decline: https://arken.nmbu.no/~sigury/AOS_234/AOS234%20files/Hirschman_Exit_voice_loyality.pdf
-- Sean Scalmer, “Direct Action: The Invention of a Transnational Concept,” *International Review of Social History* 68, no. 3 (2023): https://doi.org/10.1017/S0020859023000391
+- _An Ecomodernist Manifesto_ (2015), primary statement on technological and institutional decoupling: https://www.ecomodernism.org/manifesto1
+- Michael Löwy, “The Ecosocialist Alternative,” in _The Cambridge Handbook of Environmental Sociology_ (2020): https://doi.org/10.1017/9781108554510.011
+- Albert O. Hirschman, _Exit, Voice, and Loyalty_ (Harvard University Press, 1970), on leaving and internal voice as distinct responses to institutional decline: https://arken.nmbu.no/~sigury/AOS_234/AOS234%20files/Hirschman_Exit_voice_loyality.pdf
+- Sean Scalmer, “Direct Action: The Invention of a Transnational Concept,” _International Review of Social History_ 68, no. 3 (2023): https://doi.org/10.1017/S0020859023000391

@@ -13,8 +13,8 @@ This is presented as the current's theoretical expectation, not as an empirical 
 ## Source basis
 
 - Stanford Encyclopedia of Philosophy, “Libertarianism,” identifies left market anarchism as a left-libertarian version of market anarchism and distinguishes left-libertarian concerns with egalitarian access to natural resources from right-libertarian approaches: https://plato.stanford.edu/entries/libertarianism/
-- Gary Chartier and Charles W. Johnson, *Markets Not Capitalism*, describes left-wing market anarchism as pro-market and anti-capitalist, emphasizing the role of legal privilege and state-supported corporate power in shaping existing markets: https://theanarchistlibrary.org/library/gary-chartier-and-charles-w-johnson-markets-not-capitalism
-- Gary Chartier, “Labor Exploitation: A Left-Libertarian Analysis,” in *Exploitation: Perspectives from Philosophy, Politics, and Economics*, argues that state interventions can enable private exploitation and that a freed market is expected to reduce labor exploitation: https://academic.oup.com/book/56140/chapter-abstract/442818231
+- Gary Chartier and Charles W. Johnson, _Markets Not Capitalism_, describes left-wing market anarchism as pro-market and anti-capitalist, emphasizing the role of legal privilege and state-supported corporate power in shaping existing markets: https://theanarchistlibrary.org/library/gary-chartier-and-charles-w-johnson-markets-not-capitalism
+- Gary Chartier, “Labor Exploitation: A Left-Libertarian Analysis,” in _Exploitation: Perspectives from Philosophy, Politics, and Economics_, argues that state interventions can enable private exploitation and that a freed market is expected to reduce labor exploitation: https://academic.oup.com/book/56140/chapter-abstract/442818231
 
 ## Validation intent
 

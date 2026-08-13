@@ -33,6 +33,7 @@ Choose the narrowest useful checks first, then broaden:
 
 ```markdown
 ## Validation report
+
 Commands run:
 Results:
 Evidence:

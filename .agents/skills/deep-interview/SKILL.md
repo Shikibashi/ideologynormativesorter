@@ -36,6 +36,7 @@ Return a compact resolved brief:
 
 ```markdown
 ## Resolved brief
+
 Problem:
 Scope:
 Non-goals:

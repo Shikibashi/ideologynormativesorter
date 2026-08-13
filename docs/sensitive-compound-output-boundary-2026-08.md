@@ -20,15 +20,15 @@ construct-matched module.
 
 ## Constitutive boundaries
 
-| Catalog label | Why a nearby core profile is not enough | Required construct before a result can be shown |
-| --- | --- | --- |
-| Fascism | Authoritarianism, nationalism, militarism, and traditionalism do not by themselves establish the palingenetic, revolutionary ultranationalism used in influential fascism scholarship. | National-rebirth myth plus fascist mass-mobilization or revolutionary project. |
-| Welfare Chauvinism | National attachment plus support for welfare spending does not show who should receive welfare or public services. | A named in-group/out-group boundary for welfare or service access, with conditional-access variants assessed separately. |
-| Eco-Authoritarianism | Ecological concern, state capacity, or expert confidence does not itself show willingness to override rights or democratic constraints for ecological enforcement. | Ecological enforcement specifically preferred over ordinary democratic or rights constraints. |
-| Religious Nationalism | Religiosity plus nationalism does not establish that religious and national identities/goals are fused. | Direct religious-national fusion, now measured by `fm-rn-3` in the opt-in module. |
-| Theocratic Politics | Religiosity, moral traditionalism, a state religion, religious parties, or statutory accommodation do not establish who has final authority over civil-law legitimacy. | Direct support for final religious legal authority, assessed independently by `fm-rn-2` and `fm-rn-11` in the opt-in module. |
-| Christian Reconstructionism | Generic religious authority does not establish Reconstructionist theonomy or biblical civil-law claims. | Theonomic biblical civil-law authority, separately tested from general religious influence. |
-| Fundamentalist theocracy | Generic religious authority does not establish literalist or fundamentalist scriptural authority in coercive law. | Literalist or fundamentalist scriptural authority in coercive law. |
+| Catalog label               | Why a nearby core profile is not enough                                                                                                                                                | Required construct before a result can be shown                                                                              |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Fascism                     | Authoritarianism, nationalism, militarism, and traditionalism do not by themselves establish the palingenetic, revolutionary ultranationalism used in influential fascism scholarship. | National-rebirth myth plus fascist mass-mobilization or revolutionary project.                                               |
+| Welfare Chauvinism          | National attachment plus support for welfare spending does not show who should receive welfare or public services.                                                                     | A named in-group/out-group boundary for welfare or service access, with conditional-access variants assessed separately.     |
+| Eco-Authoritarianism        | Ecological concern, state capacity, or expert confidence does not itself show willingness to override rights or democratic constraints for ecological enforcement.                     | Ecological enforcement specifically preferred over ordinary democratic or rights constraints.                                |
+| Religious Nationalism       | Religiosity plus nationalism does not establish that religious and national identities/goals are fused.                                                                                | Direct religious-national fusion, now measured by `fm-rn-3` in the opt-in module.                                            |
+| Theocratic Politics         | Religiosity, moral traditionalism, a state religion, religious parties, or statutory accommodation do not establish who has final authority over civil-law legitimacy.                 | Direct support for final religious legal authority, assessed independently by `fm-rn-2` and `fm-rn-11` in the opt-in module. |
+| Christian Reconstructionism | Generic religious authority does not establish Reconstructionist theonomy or biblical civil-law claims.                                                                                | Theonomic biblical civil-law authority, separately tested from general religious influence.                                  |
+| Fundamentalist theocracy    | Generic religious authority does not establish literalist or fundamentalist scriptural authority in coercive law.                                                                      | Literalist or fundamentalist scriptural authority in coercive law.                                                           |
 
 The fascism boundary follows scholarship that treats a palingenetic
 revolutionary impulse as an ineliminable fascist core, rather than a synonym for
@@ -58,13 +58,13 @@ condition; this supports the narrow direct-authority construct used here.
 Philosophy”](https://academic.oup.com/edited-volume/62239/chapter-abstract/550724223)
 Cambridge's case-specific study further cautions against assuming that every
 theocratic claim has one clerical institutional template. [Cambridge,
-*Maimonides and Jewish
-Theocracy*](https://www.cambridge.org/core/elements/maimonides-and-jewish-theocracy/1A7AC0AD5F5048F1CA3690BC9FB97D99)
+_Maimonides and Jewish
+Theocracy_](https://www.cambridge.org/core/elements/maimonides-and-jewish-theocracy/1A7AC0AD5F5048F1CA3690BC9FB97D99)
 
 The ecological boundary follows scholarship that frames eco-authoritarianism
 around claims that democracy or rights constraints should yield in response to
-ecological crisis. [Cambridge, *Transition
-Imaginaries*](https://www.cambridge.org/core/elements/transition-imaginaries/61167AF793A1F7E7C73BCA8C5CDB7C73), [Mittiga, “Political Legitimacy,
+ecological crisis. [Cambridge, _Transition
+Imaginaries_](https://www.cambridge.org/core/elements/transition-imaginaries/61167AF793A1F7E7C73BCA8C5CDB7C73), [Mittiga, “Political Legitimacy,
 Authoritarianism, and Climate
 Change”](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/E7391723A7E02FA6D536AC168377D2DE/S0003055421001301a.pdf/political_legitimacy_authoritarianism_and_climate_change.pdf)
 

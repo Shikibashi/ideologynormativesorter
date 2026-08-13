@@ -62,19 +62,19 @@ has the same complete program.
 
 ## Source basis
 
-- Roger Griffin, *Fascism*, Oxford University Press, on comparative fascism
+- Roger Griffin, _Fascism_, Oxford University Press, on comparative fascism
   and the revolutionary ultranationalist form of fascist politics:
   https://doi.org/10.1093/oso/9780192892492.001.0001
 - Roger Griffin’s Oxford Brookes profile, on palingenetic myth as a theory of
   fascism and its use in comparative fascist studies:
   https://www.brookes.ac.uk/profiles/staff/roger-griffin
 - Daniele Conversi, “Eco-fascism: an oxymoron? Far-right nationalism, history,
-  and the climate emergency,” *Frontiers in Human Dynamics* 6 (2024), on the
+  and the climate emergency,” _Frontiers in Human Dynamics_ 6 (2024), on the
   contested term and the relationship between far-right nationalism and
   environmental politics:
   https://doi.org/10.3389/fhumd.2024.1373872
 - Sam Moore and Alex Roberts, “Ecofascism, far-right ecologism, and
-  neo-Malthusianism,” *The New Political Economy of the Far Right*, on
+  neo-Malthusianism,” _The New Political Economy of the Far Right_, on
   ecofascism as a cluster of far-right ecological discourses rather than a
   synonym for environmentalism:
   https://doi.org/10.7765/9781526173898.00011
@@ -82,7 +82,7 @@ has the same complete program.
   organicism, and the conservative concern with established institutions:
   https://doi.org/10.1332/policypress/9781847428547.003.0002
 - J. Simpson, “It Was Always Blood and Soil: Ecofascism and the Racial
-  Capitalocene,” *Antipode* 57, on the racialized ecological politics captured
+  Capitalocene,” _Antipode_ 57, on the racialized ecological politics captured
   by some uses of ecofascism:
   https://doi.org/10.1111/anti.13134
 

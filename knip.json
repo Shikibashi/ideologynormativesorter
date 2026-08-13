@@ -1,0 +1,31 @@
+{
+  "$schema": "https://unpkg.com/knip@latest/schema.json",
+  "entry": [
+    "src/main.tsx",
+    "src/validation/index.ts",
+    "src/validation/mappingAudit/index.ts",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "tests/**/*.ts",
+    "research-worker/worker.test.mjs",
+    "research-worker/src/worker.mjs",
+    "research-collector/server.mjs",
+    "public/ecw-prepaint.js",
+    "scripts/**/*.mjs",
+    "check_axes.ts",
+    "fix_freeze.ts",
+    "generate_q.ts",
+    "sim.ts"
+  ],
+  "ignoreExportsUsedInFile": true,
+  "ignore": ["src/research/index.ts"],
+  "project": [
+    "src/**/*.{ts,tsx}",
+    "tests/**/*.ts",
+    "research-worker/**/*.mjs",
+    "research-collector/**/*.mjs",
+    "public/**/*.js",
+    "scripts/**/*.mjs",
+    "*.ts"
+  ]
+}

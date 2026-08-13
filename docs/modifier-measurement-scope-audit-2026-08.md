@@ -8,15 +8,15 @@ This distinction matters especially for populism. The literature treats populism
 
 ## Ordinary core constructs
 
-| Modifier | Declared indicators | Output boundary |
-| --- | --- | --- |
-| Anti-imperialism | q0321, q0322, q0323, q0326 | Equal standing and resistance to domination abroad; not pacifism or every anti-colonial program. |
-| Cosmopolitanism | q0201, q0321, q0233 | Equal moral concern and layered membership; not world government or one border rule. |
-| Civil-libertarianism | q0161, q0164, q0173 | Rights constraint; not property theory or a minimal-state conclusion. |
-| Decentralist orientation | q0015, q0018, q0053 | Preference for dispersed, contestable institutions; not separatism or anarchism. |
-| Feminist orientation | q0261, q0264, q0421 | Gendered hierarchy and liberation; not a particular feminist school. |
-| Multiculturalism | q0281, q0282, q0293 | Plural accommodation with equal status; not one exemption, representation, or self-government policy. |
-| Technocratic orientation | q0458, q0460, q0476 | Accountable evidence-guided administration; not insulated expert rule or technocratic centralism. |
+| Modifier                 | Declared indicators        | Output boundary                                                                                       |
+| ------------------------ | -------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Anti-imperialism         | q0321, q0322, q0323, q0326 | Equal standing and resistance to domination abroad; not pacifism or every anti-colonial program.      |
+| Cosmopolitanism          | q0201, q0321, q0233        | Equal moral concern and layered membership; not world government or one border rule.                  |
+| Civil-libertarianism     | q0161, q0164, q0173        | Rights constraint; not property theory or a minimal-state conclusion.                                 |
+| Decentralist orientation | q0015, q0018, q0053        | Preference for dispersed, contestable institutions; not separatism or anarchism.                      |
+| Feminist orientation     | q0261, q0264, q0421        | Gendered hierarchy and liberation; not a particular feminist school.                                  |
+| Multiculturalism         | q0281, q0282, q0293        | Plural accommodation with equal status; not one exemption, representation, or self-government policy. |
+| Technocratic orientation | q0458, q0460, q0476        | Accountable evidence-guided administration; not insulated expert rule or technocratic centralism.     |
 
 ## Abstaining public modifiers
 

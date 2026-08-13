@@ -1,19 +1,19 @@
-import { labels } from '../../../data/labels'
-import { axes } from '../../../data/axes'
-import type { AxisId } from '../../../types/common'
-import type { IdeologyLabel } from '../../../types/label'
-import type { ClaimMatrixEntry } from '../types'
+import { labels } from "../../../data/labels";
+import { axes } from "../../../data/axes";
+import type { AxisId } from "../../../types/common";
+import type { IdeologyLabel } from "../../../types/label";
+import type { ClaimMatrixEntry } from "../types";
 import {
   ensureLabelBankCitations,
   labelBankPrimaryCiteId,
   scholarlyCiteIdsForFamily,
-} from '../citations/registry'
+} from "../citations/registry";
 import {
   formatCentroidStatement,
   formatDefinitionStatement,
   formatFamilyStatement,
   formatPerspectives,
-} from './formatters'
+} from "./formatters";
 
 function buildClaim(
   label: IdeologyLabel,
@@ -29,12 +29,12 @@ function buildClaim(
     scholarlyCiteIds: scholarlyCiteIdsForFamily(label.family),
     perspectives: formatPerspectives(label, fieldPath),
     // Researched clean-room fill awaiting qualified-expert textual review.
-    textualStatus: 'in-review',
+    textualStatus: "in-review",
     // No qualified-expert available yet — must remain non-pass.
-    expertStatus: 'not-started',
+    expertStatus: "not-started",
     // Empirical gate withheld until consented respondent data.
-    empiricalStatus: 'insufficient-data',
-  }
+    empiricalStatus: "insufficient-data",
+  };
 }
 
 /**
@@ -45,44 +45,44 @@ function buildClaim(
  */
 export function buildClaimsForLabel(label: IdeologyLabel): ClaimMatrixEntry[] {
   const claims: ClaimMatrixEntry[] = [
-    buildClaim(label, 'definition', formatDefinitionStatement(label)),
-    buildClaim(label, 'family', formatFamilyStatement(label)),
-  ]
+    buildClaim(label, "definition", formatDefinitionStatement(label)),
+    buildClaim(label, "family", formatFamilyStatement(label)),
+  ];
 
   for (const axis of axes) {
-    const axisId = axis.id as AxisId
-    const value = label.centroid[axisId] ?? 0
+    const axisId = axis.id as AxisId;
+    const value = label.centroid[axisId] ?? 0;
     claims.push(
       buildClaim(
         label,
         `centroid.${axisId}`,
         formatCentroidStatement(label, axis, value),
       ),
-    )
+    );
   }
 
-  return claims
+  return claims;
 }
 
 /** @deprecated Prefer buildClaimsForLabel — alias kept for existing call sites/tests. */
 export function buildClaimStubsForLabel(
   label: IdeologyLabel,
 ): ClaimMatrixEntry[] {
-  return buildClaimsForLabel(label)
+  return buildClaimsForLabel(label);
 }
 
 /** Build claims for every live catalog label. Seeds citation registry once. */
 export function buildAllClaims(): ClaimMatrixEntry[] {
-  ensureLabelBankCitations(labels.map((l) => l.id))
-  return labels.flatMap((label) => buildClaimsForLabel(label))
+  ensureLabelBankCitations(labels.map((l) => l.id));
+  return labels.flatMap((label) => buildClaimsForLabel(label));
 }
 
 /** @deprecated Prefer buildAllClaims. */
 export function buildAllClaimStubs(): ClaimMatrixEntry[] {
-  return buildAllClaims()
+  return buildAllClaims();
 }
 
 /** Expected field paths for the WP3 matrix (definition, family, 26 centroids). */
 export function expectedClaimFieldPaths(): string[] {
-  return ['definition', 'family', ...axes.map((a) => `centroid.${a.id}`)]
+  return ["definition", "family", ...axes.map((a) => `centroid.${a.id}`)];
 }

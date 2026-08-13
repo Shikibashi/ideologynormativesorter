@@ -4,50 +4,62 @@
  */
 export interface AcademicTermDefinition {
   /** Matches stems or statement-choice options that use the concept. */
-  pattern: RegExp
+  pattern: RegExp;
   /** Short, customer-facing definition shown before the measurement sentence. */
-  definition: string
+  definition: string;
 }
 
 export const academicTermDictionary: AcademicTermDefinition[] = [
   {
-    pattern: /\bpolitical legitimacy\b|\blegitimacy of (?:political )?(?:authority|rule|government|the state)\b|\bpolitical authority\b/i,
-    definition: '“Political legitimacy” means having a justified right to make and enforce rules; it does not merely mean that people accept the authority.',
+    pattern:
+      /\bpolitical legitimacy\b|\blegitimacy of (?:political )?(?:authority|rule|government|the state)\b|\bpolitical authority\b/i,
+    definition:
+      "“Political legitimacy” means having a justified right to make and enforce rules; it does not merely mean that people accept the authority.",
   },
   {
     pattern: /\bdomination\b|\bdominat(?:e|ion)\b/i,
-    definition: '“Domination” means being subject to another person or institution’s unchecked power, even if that power is not always used.',
+    definition:
+      "“Domination” means being subject to another person or institution’s unchecked power, even if that power is not always used.",
   },
   {
     pattern: /\bnon[- ]?interference\b|\bnegative liberty\b/i,
-    definition: '“Non-interference” means freedom from others blocking, forcing or controlling your choices.',
+    definition:
+      "“Non-interference” means freedom from others blocking, forcing or controlling your choices.",
   },
   {
-    pattern: /\bdistributive justice\b|\b(?:material|income|wealth|economic) (?:equality|inequality)\b/i,
-    definition: '“Distributive justice” means how fairly benefits, burdens, income, wealth or opportunities are shared.',
+    pattern:
+      /\bdistributive justice\b|\b(?:material|income|wealth|economic) (?:equality|inequality)\b/i,
+    definition:
+      "“Distributive justice” means how fairly benefits, burdens, income, wealth or opportunities are shared.",
   },
   {
     pattern: /\b(?:state|administrative|institutional) capacity\b/i,
-    definition: '“State capacity” means how well public institutions can implement rules, collect resources and deliver services.',
+    definition:
+      "“State capacity” means how well public institutions can implement rules, collect resources and deliver services.",
   },
   {
     pattern: /\bpublic choice\b/i,
-    definition: '“Public choice” means studying how incentives, constraints and organized interests affect decisions by political actors and institutions.',
+    definition:
+      "“Public choice” means studying how incentives, constraints and organized interests affect decisions by political actors and institutions.",
   },
   {
     pattern: /\bcoordination\b|\bcollective action\b/i,
-    definition: '“Coordination” means how people align their actions when no single person can solve a problem alone.',
+    definition:
+      "“Coordination” means how people align their actions when no single person can solve a problem alone.",
   },
   {
     pattern: /\bsubsidiarity\b/i,
-    definition: '“Subsidiarity” means decisions should be handled by the smallest or closest institution that can do the job well.',
+    definition:
+      "“Subsidiarity” means decisions should be handled by the smallest or closest institution that can do the job well.",
   },
   {
     pattern: /\bpluralism\b/i,
-    definition: '“Pluralism” means accepting that different groups may live by different values while sharing a political system.',
+    definition:
+      "“Pluralism” means accepting that different groups may live by different values while sharing a political system.",
   },
   {
     pattern: /\bdeliberation\b|\bdeliberative\b/i,
-    definition: '“Deliberation” means decision-making through public reasons, discussion and weighing objections before acting.',
+    definition:
+      "“Deliberation” means decision-making through public reasons, discussion and weighing objections before acting.",
   },
-]
+];

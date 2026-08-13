@@ -36,12 +36,12 @@ No empirical-belief summary was invented for a label that lacks a common, testab
 
 ## Source basis
 
-- “Libertarianism,” *Stanford Encyclopedia of Philosophy*, on anarcho-capitalism, protection associations, and left-libertarian claims over natural resources: https://plato.stanford.edu/entries/libertarianism/
-- “Anarchism,” *Stanford Encyclopedia of Philosophy*, on anti-authority commitments, communist strands, and Kropotkin’s anarchist communism: https://plato.stanford.edu/entries/anarchism/
-- Henry George, *Progress and Poverty*, chapter 26, on stable private tenure, community claims to land value, and collecting rent for the community: https://www.henrygeorge.org/pchp26.htm
+- “Libertarianism,” _Stanford Encyclopedia of Philosophy_, on anarcho-capitalism, protection associations, and left-libertarian claims over natural resources: https://plato.stanford.edu/entries/libertarianism/
+- “Anarchism,” _Stanford Encyclopedia of Philosophy_, on anti-authority commitments, communist strands, and Kropotkin’s anarchist communism: https://plato.stanford.edu/entries/anarchism/
+- Henry George, _Progress and Poverty_, chapter 26, on stable private tenure, community claims to land value, and collecting rent for the community: https://www.henrygeorge.org/pchp26.htm
 - Bleeding Heart Libertarians, “About Us,” a primary statement by the academic project connecting free markets, individual liberty, social justice, and economic vulnerability: https://bleedingheartlibertarians.com/about-us/
-- James Bultema, “Literary Roots,” in *Free Enough to Grow* (Springer, 2026), on Kemalism’s six principles: https://doi.org/10.1007/978-3-032-10857-9_2
-- Julie Ingersoll, “The Christian Reconstruction Movement in U.S. Politics,” *Oxford Handbook Topics in Religion* (2017), on Rushdoony, theonomy, postmillennialism, and biblical law: https://doi.org/10.1093/oxfordhb/9780199935420.013.25
-- Jussi Backman, “Radical conservatism and the Heideggerian right: Heidegger, de Benoist, Dugin,” *Frontiers in Political Science* 4 (2022), on Dugin’s stated relation to liberalism, communism, and fascism: https://doi.org/10.3389/fpos.2022.941799
-- Jacob W. Kipp, “Aleksandr Dugin and the ideology of national revival,” *European Security* 11, no. 3 (2002), on Dugin’s path from Limonov’s National Bolsheviks to Neo-Eurasianism: https://doi.org/10.1080/09662830208407539
-- Daniele Bernardini, “Una ‘Fatalità tedesca’,” *Società e Storia* 142 (2013), on Niekisch and the heterogeneous interwar National Bolshevik movement: https://doi.org/10.3280/SS2013-142003
+- James Bultema, “Literary Roots,” in _Free Enough to Grow_ (Springer, 2026), on Kemalism’s six principles: https://doi.org/10.1007/978-3-032-10857-9_2
+- Julie Ingersoll, “The Christian Reconstruction Movement in U.S. Politics,” _Oxford Handbook Topics in Religion_ (2017), on Rushdoony, theonomy, postmillennialism, and biblical law: https://doi.org/10.1093/oxfordhb/9780199935420.013.25
+- Jussi Backman, “Radical conservatism and the Heideggerian right: Heidegger, de Benoist, Dugin,” _Frontiers in Political Science_ 4 (2022), on Dugin’s stated relation to liberalism, communism, and fascism: https://doi.org/10.3389/fpos.2022.941799
+- Jacob W. Kipp, “Aleksandr Dugin and the ideology of national revival,” _European Security_ 11, no. 3 (2002), on Dugin’s path from Limonov’s National Bolsheviks to Neo-Eurasianism: https://doi.org/10.1080/09662830208407539
+- Daniele Bernardini, “Una ‘Fatalità tedesca’,” _Società e Storia_ 142 (2013), on Niekisch and the heterogeneous interwar National Bolshevik movement: https://doi.org/10.3280/SS2013-142003

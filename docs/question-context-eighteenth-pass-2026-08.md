@@ -8,12 +8,12 @@ weights, or label assignments.
 
 ## Scope
 
-| Items | Layer focus | Boundaries added |
-| --- | --- | --- |
-| `q0001`, `q0003`–`q0006` | Normative | Exit, territorial monopoly, emergency authority, political obligation, consent, elections, and inherited membership are related but non-identical legitimacy arguments. |
-| `q0021`–`q0026` | Normative | Labor, title, conquest, privilege, rectification, personal possessions, independence, livelihood, and meaningful exit are kept distinct rather than treated as one labor or property theory. |
+| Items                              | Layer focus            | Boundaries added                                                                                                                                                                                    |
+| ---------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `q0001`, `q0003`–`q0006`           | Normative              | Exit, territorial monopoly, emergency authority, political obligation, consent, elections, and inherited membership are related but non-identical legitimacy arguments.                             |
+| `q0021`–`q0026`                    | Normative              | Labor, title, conquest, privilege, rectification, personal possessions, independence, livelihood, and meaningful exit are kept distinct rather than treated as one labor or property theory.        |
 | `q0034`, `q0035`, `q0038`, `q0039` | Prescriptive/normative | Entry barriers, artificial scarcity, nationalization, public governance, contestability, reciprocal obligation, and property absolutism are separated as different reform and legitimacy questions. |
-| `q0041`–`q0046` | Normative | Voluntary exchange, planning, plural ends, coercively restricted access, privilege removal, and the conditions for a moral defense of markets are not treated as universal efficiency claims. |
+| `q0041`–`q0046`                    | Normative              | Voluntary exchange, planning, plural ends, coercively restricted access, privilege removal, and the conditions for a moral defense of markets are not treated as universal efficiency claims.       |
 
 ## Source basis
 

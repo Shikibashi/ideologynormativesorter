@@ -29,27 +29,27 @@ expected outcomes are settled empirical findings.
 
 ## Source basis
 
-- Samuel Edward Konkin III, *New Libertarian Manifesto*, a primary statement
+- Samuel Edward Konkin III, _New Libertarian Manifesto_, a primary statement
   of counter-economics, voluntary exchange, and the strategy of undermining
   state authority:
   https://agorism.eu.org/docs/NewLibertarianManifesto.pdf
 - “Agorism: Revolutionary Market Anarchism,” an archival movement source that
   identifies counter-economics as Agorism’s defining practice:
   https://agorism.eu.org/
-- “Degrowth: From Theory to Practice,” *Journal of Cleaner Production*, on
+- “Degrowth: From Theory to Practice,” _Journal of Cleaner Production_, on
   equitable downscaling of production and consumption, sufficiency, and
   ecological conditions:
   https://www.sciencedirect.com/science/article/pii/S0959652612003162
-- “15 years of degrowth research: A systematic review,” *Ecological
-  Economics*, on reducing resource and energy throughput as a unifying theme
+- “15 years of degrowth research: A systematic review,” _Ecological
+  Economics_, on reducing resource and energy throughput as a unifying theme
   while noting definitional and policy diversity:
   https://www.sciencedirect.com/science/article/pii/S0921800923003646
-- “Why a Handbook on Ordoliberalism?”, *Oxford Handbook of Ordoliberalism*,
+- “Why a Handbook on Ordoliberalism?”, _Oxford Handbook of Ordoliberalism_,
   on competition as a state-constructed legal order rather than a spontaneous
   natural outcome:
   https://academic.oup.com/edited-volume/44607/chapter/378218491
 - “Competition Laws and Their Enforcement in the Project of European
-  Integration,” *Oxford Handbook of Ordoliberalism*, on the strong state,
+  Integration,” _Oxford Handbook of Ordoliberalism_, on the strong state,
   anti-concentration policy, and competitive market order:
   https://academic.oup.com/edited-volume/44607/chapter-abstract/378220425
 

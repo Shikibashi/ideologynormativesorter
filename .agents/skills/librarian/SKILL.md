@@ -35,6 +35,7 @@ For each artifact, extract:
 
 ```markdown
 ## Librarian notes
+
 Artifact:
 Why it matters:
 Key interfaces:

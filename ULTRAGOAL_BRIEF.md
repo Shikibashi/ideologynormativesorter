@@ -5,6 +5,7 @@ Implement the full set of advanced reliability, explainability, versioning, repr
 The repo is brownfield Vite 8 + React 19 + TS 6 + Vitest 4 + ESLint 10, no router, no DB. Core (400 clean-room questions, 24 axes, 8 labels, tiered modes, pure scoring, share via URL, UI) is implemented and tests pass.
 
 Scope (all-three-combined, user chosen):
+
 - Reliability indicators (per-axis and per-label pragmatic bands)
 - Explainability ("Why this score" with top contributing questions)
 - Question versioning (optional fields + bank constants, no mass edit of bank)
@@ -15,6 +16,7 @@ Scope (all-three-combined, user chosen):
 - Decomposition depth: divergence vs contradiction detection, domain mini-results, same-answer/different-reason and different-answer/same-value analysis
 
 Constraints:
+
 - No new runtime deps
 - Pure functions, unit-testable, deterministic
 - Preserve existing public APIs (buildResultProfile, etc.)

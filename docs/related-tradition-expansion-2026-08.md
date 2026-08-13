@@ -16,10 +16,10 @@ This pass adds three source-backed, non-scored entries:
 
 - Stanford Encyclopedia of Philosophy, “Libertarianism”: https://plato.stanford.edu/entries/libertarianism/
 - Stanford Encyclopedia of Philosophy, “Liberalism”: https://plato.stanford.edu/entries/liberalism/
-- Robert A. Brown and Todd C. Shaw, “Separate Nations: Two Attitudinal Dimensions of Black Nationalism,” *The Journal of Politics* 64(1), 2002: https://onlinelibrary.wiley.com/doi/abs/10.1111/1468-2508.00116
-- Andrew Valls, “A Liberal Defense of Black Nationalism,” *American Political Science Review* 104(3), 2010: https://www.cambridge.org/core/journals/american-political-science-review/article/abs/liberal-defense-of-black-nationalism/5B5E6442E55A8A10342A0D43BDEFC47B
-- Lester K. Spence, Todd C. Shaw, and Robert A. Brown, “True to Our Native Land: Distinguishing Attitudinal Support for Pan-Africanism from Black Separatism,” *Du Bois Review*, 2005: https://www.cambridge.org/core/journals/du-bois-review-social-science-research-on-race/article/true-to-our-native-land-distinguishing-attitudinal-support-for-panafricanism-from-black-separatism/2378116FD1172FA43A339347603DCB11
-- Rita Abrahamsen, “Internationalists, sovereigntists, nativists: Contending visions of world order in Pan-Africanism,” *Review of International Studies* 46(1), 2020: https://www.cambridge.org/core/journals/review-of-international-studies/article/abs/internationalists-sovereigntists-nativists-contending-visions-of-world-order-in-panafricanism/85ED07FAA4CCB08F6CDB2A532437B3E2
+- Robert A. Brown and Todd C. Shaw, “Separate Nations: Two Attitudinal Dimensions of Black Nationalism,” _The Journal of Politics_ 64(1), 2002: https://onlinelibrary.wiley.com/doi/abs/10.1111/1468-2508.00116
+- Andrew Valls, “A Liberal Defense of Black Nationalism,” _American Political Science Review_ 104(3), 2010: https://www.cambridge.org/core/journals/american-political-science-review/article/abs/liberal-defense-of-black-nationalism/5B5E6442E55A8A10342A0D43BDEFC47B
+- Lester K. Spence, Todd C. Shaw, and Robert A. Brown, “True to Our Native Land: Distinguishing Attitudinal Support for Pan-Africanism from Black Separatism,” _Du Bois Review_, 2005: https://www.cambridge.org/core/journals/du-bois-review-social-science-research-on-race/article/true-to-our-native-land-distinguishing-attitudinal-support-for-panafricanism-from-black-separatism/2378116FD1172FA43A339347603DCB11
+- Rita Abrahamsen, “Internationalists, sovereigntists, nativists: Contending visions of world order in Pan-Africanism,” _Review of International Studies_ 46(1), 2020: https://www.cambridge.org/core/journals/review-of-international-studies/article/abs/internationalists-sovereigntists-nativists-contending-visions-of-world-order-in-panafricanism/85ED07FAA4CCB08F6CDB2A532437B3E2
 
 ### Current version and date sensitivity
 

@@ -32,26 +32,26 @@ claims that any proposed model has one settled empirical outcome.
 
 ## Source basis
 
-- “Socialism,” *Stanford Encyclopedia of Philosophy*, on the diversity of
+- “Socialism,” _Stanford Encyclopedia of Philosophy_, on the diversity of
   socialist models, social control of productive assets, and disagreements
   about markets, planning, and democratic control:
   https://plato.stanford.edu/entries/socialism/index.html
-- “Socialism,” *Internet Encyclopedia of Philosophy*, including its treatment
+- “Socialism,” _Internet Encyclopedia of Philosophy_, including its treatment
   of participatory economics as a developed participatory-planning model:
   https://iep.utm.edu/socialis/
-- “Direct Action: The Invention of a Transnational Concept,” *International
-  Review of Social History*, on revolutionary syndicalism’s combination of
+- “Direct Action: The Invention of a Transnational Concept,” _International
+  Review of Social History_, on revolutionary syndicalism’s combination of
   trade unionism and direct action:
   https://www.cambridge.org/core/journals/international-review-of-social-history/article/direct-action-the-invention-of-a-transnational-concept/12505D4E6288B6BC01859740280AA6D4
-- “Building Workers’ Power,” in *Building Power to Change the World*, on
+- “Building Workers’ Power,” in _Building Power to Change the World_, on
   German council movements and worker-led organizations:
   https://academic.oup.com/book/40367/chapter/347057694
 - Sean Scalmer, “The Inconceivability of Real ‘Workers’ Control’ under
-  Capitalism,” *International Labor and Working-Class History*, on Pannekoek,
+  Capitalism,” _International Labor and Working-Class History_, on Pannekoek,
   council communism, and workers’ councils:
   https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4FE0AB81C4EA9208333A4D81AE593887/S0147547922000308a.pdf/the-inconceivability-of-real-workers-control-under-capitalism.pdf
-- Michael Albert and Robin Hahnel, *The Political Economy of Participatory
-  Economics*, on democratic planning through producers’ and consumers’
+- Michael Albert and Robin Hahnel, _The Political Economy of Participatory
+  Economics_, on democratic planning through producers’ and consumers’
   councils:
   https://www.degruyterbrill.com/document/doi/10.1515/9780691216003/html?lang=en
 

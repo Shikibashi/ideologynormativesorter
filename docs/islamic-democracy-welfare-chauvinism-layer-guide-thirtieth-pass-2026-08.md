@@ -32,22 +32,22 @@ and policies asked about in the other two layers.
 ## Source basis
 
 - Bruce G. Gilley, “Designing Islamic constitutions: Past trends and options
-  for a democratic future,” *International Journal of Constitutional Law* 11,
+  for a democratic future,” _International Journal of Constitutional Law_ 11,
   no. 3 (2013), on Islamic constitutionalism, competing models of Islamic
   review, and the absence of one settled enforcement design:
   https://doi.org/10.1093/icon/mot052
 - Güne Murat Tezcür, “Constitutionalism, judiciary, and democracy in Islamic
-  societies,” *Polity* 39, no. 4 (2007), on judicial review, majority rule,
+  societies,” _Polity_ 39, no. 4 (2007), on judicial review, majority rule,
   constitutionalism, and minority rights in non-secularized societies:
   https://doi.org/10.1057/palgrave.polity.2300086
 - William L. Allen, Mariña Fernández-Reino, and Isabel Ruiz, “Immigration and
-  the welfare state,” *Oxford Review of Economic Policy* 41, no. 1 (2025), on
+  the welfare state,” _Oxford Review of Economic Policy_ 41, no. 1 (2025), on
   welfare chauvinism as restricting welfare access to in-group members and on
   the roles of perceived contribution, benefit design, and context:
   https://doi.org/10.1093/oxrep/graf014
 - Emine Duman and Anıl Duman, “Feeling insecure and excluding immigrants:
-  Relationship between subjective risks and welfare chauvinism,” *Social
-  Policy & Administration* (2023), on welfare chauvinism as restricting
+  Relationship between subjective risks and welfare chauvinism,” _Social
+  Policy & Administration_ (2023), on welfare chauvinism as restricting
   immigrants’ access to social benefits and public services and on perceived
   insecurity:
   https://doi.org/10.1111/spol.12919

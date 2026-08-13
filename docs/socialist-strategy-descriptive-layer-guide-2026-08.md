@@ -29,27 +29,27 @@ not claims that the proposed arrangements have one settled empirical result.
 
 ## Source basis
 
-- Lucien Bianco, “Essai de définition du maoïsme,” *Annales. Histoire,
-  Sciences Sociales*, on Maoism as a historically specific and contested
+- Lucien Bianco, “Essai de définition du maoïsme,” _Annales. Histoire,
+  Sciences Sociales_, on Maoism as a historically specific and contested
   tradition rather than a synonym for the whole Chinese revolution:
   https://www.cambridge.org/core/journals/annales-histoire-sciences-sociales/article/essai-de-definition-du-maoisme/40F7654050CE6B45831A168D99488DA6
 - “Heirs to What Had Been Accomplished: D. N. Aidit, the PKI, and Maoism,
-  1950–1965,” *Modern Intellectual History*, on local adaptation and the
+  1950–1965,” _Modern Intellectual History_, on local adaptation and the
   non-monolithic character of Maoist politics:
   https://www.cambridge.org/core/journals/modern-intellectual-history/article/abs/heirs-to-what-had-been-accomplished-d-n-aidit-the-pki-and-maoism-19501965/BE78BB30F384953AD5FFA3C55F31BA7F
-- Richard B. Day, “The Myth of Trotskyism,” in *Leon Trotsky and the Politics
-  of Economic Isolation*, on permanent revolution, internationalism, and the
+- Richard B. Day, “The Myth of Trotskyism,” in _Leon Trotsky and the Politics
+  of Economic Isolation_, on permanent revolution, internationalism, and the
   rejection of socialism in one country:
   https://www.cambridge.org/core/books/leon-trotsky-and-the-politics-of-economic-isolation/myth-of-trotskyism/95EE597BFA047615C393337F30CF63AF
-- “The Personal, the Political, and Permanent Revolution,” *International
-  Review of Social History*, on worker self-emancipation and the varied
+- “The Personal, the Political, and Permanent Revolution,” _International
+  Review of Social History_, on worker self-emancipation and the varied
   legacies of Trotskyism:
   https://www.cambridge.org/core/journals/international-review-of-social-history/article/the-personal-the-political-and-permanent-revolution-ernest-mandel-and-the-conflicted-legacies-of-trotskyism/9D8C92D342E56AEC78C857A1CABF9A64
-- “The institutional impossibility of guild socialism,” *Cambridge Journal
-  of Economics*, on public ownership, functional organizations, delegated
+- “The institutional impossibility of guild socialism,” _Cambridge Journal
+  of Economics_, on public ownership, functional organizations, delegated
   workplace powers, and worker decision-making:
   https://academic.oup.com/cje/article/47/1/21/6775929
 - “Tempered Radicalism: Zhang Dongsun and Chinese Guild Socialism,
-  1913–1922,” *International Review of Social History*, on industrial
+  1913–1922,” _International Review of Social History_, on industrial
   democracy, workers’ control, and local adaptation:
   https://www.cambridge.org/core/product/identifier/S002085902300024X/type/journal_article

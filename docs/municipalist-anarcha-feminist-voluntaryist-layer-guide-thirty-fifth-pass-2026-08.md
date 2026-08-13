@@ -42,7 +42,7 @@ association.
 - Murray Bookchin, “Municipalization,” on decentralized confederal popular
   power as an alternative to centralized bureaucratic administration:
   https://theanarchistlibrary.org/library/murray-bookchin-municipalization
-- Donna M. Kowal, “Anarcha-Feminism,” in *The Palgrave Handbook of Anarchism*
+- Donna M. Kowal, “Anarcha-Feminism,” in _The Palgrave Handbook of Anarchism_
   (2019), on sexual double standards, gendered labor, women’s autonomy, and
   anarcha-feminism as a distinct anarchist tradition:
   https://doi.org/10.1007/978-3-319-75620-2_15

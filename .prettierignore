@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-ssr
+test-results
+coverage
+playwright-report
+.slopmop
+private-data

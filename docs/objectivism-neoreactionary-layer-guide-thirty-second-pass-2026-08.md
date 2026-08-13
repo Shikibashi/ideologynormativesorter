@@ -31,15 +31,15 @@ academic schools.
 
 ## Source basis
 
-- “Ayn Rand,” *Stanford Encyclopedia of Philosophy*, on Objectivism’s
+- “Ayn Rand,” _Stanford Encyclopedia of Philosophy_, on Objectivism’s
   objective/subjective/intrinsic distinctions and its claims about rational
   individual life and capitalism:
   https://plato.stanford.edu/entries/ayn-rand/
 - Gregory Salmieri, “Objectivist Epistemology in Outline,” Ayn Rand Institute,
   on Objectivist claims about objective reality and reason:
   https://courses.aynrand.org/wp-content/uploads/2021/04/OEIO-Transcript.pdf
-- Joshua Tait, “Mencius Moldbug and Neoreaction,” in *Key Thinkers of the
-  Radical Right: Behind the New Threat to Liberal Democracy* (Oxford
+- Joshua Tait, “Mencius Moldbug and Neoreaction,” in _Key Thinkers of the
+  Radical Right: Behind the New Threat to Liberal Democracy_ (Oxford
   University Press, 2019), on neoreaction’s anti-democratic, antiegalitarian,
   monarchic, and corporate-governance claims:
   https://doi.org/10.1093/oso/9780190877583.003.0012

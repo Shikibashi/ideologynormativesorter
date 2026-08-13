@@ -20,29 +20,29 @@ Axis-mediated only: selectable responses → signed axis contributions → centr
 
 Inventory sets (no double-count):
 
-| Set | Role |
-|---|---|
-| `raw` | Unmodified bank exports |
-| `overlay` | Semantic correction / needs-rewrite maps |
-| `effective-retained` | Overlay applied, includes `active===false` |
-| `effective-active` | Public quiz / scoring pool |
-| `post-correction-*` | After WP5 mutations (main overlay already applied) |
+| Set                  | Role                                               |
+| -------------------- | -------------------------------------------------- |
+| `raw`                | Unmodified bank exports                            |
+| `overlay`            | Semantic correction / needs-rewrite maps           |
+| `effective-retained` | Overlay applied, includes `active===false`         |
+| `effective-active`   | Public quiz / scoring pool                         |
+| `post-correction-*`  | After WP5 mutations (main overlay already applied) |
 
 ## Machine artifacts (authoritative)
 
-| Artifact | Path | Stable id |
-|---|---|---|
-| Types / enums | `src/validation/mappingAudit/types.ts` | n/a |
-| Freeze | `src/validation/mappingAudit/inventory/freeze.ts` | `inv:*` |
+| Artifact      | Path                                                             | Stable id                                |
+| ------------- | ---------------------------------------------------------------- | ---------------------------------------- |
+| Types / enums | `src/validation/mappingAudit/types.ts`                           | n/a                                      |
+| Freeze        | `src/validation/mappingAudit/inventory/freeze.ts`                | `inv:*`                                  |
 | Contributions | `src/validation/mappingAudit/manifests/responseContributions.ts` | `rc:{questionId}:{responseKey}:{axisId}` |
-| Dossiers | `src/validation/mappingAudit/dossiers/index.ts` | `dossier:{labelId}` |
-| Claims | `src/validation/mappingAudit/dossiers/claims.ts` | `claim:{labelId}:{fieldPath}:{n}` |
-| Citations | `src/validation/mappingAudit/citations/registry.ts` | `cite:*` |
-| Findings | `src/validation/mappingAudit/findings/ledger.ts` | `finding:{issueClass}:{subjectId}:{n}` |
-| Reviews | `src/validation/mappingAudit/reviews/records.ts` | `review:{findingId}:{role}:{seq}` |
-| Lifecycle | `src/validation/mappingAudit/labels/lifecycle.ts` | `life:{labelId}` |
-| Separability | `src/validation/mappingAudit/separability/diagnostics.ts` | `sep:{analysis}:{id}` |
-| Release | `src/validation/mappingAudit/release/summary.ts` | `release:{bankVersion}:{scoringVersion}` |
+| Dossiers      | `src/validation/mappingAudit/dossiers/index.ts`                  | `dossier:{labelId}`                      |
+| Claims        | `src/validation/mappingAudit/dossiers/claims.ts`                 | `claim:{labelId}:{fieldPath}:{n}`        |
+| Citations     | `src/validation/mappingAudit/citations/registry.ts`              | `cite:*`                                 |
+| Findings      | `src/validation/mappingAudit/findings/ledger.ts`                 | `finding:{issueClass}:{subjectId}:{n}`   |
+| Reviews       | `src/validation/mappingAudit/reviews/records.ts`                 | `review:{findingId}:{role}:{seq}`        |
+| Lifecycle     | `src/validation/mappingAudit/labels/lifecycle.ts`                | `life:{labelId}`                         |
+| Separability  | `src/validation/mappingAudit/separability/diagnostics.ts`        | `sep:{analysis}:{id}`                    |
+| Release       | `src/validation/mappingAudit/release/summary.ts`                 | `release:{bankVersion}:{scoringVersion}` |
 
 ## WP0 Freeze (live recount)
 

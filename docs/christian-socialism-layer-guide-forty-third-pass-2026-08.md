@@ -12,9 +12,9 @@ Utopian Socialism remains without a descriptive-layer summary. The label is a la
 
 ## Source basis
 
-- Janine Giordano Drake, *The Gospel of Church: How Mainline Protestants Vilified Christian Socialism and Fractured the Labor Movement*, Oxford University Press (2023), connects Christian Socialist activity to industrial labor conflict, justice for working people, and attempts to change the social and economic system: https://doi.org/10.1093/oso/9780197614303.001.0001
-- “Capitalism and Socialism,” in *The Oxford Handbook of Nineteenth-Century Christian Thought*, describes Protestant Christian socialisms and Catholic social teaching as varied responses to industrial capitalism rather than one Christian political economy: https://academic.oup.com/edited-volume/28079/chapter-abstract/212105874
-- Antoine Picon, “Utopian Socialism and Social Science,” in *The Cambridge History of Science*, emphasizes the distinct doctrines of Saint-Simon, Fourier, and Owen and the difficulty of assessing their shared intellectual role: https://doi.org/10.1017/CHOL9780521594424.006
+- Janine Giordano Drake, _The Gospel of Church: How Mainline Protestants Vilified Christian Socialism and Fractured the Labor Movement_, Oxford University Press (2023), connects Christian Socialist activity to industrial labor conflict, justice for working people, and attempts to change the social and economic system: https://doi.org/10.1093/oso/9780197614303.001.0001
+- “Capitalism and Socialism,” in _The Oxford Handbook of Nineteenth-Century Christian Thought_, describes Protestant Christian socialisms and Catholic social teaching as varied responses to industrial capitalism rather than one Christian political economy: https://academic.oup.com/edited-volume/28079/chapter-abstract/212105874
+- Antoine Picon, “Utopian Socialism and Social Science,” in _The Cambridge History of Science_, emphasizes the distinct doctrines of Saint-Simon, Fourier, and Owen and the difficulty of assessing their shared intellectual role: https://doi.org/10.1017/CHOL9780521594424.006
 - Aden Quenemoen, “The Utopian Socialists Reconsidered,” Portland State University Economics Working Paper 75, cautions that broad generalizations fail to capture the uniqueness of the contributors and their proposals: https://pdxscholar.library.pdx.edu/econ_workingpapers/75/
 
 ## Validation intent

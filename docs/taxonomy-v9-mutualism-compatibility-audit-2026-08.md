@@ -41,7 +41,7 @@ two exhaustive kinds of Mutualism.
 
 Clarence Lee Swartz and Laurance Labadie are therefore shown as historical
 orientation anchors in the source disclosure, rather than as generated result
-labels. Swartz's *What Is Mutualism?* is retained as a primary historical text.
+labels. Swartz's _What Is Mutualism?_ is retained as a primary historical text.
 The University of Michigan material documents Joseph Labadie's relation to
 Benjamin Tucker and American individualist anarchism. C4SS and Kevin Carson are
 included only as primary sources for contemporary self-description: C4SS’s own
@@ -51,13 +51,13 @@ dates C4SS to 2006, and its 2008 announcement describes Carson as its first
 paid staff member; he is therefore not treated as the origin of Mutualism or
 C4SS.
 
-Sources: [Prichard, *Pierre-Joseph Proudhon's Mutualist Social Science*](https://www.cambridge.org/core/books/abs/cambridge-history-of-socialism/pierrejoseph-proudhons-mutualist-social-science/E9FC4C18BD9C1577C7AAC1FE69B7E03D),
-[SEP, *Anarchism*](https://plato.stanford.edu/entries/anarchism/),
+Sources: [Prichard, _Pierre-Joseph Proudhon's Mutualist Social Science_](https://www.cambridge.org/core/books/abs/cambridge-history-of-socialism/pierrejoseph-proudhons-mutualist-social-science/E9FC4C18BD9C1577C7AAC1FE69B7E03D),
+[SEP, _Anarchism_](https://plato.stanford.edu/entries/anarchism/),
 [SEP notes on individualist anarchism](https://plato.stanford.edu/archives/sum2024/entries/nozick-political/notes.html),
-[University of Michigan, *Jo Labadie*](https://deepblue.lib.umich.edu/bitstream/2027.42/120256/1/jo_labadie_00.pdf),
-[Swartz, *What Is Mutualism?*](https://c4ss.org/wp-content/uploads/2009/06/what-is-mutualism.pdf),
-and [Carson, *Are We All Mutualists?*](https://c4ss.org/content/40929), plus
-[C4SS, *What Is C4SS?*](https://c4ss.org/content/53795), [C4SS history
+[University of Michigan, _Jo Labadie_](https://deepblue.lib.umich.edu/bitstream/2027.42/120256/1/jo_labadie_00.pdf),
+[Swartz, _What Is Mutualism?_](https://c4ss.org/wp-content/uploads/2009/06/what-is-mutualism.pdf),
+and [Carson, _Are We All Mutualists?_](https://c4ss.org/content/40929), plus
+[C4SS, _What Is C4SS?_](https://c4ss.org/content/53795), [C4SS history
 (2006)](https://c4ss.org/content/18260), and [C4SS’s Carson appointment
 (2008)](https://c4ss.org/content/55).
 
@@ -97,16 +97,16 @@ while preserving the underlying evidence record for later calibration work.
 
 ## Retired compatibility ledger
 
-| Retired ID | v9 disposition | Analysis behavior |
-| --- | --- | --- |
-| `conservative-liberalism` | alias | Canonicalizes to `liberal-conservatism`. |
-| `bright-green-environmentalism` | alias | Canonicalizes to `ecomodernist`. |
-| `civil-libertarian-cosmopolitan` | split | Expands to `civil-libertarianism` and `cosmopolitanism`. |
-| `decentralist-market-skeptic-of-state` | split | Expands to `market-liberal` and `decentralist-orientation`. |
-| `national-traditionalist` | split | Expands to `national-conservatism` and `social-conservatism`; religious nationalism is not inferred. |
-| `cultural-populism` | keep retired | Remains raw historical data because no fixed host ideology or cultural content is safe to infer. |
-| `egalitarian-statist` | keep retired | Remains raw historical data because egalitarian ends and state capacity do not identify one active family. |
-| `revolutionary-collectivist` | keep retired | Remains raw historical data because revolutionary strategy and collectivist ownership occur across distinct socialist traditions. |
+| Retired ID                             | v9 disposition | Analysis behavior                                                                                                                 |
+| -------------------------------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `conservative-liberalism`              | alias          | Canonicalizes to `liberal-conservatism`.                                                                                          |
+| `bright-green-environmentalism`        | alias          | Canonicalizes to `ecomodernist`.                                                                                                  |
+| `civil-libertarian-cosmopolitan`       | split          | Expands to `civil-libertarianism` and `cosmopolitanism`.                                                                          |
+| `decentralist-market-skeptic-of-state` | split          | Expands to `market-liberal` and `decentralist-orientation`.                                                                       |
+| `national-traditionalist`              | split          | Expands to `national-conservatism` and `social-conservatism`; religious nationalism is not inferred.                              |
+| `cultural-populism`                    | keep retired   | Remains raw historical data because no fixed host ideology or cultural content is safe to infer.                                  |
+| `egalitarian-statist`                  | keep retired   | Remains raw historical data because egalitarian ends and state capacity do not identify one active family.                        |
+| `revolutionary-collectivist`           | keep retired   | Remains raw historical data because revolutionary strategy and collectivist ownership occur across distinct socialist traditions. |
 
 The ledger is executable metadata in `labelTaxonomy.ts`, not merely a prose
 note. `normalizeHistoricalLabelIds()` expands only deterministic splits and

@@ -40,23 +40,23 @@ that every adherent or historical implementation shares one complete program.
 
 ## Source basis
 
-- “Libertarianism,” *Stanford Encyclopedia of Philosophy*, on self-ownership,
+- “Libertarianism,” _Stanford Encyclopedia of Philosophy_, on self-ownership,
   left-libertarian egalitarian claims over the external world, and the link
   between land-value taxation and self-ownership:
   https://plato.stanford.edu/entries/libertarianism/
-- Henry George, *Progress and Poverty*, Chapters 11 and 33, on the distinction
+- Henry George, _Progress and Poverty_, Chapters 11 and 33, on the distinction
   between land rent and human improvements and the case for taxing land value:
   https://www.henrygeorge.org/pchp11.htm
   https://www.henrygeorge.org/pchp33.htm
 - Javier Lloveras, Gary Warnaby, and Lee Quinn, “Mutualism as market practice,”
-  *Marketing Theory* 20, no. 3 (2020), on mutualism, market exchange, mutual
+  _Marketing Theory_ 20, no. 3 (2020), on mutualism, market exchange, mutual
   credit, and cooperative management of markets as a common:
   https://doi.org/10.1177/1470593119885172
-- “Anarchism,” *Stanford Encyclopedia of Philosophy*, Spring 2026 Edition, on
+- “Anarchism,” _Stanford Encyclopedia of Philosophy_, Spring 2026 Edition, on
   the diversity of anarchist forms, libertarian and socialist currents, and
   mutualism’s place among decentralized anti-authoritarian approaches:
   https://plato.stanford.edu/archives/spr2026/entries/anarchism/
-- “Robert Nozick’s Political Philosophy,” *Stanford Encyclopedia of Philosophy*,
+- “Robert Nozick’s Political Philosophy,” _Stanford Encyclopedia of Philosophy_,
   on the minimal state’s protection of life, liberty, property, and contract
   and its contrast with individualist anarchism:
   https://plato.stanford.edu/entries/nozick-political/

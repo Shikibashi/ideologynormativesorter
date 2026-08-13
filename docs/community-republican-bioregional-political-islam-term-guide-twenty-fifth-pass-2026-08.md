@@ -62,11 +62,11 @@ that every movement using one of these names has the same complete program.
 
 ## Source basis
 
-- “Communitarianism,” *Stanford Encyclopedia of Philosophy*, Summer 2025
+- “Communitarianism,” _Stanford Encyclopedia of Philosophy_, Summer 2025
   Edition, on constitutive communities, social identity, tradition and context,
   and the normative value of community:
   https://plato.stanford.edu/archives/sum2025/entries/communitarianism/
-- “Republicanism,” *Stanford Encyclopedia of Philosophy*, Fall 2025 Edition,
+- “Republicanism,” _Stanford Encyclopedia of Philosophy_, Fall 2025 Edition,
   on freedom as non-domination, civic self-government, rule of law, and the
   compatibility of republicanism with pluralist institutions:
   https://plato.stanford.edu/archives/fall2025/entries/republicanism/
@@ -74,13 +74,13 @@ that every movement using one of these names has the same complete program.
   Environmental Science and Forestry, on bioregions as ecological and cultural
   places, watershed boundaries, local knowledge, and participatory stewardship:
   https://www.esf.edu/cbbrs/about.php
-- John L. Esposito and Emad El-Din Shahin, eds., *The Oxford Handbook of Islam
-  and Politics*, Oxford University Press, on the geographic and ideological
+- John L. Esposito and Emad El-Din Shahin, eds., _The Oxford Handbook of Islam
+  and Politics_, Oxford University Press, on the geographic and ideological
   diversity of political Islam, including democracy, authoritarianism,
   movements in power, democratization, and jihadist political Islam:
   https://doi.org/10.1093/oxfordhb/9780195395891.001.0001
-- “On ‘Bioregionalism’ and ‘Watershed Consciousness’,” *The Professional
-  Geographer*, on bioregionalism’s watershed and ecological orientation and the
+- “On ‘Bioregionalism’ and ‘Watershed Consciousness’,” _The Professional
+  Geographer_, on bioregionalism’s watershed and ecological orientation and the
   debate over its relationship to established ecology:
   https://doi.org/10.1111/j.0033-0124.1985.00001.x
 

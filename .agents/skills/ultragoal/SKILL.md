@@ -15,9 +15,10 @@ Create a goal ledger before implementation:
 
 ```markdown
 ## Goal ledger
-| ID | Goal | Status | Evidence |
-|---|---|---|---|
-| G1 | ... | pending | |
+
+| ID  | Goal | Status  | Evidence |
+| --- | ---- | ------- | -------- |
+| G1  | ...  | pending |          |
 ```
 
 Statuses: `pending`, `active`, `blocked`, `done`, `cut`.
@@ -45,6 +46,7 @@ A task is done only when:
 
 ```markdown
 ## Completion report
+
 Summary:
 Goals completed:
 Files changed:

@@ -31,26 +31,26 @@ that the expected outcomes are settled empirical findings.
 
 ## Source basis
 
-- “Ethnonationalism,” *Oxford Bibliographies in Geography*, on ethnicity and
+- “Ethnonationalism,” _Oxford Bibliographies in Geography_, on ethnicity and
   ethnic ties as core components of conceptions of the nation:
   https://academic.oup.com/reference/62356/reference-article-abstract/554498639?login=false
 - “Conceptions of National Identity and Ambivalence towards Immigration,”
-  *British Journal of Political Science*, on ethno-cultural conceptions of
+  _British Journal of Political Science_, on ethno-cultural conceptions of
   national boundaries through descent, language, custom, and tradition:
   https://www.cambridge.org/core/journals/british-journal-of-political-science/article/conceptions-of-national-identity-and-ambivalence-towards-immigration/48C49A80C2DCD1B28971792EE57595ED
-- “The Idea of Absolute Monarchy in Seventeenth-Century England,” *The
-  Historical Journal*, on the historical theory and institutional debate over
+- “The Idea of Absolute Monarchy in Seventeenth-Century England,” _The
+  Historical Journal_, on the historical theory and institutional debate over
   absolute monarchy:
   https://www.cambridge.org/core/journals/historical-journal/article/idea-of-absolute-monarchy-in-seventeenth-century-england/06A6BA26F90F0802913A776F667CA769
 - “Lordship, Kingship, and Empire: The Idea of Monarchy 1400–1525,” Oxford
   University Press, on changing theories and forms of monarchical authority:
   https://academic.oup.com/book/9986
-- “Dissecting Public Opinion on Regional Authority,” *Publius: The Journal of
-  Federalism*, on regional preferences for self-rule and shared rule and the
+- “Dissecting Public Opinion on Regional Authority,” _Publius: The Journal of
+  Federalism_, on regional preferences for self-rule and shared rule and the
   non-zero-sum variation among regionalists:
   https://academic.oup.com/publius/article/52/2/310/6352108
-- “Theorising Regions through Changes in Statehood,” *Review of International
-  Studies*, on regionalism as a field connecting state theory and political
+- “Theorising Regions through Changes in Statehood,” _Review of International
+  Studies_, on regionalism as a field connecting state theory and political
   geography:
   https://www.cambridge.org/core/journals/review-of-international-studies/article/abs/theorising-regions-through-changes-in-statehood-rethinking-the-theory-and-method-of-comparative-regionalism/2A229AE1386C5FBF1806C20EF3BA5EE7
 

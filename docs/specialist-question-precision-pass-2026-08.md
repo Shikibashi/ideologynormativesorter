@@ -23,12 +23,12 @@ turn synthetic module fits into validation evidence.
 
 ## Research basis
 
-- The [ILO summary of *Care work and care jobs for the future of decent work*](https://www.ilo.org/publications/care-work-and-care-jobs-future-decent-work-summary)
+- The [ILO summary of _Care work and care jobs for the future of decent work_](https://www.ilo.org/publications/care-work-and-care-jobs-future-decent-work-summary)
   treats paid and unpaid care work together and links their organization to
   gender inequalities in households and labor markets. That supports the
   narrower social-reproduction wording without treating ownership or one
   policy instrument as part of the same item.
-- The [peer-reviewed discussion of democratic confederalism in *Problema*](https://revistas.juridicas.unam.mx/index.php/filosofia-derecho/article/view/18207)
+- The [peer-reviewed discussion of democratic confederalism in _Problema_](https://revistas.juridicas.unam.mx/index.php/filosofia-derecho/article/view/18207)
   describes the project as a form of sociopolitical organization centered on
   self-organization and autonomous communities. That supports measuring the
   confederal coordination construct while leaving recall, delegation, and

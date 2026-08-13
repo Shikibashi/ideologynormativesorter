@@ -78,21 +78,21 @@ about every adherent or movement using any of the names.
 
 ## Source basis
 
-- “Liberalism,” *Stanford Encyclopedia of Philosophy*, on liberalism as a
+- “Liberalism,” _Stanford Encyclopedia of Philosophy_, on liberalism as a
   diverse tradition, the contrast between classical and new liberal positions,
   private property and markets, and disagreement over the state’s role:
   https://plato.stanford.edu/entries/liberalism/
-- “Neoliberalism,” *Stanford Encyclopedia of Philosophy*, on the contested
+- “Neoliberalism,” _Stanford Encyclopedia of Philosophy_, on the contested
   meaning of the term and its association with liberal-capitalist institutions,
   limited democracy, modest welfare, market coordination, and skepticism of
   extensive regulation:
   https://plato.stanford.edu/entries/neoliberalism/
-- “Multiculturalism,” *Stanford Encyclopedia of Philosophy* (substantive
+- “Multiculturalism,” _Stanford Encyclopedia of Philosophy_ (substantive
   revision 2024), on the distinction between demographic diversity and
   multiculturalism as a normative ideal, rejection of forced assimilation, and
   debates over group-differentiated rights:
   https://plato.stanford.edu/entries/multiculturalism/
-- “Cosmopolitanism,” *Stanford Encyclopedia of Philosophy*, on versions that
+- “Cosmopolitanism,” _Stanford Encyclopedia of Philosophy_, on versions that
   focus on moral obligations, global justice, shared markets, culture, or
   political institutions rather than one single world-state model:
   https://plato.stanford.edu/entries/cosmopolitanism/
@@ -104,8 +104,8 @@ about every adherent or movement using any of the names.
   world-federalist proposal describing a non-military, democratic, federal
   structure with ultimate sovereignty in the people:
   https://www.ef-gov.org/en/index.php
-- Christian Joppke, “Liberalism versus Neoliberalism,” *Political
-  Neoliberalism: Order and Rupture* (Oxford University Press, 2025), on why
+- Christian Joppke, “Liberalism versus Neoliberalism,” _Political
+  Neoliberalism: Order and Rupture_ (Oxford University Press, 2025), on why
   liberalism and neoliberalism should not be treated as interchangeable
   political doctrines:
   https://academic.oup.com/book/59990/chapter-abstract/513445521

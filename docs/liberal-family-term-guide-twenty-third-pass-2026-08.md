@@ -67,40 +67,40 @@ program.
 
 ## Source basis
 
-- Ronald Hayduk, “Progressives,” *International Encyclopedia of the Social
-  Sciences*, on progressivism’s diverse reform coalitions, institutional
+- Ronald Hayduk, “Progressives,” _International Encyclopedia of the Social
+  Sciences_, on progressivism’s diverse reform coalitions, institutional
   reform, public-interest claims, and changing historical forms:
   https://www.encyclopedia.com/social-sciences/applied-and-social-sciences-magazines/progressives
-- David L. Cockrell and Allyson C. Criner, “Progressivism,” *Encyclopedia of
-  North Carolina*, on the term’s changing forms and its association with
+- David L. Cockrell and Allyson C. Criner, “Progressivism,” _Encyclopedia of
+  North Carolina_, on the term’s changing forms and its association with
   educational, economic, and social development:
   https://www.ncpedia.org/progressivism
-- Ann Cudd, “Liberal Feminism,” *Stanford Encyclopedia of Philosophy*, on
+- Ann Cudd, “Liberal Feminism,” _Stanford Encyclopedia of Philosophy_, on
   personal and political autonomy, equality, anti-discrimination, and the role
   of state institutions in egalitarian-liberal feminism:
   https://plato.stanford.edu/entries/feminism-liberal/
 - Linda C. McClain and Brittany K. Hacker, “Liberal Feminist Jurisprudence:
-  Foundational, Enduring, Adaptive,” *The Oxford Handbook of Feminism and Law
-  in the United States*, on autonomy, dignity, equality, and legal reform:
+  Foundational, Enduring, Adaptive,” _The Oxford Handbook of Feminism and Law
+  in the United States_, on autonomy, dignity, equality, and legal reform:
   https://doi.org/10.1093/oxfordhb/9780197519998.013.2
-- Henry George, *Progress and Poverty*, Chapters 11 and 33, on the distinction
+- Henry George, _Progress and Poverty_, Chapters 11 and 33, on the distinction
   between land rent and human improvements and the case for taxing land value:
   https://www.henrygeorge.org/pchp11.htm
   https://www.henrygeorge.org/pchp33.htm
-- H. James Brown, ed., *Land Use and Taxation: Applying the Insights of Henry
-  George*, Lincoln Institute of Land Policy, on the continuing policy debate
+- H. James Brown, ed., _Land Use and Taxation: Applying the Insights of Henry
+  George_, Lincoln Institute of Land Policy, on the continuing policy debate
   over private land rights, public interests, land value, and value capture:
   https://www.lincolninst.edu/publications/books/land-use-taxation/
-- Anthony F. Lang Jr., “Internationalism,” *International Encyclopedia of the
-  Social Sciences*, on internationalism’s overlapping meanings, international
+- Anthony F. Lang Jr., “Internationalism,” _International Encyclopedia of the
+  Social Sciences_, on internationalism’s overlapping meanings, international
   law and institutions, its distinction from cosmopolitanism, and its
   difference from world government:
   https://www.encyclopedia.com/social-sciences-and-law/political-science-and-government/military-affairs-nonnaval/internationalism
-- Talbot Imlay, *The Practice of Socialist Internationalism: European Socialists
-  and International Politics, 1914–1960*, Oxford University Press, on
+- Talbot Imlay, _The Practice of Socialist Internationalism: European Socialists
+  and International Politics, 1914–1960_, Oxford University Press, on
   internationalism operating through both national and transnational spaces:
   https://doi.org/10.1093/oso/9780199641048.001.0001
-- Karl Pike, “What Is Centrism?” *Political Studies*, on centrism’s changeable
+- Karl Pike, “What Is Centrism?” _Political Studies_, on centrism’s changeable
   and contested character, its strategic relationship to left and right, and
   its pragmatic emphasis on reforms blocked by ideological intransigence:
   https://doi.org/10.1177/00323217251410692

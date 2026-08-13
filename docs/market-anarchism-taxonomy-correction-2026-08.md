@@ -12,7 +12,7 @@ Sources:
 
 - [Stanford Encyclopedia of Philosophy, “Libertarianism”](https://plato.stanford.edu/entries/libertarianism/)
 - [Stanford Encyclopedia of Philosophy, “Anarchism”](https://plato.stanford.edu/entries/anarchism/)
-- [Lloveras, Warnaby, and Quinn, “Mutualism as market practice,” *Marketing Theory*](https://doi.org/10.1177/1470593119885172)
-- [Cambridge, *Social Anarchism and the Rejection of Moral Tyranny*](https://www.cambridge.org/core/books/social-anarchism-and-the-rejection-of-moral-tyranny/introduction/5E48734271ADE9A86CC39992674B759F)
+- [Lloveras, Warnaby, and Quinn, “Mutualism as market practice,” _Marketing Theory_](https://doi.org/10.1177/1470593119885172)
+- [Cambridge, _Social Anarchism and the Rejection of Moral Tyranny_](https://www.cambridge.org/core/books/social-anarchism-and-the-rejection-of-moral-tyranny/introduction/5E48734271ADE9A86CC39992674B759F)
 
 Taxonomy registry version: `2026-08-taxonomy-v3`.

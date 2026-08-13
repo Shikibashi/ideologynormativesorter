@@ -25,12 +25,12 @@ threat assessments have been empirically vindicated.
 
 ## Source basis
 
-- John Ehrman, *The Rise of Neoconservatism* (Yale University Press, 1995), on
+- John Ehrman, _The Rise of Neoconservatism_ (Yale University Press, 1995), on
   the movement’s hardline anticommunism and transition from Cold War liberalism
   into the Reagan-era conservative coalition:
   https://yalebooks.yale.edu/book/9780300068702/the-rise-of-neoconservatism/
 - James Chappel, “Conservatives in a ‘Liberal Age’: Rethinking the
-  Neoconservative Turn in the 1960s,” in *Cold War Liberalism* (Cambridge
+  Neoconservative Turn in the 1960s,” in _Cold War Liberalism_ (Cambridge
   University Press, 2026), on Cold War liberal roots and the emphasis on
   national security, military power, and global hegemony:
   https://www.cambridge.org/core/books/cold-war-liberalism/conservatives-in-a-liberal-age/BC44D4337E77BD075DC6247719788839

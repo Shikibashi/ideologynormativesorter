@@ -1,219 +1,270 @@
-import type { Axis } from '../types'
+import type { Axis } from "../types";
 
 export const axes: Axis[] = [
-   // Normative: what the respondent thinks is morally legitimate.
-   {
-      id: 'authority-legitimacy',
-      layer: 'normative',
-      name: 'Authority Legitimacy',
-      negativePole: 'Authority requires constant justification',
-      positivePole: 'Centralized authority is presumptively legitimate',
-      description: 'Whether a central institution holding exclusive power over law and force needs special justification, or may be presumed legitimate.',
-   },
-   {
-      id: 'property-legitimacy',
-      layer: 'normative',
-      name: 'Property Legitimacy',
-      negativePole: 'Collective claims are at least as strong as private title',
-      positivePole: 'Private property rights are strongly legitimate',
-      description: 'How strong a moral claim private ownership of productive assets carries relative to collective or common claims.',
-   },
-   {
-      id: 'liberty-noninterference',
-      layer: 'normative',
-      name: 'Conceptions of Liberty',
-      negativePole: 'Freedom also depends on autonomy, capacity, or protection from domination',
-      positivePole: 'Freedom mainly means absence of interference',
-      description: 'Whether political freedom is understood mainly as being left unimpeded or also as having the practical independence and protection from arbitrary power needed to act.',
-   },
-   {
-      id: 'equality-theory',
-      layer: 'normative',
-      name: 'Formal vs Substantive Equality',
-      negativePole: 'Equal legal status and rules are the main requirement',
-      positivePole: 'Reducing material disparities is also a central requirement',
-      description: 'Whether justice primarily requires equal legal status and rules or also requires reducing material disparities.',
-   },
-   {
-      id: 'political-community-boundary',
-      layer: 'normative',
-      name: 'Political Community Boundary',
-      negativePole: 'Special obligations to compatriots may outweigh duties to outsiders',
-      positivePole: 'Nationality does not limit people’s basic moral standing',
-      description: 'Whether moral and political obligations are concentrated within a particular community or extend universally.',
-   },
-   {
-      id: 'moral-traditionalism',
-      layer: 'normative',
-      name: 'Moral Traditionalism',
-      negativePole: 'Pluralism and permissiveness in personal morality are appropriate',
-      positivePole: 'A traditional, settled moral order should be upheld',
-      description: 'Whether inherited norms around personal and family conduct deserve deference, or whether a wide range of personal moral choices should be left open.',
-   },
-   {
-      id: 'anti-domination',
-      layer: 'normative',
-      name: 'Anti-Domination vs Hierarchy Acceptance',
-      negativePole: 'Established hierarchies may remain legitimate without continuing contestability',
-      positivePole: 'Hierarchy requires continuing checks, contestability, and justification',
-      description: 'Whether established hierarchy is entitled to continuing deference or must remain open to challenge and effective checks.',
-   },
-   {
-      id: 'human-nature-priority',
-      layer: 'normative',
-      name: 'Ecocentric vs Anthropocentric Priority',
-      negativePole: 'Human welfare and productive use of nature take priority',
-      positivePole: 'The natural world has standing independent of human use',
-      description: 'Whether the nonhuman environment carries moral weight in its own right, or whether nature is properly valued chiefly as a resource for human flourishing.',
-   },
-   {
-      id: 'militarism-pacifism',
-      layer: 'normative',
-      name: 'Pacifism vs Conditional Use of Force',
-      negativePole: 'Military force is never morally justified',
-      positivePole: 'Military force can be morally justified under specified conditions',
-      description: 'Whether military force can ever be morally justified; this does not measure support for frequent intervention or military dominance.',
-   },
-   {
-      id: 'secularism-religious',
-      layer: 'normative',
-      name: 'Secularism vs Religious Public Order',
-      negativePole: 'Public institutions should be neutral among religions and non-religion',
-      positivePole: 'Public life should reflect a religious moral order',
-      description: 'Whether government and public institutions should be neutral with respect to religion, or may legitimately promote and reflect religious values.',
-   },
+  // Normative: what the respondent thinks is morally legitimate.
+  {
+    id: "authority-legitimacy",
+    layer: "normative",
+    name: "Authority Legitimacy",
+    negativePole: "Authority requires constant justification",
+    positivePole: "Centralized authority is presumptively legitimate",
+    description:
+      "Whether a central institution holding exclusive power over law and force needs special justification, or may be presumed legitimate.",
+  },
+  {
+    id: "property-legitimacy",
+    layer: "normative",
+    name: "Property Legitimacy",
+    negativePole: "Collective claims are at least as strong as private title",
+    positivePole: "Private property rights are strongly legitimate",
+    description:
+      "How strong a moral claim private ownership of productive assets carries relative to collective or common claims.",
+  },
+  {
+    id: "liberty-noninterference",
+    layer: "normative",
+    name: "Conceptions of Liberty",
+    negativePole:
+      "Freedom also depends on autonomy, capacity, or protection from domination",
+    positivePole: "Freedom mainly means absence of interference",
+    description:
+      "Whether political freedom is understood mainly as being left unimpeded or also as having the practical independence and protection from arbitrary power needed to act.",
+  },
+  {
+    id: "equality-theory",
+    layer: "normative",
+    name: "Formal vs Substantive Equality",
+    negativePole: "Equal legal status and rules are the main requirement",
+    positivePole: "Reducing material disparities is also a central requirement",
+    description:
+      "Whether justice primarily requires equal legal status and rules or also requires reducing material disparities.",
+  },
+  {
+    id: "political-community-boundary",
+    layer: "normative",
+    name: "Political Community Boundary",
+    negativePole:
+      "Special obligations to compatriots may outweigh duties to outsiders",
+    positivePole: "Nationality does not limit people’s basic moral standing",
+    description:
+      "Whether moral and political obligations are concentrated within a particular community or extend universally.",
+  },
+  {
+    id: "moral-traditionalism",
+    layer: "normative",
+    name: "Moral Traditionalism",
+    negativePole:
+      "Pluralism and permissiveness in personal morality are appropriate",
+    positivePole: "A traditional, settled moral order should be upheld",
+    description:
+      "Whether inherited norms around personal and family conduct deserve deference, or whether a wide range of personal moral choices should be left open.",
+  },
+  {
+    id: "anti-domination",
+    layer: "normative",
+    name: "Anti-Domination vs Hierarchy Acceptance",
+    negativePole:
+      "Established hierarchies may remain legitimate without continuing contestability",
+    positivePole:
+      "Hierarchy requires continuing checks, contestability, and justification",
+    description:
+      "Whether established hierarchy is entitled to continuing deference or must remain open to challenge and effective checks.",
+  },
+  {
+    id: "human-nature-priority",
+    layer: "normative",
+    name: "Ecocentric vs Anthropocentric Priority",
+    negativePole: "Human welfare and productive use of nature take priority",
+    positivePole: "The natural world has standing independent of human use",
+    description:
+      "Whether the nonhuman environment carries moral weight in its own right, or whether nature is properly valued chiefly as a resource for human flourishing.",
+  },
+  {
+    id: "militarism-pacifism",
+    layer: "normative",
+    name: "Pacifism vs Conditional Use of Force",
+    negativePole: "Military force is never morally justified",
+    positivePole:
+      "Military force can be morally justified under specified conditions",
+    description:
+      "Whether military force can ever be morally justified; this does not measure support for frequent intervention or military dominance.",
+  },
+  {
+    id: "secularism-religious",
+    layer: "normative",
+    name: "Secularism vs Religious Public Order",
+    negativePole:
+      "Public institutions should be neutral among religions and non-religion",
+    positivePole: "Public life should reflect a religious moral order",
+    description:
+      "Whether government and public institutions should be neutral with respect to religion, or may legitimately promote and reflect religious values.",
+  },
 
-   // Descriptive: what the respondent believes is empirically true.
-   {
-      id: 'market-process-confidence',
-      layer: 'descriptive',
-      name: 'Market-Process Confidence',
-      negativePole: 'Markets routinely misallocate resources or produce harmful outcomes',
-      positivePole: 'Markets generally coordinate information and resources well',
-      description: 'Empirical confidence that decentralized price-driven exchange tends to allocate resources effectively.',
-   },
-   {
-      id: 'state-capacity-confidence',
-      layer: 'descriptive',
-      name: 'State-Capacity Confidence',
-      negativePole: 'States usually fail to execute complex tasks well',
-      positivePole: 'States can competently execute complex policy',
-      description: 'Empirical confidence in the administrative capability of state institutions to carry out ambitious programs.',
-   },
-   {
-      id: 'public-choice-skepticism',
-      layer: 'descriptive',
-      name: 'Public-Choice Skepticism',
-      negativePole: 'Public institutions usually overcome self-interest and capture',
-      positivePole: 'Public institutions are often shaped by self-interest and capture',
-      description: 'Empirical expectation that public institutions are bent toward the interests of insiders, regulators, or organized lobbies rather than the public.',
-   },
-   {
-      id: 'democratic-confidence',
-      layer: 'descriptive',
-      name: 'Democratic Confidence',
-      negativePole: 'Voters are often manipulable or poorly informed',
-      positivePole: 'Voters generally deliberate well and reach sound decisions',
-      description: 'Empirical confidence that majoritarian democratic processes reliably produce good collective decisions.',
-   },
-   {
-      id: 'expert-confidence',
-      layer: 'descriptive',
-      name: 'Expert Confidence',
-      negativePole: 'Expert bodies tend to cartelize or detach from public accountability',
-      positivePole: 'Delegating decisions to experts generally improves governance',
-      description: 'Empirical confidence that technical or professional expertise, once given authority, tends to produce better outcomes rather than self-serving or insulated decision-making.',
-   },
-   {
-      id: 'cultural-plasticity',
-      layer: 'descriptive',
-      name: 'Cultural Plasticity vs Persistence',
-      negativePole: 'Culture and norms are path-dependent and resist deliberate policy change',
-      positivePole: 'Culture and norms respond readily to policy and institutional design',
-      description: 'Empirical belief about how malleable cultural patterns, norms, and behavior are in response to law and policy.',
-   },
-   {
-      id: 'coordination-optimism',
-      layer: 'descriptive',
-      name: 'Coordination Optimism',
-      negativePole: 'Decentralized coordination often fails without central direction',
-      positivePole: 'Decentralized coordination often succeeds without central direction',
-      description: 'Empirical expectation about whether decentralized, voluntary arrangements between individuals and groups tend to succeed or fail absent a central coordinator.',
-   },
+  // Descriptive: what the respondent believes is empirically true.
+  {
+    id: "market-process-confidence",
+    layer: "descriptive",
+    name: "Market-Process Confidence",
+    negativePole:
+      "Markets routinely misallocate resources or produce harmful outcomes",
+    positivePole: "Markets generally coordinate information and resources well",
+    description:
+      "Empirical confidence that decentralized price-driven exchange tends to allocate resources effectively.",
+  },
+  {
+    id: "state-capacity-confidence",
+    layer: "descriptive",
+    name: "State-Capacity Confidence",
+    negativePole: "States usually fail to execute complex tasks well",
+    positivePole: "States can competently execute complex policy",
+    description:
+      "Empirical confidence in the administrative capability of state institutions to carry out ambitious programs.",
+  },
+  {
+    id: "public-choice-skepticism",
+    layer: "descriptive",
+    name: "Public-Choice Skepticism",
+    negativePole:
+      "Public institutions usually overcome self-interest and capture",
+    positivePole:
+      "Public institutions are often shaped by self-interest and capture",
+    description:
+      "Empirical expectation that public institutions are bent toward the interests of insiders, regulators, or organized lobbies rather than the public.",
+  },
+  {
+    id: "democratic-confidence",
+    layer: "descriptive",
+    name: "Democratic Confidence",
+    negativePole: "Voters are often manipulable or poorly informed",
+    positivePole: "Voters generally deliberate well and reach sound decisions",
+    description:
+      "Empirical confidence that majoritarian democratic processes reliably produce good collective decisions.",
+  },
+  {
+    id: "expert-confidence",
+    layer: "descriptive",
+    name: "Expert Confidence",
+    negativePole:
+      "Expert bodies tend to cartelize or detach from public accountability",
+    positivePole:
+      "Delegating decisions to experts generally improves governance",
+    description:
+      "Empirical confidence that technical or professional expertise, once given authority, tends to produce better outcomes rather than self-serving or insulated decision-making.",
+  },
+  {
+    id: "cultural-plasticity",
+    layer: "descriptive",
+    name: "Cultural Plasticity vs Persistence",
+    negativePole:
+      "Culture and norms are path-dependent and resist deliberate policy change",
+    positivePole:
+      "Culture and norms respond readily to policy and institutional design",
+    description:
+      "Empirical belief about how malleable cultural patterns, norms, and behavior are in response to law and policy.",
+  },
+  {
+    id: "coordination-optimism",
+    layer: "descriptive",
+    name: "Coordination Optimism",
+    negativePole:
+      "Decentralized coordination often fails without central direction",
+    positivePole:
+      "Decentralized coordination often succeeds without central direction",
+    description:
+      "Empirical expectation about whether decentralized, voluntary arrangements between individuals and groups tend to succeed or fail absent a central coordinator.",
+  },
 
-   // Prescriptive: what should actually be done, especially under non-ideal conditions.
-   {
-      id: 'centralization-preference',
-      layer: 'prescriptive',
-      name: 'Centralization Preference',
-      negativePole: 'Authority and decision-making should be decentralized',
-      positivePole: 'Authority and decision-making should be centralized',
-      description: 'Whether power and policymaking should be concentrated or dispersed across smaller units.',
-   },
-   {
-      id: 'reform-vs-revolution',
-      layer: 'prescriptive',
-      name: 'Reform vs Revolution',
-      negativePole: 'Change should work through existing institutions',
-      positivePole: 'Existing institutions should be ruptured and replaced',
-      description: 'Whether desired change should be pursued by reforming current institutions or by replacing them outright.',
-   },
-   {
-      id: 'gradualism-vs-immediatism',
-      layer: 'prescriptive',
-      name: 'Gradualism vs Immediatism',
-      negativePole: 'Change should be phased in gradually',
-      positivePole: 'Change should be implemented immediately',
-      description: 'Whether favored reforms should be sequenced slowly to manage transition costs, or enacted at once.',
-   },
-   {
-      id: 'state-action-vs-exit',
-      layer: 'prescriptive',
-      name: 'State Action vs Exit',
-      negativePole: 'Problems are best solved by exit into private or counter-institutional alternatives',
-      positivePole: 'Problems are best solved through state action and public provision',
-      description: 'Whether the preferred remedy to a given problem runs through state provision or through opting out into voluntary alternatives.',
-   },
-   {
-      id: 'electoralism-vs-direct-action',
-      layer: 'prescriptive',
-      name: 'Electoralism vs Direct Action',
-      negativePole: 'Change should be pursued through direct action outside formal channels',
-      positivePole: 'Change should be pursued through electoral and institutional channels',
-      description: 'Whether favored strategies for change rely on formal political and legal processes or on direct action that bypasses them.',
-   },
-   {
-      id: 'compromise-vs-persistence',
-      layer: 'prescriptive',
-      name: 'Compromise vs Persistence',
-      negativePole: 'Ideological commitments should be held firm despite opposition',
-      positivePole: 'Practical compromise with opponents is usually worthwhile',
-      description: 'Whether achieving partial gains through negotiated compromise is preferable to holding out for a fuller, uncompromised outcome.',
-   },
-   {
-      id: 'coercion-strategy',
-      layer: 'prescriptive',
-      name: 'Coercion Strategy',
-      negativePole: 'Change should be pursued only through peaceful, non-coercive strategies',
-      positivePole: 'Change may be pursued through coercive strategies in some circumstances',
-      description: 'Whether the use of coercive or forceful tactics, beyond ordinary persuasion and lawful process, can be justified to advance favored political ends.',
-   },
-   {
-      id: 'regulation-vs-deregulation',
-      layer: 'prescriptive',
-      name: 'Regulation vs Deregulation',
-      negativePole: 'Regulatory constraints should be reduced or simplified',
-      positivePole: 'Regulatory constraints and oversight should be strengthened',
-      description: 'Whether the preferred policy direction is to reduce regulatory constraint or to add and strengthen oversight.',
-   },
-   {
-      id: 'redistribution-vs-predistribution',
-      layer: 'prescriptive',
-      name: 'Redistribution vs Predistribution',
-      negativePole: 'Underlying rules governing markets should be altered before distribution occurs',
-      positivePole: 'Material need is best addressed by redistributing after market outcomes occur',
-      description: 'Whether the preferred remedy for unmet material need is transferring resources after the fact or changing the rules that shape market outcomes beforehand.',
-   },
-]
+  // Prescriptive: what should actually be done, especially under non-ideal conditions.
+  {
+    id: "centralization-preference",
+    layer: "prescriptive",
+    name: "Centralization Preference",
+    negativePole: "Authority and decision-making should be decentralized",
+    positivePole: "Authority and decision-making should be centralized",
+    description:
+      "Whether power and policymaking should be concentrated or dispersed across smaller units.",
+  },
+  {
+    id: "reform-vs-revolution",
+    layer: "prescriptive",
+    name: "Reform vs Revolution",
+    negativePole: "Change should work through existing institutions",
+    positivePole: "Existing institutions should be ruptured and replaced",
+    description:
+      "Whether desired change should be pursued by reforming current institutions or by replacing them outright.",
+  },
+  {
+    id: "gradualism-vs-immediatism",
+    layer: "prescriptive",
+    name: "Gradualism vs Immediatism",
+    negativePole: "Change should be phased in gradually",
+    positivePole: "Change should be implemented immediately",
+    description:
+      "Whether favored reforms should be sequenced slowly to manage transition costs, or enacted at once.",
+  },
+  {
+    id: "state-action-vs-exit",
+    layer: "prescriptive",
+    name: "State Action vs Exit",
+    negativePole:
+      "Problems are best solved by exit into private or counter-institutional alternatives",
+    positivePole:
+      "Problems are best solved through state action and public provision",
+    description:
+      "Whether the preferred remedy to a given problem runs through state provision or through opting out into voluntary alternatives.",
+  },
+  {
+    id: "electoralism-vs-direct-action",
+    layer: "prescriptive",
+    name: "Electoralism vs Direct Action",
+    negativePole:
+      "Change should be pursued through direct action outside formal channels",
+    positivePole:
+      "Change should be pursued through electoral and institutional channels",
+    description:
+      "Whether favored strategies for change rely on formal political and legal processes or on direct action that bypasses them.",
+  },
+  {
+    id: "compromise-vs-persistence",
+    layer: "prescriptive",
+    name: "Compromise vs Persistence",
+    negativePole:
+      "Ideological commitments should be held firm despite opposition",
+    positivePole: "Practical compromise with opponents is usually worthwhile",
+    description:
+      "Whether achieving partial gains through negotiated compromise is preferable to holding out for a fuller, uncompromised outcome.",
+  },
+  {
+    id: "coercion-strategy",
+    layer: "prescriptive",
+    name: "Coercion Strategy",
+    negativePole:
+      "Change should be pursued only through peaceful, non-coercive strategies",
+    positivePole:
+      "Change may be pursued through coercive strategies in some circumstances",
+    description:
+      "Whether the use of coercive or forceful tactics, beyond ordinary persuasion and lawful process, can be justified to advance favored political ends.",
+  },
+  {
+    id: "regulation-vs-deregulation",
+    layer: "prescriptive",
+    name: "Regulation vs Deregulation",
+    negativePole: "Regulatory constraints should be reduced or simplified",
+    positivePole: "Regulatory constraints and oversight should be strengthened",
+    description:
+      "Whether the preferred policy direction is to reduce regulatory constraint or to add and strengthen oversight.",
+  },
+  {
+    id: "redistribution-vs-predistribution",
+    layer: "prescriptive",
+    name: "Redistribution vs Predistribution",
+    negativePole:
+      "Underlying rules governing markets should be altered before distribution occurs",
+    positivePole:
+      "Material need is best addressed by redistributing after market outcomes occur",
+    description:
+      "Whether the preferred remedy for unmet material need is transferring resources after the fact or changing the rules that shape market outcomes beforehand.",
+  },
+];
 
-export const axisById = new Map(axes.map((a) => [a.id, a]))
+export const axisById = new Map(axes.map((a) => [a.id, a]));

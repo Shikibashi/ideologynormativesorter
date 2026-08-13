@@ -19,7 +19,7 @@ This pass corrects a catalog relationship error without changing the
   Catholic integralism as a religious anti-liberal tradition whose ideal
   political order subordinates the state to the church. It supports the
   definition and normative boundary, not a claim about every historical
-  movement using the word *integralism*:
+  movement using the word _integralism_:
   [Introduction to OJLR Special Issue: The New Catholic Integralism and
   Religious Anti-Liberalism](https://academic.oup.com/ojlr/advance-article-abstract/doi/10.1093/ojlr/rwag013/8735948)
 - Cambridge research treats Catholic integralism as one distinct form within

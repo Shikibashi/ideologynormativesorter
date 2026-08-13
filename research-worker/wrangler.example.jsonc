@@ -27,15 +27,15 @@
     "ALLOWED_LEGACY_MODERATE_ITEM_COUNTS": "158,149",
     "ALLOWED_LEGACY_EXTENSIVE_ITEM_COUNTS": "336,309",
     "ALLOWED_MATRIX_ITEM_COUNTS": "120",
-    "MAXIMUM_BODY_BYTES": "2000000"
+    "MAXIMUM_BODY_BYTES": "2000000",
   },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "political-judgment-contributions",
       "database_id": "REPLACE_WITH_D1_DATABASE_ID",
-      "migrations_dir": "migrations"
-    }
+      "migrations_dir": "migrations",
+    },
   ],
   "ratelimits": [
     {
@@ -43,9 +43,9 @@
       "namespace_id": "24001",
       "simple": {
         "limit": 20,
-        "period": 60
-      }
-    }
+        "period": 60,
+      },
+    },
   ],
   "observability": {
     "enabled": true,
@@ -54,12 +54,12 @@
       "enabled": true,
       "head_sampling_rate": 1,
       "invocation_logs": true,
-      "persist": true
+      "persist": true,
     },
     "traces": {
       "enabled": false,
       "head_sampling_rate": 1,
-      "persist": true
-    }
-  }
+      "persist": true,
+    },
+  },
 }

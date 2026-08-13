@@ -35,23 +35,23 @@ catalog’s ideological profile.
 
 ## Source basis
 
-- “Environmental Ethics,” *Stanford Encyclopedia of Philosophy*, on Deep
+- “Environmental Ethics,” _Stanford Encyclopedia of Philosophy_, on Deep
   Ecology, biospheric egalitarianism, intrinsic value independent of human use,
   and the relational understanding of humans within nature:
   https://plato.stanford.edu/entries/ethics-environmental/
 - Arne Næss, “The Shallow and the Deep, Long-Range Ecology Movement: A
-  Summary,” *Inquiry* 16 (1973), DOI 10.1080/00201747308601682, on the deep
+  Summary,” _Inquiry_ 16 (1973), DOI 10.1080/00201747308601682, on the deep
   movement’s concern with diversity, complexity, autonomy, decentralization,
   symbiosis, egalitarianism, and classlessness:
   https://doi.org/10.1080/00201747308601682
 - Sarah Eaton and Genia Kostka, “Environmental Authoritarianism: A Critical
-  Review,” *The Oxford Handbook of Authoritarian Politics* (2024), on the
+  Review,” _The Oxford Handbook of Authoritarian Politics_ (2024), on the
   environmental-authoritarianism literature, including state capacity,
   co-optation, legitimization, repression, corruption, and resource politics:
   https://doi.org/10.1093/oxfordhb/9780198871996.013.31
 - Chen Xiang and Alex Lo, “Authoritarian environmentalism 2.0: An incremental
-  transition of environmental governance in China,” *Environment and Planning
-  C: Politics and Space* 43 (2025), on the interaction of recentralization and
+  transition of environmental governance in China,” _Environment and Planning
+  C: Politics and Space_ 43 (2025), on the interaction of recentralization and
   decentralization in environmental governance rather than a simple binary:
   https://doi.org/10.1177/23996544241286325
 

@@ -8,12 +8,12 @@ The religious-national module previously tested six general constructs but
 did not directly ask whether a respondent endorsed the particular traditions
 represented by three of its candidates. It now adds:
 
-| Item | Construct | Boundary |
-| --- | --- | --- |
-| `fm-rn-7` | Islamic public law | Islamic ethical/legal influence with citizen accountability and equal civic rights; not clerical rule by definition. |
-| `fm-rn-8` | Interpretive pluralism | Contestable interpretation of Islamic principles rather than one final clerical authority. |
-| `fm-rn-9` | Hindu civilizational belonging | Hindutva-specific national membership, distinct from Hinduism as personal religion. |
-| `fm-rn-10` | Jewish national self-determination | Zionist self-determination as a political aim without fixing one border, religion, or constitutional model. |
+| Item       | Construct                          | Boundary                                                                                                             |
+| ---------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `fm-rn-7`  | Islamic public law                 | Islamic ethical/legal influence with citizen accountability and equal civic rights; not clerical rule by definition. |
+| `fm-rn-8`  | Interpretive pluralism             | Contestable interpretation of Islamic principles rather than one final clerical authority.                           |
+| `fm-rn-9`  | Hindu civilizational belonging     | Hindutva-specific national membership, distinct from Hinduism as personal religion.                                  |
+| `fm-rn-10` | Jewish national self-determination | Zionist self-determination as a political aim without fixing one border, religion, or constitutional model.          |
 
 The item boundaries follow Cambridge’s account of Islamic constitutionalism as
 a negotiation between rights, Islam, and constitutional democracy; Oxford’s

@@ -1,24 +1,27 @@
-import type { Answer, Question } from '../types'
+import type { Answer, Question } from "../types";
 
-const LIKERT_MAX: Record<'likert5' | 'likert7', number> = {
+const LIKERT_MAX: Record<"likert5" | "likert7", number> = {
   likert5: 2,
   likert7: 3,
-}
+};
 
 /**
  * Converts a raw Likert answer into a -1..1 unit value, honoring reverseScored.
  * Returns null for non-substantive answers, which are excluded from aggregation.
  */
-export function normalizeAnswer(question: Question, answer: Answer): number | null {
-  if (typeof answer.value !== 'number') return null
-  if (question.responseType === 'statementChoice') return 1
+export function normalizeAnswer(
+  question: Question,
+  answer: Answer,
+): number | null {
+  if (typeof answer.value !== "number") return null;
+  if (question.responseType === "statementChoice") return 1;
 
-  const max = LIKERT_MAX[question.responseType]
-  let unit = answer.value / max
-  if (unit > 1) unit = 1
-  if (unit < -1) unit = -1
+  const max = LIKERT_MAX[question.responseType];
+  let unit = answer.value / max;
+  if (unit > 1) unit = 1;
+  if (unit < -1) unit = -1;
 
-  return question.reverseScored ? -unit : unit
+  return question.reverseScored ? -unit : unit;
 }
 
 /**
@@ -29,14 +32,20 @@ export function normalizeAnswer(question: Question, answer: Answer): number | nu
  * weight (1).
  */
 export function salienceFactor(question: Question, answer: Answer): number {
-  if (answer.salienceSkipped === true && question.layer !== 'normative') return 0
-  const rating = question.layer === 'descriptive' ? answer.confidence : question.layer === 'prescriptive' ? answer.priority : undefined
-  if (rating === undefined) return 1
-  return clampUnit(rating / 5)
+  if (answer.salienceSkipped === true && question.layer !== "normative")
+    return 0;
+  const rating =
+    question.layer === "descriptive"
+      ? answer.confidence
+      : question.layer === "prescriptive"
+        ? answer.priority
+        : undefined;
+  if (rating === undefined) return 1;
+  return clampUnit(rating / 5);
 }
 
 function clampUnit(value: number): number {
-  if (value > 1) return 1
-  if (value < 0.2) return 0.2
-  return value
+  if (value > 1) return 1;
+  if (value < 0.2) return 0.2;
+  return value;
 }

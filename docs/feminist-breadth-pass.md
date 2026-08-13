@@ -48,10 +48,10 @@ This makes the direction of causality explicit: **measurement earns a label; add
 
 The module is based on broad distinctions used in feminist political philosophy rather than internet ideology taxonomies.
 
-- Stanford Encyclopedia of Philosophy, *Feminist Political Philosophy* — discusses liberal feminism's autonomy/equality tradition and radical feminism's focus on dominance/subordination and patriarchy: https://plato.stanford.edu/entries/feminism-political/
-- Stanford Encyclopedia of Philosophy, *Feminist Perspectives on Class and Work* — reviews the influential liberal/radical/Marxist/socialist classification and the materialist analysis of labor, household work, and economic dependence: https://plato.stanford.edu/entries/feminism-class/
-- Stanford Encyclopedia of Philosophy, *Feminist Perspectives on Power* — surveys socialist-feminist attempts to integrate class and patriarchy and the later social-reproduction tradition: https://plato.stanford.edu/entries/feminist-power/
-- Stanford Encyclopedia of Philosophy, *Liberal Feminism* — provides the more specific autonomy and equal-rights account used to anchor the liberal specialist prototype: https://plato.stanford.edu/entries/feminism-liberal/
+- Stanford Encyclopedia of Philosophy, _Feminist Political Philosophy_ — discusses liberal feminism's autonomy/equality tradition and radical feminism's focus on dominance/subordination and patriarchy: https://plato.stanford.edu/entries/feminism-political/
+- Stanford Encyclopedia of Philosophy, _Feminist Perspectives on Class and Work_ — reviews the influential liberal/radical/Marxist/socialist classification and the materialist analysis of labor, household work, and economic dependence: https://plato.stanford.edu/entries/feminism-class/
+- Stanford Encyclopedia of Philosophy, _Feminist Perspectives on Power_ — surveys socialist-feminist attempts to integrate class and patriarchy and the later social-reproduction tradition: https://plato.stanford.edu/entries/feminist-power/
+- Stanford Encyclopedia of Philosophy, _Liberal Feminism_ — provides the more specific autonomy and equal-rights account used to anchor the liberal specialist prototype: https://plato.stanford.edu/entries/feminism-liberal/
 
 ## What this pass does not claim
 

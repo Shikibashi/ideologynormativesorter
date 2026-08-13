@@ -1,74 +1,83 @@
-import type { AxisId, DomainId, LabelId, Layer, QuestionId, QuizTier, ResponseType, TheoryContext } from './common'
+import type {
+  AxisId,
+  DomainId,
+  LabelId,
+  Layer,
+  QuestionId,
+  QuizTier,
+  ResponseType,
+  TheoryContext,
+} from "./common";
 
 export interface AxisWeight {
-  axisId: AxisId
+  axisId: AxisId;
   /** Signed contribution toward the axis's positive pole, -1..1. */
-  weight: number
+  weight: number;
 }
 
 export interface IdeologyAffinity {
-  labelId: LabelId
+  labelId: LabelId;
   /** Signed contribution toward affinity with the label, -1..1. */
-  weight: number
+  weight: number;
 }
 
 export interface QuestionSource {
-  title: string
-  url: string
-  publisher?: string
-  publishedAt?: string
+  title: string;
+  url: string;
+  publisher?: string;
+  publishedAt?: string;
 }
 
 /** One "which best represents your view" option for a statementChoice question. */
 export interface StatementOption {
-  id: string
-  text: string
-  axisWeights: AxisWeight[]
+  id: string;
+  text: string;
+  axisWeights: AxisWeight[];
 }
 
 export interface Question {
-  id: QuestionId
-  prompt: string
-  domain: DomainId
-  layer: Layer
-  theoryContext: TheoryContext
-  responseType: ResponseType
+  id: QuestionId;
+  prompt: string;
+  domain: DomainId;
+  layer: Layer;
+  theoryContext: TheoryContext;
+  responseType: ResponseType;
   /** Smallest question pool this item belongs to; quick ⊂ moderate ⊂ extensive. */
-  tier: QuizTier
-  axisWeights: AxisWeight[]
+  tier: QuizTier;
+  axisWeights: AxisWeight[];
   /** Required when responseType is statementChoice; each option carries its own axisWeights instead of the question-level scale. */
-  statementOptions?: StatementOption[]
+  statementOptions?: StatementOption[];
   /** When true, the raw answer value is inverted before axis weights are applied. */
-  reverseScored?: boolean
-  ideologyAffinities?: IdeologyAffinity[]
+  reverseScored?: boolean;
+  ideologyAffinities?: IdeologyAffinity[];
   /** Faction module this item belongs to, if any. Absent for core short/full mode items. */
-  module?: string
+  module?: string;
   /** Optional note shown in results explaining what the item measures. */
-  explanation?: string
+  explanation?: string;
   /** Plain-language help text shown under the question during the quiz. */
-  helpText?: string
+  helpText?: string;
   /** Operational definition or empirical scope for a descriptive item. */
-  evidenceNote?: string
+  evidenceNote?: string;
   /** Public sources supporting the context of an item; sources do not determine the respondent's answer. */
-  sources?: QuestionSource[]
+  sources?: QuestionSource[];
   /** Neutral background context for any layer; descriptive items use evidenceNote for empirical scope. */
-  contextNote?: string
+  contextNote?: string;
   /** Descriptive items may let the respondent decline to guess. */
-  allowDontKnow?: boolean
+  allowDontKnow?: boolean;
   /** Prompt shown alongside a descriptive item's confidence rating. */
-  confidencePrompt?: string
+  confidencePrompt?: string;
   /** Prompt shown alongside a prescriptive item's priority rating. */
-  priorityPrompt?: string
+  priorityPrompt?: string;
 
   /** Versioning / lifecycle metadata (optional; absent means current bank + active=true for selection/scoring). */
-  version?: string
-  active?: boolean
-  reviewStatus?: 'approved' | 'draft' | 'needs-rewrite'
-  replacesQuestionId?: QuestionId
-  createdAt?: string
-  updatedAt?: string
-  deprecatedAt?: string
-  deprecationReason?: string
-  sourceStatus?: 'clean_room' | 'original'
-  textHash?: string
+  version?: string;
+  active?: boolean;
+  reviewStatus?: "approved" | "draft" | "needs-rewrite";
+  replacesQuestionId?: QuestionId;
+  createdAt?: string;
+  updatedAt?: string;
+  deprecatedAt?: string;
+  deprecationReason?: string;
+  sourceStatus?: "clean_room" | "original";
+  textHash?: string;
 }

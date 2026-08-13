@@ -4,7 +4,7 @@ export {
   directionalBalance,
   pearsonCorrelation,
   sourceCoverage,
-} from './psychometrics'
+} from "./psychometrics";
 
 export type {
   AxisPsychometricReport,
@@ -17,6 +17,6 @@ export type {
   SelfLabelConcordance,
   SourceCoverageReport,
   ValidationResponse,
-} from './psychometrics'
+} from "./psychometrics";
 
-export * from './mappingAudit'
+export * from "./mappingAudit";

@@ -39,14 +39,14 @@ implementation, or movement using one label has the same complete program.
 
 ## Source basis
 
-- Alfredo Sánchez Santiago, “Radical Democracy,” *EUNOMÍA. Revista en Cultura
-  de la Legalidad* (2024), DOI 10.20318/eunomia.2024.8513, on radical
+- Alfredo Sánchez Santiago, “Radical Democracy,” _EUNOMÍA. Revista en Cultura
+  de la Legalidad_ (2024), DOI 10.20318/eunomia.2024.8513, on radical
   democracy’s relation to agonistic democracy, participation, equality,
   representative institutions, social movements, and counter-hegemonic
   struggle:
   https://doi.org/10.20318/eunomia.2024.8513
 - Manon Westphal, “Clarifying and Defining the Concept of Liquid Democracy,”
-  *Swiss Political Science Review* 28 (2022), on the mixture of direct and
+  _Swiss Political Science Review_ 28 (2022), on the mixture of direct and
   representative democracy, voluntary delegation, and proxy voting:
   https://doi.org/10.1111/spsr.12486
 - Joseph Campbell, Alessandra Casella, Lucas de Lara, Victoria R. Mooers, and
@@ -54,12 +54,12 @@ implementation, or movement using one label has the same complete program.
   NBER Working Paper 30794 (2022), on referendum decisions with the option to
   delegate votes to other voters:
   https://doi.org/10.3386/w30794
-- Abdullah Öcalan, *Democratic Confederalism* (2011), primary statement on
+- Abdullah Öcalan, _Democratic Confederalism_ (2011), primary statement on
   non-state political administration, grassroots participation, community
   decision-making, ecology, feminism, and confederal coordination:
   https://www.freeocalan.org/wp-content/uploads/2012/09/Ocalan-Democratic-Confederalism.pdf
 - Federico Venturini, “The Geopolitics of Democratic Confederalism in Syria,”
-  *Geopolitics* 26 (2021), on the literature describing the model as
+  _Geopolitics_ 26 (2021), on the literature describing the model as
   stateless, gender-egalitarian, ecological, and direct-democratic:
   https://doi.org/10.1080/14650045.2019.1691998
 

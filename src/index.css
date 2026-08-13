@@ -1,5 +1,4 @@
-@import './styles/ecw-tokens.css';
-
+@import "./styles/ecw-tokens.css";
 
 * {
   box-sizing: border-box;
@@ -12,7 +11,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font: var(--ecw-font-size-body)/var(--ecw-line-height-body) var(--ecw-font-ui);
+  font: var(--ecw-font-size-body) / var(--ecw-line-height-body)
+    var(--ecw-font-ui);
   color: var(--ecw-text);
   background-color: var(--ecw-canvas);
   background-image:
@@ -56,7 +56,10 @@ a:hover {
 }
 
 #root {
-  width: min(var(--ecw-shell-max), calc(100% - (var(--ecw-shell-gutter) + var(--ecw-shell-gutter))));
+  width: min(
+    var(--ecw-shell-max),
+    calc(100% - (var(--ecw-shell-gutter) + var(--ecw-shell-gutter)))
+  );
   min-height: calc(100vh - (var(--ecw-shell-gutter) + var(--ecw-shell-gutter)));
   margin: var(--ecw-shell-gutter) auto;
 }
@@ -155,16 +158,21 @@ code {
 }
 
 :root:lang(ja) {
-  --ecw-font-ui: Verdana, "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", sans-serif;
+  --ecw-font-ui:
+    Verdana, "DejaVu Sans", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP",
+    sans-serif;
 }
 
 :root:lang(ko) {
-  --ecw-font-ui: Verdana, "DejaVu Sans", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  --ecw-font-ui:
+    Verdana, "DejaVu Sans", "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans KR", sans-serif;
 }
 
 :root:lang(ar),
 :root:lang(he) {
-  --ecw-font-ui: Verdana, "Noto Sans Arabic", "Segoe UI", "DejaVu Sans", sans-serif;
+  --ecw-font-ui:
+    Verdana, "Noto Sans Arabic", "Segoe UI", "DejaVu Sans", sans-serif;
 }
 
 @media (forced-colors: active) {

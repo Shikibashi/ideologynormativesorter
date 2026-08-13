@@ -31,6 +31,7 @@ Use this skill for bugs. Do not guess-patch. Reproduce, isolate, explain, fix, a
 
 ```markdown
 ## Debug report
+
 Symptom:
 Reproduction:
 Root cause:

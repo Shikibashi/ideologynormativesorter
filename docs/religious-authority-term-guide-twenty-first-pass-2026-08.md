@@ -59,24 +59,24 @@ program.
 
 ## Source basis
 
-- Paolo Pombeni, “Christian Democracy,” *The Oxford Handbook of Political
-  Ideologies*, on Christian democracy’s relationship to constitutionalism,
+- Paolo Pombeni, “Christian Democracy,” _The Oxford Handbook of Political
+  Ideologies_, on Christian democracy’s relationship to constitutionalism,
   church-state relations, and Christian social doctrine:
   https://doi.org/10.1093/oxfordhb/9780199585977.013.0003
-- Carlo Invernizzi Accetti, “Subsidiarity,” in *What is Christian Democracy?*,
+- Carlo Invernizzi Accetti, “Subsidiarity,” in _What is Christian Democracy?_,
   on subsidiarity as a central Christian-democratic principle for distributing
   authority across local, national, and international levels:
   https://doi.org/10.1017/9781108368162.005
-- “Theocracy,” *The Encyclopedia of Political Science*, on the placement of
+- “Theocracy,” _The Encyclopedia of Political Science_, on the placement of
   ultimate state authority in divine commission or religious law rather than
   treating the term as a synonym for personal belief:
   https://www.encyclopedia.com/social-sciences-and-law/political-science-and-government/political-science-terms-and-concepts/theocracy
 - Kevin Vallier, “The Justice Argument Against Catholic Integralism,”
-  *Political Studies* (2024), on Catholic integralism’s claim that church law
+  _Political Studies_ (2024), on Catholic integralism’s claim that church law
   may direct state authority toward the church’s higher end:
   https://doi.org/10.1177/00323217221130169
-- “Catholic Integralism and the Integralists,” *All the Kingdoms of the
-  World*, on natural law, the common good, human dignity, church-state
+- “Catholic Integralism and the Integralists,” _All the Kingdoms of the
+  World_, on natural law, the common good, human dignity, church-state
   relations, religious liberty, and canon law in integralist thought:
   https://academic.oup.com/book/46743/chapter-abstract/413274573
 - “Religious Fundamentalism: A Theoretical-Constitutional Analysis,” on

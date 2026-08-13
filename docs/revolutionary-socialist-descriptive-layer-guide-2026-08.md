@@ -27,18 +27,18 @@ proposed transition mechanisms have one universally established outcome.
 
 ## Source basis
 
-- “Socialism,” *Stanford Encyclopedia of Philosophy*, on socialism’s
+- “Socialism,” _Stanford Encyclopedia of Philosophy_, on socialism’s
   diversity, social or democratic control of productive assets, and the fact
   that socialism is not equivalent to one form of statism or planning:
   https://plato.stanford.edu/archives/fall2025/entries/socialism/
-- “Political Revolution,” *Internet Encyclopedia of Philosophy*, on
+- “Political Revolution,” _Internet Encyclopedia of Philosophy_, on
   revolution as fundamental socio-political transformation and the role of
   revolutionary traditions in questions of power and transition:
   https://iep.utm.edu/pol-rev/
-- Vladimir Lenin, *What Is To Be Done?*, a primary text on professional
+- Vladimir Lenin, _What Is To Be Done?_, a primary text on professional
   revolutionary organization and party leadership:
   https://www.marxists.info/archive/lenin/works/1901/witbd/index.htm
-- Joseph Stalin, *The Foundations of Leninism*, a primary codification of
+- Joseph Stalin, _The Foundations of Leninism_, a primary codification of
   Leninism’s party and revolutionary-state concepts:
   https://www.marxists.org/reference/archive/stalin/works/1924/foundations-leninism/index.htm
 

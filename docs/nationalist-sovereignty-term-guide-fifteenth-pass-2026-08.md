@@ -15,7 +15,7 @@ prompts, question selection, result eligibility, or scoring behavior.
 ## Direct term guides
 
 - **Civic Nationalism** now emphasizes shared citizenship, institutions, and public culture rather than inherited ancestry, while noting that real civic identities can overlap with cultural and historical identities and do not guarantee liberal democracy or equal inclusion.
-- **Indigenous Sovereignty / Self-Determination** now identifies Indigenous authority over community affairs, land relationships, cultures, languages, and institutions. It remains a broad catalog heading rather than one uniform political program or a synonym for state-led *indigenismo*.
+- **Indigenous Sovereignty / Self-Determination** now identifies Indigenous authority over community affairs, land relationships, cultures, languages, and institutions. It remains a broad catalog heading rather than one uniform political program or a synonym for state-led _indigenismo_.
 - **Hindutva** now identifies a Hindu-nationalist political ideology that presents India as a Hindu nation or civilizational community. It is explicitly distinguished from Hinduism as a religion, with variation over citizenship, minorities, secularism, and state power.
 - **Religious Nationalism** now identifies the family of projects that fuse national identity or sovereignty with a religious tradition. It ranges from cultural identity politics to movements seeking religiously informed law or formal religious authority.
 - **Political Zionism** now identifies the diverse Jewish national movement seeking Jewish national self-determination through a national home or state in the Land of Israel. Its liberal, socialist, religious, revisionist, and other currents are not collapsed into one government or policy.
@@ -48,7 +48,7 @@ result is not displaced by a generic parent-family definition.
 
 ## Source basis
 
-- “Nationalism,” *Stanford Encyclopedia of Philosophy* (Summer 2025), on the
+- “Nationalism,” _Stanford Encyclopedia of Philosophy_ (Summer 2025), on the
   diversity of nationalism, national self-determination, the distinction
   between cultural and political nationalism, and the fact that self-
   determination need not always mean an independent state:
@@ -61,24 +61,24 @@ result is not displaced by a generic parent-family definition.
   Encyclopedia of Politics, on religious identity, church-state relations,
   policy influence, and variation in religious nationalism:
   https://academic.oup.com/edited-volume/62239/chapter-abstract/550810397
-- “Zionism,” *International Encyclopedia of Political Science*, on Zionism as
+- “Zionism,” _International Encyclopedia of Political Science_, on Zionism as
   a late-nineteenth-century Jewish national movement, its political statehood
   project, internal Jewish debate, and contestation in Palestine:
   https://doi.org/10.4135/9781412959636.n648
 - Julian Go and Jake Watson, “Anticolonial Nationalism From Imagined
-  Communities to Colonial Conflict,” *European Journal of Sociology* (2019),
+  Communities to Colonial Conflict,” _European Journal of Sociology_ (2019),
   on the historical specificity and varied origins of anticolonial nationalism:
   https://www.cambridge.org/core/journals/european-journal-of-sociology-archives-europeennes-de-sociologie/article/abs/anticolonial-nationalism-from-imagined-communities-to-colonial-conflict/A612DBBD02197ACF4612497676202CFD
-- Pål Kolstø, “Is imperialist nationalism an oxymoron?,” *Nations and
-  Nationalism* (2019), on the historical coexistence of nationalism and
+- Pål Kolstø, “Is imperialist nationalism an oxymoron?,” _Nations and
+  Nationalism_ (2019), on the historical coexistence of nationalism and
   imperialism and the difference between nation-building and ethnocratic
   imperialism:
   https://doi.org/10.1111/nana.12449
-- “Self-Determination and Secession: Why Nations Are Special,” *Canadian
-  Journal of Philosophy*, on the contested relationship among nations,
+- “Self-Determination and Secession: Why Nations Are Special,” _Canadian
+  Journal of Philosophy_, on the contested relationship among nations,
   self-determination, secession, and minority rights:
   https://www.cambridge.org/core/journals/canadian-journal-of-philosophy/article/selfdetermination-and-secession-why-nations-are-special/01CBEF99A78D2F2054C61FC6906A992B
-- United Nations, *Declaration on the Rights of Indigenous Peoples*, on
+- United Nations, _Declaration on the Rights of Indigenous Peoples_, on
   Indigenous peoples’ rights to self-determination, culture, institutions,
   lands, and resources:
   https://www.un.org/development/desa/indigenouspeoples/wp-content/uploads/sites/19/2019/01/UNDRIP_E_web.pdf

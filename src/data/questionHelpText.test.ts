@@ -1,377 +1,530 @@
-import { describe, expect, it } from 'vitest'
-import type { Question } from '../types'
-import { axes } from './axes'
-import { questions as effectiveQuestions } from './effectiveQuestions'
-import { getQuestionHelpText, getSalienceHelpText } from './questionHelpText'
-import { questions } from './questions'
+import { describe, expect, it } from "vitest";
+import type { Question } from "../types";
+import { axes } from "./axes";
+import { questions as effectiveQuestions } from "./effectiveQuestions";
+import { getQuestionHelpText, getSalienceHelpText } from "./questionHelpText";
+import { questions } from "./questions";
 
 function stripTerminalPunctuation(value: string): string {
-  return value.trim().replace(/[.!?]$/, '')
+  return value.trim().replace(/[.!?]$/, "");
 }
 
 const baseQuestion: Question = {
-  id: 'test-question',
-  prompt: 'People should have meaningful exit rights from political authority.',
-  domain: 'state-legitimacy',
-  layer: 'normative',
-  theoryContext: 'mixed',
-  responseType: 'likert7',
-  tier: 'quick',
-  axisWeights: [{ axisId: 'authority-legitimacy', weight: -1 }],
-}
+  id: "test-question",
+  prompt: "People should have meaningful exit rights from political authority.",
+  domain: "state-legitimacy",
+  layer: "normative",
+  theoryContext: "mixed",
+  responseType: "likert7",
+  tier: "quick",
+  axisWeights: [{ axisId: "authority-legitimacy", weight: -1 }],
+};
 
-describe('question help text', () => {
-  const allQuestionItems = questions
+describe("question help text", () => {
+  const allQuestionItems = questions;
 
-  it('defines prompt terms and explains the measurement in plain language without echoing the prompt', () => {
-    const helpText = getQuestionHelpText(baseQuestion)
+  it("defines prompt terms and explains the measurement in plain language without echoing the prompt", () => {
+    const helpText = getQuestionHelpText(baseQuestion);
 
-    expect(helpText).toContain('“Exit” means')
-    expect(helpText).toContain('This question measures which values and forms of authority you consider morally legitimate about state legitimacy, based on how strongly you agree')
-    expect(helpText).not.toContain('people should have meaningful exit rights from political authority')
-    expect(helpText).not.toContain('with scoring focused on')
-  })
+    expect(helpText).toContain("“Exit” means");
+    expect(helpText).toContain(
+      "This question measures which values and forms of authority you consider morally legitimate about state legitimacy, based on how strongly you agree",
+    );
+    expect(helpText).not.toContain(
+      "people should have meaningful exit rights from political authority",
+    );
+    expect(helpText).not.toContain("with scoring focused on");
+  });
 
-  it('keeps statement-choice help focused on the topic rather than internal axis labels or the literal prompt', () => {
+  it("keeps statement-choice help focused on the topic rather than internal axis labels or the literal prompt", () => {
     const helpText = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Which comes closest to your view of when political authority is justified?',
-      responseType: 'statementChoice',
+      prompt:
+        "Which comes closest to your view of when political authority is justified?",
+      responseType: "statementChoice",
       axisWeights: [],
       statementOptions: [
-        { id: 'a', text: 'Authority is usually justified.', axisWeights: [{ axisId: 'authority-legitimacy', weight: 0.7 }] },
-        { id: 'b', text: 'Authority is rarely justified.', axisWeights: [{ axisId: 'anti-domination', weight: 0.4 }] },
+        {
+          id: "a",
+          text: "Authority is usually justified.",
+          axisWeights: [{ axisId: "authority-legitimacy", weight: 0.7 }],
+        },
+        {
+          id: "b",
+          text: "Authority is rarely justified.",
+          axisWeights: [{ axisId: "anti-domination", weight: 0.4 }],
+        },
       ],
-    })
+    });
 
-    expect(helpText).not.toContain('with scoring focused on')
-    expect(helpText).toContain('based on which statement you choose')
-    expect(helpText).not.toContain('which comes closest to your view of when political authority is justified')
-    expect(helpText).not.toContain('view of which comes closest')
-    expect(helpText).not.toContain('view of which statement')
-  })
+    expect(helpText).not.toContain("with scoring focused on");
+    expect(helpText).toContain("based on which statement you choose");
+    expect(helpText).not.toContain(
+      "which comes closest to your view of when political authority is justified",
+    );
+    expect(helpText).not.toContain("view of which comes closest");
+    expect(helpText).not.toContain("view of which statement");
+  });
 
-  it('explains institutional-design prompts without leaking unrelated axis labels or the literal prompt', () => {
+  it("explains institutional-design prompts without leaking unrelated axis labels or the literal prompt", () => {
     const helpText = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Institutional design should assume rulers are ordinary incentive-driven actors, not guardians above politics.',
-      layer: 'prescriptive',
+      prompt:
+        "Institutional design should assume rulers are ordinary incentive-driven actors, not guardians above politics.",
+      layer: "prescriptive",
       axisWeights: [
-        { axisId: 'state-action-vs-exit', weight: 1 },
-        { axisId: 'centralization-preference', weight: -0.8 },
+        { axisId: "state-action-vs-exit", weight: 1 },
+        { axisId: "centralization-preference", weight: -0.8 },
       ],
-    })
+    });
 
-    expect(helpText).toContain('“Institutional design” means')
-    expect(helpText).not.toContain('institutional design should assume rulers are ordinary incentive-driven actors')
-    expect(helpText).not.toContain('State Action vs Exit')
-    expect(helpText).not.toContain('state action vs exit')
-  })
+    expect(helpText).toContain("“Institutional design” means");
+    expect(helpText).not.toContain(
+      "institutional design should assume rulers are ordinary incentive-driven actors",
+    );
+    expect(helpText).not.toContain("State Action vs Exit");
+    expect(helpText).not.toContain("state action vs exit");
+  });
 
-  it('uses the academic concept dictionary for matched terms', () => {
+  it("uses the academic concept dictionary for matched terms", () => {
     const helpText = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Unchecked domination should matter even when officials usually act benevolently.',
-      axisWeights: [{ axisId: 'anti-domination', weight: 1 }],
-    })
+      prompt:
+        "Unchecked domination should matter even when officials usually act benevolently.",
+      axisWeights: [{ axisId: "anti-domination", weight: 1 }],
+    });
 
-    expect(helpText).toContain('“Domination” means')
-    expect(helpText).not.toContain('unchecked domination should matter')
-  })
+    expect(helpText).toContain("“Domination” means");
+    expect(helpText).not.toContain("unchecked domination should matter");
+  });
 
-  it('provides help text for salience follow-up questions', () => {
-    expect(getSalienceHelpText('confidence')).toContain('“Confidence” means')
-    expect(getSalienceHelpText('priority')).toContain('“Priority” means')
-  })
+  it("provides help text for salience follow-up questions", () => {
+    expect(getSalienceHelpText("confidence")).toContain("“Confidence” means");
+    expect(getSalienceHelpText("priority")).toContain("“Priority” means");
+  });
 
-  it('generates concise customer-facing help text for every core questionnaire item', () => {
+  it("generates concise customer-facing help text for every core questionnaire item", () => {
     for (const question of questions) {
-      const helpText = getQuestionHelpText(question)
+      const helpText = getQuestionHelpText(question);
 
-      expect(helpText, `${question.id} is missing a definition`).toMatch(/^“.+”/)
-      expect(helpText, `${question.id} is missing a measurement sentence`).toContain('This question measures')
-      expect(helpText, `${question.id} should not echo the question prompt`).not.toContain(stripTerminalPunctuation(question.prompt).slice(0, 48).toLowerCase())
-      expect(helpText.length, `${question.id} help text is too long`).toBeLessThanOrEqual(650)
+      expect(helpText, `${question.id} is missing a definition`).toMatch(
+        /^“.+”/,
+      );
+      expect(
+        helpText,
+        `${question.id} is missing a measurement sentence`,
+      ).toContain("This question measures");
+      expect(
+        helpText,
+        `${question.id} should not echo the question prompt`,
+      ).not.toContain(
+        stripTerminalPunctuation(question.prompt).slice(0, 48).toLowerCase(),
+      );
+      expect(
+        helpText.length,
+        `${question.id} help text is too long`,
+      ).toBeLessThanOrEqual(650);
     }
-  })
+  });
 
-  it('keeps every generated explainer free of awkward nested-question wording', () => {
+  it("keeps every generated explainer free of awkward nested-question wording", () => {
     const awkwardFragments = [
-      'view of which comes closest',
-      'view of which statement',
-      'view of which best',
-      'view of which captures',
-      'whether you agree that which',
-      'whether you agree that what',
-      'whether you agree that how',
-      'about about',
-    ]
+      "view of which comes closest",
+      "view of which statement",
+      "view of which best",
+      "view of which captures",
+      "whether you agree that which",
+      "whether you agree that what",
+      "whether you agree that how",
+      "about about",
+    ];
 
     for (const question of allQuestionItems) {
-      const helpText = getQuestionHelpText(question)
+      const helpText = getQuestionHelpText(question);
 
       for (const fragment of awkwardFragments) {
-        expect(helpText, `${question.id} uses awkward nested wording`).not.toContain(fragment)
+        expect(
+          helpText,
+          `${question.id} uses awkward nested wording`,
+        ).not.toContain(fragment);
       }
     }
-  })
+  });
 
-  it('does not expose internal axis names in generated question explainers', () => {
+  it("does not expose internal axis names in generated question explainers", () => {
     for (const question of allQuestionItems) {
-      const helpText = getQuestionHelpText(question)
+      const helpText = getQuestionHelpText(question);
 
       for (const axis of axes) {
-        expect(helpText, `${question.id} leaks axis label ${axis.name}`).not.toContain(axis.name)
+        expect(
+          helpText,
+          `${question.id} leaks axis label ${axis.name}`,
+        ).not.toContain(axis.name);
       }
     }
-  })
+  });
 
-  it('keeps every generated explainer free of scoring and implementation jargon', () => {
+  it("keeps every generated explainer free of scoring and implementation jargon", () => {
     const implementationFragments = [
-      'axis',
-      'axis-weight',
-      'centroid',
-      'likert',
-      'responseType',
-      'score',
-      'scoring',
-      'tier',
-    ]
+      "axis",
+      "axis-weight",
+      "centroid",
+      "likert",
+      "responseType",
+      "score",
+      "scoring",
+      "tier",
+    ];
 
     for (const question of allQuestionItems) {
-      const helpText = getQuestionHelpText(question).toLowerCase()
+      const helpText = getQuestionHelpText(question).toLowerCase();
 
       for (const fragment of implementationFragments) {
-        expect(helpText, `${question.id} exposes implementation jargon`).not.toContain(fragment.toLowerCase())
+        expect(
+          helpText,
+          `${question.id} exposes implementation jargon`,
+        ).not.toContain(fragment.toLowerCase());
       }
     }
-  })
+  });
 
-  it('uses a consistent definition-plus-measurement structure for every generated explainer', () => {
+  it("uses a consistent definition-plus-measurement structure for every generated explainer", () => {
     const measurementOverrides: Readonly<Record<string, string>> = {
-      q0104: 'how much moral weight you give homeowners’ financial interests when they conflict with newcomers’ access to housing',
-      q0302: 'how you weigh nonhuman moral standing against owners’ economic claims',
-    }
+      q0104:
+        "how much moral weight you give homeowners’ financial interests when they conflict with newcomers’ access to housing",
+      q0302:
+        "how you weigh nonhuman moral standing against owners’ economic claims",
+    };
 
     for (const question of allQuestionItems) {
-      const helpText = getQuestionHelpText(question)
-      const lowerHelpText = helpText.toLowerCase()
+      const helpText = getQuestionHelpText(question);
+      const lowerHelpText = helpText.toLowerCase();
 
-      expect(helpText, `${question.id} should start with a quoted plain-language term`).toMatch(/^“[^”]+” means /)
-      const expectedMeasurement = measurementOverrides[String(question.id)] ?? (question.layer === 'normative'
-        ? `which values and forms of authority you consider morally legitimate about `
-        : question.layer === 'descriptive'
-          ? `what you think tends to be true in the world about `
-          : question.theoryContext === 'ideal'
-            ? `which policies, institutions, or strategies you would favor under ideal conditions about `
-            : question.theoryContext === 'nonideal'
-              ? `which policies, institutions, or strategies you would favor under current constraints about `
-            : `which practical policy or strategy direction you favor under the conditions named in the question about `)
-      expect(helpText, `${question.id} should include one clear measurement sentence`).toContain(`This question measures ${expectedMeasurement}`)
-      expect(lowerHelpText, `${question.id} should not use the generic missing-domain fallback`).not.toContain('general political judgment prompt')
-      expect(helpText.length, `${question.id} should stay concise enough to read inline`).toBeLessThanOrEqual(650)
+      expect(
+        helpText,
+        `${question.id} should start with a quoted plain-language term`,
+      ).toMatch(/^“[^”]+” means /);
+      const expectedMeasurement =
+        measurementOverrides[String(question.id)] ??
+        (question.layer === "normative"
+          ? `which values and forms of authority you consider morally legitimate about `
+          : question.layer === "descriptive"
+            ? `what you think tends to be true in the world about `
+            : question.theoryContext === "ideal"
+              ? `which policies, institutions, or strategies you would favor under ideal conditions about `
+              : question.theoryContext === "nonideal"
+                ? `which policies, institutions, or strategies you would favor under current constraints about `
+                : `which practical policy or strategy direction you favor under the conditions named in the question about `);
+      expect(
+        helpText,
+        `${question.id} should include one clear measurement sentence`,
+      ).toContain(`This question measures ${expectedMeasurement}`);
+      expect(
+        lowerHelpText,
+        `${question.id} should not use the generic missing-domain fallback`,
+      ).not.toContain("general political judgment prompt");
+      expect(
+        helpText.length,
+        `${question.id} should stay concise enough to read inline`,
+      ).toBeLessThanOrEqual(650);
     }
-  })
+  });
 
-  it('does not privilege selected statement-choice options with uneven helper definitions', () => {
+  it("does not privilege selected statement-choice options with uneven helper definitions", () => {
     const helpText = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Which comes closest to your view?',
-      responseType: 'statementChoice',
+      prompt: "Which comes closest to your view?",
+      responseType: "statementChoice",
       axisWeights: [],
       statementOptions: [
-        { id: 'a', text: 'Public goods justify ordinary political authority.', axisWeights: [{ axisId: 'authority-legitimacy', weight: 0.6 }] },
-        { id: 'b', text: 'Exit rights should remain available.', axisWeights: [{ axisId: 'anti-domination', weight: 0.4 }] },
-        { id: 'c', text: 'This depends on institutional design.', axisWeights: [{ axisId: 'authority-legitimacy', weight: 0.2 }] },
+        {
+          id: "a",
+          text: "Public goods justify ordinary political authority.",
+          axisWeights: [{ axisId: "authority-legitimacy", weight: 0.6 }],
+        },
+        {
+          id: "b",
+          text: "Exit rights should remain available.",
+          axisWeights: [{ axisId: "anti-domination", weight: 0.4 }],
+        },
+        {
+          id: "c",
+          text: "This depends on institutional design.",
+          axisWeights: [{ axisId: "authority-legitimacy", weight: 0.2 }],
+        },
       ],
-    })
+    });
 
-    expect(helpText).not.toContain('“Exit” means')
-    expect(helpText).not.toContain('“Public goods” means')
-    expect(helpText).not.toContain('“Institutional design” means')
-    expect(helpText).toContain('“Political legitimacy” means')
-  })
+    expect(helpText).not.toContain("“Exit” means");
+    expect(helpText).not.toContain("“Public goods” means");
+    expect(helpText).not.toContain("“Institutional design” means");
+    expect(helpText).toContain("“Political legitimacy” means");
+  });
 
   it('does not attach the unrelated "political authority" definition merely because a prompt says legitimate/legitimacy', () => {
     const helpText = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'A political order is more legitimate when people can refuse its services without being treated as criminals.',
-    })
+      prompt:
+        "A political order is more legitimate when people can refuse its services without being treated as criminals.",
+    });
 
-    expect(helpText).toContain('“Political legitimacy” means')
-    expect(helpText).not.toContain('“Political authority” means')
-  })
+    expect(helpText).toContain("“Political legitimacy” means");
+    expect(helpText).not.toContain("“Political authority” means");
+  });
 
-  it('defines specific niche jargon instead of falling back to the generic domain definition', () => {
+  it("defines specific niche jargon instead of falling back to the generic domain definition", () => {
     const cases: Array<[string, string]> = [
-      ['Occupational licensing often protects incumbent workers more than consumers.', '“Occupational licensing” means'],
-      ['Deposit insurance reduces panic but can weaken discipline on banks if supervision fails.', '“Deposit insurance” means'],
-      ['Qualified immunity and similar shields should be narrowed when officials violate clear rights.', '“Qualified immunity” means'],
-      ['Civil asset forfeiture should require a criminal conviction or be abolished.', '“Asset forfeiture” means'],
-      ['Blasphemy, apostasy, and heresy should not be civil crimes.', '“Blasphemy” means'],
-      ['Referenda should include fiscal notes, rights constraints, and rules against targeting unpopular minorities.', '“Referendum” means'],
-      ['Benefit rules should be designed to avoid cliffs that punish additional earnings.', '“Benefit cliffs” means'],
-    ]
+      [
+        "Occupational licensing often protects incumbent workers more than consumers.",
+        "“Occupational licensing” means",
+      ],
+      [
+        "Deposit insurance reduces panic but can weaken discipline on banks if supervision fails.",
+        "“Deposit insurance” means",
+      ],
+      [
+        "Qualified immunity and similar shields should be narrowed when officials violate clear rights.",
+        "“Qualified immunity” means",
+      ],
+      [
+        "Civil asset forfeiture should require a criminal conviction or be abolished.",
+        "“Asset forfeiture” means",
+      ],
+      [
+        "Blasphemy, apostasy, and heresy should not be civil crimes.",
+        "“Blasphemy” means",
+      ],
+      [
+        "Referenda should include fiscal notes, rights constraints, and rules against targeting unpopular minorities.",
+        "“Referendum” means",
+      ],
+      [
+        "Benefit rules should be designed to avoid cliffs that punish additional earnings.",
+        "“Benefit cliffs” means",
+      ],
+    ];
 
     for (const [prompt, expectedFragment] of cases) {
-      const helpText = getQuestionHelpText({ ...baseQuestion, prompt })
-      expect(helpText, `"${prompt}" should not use the generic domain fallback`).toContain(expectedFragment)
+      const helpText = getQuestionHelpText({ ...baseQuestion, prompt });
+      expect(
+        helpText,
+        `"${prompt}" should not use the generic domain fallback`,
+      ).toContain(expectedFragment);
     }
-  })
+  });
 
-  it('handles hyphenated licensing and distinguishes expertise from technocracy', () => {
-    const byId = new Map(effectiveQuestions.map((question) => [question.id, question]))
-    const licensing = getQuestionHelpText(byId.get('q0094')!)
-    const conscience = getQuestionHelpText(byId.get('q0259')!)
-    const expertise = getQuestionHelpText(byId.get('q0342')!)
+  it("handles hyphenated licensing and distinguishes expertise from technocracy", () => {
+    const byId = new Map(
+      effectiveQuestions.map((question) => [question.id, question]),
+    );
+    const licensing = getQuestionHelpText(byId.get("q0094")!);
+    const conscience = getQuestionHelpText(byId.get("q0259")!);
+    const expertise = getQuestionHelpText(byId.get("q0342")!);
 
-    expect(licensing).toContain('“Occupational licensing” means')
-    expect(conscience).toContain('“Delegating conscience” means')
-    expect(expertise).toContain('“Expert knowledge” means')
-    expect(conscience).not.toContain('Technocrats')
-    expect(expertise).not.toContain('Technocrats')
+    expect(licensing).toContain("“Occupational licensing” means");
+    expect(conscience).toContain("“Delegating conscience” means");
+    expect(expertise).toContain("“Expert knowledge” means");
+    expect(conscience).not.toContain("Technocrats");
+    expect(expertise).not.toContain("Technocrats");
 
-    const technocracy = getQuestionHelpText({ ...baseQuestion, prompt: 'Technocracy should replace elected control.' })
-    expect(technocracy).toContain('“Technocrats” means')
-  })
+    const technocracy = getQuestionHelpText({
+      ...baseQuestion,
+      prompt: "Technocracy should replace elected control.",
+    });
+    expect(technocracy).toContain("“Technocrats” means");
+  });
 
-  it('uses item-specific topics instead of injecting every subject named by a broad domain', () => {
-    const byId = new Map(effectiveQuestions.map((question) => [question.id, question]))
-    const housing = getQuestionHelpText(byId.get('q0104')!)
-    const nonhumanStanding = getQuestionHelpText(byId.get('q0302')!)
+  it("uses item-specific topics instead of injecting every subject named by a broad domain", () => {
+    const byId = new Map(
+      effectiveQuestions.map((question) => [question.id, question]),
+    );
+    const housing = getQuestionHelpText(byId.get("q0104")!);
+    const nonhumanStanding = getQuestionHelpText(byId.get("q0302")!);
 
-    expect(housing).toContain('homeowners’ financial interests')
-    expect(housing).not.toMatch(/georgism/i)
-    expect(nonhumanStanding).toContain('nonhuman moral standing')
-    expect(nonhumanStanding).not.toMatch(/nuclear power/i)
-  })
+    expect(housing).toContain("homeowners’ financial interests");
+    expect(housing).not.toMatch(/georgism/i);
+    expect(nonhumanStanding).toContain("nonhuman moral standing");
+    expect(nonhumanStanding).not.toMatch(/nuclear power/i);
+  });
 
-  it('uses theory context for prescriptive help instead of calling ideal items current policy', () => {
-    const ideal = getQuestionHelpText({ ...baseQuestion, layer: 'prescriptive', theoryContext: 'ideal' })
-    const nonideal = getQuestionHelpText({ ...baseQuestion, layer: 'prescriptive', theoryContext: 'nonideal' })
+  it("uses theory context for prescriptive help instead of calling ideal items current policy", () => {
+    const ideal = getQuestionHelpText({
+      ...baseQuestion,
+      layer: "prescriptive",
+      theoryContext: "ideal",
+    });
+    const nonideal = getQuestionHelpText({
+      ...baseQuestion,
+      layer: "prescriptive",
+      theoryContext: "nonideal",
+    });
 
-    expect(ideal).toContain('under ideal conditions')
-    expect(ideal).not.toContain('under current constraints')
-    expect(nonideal).toContain('under current constraints')
-  })
+    expect(ideal).toContain("under ideal conditions");
+    expect(ideal).not.toContain("under current constraints");
+    expect(nonideal).toContain("under current constraints");
+  });
 
-  it('does not attach domain-specific definitions to unrelated uses of the same word', () => {
+  it("does not attach domain-specific definitions to unrelated uses of the same word", () => {
     const childWelfare = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Child-welfare intervention should preserve family ties when safety allows.',
-      domain: 'family-gender-feminism',
-    })
+      prompt:
+        "Child-welfare intervention should preserve family ties when safety allows.",
+      domain: "family-gender-feminism",
+    });
     const employerSanctions = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Employer sanctions can increase off-the-books work.',
-      domain: 'immigration-borders',
-    })
+      prompt: "Employer sanctions can increase off-the-books work.",
+      domain: "immigration-borders",
+    });
     const foreignPlanners = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Military interventions often generate local knowledge failures that planners underestimated.',
-      domain: 'foreign-policy-war',
-      layer: 'descriptive',
-    })
+      prompt:
+        "Military interventions often generate local knowledge failures that planners underestimated.",
+      domain: "foreign-policy-war",
+      layer: "descriptive",
+    });
     const threatInflation = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Security agencies can benefit from threat inflation.',
-      domain: 'foreign-policy-war',
-      layer: 'descriptive',
-    })
+      prompt: "Security agencies can benefit from threat inflation.",
+      domain: "foreign-policy-war",
+      layer: "descriptive",
+    });
 
-    expect(childWelfare).not.toContain('conditions outside one’s own country')
-    expect(employerSanctions).not.toContain('pressure another government')
-    expect(foreignPlanners).not.toContain('production or allocation')
-    expect(threatInflation).toContain('exaggerating a danger')
-    expect(threatInflation).not.toContain('general rise in prices')
-  })
+    expect(childWelfare).not.toContain("conditions outside one’s own country");
+    expect(employerSanctions).not.toContain("pressure another government");
+    expect(foreignPlanners).not.toContain("production or allocation");
+    expect(threatInflation).toContain("exaggerating a danger");
+    expect(threatInflation).not.toContain("general rise in prices");
+  });
 
-  it('does not mistake ordinary capture, permitting, or democratic language for specialist terms', () => {
+  it("does not mistake ordinary capture, permitting, or democratic language for specialist terms", () => {
     const landCapture = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Infrastructure finance should capture rising land values rather than taxing unrelated activity.',
-      domain: 'land-housing-georgism',
-      layer: 'prescriptive',
-    })
+      prompt:
+        "Infrastructure finance should capture rising land values rather than taxing unrelated activity.",
+      domain: "land-housing-georgism",
+      layer: "prescriptive",
+    });
     const culturalPermission = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Public institutions should avoid ancestry-based privilege while permitting voluntary cultural association.',
-      domain: 'national-identity-sovereignty',
-      layer: 'prescriptive',
-    })
+      prompt:
+        "Public institutions should avoid ancestry-based privilege while permitting voluntary cultural association.",
+      domain: "national-identity-sovereignty",
+      layer: "prescriptive",
+    });
     const democraticPolitics = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Democratic politics can set social priorities.',
-      domain: 'democracy-expertise-constitutionalism',
-      layer: 'descriptive',
-    })
+      prompt: "Democratic politics can set social priorities.",
+      domain: "democracy-expertise-constitutionalism",
+      layer: "descriptive",
+    });
     const antiCapture = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Environmental subsidies should include sunset clauses and anti-capture review.',
-      domain: 'environment-climate-growth',
-      layer: 'prescriptive',
-    })
+      prompt:
+        "Environmental subsidies should include sunset clauses and anti-capture review.",
+      domain: "environment-climate-growth",
+      layer: "prescriptive",
+    });
 
-    expect(landCapture).not.toContain('“Public choice” means')
-    expect(landCapture).not.toContain('“Capture” means')
-    expect(culturalPermission).not.toContain('“Zoning and permitting” means')
-    expect(democraticPolitics).not.toContain('“Majoritarian decision-making” means')
-    expect(antiCapture).toContain('“Capture” means')
-  })
+    expect(landCapture).not.toContain("“Public choice” means");
+    expect(landCapture).not.toContain("“Capture” means");
+    expect(culturalPermission).not.toContain("“Zoning and permitting” means");
+    expect(democraticPolitics).not.toContain(
+      "“Majoritarian decision-making” means",
+    );
+    expect(antiCapture).toContain("“Capture” means");
+  });
 
-  it('defines prices without supplying the information-signaling claim being tested', () => {
+  it("defines prices without supplying the information-signaling claim being tested", () => {
     const helpText = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Prices can coordinate plans among strangers.',
-      domain: 'markets-planning',
-      layer: 'descriptive',
-    })
+      prompt: "Prices can coordinate plans among strangers.",
+      domain: "markets-planning",
+      layer: "descriptive",
+    });
 
-    expect(helpText).toContain('“Price” means the amount paid or received')
-    expect(helpText).not.toContain('signals that reflect')
-  })
+    expect(helpText).toContain("“Price” means the amount paid or received");
+    expect(helpText).not.toContain("signals that reflect");
+  });
 
-  it('defines exit across institutional settings and does not imply that direct action is necessarily violent', () => {
+  it("defines exit across institutional settings and does not imply that direct action is necessarily violent", () => {
     const exit = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Build exit options before relying on a single institution.',
-      domain: 'strategy-change',
-      layer: 'prescriptive',
-    })
+      prompt: "Build exit options before relying on a single institution.",
+      domain: "strategy-change",
+      layer: "prescriptive",
+    });
     const directAction = getQuestionHelpText({
       ...baseQuestion,
-      prompt: 'Direct action can be appropriate when official channels are closed.',
-      domain: 'strategy-change',
-      layer: 'prescriptive',
-    })
+      prompt:
+        "Direct action can be appropriate when official channels are closed.",
+      domain: "strategy-change",
+      layer: "prescriptive",
+    });
 
-    expect(exit).toContain('relationship, organization, jurisdiction, or provider')
-    expect(exit).toContain('different response from trying to change the institution from within')
-    expect(directAction).toContain('without relying on elected or administrative intermediaries')
-    expect(directAction).toContain('not necessarily violent')
-  })
+    expect(exit).toContain(
+      "relationship, organization, jurisdiction, or provider",
+    );
+    expect(exit).toContain(
+      "different response from trying to change the institution from within",
+    );
+    expect(directAction).toContain(
+      "without relying on elected or administrative intermediaries",
+    );
+    expect(directAction).toContain("not necessarily violent");
+  });
 
-  it('keeps context-specific ordinary words from triggering unrelated specialist definitions', () => {
-    const byId = new Map(questions.map((question) => [question.id, question]))
+  it("keeps context-specific ordinary words from triggering unrelated specialist definitions", () => {
+    const byId = new Map(questions.map((question) => [question.id, question]));
 
-    expect(getQuestionHelpText(byId.get('q0150')!)).not.toContain('“Political legitimacy”')
-    expect(getQuestionHelpText(byId.get('q0152')!)).toContain('“Artistic patronage”')
-    expect(getQuestionHelpText(byId.get('q0179')!)).toContain('“Political equality”')
-    expect(getQuestionHelpText(byId.get('q0282')!)).not.toContain('“Price”')
-    expect(getQuestionHelpText(byId.get('q0334')!)).toContain('“Exit criteria”')
-    expect(getQuestionHelpText(byId.get('q0334')!)).not.toContain('“Exit” means a real ability')
-    expect(getQuestionHelpText(byId.get('q0400')!)).not.toContain('“State capacity”')
-  })
+    expect(getQuestionHelpText(byId.get("q0150")!)).not.toContain(
+      "“Political legitimacy”",
+    );
+    expect(getQuestionHelpText(byId.get("q0152")!)).toContain(
+      "“Artistic patronage”",
+    );
+    expect(getQuestionHelpText(byId.get("q0179")!)).toContain(
+      "“Political equality”",
+    );
+    expect(getQuestionHelpText(byId.get("q0282")!)).not.toContain("“Price”");
+    expect(getQuestionHelpText(byId.get("q0334")!)).toContain(
+      "“Exit criteria”",
+    );
+    expect(getQuestionHelpText(byId.get("q0334")!)).not.toContain(
+      "“Exit” means a real ability",
+    );
+    expect(getQuestionHelpText(byId.get("q0400")!)).not.toContain(
+      "“State capacity”",
+    );
+  });
 
-  it('distinguishes adjacent technical concepts instead of merging them into one definition', () => {
-    const monopsony = getQuestionHelpText({ ...baseQuestion, id: 'monopsony', prompt: 'Worker exit can be limited by monopsony.', domain: 'labor-unions-workplace', layer: 'descriptive' })
-    const patent = getQuestionHelpText({ ...baseQuestion, id: 'patent', prompt: 'Patents can affect entry.', domain: 'intellectual-property-information', layer: 'descriptive' })
-    const copyright = getQuestionHelpText({ ...baseQuestion, id: 'copyright', prompt: 'Copyright can affect creative work.', domain: 'intellectual-property-information', layer: 'descriptive' })
+  it("distinguishes adjacent technical concepts instead of merging them into one definition", () => {
+    const monopsony = getQuestionHelpText({
+      ...baseQuestion,
+      id: "monopsony",
+      prompt: "Worker exit can be limited by monopsony.",
+      domain: "labor-unions-workplace",
+      layer: "descriptive",
+    });
+    const patent = getQuestionHelpText({
+      ...baseQuestion,
+      id: "patent",
+      prompt: "Patents can affect entry.",
+      domain: "intellectual-property-information",
+      layer: "descriptive",
+    });
+    const copyright = getQuestionHelpText({
+      ...baseQuestion,
+      id: "copyright",
+      prompt: "Copyright can affect creative work.",
+      domain: "intellectual-property-information",
+      layer: "descriptive",
+    });
 
-    expect(monopsony).toContain('“Monopsony”')
-    expect(patent).toContain('“Patent”')
-    expect(patent).not.toContain('Patent and copyright')
-    expect(copyright).toContain('“Copyright”')
-    expect(copyright).not.toContain('Patent and copyright')
-  })
-})
+    expect(monopsony).toContain("“Monopsony”");
+    expect(patent).toContain("“Patent”");
+    expect(patent).not.toContain("Patent and copyright");
+    expect(copyright).toContain("“Copyright”");
+    expect(copyright).not.toContain("Patent and copyright");
+  });
+});

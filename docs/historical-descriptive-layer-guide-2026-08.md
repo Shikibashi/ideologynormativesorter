@@ -26,16 +26,16 @@ claims that the expected outcomes are established facts.
 ## Source basis
 
 - “Turkish Conservative Modernism: Birth of a Nationalist Quest for Cultural
-  Renewal,” *International Journal of Middle East Studies*, on Kemalism’s
+  Renewal,” _International Journal of Middle East Studies_, on Kemalism’s
   laicism, nationalism, solidarist positivism, and scientism:
   https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/abs/turkish-conservative-modernism-birth-of-a-nationalist-quest-for-cultural-renewal/72A93098038B9EC1D959659C08D0EAEB
-- “Kemalism’s Desired Citizens,” in *Creating the Desired Citizen*, on the
+- “Kemalism’s Desired Citizens,” in _Creating the Desired Citizen_, on the
   secular Turkish national project and its treatment of religious and Ottoman
   alternatives:
   https://www.cambridge.org/core/books/abs/creating-the-desired-citizen/kemalisms-desired-citizens/3B5C41E0834DCECE9B9A11B7145A358E
 - Julie J. Ingersoll, “Christian Reconstructionist Theology,” Oxford
-  Research Encyclopedia / *The Oxford Handbook of Religion and American
-  Politics*, on Calvinism, postmillennialism, presuppositionalism, theonomy,
+  Research Encyclopedia / _The Oxford Handbook of Religion and American
+  Politics_, on Calvinism, postmillennialism, presuppositionalism, theonomy,
   and the project of rebuilding Christian public order:
   https://academic.oup.com/book/10399/chapter-abstract/158211514
 

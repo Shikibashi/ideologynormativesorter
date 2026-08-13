@@ -41,16 +41,16 @@ performance.
 ## Sources
 
 - “Active Citizens and an Active State: Uncovering the ‘Positive’ Underpinnings
-  of the Australian Constitution,” *Federal Law Review*:
+  of the Australian Constitution,” _Federal Law Review_:
   https://www.cambridge.org/core/journals/federal-law-review/article/active-citizens-and-an-active-state-uncovering-the-positive-underpinnings-of-the-australian-constitution/7BFDFCA3C8F94BBAE05B3872702CB3B1
-- Ian Boyd, “Chesterton and Distributism,” *New Blackfriars*:
+- Ian Boyd, “Chesterton and Distributism,” _New Blackfriars_:
   https://www.cambridge.org/core/journals/new-blackfriars/article/abs/chesterton-and-distributism/BA1C42595D15D789410CAA6A54F370D7
 - “Welfare Chauvinism in Divided Societies: The Role of National Identity in
-  Social Policy Preferences,” *Policy & Society*:
+  Social Policy Preferences,” _Policy & Society_:
   https://academic.oup.com/policyandsociety/article/45/3/343/8304391
-- Anna Stilz, “Decolonization and Self-Determination,” *Social Philosophy and
-  Policy*:
+- Anna Stilz, “Decolonization and Self-Determination,” _Social Philosophy and
+  Policy_:
   https://www.cambridge.org/core/journals/social-philosophy-and-policy/article/decolonization-and-selfdetermination/A5E1F0CE272476C91C15E1BB82CF4A4F
-- “Regionalism and Regionalization,” *Princeton Encyclopedia of
-  Self-Determination*:
+- “Regionalism and Regionalization,” _Princeton Encyclopedia of
+  Self-Determination_:
   https://pesd.princeton.edu/node/626

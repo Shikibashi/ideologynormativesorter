@@ -28,18 +28,18 @@ coalition as a stable, internally uniform school.
 
 ## Source basis
 
-- Llewelyn H. Rockwell Jr., “The Case for Paleo-Libertarianism,” *Liberty*
+- Llewelyn H. Rockwell Jr., “The Case for Paleo-Libertarianism,” _Liberty_
   Magazine (January 1990), a primary statement of the movement’s claims about
   the welfare state, free markets, private property, social authority, and
   anti-interventionism:
   https://uploads-ssl.webflow.com/5d62a0b2e3123d5d0247c5d5/5d9aad8de7a0b333dde9bbc0_Liberty_Magazine_January_1990%20pages%20Liberty%20-%20Page%2034%20-%20Liberty%20-%20Page%2038.pdf
 - Marcin Chmielowski, “Murray N. Rothbard’s Paleolibertarianism: In Search
   for a Political Success during the Republican Party Presidential Primaries
-  1992,” *Res Publica* 19, no. 2 (2016), on Paleolibertarianism as both a
+  1992,” _Res Publica_ 19, no. 2 (2016), on Paleolibertarianism as both a
   political proposition and a theory within libertarianism:
   https://doi.org/10.5209/RPUB.53870
 - Tristan Hughes, “A space for freedom: The Paleolibertarian coalition,”
-  *Journal of Political Ideologies* 30, no. 2 (2025), on the coalition’s
+  _Journal of Political Ideologies_ 30, no. 2 (2025), on the coalition’s
   fleeting character, competing agendas, local-control overlap, and dispute
   over state intervention:
   https://doi.org/10.1080/13569317.2023.2296403

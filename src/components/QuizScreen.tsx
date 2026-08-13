@@ -1,5 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
-import { getQuestionHelpText, getSalienceHelpText } from '../data/questionHelpText'
+import { useEffect, useRef, useState } from "react";
+import {
+  getQuestionHelpText,
+  getSalienceHelpText,
+} from "../data/questionHelpText";
 import {
   DEFAULT_CONFIDENCE_PROMPT,
   DEFAULT_PRIORITY_PROMPT,
@@ -7,33 +10,36 @@ import {
   SKIP_SALIENCE_LABEL,
   scaleLabel,
   scaleValues,
-} from '../questionPresentation'
-import { saveQuizState } from '../save'
-import { announceStatus } from '../status'
-import type { Answer, AnswerMap, Question, QuizTier } from '../types'
+} from "../questionPresentation";
+import { saveQuizState } from "../save";
+import { announceStatus } from "../status";
+import type { Answer, AnswerMap, Question, QuizTier } from "../types";
 
-type ProgressSaveResult = { saved: true } | { saved: false; reason: string }
+type ProgressSaveResult = { saved: true } | { saved: false; reason: string };
 
 export interface QuizScreenStatus {
-  current: number
-  total: number
-  layer: Question['layer']
-  save: 'current' | 'unavailable'
+  current: number;
+  total: number;
+  layer: Question["layer"];
+  save: "current" | "unavailable";
 }
 
 interface QuizScreenProps {
-  questions: Question[]
-  onComplete: (answers: AnswerMap) => void
+  questions: Question[];
+  onComplete: (answers: AnswerMap) => void;
   /** Tier label for core-quiz save/display only — no filtering logic. */
-  tier?: string
-  initialAnswers?: AnswerMap
-  initialIndex?: number
-  contextLabel?: string
-  progressSaver?: (state: { answers: AnswerMap; index: number }) => ProgressSaveResult
-  onExit?: () => void
+  tier?: string;
+  initialAnswers?: AnswerMap;
+  initialIndex?: number;
+  contextLabel?: string;
+  progressSaver?: (state: {
+    answers: AnswerMap;
+    index: number;
+  }) => ProgressSaveResult;
+  onExit?: () => void;
   /** Research-only refusal option. Kept separate from empirical uncertainty. */
-  allowRefusal?: boolean
-  onStatusChange?: (status: QuizScreenStatus) => void
+  allowRefusal?: boolean;
+  onStatusChange?: (status: QuizScreenStatus) => void;
 }
 
 export function QuizScreen({
@@ -48,90 +54,116 @@ export function QuizScreen({
   allowRefusal = false,
   onStatusChange,
 }: QuizScreenProps) {
-  const [index, setIndex] = useState(initialIndex ?? 0)
-  const [answers, setAnswers] = useState<AnswerMap>(initialAnswers ?? {})
-  const [pendingValue, setPendingValue] = useState<Answer['value'] | null>(null)
-  const [saveError, setSaveError] = useState<string | null>(null)
-  const [saveState, setSaveState] = useState<QuizScreenStatus['save']>('current')
-  const question = questions[index]
-  const selected = answers[question.id]
-  const isLast = index === questions.length - 1
+  const [index, setIndex] = useState(initialIndex ?? 0);
+  const [answers, setAnswers] = useState<AnswerMap>(initialAnswers ?? {});
+  const [pendingValue, setPendingValue] = useState<Answer["value"] | null>(
+    null,
+  );
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [saveState, setSaveState] =
+    useState<QuizScreenStatus["save"]>("current");
+  const question = questions[index];
+  const selected = answers[question.id];
+  const isLast = index === questions.length - 1;
 
-  const salienceField = question.layer === 'descriptive' ? 'confidence' : question.layer === 'prescriptive' ? 'priority' : null
-  const salienceQuestion = typeof pendingValue === 'number' ? salienceField : null
-  const canAnswerDontKnow = question.layer === 'descriptive' || question.allowDontKnow === true
-  const saveSuccessAnnounced = useRef(false)
+  const salienceField =
+    question.layer === "descriptive"
+      ? "confidence"
+      : question.layer === "prescriptive"
+        ? "priority"
+        : null;
+  const salienceQuestion =
+    typeof pendingValue === "number" ? salienceField : null;
+  const canAnswerDontKnow =
+    question.layer === "descriptive" || question.allowDontKnow === true;
+  const saveSuccessAnnounced = useRef(false);
 
   useEffect(() => {
-    onStatusChange?.({ current: index + 1, total: questions.length, layer: question.layer, save: saveState })
-  }, [index, onStatusChange, question.layer, questions.length, saveState])
+    onStatusChange?.({
+      current: index + 1,
+      total: questions.length,
+      layer: question.layer,
+      save: saveState,
+    });
+  }, [index, onStatusChange, question.layer, questions.length, saveState]);
 
   // Persist only when the answer object changes. This also avoids Strict Mode
   // replaying a save announcement for an untouched restored session.
-  const lastPersistedAnswers = useRef(answers)
+  const lastPersistedAnswers = useRef(answers);
   useEffect(() => {
-    if (lastPersistedAnswers.current === answers) return
-    lastPersistedAnswers.current = answers
-    if (Object.keys(answers).length === 0) return
+    if (lastPersistedAnswers.current === answers) return;
+    lastPersistedAnswers.current = answers;
+    if (Object.keys(answers).length === 0) return;
 
     const result = progressSaver
       ? progressSaver({ answers, index })
       : tier
         ? saveQuizState({ questions, answers, index, tier: tier as QuizTier })
-        : null
+        : null;
 
     if (result?.saved === false) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- safe: saveError is not a dep
-      setSaveError(result.reason)
-      setSaveState('unavailable')
-      announceStatus(result.reason)
+      setSaveError(result.reason);
+      setSaveState("unavailable");
+      announceStatus(result.reason);
     } else if (result?.saved === true) {
-      setSaveError(null)
-      setSaveState('current')
+      setSaveError(null);
+      setSaveState("current");
       if (!saveSuccessAnnounced.current) {
-        saveSuccessAnnounced.current = true
-        announceStatus('Assessment progress saved locally.')
+        saveSuccessAnnounced.current = true;
+        announceStatus("Assessment progress saved locally.");
       }
     }
-  }, [answers, index, progressSaver, questions, tier])
+  }, [answers, index, progressSaver, questions, tier]);
 
-  function commit(value: Answer['value'], rating?: number, salienceSkipped = false) {
-    const answer: Answer = { questionId: question.id, value }
-    if (salienceField === 'confidence' && rating !== undefined) answer.confidence = rating
-    if (salienceField === 'priority' && rating !== undefined) answer.priority = rating
-    if (salienceSkipped) answer.salienceSkipped = true
+  function commit(
+    value: Answer["value"],
+    rating?: number,
+    salienceSkipped = false,
+  ) {
+    const answer: Answer = { questionId: question.id, value };
+    if (salienceField === "confidence" && rating !== undefined)
+      answer.confidence = rating;
+    if (salienceField === "priority" && rating !== undefined)
+      answer.priority = rating;
+    if (salienceSkipped) answer.salienceSkipped = true;
 
-    const next: AnswerMap = { ...answers, [question.id]: answer }
-    setAnswers(next)
-    setPendingValue(null)
-    announceStatus(isLast ? 'Answer recorded. Assessment complete.' : `Answer recorded; advanced to item ${index + 2} of ${questions.length}.`)
+    const next: AnswerMap = { ...answers, [question.id]: answer };
+    setAnswers(next);
+    setPendingValue(null);
+    announceStatus(
+      isLast
+        ? "Answer recorded. Assessment complete."
+        : `Answer recorded; advanced to item ${index + 2} of ${questions.length}.`,
+    );
     if (isLast) {
-      onComplete(next)
+      onComplete(next);
     } else {
-      setIndex(index + 1)
+      setIndex(index + 1);
     }
   }
 
-  function chooseValue(value: Answer['value']) {
-    if (typeof value === 'number' && salienceField) {
-      setPendingValue(value)
+  function chooseValue(value: Answer["value"]) {
+    if (typeof value === "number" && salienceField) {
+      setPendingValue(value);
     } else {
-      commit(value)
+      commit(value);
     }
   }
 
   function goBack() {
-    setPendingValue(null)
-    setIndex(index - 1)
+    setPendingValue(null);
+    setIndex(index - 1);
   }
 
-  const positionLabel = `${contextLabel ? `${contextLabel} · ` : ''}Question ${index + 1} of ${questions.length}`
+  const positionLabel = `${contextLabel ? `${contextLabel} · ` : ""}Question ${index + 1} of ${questions.length}`;
 
   if (salienceQuestion) {
-    const prompt = salienceQuestion === 'confidence'
-      ? DEFAULT_CONFIDENCE_PROMPT
-      : DEFAULT_PRIORITY_PROMPT
-    const helpText = getSalienceHelpText(salienceQuestion)
+    const prompt =
+      salienceQuestion === "confidence"
+        ? DEFAULT_CONFIDENCE_PROMPT
+        : DEFAULT_PRIORITY_PROMPT;
+    const helpText = getSalienceHelpText(salienceQuestion);
 
     return (
       <section
@@ -153,37 +185,60 @@ export function QuizScreen({
           aria-valuenow={index + 1}
           aria-valuetext={`${positionLabel}`}
         >
-          <div className="progress-fill" style={{ width: `${((index + 1) / questions.length) * 100}%` }} />
+          <div
+            className="progress-fill"
+            style={{ width: `${((index + 1) / questions.length) * 100}%` }}
+          />
         </div>
         <p className="muted question-context">
           {positionLabel} &middot; {salienceQuestion}
         </p>
         <p className="prompt">{prompt}</p>
         <p className="muted question-help">{helpText}</p>
-        <div className="scale" role="group" aria-label={`${salienceQuestion} rating`}>
+        <div
+          className="scale"
+          role="group"
+          aria-label={`${salienceQuestion} rating`}
+        >
           {SALIENCE_LEVELS.map((level) => (
             <button
               key={level.value}
               type="button"
               className="scale-button"
-              onClick={() => commit(pendingValue as Answer['value'], level.value)}
+              onClick={() =>
+                commit(pendingValue as Answer["value"], level.value)
+              }
             >
               {level.label}
             </button>
           ))}
         </div>
-        <button type="button" className="back-link" onClick={() => setPendingValue(null)}>
+        <button
+          type="button"
+          className="back-link"
+          onClick={() => setPendingValue(null)}
+        >
           Back
         </button>
-        <button type="button" className="back-link" onClick={() => commit(pendingValue as Answer['value'], undefined, true)}>
+        <button
+          type="button"
+          className="back-link"
+          onClick={() =>
+            commit(pendingValue as Answer["value"], undefined, true)
+          }
+        >
           {SKIP_SALIENCE_LABEL}
         </button>
-        {onExit && <button type="button" className="back-link" onClick={onExit}>Stop follow-up</button>}
+        {onExit && (
+          <button type="button" className="back-link" onClick={onExit}>
+            Stop follow-up
+          </button>
+        )}
       </section>
-    )
+    );
   }
 
-  const helpText = question.helpText ?? getQuestionHelpText(question)
+  const helpText = question.helpText ?? getQuestionHelpText(question);
 
   return (
     <section
@@ -195,7 +250,9 @@ export function QuizScreen({
       <div className="section-band">
         <span className="section-band-label">ASSESSMENT / QUESTION</span>
         <span className="section-band-status">
-          {saveState === 'current' ? 'LOCAL SAVE ENABLED' : 'LOCAL SAVE UNAVAILABLE'}
+          {saveState === "current"
+            ? "LOCAL SAVE ENABLED"
+            : "LOCAL SAVE UNAVAILABLE"}
         </span>
       </div>
       <div
@@ -207,43 +264,69 @@ export function QuizScreen({
         aria-valuenow={index + 1}
         aria-valuetext={positionLabel}
       >
-        <div className="progress-fill" style={{ width: `${((index + 1) / questions.length) * 100}%` }} />
+        <div
+          className="progress-fill"
+          style={{ width: `${((index + 1) / questions.length) * 100}%` }}
+        />
       </div>
       <p className="muted question-context">
         {positionLabel} &middot; {question.layer}
-        {question.theoryContext !== 'mixed' ? ` · ${question.theoryContext}` : ''}
+        {question.theoryContext !== "mixed"
+          ? ` · ${question.theoryContext}`
+          : ""}
       </p>
 
       <p className="prompt">{question.prompt}</p>
       <p className="muted question-help help-text">{helpText}</p>
-      {(question.contextNote || question.evidenceNote) && (question.sources?.length ?? 0) > 0 && (
-        <details key={question.id} className="question-evidence">
-          <summary>Context and sources</summary>
-          {question.contextNote && <p>{question.contextNote}</p>}
-          {question.evidenceNote && (
-            <p>{question.contextNote ? <><strong>Evidence scope:</strong> {question.evidenceNote}</> : question.evidenceNote}</p>
-          )}
-          <p className="muted">Background only; these sources do not determine how you should answer.</p>
-          <ul>
-            {question.sources!.map((item) => (
-              <li key={item.url}>
-                <a href={item.url} target="_blank" rel="noreferrer">
-                  {item.title}{item.publisher ? ` — ${item.publisher}` : ''}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </details>
+      {(question.contextNote || question.evidenceNote) &&
+        (question.sources?.length ?? 0) > 0 && (
+          <details key={question.id} className="question-evidence">
+            <summary>Context and sources</summary>
+            {question.contextNote && <p>{question.contextNote}</p>}
+            {question.evidenceNote && (
+              <p>
+                {question.contextNote ? (
+                  <>
+                    <strong>Evidence scope:</strong> {question.evidenceNote}
+                  </>
+                ) : (
+                  question.evidenceNote
+                )}
+              </p>
+            )}
+            <p className="muted">
+              Background only; these sources do not determine how you should
+              answer.
+            </p>
+            <ul>
+              {question.sources!.map((item) => (
+                <li key={item.url}>
+                  <a href={item.url} target="_blank" rel="noreferrer">
+                    {item.title}
+                    {item.publisher ? ` — ${item.publisher}` : ""}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
+      {saveError && (
+        <p className="muted error-inline" role="alert">
+          {saveError}
+        </p>
       )}
-      {saveError && <p className="muted error-inline" role="alert">{saveError}</p>}
 
-      {question.responseType === 'statementChoice' ? (
-        <div className="statement-list" role="group" aria-label="Which best represents your view">
+      {question.responseType === "statementChoice" ? (
+        <div
+          className="statement-list"
+          role="group"
+          aria-label="Which best represents your view"
+        >
           {question.statementOptions?.map((option, optionIndex) => (
             <button
               key={option.id}
               type="button"
-              className={`statement-button${selected?.value === optionIndex ? ' selected' : ''}`}
+              className={`statement-button${selected?.value === optionIndex ? " selected" : ""}`}
               data-answer-value={optionIndex}
               aria-pressed={selected?.value === optionIndex}
               onClick={() => chooseValue(optionIndex)}
@@ -258,7 +341,7 @@ export function QuizScreen({
             <button
               key={value}
               type="button"
-              className={`scale-button${selected?.value === value ? ' selected' : ''}`}
+              className={`scale-button${selected?.value === value ? " selected" : ""}`}
               data-answer-value={value}
               aria-pressed={selected?.value === value}
               onClick={() => chooseValue(value)}
@@ -272,10 +355,10 @@ export function QuizScreen({
       {canAnswerDontKnow && (
         <button
           type="button"
-          className={`dont-know-button${selected?.value === 'dont_know' ? ' selected' : ''}`}
+          className={`dont-know-button${selected?.value === "dont_know" ? " selected" : ""}`}
           data-answer-value="dont_know"
-          aria-pressed={selected?.value === 'dont_know'}
-          onClick={() => chooseValue('dont_know')}
+          aria-pressed={selected?.value === "dont_know"}
+          onClick={() => chooseValue("dont_know")}
         >
           I don't know
         </button>
@@ -284,10 +367,10 @@ export function QuizScreen({
       {allowRefusal && (
         <button
           type="button"
-          className={`dont-know-button${selected?.value === 'prefer_not_to_answer' ? ' selected' : ''}`}
+          className={`dont-know-button${selected?.value === "prefer_not_to_answer" ? " selected" : ""}`}
           data-answer-value="prefer_not_to_answer"
-          aria-pressed={selected?.value === 'prefer_not_to_answer'}
-          onClick={() => chooseValue('prefer_not_to_answer')}
+          aria-pressed={selected?.value === "prefer_not_to_answer"}
+          onClick={() => chooseValue("prefer_not_to_answer")}
         >
           Prefer not to answer
         </button>
@@ -298,7 +381,11 @@ export function QuizScreen({
           Back
         </button>
       )}
-      {onExit && <button type="button" className="back-link" onClick={onExit}>Stop follow-up</button>}
+      {onExit && (
+        <button type="button" className="back-link" onClick={onExit}>
+          Stop follow-up
+        </button>
+      )}
     </section>
-  )
+  );
 }

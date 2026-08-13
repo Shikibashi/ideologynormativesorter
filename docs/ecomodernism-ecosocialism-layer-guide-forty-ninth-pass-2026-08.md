@@ -12,9 +12,9 @@ Ecosocialism now has a descriptive summary that reports its characteristic struc
 
 ## Source basis
 
-- The authors of *An Ecomodernist Manifesto* describe ecomodernism's aim as decoupling human development from environmental impacts through technological, social, economic, and political modernization: https://www.ecomodernism.org/manifesto-english
-- Wiedenhofer, Virág, Kalt, Plank, and Matej, “A categorisation and review of research literature,” *Environmental Science & Policy* 112 (2020), review 179 studies and distinguish relative from absolute decoupling, finding no evidence of the global, fast-enough absolute decoupling required for ecological sustainability: https://pmc.ncbi.nlm.nih.gov/articles/PMC7330600/
-- Michael Löwy, “Eco-Socialism and Democratic Planning,” *Socialist Register* 43 (2007/2009), describes ecosocialism's focus on social needs, ecological equilibrium, collective ownership, democratic planning, and a critique of capitalist accumulation: https://socialistregister.com/index.php/srv/article/view/5869
+- The authors of _An Ecomodernist Manifesto_ describe ecomodernism's aim as decoupling human development from environmental impacts through technological, social, economic, and political modernization: https://www.ecomodernism.org/manifesto-english
+- Wiedenhofer, Virág, Kalt, Plank, and Matej, “A categorisation and review of research literature,” _Environmental Science & Policy_ 112 (2020), review 179 studies and distinguish relative from absolute decoupling, finding no evidence of the global, fast-enough absolute decoupling required for ecological sustainability: https://pmc.ncbi.nlm.nih.gov/articles/PMC7330600/
+- Michael Löwy, “Eco-Socialism and Democratic Planning,” _Socialist Register_ 43 (2007/2009), describes ecosocialism's focus on social needs, ecological equilibrium, collective ownership, democratic planning, and a critique of capitalist accumulation: https://socialistregister.com/index.php/srv/article/view/5869
 
 ## Validation intent
 

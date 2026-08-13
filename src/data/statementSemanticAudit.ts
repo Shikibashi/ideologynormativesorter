@@ -1,4 +1,4 @@
-import type { Question, StatementOption } from '../types'
+import type { Question, StatementOption } from "../types";
 
 /**
  * Statement-corpus semantic overlay (WP2 fills corrections).
@@ -11,16 +11,18 @@ import type { Question, StatementOption } from '../types'
  * shared ids; duplicating them here would risk a second, possibly divergent
  * deprecation record for the same question id.
  */
-export const STATEMENT_SEMANTIC_AUDIT_VERSION = '2026-07-statement-semantic-v1'
-export const STATEMENT_SEMANTIC_AUDIT_DATE = '2026-07-19'
+export const STATEMENT_SEMANTIC_AUDIT_VERSION = "2026-07-statement-semantic-v1";
+export const STATEMENT_SEMANTIC_AUDIT_DATE = "2026-07-19";
 
 export type StatementSemanticCorrection = {
-  statementOptions: StatementOption[]
-  rationale: string
-}
+  statementOptions: StatementOption[];
+  rationale: string;
+};
 
-export const statementSemanticCorrections: Record<string, StatementSemanticCorrection> =
-  {}
+export const statementSemanticCorrections: Record<
+  string,
+  StatementSemanticCorrection
+> = {};
 
 // High-confidence, statement-only construct finding (not present in the main
 // overlay's needsRewriteById): sq04 forces a single choice across two
@@ -32,36 +34,36 @@ export const statementNeedsRewriteById: Record<
   { issue: string; rationale: string }
 > = {
   sq04: {
-    issue: 'double-barreled',
+    issue: "double-barreled",
     rationale:
-      'Forced options conflate public-choice-skepticism (capture/self-interest of welfare administrators) with state-capacity-confidence (administrative competence): e.g. option b implies both low skepticism and high capacity as a single package, so picking one option cannot cleanly discriminate either construct.',
+      "Forced options conflate public-choice-skepticism (capture/self-interest of welfare administrators) with state-capacity-confidence (administrative competence): e.g. option b implies both low skepticism and high capacity as a single package, so picking one option cannot cleanly discriminate either construct.",
   },
-}
+};
 
 export function applyStatementSemanticReview(question: Question): Question {
-  const correction = statementSemanticCorrections[String(question.id)]
+  const correction = statementSemanticCorrections[String(question.id)];
   if (correction) {
     return {
       ...question,
       statementOptions: correction.statementOptions,
-      reviewStatus: 'approved',
+      reviewStatus: "approved",
       version: STATEMENT_SEMANTIC_AUDIT_VERSION,
       updatedAt: STATEMENT_SEMANTIC_AUDIT_DATE,
-    }
+    };
   }
 
-  const rewrite = statementNeedsRewriteById[String(question.id)]
+  const rewrite = statementNeedsRewriteById[String(question.id)];
   if (rewrite) {
     return {
       ...question,
       active: false,
-      reviewStatus: 'needs-rewrite',
+      reviewStatus: "needs-rewrite",
       version: STATEMENT_SEMANTIC_AUDIT_VERSION,
       updatedAt: STATEMENT_SEMANTIC_AUDIT_DATE,
       deprecatedAt: STATEMENT_SEMANTIC_AUDIT_DATE,
       deprecationReason: `${rewrite.issue}: ${rewrite.rationale}`,
-    }
+    };
   }
 
-  return question
+  return question;
 }

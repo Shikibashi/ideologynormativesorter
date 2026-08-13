@@ -55,34 +55,34 @@ every adherent or movement using any of the names.
 
 ## Source basis
 
-- Cas Mudde, “The Populist Zeitgeist,” *Government and Opposition* 39.4
+- Cas Mudde, “The Populist Zeitgeist,” _Government and Opposition_ 39.4
   (2004), on populism as a thin-centered ideology organized around the moral
   distinction between the people and the elite and popular sovereignty:
   https://doi.org/10.1111/j.1477-7053.2004.00135.x
-- Cas Mudde, “Populism,” *The Oxford Handbook of Political Ideologies*, on a
+- Cas Mudde, “Populism,” _The Oxford Handbook of Political Ideologies_, on a
   minimal cross-context concept of populism and its reliance on host ideologies
   for more complete policy content:
   https://doi.org/10.1093/oxfordhb/9780199585977.001.0001
 - Wirth et al., “Measuring Populist Attitudes on Three Dimensions,”
-  *International Journal of Public Opinion Research* 30.2 (2018), on the
+  _International Journal of Public Opinion Research_ 30.2 (2018), on the
   people/elite opposition, popular sovereignty, and the way populism combines
   with thicker ideologies such as nativism or socialism:
   https://academic.oup.com/ijpor/article/30/2/316/2993904
-- Chantal Mouffe, *For a Left Populism* (Verso, 2018), a primary left-populist
+- Chantal Mouffe, _For a Left Populism_ (Verso, 2018), a primary left-populist
   intervention centered on constructing a democratic “people” against
   oligarchic power:
   https://www.versobooks.com/products/160-for-a-left-populism
 - Arter, “Bigwig hatred and the emergence of the first Scandinavian
-  agrarian-populist party,” *Scandinavian Political Studies* 46 (2023), on
+  agrarian-populist party,” _Scandinavian Political Studies_ 46 (2023), on
   agrarian populism as an ideology rooted in rural-urban antagonism rather
   than one fixed property or class position:
   https://doi.org/10.1111/scps.12251
 - Pye et al., “Three populisms and two dead ends: Variants of agrarian
-  populism in Thailand,” *Journal of Agrarian Change* (2023), on the
+  populism in Thailand,” _Journal of Agrarian Change_ (2023), on the
   coexistence of progressive, reactionary, authoritarian, and pro-capitalist
   agrarian populist projects:
   https://doi.org/10.1111/joac.12504
-- “Populism: A Socio-Cultural Approach,” *The Oxford Handbook of Populism*, on
+- “Populism: A Socio-Cultural Approach,” _The Oxford Handbook of Populism_, on
   cultural identity, appeals, representation, and distinct left/right
   polarities in populist politics:
   https://academic.oup.com/edited-volume/27977/chapter-abstract/211649560

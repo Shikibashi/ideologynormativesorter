@@ -55,13 +55,25 @@
   --ecw-control-disabled-face: #8d8d8d;
   --ecw-control-disabled-text: #343434;
   --ecw-grid-line: rgba(102, 117, 200, 0.08);
-  --ecw-bevel-light: color-mix(in srgb, var(--ecw-control-highlight) 80%, transparent);
-  --ecw-bevel-dark: color-mix(in srgb, var(--ecw-control-shadow) 85%, transparent);
+  --ecw-bevel-light: color-mix(
+    in srgb,
+    var(--ecw-control-highlight) 80%,
+    transparent
+  );
+  --ecw-bevel-dark: color-mix(
+    in srgb,
+    var(--ecw-control-shadow) 85%,
+    transparent
+  );
 
   /* Named fallbacks precede generic families; density never changes text scale. */
-  --ecw-font-display: Georgia, "Noto Serif", "DejaVu Serif", "Times New Roman", "Liberation Serif", serif;
+  --ecw-font-display:
+    Georgia, "Noto Serif", "DejaVu Serif", "Times New Roman",
+    "Liberation Serif", serif;
   --ecw-font-ui: Verdana, "DejaVu Sans", Tahoma, "Noto Sans", Arial, sans-serif;
-  --ecw-font-system: "Courier New", "Liberation Mono", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
+  --ecw-font-system:
+    "Courier New", "Liberation Mono", "DejaVu Sans Mono", "Noto Sans Mono",
+    monospace;
   --ecw-font-size-body: 0.9375rem;
   --ecw-font-size-ui: 0.875rem;
   --ecw-font-size-meta: 0.8125rem;
@@ -169,7 +181,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root[data-theme='light'] {
+:root[data-theme="light"] {
   --ecw-canvas: #d6d9e8;
   --ecw-workspace: #c7ccdf;
   --ecw-surface: #f4f3eb;
@@ -218,21 +230,21 @@
   color-scheme: light;
 }
 
-:root[data-contrast='more'][data-theme='dark'] {
+:root[data-contrast="more"][data-theme="dark"] {
   --ecw-border-structural: #aab5ff;
   --ecw-border-strong: #d1d7ff;
   --ecw-rule-decorative: #6d78bd;
   --ecw-text-muted: #d8ddff;
 }
 
-:root[data-contrast='more'][data-theme='light'] {
+:root[data-contrast="more"][data-theme="light"] {
   --ecw-border-structural: #3b467b;
   --ecw-border-strong: #1d285e;
   --ecw-rule-decorative: #747da3;
   --ecw-text-muted: #3f496b;
 }
 
-:root[data-density='compact'] {
+:root[data-density="compact"] {
   --ecw-control-block: 1.875rem;
   --ecw-field-block: 2rem;
   --ecw-row-block: 1.875rem;
@@ -242,7 +254,7 @@
   --ecw-hit-min: 1.875rem;
 }
 
-:root[data-density='comfortable'] {
+:root[data-density="comfortable"] {
   --ecw-control-block: 2.75rem;
   --ecw-field-block: 2.75rem;
   --ecw-row-block: 2.5rem;

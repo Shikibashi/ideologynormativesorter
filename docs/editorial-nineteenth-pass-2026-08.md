@@ -19,9 +19,9 @@ new wording through a versioned effective-bank overlay.
 
 ## Sources checked
 
-- [World Bank, *Land Policies for Resilient and Equitable Growth in Africa*](https://www.worldbank.org/en/publication/land-policies-africa)
-- [Stanford Encyclopedia of Philosophy, *Property and Ownership*](https://plato.stanford.edu/entries/property/)
-- [U.S. EPA/Census, *Do Environmental Regulations Disproportionately Affect Small Businesses?*](https://www.epa.gov/sites/default/files/2014-12/documents/do_environmental_regulations_disproportionately_affect_small_businesses.pdf)
+- [World Bank, _Land Policies for Resilient and Equitable Growth in Africa_](https://www.worldbank.org/en/publication/land-policies-africa)
+- [Stanford Encyclopedia of Philosophy, _Property and Ownership_](https://plato.stanford.edu/entries/property/)
+- [U.S. EPA/Census, _Do Environmental Regulations Disproportionately Affect Small Businesses?_](https://www.epa.gov/sites/default/files/2014-12/documents/do_environmental_regulations_disproportionately_affect_small_businesses.pdf)
 
 The land-tenure record documents rights recognition, transfer, and accessible
 conflict resolution in varied settings. The environmental study reports that

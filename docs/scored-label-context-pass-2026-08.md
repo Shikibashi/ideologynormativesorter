@@ -7,14 +7,14 @@ label centroids, role assignments, question weights, or respondent scoring.
 
 ## Labels covered
 
-| Family | Labels | Main boundary made explicit |
-| --- | --- | --- |
-| Religious authority | Theocratic Politics; Religious Nationalism | Religious influence, religious-national identity, and controlling religious authority are distinct institutional claims. |
-| National membership and sovereignty | Ethnonationalist; Left-Wing Nationalism; National Conservatism; Expansionist Nationalism; Separatist Nationalism | Ethnic membership, anti-colonial self-determination, cultural continuity, territorial expansion, and secession are not interchangeable. |
-| Liberal and republican traditions | Classical Liberalism; Market-Governance Liberalism (Neoliberalism); Communitarianism; Republicanism; Liberal Conservatism; Internationalism | Historically variable families do not imply one state size, economic program, party identity, or foreign-policy package. |
-| Populism and democracy | Right-Wing Populism; Left-Wing Populism; Radical Democracy | Thin populist host ideologies and plural radical-democratic traditions are not complete programs or synonymous with one institutional design. |
-| Pluralism and ecology | Multiculturalism; Eco-Authoritarianism; Progressivism | Recognition, ecological authority, and reform orientation each leave important questions about rights, coercion, expertise, and implementation open. |
-| Fiscal and social conservatism | Fiscal Conservatism; Social Conservatism | Fiscal restraint is not “small government,” and moral traditionalism does not determine religion, economics, nationalism, or enforcement strategy. |
+| Family                              | Labels                                                                                                                                      | Main boundary made explicit                                                                                                                          |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Religious authority                 | Theocratic Politics; Religious Nationalism                                                                                                  | Religious influence, religious-national identity, and controlling religious authority are distinct institutional claims.                             |
+| National membership and sovereignty | Ethnonationalist; Left-Wing Nationalism; National Conservatism; Expansionist Nationalism; Separatist Nationalism                            | Ethnic membership, anti-colonial self-determination, cultural continuity, territorial expansion, and secession are not interchangeable.              |
+| Liberal and republican traditions   | Classical Liberalism; Market-Governance Liberalism (Neoliberalism); Communitarianism; Republicanism; Liberal Conservatism; Internationalism | Historically variable families do not imply one state size, economic program, party identity, or foreign-policy package.                             |
+| Populism and democracy              | Right-Wing Populism; Left-Wing Populism; Radical Democracy                                                                                  | Thin populist host ideologies and plural radical-democratic traditions are not complete programs or synonymous with one institutional design.        |
+| Pluralism and ecology               | Multiculturalism; Eco-Authoritarianism; Progressivism                                                                                       | Recognition, ecological authority, and reform orientation each leave important questions about rights, coercion, expertise, and implementation open. |
+| Fiscal and social conservatism      | Fiscal Conservatism; Social Conservatism                                                                                                    | Fiscal restraint is not “small government,” and moral traditionalism does not determine religion, economics, nationalism, or enforcement strategy.   |
 
 ## Research basis
 

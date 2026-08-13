@@ -30,22 +30,22 @@ has one institutional program.
 
 ## Source basis
 
-- Jeff Haynes, “Religious Nationalism and Religious Influence,” *Oxford
-  Research Encyclopedia of Politics*, on religious nationalism as a fusion of
+- Jeff Haynes, “Religious Nationalism and Religious Influence,” _Oxford
+  Research Encyclopedia of Politics_, on religious nationalism as a fusion of
   religious and national identities and goals, with varied implications for
   institutions, authority, policy, and political violence:
   https://academic.oup.com/edited-volume/62239/chapter-abstract/550810397
 - Mark Juergensmeyer, “Religious Nationalism and the Problem of Collective
-  Representation,” *Annual Review of Sociology* 27 (2001), on religious
+  Representation,” _Annual Review of Sociology_ 27 (2001), on religious
   nationalism’s distinctive account of solidarity and collective political
   representation:
   https://doi.org/10.1146/annurev.soc.27.1.125
 - Aparna Devare, “Secularizing Religion: Hindu Extremism as a Modernist
-  Discourse,” *International Political Sociology* 3, no. 2 (2009), on
+  Discourse,” _International Political Sociology_ 3, no. 2 (2009), on
   Savarkar’s Hindutva as a modern political discourse centered on a homogenous
   Hindu nation:
   https://doi.org/10.1111/j.1749-5687.2009.00069.x
-- Tanika Sarkar, *Hindu Nationalism in India* (Oxford University Press, 2022),
+- Tanika Sarkar, _Hindu Nationalism in India_ (Oxford University Press, 2022),
   on Hindutva’s historical development, organizations, cultural politics, and
   relationship to religious nationalism:
   https://doi.org/10.1093/oso/9780197645987.001.0001

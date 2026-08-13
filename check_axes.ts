@@ -1,5 +1,5 @@
-import { axes } from './src/data/axes'
+import { axes } from "./src/data/axes";
 
 for (const axis of axes) {
-  console.log(`${axis.id} -> ${axis.layer}`)
+  console.log(`${axis.id} -> ${axis.layer}`);
 }

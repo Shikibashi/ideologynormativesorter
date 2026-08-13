@@ -8,9 +8,9 @@ claim about political outcomes.
 
 ## Completed source-fidelity fixes
 
-- Cyberocracy now cites David Ronfeldt’s dedicated RAND paper, *Cyberocracy,
-  Cyberspace, and Cyberology: Political Effects of the Information Revolution*,
-  rather than using only the broader *Noopolitik* report.
+- Cyberocracy now cites David Ronfeldt’s dedicated RAND paper, _Cyberocracy,
+  Cyberspace, and Cyberology: Political Effects of the Information Revolution_,
+  rather than using only the broader _Noopolitik_ report.
 - Zionism now includes separate Cambridge research records for the Revisionist
   and Labour currents. The public label remains a family-level, provisional
   specialist result rather than a synthetic claim about every Zionist current.
@@ -101,14 +101,14 @@ claim about political outcomes.
 
 ## Current interpretation after source review
 
-| Label or family | Evidence-supported interpretation | Measurement consequence |
-| --- | --- | --- |
-| Hindutva | A contested political Hindu-nationalist discourse distinct from Hinduism, with multiple scholarly definitions and formulations ranging from moderate to extremist. | Keep the label provisional; separate civilizational identity, majority/state congruence, minority citizenship, and party strategy before any promotion. |
-| Zionism | A historically changing family of Jewish national self-determination projects with distinct Labour, Revisionist, religious, liberal, and other currents. | Do not read the family centroid as a single border, state, religious, or minority-rights program. |
-| Islamic democratic constitutionalism | A family of arrangements differing over whether Islam limits government, grounds constitutional law, or is included within a limited constitutional order; judicial review and minority rights are separate institutional questions. | Preserve the opt-in module and abstention behavior until subtype separation and criterion validity are tested. |
-| Accelerationism | A family whose left, right, unconditional, and technology-centered uses can diverge sharply. | Keep the public label provisional; the technology module now tests market intensification versus post-capitalist redirection before any subtype interpretation. |
-| Cyberocracy | An early, future-oriented concept of information-organized or cybercratic government, not a settled ideology or synonym for digital democracy. | Keep it context-only in ordinary scoring and experimental in the technology module. |
-| Dugin’s Fourth Political Theory | Dugin’s own proposed framework must be displayed separately from scholarly criticism that treats it as an ideological repackaging of older reactionary or fascist materials. | Keep author-specific naming, self-description, and criticism distinct. |
+| Label or family                      | Evidence-supported interpretation                                                                                                                                                                                                    | Measurement consequence                                                                                                                                         |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hindutva                             | A contested political Hindu-nationalist discourse distinct from Hinduism, with multiple scholarly definitions and formulations ranging from moderate to extremist.                                                                   | Keep the label provisional; separate civilizational identity, majority/state congruence, minority citizenship, and party strategy before any promotion.         |
+| Zionism                              | A historically changing family of Jewish national self-determination projects with distinct Labour, Revisionist, religious, liberal, and other currents.                                                                             | Do not read the family centroid as a single border, state, religious, or minority-rights program.                                                               |
+| Islamic democratic constitutionalism | A family of arrangements differing over whether Islam limits government, grounds constitutional law, or is included within a limited constitutional order; judicial review and minority rights are separate institutional questions. | Preserve the opt-in module and abstention behavior until subtype separation and criterion validity are tested.                                                  |
+| Accelerationism                      | A family whose left, right, unconditional, and technology-centered uses can diverge sharply.                                                                                                                                         | Keep the public label provisional; the technology module now tests market intensification versus post-capitalist redirection before any subtype interpretation. |
+| Cyberocracy                          | An early, future-oriented concept of information-organized or cybercratic government, not a settled ideology or synonym for digital democracy.                                                                                       | Keep it context-only in ordinary scoring and experimental in the technology module.                                                                             |
+| Dugin’s Fourth Political Theory      | Dugin’s own proposed framework must be displayed separately from scholarly criticism that treats it as an ideological repackaging of older reactionary or fascist materials.                                                         | Keep author-specific naming, self-description, and criticism distinct.                                                                                          |
 
 ## Tests now in place
 
@@ -219,21 +219,21 @@ claim about political outcomes.
 
 ## Research references
 
-- RAND, [*Cyberocracy, Cyberspace, and Cyberology*](https://www.rand.org/pubs/papers/P7745.html).
-- Oxford University Press, [*Hindutva, Hindu Organizations, and the Hindu Diasporas*](https://academic.oup.com/book/47098/chapter-abstract/416165265).
-- Cambridge University Press, [*Jabotinsky and the Revisionist tradition*](https://www.cambridge.org/core/books/abs/zionism-and-the-foundations-of-israeli-diplomacy/jabotinsky-and-the-revisionist-tradition/FEC78FE517D6D846BBB4F7997C436517).
-- Cambridge University Press, [*In the Name of Socialism: Zionism and European Social Democracy in the Inter-War Years*](https://www.cambridge.org/core/journals/international-review-of-social-history/article/in-the-name-of-socialism-zionism-and-european-social-democracy-in-the-interwar-years/8B3D3F22827E7E6D8B2963870C68E09E).
-- Annual Review, [*Islamic Constitutionalism*](https://www.annualreviews.org/content/journals/10.1146/annurev.lawsocsci.3.081806.112753).
-- Tezcür, [*Constitutionalism, judiciary, and democracy in Islamic societies*](https://asu.elsevierpure.com/en/publications/constitutionalism-judiciary-and-democracy-in-islamic-societies/).
-- Cambridge University Press, [*From Islamists to Muslim Democrats: The Case of Tunisia’s Ennahda*](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/from-islamists-to-muslim-democrats-the-case-of-tunisias-ennahda/C0D3D82CA222E3C28B108B28ED5A4DD4).
-- Taylor & Francis, [*Editorial Introduction: Accelerationism and the Left*](https://www.tandfonline.com/doi/full/10.1080/0969725X.2019.1568729).
-- Springer Nature, [*Old wine in a postmodern bottle: Aleksandr Dugin’s “Fourth political theory”*](https://link.springer.com/article/10.1007/s11212-025-09703-3).
-- Oxford University Press, [*The Ethics of Social Democracy: Justice Meets Capitalism*](https://academic.oup.com/book/62941).
-- Wiley, [*The Political and Social Doctrine of Fascism*](https://onlinelibrary.wiley.com/doi/10.1111/j.1467-923X.1933.tb02289.x).
-- Cambridge University Press, [*From Constitutional to Civic Patriotism*](https://www.cambridge.org/core/journals/british-journal-of-political-science/article/abs/from-constitutional-to-civic-patriotism/9C7723CE5D8DE5AF316783A224D1BB16).
-- Cambridge University Press, [*On the Demos and Its Kin: Nationalism, Democracy, and the Boundary Problem*](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/on-the-demos-and-its-kin-nationalism-democracy-and-the-boundary-problem/BE8FA4B938813DF88441F306772037EC).
-- Oxford University Press, [*Welfare Chauvinism in Divided Societies*](https://academic.oup.com/policyandsociety/article/45/3/343/8304391).
-- Oxford University Press, [*Dissecting Public Opinion on Regional Authority*](https://academic.oup.com/publius/article/52/2/310/6352108).
-- Humphrey, Laycock, and Umbach, [*Introduction*](https://doi.org/10.1080/13569317.2019.1589961), on macro, meso, and micro ideological discourse.
-- Ylikoski, [*Getting lost with levels: the sociological micro-macro problem*](https://link.springer.com/article/10.1007/s11229-024-04841-3), on context-dependent levels of analysis.
-- Maynard, [*Ideological and Non-Ideological: The Levels of Analysis Problem*](https://doi.org/10.4324/9781003412007-3), on the proposed macro/meso/micro/nano analytic matrix.
+- RAND, [_Cyberocracy, Cyberspace, and Cyberology_](https://www.rand.org/pubs/papers/P7745.html).
+- Oxford University Press, [_Hindutva, Hindu Organizations, and the Hindu Diasporas_](https://academic.oup.com/book/47098/chapter-abstract/416165265).
+- Cambridge University Press, [_Jabotinsky and the Revisionist tradition_](https://www.cambridge.org/core/books/abs/zionism-and-the-foundations-of-israeli-diplomacy/jabotinsky-and-the-revisionist-tradition/FEC78FE517D6D846BBB4F7997C436517).
+- Cambridge University Press, [_In the Name of Socialism: Zionism and European Social Democracy in the Inter-War Years_](https://www.cambridge.org/core/journals/international-review-of-social-history/article/in-the-name-of-socialism-zionism-and-european-social-democracy-in-the-interwar-years/8B3D3F22827E7E6D8B2963870C68E09E).
+- Annual Review, [_Islamic Constitutionalism_](https://www.annualreviews.org/content/journals/10.1146/annurev.lawsocsci.3.081806.112753).
+- Tezcür, [_Constitutionalism, judiciary, and democracy in Islamic societies_](https://asu.elsevierpure.com/en/publications/constitutionalism-judiciary-and-democracy-in-islamic-societies/).
+- Cambridge University Press, [_From Islamists to Muslim Democrats: The Case of Tunisia’s Ennahda_](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/from-islamists-to-muslim-democrats-the-case-of-tunisias-ennahda/C0D3D82CA222E3C28B108B28ED5A4DD4).
+- Taylor & Francis, [_Editorial Introduction: Accelerationism and the Left_](https://www.tandfonline.com/doi/full/10.1080/0969725X.2019.1568729).
+- Springer Nature, [_Old wine in a postmodern bottle: Aleksandr Dugin’s “Fourth political theory”_](https://link.springer.com/article/10.1007/s11212-025-09703-3).
+- Oxford University Press, [_The Ethics of Social Democracy: Justice Meets Capitalism_](https://academic.oup.com/book/62941).
+- Wiley, [_The Political and Social Doctrine of Fascism_](https://onlinelibrary.wiley.com/doi/10.1111/j.1467-923X.1933.tb02289.x).
+- Cambridge University Press, [_From Constitutional to Civic Patriotism_](https://www.cambridge.org/core/journals/british-journal-of-political-science/article/abs/from-constitutional-to-civic-patriotism/9C7723CE5D8DE5AF316783A224D1BB16).
+- Cambridge University Press, [_On the Demos and Its Kin: Nationalism, Democracy, and the Boundary Problem_](https://www.cambridge.org/core/journals/american-political-science-review/article/abs/on-the-demos-and-its-kin-nationalism-democracy-and-the-boundary-problem/BE8FA4B938813DF88441F306772037EC).
+- Oxford University Press, [_Welfare Chauvinism in Divided Societies_](https://academic.oup.com/policyandsociety/article/45/3/343/8304391).
+- Oxford University Press, [_Dissecting Public Opinion on Regional Authority_](https://academic.oup.com/publius/article/52/2/310/6352108).
+- Humphrey, Laycock, and Umbach, [_Introduction_](https://doi.org/10.1080/13569317.2019.1589961), on macro, meso, and micro ideological discourse.
+- Ylikoski, [_Getting lost with levels: the sociological micro-macro problem_](https://link.springer.com/article/10.1007/s11229-024-04841-3), on context-dependent levels of analysis.
+- Maynard, [_Ideological and Non-Ideological: The Levels of Analysis Problem_](https://doi.org/10.4324/9781003412007-3), on the proposed macro/meso/micro/nano analytic matrix.

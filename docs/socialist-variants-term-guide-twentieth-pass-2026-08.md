@@ -58,26 +58,26 @@ complete program.
 
 ## Source basis
 
-- “Socialism,” *Internet Encyclopedia of Philosophy*, on social ownership and
+- “Socialism,” _Internet Encyclopedia of Philosophy_, on social ownership and
   the difference between planning-based and market-based socialist models:
   https://iep.utm.edu/socialis/
-- “Market Socialism,” *Encyclopedia of Modern Political Thought*, on combining
+- “Market Socialism,” _Encyclopedia of Modern Political Thought_, on combining
   social ownership with market allocation of commodities and labor:
   https://sk.sagepub.com/ency/edvol/embed/encyclopedia-of-modern-political-thought/chpt/market-socialism
-- “Socialist/Marxist Feminism,” *Oxford Bibliographies in Literary and Critical
-  Theory*, on introducing sex and gender as categories of capitalist
+- “Socialist/Marxist Feminism,” _Oxford Bibliographies in Literary and Critical
+  Theory_, on introducing sex and gender as categories of capitalist
   oppression and analyzing women’s relation to patriarchal institutions and
   wage labor:
   https://academic.oup.com/reference/62382/reference-article-abstract/555032950
-- “Gender and social reproduction: historical perspectives,” *American
-  Journal of Public Health* 92.6 (2002), on social reproduction as a feminist
+- “Gender and social reproduction: historical perspectives,” _American
+  Journal of Public Health_ 92.6 (2002), on social reproduction as a feminist
   concept extending beyond production in the narrow Marxist sense:
   https://pubmed.ncbi.nlm.nih.gov/12316382/
-- Hyeon-Kim Kim, “Juche (Self-Reliance) in North Korea,” *The Encyclopedia of
-  Political Science* / Wiley reference entry, on ideological self-reliance,
+- Hyeon-Kim Kim, “Juche (Self-Reliance) in North Korea,” _The Encyclopedia of
+  Political Science_ / Wiley reference entry, on ideological self-reliance,
   political independence, economic independence, and military independence:
   https://onlinelibrary.wiley.com/doi/abs/10.1002/9781118430873.est0820
-- Charles K. Armstrong, “Socialism in our own style,” in *North Korea*, on
+- Charles K. Armstrong, “Socialism in our own style,” in _North Korea_, on
   Juche as an ideology formulated and promulgated by the North Korean state:
   https://doi.org/10.1017/CBO9781139021692.006
 

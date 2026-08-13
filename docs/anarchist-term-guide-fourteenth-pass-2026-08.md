@@ -51,12 +51,12 @@ specific result is not displaced by the generic parent-family definition.
 
 ## Source basis
 
-- “Anarchism,” *Stanford Encyclopedia of Philosophy*, on the diversity of
+- “Anarchism,” _Stanford Encyclopedia of Philosophy_, on the diversity of
   anarchist forms and individualist anarchism’s emphasis on autonomy,
   self-determination, and voluntary cooperation:
   https://plato.stanford.edu/entries/anarchism/
-- Gary Chartier, “Left-Wing Market Anarchism and Natural Law,” *Studies in
-  Emergent Order* 7 (2014): 314–324, on a contemporary left-wing market
+- Gary Chartier, “Left-Wing Market Anarchism and Natural Law,” _Studies in
+  Emergent Order_ 7 (2014): 314–324, on a contemporary left-wing market
   anarchist position:
   https://cosmosandtaxis.org/wp-content/uploads/2014/05/sieo_7_2014_chartier.pdf
 - John Zerzan, “Future Primitive,” the primary essay associated with the
@@ -66,15 +66,15 @@ specific result is not displaced by the generic parent-family definition.
   the voluntary state and opposition to compulsory taxation and political
   compulsion:
   https://www.panarchy.org/herbert/voluntaryism.html
-- Max Stirner, *The Ego and Its Own*, on the unique individual and the
+- Max Stirner, _The Ego and Its Own_, on the unique individual and the
   contingent “Union of Egoists”:
   https://www.marxists.org/reference/archive/stirner/ego-and-its-own.htm
-- Donna M. Kowal, “Anarcha-Feminism,” in *The Palgrave Handbook of Anarchism*
+- Donna M. Kowal, “Anarcha-Feminism,” in _The Palgrave Handbook of Anarchism_
   (2019), DOI 10.1007/978-3-319-75620-2_15, on the tradition’s emergence from
   anarchist women’s critique of sexual double standards and gendered labor:
   https://doi.org/10.1007/978-3-319-75620-2_15
-- C. B. Daring, J. Rogue, Deric Shannon, and Abbey Volcano, eds., *Queering
-  Anarchism* (2012), as described in Martha A. Ackelsberg’s author-archived
+- C. B. Daring, J. Rogue, Deric Shannon, and Abbey Volcano, eds., _Queering
+  Anarchism_ (2012), as described in Martha A. Ackelsberg’s author-archived
   preface on the book’s multiple critiques and alternatives:
   https://scholarworks.smith.edu/gov_facpubs/11/
 - Timothy C. May, “The Crypto Anarchist Manifesto” (1988), and Eric Hughes,

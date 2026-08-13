@@ -59,26 +59,26 @@ using one of these names has the same complete program.
   monarch as head of state and elected government, constitutional conventions,
   and ceremonial or formal royal roles:
   https://www.ucl.ac.uk/social-historical-sciences/constitution-unit/constitution-unit-publications/constitution-unit-briefings/what-constitutional-monarchy-and-what-its-role-uk
-- Robert Hazell and Bob Morris, *The Monarchy and the Constitution*, Oxford
+- Robert Hazell and Bob Morris, _The Monarchy and the Constitution_, Oxford
   University Press, on constitutional monarchy, royal prerogative, succession,
   and the separation of head-of-state and head-of-government roles:
   https://academic.oup.com/book/6972
-- Stefanie Michels Hilfrich, “Anti-imperialism and anti-colonialism,” *The
-  Wiley Blackwell Encyclopedia of Social and Political Movements*, on the
+- Stefanie Michels Hilfrich, “Anti-imperialism and anti-colonialism,” _The
+  Wiley Blackwell Encyclopedia of Social and Political Movements_, on the
   broader and changing scope of anti-imperialism beyond opposition to formal
   colonial rule alone:
   https://doi.org/10.1002/9781118455074.wbeoe120
 - Elizabeth Anderson, “Empire, Popular Sovereignty, and the Problem of
-  Self-and-Other-Determination,” *Perspectives on Politics*, on imperial
+  Self-and-Other-Determination,” _Perspectives on Politics_, on imperial
   domination, popular sovereignty, and the political problem of self-
   determination:
   https://doi.org/10.1017/S1537592721000020
-- Michael Herb, “Monarchism as an Authoritarian Institution,” *The Oxford
-  Handbook of Authoritarian Politics*, on monarchism as hereditary succession
+- Michael Herb, “Monarchism as an Authoritarian Institution,” _The Oxford
+  Handbook of Authoritarian Politics_, on monarchism as hereditary succession
   and as an institution whose political authority can vary rather than one
   fixed regime type:
   https://doi.org/10.1093/oxfordhb/9780198871996.013.63
-- “Conservatism,” *Stanford Encyclopedia of Philosophy*, on living tradition,
+- “Conservatism,” _Stanford Encyclopedia of Philosophy_, on living tradition,
   inherited institutions, authority, hierarchy, and the distinction between
   cautious conservatism and dogmatic reaction:
   https://plato.stanford.edu/archives/sum2022/entries/conservatism/

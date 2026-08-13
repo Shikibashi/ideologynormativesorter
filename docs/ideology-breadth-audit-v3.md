@@ -8,19 +8,19 @@ The audit uses academic political theory and intellectual history as the inclusi
 
 ## Current family coverage
 
-| Family | Current coverage | Breadth judgment | Next action |
-| --- | --- | --- | --- |
-| Liberal traditions | Classical Liberalism, Social Liberalism, Neoliberalism, Cosmopolitan Liberalism; narrower liberal schools retained as specialists | Broadly covered | Improve within-family discrimination only where tests show debt |
-| Conservative traditions | Social, National, Liberal and Neoconservatism; Christian Democracy plus narrower right/religious specialists | Broadly covered | Keep specialist depth approach |
-| Socialist / communist traditions | Democratic Socialism, Market Socialism, Marxism-Leninism, Libertarian Socialism, Ecosocialism; many historical subtypes as specialists | Broadly covered | Resolve subtypes through left-family modules rather than main-pool expansion |
-| Anarchist traditions | Anarcho-Communism, Anarcho-Capitalism, Mutualism, Individualist Anarchism plus multiple specialists | Broadly covered | Keep subtype precision in anarchist/market modules |
-| Nationalist traditions | Civic Nationalism, Ethnonationalism, Religious Nationalism, National Conservatism, Fascism plus multiple specialists/modifiers | Broad at the generic level | Add liberation/self-determination constructs before adding historically subordinated-group nationalisms |
-| Ecological traditions | Deep Ecology, Degrowth Green, Ecomodernism, Ecosocialism plus green specialists | Broadly covered | Continue green-family specialist validation |
-| Religious politics | Christian Democracy and Religious Nationalism plus Islamic, integralist, reconstructionist, theocratic and other specialists | Broadly covered | Avoid multiplying religion-specific labels unless a module can distinguish them |
-| Feminist traditions | Liberal Feminism is primary; Anarcha-Feminism is specialist | Previously undermeasured | **In progress in PR #15:** dedicated feminist specialist instrument for liberal, radical, socialist/Marxist and anarcha-feminist profiles |
-| Multicultural / recognition politics | Multiculturalism is currently a modifier | Role deserves review | Test whether recognition, accommodation and group-differentiated rights form a sufficiently independent measured profile |
-| Black self-determination / Black nationalism | Public related-tradition entry with a focused identity-sovereignty module; no general-quiz endpoint | Genuine breadth gap with an honest non-scored surface | Validate the focused module before any scored promotion |
-| Indigenous / decolonial sovereignty | Indigenism exists as a specialist in the focused identity-sovereignty module | Label and construct coverage present; respondent validation absent | Keep it outside ordinary nationalism and validate the dedicated module |
+| Family                                       | Current coverage                                                                                                                       | Breadth judgment                                                   | Next action                                                                                                                               |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Liberal traditions                           | Classical Liberalism, Social Liberalism, Neoliberalism, Cosmopolitan Liberalism; narrower liberal schools retained as specialists      | Broadly covered                                                    | Improve within-family discrimination only where tests show debt                                                                           |
+| Conservative traditions                      | Social, National, Liberal and Neoconservatism; Christian Democracy plus narrower right/religious specialists                           | Broadly covered                                                    | Keep specialist depth approach                                                                                                            |
+| Socialist / communist traditions             | Democratic Socialism, Market Socialism, Marxism-Leninism, Libertarian Socialism, Ecosocialism; many historical subtypes as specialists | Broadly covered                                                    | Resolve subtypes through left-family modules rather than main-pool expansion                                                              |
+| Anarchist traditions                         | Anarcho-Communism, Anarcho-Capitalism, Mutualism, Individualist Anarchism plus multiple specialists                                    | Broadly covered                                                    | Keep subtype precision in anarchist/market modules                                                                                        |
+| Nationalist traditions                       | Civic Nationalism, Ethnonationalism, Religious Nationalism, National Conservatism, Fascism plus multiple specialists/modifiers         | Broad at the generic level                                         | Add liberation/self-determination constructs before adding historically subordinated-group nationalisms                                   |
+| Ecological traditions                        | Deep Ecology, Degrowth Green, Ecomodernism, Ecosocialism plus green specialists                                                        | Broadly covered                                                    | Continue green-family specialist validation                                                                                               |
+| Religious politics                           | Christian Democracy and Religious Nationalism plus Islamic, integralist, reconstructionist, theocratic and other specialists           | Broadly covered                                                    | Avoid multiplying religion-specific labels unless a module can distinguish them                                                           |
+| Feminist traditions                          | Liberal Feminism is primary; Anarcha-Feminism is specialist                                                                            | Previously undermeasured                                           | **In progress in PR #15:** dedicated feminist specialist instrument for liberal, radical, socialist/Marxist and anarcha-feminist profiles |
+| Multicultural / recognition politics         | Multiculturalism is currently a modifier                                                                                               | Role deserves review                                               | Test whether recognition, accommodation and group-differentiated rights form a sufficiently independent measured profile                  |
+| Black self-determination / Black nationalism | Public related-tradition entry with a focused identity-sovereignty module; no general-quiz endpoint                                    | Genuine breadth gap with an honest non-scored surface              | Validate the focused module before any scored promotion                                                                                   |
+| Indigenous / decolonial sovereignty          | Indigenism exists as a specialist in the focused identity-sovereignty module                                                           | Label and construct coverage present; respondent validation absent | Keep it outside ordinary nationalism and validate the dedicated module                                                                    |
 
 ## Priority 1: feminist traditions
 
@@ -103,11 +103,11 @@ In particular:
 
 ## Academic sources
 
-- Stanford Encyclopedia of Philosophy, *Feminist Political Philosophy*: https://plato.stanford.edu/entries/feminism-political/
-- Stanford Encyclopedia of Philosophy, *Feminist Perspectives on Class and Work*: https://plato.stanford.edu/entries/feminism-class/
-- Andrew Valls, “A Liberal Defense of Black Nationalism,” *American Political Science Review* 104(3), 2010: https://doi.org/10.1017/S0003055410000249
-- Dean E. Robinson, *Black Nationalism in American Politics and Thought*, Cambridge University Press, 2001: https://doi.org/10.1017/CBO9780511606038
-- Stanford Encyclopedia of Philosophy, *Nationalism*: https://plato.stanford.edu/entries/nationalism/
-- Stanford Encyclopedia of Philosophy, *Multiculturalism*: https://plato.stanford.edu/entries/multiculturalism/
-- Valentin Clavé-Mercier, “Indigenous political theory, metaphysical revolt, and the decolonial rearticulation of political ordering,” *International Theory* 17(1), 2025: https://doi.org/10.1017/S1752971924000137
-- David Myer Temin, *Remapping Sovereignty: Decolonization and Self-Determination in North American Indigenous Political Thought*, University of Chicago Press, 2023.
+- Stanford Encyclopedia of Philosophy, _Feminist Political Philosophy_: https://plato.stanford.edu/entries/feminism-political/
+- Stanford Encyclopedia of Philosophy, _Feminist Perspectives on Class and Work_: https://plato.stanford.edu/entries/feminism-class/
+- Andrew Valls, “A Liberal Defense of Black Nationalism,” _American Political Science Review_ 104(3), 2010: https://doi.org/10.1017/S0003055410000249
+- Dean E. Robinson, _Black Nationalism in American Politics and Thought_, Cambridge University Press, 2001: https://doi.org/10.1017/CBO9780511606038
+- Stanford Encyclopedia of Philosophy, _Nationalism_: https://plato.stanford.edu/entries/nationalism/
+- Stanford Encyclopedia of Philosophy, _Multiculturalism_: https://plato.stanford.edu/entries/multiculturalism/
+- Valentin Clavé-Mercier, “Indigenous political theory, metaphysical revolt, and the decolonial rearticulation of political ordering,” _International Theory_ 17(1), 2025: https://doi.org/10.1017/S1752971924000137
+- David Myer Temin, _Remapping Sovereignty: Decolonization and Self-Determination in North American Indigenous Political Thought_, University of Chicago Press, 2023.

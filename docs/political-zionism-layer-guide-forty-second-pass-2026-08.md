@@ -12,9 +12,9 @@ This is framed as a movement-level belief, not as a claim that statehood guarant
 
 ## Source basis
 
-- David Hazony, “Zionism and security,” in *A History of Modern Israel*, Cambridge University Press (2013), identifies safeguarding Jewish existence from persecution, physical extinction, assimilation, and disintegration as a central aim of Zionism and treats statehood as its prominent realization: https://doi.org/10.1017/CBO9781139236720.005
-- Michael Stanislawski, *Zionism: A Very Short Introduction*, Oxford University Press (2016), surveys Zionism's internal intellectual history and ideological divisions from modern Jewish nationalism through later transformations: https://doi.org/10.1093/actrade/9780199766048.001.0001
-- Derek J. Penslar, “Zionism from Its Inception to 1948,” *Oxford Bibliographies in Jewish Studies*, describes Zionism as Jewish nationalism whose adherents linked Jewish physical and cultural survival to return to the ancestral homeland, while also situating the movement amid Arab opposition, diaspora dissent, and multiple ideological developments: https://academic.oup.com/reference/62376/reference-article/554960671
+- David Hazony, “Zionism and security,” in _A History of Modern Israel_, Cambridge University Press (2013), identifies safeguarding Jewish existence from persecution, physical extinction, assimilation, and disintegration as a central aim of Zionism and treats statehood as its prominent realization: https://doi.org/10.1017/CBO9781139236720.005
+- Michael Stanislawski, _Zionism: A Very Short Introduction_, Oxford University Press (2016), surveys Zionism's internal intellectual history and ideological divisions from modern Jewish nationalism through later transformations: https://doi.org/10.1093/actrade/9780199766048.001.0001
+- Derek J. Penslar, “Zionism from Its Inception to 1948,” _Oxford Bibliographies in Jewish Studies_, describes Zionism as Jewish nationalism whose adherents linked Jewish physical and cultural survival to return to the ancestral homeland, while also situating the movement amid Arab opposition, diaspora dissent, and multiple ideological developments: https://academic.oup.com/reference/62376/reference-article/554960671
 - Stanford Encyclopedia of Philosophy, “Nationalism,” distinguishes cultural and statist nationalism and cautions that national self-determination does not by itself settle the question of independent statehood: https://plato.stanford.edu/entries/nationalism/
 
 ## Validation intent

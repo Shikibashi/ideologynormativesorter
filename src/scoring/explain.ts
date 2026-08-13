@@ -1,5 +1,5 @@
-import type { AnswerMap, AxisId, Contribution, Question } from '../types'
-import { normalizeAnswer, salienceFactor } from './normalize'
+import type { AnswerMap, AxisId, Contribution, Question } from "../types";
+import { normalizeAnswer, salienceFactor } from "./normalize";
 
 /**
  * Returns top contributing questions for an axis, sorted by |contribution| desc (capped at 5).
@@ -8,26 +8,32 @@ import { normalizeAnswer, salienceFactor } from './normalize'
 export function contributionsForAxis(
   axisId: AxisId,
   questions: Question[],
-  answers: AnswerMap
+  answers: AnswerMap,
 ): Contribution[] {
-  const contributions: Contribution[] = []
+  const contributions: Contribution[] = [];
 
   for (const question of questions) {
-    const answer = answers[question.id]
-    if (!answer) continue
+    const answer = answers[question.id];
+    if (!answer) continue;
 
-    let axisWeight = question.axisWeights.find((w) => w.axisId === axisId)
-    if (question.responseType === 'statementChoice' && typeof answer.value === 'number') {
-      axisWeight = question.statementOptions?.[answer.value]?.axisWeights.find((w) => w.axisId === axisId)
+    let axisWeight = question.axisWeights.find((w) => w.axisId === axisId);
+    if (
+      question.responseType === "statementChoice" &&
+      typeof answer.value === "number"
+    ) {
+      axisWeight = question.statementOptions?.[answer.value]?.axisWeights.find(
+        (w) => w.axisId === axisId,
+      );
     }
-    if (!axisWeight) continue
+    if (!axisWeight) continue;
 
-    const unit = normalizeAnswer(question, answer)
-    if (unit === null) continue
-    if (answer.salienceSkipped === true && question.layer !== 'normative') continue
+    const unit = normalizeAnswer(question, answer);
+    if (unit === null) continue;
+    if (answer.salienceSkipped === true && question.layer !== "normative")
+      continue;
 
-    const factor = salienceFactor(question, answer)
-    const contribution = unit * axisWeight.weight * factor
+    const factor = salienceFactor(question, answer);
+    const contribution = unit * axisWeight.weight * factor;
 
     contributions.push({
       questionId: question.id,
@@ -38,10 +44,12 @@ export function contributionsForAxis(
       axisWeight: axisWeight.weight,
       salienceFactor: factor,
       contribution,
-      toward: contribution >= 0 ? 'positive' : 'negative'
-    })
+      toward: contribution >= 0 ? "positive" : "negative",
+    });
   }
 
-  contributions.sort((a, b) => Math.abs(b.contribution) - Math.abs(a.contribution))
-  return contributions.slice(0, 5)
+  contributions.sort(
+    (a, b) => Math.abs(b.contribution) - Math.abs(a.contribution),
+  );
+  return contributions.slice(0, 5);
 }

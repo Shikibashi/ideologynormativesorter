@@ -14,11 +14,11 @@ Marxist-Leninist materials and changed through Kimist succession politics.
 
 Sources:
 
-- Thomas Stock, “The Making of Chuch’e Philosophy,” *North Korean Ideology: A
-  Cold War History*, Oxford University Press:
+- Thomas Stock, “The Making of Chuch’e Philosophy,” _North Korean Ideology: A
+  Cold War History_, Oxford University Press:
   [Oxford Academic](https://academic.oup.com/book/60614/chapter-abstract/524677518)
-- Hazel Smith, “‘Socialism in our own style’,” *North Korea: Politics,
-  Economy and Society*, Cambridge University Press:
+- Hazel Smith, “‘Socialism in our own style’,” _North Korea: Politics,
+  Economy and Society_, Cambridge University Press:
   [Cambridge Core](https://www.cambridge.org/core/books/abs/north-korea/socialism-in-our-own-style/3CC34A21BCDF3BEB1EDA6FB9449CA6F8)
 
 ## National Bolshevism

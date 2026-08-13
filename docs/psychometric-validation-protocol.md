@@ -277,7 +277,13 @@ Research mode produces a versioned record equivalent to:
   },
   "locale": "en-US",
   "qualityRuleVersion": "data-quality-v2",
-  "itemMap": [{ "questionId": "q0001", "prompt": "Exact presented prompt", "responseOptions": [] }]
+  "itemMap": [
+    {
+      "questionId": "q0001",
+      "prompt": "Exact presented prompt",
+      "responseOptions": []
+    }
+  ]
 }
 ```
 

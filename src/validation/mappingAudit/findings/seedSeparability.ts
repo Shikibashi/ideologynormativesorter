@@ -1,8 +1,8 @@
-import type { AuditFinding } from '../types'
+import type { AuditFinding } from "../types";
 import {
   buildNearDuplicateFindings,
   separabilityDiagnostics,
-} from '../separability/diagnostics'
+} from "../separability/diagnostics";
 
 /**
  * Append near-duplicate-centroid findings derived from separability diagnostics.
@@ -10,5 +10,5 @@ import {
  * match-pool pair is closer than the near-duplicate distance threshold.
  */
 export function seedSeparabilityFindings(): AuditFinding[] {
-  return buildNearDuplicateFindings(separabilityDiagnostics)
+  return buildNearDuplicateFindings(separabilityDiagnostics);
 }

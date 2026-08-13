@@ -68,18 +68,18 @@ about every adherent or movement using any of the names.
 
 ## Source basis
 
-- “Technocracy,” *Encyclopedia* (MDPI, 2025), on governance by technical or
+- “Technocracy,” _Encyclopedia_ (MDPI, 2025), on governance by technical or
   scientific expertise and its tension with democratic judgment and intrinsic
   values:
   https://www.mdpi.com/2673-8392/5/4/194
-- “Human Enhancement,” *Stanford Encyclopedia of Philosophy*, on enhancement
+- “Human Enhancement,” _Stanford Encyclopedia of Philosophy_, on enhancement
   enthusiasts and transhumanist arguments about transforming human nature,
   alongside bioconservative objections:
   https://plato.stanford.edu/entries/enhancement/
 - Humanity+, “Transhumanist Declaration,” on overcoming aging, cognitive
   shortcomings, involuntary suffering, and the risks of technological change:
   https://www.transfigurism.org/about/official-documents/transhumanist-declaration
-- David Ronfeldt, “Cyberocracy Is Coming,” *The Information Society* 8.4
+- David Ronfeldt, “Cyberocracy Is Coming,” _The Information Society_ 8.4
   (1992), on information and communications infrastructures altering
   bureaucracy and producing democratic, authoritarian, or hybrid outcomes:
   https://doi.org/10.1080/01972243.1992.9960123
@@ -89,11 +89,11 @@ about every adherent or movement using any of the names.
   doctrine:
   https://391.org/manifestos/2013-accelerate-alex-williams-nick-srnicek/
 - Jose van Dijck, “Datafication, dataism and dataveillance: Big Data between
-  scientific paradigm and ideology,” *Surveillance & Society* 12.2 (2014), on
+  scientific paradigm and ideology,” _Surveillance & Society_ 12.2 (2014), on
   dataism as an ideological belief in datafication and the limits of trust in
   quantified systems:
   https://doi.org/10.24908/ss.v12i2.4776
-- “A Trilemma for the Singularitarian,” *Philosophy & Technology* (2023), on
+- “A Trilemma for the Singularitarian,” _Philosophy & Technology_ (2023), on
   the singularity as a contested concept involving intelligence explosion,
   artificial general intelligence, superhumanity, and whole-brain emulation:
   https://doi.org/10.1007/s13347-023-00653-4
@@ -102,12 +102,12 @@ about every adherent or movement using any of the names.
   revitalization, and entrepreneurial transformation:
   https://whattheythink.com/articles/77223-going-green-alex-steffen-worldchanging-com-speaks-seattle/
 - Nick J. Fox, “Green capitalism, climate change and the technological fix: A
-  more-than-human assessment,” *Sociology* (2023), on green capitalism as a
+  more-than-human assessment,” _Sociology_ (2023), on green capitalism as a
   market-centered proposal and its incorporation of ecological conditions into
   capital accumulation:
   https://doi.org/10.1177/00380261221121232
 - Jeffrey A. Ewing, “Hollow Ecology: Ecological Modernization Theory and the
-  Death of Nature,” *Journal of World-Systems Research* 23.1 (2017), on green
+  Death of Nature,” _Journal of World-Systems Research_ 23.1 (2017), on green
   capitalist and ecological-modernization approaches and their critics:
   https://doi.org/10.5195/JWSR.2017.611
 
