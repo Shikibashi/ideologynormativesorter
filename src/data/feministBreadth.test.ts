@@ -96,6 +96,15 @@ describe('feminist breadth module', () => {
     }
   })
 
+  it('keeps the materialist strategy item focused on social reproduction', () => {
+    const item = feministModuleItems.find((entry) => entry.question.id === 'fm-fem-5')
+    expect(item?.question.prompt).toBe(
+      'Gender liberation requires changing the organization of paid and unpaid labor, not only strengthening anti-discrimination law.',
+    )
+    expect(item?.question.prompt).not.toMatch(/ownership|workplace power/i)
+    expect(item?.constructWeights).toEqual({ 'class-social-reproduction': 1 })
+  })
+
   it('keeps specialist candidate prototypes meaningfully separated', () => {
     let minimumDistance = Number.POSITIVE_INFINITY
     let closestPair = ''
@@ -129,7 +138,7 @@ describe('feminist breadth module', () => {
     expect(primaryIds.has('socialist-feminism')).toBe(false)
 
     expect(candidateById.get('radical-feminism')?.status).toBe('candidate-specialist')
-    expect(catalogIds.has('radical-feminism'), 'radical-feminism was promoted before validation').toBe(false)
+    expect(catalogIds.has('radical-feminism'), 'radical-feminism must remain browsable while provisional').toBe(true)
     expect(primaryIds.has('radical-feminism'), 'radical-feminism leaked into the primary pool').toBe(false)
   })
 

@@ -74,6 +74,8 @@ const RULES: Record<string, PolarityRule> = {
  * current sign is correct despite the heuristic flag.
  */
 const ALLOWLIST: Record<string, string[]> = {
+   // "rupture" describes the alternative rejected by this reform-preferring item.
+   q0436: ['reform-vs-revolution'],
    // "stricter rules on PUBLIC unions" is genuinely more state constraint; +regulation is correct.
    q0095: ['state-action-vs-exit'],
    // "impose losses on investors before taxpayers" = remove the bailout subsidy; -regulation is correct.

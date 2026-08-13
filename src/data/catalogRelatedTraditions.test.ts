@@ -37,11 +37,11 @@ describe('related ideology traditions', () => {
     expect(marketLibertarian).toMatchObject({
       id: 'market-right-libertarianism',
       family: 'liberal',
-      subfamily: 'market-right-libertarian',
+      subfamily: 'right-libertarian',
     })
     expect(marketLibertarian?.aliases).not.toContain('Libertarianism')
-    expect(marketLibertarian?.aliases).toContain('Right-Libertarianism')
-    expect(marketLibertarian?.description).toMatch(/market-oriented anti-statist neighborhood/i)
+    expect(marketLibertarian?.aliases).toContain('Market / Right-Libertarianism')
+    expect(marketLibertarian?.description).toMatch(/broad right-libertarian family/i)
 
     const focusedCandidateIds = catalogRelatedTraditions
       .filter((tradition) => tradition.status === 'focused-follow-up')

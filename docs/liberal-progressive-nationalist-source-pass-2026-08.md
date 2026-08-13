@@ -1,0 +1,10 @@
+# Liberal, progressive, and nationalist modifier source pass — August 2026
+
+This pass adds dedicated sources to four scored entries that had previously relied only on broad liberal or nationalist family baselines.
+
+- **Market-Governance Liberalism / neoliberalism** now cites [Oxford Bibliographies’ *Neoliberalism*](https://academic.oup.com/reference/62334/reference-article-abstract/554052942). The source records the term’s contested and plural uses, including ideology, policy project, and governance form; the catalog’s operational meaning remains deliberately narrower and is not presented as the only academic use.
+- **Progressivism** now cites Cambridge research on [*The Bases of Progressivism within the Major Parties*](https://www.cambridge.org/core/journals/social-science-history/article/abs/bases-of-progressivism-within-the-major-parties/9F4E5915519D82957598AB084E08BA94). This is historical evidence for a broad reform movement, especially in the U.S. Progressive Era, not a universal definition of all contemporary progressives.
+- **Expansionist Nationalism** now cites Cambridge’s [*Imperial Nationalism*](https://www.cambridge.org/core/books/abs/russias-war-on-ukraine/imperial-nationalism/5B79DD19FDC5055D522B461AD44C7B1D) as a contemporary boundary case involving territorial domination and denial of another state’s identity. It is not used to imply that every expansionist movement has the same ideology.
+- **Separatist Nationalism** now cites Cambridge research on [variation within sub-state national movements](https://www.cambridge.org/core/journals/european-political-science-review/article/abs/internal-variation-in-substate-national-movements-and-the-moral-polity-of-the-nationalist/BC64C2D6CC42FC83E65E7D4681BD687C), distinguishing independentist, autonomist, and federalist orientations.
+
+All four records are scoped to definition, descriptive interpretation, and boundary. They document terms and distinctions; they do not validate centroids, political outcomes, or respondent measurement.

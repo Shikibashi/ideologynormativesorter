@@ -1,6 +1,6 @@
 # Ideology label editorial review — 2026-08
 
-This is the full editorial disposition for the 118-label catalog in src/data/labels.ts. It reviews user-facing name, description, family/subfamily scope, usage/caution context, and fit with the three-layer instrument. It does not validate numeric centroids against respondents and does not authorize automatic label promotion from self-reported ideology names.
+This is the full editorial disposition for the current 131-label catalog in src/data/labels.ts. It reviews user-facing name, description, family/subfamily scope, usage/caution context, and fit with the three-layer instrument. It does not validate numeric centroids against respondents and does not authorize automatic label promotion from self-reported ideology names.
 
 ## Rubric
 
@@ -16,10 +16,10 @@ The review preserves existing label IDs and centroids. This continuation adds So
 
 ## Disposition summary
 
-- 118 labels reviewed.
-- 18 labels revised in this pass.
-- 99 labels retained after review.
-- 1 specialist label added from an existing construct-matched follow-up.
+- 131 labels reviewed.
+- 22 labels revised in this pass.
+- 95 labels retained after review.
+- 14 labels added through the taxonomy and specialist-module migration.
 - Existing precision follow-ups remain deferred for respondent evidence or dedicated modules, especially accelerationism, Zionism, Hindutva, Islamic democratic variants, cyberocracy, techno-anarchism, and revolutionary state-socialist subtypes.
 - “Retained” means the current wording passed this editorial screen; it is not a claim of empirical validity or a claim that the centroid is validated.
 
@@ -46,8 +46,8 @@ The review preserves existing label IDs and centroids. This continuation adds So
 | marxist-leninist | Marxist-Leninist | Retained | Reviewed; no copy change required in this pass. |
 | council-communist | Council Communist | Retained | Reviewed; no copy change required in this pass. |
 | syndicalist | Syndicalist | Retained | Reviewed; no copy change required in this pass. |
-| anarcho-communist | Anarcho-Communist | Retained | Reviewed; no copy change required in this pass. |
-| minarchist | Minarchist | Retained | Reviewed; no copy change required in this pass. |
+| anarcho-communist | Anarcho-Communist | Revised | Replaced absolute immediate-abolition wording with common ownership, voluntary association, and explicit variation over transition and coordination; added boundaries against neighboring anarchist currents. |
+| minarchist | Minarchist | Revised | Attributed the minimal-state claim to a libertarian doctrine, clarified scope variation, and distinguished it from classical liberalism and anarcho-capitalism. |
 | agorist | Agorist | Retained | Reviewed; no copy change required in this pass. |
 | neoconservative | Neoconservative | Retained | Reviewed; no copy change required in this pass. |
 | theocrat | Theocratic Politics | Retained | Reviewed; no copy change required in this pass. |
@@ -68,7 +68,7 @@ The review preserves existing label IDs and centroids. This continuation adds So
 | libertarian-socialism | Libertarian Socialism | Retained | Reviewed; no copy change required in this pass. |
 | deep-ecology | Deep Ecology | Retained | Reviewed; no copy change required in this pass. |
 | paleolibertarianism | Paleolibertarianism | Retained | Reviewed; no copy change required in this pass. |
-| objectivism | Objectivism | Retained | Reviewed; no copy change required in this pass. |
+| objectivism | Objectivism | Revised | Attributed the political claims to Ayn Rand’s wider philosophical system and added a boundary against generic libertarianism, egoism, and pro-market positions. |
 | transhumanism | Transhumanism | Revised | Clarified it as a broad family with disagreement over governance, risk, access, and markets. |
 | welfare-chauvinism | Welfare Chauvinism | Retained | Reviewed; no copy change required in this pass. |
 | right-wing-populism | Right-Wing Populism | Revised | Softened strongman/rupture language; keeps populism as a thin host tradition. |
@@ -81,7 +81,7 @@ The review preserves existing label IDs and centroids. This continuation adds So
 | maoism | Maoism | Retained | Reviewed; no copy change required in this pass. |
 | trotskyism | Trotskyism | Retained | Reviewed; no copy change required in this pass. |
 | panarchism | Panarchism | Retained | Reviewed; no copy change required in this pass. |
-| world-federalism | World Federalism | Revised | Removed an unnecessary claim that one world government is the only necessary solution. |
+| world-federalism | World Federalism | Revised | Clarified the federal global-authority claim, retained self-government at other levels, and distinguished it from generic global governance or a single centralized world state. |
 | indigenism | Indigenism | Revised | Removed the implication of one shared traditional governance model; added an Indigenous-diversity caveat. |
 | guild-socialism | Guild Socialism | Retained | Reviewed; no copy change required in this pass. |
 | multiculturalism | Multiculturalism | Retained | Reviewed; no copy change required in this pass. |
@@ -89,10 +89,10 @@ The review preserves existing label IDs and centroids. This continuation adds So
 | bioregionalism | Bioregionalism | Revised | Removed the claim that all bioregionalism rejects capitalism; clarified place-based scope. |
 | eco-authoritarianism | Eco-Authoritarianism | Retained | Reviewed; no copy change required in this pass. |
 | eco-fascism | Eco-Fascism | Retained | Reviewed; no copy change required in this pass. |
-| hindutva | Hindutva | Retained | Reviewed; no copy change required in this pass. |
+| hindutva | Hindutva | Revised | Expanded the definition and caution to distinguish the political term from Hinduism and to note variation from cultural/civilizational formulations to majoritarian or exclusionary projects. |
 | religious-nationalism | Religious Nationalism | Revised | Clarified it as a family spanning cultural identity politics to religious public authority. |
 | zionism | Political Zionism | Retained | Reviewed; no copy change required in this pass. |
-| national-bolshevism | National Bolshevism | Retained | Reviewed; no copy change required in this pass. |
+| national-bolshevism | National Bolshevism | Revised | Bounded the public wording to the post-Soviet Limonov–Dugin reference case and added a caution against treating interwar, National Communist, and other red-brown uses as one doctrine. |
 | strasserism | Strasserite Fascism | Retained | Reviewed; no copy change required in this pass. |
 | integralism | Integralism | Retained | Reviewed; no copy change required in this pass. |
 | democratic-confederalism | Democratic Confederalism | Retained | Reviewed; no copy change required in this pass. |
@@ -101,7 +101,7 @@ The review preserves existing label IDs and centroids. This continuation adds So
 | islamic-democracy | Islamic Democratic Constitutionalism | Retained | Reviewed; no copy change required in this pass. |
 | liquid-democracy | Liquid Democracy | Retained | Reviewed; no copy change required in this pass. |
 | accelerationism | Accelerationism | Retained | Reviewed; no copy change required in this pass. |
-| juche | Juche | Retained | Reviewed; no copy change required in this pass. |
+| juche | Juche | Revised | Replaced the potentially autarkic “economic self-sufficiency” wording with state-directed self-reliance, added the changing Marxist-Leninist/Kimist inheritance, and added Cambridge source coverage. |
 | techno-anarchism | Techno-Anarchist / Crypto-Anarchist | Retained | Reviewed; no copy change required in this pass. |
 | progressivism | Progressivism | Revised | Broadened the description beyond expert-led technocracy and added historical/usage scope. |
 | liberal-feminism | Liberal Feminism | Retained | Reviewed; no copy change required in this pass. |
@@ -115,7 +115,7 @@ The review preserves existing label IDs and centroids. This continuation adds So
 | libertarian-municipalism | Libertarian Municipalism | Retained | Reviewed; no copy change required in this pass. |
 | corporatism | Corporatism | Retained | Reviewed; no copy change required in this pass. |
 | kemalism | Kemalism | Retained | Reviewed; no copy change required in this pass. |
-| anarcha-feminism | Anarcha-Feminism | Retained | Reviewed; no copy change required in this pass. |
+| anarcha-feminism | Anarcha-Feminism | Revised | Softened the universal abolition claim and clarified variation over which hierarchies and institutions are targeted. |
 | anarcho-syndicalism | Anarcho-Syndicalism | Retained | Reviewed; no copy change required in this pass. |
 | platformism | Platformism | Retained | Reviewed; no copy change required in this pass. |
 | fiscal-conservatism | Fiscal Conservatism | Retained | Reviewed; no copy change required in this pass. |
@@ -148,11 +148,30 @@ The review preserves existing label IDs and centroids. This continuation adds So
 | conservative | Conservative / Prudential Conservative | Added | Added as the broad conservative family anchor; distinguished from social conservatism, national conservatism, Christian democracy, and small-government claims. |
 | green-politics | Green Politics / Political Ecology | Added | Added as a multidimensional ecological family anchor rather than treating one green subtype as the family default. |
 | social-anarchism | Social / Communal Anarchism | Added | Added as a broad anti-authoritarian neighborhood distinct from anarcho-communism, syndicalism, mutualism, and market variants. |
-| market-right-libertarianism | Market / Right-Libertarianism | Added | Added as a broad market and anti-statist neighborhood distinct from anarcho-capitalism and minarchism. |
+| market-right-libertarianism | Right-Libertarianism | Corrected | Public name no longer fuses right-libertarianism with market anarchism; the old display name remains a searchable alias, while market-anarchist specialists are grouped under anarchism. |
 | marxian-socialism | Non-Leninist Marxian Socialism | Added | Added as a broad Marxian family anchor separate from Marxism-Leninism and specialist revolutionary variants. |
 | technocratic-orientation | Technocratic Orientation | Added | Added as a cross-cutting expertise and administration modifier distinct from technocratic centralism. |
 | black-nationalism | Black Nationalism | Added | Added as a provisional identity-sovereignty specialist with community-nationalist and separatist variants. |
 | pan-africanism | Pan-Africanism | Added | Added as a provisional transnational solidarity specialist distinct from generic ethnonationalism and Black separatism. |
+| market-anarchism | Market Anarchism | Added | Added as an anarchist-family specialist anchor for voluntary exchange and non-state coordination; it is not a liberal primary or a synonym for mutualism or anarcho-capitalism. |
+| third-way | Third Way Social Democracy | Added | Added as a historically bounded, provisional social-democratic specialist covering the market-compatible modernization associated with New Labour and related center-left reforms. |
+| baathism | Baʿthism / Arab Socialism | Added | Added as a provisional Arab-nationalist and socialist specialist while distinguishing founding doctrine from later Syrian and Iraqi authoritarian party-state practice. |
+| developmental-authoritarianism | Developmental Authoritarianism | Added | Added as a provisional state-led developmental specialist; it is distinct from developmentalism in general and does not imply that authoritarianism guarantees development. |
+| confucian-political-revival | Confucian Political Revival / Asian Values | Added | Added as a context-only comparative entry because contemporary Confucian and Asian-values arguments range from democratic reinterpretation to authoritarian legitimation. |
+| asian-values | Asian Values Discourse | Added | Added as a context-only discourse and separated from Political Confucianism so regional claims are not treated as a uniform ideology. |
+| developmentalism | Developmentalism / Developmental-State Political Economy | Added | Added as a provisional specialist for state capacity, industrial upgrading, infrastructure, and strategic coordination without equating developmentalism with authoritarianism. |
+| pan-arabism | Pan-Arabism / Arab Nationalism | Added | Added as a regional nationalist specialist for Arab unity and solidarity, distinct from Arab Socialism, Baʿthism, Political Islam, and generic nationalism. |
+| arab-socialism | Arab Socialism | Added | Added as a regional socialist specialist and kept distinct from the related Baʿthist context and from Marxism-Leninism. |
+| radical-feminism | Radical Feminism | Added | Added as a provisional feminist specialist centered on patriarchy, sexuality, reproduction, and structural gender power. |
+| black-feminism | Black Feminism | Added | Added as a provisional specialist centered on interlocking racial, gendered, class, and sexual domination and Black women’s autonomy. |
+| queer-politics | Queer Politics | Added | Added as a broad provisional specialist for sexual and gender self-determination without making anarchism or one theory of gender definitional. |
+| nationalism | Nationalism / National Orientation | Added | Added as a base modifier because nationalism supplies a political-community orientation while leaving membership, economy, and institutional form open. |
+| populism | Populism / People-versus-Elite Orientation | Added | Added as a base modifier because people-versus-elite framing normally attaches to a more complete host ideology. |
+| civil-libertarianism | Civil Libertarianism | Added | Added as an independent modifier for speech, privacy, association, conscience, due process, protest, and bodily autonomy. |
+| cosmopolitanism | Cosmopolitanism | Added | Added as an independent modifier for equal moral concern beyond national boundaries and transnational obligation. |
+| decentralist-orientation | Decentralist Orientation | Added | Added as an independent authority-distribution modifier rather than bundling decentralization with one economic family. |
+| feminist-orientation | Feminist Orientation | Added | Added as a cross-cutting modifier that routes respondents toward construct-matched feminist specialists without treating one school as generic feminism. |
+| economic-nationalism | Economic Nationalism | Added | Added as a cross-cutting modifier for productive capacity, strategic autonomy, domestic industry, and control of strategic assets. |
 
 ## Three-layer editorial rule
 

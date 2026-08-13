@@ -1,9 +1,18 @@
 import type { Question } from '../types'
+import { CONFIDENCE_COVERAGE_VERSION, confidenceCoverageQuestions } from './confidenceCoverage'
+import {
+   CONFIDENCE_COVERAGE_SECOND_PASS_VERSION,
+   confidenceCoverageSecondPassQuestions,
+} from './confidenceCoverageSecondPass'
+import {
+   CONFIDENCE_COVERAGE_THIRD_PASS_VERSION,
+   confidenceCoverageThirdPassQuestions,
+} from './confidenceCoverageThirdPass'
 import { statementQuestions } from './statementQuestions'
 
 const CONFIDENCE_PROMPT = 'How confident are you in this empirical claim?'
 const PRIORITY_PROMPT = 'How high a priority is this relative to other reforms?'
-export const QUESTION_BANK_VERSION = '2026-06-v4'
+export const QUESTION_BANK_VERSION = `2026-06-v4+${CONFIDENCE_COVERAGE_VERSION}+${CONFIDENCE_COVERAGE_SECOND_PASS_VERSION}+${CONFIDENCE_COVERAGE_THIRD_PASS_VERSION}`
 export const SCORING_VERSION = '2026-06-25'
 
 export function getBankFingerprint(): string {
@@ -6428,7 +6437,13 @@ const baseQuestions: Question[] = [
    },
 ]
 
-export const coreQuestions: Question[] = [...baseQuestions, ...statementQuestions]
+export const coreQuestions: Question[] = [
+   ...baseQuestions,
+   ...confidenceCoverageQuestions,
+   ...confidenceCoverageSecondPassQuestions,
+   ...confidenceCoverageThirdPassQuestions,
+   ...statementQuestions,
+]
 
 export const questions: Question[] = coreQuestions
 

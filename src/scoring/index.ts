@@ -6,17 +6,19 @@ import { detectDivergencesAndContradictions } from './divergence'
 import { computeDomainMiniResults } from './domainResults'
 import { contributionsForAxis } from './explain'
 import { computeIdealNonIdealGaps } from './gap'
-import { computeConflatedLabels, computeLabelMatches, computeModifierMatches } from './labelMatch'
+import { computeConflatedLabels, computeLabelMatches } from './labelMatch'
+import { computeDirectModifierMatches } from './modifierConstructMatch'
 import { computeReasonBreakdowns } from './reasonDecomposition'
 import { reliabilityForAxis, reliabilityForLabel } from './reliability'
 
-/** Bumped because the semantic audit changes effective question-to-axis mappings. */
-export const RESULT_SCORING_VERSION = '2026-08-12-taxonomy-v1'
+/** Bumped when ordinary output eligibility changes or research cohorts must remain distinct. */
+export const RESULT_SCORING_VERSION = '2026-08-13-taxonomy-v7'
 
 export { normalizeAnswer, salienceFactor } from './normalize'
 export { computeAxisScores, computeScoreBreakdown, axisScoreMap } from './aggregate'
 export { computeIdealNonIdealGaps } from './gap'
 export { computeConflatedLabels, computeLabelMatches, computeModifierMatches } from './labelMatch'
+export { computeDirectModifierMatches } from './modifierConstructMatch'
 export { reliabilityForAxis, reliabilityForLabel } from './reliability'
 export { contributionsForAxis } from './explain'
 export { detectDivergencesAndContradictions } from './divergence'
@@ -32,8 +34,8 @@ export function buildResultProfile(
 ): ResultProfile {
    const scores = computeScoreBreakdown(questions, answers, axes)
    const gaps = computeIdealNonIdealGaps(questions, answers)
-   const nearestLabels = computeLabelMatches(scores, labels)
-   const modifierMatches = computeModifierMatches(scores, modifierLabels)
+   const nearestLabels = computeLabelMatches(scores, labels, axes)
+   const modifierMatches = computeDirectModifierMatches(questions, answers, modifierLabels)
    const conflatedLabels = computeConflatedLabels(scores, labels, axes)
 
    const axisScoresMap = new Map([...scores.normative, ...scores.descriptive, ...scores.prescriptive].map(s => [s.axisId, s]))
@@ -44,7 +46,7 @@ export function buildResultProfile(
    }
 
    const labelReliabilities: Record<string, LabelReliability> = {}
-   for (const l of [...labels, ...modifierLabels]) {
+   for (const l of labels) {
       const centroidAxes = Object.keys(l.centroid || {})
       labelReliabilities[l.id] = reliabilityForLabel(l.id, axisScoresMap, centroidAxes)
    }

@@ -3,31 +3,32 @@ import { axes } from './axes'
 import { questions } from './effectiveQuestions'
 import {
   CONTEXT_LABEL_IDS,
+  LEGACY_LABEL_DISPOSITIONS,
   LABEL_IDS_BY_ROLE,
   MODIFIER_LABEL_IDS,
   PRIMARY_LABEL_IDS,
   PROVISIONAL_SPECIALIST_LABEL_IDS,
   RETIRED_LABEL_IDS,
   SPECIALIST_LABEL_IDS,
+  modifierScoringLabels,
   primaryScoringLabels,
   publicCatalogLabels,
   researchIdentityLabels,
   roleForLabel,
   specialistModuleByLabel,
+  taxonomyForLabel,
+  normalizeHistoricalLabelIds,
 } from './labelTaxonomy'
 import { labels } from './labels'
 import { specialistModuleDefinitions } from '../specialist'
+import { compoundGateByLabelId } from './compoundGates'
+import { modifierMeasurementForLabel } from './modifierMeasurement'
 
 const MAJOR_PRIMARY_FAMILIES = [
-  'anarchist',
-  'authoritarian',
-  'communitarian',
   'conservative',
   'democratic',
-  'distributist',
   'green',
   'liberal',
-  'nationalist',
   'republican',
   'social-democratic',
   'socialist',
@@ -47,7 +48,6 @@ const NON_IDEOLOGY_ENDPOINTS = [
 
 const THIN_OR_CROSS_CUTTING_ENDPOINTS = [
   'anti-imperialism',
-  'eco-authoritarianism',
   'fiscal-conservatism',
   'internationalism',
   'left-wing-nationalism',
@@ -56,20 +56,30 @@ const THIN_OR_CROSS_CUTTING_ENDPOINTS = [
   'regionalism',
   'right-wing-populism',
   'separatist-nationalism',
+]
+
+const DEFINING_CONSTRUCT_SPECIALIST_ENDPOINTS = [
+  'eco-authoritarianism',
+  'fascist-authoritarian',
+  'religious-nationalism',
   'theocrat',
   'welfare-chauvinism',
-]
+] as const
 
 const LIBERAL_LIBERTARIAN_LABEL_IDS = [
   'decentralist-market-skeptic-of-state',
   'geolibertarian',
-  'anarcho-capitalist',
   'minarchist',
-  'agorist',
   'paleolibertarianism',
   'objectivism',
-  'voluntaryism',
   'georgism',
+] as const
+
+const ANARCHIST_MARKET_LABEL_IDS = [
+  'anarcho-capitalist',
+  'agorist',
+  'left-wing-market-anarchism',
+  'voluntaryism',
 ] as const
 
 function centroidDistance(a: Record<string, number>, b: Record<string, number>): number {
@@ -93,9 +103,16 @@ describe('ideology taxonomy', () => {
   })
 
   it('keeps the default scoring pool broad but bounded', () => {
-    expect(primaryScoringLabels.length).toBeGreaterThanOrEqual(20)
-    expect(primaryScoringLabels.length).toBeLessThanOrEqual(45)
+    expect(primaryScoringLabels.length).toBe(16)
     expect(primaryScoringLabels).toHaveLength(PRIMARY_LABEL_IDS.length)
+  })
+
+  it('keeps final religious legal authority off the ordinary modifier path', () => {
+    expect(roleForLabel('theocrat')).toBe('specialist')
+    expect(MODIFIER_LABEL_IDS).not.toContain('theocrat')
+    expect(compoundGateByLabelId.get('theocrat')).toBeUndefined()
+    expect(publicCatalogLabels.find((label) => label.id === 'theocrat')?.taxonomy.measurementStatus)
+      .toBe('provisional-specialist')
   })
 
   it('covers the major political families in the primary pool', () => {
@@ -105,16 +122,54 @@ describe('ideology taxonomy', () => {
     }
   })
 
-  it('places market and right-libertarian traditions in the liberal lineage without absorbing socialist or anarchist uses', () => {
+  it('separates right-libertarian lineage from market-anarchist catalog entries', () => {
     const labelById = new Map(labels.map((label) => [label.id, label]))
 
     for (const labelId of LIBERAL_LIBERTARIAN_LABEL_IDS) {
       expect(labelById.get(labelId)?.family, `${labelId} should be grouped under liberal`).toBe('liberal')
     }
 
+    for (const labelId of ANARCHIST_MARKET_LABEL_IDS) {
+      expect(labelById.get(labelId)?.family, `${labelId} should be grouped under anarchist`).toBe('anarchist')
+    }
+
     expect(labelById.get('libertarian-socialism')?.family).toBe('socialist')
     expect(labelById.get('left-wing-market-anarchism')?.family).toBe('anarchist')
+    expect(labelById.get('mutualist')?.subfamily).toBe('mutualist-anarchist')
+    expect(taxonomyForLabel('mutualist')?.parentId).toBeUndefined()
+    expect(taxonomyForLabel('anarcho-capitalist')?.parentId).toBeUndefined()
+    expect(publicCatalogLabels.find((label) => label.id === 'market-right-libertarianism')?.name).toBe('Right-Libertarianism')
     expect(labelById.get('libertarian-municipalism')?.family).not.toBe('liberal')
+  })
+
+  it('uses typed relations instead of false parentage for contested anarchist and Marxian boundaries', () => {
+    const anarchoCapitalistRelations = taxonomyForLabel('anarcho-capitalist')?.relations ?? []
+    expect(anarchoCapitalistRelations).toEqual(expect.arrayContaining([
+      expect.objectContaining({ type: 'overlaps_with', labelId: 'market-anarchism' }),
+      expect.objectContaining({ type: 'overlaps_with', labelId: 'market-right-libertarianism' }),
+    ]))
+    expect(taxonomyForLabel('marxist-leninist')?.parentId).toBeUndefined()
+    expect(taxonomyForLabel('marxian-socialism')?.relations).toEqual(expect.arrayContaining([
+      expect.objectContaining({ type: 'contrasts_with', labelId: 'marxist-leninist' }),
+    ]))
+    expect(taxonomyForLabel('mutualist')?.relations).toEqual(expect.arrayContaining([
+      expect.objectContaining({ type: 'overlaps_with', labelId: 'individualist-anarchism' }),
+      expect.objectContaining({ type: 'overlaps_with', labelId: 'market-anarchism' }),
+    ]))
+    expect(taxonomyForLabel('individualist-anarchism')?.relations).toEqual(expect.arrayContaining([
+      expect.objectContaining({ type: 'influenced_by', labelId: 'mutualist' }),
+    ]))
+    expect(taxonomyForLabel('individualist-anarchism')?.relations.find((relation) => relation.labelId === 'mutualist')?.note)
+      .toMatch(/later revivalist work is not treated as a historical parent/i)
+  })
+
+  it('keeps technocratic centralism a narrow compound rather than a child of generic expertise', () => {
+    const technocraticCentralism = taxonomyForLabel('technocratic-centralist')
+    expect(technocraticCentralism?.parentId).toBeUndefined()
+    expect(technocraticCentralism?.relations).toEqual(expect.arrayContaining([
+      expect.objectContaining({ type: 'requires', labelId: 'technocratic-orientation' }),
+    ]))
+    expect(publicCatalogLabels.find((label) => label.id === 'technocratic-centralist')?.name).toBe('Technocratic Centralism')
   })
 
   it('keeps adjacent anarchist and anti-state labels from inheriting narrower doctrines as required subtypes', () => {
@@ -205,6 +260,34 @@ describe('ideology taxonomy', () => {
     }
   })
 
+  it('only exposes modifiers with declared direct core constructs to ordinary scoring', () => {
+    const ordinaryModifierIds = new Set(modifierScoringLabels.map((label) => label.id))
+
+    for (const labelId of MODIFIER_LABEL_IDS) {
+      const measurement = modifierMeasurementForLabel(labelId)
+      expect(measurement, `${labelId} needs a measurement disposition`).toBeDefined()
+      expect(ordinaryModifierIds.has(labelId), labelId).toBe(measurement?.availability === 'core-construct')
+    }
+  })
+
+  it('keeps labels whose defining construct is absent from the core instrument out of ordinary results', () => {
+    for (const labelId of DEFINING_CONSTRUCT_SPECIALIST_ENDPOINTS) {
+      expect(SPECIALIST_LABEL_IDS).toContain(labelId)
+      expect(roleForLabel(labelId)).toBe('specialist')
+      expect(primaryScoringLabels.some((label) => label.id === labelId)).toBe(false)
+      expect(MODIFIER_LABEL_IDS).not.toContain(labelId)
+    }
+
+    expect(PROVISIONAL_SPECIALIST_LABEL_IDS).toEqual(expect.arrayContaining([
+      'eco-authoritarianism',
+      'fascist-authoritarian',
+      'welfare-chauvinism',
+    ]))
+    expect(specialistModuleByLabel['religious-nationalism']).toBe('religious-national-politics-module')
+    expect(specialistModuleByLabel.theocrat).toBe('religious-national-politics-module')
+    expect(PROVISIONAL_SPECIALIST_LABEL_IDS).not.toContain('theocrat')
+  })
+
   it('keeps retired synthetic labels out of both scoring and the public label browser', () => {
     for (const labelId of RETIRED_LABEL_IDS) {
       expect(primaryScoringLabels.some((label) => label.id === labelId)).toBe(false)
@@ -263,6 +346,51 @@ describe('ideology taxonomy', () => {
     expect(specialistModuleByLabel['liberal-feminism']).toBe('feminist-faction-module')
     expect(roleForLabel('constitutional-monarchism')).toBe('context')
     expect(roleForLabel('civil-libertarian-cosmopolitan')).toBe('retired')
+    expect(roleForLabel('ethnonationalist')).toBe('modifier')
+    expect(roleForLabel('market-anarchism')).toBe('specialist')
+    expect(publicCatalogLabels.find((label) => label.id === 'market-anarchism')?.family).toBe('anarchist')
+    expect(taxonomyForLabel('market-anarchism')?.parentId).toBeUndefined()
+    expect(taxonomyForLabel('georgism')?.parentId).toBeUndefined()
+    expect(taxonomyForLabel('market-socialist')?.parentId).toBeUndefined()
+    expect(taxonomyForLabel('black-nationalism')?.parentId).toBeUndefined()
+    expect(taxonomyForLabel('pan-africanism')?.parentId).toBeUndefined()
+    expect(taxonomyForLabel('anarcho-primitivism')?.parentId).toBeUndefined()
+  })
+
+  it('keeps historical aliases and compound profiles analytically compositional', () => {
+    expect(normalizeHistoricalLabelIds([
+      'conservative-liberalism',
+      'bright-green-environmentalism',
+      'civil-libertarian-cosmopolitan',
+      'decentralist-market-skeptic-of-state',
+      'national-traditionalist',
+    ])).toEqual([
+      'liberal-conservatism',
+      'ecomodernist',
+      'civil-libertarianism',
+      'cosmopolitanism',
+      'market-liberal',
+      'decentralist-orientation',
+      'national-conservatism',
+      'social-conservatism',
+    ])
+    expect(LEGACY_LABEL_DISPOSITIONS['cultural-populism']).toMatchObject({ disposition: 'keep-retired' })
+    expect(LEGACY_LABEL_DISPOSITIONS['egalitarian-statist']).toMatchObject({ disposition: 'keep-retired' })
+    expect(LEGACY_LABEL_DISPOSITIONS['revolutionary-collectivist']).toMatchObject({ disposition: 'keep-retired' })
+    expect(taxonomyForLabel('decentralist-market-skeptic-of-state')).toMatchObject({
+      legacyDisposition: 'split',
+      legacyComponents: ['market-liberal', 'decentralist-orientation'],
+    })
+    expect(taxonomyForLabel('bright-green-environmentalism')?.relations).toEqual([
+      expect.objectContaining({ type: 'alias_of', labelId: 'ecomodernist' }),
+    ])
+    expect(taxonomyForLabel('social-anarchism')?.relations).toEqual(expect.arrayContaining([
+      expect.objectContaining({ type: 'subtype_of', labelId: 'libertarian-socialism' }),
+    ]))
+    expect(taxonomyForLabel('developmental-authoritarianism')?.relations).toEqual(expect.arrayContaining([
+      expect.objectContaining({ type: 'hybrid_of', labelId: 'developmentalism' }),
+      expect.objectContaining({ type: 'requires', labelId: 'technocratic-orientation' }),
+    ]))
   })
 
   it('does not route world federalism through nationalist discriminators', () => {

@@ -14,7 +14,7 @@ import { SiteShell, type ShellContext } from './components/SiteShell'
 import { axes } from './data/axes'
 import { domains } from './data/domains'
 import { QUESTION_BANK_VERSION, questionById, questions, questionsForTier } from './data/effectiveQuestions'
-import { modifierScoringLabels, primaryScoringLabels, publicCatalogLabels, researchIdentityLabels } from './data/labelTaxonomy'
+import { modifierScoringLabels, primaryScoringLabels, publicCatalogLabels, researchIdentityLabels, TAXONOMY_VERSION } from './data/labelTaxonomy'
 import {
    buildResearchSubmission,
    buildSpecialistDispositionSubmission,
@@ -739,6 +739,7 @@ function App() {
          { label: 'MODE', value: composition === 'workbench' ? 'WORKBENCH' : 'ASSESSMENT' },
          { label: 'STORAGE', value: 'BROWSER LOCAL' },
          { label: 'INSTRUMENT', value: 'CURRENT' },
+         { label: 'TAXONOMY', value: TAXONOMY_VERSION },
          { label: 'OUTPUT', value: 'THREE-LAYER PROFILE' },
       ]
       let statusItems: ShellContext['statusItems'] = [

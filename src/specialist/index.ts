@@ -7,6 +7,7 @@ import {
   type ExperimentalSpecialistModuleSpec,
 } from '../data/experimentalSpecialists'
 import {
+  evaluateSpecialistConstructGates,
   profileDistanceConstructIds,
   profileEvidence,
   summarizeSpecialistEvidence,
@@ -59,6 +60,8 @@ export interface SpecialistMatch {
   evidenceCoverage?: number
   coveredConstructCount?: number
   requiredConstructCount?: number
+  gateStatus?: 'passed' | 'blocked' | 'insufficient-evidence'
+  gateFailures?: readonly string[]
 }
 
 export interface SpecialistOutcome {
@@ -82,13 +85,33 @@ export interface SpecialistModuleDefinition {
   score: (answers: AnswerMap) => SpecialistOutcome
 }
 
+export type SpecialistAssignmentStrategy = 'balanced-hash-v1' | 'balanced-hash-v2'
+export const SPECIALIST_ASSIGNMENT_STRATEGY = 'balanced-hash-v2' as const
+/**
+ * Frozen ordered module roster for the existing balanced-hash-v2 cohort.
+ *
+ * Do not add, remove, or reorder an ID here for an existing study cohort:
+ * change the study cohort or assignment strategy first. Keeping the v2 hash
+ * seed unchanged preserves existing test/retest allocation.
+ */
+export const SPECIALIST_ASSIGNMENT_ROSTER_VERSION = '2026-08-specialist-roster-v1' as const
+export const SPECIALIST_ASSIGNMENT_MODULE_IDS = [
+  'feminist-faction-module',
+  'identity-sovereignty-module',
+  'anarchist-families-module',
+  'green-morphology-module',
+  'socialist-families-module',
+  'conservative-variants-module',
+  'religious-national-politics-module',
+  'technology-governance-module',
+  'monarchist-municipal-module',
+] as const satisfies readonly SpecialistModuleId[]
+
 export interface SpecialistModuleAssignment {
   moduleId: SpecialistModuleId
   strategy: SpecialistAssignmentStrategy
+  rosterVersion: string
 }
-
-export type SpecialistAssignmentStrategy = 'balanced-hash-v1' | 'balanced-hash-v2'
-export const SPECIALIST_ASSIGNMENT_STRATEGY = 'balanced-hash-v2' as const
 
 function numericAnswers(answers: AnswerMap): Record<string, number | undefined> {
   return Object.fromEntries(
@@ -136,7 +159,7 @@ const identityCriterionOptions: SpecialistCriterionOption[] = identitySovereignt
 const specialistModules: SpecialistModuleDefinition[] = [
   {
     id: FEMINIST_MODULE_ID,
-    version: '2026-08-v4',
+    version: '2026-08-v5',
     title: 'Feminist political traditions',
     shortTitle: 'Feminist traditions',
     description:
@@ -236,12 +259,21 @@ function scoreExperimentalModule(spec: ExperimentalSpecialistModuleSpec, answers
       ? Number.POSITIVE_INFINITY
       : Math.sqrt(covered.reduce((sum, constructId) => sum + (constructScores[constructId] - candidate.signals[constructId]) ** 2, 0) / covered.length)
     const evidence = profileEvidence(summary, candidate.signals)
+    const gateEvaluation = evaluateSpecialistConstructGates(summary, constructScores, candidate.gates)
+    const insufficientEvidence = evidence.insufficientEvidence || gateEvaluation.status === 'insufficient-evidence'
+    const blocked = gateEvaluation.status === 'blocked'
     return {
       id: candidate.id,
       name: candidate.name,
-      status: evidence.insufficientEvidence ? 'insufficient evidence' : 'experimental',
-      fit: covered.length > 0 ? Math.max(0, 1 - distance / 2) : 0,
+      status: insufficientEvidence
+        ? 'insufficient evidence'
+        : blocked
+          ? 'blocked by constitutive gate'
+          : 'experimental',
+      fit: !blocked && covered.length > 0 ? Math.max(0, 1 - distance / 2) : 0,
       evidence,
+      gateStatus: gateEvaluation.status,
+      gateFailures: gateEvaluation.failedConstructIds,
       distance,
       description: candidate.description,
     }
@@ -255,6 +287,8 @@ function scoreExperimentalModule(spec: ExperimentalSpecialistModuleSpec, answers
       name: match.name,
       status: match.status,
       fit: match.fit,
+      gateStatus: match.gateStatus,
+      gateFailures: match.gateFailures,
       ...match.evidence,
     })),
     evidence: summary,
@@ -287,6 +321,21 @@ for (const spec of experimentalSpecialistModuleSpecs) {
 export const specialistModuleDefinitions: readonly SpecialistModuleDefinition[] = specialistModules
 export const specialistModuleById = new Map(specialistModules.map((module) => [module.id, module]))
 
+function assertFrozenAssignmentRoster(): void {
+  const registeredIds = specialistModuleDefinitions.map((module) => module.id)
+  const rosterIds = [...SPECIALIST_ASSIGNMENT_MODULE_IDS]
+  const unchanged = registeredIds.length === rosterIds.length
+    && registeredIds.every((moduleId, index) => moduleId === rosterIds[index])
+    && new Set(rosterIds).size === rosterIds.length
+  if (!unchanged) {
+    throw new Error(
+      'Specialist assignment roster no longer matches the registered module order. Create a new assignment strategy or study cohort before changing the roster.',
+    )
+  }
+}
+
+assertFrozenAssignmentRoster()
+
 function hash32(value: string): number {
   let hash = 2166136261
   for (let index = 0; index < value.length; index += 1) {
@@ -297,8 +346,16 @@ function hash32(value: string): number {
 }
 
 export function assignSpecialistModule(participantId: string, studyId: string): SpecialistModuleAssignment {
-  const index = hash32(`${studyId}:${participantId}:specialist-assignment`) % specialistModules.length
-  return { moduleId: specialistModules[index].id, strategy: SPECIALIST_ASSIGNMENT_STRATEGY }
+  // Preserve the established balanced-hash-v2 seed so a frozen roster gives
+  // the same module to the same participant at test and retest.
+  const index = hash32(`${studyId}:${participantId}:specialist-assignment`) % SPECIALIST_ASSIGNMENT_MODULE_IDS.length
+  const moduleId = SPECIALIST_ASSIGNMENT_MODULE_IDS[index]
+  if (!moduleId) throw new Error('Specialist assignment roster is empty.')
+  return {
+    moduleId,
+    strategy: SPECIALIST_ASSIGNMENT_STRATEGY,
+    rosterVersion: SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
+  }
 }
 
 export function buildSpecialistQuestionForm(

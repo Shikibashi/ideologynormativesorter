@@ -37,7 +37,7 @@ export const descriptiveEvidenceSecondPassById: Readonly<Record<string, Descript
   },
   q0210: {
     evidenceNote: 'Scope to municipalities hosting large, rapid Syrian refugee inflows in Jordan, Lebanon, and the Kurdistan Region of Iraq: assess population change, existing service capacity, financing, staffing, infrastructure, backlogs, and host-community access.',
-    sources: [source('Coping with the Influx: Service Delivery to Syrian Refugees and Hosts in Jordan, Lebanon, and Kurdistan, Iraq', 'https://documents1.worldbank.org/curated/en/585111595352295241/pdf/Coping-with-the-Influx-Service-Delivery-to-Syrian-Refugees-and-Hosts-in-Jordan-Lebanon-and-Kurdistan-Iraq.pdf', 'World Bank')],
+    sources: [source('Coping with the Influx: Service Delivery to Syrian Refugees and Hosts in Jordan, Lebanon, and Kurdistan, Iraq', 'https://documents.worldbank.org/en/publication/documents-reports/documentdetail/585111595352295241/coping-with-the-influx-service-delivery-to-syrian-refugees-and-hosts-in-jordan-lebanon-and-kurdistan-iraq', 'World Bank')],
   },
   q0227: {
     evidenceNote: 'Scope to paired-city studies of Hindu-Muslim violence in India: distinguish interethnic civic associations from associations organized mainly within one community and compare their relationship with episodes of communal violence; the cases do not establish a universal city-level law.',

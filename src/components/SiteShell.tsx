@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import type { ReactNode } from 'react'
+import type { MouseEvent, ReactNode } from 'react'
 import {
   APPEARANCE_STORAGE_KEY,
   CONTRAST_STORAGE_KEY,
@@ -45,6 +45,21 @@ function systemPrefersMoreContrast(): boolean {
   return typeof window !== 'undefined'
     && typeof window.matchMedia === 'function'
     && window.matchMedia('(prefers-contrast: more)').matches
+}
+
+function handleResultsMethodologyNavigation(event: MouseEvent<HTMLDivElement>, stage: string): void {
+  if (stage !== 'results') return
+
+  const target = event.target
+  if (!(target instanceof Element)) return
+
+  const link = target.closest<HTMLAnchorElement>('a[href*="view=methodology"]')
+  if (!link) return
+
+  event.preventDefault()
+  const url = new URL(link.href, window.location.href)
+  window.history.pushState({}, '', `${url.pathname}${url.search}${url.hash}`)
+  window.dispatchEvent(new PopStateEvent('popstate'))
 }
 
 export function SiteShell({ children, context }: SiteShellProps) {
@@ -161,6 +176,7 @@ export function SiteShell({ children, context }: SiteShellProps) {
       data-theme={theme}
       data-stage={context.stage}
       data-composition={context.composition}
+      onClick={(event) => handleResultsMethodologyNavigation(event, context.stage)}
     >
       <header className="site-masthead">
         <div className="site-brand">

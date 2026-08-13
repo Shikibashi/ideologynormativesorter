@@ -2,7 +2,7 @@
 
 Date: 2026-08-11
 
-Bank overlay: `2026-08-editorial-v7`
+Bank overlay: `2026-08-editorial-v7.1`
 
 Evidence overlay: `2026-08-descriptive-evidence-v2`
 
@@ -24,7 +24,7 @@ The v8 release review later quarantined `q0049`, `q0168`, and `q0210`; the table
 | `q0168` | Replaced an unspecified censorship-slippage claim with documented use of broad counterterrorism laws against legitimate expression; v8 later quarantined the item because the available axis measures insider capture rather than civil-liberties enforcement. | [UN Human Rights Council, A/HRC/40/52](https://www.ohchr.org/sites/default/files/Documents/Issues/Terrorism/SR/A_HRC_40_52_EN.pdf) |
 | `q0207` | Replaced a migration-and-cooperation bundle with the qualified result of a randomized-contact review; mapped only to cultural plasticity. | [Paluck, Green, and Green, “The Contact Hypothesis Re-evaluated”](https://www.cambridge.org/core/journals/behavioural-public-policy/article/contact-hypothesis-reevaluated/142C913E7FA9E121277B29E994124EC5) |
 | `q0208` | Replaced a bargaining-power assertion with an industry-level association between lobbying and migration barriers; mapped only to public-choice skepticism. | [Facchini, Mayda, and Mishra, “Do Interest Groups Affect Immigration?”](https://www.iza.org/en/publications/dp/3183/do-interest-groups-affect-immigration) |
-| `q0210` | Replaced a housing-law bundle with a scoped municipal service-capacity condition; v8 later quarantined the item because the conditional statement could not discriminate state-capacity confidence. | [World Bank, “Coping with the Influx”](https://documents1.worldbank.org/curated/en/585111595352295241/pdf/Coping-with-the-Influx-Service-Delivery-to-Syrian-Refugees-and-Hosts-in-Jordan-Lebanon-and-Kurdistan-Iraq.pdf) |
+| `q0210` | Replaced a housing-law bundle with a scoped municipal service-capacity condition; v8 later quarantined the item because the conditional statement could not discriminate state-capacity confidence. | [World Bank, “Coping with the Influx”](https://documents.worldbank.org/en/publication/documents-reports/documentdetail/585111595352295241/coping-with-the-influx-service-delivery-to-syrian-refugees-and-hosts-in-jordan-lebanon-and-kurdistan-iraq) |
 | `q0227` | Replaced an undefined civic-ritual claim with paired-city evidence on interethnic associations and communal violence; mapped only to decentralized coordination. | [Varshney, “Ethnic Conflict and Civil Society”](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/2F8EEAACC16E9A8366A9914C0301F08D/S0043887100020165a.pdf/ethnic-conflict-and-civil-society-india-and-beyond.pdf) |
 | `q0329` | Replaced a causal threat-inflation claim with a noncausal association between lobbying and defense contract awards; mapped only to public-choice skepticism. | [Ağca and Igan, BIS Working Paper 1058](https://www.bis.org/publ/work1058.htm) |
 

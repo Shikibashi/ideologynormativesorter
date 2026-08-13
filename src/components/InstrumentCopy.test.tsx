@@ -9,7 +9,7 @@ describe('respondent-facing instrument copy', () => {
   it('offers only outcome-oriented balanced and full-depth public assessments', () => {
     render(
       <IntroScreen
-        questionCounts={{ blitz: 17, quick: 50, moderate: 140, extensive: 285 }}
+        questionCounts={{ blitz: 17, quick: 50, moderate: 206, extensive: 338 }}
         domainCount={20}
         contributionAvailable
         savedProgress={null}
@@ -33,6 +33,9 @@ describe('respondent-facing instrument copy', () => {
     expect(screen.getByText(/ordered seven-point agreement scales/i)).toBeInTheDocument()
     expect(screen.getByText(/skipping that rating excludes the answer from the result/i)).toBeInTheDocument()
     expect(screen.getByText(/scored label cards now expose curated definition, boundary/i)).toBeInTheDocument()
+    expect(screen.getByText(/require a defining construct that the core profile does not measure/i)).toBeInTheDocument()
+    expect(screen.getByText(/theocratic comparison requires direct evidence about final religious legal authority/i)).toBeInTheDocument()
+    expect(screen.getByText(/never appear as ordinary quiz matches/i)).toBeInTheDocument()
     expect(screen.queryByText(/five- or seven-point agreement scales/i)).not.toBeInTheDocument()
   })
 })

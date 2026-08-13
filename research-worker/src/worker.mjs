@@ -18,6 +18,13 @@ function validString(value, maximumLength = 10_000) {
   return typeof value === 'string' && value.trim().length > 0 && value.length <= maximumLength
 }
 
+function validVersion(value, expected) {
+  // Bank fingerprints concatenate the versioned review overlays. Keep a
+  // bounded field, but allow the configured fingerprint to grow beyond the
+  // short metadata limit used by individual module versions.
+  return validString(value, 2048) && typeof expected === 'string' && value === expected
+}
+
 function validTimestamp(value) {
   if (typeof value !== 'string') return false
   const parsed = Date.parse(value)
@@ -34,6 +41,13 @@ function configuredIntegerSet(value) {
   return new Set(value.split(',')
     .map((entry) => Number(entry.trim()))
     .filter((entry) => Number.isInteger(entry) && entry > 0))
+}
+
+function configuredTokenList(value) {
+  if (typeof value !== 'string') return []
+  const values = value.split(',').map((entry) => entry.trim())
+  if (values.length === 0 || !values.every((entry) => validToken(entry)) || new Set(values).size !== values.length) return []
+  return values
 }
 
 function validConsent(consent, env) {
@@ -145,6 +159,13 @@ export function researchFormFingerprint(itemMap, formVersion = 'profile-form-v3'
   return `rf_${hash32(`${formVersion}:${canonicalIds}`).toString(16).padStart(8, '0')}`
 }
 
+function labelRosterFingerprint(role, labelIds, taxonomyVersion, modifierMeasurementVersion = 'not-applicable') {
+  if (!Array.isArray(labelIds)) return ''
+  const canonicalIds = [...new Set(labelIds)].sort().join('|')
+  const payload = `${taxonomyVersion}:${role}:${modifierMeasurementVersion}:${canonicalIds}`
+  return `lr_${hash32(payload).toString(16).padStart(8, '0')}`
+}
+
 function validIdentity(identity) {
   if (!isObject(identity)) return false
   if (identity.selfLabelId !== undefined && !validToken(identity.selfLabelId)) return false
@@ -156,9 +177,9 @@ function validIdentity(identity) {
 
 function validCoreRecord(submission, env) {
   const expectedProfileCount = submission.tier === 'moderate'
-    ? configuredInteger(env.EXPECTED_MODERATE_ITEM_COUNT, 140)
+    ? configuredInteger(env.EXPECTED_MODERATE_ITEM_COUNT, 206)
     : submission.tier === 'extensive'
-      ? configuredInteger(env.EXPECTED_EXTENSIVE_ITEM_COUNT, 285)
+      ? configuredInteger(env.EXPECTED_EXTENSIVE_ITEM_COUNT, 338)
       : null
   const legacyProfileCounts = submission.tier === 'moderate'
     ? configuredIntegerSet(env.ALLOWED_LEGACY_MODERATE_ITEM_COUNTS)
@@ -178,23 +199,41 @@ function validCoreRecord(submission, env) {
     && (submission.tier === 'moderate' || submission.tier === 'extensive')
     && (validProfileForm || validMatrixForm)
     && typeof submission.resumed === 'boolean'
-    && validString(submission.bankVersion, 512)
-    && validString(submission.scoringVersion, 512)
-    && validString(submission.taxonomyVersion, 128)
+    && validVersion(submission.bankVersion, env.EXPECTED_BANK_VERSION)
+    && validVersion(submission.scoringVersion, env.EXPECTED_SCORING_VERSION)
+    && validVersion(submission.taxonomyVersion, env.EXPECTED_TAXONOMY_VERSION)
+    && validVersion(submission.modifierMeasurementVersion, env.EXPECTED_MODIFIER_MEASUREMENT_VERSION)
     && Array.isArray(submission.primaryLabelIds)
     && submission.primaryLabelIds.length > 0
     && submission.primaryLabelIds.every((id) => validToken(id))
+    && new Set(submission.primaryLabelIds).size === submission.primaryLabelIds.length
     && Array.isArray(submission.modifierLabelIds)
     && submission.modifierLabelIds.every((id) => validToken(id))
+    && new Set(submission.modifierLabelIds).size === submission.modifierLabelIds.length
+    && validVersion(submission.primaryLabelRosterFingerprint, env.EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT)
+    && validVersion(submission.modifierLabelRosterFingerprint, env.EXPECTED_MODIFIER_LABEL_ROSTER_FINGERPRINT)
+    && submission.primaryLabelRosterFingerprint === labelRosterFingerprint(
+      'primary',
+      submission.primaryLabelIds,
+      submission.taxonomyVersion,
+    )
+    && submission.modifierLabelRosterFingerprint === labelRosterFingerprint(
+      'modifier',
+      submission.modifierLabelIds,
+      submission.taxonomyVersion,
+      submission.modifierMeasurementVersion,
+    )
     && validIdentity(submission.identity)
     && Array.isArray(submission.predictedLabelIds)
     && submission.predictedLabelIds.length <= 5
     && submission.predictedLabelIds.every((id) => validToken(id))
     && new Set(submission.predictedLabelIds).size === submission.predictedLabelIds.length
+    && submission.predictedLabelIds.every((id) => submission.primaryLabelIds.includes(id))
     && Array.isArray(submission.predictedModifierIds)
     && submission.predictedModifierIds.length <= 5
     && submission.predictedModifierIds.every((id) => validToken(id))
     && new Set(submission.predictedModifierIds).size === submission.predictedModifierIds.length
+    && submission.predictedModifierIds.every((id) => submission.modifierLabelIds.includes(id))
     && isObject(submission.form)
     && submission.form.algorithmVersion === env.EXPECTED_FORM_VERSION
     && submission.form.assignedItemCount === assignedCount
@@ -204,23 +243,37 @@ function validCoreRecord(submission, env) {
     && submission.sampling?.weighting === 'none'
     && validToken(submission.sampling?.recruitmentSource, 96)
     && submission.sampling?.recruitmentSourceProvenance === 'url-parameter-unverified'
+    && (submission.specialistAssignment === undefined
+      || validAssignment(
+        submission.specialistAssignment,
+        submission.specialistAssignment.moduleId,
+        submission.participantId,
+        submission.studyId,
+        env,
+      ))
 }
 
-function validAssignment(assignment, moduleId) {
+function validAssignment(assignment, moduleId, participantId, studyId, env) {
+  const moduleIds = configuredTokenList(env.EXPECTED_SPECIALIST_ASSIGNMENT_MODULE_IDS)
+  const expectedModuleId = moduleIds[hash32(`${studyId}:${participantId}:specialist-assignment`) % moduleIds.length]
   return isObject(assignment)
     && assignment.moduleId === moduleId
     && validToken(assignment.moduleId)
     && validToken(assignment.strategy)
+    && assignment.strategy === env.EXPECTED_SPECIALIST_ASSIGNMENT_STRATEGY
+    && validToken(assignment.rosterVersion)
+    && assignment.rosterVersion === env.EXPECTED_SPECIALIST_ASSIGNMENT_ROSTER_VERSION
+    && expectedModuleId === moduleId
 }
 
-function validSpecialistRecord(submission) {
+function validSpecialistRecord(submission, env) {
   return submission.recordType === 'specialist'
     && validAnsweredRecord(submission)
     && validToken(submission.moduleId)
     && validString(submission.moduleVersion, 512)
-    && validString(submission.bankVersion, 512)
-    && validString(submission.scoringVersion, 512)
-    && validAssignment(submission.assignment, submission.moduleId)
+    && validVersion(submission.bankVersion, env.EXPECTED_BANK_VERSION)
+    && validVersion(submission.scoringVersion, env.EXPECTED_SCORING_VERSION)
+    && validAssignment(submission.assignment, submission.moduleId, submission.participantId, submission.studyId, env)
     && isObject(submission.criterion)
     && Array.isArray(submission.criterion.selectedIds)
     && submission.criterion.selectedIds.every((id) => validToken(id))
@@ -233,11 +286,11 @@ function validSpecialistRecord(submission) {
     && submission.matches.every((match) => isObject(match) && validToken(match.id) && Number.isFinite(match.fit))
 }
 
-function validSpecialistDisposition(submission) {
+function validSpecialistDisposition(submission, env) {
   return submission.recordType === 'specialist-disposition'
     && validToken(submission.moduleId)
     && validString(submission.moduleVersion, 512)
-    && validAssignment(submission.assignment, submission.moduleId)
+    && validAssignment(submission.assignment, submission.moduleId, submission.participantId, submission.studyId, env)
     && ['declined-before-start', 'declined-after-partial', 'declined-after-completion'].includes(submission.disposition)
     && Number.isInteger(submission.answeredCount)
     && submission.answeredCount >= 0
@@ -246,8 +299,8 @@ function validSpecialistDisposition(submission) {
 export function validateSubmission(submission, env) {
   if (!validBaseRecord(submission, env)) return false
   if (submission.recordType === 'core') return validCoreRecord(submission, env)
-  if (submission.recordType === 'specialist') return validSpecialistRecord(submission)
-  return validSpecialistDisposition(submission)
+  if (submission.recordType === 'specialist') return validSpecialistRecord(submission, env)
+  return validSpecialistDisposition(submission, env)
 }
 
 function canonicalize(value) {

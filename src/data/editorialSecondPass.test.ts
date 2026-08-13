@@ -18,7 +18,7 @@ describe('editorial second pass', () => {
     expect(ecomodernist.family).toBe('green')
     expect(ecomodernist.prescriptivePhilosophies).not.toContain('Technocracy')
 
-    expect(roleForLabel('religious-nationalism')).toBe('modifier')
+    expect(roleForLabel('religious-nationalism')).toBe('specialist')
     expect(labelById.get('religious-nationalism')!.normativePhilosophies).not.toContain('Theocracy')
 
     expect(labelById.get('political-islam')!.family).toBe('religious-political')
@@ -28,9 +28,9 @@ describe('editorial second pass', () => {
     expect(labelById.get('constitutional-monarchism')!.description).toMatch(/parliamentary democracy/)
   })
 
-  it('keeps broad synthetic display-name overrides out of the public catalog', () => {
+  it('keeps the retired compound out while exposing the precise specialist name', () => {
     const publicById = new Map(publicCatalogLabels.map((label) => [label.id, label]))
-    expect(publicById.get('technocratic-centralist')!.name).toBe('Technocratic Centralist')
+    expect(publicById.get('technocratic-centralist')!.name).toBe('Technocratic Centralism')
     expect(publicById.has('civil-libertarian-cosmopolitan')).toBe(false)
   })
 

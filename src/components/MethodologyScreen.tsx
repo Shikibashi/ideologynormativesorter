@@ -1,4 +1,7 @@
-import { coreQuestions } from '../data/effectiveQuestions'
+import { coreQuestions, QUESTION_BANK_VERSION } from '../data/effectiveQuestions'
+import { TAXONOMY_VERSION } from '../data/labelTaxonomy'
+import { IDEOLOGY_SCALE_VERSION } from '../data/ideologyScales'
+import { RESULT_SCORING_VERSION } from '../scoring'
 import { specialistModuleDefinitions } from '../specialist'
 
 export function MethodologyScreen({ onBack }: { onBack: () => void }) {
@@ -30,17 +33,41 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
          <p>
             Labels are secondary outputs. The primary output is your layered profile and divergences.
          </p>
+         <p data-testid="instrument-version">
+            Public contract: taxonomy <code>{TAXONOMY_VERSION}</code>; scoring <code>{RESULT_SCORING_VERSION}</code>;
+            question bank <code>{QUESTION_BANK_VERSION}</code>.
+         </p>
          <p>
-            The label catalog now separates broad primary families, independently measured cross-cutting modifiers,
+            The label catalog now separates broad primary families, directly measured cross-cutting modifiers,
             context or institutional forms, and narrower specialist traditions. Provisional specialists remain
-            browsable but are not presented as ordinary quiz matches until a construct-matched follow-up exists.
-            Modifier matches are capped at five and require sufficient fit and answer coverage.
+            browsable but never appear as ordinary quiz matches; a construct-matched follow-up can show only an
+            explicitly experimental comparison.
+            Modifier matches are capped at five and require sufficient fit and answer coverage on their declared
+            direct indicators; a catalog modifier without those indicators remains explainable but does not appear as
+            an ordinary result.
             The opt-in specialist roster currently contains anarchist, green, socialist, conservative, religious-national,
             technology-governance, and monarchist/municipal experimental waves; assignment alone does not validate a
             specialist label or promote it into ordinary scoring.
          </p>
          <p>
+            Some narrow compound terms require a defining construct that the core profile does not measure. Fascism,
+            welfare chauvinism, eco-authoritarianism, religious nationalism, and theocratic politics are therefore
+            catalog context or opt-in experimental comparisons only—not ordinary results inferred from nearby authority,
+            national, religious, welfare, or ecological answers. The theocratic comparison requires direct evidence
+            about final religious legal authority rather than broad religiosity or moral traditionalism.
+         </p>
+         <p>
             Label comparisons are qualitative summaries of profile distance on the test's own axes. They are not probabilities, diagnoses, accuracy rates, or validated estimates of ideological identity.
+         </p>
+         <p>
+            The catalog also records analytical scale guidance (<code>{IDEOLOGY_SCALE_VERSION}</code>). Macro refers to
+            doctrine, social order, or society-wide patterns; meso refers to movements, parties, organizations,
+            coalitions, regimes, and public discourse; micro refers to individual, local, household, or interactional
+            uptake. The quiz’s label estimate is therefore a micro-level estimate of how one respondent takes up
+            macro/meso ideological claims, not proof that the tradition itself is a micro ideology. Some ideology
+            scholarship proposes “nano” as a method-sensitive sublevel within micro for personally adapted ideas,
+            dispositions, and interactional mechanisms. The catalog does not assign nano labels or infer nano-level
+            commitments from a single response.
          </p>
          <p>
             Consumer label explainers use curated tradition notes. The site does not turn a synthetic comparison coordinate into a claim that every member of a tradition must hold that doctrine.
@@ -87,6 +114,13 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
          <p>
             The scores and label matches are experimental. They have not been validated as objective classifications and
             should be treated as prompts for reflection, not diagnoses or statements of political identity.
+         </p>
+         <p>
+            In an opt-in specialist follow-up, “sufficient evidence” means only that enough mapped constructs were
+            answered for a provisional comparison to be considered. The public result additionally requires at least
+            0.60 profile proximity, 60% candidate-construct coverage, and no failed constitutive gate before it is
+            displayed. This is not a psychometric reliability or validity result, and the voluntary sample cannot
+            establish population prevalence or representativeness.
          </p>
          <p>
             Patterns found in voluntary contributions apply only to the people who chose to contribute. The optional

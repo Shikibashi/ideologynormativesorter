@@ -1,33 +1,50 @@
 import { describe, expect, it } from 'vitest'
 import { questionsForTier, QUESTION_BANK_VERSION } from '../data/effectiveQuestions'
 import { RESULT_SCORING_VERSION } from '../scoring'
+import { TAXONOMY_VERSION } from '../data/labelTaxonomy'
 import type { AnswerMap } from '../types'
 import {
   buildResearchSubmission,
   buildSpecialistDispositionSubmission,
   buildSpecialistResearchSubmission,
+  MODIFIER_LABEL_ROSTER_FINGERPRINT,
+  PRIMARY_LABEL_ROSTER_FINGERPRINT,
   RESEARCH_CONSENT_VERSION,
   RESEARCH_QUALITY_RULE_VERSION,
   RESEARCH_SCHEMA_VERSION,
+  RESEARCH_STUDY_ID,
   type ResearchConsent,
 } from './index'
+import { MODIFIER_MEASUREMENT_VERSION } from '../data/modifierMeasurement'
 import { buildContributionQuestionForm, RESEARCH_FORM_VERSION } from './forms'
 import {
+  assignSpecialistModule,
   buildSpecialistQuestionForm,
   scoreSpecialistModule,
+  SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
+  SPECIALIST_ASSIGNMENT_STRATEGY,
   specialistModuleDefinitions,
 } from '../specialist'
 // @ts-expect-error The production Worker is a native JavaScript module outside the browser bundle.
 import { validateSubmission } from '../../research-worker/src/worker.mjs'
 
 const collectorEnvironment = {
-  EXPECTED_STUDY_ID: 'community-2026',
+  EXPECTED_STUDY_ID: RESEARCH_STUDY_ID,
   EXPECTED_SCHEMA_VERSION: RESEARCH_SCHEMA_VERSION,
   EXPECTED_CONSENT_VERSION: RESEARCH_CONSENT_VERSION,
   EXPECTED_QUALITY_RULE_VERSION: RESEARCH_QUALITY_RULE_VERSION,
   EXPECTED_FORM_VERSION: RESEARCH_FORM_VERSION,
-  EXPECTED_MODERATE_ITEM_COUNT: '140',
-  EXPECTED_EXTENSIVE_ITEM_COUNT: '285',
+  EXPECTED_BANK_VERSION: QUESTION_BANK_VERSION,
+  EXPECTED_SCORING_VERSION: RESULT_SCORING_VERSION,
+  EXPECTED_TAXONOMY_VERSION: TAXONOMY_VERSION,
+  EXPECTED_MODIFIER_MEASUREMENT_VERSION: MODIFIER_MEASUREMENT_VERSION,
+  EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT: PRIMARY_LABEL_ROSTER_FINGERPRINT,
+  EXPECTED_MODIFIER_LABEL_ROSTER_FINGERPRINT: MODIFIER_LABEL_ROSTER_FINGERPRINT,
+  EXPECTED_SPECIALIST_ASSIGNMENT_STRATEGY: SPECIALIST_ASSIGNMENT_STRATEGY,
+  EXPECTED_SPECIALIST_ASSIGNMENT_ROSTER_VERSION: SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
+  EXPECTED_SPECIALIST_ASSIGNMENT_MODULE_IDS: 'feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module',
+    EXPECTED_MODERATE_ITEM_COUNT: '206',
+    EXPECTED_EXTENSIVE_ITEM_COUNT: '338',
   ALLOWED_LEGACY_MODERATE_ITEM_COUNTS: '158,149',
   ALLOWED_LEGACY_EXTENSIVE_ITEM_COUNTS: '336,309',
   ALLOWED_MATRIX_ITEM_COUNTS: '120',
@@ -51,8 +68,8 @@ function endpointConsent(): ResearchConsent {
 
 describe('Cloudflare contribution collector compatibility', () => {
   it.each([
-    ['moderate', 140],
-    ['extensive', 285],
+    ['moderate', 206],
+    ['extensive', 338],
   ] as const)('accepts the complete %s profile produced by the frontend', (tier, expectedCount) => {
     const form = buildContributionQuestionForm(questionsForTier(tier), 'p_compatibility', 'test', null)
     const answers = Object.fromEntries(form.map((question) => [
@@ -60,7 +77,7 @@ describe('Cloudflare contribution collector compatibility', () => {
       { questionId: question.id, value: 'prefer_not_to_answer' },
     ])) as AnswerMap
     const submission = buildResearchSubmission({
-      studyId: 'community-2026',
+      studyId: RESEARCH_STUDY_ID,
       participantId: 'p_compatibility',
       administration: 'test',
       bankVersion: QUESTION_BANK_VERSION,
@@ -87,15 +104,15 @@ describe('Cloudflare contribution collector compatibility', () => {
   })
 
   it('accepts the specialist completion and decline records produced by the frontend', () => {
-    const module = specialistModuleDefinitions[0]
+    const assignment = assignSpecialistModule('p_compatibility', RESEARCH_STUDY_ID)
+    const module = specialistModuleDefinitions.find((candidate) => candidate.id === assignment.moduleId)!
     const questions = buildSpecialistQuestionForm(module.id, 'p_compatibility', 'test')
     const answers = Object.fromEntries(questions.map((question) => [
       question.id,
       { questionId: question.id, value: 'prefer_not_to_answer' },
     ])) as AnswerMap
-    const assignment = { moduleId: module.id, strategy: 'balanced-hash-v1' as const }
     const specialist = buildSpecialistResearchSubmission({
-      studyId: 'community-2026',
+      studyId: RESEARCH_STUDY_ID,
       participantId: 'p_compatibility',
       administration: 'test',
       consent: endpointConsent(),
@@ -115,7 +132,7 @@ describe('Cloudflare contribution collector compatibility', () => {
       submissionId: 'specialist_compatibility',
     })
     const disposition = buildSpecialistDispositionSubmission({
-      studyId: 'community-2026',
+      studyId: RESEARCH_STUDY_ID,
       participantId: 'p_compatibility',
       administration: 'test',
       consent: endpointConsent(),

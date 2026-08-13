@@ -42,18 +42,50 @@ export interface LabelMatch {
    fit: number
    /** 0..1, how much of the label's centroid was actually measured. */
    evidenceStrength: number
-   /** Number of centroid axes with at least one answered question. */
-   measuredAxisCount: number
-   /** Total axes in the label's centroid. */
-   totalAxisCount: number
+  /**
+   * Number of measured comparison dimensions. This is centroid axes for
+   * primary-label matching and direct items for modifier-construct matching.
+   */
+  measuredAxisCount: number
+  /** Total comparison dimensions (centroid axes or direct construct items). */
+  totalAxisCount: number
    /** Distance gap between this match and the runner-up (undefined if this is not rank 1). */
    runnerUpMargin?: number
    reasoning?: {
       sharedExtremeAxes: { axisId: AxisId; userScore: number; labelScore: number }[]
       divergentAxes: { axisId: AxisId; userScore: number; labelScore: number }[]
    }
+   /**
+    * Independently calculated fit and coverage for each judgment layer.
+    * This explains a comparison; it does not alter its overall rank.
+    */
+   layerEvidence?: Record<Layer, LabelLayerEvidence>
    /** Qualitative uncertainty derived from evidenceStrength and runnerUpMargin. */
    uncertaintyBand: 'low' | 'medium' | 'high'
+  /** Whether a constitutive gate was passed before this label was exposed. */
+  compoundGateStatus?: 'passed' | 'blocked' | 'insufficient-evidence'
+  /**
+   * Present only for a cross-cutting modifier matched from direct core items.
+   * This makes the construct boundary explicit and prevents a modifier card
+   * from being read as a fit across the label's full ideology centroid.
+   */
+  modifierConstruct?: {
+    measurementVersion: string
+    name: string
+    note: string
+    answeredQuestionIds: string[]
+    indicatorQuestionIds: string[]
+    minimumAnsweredItems: number
+  }
+}
+
+export interface LabelLayerEvidence {
+   /** 0..1 proximity within this layer, or null when no relevant axis was measured. */
+   fit: number | null
+   /** 0..1 share of this label's layer-specific centroid actually measured. */
+   evidenceStrength: number
+   measuredAxisCount: number
+   totalAxisCount: number
 }
 
 /**

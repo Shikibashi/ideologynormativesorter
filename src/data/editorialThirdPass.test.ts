@@ -35,10 +35,12 @@ describe('editorial third pass', () => {
     expect(label.subTheories).not.toContain('Syntheism')
   })
 
-  it('keeps aliases, neighboring ideologies, policies, and research fields out of subtype lists', () => {
-    expect(labelById.get('left-wing-market-anarchism')!.subTheories).toEqual(['Left-Rothbardianism'])
-    expect(labelById.get('national-bolshevism')!.aliases).toBeUndefined()
-    expect(labelById.get('world-federalism')!.subTheories).toBeUndefined()
+   it('keeps aliases, neighboring ideologies, policies, and research fields out of subtype lists', () => {
+      expect(labelById.get('left-wing-market-anarchism')!.subTheories).toEqual(['Left-Rothbardianism'])
+      expect(labelById.get('national-bolshevism')!.aliases).toBeUndefined()
+      expect(labelById.get('integralism')!.aliases).toContain('Catholic Integralism')
+      expect(labelById.get('integralism')!.subTheories).toBeUndefined()
+      expect(labelById.get('world-federalism')!.subTheories).toBeUndefined()
     expect(labelById.get('islamic-democracy')!.subTheories).toBeUndefined()
 
     const liquidDemocracy = labelById.get('liquid-democracy')!

@@ -5,7 +5,16 @@ import {
   ninthPassRewritesById,
   ninthPassStatementRewritesById,
 } from './editorialNinthPass'
+import { EXPERIMENTAL_SPECIALIST_VERSION } from './experimentalSpecialists'
 import { specialistModuleDefinitions } from '../specialist'
+import { EDITORIAL_TWENTIETH_PASS_VERSION } from './editorialTwentiethPass'
+import { EDITORIAL_TWENTY_FIRST_PASS_VERSION } from './editorialTwentyFirstPass'
+import { EDITORIAL_TWENTY_SECOND_PASS_VERSION } from './editorialTwentySecondPass'
+import { EDITORIAL_TWENTY_THIRD_PASS_VERSION } from './editorialTwentyThirdPass'
+import { EDITORIAL_TWENTY_FOURTH_PASS_VERSION } from './editorialTwentyFourthPass'
+import { EDITORIAL_TWENTY_FIFTH_PASS_VERSION } from './editorialTwentyFifthPass'
+import { EDITORIAL_TWENTY_SEVENTH_PASS_VERSION } from './editorialTwentySeventhPass'
+import { EDITORIAL_TWENTY_EIGHTH_PASS_VERSION } from './editorialTwentyEighthPass'
 
 const activeCoreQuestions = coreQuestions.filter((question) => question.active !== false)
 const specialistQuestions = specialistModuleDefinitions.flatMap((module) => module.questions)
@@ -63,15 +72,24 @@ describe('ninth editorial pass', () => {
   })
 
   it('stamps every previously unversioned active core and specialist item without erasing earlier pass history', () => {
-    expect(activeCoreQuestions).toHaveLength(285)
-    expect(specialistQuestions).toHaveLength(58)
+    expect(activeCoreQuestions).toHaveLength(338)
+    expect(specialistQuestions).toHaveLength(68)
     for (const question of [...activeCoreQuestions, ...specialistQuestions]) {
       expect(question.reviewStatus, `${question.id} review status`).toBe('approved')
       expect(question.version, `${question.id} review version`).toBeTruthy()
       expect(question.updatedAt, `${question.id} updatedAt`).toBeTruthy()
     }
 
-    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_NINTH_PASS_VERSION)).toHaveLength(86)
-    expect(specialistQuestions.every((question) => question.version === EDITORIAL_NINTH_PASS_VERSION || question.version === '2026-08-specialist-v1')).toBe(true)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_NINTH_PASS_VERSION)).toHaveLength(82)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_TWENTIETH_PASS_VERSION)).toHaveLength(2)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_TWENTY_FIRST_PASS_VERSION)).toHaveLength(3)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_TWENTY_SECOND_PASS_VERSION)).toHaveLength(6)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_TWENTY_THIRD_PASS_VERSION)).toHaveLength(11)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_TWENTY_FOURTH_PASS_VERSION)).toHaveLength(2)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_TWENTY_FIFTH_PASS_VERSION)).toHaveLength(20)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_TWENTY_SEVENTH_PASS_VERSION)).toHaveLength(2)
+    expect(activeCoreQuestions.filter((question) => question.version === EDITORIAL_TWENTY_EIGHTH_PASS_VERSION)).toHaveLength(2)
+    expect(EXPERIMENTAL_SPECIALIST_VERSION).toBe('2026-08-specialist-v10')
+    expect(specialistQuestions.every((question) => question.version === EDITORIAL_NINTH_PASS_VERSION || question.version === EXPERIMENTAL_SPECIALIST_VERSION)).toBe(true)
   })
 })

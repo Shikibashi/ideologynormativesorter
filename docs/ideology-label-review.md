@@ -1,7 +1,7 @@
 # Ideology Label Academic Review
 
-> This is the historical baseline audit. The current 118-label disposition,
-> including post-audit renames and copy decisions, is tracked in
+> This is the historical baseline audit. The current 126-label disposition,
+> including post-audit additions, renames, and copy decisions, is tracked in
 > `docs/ideology-label-editorial-review-2026-08.md`.
 
 This review audits the ideology labels currently defined in `src/data/labels.ts`. Baseline definitions are drawn from political theory and intellectual-history sources rather than internet slang or partisan usage. Core references used: Stanford Encyclopedia of Philosophy entries on liberalism, socialism, anarchism, nationalism, conservatism, republicanism, democracy, cosmopolitanism, global democracy, and global justice; Internet Encyclopedia of Philosophy on socialism and political philosophy; Oxford Research Encyclopedia on socialism and populism; Roger Griffin / Oxford-style scholarship on fascism as palingenetic ultranationalism; scholarly treatments of Hindutva, Zionism, Juche, and Islamic democracy. See source notes at the end.

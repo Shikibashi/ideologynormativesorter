@@ -1,4 +1,5 @@
-import type { Axis, AxisId, IdeologyLabel, LabelConflationFlag, LabelMatch, Layer, ScoreBreakdown } from '../types'
+import type { Axis, AxisId, IdeologyLabel, LabelConflationFlag, LabelLayerEvidence, LabelMatch, Layer, ScoreBreakdown } from '../types'
+import { compoundGateByLabelId } from '../data/compoundGates'
 
 const NEAREST_LABEL_COUNT = 20
 export const MODIFIER_MATCH_LIMIT = 5
@@ -12,10 +13,32 @@ const DIVERGENCE_DELTA = 0.18
 const AXIS_DIVERGENCE_GAP = 0.8
 /** Maximum divergent axes named per flag. */
 const MAX_DIVERGENT_AXES = 3
+const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
 
 interface MeasuredScore {
    normalized: number
    itemCount: number
+}
+
+function compoundGateStatus(
+   breakdown: ScoreBreakdown,
+   label: IdeologyLabel,
+): LabelMatch['compoundGateStatus'] {
+   const gate = compoundGateByLabelId.get(label.id)
+   if (!gate) return undefined
+
+   const scoreMap = measuredScoreMap(breakdown)
+   let insufficient = false
+   for (const requirement of gate.allOf) {
+      const score = scoreMap.get(requirement.axisId)
+      if (!score || score.itemCount === 0) {
+         insufficient = true
+         continue
+      }
+      if (requirement.min !== undefined && score.normalized < requirement.min) return 'blocked'
+      if (requirement.max !== undefined && score.normalized > requirement.max) return 'blocked'
+   }
+   return insufficient ? 'insufficient-evidence' : 'passed'
 }
 
 function measuredScoreMap(breakdown: ScoreBreakdown): Map<AxisId, MeasuredScore> {
@@ -64,11 +87,39 @@ function distanceOver(
 }
 
 /**
+ * Calculate a label comparison independently within every judgment layer.
+ * The same distance-and-evidence contract as overall matching is used here,
+ * but these values are explanatory only: they never change rank or gates.
+ */
+function layerEvidenceFor(
+   scoreMap: Map<AxisId, MeasuredScore>,
+   label: IdeologyLabel,
+   axes: readonly Axis[],
+): Record<Layer, LabelLayerEvidence> {
+   return Object.fromEntries(LAYERS.map((layer) => {
+      const axisIds = axes
+         .filter((axis) => axis.layer === layer && label.centroid[axis.id] !== undefined)
+         .map((axis) => axis.id)
+      const { distance, measuredAxisCount, totalAxisCount, evidenceStrength } = distanceOver(scoreMap, label, axisIds)
+      return [layer, {
+         fit: measuredAxisCount > 0 ? closeness(distance) : null,
+         evidenceStrength,
+         measuredAxisCount,
+         totalAxisCount,
+      }]
+   })) as Record<Layer, LabelLayerEvidence>
+}
+
+/**
  * Ranks ideology labels by Euclidean distance over measured axes.
  * This avoids treating unasked axes as neutral evidence while still lowering
  * confidence when the match rests on sparse answers.
  */
-export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyLabel[]): LabelMatch[] {
+export function computeLabelMatches(
+   breakdown: ScoreBreakdown,
+   labels: IdeologyLabel[],
+   axes?: readonly Axis[],
+): LabelMatch[] {
    const scoreMap = measuredScoreMap(breakdown)
 
    const matches = labels.map((label) => {
@@ -88,12 +139,22 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
          totalAxisCount,
          runnerUpMargin: undefined as number | undefined,
          uncertaintyBand: 'high' as 'low' | 'medium' | 'high',
+         compoundGateStatus: compoundGateStatus(breakdown, label),
          reasoning: undefined as ReturnType<typeof computeLabelMatchReasoning> | undefined,
+         layerEvidence: axes ? layerEvidenceFor(scoreMap, label, axes) : undefined,
       }
    })
 
-   matches.sort((a, b) => a.distance - b.distance)
-   const top = matches.slice(0, NEAREST_LABEL_COUNT)
+   // A compound label cannot be a nearest result when its defining
+   // commitment was either contradicted or not measured. This is the point at
+   // which the taxonomy's “necessary component” semantics become scoring
+   // behavior rather than explanatory prose.
+   const eligibleMatches = matches.filter((match) =>
+      match.compoundGateStatus === undefined || match.compoundGateStatus === 'passed',
+   )
+
+   eligibleMatches.sort((a, b) => a.distance - b.distance)
+   const top = eligibleMatches.slice(0, NEAREST_LABEL_COUNT)
 
    // Set runnerUpMargin for rank 1 only
    if (top.length >= 2) {
@@ -126,8 +187,12 @@ export function computeLabelMatches(breakdown: ScoreBreakdown, labels: IdeologyL
  * never compete with primary labels and weak or high-uncertainty matches are
  * intentionally omitted from the public result.
  */
-export function computeModifierMatches(breakdown: ScoreBreakdown, labels: IdeologyLabel[]): LabelMatch[] {
-   return computeLabelMatches(breakdown, labels)
+export function computeModifierMatches(
+   breakdown: ScoreBreakdown,
+   labels: IdeologyLabel[],
+   axes?: readonly Axis[],
+): LabelMatch[] {
+   return computeLabelMatches(breakdown, labels, axes)
       .filter((match) => match.fit >= MODIFIER_FIT_THRESHOLD)
       .filter((match) => match.evidenceStrength >= MODIFIER_EVIDENCE_THRESHOLD)
       .filter((match) => match.uncertaintyBand !== 'high')
@@ -169,8 +234,6 @@ function computeLabelMatchReasoning(
       divergentAxes: divergentAxes.slice(0, 3)
    }
 }
-
-const LAYERS: Layer[] = ['normative', 'descriptive', 'prescriptive']
 
 const LAYER_NOUN: Record<Layer, string> = {
    normative: 'moral commitments',

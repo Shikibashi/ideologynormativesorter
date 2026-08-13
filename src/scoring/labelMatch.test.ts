@@ -80,6 +80,32 @@ describe('computeLabelMatches', () => {
       expect(opposite.reasoning?.divergentAxes.length).toBeGreaterThan(0)
    })
 
+   it('reports independent layer evidence without changing the overall ranking', () => {
+      const ranked = computeLabelMatches(breakdown, [partialMatchLabel, oppositeLabel, exactMatchLabel], axes)
+      const partial = ranked.find((match) => match.labelId === 'partial')
+
+      expect(ranked.map((match) => match.labelId)).toEqual(['exact-match', 'partial', 'opposite'])
+      expect(partial?.layerEvidence?.normative.fit).toBeCloseTo(1)
+      expect(partial?.layerEvidence?.descriptive.fit).toBeCloseTo(1)
+      expect(partial?.layerEvidence?.prescriptive.fit).toBeLessThan(0.3)
+      expect(partial?.layerEvidence?.normative).toMatchObject({ measuredAxisCount: 2, totalAxisCount: 2 })
+      expect(partial?.layerEvidence?.prescriptive).toMatchObject({ measuredAxisCount: 2, totalAxisCount: 2 })
+   })
+
+   it('marks a layer as unmeasured instead of treating it as neutral evidence', () => {
+      const sparseBreakdown: ScoreBreakdown = {
+         normative: [{ axisId: 'norm1', layer: 'normative', raw: 0.8, normalized: 0.8, itemCount: 1 }],
+         descriptive: [],
+         prescriptive: [],
+      }
+
+      const [match] = computeLabelMatches(sparseBreakdown, [exactMatchLabel], axes)
+
+      expect(match.layerEvidence?.normative.fit).toBeCloseTo(1)
+      expect(match.layerEvidence?.descriptive.fit).toBeNull()
+      expect(match.layerEvidence?.prescriptive.fit).toBeNull()
+   })
+
    it('gives a maximally opposite profile a zero fit regardless of axis count', () => {
       const oppositeBreakdown: ScoreBreakdown = {
          normative: [
@@ -215,6 +241,65 @@ describe('computeLabelMatches', () => {
 
       expect(matches[0].labelId).toBe('measured-match')
       expect(matches[0].distance).toBeCloseTo(0)
+   })
+
+   it('withholds compound labels when a constitutive commitment is absent or contradicted', () => {
+      const label: IdeologyLabel = {
+         id: 'fascist-authoritarian',
+         name: 'Fascist Authoritarianism',
+         family: 'test',
+         description: 'd',
+         centroid: {
+            'authority-legitimacy': 0.8,
+            'liberty-noninterference': -0.8,
+            'political-community-boundary': -0.8,
+            'democratic-confidence': -0.8,
+            'centralization-preference': 0.8,
+            'coercion-strategy': 0.8,
+         },
+      }
+      const score = (axisId: string, normalized: number) => ({
+         axisId: axisId as Axis['id'],
+         layer: 'normative' as const,
+         raw: normalized,
+         normalized,
+         itemCount: 3,
+      })
+
+      const complete = computeLabelMatches({
+         normative: [
+            score('authority-legitimacy', 0.8),
+            score('liberty-noninterference', -0.8),
+            score('political-community-boundary', -0.8),
+            score('democratic-confidence', -0.8),
+            score('centralization-preference', 0.8),
+            score('coercion-strategy', 0.8),
+         ],
+         descriptive: [],
+         prescriptive: [],
+      }, [label])
+      expect(complete[0]?.compoundGateStatus).toBe('passed')
+
+      const contradicted = computeLabelMatches({
+         normative: [
+            score('authority-legitimacy', 0.8),
+            score('liberty-noninterference', -0.8),
+            score('political-community-boundary', 0.8),
+            score('democratic-confidence', -0.8),
+            score('centralization-preference', 0.8),
+            score('coercion-strategy', 0.8),
+         ],
+         descriptive: [],
+         prescriptive: [],
+      }, [label])
+      expect(contradicted).toEqual([])
+
+      const sparse = computeLabelMatches({
+         normative: [score('authority-legitimacy', 0.8)],
+         descriptive: [],
+         prescriptive: [],
+      }, [label])
+      expect(sparse).toEqual([])
    })
 })
 

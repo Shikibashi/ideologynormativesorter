@@ -5,9 +5,17 @@ import {
   buildSpecialistDispositionSubmission,
   buildSpecialistResearchSubmission,
   getOrCreateParticipantId,
+  MODIFIER_LABEL_ROSTER_FINGERPRINT,
+  PRIMARY_LABEL_ROSTER_FINGERPRINT,
   submitResearchSubmission,
   type ResearchConsent,
 } from './index'
+import {
+  SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
+  SPECIALIST_ASSIGNMENT_STRATEGY,
+} from '../specialist'
+import { TAXONOMY_VERSION } from '../data/labelTaxonomy'
+import { MODIFIER_MEASUREMENT_VERSION } from '../data/modifierMeasurement'
 
 const consent: ResearchConsent = {
   ageConfirmed: true,
@@ -91,7 +99,11 @@ describe('research submission', () => {
       },
       predictedLabelIds: ['market-liberal', 'classical-liberalism'],
       predictedModifierIds: ['religious-nationalism', 'progressivism'],
-      specialistAssignment: { moduleId: 'feminist-faction-module', strategy: 'balanced-hash-v1' },
+      specialistAssignment: {
+        moduleId: 'feminist-faction-module',
+        strategy: SPECIALIST_ASSIGNMENT_STRATEGY,
+        rosterVersion: SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
+      },
       answers,
       questions: [question],
       submittedAt: '2026-07-18T12:30:00.000Z',
@@ -104,10 +116,15 @@ describe('research submission', () => {
     expect(submission.identity.selfReportedIdeologies).toBe('Mutualism; Pan-Africanism')
     expect(submission.predictedLabelIds).toEqual(['market-liberal', 'classical-liberalism'])
     expect(submission.predictedModifierIds).toEqual(['religious-nationalism', 'progressivism'])
-    expect(submission.taxonomyVersion).toMatch(/^2026-08-taxonomy-v1$/)
+    expect(submission.taxonomyVersion).toBe(TAXONOMY_VERSION)
+    expect(submission.modifierMeasurementVersion).toBe(MODIFIER_MEASUREMENT_VERSION)
     expect(submission.primaryLabelIds).toContain('conservative')
     expect(submission.modifierLabelIds).toContain('technocratic-orientation')
+    expect(submission.modifierLabelIds).not.toContain('theocrat')
+    expect(submission.primaryLabelRosterFingerprint).toBe(PRIMARY_LABEL_ROSTER_FINGERPRINT)
+    expect(submission.modifierLabelRosterFingerprint).toBe(MODIFIER_LABEL_ROSTER_FINGERPRINT)
     expect(submission.specialistAssignment?.moduleId).toBe('feminist-faction-module')
+    expect(submission.specialistAssignment?.rosterVersion).toBe(SPECIALIST_ASSIGNMENT_ROSTER_VERSION)
     expect(submission.durationMs).toBe(600_000)
     expect(submission.presentationOrder).toEqual(['q-test'])
     expect(submission.form).toMatchObject({
@@ -145,7 +162,11 @@ describe('research submission', () => {
       consent,
       moduleId: 'feminist-faction-module',
       moduleVersion: '2026-08-v1',
-      assignment: { moduleId: 'feminist-faction-module', strategy: 'balanced-hash-v1' },
+      assignment: {
+        moduleId: 'feminist-faction-module',
+        strategy: SPECIALIST_ASSIGNMENT_STRATEGY,
+        rosterVersion: SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
+      },
       bankVersion: 'bank-v1',
       scoringVersion: 'score-v1',
       criterion: { selectedIds: ['liberal-feminism'], noneOrUnsure: false, confidence: 'high' },
@@ -178,7 +199,11 @@ describe('research submission', () => {
       consent,
       moduleId: 'identity-sovereignty-module',
       moduleVersion: '2026-08-v1',
-      assignment: { moduleId: 'identity-sovereignty-module', strategy: 'balanced-hash-v1' },
+      assignment: {
+        moduleId: 'identity-sovereignty-module',
+        strategy: SPECIALIST_ASSIGNMENT_STRATEGY,
+        rosterVersion: SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
+      },
       disposition: 'declined-after-partial',
       answeredCount: 4,
       startedAt: '2026-07-18T12:10:00.000Z',

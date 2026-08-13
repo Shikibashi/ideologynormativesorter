@@ -43,11 +43,20 @@ class FakeDatabase {
 function environment(overrides = {}) {
   return {
     ALLOWED_ORIGIN: ORIGIN,
-    EXPECTED_STUDY_ID: 'community-2026',
-    EXPECTED_SCHEMA_VERSION: '2026-08-v10',
+    EXPECTED_STUDY_ID: 'community-2026-v4',
+    EXPECTED_SCHEMA_VERSION: '2026-08-v14',
     EXPECTED_CONSENT_VERSION: '2026-08-12-v8',
     EXPECTED_QUALITY_RULE_VERSION: 'data-quality-v2',
     EXPECTED_FORM_VERSION: 'profile-form-v3',
+    EXPECTED_BANK_VERSION: 'bank-v1',
+    EXPECTED_SCORING_VERSION: 'scoring-v1',
+    EXPECTED_TAXONOMY_VERSION: 'taxonomy-v1',
+    EXPECTED_MODIFIER_MEASUREMENT_VERSION: 'modifier-measurement-v1',
+    EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT: 'lr_f8266296',
+    EXPECTED_MODIFIER_LABEL_ROSTER_FINGERPRINT: 'lr_28f0d466',
+    EXPECTED_SPECIALIST_ASSIGNMENT_STRATEGY: 'balanced-hash-v2',
+    EXPECTED_SPECIALIST_ASSIGNMENT_ROSTER_VERSION: '2026-08-specialist-roster-v1',
+    EXPECTED_SPECIALIST_ASSIGNMENT_MODULE_IDS: 'feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module',
     EXPECTED_MODERATE_ITEM_COUNT: '1',
     EXPECTED_EXTENSIVE_ITEM_COUNT: '2',
     ALLOWED_LEGACY_MODERATE_ITEM_COUNTS: '3',
@@ -75,10 +84,10 @@ function coreSubmission(overrides = {}) {
     ],
   }]
   return {
-      schemaVersion: '2026-08-v10',
+    schemaVersion: '2026-08-v14',
     submissionId: 'submission_1',
     recordType: 'core',
-    studyId: 'community-2026',
+    studyId: 'community-2026-v4',
     participantId: 'p_test',
     administration: 'test',
     submittedAt: '2026-08-10T12:02:00.000Z',
@@ -118,8 +127,11 @@ function coreSubmission(overrides = {}) {
     bankVersion: 'bank-v1',
     scoringVersion: 'scoring-v1',
     taxonomyVersion: 'taxonomy-v1',
+    modifierMeasurementVersion: 'modifier-measurement-v1',
     primaryLabelIds: ['conservative'],
     modifierLabelIds: ['progressivism'],
+    primaryLabelRosterFingerprint: 'lr_f8266296',
+    modifierLabelRosterFingerprint: 'lr_28f0d466',
     tier: 'moderate',
     identity: {},
     predictedLabelIds: [],
@@ -159,6 +171,63 @@ describe('research contribution Worker', () => {
     assert.equal(retry.status, 202)
     assert.equal((await retry.json()).deduplicated, true)
     assert.equal(env.DB.rows.size, 1)
+  })
+
+  it('rejects stale measurement metadata', async () => {
+    const env = environment()
+
+    for (const field of [
+      'bankVersion',
+      'scoringVersion',
+      'taxonomyVersion',
+      'modifierMeasurementVersion',
+      'primaryLabelRosterFingerprint',
+      'modifierLabelRosterFingerprint',
+    ]) {
+      const submission = coreSubmission({ [field]: `${field}-stale` })
+      const response = await handleRequest(postRequest(submission), env)
+      assert.equal(response.status, 422)
+    }
+  })
+
+  it('rejects roster tampering and result IDs outside the declared active rosters', async () => {
+    const env = environment()
+    const invalidSubmissions = [
+      coreSubmission({ primaryLabelIds: ['market-liberal'] }),
+      coreSubmission({ modifierLabelIds: ['populism'] }),
+      coreSubmission({ predictedLabelIds: ['market-liberal'] }),
+      coreSubmission({ predictedModifierIds: ['populism'] }),
+    ]
+
+    for (const [index, submission] of invalidSubmissions.entries()) {
+      submission.submissionId = `submission_roster_${index}`
+      assert.equal((await handleRequest(postRequest(submission), env)).status, 422)
+    }
+  })
+
+  it('accepts only the frozen balanced-hash specialist assignment', async () => {
+    const env = environment()
+    const assignment = {
+      moduleId: 'socialist-families-module',
+      strategy: 'balanced-hash-v2',
+      rosterVersion: '2026-08-specialist-roster-v1',
+    }
+
+    assert.equal((await handleRequest(postRequest(coreSubmission({
+      submissionId: 'submission_assigned',
+      specialistAssignment: assignment,
+    })), env)).status, 202)
+
+    for (const [suffix, invalidAssignment] of [
+      ['strategy', { ...assignment, strategy: 'balanced-hash-v1' }],
+      ['roster', { ...assignment, rosterVersion: 'stale-roster' }],
+      ['module', { ...assignment, moduleId: 'anarchist-families-module' }],
+    ]) {
+      assert.equal((await handleRequest(postRequest(coreSubmission({
+        submissionId: `submission_assigned_${suffix}`,
+        specialistAssignment: invalidAssignment,
+      })), env)).status, 422)
+    }
   })
 
   it('accepts the configured full-depth profile and a controlled matrix form', async () => {

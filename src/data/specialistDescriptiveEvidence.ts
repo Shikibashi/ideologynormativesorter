@@ -1,6 +1,6 @@
 import type { Question, QuestionSource } from '../types'
 
-export const SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION = '2026-08-specialist-descriptive-v1'
+export const SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION = '2026-08-specialist-descriptive-v3'
 
 interface SpecialistDescriptiveEvidence {
   evidenceNote: string
@@ -14,7 +14,7 @@ const source = (title: string, url: string, publisher: string): QuestionSource =
 })
 
 /**
- * Operational scope for the three descriptive items in the respondent-facing
+ * Operational scope for the descriptive items in the respondent-facing
  * specialist modules. These records narrow the claims without changing their
  * wording, local construct weights, or global compatibility weights.
  */
@@ -64,6 +64,54 @@ export const specialistDescriptiveEvidenceById: Readonly<Record<string, Speciali
         'Understanding the Indigenous and Tribal Peoples Convention',
         'https://www.ilo.org/publications/understanding-indigenous-and-tribal-peoples-convention',
         'International Labour Organization',
+      ),
+    ],
+  },
+  'fm-an-2': {
+    evidenceNote:
+      'Scope to the institutional conditions under which market exchange and private coordination use dispersed information, including property rules, contract enforcement, infrastructure, and public goods. The claim does not say that markets are self-sufficient, that every market is competitive, or that decentralized exchange removes all state or corporate power; market performance varies by sector and institutional design.',
+    sources: [
+      source(
+        'Markets',
+        'https://plato.stanford.edu/entries/markets/',
+        'Stanford Encyclopedia of Philosophy',
+      ),
+      source(
+        'Anarchism',
+        'https://plato.stanford.edu/entries/anarchism/',
+        'Stanford Encyclopedia of Philosophy',
+      ),
+    ],
+  },
+  'fm-so-2': {
+    evidenceNote:
+      'Scope to proposals and historical debates about democratic or participatory planning in which workers, consumers, or public institutions coordinate production through deliberation, negotiated plans, or computational tools. The claim does not equate democratic planning with centralized command, imply that planning always outperforms markets, or settle the information, incentive, and accountability tradeoffs across sectors.',
+    sources: [
+      source(
+        'Socialism',
+        'https://plato.stanford.edu/archives/fall2025/entries/socialism/',
+        'Stanford Encyclopedia of Philosophy',
+      ),
+      source(
+        'A Brief Sketch of Four Models of Democratic Economic Planning',
+        'https://academic.oup.com/policy-press-scholarship-online/book/61193/chapter/532422630',
+        'Oxford Academic',
+      ),
+    ],
+  },
+  'fm-te-3': {
+    evidenceNote:
+      'Scope to technical and governance mechanisms rather than a universal political outcome: cryptography can provide confidentiality, integrity, and authentication, while distributed networks can change how trust and coordination are organized. The claim does not establish that such tools eliminate intermediaries, equalize control, or produce democratic decentralization in every deployment.',
+    sources: [
+      source(
+        'Guideline for Using Cryptographic Standards in the Federal Government: Cryptographic Mechanisms',
+        'https://csrc.nist.gov/pubs/sp/800/175/b/r1/final',
+        'National Institute of Standards and Technology',
+      ),
+      source(
+        'Decentralized Network Governance: Blockchain Technology and the Future of Regulation',
+        'https://www.frontiersin.org/journals/blockchain/articles/10.3389/fbloc.2020.00012/full',
+        'Frontiers in Blockchain',
       ),
     ],
   },

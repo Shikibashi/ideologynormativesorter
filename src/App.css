@@ -970,6 +970,12 @@
   padding: 10px 11px;
 }
 
+.label-card .label-note {
+  margin: 4px 0;
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
 .axis-chip-list,
 .layer-agreement {
   display: flex;
@@ -998,7 +1004,9 @@
 .full-label-browser,
 .label-reasoning,
 .label-layer-explainer,
-.label-term-guide {
+.label-term-guide,
+.label-context-disclosure,
+.label-scale-disclosure {
   color: var(--ecw-text-strong);
 }
 
@@ -1007,7 +1015,10 @@
 .full-label-browser > summary,
 .label-reasoning > summary,
 .label-layer-explainer > summary,
-.label-term-guide > summary {
+.label-term-guide > summary,
+.label-context-disclosure > summary,
+.label-scale-disclosure > summary,
+.label-source-disclosure > summary {
   min-block-size: var(--ecw-hit-min);
   display: flex;
   align-items: center;
@@ -1044,7 +1055,8 @@
 }
 
 .label-layer-explainer,
-.label-term-guide {
+.label-term-guide,
+.label-scale-disclosure {
   margin-top: 8px;
   padding: 6px 8px;
   background: var(--ecw-surface-recessed);
@@ -1455,7 +1467,7 @@
 
 .results-workbench {
   display: grid;
-  grid-template-columns: minmax(10rem, 0.22fr) minmax(0, 1fr) minmax(15rem, 0.36fr);
+  grid-template-columns: minmax(10rem, 0.22fr) minmax(0, 1fr) minmax(15rem, 0.6fr);
   gap: var(--ecw-space-layout);
   align-items: start;
   min-width: 0;
@@ -1553,6 +1565,27 @@
 
 .results-inspector-block .label-card {
   padding: var(--ecw-space-panel);
+}
+
+.results-inspector-block .label-card .label-note {
+  margin: 2px 0;
+  font-size: 0.75rem;
+  line-height: 1.18;
+}
+
+.results-inspector-block .label-card-compact .label-context-disclosure {
+  margin-top: 4px;
+}
+
+.results-inspector-block .label-card-compact .label-scale-disclosure {
+  margin-top: 4px;
+}
+
+@container results-page (min-width: 80rem) {
+  .results-inspector-block .label-card-list,
+  .results-inspector-block .philosophy-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .result-block,

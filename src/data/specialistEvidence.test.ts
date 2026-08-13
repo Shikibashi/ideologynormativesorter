@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { scoreFeministSpecialists } from './feministBreadth'
 import { scoreIdentitySovereigntyTraditions } from './identitySovereigntyBreadth'
-import { summarizeSpecialistEvidence } from './specialistEvidence'
+import { evaluateSpecialistConstructGates, summarizeSpecialistEvidence } from './specialistEvidence'
 
 describe('specialist evidence accounting', () => {
   it('does not turn an unanswered module into zero-valued evidence', () => {
@@ -36,5 +36,34 @@ describe('specialist evidence accounting', () => {
 
     expect(panAfrican?.evidence.insufficientEvidence).toBe(false)
     expect(panAfrican?.fit).toBeGreaterThan(0.9)
+  })
+
+  it('abstains on missing defining constructs and blocks measured contradictions', () => {
+    const summary = summarizeSpecialistEvidence(
+      [
+        { question: { id: 'authority' }, constructWeights: { authority: 1 } },
+        { question: { id: 'ownership' }, constructWeights: { ownership: 1 } },
+      ],
+      { authority: 1, ownership: -1 },
+      ['authority', 'ownership'],
+    )
+
+    expect(evaluateSpecialistConstructGates(summary, { authority: 1, ownership: -1 }, [
+      { constructId: 'authority', min: 0.6 },
+      { constructId: 'ownership', max: -0.4 },
+    ])).toEqual({ status: 'passed', failedConstructIds: [] })
+
+    expect(evaluateSpecialistConstructGates(summary, { authority: -1, ownership: -1 }, [
+      { constructId: 'authority', min: 0.6 },
+    ])).toEqual({ status: 'blocked', failedConstructIds: ['authority'] })
+
+    const sparseSummary = summarizeSpecialistEvidence(
+      [{ question: { id: 'authority' }, constructWeights: { authority: 1 } }],
+      {},
+      ['authority'],
+    )
+    expect(evaluateSpecialistConstructGates(sparseSummary, {}, [
+      { constructId: 'authority', min: 0.6 },
+    ])).toEqual({ status: 'insufficient-evidence', failedConstructIds: [] })
   })
 })

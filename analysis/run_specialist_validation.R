@@ -75,6 +75,7 @@ assignment_rows <- lapply(core_records, function(record) {
     administration = record$administration,
     module_id = assignment$moduleId,
     strategy = assignment$strategy %||% "unknown",
+    roster_version = assignment$rosterVersion %||% "unknown",
     stringsAsFactors = FALSE
   )
 })
@@ -82,20 +83,26 @@ assignment_rows <- assignment_rows[!vapply(assignment_rows, is.null, logical(1))
 assignments <- if (length(assignment_rows) > 0) unique(do.call(rbind, assignment_rows)) else data.frame()
 
 completion_rows <- lapply(specialist_records, function(record) {
+  assignment <- record$assignment %||% list()
   data.frame(
     participant_id = record$participantId,
     administration = record$administration,
     module_id = record$moduleId,
+    strategy = assignment$strategy %||% "unknown",
+    roster_version = assignment$rosterVersion %||% "unknown",
     stringsAsFactors = FALSE
   )
 })
 completions <- if (length(completion_rows) > 0) unique(do.call(rbind, completion_rows)) else data.frame()
 
 disposition_rows <- lapply(disposition_records, function(record) {
+  assignment <- record$assignment %||% list()
   data.frame(
     participant_id = record$participantId,
     administration = record$administration,
     module_id = record$moduleId,
+    strategy = assignment$strategy %||% "unknown",
+    roster_version = assignment$rosterVersion %||% "unknown",
     disposition = record$disposition %||% "unknown",
     answered_count = as.numeric(record$answeredCount %||% 0),
     duration_ms = as.numeric(record$durationMs %||% 0),
@@ -108,26 +115,31 @@ if (nrow(dispositions) > 0) {
   utils::write.csv(dispositions, file.path(output_dir, "specialist-dispositions.csv"), row.names = FALSE)
 } else {
   empty_csv(file.path(output_dir, "specialist-dispositions.csv"), c(
-    "participant_id", "administration", "module_id", "disposition", "answered_count", "duration_ms", "completed_at"
+    "participant_id", "administration", "module_id", "strategy", "roster_version", "disposition", "answered_count", "duration_ms", "completed_at"
   ))
 }
 
 if (nrow(assignments) > 0) {
   uptake_rows <- list()
-  group_keys <- unique(assignments[, c("administration", "module_id"), drop = FALSE])
+  group_keys <- unique(assignments[, c("administration", "module_id", "strategy", "roster_version"), drop = FALSE])
   for (row_index in seq_len(nrow(group_keys))) {
     administration <- group_keys$administration[[row_index]]
     module_id <- group_keys$module_id[[row_index]]
+    strategy <- group_keys$strategy[[row_index]]
+    roster_version <- group_keys$roster_version[[row_index]]
     assigned <- assignments[
-      assignments$administration == administration & assignments$module_id == module_id,
+      assignments$administration == administration & assignments$module_id == module_id
+        & assignments$strategy == strategy & assignments$roster_version == roster_version,
       , drop = FALSE
     ]
     completed <- if (nrow(completions) > 0) completions[
-      completions$administration == administration & completions$module_id == module_id,
+      completions$administration == administration & completions$module_id == module_id
+        & completions$strategy == strategy & completions$roster_version == roster_version,
       , drop = FALSE
     ] else data.frame()
     declined <- if (nrow(dispositions) > 0) dispositions[
-      dispositions$administration == administration & dispositions$module_id == module_id,
+      dispositions$administration == administration & dispositions$module_id == module_id
+        & dispositions$strategy == strategy & dispositions$roster_version == roster_version,
       , drop = FALSE
     ] else data.frame()
 
@@ -140,6 +152,8 @@ if (nrow(assignments) > 0) {
     uptake_rows[[length(uptake_rows) + 1]] <- data.frame(
       administration = administration,
       module_id = module_id,
+      strategy = strategy,
+      roster_version = roster_version,
       assigned_n = length(assigned_ids),
       completed_n = sum(assigned_ids %in% completed_ids),
       explicit_declined_n = sum(assigned_ids %in% declined_ids),
@@ -153,7 +167,7 @@ if (nrow(assignments) > 0) {
   utils::write.csv(do.call(rbind, uptake_rows), file.path(output_dir, "specialist-module-uptake.csv"), row.names = FALSE)
 } else {
   empty_csv(file.path(output_dir, "specialist-module-uptake.csv"), c(
-    "administration", "module_id", "assigned_n", "completed_n", "explicit_declined_n", "unresolved_n",
+    "administration", "module_id", "strategy", "roster_version", "assigned_n", "completed_n", "explicit_declined_n", "unresolved_n",
     "completion_rate", "explicit_decline_rate", "unresolved_rate"
   ))
 }
@@ -164,6 +178,8 @@ if (nrow(dispositions) > 0) {
     by = list(
       administration = dispositions$administration,
       module_id = dispositions$module_id,
+      strategy = dispositions$strategy,
+      roster_version = dispositions$roster_version,
       disposition = dispositions$disposition
     ),
     FUN = length
@@ -171,7 +187,7 @@ if (nrow(dispositions) > 0) {
   utils::write.csv(disposition_summary, file.path(output_dir, "specialist-disposition-summary.csv"), row.names = FALSE)
 } else {
   empty_csv(file.path(output_dir, "specialist-disposition-summary.csv"), c(
-    "administration", "module_id", "disposition", "n"
+    "administration", "module_id", "strategy", "roster_version", "disposition", "n"
   ))
 }
 

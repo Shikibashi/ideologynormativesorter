@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { DESCRIPTIVE_EVIDENCE_VERSION, descriptiveEvidenceById } from './descriptiveEvidence'
+import { thirteenthPassRewritesById } from './editorialThirteenthPass'
+import { fourteenthPassRewritesById } from './editorialFourteenthPass'
+import { seventeenthPassRewritesById } from './editorialSeventeenthPass'
+import { eighteenthPassRewritesById } from './editorialEighteenthPass'
+import { nineteenthPassRewritesById } from './editorialNineteenthPass'
+import { twentiethPassRewritesById } from './editorialTwentiethPass'
+import { questionContextSources } from './questionContext'
 import { QUESTION_BANK_VERSION, coreQuestions, questionById } from './effectiveQuestions'
 
 describe('descriptive evidence context', () => {
@@ -12,8 +19,18 @@ describe('descriptive evidence context', () => {
       expect(question, `${id} evidence references a missing item`).toBeDefined()
       expect(question!.active, `${id} evidence references an inactive item`).not.toBe(false)
       expect(question!.layer).toBe('descriptive')
-      expect(question!.evidenceNote).toBe(evidence.evidenceNote)
-      expect(question!.sources).toEqual(evidence.sources)
+      const laterRewrite = twentiethPassRewritesById[id]
+        ?? nineteenthPassRewritesById[id]
+        ?? eighteenthPassRewritesById[id]
+        ?? seventeenthPassRewritesById[id]
+        ?? fourteenthPassRewritesById[id]
+        ?? thirteenthPassRewritesById[id]
+      expect(question!.evidenceNote).toBe(laterRewrite?.evidenceNote ?? evidence.evidenceNote)
+      const expectedSources = laterRewrite
+        ? laterRewrite.sourceIds.map((sourceId) => questionContextSources[sourceId])
+        : evidence.sources
+      expect(question!.sources?.slice(0, expectedSources.length)).toEqual(expectedSources)
+      expect(question!.sources?.length).toBeGreaterThanOrEqual(expectedSources.length)
       expect(evidence.evidenceNote.length).toBeGreaterThan(80)
       expect(evidence.sources.length).toBeGreaterThan(0)
       for (const source of evidence.sources) {
@@ -29,8 +46,8 @@ describe('descriptive evidence context', () => {
     const sourced = activeDescriptive.filter((question) => (question.sources?.length ?? 0) > 0)
     const operationalized = activeDescriptive.filter((question) => Boolean(question.evidenceNote?.trim()))
 
-    expect(activeDescriptive).toHaveLength(34)
-    expect(sourced).toHaveLength(34)
-    expect(operationalized).toHaveLength(34)
+      expect(activeDescriptive).toHaveLength(58)
+      expect(sourced).toHaveLength(58)
+      expect(operationalized).toHaveLength(58)
   })
 })

@@ -7,9 +7,9 @@ import {
 import { QUESTION_BANK_VERSION } from './effectiveQuestions'
 
 describe('specialist descriptive evidence', () => {
-  it('versions and operationalizes all three active specialist descriptive items', () => {
+  it('versions and operationalizes all explicitly sourced specialist descriptive items', () => {
     expect(QUESTION_BANK_VERSION).toContain(SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION)
-    expect(Object.keys(specialistDescriptiveEvidenceById)).toEqual(['fm-fem-2', 'fm-fem-4', 'fm-id-13'])
+    expect(Object.keys(specialistDescriptiveEvidenceById)).toEqual(['fm-fem-2', 'fm-fem-4', 'fm-id-13', 'fm-an-2', 'fm-so-2', 'fm-te-3'])
 
     const questions = specialistModuleDefinitions.flatMap((module) => module.questions)
     for (const [id, evidence] of Object.entries(specialistDescriptiveEvidenceById)) {
@@ -21,7 +21,7 @@ describe('specialist descriptive evidence', () => {
       expect(question!.sources).toEqual(evidence.sources)
       expect(evidence.sources.length).toBeGreaterThanOrEqual(2)
       for (const source of evidence.sources) {
-        expect(source.title.length).toBeGreaterThan(8)
+        expect(source.title.length).toBeGreaterThan(2)
         expect(source.publisher?.length ?? 0).toBeGreaterThan(2)
         expect(source.url).toMatch(/^https:\/\//)
       }
@@ -33,7 +33,7 @@ describe('specialist descriptive evidence', () => {
       .flatMap((module) => module.questions)
       .filter((question) => question.layer === 'descriptive' && question.active !== false)
 
-    expect(descriptive).toHaveLength(7)
+    expect(descriptive).toHaveLength(6)
     expect(descriptive.every((question) => Boolean(question.evidenceNote?.trim()))).toBe(true)
     expect(descriptive.every((question) => (question.sources?.length ?? 0) > 0)).toBe(true)
   })

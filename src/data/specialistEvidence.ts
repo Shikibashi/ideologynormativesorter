@@ -29,6 +29,50 @@ export interface SpecialistProfileEvidence {
   requiredConstructCount: number
 }
 
+export interface SpecialistConstructGate {
+  constructId: string
+  min?: number
+  max?: number
+}
+
+export type SpecialistGateStatus = 'passed' | 'blocked' | 'insufficient-evidence'
+
+export interface SpecialistGateEvaluation {
+  status: SpecialistGateStatus
+  failedConstructIds: string[]
+}
+
+/**
+ * Evaluate necessary construct commitments separately from centroid distance.
+ * Missing construct evidence abstains; a measured contradiction blocks the
+ * candidate. This keeps a plausible nearest-neighbour score from laundering
+ * an absent or contradicted defining commitment into a specialist result.
+ */
+export function evaluateSpecialistConstructGates(
+  summary: SpecialistEvidenceSummary,
+  constructScores: Readonly<Record<string, number>>,
+  gates: readonly SpecialistConstructGate[] = [],
+): SpecialistGateEvaluation {
+  let hasInsufficientEvidence = false
+  const failedConstructIds: string[] = []
+
+  for (const gate of gates) {
+    const evidence = summary.constructs[gate.constructId]
+    const score = constructScores[gate.constructId]
+    if (!evidence?.sufficient || !Number.isFinite(score)) {
+      hasInsufficientEvidence = true
+      continue
+    }
+    if ((gate.min !== undefined && score < gate.min) || (gate.max !== undefined && score > gate.max)) {
+      failedConstructIds.push(gate.constructId)
+    }
+  }
+
+  if (hasInsufficientEvidence) return { status: 'insufficient-evidence', failedConstructIds }
+  if (failedConstructIds.length > 0) return { status: 'blocked', failedConstructIds }
+  return { status: 'passed', failedConstructIds }
+}
+
 interface WeightedItem {
   question: { id: string }
   constructWeights: Partial<Record<string, number>>

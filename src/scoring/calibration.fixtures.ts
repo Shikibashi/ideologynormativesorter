@@ -1,6 +1,7 @@
 import type { AnswerMap, AxisWeight, IdeologyLabel, Question } from '../types'
 import { questions } from '../data/questions'
 import { labelById } from '../data/labels'
+import { primaryScoringLabels } from '../data/labelTaxonomy'
 
 export interface CalibrationFixture {
    id: string
@@ -118,7 +119,6 @@ const targetIds = [
    'mutualist',
    'ecomodernist',
    'christian-democrat',
-   'fascist-authoritarian',
    'marxist-leninist',
    'council-communist',
    'syndicalist',
@@ -223,7 +223,9 @@ const targetIds = [
    'social-investment-state',
 ]
 
-export const calibrationFixtures: CalibrationFixture[] = targetIds.map(id => {
+export const calibrationFixtures: CalibrationFixture[] = targetIds
+  .filter((id) => primaryScoringLabels.some((label) => label.id === id))
+  .map(id => {
    const label = labelById.get(id)!
    const answers = createCentroidAlignedFixture(label)
    return {

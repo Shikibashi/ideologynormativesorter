@@ -10,13 +10,20 @@ const specialistOutputFile = resolve(
 )
 const allowedOrigin = process.env.ALLOWED_ORIGIN ?? 'http://localhost:5173'
 const maximumBodyBytes = Number(process.env.MAXIMUM_BODY_BYTES ?? 2_000_000)
-const expectedSchemaVersion = process.env.RESEARCH_SCHEMA_VERSION ?? '2026-08-v10'
+const expectedSchemaVersion = process.env.RESEARCH_SCHEMA_VERSION ?? '2026-08-v14'
 const expectedConsentVersion = process.env.RESEARCH_CONSENT_VERSION ?? '2026-08-12-v8'
 const expectedQualityRuleVersion = process.env.RESEARCH_QUALITY_RULE_VERSION ?? 'data-quality-v2'
 const expectedFormVersion = process.env.RESEARCH_FORM_VERSION ?? 'profile-form-v3'
 const expectedStudyId = process.env.RESEARCH_STUDY_ID?.trim() || null
 const expectedBankVersion = process.env.RESEARCH_BANK_VERSION?.trim() || null
 const expectedScoringVersion = process.env.RESEARCH_SCORING_VERSION?.trim() || null
+const expectedTaxonomyVersion = process.env.RESEARCH_TAXONOMY_VERSION ?? '2026-08-taxonomy-v12'
+const expectedModifierMeasurementVersion = process.env.RESEARCH_MODIFIER_MEASUREMENT_VERSION ?? '2026-08-modifier-construct-v1'
+const expectedPrimaryLabelRosterFingerprint = process.env.RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT ?? 'lr_6082ca47'
+const expectedModifierLabelRosterFingerprint = process.env.RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT ?? 'lr_1e8211b7'
+const expectedSpecialistAssignmentStrategy = process.env.RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY ?? 'balanced-hash-v2'
+const expectedSpecialistAssignmentRosterVersion = process.env.RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION ?? '2026-08-specialist-roster-v1'
+const expectedSpecialistAssignmentModuleIds = process.env.RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS ?? 'feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module'
 const TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/
 const LAYERS = new Set(['normative', 'descriptive', 'prescriptive'])
 const THEORY_CONTEXTS = new Set(['ideal', 'nonideal', 'mixed'])
@@ -53,6 +60,13 @@ function validIsoTimestamp(value) {
 
 function validVersion(value, expected = null) {
   return validNonemptyString(value, 512) && (expected === null || value === expected)
+}
+
+function configuredTokenList(value) {
+  if (typeof value !== 'string') return []
+  const values = value.split(',').map((entry) => entry.trim())
+  if (values.length === 0 || !values.every((entry) => validToken(entry, 128)) || new Set(values).size !== values.length) return []
+  return values
 }
 
 function validAxisWeights(weights) {
@@ -138,6 +152,13 @@ function hash32(value) {
 function researchFormFingerprint(itemMap) {
   const canonical = itemMap.map((item) => item.questionId).sort().join('|')
   return `rf_${hash32(`${expectedFormVersion}:${canonical}`).toString(16).padStart(8, '0')}`
+}
+
+function labelRosterFingerprint(role, labelIds, taxonomyVersion, modifierMeasurementVersion = 'not-applicable') {
+  if (!Array.isArray(labelIds)) return ''
+  const canonicalIds = [...new Set(labelIds)].sort().join('|')
+  const payload = `${taxonomyVersion}:${role}:${modifierMeasurementVersion}:${canonicalIds}`
+  return `lr_${hash32(payload).toString(16).padStart(8, '0')}`
 }
 
 function canonicalize(value) {
@@ -273,11 +294,16 @@ function validAnsweredRecord(value) {
   return value.itemMap.every((item) => validAnswerForItem(value.answers[item.questionId], item))
 }
 
-function validAssignment(assignment, moduleId) {
+function validAssignment(assignment, moduleId, participantId, studyId) {
+  const moduleIds = configuredTokenList(expectedSpecialistAssignmentModuleIds)
+  const expectedModuleId = moduleIds[hash32(`${studyId}:${participantId}:specialist-assignment`) % moduleIds.length]
   return isObject(assignment)
     && assignment.moduleId === moduleId
     && validToken(assignment.moduleId, 128)
-    && validToken(assignment.strategy, 128)
+    && assignment.strategy === expectedSpecialistAssignmentStrategy
+    && validToken(assignment.rosterVersion, 128)
+    && assignment.rosterVersion === expectedSpecialistAssignmentRosterVersion
+    && expectedModuleId === moduleId
 }
 
 function validIdentity(identity) {
@@ -295,22 +321,40 @@ function validCoreRecord(value) {
     && typeof value.resumed === 'boolean'
     && validVersion(value.bankVersion, expectedBankVersion)
     && validVersion(value.scoringVersion, expectedScoringVersion)
-    && validToken(value.taxonomyVersion, 128)
+    && validVersion(value.taxonomyVersion, expectedTaxonomyVersion)
+    && validVersion(value.modifierMeasurementVersion, expectedModifierMeasurementVersion)
     && Array.isArray(value.primaryLabelIds)
     && value.primaryLabelIds.length > 0
     && value.primaryLabelIds.every((labelId) => validToken(labelId, 128))
+    && new Set(value.primaryLabelIds).size === value.primaryLabelIds.length
     && Array.isArray(value.modifierLabelIds)
     && value.modifierLabelIds.every((labelId) => validToken(labelId, 128))
+    && new Set(value.modifierLabelIds).size === value.modifierLabelIds.length
+    && validVersion(value.primaryLabelRosterFingerprint, expectedPrimaryLabelRosterFingerprint)
+    && validVersion(value.modifierLabelRosterFingerprint, expectedModifierLabelRosterFingerprint)
+    && value.primaryLabelRosterFingerprint === labelRosterFingerprint(
+      'primary',
+      value.primaryLabelIds,
+      value.taxonomyVersion,
+    )
+    && value.modifierLabelRosterFingerprint === labelRosterFingerprint(
+      'modifier',
+      value.modifierLabelIds,
+      value.taxonomyVersion,
+      value.modifierMeasurementVersion,
+    )
     && TIERS.has(value.tier)
     && validIdentity(value.identity)
     && Array.isArray(value.predictedLabelIds)
     && value.predictedLabelIds.length <= 5
     && value.predictedLabelIds.every((labelId) => validToken(labelId, 128))
     && new Set(value.predictedLabelIds).size === value.predictedLabelIds.length
+    && value.predictedLabelIds.every((labelId) => value.primaryLabelIds.includes(labelId))
     && Array.isArray(value.predictedModifierIds)
     && value.predictedModifierIds.length <= 5
     && value.predictedModifierIds.every((labelId) => validToken(labelId, 128))
     && new Set(value.predictedModifierIds).size === value.predictedModifierIds.length
+    && value.predictedModifierIds.every((labelId) => value.modifierLabelIds.includes(labelId))
     && isObject(value.form)
     && value.form.algorithmVersion === expectedFormVersion
     && (value.form.requestedItemCount === null
@@ -327,7 +371,12 @@ function validCoreRecord(value) {
     && validToken(value.sampling?.recruitmentSource)
     && value.sampling?.recruitmentSourceProvenance === 'url-parameter-unverified'
     && (value.specialistAssignment === undefined
-      || validAssignment(value.specialistAssignment, value.specialistAssignment.moduleId))
+      || validAssignment(
+        value.specialistAssignment,
+        value.specialistAssignment.moduleId,
+        value.participantId,
+        value.studyId,
+      ))
 }
 
 function validSpecialistRecord(value) {
@@ -337,7 +386,7 @@ function validSpecialistRecord(value) {
     && validVersion(value.moduleVersion)
     && validVersion(value.bankVersion, expectedBankVersion)
     && validVersion(value.scoringVersion, expectedScoringVersion)
-    && validAssignment(value.assignment, value.moduleId)
+    && validAssignment(value.assignment, value.moduleId, value.participantId, value.studyId)
     && isObject(value.criterion)
     && Array.isArray(value.criterion.selectedIds)
     && value.criterion.selectedIds.every((labelId) => validToken(labelId, 128))
@@ -356,7 +405,7 @@ function validSpecialistDisposition(value) {
     && value.recordType === 'specialist-disposition'
     && validToken(value.moduleId, 128)
     && validVersion(value.moduleVersion)
-    && validAssignment(value.assignment, value.moduleId)
+    && validAssignment(value.assignment, value.moduleId, value.participantId, value.studyId)
     && ['declined-before-start', 'declined-after-partial', 'declined-after-completion'].includes(value.disposition)
     && Number.isInteger(value.answeredCount)
     && value.answeredCount >= 0

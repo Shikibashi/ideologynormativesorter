@@ -4,16 +4,16 @@ The browser application computes descriptive and classical diagnostics only when
 
 ## Inputs
 
-Use consented schema `2026-08-v9` records produced by contribution mode. The public flow omits `formSize` and contributes
+Use consented schema `2026-08-v14` records produced by contribution mode. The public flow omits `formSize` and contributes
 the complete selected Balanced or Full-depth profile. A controlled `research=1` URL can request a balanced matrix form
 with `formSize` for instrument analysis.
 
 ```text
-https://your-site.example/?research=1&study=pilot-2026&formSize=120
-https://your-site.example/?research=1&study=pilot-2026&administration=retest&formSize=120
+https://your-site.example/?research=1&study=community-2026-v4&formSize=120
+https://your-site.example/?research=1&study=community-2026-v4&administration=retest&formSize=120
 ```
 
-The same browser keeps a stable random participant code. Test and retest core forms preserve the same participant-specific item membership but use a different deterministic presentation order. The record stores the form algorithm version, membership fingerprint, exact presented wording/options, and open-opt-in recruitment source. Research participants are also deterministically assigned one optional specialist module. The same participant receives the same specialist module at test and retest, while specialist item order changes by administration.
+The same browser keeps a stable random participant code. Test and retest core forms preserve the same participant-specific item membership but use a different deterministic presentation order. The record stores the form algorithm version, membership fingerprint, exact presented wording/options, and open-opt-in recruitment source. Research participants are also deterministically assigned one optional specialist module. The same participant receives the same specialist module at test and retest under the frozen `2026-08-specialist-roster-v1` / `balanced-hash-v2` contract, while specialist item order changes by administration.
 
 Core records and specialist records share `studyId`, `participantId`, and `administration`, so they can be joined without storing names, email addresses, exact ages, or precise locations. The core record includes the assigned specialist module even when the respondent declines it, which provides a denominator for follow-up uptake analysis.
 
@@ -21,6 +21,14 @@ Set `VITE_RESEARCH_ENDPOINT` at build time to transmit records through the websi
 
 ```bash
 ALLOWED_ORIGIN=http://localhost:5173 \
+RESEARCH_STUDY_ID=community-2026-v4 \
+RESEARCH_TAXONOMY_VERSION=2026-08-taxonomy-v12 \
+RESEARCH_MODIFIER_MEASUREMENT_VERSION=2026-08-modifier-construct-v1 \
+RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT=lr_6082ca47 \
+RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT=lr_1e8211b7 \
+RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY=balanced-hash-v2 \
+RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION=2026-08-specialist-roster-v1 \
+RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS=feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module \
 RESEARCH_OUTPUT_FILE=./private-data/submissions.ndjson \
 SPECIALIST_RESEARCH_OUTPUT_FILE=./private-data/specialist-submissions.ndjson \
 node research-collector/server.mjs
@@ -71,6 +79,10 @@ PSYCH_REQUIRED_FORM_VERSION=profile-form-v3
 PSYCH_REQUIRED_QUALITY_RULE_VERSION=data-quality-v2
 # Also set PSYCH_REQUIRED_BANK_VERSION and PSYCH_REQUIRED_SCORING_VERSION
 # to the frozen cohort values for field analysis.
+PSYCH_REQUIRED_TAXONOMY_VERSION=2026-08-taxonomy-v12
+PSYCH_REQUIRED_MODIFIER_MEASUREMENT_VERSION=2026-08-modifier-construct-v1
+PSYCH_REQUIRED_PRIMARY_LABEL_ROSTER_FINGERPRINT=lr_6082ca47
+PSYCH_REQUIRED_MODIFIER_LABEL_ROSTER_FINGERPRINT=lr_1e8211b7
 ```
 
 ## Run specialist validation

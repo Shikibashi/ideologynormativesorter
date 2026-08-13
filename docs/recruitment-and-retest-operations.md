@@ -19,13 +19,13 @@ Never put email addresses, names, phone numbers, recruitment-platform IDs, IP ad
 Initial administration:
 
 ```text
-https://SITE/?research=1&study=pilot-2026&formSize=120
+https://SITE/?research=1&study=community-2026-v4&formSize=120
 ```
 
 Retest administration:
 
 ```text
-https://SITE/?research=1&study=pilot-2026&administration=retest&formSize=120
+https://SITE/?research=1&study=community-2026-v4&administration=retest&formSize=120
 ```
 
 The same browser retains the pseudonymous participant code. Cross-device retest linkage requires a separate random linking token managed outside the response collector. Do not use an email address as the participant code.
@@ -98,12 +98,13 @@ The retest must use:
 
 - the same study ID;
 - the same question-bank and scoring versions;
+- the same taxonomy, assignment strategy, and assignment-roster versions;
 - the same assigned item coverage where a matrix form was used;
 - a different deterministic presentation order;
 - the same pseudonymous participant code;
 - `administration=retest` in the study URL.
 
-Do not expose the participant's prior answers during retest. Record major external political events affecting the whole study period in an aggregate study log. Do not ask participants for detailed personal political events unless separately approved and necessary.
+Do not expose the participant's prior answers during retest. The ordered specialist roster must remain frozen for this study; a roster change requires a new study cohort or assignment strategy rather than reassignment during retest. Record major external political events affecting the whole study period in an aggregate study log. Do not ask participants for detailed personal political events unless separately approved and necessary.
 
 ## Reminder schedule
 

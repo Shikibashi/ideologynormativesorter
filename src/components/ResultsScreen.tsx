@@ -124,6 +124,8 @@ function labelMatchesSearch(label: LabelWithInfluences, query: string): boolean 
       label.description,
       label.usageNote,
       label.cautionNote,
+      label.taxonomy?.analyticalScale.note,
+      ...(label.taxonomy?.analyticalScale.commonScales ?? []),
       ...(label.aliases ?? []),
       ...(label.philosophies ?? []),
       ...(label.subTheories ?? []),
@@ -164,10 +166,20 @@ function taxonomyStatusLabel(taxonomy?: LabelWithInfluences['taxonomy']): string
    if (!taxonomy) return null
    if (taxonomy.measurementStatus === 'core-primary') return 'primary scored family'
    if (taxonomy.measurementStatus === 'modifier-scored') return 'modifier scored independently'
+   if (taxonomy.measurementStatus === 'modifier-follow-up') return 'modifier available through focused follow-up'
+   if (taxonomy.measurementStatus === 'modifier-catalog-only') return 'catalog modifier · not currently scored'
    if (taxonomy.measurementStatus === 'validated-specialist') return 'validated specialist follow-up'
    if (taxonomy.measurementStatus === 'provisional-specialist') return 'provisional specialist'
    if (taxonomy.measurementStatus === 'context-only') return 'context / institution'
    return 'compatibility alias'
+}
+
+function taxonomyScaleLabel(taxonomy?: LabelWithInfluences['taxonomy']): string | null {
+   if (!taxonomy) return null
+   const respondentScale = taxonomy.analyticalScale.respondentMeasurementScale
+      ? ` · respondent estimate: ${taxonomy.analyticalScale.respondentMeasurementScale}-level uptake`
+      : ''
+   return `common analytical scales: ${taxonomy.analyticalScale.commonScales.join(' / ')}${respondentScale}`
 }
 
 function focusedFeministTradition(candidate: FeministSpecialistCandidate): BrowserRelatedTradition {
@@ -192,10 +204,16 @@ function sourceHost(url: string): string {
 
 function labelEvidenceSummary(
    label: LabelWithInfluences,
+   match?: LabelMatch,
    labelReliability?: LabelReliability,
    axisReliabilities?: Record<AxisId, AxisReliability>,
    axisById?: Map<AxisId, Axis>,
 ): string {
+   if (match?.modifierConstruct) {
+      const { name, answeredQuestionIds, indicatorQuestionIds, minimumAnsweredItems } = match.modifierConstruct
+      return `direct ${name} coverage: ${answeredQuestionIds.length} of ${indicatorQuestionIds.length} indicators answered (minimum ${minimumAnsweredItems}) · not inferred from the full ${label.name} profile`
+   }
+
    const sparseAxes = Object.keys(label.centroid)
       .filter((axisId): axisId is AxisId => {
          const reliability = axisReliabilities?.[axisId]
@@ -217,18 +235,23 @@ function LabelCard({
    labelReliability,
    axisReliabilities,
    axisById,
+   compact = false,
 }: {
    label: LabelWithInfluences
    match?: LabelMatch
    labelReliability?: LabelReliability
    axisReliabilities?: Record<AxisId, AxisReliability>
    axisById?: Map<AxisId, Axis>
+   compact?: boolean
 }) {
    return (
-      <article className="label-card">
+      <article className={`label-card${compact ? ' label-card-compact' : ''}`}>
          <h5>{label.name}</h5>
          {taxonomyStatusLabel(label.taxonomy) && (
             <p className="muted label-taxonomy-status">{taxonomyStatusLabel(label.taxonomy)}</p>
+         )}
+         {taxonomyScaleLabel(label.taxonomy) && (
+            <p className="muted label-taxonomy-status">{taxonomyScaleLabel(label.taxonomy)}</p>
          )}
          {match && (
             <p className="muted">
@@ -240,12 +263,53 @@ function LabelCard({
          )}
          {match && (
             <p className="muted label-evidence">
-               {labelEvidenceSummary(label, labelReliability, axisReliabilities, axisById)}
+               {labelEvidenceSummary(label, match, labelReliability, axisReliabilities, axisById)}
+            </p>
+         )}
+         {match?.modifierConstruct && (
+            <p className="muted label-note">
+               <strong>{match.modifierConstruct.name}:</strong> {match.modifierConstruct.note}
             </p>
          )}
          <p>{label.description}</p>
-         {label.usageNote && <p className="muted label-note">{label.usageNote}</p>}
+         {compact ? (
+            (label.usageNote || label.cautionNote) && (
+               <details className="label-context-disclosure">
+                  <summary>Usage and caution</summary>
+                  {label.usageNote && <p className="muted label-note">{label.usageNote}</p>}
+                  {label.cautionNote && <p className="muted label-note">Note: {label.cautionNote}</p>}
+               </details>
+            )
+         ) : (
+            <>
+               {label.usageNote && <p className="muted label-note">{label.usageNote}</p>}
          {label.cautionNote && <p className="muted label-note">Note: {label.cautionNote}</p>}
+            </>
+         )}
+         {label.taxonomy && (
+            <details className="label-scale-disclosure">
+               <summary>Analytical scale and scope</summary>
+               <p className="muted">{label.taxonomy.analyticalScale.note}</p>
+               <p className="muted">
+                  Common scales: {label.taxonomy.analyticalScale.commonScales.join(', ')}. Scale registry:{' '}
+                  {label.taxonomy.analyticalScaleVersion}.
+               </p>
+               {label.taxonomy.analyticalScale.respondentMeasurementScale && (
+                  <p className="muted">
+                     Respondent estimate: micro-level uptake of the tradition’s claims. This is not a nano-level inference from a single answer.
+                  </p>
+               )}
+               <ul>
+                  {label.taxonomy.analyticalScale.sources.map((source) => (
+                     <li key={source.sourceId}>
+                        <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
+                        <span className="muted"> · {source.publisher}</span>
+                        <div className="muted">{source.note}</div>
+                     </li>
+                  ))}
+               </ul>
+            </details>
+         )}
          <details className="label-layer-explainer">
             <summary>How this label reads across the three layers</summary>
             {LAYERS.map((layer) => (
@@ -288,6 +352,23 @@ function LabelCard({
          {match?.reasoning && axisById && (
             <details className="label-reasoning">
                <summary>Why is this nearby?</summary>
+               {match.layerEvidence && (
+                  <div className="reasoning-group">
+                     <strong>Layer-level proximity</strong>
+                     <ul>
+                        {LAYERS.map((layer) => {
+                           const evidence = match.layerEvidence![layer]
+                           const summary = evidence.fit === null
+                              ? 'not measured for this comparison'
+                              : `${layerAgreementLabel(evidence.fit)} · ${evidence.measuredAxisCount} of ${evidence.totalAxisCount} relevant axes measured`
+                           return <li key={layer}>{LAYER_LABELS[layer]}: {summary}</li>
+                        })}
+                     </ul>
+                     <p className="muted">
+                        Each layer is compared independently. A close value in one layer does not turn disagreement in another into agreement.
+                     </p>
+                  </div>
+               )}
                {match.reasoning.sharedExtremeAxes.length > 0 && (
                   <div className="reasoning-group">
                      <strong>Top Shared Values</strong>
@@ -333,9 +414,10 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
    const [shareUrl, setShareUrl] = useState<string | null>(null)
    const [activeSection, setActiveSection] = useState(() => activeResultSection(window.location.hash))
    const visibleLabels = labels.filter((label) => labelMatchesSearch(label, labelSearch))
+   const publicLabelIds = new Set(labels.map((label) => label.id))
    const relatedTraditions: BrowserRelatedTradition[] = [
       ...feministSpecialistCandidates
-         .filter((candidate) => candidate.status === 'candidate-specialist')
+         .filter((candidate) => candidate.status === 'candidate-specialist' && !publicLabelIds.has(candidate.id))
          .map(focusedFeministTradition),
       ...catalogRelatedTraditions.map(catalogCandidateTradition),
    ]
@@ -602,9 +684,10 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                            key={match.labelId}
                            label={label}
                            match={match}
-                           labelReliability={result.labelReliabilities?.[label.id]}
-                           axisReliabilities={result.axisReliabilities}
-                           axisById={axisById}
+                          labelReliability={result.labelReliabilities?.[label.id]}
+                          axisReliabilities={result.axisReliabilities}
+                          axisById={axisById}
+                           compact
                         />
                      ) : null
                   })}
@@ -652,6 +735,7 @@ export function ResultsScreen({ result, axes, domains, labels, answers, compareR
                                              labelReliability={result.labelReliabilities?.[label.id]}
                                              axisReliabilities={result.axisReliabilities}
                                              axisById={axisById}
+                                             compact
                                           />
                                        ) : null
                                     })}

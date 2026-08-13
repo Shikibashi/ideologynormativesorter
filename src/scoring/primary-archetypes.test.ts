@@ -85,16 +85,6 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'fascist-ultranationalist', targetLabelId: 'fascist-authoritarian', expectedFamily: 'authoritarian',
-    intent: {
-      'authority-legitimacy': 1, 'liberty-noninterference': -1, 'equality-theory': -0.7,
-      'political-community-boundary': -1, 'moral-traditionalism': 0.7, 'anti-domination': -0.8,
-      'state-capacity-confidence': 0.8, 'democratic-confidence': -0.9, 'centralization-preference': 1,
-      'reform-vs-revolution': 0.8, 'gradualism-vs-immediatism': 0.7, 'state-action-vs-exit': 0.9,
-      'compromise-vs-persistence': -0.8, 'coercion-strategy': 1, 'militarism-pacifism': 0.9,
-    },
-  },
-  {
     id: 'radical-democrat', targetLabelId: 'radical-democracy', expectedFamily: 'democratic',
     intent: {
       'authority-legitimacy': -0.1, 'property-legitimacy': 0, 'liberty-noninterference': 0.4, 'equality-theory': 0.2,
@@ -105,7 +95,7 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'mutualist-market-anarchist', targetLabelId: 'social-anarchism', expectedFamily: 'anarchist',
+    id: 'mutualist-market-anarchist', targetLabelId: 'libertarian-socialism', expectedFamily: 'socialist',
     intent: {
       'authority-legitimacy': -0.9, 'property-legitimacy': -0.3, 'liberty-noninterference': 0.8,
       'equality-theory': 0.5, 'anti-domination': 1, 'market-process-confidence': 0.5,
@@ -126,7 +116,7 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'civic-nationalist', targetLabelId: 'civic-nationalist', expectedFamily: 'nationalist',
+    id: 'civic-nationalist', targetLabelId: 'republicanism', expectedFamily: 'republican',
     intent: {
       'authority-legitimacy': 0.2, 'liberty-noninterference': 0.3, 'equality-theory': 0.2,
       'political-community-boundary': -0.45, 'moral-traditionalism': 0.1, 'democratic-confidence': 0.7,
@@ -146,7 +136,7 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'communitarian', targetLabelId: 'communitarianism', expectedFamily: 'communitarian',
+    id: 'communitarian', targetLabelId: 'conservative', expectedFamily: 'conservative',
     intent: {
       'authority-legitimacy': 0.3, 'liberty-noninterference': -0.2, 'equality-theory': 0.3,
       'political-community-boundary': -0.2, 'moral-traditionalism': 0.4, 'anti-domination': 0.2,
@@ -155,7 +145,7 @@ const ARCHETYPES: PrimaryArchetype[] = [
     },
   },
   {
-    id: 'distributist', targetLabelId: 'distributism', expectedFamily: 'distributist',
+    id: 'distributist', targetLabelId: 'christian-democrat', expectedFamily: 'conservative',
     intent: {
       'authority-legitimacy': 0.2, 'property-legitimacy': 0.5, 'liberty-noninterference': 0.1,
       'equality-theory': 0.5, 'political-community-boundary': -0.1, 'moral-traditionalism': 0.6,

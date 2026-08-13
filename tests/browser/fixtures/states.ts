@@ -3,7 +3,7 @@ import { buildResearchQuestionForm, RESEARCH_FORM_VERSION, researchFormFingerpri
 import { RESULT_SCORING_VERSION } from '../../../src/scoring'
 import type { AnswerMap, Question } from '../../../src/types'
 
-export const CONTRIBUTION_PATH = '/?research=1&collection=community-2026&formSize=12'
+export const CONTRIBUTION_PATH = '/?research=1&collection=community-2026-v3&formSize=12'
 export const PARTICIPANT_ID = 'p_browser_conformance'
 
 function encodedResult(entries: Array<[string, number]>): string {
@@ -66,7 +66,7 @@ export function completedContributionStorage(): Record<string, string> {
     12,
   )
   return {
-    'political-judgment-research-participant-v1:community-2026': PARTICIPANT_ID,
+    'political-judgment-research-participant-v1:community-2026-v3': PARTICIPANT_ID,
     'ideology-quiz-save': JSON.stringify({
       questions: form,
       answers: answerMap(form, 'prefer_not_to_answer'),
@@ -76,7 +76,7 @@ export function completedContributionStorage(): Record<string, string> {
       completedAt: '2026-08-10T12:12:00.000Z',
       research: {
         participantId: PARTICIPANT_ID,
-        studyId: 'community-2026',
+        studyId: 'community-2026-v3',
         administration: 'test',
         bankVersion: QUESTION_BANK_VERSION,
         formVersion: RESEARCH_FORM_VERSION,

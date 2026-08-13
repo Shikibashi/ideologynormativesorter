@@ -32,6 +32,55 @@ import {
   EDITORIAL_TENTH_PASS_VERSION,
   tenthPassRewritesById,
 } from './editorialTenthPass'
+import {
+  EDITORIAL_THIRTEENTH_PASS_VERSION,
+  thirteenthPassRewritesById,
+} from './editorialThirteenthPass'
+import {
+  EDITORIAL_FOURTEENTH_PASS_VERSION,
+  fourteenthPassRewritesById,
+} from './editorialFourteenthPass'
+import {
+  EDITORIAL_FIFTEENTH_PASS_VERSION,
+  fifteenthPassRewritesById,
+} from './editorialFifteenthPass'
+import {
+  EDITORIAL_SIXTEENTH_PASS_VERSION,
+  sixteenthPassRewritesById,
+} from './editorialSixteenthPass'
+import {
+  EDITORIAL_SEVENTEENTH_PASS_VERSION,
+  seventeenthPassRewritesById,
+} from './editorialSeventeenthPass'
+import {
+  EDITORIAL_EIGHTEENTH_PASS_VERSION,
+  eighteenthPassRewritesById,
+} from './editorialEighteenthPass'
+import {
+  EDITORIAL_NINETEENTH_PASS_VERSION,
+  nineteenthPassRewritesById,
+} from './editorialNineteenthPass'
+import {
+  EDITORIAL_TWENTIETH_PASS_VERSION,
+  twentiethPassRewritesById,
+} from './editorialTwentiethPass'
+import {
+  EDITORIAL_TWENTY_FIRST_PASS_VERSION,
+  twentyFirstPassRewritesById,
+} from './editorialTwentyFirstPass'
+import { confidenceCoverageTierPromotions, EDITORIAL_TWENTY_THIRD_PASS_VERSION } from './editorialTwentyThirdPass'
+import {
+  descriptiveConstructCorrectionsById,
+  EDITORIAL_TWENTY_FIFTH_PASS_VERSION,
+} from './editorialTwentyFifthPass'
+import {
+  descriptiveConstructCorrectionsById as v26Corrections,
+  EDITORIAL_TWENTY_SIXTH_PASS_VERSION,
+} from './editorialTwentySixthPass'
+import {
+  EDITORIAL_TWENTY_EIGHTH_PASS_VERSION,
+  precisionRewritesById as v28Rewrites,
+} from './editorialTwentyEighthPass'
 
 describe('semantic question audit', () => {
   it('does not both correct and deactivate an item in the same semantic-review pass', () => {
@@ -53,7 +102,23 @@ describe('semantic question audit', () => {
       const eighthPassRewrite = eighthPassRewritesById[questionId]
       const ninthPassRewrite = ninthPassRewritesById[questionId] ?? ninthPassStatementRewritesById[questionId]
       const tenthPassRewrite = tenthPassRewritesById[questionId]
-      const expectedWeights = eighthPassRewrite
+      const thirteenthPassRewrite = thirteenthPassRewritesById[questionId]
+      const fourteenthPassRewrite = fourteenthPassRewritesById[questionId]
+      const fifteenthPassRewrite = fifteenthPassRewritesById[questionId]
+      const sixteenthPassRewrite = sixteenthPassRewritesById[questionId]
+      const seventeenthPassRewrite = seventeenthPassRewritesById[questionId]
+      const eighteenthPassRewrite = eighteenthPassRewritesById[questionId]
+      const nineteenthPassRewrite = nineteenthPassRewritesById[questionId]
+      const twentiethPassRewrite = twentiethPassRewritesById[questionId]
+      const twentyFirstPassRewrite = twentyFirstPassRewritesById[questionId]
+      const twentyFifthCorrection = descriptiveConstructCorrectionsById[questionId]
+      const twentySixthCorrection = v26Corrections[questionId]
+      const twentyEighthRewrite = v28Rewrites[questionId]
+      const expectedWeights = twentySixthCorrection
+        ? twentySixthCorrection.axisWeights
+        : twentyFifthCorrection
+        ? twentyFifthCorrection.axisWeights
+        : eighthPassRewrite
         ? eighthPassRewrite.axisWeights
         : seventhPassRewrite
         ? seventhPassRewrite.axisWeights
@@ -62,7 +127,46 @@ describe('semantic question audit', () => {
           : correction.axisWeights
       expect(question!.axisWeights).toEqual(expectedWeights)
 
-      if (tenthPassRewrite) {
+      if (twentyEighthRewrite) {
+        expect(question!.version).toBe(EDITORIAL_TWENTY_EIGHTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (twentySixthCorrection) {
+        expect(question!.version).toBe(EDITORIAL_TWENTY_SIXTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (twentyFifthCorrection) {
+        expect(question!.version).toBe(EDITORIAL_TWENTY_FIFTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (confidenceCoverageTierPromotions[questionId]) {
+        expect(question!.version).toBe(EDITORIAL_TWENTY_THIRD_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (twentyFirstPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_TWENTY_FIRST_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (twentiethPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_TWENTIETH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (nineteenthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_NINETEENTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (eighteenthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_EIGHTEENTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (seventeenthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_SEVENTEENTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (sixteenthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_SIXTEENTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (fifteenthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_FIFTEENTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (fourteenthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_FOURTEENTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (thirteenthPassRewrite) {
+        expect(question!.version).toBe(EDITORIAL_THIRTEENTH_PASS_VERSION)
+        expect(question!.reviewStatus).toBe('approved')
+      } else if (tenthPassRewrite) {
         expect(question!.version).toBe(EDITORIAL_TENTH_PASS_VERSION)
         expect(question!.reviewStatus).toBe('approved')
       } else if (ninthPassRewrite) {
@@ -134,10 +238,18 @@ describe('semantic question audit', () => {
     }
   })
 
+  it('keeps every respondent-visible core item approved after the review overlays', () => {
+    const unapproved = questions
+      .filter((question) => question.reviewStatus !== 'approved')
+      .map((question) => `${question.id}:${question.reviewStatus ?? 'missing'}`)
+    expect(unapproved).toEqual([])
+  })
+
   it('corrects known sign inversions', () => {
     const decentralizedOrder = questionById.get('q0012')!
-    expect(decentralizedOrder.axisWeights).toContainEqual({ axisId: 'coordination-optimism', weight: 0.8 })
-    expect(decentralizedOrder.axisWeights).toContainEqual({ axisId: 'state-capacity-confidence', weight: -0.6 })
+    expect(decentralizedOrder.axisWeights).toEqual([
+      { axisId: 'coordination-optimism', weight: 0.8 },
+    ])
 
     const narrowSpeechRestrictions = questionById.get('q0174')!
     expect(narrowSpeechRestrictions.axisWeights).toContainEqual({ axisId: 'coercion-strategy', weight: -0.8 })

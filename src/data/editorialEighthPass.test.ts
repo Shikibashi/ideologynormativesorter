@@ -6,6 +6,7 @@ import {
   eighthPassRewritesById,
 } from './editorialEighthPass'
 import { QUESTION_BANK_VERSION, questionById, questionsForTier } from './effectiveQuestions'
+import { EDITORIAL_TWENTY_THIRD_PASS_VERSION } from './editorialTwentyThirdPass'
 
 describe('eighth editorial pass', () => {
   it('quarantines the three independently identified evidence-to-construct mismatches', () => {
@@ -36,7 +37,7 @@ describe('eighth editorial pass', () => {
     const compromise = questionById.get('q0423')
     expect(compromise?.active).toBe(true)
     expect(compromise?.reviewStatus).toBe('approved')
-    expect(compromise?.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION)
+    expect(compromise?.version).toBe(EDITORIAL_TWENTY_THIRD_PASS_VERSION)
     expect(compromise?.prompt).toBe(eighthPassRewritesById.q0423.prompt)
     expect(compromise?.axisWeights).toEqual([{ axisId: 'compromise-vs-persistence', weight: 1 }])
   })
@@ -56,7 +57,7 @@ describe('eighth editorial pass', () => {
   it('updates the exact versioned profile cardinalities', () => {
     expect(questionsForTier('blitz')).toHaveLength(17)
     expect(questionsForTier('quick')).toHaveLength(50)
-    expect(questionsForTier('moderate')).toHaveLength(140)
-    expect(questionsForTier('extensive')).toHaveLength(285)
+    expect(questionsForTier('moderate')).toHaveLength(206)
+    expect(questionsForTier('extensive')).toHaveLength(338)
   })
 })

@@ -101,7 +101,7 @@ const IDEOLOGY_TERM_DEFINITIONS: IdeologyTermDefinition[] = [
    },
    {
       pattern: /\btheocr(?:acy|atic)\b|\btheocrat\b/i,
-      definition: '“Theocratic politics” treats religious authority or revealed law as a legitimate basis for public rule; it is not a synonym for private religious belief.',
+      definition: '“Theocratic politics” names an order in which religious authority or binding religious doctrine controls final civil-law legitimacy; it is not a synonym for private religious belief, religious participation, or establishment alone.',
    },
    {
       pattern: /\bpolitical islam\b|\bislamic democratic constitutionalism\b/i,
@@ -202,7 +202,7 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“Christian Democracy” combines Christian social thought with democratic constitutionalism, subsidiarity, solidarity, social-market economics, and family or civil-society institutions; it is not equivalent to theocracy or a single church-state model.',
    ],
    theocrat: [
-      '“Theocratic Politics” makes religious authority or revealed law the ultimate source of civil legitimacy and public law; it is a form of political ordering, not merely personal faith or every religiously inspired democratic movement.',
+      '“Theocratic Politics” makes religious authority or binding religious doctrine the ultimate source of civil legitimacy and public law; it is a form of political ordering, not merely personal faith, religious participation, establishment, or every religiously inspired democratic movement.',
    ],
    integralism: [
       '“Integralism” here means Catholic integralism: a tradition that subordinates public order to a Catholic conception of the common good and divine moral authority, rejecting liberal church-state separation; it is distinct from Christian democracy and not synonymous with every clerical-fascist movement.',
@@ -220,7 +220,7 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“Socialist and Marxist Feminist Traditions” analyze gender domination together with capitalism, class, labor, property, and social reproduction; this combined catalog label covers overlapping traditions without claiming they are identical or that economic change alone resolves patriarchy.',
    ],
    juche: [
-      '“Juche” is the DPRK/Kimist state ideology of political independence, economic self-reliance, and military self-defense, organized around a centralized party-state and supreme-leader sovereignty; it is a specific national state ideology, not generic socialism or a general philosophy of personal self-reliance.',
+      '“Juche” is the DPRK/Kimist state ideology of political independence and state-directed self-reliance, organized around a centralized party-state, military self-defense, and supreme-leader sovereignty; it is a historically developing national state ideology, not generic socialism, literal autarky, or a general philosophy of personal self-reliance.',
    ],
    'egalitarian-statist': [
       '“State-Capacity Egalitarian” is a social-democratic orientation that treats capable, accountable public institutions and social provision as means to reduce durable material inequalities; it is distinct from authoritarian state socialism and from generic egalitarianism without a state-capacity commitment.',
@@ -247,7 +247,7 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“Cultural Populism” is a catalog term for populist politics that defines the people and the elite through cultural identity, often presenting ordinary or traditional communities against distant, cosmopolitan, or institutionally powerful elites; it is not identical to right-wing populism or every defense of tradition.',
    ],
    'market-liberal': [
-      '“Market Liberal” is a market-oriented liberal position centered on private property, individual rights, competitive exchange, rule of law, and limited but constitutional government; it is distinct from social liberalism’s stronger emphasis on public capability provision and from neoliberalism’s market-governance usage.',
+      '“Market Liberal” is the broad contemporary market-oriented liberal position: it favors private property, individual liberty, competitive exchange, and private enterprise while accepting an enabling state, public goods, macroeconomic institutions, and a limited safety net. It is distinct from social liberalism, neoliberalism, and right-libertarianism.',
    ],
    'decentralist-market-skeptic-of-state': [
       '“Decentralist Market Liberal” is a market-liberal position that treats concentrated state power as a central danger and favors decentralized exchange, voluntary association, and exit; it is distinct from socialist anarchism and left-wing market anarchism rather than a synonym for any anti-state politics.',
@@ -316,7 +316,7 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“Cyberocracy” is a speculative theory of governance in which electronic information and communications infrastructures, networks, and computational systems reshape or potentially supersede bureaucracy; possible forms range from democratic to authoritarian or hybrid, so it is not synonymous with digital democracy or algorithmic governance.',
    ],
    accelerationism: [
-      '“Accelerationism” is a contested family of views that treats intensifying capitalism, technology, or modernity as a route to systemic transformation; left, right, and technology-centered variants have sharply different ends and strategies, so it is not simply faster policy or generic radicalism.',
+      '“Accelerationism” is a contested family of views that treats intensifying capitalism, technology, or modernity as a route to systemic transformation; left, right, and technology-centered variants have sharply different ends and strategies. Some reactionary currents treat breakdown or conflict as a means, but that is not implied by the family term, which is not simply faster policy or generic radicalism.',
    ],
    dataism: [
       '“Dataism” is an emerging, contested techno-philosophical term that treats data generation, processing, and flows as central to knowledge, value, and governance; it is not a settled political movement or a claim that data are automatically neutral or objective.',
@@ -421,7 +421,7 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“Platformism” is an anarchist-communist organizational tendency, originating in the 1926 Organisational Platform, that emphasizes theoretical and tactical unity, collective responsibility, and federalism.',
    ],
    mutualist: [
-      '“Mutualism” is a Proudhonian anarchist tradition centered on reciprocity, cooperative exchange, and mutual credit as alternatives to both capitalist privilege and state administration.',
+      '“Mutualism” is a plural anarchist tradition rooted in Proudhonian reciprocity, cooperative exchange, and mutual credit, together with federal association. Proudhon influenced part of the Tucker-era American individualist field—including Joseph (Jo) and Laurance Labadie—while Clarence L. Swartz supplied a later Mutualist Associates restatement and contemporary writers revisit parts of the inheritance differently. These are overlapping lines of influence, not two exhaustive camps. C4SS is a contemporary left-market-anarchist organization, not a mutualist subtype or a single-author doctrine; it predates Kevin Carson’s 2008 appointment as its first paid staff member.',
    ],
    agorist: [
       '“Agorism” is Samuel Edward Konkin III’s market-anarchist strategy of building a counter-economy through voluntary exchange outside state licensing and taxation rather than pursuing electoral power.',
@@ -481,7 +481,7 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“Bleeding-heart libertarianism,” also called neoclassical liberalism by some academic proponents, combines civil liberties and market institutions with explicit concern for social justice and the interests of the least advantaged.',
    ],
    'national-bolshevism': [
-      '“National Bolshevism” names historically varied attempts to combine radical nationalism with Bolshevik or revolutionary-socialist ideas; this catalog models the post-Soviet authoritarian nationalist current, not orthodox Marxism-Leninism.',
+      '“National Bolshevism” names historically varied attempts to combine radical nationalism with Bolshevik or revolutionary-socialist ideas; this catalog uses the post-Soviet Limonov–Dugin current as a bounded reference case, not as a universal definition or as orthodox Marxism-Leninism.',
    ],
    kemalism: [
       '“Kemalism,” or “Atatürkism,” is the founding republican ideology of modern Turkey, conventionally summarized by the Six Arrows: republicanism, nationalism, peopleism (halkçılık), statism, laicism, and reformism. Peopleism here is a Kemalist claim about national unity and popular sovereignty, not a synonym for every contemporary populist movement.',
@@ -550,10 +550,76 @@ const DIRECT_TERM_DEFINITIONS_BY_LABEL_ID: Readonly<Record<string, readonly stri
       '“Social / Communal Anarchism” is a broad anti-authoritarian family centered on voluntary association, opposition to imposed hierarchy, and decentralized communal or federated organization; it does not settle the distinct questions of property, markets, technology, or political strategy.',
    ],
    'market-right-libertarianism': [
-      '“Market / Right-Libertarianism” is a broad market-oriented and anti-statist neighborhood emphasizing voluntary exchange and personal liberty; anarcho-capitalism, minarchism, Georgism, and other variants differ over property, public goods, and whether any state is legitimate.',
+      '“Right-Libertarianism” is a broad market-oriented and anti-statist family emphasizing voluntary exchange and personal liberty; it is kept distinct here from market anarchism as an anarchist field that includes left-market and mutualist currents. Anarcho-capitalism, minarchism, Georgism, and other variants differ over property, public goods, and whether any state is legitimate.',
    ],
    'marxian-socialism': [
       '“Marxian Socialism (Non-Leninist)” is a broad Marxian family focused on class power and social or worker control of production without assuming Leninist party-state organization; democratic, council, syndicalist, and other strategies remain distinct.',
+   ],
+   'technocratic-orientation': [
+      '“Technocratic Orientation” is a cross-cutting preference for using specialized knowledge, evidence, and competent administration in public decisions; it is weaker than technocracy as rule by experts and does not determine whether final authority should remain electorally accountable.',
+   ],
+   'black-nationalism': [
+      '“Black Nationalism” names heterogeneous traditions of Black racial consciousness, linked fate, solidarity, self-determination, and collective action against anti-Black domination; community empowerment, integrationist, separatist, internationalist, and Black feminist currents should not be collapsed into one program.',
+   ],
+   'pan-africanism': [
+      '“Pan-Africanism” is a changing idea and movement for solidarity, liberation, and cooperation among African and African-diasporic peoples; it is distinct from Black separatism and does not prescribe one state, border, institutional level, or economic system.',
+   ],
+   'market-anarchism': [
+      '“Market Anarchism” is an anarchist family centered on voluntary exchange and non-state coordination; mutualist, agorist, left-wing market, and anarcho-capitalist variants disagree over property, exploitation, reciprocity, and whether market order can be non-capitalist.',
+   ],
+   'third-way': [
+      '“Third Way Social Democracy” names a late twentieth-century center-left reform project that combined social investment and egalitarian aims with market coordination, active labor-market policy, fiscal discipline, and stronger individual responsibility; it is historically bounded and contested rather than a synonym for all modern social democracy.',
+   ],
+   baathism: [
+      '“Baʿthism / Arab Socialism” is a secular Arab-nationalist synthesis centered on Arab unity, independence, and state-led social transformation; the founding doctrine and the later authoritarian practice of Syrian and Iraqi Baʿthist regimes must be distinguished.',
+   ],
+   'developmental-authoritarianism': [
+      '“Developmental Authoritarianism” is an authoritarian variant of developmentalism that treats industrialization, state capacity, and national economic transformation as sources of legitimacy; developmental strategies also exist under democratic institutions and authoritarianism does not guarantee success.',
+   ],
+   'confucian-political-revival': [
+      '“Political Confucianism” is a modern specialist family applying Confucian ideas about moral cultivation, public virtue, social roles, and humane government to contemporary institutions; democratic, constitutional, perfectionist, and meritocratic branches must remain distinct.',
+   ],
+   'asian-values': [
+      '“Asian Values” is a contested political discourse about family, duty, harmony, order, community, and development; it is context for regional debates, not a uniform culture or standalone ideology.',
+   ],
+   nationalism: [
+      '“Nationalism / National Orientation” is a thin modifier treating the nation as a valuable political community; membership rules, territorial projects, and host ideology are separate questions.',
+   ],
+   populism: [
+      '“Populism” is a thin people-versus-elite and popular-sovereignty frame that normally attaches to a fuller host ideology; it does not by itself specify left/right economics, nationalism, or authoritarianism.',
+   ],
+   'civil-libertarianism': [
+      '“Civil Libertarianism” protects speech, association, privacy, conscience, due process, protest, and bodily autonomy as cross-cutting rights commitments; it is not economic libertarianism and does not settle welfare or property policy.',
+   ],
+   cosmopolitanism: [
+      '“Cosmopolitanism” extends moral concern across national boundaries and may support transnational rights, mobility, cooperation, or institutions; it is distinct from Internationalism and World Federalism.',
+   ],
+   'decentralist-orientation': [
+      '“Decentralist Orientation” prefers local, federal, municipal, polycentric, or voluntary institutions over concentrated authority; it does not itself imply anarchism, separatism, or one economic system.',
+   ],
+   'feminist-orientation': [
+      '“Feminist Orientation” treats gendered power, exclusion, care, reproduction, violence, labor, or representation as fundamental concerns without selecting liberal, radical, socialist, Black, anarchist, or queer feminism.',
+   ],
+   'economic-nationalism': [
+      '“Economic Nationalism” prioritizes national productive capacity, strategic autonomy, domestic industry, supply resilience, managed trade, or control of key assets; it can attach to left, right, developmental, populist, or anti-colonial hosts.',
+   ],
+   developmentalism: [
+      '“Developmentalism” is a specialist political-economy family centered on industrial upgrading, productive capacity, state coordination, technology, and strategic investment; democratic and authoritarian variants must not be conflated.',
+   ],
+   'pan-arabism': [
+      '“Pan-Arabism / Arab Nationalism” treats Arabic-speaking peoples as a wider Arab nation and supports solidarity, sovereignty, cultural unity, or political integration across state borders; Nasserist, Baʿthist, and other variants differ.',
+   ],
+   'arab-socialism': [
+      '“Arab Socialism” combines Arab national liberation or unity with state-led development, land reform, public control of strategic sectors, welfare, and anti-imperialism; it is not identical to Marxism-Leninism.',
+   ],
+   'radical-feminism': [
+      '“Radical Feminism” treats patriarchy and male power as fundamental structures reproduced through sexuality, family, culture, violence, and reproductive control; it is one feminist school among several.',
+   ],
+   'black-feminism': [
+      '“Black Feminism” analyzes interlocking race, gender, class, sexuality, and state power from Black women’s political experience while developing autonomous organization, coalition, and liberation strategies.',
+   ],
+   'queer-politics': [
+      '“Queer Liberation / Queer Politics” seeks sexual and gender self-determination while challenging heteronormativity, compulsory categories, policing, and fixed identities; rights-reform and radical variants remain distinct.',
    ],
 }
 
@@ -666,13 +732,35 @@ const DIRECT_ONLY_TERM_DEFINITION_LABEL_IDS = new Set([
    'social-anarchism',
    'market-right-libertarianism',
    'marxian-socialism',
+   'technocratic-orientation',
+   'black-nationalism',
+   'pan-africanism',
+   'market-anarchism',
+   'third-way',
+   'baathism',
+   'developmental-authoritarianism',
+   'confucian-political-revival',
+   'asian-values',
+   'nationalism',
+   'populism',
+   'civil-libertarianism',
+   'cosmopolitanism',
+   'decentralist-orientation',
+   'feminist-orientation',
+   'economic-nationalism',
+   'developmentalism',
+   'pan-arabism',
+   'arab-socialism',
+   'radical-feminism',
+   'black-feminism',
+   'queer-politics',
 ])
 
 /**
  * Layer-specific editorial summaries for labels whose general influence notes
  * otherwise conflate values, empirical expectations, and practical strategy.
  */
-export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<Record<Layer, string>>>> = {
+const CURATED_IDEOLOGY_LAYER_SUMMARIES_BASE: Readonly<Record<string, Partial<Record<Layer, string>>>> = {
    conservative: {
       normative: 'Treats continuity, inherited institutional knowledge, social order, and practical judgment as legitimate political goods, while leaving economic and cultural policy open to different conservative traditions.',
       descriptive: 'Expects institutions and practices formed over time to contain knowledge that abstract redesign can miss, while recognizing that inherited arrangements can also preserve injustice or require correction.',
@@ -689,7 +777,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors dismantling or sharply limiting imposed political hierarchy through voluntary association, direct participation, mutual aid, and federated organization, without deciding whether social ownership, mutual exchange, or another economic form is best.',
    },
    'market-right-libertarianism': {
-      normative: 'Treats individual liberty, voluntary exchange, secure property or use rights, and restraint on coercive authority as central political goods, while leaving the justification and extent of property rights contested.',
+      normative: 'Treats individual liberty, voluntary exchange, secure property or use rights, and restraint on coercive authority as central political goods, while leaving the justification and extent of property rights contested; these commitments do not by themselves settle whether a position is right-libertarian, mutualist, or another market-anarchist current.',
       descriptive: 'Expects decentralized market exchange and voluntary coordination to use dispersed knowledge and incentives better than extensive central direction, while variants differ over public goods, inequality, market power, and state legitimacy.',
       prescriptive: 'Favors expanding voluntary exchange and limiting centralized political intervention, with possible commitments ranging from a minimal protective state to stateless market order, land-rent approaches, or other specialist designs.',
    },
@@ -697,6 +785,46 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       normative: 'Treats class domination, private control of productive assets, and alienated labor as central injustices and values social or worker control over the conditions of production.',
       descriptive: 'Expects capitalist ownership and class relations to shape political power, distribution, and social conflict, while non-Leninist Marxian traditions disagree about the roles of markets, planning, democracy, parties, and revolution.',
       prescriptive: 'Favors transforming capitalist property and class relations through democratic, worker, council, syndicalist, or other socialist strategies without importing Leninist party-state organization into the broad anchor.',
+   },
+   'technocratic-orientation': {
+      normative: 'Treats competent inquiry, specialized knowledge, and effective administration as valuable for public decision-making, while leaving democratic equality and public contestation as separate questions rather than assuming expertise overrides them.',
+      descriptive: 'Expects complex policy problems to require domain knowledge, measurement, and administrative capacity, while recognizing that experts can disagree, embed values, reproduce exclusion, or become insulated from affected publics.',
+      prescriptive: 'Favors evidence-informed policy, professional capacity, transparent methods, review, and accountable expert advice; it does not by itself favor rule by an insulated technocratic elite or centralized authority.',
+   },
+   'black-nationalism': {
+      normative: 'Treats Black collective dignity, solidarity, self-determination, and protection from racial domination as politically important, while leaving the relationship among integration, community autonomy, separatism, and internationalism open to different currents.',
+      descriptive: 'Expects anti-Black racial hierarchy and linked historical experience to shape political interests and collective identity, while Black nationalist traditions differ over class, gender, territory, diaspora, and the institutional meaning of self-determination.',
+      prescriptive: 'Favors forms of Black collective organization, institutional power, cultural affirmation, self-defense, autonomy, or liberation; the label does not entail one separatist territory, racial hierarchy, or strategy.',
+   },
+   'pan-africanism': {
+      normative: 'Treats solidarity and political or cultural self-determination among African and African-diasporic peoples as important responses to colonialism, racism, and unequal global power, without requiring one account of identity or unity.',
+      descriptive: 'Expects colonial and racialized international structures to fragment or subordinate African peoples, while cooperation, liberation movements, diaspora networks, and continental institutions can create forms of shared agency; historical Pan-Africanism is internally and institutionally diverse.',
+      prescriptive: 'Favors cross-border solidarity, anti-colonial and anti-racist cooperation, cultural exchange, economic or political coordination, and sometimes continental political unity; it does not require Black separatism, a single federation, or one ideology of governance.',
+   },
+   'market-anarchism': {
+      normative: 'Treats centralized coercive authority as illegitimate or presumptively suspect while valuing voluntary exchange, autonomy, and decentralized association; it leaves the moral status of private, common, and use-based property open to variants.',
+      descriptive: 'Expects non-state markets and voluntary institutions to coordinate exchange and dispute resolution, while market-anarchist traditions disagree about exploitation, inequality, mutual credit, capitalist property, and the feasibility of competing institutions.',
+      prescriptive: 'Favors building or defending decentralized exchange, voluntary association, and non-state institutions; mutualist, agorist, left-wing market, and anarcho-capitalist strategies should not be inferred from the family label alone.',
+   },
+   'third-way': {
+      normative: 'Retains social-democratic concern with inclusion, equality, and social protection while treating opportunity, responsibility, and adaptive market institutions as compatible political goods.',
+      descriptive: 'Expects traditional nationalized or passive welfare arrangements to face fiscal, economic, and social pressures, while active labor-market policy, education, social investment, and regulated competition can renew center-left governing capacity; critics interpret the shift differently.',
+      prescriptive: 'Favors market-compatible social investment, active labor-market programs, targeted redistribution, public-service reform, fiscal discipline, and conditional or reciprocal welfare commitments rather than a return to either laissez-faire or comprehensive public ownership.',
+   },
+   baathism: {
+      normative: 'Treats Arab unity, national independence, secular public belonging, and social transformation as legitimate political goods, while the relationship among freedom, party leadership, pluralism, and state authority varies between doctrine and historical branches.',
+      descriptive: 'Expects colonial fragmentation and foreign dependence to block Arab political agency, while a unified movement and state-led development can produce national renewal; Syrian and Iraqi party-states transformed the tradition in different ways.',
+      prescriptive: 'Favors Arab unity, independent state capacity, social and economic transformation, and organized political leadership; the label does not by itself prescribe one constitutional system or justify later authoritarian practice.',
+   },
+   'developmental-authoritarianism': {
+      normative: 'Treats national development, material transformation, administrative competence, and economic sovereignty as important grounds of political legitimacy, accepting constrained pluralism as a possible tradeoff rather than a universal requirement.',
+      descriptive: 'Expects autonomous or semi-autonomous bureaucracies, industrial policy, state–business coordination, and disciplined investment to accelerate structural transformation, while evidence and cases vary over coercion, distribution, and actual success.',
+      prescriptive: 'Favors strong developmental institutions, industrial policy, coordinated investment, and expert administration, with authoritarian variants limiting opposition or participation; the model does not establish that democracy or rights must be suspended for development.',
+   },
+   'confucian-political-revival': {
+      normative: 'Treats social roles, moral cultivation, family and civic duty, harmony, and public virtue as politically relevant goods, while contemporary interpreters disagree about hierarchy, equality, rights, and democratic legitimacy.',
+      descriptive: 'Expects appeals to Confucian or Asian-values language to shape arguments about authority, development, and social order, but the discourse is historically situated and can support both authoritarian legitimation and democratic reinterpretation.',
+      prescriptive: 'May favor meritocratic administration, social responsibility, civic education, and public order; as a context label it does not prescribe one regime, economic system, or interpretation of Confucian texts.',
    },
    ecomodernist: {
       normative: 'Values human flourishing and ecological protection as compatible goals rather than treating prosperity and ecological integrity as inherently opposed.',
@@ -794,9 +922,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors democratic constitutionalism, subsidiarity, social-market institutions, social provision, labor protections, and support for family and civil society; it does not prescribe direct clerical rule.',
    },
    theocrat: {
-      normative: 'Treats religious authority, divine law, or revealed moral order as superior sources of public legitimacy to secular pluralist law.',
-      descriptive: 'Expects secular autonomy and pluralism to permit moral disorder or violate religious truth, while models differ over whether clerics, religious law, or state institutions hold authority.',
-      prescriptive: 'Favors public law and state authority derived from or enforcing religious doctrine; the label does not identify one religion or one institutional form.',
+      normative: 'Treats binding religious doctrine or recognized religious authority as an ultimate source of public legitimacy, while allowing that the institutional carrier of that authority can vary.',
+      descriptive: 'Expects secular autonomy or pluralist law to conflict with religious truth in some domains, while historical models differ over clerics, judges, rulers, texts, and institutions.',
+      prescriptive: 'Favors a public order in which religious authority or doctrine can control final civil-law legitimacy; the opt-in module tests only a narrow final-authority form and does not identify one religion, regime, or treatment of minorities.',
    },
    integralism: {
       normative: 'Treats Catholic truth, the common good, and ordered social authority as requiring public power to recognize and remain subordinate to divine moral order.',
@@ -824,9 +952,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors collective action against patriarchy and capitalist exploitation through changes to ownership, labor, care, reproduction, and social institutions; the combined catalog label does not prescribe one feminist strategy.',
    },
    juche: {
-      normative: 'Treats political autonomy, national self-reliance, collective discipline, and the sovereignty of the Korean revolutionary state as central political goods.',
-      descriptive: 'Expects foreign dependence and ideological deviation to threaten national independence, while assigning a centralized party-state and supreme leader a guiding role in mobilizing the people.',
-      prescriptive: 'Favors political independence, economic self-reliance, military self-defense, centralized party leadership, and leader-centered state authority in the DPRK/Kimist model; it is not a general endorsement of personal self-sufficiency.',
+      normative: 'Treats political autonomy, national self-reliance, collective discipline, and the sovereignty of the Korean revolutionary state as central political goods, as articulated in the DPRK/Kimist tradition.',
+      descriptive: 'Expects foreign dependence or ideological deviation to threaten national independence, while assigning a centralized party-state and supreme leader a guiding role in mobilizing the people; the doctrine developed through changing Marxist-Leninist and Kimist formulations.',
+      prescriptive: 'Favors political independence, state-directed economic self-reliance, military self-defense, centralized party leadership, and leader-centered state authority in the DPRK/Kimist model; it is not a general endorsement of personal self-sufficiency or literal autarky.',
    },
    'egalitarian-statist': {
       normative: 'Treats material equality and effective public provision as political goods, while regarding capable and accountable state institutions as legitimate tools for reducing durable disadvantage.',
@@ -943,9 +1071,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors dispersing productive property among families, small firms, guilds, cooperatives, and local associations rather than concentrating it in corporations or the state.',
    },
    mutualist: {
-      normative: 'Treats reciprocity, worker autonomy, equal exchange, and voluntary association as safeguards against both capitalist privilege and centralized state administration.',
-      descriptive: 'Expects cooperative markets and mutual-credit institutions to widen access to productive resources and reduce exploitation, while historical and contemporary implementations differ over property, exchange, and institutional scale.',
-      prescriptive: 'Favors mutual credit, cooperative exchange, possession or use-based claims, and federated voluntary institutions instead of state administration or concentrated capitalist ownership.',
+      normative: 'Treats reciprocity, worker autonomy, equal exchange, voluntary association, and resistance to state-granted privilege as safeguards against both capitalist domination and centralized administration. Proudhonian, Tuckerite or individualist, Swartz-associated, and later mutualist currents disagree about the moral basis and extent of property claims.',
+      descriptive: 'Expects state-created monopoly, rent, and privilege to distort exchange, while cooperative markets and mutual-credit institutions, together with federated association, can widen productive access and reduce exploitation. Historical and contemporary currents differ over labor value, currency, land, wage labor, and institutional scale; these are contestable expectations, not settled facts.',
+      prescriptive: 'May favor mutual credit, cooperative exchange, possession or use-based claims, and federated voluntary institutions rather than state administration or concentrated capitalist ownership. The current specialist module reports only a family-level affinity: it cannot identify Proudhonian, Tuckerite, Joseph or Laurance Labadie-associated, Swartz-associated, neo-Proudhonian, or C4SS-affiliated commitments from its present constructs.',
    },
    'civic-nationalist': {
       descriptive: 'Expects shared citizenship, common political institutions, and commitment to public principles to build solidarity across ancestry or religion, while scholarship finds the civic/ethnic distinction blurred and civic criteria can still be exclusionary in practice.',
@@ -998,7 +1126,7 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       prescriptive: 'Favors stateless, voluntary forms of association while leaving substantial disagreement among natural-rights, mutualist, and egoist currents over property, exchange, and durable organization.',
    },
    'national-bolshevism': {
-      descriptive: 'Expects a strong, anti-liberal state to unify national power through a synthesis of nationalism and revolutionary-socialist mobilization, while historical versions differ—from interwar German currents to the post-Soviet Limonov–Dugin milieu—and do not form one settled doctrine.',
+      descriptive: 'The post-Soviet reference case expects a strong, anti-liberal state to unify national power through a synthesis of nationalism and revolutionary-socialist mobilization, while historical versions differ—from interwar German currents to the Limonov–Dugin milieu—and do not form one settled doctrine.',
    },
    'anarcho-primitivism': {
       normative: 'Treats autonomy, ecological integrity, and freedom from civilizational domination as more important than maintaining industrial scale, technological dependence, or specialized hierarchy.',
@@ -1180,9 +1308,9 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects racial hierarchy, leader-centered state power, and territorial expansion to secure the survival and regeneration of a racially defined German national community; these were Nazi ideological claims, not valid findings about human societies.',
    },
    'technocratic-centralist': {
-      normative: 'Treats expert competence, administrative capacity, and coordinated problem-solving as important grounds of political legitimacy, with less confidence in unmediated electoral judgment.',
-      descriptive: 'Assumes centralized expert administration has high capacity and that markets and electoral majorities are comparatively unreliable.',
-      prescriptive: 'Favors centralized expert agencies, planning, and evidence-guided administration insulated from short-term electoral pressure; the label leaves open how accountability and popular participation are secured.',
+      normative: 'Treats expert competence and centralized administrative coordination as important grounds of political legitimacy, with less confidence in unmediated electoral judgment.',
+      descriptive: 'Its advocates may expect centralized expert administration to solve complex coordination problems more reliably than fragmented institutions or short-term majorities. That is a contestable empirical expectation, not a settled finding or a premise shared by every use of expertise in government.',
+      prescriptive: 'Favors expert-led national agencies, planning, or coordinated administration insulated to some degree from short-term electoral pressure. The label does not settle how rights review, accountability, party competition, or public participation should be secured.',
    },
    transhumanism: {
       normative: 'Values human flourishing, autonomy, and the possibility of overcoming disease, aging, or inherited biological limits through enhancement.',
@@ -1243,6 +1371,216 @@ export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<R
       descriptive: 'Expects regional self-rule and institutions closer to local identities and interests to represent communities more responsively than centralized administration; regionalist currents differ over cultural protection, federal autonomy, shared rule, and independence.',
    },
 }
+
+/**
+ * Completion notes for catalog labels whose existing historical or influence
+ * copy covered only some layers. Each note keeps values, empirical claims,
+ * and practical recommendations separate instead of letting the UI fall back
+ * to a generic “not currently curated” explanation.
+ */
+const CURATED_IDEOLOGY_LAYER_COMPLETIONS: Readonly<Record<string, Partial<Record<Layer, string>>>> = {
+   'revolutionary-collectivist': {
+      normative: 'Treats collective equality, social ownership, and a decisive break with entrenched class power as more legitimate than preserving existing property relations, while historical currents disagree over party rule and political pluralism.',
+   },
+   'anarcho-capitalist': {
+      normative: 'Treats self-ownership and voluntary association, strong private property rights, voluntary exchange, and the non-aggression principle as central, rejecting a compulsory state as morally unnecessary or illegitimate.',
+   },
+   'marxist-leninist': {
+      normative: 'Treats class emancipation, social ownership, and disciplined revolutionary organization as legitimate grounds for concentrating transitional political power, while its historical realization raises serious disputes about pluralism and coercion.',
+   },
+   'council-communist': {
+      normative: 'Treats workers’ self-emancipation and direct collective control of production and political decisions as more legitimate than capitalist ownership or a separate vanguard bureaucracy.',
+      prescriptive: 'Favors workers’ councils, recallable delegates, and federated direct control of workplaces and public decisions rather than parliamentary government or a permanent vanguard party.',
+   },
+   syndicalist: {
+      normative: 'Treats worker solidarity, collective self-management, and freedom from both capitalist and bureaucratic domination as central political goods, with autonomous labor organization carrying legitimate authority.',
+      prescriptive: 'Favors autonomous unions, strikes, direct action, and federated worker organization as the route to social transformation and as a possible institutional basis for workers’ control afterward.',
+   },
+   'anarcho-communist': {
+      normative: 'Treats common access according to need, mutual aid, equality, and the abolition of imposed political and economic hierarchy as central goods rather than treating private accumulation or state command as legitimate foundations.',
+   },
+   agorist: {
+      normative: 'Treats voluntary exchange, individual autonomy, and resistance to compulsory state authority as important, while agorist writers differ over how to judge property, exclusion, and forms of counter-economic exchange.',
+      prescriptive: 'Favors building counter-economic networks, mutual exchange, and parallel institutions outside licensing and taxation as a strategy for reducing dependence on and legitimacy of the state.',
+   },
+   ecosocialist: {
+      normative: 'Treats ecological integrity and social equality as connected goods, arguing that neither human domination of nature nor class domination should define a legitimate political economy.',
+   },
+   'degrowth-green': {
+      normative: 'Treats sufficiency, ecological limits, social justice, and human flourishing as preferable to indefinite aggregate production growth, while leaving the desirable level and institutional form of reduction contested.',
+      prescriptive: 'Favors democratically planned reductions in resource and energy throughput where needed, redistribution and universal provision, shorter working time, and well-being measures rather than treating GDP growth as the overriding goal.',
+   },
+   'absolute-monarchist': {
+      normative: 'Treats indivisible hereditary sovereignty, dynastic continuity, and political unity as legitimate grounds for a ruler’s authority, generally giving the monarch stronger standing than elected or divided institutions.',
+      prescriptive: 'Favors concentrating final executive and legislative authority in a hereditary monarch, subject to whatever religious, customary, or legal limits a particular absolutist theory retains; it is stronger than constitutional monarchy.',
+   },
+   neoreactionary: {
+      normative: 'Treats hierarchy, order, unequal authority, and exit from democratic mass politics as more defensible than egalitarian popular sovereignty, with different writers grounding that preference in property, competence, tradition, or civilizational arguments.',
+      prescriptive: 'Favors replacing or sharply reducing electoral democracy through highly centralized proprietary, monarchical, or corporate forms of rule and strong exit rights; this is a contested family of proposals rather than one implemented regime.',
+   },
+   ordoliberalism: {
+      normative: 'Treats a legally constituted competitive order, rule-bound public authority, and protection against private concentrations of power as compatible with liberty and social stability rather than equating freedom with an unregulated market.',
+      prescriptive: 'Favors a strong but rule-bound state that sets competition law, monetary and legal conditions, and limited social safeguards so markets remain competitive; it does not require laissez-faire or state ownership.',
+   },
+   distributism: {
+      normative: 'Treats widely dispersed productive property, family and community independence, subsidiarity, and human-scale economic participation as preferable to both concentrated private capital and comprehensive state ownership.',
+      prescriptive: 'Favors dispersing productive property through cooperatives, small property, local production, anti-monopoly rules, and supportive credit, while allowing distributists to differ over markets, welfare, and regulation.',
+   },
+   'libertarian-socialism': {
+      normative: 'Treats freedom from both capitalist dependence and centralized political domination as requiring collective or worker control, voluntary association, and democratic self-management rather than isolated individual exit alone.',
+   },
+   paleolibertarianism: {
+      normative: 'Treats private property, voluntary exchange, strong individual liberty, and skepticism toward centralized government as central goods, often combined with cultural traditionalism without making that combination universal.',
+      prescriptive: 'Favors sharply reducing state taxation and regulation, defending property and contract, and relying on private or local institutions; paleolibertarian currents vary over immigration, social norms, foreign policy, and the remaining state.',
+   },
+   objectivism: {
+      normative: 'Treats rational individual judgment, productive achievement, individual rights, and rational self-interest as moral foundations, rejecting altruistic demands that require sacrificing a person’s life or agency to others.',
+      prescriptive: 'Favors laissez-faire capitalism, strong individual rights, and a limited government confined chiefly to protecting against force, fraud, and rights violations; it is not identical to every pro-market or egoist position.',
+   },
+   'welfare-chauvinism': {
+      normative: 'Treats social benefits as obligations owed primarily or preferentially to an established national in-group, placing bounded solidarity above equal access for migrants or other out-groups.',
+      prescriptive: 'Favors restricting immigrants’ or other out-groups’ eligibility for welfare, services, or social insurance through residence, citizenship, contribution, or deservingness rules; the label concerns access boundaries, not one welfare-state size.',
+   },
+   participism: {
+      normative: 'Treats self-management, equitable participation, solidarity, and fair distribution of empowering and disempowering work as central goods in economic and political life.',
+      prescriptive: 'Favors worker and consumer councils, balanced job complexes, and negotiated or facilitative planning so people participate in decisions proportionate to how they are affected rather than relying only on markets or command.',
+   },
+   maoism: {
+      normative: 'Treats revolutionary egalitarianism, anti-imperialism, mass participation under organized leadership, and resistance to class restoration as central political goods, while historical practice involved severe coercion and disputed authority.',
+   },
+   trotskyism: {
+      normative: 'Treats international working-class emancipation and opposition to bureaucratic privilege as central goods, rejecting the idea that a durable socialist order can be secured through isolated national consolidation.',
+   },
+   panarchism: {
+      normative: 'Treats freedom of association and the ability to choose among governing arrangements as more important than requiring one territorial authority to rule everyone in a jurisdiction.',
+      prescriptive: 'Favors voluntary, nonterritorial or overlapping jurisdictions that people may join, leave, or help organize, while practical proposals must still address public goods, conflict, mobility, and unequal bargaining power.',
+   },
+   'guild-socialism': {
+      normative: 'Treats worker control, democratic association, and social ownership as preferable to private capital’s authority or direct bureaucratic management of production.',
+   },
+   'national-bolshevism': {
+      normative: 'The post-Soviet reference case treats national unity, sovereign power, and revolutionary or anti-liberal transformation as compatible political goods, often subordinating liberal pluralism and universalist class politics to a bounded national project; other historical uses differ.',
+      prescriptive: 'The post-Soviet reference case favors an authoritarian national state using centralized power and anti-capitalist or socialist rhetoric to pursue sovereignty and social mobilization; historical currents differ and the label is not orthodox Marxism-Leninism.',
+   },
+   paleoconservatism: {
+      normative: 'Treats national sovereignty, inherited culture, local community, constitutional tradition, and social continuity as important political goods, often resisting cosmopolitan or supranational authority.',
+   },
+   'one-nation-conservatism': {
+      normative: 'Treats social cohesion, reciprocal duties across classes, national community, and responsible stewardship by established institutions as legitimate conservative goods rather than viewing laissez-faire or egalitarian leveling as the only alternatives.',
+   },
+   'national-socialism': {
+      prescriptive: 'Favors a one-party racial dictatorship, exclusionary and genocidal state power, militarized expansion, and coercive mass mobilization; the movement’s anti-capitalist rhetoric does not make its program socialist in the ordinary ownership or egalitarian sense.',
+   },
+   'christian-socialism': {
+      normative: 'Treats Christian solidarity, human dignity, economic justice, and obligations to poor and working people as reasons to challenge exploitative social arrangements, while Christian socialist currents differ over church authority, class, and pluralism.',
+   },
+   'utopian-socialism': {
+      normative: 'Treats cooperation, equality, shared provision, and morally reformed social relations as achievable through consciously designed communities rather than accepting competitive property relations as inevitable.',
+   },
+   'libertarian-municipalism': {
+      normative: 'Treats direct local self-government, civic participation, ecological responsibility, and freedom from centralized domination as mutually reinforcing political goods.',
+   },
+   'bleeding-heart-libertarianism': {
+      prescriptive: 'Favors market institutions and civil liberties together with reforms that address poverty, exclusion, or unequal starting points, such as a social minimum or access-enhancing policies; proposals differ over coercion and redistribution.',
+   },
+   'christian-reconstructionism': {
+      normative: 'Treats biblical authority and a divinely ordered social hierarchy as the basis of legitimate public morality, rejecting the idea that liberal secular neutrality should be the final standard for law.',
+   },
+   regionalism: {
+      normative: 'Treats regional identity, place-based self-government, and the ability of communities to shape policy close to their social and ecological circumstances as important goods, without requiring independence.',
+      prescriptive: 'Favors regional autonomy, federal or devolved institutions, cultural and economic self-government, or in some cases independence, while the label does not decide how authority should be shared with the wider state.',
+   },
+   'market-liberal': {
+      normative: 'Treats private property, individual liberty, legal equality, voluntary exchange, and market coordination as important sources of liberty and prosperity while accepting an enabling constitutional state.',
+      descriptive: 'Expects competitive markets and rule-governed economic institutions to coordinate dispersed knowledge and support prosperity, while recognizing public-goods, monopoly, and social-insurance problems.',
+      prescriptive: 'Favors competitive markets, secure private property, private enterprise, trade, public goods, macroeconomic stability, and a limited safety net without requiring laissez-faire or minimal government.',
+   },
+   nationalism: {
+      normative: 'Treats the nation as a valuable community entitled to some combination of continuity, solidarity, sovereignty, priority, or self-government without fixing membership or economic policy.',
+      descriptive: 'Expects shared national identification and political sovereignty to shape solidarity and legitimacy, while forms differ over civic membership, ethnicity, religion, territory, and international order.',
+      prescriptive: 'Favors institutions that protect national self-government or continuity; territorial and membership projects must be measured separately.',
+   },
+   populism: {
+      normative: 'Treats a morally unified people and popular sovereignty as especially authoritative against an elite understood as corrupt or self-serving, while leaving pluralism and host ideology open.',
+      descriptive: 'Expects political conflict to reflect a people-versus-elite antagonism, but anti-pluralism, leadership style, nationalism, and economic policy are not entailed by the thin core.',
+      prescriptive: 'Favors direct appeals to the people, anti-elite accountability, and popular control; left/right content and institutional safeguards depend on host commitments.',
+   },
+   'civil-libertarianism': {
+      normative: 'Treats speech, privacy, association, conscience, due process, protest, and bodily autonomy as strong rights against arbitrary public or private coercion.',
+      descriptive: 'Expects concentrated authority and unchecked surveillance or policing to threaten personal freedom, while rights protections and independent courts can constrain domination.',
+      prescriptive: 'Favors rights safeguards, due process, privacy, free expression, association, and limits on coercive intrusion without deciding economic policy or global membership.',
+   },
+   cosmopolitanism: {
+      normative: 'Treats equal moral concern across national boundaries as politically important while allowing local attachment and democratic institutional disagreement.',
+      descriptive: 'Expects cross-border interdependence and shared human vulnerability to generate duties that exceed national membership alone.',
+      prescriptive: 'Favors transnational rights, cooperation, mobility, or institutions in forms compatible with differing views about borders, democracy, and world government.',
+   },
+   'decentralist-orientation': {
+      normative: 'Treats local self-government, polycentric authority, federalism, and exit or voice across institutions as safeguards against concentrated domination.',
+      descriptive: 'Expects dispersed decision-making to use local knowledge and improve accountability, while recognizing coordination, inequality, and capacity problems.',
+      prescriptive: 'Favors devolution, federal or municipal authority, polycentric governance, and voluntary association without specifying one economic or cultural order.',
+   },
+   'feminist-orientation': {
+      normative: 'Treats gendered domination, exclusion, violence, care, reproductive control, labor, and political representation as fundamental concerns of justice.',
+      descriptive: 'Expects gendered power to operate through law, culture, family, economy, sexuality, and institutions, while feminist schools disagree over causal priority and strategy.',
+      prescriptive: 'Favors reforms or transformations that expand gender justice and autonomy; the modifier does not choose liberal, radical, socialist, Black, anarchist, or queer feminism.',
+   },
+   'economic-nationalism': {
+      normative: 'Treats national productive capacity, economic sovereignty, domestic industry, resilience, or control of strategic assets as legitimate political priorities.',
+      descriptive: 'Expects unregulated dependence or unequal trade relations to constrain national agency, while state action can also create inefficiency, patronage, or exclusion.',
+      prescriptive: 'Favors industrial policy, strategic procurement, managed trade, supply resilience, or national control of key assets without fixing ownership or welfare policy.',
+   },
+   developmentalism: {
+      normative: 'Treats productive transformation, administrative capacity, infrastructure, and material development as important grounds of political legitimacy.',
+      descriptive: 'Expects coordinated state–business institutions, industrial policy, technology acquisition, and disciplined investment to accelerate structural transformation, with mixed evidence across cases.',
+      prescriptive: 'Favors capable developmental institutions and strategic coordination while leaving democratic pluralism, markets, ownership, and welfare design open.',
+   },
+   'pan-arabism': {
+      normative: 'Treats Arabic-speaking peoples as a wider political community entitled to solidarity, sovereignty, cultural unity, or self-determination across existing borders.',
+      descriptive: 'Expects colonial fragmentation and external dependence to constrain Arab agency, while unity and cross-border organization can generate political capacity; historical variants differ.',
+      prescriptive: 'Favors Arab solidarity, cultural and political coordination, or integration without fixing socialism, secularism, party organization, or one constitutional model.',
+   },
+   'arab-socialism': {
+      normative: 'Treats Arab liberation, social equality, public control of strategic resources, and developmental transformation as compatible political goods.',
+      descriptive: 'Expects colonial and class structures to obstruct national development, while state-led transformation, land reform, and public ownership can expand collective capacity; historical cases diverge.',
+      prescriptive: 'Favors Arab unity or independence, state-led development, social provision, land reform, and public control of strategic sectors without implying Leninist party-state rule.',
+   },
+   'radical-feminism': {
+      normative: 'Treats patriarchy and male power as fundamental structures of domination requiring more than formal equality or isolated legal reform.',
+      descriptive: 'Expects sexual, family, cultural, and reproductive institutions to reproduce gender hierarchy alongside law and economic power.',
+      prescriptive: 'Favors transforming the institutions and practices that reproduce patriarchy; radical feminist traditions differ over sexuality, gender, race, class, and political strategy.',
+   },
+   'black-feminism': {
+      normative: 'Treats Black women’s collective dignity, autonomy, and liberation from interlocking racial, gendered, class, and sexual domination as central political goods.',
+      descriptive: 'Expects race, gender, class, sexuality, and state power to interact rather than operate as isolated systems, while Black feminist traditions remain plural.',
+      prescriptive: 'Favors autonomous organization, coalition, institutional transformation, and political practices grounded in Black women’s lived and collective knowledge.',
+   },
+   'queer-politics': {
+      normative: 'Treats sexual and gender self-determination and resistance to heteronormative domination as politically important goods.',
+      descriptive: 'Expects compulsory categories, policing, medicalization, family norms, and institutional recognition to shape gender and sexual freedom.',
+      prescriptive: 'Favors queer liberation, anti-discrimination, autonomy, and sometimes transformation of policing, borders, family, or fixed identity categories; strategies vary.',
+   },
+   'confucian-political-revival': {
+      normative: 'Treats moral cultivation, relational obligation, public virtue, harmony, and humane government as politically relevant while leaving hierarchy, equality, rights, and democracy contested.',
+      descriptive: 'Expects modern Confucian arguments to shape debates about authority, development, merit, and democracy, with both democratic and meritocratic branches.',
+      prescriptive: 'May favor civic education, ethical leadership, meritocratic administration, or constitutional democracy; the specialist does not prescribe one regime or economic order.',
+   },
+   'asian-values': {
+      normative: 'Frames family, duty, social harmony, community, and order as potentially weightier public goods than individualized liberal autonomy, without settling their institutional meaning.',
+      descriptive: 'Expects Asian-values language to organize regional debates about development and democracy, but its uses are heterogeneous and often strategic.',
+      prescriptive: 'May support communitarian, developmental, or authority-centered policies; as context it is not a scored program.',
+   },
+}
+
+export const CURATED_IDEOLOGY_LAYER_SUMMARIES: Readonly<Record<string, Partial<Record<Layer, string>>>> = Object.freeze(
+   Object.keys({ ...CURATED_IDEOLOGY_LAYER_SUMMARIES_BASE, ...CURATED_IDEOLOGY_LAYER_COMPLETIONS }).reduce<Record<string, Partial<Record<Layer, string>>>>((summaries, labelId) => {
+      summaries[labelId] = {
+         ...CURATED_IDEOLOGY_LAYER_SUMMARIES_BASE[labelId],
+         ...CURATED_IDEOLOGY_LAYER_COMPLETIONS[labelId],
+      }
+      return summaries
+   }, {}),
+)
 
 function layerPhilosophies(label: IdeologyLabel, layer: Layer): string[] {
    if (layer === 'normative') return label.normativePhilosophies ?? []

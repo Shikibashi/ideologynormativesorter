@@ -1,12 +1,14 @@
 import type { AxisWeight, Question } from '../types'
 
-export const EDITORIAL_SEVENTH_PASS_VERSION = '2026-08-editorial-v7'
+export const EDITORIAL_SEVENTH_PASS_VERSION = '2026-08-editorial-v7.1'
 export const EDITORIAL_SEVENTH_PASS_DATE = '2026-08-11'
 
 export interface SeventhPassRewrite {
   prompt: string
   axisWeights: AxisWeight[]
   theoryContext: Question['theoryContext']
+  /** A rewrite may replace a raw item with a sourced construct from another domain. */
+  domain?: Question['domain']
   rationale: string
 }
 
@@ -52,6 +54,7 @@ export const seventhPassRewritesById: Readonly<Record<string, SeventhPassRewrite
     prompt: 'Across randomized intergroup-contact studies with delayed outcomes, contact usually reduced measured prejudice, although effects varied and were weaker for ethnic, racial, religious, and immigrant targets.',
     axisWeights: [w('cultural-plasticity', 1)],
     theoryContext: 'nonideal',
+    domain: 'race-ethnicity-multiculturalism',
     rationale: 'Replace a broad migration-and-cooperation bundle with the qualified finding from a policy-focused review of randomized contact studies.',
   },
   q0208: {
@@ -134,6 +137,7 @@ export function applyEditorialSeventhPass(question: Question): Question {
     prompt: rewrite.prompt,
     axisWeights: rewrite.axisWeights.map((axisWeight) => ({ ...axisWeight })),
     theoryContext: rewrite.theoryContext,
+    domain: rewrite.domain ?? question.domain,
     reviewStatus: 'approved',
     version: EDITORIAL_SEVENTH_PASS_VERSION,
     updatedAt: EDITORIAL_SEVENTH_PASS_DATE,

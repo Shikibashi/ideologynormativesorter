@@ -128,6 +128,21 @@ describe('SiteShell appearance control', () => {
     expect(screen.getByRole('link', { name: 'METHODOLOGY' })).not.toHaveAttribute('aria-current')
   })
 
+  it('keeps result navigation in the current app when Methodology is opened from results', () => {
+    window.history.replaceState(null, '', '/')
+    const resultsContext = { ...TEST_CONTEXT, stage: 'results', composition: 'workbench' as const }
+    render(
+      <SiteShell context={resultsContext}>
+        <a href="/?view=methodology">Open methodology from the result</a>
+      </SiteShell>,
+    )
+
+    fireEvent.click(screen.getByRole('link', { name: 'Open methodology from the result' }))
+
+    expect(window.location.pathname).toBe('/')
+    expect(window.location.search).toBe('?view=methodology')
+  })
+
   it('defaults to System and persists an explicit Light selection', () => {
     render(<SiteShell context={TEST_CONTEXT}><p>Application content</p></SiteShell>)
 

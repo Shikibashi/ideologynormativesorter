@@ -1,0 +1,16 @@
+# Editorial twenty-first pass — 2026-08
+
+This pass refines three prescriptive items whose shorthand obscured the
+institutional choice being measured. The raw IDs remain stable and the
+effective bank uses `2026-08-editorial-v21`.
+
+| Item | Effective correction | Research boundary |
+| --- | --- | --- |
+| `q0135` | Replaces “currency holders” and the manager-loss claim with insured-depositor protection and the resolution claims hierarchy. | The Financial Stability Board calls for losses to be allocated to shareholders and unsecured or uninsured creditors while protecting covered depositors and avoiding taxpayer exposure; national regimes differ. See [FSB Key Attributes](https://www.fsb.org/2014/10/key-attributes-of-effective-resolution-regimes-for-financial-institutions-3/) and [FDIC failing-bank resolutions](https://www.fdic.gov/resources/resolutions). |
+| `q0136` | Retains alternative-currency freedom while naming fraud, insolvency, consumer-protection, and payment-stability constraints. | Federal Reserve analysis distinguishes private money, central-bank money, and digital payment instruments; private-money competition can create fragmentation, fraud, volatility, and run risks. See [Private money and central bank money as payments go digital](https://www.federalreserve.gov/newsevents/speech/brainard20210524a.htm). |
+| `q0318` | Replaces “abundance” and bureaucratic “austerity” with a comparison between technology/efficiency strategies and broad consumption limits. | IPCC evidence distinguishes carbon, energy, and material intensity from absolute emissions and finds that decoupling varies across countries and periods and is not sufficient by itself for climate stabilization. See [IPCC AR6 WGIII Chapter 2](https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-2/). |
+
+These are source-fidelity and construct-clarity corrections. They do not
+establish that respondents interpret the revised items consistently or that
+the mapped axes have empirical validity; those claims still require the
+planned cognitive, reliability, criterion, fairness, and expert-review gates.

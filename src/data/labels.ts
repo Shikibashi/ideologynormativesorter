@@ -63,9 +63,11 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'market-liberal',
       description:
-         'Emphasizes private property, market coordination, individual liberty, and rule-governed reform, generally preferring competition and limited regulation while accepting constitutional constraints.',
+         'A contemporary market-liberal family that gives strong presumptive priority to competitive markets, private enterprise, trade, property, and rule-governed economic policy while accepting an enabling state, public goods, macroeconomic institutions, and a limited safety net.',
+      cautionNote:
+         'Market liberalism is broader than deregulation or small government: it can accept public goods, social insurance, regulation, and constitutional limits. It is distinct from classical liberalism, right-libertarianism, and neoliberal technocratic governance.',
       usageNote:
-         'This label covers market-liberal reformism and should not be read as social liberalism or neoliberal technocratic governance.',
+         'Use this as the broad contemporary pro-market liberal anchor. It describes a family of market-oriented institutional commitments, not a claim that every market liberal favors the same tax, welfare, trade, or regulatory program.',
       philosophies: ["Liberalism","Classical Liberalism","Lockeanism"],
       subTheories: ["Classical Liberalism","Libertarianism"],
       ethicalTheory: ["Deontology"],
@@ -178,6 +180,8 @@ export const labels: IdeologyLabel[] = [
          'Seeks democratic control or social ownership of major productive assets while rejecting authoritarian one-party rule; distinct from social democracy, which usually reforms capitalism rather than replacing ownership structures.',
       usageNote:
          'This follows the contemporary (especially U.S.) usage that sharply distinguishes democratic socialism from social democracy. Historically the Socialist International used "democratic socialism" as its own name for what is now usually called social democracy, so the term has shifted meaning over time.',
+      cautionNote:
+         'The contemporary social-ownership distinction is useful but not universal: some parties and historical traditions use democratic socialism for reformist social democracy. Agreement does not identify one ownership model, strategy, or party tradition.',
       philosophies: ["Marxism","Socialism","Democratic Socialism","Reformism"],
       subTheories: ["Debsian Socialism","Fabian Socialism"],
       ethicalTheory: ["Consequentialism"],
@@ -337,30 +341,27 @@ export const labels: IdeologyLabel[] = [
    },
    {
       id: 'technocratic-centralist',
-      name: 'Technocratic Centralist',
+      name: 'Technocratic Centralism',
       family: 'technocratic',
       subfamily: 'technocratic',
       description:
-         'Trusts centralized expert administration over both markets and electoral majorities, treating state capacity as high and democratic judgment as comparatively unreliable.',
+         'A narrow compound position that assigns governing authority to technical or scientific experts and favors centralized administrative coordination in areas treated as technically complex; it is not a synonym for expert advice or evidence-informed policy.',
       usageNote:
-         'This label denotes a strong preference for centralized expert authority, not expertise or competent administration in general; technocratic and authoritarian commitments can vary independently.',
-      philosophies: ["Technocracy","Progressivism","Ecomodernism","Techno-Optimism"],
+         'Technocratic Centralism requires both expert-centered authority and concentrated administrative coordination. A respondent can value expertise while favoring democratic, federal, local, or pluralist institutions, so a general technocratic orientation is not enough.',
+      cautionNote:
+         'Do not infer this label from evidence-based policy, professional administration, state capacity, or technology optimism. Its proponents and critics differ over elections, accountability, rights review, and pluralism; those questions require separate evidence.',
+      philosophies: ["Technocracy"],
    aliases: ["Noocracy","Scientocracy"],
-      subTheories: ["Managerialism","Elite Theory","Synoptic Planning"],
-      ethicalTheory: ["Consequentialism"],
+      subTheories: ["Managerialism","Synoptic Planning"],
+      ethicalTheory: [],
       normativePhilosophies: [],
-      descriptivePhilosophies: ["Techno-Optimism"],
-      prescriptivePhilosophies: ["Technocracy","Progressivism","Ecomodernism"],
+      descriptivePhilosophies: [],
+      prescriptivePhilosophies: ["Technocracy"],
       philosophyInfluences: [
          {
             philosophy: "Technocracy",
-            description: "Expert administration as superior to both markets and democratic deliberation.",
+            description: "Expert-centered government combined with centralized administrative coordination.",
             affectedAxes: ["expert-confidence","democratic-confidence","centralization-preference"],
-         },
-         {
-            philosophy: "Progressivism",
-            description: "Belief in deliberate social improvement through evidence-based reform.",
-            affectedAxes: ["state-capacity-confidence","cultural-plasticity"],
          }
       ],
       centroid: {
@@ -455,6 +456,8 @@ export const labels: IdeologyLabel[] = [
          'Treats exclusive private appropriation of natural opportunities—especially land and resource rents—as the central injustice, while leaving genuinely produced wealth to voluntary exchange; prefers land-value taxation and free migration to state micromanagement.',
       usageNote:
          'Geolibertarianism combines libertarian self-ownership with a common claim on land and natural-resource rent; it is not simply laissez-faire libertarianism or every version of Georgism.',
+      cautionNote:
+         'Georgist-libertarian arguments distinguish natural opportunities from produced wealth, but they vary over the tax base, public services, compensation, and migration; this is not a generic endorsement of every land tax or every libertarian program.',
       philosophies: ["Libertarianism","Geolibertarianism","Georgism","Lockeanism"],
       subTheories: ["Georgism","Geoism","Land Value Tax"],
       ethicalTheory: ["Deontology"],
@@ -505,10 +508,10 @@ export const labels: IdeologyLabel[] = [
    {
       id: 'anarcho-capitalist',
       name: 'Anarcho-Capitalist',
-      family: 'liberal',
+      family: 'anarchist',
       subfamily: 'market-anarchist',
       description:
-         'Rejects political authority and compulsory public goods provision entirely, treating all legitimate social order as emergent from voluntary contract, private property, and competitive protection and arbitration markets.',
+         'Seeks to replace the state and compulsory public-goods provision with social order based on voluntary contract, private property, and competing private providers of protection and arbitration.',
       cautionNote:
          'This is a right-libertarian market doctrine and is contested within anarchist studies because it accepts private property and market provision of law.',
       philosophies: ["Libertarianism","Anarcho-Capitalism","Rothbardianism","Austrian Economics"],
@@ -520,7 +523,7 @@ export const labels: IdeologyLabel[] = [
       philosophyInfluences: [
          {
             philosophy: "Libertarianism",
-            description: "Absolute commitment to self-ownership and voluntary association.",
+            description: "Strong commitment to self-ownership and voluntary association.",
             affectedAxes: ["authority-legitimacy","liberty-noninterference","property-legitimacy"],
          },
          {
@@ -567,6 +570,8 @@ export const labels: IdeologyLabel[] = [
          'Combines social or cooperative ownership of productive capital with market pricing and competition, aiming to disperse economic power without abandoning the coordinating virtues of exchange.',
       usageNote:
          'Market socialism concerns ownership and economic coordination, not merely welfare spending within private capitalism; its models differ over worker control, public ownership, and market design.',
+      cautionNote:
+         'Market socialism is a family of economic-system proposals rather than one party or state model: worker cooperatives, public firms, and other forms of social ownership can coexist with markets, and the label is not synonymous with social democracy or private-market capitalism.',
       philosophies: ["Marxism","Socialism","Market Socialism","Neoclassical Economics"],
       subTheories: ["Oskar Lange Model","Worker Self-Management","Cooperativism"],
       ethicalTheory: ["Consequentialism"],
@@ -620,7 +625,11 @@ export const labels: IdeologyLabel[] = [
       family: 'social-democratic',
       subfamily: 'reformist-welfare',
       description:
-         'Accepts a mixed economy and parliamentary institutions, then uses them to temper market outcomes through progressive taxation, public services, unions, and steady incremental reform.',
+         'Accepts a mixed economy and democratic institutions, then uses them to temper market outcomes through progressive taxation, public services, unions, and steady incremental reform.',
+      usageNote:
+         'In contemporary usage, social democracy usually refers to democratic reform and welfare institutions within a predominantly capitalist mixed economy; historical parties and theorists have used the term more broadly.',
+      cautionNote:
+         'This is not synonymous with democratic socialism, which may seek social ownership, or with one fixed Nordic institutional model.',
       philosophies: ["Social Democracy","Reformism","Welfare State"],
       subTheories: ["Social Democracy","Welfare State","Nordic Model"],
       ethicalTheory: ["Consequentialism"],
@@ -667,15 +676,19 @@ export const labels: IdeologyLabel[] = [
       id: 'mutualist',
       name: 'Mutualist',
       family: 'anarchist',
-      subfamily: 'social-anarchist',
+      subfamily: 'mutualist-anarchist',
       description:
-         'Balances anti-authoritarianism with a cooperative market ethos: opposes rent and hierarchy, favors local federations and mutual credit, and treats both state power and concentrated capital as sources of domination.',
-      philosophies: ["Anarchism","Mutualism","Proudhonism"],
-      subTheories: ["Proudhonian Mutualism","Reciprocal Exchange"],
+         'A plural anarchist tradition associated first with Proudhon and later reworked in American individualist and contemporary currents. Its common themes include reciprocal association, opposition to state-granted privilege and exploitation, mutual credit, and federated or cooperative provision, while property, labor exchange, and market questions remain contested.',
+      usageNote:
+         'For historical orientation, the catalog distinguishes Proudhonian mutualism; the Tucker-era American individualist-anarchist field, including Joseph (Jo) and Laurance Labadie; Clarence L. Swartz’s 1927 Mutualist Associates restatement; and later Proudhonian or left-market revivals. Across those overlapping lines, reciprocal exchange and mutual credit are recurring institutional ideas rather than a single shared program. The historical direction is principally Proudhon into part of the Tuckerite field; contemporary revivals are later reinterpretations, not historical origins of individualist anarchism.',
+      cautionNote:
+         'Proudhonian, Tuckerite or other individualist, Swartz-associated, and contemporary mutualist formulations overlap without forming two fixed or exhaustive camps. C4SS is a contemporary left-market-anarchist organization with several currents, not a mutualist subtype or a single-author school; it predates Kevin Carson’s 2008 appointment as its first paid staff member. The catalog therefore does not infer C4SS or Kevin Carson affiliation—or any precise historical lineage—from a family-level affinity.',
+      philosophies: ["Anarchism","Mutualism","Proudhonism","Individualist Anarchism"],
+      subTheories: ["Proudhonian Mutualism","Tuckerite American Individualist Anarchism","Labadie Line within American Individualist Anarchism","Clarence L. Swartz / Mutualist Associates (1927)","Contemporary Mutualist and Left-Market Revivals"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Anarchism","Proudhonism"],
       descriptivePhilosophies: [],
-      prescriptivePhilosophies: ["Mutualism","Proudhonism"],
+      prescriptivePhilosophies: ["Mutualism","Proudhonism","Individualist Anarchism"],
       philosophyInfluences: [
          {
             philosophy: "Anarchism",
@@ -780,6 +793,10 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'religious-conservative',
       description:
          'Draws on Christian social thought, subsidiarity, social-market economics, family and civil-society institutions, and democratic constitutionalism, combining moral traditionalism with welfare and labor protections.',
+      usageNote:
+         'Christian democracy is a family of democratic movements rather than a single confessional state program; subsidiarity, social-market arrangements, family policy, and civil-society institutions are combined differently across countries.',
+      cautionNote:
+         'It is not equivalent to theocracy or distributism: religious inspiration can coexist with constitutional pluralism, and social-market policy does not require dispersed private productive property.',
       philosophies: ["Conservatism","Christian Democracy","Catholic Social Teaching"],
       subTheories: ["Popular Party","Catholic Social Teaching"],
       ethicalTheory: ["Virtue Ethics"],
@@ -891,9 +908,11 @@ export const labels: IdeologyLabel[] = [
       family: 'socialist',
       subfamily: 'state-socialist',
       description:
-         'Holds that a disciplined vanguard party must seize and wield centralized state power to abolish private capital and direct a planned economy through the transition to communism.',
+         'Typically centers a disciplined vanguard party that seizes and wields centralized state power to abolish private capital and direct a planned or state-coordinated economy during a transition toward communism; national and historical variants differ substantially.',
       usageNote:
          'Titoism claimed continuity with Marxism-Leninism but is a heterodox/contested case: its market elements, worker self-management, and non-aligned foreign policy broke sharply enough from Soviet orthodoxy that Yugoslavia was expelled from the Cominform in 1948.',
+      cautionNote:
+         'This is a family-level label for vanguard-party state socialism, not a claim that Soviet, Chinese, Cuban, Vietnamese, or other national variants shared one economy, constitutional order, or historical practice.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism"],
       subTheories: ["Stalinism","Maoism","Hoxhaism"],
       ethicalTheory: ["Consequentialism"],
@@ -948,6 +967,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'libertarian-socialist',
       description:
          'Rejects both the market and the vanguard party, holding that workers should govern production directly through federated councils rather than a state bureaucracy that would reproduce domination.',
+      cautionNote:
+         'Council communism is a distinct anti-vanguardist current centered on workers’ councils and direct self-government; it should not be collapsed into Marxism-Leninism, ordinary union democracy, or every form of libertarian socialism.',
       philosophies: ["Marxism","Socialism","Council Communism","Libertarian Socialism"],
       subTheories: ["Dutch-German Left Communism"],
       ethicalTheory: ["Consequentialism"],
@@ -1057,7 +1078,11 @@ export const labels: IdeologyLabel[] = [
       family: 'anarchist',
       subfamily: 'social-anarchist',
       description:
-         'Seeks the immediate abolition of both state and market in favor of stateless communism organized around free association and distribution according to need.',
+         'Seeks a stateless communist order in which productive resources are held in common, association is voluntary and decentralized, and distribution is organized around need; currents differ over transition, scale, and coordination.',
+      usageNote:
+         'Anarcho-communism is a socialist-anarchist current, not a synonym for every anti-state or anti-market position. Its historical advocates have differed over federated organization, revolutionary strategy, and how communal production should coordinate.',
+      cautionNote:
+         'The label describes a family resemblance rather than one implementation: it should be distinguished from anarcho-capitalism, mutualism, and broader social anarchism even where they share opposition to centralized state authority.',
       philosophies: ["Anarchism","Anarcho-Communism","Kropotkinism"],
       subTheories: ["Platformism","Synthesis Anarchism"],
       ethicalTheory: ["Deontology"],
@@ -1111,7 +1136,11 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'minarchist',
       description:
-         'Holds that the state should be shrunk to a minimal night-watchman role limited to police, courts, and defense, retained only because competitive enforcement of rights is judged unworkable.',
+         'A libertarian doctrine that generally permits a minimal state for protecting against force, theft, fraud, and rights violations through courts, policing, and defense; minarchists differ over the state’s exact scope and justification.',
+      usageNote:
+         'Minarchism names a minimal-state position within libertarian thought. It is narrower than classical liberalism and retains public authority, while anarcho-capitalism rejects the state rather than merely limiting it.',
+      cautionNote:
+         'The night-watchman formulation is a family resemblance, not a single settled institutional blueprint; disagreements include public goods, adjudication, emergency powers, and the boundary between protection and regulation.',
       philosophies: ["Libertarianism","Minarchism","Lockeanism","Nozickism"],
       subTheories: ["Night-Watchman State","Limited Government"],
       ethicalTheory: ["Deontology"],
@@ -1126,7 +1155,7 @@ export const labels: IdeologyLabel[] = [
          },
          {
             philosophy: "Minarchism",
-            description: "State limited to police, courts, and defense only.",
+            description: "A minimal rights-protecting state, commonly centered on courts, policing, and defense; minarchist views differ over public goods, infrastructure, and the boundary of legitimate protection.",
             affectedAxes: ["authority-legitimacy","state-action-vs-exit","centralization-preference"],
          }
       ],
@@ -1162,10 +1191,12 @@ export const labels: IdeologyLabel[] = [
    {
       id: 'agorist',
       name: 'Agorist',
-      family: 'liberal',
+      family: 'anarchist',
       subfamily: 'market-anarchist',
       description:
-         'A market-anarchist strategy that rejects electoral politics entirely and seeks to dissolve the state through counter-economics: building untaxed, unlicensed black and grey markets and parallel institutions.',
+         'A market-anarchist strategy that places primary emphasis on counter-economics rather than electoral politics, seeking to dissolve or marginalize the state through untaxed or unlicensed black and grey markets and parallel institutions.',
+      cautionNote:
+         'Agorism names a counter-economic strategy associated with market anarchism, not all libertarian or pro-market politics; its claims about parallel markets and state dissolution remain contested and provisional.',
       philosophies: ["Libertarianism","Anarcho-Capitalism","Rothbardianism","Austrian Economics"],
       subTheories: ["Counter-Economics","Market Anarchism"],
       ethicalTheory: ["Deontology"],
@@ -1175,7 +1206,7 @@ export const labels: IdeologyLabel[] = [
       philosophyInfluences: [
          {
             philosophy: "Libertarianism",
-            description: "Absolute private property and self-ownership.",
+            description: "Strong private-property and self-ownership commitments within its market-anarchist strategy.",
             affectedAxes: ["property-legitimacy","authority-legitimacy"],
          },
          {
@@ -1222,6 +1253,8 @@ export const labels: IdeologyLabel[] = [
          'Combines conservative or market-liberal domestic policy with an assertive international posture, including willingness to use American or allied power to defend strategic interests and promote liberal-democratic institutions abroad.',
       usageNote:
          'This catalog uses the modern U.S. current, whose roots include Cold War liberal and anti-communist circles. Some neoconservatives were influenced by Leo Strauss or Straussians, but Straussian philosophy is not a definition or subtype of neoconservatism.',
+      cautionNote:
+         'Neoconservatism is a historically specific and internally changing U.S. current, not a synonym for every hawkish conservative, interventionist, or supporter of democracy promotion; its domestic-economic and foreign-policy emphases vary by period and author.',
       philosophies: ["Conservatism","Neoconservatism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","Neoconservatism"],
@@ -1272,6 +1305,8 @@ export const labels: IdeologyLabel[] = [
          'Holds that legitimate public authority and civil law should derive from and enforce religious doctrine, with religious institutions or revealed law taking precedence over secular and pluralist norms.',
       cautionNote:
          'This identifies theocratic political ordering, not personal religious belief or religiously inspired democratic politics.',
+      usageNote:
+         'The defining claim is about the source of public authority: revealed or religious law or institutions are treated as controlling for civil legitimacy. Religious voters, parties, and laws can remain within a pluralist constitutional order when religious authority is influential rather than sovereign. The current opt-in comparison tests only final religious legal authority, not every historical or constitutional theocratic variation.',
       philosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
@@ -1325,6 +1360,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'red-green',
       description:
          'Treats ecological crisis as inseparable from capitalism, seeking collective ownership and democratic planning of production to serve both human need and ecological limits rather than profit or growth for its own sake.',
+      cautionNote:
+         'Ecosocialism joins ecological limits to socialist ownership and democratic planning; it is narrower than green politics generally and is not interchangeable with public investment, environmental regulation, or degrowth.',
       philosophies: ["Environmentalism","Ecologism","Ecosocialism","Marxism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Environmentalism","Ecologism","Ecosocialism","Marxism"],
@@ -1378,6 +1415,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'post-growth',
       description:
          'Holds that lasting sustainability requires a planned, democratic reduction of throughput in rich economies, rejecting growth as a goal in favor of sufficiency, localism, and a shift from material accumulation to shared well-being.',
+      cautionNote:
+         'Degrowth is a deliberately affluent-economy and material-throughput critique of growth-centered policy, not a synonym for recession, poverty reduction, or every form of environmentalism; currents differ over planning, technology, and distribution.',
       philosophies: ["Environmentalism","Ecologism","Degrowth","Steady-State Economics"],
       subTheories: ["Post-Growth","Sufficiency Economy","Decommodification"],
       ethicalTheory: ["Virtue Ethics"],
@@ -1431,7 +1470,11 @@ export const labels: IdeologyLabel[] = [
       family: 'nationalist',
       subfamily: 'inclusive-national',
       description:
-         'Grounds national belonging in shared institutions, laws, and civic commitment rather than ancestry, treating the nation as an inclusive political community open to anyone who adopts its constitutional values.',
+         'Grounds national belonging primarily in shared citizenship, institutions, laws, and civic commitment rather than ancestry; in principle, membership can be open to people who acquire civic standing, although language, cultural, and constitutional criteria may still restrict access.',
+      usageNote:
+         'Civic nationalism describes a political basis of belonging, but criteria such as language, constitutional loyalty, and citizenship can still be contested or exclusionary in practice.',
+      cautionNote:
+         'It is not automatically liberal, cosmopolitan, or non-coercive; a civic nation can still enforce borders, assimilation, or minority exclusion.',
       philosophies: ["Nationalism","Civic Nationalism","Republicanism"],
       subTheories: ["Liberal Nationalism"],
       ethicalTheory: ["Virtue Ethics"],
@@ -1485,14 +1528,16 @@ export const labels: IdeologyLabel[] = [
       family: 'nationalist',
       subfamily: 'ethnic-national',
       description:
-         'Defines the nation primarily through shared descent, ethnicity, or inherited culture, prioritizing the political continuity and interests of that ethnic community over equal civic membership alone.',
+         'Defines the nation primarily through shared descent, ethnicity, cultural ties, or inherited collective identity, prioritizing the political continuity and interests of that community over a purely civic account of membership.',
       usageNote:
-         'Ethnonationalism makes ethnic belonging central to national membership, but it does not by itself specify one legal membership rule, racial-science doctrine, level of exclusion, or strategy toward minorities. Historical variants include self-determination and anti-colonial projects as well as exclusionary, assimilationist, or ethnocratic movements.',
-      philosophies: ["Nationalism","Ethnic Nationalism","Primordialism"],
-      subTheories: ["Volkisch Nationalism"],
+         'Ethnonationalism makes ethnic belonging central to national membership, but it does not by itself specify one legal membership rule, primordialist or racial-science doctrine, level of exclusion, or strategy toward minorities. Historical variants include self-determination and anti-colonial projects as well as exclusionary, assimilationist, or ethnocratic movements; the ordinary prototype should not be read as measuring all of these variants equally.',
+      cautionNote:
+         'Ethnicity being politically central does not settle whether membership is inherited, assimilable, civic-ethnic, exclusionary, racialized, or compatible with minority self-determination. Those are distinct variants and should not be inferred from this broad label alone.',
+      philosophies: ["Nationalism","Ethnic Nationalism"],
+      subTheories: ["Volkisch Nationalism","Primordialist Nationalism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Nationalism"],
-      descriptivePhilosophies: ["Primordialism"],
+      descriptivePhilosophies: [],
       prescriptivePhilosophies: ["Ethnic Nationalism"],
       philosophyInfluences: [
          {
@@ -1501,9 +1546,9 @@ export const labels: IdeologyLabel[] = [
             affectedAxes: ["political-community-boundary","authority-legitimacy"],
          },
          {
-            philosophy: "Primordialism",
-            description: "Ethnic identity treated as ancient and fixed rather than socially constructed.",
-            affectedAxes: ["equality-theory","moral-traditionalism","coercion-strategy"],
+            philosophy: "Ethnic Nationalism",
+            description: "Ethnic or cultural membership is treated as politically salient; variants differ over whether belonging is inherited, assimilable, self-determined, or imposed.",
+            affectedAxes: ["political-community-boundary","cultural-plasticity","equality-theory"],
          }
       ],
       centroid: {
@@ -1656,6 +1701,8 @@ export const labels: IdeologyLabel[] = [
          'A liberal tradition that makes individual liberty, private property, freedom of contract, rule of law, and constitutionally limited government central, while allowing disagreement about how much government social and economic policy requires.',
       usageNote:
          'Classical liberalism is historically variable and should not be treated as identical to contemporary neoliberal policy, minarchism, or every market-oriented position.',
+      cautionNote:
+         'The tradition ranges from near-libertarian views to positions allowing public goods, regulation, or a modest social minimum. The label therefore does not imply laissez-faire absolutism, a fixed state size, or a contemporary party alignment.',
       philosophies: ["Liberalism","Classical Liberalism","Lockeanism"],
       subTheories: ["Lockean Liberalism","Negative Liberty"],
       ethicalTheory: ["Deontology"],
@@ -1712,6 +1759,8 @@ export const labels: IdeologyLabel[] = [
          'Describes a market-oriented liberal approach to governing capitalism through competition policy, privatization or outsourcing, independent expert institutions, and international economic rules; the term “neoliberalism” is broader and often polemical.',
       cautionNote:
          'The term neoliberalism is contested and often polemical; this label uses the narrower sense of market-governance liberalism.',
+      usageNote:
+         'In this catalog, the operational meaning is a market-governance orientation: public authorities construct and police competitive markets through rules, privatization or outsourcing, expert institutions, and international economic coordination. It is not a claim that every market liberal, privatization policy, or austerity program is neoliberal.',
       aliases: ["Neoliberalism"],
       philosophies: ["Liberalism","Neoliberalism","Chicago School","Austrian Economics"],
       subTheories: [],
@@ -1769,6 +1818,8 @@ export const labels: IdeologyLabel[] = [
          'Holds that a competitive market order is itself a public good requiring a strong constitutional state that enforces competition against cartels and prevents interest-group capture through binding rules rather than discretionary intervention.',
       usageNote:
          'Ordoliberalism is a rule-bound market-order tradition: it rejects both laissez-faire indifference to market power and unconstrained discretionary management, while varying over welfare and democracy.',
+      cautionNote:
+         'Ordoliberalism’s strong state is primarily a constitutional rule-setting role that protects competitive order; it should not be collapsed into laissez-faire, generic economic regulation, or one settled welfare-state or democratic program.',
       philosophies: ["Liberalism","Ordoliberalism","German Historical School"],
       subTheories: ["Freiburg School"],
       ethicalTheory: ["Deontology"],
@@ -1823,6 +1874,10 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'welfare-liberal',
       description:
          'Accepts markets and private property as foundations but bounds them by a positive-liberty commitment to substantive opportunity, using targeted state provision and redistribution so that fair life chances are compatible with individual freedom.',
+      usageNote:
+         'Social liberalism is a family of liberal arguments, historically associated with “new liberalism,” that treats effective opportunity or positive liberty as requiring some social provision and public action while retaining individual rights, markets, and pluralism.',
+      cautionNote:
+         'It is not social democracy by definition: the label leaves open the scale of redistribution, welfare provision, and market regulation, and it is not a synonym for progressive cultural politics.',
       philosophies: ["Liberalism","Social Liberalism","Millism","Rawlsianism"],
       subTheories: ["New Liberalism","Welfare Liberalism","Rawlsianism"],
       ethicalTheory: ["Deontology"],
@@ -1931,9 +1986,11 @@ export const labels: IdeologyLabel[] = [
       family: 'communitarian',
       subfamily: 'civic-communitarian',
       description:
-         'Holds that the self is constituted by shared community and tradition, so that justice must weigh common goods and the social bases of self-respect alongside individual rights, favoring civic participation over either laissez-faire or statist central planning.',
+         'Holds that people’s identities and moral judgments are formed through shared communities and traditions, so justice should weigh common goods and the social bases of self-respect alongside individual rights. Communitarian positions vary over markets, welfare, state power, and civic participation.',
       usageNote:
          'Communitarianism is a critique of liberal individualism found across the political spectrum (Sandel, MacIntyre, Etzioni, Taylor); it is not primarily a socialist or Marxist tradition, despite some left-communitarian thinkers drawing on both.',
+      cautionNote:
+         'Communitarianism does not by definition reject individual rights, pluralism, or liberal democracy. Its variants differ over which communities matter, how traditions may be criticized, and when public authority may enforce common goods.',
       philosophies: ["Communitarianism","Civic Republicanism","Social Contract Theory"],
       subTheories: [],
       ethicalTheory: ["Virtue Ethics"],
@@ -1990,6 +2047,8 @@ export const labels: IdeologyLabel[] = [
          'Treats freedom as non-domination—security against arbitrary power—and emphasizes civic self-government, rule of law, accountable institutions, and the social conditions needed for citizens to stand as equals.',
       usageNote:
          'This means the political-theory tradition of civic self-government and non-domination, not a contemporary party label.',
+      cautionNote:
+         'Republicanism is a family of arguments about civic freedom, public accountability, and protection from arbitrary power; it does not by itself choose a single party system, economic model, level of centralization, or relation to liberalism.',
       philosophies: ["Republicanism","Civic Humanism"],
       subTheories: ["Civic Republicanism","Neo-Republicanism","Free State"],
       ethicalTheory: ["Deontology"],
@@ -2044,6 +2103,10 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'catholic-localist',
       description:
          'Holds that widespread ownership of productive property by families and local guilds is morally preferable to both concentrated corporate capital and collective state ownership, grounding a decentralized moral economy in subsidiarity and the dignity of small ownership.',
+      usageNote:
+         'Distributism is a Catholic-influenced economic program centered on widespread ownership of productive property; family firms, guilds, cooperatives, and anti-monopoly measures are associated proposals rather than identical requirements.',
+      cautionNote:
+         'It is not simply small-business advocacy, agrarian nostalgia, or state socialism: its defining claim concerns the distribution of productive ownership, including difficult questions about large-scale assets.',
       philosophies: ["Distributism","Catholic Social Teaching"],
       subTheories: ["Catholic Social Teaching","Subsidiarity","Small Property"],
       ethicalTheory: ["Virtue Ethics"],
@@ -2098,6 +2161,10 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'libertarian-socialist',
       description:
          'A broader anti-authoritarian socialism that opposes both capitalist concentration and centralized state socialism, seeking worker self-management and federated anti-hierarchical organization through a mix of reform and direct action rather than vanguard seizure.',
+      usageNote:
+         'The term covers overlapping anarchist, councilist, autonomist, syndicalist, and other anti-authoritarian socialist currents; they disagree about organization, markets, property, and transition.',
+      cautionNote:
+         'It is not right-libertarianism: the shared “libertarian” term refers here to opposition to hierarchical or coercive domination, while property and economic commitments differ.',
       philosophies: ["Marxism","Socialism","Anarchism","Council Communism","Libertarian Socialism"],
       subTheories: ["Council Communism","De Leonism","Autonomist Marxism"],
       ethicalTheory: ["Consequentialism"],
@@ -2152,6 +2219,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'ecocentric',
       description:
          'Treats the nonhuman natural world as possessing intrinsic worth independent of human use, holding that ecological integrity requires restructuring social and economic life around biocentric limits rather than greening an essentially anthropocentric growth order.',
+      cautionNote:
+         'Deep ecology gives nonhuman nature intrinsic value and is distinct from conservation based mainly on human welfare, environmental regulation, or green growth; it does not by itself specify one political institution or economic program.',
       philosophies: ["Environmentalism","Ecologism","Deep Ecology","Biocentrism"],
       subTheories: ["Biospheric Egalitarianism","Ecocentrism","Gaia Philosophy"],
       ethicalTheory: ["Virtue Ethics"],
@@ -2261,7 +2330,11 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'objectivist',
       description:
-         'Grounds morality in rational egoism and productive achievement, holding that individual rights to life, liberty, property, and the pursuit of happiness are absolute, that laissez-faire capitalism is the only just social system, and that voluntary hierarchy and uncompromising principle forbid redistributive coercion.',
+         'Ayn Rand’s philosophical system grounds morality in rational self-interest and productive achievement, defends individual rights, and presents laissez-faire capitalism with a limited rights-protecting government as its political-economic ideal.',
+      usageNote:
+         'Objectivism is an author-specific philosophical doctrine spanning metaphysics, epistemology, ethics, aesthetics, and politics; this catalog uses the political commitments as one part of that larger system.',
+      cautionNote:
+         'Its claims about rational egoism, absolute rights, and laissez-faire capitalism are Objectivist doctrines attributed to Rand, not synonyms for generic libertarianism, egoism, or every pro-market position.',
       philosophies: ["Libertarianism","Objectivism","Randianism"],
       subTheories: ["Randian Objectivism","Rational Egoism","Laissez-Faire"],
       ethicalTheory: ["Rational Egoism","Virtue Ethics"],
@@ -2372,6 +2445,10 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'welfare-chauvinist',
       description:
          'Combines a generous redistributive welfare state with a strictly bounded national membership, holding that social provision is a right of the in-group financed and reserved for citizens, while restricting immigration and access on grounds of national belonging and fiscal sustainability.',
+      usageNote:
+         'In political research, welfare chauvinism usually means restricting immigrants’ access to welfare benefits or services for a national or perceived native in-group; restrictions can be conditional or near-total.',
+      cautionNote:
+         'It is narrower than opposition to immigration or support for a smaller welfare state: someone can favor generous provision for the in-group while restricting immigrant eligibility, and welfare ethnocentrism can target ethnic minorities who are citizens.',
       philosophies: ["Nationalism","Welfare Chauvinism"],
       subTheories: ["Welfare Nationalism","Social Nationalism"],
       ethicalTheory: ["Virtue Ethics"],
@@ -2428,6 +2505,8 @@ export const labels: IdeologyLabel[] = [
          'Frames politics as a struggle between a corrupt elite and an authentic people, often combining majoritarian or extra-institutional mobilization with national sovereignty, traditional cultural order, and tighter boundaries around political membership.',
       cautionNote:
          'Populism is a thin ideology or political style that divides a virtuous people from elites; it is not a complete doctrine by itself.',
+      usageNote:
+         'Right-wing populism is a host-dependent combination of the people-versus-elite frame with some mix of national sovereignty, traditionalism, nativism, or market and welfare positions. The populist core should not be treated as a complete right-wing program or as evidence of one inevitable institutional outcome.',
       philosophies: ["Populism"],
       subTheories: ["Right Populism","National Populism"],
       ethicalTheory: ["Deontology"],
@@ -2479,6 +2558,8 @@ export const labels: IdeologyLabel[] = [
          'Treats concentrated institutional and economic power as a standing threat to self-rule, favoring expansive participation, anti-elite institutional redesign, and democratized authority beyond periodic elections.',
       usageNote:
          'Radical democracy extends participation and contestability beyond periodic elections; it is not a rejection of democracy or one fixed policy bundle.',
+      cautionNote:
+         'Radical-democratic traditions vary among participatory, deliberative, agonistic, and constitutional approaches. The label does not mean direct democracy only, hostility to all institutions, or one predetermined economic program.',
       philosophies: ["Democracy","Radical Democracy","Participatory Democracy"],
       subTheories: ["Deliberative Democracy","Participatory Democracy"],
       ethicalTheory: ["Deontology"],
@@ -2656,7 +2737,7 @@ export const labels: IdeologyLabel[] = [
       philosophyInfluences: [
          {
             philosophy: "Anarchism",
-            description: "Rejection of all coercive authority.",
+            description: "Subjects coercive political authority and hierarchy to radical criticism.",
             affectedAxes: ["authority-legitimacy","centralization-preference"],
          },
          {
@@ -2758,6 +2839,8 @@ export const labels: IdeologyLabel[] = [
          'Frames politics as a struggle between ordinary people and entrenched elites, channeling that antagonism toward redistribution, economic democracy, and majoritarian popular sovereignty rather than nationalist exclusion.',
       cautionNote:
          'Populism is a thin ideology or political style that divides a virtuous people from elites; this variant combines it with egalitarian or anti-oligarchic politics.',
+      usageNote:
+         'Left-wing populism uses the people-versus-elite frame with an egalitarian or anti-oligarchic host orientation. It can overlap with socialism, social democracy, or democratic reform without being identical to any of them or fixing one ownership model.',
       philosophies: ["Populism","Left-Wing Populism","Socialism"],
       subTheories: ["Left Populism","Social Populism"],
       ethicalTheory: ["Deontology"],
@@ -2812,6 +2895,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'maoist',
       description:
          'Extends revolutionary state socialism through mass line politics, protracted struggle, anti-revisionism, and peasant or peripheral mobilization, treating revolutionary transformation as a continuing process against bureaucratic restoration.',
+      cautionNote:
+         'Maoism is a historically specific and internally varied revolutionary current associated with mass-line politics, peasant mobilization, and continuing struggle; it is not simply a synonym for every communist party or for Marxism-Leninism in general.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism","Maoism"],
       subTheories: ["Marxism-Leninism-Maoism","Maoism-Third Worldism"],
       ethicalTheory: ["Consequentialism"],
@@ -2866,6 +2951,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'trotskyist',
       description:
          'Combines revolutionary socialism with permanent international revolution, anti-Stalinist party politics, and critique of bureaucratic state socialism, rejecting both reformist gradualism and nationalist socialism.',
+      cautionNote:
+         'Trotskyism is a family of revolutionary Marxist currents centered on international revolution and critiques of Stalinist bureaucracy; organizations differ over party strategy, united fronts, and the meaning of permanent revolution.',
       philosophies: ["Marxism","Socialism","Leninism","Vanguardism","Trotskyism"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: ["Marxism","Socialism"],
@@ -2974,7 +3061,11 @@ export const labels: IdeologyLabel[] = [
       family: 'liberal',
       subfamily: 'world-federalist',
       description:
-         'Advocates a democratic federal layer of world government and enforceable international law as a way to pursue peace, justice, and human rights across national boundaries.',
+         'Advocates a democratic federal layer of global authority and enforceable international law to address peace, justice, and human-rights problems that cross national boundaries while retaining self-government at other levels.',
+      usageNote:
+         'World federalism is a family of proposals for constitutional or federal global authority. Proposals differ over how powers would be divided among global, national, regional, and local institutions.',
+      cautionNote:
+         'It is stronger than international cooperation alone but is not identical to cosmopolitanism, generic global governance, or a single centralized world state; the label does not settle feasibility or institutional design.',
       philosophies: ["Liberalism","World Federalism","Cosmopolitanism","Kantianism"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Liberalism","World Federalism","Cosmopolitanism","Kantianism"],
@@ -3085,6 +3176,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'guild-socialist',
       description:
          'Advocates industrial self-government through democratic worker guilds that control production and negotiate with the public; historical proposals differed over whether ultimate ownership should be public, guild-based, or otherwise socialized.',
+      cautionNote:
+         'Guild socialism is an historical model of worker self-government organized through industrial guilds, distinct from both ordinary trade unionism and one fixed theory of public ownership; its proposals varied across authors and periods.',
       philosophies: ["Marxism","Socialism","Guild Socialism"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: ["Marxism","Socialism"],
@@ -3140,6 +3233,8 @@ export const labels: IdeologyLabel[] = [
          'Holds that diverse cultural traditions can and should coexist peacefully within a single society, valuing cultural pluralism, anti-racism, and inclusive democratic citizenship over assimilation or monocultural nationalism.',
       usageNote:
          'Multiculturalism is modeled as a cross-cutting recognition and accommodation commitment; it does not by itself prescribe separatism, one group-rights model, or a complete economic ideology.',
+      cautionNote:
+         'Multiculturalist approaches differ over individual rights, group-differentiated accommodation, integration, language, autonomy, and shared civic institutions. Support for recognition does not by itself entail separate sovereignty or exemption from equal-rights standards.',
       philosophies: ["Liberalism","Multiculturalism","Cultural Pluralism"],
       subTheories: ["Cultural Pluralism","Interculturalism"],
       ethicalTheory: ["Deontology"],
@@ -3244,7 +3339,11 @@ export const labels: IdeologyLabel[] = [
       family: 'green',
       subfamily: 'bioregional',
       description:
-         'Holds that political and economic boundaries should reflect ecological regions rather than only inherited borders, advocating place-based governance, local resilience, and stewardship of shared ecosystems across diverse economic models.',
+         'A place-based ecological political current that links governance, economic life, and stewardship to ecologically and culturally understood regions rather than only inherited borders; proposals vary over watersheds, local resilience, and relations with existing states.',
+      usageNote:
+         'Bioregionalism is concerned with how people organize relationships within living regions and their ecosystems. Contemporary bioregioning includes changing, experimental spatial and governance practices rather than one fixed map.',
+      cautionNote:
+         'Bioregions are not purely objective natural boundaries, and the label does not by itself reject nation-states, capitalism, markets, or larger institutions; those are separate political choices.',
       philosophies: ["Environmentalism","Ecologism","Bioregionalism","Communalism"],
       subTheories: ["Ecoregionalism","Bioregional Democracy","Permaculture"],
       ethicalTheory: ["Virtue Ethics"],
@@ -3301,6 +3400,8 @@ export const labels: IdeologyLabel[] = [
          'Treats ecological crisis as the overriding political priority requiring a powerful centralized state—often technocratic or vanguardist—to enforce environmental discipline, irrespective of conventional left-right cultural positioning.',
       cautionNote:
          'This label refers to authoritarian environmental governance, not ecomodernism, ecosocialism, or ordinary climate policy.',
+      usageNote:
+         'This label marks a proposed ecological strategy that gives concentrated or less-liberal authority a central role in enforcing environmental limits. It is narrower than ordinary environmental regulation and distinct from eco-fascism, emergency stewardship, and democratic ecological planning.',
       philosophies: ["Authoritarianism","Eco-Authoritarianism","Environmentalism"],
       subTheories: ["Eco-Dictatorship","Green Leviathan"],
       ethicalTheory: ["Virtue Ethics"],
@@ -3327,7 +3428,7 @@ export const labels: IdeologyLabel[] = [
          'political-community-boundary': -0.9,
          'moral-traditionalism': -0.2,
          'anti-domination': -0.6,
-         'human-nature-priority': -0.6,
+         'human-nature-priority': 0.6,
          'market-process-confidence': -0.4,
          'state-capacity-confidence': 0.9,
          'public-choice-skepticism': -0.6,
@@ -3410,9 +3511,9 @@ export const labels: IdeologyLabel[] = [
       family: 'nationalist',
       subfamily: 'hindutva',
       description:
-         'Seeks to define Indian national identity through Hindu culture and values, treating Hinduism as the civilizational and spiritual foundation of the nation rather than a mere religion among equals.',
+         'Frames Indian national identity through Hindu civilizational and cultural categories; in scholarly usage it often denotes Hindu nationalism, but formulations differ over belonging, secularism, minority citizenship, and state power.',
       cautionNote:
-         'Hindutva is a Hindu-nationalist political ideology, not Hinduism as a religion.',
+         'Hindutva is a contested political term, not Hinduism as a religion. Scholarly formulations range from cultural or civilizational accounts to majoritarian or exclusionary projects, so this provisional label does not infer a respondent’s religion or one party’s complete program.',
       philosophies: ["Nationalism","Hindutva","Hindu Nationalism","Integral Humanism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Nationalism","Hindutva","Hindu Nationalism","Integral Humanism"],
@@ -3465,9 +3566,11 @@ export const labels: IdeologyLabel[] = [
       family: 'nationalist',
       subfamily: 'religious-nationalist',
       description:
-         'Fuses national identity with a particular religious tradition, seeking public institutions that reflect that tradition and treat it as central to political membership or authority.',
+         'Connects national identity or sovereignty with a particular religious tradition; depending on the variant, religion may function as cultural identity, a membership boundary, a source of public authority, or a state-building project.',
       cautionNote:
          'A broad family rather than one doctrine: religious nationalism can range from cultural identity politics to projects that give religious law or institutions formal public authority.',
+      usageNote:
+         'Religious nationalism links the political nation or state’s legitimacy and membership story to a religious tradition. Variants differ over whether that link is symbolic, majoritarian, constitutional, or coercive, and over the status of dissenters and minorities.',
       philosophies: ["Nationalism","Religious Nationalism"],
       subTheories: ["Christian Nationalism","Islamo-Nationalism"],
       ethicalTheory: ["Virtue Ethics"],
@@ -3477,7 +3580,7 @@ export const labels: IdeologyLabel[] = [
       philosophyInfluences: [
          {
             philosophy: "Nationalism",
-            description: "National sovereignty and identity as paramount.",
+            description: "National identity and sovereignty are treated as salient political commitments, with their priority over other loyalties varying by movement.",
             affectedAxes: ["political-community-boundary","authority-legitimacy"],
          },
          {
@@ -3577,9 +3680,11 @@ export const labels: IdeologyLabel[] = [
       family: 'authoritarian',
       subfamily: 'national-bolshevist',
       description:
-         'A historically variable attempt to combine radical nationalism with Bolshevik or revolutionary-socialist ideas. This catalog models the post-Soviet authoritarian nationalist current associated with Limonov’s movement and Dugin’s early milieu.',
+         'A historically variable set of attempts to combine radical nationalism with Bolshevik or revolutionary-socialist ideas. This catalog uses the post-Soviet authoritarian nationalist current associated with Limonov’s movement and Dugin’s early milieu as its reference case.',
       usageNote:
          'The name has also described distinct interwar German currents, so it should not be read as one invariant doctrine. The post-Soviet form modeled here is commonly studied with the radical right and is not orthodox Marxism-Leninism.',
+      cautionNote:
+         'This is a provisional, historically bounded specialist label: interwar German National Bolshevism, post-Soviet Limonov–Dugin politics, National Communism, and other red-brown currents do not share one settled program. The label does not make nationalism and socialism interchangeable or imply orthodox Marxism-Leninism.',
       philosophies: ["Authoritarianism","National Bolshevism","Conservative Revolution"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Authoritarianism"],
@@ -3690,8 +3795,8 @@ export const labels: IdeologyLabel[] = [
          'Holds that Catholic faith should be the basis of public law and policy, rejecting the separation of church and state in favor of an organic society where civil authority is subordinate to divine moral order.',
       usageNote:
          'A distinct Catholic political tradition predating fascism (19th-century ultramontanism) and continuing in non-fascist forms today; "clerical fascism" describes one specific 20th-century fusion of integralist and fascist movements, not a synonym for integralism as such.',
+      aliases: ['Catholic Integralism'],
       philosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
-      subTheories: ["Clerical Fascism","Catholic Integralism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","Theocracy","Integralism","Catholic Social Teaching"],
       descriptivePhilosophies: [],
@@ -3746,6 +3851,8 @@ export const labels: IdeologyLabel[] = [
          'Rejects centralized state authority in favor of decentralized, bottom-up democracy organized through communes, councils, and confederations, grounded in gender equality, ecology, and pluralistic self-governance.',
       usageNote:
          'Democratic confederalism is a specific communalist and confederal project associated with bottom-up assemblies, ecology, and gender equality; it is not synonymous with ordinary federalism or decentralization.',
+      cautionNote:
+         'The label most closely names the Öcalan-linked project associated with Kurdish movements and related communalist experiments; institutional practice varies, and it should not be treated as a synonym for all confederalism, Kurdish politics, or local democracy.',
       philosophies: ["Democracy","Democratic Confederalism","Communalism","Bookchinism"],
       subTheories: ["Apoite Democracy","Confederalism","Kurdish Democracy"],
       ethicalTheory: ["Deontology"],
@@ -3857,6 +3964,8 @@ export const labels: IdeologyLabel[] = [
          'A paternalistic conservative tradition that accepts a role for the welfare state and moderate state intervention to preserve social cohesion, favoring gradual reform over radical change.',
       usageNote:
          'One-Nation Conservatism names a historically British paternalist tradition of social cohesion and gradual reform, not generic nationalism or every conservative welfare position.',
+      cautionNote:
+         'The label refers to a historically British conservative response to class division and social dislocation; it does not by itself specify modern welfare levels, national identity, religion, or support for an interventionist state.',
       philosophies: ["Conservatism","One Nation Conservatism","Burkeanism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","One Nation Conservatism","Burkeanism"],
@@ -3965,6 +4074,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'liquid-democratic',
       description:
          'A hybrid system of direct and representative democracy in which citizens may vote directly on issues or delegate their voting power to trusted representatives on a per-issue basis.',
+      cautionNote:
+         'Liquid democracy is primarily a voting and delegation procedure, not a complete ideology; its political meaning depends on whether delegations are revocable, how expertise is selected, and which decisions remain directly voted.',
       philosophies: ["Democracy","Liquid Democracy"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: ["Democracy","Liquid Democracy"],
@@ -4017,9 +4128,9 @@ export const labels: IdeologyLabel[] = [
       family: 'technocratic',
       subfamily: 'accelerationist',
       description:
-         'Uses acceleration as a strategy or diagnosis: intensifying technological, capitalist, or modernizing forces to force systemic transformation. The current centroid is closest to technology-centered accelerationism, not the full left/right accelerationist family.',
+         'Treats intensifying technological, capitalist, or modernizing forces as a strategy or diagnosis of systemic transformation. This provisional centroid is closest to technology-centered accelerationism; left, right, and other variants are not interchangeable.',
       cautionNote:
-         'Accelerationism has incompatible left, right, and technology-centered variants; this result is provisional until those variants receive separate centroids.',
+         'Accelerationism has incompatible left, right, and technology-centered variants. Some reactionary currents frame breakdown or conflict as a route to a new order, but this context label does not infer support for collapse, authoritarianism, or political violence; separate variant measurement is still required.',
       philosophies: ["Technocracy","Progressivism","Accelerationism"],
       ethicalTheory: ["Consequentialism"],
       normativePhilosophies: [],
@@ -4072,16 +4183,21 @@ export const labels: IdeologyLabel[] = [
       family: 'socialist',
       subfamily: 'juche',
       description:
-         'A state ideology of national self-reliance emphasizing political independence, economic self-sufficiency, and military self-defense under a highly centralized one-party state with a supreme leader.',
+         'The DPRK/Kimist state ideology that frames political independence and state-directed self-reliance as central goods, alongside military self-defense, under a highly centralized party-state and supreme leader.',
       cautionNote:
-         'This is the DPRK/Kimist state ideology of self-reliance and leader-centered sovereignty, not generic socialism.',
+         'This label refers to a historically developing DPRK/Kimist state ideology, not a general philosophy of personal self-reliance or a claim that North Korea was economically autarkic. Its Marxist-Leninist inheritance, leader-centered succession politics, and institutional emphases changed over time.',
       philosophies: ["Marxism","Socialism","Juche","Stalinism","Confucianism"],
       subTheories: ["Kimilsungism-Kimjongilism","Songun"],
       ethicalTheory: ["Consequentialism"],
-      normativePhilosophies: ["Marxism","Socialism","Confucianism"],
+      normativePhilosophies: ["Juche","Socialism","Confucianism"],
       descriptivePhilosophies: ["Marxism"],
       prescriptivePhilosophies: ["Juche","Stalinism"],
       philosophyInfluences: [
+         {
+            philosophy: "Juche",
+            description: "Political independence, state-directed self-reliance, and leader-centered national sovereignty.",
+            affectedAxes: ["authority-legitimacy","political-community-boundary","state-action-vs-exit","militarism-pacifism"],
+         },
          {
             philosophy: "Marxism",
             description: "Socialist planned economy and anti-capitalism.",
@@ -4187,6 +4303,8 @@ export const labels: IdeologyLabel[] = [
          'Seeks deliberate social improvement through institutional reform, empirical inquiry, and public policy, with variants ranging from expert-led administration to participatory and movement-based reform.',
       usageNote:
          'A broad and historically changing family: this label should not be read as synonymous with technocracy or one specific contemporary policy platform.',
+      cautionNote:
+         'Progressivism is not synonymous with all left politics, technocracy, social liberalism, or contemporary policy positions that use the word. Its reform goals, constituencies, and attitudes toward expertise, participation, and state power vary by historical context.',
       philosophies: ["Progressivism","Pragmatism","Empiricism","Social Liberalism"],
       subTheories: ["Social Progressivism","Evidence-Based Policy"],
       ethicalTheory: ["Deontology"],
@@ -4243,6 +4361,8 @@ export const labels: IdeologyLabel[] = [
          'Seeks gender equality through legal reform, equal rights, and equal opportunity within existing liberal-democratic institutions, emphasizing individual autonomy and formal equality before the law.',
       usageNote:
          'Liberal feminism emphasizes rights, legal status, and opportunity within liberal institutions; it is one feminist tradition rather than a synonym for feminism as a whole.',
+      cautionNote:
+         'Liberal feminist traditions differ over structural inequality, care, affirmative action, and the limits of formal equality; this label identifies a rights-and-opportunity emphasis rather than a claim that other feminist concerns are irrelevant.',
       philosophies: ["Feminism","Liberalism","Egalitarianism"],
       subTheories: ["Equality Feminism","Liberal Equality Feminism"],
       ethicalTheory: ["Deontology"],
@@ -4416,6 +4536,8 @@ export const labels: IdeologyLabel[] = [
          'Combines national self-determination with anti-colonial, redistributive, and popular-sovereignty commitments, framing national liberation as a precondition for social justice rather than ethnic hierarchy.',
       usageNote:
          'Left-wing nationalism here refers to anti-colonial or socially egalitarian self-determination; it is not equivalent to ethnonationalism and does not imply one economic or territorial strategy.',
+      cautionNote:
+         'An anti-colonial or egalitarian national project is not automatically cosmopolitan, inclusive in practice, or protective against state domination. The label leaves open how membership, minority rights, borders, and coercive power are handled.',
       philosophies: ["Nationalism","Socialism","Anti-Colonialism","Self-Determination"],
       subTheories: ["Anti-Colonial Nationalism","National Liberation"],
       ethicalTheory: ["Virtue Ethics"],
@@ -4525,6 +4647,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'early-socialist',
       description:
          'A retrospective label for diverse early socialist projects. Owenite and Fourierist currents emphasized cooperative communities, while Saint-Simonian currents placed more weight on expert-led industrial organization and rational administration.',
+      cautionNote:
+         'Utopian socialism is a retrospective umbrella for diverse nineteenth-century projects rather than one settled doctrine; cooperative, communal, and expert-administrative currents should not be treated as interchangeable.',
       philosophies: ["Utopian Socialism","Socialism","Owenism","Fourierism"],
       subTheories: ["Fourierism","Owenism","Saint-Simonianism"],
       ethicalTheory: ["Consequentialism"],
@@ -4575,8 +4699,8 @@ export const labels: IdeologyLabel[] = [
    {
       id: 'voluntaryism',
       name: 'Voluntaryism',
-      family: 'liberal',
-      subfamily: 'market-anarchist',
+      family: 'anarchist',
+      subfamily: 'voluntaryist-anarchist',
       description:
          'A family of views holding that political institutions should depend on voluntary support and association. Auberon Herbert defended a voluntarily funded minimal “Voluntary State”; later Voluntaryists developed anti-state and anti-electoral variants.',
       usageNote:
@@ -4646,7 +4770,7 @@ export const labels: IdeologyLabel[] = [
       philosophyInfluences: [
          {
             philosophy: "Egoism",
-            description: "The unique individual rejects all external constraints as spooks.",
+            description: "The unique individual subjects fixed ideas and imposed authority to criticism rather than accepting them as sacred constraints.",
             affectedAxes: ["authority-legitimacy","moral-traditionalism","liberty-noninterference"],
          },
          {
@@ -4691,6 +4815,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'confederal-democratic',
       description:
          'Proposes a confederal network of directly-democratic municipal assemblies as the basis for a stateless, ecological, and ethical society, replacing both state sovereignty and capitalist markets with face-to-face popular governance.',
+      cautionNote:
+         'Libertarian municipalism is a specific Bookchin-linked project of municipal assemblies, ecology, and confederation; it is not generic local government, federalism, or every decentralized anarchist strategy.',
       philosophies: ["Libertarian Municipalism","Communalism","Bookchinism","Social Ecology"],
       subTheories: ["Communalism","Social Ecology"],
       ethicalTheory: ["Deontology"],
@@ -4855,7 +4981,7 @@ export const labels: IdeologyLabel[] = [
       family: 'anarchist',
       subfamily: 'social-anarchist',
       description:
-         'Views patriarchy as a fundamental structure of domination interlocking with capitalism and statism, arguing that gender liberation requires abolishing all hierarchical institutions and building decentralized, non-coercive social relations.',
+         'Views patriarchy as a major structure of domination linked in different accounts to capitalism, statism, and other hierarchies; many anarcha-feminist currents favor decentralized, non-coercive social relations, but they differ over which institutions must be abolished or transformed.',
       usageNote:
          'A diverse feminist-anarchist tradition rather than one fixed theory of gender or organization; it addresses domination in intimate and economic life as well as access to formal political authority.',
       philosophies: ["Anarcha-Feminism","Feminism","Anarchism","Anti-Patriarchy"],
@@ -4872,7 +4998,7 @@ export const labels: IdeologyLabel[] = [
          },
          {
             philosophy: "Anarchism",
-            description: "Abolishing all hierarchical institutions together.",
+            description: "Connecting feminist liberation to opposition to imposed hierarchy.",
             affectedAxes: ["authority-legitimacy","centralization-preference","property-legitimacy"],
          }
       ],
@@ -4912,6 +5038,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'social-anarchist',
       description:
          'A revolutionary, worker-centered variant of anarchism that seeks to replace capitalism and the state with a decentralized federation of democratically-run worker syndicates and communes, using direct action and solidarity rather than electoral politics.',
+      cautionNote:
+         'Anarcho-syndicalism centers worker organization, direct action, and syndicalist federation within anarchist politics; it is not identical to all syndicalism, all anarchism, or every anti-electoral movement.',
       philosophies: ["Anarchism","Anarcho-Syndicalism","Syndicalism","Socialism"],
       subTheories: ["Revolutionary Unionism","Dual Power","Industrial Democracy"],
       ethicalTheory: ["Deontology","Virtue Ethics"],
@@ -4966,6 +5094,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'social-anarchist',
       description:
          'A tendency within anarchism that advocates for a unified, strategic anarchist organization with collective responsibility and tactical unity, rejecting both vanguardism and loose affinity-group models in favor of a disciplined yet decentralized revolutionary mass movement.',
+      cautionNote:
+         'Platformism is an organizational tendency emphasizing tactical unity and collective responsibility inside anarchism; it rejects a vanguard party but is more structured than loose affinity-group anarchism and is not the whole of anarcho-communism.',
       philosophies: ["Anarchism","Platformism","Anarcho-Communism"],
       subTheories: ["Organizational Platform","Anarchist Unity"],
       ethicalTheory: ["Deontology","Consequentialism"],
@@ -5022,6 +5152,8 @@ export const labels: IdeologyLabel[] = [
          'Prioritizes sustainable public finances through some combination of debt sustainability, deficit restraint, fiscal rules, spending choices, and revenue policy. It does not by itself determine views on social issues, monetary policy, or the overall size of government.',
       usageNote:
          'This is a thin, historically variable fiscal orientation rather than a complete conservative ideology. Balanced-budget rules, tax cuts, spending restraint, supply-side policy, and austerity are distinct possible strategies, not subtypes or necessary commitments.',
+      cautionNote:
+         'Fiscal conservatism should not be read as “small government” or as a mandate for spending cuts. A position may favor sustainable public finances through taxes, growth, spending priorities, countercyclical rules, or institutional constraints; the distributional and macroeconomic effects require separate analysis.',
       philosophies: ["Fiscal Conservatism"],
       ethicalTheory: ["Deontology"],
       normativePhilosophies: [],
@@ -5065,6 +5197,8 @@ export const labels: IdeologyLabel[] = [
          'A conservative orientation centered on preserving traditional moral values, social norms, and established institutions, viewing them as essential to social cohesion and human flourishing against progressive cultural change.',
       usageNote:
          'This is a social and moral orientation, not a complete economic or foreign-policy program; socially conservative positions can coexist with different views of markets, welfare, and international affairs.',
+      cautionNote:
+         'Social conservatism is not necessarily theocratic, nationalist, or anti-democratic. Secular and religious variants differ over whether norms should be sustained through persuasion, civil association, law, or state enforcement.',
       philosophies: ["Conservatism","Social Conservatism","Traditionalism","Communitarianism"],
       ethicalTheory: ["Virtue Ethics","Deontology"],
       normativePhilosophies: ["Conservatism","Social Conservatism","Traditionalism","Communitarianism"],
@@ -5120,6 +5254,8 @@ export const labels: IdeologyLabel[] = [
          'A conservative position that fuses traditional moral and social conservatism with a strong emphasis on national sovereignty, cultural identity, and the nation-state as the primary locus of political community and loyalty.',
       cautionNote:
          'A broad and contested contemporary family: it is not automatically ethnonationalist or fascist, but some movements described by the term reject liberal constraints. Economic and foreign-policy positions vary across cases.',
+      usageNote:
+         'The catalog uses national conservatism for a contested synthesis of national sovereignty or cultural continuity with social order and conservative change preferences. Its positions on democracy, immigration, markets, welfare, religion, and foreign policy vary across countries and movements.',
       philosophies: ["Conservatism","Nationalism","Social Conservatism","National Conservatism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Conservatism","Nationalism","Social Conservatism"],
@@ -5175,6 +5311,8 @@ export const labels: IdeologyLabel[] = [
          'A conservative-family synthesis that pairs social continuity and cautious reform with liberal constitutionalism, civil liberty, limited government, and a market economy.',
       usageNote:
          'This catalog uses the name for the conservative-family side of an overlapping liberal-conservative field. Academic and party usage varies by country and period, so the word order is not a universal taxonomy; compare the catalog’s liberal-family Conservative Liberalism label.',
+      cautionNote:
+         'Liberal conservatism is not a fixed midpoint between liberalism and conservatism. Historical variants differ over constitutional rights, state capacity, markets, social order, and the pace of reform, and can overlap with conservative liberalism or ordoliberalism without being interchangeable.',
       philosophies: ["Conservatism","Liberalism","Classical Liberalism","Liberal Conservatism"],
       ethicalTheory: ["Deontology","Consequentialism"],
       normativePhilosophies: ["Conservatism","Liberalism","Classical Liberalism"],
@@ -5284,6 +5422,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'geoist-market',
       description:
          'A political and economic philosophy based on Henry George’s distinction between privately created value and socially generated land or resource rent, generally favoring public capture of that rent through land-value taxation; the historic “single tax” is one formulation, not the only one.',
+      cautionNote:
+         'Georgism is a land- and resource-rent doctrine, not simply a synonym for property taxation or small government; contemporary proposals differ over the tax base, public services, compensation, and treatment of other forms of property.',
       philosophies: ["Georgism","Classical Liberalism","Libertarianism","Geoism"],
       subTheories: ["Geoism","Single-Tax Theory","Geolibertarianism"],
       ethicalTheory: ["Deontology","Consequentialism"],
@@ -5340,6 +5480,8 @@ export const labels: IdeologyLabel[] = [
          'A political orientation that emphasizes cooperation and obligations across national boundaries, supports international institutions, and may draw on universal human-rights or cosmopolitan arguments without requiring one global state.',
       usageNote:
          'Internationalism is broader than cosmopolitanism: it can describe cooperation among states, transnational solidarity, or universal rights, depending on the tradition.',
+      cautionNote:
+         'Internationalism can be liberal, socialist, anti-imperialist, institutional, or state-cooperative. It does not by itself entail cosmopolitan individualism, military intervention, open borders, or a world federation.',
       philosophies: ["Liberalism","Cosmopolitanism","Internationalism","Human Rights","Liberal Internationalism"],
       subTheories: ["Cosmopolitan Liberalism","Global Justice","Liberal Internationalism"],
       ethicalTheory: ["Deontology"],
@@ -5394,6 +5536,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'civil-libertarian',
       description:
          'A variant of libertarianism that combines strong commitments to individual liberty, free markets, and limited government with an emphasis on social justice, concern for the disadvantaged, and recognition that systemic inequality can undermine meaningful freedom.',
+      cautionNote:
+         'Bleeding-heart libertarianism is a contested attempt to combine strong liberty and market commitments with concern for poverty and social justice; it is not equivalent to welfare liberalism or to libertarianism as a whole.',
       philosophies: ["Libertarianism","Liberalism","Social Justice","Classical Liberalism","Left-Libertarianism"],
       ethicalTheory: ["Deontology","Consequentialism"],
       normativePhilosophies: ["Libertarianism","Liberalism"],
@@ -5447,6 +5591,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'constitutional-monarchist',
       description:
          'A political system that retains a hereditary monarch under constitutional rules that limit royal power; variants range from a ceremonial head of state in a parliamentary democracy to a monarch with constrained executive authority.',
+      cautionNote:
+         'Constitutional monarchism names a regime form, not a complete ideology: parliamentary ceremonial monarchy, executive constitutional monarchy, and the surrounding party and rights systems can differ substantially.',
       philosophies: ["Monarchism","Constitutionalism"],
       subTheories: ["Parliamentary Constitutional Monarchy","Executive Constitutional Monarchy"],
       ethicalTheory: ["Virtue Ethics"],
@@ -5503,6 +5649,8 @@ export const labels: IdeologyLabel[] = [
          'A nationalist ideology that asserts the right and duty of a nation to expand its territorial control, influence, and power over other peoples and regions, often invoking historical claims, civilizing missions, or strategic imperatives.',
       usageNote:
          'Expansionist nationalism is not synonymous with realism or Social Darwinism. Those may be invoked by some movements, but they are not required parts of the label; territorial expansion, imperial influence, or irredentist claims are the defining commitments.',
+      cautionNote:
+         'The label concerns a commitment to territorial or imperial expansion, not every assertive foreign policy or strong national identity. Historical claims, irredentism, strategic influence, colonial rule, and the use of force can occur in different combinations and should be distinguished.',
       philosophies: ["Nationalism","Imperialism","Expansionism"],
       subTheories: ["Expansionism","Imperial Nationalism","Irredentism"],
       ethicalTheory: ["Virtue Ethics","Consequentialism"],
@@ -5554,6 +5702,8 @@ export const labels: IdeologyLabel[] = [
          'A nationalist movement seeking self-determination and political independence for a specific region, ethnic group, or cultural community from a larger existing state, often through secession or devolution of sovereignty.',
       usageNote:
          'Separatist nationalism can seek autonomy, federal reorganization, or independence. The label does not by itself establish a right to unilateral secession, ethnic exclusion, or violent strategy.',
+      cautionNote:
+         'Separatist claims can be civic or ethnic and can pursue negotiated autonomy, federalism, or independence. Their legitimacy and likely effects depend on consent, minority safeguards, territorial feasibility, constitutional rules, and the strategy used; the label alone settles none of these.',
       philosophies: ["Nationalism","Separatism","Self-Determination","Federalism"],
       subTheories: ["Secessionism","Independence Movements","Autonomism"],
       ethicalTheory: ["Deontology"],
@@ -5610,6 +5760,8 @@ export const labels: IdeologyLabel[] = [
          'A populist movement rooted in rural and farming communities that mobilizes against perceived exploitation by urban elites, financial interests, and corporate monopolies, advocating for economic reforms benefiting small producers and landholders.',
       usageNote:
          'Agrarian populism is a rural producer-centered form of thin populism; it can support cooperative, distributist, socialist, or market-oriented reforms and is not a synonym for all rural politics.',
+      cautionNote:
+         'A rural producer base and people-versus-elite rhetoric do not determine agrarian populism’s race, class, economic, or institutional program; historical currents have combined it with different cooperative, socialist, market, or exclusionary projects.',
       philosophies: ["Populism","Agrarianism","Distributism","Economic Nationalism"],
       subTheories: ["Agrarian Socialism","Rural Populism","Cooperative Movement"],
       ethicalTheory: ["Virtue Ethics"],
@@ -5663,7 +5815,9 @@ export const labels: IdeologyLabel[] = [
       family: 'conservative',
       subfamily: 'religious-conservative',
       description:
-         'A political system in which religious law and doctrine serve as the supreme authority for governance, with state institutions enforcing a fundamentalist interpretation of sacred texts and suppressing religious pluralism and secular alternatives.',
+         'A political system in which religious law and doctrine serve as the supreme authority for governance, with state institutions enforcing a strict, self-described fundamentalist interpretation of sacred texts and often restricting religious pluralism and secular alternatives.',
+      cautionNote:
+         'Fundamentalist theocracy is a strong analytical label that should be distinguished from religious establishment, clerical influence, or ordinary religious conservatism; the relevant doctrine, interpretive authority, and treatment of dissent vary by case.',
       philosophies: ["Theocracy","Religious Fundamentalism","Conservatism","Traditionalism"],
       subTheories: ["Dominionism","Theonomic Governance"],
       ethicalTheory: ["Divine Command Theory","Virtue Ethics"],
@@ -5673,7 +5827,7 @@ export const labels: IdeologyLabel[] = [
       philosophyInfluences: [
          {
             philosophy: "Religious Fundamentalism",
-            description: "Belief in the literal truth of sacred texts and their mandatory application in public life.",
+            description: "Selected foundational texts or doctrines are treated as authoritative for public life, with limited room for pluralist reinterpretation.",
             affectedAxes: ["secularism-religious","moral-traditionalism","cultural-plasticity"],
          },
          {
@@ -5929,7 +6083,9 @@ export const labels: IdeologyLabel[] = [
       family: 'social-democratic',
       subfamily: 'welfare-liberal',
       description:
-         'Advocacy for a regular, unconditional cash payment from the government to every citizen or resident, intended to provide economic security, reduce poverty, simplify welfare systems, and support individual autonomy in a changing labor market.',
+         'Advocacy for a regular, unconditional cash payment to every member of a defined population, intended to provide economic security and support individual autonomy; proposals differ over citizenship or residency, payment level, taxation, funding, and the role of existing services.',
+      cautionNote:
+         'Universal basic income is a policy proposal rather than a complete ideology; universality, residency, payment level, taxation, funding, and its relationship to public services or existing benefits are separate design choices.',
       philosophies: ["Social Democracy","Liberalism","Distributive Justice","Egalitarianism","Basic Income Guarantee"],
       subTheories: ["Basic Income Guarantee","Citizen's Dividend"],
       ethicalTheory: ["Consequentialism"],
@@ -6041,6 +6197,10 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'anti-imperialist',
       description:
          'Opposes one state or power controlling other peoples through colonial rule, military domination, or unequal political dependence, and supports the self-determination of subordinated peoples.',
+      usageNote:
+         'Anti-imperialism is a family of positions opposed to colonial rule, foreign domination, and unequal dependence; projects vary across independence, non-alignment, international solidarity, socialist analysis, and broader decolonial or cosmopolitan reconstruction.',
+      cautionNote:
+         'Opposition to external domination does not by itself settle a movement’s domestic regime, economic system, use of force, or treatment of minorities; different political programs can share anti-imperial language.',
       philosophies: ["Anti-Imperialism","Internationalism","Post-Colonialism","Dependency Theory"],
       subTheories: ["Third Worldism","Dependency Theory","Non-Alignment"],
       ethicalTheory: ["Deontology"],
@@ -6092,6 +6252,8 @@ export const labels: IdeologyLabel[] = [
          'An approach to environmental protection that works within existing capitalist market structures, promoting green growth, carbon pricing, renewable energy markets, eco-labeling, and corporate sustainability as mechanisms for ecological transition without systemic economic transformation.',
       usageNote:
          'Green capitalism identifies market-compatible transition instruments, not environmentalism in general; it differs from ecomodernism, ecosocialism, and degrowth even where policies overlap.',
+      cautionNote:
+         'Green-capitalist instruments can involve commodification, expert measurement, unequal bargaining power, and distributional tradeoffs; the label does not establish that markets alone are sufficient for ecological transition or that every market environmental policy is green capitalism.',
       philosophies: ["Environmentalism","Market Liberalism","Ecomodernism","Reform Ecology","Green Capitalism","Ecological Modernization"],
       subTheories: ["Green Growth"],
       ethicalTheory: ["Consequentialism"],
@@ -6258,6 +6420,10 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'subnational',
       description:
          'A political ideology emphasizing the interests, culture, and autonomy of a particular region within a larger state or federation, advocating for greater decentralization, regional self-government, and the protection of regional cultural and economic distinctiveness.',
+      usageNote:
+         'Regionalism can mean a movement for territorial autonomy, regional organization of state policy, or decentralization and regional self-government; these forms should not be collapsed into one program.',
+      cautionNote:
+         'It is not automatically federalism or secession: a regionalist position can seek devolution within a unitary state, while some movements pursue independence or remain mainly developmental or cultural.',
       philosophies: ["Regionalism","Federalism","Decentralization","Localism"],
       ethicalTheory: ["Virtue Ethics"],
       normativePhilosophies: ["Regionalism","Federalism","Localism"],
@@ -6367,6 +6533,8 @@ export const labels: IdeologyLabel[] = [
       subfamily: 'welfare-liberal',
       description:
          'A social democratic approach that reorients the welfare state from passive income maintenance toward active social investment in human capital, education, childcare, lifelong learning, and labor market activation, seeking both economic efficiency and social inclusion.',
+      cautionNote:
+         'The social-investment state emphasizes capabilities and life-course investment but does not replace income security, care, or disability protection by definition; activation policies can be designed in supportive or punitive ways.',
       philosophies: ["Social Democracy","Social Liberalism","Human Capital Theory","Social Investment","Predistribution"],
       subTheories: ["Active Labor Market Policy","Inclusive Growth","Predistribution"],
       ethicalTheory: ["Consequentialism"],
@@ -6432,7 +6600,7 @@ export const labels: IdeologyLabel[] = [
       philosophyInfluences: [
          {
             philosophy: "Anarchism",
-            description: "Rejection of all coercive hierarchy including heteronormative and patriarchal institutions.",
+            description: "Subjects coercive hierarchy—including heteronormative and patriarchal institutions—to radical criticism.",
             affectedAxes: ["authority-legitimacy","anti-domination","centralization-preference"],
          },
          {
@@ -6607,7 +6775,7 @@ labels.push(
       description:
          'A broad anti-authoritarian family centered on voluntary association, rejection of imposed hierarchy, and decentralized communal or federated forms of social organization.',
       usageNote:
-         'This anchor covers social and communal anarchist commitments without deciding between communism, syndicalism, mutualism, primitivism, feminism, or other specialist currents.',
+         'This anchor covers social and communal anarchist commitments without deciding between communism, syndicalism, primitivism, feminism, or other specialist currents. Mutualism and market anarchism are adjacent anarchist currents, not required subtypes of this anchor.',
       cautionNote:
          'Anarchism is not one economic doctrine: anti-state commitments can coexist with different views of property, markets, technology, and organization.',
       philosophies: ['Anarchism', 'Communalism', 'Anti-Authoritarianism', 'Social Anarchism'],
@@ -6644,20 +6812,20 @@ labels.push(
    },
    {
       id: 'market-right-libertarianism',
-      name: 'Market / Right-Libertarianism',
-      aliases: ['Market Libertarianism', 'Right-Libertarianism'],
+      name: 'Right-Libertarianism',
+      aliases: ['Market Libertarianism', 'Market / Right-Libertarianism'],
       family: 'liberal',
-      subfamily: 'market-right-libertarian',
+      subfamily: 'right-libertarian',
       description:
-         'A broad market-oriented anti-statist neighborhood emphasizing voluntary exchange, strong personal liberty, and skepticism toward centralized political authority while leaving room for disagreement over property and institutional design.',
+         'A broad right-libertarian family emphasizing voluntary exchange, strong personal liberty, private or use-based property claims, and skepticism toward centralized political authority while leaving room for disagreement over the state and institutional design.',
       usageNote:
-         'This is an umbrella neighborhood, not a synonym for anarcho-capitalism, minarchism, Georgism, Objectivism, or every market-liberal position.',
+         'This public name separates the right-libertarian property-and-state lineage from market anarchism as a broader and contested anarchist field. It is not a synonym for anarcho-capitalism, minarchism, Georgism, Objectivism, or every market-liberal position.',
       cautionNote:
-         'Market and right-libertarian traditions differ over the legitimacy of the state, property acquisition, public goods, and social obligations.',
-      philosophies: ['Liberalism', 'Libertarianism', 'Right-Libertarianism', 'Market Anarchism'],
-      subTheories: ['Market Anarchism', 'Voluntaryist Market Order'],
+         'Right-libertarian traditions differ over the legitimacy of the state, property acquisition, public goods, social obligations, and whether anarcho-capitalism should count as anarchism.',
+      philosophies: ['Liberalism', 'Libertarianism', 'Right-Libertarianism'],
+      subTheories: ['Voluntaryist Market Order'],
       normativePhilosophies: ['Liberalism', 'Libertarianism'],
-      descriptivePhilosophies: ['Liberalism', 'Market Anarchism'],
+      descriptivePhilosophies: ['Liberalism'],
       prescriptivePhilosophies: ['Right-Libertarianism'],
       centroid: broadCentroid({
          'authority-legitimacy': -0.6,
@@ -6846,6 +7014,667 @@ labels.push(
          'regulation-vs-deregulation': 0.1,
          'redistribution-vs-predistribution': 0.3,
          'militarism-pacifism': -0.15,
+      }),
+   },
+   {
+      id: 'market-anarchism',
+      name: 'Market Anarchism',
+      family: 'anarchist',
+      subfamily: 'market-anarchist',
+      description:
+         'A family of anarchist positions that combine rejection of centralized state authority with voluntary exchange, decentralized coordination, and non-state institutions; its variants disagree over property, exploitation, mutual credit, and the meaning of a market order.',
+      usageNote:
+         'Market Anarchism belongs in the anarchist family because its defining institutional claim concerns stateless or anti-state organization. Mutualism, agorism, left-wing market anarchism, and anarcho-capitalism are related but not interchangeable variants.',
+      cautionNote:
+         'The label is a provisional specialist anchor: it does not decide whether markets are capitalist, reciprocal, counter-economic, or compatible with common ownership, and anarcho-capitalism remains contested within anarchist studies.',
+      philosophies: ['Anarchism', 'Market Anarchism', 'Libertarianism'],
+      subTheories: ['Mutualism', 'Agorism', 'Left-Wing Market Anarchism', 'Anarcho-Capitalism'],
+      normativePhilosophies: ['Anarchism', 'Libertarianism'],
+      descriptivePhilosophies: ['Market Anarchism'],
+      prescriptivePhilosophies: ['Market Anarchism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': -0.85,
+         'property-legitimacy': 0.2,
+         'liberty-noninterference': 0.75,
+         'equality-theory': 0.1,
+         'political-community-boundary': 0.1,
+         'moral-traditionalism': -0.2,
+         'anti-domination': 0.65,
+         'market-process-confidence': 0.8,
+         'state-capacity-confidence': -0.5,
+         'public-choice-skepticism': 0.65,
+         'democratic-confidence': 0.1,
+         'expert-confidence': -0.1,
+         'cultural-plasticity': 0.15,
+         'coordination-optimism': 0.7,
+         'centralization-preference': -0.8,
+         'reform-vs-revolution': -0.1,
+         'gradualism-vs-immediatism': -0.1,
+         'state-action-vs-exit': -0.7,
+         'electoralism-vs-direct-action': 0.2,
+         'compromise-vs-persistence': 0.1,
+         'coercion-strategy': -0.7,
+         'regulation-vs-deregulation': -0.5,
+         'redistribution-vs-predistribution': -0.1,
+         'militarism-pacifism': -0.5,
+         'secularism-religious': -0.3,
+      }),
+   },
+   {
+      id: 'third-way',
+      name: 'Third Way Social Democracy',
+      aliases: ['New Labour-style Social Democracy', 'Neue Mitte'],
+      family: 'social-democratic',
+      subfamily: 'third-way',
+      description:
+         'A late twentieth-century social-democratic variant that combines egalitarian aims and social investment with market coordination, active labour-market policy, fiscal discipline, and a stronger emphasis on individual responsibility than earlier welfare-state models.',
+      usageNote:
+         'Third Way is a historically bounded variant of social-democratic modernization associated especially with the Blair, Schröder, and related center-left reform debates; it is not a synonym for all pragmatism or all neoliberalism.',
+      cautionNote:
+         'Scholars disagree over whether the Third Way was a distinct ideological synthesis or a market-oriented transformation of social democracy; the label describes that contested reform project rather than endorsing one government’s whole record.',
+      philosophies: ['Social Democracy', 'Third Way', 'Social Liberalism'],
+      subTheories: ['New Labour'],
+      normativePhilosophies: ['Social Democracy', 'Social Liberalism'],
+      descriptivePhilosophies: ['Third Way'],
+      prescriptivePhilosophies: ['Third Way'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.05,
+         'property-legitimacy': 0.15,
+         'liberty-noninterference': 0.15,
+         'equality-theory': 0.35,
+         'political-community-boundary': 0.2,
+         'moral-traditionalism': -0.2,
+         'anti-domination': 0.35,
+         'market-process-confidence': 0.45,
+         'state-capacity-confidence': 0.35,
+         'public-choice-skepticism': 0.1,
+         'democratic-confidence': 0.55,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': 0.3,
+         'coordination-optimism': 0.35,
+         'centralization-preference': 0.2,
+         'reform-vs-revolution': -0.75,
+         'gradualism-vs-immediatism': -0.5,
+         'state-action-vs-exit': 0.45,
+         'electoralism-vs-direct-action': 0.7,
+         'compromise-vs-persistence': 0.65,
+         'coercion-strategy': -0.5,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0.35,
+         'militarism-pacifism': -0.2,
+         'secularism-religious': -0.3,
+      }),
+   },
+   {
+      id: 'baathism',
+      name: 'Ba\u02bcthism / Arab Socialism',
+      aliases: ['Baathism', 'Arab Socialist Ba\u02bcth'],
+      family: 'nationalist',
+      subfamily: 'arab-socialist',
+      description:
+         'A secular Arab-nationalist tradition seeking Arab unity, political independence, and social transformation through a vanguard party and state-led development; its historical branches differed sharply in constitutional claims, political repression, economic policy, and relations with religion.',
+      usageNote:
+         'Ba\u02bcthism is not Marxism-Leninism, generic anti-imperialism, or Political Islam: its core synthesis is Arab national unity, freedom, and socialism, interpreted through historically distinct party-states and movements.',
+      cautionNote:
+         'The ideology of Ba\u02bcth\u2019s founders should not be collapsed into the later authoritarian records of the Syrian and Iraqi regimes; the label is a provisional specialist entry that keeps doctrine, organization, and regime practice analytically separate.',
+      philosophies: ['Arab Nationalism', 'Socialism', 'Arab Socialism', 'Secularism', 'Anti-Imperialism', 'Baʿthism', 'Arab Unity'],
+      subTheories: ['Arab Unity', 'Arab Socialism'],
+      normativePhilosophies: ['Arab Nationalism', 'Socialism', 'Secularism', 'Anti-Imperialism'],
+      descriptivePhilosophies: ['Arab Nationalism', 'Baʿthism'],
+      prescriptivePhilosophies: ['Arab Unity', 'Arab Socialism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.5,
+         'property-legitimacy': -0.2,
+         'liberty-noninterference': -0.4,
+         'equality-theory': 0.35,
+         'political-community-boundary': 0.55,
+         'moral-traditionalism': 0,
+         'anti-domination': -0.2,
+         'market-process-confidence': -0.2,
+         'state-capacity-confidence': 0.5,
+         'public-choice-skepticism': -0.2,
+         'democratic-confidence': -0.4,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': 0.1,
+         'coordination-optimism': 0.3,
+         'centralization-preference': 0.6,
+         'reform-vs-revolution': 0.2,
+         'gradualism-vs-immediatism': 0.1,
+         'state-action-vs-exit': 0.7,
+         'electoralism-vs-direct-action': -0.5,
+         'compromise-vs-persistence': -0.3,
+         'coercion-strategy': 0.2,
+         'regulation-vs-deregulation': 0.5,
+         'redistribution-vs-predistribution': 0.4,
+         'militarism-pacifism': 0.1,
+         'secularism-religious': 0.45,
+      }),
+   },
+   {
+      id: 'developmental-authoritarianism',
+      name: 'Developmental Authoritarianism',
+      aliases: ['Authoritarian Developmentalism', 'Developmental State Politics'],
+      family: 'authoritarian',
+      subfamily: 'developmental-state',
+      description:
+         'A state-led developmental project that treats rapid industrialization, national economic transformation, and administrative capacity as sources of legitimacy, often pairing autonomous or technocratic bureaucracy with restricted pluralism or dominant-party rule.',
+      usageNote:
+         'This label names an authoritarian variant of developmentalism, not developmental states in general: developmental strategies can also be pursued under democratic institutions, and authoritarian control does not guarantee developmental success.',
+      cautionNote:
+         'The specialist entry separates a policy-development model from a complete civilizational or cultural ideology; cases vary over markets, nationalism, welfare, coercion, and the degree of bureaucratic autonomy.',
+      philosophies: ['Developmentalism', 'Technocracy', 'Economic Nationalism', 'Developmental State'],
+      subTheories: ['Developmental State', 'Authoritarian Modernization'],
+      normativePhilosophies: ['Developmentalism', 'Economic Nationalism'],
+      descriptivePhilosophies: ['Developmental State'],
+      prescriptivePhilosophies: ['Developmentalism', 'Technocracy'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.65,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': -0.3,
+         'equality-theory': 0.1,
+         'political-community-boundary': 0.4,
+         'moral-traditionalism': 0,
+         'anti-domination': -0.3,
+         'market-process-confidence': 0.3,
+         'state-capacity-confidence': 0.85,
+         'public-choice-skepticism': -0.4,
+         'democratic-confidence': -0.4,
+         'expert-confidence': 0.6,
+         'cultural-plasticity': 0.1,
+         'coordination-optimism': 0.4,
+         'centralization-preference': 0.6,
+         'reform-vs-revolution': -0.1,
+         'gradualism-vs-immediatism': 0.2,
+         'state-action-vs-exit': 0.8,
+         'electoralism-vs-direct-action': -0.4,
+         'compromise-vs-persistence': -0.2,
+         'coercion-strategy': 0.2,
+         'regulation-vs-deregulation': 0.5,
+         'redistribution-vs-predistribution': 0.2,
+         'militarism-pacifism': 0,
+         'secularism-religious': 0.1,
+      }),
+   },
+   {
+      id: 'confucian-political-revival',
+      name: 'Political Confucianism',
+      family: 'communitarian',
+      subfamily: 'confucian-political',
+      description:
+         'A modern political family that applies Confucian ideas about moral cultivation, relational obligation, public virtue, merit, harmony, and humane government to contemporary institutions, with democratic, constitutional, perfectionist, and meritocratic branches.',
+      usageNote:
+         'Political Confucianism is a specialist intellectual family rather than a synonym for Asian Values, Chinese state ideology, technocracy, or authoritarianism; modern Confucian thinkers have defended both democratic and meritocratic interpretations.',
+      cautionNote:
+         '“Asian values” is a contested political discourse, not evidence that East Asian societies share one culture or that Confucianism is inherently incompatible with democracy.',
+      philosophies: ['Confucianism', 'Communitarianism', 'Political Confucianism'],
+      subTheories: ['Confucian Democracy', 'Confucian Perfectionism', 'Confucian Meritocracy'],
+      normativePhilosophies: ['Confucianism', 'Communitarianism'],
+      descriptivePhilosophies: ['Political Confucianism'],
+      prescriptivePhilosophies: ['Political Confucianism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.35,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': -0.1,
+         'equality-theory': 0,
+         'political-community-boundary': 0.3,
+         'moral-traditionalism': 0.45,
+         'anti-domination': -0.1,
+         'market-process-confidence': 0.2,
+         'state-capacity-confidence': 0.35,
+         'public-choice-skepticism': 0,
+         'democratic-confidence': 0.1,
+         'expert-confidence': 0.3,
+         'cultural-plasticity': -0.1,
+         'coordination-optimism': 0.2,
+         'centralization-preference': 0.2,
+         'reform-vs-revolution': -0.2,
+         'gradualism-vs-immediatism': -0.1,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0,
+         'compromise-vs-persistence': 0.1,
+         'coercion-strategy': -0.1,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0,
+         'militarism-pacifism': 0,
+         'secularism-religious': 0.2,
+      }),
+   },
+   {
+      id: 'asian-values',
+      name: 'Asian Values Discourse',
+      family: 'communitarian',
+      subfamily: 'asian-values',
+      description:
+         'A contested political discourse claiming that family, duty, social harmony, order, community, and development should receive distinctive weight in public life, often in contrast to individualized liberal rights.',
+      usageNote:
+         'This is context-only: “Asian values” is a heterogeneous and sometimes strategic discourse, not a uniform regional culture or a settled ideology.',
+      cautionNote:
+         'Do not infer authoritarianism, Confucian belief, or a single Asian political model from this context entry.',
+      philosophies: ['Asian Values', 'Communitarianism', 'Developmentalism'],
+      subTheories: ['Confucian Asian Values', 'Developmental Asian Values'],
+      normativePhilosophies: ['Communitarianism'],
+      descriptivePhilosophies: ['Asian Values'],
+      prescriptivePhilosophies: ['Developmentalism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.2,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': -0.1,
+         'equality-theory': 0,
+         'political-community-boundary': 0.25,
+         'moral-traditionalism': 0.35,
+         'anti-domination': -0.1,
+         'state-capacity-confidence': 0.3,
+         'democratic-confidence': 0,
+         'expert-confidence': 0.2,
+         'cultural-plasticity': -0.15,
+         'centralization-preference': 0.15,
+         'state-action-vs-exit': 0.25,
+         'regulation-vs-deregulation': 0.15,
+         'secularism-religious': 0.1,
+      }),
+   },
+   {
+      id: 'developmentalism',
+      name: 'Developmentalism / Developmental-State Political Economy',
+      family: 'technocratic',
+      subfamily: 'developmental-state',
+      description:
+         'A political-economy family prioritizing industrial upgrading, productive capacity, infrastructure, technology acquisition, exports, and strategic coordination by a capable state and organized public-private institutions.',
+      usageNote:
+         'Developmentalism is not synonymous with authoritarianism: developmental strategies can operate under democratic institutions, and authoritarian control does not guarantee developmental success.',
+      cautionNote:
+         'This specialist separates state capacity and industrial strategy from regime type, nationalism, technocracy, and any one country case.',
+      philosophies: ['Developmentalism', 'Developmental State', 'Industrial Policy', 'State Capacity', 'Economic Nationalism'],
+      subTheories: ['Developmental State', 'Embedded Autonomy', 'Industrial Policy'],
+      normativePhilosophies: ['Developmentalism', 'State Capacity'],
+      descriptivePhilosophies: ['Developmental State'],
+      prescriptivePhilosophies: ['Industrial Policy', 'Economic Nationalism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.35,
+         'property-legitimacy': 0.1,
+         'liberty-noninterference': -0.1,
+         'equality-theory': 0.15,
+         'political-community-boundary': 0.35,
+         'moral-traditionalism': 0,
+         'anti-domination': -0.1,
+         'market-process-confidence': 0.2,
+         'state-capacity-confidence': 0.8,
+         'public-choice-skepticism': -0.3,
+         'democratic-confidence': 0.2,
+         'expert-confidence': 0.55,
+         'cultural-plasticity': 0.1,
+         'coordination-optimism': 0.45,
+         'centralization-preference': 0.35,
+         'reform-vs-revolution': -0.15,
+         'gradualism-vs-immediatism': -0.1,
+         'state-action-vs-exit': 0.65,
+         'electoralism-vs-direct-action': 0.3,
+         'compromise-vs-persistence': 0.3,
+         'coercion-strategy': 0,
+         'regulation-vs-deregulation': 0.35,
+         'redistribution-vs-predistribution': 0.2,
+         'militarism-pacifism': 0,
+         'secularism-religious': 0,
+      }),
+   },
+   {
+      id: 'pan-arabism',
+      name: 'Pan-Arabism / Arab Nationalism',
+      family: 'nationalist',
+      subfamily: 'pan-arab',
+      description:
+         'A pan-national tradition treating Arabic-speaking peoples as members of a wider Arab nation and favoring solidarity, sovereignty, cultural unity, or political integration across existing state borders.',
+      usageNote:
+         'Pan-Arabism is distinct from Arab Socialism, Baʿthism, Nasserism, Political Islam, and generic nationalism, although it has historically combined with each in different ways.',
+      cautionNote:
+         'The specialist identifies a regional political tradition, not a claim that Arabic-speaking societies share one culture or one policy program.',
+      philosophies: ['Pan-Arabism', 'Arab Nationalism', 'Nationalism', 'Self-Determination', 'Arab Unity'],
+      subTheories: ['Nasserism', 'Baʿthism', 'Arab Unity'],
+      normativePhilosophies: ['Arab Nationalism', 'Nationalism', 'Self-Determination'],
+      descriptivePhilosophies: ['Pan-Arabism'],
+      prescriptivePhilosophies: ['Arab Unity'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.15,
+         'property-legitimacy': 0,
+         'liberty-noninterference': 0,
+         'equality-theory': 0.25,
+         'political-community-boundary': -0.25,
+         'moral-traditionalism': 0.1,
+         'anti-domination': 0.35,
+         'market-process-confidence': 0,
+         'state-capacity-confidence': 0.3,
+         'democratic-confidence': 0.15,
+         'expert-confidence': 0,
+         'cultural-plasticity': 0.1,
+         'coordination-optimism': 0.25,
+         'centralization-preference': 0.2,
+         'state-action-vs-exit': 0.3,
+         'electoralism-vs-direct-action': 0.15,
+         'regulation-vs-deregulation': 0.1,
+         'redistribution-vs-predistribution': 0.2,
+         'secularism-religious': 0.2,
+      }),
+   },
+   {
+      id: 'arab-socialism',
+      name: 'Arab Socialism',
+      family: 'socialist',
+      subfamily: 'arab-socialist',
+      description:
+         'A regional socialist family combining Arab national liberation or unity with state-led development, land reform, public control of strategic sectors, welfare, and anti-imperialism.',
+      usageNote:
+         'Arab Socialism includes Nasserist, Baʿthist, and other variants; it is not identical to Marxism-Leninism, generic state socialism, or every Arab nationalist movement.',
+      cautionNote:
+         'Historical governments and parties used the term differently, so doctrine, organization, economic policy, and later regime practice must be kept distinct.',
+      philosophies: ['Arab Socialism', 'Socialism', 'Arab Nationalism', 'Anti-Imperialism', 'Arab Socialist Development'],
+      subTheories: ['Nasserism', 'Baʿthism', 'Arab Socialist Development'],
+      normativePhilosophies: ['Socialism', 'Arab Nationalism'],
+      descriptivePhilosophies: ['Arab Socialism'],
+      prescriptivePhilosophies: ['Anti-Imperialism', 'Arab Socialist Development'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.25,
+         'property-legitimacy': -0.25,
+         'liberty-noninterference': -0.15,
+         'equality-theory': 0.45,
+         'political-community-boundary': -0.15,
+         'moral-traditionalism': 0.05,
+         'anti-domination': 0.15,
+         'market-process-confidence': -0.2,
+         'state-capacity-confidence': 0.45,
+         'democratic-confidence': 0,
+         'expert-confidence': 0.1,
+         'cultural-plasticity': 0.1,
+         'coordination-optimism': 0.2,
+         'centralization-preference': 0.35,
+         'state-action-vs-exit': 0.5,
+         'electoralism-vs-direct-action': 0,
+         'regulation-vs-deregulation': 0.35,
+         'redistribution-vs-predistribution': 0.4,
+         'secularism-religious': 0.3,
+      }),
+   },
+   {
+      id: 'radical-feminism',
+      name: 'Radical Feminism',
+      family: 'feminist',
+      subfamily: 'radical-feminist',
+      description:
+         'A feminist tradition treating patriarchy and male power as fundamental structures reproduced through sexuality, family, culture, violence, and control of reproduction.',
+      usageNote:
+         'Radical feminism is distinct from liberal, socialist/Marxist, anarchist, Black, and queer feminist traditions even where they share critiques of gender domination.',
+      cautionNote:
+         'Historical and contemporary radical feminisms disagree over sexuality, gender identity, race, class, and political strategy; the label should not be inferred from generic gender equality alone.',
+      philosophies: ['Feminism', 'Radical Feminism', 'Patriarchy Critique', 'Gender Liberation'],
+      subTheories: ['Radical Feminist Politics', 'Lesbian Feminism'],
+      normativePhilosophies: ['Feminism', 'Gender Liberation'],
+      descriptivePhilosophies: ['Patriarchy Critique'],
+      prescriptivePhilosophies: ['Radical Feminism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0,
+         'property-legitimacy': -0.1,
+         'liberty-noninterference': 0.35,
+         'equality-theory': 0.75,
+         'moral-traditionalism': -0.55,
+         'anti-domination': 0.85,
+         'state-capacity-confidence': 0.1,
+         'democratic-confidence': 0.35,
+         'cultural-plasticity': 0.4,
+         'centralization-preference': -0.1,
+         'state-action-vs-exit': 0.1,
+         'electoralism-vs-direct-action': 0.15,
+         'regulation-vs-deregulation': 0.15,
+         'redistribution-vs-predistribution': 0.25,
+         'secularism-religious': -0.25,
+      }),
+   },
+   {
+      id: 'black-feminism',
+      name: 'Black Feminism',
+      family: 'feminist',
+      subfamily: 'black-feminist',
+      description:
+         'A feminist tradition analyzing interlocking race, gender, class, sexuality, and state power from Black women’s political experience while developing autonomous organization, coalition, and liberation strategies.',
+      usageNote:
+         'Black feminism is not generic feminism, Black Nationalism, Socialist Feminism, or Multiculturalism, although it can overlap with each.',
+      cautionNote:
+         'The tradition is internally plural and should not be reduced to one identity claim or one policy platform.',
+      philosophies: ['Feminism', 'Black Feminism', 'Intersectional Liberation', 'Anti-Racism'],
+      subTheories: ['Black Feminist Thought', 'Womanism'],
+      normativePhilosophies: ['Feminism', 'Anti-Racism'],
+      descriptivePhilosophies: ['Intersectional Liberation'],
+      prescriptivePhilosophies: ['Black Feminism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.05,
+         'property-legitimacy': -0.15,
+         'liberty-noninterference': 0.25,
+         'equality-theory': 0.8,
+         'political-community-boundary': -0.05,
+         'moral-traditionalism': -0.35,
+         'anti-domination': 0.9,
+         'state-capacity-confidence': 0.1,
+         'democratic-confidence': 0.45,
+         'cultural-plasticity': 0.35,
+         'centralization-preference': -0.05,
+         'state-action-vs-exit': 0.2,
+         'electoralism-vs-direct-action': 0.2,
+         'regulation-vs-deregulation': 0.2,
+         'redistribution-vs-predistribution': 0.4,
+         'secularism-religious': -0.15,
+      }),
+   },
+   {
+      id: 'queer-politics',
+      name: 'Queer Liberation / Queer Politics',
+      family: 'feminist',
+      subfamily: 'queer-politics',
+      description:
+         'A broad family seeking sexual and gender self-determination while critiquing heteronormativity, compulsory categories, policing, medicalization, and fixed identities; strategies range from rights reform to radical transformation.',
+      usageNote:
+         'Broad queer politics is distinct from Queer Anarchism, Anarcha-Feminism, and any single theory of gender or sexuality.',
+      cautionNote:
+         'The specialist is intentionally plural and should not be inferred from support for one isolated equality or anti-discrimination policy.',
+      philosophies: ['Queer Politics', 'Gender Liberation', 'Feminism', 'Anti-Authoritarianism'],
+      subTheories: ['Queer Liberation', 'Queer Theory'],
+      normativePhilosophies: ['Gender Liberation', 'Feminism'],
+      descriptivePhilosophies: ['Queer Politics'],
+      prescriptivePhilosophies: ['Anti-Authoritarianism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': -0.1,
+         'liberty-noninterference': 0.65,
+         'equality-theory': 0.55,
+         'moral-traditionalism': -0.8,
+         'anti-domination': 0.75,
+         'democratic-confidence': 0.35,
+         'cultural-plasticity': 0.85,
+         'centralization-preference': -0.2,
+         'state-action-vs-exit': 0.1,
+         'electoralism-vs-direct-action': 0.15,
+         'regulation-vs-deregulation': 0.15,
+         'redistribution-vs-predistribution': 0.2,
+         'secularism-religious': -0.5,
+      }),
+   },
+   {
+      id: 'nationalism',
+      name: 'Nationalism / National Orientation',
+      family: 'nationalist',
+      subfamily: 'national-orientation',
+      description:
+         'A cross-cutting orientation that treats the nation as a valuable political community entitled to some combination of continuity, solidarity, priority, sovereignty, or self-government.',
+      usageNote:
+         'This modifier does not decide who belongs, what economic system the nation should adopt, or whether its territorial project is defensive, separatist, unifying, or expansionist.',
+      cautionNote:
+         'Civic, ethnocultural, religious, left-wing, economic, separatist, and expansionist variants require separate evidence.',
+      philosophies: ['Nationalism', 'Popular Sovereignty', 'Self-Determination'],
+      normativePhilosophies: ['Nationalism', 'Self-Determination'],
+      descriptivePhilosophies: ['Nationalism'],
+      prescriptivePhilosophies: ['Popular Sovereignty'],
+      centroid: broadCentroid({
+         'political-community-boundary': -0.55,
+         'state-capacity-confidence': 0.2,
+         'democratic-confidence': 0.1,
+         'moral-traditionalism': 0.15,
+         'anti-domination': 0.1,
+         'centralization-preference': 0.1,
+         'state-action-vs-exit': 0.25,
+         'secularism-religious': 0.1,
+      }),
+   },
+   {
+      id: 'populism',
+      name: 'Populism / People-versus-Elite Orientation',
+      family: 'populist',
+      subfamily: 'thin-populism',
+      description:
+         'A thin cross-cutting orientation framing politics as a moral struggle between a virtuous people and a corrupt elite and treating popular sovereignty or a general will as especially authoritative.',
+      usageNote:
+         'Populism supplies a political frame rather than a complete economic or social program; left, right, agrarian, centrist, and authoritarian hosts must be distinguished separately.',
+      cautionNote:
+         'Do not infer anti-pluralism, fascism, nationalism, or a specific economic policy from anti-elite language alone.',
+      philosophies: ['Populism', 'Popular Sovereignty', 'Anti-Elitism'],
+      normativePhilosophies: ['Popular Sovereignty'],
+      descriptivePhilosophies: ['Populism'],
+      prescriptivePhilosophies: ['Anti-Elitism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': 0.15,
+         'equality-theory': 0.25,
+         'political-community-boundary': -0.15,
+         'anti-domination': 0.4,
+         'public-choice-skepticism': 0.65,
+         'democratic-confidence': 0.25,
+         'centralization-preference': 0.1,
+         'electoralism-vs-direct-action': 0.15,
+         'compromise-vs-persistence': -0.2,
+         'coercion-strategy': 0.05,
+      }),
+   },
+   {
+      id: 'civil-libertarianism',
+      name: 'Civil Libertarianism',
+      family: 'liberal',
+      subfamily: 'civil-libertarian',
+      description:
+         'A cross-cutting orientation giving strong presumptive protection to speech, press, privacy, association, religion, due process, protest, and bodily autonomy independent of economic ideology.',
+      usageNote:
+         'Civil libertarianism is about personal and procedural freedom, not necessarily private property, market liberty, minimal government, or cosmopolitanism.',
+      cautionNote:
+         'Different civil-libertarian traditions disagree over emergency powers, economic regulation, equality, and the scope of bodily autonomy.',
+      philosophies: ['Civil Libertarianism', 'Liberalism', 'Rights'],
+      normativePhilosophies: ['Civil Libertarianism', 'Rights'],
+      descriptivePhilosophies: ['Liberalism'],
+      prescriptivePhilosophies: ['Civil Libertarianism'],
+      centroid: broadCentroid({
+         'liberty-noninterference': 0.85,
+         'anti-domination': 0.75,
+         'moral-traditionalism': -0.35,
+         'democratic-confidence': 0.45,
+         'centralization-preference': -0.15,
+         'state-action-vs-exit': -0.2,
+         'coercion-strategy': -0.8,
+         'secularism-religious': -0.25,
+      }),
+   },
+   {
+      id: 'cosmopolitanism',
+      name: 'Cosmopolitanism',
+      family: 'liberal',
+      subfamily: 'cosmopolitan',
+      description:
+         'A cross-cutting orientation toward equal moral concern across nationality and some combination of open membership, transnational rights, international cooperation, or supranational institutions.',
+      usageNote:
+         'Cosmopolitanism concerns the scope of moral and political obligation; it differs from Internationalism’s cooperation emphasis and World Federalism’s specific institutional project.',
+      cautionNote:
+         'Cosmopolitan commitments can coexist with local attachment, democratic borders, markets, welfare states, or strong civil liberties.',
+      philosophies: ['Cosmopolitanism', 'Universalism', 'Global Justice'],
+      normativePhilosophies: ['Cosmopolitanism', 'Universalism'],
+      descriptivePhilosophies: ['Global Justice'],
+      prescriptivePhilosophies: ['Cosmopolitanism'],
+      centroid: broadCentroid({
+         'political-community-boundary': 0.8,
+         'anti-domination': 0.35,
+         'cultural-plasticity': 0.45,
+         'democratic-confidence': 0.3,
+         'centralization-preference': 0.1,
+         'state-action-vs-exit': 0.1,
+         'militarism-pacifism': 0.1,
+      }),
+   },
+   {
+      id: 'decentralist-orientation',
+      name: 'Decentralist Orientation',
+      family: 'regionalist',
+      subfamily: 'decentralist',
+      description:
+         'A cross-cutting preference for local, federal, municipal, polycentric, or voluntarily chosen institutions over concentrated and territorially uniform authority.',
+      usageNote:
+         'Decentralization can coexist with markets, socialism, nationalism, ecology, or capable national coordination; it is not a synonym for separatism, anarchism, or regionalism.',
+      cautionNote:
+         'The modifier measures authority distribution and institutional scale, not a complete economic or cultural program.',
+      philosophies: ['Decentralism', 'Federalism', 'Polycentrism'],
+      normativePhilosophies: ['Decentralism', 'Federalism'],
+      descriptivePhilosophies: ['Polycentrism'],
+      prescriptivePhilosophies: ['Decentralism'],
+      centroid: broadCentroid({
+         'authority-legitimacy': -0.35,
+         'state-capacity-confidence': -0.1,
+         'anti-domination': 0.55,
+         'centralization-preference': -0.85,
+         'state-action-vs-exit': -0.25,
+         'electoralism-vs-direct-action': -0.1,
+      }),
+   },
+   {
+      id: 'feminist-orientation',
+      name: 'Feminist Orientation',
+      family: 'feminist',
+      subfamily: 'feminist-orientation',
+      description:
+         'A cross-cutting orientation treating gendered power, exclusion, violence, care, reproduction, labor, or political representation as fundamental political concerns without selecting one feminist school.',
+      usageNote:
+         'This modifier supports specialist follow-ups for liberal, radical, socialist/Marxist, Black, anarchist, and queer feminisms; it is not itself one of those traditions.',
+      cautionNote:
+         'General support for equal treatment is not enough to identify a feminist school or a particular theory of patriarchy.',
+      philosophies: ['Feminism', 'Gender Equality', 'Gender Justice'],
+      normativePhilosophies: ['Feminism', 'Gender Justice'],
+      descriptivePhilosophies: ['Gender Equality'],
+      prescriptivePhilosophies: ['Feminism'],
+      centroid: broadCentroid({
+         'liberty-noninterference': 0.2,
+         'equality-theory': 0.65,
+         'moral-traditionalism': -0.35,
+         'anti-domination': 0.75,
+         'democratic-confidence': 0.3,
+         'cultural-plasticity': 0.35,
+         'state-action-vs-exit': 0.1,
+         'regulation-vs-deregulation': 0.15,
+      }),
+   },
+   {
+      id: 'economic-nationalism',
+      name: 'Economic Nationalism',
+      family: 'nationalist',
+      subfamily: 'economic-nationalism',
+      description:
+         'A cross-cutting orientation prioritizing national productive capacity, strategic autonomy, domestic industry, supply resilience, managed trade, or national control of key assets.',
+      usageNote:
+         'Economic nationalism can attach to conservative, socialist, developmental, populist, or anti-colonial hosts and is not identical to fiscal conservatism or protectionism in every instance.',
+      cautionNote:
+         'The modifier measures national economic priority separately from the preferred ownership system, welfare regime, or level of state coercion.',
+      philosophies: ['Economic Nationalism', 'Productive Capacity', 'Strategic Autonomy'],
+      normativePhilosophies: ['Economic Nationalism', 'Strategic Autonomy'],
+      descriptivePhilosophies: ['Productive Capacity'],
+      prescriptivePhilosophies: ['Economic Nationalism'],
+      centroid: broadCentroid({
+         'property-legitimacy': -0.05,
+         'political-community-boundary': -0.45,
+         'market-process-confidence': -0.05,
+         'state-capacity-confidence': 0.45,
+         'public-choice-skepticism': -0.1,
+         'coordination-optimism': 0.25,
+         'centralization-preference': 0.25,
+         'state-action-vs-exit': 0.45,
+         'regulation-vs-deregulation': 0.35,
+         'secularism-religious': 0.05,
       }),
    },
 )

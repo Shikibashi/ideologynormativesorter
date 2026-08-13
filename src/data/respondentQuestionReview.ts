@@ -214,7 +214,7 @@ export const tierPromotionsById: Record<string, TierPromotion> = {
   q0147: { tier: 'blitz', rationale: 'Restore information-policy descriptive coverage in Blitz and Quick.' },
   q0168: { tier: 'quick', rationale: 'Restore civil-liberties descriptive coverage in Quick.' },
   q0188: { tier: 'quick', rationale: 'Restore justice-system descriptive coverage in Quick.' },
-  q0207: { tier: 'quick', rationale: 'Restore migration descriptive coverage in Quick.' },
+  q0207: { tier: 'quick', rationale: 'Restore intergroup-contact descriptive coverage in Quick after the sourced construct migration.' },
   q0227: { tier: 'blitz', rationale: 'Restore national-identity descriptive coverage in Blitz and Quick.' },
   q0248: { tier: 'quick', rationale: 'Restore religion-and-state descriptive coverage in Quick.' },
   q0269: { tier: 'quick', rationale: 'Restore family-policy descriptive coverage in Quick.' },

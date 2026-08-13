@@ -1,4 +1,7 @@
+import type { LabelId } from '../types'
 import type { SpecialistModuleDefinition, SpecialistOutcome } from '../specialist'
+import { labelById } from '../data/labels'
+import { getIdeologyLabelSources } from '../data/labelSources'
 import { constructSignalLabel, labelProximityLabel } from '../resultLanguage'
 
 interface SpecialistModuleResultScreenProps {
@@ -6,6 +9,10 @@ interface SpecialistModuleResultScreenProps {
   outcome: SpecialistOutcome
   onContinue: () => void
 }
+
+/** Public experimental results are stricter than the internal candidate roster. */
+const MINIMUM_VISIBLE_FIT = 0.6
+const MINIMUM_VISIBLE_EVIDENCE_COVERAGE = 0.6
 
 function formatConstructName(value: string): string {
   return value
@@ -16,8 +23,11 @@ function formatConstructName(value: string): string {
 
 export function SpecialistModuleResultScreen({ module, outcome, onContinue }: SpecialistModuleResultScreenProps) {
   const visibleMatches = outcome.matches
-    .filter((match) => !match.insufficientEvidence && match.fit >= 0.35)
+    .filter((match) => !match.insufficientEvidence && match.fit >= MINIMUM_VISIBLE_FIT)
+    .filter((match) => (match.evidenceCoverage ?? 0) >= MINIMUM_VISIBLE_EVIDENCE_COVERAGE)
+    .filter((match) => match.gateStatus !== 'blocked' && match.gateStatus !== 'insufficient-evidence')
     .slice(0, 5)
+  const candidateById = new Map(module.criterionOptions.map((candidate) => [candidate.traditionId, candidate]))
   const constructs = Object.entries(outcome.constructScores)
     .sort((left, right) => Math.abs(right[1]) - Math.abs(left[1]))
 
@@ -35,6 +45,10 @@ export function SpecialistModuleResultScreen({ module, outcome, onContinue }: Sp
       <p className="muted">
         The matches below are experimental comparisons, not authoritative claims about your political identity.
       </p>
+      <p className="muted">
+        “Sufficient” evidence here means that enough mapped constructs were answered to display a provisional comparison;
+        it is not a reliability, validity, or population-representativeness finding.
+      </p>
       {outcome.evidence?.status === 'insufficient-evidence' ? (
         <p className="notice-card" role="status">
           Overall module coverage is sparse. Any match shown below is limited to a profile with enough defining
@@ -51,15 +65,47 @@ export function SpecialistModuleResultScreen({ module, outcome, onContinue }: Sp
         <h2>Closest experimental matches</h2>
         {visibleMatches.length > 0 ? (
           <div className="label-grid">
-            {visibleMatches.map((match) => (
-              <article className="label-card" key={`${match.id}:${match.variant ?? ''}`}>
-                <h5>{match.name}{match.variant ? ` — ${match.variant}` : ''}</h5>
-                <p className="muted">{labelProximityLabel(match.fit)} · experimental candidate comparison</p>
-              </article>
-            ))}
+            {visibleMatches.map((match) => {
+              const candidate = candidateById.get(match.id)
+              const label = labelById.get(match.id as LabelId)
+              const sources = label ? getIdeologyLabelSources(label, true) : []
+              return (
+                <article className="label-card" key={`${match.id}:${match.variant ?? ''}`}>
+                  <h5>{match.name}{match.variant ? ` — ${match.variant}` : ''}</h5>
+                  <p className="muted">{labelProximityLabel(match.fit)} · experimental candidate comparison</p>
+                  {(candidate?.description ?? label?.description) && (
+                    <p className="muted">{candidate?.description ?? label?.description}</p>
+                  )}
+                  {label && (label.usageNote || label.cautionNote) && (
+                    <details className="label-context-disclosure">
+                      <summary>Scope and limitations</summary>
+                      {label.usageNote && <p className="muted">{label.usageNote}</p>}
+                      {label.cautionNote && <p className="muted">{label.cautionNote}</p>}
+                    </details>
+                  )}
+                  {sources.length > 0 && (
+                    <details className="label-source-disclosure">
+                      <summary>Sources and scope</summary>
+                      <p className="muted">
+                        These sources interpret the tradition; they do not validate this experimental comparison or establish an identity claim.
+                      </p>
+                      <ul>
+                        {sources.map((source) => (
+                          <li key={source.sourceId}>
+                            <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
+                            {source.publisher && <span className="muted"> · {source.publisher}</span>}
+                            <div className="muted">{source.note}</div>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                </article>
+              )
+            })}
           </div>
         ) : (
-          <p className="muted">No candidate profile was a strong fit. That is useful feedback too.</p>
+          <p className="muted">No candidate profile met the experimental display threshold. That is useful feedback too.</p>
         )}
       </div>
 

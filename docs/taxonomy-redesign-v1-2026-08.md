@@ -26,7 +26,7 @@ The five broad anchors have their own centroids, descriptions, caution notes, te
 
 ## Experimental module roster
 
-The respondent-facing specialist roster uses `balanced-hash-v2` in `src/specialist/index.ts`. Assignment is deterministic for a participant and study cohort, while the versioned strategy makes a future roster change explicit rather than silently changing an existing cohort. The current opt-in waves are:
+The respondent-facing specialist roster uses `balanced-hash-v2` in `src/specialist/index.ts`, with the ordered roster persisted as `2026-08-specialist-roster-v1`. Assignment is deterministic for a participant and study cohort, and the v2 hash seed is preserved for this frozen roster. A future module addition, removal, or reorder must use a new study cohort or assignment strategy; it must not silently change an existing cohort's retest allocation. The current opt-in waves are:
 
 1. anarchist and market-libertarian families;
 2. green morphology and multi-affinity profiles;

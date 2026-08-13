@@ -88,13 +88,20 @@ The repository includes a minimal dependency-free collector for controlled deplo
 ```bash
 ALLOWED_ORIGIN=http://localhost:5173 \
 RESEARCH_OUTPUT_FILE=./private-data/submissions.ndjson \
-RESEARCH_STUDY_ID=pilot-2026 \
+RESEARCH_STUDY_ID=community-2026-v4 \
 RESEARCH_BANK_VERSION='the-frozen-bank-version' \
 RESEARCH_SCORING_VERSION='the-frozen-scoring-version' \
+RESEARCH_TAXONOMY_VERSION=2026-08-taxonomy-v12 \
+RESEARCH_MODIFIER_MEASUREMENT_VERSION=2026-08-modifier-construct-v1 \
+RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT=lr_6082ca47 \
+RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT=lr_1e8211b7 \
+RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY=balanced-hash-v2 \
+RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION=2026-08-specialist-roster-v1 \
+RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS=feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module \
 node research-collector/server.mjs
 ```
 
-The collector validates the schema, consent, quality-rule and form versions; recomputes matrix-form fingerprints; enforces timestamp, response-option and confidence/priority consistency; and treats `submissionId` as a persistent idempotency key. An exact retry is acknowledged without a second append, while reuse of an ID for different content is rejected. Set the optional study, bank, and scoring variables above for a frozen field deployment; the schema, consent, quality-rule, and form variables have current-version defaults and can also be overridden explicitly.
+The collector validates the schema, consent, quality-rule, form, and taxonomy versions; recomputes matrix-form fingerprints; enforces timestamp, response-option and confidence/priority consistency; validates deterministic specialist assignments against the configured strategy, roster version, and module list; and treats `submissionId` as a persistent idempotency key. An exact retry is acknowledged without a second append, while reuse of an ID for different content is rejected. Set the study, bank, scoring, taxonomy, and specialist-assignment variables above for a frozen field deployment; the schema, consent, quality-rule, and form variables have current-version defaults and can also be overridden explicitly.
 
 This reference service is not production-hardening by itself. Production use requires HTTPS, rate limiting, encrypted storage and backups, restricted access, retention/deletion controls, monitoring, incident response, and the applicable ethics/privacy review. Raw records must never be committed to Git.
 

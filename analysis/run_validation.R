@@ -65,12 +65,16 @@ bootstrap_replicates <- as.integer(Sys.getenv("PSYCH_BOOTSTRAP_REPLICATES", "100
 minimum_axis_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_AXIS_N", "100"))
 minimum_factor_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_FACTOR_N", "300"))
 minimum_dif_group_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_DIF_GROUP_N", "100"))
-required_schema_version <- Sys.getenv("PSYCH_REQUIRED_SCHEMA_VERSION", "2026-08-v9")
+required_schema_version <- Sys.getenv("PSYCH_REQUIRED_SCHEMA_VERSION", "2026-08-v14")
 required_consent_version <- Sys.getenv("PSYCH_REQUIRED_CONSENT_VERSION", "2026-08-12-v8")
 required_form_version <- Sys.getenv("PSYCH_REQUIRED_FORM_VERSION", "profile-form-v3")
 required_quality_rule_version <- Sys.getenv("PSYCH_REQUIRED_QUALITY_RULE_VERSION", "data-quality-v2")
 required_bank_version <- Sys.getenv("PSYCH_REQUIRED_BANK_VERSION", "")
 required_scoring_version <- Sys.getenv("PSYCH_REQUIRED_SCORING_VERSION", "")
+required_taxonomy_version <- Sys.getenv("PSYCH_REQUIRED_TAXONOMY_VERSION", "2026-08-taxonomy-v12")
+required_modifier_measurement_version <- Sys.getenv("PSYCH_REQUIRED_MODIFIER_MEASUREMENT_VERSION", "2026-08-modifier-construct-v1")
+required_primary_label_roster_fingerprint <- Sys.getenv("PSYCH_REQUIRED_PRIMARY_LABEL_ROSTER_FINGERPRINT", "lr_6082ca47")
+required_modifier_label_roster_fingerprint <- Sys.getenv("PSYCH_REQUIRED_MODIFIER_LABEL_ROSTER_FINGERPRINT", "lr_1e8211b7")
 set.seed(as.integer(Sys.getenv("PSYCH_RANDOM_SEED", "20260718")))
 
 read_json_file <- function(path) {
@@ -146,6 +150,10 @@ study_ids <- unique(vapply(submissions, function(record) record$studyId %||% "un
 schema_versions <- unique(vapply(submissions, function(record) record$schemaVersion %||% "unknown", character(1)))
 bank_versions <- unique(vapply(submissions, function(record) record$bankVersion %||% "unknown", character(1)))
 scoring_versions <- unique(vapply(submissions, function(record) record$scoringVersion %||% "unknown", character(1)))
+taxonomy_versions <- unique(vapply(submissions, function(record) record$taxonomyVersion %||% "unknown", character(1)))
+modifier_measurement_versions <- unique(vapply(submissions, function(record) record$modifierMeasurementVersion %||% "unknown", character(1)))
+primary_label_roster_fingerprints <- unique(vapply(submissions, function(record) record$primaryLabelRosterFingerprint %||% "unknown", character(1)))
+modifier_label_roster_fingerprints <- unique(vapply(submissions, function(record) record$modifierLabelRosterFingerprint %||% "unknown", character(1)))
 form_versions <- unique(vapply(submissions, function(record) record$form$algorithmVersion %||% "unknown", character(1)))
 quality_rule_versions <- unique(vapply(submissions, function(record) record$qualityRuleVersion %||% "unknown", character(1)))
 if (length(study_ids) > 1) stop("Multiple study IDs detected; analyze one preregistered cohort at a time.")
@@ -154,6 +162,18 @@ if (length(schema_versions) > 1 || !identical(schema_versions[[1]], required_sch
 }
 if (length(bank_versions) > 1) stop("Multiple bank versions detected: ", paste(bank_versions, collapse = ", "))
 if (length(scoring_versions) > 1) stop("Multiple scoring versions detected: ", paste(scoring_versions, collapse = ", "))
+if (length(taxonomy_versions) > 1 || !identical(taxonomy_versions[[1]], required_taxonomy_version)) {
+  stop("Expected only taxonomy registry ", required_taxonomy_version, "; found: ", paste(taxonomy_versions, collapse = ", "))
+}
+if (length(modifier_measurement_versions) > 1 || !identical(modifier_measurement_versions[[1]], required_modifier_measurement_version)) {
+  stop("Expected only modifier measurement registry ", required_modifier_measurement_version, "; found: ", paste(modifier_measurement_versions, collapse = ", "))
+}
+if (length(primary_label_roster_fingerprints) > 1 || !identical(primary_label_roster_fingerprints[[1]], required_primary_label_roster_fingerprint)) {
+  stop("Expected only primary-label roster fingerprint ", required_primary_label_roster_fingerprint, "; found: ", paste(primary_label_roster_fingerprints, collapse = ", "))
+}
+if (length(modifier_label_roster_fingerprints) > 1 || !identical(modifier_label_roster_fingerprints[[1]], required_modifier_label_roster_fingerprint)) {
+  stop("Expected only modifier-label roster fingerprint ", required_modifier_label_roster_fingerprint, "; found: ", paste(modifier_label_roster_fingerprints, collapse = ", "))
+}
 if (length(form_versions) > 1 || !identical(form_versions[[1]], required_form_version)) {
   stop("Expected only form algorithm ", required_form_version, "; found: ", paste(form_versions, collapse = ", "))
 }
@@ -847,6 +867,10 @@ summary <- list(
   retestCount = sum(retest_rows),
   bankVersions = bank_versions,
   scoringVersions = scoring_versions,
+  taxonomyVersions = taxonomy_versions,
+  modifierMeasurementVersions = modifier_measurement_versions,
+  primaryLabelRosterFingerprints = primary_label_roster_fingerprints,
+  modifierLabelRosterFingerprints = modifier_label_roster_fingerprints,
   schemaVersions = schema_versions,
   formVersions = form_versions,
   qualityRuleVersions = quality_rule_versions,
@@ -856,7 +880,11 @@ summary <- list(
     formVersion = required_form_version,
     qualityRuleVersion = required_quality_rule_version,
     bankVersion = if (nzchar(required_bank_version)) required_bank_version else NULL,
-    scoringVersion = if (nzchar(required_scoring_version)) required_scoring_version else NULL
+    scoringVersion = if (nzchar(required_scoring_version)) required_scoring_version else NULL,
+    taxonomyVersion = required_taxonomy_version,
+    modifierMeasurementVersion = required_modifier_measurement_version,
+    primaryLabelRosterFingerprint = required_primary_label_roster_fingerprint,
+    modifierLabelRosterFingerprint = required_modifier_label_roster_fingerprint
   ),
   eligibleItemCount = length(eligible_ids),
   excludedNeedsRewriteCount = sum(vapply(item_registry, function(item) identical(item$reviewStatus, "needs-rewrite"), logical(1))),

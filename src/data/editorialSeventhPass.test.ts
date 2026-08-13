@@ -6,6 +6,14 @@ import {
   seventhPassRewritesById,
 } from './editorialSeventhPass'
 import { eighthPassReplacementRequiredById } from './editorialEighthPass'
+import {
+  EDITORIAL_TWELFTH_PASS_VERSION,
+  twelfthPassRewritesById,
+} from './editorialTwelfthPass'
+import {
+  EDITORIAL_TWENTIETH_PASS_VERSION,
+  twentiethPassRewritesById,
+} from './editorialTwentiethPass'
 import { QUESTION_BANK_VERSION, questionById, questionsForTier } from './effectiveQuestions'
 
 const axisIds = new Set(axes.map((axis) => axis.id))
@@ -20,14 +28,23 @@ describe('seventh editorial pass', () => {
       expect(question, `${id} rewrite references a missing item`).toBeDefined()
       expect(seventhPassReplacementRequiredById[id], `${id} cannot be rewritten and quarantined together`).toBeUndefined()
       expect(question!.layer).toBe('descriptive')
-      expect(question!.prompt).toBe(rewrite.prompt)
+      if (id === 'q0207') {
+        expect(question!.domain).toBe('race-ethnicity-multiculturalism')
+      }
+      const twelfthRewrite = twelfthPassRewritesById[id]
+      const twentiethRewrite = twentiethPassRewritesById[id]
+      expect(question!.prompt).toBe(twentiethRewrite?.prompt ?? twelfthRewrite?.prompt ?? rewrite.prompt)
       expect(question!.axisWeights).toEqual(rewrite.axisWeights)
       expect(question!.theoryContext).toBe(rewrite.theoryContext)
       if (eighthPassReplacementRequiredById[id]) {
         expect(question!.active).toBe(false)
       } else {
         expect(question!.active).not.toBe(false)
-        expect(question!.version).toBe(EDITORIAL_SEVENTH_PASS_VERSION)
+        expect(question!.version).toBe(twentiethRewrite
+          ? EDITORIAL_TWENTIETH_PASS_VERSION
+          : twelfthRewrite
+            ? EDITORIAL_TWELFTH_PASS_VERSION
+            : EDITORIAL_SEVENTH_PASS_VERSION)
       }
       expect(rewrite.rationale.length).toBeGreaterThan(40)
 

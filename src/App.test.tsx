@@ -65,13 +65,15 @@ function clickScaleAndAnySalienceFollowUp(index: number) {
    }
 }
 
-// Hand-authored cross-layer intent: egalitarian/anti-domination values,
-// market-confident empirical beliefs, deregulatory/decentralist strategy.
+// Hand-authored cross-layer intent: egalitarian/anti-domination values with
+// traditional-order stress, market-confident empirical beliefs, and
+// deregulatory/decentralist strategy.
 const CROSS_LAYER_INTENT: Record<string, number> = {
    'equality-theory': 1,
    'anti-domination': 1,
    'authority-legitimacy': -1,
    'liberty-noninterference': 1,
+   'moral-traditionalism': 1,
    'property-legitimacy': 0.3,
    'market-process-confidence': 1,
    'public-choice-skepticism': 1,
@@ -124,12 +126,12 @@ function handleSalienceIfPresent() {
 
 describe('App', () => {
    it('upgrades an old public 120-item link to the complete Balanced profile at consent', () => {
-      window.history.replaceState(null, '', '/?contribute=1&collection=community-2026&formSize=120')
+      window.history.replaceState(null, '', '/?contribute=1&collection=community-2026-v3&formSize=120')
 
       render(<App />)
 
       expect(screen.getByRole('heading', { name: /optional profile contribution/i })).toBeInTheDocument()
-      expect(screen.getByText(/selected profile contains 140 questions/i)).toBeInTheDocument()
+      expect(screen.getByText(/selected profile contains 206 questions/i)).toBeInTheDocument()
       expect(screen.getByRole('button', { name: /continue to balanced profile/i })).toBeDisabled()
       expect(screen.queryByText(/question 1 of 120/i)).not.toBeInTheDocument()
    })
@@ -216,7 +218,7 @@ describe('App', () => {
       expect(screen.getByRole('complementary', { name: /session setup/i })).toBeInTheDocument()
       expect(screen.getByText(/choose the depth of the assessment/i)).toBeInTheDocument()
       expect(screen.getByRole('checkbox', { name: /optionally contribute this balanced profile/i })).not.toBeChecked()
-      expect(screen.getByText(/same 140-question profile, not a separate test/i)).toBeInTheDocument()
+      expect(screen.getByText(/same 206-question profile, not a separate test/i)).toBeInTheDocument()
       expect(screen.queryByRole('radio', { name: /blitz/i })).not.toBeInTheDocument()
       expect(screen.queryByRole('radio', { name: /quick/i })).not.toBeInTheDocument()
       fireEvent.click(screen.getByRole('radio', { name: /balanced profile/i }))
@@ -244,15 +246,15 @@ describe('App', () => {
 
       fireEvent.click(screen.getByRole('radio', { name: /full-depth profile/i }))
       fireEvent.click(screen.getByRole('checkbox', { name: /optionally contribute this full-depth profile/i }))
-      expect(screen.getByText(/same 285-question profile, not a separate test/i)).toBeInTheDocument()
+      expect(screen.getByText(/same 338-question profile, not a separate test/i)).toBeInTheDocument()
       fireEvent.click(screen.getByRole('button', { name: /review contribution details/i }))
 
       expect(screen.getByRole('heading', { name: /optional profile contribution/i })).toBeInTheDocument()
-      expect(screen.getByText(/selected profile contains 285 questions/i)).toBeInTheDocument()
+      expect(screen.getByText(/selected profile contains 338 questions/i)).toBeInTheDocument()
       expect(screen.getByRole('button', { name: /continue to full-depth profile/i })).toBeDisabled()
       fireEvent.click(screen.getByRole('button', { name: /continue without contributing/i }))
 
-      expect(screen.getByText('Question 1 of 285', { exact: false })).toBeInTheDocument()
+      expect(screen.getByText('Question 1 of 338', { exact: false })).toBeInTheDocument()
    })
 
    it('allows a completed respondent to skip upload and see the result', () => {
@@ -488,7 +490,8 @@ describe('App', () => {
       expect(groups[0].textContent ?? '').not.toMatch(/axis proximity\s+-?\d/i)
       expect(groups[0].querySelector('.label-evidence')?.textContent ?? '').toMatch(/answer coverage/i)
       expect(groups[0].querySelector('.label-source-disclosure')?.textContent ?? '').toMatch(/background sources/i)
-   })
+      expect(groups[0].querySelector('.label-scale-disclosure')?.textContent ?? '').toMatch(/analytical scale/i)
+   }, 15_000)
 
    it('keeps the full label browser collapsed by default and searches label metadata', () => {
       const encoded = encodeAnswers({ q0001: { questionId: 'q0001', value: 2 } }, SHARE_META)
@@ -522,9 +525,8 @@ describe('App', () => {
          target: { value: 'Radical Feminism' },
       })
 
-      expect(screen.getByRole('heading', { name: /^related traditions$/i })).toBeInTheDocument()
       expect(screen.getByRole('heading', { name: /radical feminism/i })).toBeInTheDocument()
-      expect(screen.getByText(/not ranked by the general quiz/i)).toBeInTheDocument()
+      expect(screen.queryByRole('heading', { name: /^related traditions$/i })).not.toBeInTheDocument()
 
       fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {
          target: { value: 'Non-Leninist Marxism' },
@@ -544,7 +546,7 @@ describe('App', () => {
          target: { value: 'Market Libertarianism' },
       })
 
-      expect(within(browser!).getByRole('heading', { name: /market \/ right-libertarianism/i })).toBeInTheDocument()
+      expect(within(browser!).getByRole('heading', { name: /right-libertarianism/i })).toBeInTheDocument()
       expect(within(browser!).getByText(/primary scored family/i)).toBeInTheDocument()
 
       fireEvent.change(screen.getByRole('searchbox', { name: /search ideology labels/i }), {

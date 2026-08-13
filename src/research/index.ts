@@ -13,6 +13,8 @@ import {
   primaryScoringLabels,
   TAXONOMY_VERSION,
 } from '../data/labelTaxonomy'
+import { MODIFIER_MEASUREMENT_VERSION } from '../data/modifierMeasurement'
+import { labelRosterFingerprint } from './taxonomyMetadata'
 import type {
   SpecialistCriterionResponse,
   SpecialistMatch,
@@ -21,10 +23,23 @@ import type {
   SpecialistOutcome,
 } from '../specialist'
 
-export const RESEARCH_SCHEMA_VERSION = '2026-08-v10'
+export const RESEARCH_SCHEMA_VERSION = '2026-08-v14'
 export const RESEARCH_CONSENT_VERSION = '2026-08-12-v8'
 export const RESEARCH_QUALITY_RULE_VERSION = 'data-quality-v2'
-export const PUBLIC_RESEARCH_ENTRYPOINT = '?contribute=1&collection=community-2026'
+/** A new cohort isolates taxonomy and specialist-construct revisions from prior submissions. */
+export const RESEARCH_STUDY_ID = 'community-2026-v4'
+export const PUBLIC_RESEARCH_ENTRYPOINT = '?contribute=1&collection=community-2026-v4'
+export const PRIMARY_LABEL_ROSTER_FINGERPRINT = labelRosterFingerprint(
+  'primary',
+  primaryScoringLabels.map((label) => label.id),
+  TAXONOMY_VERSION,
+)
+export const MODIFIER_LABEL_ROSTER_FINGERPRINT = labelRosterFingerprint(
+  'modifier',
+  modifierScoringLabels.map((label) => label.id),
+  TAXONOMY_VERSION,
+  MODIFIER_MEASUREMENT_VERSION,
+)
 const PARTICIPANT_STORAGE_KEY = 'political-judgment-research-participant-v1'
 
 export type ResearchAdministration = 'test' | 'retest'
@@ -122,8 +137,12 @@ export interface CoreResearchSubmission extends ResearchRecordBase {
   bankVersion: string
   scoringVersion: string
   taxonomyVersion: string
+  /** Version of the direct-construct eligibility registry for modifiers. */
+  modifierMeasurementVersion: string
   primaryLabelIds: string[]
   modifierLabelIds: string[]
+  primaryLabelRosterFingerprint: string
+  modifierLabelRosterFingerprint: string
   tier: QuizTier
   identity: ResearchIdentity
   predictedLabelIds: string[]
@@ -257,7 +276,7 @@ export function researchAdministration(search = window.location.search): Researc
 export function researchStudyId(search = window.location.search): string {
   const params = new URLSearchParams(search)
   const configured = safeToken(params.get('collection') ?? params.get('study') ?? '')
-  return configured || 'community-2026'
+  return configured || RESEARCH_STUDY_ID
 }
 
 export function researchRecruitmentSource(search = window.location.search): string {
@@ -268,9 +287,9 @@ export function researchRecruitmentSource(search = window.location.search): stri
 export function getOrCreateParticipantId(
   storage: StorageLike = window.localStorage,
   createId: (() => string) | undefined = undefined,
-  studyId = 'community-2026',
+  studyId = RESEARCH_STUDY_ID,
 ): string {
-  const storageKey = `${PARTICIPANT_STORAGE_KEY}:${safeToken(studyId) || 'community-2026'}`
+  const storageKey = `${PARTICIPANT_STORAGE_KEY}:${safeToken(studyId) || RESEARCH_STUDY_ID}`
   const existing = storage.getItem(storageKey)
   if (existing) return existing
   const participantId = `p_${safeToken((createId ?? (() => crypto.randomUUID()))())}`
@@ -306,7 +325,7 @@ export function buildResearchSubmission(input: {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: 'core',
-    studyId: safeToken(input.studyId) || 'community-2026',
+    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? new Date().toISOString(),
@@ -318,8 +337,11 @@ export function buildResearchSubmission(input: {
     bankVersion: input.bankVersion,
     scoringVersion: input.scoringVersion,
     taxonomyVersion: TAXONOMY_VERSION,
+    modifierMeasurementVersion: MODIFIER_MEASUREMENT_VERSION,
     primaryLabelIds: primaryScoringLabels.map((label) => label.id),
     modifierLabelIds: modifierScoringLabels.map((label) => label.id),
+    primaryLabelRosterFingerprint: PRIMARY_LABEL_ROSTER_FINGERPRINT,
+    modifierLabelRosterFingerprint: MODIFIER_LABEL_ROSTER_FINGERPRINT,
     tier: input.tier,
     consent: input.consent,
     locale: normalizeLocale(input.locale),
@@ -376,7 +398,7 @@ export function buildSpecialistResearchSubmission(input: {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: 'specialist',
-    studyId: safeToken(input.studyId) || 'community-2026',
+    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? new Date().toISOString(),
@@ -423,7 +445,7 @@ export function buildSpecialistDispositionSubmission(input: {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: 'specialist-disposition',
-    studyId: safeToken(input.studyId) || 'community-2026',
+    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? completedAt,

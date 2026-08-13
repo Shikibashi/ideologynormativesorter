@@ -8,7 +8,7 @@ The scored catalog is already broad enough that adding synthetic global-axis cen
 
 This pass adds three source-backed, non-scored entries:
 
-- **Market / Right-Libertarianism** is placed in the `liberal` family. The qualified name avoids treating all libertarian usage as market liberalism; libertarian-socialist and anarchist traditions remain in their own families.
+- **Right-Libertarianism** is placed in the `liberal` family as a property-and-state lineage. Market-anarchist specialist entries are placed in the `anarchist` family instead; the distinction avoids treating market anarchism as synonymous with right-libertarianism.
 - **Black Nationalism** is represented once at the public label level while its focused module preserves community-nationalist and separatist variants. It is not derived from the generic Ethnonationalist centroid.
 - **Pan-Africanism** remains distinct from Black separatism and is described as a plural tradition spanning transnational solidarity, African unity, sovereignty-centered projects, and nativist variants.
 
@@ -33,7 +33,7 @@ Keep these entries searchable and clearly marked as either “not ranked by the 
 
 - The related-tradition status now distinguishes catalog-only candidates from candidates with a focused follow-up.
 - Black Nationalism and Pan-Africanism point to the existing identity-sovereignty measurement surface.
-- Market / Right-Libertarianism adds an umbrella search result without duplicating Minarchism, Anarcho-Capitalism, Georgist Libertarianism, or other scored/specialist profiles.
+- Right-Libertarianism adds an umbrella search result without duplicating Minarchism, Georgist Libertarianism, or other scored/specialist profiles; Anarcho-Capitalism and Agorism remain visible as anarchist specialists with explicit boundary notes.
 - No label ID in `src/data/labels.ts`, global centroid, axis weight, or primary scoring pool changed.
 
 ### Uncertainties

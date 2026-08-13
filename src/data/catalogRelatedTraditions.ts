@@ -44,17 +44,4 @@ export const catalogRelatedTraditions: readonly CatalogRelatedTradition[] = [
       'https://www.cambridge.org/core/journals/africa/article/abs/ujamaa-revisited-indigenous-and-european-influences-in-nyereres-social-and-political-thought/6BEAA8BE5DECD916979237B710C7F73F',
     ],
   },
-  {
-    id: 'arab-socialism',
-    name: 'Arab Socialism',
-    family: 'socialist',
-    subfamily: 'arab-socialist',
-    status: 'catalog-candidate',
-    aliases: ['Arab Socialist', 'Socialist Arabism'],
-    description:
-      'A diverse family of Arab socialist currents that joined social and economic transformation to anti-colonial state-building and Arab national projects, including but not limited to Nasserist and Ba’athist forms.',
-    sourceUrls: [
-      'https://www.cambridge.org/core/books/abs/cambridge-history-of-socialism/arab-socialism/C0CC111E2F8E7DB698326B03385240CF',
-    ],
-  },
 ]

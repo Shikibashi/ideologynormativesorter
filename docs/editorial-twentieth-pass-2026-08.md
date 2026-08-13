@@ -1,0 +1,23 @@
+# Editorial twentieth pass — 2026-08
+
+This pass tightens five effective-bank prompts after checking their cited
+reports. Raw question IDs and historical wording remain available for
+research compatibility; the respondent-facing bank uses the versioned overlay
+`2026-08-editorial-v20`.
+
+| Item | Effective correction | Research boundary |
+| --- | --- | --- |
+| `q0007` | Uses an associational formulation and names U.S. metropolitan police-service comparisons. | Ostrom’s work compares the output and efficiency of metropolitan police arrangements; it does not establish that autonomous provision improves every public service. See [Ostrom’s Nobel biographical account](https://www.nobelprize.org/prizes/economic-sciences/2009/ostrom/biographical/) and [prize lecture](https://www.nobelprize.org/uploads/2018/06/ostrom_lecture.pdf). |
+| `q0067` | Names SNAP and the recertification interview-timing study rather than asserting a universal welfare effect. | Homonoff and Somerville study randomly assigned interview timing in San Francisco; later assignments reduced recertification and subsequent participation among affected cases, while many cases re-enrolled. See [NBER Working Paper 27311](https://www.nber.org/papers/w27311). |
+| `q0107` | Replaces “reduce exclusion” with the source-matched price-pressure mechanism. | Glaeser and Gyourko analyze high-cost U.S. markets and describe their zoning evidence as suggestive; the item does not settle displacement, segregation, infrastructure, or all housing access effects. See [NBER Working Paper 8835](https://www.nber.org/papers/w8835). |
+| `q0328` | Narrows the intervention claim to adaptation to local political and institutional conditions in Afghanistan. | SIGAR/USIP identify local knowledge and buy-in as conditions for development success; this case is not a universal law of intervention. See [Lessons from the Coalition](https://www.sigar.mil/Portals/147/Files/Reports/Lessons-Learned/SIGAR-16-59-LL.pdf). |
+| `q0402` | Isolates anticipatory self-defense and removes “overwhelming force.” | Article 51 refers to self-defense after an armed attack, while the scope of anticipatory action is contested; preventive war, necessity, proportionality, legality, and moral legitimacy are separate questions. See [UN Article 51 materials](https://legal.un.org/repertory/art51.shtml?app=true) and [UN Secretary-General guidance on pre-emptive action](https://www.un.org/sg/en/content/former-secretary-general/articles/2004-12-02/courage-fulfil-our-responsibilities). |
+
+`q0425` receives a bespoke context record rather than a prompt rewrite. It now
+distinguishes hereditary succession from constitutional limits, consent, equal
+citizenship, competence, and the claimed value of continuity.
+
+These are editorial/source-fidelity improvements, not evidence of reliability,
+validity, fairness, or stable respondent interpretation. Those require the
+planned cognitive interviews, test–retest study, criterion comparison,
+subgroup/invariance analysis, and qualified expert review.

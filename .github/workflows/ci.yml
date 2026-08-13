@@ -35,6 +35,9 @@ jobs:
       - name: Check collector syntax
         run: node --check research-collector/server.mjs
 
+      - name: Check research version contract
+        run: npm run research:check
+
       - name: Test edge collector
         run: npm run test:worker
 

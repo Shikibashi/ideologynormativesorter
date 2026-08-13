@@ -29,6 +29,26 @@ describe('ideology explainers', () => {
       }
    })
 
+   it('keeps every catalog label explicit across normative, descriptive, and prescriptive layers', () => {
+      const missing: string[] = []
+      for (const label of labels) {
+         for (const layer of ['normative', 'descriptive', 'prescriptive'] as const) {
+            const summary = CURATED_IDEOLOGY_LAYER_SUMMARIES[label.id]?.[layer]
+            if (!summary || summary.length <= 80) missing.push(`${label.id}/${layer}`)
+            if (summary?.match(/does not currently provide/i)) missing.push(`${label.id}/${layer}:fallback`)
+         }
+      }
+      expect(missing).toEqual([])
+   })
+
+   it('provides a direct or pattern-matched term definition for every catalog label', () => {
+      for (const label of labels) {
+         const definitions = getIdeologyTermDefinitions(label)
+         expect(definitions.length, `${label.id} is missing a term definition`).toBeGreaterThan(0)
+         expect(definitions.every((definition) => definition.length > 40), `${label.id} has a thin term definition`).toBe(true)
+      }
+   })
+
    it('uses the intended definitions for high-confusion ideology terms', () => {
       const byId = new Map(labels.map((label) => [label.id, label]))
       const cases: Array<[string, RegExp]> = [
@@ -37,7 +57,7 @@ describe('ideology explainers', () => {
          ['eco-fascism', /fascist or exclusionary ultranationalism with ecological politics/],
          ['strasserism', /radical fascist current associated with the Strasser brothers/],
          ['christian-democrat', /Christian social thought with democratic constitutionalism/],
-         ['theocrat', /religious authority or revealed law/],
+         ['theocrat', /religious authority or binding religious doctrine/],
          ['integralism', /Catholic integralism/],
          ['fundamentalist-theocracy', /strict or literal authoritative interpretation of sacred texts/],
          ['democratic-socialist', /social ownership of major productive assets/],
@@ -136,6 +156,9 @@ describe('ideology explainers', () => {
          ['anarcha-feminism', /feminist analysis of gender domination/],
          ['queer-anarchism', /resistance to enforced sexual and gender norms/],
          ['techno-anarchism', /encryption, anonymity, peer-to-peer systems/],
+         ['technocratic-orientation', /cross-cutting preference for using specialized knowledge/],
+         ['black-nationalism', /heterogeneous traditions of Black racial consciousness/],
+         ['pan-africanism', /changing idea and movement for solidarity/],
       ]
 
       for (const [id, expected] of cases) {
@@ -713,8 +736,8 @@ describe('ideology explainers', () => {
          ['separatist-nationalism', 'prescriptive', /autonomy, federal reorganization, or secession/],
          ['christian-democrat', 'normative', /human dignity, solidarity, family and civil society/],
          ['christian-democrat', 'prescriptive', /democratic constitutionalism, subsidiarity, social-market institutions/],
-         ['theocrat', 'normative', /religious authority, divine law, or revealed moral order/],
-         ['theocrat', 'prescriptive', /public law and state authority derived from or enforcing religious doctrine/],
+         ['theocrat', 'normative', /binding religious doctrine or recognized religious authority/],
+         ['theocrat', 'prescriptive', /final civil-law legitimacy/],
          ['integralism', 'normative', /Catholic truth, the common good, and ordered social authority/],
          ['integralism', 'prescriptive', /Catholicly informed public law/],
          ['fundamentalist-theocracy', 'normative', /strict or literal fidelity to authoritative scripture/],
@@ -734,7 +757,7 @@ describe('ideology explainers', () => {
          ['socialist-feminism', 'normative', /gender liberation and the transformation of class and property relations/],
          ['socialist-feminism', 'prescriptive', /collective action against patriarchy and capitalist exploitation/],
          ['juche', 'normative', /political autonomy, national self-reliance, collective discipline/],
-         ['juche', 'prescriptive', /political independence, economic self-reliance, military self-defense/],
+         ['juche', 'prescriptive', /political independence, state-directed economic self-reliance, military self-defense/],
          ['egalitarian-statist', 'normative', /material equality and effective public provision/],
          ['egalitarian-statist', 'prescriptive', /progressive redistribution, broad social provision/],
          ['social-democrat', 'normative', /freedom and equality as requiring democratic control/],
@@ -793,8 +816,8 @@ describe('ideology explainers', () => {
          ['world-federalism', 'descriptive', /problems that cross borders/],
          ['multiculturalism', 'normative', /cultural membership and the ability to maintain distinctive identities/],
          ['multiculturalism', 'prescriptive', /recognition, accommodation, or group-differentiated rights/],
-         ['technocratic-centralist', 'normative', /expert competence, administrative capacity/],
-         ['technocratic-centralist', 'prescriptive', /centralized expert agencies, planning/],
+         ['technocratic-centralist', 'normative', /expert competence and centralized administrative coordination/],
+         ['technocratic-centralist', 'prescriptive', /expert-led national agencies, planning/],
          ['transhumanism', 'normative', /human flourishing, autonomy/],
          ['transhumanism', 'prescriptive', /human enhancement/],
          ['cyberocracy', 'descriptive', /electronic information infrastructures/],
@@ -839,6 +862,19 @@ describe('ideology explainers', () => {
       expect(nationalBolshevism.usageNote).toMatch(/distinct interwar German currents/)
       expect(fourthTheory.description).toMatch(/does not provide one settled economic program/)
       expect(fourthTheory.usageNote).toMatch(/claimed break.*disputes|disputes.*claimed break/)
+   })
+
+   it('scopes Juche and National Bolshevism to their modeled historical reference cases', () => {
+      const byId = new Map(labels.map((label) => [label.id, label]))
+      const juche = byId.get('juche')!
+      const nationalBolshevism = byId.get('national-bolshevism')!
+
+      expect(juche.description).toMatch(/state-directed self-reliance/)
+      expect(juche.description).not.toMatch(/economic self-sufficiency/)
+      expect(juche.cautionNote).toMatch(/not.*economically autarkic/)
+      expect(juche.normativePhilosophies).toContain('Juche')
+      expect(nationalBolshevism.description).toMatch(/reference case/)
+      expect(nationalBolshevism.cautionNote).toMatch(/historically bounded specialist label/)
    })
 
    it('does not invent unrelated layer doctrine for broad or cross-cutting labels', () => {

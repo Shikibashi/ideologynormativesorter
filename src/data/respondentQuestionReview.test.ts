@@ -25,6 +25,7 @@ import { DEFAULT_CONFIDENCE_PROMPT, DEFAULT_PRIORITY_PROMPT } from '../questionP
 import { fifthPassReplacementRequiredById } from './editorialFifthPass'
 import { seventhPassReplacementRequiredById } from './editorialSeventhPass'
 import { eighthPassReplacementRequiredById } from './editorialEighthPass'
+import { twentyFirstPassRewritesById } from './editorialTwentyFirstPass'
 
 const LAYERS = ['normative', 'descriptive', 'prescriptive'] as const
 
@@ -85,7 +86,7 @@ describe('respondent-facing question review', () => {
       expect(reviewed.theoryContext).toBe(raw!.theoryContext)
       expect(reviewed.version).toBe(RESPONDENT_QUESTION_REVIEW_VERSION)
       expect(reviewed.reviewStatus).toBe('approved')
-      expect(effective!.prompt).toBe(correction.prompt)
+      expect(effective!.prompt).toBe(twentyFirstPassRewritesById[questionId]?.prompt ?? correction.prompt)
     }
   })
 
@@ -142,10 +143,10 @@ describe('respondent-facing question review', () => {
       'labor-unions-workplace/descriptive',
       'land-housing-georgism/prescriptive',
       'civil-liberties-speech/descriptive',
+      'immigration-borders/descriptive',
       'immigration-borders/prescriptive',
       'national-identity-sovereignty/prescriptive',
       'race-ethnicity-multiculturalism/normative',
-      'race-ethnicity-multiculturalism/descriptive',
       'race-ethnicity-multiculturalism/prescriptive',
       'democracy-expertise-constitutionalism/normative',
       'technology-ai-surveillance/descriptive',

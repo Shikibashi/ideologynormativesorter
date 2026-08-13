@@ -40,6 +40,14 @@ import {
   DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
 } from './descriptiveEvidenceThirdPass'
 import {
+  applyDescriptiveEvidenceFourthPass,
+  DESCRIPTIVE_EVIDENCE_FOURTH_PASS_VERSION,
+} from './descriptiveEvidenceFourthPass'
+import {
+  applyDescriptiveEvidenceFifthPass,
+  DESCRIPTIVE_EVIDENCE_FIFTH_PASS_VERSION,
+} from './descriptiveEvidenceFifthPass'
+import {
   applyEditorialNinthPass,
   EDITORIAL_NINTH_PASS_VERSION,
 } from './editorialNinthPass'
@@ -47,6 +55,74 @@ import {
   applyEditorialTenthPass,
   EDITORIAL_TENTH_PASS_VERSION,
 } from './editorialTenthPass'
+import {
+  applyEditorialTwelfthPass,
+  EDITORIAL_TWELFTH_PASS_VERSION,
+} from './editorialTwelfthPass'
+import {
+  applyEditorialThirteenthPass,
+  EDITORIAL_THIRTEENTH_PASS_VERSION,
+} from './editorialThirteenthPass'
+import {
+  applyEditorialFourteenthPass,
+  EDITORIAL_FOURTEENTH_PASS_VERSION,
+} from './editorialFourteenthPass'
+import {
+  applyEditorialFifteenthPass,
+  EDITORIAL_FIFTEENTH_PASS_VERSION,
+} from './editorialFifteenthPass'
+import {
+  applyEditorialSixteenthPass,
+  EDITORIAL_SIXTEENTH_PASS_VERSION,
+} from './editorialSixteenthPass'
+import {
+  applyEditorialSeventeenthPass,
+  EDITORIAL_SEVENTEENTH_PASS_VERSION,
+} from './editorialSeventeenthPass'
+import {
+  applyEditorialEighteenthPass,
+  EDITORIAL_EIGHTEENTH_PASS_VERSION,
+} from './editorialEighteenthPass'
+import {
+  applyEditorialNineteenthPass,
+  EDITORIAL_NINETEENTH_PASS_VERSION,
+} from './editorialNineteenthPass'
+import {
+  applyEditorialTwentiethPass,
+  EDITORIAL_TWENTIETH_PASS_VERSION,
+} from './editorialTwentiethPass'
+import {
+  applyEditorialTwentyFirstPass,
+  EDITORIAL_TWENTY_FIRST_PASS_VERSION,
+} from './editorialTwentyFirstPass'
+import {
+  applyEditorialTwentySecondPass,
+  EDITORIAL_TWENTY_SECOND_PASS_VERSION,
+} from './editorialTwentySecondPass'
+import {
+  applyEditorialTwentyThirdPass,
+  EDITORIAL_TWENTY_THIRD_PASS_VERSION,
+} from './editorialTwentyThirdPass'
+import {
+  applyEditorialTwentyFourthPass,
+  EDITORIAL_TWENTY_FOURTH_PASS_VERSION,
+} from './editorialTwentyFourthPass'
+import {
+  applyEditorialTwentyFifthPass,
+  EDITORIAL_TWENTY_FIFTH_PASS_VERSION,
+} from './editorialTwentyFifthPass'
+import {
+  applyEditorialTwentySixthPass,
+  EDITORIAL_TWENTY_SIXTH_PASS_VERSION,
+} from './editorialTwentySixthPass'
+import {
+  applyEditorialTwentySeventhPass,
+  EDITORIAL_TWENTY_SEVENTH_PASS_VERSION,
+} from './editorialTwentySeventhPass'
+import {
+  applyEditorialTwentyEighthPass,
+  EDITORIAL_TWENTY_EIGHTH_PASS_VERSION,
+} from './editorialTwentyEighthPass'
 import { SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION } from './specialistDescriptiveEvidence'
 import { applyQuestionContext, QUESTION_CONTEXT_VERSION } from './questionContext'
 
@@ -64,6 +140,25 @@ export const QUESTION_BANK_VERSION = [
   SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION,
   EDITORIAL_NINTH_PASS_VERSION,
   EDITORIAL_TENTH_PASS_VERSION,
+  EDITORIAL_TWELFTH_PASS_VERSION,
+  EDITORIAL_THIRTEENTH_PASS_VERSION,
+  EDITORIAL_FOURTEENTH_PASS_VERSION,
+  EDITORIAL_FIFTEENTH_PASS_VERSION,
+  EDITORIAL_SIXTEENTH_PASS_VERSION,
+  EDITORIAL_SEVENTEENTH_PASS_VERSION,
+  EDITORIAL_EIGHTEENTH_PASS_VERSION,
+  EDITORIAL_NINETEENTH_PASS_VERSION,
+  EDITORIAL_TWENTIETH_PASS_VERSION,
+  EDITORIAL_TWENTY_FIRST_PASS_VERSION,
+  EDITORIAL_TWENTY_SECOND_PASS_VERSION,
+  EDITORIAL_TWENTY_THIRD_PASS_VERSION,
+  EDITORIAL_TWENTY_FOURTH_PASS_VERSION,
+  EDITORIAL_TWENTY_FIFTH_PASS_VERSION,
+  EDITORIAL_TWENTY_SIXTH_PASS_VERSION,
+  EDITORIAL_TWENTY_SEVENTH_PASS_VERSION,
+  EDITORIAL_TWENTY_EIGHTH_PASS_VERSION,
+  DESCRIPTIVE_EVIDENCE_FOURTH_PASS_VERSION,
+  DESCRIPTIVE_EVIDENCE_FIFTH_PASS_VERSION,
   QUESTION_CONTEXT_VERSION,
 ].join('+')
 export { SCORING_VERSION }
@@ -80,35 +175,64 @@ export function getBankFingerprint(): string {
     DESCRIPTIVE_EVIDENCE_VERSION,
     DESCRIPTIVE_EVIDENCE_SECOND_PASS_VERSION,
     DESCRIPTIVE_EVIDENCE_THIRD_PASS_VERSION,
+    DESCRIPTIVE_EVIDENCE_FOURTH_PASS_VERSION,
     SPECIALIST_DESCRIPTIVE_EVIDENCE_VERSION,
     EDITORIAL_NINTH_PASS_VERSION,
     EDITORIAL_TENTH_PASS_VERSION,
+    EDITORIAL_TWELFTH_PASS_VERSION,
+    EDITORIAL_THIRTEENTH_PASS_VERSION,
+    EDITORIAL_FOURTEENTH_PASS_VERSION,
+    EDITORIAL_FIFTEENTH_PASS_VERSION,
+    EDITORIAL_SIXTEENTH_PASS_VERSION,
+    EDITORIAL_SEVENTEENTH_PASS_VERSION,
+    EDITORIAL_EIGHTEENTH_PASS_VERSION,
+    EDITORIAL_NINETEENTH_PASS_VERSION,
+    EDITORIAL_TWENTIETH_PASS_VERSION,
+    EDITORIAL_TWENTY_FIRST_PASS_VERSION,
+    EDITORIAL_TWENTY_SECOND_PASS_VERSION,
+    EDITORIAL_TWENTY_THIRD_PASS_VERSION,
+    EDITORIAL_TWENTY_FOURTH_PASS_VERSION,
+    EDITORIAL_TWENTY_FIFTH_PASS_VERSION,
+    EDITORIAL_TWENTY_SIXTH_PASS_VERSION,
+    EDITORIAL_TWENTY_SEVENTH_PASS_VERSION,
+    EDITORIAL_TWENTY_EIGHTH_PASS_VERSION,
+    DESCRIPTIVE_EVIDENCE_FIFTH_PASS_VERSION,
     QUESTION_CONTEXT_VERSION,
   ].join('+')
 }
 
 function applyEffectiveReview(question: Question): Question {
-  return applyQuestionContext(
-    applyEditorialTenthPass(
-      applyEditorialNinthPass(
-        applyDescriptiveEvidenceThirdPass(
-          applyDescriptiveEvidenceSecondPass(
-            applyDescriptiveEvidence(
-              applyEditorialEighthPass(
-                applyEditorialSeventhPass(
-                  applyEditorialFifthPass(
-                    applyRespondentQuestionReview(
-                      applyStatementSemanticReview(applySemanticReview(question)),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    ),
-  )
+  let reviewed = applySemanticReview(question)
+  reviewed = applyStatementSemanticReview(reviewed)
+  reviewed = applyRespondentQuestionReview(reviewed)
+  reviewed = applyEditorialFifthPass(reviewed)
+  reviewed = applyEditorialSeventhPass(reviewed)
+  reviewed = applyEditorialEighthPass(reviewed)
+  reviewed = applyDescriptiveEvidence(reviewed)
+  reviewed = applyDescriptiveEvidenceSecondPass(reviewed)
+  reviewed = applyDescriptiveEvidenceThirdPass(reviewed)
+  reviewed = applyEditorialNinthPass(reviewed)
+  reviewed = applyEditorialTenthPass(reviewed)
+  reviewed = applyEditorialTwelfthPass(reviewed)
+  reviewed = applyEditorialThirteenthPass(reviewed)
+  reviewed = applyEditorialFourteenthPass(reviewed)
+  reviewed = applyEditorialFifteenthPass(reviewed)
+  reviewed = applyEditorialSixteenthPass(reviewed)
+  reviewed = applyEditorialSeventeenthPass(reviewed)
+  reviewed = applyEditorialEighteenthPass(reviewed)
+  reviewed = applyEditorialNineteenthPass(reviewed)
+  reviewed = applyEditorialTwentiethPass(reviewed)
+  reviewed = applyEditorialTwentyFirstPass(reviewed)
+  reviewed = applyEditorialTwentySecondPass(reviewed)
+  reviewed = applyEditorialTwentyThirdPass(reviewed)
+  reviewed = applyEditorialTwentyFourthPass(reviewed)
+  reviewed = applyEditorialTwentyFifthPass(reviewed)
+  reviewed = applyEditorialTwentySixthPass(reviewed)
+  reviewed = applyEditorialTwentySeventhPass(reviewed)
+  reviewed = applyEditorialTwentyEighthPass(reviewed)
+  reviewed = applyDescriptiveEvidenceFourthPass(reviewed)
+  reviewed = applyDescriptiveEvidenceFifthPass(reviewed)
+  return applyQuestionContext(reviewed)
 }
 
 /** All reviewed core items, including deactivated items retained for traceability. */

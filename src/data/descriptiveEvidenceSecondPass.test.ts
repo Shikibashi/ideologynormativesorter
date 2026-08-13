@@ -27,7 +27,7 @@ describe('second descriptive evidence pass', () => {
   it('leaves no active descriptive item without operational context and a public source', () => {
     const activeDescriptive = coreQuestions.filter((question) => question.active !== false && question.layer === 'descriptive')
 
-    expect(activeDescriptive).toHaveLength(34)
+    expect(activeDescriptive).toHaveLength(58)
     expect(activeDescriptive.every((question) => Boolean(question.evidenceNote?.trim()))).toBe(true)
     expect(activeDescriptive.every((question) => (question.sources?.length ?? 0) > 0)).toBe(true)
   })

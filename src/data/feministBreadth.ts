@@ -70,7 +70,6 @@ export const feministModuleItems: FeministModuleItem[] = [
       axisWeights: [
         { axisId: 'liberty-noninterference', weight: 0.7 },
         { axisId: 'equality-theory', weight: 0.5 },
-        { axisId: 'reform-vs-revolution', weight: -0.4 },
       ],
     },
     constructWeights: {
@@ -87,7 +86,6 @@ export const feministModuleItems: FeministModuleItem[] = [
       allowDontKnow: true,
       confidencePrompt: 'How confident are you in this empirical claim?',
       axisWeights: [
-        { axisId: 'anti-domination', weight: 1 },
         { axisId: 'cultural-plasticity', weight: 0.5 },
       ],
     },
@@ -106,7 +104,6 @@ export const feministModuleItems: FeministModuleItem[] = [
       axisWeights: [
         { axisId: 'anti-domination', weight: 1 },
         { axisId: 'moral-traditionalism', weight: -0.5 },
-        { axisId: 'cultural-plasticity', weight: 0.4 },
       ],
     },
     constructWeights: {
@@ -123,9 +120,7 @@ export const feministModuleItems: FeministModuleItem[] = [
       allowDontKnow: true,
       confidencePrompt: 'How confident are you in this empirical claim?',
       axisWeights: [
-        { axisId: 'equality-theory', weight: 0.8 },
-        { axisId: 'anti-domination', weight: 0.5 },
-        { axisId: 'property-legitimacy', weight: -0.3 },
+        { axisId: 'cultural-plasticity', weight: -0.4 },
       ],
     },
     constructWeights: {
@@ -137,19 +132,17 @@ export const feministModuleItems: FeministModuleItem[] = [
     question: {
       id: 'fm-fem-5',
       prompt:
-        'Gender liberation requires changing ownership, workplace power, and the organization of paid and unpaid labor, not only strengthening anti-discrimination law.',
+        'Gender liberation requires changing the organization of paid and unpaid labor, not only strengthening anti-discrimination law.',
       layer: 'prescriptive',
       ...commonQuestionFields,
       priorityPrompt: 'How important is this structural question to your overall outlook?',
       axisWeights: [
-        { axisId: 'equality-theory', weight: 0.8 },
-        { axisId: 'property-legitimacy', weight: -0.6 },
-        { axisId: 'reform-vs-revolution', weight: 0.5 },
+        { axisId: 'state-action-vs-exit', weight: 0.4 },
+        { axisId: 'reform-vs-revolution', weight: 0.3 },
       ],
     },
     constructWeights: {
       'class-social-reproduction': 1,
-      'structural-patriarchy': 0.3,
     },
   },
   {
@@ -180,9 +173,9 @@ export const feministModuleItems: FeministModuleItem[] = [
       ...commonQuestionFields,
       priorityPrompt: 'How important is this strategic question to your overall outlook?',
       axisWeights: [
-        { axisId: 'authority-legitimacy', weight: -0.8 },
         { axisId: 'centralization-preference', weight: -0.8 },
         { axisId: 'state-action-vs-exit', weight: -0.8 },
+        { axisId: 'reform-vs-revolution', weight: 0.4 },
       ],
     },
     constructWeights: {
@@ -200,7 +193,6 @@ export const feministModuleItems: FeministModuleItem[] = [
       axisWeights: [
         { axisId: 'centralization-preference', weight: -1 },
         { axisId: 'electoralism-vs-direct-action', weight: -0.4 },
-        { axisId: 'anti-domination', weight: 0.4 },
       ],
     },
     constructWeights: {
@@ -215,7 +207,7 @@ export const feministModuleQuestions: Question[] = feministModuleItems.map((item
 /**
  * Specialist construct profiles are hypotheses for follow-up scoring. Marxist
  * and socialist feminism are intentionally grouped at this stage to avoid an
- * unsupported micro-split; the combined tradition is cataloged as a specialist,
+ * unsupported subtype split; the combined tradition is cataloged as a specialist,
  * not promoted into the ordinary questionnaire's primary scoring pool.
  */
 export const feministSpecialistCandidates: FeministSpecialistCandidate[] = [

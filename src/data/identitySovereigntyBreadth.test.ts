@@ -144,14 +144,15 @@ describe('identity and sovereignty breadth module', () => {
     const catalogIds = new Set(labels.map((label) => label.id))
     const primaryIds = new Set(primaryScoringLabels.map((label) => label.id))
 
-    expect(roleForLabel('ethnonationalist')).toBe('primary')
+    expect(roleForLabel('ethnonationalist')).toBe('modifier')
     expect(roleForLabel('multiculturalism')).toBe('modifier')
     expect(roleForLabel('indigenism')).toBe('specialist')
+    expect(profileById('ethnonationalist').every((profile) => profile.status === 'existing-modifier')).toBe(true)
 
     for (const existingId of ['ethnonationalist', 'multiculturalism', 'indigenism']) {
       expect(catalogIds.has(existingId)).toBe(true)
     }
-    expect(primaryIds.has('ethnonationalist')).toBe(true)
+    expect(primaryIds.has('ethnonationalist')).toBe(false)
     expect(primaryIds.has('multiculturalism')).toBe(false)
     expect(primaryIds.has('indigenism')).toBe(false)
 

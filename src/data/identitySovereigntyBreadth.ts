@@ -198,7 +198,6 @@ export const identitySovereigntyModuleItems: IdentitySovereigntyModuleItem[] = [
       ...nationalQuestionFields,
       axisWeights: [
         { axisId: 'anti-domination', weight: 0.4 },
-        { axisId: 'reform-vs-revolution', weight: -0.3 },
       ],
     },
     constructWeights: { 'institutional-recognition': 1 },
@@ -428,7 +427,7 @@ export const identitySovereigntyTraditionProfiles: IdentitySovereigntyTraditionP
   {
     id: 'ethnonationalist',
     name: 'Ethnonationalism',
-    status: 'existing-primary',
+    status: 'existing-modifier',
     variant: 'core ethnonationalism',
     description:
       'Defines nationhood primarily through inherited descent and culture and gives political weight to congruence between the state and the historic core nation.',

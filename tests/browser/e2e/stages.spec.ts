@@ -45,11 +45,11 @@ test('optional collection stays attached to the selected Full-depth profile', as
   await page.getByRole('button', { name: 'Review contribution details' }).click()
 
   await expect(page.getByRole('heading', { name: 'Optional profile contribution' })).toBeVisible()
-  await expect(page.getByText('The selected profile contains 285 questions', { exact: false })).toBeVisible()
+  await expect(page.getByText('The selected profile contains 338 questions', { exact: false })).toBeVisible()
   await page.getByRole('button', { name: 'Continue without contributing' }).click()
 
-  await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuemax', '285')
-  await expect(page.getByLabel('Application status')).toContainText('PROGRESS 1 / 285')
+  await expect(page.getByRole('progressbar', { name: 'Assessment progress' })).toHaveAttribute('aria-valuemax', '338')
+  await expect(page.getByLabel('Application status')).toContainText('PROGRESS 1 / 338')
 })
 
 test('saved session can be resumed and exposes recovery state', async ({ page }) => {
@@ -67,7 +67,7 @@ test('saved session can be resumed and exposes recovery state', async ({ page })
 test('contribution consent reaches the research quiz without changing refusal semantics', async ({ page }) => {
   await page.goto(CONTRIBUTION_PATH)
   await expect(page.getByRole('heading', { name: 'Optional profile contribution' })).toBeVisible()
-  await expect(page.getByLabel('Application context')).toContainText('COLLECTION community-2026')
+  await expect(page.getByLabel('Application context')).toContainText('COLLECTION community-2026-v3')
   await expect(page.getByLabel('Application status')).toContainText('SUBMISSION NOT SENT')
 
   await acceptContributionConsent(page)
@@ -136,6 +136,12 @@ test('shared results, comparison, and the label browser are addressable', async 
   await expect(page.getByRole('heading', { name: 'Your results' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Comparison view' })).toBeVisible()
   await expect(page.getByLabel('Application status')).toContainText('COMPARE ACTIVE')
+  const nearestLabels = page.locator('#labels')
+  const scoredCard = nearestLabels.locator('.label-card').first()
+  await expect(scoredCard).toContainText(/primary scored family|modifier scored independently/)
+  await scoredCard.locator('details.label-source-disclosure > summary').click()
+  await expect(scoredCard.getByText('Sources and scope')).toBeVisible()
+  expect(await scoredCard.locator('.label-source-disclosure a').count()).toBeGreaterThan(0)
   await page.locator('details.full-label-browser > summary').click()
   const labelBrowser = page.locator('details.full-label-browser')
   await expect(labelBrowser.getByRole('heading', { name: 'Browse the public label catalog' })).toBeVisible()
@@ -145,11 +151,12 @@ test('shared results, comparison, and the label browser are addressable', async 
 
   await search.fill('Anarcho-Capitalist')
   await expect(labelBrowser.getByRole('heading', { name: 'Anarcho-Capitalist' })).toBeVisible()
-  await expect(labelBrowser.locator('summary.family-name')).toContainText('Liberal')
+  await expect(labelBrowser.locator('summary.family-name')).toContainText('Anarchist')
+  await expect(labelBrowser.getByText('provisional specialist', { exact: true })).toBeVisible()
 
   await search.fill('Socialist Feminism')
   await expect(labelBrowser.getByRole('heading', { name: 'Socialist and Marxist Feminist Traditions' })).toBeVisible()
-  await expect(labelBrowser.locator('summary.family-name')).toContainText('Socialist')
+  await expect(labelBrowser.getByText('Socialist', { exact: true })).toBeVisible()
   await expect(labelBrowser.getByRole('heading', { name: 'Related traditions' })).toHaveCount(0)
 
   await search.fill('Nyerereism')
