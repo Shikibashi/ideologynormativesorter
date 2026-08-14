@@ -96,7 +96,7 @@ Politics”](https://academic.oup.com/edited-volume/41330/chapter/352334811)
 This change starts `community-2026-v3` with research schema `2026-08-v13`,
 taxonomy `2026-08-taxonomy-v11`, scoring `2026-08-13-taxonomy-v6`, question
 context `2026-08-question-context-v33`, and experimental specialist version
-`2026-08-specialist-v10`. The older `community-2026` and
+`2026-08-specialist-v11`. The older `community-2026` and
 `community-2026-v2` records remain historical; analyses must not pool cohorts
 without a preregistered linking decision.
 

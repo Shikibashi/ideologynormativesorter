@@ -5,6 +5,7 @@ import {
   EDITORIAL_TWENTY_SEVENTH_PASS_VERSION,
   precisionRewritesById,
 } from "./editorialTwentySeventhPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("twenty-seventh editorial pass", () => {
   it("versions and applies each normative precision rewrite", () => {
@@ -17,7 +18,9 @@ describe("twenty-seventh editorial pass", () => {
       expect(question, id).toBeDefined();
       expect(question?.active, id).not.toBe(false);
       expect(question?.layer, id).toBe("normative");
-      expect(question?.prompt, id).toBe(rewrite.prompt);
+      expect(question?.prompt, id).toBe(
+        questionPromptAfterReview(id, rewrite.prompt),
+      );
       expect(question?.version, id).toBe(EDITORIAL_TWENTY_SEVENTH_PASS_VERSION);
       expect(question?.reviewStatus, id).toBe("approved");
     }

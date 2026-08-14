@@ -19,6 +19,7 @@ import { EDITORIAL_TWENTY_FOURTH_PASS_VERSION } from "./editorialTwentyFourthPas
 import { EDITORIAL_TWENTY_FIFTH_PASS_VERSION } from "./editorialTwentyFifthPass";
 import { EDITORIAL_TWENTY_SEVENTH_PASS_VERSION } from "./editorialTwentySeventhPass";
 import { EDITORIAL_TWENTY_EIGHTH_PASS_VERSION } from "./editorialTwentyEighthPass";
+import { questionPromptRewrites } from "./questionPromptReview";
 
 const activeCoreQuestions = coreQuestions.filter(
   (question) => question.active !== false,
@@ -37,13 +38,13 @@ describe("ninth editorial pass", () => {
       "q0314",
     ]);
 
-    for (const [id, rewrite] of Object.entries(ninthPassRewritesById)) {
+    for (const id of Object.keys(ninthPassRewritesById)) {
       const question = questionById.get(id);
       expect(question, `${id} references a missing item`).toBeDefined();
       expect(question!.active).toBe(true);
       expect(question!.reviewStatus).toBe("approved");
       expect(question!.version).toBe(EDITORIAL_NINTH_PASS_VERSION);
-      expect(question!.prompt).toBe(rewrite.prompt);
+      expect(question!.prompt).toBe(questionPromptRewrites[id]);
       expect(question!.axisWeights).toEqual(
         {
           q0075: [
@@ -148,7 +149,7 @@ describe("ninth editorial pass", () => {
         (question) => question.version === EDITORIAL_TWENTY_EIGHTH_PASS_VERSION,
       ),
     ).toHaveLength(2);
-    expect(EXPERIMENTAL_SPECIALIST_VERSION).toBe("2026-08-specialist-v10");
+    expect(EXPERIMENTAL_SPECIALIST_VERSION).toBe("2026-08-specialist-v11");
     expect(
       specialistQuestions.every(
         (question) =>

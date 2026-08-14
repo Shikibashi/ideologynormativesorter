@@ -8,6 +8,7 @@ import {
   descriptiveConstructCorrectionsById,
   EDITORIAL_TWENTY_FIFTH_PASS_VERSION,
 } from "./editorialTwentyFifthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("thirteenth editorial pass", () => {
   it("narrows the three researched active items without changing their measurement layers", () => {
@@ -21,7 +22,9 @@ describe("thirteenth editorial pass", () => {
     for (const [id, rewrite] of Object.entries(thirteenthPassRewritesById)) {
       const question = questionById.get(id)!;
       expect(question.active).toBe(true);
-      expect(question.prompt).toBe(rewrite.prompt);
+      expect(question.prompt).toBe(
+        questionPromptAfterReview(id, rewrite.prompt),
+      );
       expect(question.evidenceNote).toBe(rewrite.evidenceNote);
       expect(question.sources?.map((source) => source.title)).toEqual(
         rewrite.sourceIds.map((sourceId) => {

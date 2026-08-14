@@ -63,6 +63,8 @@ export function QuizScreen({
   const [saveState, setSaveState] =
     useState<QuizScreenStatus["save"]>("current");
   const [advanceNotice, setAdvanceNotice] = useState<string | null>(null);
+  const questionPromptRef = useRef<HTMLParagraphElement>(null);
+  const shouldRevealAdvanceRef = useRef(false);
   const question = questions[index];
   const selected = answers[question.id];
   const isLast = index === questions.length - 1;
@@ -87,6 +89,15 @@ export function QuizScreen({
       save: saveState,
     });
   }, [index, onStatusChange, question.layer, questions.length, saveState]);
+
+  useEffect(() => {
+    if (!shouldRevealAdvanceRef.current) return;
+    shouldRevealAdvanceRef.current = false;
+    const target = questionPromptRef.current;
+    if (typeof target?.scrollIntoView === "function") {
+      target.scrollIntoView({ block: "center", behavior: "auto" });
+    }
+  }, [index]);
 
   // Persist only when the answer object changes. This also avoids Strict Mode
   // replaying a save announcement for an untouched restored session.
@@ -140,7 +151,8 @@ export function QuizScreen({
     if (isLast) {
       onComplete(next);
     } else {
-      setAdvanceNotice(`Advanced to item ${index + 2} of ${questions.length}.`);
+      shouldRevealAdvanceRef.current = true;
+      setAdvanceNotice(`Next question · ${index + 2} / ${questions.length}`);
       setIndex(index + 1);
     }
   }
@@ -207,7 +219,13 @@ export function QuizScreen({
         <p className="muted question-context">
           {positionLabel} &middot; {salienceQuestion}
         </p>
-        <p className="prompt">{prompt}</p>
+        <p
+          key={`prompt-${question.id}`}
+          ref={questionPromptRef}
+          className={`prompt${advanceNotice ? " question-prompt--advanced" : ""}`}
+        >
+          {prompt}
+        </p>
         <p className="muted question-help">{helpText}</p>
         <div
           className="scale"
@@ -301,7 +319,13 @@ export function QuizScreen({
           : ""}
       </p>
 
-      <p className="prompt">{question.prompt}</p>
+      <p
+        key={`prompt-${question.id}`}
+        ref={questionPromptRef}
+        className={`prompt${advanceNotice ? " question-prompt--advanced" : ""}`}
+      >
+        {question.prompt}
+      </p>
       <p className="muted question-help help-text">{helpText}</p>
       {(question.contextNote || question.evidenceNote) &&
         (question.sources?.length ?? 0) > 0 && (

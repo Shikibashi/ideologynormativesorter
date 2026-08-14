@@ -4,6 +4,7 @@ import {
   EDITORIAL_TWENTY_SECOND_PASS_VERSION,
   twentySecondPassRewritesById,
 } from "./editorialTwentySecondPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("twenty-second editorial pass", () => {
   it("registers and applies each source-backed correction", () => {
@@ -22,7 +23,9 @@ describe("twenty-second editorial pass", () => {
     for (const [id, rewrite] of Object.entries(twentySecondPassRewritesById)) {
       const question = questionById.get(id)!;
       expect(question.active, id).toBe(true);
-      expect(question.prompt, id).toBe(rewrite.prompt);
+      expect(question.prompt, id).toBe(
+        questionPromptAfterReview(id, rewrite.prompt),
+      );
       expect(question.evidenceNote, id).toBe(rewrite.evidenceNote);
       expect(question.version, id).toBe(EDITORIAL_TWENTY_SECOND_PASS_VERSION);
       expect(question.reviewStatus, id).toBe("approved");

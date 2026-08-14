@@ -16,6 +16,7 @@ import {
   descriptiveConstructCorrectionsById as v26Corrections,
   EDITORIAL_TWENTY_SIXTH_PASS_VERSION,
 } from "./editorialTwentySixthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("eighteenth editorial pass", () => {
   it("registers and applies each source-backed descriptive rewrite", () => {
@@ -27,9 +28,12 @@ describe("eighteenth editorial pass", () => {
       expect(question.active, id).toBe(true);
       expect(question.layer, id).toBe("descriptive");
       expect(question.prompt, id).toBe(
-        v26Corrections[id]?.prompt ??
-          descriptiveConstructCorrectionsById[id]?.prompt ??
-          rewrite.prompt,
+        questionPromptAfterReview(
+          id,
+          v26Corrections[id]?.prompt ??
+            descriptiveConstructCorrectionsById[id]?.prompt ??
+            rewrite.prompt,
+        ),
       );
       expect(question.evidenceNote, id).toBe(rewrite.evidenceNote);
       expect(question.version, id).toBe(

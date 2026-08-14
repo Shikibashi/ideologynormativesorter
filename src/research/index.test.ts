@@ -14,6 +14,7 @@ import {
   SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
   SPECIALIST_ASSIGNMENT_STRATEGY,
 } from "../specialist";
+import { questionById } from "../data/effectiveQuestions";
 import { TAXONOMY_VERSION } from "../data/labelTaxonomy";
 import { PRIMARY_MEASUREMENT_VERSION } from "../data/primaryMeasurement";
 import { MODIFIER_MEASUREMENT_VERSION } from "../data/modifierMeasurement";
@@ -59,6 +60,31 @@ const timing = {
 };
 
 describe("research submission", () => {
+  it("copies the final interrogative prompt into research item snapshots", () => {
+    const effectiveQuestion = questionById.get("q0067")!;
+    const submission = buildResearchSubmission({
+      studyId: "prompt-review-test",
+      participantId: "p_prompt-review",
+      administration: "test",
+      bankVersion: "bank-v1",
+      scoringVersion: "score-v1",
+      tier: "quick",
+      consent,
+      identity: { ageBand: "25-34" },
+      predictedLabelIds: [],
+      answers: {
+        q0067: { questionId: "q0067", value: 2 },
+      },
+      questions: [effectiveQuestion],
+      startedAt: "2026-07-18T12:10:00.000Z",
+      completedAt: "2026-07-18T12:20:00.000Z",
+      resumed: false,
+    });
+
+    expect(submission.itemMap[0].prompt).toBe(effectiveQuestion.prompt);
+    expect(submission.itemMap[0].prompt.endsWith("?")).toBe(true);
+  });
+
   it("uses a stable pseudonymous participant id", () => {
     const values = new Map<string, string>();
     const storage = {

@@ -19,6 +19,7 @@ import {
   questionById,
   questionsForTier,
 } from "./effectiveQuestions";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 const axisIds = new Set(axes.map((axis) => axis.id));
 
@@ -41,7 +42,10 @@ describe("seventh editorial pass", () => {
       const twelfthRewrite = twelfthPassRewritesById[id];
       const twentiethRewrite = twentiethPassRewritesById[id];
       expect(question!.prompt).toBe(
-        twentiethRewrite?.prompt ?? twelfthRewrite?.prompt ?? rewrite.prompt,
+        questionPromptAfterReview(
+          id,
+          twentiethRewrite?.prompt ?? twelfthRewrite?.prompt ?? rewrite.prompt,
+        ),
       );
       expect(question!.axisWeights).toEqual(rewrite.axisWeights);
       expect(question!.theoryContext).toBe(rewrite.theoryContext);

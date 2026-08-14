@@ -24,6 +24,7 @@ import {
   descriptiveConstructCorrectionsById,
   EDITORIAL_TWENTY_FIFTH_PASS_VERSION,
 } from "./editorialTwentyFifthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("tenth editorial pass", () => {
   it("separates the live religion/public-law duplicate without changing score fields", () => {
@@ -49,17 +50,34 @@ describe("tenth editorial pass", () => {
     expect(q0406.version).toBe(EDITORIAL_TENTH_PASS_VERSION);
     expect(q0242.reviewStatus).toBe("approved");
     expect(q0406.reviewStatus).toBe("approved");
-    expect(q0242.prompt).toBe(tenthPassRewritesById.q0242.prompt);
-    expect(q0406.prompt).toBe(tenthPassRewritesById.q0406.prompt);
-    expect(q0248.prompt).toBe(
-      fourteenthPassRewritesById.q0248?.prompt ??
-        tenthPassRewritesById.q0248.prompt,
+    expect(q0242.prompt).toBe(
+      questionPromptAfterReview("q0242", tenthPassRewritesById.q0242.prompt),
     );
-    expect(q0328.prompt).toBe(twentiethPassRewritesById.q0328.prompt);
-    expect(q0350.prompt).toBe(tenthPassRewritesById.q0350.prompt);
+    expect(q0406.prompt).toBe(
+      questionPromptAfterReview("q0406", tenthPassRewritesById.q0406.prompt),
+    );
+    expect(q0248.prompt).toBe(
+      questionPromptAfterReview(
+        "q0248",
+        fourteenthPassRewritesById.q0248?.prompt ??
+          tenthPassRewritesById.q0248.prompt,
+      ),
+    );
+    expect(q0328.prompt).toBe(
+      questionPromptAfterReview(
+        "q0328",
+        twentiethPassRewritesById.q0328.prompt,
+      ),
+    );
+    expect(q0350.prompt).toBe(
+      questionPromptAfterReview("q0350", tenthPassRewritesById.q0350.prompt),
+    );
     expect(q0368.prompt).toBe(
-      fourteenthPassRewritesById.q0368?.prompt ??
-        tenthPassRewritesById.q0368.prompt,
+      questionPromptAfterReview(
+        "q0368",
+        fourteenthPassRewritesById.q0368?.prompt ??
+          tenthPassRewritesById.q0368.prompt,
+      ),
     );
     for (const question of [q0248, q0328, q0350, q0368]) {
       expect(question.active).toBe(true);

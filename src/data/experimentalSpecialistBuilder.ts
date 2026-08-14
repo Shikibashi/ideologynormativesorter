@@ -40,7 +40,7 @@ type ExperimentalQuestion = {
 
 // The wave roster and construct bank changed after v3. Keep the version
 // explicit so prior cohort records are never interpreted as this bank.
-export const EXPERIMENTAL_SPECIALIST_VERSION = "2026-08-specialist-v10";
+export const EXPERIMENTAL_SPECIALIST_VERSION = "2026-08-specialist-v11";
 
 export function buildQuestions(
   moduleId: string,

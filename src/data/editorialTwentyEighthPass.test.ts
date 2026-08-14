@@ -5,6 +5,7 @@ import {
   applyEditorialTwentyEighthPass,
   precisionRewritesById,
 } from "./editorialTwentyEighthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("twenty-eighth editorial pass", () => {
   it("versions and applies the remaining high-confidence compound rewrites", () => {
@@ -19,7 +20,9 @@ describe("twenty-eighth editorial pass", () => {
       const question = questionById.get(id);
       expect(question, id).toBeDefined();
       expect(question?.active, id).not.toBe(false);
-      expect(question?.prompt, id).toBe(rewrite.prompt);
+      expect(question?.prompt, id).toBe(
+        questionPromptAfterReview(id, rewrite.prompt),
+      );
       expect(question?.reviewStatus, id).toBe("approved");
       expect(question?.version, id).toBe(EDITORIAL_TWENTY_EIGHTH_PASS_VERSION);
     }

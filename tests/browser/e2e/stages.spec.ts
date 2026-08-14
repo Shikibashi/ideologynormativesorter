@@ -75,11 +75,40 @@ test("mobile quiz shows the forward cue where the next question is visible", asy
   await page.getByRole("radio", { name: /Balanced profile/ }).check();
   await page.getByRole("button", { name: "Begin assessment" }).click();
 
+  await page.evaluate(() =>
+    window.scrollTo(0, document.documentElement.scrollHeight),
+  );
   await answerCurrentQuestion(page);
 
-  await expect(page.getByTestId("question-advance-cue")).toContainText(
-    /Advanced to item 2 of 206/i,
-  );
+  const advanceCue = page.getByTestId("question-advance-cue");
+  await expect(advanceCue).toContainText(/Next question · 2 \/ 206/i);
+  await expect(advanceCue).toBeVisible();
+  const nextPrompt = page.locator(".prompt").first();
+  await expect(nextPrompt).toBeVisible();
+  expect(
+    await advanceCue.evaluate((element) => ({
+      cue: getComputedStyle(element).animationName,
+      sweep: getComputedStyle(element, "::after").animationName,
+      prompt: getComputedStyle(document.querySelector(".prompt")!)
+        .animationName,
+    })),
+  ).toEqual({
+    cue: "question-advance-cue-in",
+    sweep: "question-advance-sweep",
+    prompt: "question-prompt-in",
+  });
+  expect(
+    await advanceCue.evaluate((element) => {
+      const rect = element.getBoundingClientRect();
+      return rect.top >= 0 && rect.bottom <= window.innerHeight;
+    }),
+  ).toBe(true);
+  expect(
+    await nextPrompt.evaluate((element) => {
+      const rect = element.getBoundingClientRect();
+      return rect.top >= 0 && rect.bottom <= window.innerHeight;
+    }),
+  ).toBe(true);
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,

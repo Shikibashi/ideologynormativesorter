@@ -4,6 +4,7 @@ import {
   EDITORIAL_TWENTY_FIRST_PASS_VERSION,
   twentyFirstPassRewritesById,
 } from "./editorialTwentyFirstPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("twenty-first editorial pass", () => {
   it("registers and applies each source-backed prescriptive rewrite", () => {
@@ -20,7 +21,9 @@ describe("twenty-first editorial pass", () => {
       const question = questionById.get(id)!;
       expect(question.active, id).toBe(true);
       expect(question.layer, id).toBe("prescriptive");
-      expect(question.prompt, id).toBe(rewrite.prompt);
+      expect(question.prompt, id).toBe(
+        questionPromptAfterReview(id, rewrite.prompt),
+      );
       expect(question.evidenceNote, id).toBe(rewrite.evidenceNote);
       expect(question.version, id).toBe(EDITORIAL_TWENTY_FIRST_PASS_VERSION);
       expect(question.reviewStatus, id).toBe("approved");

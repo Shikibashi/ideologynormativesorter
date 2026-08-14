@@ -227,7 +227,7 @@ export const descriptiveEvidenceById: Readonly<
     sources: [
       source(
         "Respect for Democracy, Human Rights and the Rule of Law during States of Emergency",
-        "https://www.venice.coe.int/webforms/documents/?pdf=CDL-AD%282020%29014-e",
+        "https://www.venice.coe.int/webforms/documents/default.aspx?pdffile=CDL-AD%282020%29014-e",
         "Venice Commission",
       ),
       source(
@@ -330,7 +330,7 @@ export const descriptiveEvidenceById: Readonly<
     sources: [
       source(
         "Lessons from the Coalition: International Experiences from the Afghanistan Reconstruction",
-        "https://www.sigar.mil/Portals/147/Files/Reports/Lessons-Learned/SIGAR-16-59-LL.pdf",
+        "https://www.sigar.mil/Reports/Article-Display/Article/4020346/lessons-from-the-coalition-international-experiences-from-the-afghanistan-recon/",
         "Special Inspector General for Afghanistan Reconstruction",
       ),
     ],

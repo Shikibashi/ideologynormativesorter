@@ -11,6 +11,7 @@ import {
   questionsForTier,
 } from "./effectiveQuestions";
 import { EDITORIAL_TWENTY_THIRD_PASS_VERSION } from "./editorialTwentyThirdPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("eighth editorial pass", () => {
   it("quarantines the three independently identified evidence-to-construct mismatches", () => {
@@ -41,7 +42,9 @@ describe("eighth editorial pass", () => {
     expect(question?.active).toBe(true);
     expect(question?.reviewStatus).toBe("approved");
     expect(question?.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION);
-    expect(question?.prompt).toBe(rewrite.prompt);
+    expect(question?.prompt).toBe(
+      questionPromptAfterReview("q0347", rewrite.prompt),
+    );
     expect(question?.axisWeights).toEqual([
       { axisId: "democratic-confidence", weight: 1 },
     ]);
@@ -50,7 +53,9 @@ describe("eighth editorial pass", () => {
     expect(compromise?.active).toBe(true);
     expect(compromise?.reviewStatus).toBe("approved");
     expect(compromise?.version).toBe(EDITORIAL_TWENTY_THIRD_PASS_VERSION);
-    expect(compromise?.prompt).toBe(eighthPassRewritesById.q0423.prompt);
+    expect(compromise?.prompt).toBe(
+      questionPromptAfterReview("q0423", eighthPassRewritesById.q0423.prompt),
+    );
     expect(compromise?.axisWeights).toEqual([
       { axisId: "compromise-vs-persistence", weight: 1 },
     ]);

@@ -346,7 +346,7 @@ export const questionContextSources: Readonly<Record<string, QuestionSource>> =
     },
     referendumSafeguards: {
       title: "Revised Code of Good Practice on Referendums",
-      url: "https://www.venice.coe.int/webforms/documents/?pdf=CDL-AD%282022%29015-e",
+      url: "https://www.venice.coe.int/webforms/documents/default.aspx?pdffile=CDL-AD%282022%29015-e",
       publisher:
         "European Commission for Democracy through Law (Venice Commission)",
     },
@@ -441,7 +441,7 @@ export const questionContextSources: Readonly<Record<string, QuestionSource>> =
     afghanistanReconstruction: {
       title:
         "Lessons from the Coalition: International Experiences from the Afghanistan Reconstruction",
-      url: "https://www.sigar.mil/Portals/147/Files/Reports/Lessons-Learned/SIGAR-16-59-LL.pdf",
+      url: "https://www.sigar.mil/Reports/Article-Display/Article/4020346/lessons-from-the-coalition-international-experiences-from-the-afghanistan-recon/",
       publisher: "Special Inspector General for Afghanistan Reconstruction",
     },
     landTenure: {

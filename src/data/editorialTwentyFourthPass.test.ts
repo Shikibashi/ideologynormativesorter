@@ -4,6 +4,7 @@ import {
   boundaryRewritesById,
   EDITORIAL_TWENTY_FOURTH_PASS_VERSION,
 } from "./editorialTwentyFourthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("twenty-fourth editorial pass", () => {
   it("registers and applies each identity/religion boundary correction", () => {
@@ -15,7 +16,9 @@ describe("twenty-fourth editorial pass", () => {
     for (const [id, rewrite] of Object.entries(boundaryRewritesById)) {
       const question = questionById.get(id)!;
       expect(question.active, id).toBe(true);
-      expect(question.prompt, id).toBe(rewrite.prompt);
+      expect(question.prompt, id).toBe(
+        questionPromptAfterReview(id, rewrite.prompt),
+      );
       expect(question.version, id).toBe(EDITORIAL_TWENTY_FOURTH_PASS_VERSION);
       expect(question.reviewStatus, id).toBe("approved");
     }

@@ -4,6 +4,7 @@ import {
   EDITORIAL_SIXTEENTH_PASS_VERSION,
   sixteenthPassRewritesById,
 } from "./editorialSixteenthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("sixteenth editorial pass", () => {
   it("narrows the remaining referendum safeguard bundle", () => {
@@ -13,7 +14,9 @@ describe("sixteenth editorial pass", () => {
 
     expect(question.active).toBe(true);
     expect(question.layer).toBe("prescriptive");
-    expect(question.prompt).toBe(rewrite.prompt);
+    expect(question.prompt).toBe(
+      questionPromptAfterReview("q0355", rewrite.prompt),
+    );
     expect(question.evidenceNote).toBe(rewrite.evidenceNote);
     expect(question.sources).toHaveLength(rewrite.sourceIds.length);
     expect(

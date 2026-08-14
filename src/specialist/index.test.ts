@@ -45,14 +45,14 @@ describe("specialist module registry", () => {
 
   it("versions focused module revisions separately from the experimental wave roster", () => {
     expect(specialistModuleById.get("feminist-faction-module")?.version).toBe(
-      "2026-08-v5",
+      "2026-08-v6",
     );
     expect(
       specialistModuleById.get("identity-sovereignty-module")?.version,
-    ).toBe("2026-08-v4");
+    ).toBe("2026-08-v5");
     expect(
       specialistModuleById.get("monarchist-municipal-module")?.version,
-    ).toBe("2026-08-specialist-v10");
+    ).toBe("2026-08-specialist-v11");
   });
 
   it("keeps specialist compatibility axes in the question layer", () => {

@@ -4,6 +4,7 @@ import {
   descriptiveConstructCorrectionsById,
   EDITORIAL_TWENTY_SIXTH_PASS_VERSION,
 } from "./editorialTwentySixthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("twenty-sixth editorial pass", () => {
   it("versions and applies each source-bounded correction", () => {
@@ -22,7 +23,9 @@ describe("twenty-sixth editorial pass", () => {
       expect(question?.version, id).toBe(EDITORIAL_TWENTY_SIXTH_PASS_VERSION);
       expect(question?.reviewStatus, id).toBe("approved");
       if (correction.prompt)
-        expect(question?.prompt, id).toBe(correction.prompt);
+        expect(question?.prompt, id).toBe(
+          questionPromptAfterReview(id, correction.prompt),
+        );
     }
   });
 

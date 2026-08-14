@@ -117,7 +117,7 @@ pluralist religious-party competition. The item context uses [Oxford Research
 Encyclopedia, “Secularism in Political
 Philosophy”](https://academic.oup.com/edited-volume/62239/chapter-abstract/550724223),
 alongside secularism and civil-political-rights sources. The experimental
-specialist roster is now 68 items and versioned `2026-08-specialist-v10`;
+specialist roster is now 68 items and versioned `2026-08-specialist-v11`;
 Theocratic Politics has moved from ordinary modifier scoring to this
 direct-evidence-only experimental comparison. Neither change alters ordinary
 primary scoring or specialist assignment.

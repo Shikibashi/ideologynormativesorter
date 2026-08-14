@@ -29,6 +29,7 @@ import { fifthPassReplacementRequiredById } from "./editorialFifthPass";
 import { seventhPassReplacementRequiredById } from "./editorialSeventhPass";
 import { eighthPassReplacementRequiredById } from "./editorialEighthPass";
 import { twentyFirstPassRewritesById } from "./editorialTwentyFirstPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 const LAYERS = ["normative", "descriptive", "prescriptive"] as const;
 
@@ -119,7 +120,10 @@ describe("respondent-facing question review", () => {
       expect(reviewed.version).toBe(RESPONDENT_QUESTION_REVIEW_VERSION);
       expect(reviewed.reviewStatus).toBe("approved");
       expect(effective!.prompt).toBe(
-        twentyFirstPassRewritesById[questionId]?.prompt ?? correction.prompt,
+        questionPromptAfterReview(
+          questionId,
+          twentyFirstPassRewritesById[questionId]?.prompt ?? correction.prompt,
+        ),
       );
     }
   });

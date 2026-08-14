@@ -12,6 +12,7 @@ import {
   descriptiveConstructCorrectionsById,
   EDITORIAL_TWENTY_FIFTH_PASS_VERSION,
 } from "./editorialTwentyFifthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("twentieth editorial pass", () => {
   it("registers and applies each research-scoped rewrite", () => {
@@ -27,7 +28,9 @@ describe("twentieth editorial pass", () => {
     for (const [id, rewrite] of Object.entries(twentiethPassRewritesById)) {
       const question = questionById.get(id)!;
       expect(question.active, id).toBe(true);
-      expect(question.prompt, id).toBe(rewrite.prompt);
+      expect(question.prompt, id).toBe(
+        questionPromptAfterReview(id, rewrite.prompt),
+      );
       expect(question.evidenceNote, id).toBe(rewrite.evidenceNote);
       expect(question.version, id).toBe(
         descriptiveConstructCorrectionsById[id]

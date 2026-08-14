@@ -44,7 +44,7 @@ const normsSource = source(
 );
 const informalInstitutionsSource = source(
   "Formal and informal institutions: some problems of meaning, impact, and interaction",
-  "https://doi.org/10.1017/S1744137423000291",
+  "https://doi.org/10.1017/S1744137424000249",
   "Journal of Institutional Economics / Cambridge University Press",
 );
 

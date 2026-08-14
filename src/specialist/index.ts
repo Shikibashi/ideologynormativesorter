@@ -2,6 +2,7 @@ import type { AnswerMap, Question } from "../types";
 import { applyQuestionContext } from "../data/questionContext";
 import { applyEditorialNinthPass } from "../data/editorialNinthPass";
 import { applySpecialistDescriptiveEvidence } from "../data/specialistDescriptiveEvidence";
+import { applyQuestionPromptReview } from "../data/questionPromptReview";
 import {
   experimentalSpecialistModuleSpecs,
   type ExperimentalSpecialistModuleSpec,
@@ -113,6 +114,14 @@ export const SPECIALIST_ASSIGNMENT_MODULE_IDS = [
   "monarchist-municipal-module",
 ] as const satisfies readonly SpecialistModuleId[];
 
+function applySpecialistQuestionReview(question: Question): Question {
+  return applyQuestionPromptReview(
+    applyQuestionContext(
+      applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question)),
+    ),
+  );
+}
+
 export interface SpecialistModuleAssignment {
   moduleId: SpecialistModuleId;
   strategy: SpecialistAssignmentStrategy;
@@ -178,7 +187,7 @@ const identityCriterionOptions: SpecialistCriterionOption[] =
 const specialistModules: SpecialistModuleDefinition[] = [
   {
     id: FEMINIST_MODULE_ID,
-    version: "2026-08-v5",
+    version: "2026-08-v6",
     title: "Feminist political traditions",
     shortTitle: "Feminist traditions",
     description:
@@ -186,11 +195,7 @@ const specialistModules: SpecialistModuleDefinition[] = [
     invitationNote:
       "Questions concern gender, family, work, hierarchy, and political strategy. You may skip the module without affecting your main result or study participation.",
     estimatedMinutes: 3,
-    questions: feministModuleQuestions.map((question) =>
-      applyQuestionContext(
-        applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question)),
-      ),
-    ),
+    questions: feministModuleQuestions.map(applySpecialistQuestionReview),
     criterionOptions: feministCriterionOptions,
     constructWeightsByQuestionId: copyConstructWeights(feministModuleItems),
     score: (answers) => {
@@ -212,7 +217,7 @@ const specialistModules: SpecialistModuleDefinition[] = [
   },
   {
     id: IDENTITY_SOVEREIGNTY_MODULE_ID,
-    version: "2026-08-v4",
+    version: "2026-08-v5",
     title: "Identity, nationalism, and sovereignty",
     shortTitle: "Identity and sovereignty",
     description:
@@ -220,10 +225,8 @@ const specialistModules: SpecialistModuleDefinition[] = [
     invitationNote:
       "Questions concern race, ethnicity, nationhood, colonialism, Indigenous sovereignty, Black political autonomy, and Pan-Africanism. You may skip the module without affecting your main result or study participation.",
     estimatedMinutes: 6,
-    questions: identitySovereigntyModuleQuestions.map((question) =>
-      applyQuestionContext(
-        applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question)),
-      ),
+    questions: identitySovereigntyModuleQuestions.map(
+      applySpecialistQuestionReview,
     ),
     criterionOptions: identityCriterionOptions,
     constructWeightsByQuestionId: copyConstructWeights(
@@ -353,11 +356,7 @@ for (const spec of experimentalSpecialistModuleSpecs) {
     description: spec.description,
     invitationNote: spec.invitationNote,
     estimatedMinutes: spec.estimatedMinutes,
-    questions: spec.questions.map((question) =>
-      applyQuestionContext(
-        applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question)),
-      ),
-    ),
+    questions: spec.questions.map(applySpecialistQuestionReview),
     criterionOptions: spec.candidates.map((candidate) => ({
       id: candidate.id,
       traditionId: candidate.id,

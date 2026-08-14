@@ -5,6 +5,7 @@ import {
   fifteenthPassRewritesById,
 } from "./editorialFifteenthPass";
 import { questionContextSources } from "./questionContext";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("fifteenth editorial pass", () => {
   it("narrows six high-risk prescriptive items and preserves their layer", () => {
@@ -22,7 +23,9 @@ describe("fifteenth editorial pass", () => {
       const question = questionById.get(id)!;
       expect(question.active).toBe(true);
       expect(question.layer).toBe("prescriptive");
-      expect(question.prompt).toBe(rewrite.prompt);
+      expect(question.prompt).toBe(
+        questionPromptAfterReview(id, rewrite.prompt),
+      );
       expect(question.evidenceNote).toBe(rewrite.evidenceNote);
       expect(question.sources?.map((source) => source.url)).toEqual(
         rewrite.sourceIds.map(

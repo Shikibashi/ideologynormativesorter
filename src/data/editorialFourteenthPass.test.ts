@@ -8,6 +8,7 @@ import {
   descriptiveConstructCorrectionsById,
   EDITORIAL_TWENTY_FIFTH_PASS_VERSION,
 } from "./editorialTwentyFifthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("fourteenth editorial pass", () => {
   it("keeps the reviewed descriptive items within their source scope", () => {
@@ -23,7 +24,9 @@ describe("fourteenth editorial pass", () => {
       const question = questionById.get(id)!;
       expect(question.active).toBe(true);
       expect(question.layer).toBe("descriptive");
-      expect(question.prompt).toBe(rewrite.prompt);
+      expect(question.prompt).toBe(
+        questionPromptAfterReview(id, rewrite.prompt),
+      );
       expect(question.evidenceNote).toBe(rewrite.evidenceNote);
       expect(question.sources?.length).toBeGreaterThanOrEqual(
         rewrite.sourceIds.length,

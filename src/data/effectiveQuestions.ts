@@ -128,6 +128,10 @@ import {
   applyQuestionContext,
   QUESTION_CONTEXT_VERSION,
 } from "./questionContext";
+import {
+  applyQuestionPromptReview,
+  QUESTION_PROMPT_REVIEW_VERSION,
+} from "./questionPromptReview";
 
 export const QUESTION_BANK_VERSION = [
   RAW_QUESTION_BANK_VERSION,
@@ -163,6 +167,7 @@ export const QUESTION_BANK_VERSION = [
   DESCRIPTIVE_EVIDENCE_FOURTH_PASS_VERSION,
   DESCRIPTIVE_EVIDENCE_FIFTH_PASS_VERSION,
   QUESTION_CONTEXT_VERSION,
+  QUESTION_PROMPT_REVIEW_VERSION,
 ].join("+");
 export { SCORING_VERSION };
 
@@ -201,6 +206,7 @@ export function getBankFingerprint(): string {
     EDITORIAL_TWENTY_EIGHTH_PASS_VERSION,
     DESCRIPTIVE_EVIDENCE_FIFTH_PASS_VERSION,
     QUESTION_CONTEXT_VERSION,
+    QUESTION_PROMPT_REVIEW_VERSION,
   ].join("+");
 }
 
@@ -235,7 +241,7 @@ function applyEffectiveReview(question: Question): Question {
   reviewed = applyEditorialTwentyEighthPass(reviewed);
   reviewed = applyDescriptiveEvidenceFourthPass(reviewed);
   reviewed = applyDescriptiveEvidenceFifthPass(reviewed);
-  return applyQuestionContext(reviewed);
+  return applyQuestionPromptReview(applyQuestionContext(reviewed));
 }
 
 /** All reviewed core items, including deactivated items retained for traceability. */

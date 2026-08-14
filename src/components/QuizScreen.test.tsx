@@ -135,7 +135,7 @@ describe("QuizScreen descriptive questions", () => {
 
     expect(screen.getByTestId("question-advance-cue")).toBeVisible();
     expect(screen.getByTestId("question-advance-cue")).toHaveTextContent(
-      "Advanced to item 2 of 2.",
+      "Next question · 2 / 2",
     );
     expect(screen.getByTestId("question-advance-cue")).toHaveAttribute(
       "aria-hidden",

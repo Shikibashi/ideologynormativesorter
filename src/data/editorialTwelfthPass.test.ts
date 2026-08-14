@@ -4,6 +4,7 @@ import {
   EDITORIAL_TWELFTH_PASS_VERSION,
   twelfthPassRewritesById,
 } from "./editorialTwelfthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("twelfth editorial pass", () => {
   it("narrows the intergroup-contact claim to the reviewed evidence scope", () => {
@@ -14,7 +15,9 @@ describe("twelfth editorial pass", () => {
     const rewrite = twelfthPassRewritesById.q0207;
 
     expect(question.layer).toBe("descriptive");
-    expect(question.prompt).toBe(rewrite.prompt);
+    expect(question.prompt).toBe(
+      questionPromptAfterReview("q0207", rewrite.prompt),
+    );
     expect(question.evidenceNote).toBe(rewrite.evidenceNote);
     expect(question.sources?.map((source) => source.title)).toEqual([
       "The Contact Hypothesis Re-evaluated",

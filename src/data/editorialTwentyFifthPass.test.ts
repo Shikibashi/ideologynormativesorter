@@ -8,6 +8,7 @@ import {
   descriptiveConstructCorrectionsById as v26Corrections,
   EDITORIAL_TWENTY_SIXTH_PASS_VERSION,
 } from "./editorialTwentySixthPass";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("twenty-fifth editorial pass", () => {
   it("versions and applies each construct correction", () => {
@@ -31,9 +32,10 @@ describe("twenty-fifth editorial pass", () => {
           : EDITORIAL_TWENTY_FIFTH_PASS_VERSION,
       );
       expect(question?.reviewStatus, id).toBe("approved");
-      if (v26Corrections[id]?.prompt ?? correction.prompt)
+      const expectedPrompt = v26Corrections[id]?.prompt ?? correction.prompt;
+      if (expectedPrompt)
         expect(question?.prompt, id).toBe(
-          v26Corrections[id]?.prompt ?? correction.prompt,
+          questionPromptAfterReview(id, expectedPrompt),
         );
     }
   });

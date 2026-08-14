@@ -17,6 +17,7 @@ import {
   nineteenthPassRewritesById,
 } from "./editorialNineteenthPass";
 import { questionContextSources } from "./questionContext";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 describe("seventeenth editorial pass", () => {
   it("registers and applies the source-backed descriptive narrowing pass", () => {
@@ -32,10 +33,13 @@ describe("seventeenth editorial pass", () => {
       expect(question.layer, id).toBe("descriptive");
       const laterRewrite = nineteenthPassRewritesById[id];
       expect(question.prompt, id).toBe(
-        v26Corrections[id]?.prompt ??
-          descriptiveConstructCorrectionsById[id]?.prompt ??
-          laterRewrite?.prompt ??
-          rewrite.prompt,
+        questionPromptAfterReview(
+          id,
+          v26Corrections[id]?.prompt ??
+            descriptiveConstructCorrectionsById[id]?.prompt ??
+            laterRewrite?.prompt ??
+            rewrite.prompt,
+        ),
       );
       expect(question.evidenceNote, id).toBe(
         laterRewrite?.evidenceNote ?? rewrite.evidenceNote,

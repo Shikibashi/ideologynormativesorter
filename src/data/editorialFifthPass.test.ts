@@ -70,8 +70,94 @@ import {
   questionById,
   questionsForTier,
 } from "./effectiveQuestions";
+import { questionPromptAfterReview } from "./questionPromptReview";
 
 const axisIds = new Set(axes.map((axis) => axis.id));
+
+function effectiveVersionFor(id: string, fallback: string): string {
+  return precisionRewritesById[id]
+    ? EDITORIAL_TWENTY_SEVENTH_PASS_VERSION
+    : v26Corrections[id]
+      ? EDITORIAL_TWENTY_SIXTH_PASS_VERSION
+      : descriptiveConstructCorrectionsById[id]
+        ? EDITORIAL_TWENTY_FIFTH_PASS_VERSION
+        : confidenceCoverageTierPromotions[id]
+          ? EDITORIAL_TWENTY_THIRD_PASS_VERSION
+          : fallback;
+}
+
+function expectedWordingPrompt(
+  id: string,
+  fallback: string,
+): string | undefined {
+  const precisionRewrite = precisionRewritesById[id];
+  const twentiethRewrite = twentiethPassRewritesById[id];
+  const eighteenthRewrite = eighteenthPassRewritesById[id];
+  const seventeenthRewrite = seventeenthPassRewritesById[id];
+  const sixteenthRewrite = sixteenthPassRewritesById[id];
+  const fifteenthRewrite = fifteenthPassRewritesById[id];
+  const fourteenthRewrite = fourteenthPassRewritesById[id];
+  const thirteenthRewrite = thirteenthPassRewritesById[id];
+  const eighthRewrite = eighthPassRewritesById[id];
+  const seventhRewrite = seventhPassRewritesById[id];
+  const tenthRewrite = tenthPassRewritesById[id];
+
+  if (precisionRewrite)
+    return questionPromptAfterReview(id, precisionRewrite.prompt);
+  if (twentiethRewrite)
+    return questionPromptAfterReview(id, twentiethRewrite.prompt);
+  if (eighteenthRewrite)
+    return questionPromptAfterReview(
+      id,
+      v26Corrections[id]?.prompt ?? eighteenthRewrite.prompt,
+    );
+  if (seventeenthRewrite)
+    return questionPromptAfterReview(
+      id,
+      v26Corrections[id]?.prompt ?? seventeenthRewrite.prompt,
+    );
+  if (sixteenthRewrite)
+    return questionPromptAfterReview(id, sixteenthRewrite.prompt);
+  if (fifteenthRewrite)
+    return questionPromptAfterReview(id, fifteenthRewrite.prompt);
+  if (fourteenthRewrite)
+    return questionPromptAfterReview(id, fourteenthRewrite.prompt);
+  if (thirteenthRewrite)
+    return questionPromptAfterReview(id, thirteenthRewrite.prompt);
+  if (eighthPassReplacementRequiredById[id]) return undefined;
+  if (eighthRewrite) return questionPromptAfterReview(id, eighthRewrite.prompt);
+  if (seventhPassReplacementRequiredById[id]) return undefined;
+  if (seventhRewrite)
+    return questionPromptAfterReview(id, seventhRewrite.prompt);
+  if (tenthRewrite) return questionPromptAfterReview(id, tenthRewrite.prompt);
+  return questionPromptAfterReview(id, fallback);
+}
+
+function expectedWordingVersion(id: string): string {
+  if (precisionRewritesById[id]) return EDITORIAL_TWENTY_SEVENTH_PASS_VERSION;
+  if (twentiethPassRewritesById[id])
+    return effectiveVersionFor(id, EDITORIAL_TWENTIETH_PASS_VERSION);
+  if (eighteenthPassRewritesById[id])
+    return effectiveVersionFor(id, EDITORIAL_EIGHTEENTH_PASS_VERSION);
+  if (seventeenthPassRewritesById[id])
+    return effectiveVersionFor(id, EDITORIAL_SEVENTEENTH_PASS_VERSION);
+  if (sixteenthPassRewritesById[id])
+    return effectiveVersionFor(id, EDITORIAL_SIXTEENTH_PASS_VERSION);
+  if (fifteenthPassRewritesById[id])
+    return effectiveVersionFor(id, EDITORIAL_FIFTEENTH_PASS_VERSION);
+  if (fourteenthPassRewritesById[id])
+    return effectiveVersionFor(id, EDITORIAL_FOURTEENTH_PASS_VERSION);
+  if (thirteenthPassRewritesById[id])
+    return effectiveVersionFor(id, EDITORIAL_THIRTEENTH_PASS_VERSION);
+  if (eighthPassReplacementRequiredById[id] || eighthPassRewritesById[id])
+    return EDITORIAL_EIGHTH_PASS_VERSION;
+  if (seventhPassReplacementRequiredById[id])
+    return effectiveVersionFor(id, EDITORIAL_SEVENTH_PASS_VERSION);
+  if (seventhPassRewritesById[id]) return EDITORIAL_SEVENTH_PASS_VERSION;
+  if (tenthPassRewritesById[id])
+    return effectiveVersionFor(id, EDITORIAL_TENTH_PASS_VERSION);
+  return effectiveVersionFor(id, EDITORIAL_FIFTH_PASS_VERSION);
+}
 
 describe("fifth editorial pass", () => {
   it("versions the effective bank and applies every high-confidence mapping correction", () => {
@@ -104,67 +190,56 @@ describe("fifth editorial pass", () => {
         descriptiveConstructCorrectionsById[id]?.axisWeights ??
         seventhRewrite?.axisWeights ??
         correction.axisWeights;
-      const versionFor = (fallback: string) =>
-        twentySeventhRewrite
-          ? EDITORIAL_TWENTY_SEVENTH_PASS_VERSION
-          : v26Corrections[id]
-            ? EDITORIAL_TWENTY_SIXTH_PASS_VERSION
-            : descriptiveConstructCorrectionsById[id]
-              ? EDITORIAL_TWENTY_FIFTH_PASS_VERSION
-              : confidenceCoverageTierPromotions[id]
-                ? EDITORIAL_TWENTY_THIRD_PASS_VERSION
-                : fallback;
       if (twentySeventhRewrite) {
         expect(question!.active).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(EDITORIAL_TWENTY_SEVENTH_PASS_VERSION);
       } else if (twentiethRewrite) {
-        expect(question!.prompt).toBe(twentiethRewrite.prompt);
         expect(question!.active).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_TWENTIETH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_TWENTIETH_PASS_VERSION),
         );
       } else if (eighteenthRewrite) {
         expect(question!.active).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_EIGHTEENTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_EIGHTEENTH_PASS_VERSION),
         );
       } else if (seventeenthRewrite) {
         expect(question!.active).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_SEVENTEENTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_SEVENTEENTH_PASS_VERSION),
         );
       } else if (sixteenthRewrite) {
         expect(question!.active).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_SIXTEENTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_SIXTEENTH_PASS_VERSION),
         );
       } else if (fifteenthRewrite) {
         expect(question!.active).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_FIFTEENTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_FIFTEENTH_PASS_VERSION),
         );
       } else if (fourteenthRewrite) {
         expect(question!.active).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_FOURTEENTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_FOURTEENTH_PASS_VERSION),
         );
       } else if (thirteenthRewrite) {
         expect(question!.active).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_THIRTEENTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_THIRTEENTH_PASS_VERSION),
         );
       } else if (eighthReplacement) {
         expect(question!.active).toBe(false);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_EIGHTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_EIGHTH_PASS_VERSION),
         );
       } else if (eighthRewrite) {
         expect(question!.active).not.toBe(false);
@@ -173,7 +248,7 @@ describe("fifth editorial pass", () => {
       } else if (seventhReplacement) {
         expect(question!.active).toBe(false);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_SEVENTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_SEVENTH_PASS_VERSION),
         );
       } else if (seventhRewrite) {
         expect(question!.active).not.toBe(false);
@@ -186,7 +261,7 @@ describe("fifth editorial pass", () => {
         ).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_TENTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_TENTH_PASS_VERSION),
         );
       } else {
         expect(
@@ -195,7 +270,7 @@ describe("fifth editorial pass", () => {
         ).not.toBe(false);
         expect(question!.axisWeights).toEqual(latestMappedWeights);
         expect(question!.version).toBe(
-          versionFor(EDITORIAL_FIFTH_PASS_VERSION),
+          effectiveVersionFor(id, EDITORIAL_FIFTH_PASS_VERSION),
         );
       }
       expect(correction.rationale.length).toBeGreaterThan(20);
@@ -229,106 +304,14 @@ describe("fifth editorial pass", () => {
         fifthPassReplacementRequiredById[id],
         `${id} cannot be rewritten and quarantined together`,
       ).toBeUndefined();
-      const seventhRewrite = seventhPassRewritesById[id];
       const seventhReplacement = seventhPassReplacementRequiredById[id];
-      const eighthRewrite = eighthPassRewritesById[id];
       const eighthReplacement = eighthPassReplacementRequiredById[id];
-      const tenthRewrite = tenthPassRewritesById[id];
-      const thirteenthRewrite = thirteenthPassRewritesById[id];
-      const fourteenthRewrite = fourteenthPassRewritesById[id];
-      const fifteenthRewrite = fifteenthPassRewritesById[id];
-      const sixteenthRewrite = sixteenthPassRewritesById[id];
-      const seventeenthRewrite = seventeenthPassRewritesById[id];
-      const eighteenthRewrite = eighteenthPassRewritesById[id];
-      const twentiethRewrite = twentiethPassRewritesById[id];
-      const twentySeventhRewrite = precisionRewritesById[id];
-      const versionFor = (fallback: string) =>
-        v26Corrections[id]
-          ? EDITORIAL_TWENTY_SIXTH_PASS_VERSION
-          : descriptiveConstructCorrectionsById[id]
-            ? EDITORIAL_TWENTY_FIFTH_PASS_VERSION
-            : confidenceCoverageTierPromotions[id]
-              ? EDITORIAL_TWENTY_THIRD_PASS_VERSION
-              : fallback;
-      if (twentySeventhRewrite) {
-        expect(question!.prompt).toBe(twentySeventhRewrite.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(EDITORIAL_TWENTY_SEVENTH_PASS_VERSION);
-      } else if (twentiethRewrite) {
-        expect(question!.prompt).toBe(twentiethRewrite.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_TWENTIETH_PASS_VERSION),
-        );
-      } else if (eighteenthRewrite) {
-        expect(question!.prompt).toBe(
-          v26Corrections[id]?.prompt ?? eighteenthRewrite.prompt,
-        );
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_EIGHTEENTH_PASS_VERSION),
-        );
-      } else if (seventeenthRewrite) {
-        expect(question!.prompt).toBe(
-          v26Corrections[id]?.prompt ?? seventeenthRewrite.prompt,
-        );
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_SEVENTEENTH_PASS_VERSION),
-        );
-      } else if (sixteenthRewrite) {
-        expect(question!.prompt).toBe(sixteenthRewrite.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_SIXTEENTH_PASS_VERSION),
-        );
-      } else if (fifteenthRewrite) {
-        expect(question!.prompt).toBe(fifteenthRewrite.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_FIFTEENTH_PASS_VERSION),
-        );
-      } else if (fourteenthRewrite) {
-        expect(question!.prompt).toBe(fourteenthRewrite.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_FOURTEENTH_PASS_VERSION),
-        );
-      } else if (thirteenthRewrite) {
-        expect(question!.prompt).toBe(thirteenthRewrite.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_THIRTEENTH_PASS_VERSION),
-        );
-      } else if (eighthReplacement) {
-        expect(question!.active).toBe(false);
-        expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION);
-      } else if (eighthRewrite) {
-        expect(question!.prompt).toBe(eighthRewrite.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(EDITORIAL_EIGHTH_PASS_VERSION);
-      } else if (seventhReplacement) {
-        expect(question!.active).toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_SEVENTH_PASS_VERSION),
-        );
-      } else if (seventhRewrite) {
-        expect(question!.prompt).toBe(seventhRewrite.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(EDITORIAL_SEVENTH_PASS_VERSION);
-      } else if (tenthRewrite) {
-        expect(question!.prompt).toBe(tenthRewrite.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_TENTH_PASS_VERSION),
-        );
-      } else {
-        expect(question!.prompt).toBe(correction.prompt);
-        expect(question!.active).not.toBe(false);
-        expect(question!.version).toBe(
-          versionFor(EDITORIAL_FIFTH_PASS_VERSION),
-        );
-      }
+      const expectedPrompt = expectedWordingPrompt(id, correction.prompt);
+      if (expectedPrompt) expect(question!.prompt).toBe(expectedPrompt);
+      expect(question!.active === false).toBe(
+        Boolean(seventhReplacement || eighthReplacement),
+      );
+      expect(question!.version).toBe(expectedWordingVersion(id));
       expect(correction.rationale.length).toBeGreaterThan(20);
     }
   });
@@ -359,7 +342,9 @@ describe("fifth editorial pass", () => {
             ? EDITORIAL_TWENTY_THIRD_PASS_VERSION
             : EDITORIAL_EIGHTH_PASS_VERSION,
         );
-        expect(question!.prompt).toBe(eighthRewrite.prompt);
+        expect(question!.prompt).toBe(
+          questionPromptAfterReview(id, eighthRewrite.prompt),
+        );
         expect(question!.axisWeights).toEqual(eighthRewrite.axisWeights);
       } else {
         expect(question!.active).toBe(false);
