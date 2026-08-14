@@ -1,29 +1,53 @@
 {
-  "aiSlopCleaner": {
-    "status": "passed",
-    "evidence": "Code reviewed; follows existing patterns in aggregate.ts etc; no duplicated logic, pure functions, proper types. No slop.",
-    "notes": "All new code follows patterns, no slop, pure functions, tests added. No AI-generated slop detected."
+  "artifact": {
+    "status": "current",
+    "asOf": "2026-08-14",
+    "baselineCommit": "d104f0fd514eff03dee5d7376853b62f763ba1fa",
+    "scope": "Repository documentation and executable-contract baseline",
+    "notes": "This record replaces the stale pre-release quality gate. No application source was changed for this documentation update."
+  },
+  "currentContract": {
+    "activeCoreQuestions": 338,
+    "specialistQuestions": 68,
+    "liveQuestions": 406,
+    "balancedTier": 206,
+    "fullDepthTier": 338,
+    "ordinaryPrimaryLabels": 16,
+    "axes": 26,
+    "taxonomyVersion": "2026-08-taxonomy-v13",
+    "primaryMeasurementVersion": "2026-08-primary-core-v1",
+    "modifierMeasurementVersion": "2026-08-modifier-construct-v1",
+    "scoringVersion": "2026-08-13-taxonomy-v8",
+    "researchStudy": "community-2026-v5",
+    "researchSchema": "2026-08-v15",
+    "researchForm": "profile-form-v3",
+    "specialistAssignment": "balanced-hash-v2",
+    "specialistRoster": "2026-08-specialist-roster-v1"
   },
   "verification": {
     "status": "passed",
-    "evidence": "npm test 110/110, lint 0 errors, build success. New labels, axes, faction modules, and family-tree output verified with browser preview.",
     "commands": [
       "npm test",
       "npm run lint",
       "npm run build",
-      "npm run preview + browser check"
+      "npm run research:check",
+      "npm run test:worker",
+      "npm run worker:check",
+      "npm run test:browser",
+      "git diff --check"
     ],
-    "npm test": "14 files, 110 tests passed",
-    "npm run lint": "clean (0 errors)",
-    "npm run build": "success, bundle ok",
-    "browser check": "Quick-tier share link loads results; family-tree grouping and module suggestions render without runtime errors"
+    "npm test": "110 test files, 719 tests passed",
+    "npm run lint": "passed with zero errors",
+    "npm run build": "passed; Vite emitted the existing large-chunk warning",
+    "npm run research:check": "passed",
+    "npm run test:worker": "8 tests passed",
+    "npm run worker:check": "Cloudflare deploy dry run passed",
+    "npm run test:browser": "50 tests passed across e2e, accessibility, and ECW projects",
+    "git diff --check": "passed"
   },
   "codeReview": {
-    "status": "APPROVE",
-    "recommendation": "APPROVE",
-    "architectStatus": "CLEAR",
-    "architect": "CLEAR",
-    "evidence": "All four phases implemented per finalized spec: 16 labels, 26 axes, expanded faction modules, hierarchical family output. Tests, lint, build, and browser verification green.",
-    "notes": "Implementation matches the reviewed plan, additive, backward compat, tests green after phases"
+    "status": "documentation-only",
+    "recommendation": "no source regression identified",
+    "evidence": "The update aligns this artifact with the current executable counts, version contracts, research boundaries, and validation commands. The untracked root vite artifact remains preserved and unstaged."
   }
 }
