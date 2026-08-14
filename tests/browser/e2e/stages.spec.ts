@@ -67,6 +67,26 @@ test("intro starts a standard quiz with dynamic passive status", async ({
   ).toBe(true);
 });
 
+test("mobile quiz shows the forward cue where the next question is visible", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.getByRole("radio", { name: /Balanced profile/ }).check();
+  await page.getByRole("button", { name: "Begin assessment" }).click();
+
+  await answerCurrentQuestion(page);
+
+  await expect(page.getByTestId("question-advance-cue")).toContainText(
+    /Advanced to item 2 of 206/i,
+  );
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true);
+});
+
 test("optional collection stays attached to the selected Full-depth profile", async ({
   page,
 }) => {

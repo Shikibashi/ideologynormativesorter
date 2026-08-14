@@ -116,6 +116,33 @@ describe("QuizScreen descriptive questions", () => {
     ).not.toHaveAttribute("open");
   });
 
+  it("keeps a visible advance confirmation on the next question", () => {
+    render(
+      <QuizScreen
+        questions={[
+          descriptiveChoice,
+          {
+            ...descriptiveChoice,
+            id: "next-question",
+            prompt: "Does the next empirical claim fit the evidence?",
+          },
+        ]}
+        onComplete={vi.fn()}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /i don't know/i }));
+
+    expect(screen.getByTestId("question-advance-cue")).toBeVisible();
+    expect(screen.getByTestId("question-advance-cue")).toHaveTextContent(
+      "Advanced to item 2 of 2.",
+    );
+    expect(screen.getByTestId("question-advance-cue")).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    );
+  });
+
   it("offers I do not know even when the data item omits allowDontKnow", () => {
     const onComplete = vi.fn();
     render(

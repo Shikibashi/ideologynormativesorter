@@ -62,6 +62,7 @@ export function QuizScreen({
   const [saveError, setSaveError] = useState<string | null>(null);
   const [saveState, setSaveState] =
     useState<QuizScreenStatus["save"]>("current");
+  const [advanceNotice, setAdvanceNotice] = useState<string | null>(null);
   const question = questions[index];
   const selected = answers[question.id];
   const isLast = index === questions.length - 1;
@@ -139,6 +140,7 @@ export function QuizScreen({
     if (isLast) {
       onComplete(next);
     } else {
+      setAdvanceNotice(`Advanced to item ${index + 2} of ${questions.length}.`);
       setIndex(index + 1);
     }
   }
@@ -152,6 +154,7 @@ export function QuizScreen({
   }
 
   function goBack() {
+    setAdvanceNotice(null);
     setPendingValue(null);
     setIndex(index - 1);
   }
@@ -190,6 +193,17 @@ export function QuizScreen({
             style={{ width: `${((index + 1) / questions.length) * 100}%` }}
           />
         </div>
+        {advanceNotice && (
+          <div
+            key={advanceNotice}
+            className="question-advance-cue"
+            data-testid="question-advance-cue"
+            aria-hidden="true"
+          >
+            <span className="question-advance-cue-mark">→</span>
+            <span>{advanceNotice}</span>
+          </div>
+        )}
         <p className="muted question-context">
           {positionLabel} &middot; {salienceQuestion}
         </p>
@@ -269,6 +283,17 @@ export function QuizScreen({
           style={{ width: `${((index + 1) / questions.length) * 100}%` }}
         />
       </div>
+      {advanceNotice && (
+        <div
+          key={advanceNotice}
+          className="question-advance-cue"
+          data-testid="question-advance-cue"
+          aria-hidden="true"
+        >
+          <span className="question-advance-cue-mark">→</span>
+          <span>{advanceNotice}</span>
+        </div>
+      )}
       <p className="muted question-context">
         {positionLabel} &middot; {question.layer}
         {question.theoryContext !== "mixed"
