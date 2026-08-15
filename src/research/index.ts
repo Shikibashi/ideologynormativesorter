@@ -19,7 +19,11 @@ import {
   presentedResponseOptions,
   type PresentedResponseOption,
 } from "../questionPresentation";
-import { RESEARCH_FORM_VERSION, researchFormFingerprint } from "./forms";
+import {
+  RESEARCH_FORM_VERSION,
+  researchFormFingerprint,
+  researchFormManifestForQuestions,
+} from "./forms";
 import {
   canonicalLabelId,
   modifierScoringLabels,
@@ -164,6 +168,7 @@ export interface ResearchFormMetadata {
   requestedItemCount: number | null;
   assignedItemCount: number;
   fingerprint: string;
+  manifest: import("./forms").ResearchFormManifest;
 }
 
 export interface ResearchSamplingMetadata {
@@ -368,7 +373,10 @@ function buildItemMap(
 
 export function isResearchMode(search = window.location.search): boolean {
   const params = new URLSearchParams(search);
-  return params.get("contribute") === "1" || params.get("research") === "1";
+  return (
+    (params.get("contribute") === "1" || params.get("research") === "1") &&
+    !researchTaskRouteInvalid(search)
+  );
 }
 
 function hash32(value: string): number {
@@ -384,14 +392,18 @@ export function researchLabelExposureEnabled(
   search = window.location.search,
 ): boolean {
   const params = new URLSearchParams(search);
-  return params.get("research") === "1" && params.get("exposure") === "1";
+  return (
+    params.get("research") === "1" &&
+    params.get("exposure") === "1" &&
+    !researchTaskRouteInvalid(search)
+  );
 }
 
 export function buildLabelExposureAssignment(
   studyId: string,
   participantId: string,
 ): LabelExposureAssignment {
-  const seed = `${safeToken(studyId)}_${safeToken(participantId)}_label-exposure-v1`;
+  const seed = `${safeToken(studyId)}_${safeToken(participantId)}_label-exposure-v2`;
   const arms: LabelExposureArm[] = [
     "dimension-only",
     "unlabeled-profile",
@@ -411,8 +423,8 @@ export function researchTaskArm(
   search = window.location.search,
 ): Exclude<ResearchTaskArm, "all"> | null {
   const params = new URLSearchParams(search);
-  if (params.get("research") !== "1") return null;
   const arm = params.get("arm");
+  if (params.get("research") !== "1" || arm === null) return null;
   if (
     arm === "probability" ||
     arm === "choice" ||
@@ -422,6 +434,20 @@ export function researchTaskArm(
     return arm;
   }
   return null;
+}
+
+/**
+ * A task arm is a controlled research route only when the URL explicitly opts
+ * into research and names one supported arm. An arm-shaped URL that fails
+ * those checks must not fall through to ordinary contribution collection.
+ */
+export function researchTaskRouteInvalid(
+  search = window.location.search,
+): boolean {
+  const params = new URLSearchParams(search);
+  const arm = params.get("arm");
+  if (arm === null) return false;
+  return researchTaskArm(search) === null;
 }
 
 export function researchAdministration(
@@ -537,6 +563,13 @@ export function buildResearchSubmission(input: {
       requestedItemCount: input.requestedFormSize ?? null,
       assignedItemCount: input.questions.length,
       fingerprint: researchFormFingerprint(input.questions),
+      manifest: researchFormManifestForQuestions(
+        input.questions,
+        safeToken(input.participantId),
+        input.administration,
+        input.requestedFormSize ?? null,
+        input.tier,
+      ),
     },
     sampling: {
       design: "open-opt-in-nonprobability",

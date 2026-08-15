@@ -224,6 +224,14 @@ export function handleResearchCancel(context: AppActionContext): void {
   context.setResearchEnabled(false);
   context.setResearchConsent(null);
   if (context.researchTaskArm) {
+    context.setResearchTaskArm(null);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("arm");
+    window.history.replaceState(
+      {},
+      "",
+      `${url.pathname}${url.search}${url.hash}`,
+    );
     context.setStage("intro");
     announceStatus("Research task arm declined.");
     return;

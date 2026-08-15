@@ -4,7 +4,7 @@ The browser application computes descriptive and classical diagnostics only when
 
 ## Inputs
 
-Use consented schema `2026-08-v18` records produced by contribution mode. The public flow omits `formSize` and contributes
+Use consented schema `2026-08-v19` records produced by contribution mode. The public flow omits `formSize` and contributes
 the complete selected Balanced or Full-depth profile. A controlled `research=1` URL can request a balanced matrix form
 with `formSize` for instrument analysis.
 
@@ -35,6 +35,13 @@ RESEARCH_OUTPUT_FILE=./private-data/submissions.ndjson \
 SPECIALIST_RESEARCH_OUTPUT_FILE=./private-data/specialist-submissions.ndjson \
 node research-collector/server.mjs
 ```
+
+The collector's complete frozen configuration is maintained in
+`research-collector/.env.example`; deployment must provide every listed value.
+There are no version fallbacks. The collector exits before listening if any
+required study, schema, consent, quality, form/task, label-exposure, bank,
+scoring, taxonomy, measurement, roster, or specialist-assignment value is
+missing.
 
 `submissions.ndjson` contains core records. `specialist-submissions.ndjson` contains completed specialist records plus explicit specialist disposition records such as declined-before-start and declined-after-partial. Keeping these files separate prevents topic-specific items from entering the ordinary axis reliability/factor pipeline by accident.
 
@@ -87,6 +94,8 @@ decisions, a single version bundle, and an analysis fingerprint, then writes
 
 The current entrypoints are:
 
+- `run_data_quality.R` — quality flags and inclusion-manifest draft
+- `run_validation.R` — core validation and production-score reconstruction
 - `run_descriptive_calibration.R` — `2026-08-descriptive-calibration-v1`
 - `run_strategy_conjoint.R` — `2026-08-strategy-task-bank-v2`
 - `run_normative_tradeoffs.R` — `2026-08-normative-tradeoff-v1`
@@ -95,6 +104,21 @@ The current entrypoints are:
 - `run_profiles.R` — `2026-08-profile-discovery-v1`
 - `run_prototype_calibration.R` — `2026-08-prototype-calibration-v1`
 - `run_linking.R` — `2026-08-unfolding-analysis-v1`
+- `run_specialist_validation.R` — specialist-module validation
+
+`research_contracts.R` is the shared fail-closed contract loader. The CI
+syntax gate discovers every `analysis/*.R` file, including these entrypoints,
+the W3/W4 wrappers, and the shared helper, so a newly added supported script
+cannot be omitted from parsing. The syntax gate does not claim that an R
+runtime or its packages are installed on every developer host.
+
+Before running core or W3/W4 analysis, set every
+`PSYCH_REQUIRED_<VERSION_BUNDLE_KEY>` value required by
+`analysis/research_contracts.R` to the approved current value. Core validation
+also requires both frozen label-roster fingerprints. Task-record analyses
+must provide the approved research-task form value. Missing, partial, or
+mismatched provenance fails before any result file is written; no version
+bundle is accepted merely because it is nonempty.
 
 Before a field run, set `ANALYSIS_CODE_REVISION`, `ANALYSIS_STUDY_ID`,
 `ANALYSIS_SEED`, and `ANALYSIS_FINGERPRINT` to the preregistered values. A
@@ -118,7 +142,8 @@ scoring version. Optional estimators such as `mirt` remain an explicit
 environment prerequisite for the existing DIF workflow rather than a reason
 to emit an unvalidated result.
 
-Optional core psychometric environment variables:
+Core psychometric environment variables. The frozen provenance values below are
+required; the threshold and seed values remain configurable analysis controls:
 
 ```bash
 PSYCH_BOOTSTRAP_REPLICATES=1000
@@ -126,16 +151,47 @@ PSYCH_MINIMUM_AXIS_N=100
 PSYCH_MINIMUM_FACTOR_N=300
 PSYCH_MINIMUM_DIF_GROUP_N=100
 PSYCH_RANDOM_SEED=20260718
+PSYCH_REQUIRED_ARCHITECTURE_VERSION=2026-08-measurement-architecture-v1
+PSYCH_REQUIRED_IMPLEMENTATION_SPEC_VERSION=2026-08-implementation-spec-v1
+PSYCH_REQUIRED_DECISION_LOG_VERSION=2026-08-methodological-decisions-v1
+PSYCH_REQUIRED_BANK_VERSION=2026-06-v4+2026-08-confidence-coverage-v1+2026-08-confidence-coverage-v3+2026-08-confidence-coverage-v4+2026-07-semantic-v1+2026-07-statement-semantic-v1+2026-08-respondent-v5+2026-08-editorial-v5+2026-08-editorial-v7.1+2026-08-editorial-v8+2026-08-descriptive-evidence-v1+2026-08-descriptive-evidence-v2+2026-08-descriptive-evidence-v3+2026-08-specialist-descriptive-v3+2026-08-editorial-v9+2026-08-editorial-v11+2026-08-editorial-v12+2026-08-editorial-v13+2026-08-editorial-v14+2026-08-editorial-v15+2026-08-editorial-v16+2026-08-editorial-v17+2026-08-editorial-v18+2026-08-editorial-v19+2026-08-editorial-v20+2026-08-editorial-v21+2026-08-editorial-v22+2026-08-editorial-v23+2026-08-editorial-v24+2026-08-editorial-v25+2026-08-editorial-v26+2026-08-editorial-v27+2026-08-editorial-v28+2026-08-descriptive-evidence-v4+2026-08-descriptive-evidence-v5+2026-08-question-context-v33+2026-08-question-prompts-v1
+PSYCH_REQUIRED_SCORING_VERSION=2026-08-13-taxonomy-v8
 PSYCH_REQUIRED_CONSENT_VERSION=2026-08-12-v8
 PSYCH_REQUIRED_FORM_VERSION=profile-form-v3
 PSYCH_REQUIRED_QUALITY_RULE_VERSION=data-quality-v2
-# Also set PSYCH_REQUIRED_BANK_VERSION and PSYCH_REQUIRED_SCORING_VERSION
-# to the frozen cohort values for field analysis.
 PSYCH_REQUIRED_TAXONOMY_VERSION=2026-08-taxonomy-v13
 PSYCH_REQUIRED_PRIMARY_MEASUREMENT_VERSION=2026-08-primary-core-v1
 PSYCH_REQUIRED_MODIFIER_MEASUREMENT_VERSION=2026-08-modifier-construct-v1
+PSYCH_REQUIRED_SCHEMA_VERSION=2026-08-v19
+PSYCH_REQUIRED_STUDY_ID=community-2026-v5
+PSYCH_REQUIRED_SPECIALIST_ROSTER_VERSION=2026-08-specialist-roster-v1
+PSYCH_REQUIRED_SPECIALIST_ASSIGNMENT_STRATEGY=balanced-hash-v2
+PSYCH_REQUIRED_RESEARCH_TASK_BANK_VERSION=2026-08-research-task-bank-v3
+PSYCH_REQUIRED_RESEARCH_ESTIMATOR_VERSION=2026-08-research-estimators-v1
+PSYCH_REQUIRED_DESCRIPTIVE_CALIBRATION_VERSION=2026-08-descriptive-calibration-v1
+PSYCH_REQUIRED_STRATEGY_TASK_BANK_VERSION=2026-08-strategy-task-bank-v2
+PSYCH_REQUIRED_NORMATIVE_TRADEOFF_VERSION=2026-08-normative-tradeoff-v1
+PSYCH_REQUIRED_MODEL_COMPARISON_VERSION=2026-08-model-comparison-v1
+PSYCH_REQUIRED_UNFOLDING_ANALYSIS_VERSION=2026-08-unfolding-analysis-v1
+PSYCH_REQUIRED_PERCEPTION_GEOMETRY_VERSION=2026-08-perception-geometry-v1
+PSYCH_REQUIRED_PROFILE_DISCOVERY_VERSION=2026-08-profile-discovery-v1
+PSYCH_REQUIRED_PROTOTYPE_CODING_VERSION=2026-08-prototype-coding-v1
+PSYCH_REQUIRED_DEPLOYMENT_SCOPE_VERSION=2026-08-deployment-scope-v1
+PSYCH_REQUIRED_CONSTRUCT_FAMILY_MAP_VERSION=2026-08-construct-family-map-v1
+PSYCH_REQUIRED_CRITERION_PLAN_VERSION=2026-08-criterion-plan-v1
+PSYCH_REQUIRED_VALIDATOR_BATTERY_VERSION=2026-08-validator-battery-v1
+PSYCH_REQUIRED_PROTOTYPE_CALIBRATION_VERSION=2026-08-prototype-calibration-v1
+PSYCH_REQUIRED_DIF_PLAN_VERSION=2026-08-dif-plan-v1
+PSYCH_REQUIRED_CONTENT_REVIEW_VERSION=2026-08-content-review-v1
+PSYCH_REQUIRED_COGNITIVE_REVIEW_VERSION=2026-08-cognitive-review-v1
+PSYCH_REQUIRED_LABEL_EXPOSURE_VERSION=2026-08-label-exposure-v2
+PSYCH_REQUIRED_FORM_EQUIVALENCE_VERSION=2026-08-form-equivalence-v1
+PSYCH_REQUIRED_ANCHOR_ROTATION_VERSION=2026-08-anchor-rotation-v1
+PSYCH_REQUIRED_VALIDATION_REPORT_VERSION=2026-08-validation-report-v1
+PSYCH_REQUIRED_ITEM_METADATA_VERSION=2026-08-item-metadata-v1
 PSYCH_REQUIRED_PRIMARY_LABEL_ROSTER_FINGERPRINT=lr_3cc0f435
 PSYCH_REQUIRED_MODIFIER_LABEL_ROSTER_FINGERPRINT=lr_eb26ed76
+PSYCH_REQUIRED_RESEARCH_TASK_FORM_VERSION=2026-08-research-task-form-v2
 ```
 
 ## Run specialist validation

@@ -12,6 +12,9 @@ export interface ResearchFormManifest {
   administration: ResearchAdministration;
   requestedItemCount: number | null;
   assignedItemCount: number;
+  assignmentSeed: string;
+  presentationSeed: string;
+  itemIds: string[];
   membershipFingerprint: string;
   presentationFingerprint: string;
   layerCounts: Record<Layer, number>;
@@ -152,27 +155,15 @@ export function researchFormFingerprint(questions: Question[]): string {
   return `rf_${hash32(`${RESEARCH_FORM_VERSION}:${canonical}`).toString(16).padStart(8, "0")}`;
 }
 
-export function researchPresentationFingerprint(
-  questions: Question[],
-  administration: ResearchAdministration,
-): string {
-  const ordered = questions.map((question) => String(question.id)).join("|");
-  return `rfo_${hash32(`${RESEARCH_FORM_VERSION}:${administration}:${ordered}`).toString(16).padStart(8, "0")}`;
-}
-
-export function researchFormManifest(
-  questionPool: Question[],
+export function researchFormManifestForQuestions(
+  form: Question[],
   participantId: string,
   administration: ResearchAdministration,
   requestedSize: number | null,
-  sourceTier: QuizTier = "extensive",
+  sourceTier: QuizTier,
 ): ResearchFormManifest {
-  const form = buildContributionQuestionForm(
-    questionPool,
-    participantId,
-    administration,
-    requestedSize,
-  );
+  const assignmentSeed = `${RESEARCH_FORM_VERSION}:${participantId}:assignment`;
+  const presentationSeed = `${RESEARCH_FORM_VERSION}:${participantId}:${administration}:presentation`;
   const layerCounts: Record<Layer, number> = {
     normative: 0,
     descriptive: 0,
@@ -195,6 +186,9 @@ export function researchFormManifest(
     administration,
     requestedItemCount: requestedSize,
     assignedItemCount: form.length,
+    assignmentSeed,
+    presentationSeed,
+    itemIds: form.map((question) => String(question.id)),
     membershipFingerprint: researchFormFingerprint(form),
     presentationFingerprint: researchPresentationFingerprint(
       form,
@@ -203,6 +197,36 @@ export function researchFormManifest(
     layerCounts,
     axisIds: [...axisIds].sort(),
   };
+}
+
+export function researchPresentationFingerprint(
+  questions: Question[],
+  administration: ResearchAdministration,
+): string {
+  const ordered = questions.map((question) => String(question.id)).join("|");
+  return `rfo_${hash32(`${RESEARCH_FORM_VERSION}:${administration}:${ordered}`).toString(16).padStart(8, "0")}`;
+}
+
+export function researchFormManifest(
+  questionPool: Question[],
+  participantId: string,
+  administration: ResearchAdministration,
+  requestedSize: number | null,
+  sourceTier: QuizTier = "extensive",
+): ResearchFormManifest {
+  const form = buildContributionQuestionForm(
+    questionPool,
+    participantId,
+    administration,
+    requestedSize,
+  );
+  return researchFormManifestForQuestions(
+    form,
+    participantId,
+    administration,
+    requestedSize,
+    sourceTier,
+  );
 }
 
 export function researchFormManifestErrors(
@@ -216,6 +240,12 @@ export function researchFormManifestErrors(
   }
   if (manifest.assignedItemCount !== form.length) {
     errors.push("form manifest item count does not match assigned items");
+  }
+  if (
+    manifest.itemIds.join("|") !==
+    form.map((question) => String(question.id)).join("|")
+  ) {
+    errors.push("form manifest item IDs do not match presentation order");
   }
   if (manifest.membershipFingerprint !== researchFormFingerprint(form)) {
     errors.push("form manifest membership fingerprint does not match items");

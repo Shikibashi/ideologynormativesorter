@@ -400,15 +400,50 @@ export interface LabelExposureAssignment {
   assignedAfterSubstantiveResponses: true;
 }
 
+export type LabelExposureRating = number | "prefer_not_to_answer";
+
+export interface LabelExposureRatings {
+  perceivedAccuracy: LabelExposureRating;
+  identityAcceptance: LabelExposureRating;
+  confidence: LabelExposureRating;
+  affect: LabelExposureRating;
+  followUpStability: LabelExposureRating;
+}
+
+export type LabelExposurePosition =
+  | "near midpoint"
+  | "slightly toward"
+  | "leans toward"
+  | "strongly toward"
+  | "unmeasured";
+
+export type LabelExposureCoverageBand =
+  | "insufficient"
+  | "low"
+  | "medium"
+  | "high";
+
+export interface LabelExposureAxisSnapshot {
+  axisId: string;
+  layer: Layer;
+  name: string;
+  position: LabelExposurePosition;
+  pole?: string;
+  coverageBand: LabelExposureCoverageBand;
+}
+
+export interface LabelExposurePresentation {
+  version: string;
+  fingerprint: string;
+  axes: readonly LabelExposureAxisSnapshot[];
+}
+
 export interface LabelExposureOutcome {
   assignment: LabelExposureAssignment;
   exposureShown: boolean;
-  exposedLabelIds?: readonly string[];
-  perceivedAccuracy?: number;
-  identityAcceptance?: number;
-  confidence?: number;
-  affect?: number;
-  followUpStability?: number;
+  presentation?: LabelExposurePresentation;
+  exposedLabelIds: readonly string[];
+  ratings: LabelExposureRatings;
   missingReason?: "declined" | "not-shown" | "unresolved";
 }
 

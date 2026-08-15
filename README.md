@@ -120,33 +120,24 @@ The repository includes a minimal dependency-free collector for controlled
 deployments:
 
 ```bash
-ALLOWED_ORIGIN=http://localhost:5173 \
-RESEARCH_OUTPUT_FILE=./private-data/submissions.ndjson \
-RESEARCH_TASK_OUTPUT_FILE=./private-data/research-task-submissions.ndjson \
-RESEARCH_STUDY_ID=community-2026-v5 \
-RESEARCH_BANK_VERSION='the-frozen-bank-version' \
-RESEARCH_SCORING_VERSION='the-frozen-scoring-version' \
-RESEARCH_TAXONOMY_VERSION=2026-08-taxonomy-v13 \
-RESEARCH_PRIMARY_MEASUREMENT_VERSION=2026-08-primary-core-v1 \
-RESEARCH_MODIFIER_MEASUREMENT_VERSION=2026-08-modifier-construct-v1 \
-RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT=lr_3cc0f435 \
-RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT=lr_eb26ed76 \
-RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY=balanced-hash-v2 \
-RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION=2026-08-specialist-roster-v1 \
-RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS=feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module \
+set -a
+. research-collector/.env.example
+set +a
 node research-collector/server.mjs
 ```
 
-The collector validates the schema, consent, quality-rule, form, taxonomy, and
-primary/modifier measurement versions; recomputes matrix-form fingerprints;
+The collector validates the schema, consent, quality-rule, form, task, label,
+taxonomy, and primary/modifier measurement versions; recomputes matrix-form
+fingerprints and validates the serialized form manifest;
 enforces timestamp, response-option and confidence/priority consistency;
 validates deterministic specialist assignments against the configured strategy,
 roster version, and module list; and treats `submissionId` as a persistent
 idempotency key. An exact retry is acknowledged without a second append, while
 reuse of an ID for different content is rejected. Set the study, bank, scoring,
 taxonomy, measurement, and specialist-assignment variables above for a frozen
-field deployment; the schema, consent, quality-rule, and form variables have
-current-version defaults and can also be overridden explicitly.
+field deployment. There are no frozen-version defaults: copy the complete
+configuration from `research-collector/.env.example` and keep it in a secret
+or deployment configuration store.
 
 This reference service is not production-hardening by itself. Production use
 requires HTTPS, rate limiting, encrypted storage and backups, restricted access,

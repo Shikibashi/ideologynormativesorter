@@ -58,6 +58,11 @@ research_form_fingerprint <- function(item_ids, form_version) {
   paste0("rf_", hex32(fnv1a_32(paste0(form_version, ":", canonical))))
 }
 
+research_presentation_fingerprint <- function(item_ids, form_version, administration) {
+  ordered <- paste(item_ids, collapse = "|")
+  paste0("rfo_", hex32(fnv1a_32(paste0(form_version, ":", administration, ":", ordered))))
+}
+
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) < 3) {
   stop("Usage: Rscript analysis/run_validation.R <submissions.json|jsonl|directory> <output-directory> <analysis-inclusion-manifest.csv>")
@@ -72,17 +77,28 @@ bootstrap_replicates <- as.integer(Sys.getenv("PSYCH_BOOTSTRAP_REPLICATES", "100
 minimum_axis_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_AXIS_N", "100"))
 minimum_factor_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_FACTOR_N", "300"))
 minimum_dif_group_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_DIF_GROUP_N", "100"))
-required_schema_version <- Sys.getenv("PSYCH_REQUIRED_SCHEMA_VERSION", "2026-08-v18")
-required_consent_version <- Sys.getenv("PSYCH_REQUIRED_CONSENT_VERSION", "2026-08-12-v8")
-required_form_version <- Sys.getenv("PSYCH_REQUIRED_FORM_VERSION", "profile-form-v3")
-required_quality_rule_version <- Sys.getenv("PSYCH_REQUIRED_QUALITY_RULE_VERSION", "data-quality-v2")
-required_bank_version <- Sys.getenv("PSYCH_REQUIRED_BANK_VERSION", "")
-required_scoring_version <- Sys.getenv("PSYCH_REQUIRED_SCORING_VERSION", "")
-required_taxonomy_version <- Sys.getenv("PSYCH_REQUIRED_TAXONOMY_VERSION", "2026-08-taxonomy-v13")
-required_primary_measurement_version <- Sys.getenv("PSYCH_REQUIRED_PRIMARY_MEASUREMENT_VERSION", "2026-08-primary-core-v1")
-required_modifier_measurement_version <- Sys.getenv("PSYCH_REQUIRED_MODIFIER_MEASUREMENT_VERSION", "2026-08-modifier-construct-v1")
-required_primary_label_roster_fingerprint <- Sys.getenv("PSYCH_REQUIRED_PRIMARY_LABEL_ROSTER_FINGERPRINT", "lr_3cc0f435")
-required_modifier_label_roster_fingerprint <- Sys.getenv("PSYCH_REQUIRED_MODIFIER_LABEL_ROSTER_FINGERPRINT", "lr_eb26ed76")
+required_version_values <- required_version_bundle_values()
+required_schema_version <- required_version_values$schemaVersion
+required_consent_version <- required_version_values$consentVersion
+required_form_version <- required_version_values$formVersion
+required_quality_rule_version <- required_version_values$qualityRuleVersion
+required_bank_version <- required_version_values$bankVersion
+required_scoring_version <- required_version_values$scoringVersion
+required_taxonomy_version <- required_version_values$taxonomyVersion
+required_primary_measurement_version <- required_version_values$primaryMeasurementVersion
+required_modifier_measurement_version <- required_version_values$modifierMeasurementVersion
+required_primary_label_roster_fingerprint <- Sys.getenv(
+  "PSYCH_REQUIRED_PRIMARY_LABEL_ROSTER_FINGERPRINT",
+  ""
+)
+required_modifier_label_roster_fingerprint <- Sys.getenv(
+  "PSYCH_REQUIRED_MODIFIER_LABEL_ROSTER_FINGERPRINT",
+  ""
+)
+if (!nzchar(required_primary_label_roster_fingerprint) ||
+    !nzchar(required_modifier_label_roster_fingerprint)) {
+  stop("Required label-roster fingerprints are missing from the frozen analysis configuration.")
+}
 set.seed(as.integer(Sys.getenv("PSYCH_RANDOM_SEED", "20260718")))
 
 read_json_file <- function(path) {
@@ -112,7 +128,7 @@ submissions <- submissions[vapply(submissions, function(record) {
     identical(record$recordType %||% "core", "core")
 }, logical(1))]
 if (length(submissions) == 0) stop("No valid research submissions were found.")
-invisible(lapply(submissions, version_bundle_for))
+invisible(lapply(submissions, version_bundle_for, expected = required_version_values))
 
 if (!file.exists(manifest_path)) stop("Inclusion manifest does not exist: ", manifest_path)
 manifest <- utils::read.csv(manifest_path, stringsAsFactors = FALSE)
@@ -258,6 +274,64 @@ for (record_index in seq_along(submissions)) {
       !requested_valid ||
       !identical(record$form$fingerprint %||% "", expected_fingerprint)) {
     stop("Invalid form count or fingerprint for submissionId ", record_id, ".")
+  }
+  form_manifest <- record$form$manifest
+  manifest_item_ids <- unlist(form_manifest$itemIds %||% list(), use.names = FALSE)
+  if (!is.list(form_manifest) ||
+      !identical(form_manifest$algorithmVersion %||% "", required_form_version) ||
+      !identical(form_manifest$role %||% "", if (is.null(requested_count)) "consumer-profile" else "controlled-matrix") ||
+      !identical(form_manifest$sourceTier %||% "", record$tier %||% "") ||
+      !identical(form_manifest$administration %||% "", record$administration %||% "") ||
+      !identical(form_manifest$requestedItemCount, requested_count) ||
+      !identical(as.numeric(form_manifest$assignedItemCount %||% NA), assigned_count) ||
+      !identical(
+        form_manifest$assignmentSeed %||% "",
+        paste0(required_form_version, ":", record$participantId, ":assignment")
+      ) ||
+      !identical(
+        form_manifest$presentationSeed %||% "",
+        paste0(required_form_version, ":", record$participantId, ":", record$administration %||% "test", ":presentation")
+      ) ||
+      !identical(as.character(manifest_item_ids), as.character(item_ids_for_record)) ||
+      !identical(form_manifest$membershipFingerprint %||% "", expected_fingerprint) ||
+      !identical(
+        form_manifest$presentationFingerprint %||% "",
+        research_presentation_fingerprint(item_ids_for_record, required_form_version, record$administration %||% "test")
+      )) {
+    stop("Invalid form manifest identity for submissionId ", record_id, ".")
+  }
+  manifest_layer_counts <- vapply(
+    c("normative", "descriptive", "prescriptive"),
+    function(layer) sum(vapply(record$itemMap, function(item) identical(item$layer %||% "", layer), logical(1))),
+    numeric(1)
+  )
+  recorded_layer_counts <- vapply(
+    c("normative", "descriptive", "prescriptive"),
+    function(layer) as.numeric(form_manifest$layerCounts[[layer]] %||% NA),
+    numeric(1)
+  )
+  manifest_axis_ids <- sort(unique(c(
+    unlist(lapply(record$itemMap %||% list(), function(item) {
+      vapply(
+        item$axisWeights %||% list(),
+        function(weight) weight$axisId %||% "",
+        character(1)
+      )
+    }), use.names = FALSE),
+    unlist(lapply(record$itemMap %||% list(), function(item) {
+      unlist(lapply(item$statementOptions %||% list(), function(option) {
+        vapply(
+          option$axisWeights %||% list(),
+          function(weight) weight$axisId %||% "",
+          character(1)
+        )
+      }), use.names = FALSE)
+    }), use.names = FALSE)
+  )))
+  recorded_axis_ids <- sort(as.character(unlist(form_manifest$axisIds %||% list(), use.names = FALSE)))
+  if (!identical(as.numeric(recorded_layer_counts), as.numeric(manifest_layer_counts)) ||
+      !identical(recorded_axis_ids, manifest_axis_ids)) {
+    stop("Invalid form manifest layer or axis coverage for submissionId ", record_id, ".")
   }
   if (!identical(record$sampling$design %||% "", "open-opt-in-nonprobability") ||
       !identical(record$sampling$populationInference, FALSE) ||

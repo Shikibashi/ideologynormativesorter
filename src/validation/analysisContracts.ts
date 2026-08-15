@@ -16,6 +16,10 @@ import {
   MODEL_COMPARISON_VERSION,
   VALIDATION_REPORT_VERSION,
 } from "../research/versions";
+import {
+  CURRENT_RESEARCH_VERSION_BUNDLE,
+  versionBundleErrors,
+} from "./researchContracts";
 
 const MODEL_FAMILIES = new Set<ResearchModelSpecification["family"]>([
   "production-baseline",
@@ -77,9 +81,11 @@ export function researchAnalysisMetadataErrors(
   if (!metadata.sample.denominatorDescription.trim()) {
     errors.push("sample.denominatorDescription is required");
   }
-  if (Object.keys(metadata.versionBundle).length === 0) {
-    errors.push("analysis versionBundle must not be empty");
-  }
+  const versionErrors = versionBundleErrors(
+    metadata.versionBundle,
+    CURRENT_RESEARCH_VERSION_BUNDLE,
+  );
+  errors.push(...versionErrors.map((error) => `analysis ${error}`));
   if (
     !metadata.itemFingerprint &&
     !metadata.taskFingerprint &&

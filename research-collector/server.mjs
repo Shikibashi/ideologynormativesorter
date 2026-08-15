@@ -24,57 +24,75 @@ const researchTaskOutputFile = resolve(
   process.env.RESEARCH_TASK_OUTPUT_FILE ??
     "./private-data/research-task-submissions.ndjson",
 );
-const allowedOrigin = process.env.ALLOWED_ORIGIN ?? "http://localhost:5173";
+const allowedOrigin = process.env.ALLOWED_ORIGIN?.trim() ?? "";
 const maximumBodyBytes = Number(process.env.MAXIMUM_BODY_BYTES ?? 2_000_000);
-const expectedSchemaVersion =
-  process.env.RESEARCH_SCHEMA_VERSION ?? "2026-08-v18";
+const expectedSchemaVersion = process.env.RESEARCH_SCHEMA_VERSION?.trim() ?? "";
 const expectedConsentVersion =
-  process.env.RESEARCH_CONSENT_VERSION ?? "2026-08-12-v8";
+  process.env.RESEARCH_CONSENT_VERSION?.trim() ?? "";
 const expectedQualityRuleVersion =
-  process.env.RESEARCH_QUALITY_RULE_VERSION ?? "data-quality-v2";
-const expectedFormVersion =
-  process.env.RESEARCH_FORM_VERSION ?? "profile-form-v3";
+  process.env.RESEARCH_QUALITY_RULE_VERSION?.trim() ?? "";
+const expectedFormVersion = process.env.RESEARCH_FORM_VERSION?.trim() ?? "";
 const expectedResearchTaskFormVersion =
-  process.env.RESEARCH_TASK_FORM_VERSION ?? "2026-08-research-task-form-v2";
+  process.env.RESEARCH_TASK_FORM_VERSION?.trim() ?? "";
 const expectedResearchTaskBankVersion =
-  process.env.RESEARCH_TASK_BANK_VERSION ?? "2026-08-research-task-bank-v3";
+  process.env.RESEARCH_TASK_BANK_VERSION?.trim() ?? "";
 const expectedLabelExposureVersion =
-  process.env.RESEARCH_LABEL_EXPOSURE_VERSION ?? "2026-08-label-exposure-v1";
-const expectedStudyId = process.env.RESEARCH_STUDY_ID?.trim() || null;
-const expectedBankVersion = process.env.RESEARCH_BANK_VERSION?.trim() || null;
+  process.env.RESEARCH_LABEL_EXPOSURE_VERSION?.trim() ?? "";
+const expectedStudyId = process.env.RESEARCH_STUDY_ID?.trim() ?? "";
+const expectedBankVersion = process.env.RESEARCH_BANK_VERSION?.trim() ?? "";
 const expectedScoringVersion =
-  process.env.RESEARCH_SCORING_VERSION?.trim() || null;
+  process.env.RESEARCH_SCORING_VERSION?.trim() ?? "";
 const expectedTaxonomyVersion =
-  process.env.RESEARCH_TAXONOMY_VERSION ?? "2026-08-taxonomy-v13";
+  process.env.RESEARCH_TAXONOMY_VERSION?.trim() ?? "";
 const expectedPrimaryMeasurementVersion =
-  process.env.RESEARCH_PRIMARY_MEASUREMENT_VERSION ?? "2026-08-primary-core-v1";
+  process.env.RESEARCH_PRIMARY_MEASUREMENT_VERSION?.trim() ?? "";
 const expectedModifierMeasurementVersion =
-  process.env.RESEARCH_MODIFIER_MEASUREMENT_VERSION ??
-  "2026-08-modifier-construct-v1";
+  process.env.RESEARCH_MODIFIER_MEASUREMENT_VERSION?.trim() ?? "";
 const expectedPrimaryLabelRosterFingerprint =
-  process.env.RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT ?? "lr_3cc0f435";
+  process.env.RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT?.trim() ?? "";
 const expectedModifierLabelRosterFingerprint =
-  process.env.RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT ?? "lr_eb26ed76";
+  process.env.RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT?.trim() ?? "";
 const expectedSpecialistAssignmentStrategy =
-  process.env.RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY ?? "balanced-hash-v2";
+  process.env.RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY?.trim() ?? "";
 const expectedSpecialistAssignmentRosterVersion =
-  process.env.RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION ??
-  "2026-08-specialist-roster-v1";
+  process.env.RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION?.trim() ?? "";
 const expectedSpecialistAssignmentModuleIds =
-  process.env.RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS ??
-  "feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module";
+  process.env.RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS?.trim() ?? "";
+
+export const REQUIRED_COLLECTOR_FROZEN_ENVIRONMENT = [
+  "ALLOWED_ORIGIN",
+  "RESEARCH_STUDY_ID",
+  "RESEARCH_SCHEMA_VERSION",
+  "RESEARCH_CONSENT_VERSION",
+  "RESEARCH_QUALITY_RULE_VERSION",
+  "RESEARCH_FORM_VERSION",
+  "RESEARCH_TASK_FORM_VERSION",
+  "RESEARCH_TASK_BANK_VERSION",
+  "RESEARCH_LABEL_EXPOSURE_VERSION",
+  "RESEARCH_BANK_VERSION",
+  "RESEARCH_SCORING_VERSION",
+  "RESEARCH_TAXONOMY_VERSION",
+  "RESEARCH_PRIMARY_MEASUREMENT_VERSION",
+  "RESEARCH_MODIFIER_MEASUREMENT_VERSION",
+  "RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT",
+  "RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT",
+  "RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY",
+  "RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION",
+  "RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS",
+];
+
+export function collectorConfigurationErrors(environment = process.env) {
+  return REQUIRED_COLLECTOR_FROZEN_ENVIRONMENT.filter(
+    (name) =>
+      typeof environment[name] !== "string" || !environment[name].trim(),
+  ).map((name) => `${name} is required`);
+}
 
 function expectedVersionBundle(value, formVersion) {
   return {
     ...FROZEN_VERSION_VALUES,
-    bankVersion:
-      expectedBankVersion ??
-      value.bankVersion ??
-      value.versionBundle?.bankVersion,
-    scoringVersion:
-      expectedScoringVersion ??
-      value.scoringVersion ??
-      value.versionBundle?.scoringVersion,
+    bankVersion: expectedBankVersion,
+    scoringVersion: expectedScoringVersion,
     taxonomyVersion: expectedTaxonomyVersion,
     primaryMeasurementVersion: expectedPrimaryMeasurementVersion,
     modifierMeasurementVersion: expectedModifierMeasurementVersion,
@@ -82,7 +100,7 @@ function expectedVersionBundle(value, formVersion) {
     schemaVersion: expectedSchemaVersion,
     consentVersion: expectedConsentVersion,
     qualityRuleVersion: expectedQualityRuleVersion,
-    studyId: expectedStudyId ?? value.studyId,
+    studyId: expectedStudyId,
     researchTaskBankVersion: expectedResearchTaskBankVersion,
   };
 }
@@ -104,12 +122,6 @@ const LABEL_EXPOSURE_ARMS = new Set([
   "dimension-only",
   "unlabeled-profile",
   "named-label",
-]);
-
-await Promise.all([
-  mkdir(dirname(outputFile), { recursive: true }),
-  mkdir(dirname(specialistOutputFile), { recursive: true }),
-  mkdir(dirname(researchTaskOutputFile), { recursive: true }),
 ]);
 
 function isObject(value) {
@@ -309,6 +321,108 @@ function researchFormFingerprint(itemMap) {
   return `rf_${hash32(`${expectedFormVersion}:${canonical}`).toString(16).padStart(8, "0")}`;
 }
 
+function researchPresentationFingerprint(itemMap, administration) {
+  const ordered = itemMap.map((item) => item.questionId).join("|");
+  return `rfo_${hash32(`${expectedFormVersion}:${administration}:${ordered}`)
+    .toString(16)
+    .padStart(8, "0")}`;
+}
+
+function validFormManifest(manifest, value) {
+  if (!isObject(manifest)) return false;
+  const itemIds = value.itemMap.map((item) => item.questionId);
+  const layerCounts = { normative: 0, descriptive: 0, prescriptive: 0 };
+  const axisIds = new Set();
+  for (const item of value.itemMap) {
+    if (layerCounts[item.layer] === undefined) return false;
+    layerCounts[item.layer] += 1;
+    for (const weight of item.axisWeights ?? []) axisIds.add(weight.axisId);
+    for (const option of item.statementOptions ?? []) {
+      for (const weight of option.axisWeights ?? []) axisIds.add(weight.axisId);
+    }
+  }
+  const requestedItemCount = value.form.requestedItemCount;
+  return (
+    manifest.algorithmVersion === expectedFormVersion &&
+    manifest.role ===
+      (requestedItemCount === null
+        ? "consumer-profile"
+        : "controlled-matrix") &&
+    manifest.sourceTier === value.tier &&
+    manifest.administration === value.administration &&
+    manifest.requestedItemCount === requestedItemCount &&
+    manifest.assignedItemCount === itemIds.length &&
+    manifest.assignmentSeed ===
+      `${expectedFormVersion}:${value.participantId}:assignment` &&
+    manifest.presentationSeed ===
+      `${expectedFormVersion}:${value.participantId}:${value.administration}:presentation` &&
+    Array.isArray(manifest.itemIds) &&
+    manifest.itemIds.join("|") === itemIds.join("|") &&
+    manifest.membershipFingerprint === researchFormFingerprint(value.itemMap) &&
+    manifest.presentationFingerprint ===
+      researchPresentationFingerprint(value.itemMap, value.administration) &&
+    isObject(manifest.layerCounts) &&
+    ["normative", "descriptive", "prescriptive"].every(
+      (layer) => manifest.layerCounts[layer] === layerCounts[layer],
+    ) &&
+    Array.isArray(manifest.axisIds) &&
+    [...manifest.axisIds].sort().join("|") === [...axisIds].sort().join("|")
+  );
+}
+
+function validExposurePresentation(presentation) {
+  if (
+    !isObject(presentation) ||
+    presentation.version !== expectedLabelExposureVersion ||
+    !/^lep_[0-9a-f]{8}$/.test(presentation.fingerprint) ||
+    !Array.isArray(presentation.axes) ||
+    presentation.axes.length === 0
+  )
+    return false;
+  const layers = new Set(["normative", "descriptive", "prescriptive"]);
+  const positions = new Set([
+    "near midpoint",
+    "slightly toward",
+    "leans toward",
+    "strongly toward",
+    "unmeasured",
+  ]);
+  const coverageBands = new Set(["insufficient", "low", "medium", "high"]);
+  if (
+    new Set(presentation.axes.map((axis) => axis.axisId)).size !==
+      presentation.axes.length ||
+    !presentation.axes.every(
+      (axis) =>
+        isObject(axis) &&
+        validToken(axis.axisId) &&
+        validNonemptyString(axis.name) &&
+        layers.has(axis.layer) &&
+        positions.has(axis.position) &&
+        coverageBands.has(axis.coverageBand) &&
+        (axis.position === "near midpoint" ||
+          axis.position === "unmeasured" ||
+          validNonemptyString(axis.pole)),
+    )
+  )
+    return false;
+  const canonical = presentation.axes
+    .map((axis) =>
+      [
+        axis.axisId,
+        axis.layer,
+        axis.name,
+        axis.position,
+        axis.pole ?? "",
+        axis.coverageBand,
+      ].join("|"),
+    )
+    .join("||");
+  return (
+    `lep_${hash32(canonical).toString(16).padStart(8, "0")}` ===
+    presentation.fingerprint
+  );
+}
+
 function labelRosterFingerprint(
   role,
   labelIds,
@@ -380,11 +494,7 @@ async function loadSubmissionDigests(paths) {
   return digests;
 }
 
-const submissionDigests = await loadSubmissionDigests([
-  outputFile,
-  specialistOutputFile,
-  researchTaskOutputFile,
-]);
+let submissionDigests = new Map();
 let writeQueue = Promise.resolve();
 
 function setCors(response, origin) {
@@ -404,7 +514,7 @@ function validBaseRecord(value) {
       value.schemaVersion === expectedSchemaVersion &&
       validToken(value.submissionId) &&
       validToken(value.studyId) &&
-      (expectedStudyId === null || value.studyId === expectedStudyId) &&
+      value.studyId === expectedStudyId &&
       validToken(value.participantId) &&
       (value.administration === "test" || value.administration === "retest") &&
       validIsoTimestamp(value.submittedAt) &&
@@ -566,24 +676,22 @@ function validLabelExposure(value, participantId, studyId) {
     assignment.participantId !== participantId ||
     !LABEL_EXPOSURE_ARMS.has(assignment.arm) ||
     !validToken(assignment.seed, 256) ||
-    assignment.seed !== `${studyId}_${participantId}_label-exposure-v1` ||
+    assignment.seed !== `${studyId}_${participantId}_label-exposure-v2` ||
     assignment.arm !==
       ["dimension-only", "unlabeled-profile", "named-label"][
-        hash32(`${studyId}_${participantId}_label-exposure-v1`) % 3
+        hash32(`${studyId}_${participantId}_label-exposure-v2`) % 3
       ] ||
     assignment.assignedAfterSubstantiveResponses !== true ||
     typeof value.exposureShown !== "boolean"
   )
     return false;
-  if (value.exposedLabelIds !== undefined) {
-    if (
-      !Array.isArray(value.exposedLabelIds) ||
-      new Set(value.exposedLabelIds).size !== value.exposedLabelIds.length ||
-      !value.exposedLabelIds.every((labelId) => validToken(labelId, 128))
-    )
-      return false;
-  }
-  const exposedLabelCount = value.exposedLabelIds?.length ?? 0;
+  if (
+    !Array.isArray(value.exposedLabelIds) ||
+    new Set(value.exposedLabelIds).size !== value.exposedLabelIds.length ||
+    !value.exposedLabelIds.every((labelId) => validToken(labelId, 128))
+  )
+    return false;
+  const exposedLabelCount = value.exposedLabelIds.length;
   if (
     value.exposureShown &&
     assignment.arm === "named-label" &&
@@ -596,20 +704,27 @@ function validLabelExposure(value, participantId, studyId) {
     exposedLabelCount > 0
   )
     return false;
-  const ratings = [
-    value.perceivedAccuracy,
-    value.identityAcceptance,
-    value.confidence,
-    value.affect,
-    value.followUpStability,
-  ];
+  if (
+    !isObject(value.ratings) ||
+    ![
+      "perceivedAccuracy",
+      "identityAcceptance",
+      "confidence",
+      "affect",
+      "followUpStability",
+    ].every((key) => Object.hasOwn(value.ratings, key))
+  )
+    return false;
+  const ratings = Object.values(value.ratings);
   if (
     ratings.some(
       (rating) =>
-        rating !== undefined &&
+        rating !== "prefer_not_to_answer" &&
         (!Number.isInteger(rating) || rating < 1 || rating > 5),
     )
   )
+    return false;
+  if (value.exposureShown && !validExposurePresentation(value.presentation))
     return false;
   if (!value.exposureShown && typeof value.missingReason !== "string")
     return false;
@@ -694,6 +809,7 @@ function validCoreRecord(value) {
     value.form.assignedItemCount > 0 &&
     value.form.assignedItemCount === value.itemMap.length &&
     value.form.fingerprint === researchFormFingerprint(value.itemMap) &&
+    validFormManifest(value.form.manifest, value) &&
     value.sampling?.design === "open-opt-in-nonprobability" &&
     value.sampling?.populationInference === false &&
     value.sampling?.weighting === "none" &&
@@ -974,16 +1090,46 @@ const server = createServer(async (request, response) => {
   );
 });
 
-server.listen(port, () => {
-  console.log(
-    `Research collector listening on http://localhost:${port}/submit`,
-  );
-  console.log(`Writing core pseudonymous records to ${outputFile}`);
-  console.log(
-    `Writing specialist pseudonymous records and dispositions to ${specialistOutputFile}`,
-  );
-  console.log(`Writing research task records to ${researchTaskOutputFile}`);
-  console.log(
-    `Loaded ${submissionDigests.size} existing submission ID(s) for idempotency checks`,
-  );
-});
+export async function startCollector() {
+  const configurationErrors = collectorConfigurationErrors();
+  if (configurationErrors.length > 0) {
+    throw new Error(
+      `Collector configuration is incomplete: ${configurationErrors.join("; ")}`,
+    );
+  }
+  await Promise.all([
+    mkdir(dirname(outputFile), { recursive: true }),
+    mkdir(dirname(specialistOutputFile), { recursive: true }),
+    mkdir(dirname(researchTaskOutputFile), { recursive: true }),
+  ]);
+  submissionDigests = await loadSubmissionDigests([
+    outputFile,
+    specialistOutputFile,
+    researchTaskOutputFile,
+  ]);
+  server.listen(port, () => {
+    console.log(
+      `Research collector listening on http://localhost:${port}/submit`,
+    );
+    console.log(`Writing core pseudonymous records to ${outputFile}`);
+    console.log(
+      `Writing specialist pseudonymous records and dispositions to ${specialistOutputFile}`,
+    );
+    console.log(`Writing research task records to ${researchTaskOutputFile}`);
+    console.log(
+      `Loaded ${submissionDigests.size} existing submission ID(s) for idempotency checks`,
+    );
+  });
+}
+
+if (
+  process.argv[1] &&
+  resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname)
+) {
+  try {
+    await startCollector();
+  } catch (error) {
+    console.error(error instanceof Error ? error.message : error);
+    process.exitCode = 1;
+  }
+}

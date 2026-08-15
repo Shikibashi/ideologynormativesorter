@@ -172,21 +172,25 @@ export function buildResearchVersionBundle(
 }
 
 export function versionBundleErrors(
-  bundle: Partial<MeasurementVersionBundle>,
+  bundle: Partial<MeasurementVersionBundle> | null | undefined,
   expected: Partial<MeasurementVersionBundle> = CURRENT_RESEARCH_VERSION_BUNDLE,
 ): string[] {
   const errors: string[] = [];
-  for (const key of Object.keys(bundle)) {
+  const candidate =
+    bundle && typeof bundle === "object" && !Array.isArray(bundle)
+      ? bundle
+      : {};
+  for (const key of Object.keys(candidate)) {
     if (!VERSION_KEYS.has(key as keyof MeasurementVersionBundle)) {
       errors.push(`${key} is not part of the frozen research contract`);
     }
   }
   for (const key of REQUIRED_VERSION_KEYS) {
-    if (!bundle[key]) {
+    if (!candidate[key]) {
       errors.push(`${key} is required`);
       continue;
     }
-    if (expected[key] && bundle[key] !== expected[key]) {
+    if (expected[key] && candidate[key] !== expected[key]) {
       errors.push(`${key} does not match the frozen research contract`);
     }
   }

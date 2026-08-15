@@ -110,6 +110,9 @@ describe("research forms", () => {
     );
     expect(manifest.role).toBe("controlled-matrix");
     expect(manifest.assignedItemCount).toBe(6);
+    expect(manifest.itemIds).toHaveLength(6);
+    expect(manifest.assignmentSeed).toContain("p_manifest");
+    expect(manifest.presentationSeed).toContain("test");
     expect(manifest.layerCounts.normative).toBeGreaterThan(0);
     expect(manifest.membershipFingerprint).toBe(
       researchFormFingerprint(testForm),

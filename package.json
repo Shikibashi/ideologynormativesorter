@@ -17,6 +17,8 @@
     "test:ecw": "playwright test --project=ecw",
     "test:browser": "playwright test",
     "research:check": "node scripts/check-research-contract.mjs",
+    "research:r-syntax": "node scripts/check-r-syntax.mjs",
+    "test:collector": "node --test research-collector/config-check.mjs",
     "test:worker": "node --test research-worker/worker.test.mjs",
     "worker:check": "wrangler deploy --dry-run --config research-worker/wrangler.jsonc",
     "worker:migrate": "wrangler d1 migrations apply political-judgment-contributions --remote --config research-worker/wrangler.jsonc",

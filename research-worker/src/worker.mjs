@@ -192,6 +192,7 @@ function validItem(item) {
     validString(item.helpText) &&
     validToken(item.domain) &&
     LAYERS.has(item.layer) &&
+    Array.isArray(item.axisWeights) &&
     Array.isArray(item.responseOptions) &&
     item.responseOptions.length > 0 &&
     item.responseOptions.every(validResponseOption) &&
@@ -282,6 +283,59 @@ export function researchFormFingerprint(
   return `rf_${hash32(`${formVersion}:${canonicalIds}`).toString(16).padStart(8, "0")}`;
 }
 
+function researchPresentationFingerprint(itemMap, formVersion, administration) {
+  const orderedIds = itemMap.map((item) => item.questionId).join("|");
+  return `rfo_${hash32(`${formVersion}:${administration}:${orderedIds}`)
+    .toString(16)
+    .padStart(8, "0")}`;
+}
+
+function validFormManifest(manifest, submission, env) {
+  if (!isObject(manifest)) return false;
+  const itemIds = submission.itemMap.map((item) => item.questionId);
+  const layerCounts = { normative: 0, descriptive: 0, prescriptive: 0 };
+  const axisIds = new Set();
+  for (const item of submission.itemMap) {
+    if (layerCounts[item.layer] === undefined) return false;
+    layerCounts[item.layer] += 1;
+    for (const weight of item.axisWeights ?? []) axisIds.add(weight.axisId);
+    for (const option of item.statementOptions ?? []) {
+      for (const weight of option.axisWeights ?? []) axisIds.add(weight.axisId);
+    }
+  }
+  const requestedItemCount = submission.form.requestedItemCount;
+  const expectedRole =
+    requestedItemCount === null ? "consumer-profile" : "controlled-matrix";
+  return (
+    manifest.algorithmVersion === env.EXPECTED_FORM_VERSION &&
+    manifest.role === expectedRole &&
+    manifest.sourceTier === submission.tier &&
+    manifest.administration === submission.administration &&
+    manifest.requestedItemCount === requestedItemCount &&
+    manifest.assignedItemCount === itemIds.length &&
+    manifest.assignmentSeed ===
+      `${env.EXPECTED_FORM_VERSION}:${submission.participantId}:assignment` &&
+    manifest.presentationSeed ===
+      `${env.EXPECTED_FORM_VERSION}:${submission.participantId}:${submission.administration}:presentation` &&
+    Array.isArray(manifest.itemIds) &&
+    manifest.itemIds.join("|") === itemIds.join("|") &&
+    manifest.membershipFingerprint ===
+      researchFormFingerprint(submission.itemMap, env.EXPECTED_FORM_VERSION) &&
+    manifest.presentationFingerprint ===
+      researchPresentationFingerprint(
+        submission.itemMap,
+        env.EXPECTED_FORM_VERSION,
+        submission.administration,
+      ) &&
+    isObject(manifest.layerCounts) &&
+    ["normative", "descriptive", "prescriptive"].every(
+      (layer) => manifest.layerCounts[layer] === layerCounts[layer],
+    ) &&
+    Array.isArray(manifest.axisIds) &&
+    [...manifest.axisIds].sort().join("|") === [...axisIds].sort().join("|")
+  );
+}
+
 function labelRosterFingerprint(
   role,
   labelIds,
@@ -322,30 +376,27 @@ function validLabelExposure(value, participantId, studyId, env) {
   if (!isObject(value) || !isObject(value.assignment)) return false;
   const assignment = value.assignment;
   if (
-    assignment.version !==
-      (env.EXPECTED_LABEL_EXPOSURE_VERSION ?? "2026-08-label-exposure-v1") ||
+    assignment.version !== env.EXPECTED_LABEL_EXPOSURE_VERSION ||
     assignment.studyId !== studyId ||
     assignment.participantId !== participantId ||
     !LABEL_EXPOSURE_ARMS.has(assignment.arm) ||
     !validToken(assignment.seed, 256) ||
-    assignment.seed !== `${studyId}_${participantId}_label-exposure-v1` ||
+    assignment.seed !== `${studyId}_${participantId}_label-exposure-v2` ||
     assignment.arm !==
       ["dimension-only", "unlabeled-profile", "named-label"][
-        hash32(`${studyId}_${participantId}_label-exposure-v1`) % 3
+        hash32(`${studyId}_${participantId}_label-exposure-v2`) % 3
       ] ||
     assignment.assignedAfterSubstantiveResponses !== true ||
     typeof value.exposureShown !== "boolean"
   )
     return false;
-  if (value.exposedLabelIds !== undefined) {
-    if (
-      !Array.isArray(value.exposedLabelIds) ||
-      new Set(value.exposedLabelIds).size !== value.exposedLabelIds.length ||
-      !value.exposedLabelIds.every((labelId) => validToken(labelId, 128))
-    )
-      return false;
-  }
-  const exposedLabelCount = value.exposedLabelIds?.length ?? 0;
+  if (
+    !Array.isArray(value.exposedLabelIds) ||
+    new Set(value.exposedLabelIds).size !== value.exposedLabelIds.length ||
+    !value.exposedLabelIds.every((labelId) => validToken(labelId, 128))
+  )
+    return false;
+  const exposedLabelCount = value.exposedLabelIds.length;
   if (
     value.exposureShown &&
     assignment.arm === "named-label" &&
@@ -358,20 +409,27 @@ function validLabelExposure(value, participantId, studyId, env) {
     exposedLabelCount > 0
   )
     return false;
-  const ratings = [
-    value.perceivedAccuracy,
-    value.identityAcceptance,
-    value.confidence,
-    value.affect,
-    value.followUpStability,
-  ];
+  if (
+    !isObject(value.ratings) ||
+    ![
+      "perceivedAccuracy",
+      "identityAcceptance",
+      "confidence",
+      "affect",
+      "followUpStability",
+    ].every((key) => Object.hasOwn(value.ratings, key))
+  )
+    return false;
+  const ratings = Object.values(value.ratings);
   if (
     ratings.some(
       (rating) =>
-        rating !== undefined &&
+        rating !== "prefer_not_to_answer" &&
         (!Number.isInteger(rating) || rating < 1 || rating > 5),
     )
   )
+    return false;
+  if (value.exposureShown && !validExposurePresentation(value.presentation))
     return false;
   if (!value.exposureShown && typeof value.missingReason !== "string")
     return false;
@@ -381,6 +439,62 @@ function validLabelExposure(value, participantId, studyId, env) {
   )
     return false;
   return !(value.exposureShown && value.missingReason === "not-shown");
+}
+
+function validExposurePresentation(presentation) {
+  if (
+    !isObject(presentation) ||
+    presentation.version !== "2026-08-label-exposure-v2" ||
+    !/^lep_[0-9a-f]{8}$/.test(presentation.fingerprint) ||
+    !Array.isArray(presentation.axes) ||
+    presentation.axes.length === 0
+  )
+    return false;
+  const layers = new Set(["normative", "descriptive", "prescriptive"]);
+  const positions = new Set([
+    "near midpoint",
+    "slightly toward",
+    "leans toward",
+    "strongly toward",
+    "unmeasured",
+  ]);
+  const coverageBands = new Set(["insufficient", "low", "medium", "high"]);
+  if (
+    new Set(presentation.axes.map((axis) => axis.axisId)).size !==
+    presentation.axes.length
+  )
+    return false;
+  if (
+    !presentation.axes.every(
+      (axis) =>
+        isObject(axis) &&
+        validToken(axis.axisId) &&
+        validString(axis.name) &&
+        layers.has(axis.layer) &&
+        positions.has(axis.position) &&
+        coverageBands.has(axis.coverageBand) &&
+        (axis.position === "near midpoint" ||
+          axis.position === "unmeasured" ||
+          validString(axis.pole)),
+    )
+  )
+    return false;
+  const canonical = presentation.axes
+    .map((axis) =>
+      [
+        axis.axisId,
+        axis.layer,
+        axis.name,
+        axis.position,
+        axis.pole ?? "",
+        axis.coverageBand,
+      ].join("|"),
+    )
+    .join("||");
+  return (
+    `lep_${hash32(canonical).toString(16).padStart(8, "0")}` ===
+    presentation.fingerprint
+  );
 }
 
 function validCoreRecord(submission, env) {
@@ -480,6 +594,7 @@ function validCoreRecord(submission, env) {
     submission.form.assignedItemCount === assignedCount &&
     submission.form.fingerprint ===
       researchFormFingerprint(submission.itemMap, env.EXPECTED_FORM_VERSION) &&
+    validFormManifest(submission.form.manifest, submission, env) &&
     submission.sampling?.design === "open-opt-in-nonprobability" &&
     submission.sampling?.populationInference === false &&
     submission.sampling?.weighting === "none" &&

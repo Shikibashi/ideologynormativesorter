@@ -72,6 +72,7 @@ export interface AppActionContext {
   setResearchEnabled: Setter<boolean>;
   setResearchSubmission: Setter<ResearchSubmission | null>;
   setResearchStatus: Setter<ResearchSubmissionStatus | null>;
+  setResearchTaskArm: Setter<Exclude<ResearchTaskArm, "all"> | null>;
   setLabelExposureOutcome: Setter<LabelExposureOutcome | null>;
   setLabelExposureAssignment: Setter<
     import("../types").LabelExposureAssignment | null

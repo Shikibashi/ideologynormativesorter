@@ -40,7 +40,7 @@ production promotion by itself.
 | Primary measurement                    | `2026-08-primary-core-v1`                                         |
 | Modifier measurement                   | `2026-08-modifier-construct-v1`                                   |
 | Production scoring                     | `2026-08-13-taxonomy-v8`                                          |
-| Research schema                        | `2026-08-v18`                                                     |
+| Research schema                        | `2026-08-v19`                                                     |
 | Research study                         | `community-2026-v5`                                               |
 | Research form                          | `profile-form-v3`                                                 |
 | Research task bank/form                | `2026-08-research-task-bank-v3` / `2026-08-research-task-form-v2` |
@@ -71,6 +71,9 @@ current implementation target.
    representative claims require a later calibrated release decision.
 8. Sources support definitions, boundaries, and context; they do not establish
    psychometric validity or answer keys.
+9. W1 construct-family metadata is a planning and coverage map, not empirical
+   evidence that constructs are equivalent across normative, descriptive, and
+   prescriptive layers.
 
 ## Role boundary
 

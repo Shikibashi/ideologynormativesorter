@@ -9,6 +9,7 @@ import {
   researchLabelExposureEnabled,
   researchStudyId,
   researchTaskArm,
+  researchTaskRouteInvalid,
 } from "../research";
 import type { ResearchTaskArm } from "../types";
 import { researchFormSize } from "../research/forms";
@@ -22,6 +23,7 @@ export interface AppBootstrapState {
   formSize: number | null;
   initialResearchMode: boolean;
   initialResearchTaskArm: Exclude<ResearchTaskArm, "all"> | null;
+  initialResearchTaskRouteInvalid: boolean;
   labelExposureEnabled: boolean;
   loadedInitialQuiz: ReturnType<typeof loadQuizState>;
   loadedPendingResearch: ReturnType<typeof loadPendingResearchRecord>;
@@ -45,6 +47,10 @@ export function useAppBootstrapState(): AppBootstrapState {
   const [shareLoad] = useState(() => readSharedResult(shareMeta));
   const initialResearchMode = useMemo(() => isResearchMode(), []);
   const initialResearchTaskArm = useMemo(() => researchTaskArm(), []);
+  const initialResearchTaskRouteInvalid = useMemo(
+    () => researchTaskRouteInvalid(),
+    [],
+  );
   const administration = useMemo(() => researchAdministration(), []);
   const studyId = useMemo(() => researchStudyId(), []);
   const recruitmentSource = useMemo(() => researchRecruitmentSource(), []);
@@ -73,6 +79,7 @@ export function useAppBootstrapState(): AppBootstrapState {
     formSize,
     initialResearchMode,
     initialResearchTaskArm,
+    initialResearchTaskRouteInvalid,
     labelExposureEnabled,
     loadedInitialQuiz,
     loadedPendingResearch,

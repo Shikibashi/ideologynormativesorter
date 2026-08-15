@@ -27,6 +27,38 @@ contract_stop <- function(message) {
   stop(paste0("Research analysis contract violation: ", message), call. = FALSE)
 }
 
+version_environment_name <- function(key, prefix = "PSYCH_REQUIRED_") {
+  snake_key <- gsub("([a-z0-9])([A-Z])", "\\1_\\2", key, perl = TRUE)
+  paste0(prefix, toupper(snake_key))
+}
+
+required_version_bundle_values <- function(prefix = "PSYCH_REQUIRED_") {
+  values <- lapply(required_version_bundle_keys, function(key) {
+    environment_name <- version_environment_name(key, prefix)
+    value <- trimws(Sys.getenv(environment_name, ""))
+    if (!nzchar(value)) {
+      contract_stop(paste0(
+        environment_name,
+        " is required for frozen analysis provenance"
+      ))
+    }
+    value
+  })
+  names(values) <- required_version_bundle_keys
+  task_form_version <- trimws(Sys.getenv(
+    paste0(prefix, "RESEARCH_TASK_FORM_VERSION"),
+    ""
+  ))
+  if (!nzchar(task_form_version)) {
+    contract_stop(paste0(
+      prefix,
+      "RESEARCH_TASK_FORM_VERSION is required for task-record provenance"
+    ))
+  }
+  values$researchTaskFormVersion <- task_form_version
+  values
+}
+
 read_contract_records <- function(path) {
   if (!file.exists(path) && !dir.exists(path)) {
     contract_stop(paste0("input path does not exist: ", path))
@@ -108,7 +140,7 @@ read_inclusion_manifest <- function(path, records) {
   manifest
 }
 
-version_bundle_for <- function(record) {
+version_bundle_for <- function(record, expected = NULL) {
   bundle <- record$versionBundle
   if (is.null(bundle) || !is.list(bundle) || length(bundle) == 0) {
     contract_stop(paste0("record ", record_id(record), " has no machine-readable versionBundle"))
@@ -127,11 +159,32 @@ version_bundle_for <- function(record) {
   if (length(values) == 0 || any(!nzchar(as.character(values)))) {
     contract_stop(paste0("record ", record_id(record), " has an empty versionBundle field"))
   }
-  as.list(as.character(values)) |> setNames(names(values))
+  normalized <- as.list(as.character(values)) |> setNames(names(values))
+  if (!is.null(expected)) {
+    expected_for_record <- expected
+    if (identical(record$recordType %||% "core", "research-task")) {
+      expected_for_record$formVersion <- expected$researchTaskFormVersion
+    }
+    mismatched <- required_version_bundle_keys[
+      vapply(
+        required_version_bundle_keys,
+        function(key) !identical(normalized[[key]], expected_for_record[[key]]),
+        logical(1)
+      )
+    ]
+    if (length(mismatched) > 0) {
+      contract_stop(paste0(
+        "record ", record_id(record),
+        " has incompatible frozen version value(s): ",
+        paste(mismatched, collapse = ", ")
+      ))
+    }
+  }
+  normalized
 }
 
-common_version_bundle <- function(records) {
-  bundles <- lapply(records, version_bundle_for)
+common_version_bundle <- function(records, expected = NULL) {
+  bundles <- lapply(records, version_bundle_for, expected = expected)
   keys <- unique(unlist(lapply(bundles, names), use.names = FALSE))
   result <- list()
   for (key in keys) {
@@ -216,7 +269,7 @@ run_research_analysis <- function(args, analysis_id, analysis_version, estimand,
   records <- records[vapply(records, function(record) record_id(record) %in% included_ids, logical(1))]
   if (length(records) == 0) contract_stop("the resolved manifest includes no records")
 
-  versions <- common_version_bundle(records)
+  versions <- common_version_bundle(records, required_version_bundle_values("ANALYSIS_REQUIRED_"))
   code_revision <- config$codeRevision
   if (!nzchar(code_revision)) {
     code_revision <- tryCatch(

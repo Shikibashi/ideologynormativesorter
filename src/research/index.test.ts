@@ -6,8 +6,11 @@ import {
   buildSpecialistDispositionSubmission,
   buildSpecialistResearchSubmission,
   getOrCreateParticipantId,
+  isResearchMode,
   MODIFIER_LABEL_ROSTER_FINGERPRINT,
   PRIMARY_LABEL_ROSTER_FINGERPRINT,
+  researchTaskArm,
+  researchTaskRouteInvalid,
   submitResearchSubmission,
   type ResearchConsent,
 } from "./index";
@@ -61,6 +64,20 @@ const timing = {
 };
 
 describe("research submission", () => {
+  it("fails closed for unsupported task routes without changing ordinary mode", () => {
+    expect(researchTaskArm("?research=1&arm=choice")).toBe("choice");
+    expect(researchTaskRouteInvalid("?research=1&arm=choice")).toBe(false);
+    expect(isResearchMode("?research=1&arm=choice")).toBe(true);
+
+    expect(researchTaskArm("?research=1")).toBeNull();
+    expect(researchTaskRouteInvalid("?research=1")).toBe(false);
+    expect(isResearchMode("?research=1")).toBe(true);
+
+    expect(researchTaskArm("?research=1&arm=unsupported")).toBeNull();
+    expect(researchTaskRouteInvalid("?research=1&arm=unsupported")).toBe(true);
+    expect(isResearchMode("?research=1&arm=unsupported")).toBe(false);
+  });
+
   it("assigns a deterministic post-response label-exposure arm", () => {
     const first = buildLabelExposureAssignment("study-1", "p-1");
     const second = buildLabelExposureAssignment("study-1", "p-1");
@@ -200,6 +217,13 @@ describe("research submission", () => {
       requestedItemCount: null,
     });
     expect(submission.form.fingerprint).toMatch(/^rf_[0-9a-f]{8}$/);
+    expect(submission.form.manifest).toMatchObject({
+      role: "consumer-profile",
+      sourceTier: "quick",
+      itemIds: ["q-test"],
+      layerCounts: { normative: 1, descriptive: 0, prescriptive: 0 },
+      axisIds: ["test-axis"],
+    });
     expect(submission.sampling).toEqual({
       design: "open-opt-in-nonprobability",
       populationInference: false,

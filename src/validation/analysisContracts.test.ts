@@ -15,6 +15,7 @@ import {
   FORM_EQUIVALENCE_VERSION,
   MODEL_COMPARISON_VERSION,
 } from "../research/versions";
+import { CURRENT_RESEARCH_VERSION_BUNDLE } from "./researchContracts";
 import type {
   ResearchAnalysisMetadata,
   ResearchDIFPlan,
@@ -38,7 +39,7 @@ const metadata: ResearchAnalysisMetadata = {
   },
   estimand: "layer-specific axis estimate",
   seed: 42,
-  versionBundle: { studyId: "study-1", schemaVersion: "schema-v1" },
+  versionBundle: { ...CURRENT_RESEARCH_VERSION_BUNDLE },
   itemFingerprint: "rf_items",
   modelId: "production-baseline",
 };
@@ -64,6 +65,22 @@ describe("research analysis contracts", () => {
     expect(
       researchAnalysisMetadataErrors({ ...metadata, inclusionManifestId: "" }),
     ).toContain("inclusionManifestId is required");
+  });
+
+  it.each([
+    ["missing", {}],
+    ["absent", undefined],
+    ["partial", { studyId: CURRENT_RESEARCH_VERSION_BUNDLE.studyId }],
+    [
+      "mismatched",
+      { ...CURRENT_RESEARCH_VERSION_BUNDLE, scoringVersion: "future-score" },
+    ],
+  ])("rejects a %s analysis version bundle", (_name, versionBundle) => {
+    const errors = researchAnalysisMetadataErrors({
+      ...metadata,
+      versionBundle,
+    } as ResearchAnalysisMetadata);
+    expect(errors).not.toEqual([]);
   });
 
   it("keeps precision bounded and distinguishes insufficient data", () => {

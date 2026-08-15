@@ -21,7 +21,7 @@ This brief records the current implementation contract for the ideology sorter. 
 
 ## Research, specialist modules, and collection
 
-- Research contract: study `community-2026-v5`, schema `2026-08-v18`, consent `2026-08-12-v8`, profile form `profile-form-v3`, research-task form `2026-08-research-task-form-v2`, task bank `2026-08-research-task-bank-v3`, strategy task bank `2026-08-strategy-task-bank-v2`, and assignment strategy `balanced-hash-v2`.
+- Research contract: study `community-2026-v5`, schema `2026-08-v19`, consent `2026-08-12-v8`, profile form `profile-form-v3`, research-task form `2026-08-research-task-form-v2`, task bank `2026-08-research-task-bank-v3`, strategy task bank `2026-08-strategy-task-bank-v2`, and assignment strategy `balanced-hash-v2`.
 - Research mode preserves the selected ordinary profile for contribution. Matrix/test-retest forms are explicit research requests and use deterministic membership, order, and fingerprints.
 - The frozen specialist roster is `2026-08-specialist-roster-v1` with nine modules. Specialist results expose evidence coverage and gates and do not silently change the ordinary result.
 - `research-collector/` provides dependency-free HTTP validation and NDJSON collection. `research-worker/` provides the Cloudflare Worker/D1 path, rate limiting, version checks, idempotency, and migrations.
@@ -30,7 +30,12 @@ This brief records the current implementation contract for the ideology sorter. 
 
 - Unit/data validation: `npm test`, `npm run lint`, `npm run build`, and `npm run research:check`.
 - Research-worker validation: `npm run test:worker` and `npm run worker:check` (Cloudflare dry run).
-- Browser validation: `npm run test:browser`, covering the e2e, accessibility, and ECW projects.
+- Browser validation: `npm run test:e2e`, `npm run test:a11y`, and
+  `npm run test:ecw`, covering the e2e, accessibility, and ECW projects.
+- Collector validation: `npm run test:collector` plus the fail-closed startup
+  configuration check.
+- R validation: `npm run research:r-syntax`; the host shell must use the
+  configured R environment when Rscript is not installed locally.
 - Additional measurement validation is documented in `docs/psychometric-validation-protocol.md` and implemented in `analysis/` plus `src/validation/`.
 - CI runs Node verification, collector/research/worker checks, build, R syntax checks, and browser projects. GitHub Pages deployment builds `dist` with the configured research environment; Worker deployment is a separate explicit operation.
 

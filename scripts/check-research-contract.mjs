@@ -22,22 +22,55 @@ function configuredVar(source, name) {
   return match[1];
 }
 
-function collectorDefault(source, envName) {
-  const match = source.match(
-    new RegExp(`process\\.env\\.${envName}\\s*\\?\\?\\s*['\"]([^'\"]+)['\"]`),
+function collectorRequired(source, envName) {
+  const requiredPattern = new RegExp(
+    `process\\.env\\.${envName}\\?\\.trim\\(\\)\\s*\\?\\?\\s*['\"]['\"]`,
   );
-  if (!match) throw new Error(`Missing ${envName} collector default`);
-  return match[1];
+  if (!requiredPattern.test(source)) {
+    throw new Error(`Missing fail-closed ${envName} collector configuration`);
+  }
+  const fallbackPattern = new RegExp(
+    `process\\.env\\.${envName}\\s*\\?\\?\\s*['\"]([^'\"]+)['\"]`,
+  );
+  if (fallbackPattern.test(source)) {
+    throw new Error(
+      `${envName} collector configuration has a permissive default`,
+    );
+  }
 }
 
-function analysisDefault(source, variableName, environmentName) {
-  const match = source.match(
-    new RegExp(
-      `${variableName}\\s*<-\\s*Sys.getenv\\(\\s*['\"]${environmentName}['\"]\\s*,\\s*['\"]([^'\"]+)['\"]`,
-    ),
-  );
-  if (!match) throw new Error(`Missing ${variableName} analysis default`);
-  return match[1];
+function assertCollectorRequired(source, envName) {
+  collectorRequired(source, envName);
+}
+
+function analysisRequired(source, contractSource, environmentName) {
+  if (
+    !source.includes(
+      "required_version_values <- required_version_bundle_values()",
+    )
+  ) {
+    throw new Error(
+      "Analysis entrypoint does not load the frozen version configuration",
+    );
+  }
+  const keyByEnvironment = {
+    PSYCH_REQUIRED_SCHEMA_VERSION: "schemaVersion",
+    PSYCH_REQUIRED_BANK_VERSION: "bankVersion",
+    PSYCH_REQUIRED_SCORING_VERSION: "scoringVersion",
+    PSYCH_REQUIRED_TAXONOMY_VERSION: "taxonomyVersion",
+    PSYCH_REQUIRED_PRIMARY_MEASUREMENT_VERSION: "primaryMeasurementVersion",
+    PSYCH_REQUIRED_MODIFIER_MEASUREMENT_VERSION: "modifierMeasurementVersion",
+    PSYCH_REQUIRED_FORM_VERSION: "formVersion",
+  };
+  const sourceToCheck = keyByEnvironment[environmentName]
+    ? contractSource
+    : source;
+  const requiredToken = keyByEnvironment[environmentName]
+    ? `\"${keyByEnvironment[environmentName]}\"`
+    : `\"${environmentName}\"`;
+  if (!sourceToCheck.includes(requiredToken)) {
+    throw new Error(`Analysis contract does not require ${environmentName}`);
+  }
 }
 
 function specialistRoster(source) {
@@ -105,6 +138,7 @@ const specialist = await read("src/specialist/index.ts");
 const worker = await read("research-worker/wrangler.jsonc");
 const collector = await read("research-collector/server.mjs");
 const validation = await read("analysis/run_validation.R");
+const researchContracts = await read("analysis/research_contracts.R");
 const readme = await read("analysis/README.md");
 const preregistration = await read("docs/pilot-preregistration.md");
 const launchGuide = await read("docs/pilot-retest-launch-2026-08.md");
@@ -291,121 +325,42 @@ assertEqual(
   contract.assignmentModules,
   configuredVar(worker, "EXPECTED_SPECIALIST_ASSIGNMENT_MODULE_IDS"),
 );
-assertEqual(
-  "Collector schema",
-  contract.schema,
-  collectorDefault(collector, "RESEARCH_SCHEMA_VERSION"),
-);
-assertEqual(
-  "Collector consent",
-  contract.consent,
-  collectorDefault(collector, "RESEARCH_CONSENT_VERSION"),
-);
-assertEqual(
-  "Collector quality rules",
-  contract.quality,
-  collectorDefault(collector, "RESEARCH_QUALITY_RULE_VERSION"),
-);
-assertEqual(
-  "Collector form",
-  contract.form,
-  collectorDefault(collector, "RESEARCH_FORM_VERSION"),
-);
-assertEqual(
-  "Collector research task bank",
-  contract.researchTaskBank,
-  collectorDefault(collector, "RESEARCH_TASK_BANK_VERSION"),
-);
-assertEqual(
-  "Collector research task form",
-  contract.researchTaskForm,
-  collectorDefault(collector, "RESEARCH_TASK_FORM_VERSION"),
-);
-assertEqual(
-  "Collector taxonomy",
-  documentedTaxonomyVersion,
-  collectorDefault(collector, "RESEARCH_TAXONOMY_VERSION"),
-);
-assertEqual(
-  "Collector primary measurement",
-  primaryMeasurementVersion,
-  collectorDefault(collector, "RESEARCH_PRIMARY_MEASUREMENT_VERSION"),
-);
-assertEqual(
-  "Collector modifier measurement",
-  modifierMeasurementVersion,
-  collectorDefault(collector, "RESEARCH_MODIFIER_MEASUREMENT_VERSION"),
-);
-assertEqual(
-  "Collector primary-label roster",
-  primaryLabelRosterFingerprint,
-  collectorDefault(collector, "RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT"),
-);
-assertEqual(
-  "Collector modifier-label roster",
-  modifierLabelRosterFingerprint,
-  collectorDefault(collector, "RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT"),
-);
-assertEqual(
-  "Collector specialist assignment strategy",
-  contract.assignment,
-  collectorDefault(collector, "RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY"),
-);
-assertEqual(
-  "Collector specialist assignment roster",
-  contract.assignmentRoster,
-  collectorDefault(collector, "RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION"),
-);
-assertEqual(
-  "Collector specialist assignment modules",
-  contract.assignmentModules,
-  collectorDefault(collector, "RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS"),
-);
-assertEqual(
-  "Analysis schema",
-  contract.schema,
-  analysisDefault(
-    validation,
-    "required_schema_version",
-    "PSYCH_REQUIRED_SCHEMA_VERSION",
-  ),
-);
-assertEqual(
-  "Analysis modifier measurement",
-  modifierMeasurementVersion,
-  analysisDefault(
-    validation,
-    "required_modifier_measurement_version",
-    "PSYCH_REQUIRED_MODIFIER_MEASUREMENT_VERSION",
-  ),
-);
-assertEqual(
-  "Analysis primary measurement",
-  primaryMeasurementVersion,
-  analysisDefault(
-    validation,
-    "required_primary_measurement_version",
-    "PSYCH_REQUIRED_PRIMARY_MEASUREMENT_VERSION",
-  ),
-);
-assertEqual(
-  "Analysis primary-label roster",
-  primaryLabelRosterFingerprint,
-  analysisDefault(
-    validation,
-    "required_primary_label_roster_fingerprint",
-    "PSYCH_REQUIRED_PRIMARY_LABEL_ROSTER_FINGERPRINT",
-  ),
-);
-assertEqual(
-  "Analysis modifier-label roster",
-  modifierLabelRosterFingerprint,
-  analysisDefault(
-    validation,
-    "required_modifier_label_roster_fingerprint",
-    "PSYCH_REQUIRED_MODIFIER_LABEL_ROSTER_FINGERPRINT",
-  ),
-);
+for (const name of [
+  "ALLOWED_ORIGIN",
+  "RESEARCH_STUDY_ID",
+  "RESEARCH_SCHEMA_VERSION",
+  "RESEARCH_CONSENT_VERSION",
+  "RESEARCH_QUALITY_RULE_VERSION",
+  "RESEARCH_FORM_VERSION",
+  "RESEARCH_TASK_FORM_VERSION",
+  "RESEARCH_TASK_BANK_VERSION",
+  "RESEARCH_LABEL_EXPOSURE_VERSION",
+  "RESEARCH_BANK_VERSION",
+  "RESEARCH_SCORING_VERSION",
+  "RESEARCH_TAXONOMY_VERSION",
+  "RESEARCH_PRIMARY_MEASUREMENT_VERSION",
+  "RESEARCH_MODIFIER_MEASUREMENT_VERSION",
+  "RESEARCH_PRIMARY_LABEL_ROSTER_FINGERPRINT",
+  "RESEARCH_MODIFIER_LABEL_ROSTER_FINGERPRINT",
+  "RESEARCH_SPECIALIST_ASSIGNMENT_STRATEGY",
+  "RESEARCH_SPECIALIST_ASSIGNMENT_ROSTER_VERSION",
+  "RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS",
+]) {
+  assertCollectorRequired(collector, name);
+}
+for (const name of [
+  "PSYCH_REQUIRED_SCHEMA_VERSION",
+  "PSYCH_REQUIRED_BANK_VERSION",
+  "PSYCH_REQUIRED_SCORING_VERSION",
+  "PSYCH_REQUIRED_TAXONOMY_VERSION",
+  "PSYCH_REQUIRED_PRIMARY_MEASUREMENT_VERSION",
+  "PSYCH_REQUIRED_MODIFIER_MEASUREMENT_VERSION",
+  "PSYCH_REQUIRED_FORM_VERSION",
+  "PSYCH_REQUIRED_PRIMARY_LABEL_ROSTER_FINGERPRINT",
+  "PSYCH_REQUIRED_MODIFIER_LABEL_ROSTER_FINGERPRINT",
+]) {
+  analysisRequired(validation, researchContracts, name);
+}
 
 for (const [name, source] of [
   ["analysis README", readme],

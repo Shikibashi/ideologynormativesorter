@@ -88,7 +88,17 @@ A retest administration uses:
 
 The flow requires consent before the quiz, captures optional self-identification and broad demographic groups after the questionnaire but before showing results, and assigns a stable random participant code in the same browser. Test and retest preserve identical participant-specific item membership while using different deterministic presentation orders. It does not request names, email addresses, exact age, precise location, employer, party registration, or contact information.
 
-The reference collector validates the frozen method contract before append: exact schema, consent, quality-rule, form, and taxonomy versions; internally consistent timestamps and duration; ordered item/answer membership; recomputed form fingerprint; layer-appropriate confidence, priority, refusal, and skipped-salience states; and, when present, a deterministic specialist assignment with the configured strategy, roster version, and module list. Optional deployment variables can additionally pin the study, bank, scoring, taxonomy, and specialist-assignment contract.
+The reference collector validates the frozen method contract before append:
+exact schema, consent, quality-rule, form/task, label-exposure, bank, scoring,
+taxonomy, measurement, roster, and specialist-assignment versions; internally
+consistent timestamps and duration; ordered item/answer membership; the
+serialized form manifest; recomputed form fingerprints; layer-appropriate
+confidence, priority, refusal, and skipped-salience states; and, when present,
+a deterministic specialist assignment with the configured strategy, roster
+version, and module list. All frozen deployment variables are required at
+startup; missing values fail closed before the collector begins listening. The
+complete configuration is kept in `research-collector/.env.example` and must
+be supplied through deployment configuration or secrets.
 
 Capture:
 
@@ -214,7 +224,7 @@ Research mode produces a versioned record equivalent to:
 
 ```json
 {
-  "schemaVersion": "2026-08-v18",
+  "schemaVersion": "2026-08-v19",
   "submissionId": "random-idempotency-key",
   "studyId": "community-2026-v5",
   "participantId": "p_random-code",

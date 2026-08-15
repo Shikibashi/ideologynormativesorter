@@ -22,7 +22,7 @@
     "modifierMeasurementVersion": "2026-08-modifier-construct-v1",
     "scoringVersion": "2026-08-13-taxonomy-v8",
     "researchStudy": "community-2026-v5",
-    "researchSchema": "2026-08-v18",
+    "researchSchema": "2026-08-v19",
     "researchForm": "profile-form-v3",
     "researchTaskBank": "2026-08-research-task-bank-v3",
     "researchTaskForm": "2026-08-research-task-form-v2",
@@ -37,7 +37,7 @@
     "prototypeCoding": "2026-08-prototype-coding-v1",
     "deploymentScope": "2026-08-deployment-scope-v1",
     "difPlan": "2026-08-dif-plan-v1",
-    "labelExposure": "2026-08-label-exposure-v1",
+    "labelExposure": "2026-08-label-exposure-v2",
     "formEquivalence": "2026-08-form-equivalence-v1",
     "anchorRotation": "2026-08-anchor-rotation-v1",
     "validationReport": "2026-08-validation-report-v1",
@@ -47,35 +47,43 @@
     "specialistRoster": "2026-08-specialist-roster-v1"
   },
   "verification": {
-    "status": "passed",
+    "status": "passed-with-external-r-runtime",
     "commands": [
       "npm test",
       "npm run format:check",
       "npm run lint",
       "npm run build",
       "npm run research:check",
+      "npm run test:collector",
       "npm run test:worker",
       "npm run worker:check",
-      "npm run test:browser",
-      "R contract parse and fixture wrapper smoke",
+      "npm run research:r-syntax",
+      "R Toolbox W3/W4 wrapper contract smoke",
+      "npm run test:e2e",
+      "npm run test:a11y",
+      "npm run test:ecw",
       "node --check research-collector/server.mjs",
       "git diff --check"
     ],
-    "npm test": "122 test suites, 765 tests passed",
+    "npm test": "122 test suites, 770 tests passed",
     "npm run format:check": "passed",
     "npm run lint": "passed with zero errors",
     "npm run build": "passed; Vite emitted the existing large-chunk warning",
     "npm run research:check": "passed",
+    "npm run test:collector": "4 tests passed",
     "npm run test:worker": "11 tests passed",
     "npm run worker:check": "Cloudflare deploy dry run passed",
-    "npm run test:browser": "54 tests passed across e2e, accessibility, and ECW projects",
-    "R contract parse and fixture wrapper smoke": "12 R scripts parsed; 8 analysis wrappers passed in the ideologynormativesorter-r Toolbox container",
+    "npm run research:r-syntax": "host Rscript unavailable; 12-file parse verified in the ideologynormativesorter-r Toolbox container",
+    "R Toolbox W3/W4 wrapper contract smoke": "8 wrappers passed with the frozen fixture and reported insufficient-data without fabricating estimates",
+    "npm run test:e2e": "21 tests passed",
+    "npm run test:a11y": "8 tests passed",
+    "npm run test:ecw": "28 tests passed",
     "node --check research-collector/server.mjs": "passed",
     "git diff --check": "passed"
   },
   "codeReview": {
     "status": "passed",
     "recommendation": "keep research-task and estimator outputs outside production scoring until a new decision record approves promotion",
-    "evidence": "W0/W1 architecture contracts, W2 response-process tasks, and the W3 estimator scaffold are versioned separately; the untracked root vite artifact remains preserved and unstaged."
+    "evidence": "W0/W1 architecture contracts, W2 response-process tasks, and the W3 estimator scaffold are versioned separately; the approved D-27A presentation is implemented as label-exposure-v2; the untracked root vite artifact remains preserved and unstaged."
   }
 }

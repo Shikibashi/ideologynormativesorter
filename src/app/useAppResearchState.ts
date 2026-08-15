@@ -22,6 +22,11 @@ export interface AppResearchState {
   pendingTaskResearch: NonNullable<
     AppBootstrapState["loadedPendingResearch"]
   > | null;
+  researchTaskArm: Exclude<import("../types").ResearchTaskArm, "all"> | null;
+  setResearchTaskArm: Setter<Exclude<
+    import("../types").ResearchTaskArm,
+    "all"
+  > | null>;
   researchConsent: ResearchConsent | null;
   setResearchConsent: Setter<ResearchConsent | null>;
   researchEnabled: boolean;
@@ -39,6 +44,10 @@ export interface AppResearchState {
 export function useAppResearchState(
   bootstrap: AppBootstrapState,
 ): AppResearchState {
+  const [researchTaskArm, setResearchTaskArm] = useState<Exclude<
+    import("../types").ResearchTaskArm,
+    "all"
+  > | null>(bootstrap.initialResearchTaskArm);
   const pendingCoreResearch =
     !bootstrap.sharedAnswers &&
     bootstrap.loadedPendingResearch?.submission.recordType === "core" &&
@@ -70,8 +79,7 @@ export function useAppResearchState(
       bootstrap.participantId &&
     bootstrap.loadedPendingResearch.submission.taskBankVersion ===
       RESEARCH_TASK_BANK_VERSION &&
-    bootstrap.loadedPendingResearch.submission.arm ===
-      bootstrap.initialResearchTaskArm
+    bootstrap.loadedPendingResearch.submission.arm === researchTaskArm
       ? bootstrap.loadedPendingResearch
       : null;
   const initialContributionMode =
@@ -109,6 +117,8 @@ export function useAppResearchState(
     pendingCoreResearch,
     pendingCoreSubmission,
     pendingTaskResearch,
+    researchTaskArm,
+    setResearchTaskArm,
     researchConsent,
     setResearchConsent,
     researchEnabled,

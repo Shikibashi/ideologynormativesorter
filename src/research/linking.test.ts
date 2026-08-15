@@ -18,6 +18,7 @@ import type {
   LabelExposureOutcome,
 } from "../types";
 import { buildLabelExposureAssignment } from "./index";
+import { labelExposurePresentationFingerprint } from "./labelExposure";
 
 const scope: DeploymentScopeMetadata = {
   version: DEPLOYMENT_SCOPE_VERSION,
@@ -84,13 +85,31 @@ describe("research linking and exposure contracts", () => {
     const outcome: LabelExposureOutcome = {
       assignment,
       exposureShown: true,
-      exposedLabelIds:
-        assignment.arm === "named-label" ? ["label-a"] : undefined,
-      perceivedAccuracy: 4,
-      identityAcceptance: 3,
-      confidence: 4,
-      affect: 2,
+      presentation: {
+        version: LABEL_EXPOSURE_VERSION,
+        axes: [
+          {
+            axisId: "authority-legitimacy",
+            layer: "normative",
+            name: "Authority Legitimacy",
+            position: "near midpoint",
+            coverageBand: "insufficient",
+          },
+        ],
+        fingerprint: "",
+      },
+      exposedLabelIds: assignment.arm === "named-label" ? ["label-a"] : [],
+      ratings: {
+        perceivedAccuracy: 4,
+        identityAcceptance: 3,
+        confidence: 4,
+        affect: 2,
+        followUpStability: "prefer_not_to_answer",
+      },
     };
+    outcome.presentation!.fingerprint = labelExposurePresentationFingerprint(
+      outcome.presentation!.axes,
+    );
     expect(labelExposureOutcomeErrors(outcome)).toEqual([]);
     expect(
       labelExposureOutcomeErrors({

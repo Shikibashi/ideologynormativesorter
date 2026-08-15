@@ -4,8 +4,8 @@ This document is a study template. It must be dated, assigned an immutable versi
 
 ## Instrument versions
 
-- Research schema: `2026-08-v18`
-- Label-exposure experiment: `2026-08-label-exposure-v1`; assignment is deterministic by participant code and occurs only after substantive responses. All arms receive the same substantive profile; the named-label arm additionally receives the exposed label IDs.
+- Research schema: `2026-08-v19`
+- Label-exposure experiment: `2026-08-label-exposure-v2`; assignment is deterministic by participant code and occurs only after substantive responses. All arms receive the same substantive profile; the named-label arm additionally receives the exposed label IDs.
 - Consent text: `2026-08-12-v8`
 - Form algorithm: `profile-form-v3`
 - Question bank: `2026-06-v4+2026-08-confidence-coverage-v1+2026-08-confidence-coverage-v3+2026-08-confidence-coverage-v4+2026-07-semantic-v1+2026-07-statement-semantic-v1+2026-08-respondent-v5+2026-08-editorial-v5+2026-08-editorial-v7.1+2026-08-editorial-v8+2026-08-descriptive-evidence-v1+2026-08-descriptive-evidence-v2+2026-08-descriptive-evidence-v3+2026-08-specialist-descriptive-v3+2026-08-editorial-v9+2026-08-editorial-v11+2026-08-editorial-v12+2026-08-editorial-v13+2026-08-editorial-v14+2026-08-editorial-v15+2026-08-editorial-v16+2026-08-editorial-v17+2026-08-editorial-v18+2026-08-editorial-v19+2026-08-editorial-v20+2026-08-editorial-v21+2026-08-editorial-v22+2026-08-editorial-v23+2026-08-editorial-v24+2026-08-editorial-v25+2026-08-editorial-v26+2026-08-editorial-v27+2026-08-editorial-v28+2026-08-descriptive-evidence-v4+2026-08-descriptive-evidence-v5+2026-08-question-context-v33+2026-08-question-prompts-v1`
@@ -17,6 +17,32 @@ This document is a study template. It must be dated, assigned an immutable versi
 - Primary measurement registry: `2026-08-primary-core-v1`
 - Modifier measurement registry: `2026-08-modifier-construct-v1`; ordinary modifier output is limited to declared direct core indicators, while catalog-only and focused-follow-up modifiers must abstain.
 - Study cohort: `community-2026-v5`
+
+### Approved label-exposure presentation (D-27A)
+
+The implementation uses the approved presentation contract, but this draft
+preregistration still requires an amendment and dated registration before field
+use. Every arm receives the same axes, layers, order, names, qualitative
+positions, coverage bands, and uncertainty language. The dimension-only and
+unlabeled-profile arms have identical visible no-label content. The named-label
+arm adds only up to three ordered names under “Closest current profile
+matches”; it does not show descriptions, families, fit, distances, margins,
+percentages, probabilities, posteriors, or label-specific confidence.
+
+No raw or normalized axis numbers are participant-facing, including in ARIA
+text, tooltips, or serialized presentation snapshots. The fixed notice is:
+
+> This is a profile-similarity comparison, not a diagnosis, probability,
+> validated identity, or population claim. Some dimensions are more tentative
+> when answer coverage is limited.
+
+The core record persists the randomized assignment, exposure completion state,
+common presentation fingerprint, ordered axis/layer qualitative snapshots and
+coverage bands, ordered exposed label IDs, and all five post-exposure ratings,
+including explicit refusal values. This is presentation instrumentation only;
+it does not alter ordinary scoring, taxonomy matching, or the W1 construct
+family map. The W1 map is not evidence of empirical construct equivalence across
+layers.
 
 Any change to item wording, item-to-axis mapping, eligibility, label centroid, or scoring creates a new analysis cohort unless a linking design is specified in advance.
 The ordered specialist assignment roster is likewise frozen within a cohort. A module addition, removal, or reordering requires a new study cohort or assignment strategy; it must never be silently applied to a retest cohort.

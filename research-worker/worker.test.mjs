@@ -46,10 +46,10 @@ function environment(overrides = {}) {
   return {
     ALLOWED_ORIGIN: ORIGIN,
     EXPECTED_STUDY_ID: "community-2026-v5",
-    EXPECTED_SCHEMA_VERSION: "2026-08-v18",
+    EXPECTED_SCHEMA_VERSION: "2026-08-v19",
     EXPECTED_RESEARCH_TASK_FORM_VERSION: "2026-08-research-task-form-v2",
     EXPECTED_RESEARCH_TASK_BANK_VERSION: "2026-08-research-task-bank-v3",
-    EXPECTED_LABEL_EXPOSURE_VERSION: "2026-08-label-exposure-v1",
+    EXPECTED_LABEL_EXPOSURE_VERSION: "2026-08-label-exposure-v2",
     EXPECTED_CONSENT_VERSION: "2026-08-12-v8",
     EXPECTED_QUALITY_RULE_VERSION: "data-quality-v2",
     EXPECTED_FORM_VERSION: "profile-form-v3",
@@ -88,7 +88,7 @@ function versionBundle(formVersion = "profile-form-v3") {
     primaryMeasurementVersion: "primary-measurement-v1",
     modifierMeasurementVersion: "modifier-measurement-v1",
     formVersion,
-    schemaVersion: "2026-08-v18",
+    schemaVersion: "2026-08-v19",
     consentVersion: "2026-08-12-v8",
     qualityRuleVersion: "data-quality-v2",
     studyId: "community-2026-v5",
@@ -112,7 +112,7 @@ function versionBundle(formVersion = "profile-form-v3") {
     difPlanVersion: "2026-08-dif-plan-v1",
     contentReviewVersion: "2026-08-content-review-v1",
     cognitiveReviewVersion: "2026-08-cognitive-review-v1",
-    labelExposureVersion: "2026-08-label-exposure-v1",
+    labelExposureVersion: "2026-08-label-exposure-v2",
     formEquivalenceVersion: "2026-08-form-equivalence-v1",
     anchorRotationVersion: "2026-08-anchor-rotation-v1",
     validationReportVersion: "2026-08-validation-report-v1",
@@ -129,6 +129,76 @@ function hash32(value) {
   return hash >>> 0;
 }
 
+function researchPresentationFingerprint(itemMap, administration = "test") {
+  const ordered = itemMap.map((item) => item.questionId).join("|");
+  return `rfo_${hash32(`profile-form-v3:${administration}:${ordered}`)
+    .toString(16)
+    .padStart(8, "0")}`;
+}
+
+function formManifest(
+  itemMap,
+  participantId = "p_test",
+  tier = "moderate",
+  administration = "test",
+  requestedItemCount = null,
+) {
+  return {
+    algorithmVersion: "profile-form-v3",
+    role:
+      requestedItemCount === null ? "consumer-profile" : "controlled-matrix",
+    sourceTier: tier,
+    administration,
+    requestedItemCount,
+    assignedItemCount: itemMap.length,
+    assignmentSeed: `profile-form-v3:${participantId}:assignment`,
+    presentationSeed: `profile-form-v3:${participantId}:${administration}:presentation`,
+    itemIds: itemMap.map((item) => item.questionId),
+    membershipFingerprint: researchFormFingerprint(itemMap),
+    presentationFingerprint: researchPresentationFingerprint(
+      itemMap,
+      administration,
+    ),
+    layerCounts: {
+      normative: itemMap.filter((item) => item.layer === "normative").length,
+      descriptive: itemMap.filter((item) => item.layer === "descriptive")
+        .length,
+      prescriptive: itemMap.filter((item) => item.layer === "prescriptive")
+        .length,
+    },
+    axisIds: ["authority-legitimacy"],
+  };
+}
+
+function exposurePresentation() {
+  const axes = [
+    {
+      axisId: "authority-legitimacy",
+      layer: "normative",
+      name: "Authority Legitimacy",
+      position: "near midpoint",
+      coverageBand: "insufficient",
+    },
+  ];
+  const canonical = axes
+    .map((axis) =>
+      [
+        axis.axisId,
+        axis.layer,
+        axis.name,
+        axis.position,
+        "",
+        axis.coverageBand,
+      ].join("|"),
+    )
+    .join("||");
+  return {
+    version: "2026-08-label-exposure-v2",
+    fingerprint: `lep_${hash32(canonical).toString(16).padStart(8, "0")}`,
+    axes,
+  };
+}
+
 function coreSubmission(overrides = {}) {
   const itemMap = [
     {
@@ -137,6 +207,7 @@ function coreSubmission(overrides = {}) {
       helpText: "Choose the response closest to your view.",
       domain: "state-legitimacy",
       layer: "normative",
+      axisWeights: [{ axisId: "authority-legitimacy", weight: -1 }],
       responseOptions: [
         { value: -1, label: "Disagree" },
         { value: 0, label: "Neither" },
@@ -150,7 +221,7 @@ function coreSubmission(overrides = {}) {
     },
   ];
   return {
-    schemaVersion: "2026-08-v18",
+    schemaVersion: "2026-08-v19",
     submissionId: "submission_1",
     recordType: "core",
     studyId: "community-2026-v5",
@@ -183,6 +254,7 @@ function coreSubmission(overrides = {}) {
       requestedItemCount: null,
       assignedItemCount: 1,
       fingerprint: researchFormFingerprint(itemMap),
+      manifest: formManifest(itemMap),
     },
     sampling: {
       design: "open-opt-in-nonprobability",
@@ -501,19 +573,41 @@ describe("research contribution Worker", () => {
         requestedItemCount: null,
         assignedItemCount: 2,
         fingerprint: researchFormFingerprint(fullItemMap),
+        manifest: formManifest(fullItemMap, "p_test", "extensive"),
       },
     });
     const matrix = coreSubmission({
       submissionId: "submission_matrix",
-      form: { ...base.form, requestedItemCount: 1 },
+      form: {
+        ...base.form,
+        requestedItemCount: 1,
+        manifest: formManifest(base.itemMap, "p_test", "moderate", "test", 1),
+      },
     });
     const legacyFull = coreSubmission({
       submissionId: "submission_legacy_full",
       tier: "extensive",
+      form: {
+        ...base.form,
+        manifest: formManifest(base.itemMap, "p_test", "extensive"),
+      },
     });
 
     assert.equal((await handleRequest(postRequest(full), env)).status, 202);
     assert.equal((await handleRequest(postRequest(matrix), env)).status, 202);
+    assert.equal(
+      (
+        await handleRequest(
+          postRequest({
+            ...full,
+            submissionId: "submission_full_manifest_invalid",
+            form: { ...full.form, manifest: undefined },
+          }),
+          env,
+        )
+      ).status,
+      422,
+    );
     assert.equal(
       (await handleRequest(postRequest(legacyFull), env)).status,
       202,
@@ -526,19 +620,23 @@ describe("research contribution Worker", () => {
       submissionId: "submission_exposure",
       labelExposure: {
         assignment: {
-          version: "2026-08-label-exposure-v1",
+          version: "2026-08-label-exposure-v2",
           studyId: "community-2026-v5",
           participantId: "p_test",
           arm: "named-label",
-          seed: "community-2026-v5_p_test_label-exposure-v1",
+          seed: "community-2026-v5_p_test_label-exposure-v2",
           assignedAfterSubstantiveResponses: true,
         },
         exposureShown: true,
+        presentation: exposurePresentation(),
         exposedLabelIds: ["conservative"],
-        perceivedAccuracy: 4,
-        identityAcceptance: 3,
-        confidence: 4,
-        affect: 2,
+        ratings: {
+          perceivedAccuracy: 4,
+          identityAcceptance: 3,
+          confidence: 4,
+          affect: 2,
+          followUpStability: "prefer_not_to_answer",
+        },
       },
     });
     assert.equal((await handleRequest(postRequest(valid), env)).status, 202);
@@ -546,7 +644,7 @@ describe("research contribution Worker", () => {
       submissionId: "submission_exposure_invalid",
       labelExposure: {
         ...valid.labelExposure,
-        perceivedAccuracy: 6,
+        ratings: { ...valid.labelExposure.ratings, perceivedAccuracy: 6 },
       },
     });
     assert.equal((await handleRequest(postRequest(invalid), env)).status, 422);

@@ -7,7 +7,7 @@ export const METHODOLOGICAL_DECISION_LOG_VERSION =
   "2026-08-methodological-decisions-v1" as const;
 export const IMPLEMENTATION_SPECIFICATION_VERSION =
   "2026-08-implementation-spec-v1" as const;
-export const RESEARCH_SCHEMA_VERSION = "2026-08-v18" as const;
+export const RESEARCH_SCHEMA_VERSION = "2026-08-v19" as const;
 export const RESEARCH_CONSENT_VERSION = "2026-08-12-v8" as const;
 export const RESEARCH_QUALITY_RULE_VERSION = "data-quality-v2" as const;
 export const RESEARCH_STUDY_ID = "community-2026-v5" as const;
@@ -42,7 +42,7 @@ export const DEPLOYMENT_SCOPE_VERSION = "2026-08-deployment-scope-v1" as const;
 export const DIF_PLAN_VERSION = "2026-08-dif-plan-v1" as const;
 export const CONTENT_REVIEW_VERSION = "2026-08-content-review-v1" as const;
 export const COGNITIVE_REVIEW_VERSION = "2026-08-cognitive-review-v1" as const;
-export const LABEL_EXPOSURE_VERSION = "2026-08-label-exposure-v1" as const;
+export const LABEL_EXPOSURE_VERSION = "2026-08-label-exposure-v2" as const;
 export const FORM_EQUIVALENCE_VERSION = "2026-08-form-equivalence-v1" as const;
 export const ANCHOR_ROTATION_VERSION = "2026-08-anchor-rotation-v1" as const;
 export const VALIDATION_REPORT_VERSION =

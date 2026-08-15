@@ -40,6 +40,10 @@ production label matching. Anchor/rotating item registries, calibrated
 estimators, and analysis scripts remain research-only scaffolding; production
 use remains a later-wave evidence gate.
 
+W1 construct families are an organizing and coverage map only. They do not
+establish empirical equivalence of constructs across layers, and no such
+cross-layer equivalence claim is part of this release.
+
 The task-specific protocol is documented in
 [`docs/research-task-protocol-2026-08.md`](research-task-protocol-2026-08.md).
 
@@ -52,7 +56,7 @@ Current production identifiers remain unchanged during research waves:
 - taxonomy: `2026-08-taxonomy-v13`;
 - primary measurement: `2026-08-primary-core-v1`;
 - modifier measurement: `2026-08-modifier-construct-v1`;
-- research schema: `2026-08-v18`;
+- research schema: `2026-08-v19`;
 - consent: `2026-08-12-v8`;
 - quality rules: `data-quality-v2`;
 - form: `profile-form-v3`;
@@ -72,7 +76,7 @@ Research contracts use dedicated identifiers such as
 `2026-08-validator-battery-v1`, `2026-08-prototype-calibration-v1`,
 `2026-08-prototype-coding-v1`, `2026-08-deployment-scope-v1`,
 `2026-08-dif-plan-v1`, `2026-08-content-review-v1`,
-`2026-08-cognitive-review-v1`, `2026-08-label-exposure-v1`,
+`2026-08-cognitive-review-v1`, `2026-08-label-exposure-v2`,
 `2026-08-form-equivalence-v1`, `2026-08-anchor-rotation-v1`, and
 `2026-08-validation-report-v1`. Exposing any of these as production meaning
 requires the corresponding approval and production version bump.

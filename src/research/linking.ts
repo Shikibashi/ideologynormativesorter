@@ -7,6 +7,7 @@ import {
   PROTOTYPE_CODING_VERSION,
 } from "./versions";
 import { buildLabelExposureAssignment } from "./index";
+import { labelExposurePresentationErrors } from "./labelExposure";
 import type {
   BridgeResponseRecord,
   DeploymentScopeMetadata,
@@ -162,17 +163,16 @@ export function labelExposureOutcomeErrors(
   outcome: LabelExposureOutcome,
 ): string[] {
   const errors = labelExposureAssignmentErrors(outcome.assignment);
-  if (outcome.exposedLabelIds !== undefined) {
-    if (
-      !Array.isArray(outcome.exposedLabelIds) ||
-      new Set(outcome.exposedLabelIds).size !==
-        outcome.exposedLabelIds.length ||
-      outcome.exposedLabelIds.some((labelId) => !labelId.trim())
-    ) {
-      errors.push("exposed label ids must be unique, non-empty ids");
-    }
+  if (
+    !Array.isArray(outcome.exposedLabelIds) ||
+    new Set(outcome.exposedLabelIds).size !== outcome.exposedLabelIds.length ||
+    outcome.exposedLabelIds.some((labelId) => !labelId.trim())
+  ) {
+    errors.push("exposed label ids must be unique, non-empty ids");
   }
-  const exposedLabelCount = outcome.exposedLabelIds?.length ?? 0;
+  const exposedLabelCount = Array.isArray(outcome.exposedLabelIds)
+    ? outcome.exposedLabelIds.length
+    : 0;
   if (
     outcome.exposureShown &&
     outcome.assignment.arm === "named-label" &&
@@ -187,15 +187,23 @@ export function labelExposureOutcomeErrors(
   ) {
     errors.push("non-label exposure arms cannot record exposed label ids");
   }
+  if (outcome.exposureShown) {
+    if (!outcome.presentation) {
+      errors.push("shown exposure outcomes require the common presentation");
+    } else {
+      errors.push(...labelExposurePresentationErrors(outcome.presentation));
+    }
+  }
   for (const [name, value] of [
-    ["perceivedAccuracy", outcome.perceivedAccuracy],
-    ["identityAcceptance", outcome.identityAcceptance],
-    ["confidence", outcome.confidence],
-    ["affect", outcome.affect],
-    ["followUpStability", outcome.followUpStability],
+    ["perceivedAccuracy", outcome.ratings?.perceivedAccuracy],
+    ["identityAcceptance", outcome.ratings?.identityAcceptance],
+    ["confidence", outcome.ratings?.confidence],
+    ["affect", outcome.ratings?.affect],
+    ["followUpStability", outcome.ratings?.followUpStability],
   ] as const) {
     if (
       value !== undefined &&
+      value !== "prefer_not_to_answer" &&
       (!Number.isFinite(value) || value < 1 || value > 5)
     ) {
       errors.push(`${name} must be a 1-5 response`);

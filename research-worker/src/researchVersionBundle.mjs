@@ -62,7 +62,7 @@ export const FROZEN_VERSION_VALUES = {
   difPlanVersion: "2026-08-dif-plan-v1",
   contentReviewVersion: "2026-08-content-review-v1",
   cognitiveReviewVersion: "2026-08-cognitive-review-v1",
-  labelExposureVersion: "2026-08-label-exposure-v1",
+  labelExposureVersion: "2026-08-label-exposure-v2",
   formEquivalenceVersion: "2026-08-form-equivalence-v1",
   anchorRotationVersion: "2026-08-anchor-rotation-v1",
   validationReportVersion: "2026-08-validation-report-v1",

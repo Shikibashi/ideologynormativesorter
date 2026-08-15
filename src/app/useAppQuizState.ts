@@ -88,9 +88,11 @@ export function useAppQuizState({
   const [quizCompletedAt, setQuizCompletedAt] = useState<string | null>(null);
   const [wasResumed, setWasResumed] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(
-    bootstrap.shareLoad.malformed
-      ? "We couldn't open that shared result link — it may be incomplete or out of date. You can start the test below to build your own profile."
-      : null,
+    bootstrap.initialResearchTaskRouteInvalid
+      ? "That research task link is not supported. The controlled task route was disabled; choose an ordinary assessment or a valid contribution link to continue."
+      : bootstrap.shareLoad.malformed
+        ? "We couldn't open that shared result link — it may be incomplete or out of date. You can start the test below to build your own profile."
+        : null,
   );
   const [compareAnswers] = useState<AnswerMap | null>(() =>
     readCompareAnswers(shareMeta),
@@ -100,7 +102,7 @@ export function useAppQuizState({
       ? "results"
       : requestedMethodology()
         ? "methodology"
-        : bootstrap.initialResearchTaskArm && research.pendingTaskResearch
+        : research.researchTaskArm && research.pendingTaskResearch
           ? "research-tasks"
           : bootstrap.initialResearchMode
             ? "consent"

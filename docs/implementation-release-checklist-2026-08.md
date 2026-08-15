@@ -40,9 +40,13 @@ npm test
 npm run lint
 npm run build
 npm run research:check
+npm run test:collector
 npm run test:worker
 npm run worker:check
-npm run test:browser
+npm run research:r-syntax
+npm run test:e2e
+npm run test:a11y
+npm run test:ecw
 git diff --check
 ```
 
@@ -50,6 +54,7 @@ Run the task-specific contract and R smoke checks as well:
 
 ```text
 npm test -- --run src/validation/analysisContracts.test.ts src/data/anchorItems.test.ts src/research/linking.test.ts
+npm run test:collector
 ```
 
 The R smoke command and fixture are documented in
