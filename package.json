@@ -19,6 +19,7 @@
     "research:check": "node scripts/check-research-contract.mjs",
     "research:r-syntax": "node scripts/check-r-syntax.mjs",
     "vnext:items:check": "node scripts/generate-vnext-item-manifest.mjs --check",
+    "vnext:contract:check": "npx vite-node scripts/check-vnext-authority.mts",
     "vnext:release:check": "node scripts/check-vnext-release.mjs",
     "test:collector": "node --test research-collector/config-check.mjs",
     "test:worker": "node --test research-worker/worker.test.mjs",

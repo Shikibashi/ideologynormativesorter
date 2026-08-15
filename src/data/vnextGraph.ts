@@ -1,11 +1,14 @@
 import type {
+  VNextGraphAdjudicationRecord,
   VNextGraphEdge,
   VNextGraphRelationType,
+  VNextGraphMigrationRecord,
   VNextRelationDirectionality,
   VNextRelationScope,
 } from "../types";
 import { vnextConstructRegistry } from "./vnextConstructs";
 import { vnextOntologyNodes } from "./vnextOntology";
+import { vnextGraphMigrationLedger } from "./vnextGraphMigration";
 import { VNEXT_GRAPH_VERSION } from "../validation/vnextVersions";
 
 type RelationSeed = {
@@ -15,20 +18,10 @@ type RelationSeed = {
   scope: VNextRelationScope;
   facetId: string;
   note: string;
-  provenance: readonly string[];
+  sourceRecordIds: readonly string[];
+  decisionIds: readonly string[];
   semanticConstraints: readonly { code: string; statement: string }[];
 };
-
-const GRAPH_PROVENANCE = [
-  "vnext-integrated-system-specification-2026-08:5.3",
-  "vnext-taxonomy-measurement-architecture-review-2026-08",
-  "D-58",
-  "D-70",
-  "D-71",
-  "D-72",
-  "D-73",
-  "D-74",
-] as const;
 
 function seed(
   sourceId: string,
@@ -39,6 +32,7 @@ function seed(
   note: string,
   constraint: string,
 ): RelationSeed {
+  const adjudicationId = `vnext-graph-adjudication:${sourceId}:${type}:${targetId}`;
   return {
     sourceId,
     targetId,
@@ -46,7 +40,12 @@ function seed(
     scope,
     facetId,
     note,
-    provenance: GRAPH_PROVENANCE,
+    sourceRecordIds: [
+      adjudicationId,
+      "docs/vnext-integrated-system-specification-2026-08.md:5.3",
+      "docs/vnext-specialist-architecture-review-2026-08.md:6",
+    ],
+    decisionIds: ["D-132"],
     semanticConstraints: [{ code: constraint, statement: note }],
   };
 }
@@ -408,6 +407,80 @@ const SYMMETRIC_TYPES = new Set<VNextGraphRelationType>([
   "not_equivalent_to",
 ]);
 
+const MIGRATION_SCOPE_BY_RELATION: Readonly<
+  Record<VNextGraphRelationType, VNextRelationScope>
+> = {
+  subtype_of: "conceptual",
+  family_member_of: "conceptual",
+  hybrid_of: "conceptual",
+  configures: "institutional",
+  often_combines_with: "conceptual",
+  overlaps_with: "conceptual",
+  contrasts_with: "conceptual",
+  requires: "measurement",
+  regional_variant_of: "historical",
+  historical_predecessor_of: "historical",
+  influenced_by: "historical",
+  institutionalizes: "institutional",
+  context_for: "catalog",
+  policy_expression_of: "measurement",
+  alias_of: "catalog",
+  not_equivalent_to: "conceptual",
+  incompatible_with_core: "measurement",
+};
+const MIGRATION_CONSTRAINT_PREFIX: Readonly<
+  Record<VNextGraphRelationType, string>
+> = {
+  subtype_of: "subtype-",
+  family_member_of: "family-",
+  hybrid_of: "hybrid-",
+  configures: "configuration-",
+  often_combines_with: "symmetric-",
+  overlaps_with: "symmetric-",
+  contrasts_with: "symmetric-",
+  requires: "required-",
+  regional_variant_of: "regional-",
+  historical_predecessor_of: "historical-",
+  influenced_by: "influence-",
+  institutionalizes: "institutional-",
+  context_for: "context-",
+  policy_expression_of: "policy-",
+  alias_of: "alias-",
+  not_equivalent_to: "symmetric-",
+  incompatible_with_core: "core-entry-",
+};
+
+function migrationSeed(record: VNextGraphMigrationRecord): RelationSeed {
+  const type = record.oldRelation as VNextGraphRelationType;
+  const source = vnextOntologyNodes.find(
+    (node) => node.id === record.oldSourceId,
+  );
+  const facetId =
+    source?.constitutiveFacetIds[0] ??
+    source?.evidenceRequirements.requiredFacetIds[0] ??
+    "authority.accountability";
+  const note = record.rationale;
+  return {
+    sourceId: record.oldSourceId,
+    targetId: record.oldTargetId,
+    type,
+    scope: MIGRATION_SCOPE_BY_RELATION[type],
+    facetId,
+    note,
+    sourceRecordIds: [
+      ...record.sourceRecordIds,
+      `vnext-graph-adjudication:${record.oldSourceId}:${type}:${record.oldTargetId}`,
+    ],
+    decisionIds: [record.methodologicalDecision],
+    semanticConstraints: [
+      {
+        code: `${MIGRATION_CONSTRAINT_PREFIX[type]}migration-retained`,
+        statement: note,
+      },
+    ],
+  };
+}
+
 function edgeId(sourceId: string, type: string, targetId: string): string {
   return `${sourceId}:${type}:${targetId}`;
 }
@@ -422,12 +495,13 @@ function buildEdge(
   relation: RelationSeed,
   symmetricDerived = false,
 ): VNextGraphEdge {
+  const id = edgeId(relation.sourceId, relation.type, relation.targetId);
   const canonicalFacetId = relation.facetId.includes(".")
     ? relation.facetId
     : (vnextConstructRegistry.roots.find((root) => root.id === relation.facetId)
         ?.facetIds[0] ?? relation.facetId);
   return {
-    id: edgeId(relation.sourceId, relation.type, relation.targetId),
+    id,
     sourceId: relation.sourceId,
     targetId: relation.targetId,
     type: relation.type,
@@ -440,8 +514,11 @@ function buildEdge(
       evidenceScope: "conceptual graph provenance; not respondent validity",
       differentiatingConstructIds: [canonicalFacetId],
     },
-    sourceRecordIds: relation.provenance,
-    provenance: relation.provenance,
+    sourceRecordIds: [
+      ...relation.sourceRecordIds,
+      ...(symmetricDerived ? [`vnext-graph-adjudication:${id}`] : []),
+    ],
+    provenance: [...relation.sourceRecordIds, ...relation.decisionIds],
     note: relation.note,
     semanticConstraints: relation.semanticConstraints,
     ...(symmetricDerived ? { symmetricDerived: true } : {}),
@@ -460,10 +537,26 @@ for (const relation of AUTHORITATIVE_RELATIONS) {
     graphEdges.set(reverse.id, reverse);
   }
 }
+for (const record of vnextGraphMigrationLedger) {
+  const relation = migrationSeed(record);
+  const edge = buildEdge(relation);
+  if (!graphEdges.has(edge.id)) graphEdges.set(edge.id, edge);
+}
 
 export const vnextGraphEdges: readonly VNextGraphEdge[] = [
   ...graphEdges.values(),
 ].sort((a, b) => a.id.localeCompare(b.id));
+export const vnextGraphAdjudicationRecords: readonly VNextGraphAdjudicationRecord[] =
+  vnextGraphEdges.map((edge) => ({
+    adjudicationId: `vnext-graph-adjudication:${edge.id}`,
+    sourceId: edge.sourceId,
+    targetId: edge.targetId,
+    type: edge.type,
+    status: "approved",
+    sourceRecordIds: edge.sourceRecordIds,
+    decisionIds: edge.provenance.filter((record) => /^D-\d+/.test(record)),
+    rationale: edge.note,
+  }));
 export const vnextGraphEdgesBySource = new Map<
   string,
   readonly VNextGraphEdge[]

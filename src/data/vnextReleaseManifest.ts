@@ -13,7 +13,8 @@ import { vnextValidationManifest } from "./vnextValidationManifest";
 import { CURRENT_RESEARCH_VERSION_BUNDLE } from "../validation/researchContracts";
 import type { VNextReleaseManifest } from "../types";
 import {
-  VNEXT_AUDITED_CANDIDATE_COMMIT,
+  VNEXT_HISTORICAL_AUDIT_CANDIDATE_COMMIT,
+  VNEXT_RELEASE_CANDIDATE_COMMIT,
   VNEXT_CALIBRATION_VERSION,
   VNEXT_CHALLENGER_MODELS_VERSION,
   VNEXT_CONSTRUCTS_VERSION,
@@ -37,11 +38,14 @@ function fingerprint(values: readonly string[]): string {
 export const vnextReleaseManifest: VNextReleaseManifest = {
   manifestId: "vnext-release-manifest:2026-08-candidate-e298ccd",
   manifestVersion: VNEXT_RELEASE_MANIFEST_VERSION,
-  candidateCommit: VNEXT_AUDITED_CANDIDATE_COMMIT,
-  auditedCandidateCommit: VNEXT_AUDITED_CANDIDATE_COMMIT,
+  candidateCommit: VNEXT_RELEASE_CANDIDATE_COMMIT,
+  auditedCandidateCommit: VNEXT_RELEASE_CANDIDATE_COMMIT,
+  historicalAuditCandidateCommit: VNEXT_HISTORICAL_AUDIT_CANDIDATE_COMMIT,
+  candidateBinding: "parent-bound-finalization",
+  releaseMetadataParentCommit: VNEXT_RELEASE_CANDIDATE_COMMIT,
   frozenBaselineCommit: VNEXT_FROZEN_BASELINE_COMMIT,
   branch: "codex/vnext-implementation",
-  reference: "candidate-under-audit:e298ccd5588708528db4b63e3e33ce6f19230d69",
+  reference: `release-candidate:${VNEXT_RELEASE_CANDIDATE_COMMIT}`,
   versionTuple: {
     ...CURRENT_RESEARCH_VERSION_BUNDLE,
     vnextOntologyVersion: VNEXT_ONTOLOGY_VERSION,
@@ -124,6 +128,8 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
       status: "closed",
       implementationUnits: ["I-002", "I-006"],
       evidence: [
+        "src/data/vnextOntologyRecords.ts",
+        "src/data/vnextGraphMigration.ts",
         "src/data/vnextOntology.ts",
         "src/data/vnextGraph.ts",
         "src/validation/vnextGraph.ts",
@@ -134,6 +140,8 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
       status: "closed",
       implementationUnits: ["I-003", "I-006"],
       evidence: [
+        "src/data/vnextOntologyRecords.ts",
+        "src/data/vnextAuthorityPolicy.ts",
         "src/data/vnextRolePolicy.ts",
         "src/validation/vnextRoleResolver.ts",
       ],
@@ -143,6 +151,7 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
       status: "closed",
       implementationUnits: ["I-004", "I-006"],
       evidence: [
+        "src/data/vnextConstructRecords.ts",
         "src/data/vnextConstructs.ts",
         "src/validation/vnextConstructs.ts",
       ],
@@ -162,6 +171,7 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
       status: "closed",
       implementationUnits: ["I-008", "I-009"],
       evidence: [
+        "src/data/vnextSurfaceRecords.ts",
         "src/data/vnextSurfaceManifests.ts",
         "src/validation/vnextSurfaceManifests.ts",
         "src/data/vnextChallengers.ts",
@@ -174,6 +184,8 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
       evidence: [
         "src/data/vnextReleaseManifest.ts",
         "release-manifest/vnext-release-manifest.json",
+        "scripts/check-vnext-authority.mts",
+        "scripts/check-vnext-release.mjs",
         ".github/workflows/ci.yml",
       ],
     },

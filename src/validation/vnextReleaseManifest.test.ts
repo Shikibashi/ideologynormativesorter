@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import { vnextReleaseManifest } from "../data/vnextReleaseManifest";
 import {
   assertVNextReleaseManifest,
@@ -22,5 +23,18 @@ describe("vNext release manifest", () => {
     expect(vnextReleaseManifest.rollbackReference).toBe(
       vnextReleaseManifest.frozenBaselineCommit,
     );
+    expect(vnextReleaseManifest.candidateBinding).toBe(
+      "parent-bound-finalization",
+    );
+    expect(vnextReleaseManifest.releaseMetadataParentCommit).toBe(
+      vnextReleaseManifest.candidateCommit,
+    );
+  });
+
+  it("keeps the typed release manifest byte-source and JSON artifact semantically identical", () => {
+    const json = JSON.parse(
+      readFileSync("release-manifest/vnext-release-manifest.json", "utf8"),
+    );
+    expect(json).toEqual(vnextReleaseManifest);
   });
 });

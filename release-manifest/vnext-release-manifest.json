@@ -3,27 +3,51 @@
   "manifestVersion": "2026-08-vnext-release-manifest-v1",
   "candidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
   "auditedCandidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
+  "historicalAuditCandidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
+  "candidateBinding": "parent-bound-finalization",
+  "releaseMetadataParentCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
   "frozenBaselineCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
   "branch": "codex/vnext-implementation",
-  "reference": "candidate-under-audit:e298ccd5588708528db4b63e3e33ce6f19230d69",
+  "reference": "release-candidate:e298ccd5588708528db4b63e3e33ce6f19230d69",
   "versionTuple": {
     "architectureVersion": "2026-08-measurement-architecture-v1",
     "implementationSpecVersion": "2026-08-implementation-spec-v1",
     "decisionLogVersion": "2026-08-methodological-decisions-v1",
+    "bankVersion": "2026-06-v4+2026-08-confidence-coverage-v1+2026-08-confidence-coverage-v3+2026-08-confidence-coverage-v4+2026-07-semantic-v1+2026-07-statement-semantic-v1+2026-08-respondent-v5+2026-08-editorial-v5+2026-08-editorial-v7.1+2026-08-editorial-v8+2026-08-descriptive-evidence-v1+2026-08-descriptive-evidence-v2+2026-08-descriptive-evidence-v3+2026-08-specialist-descriptive-v3+2026-08-editorial-v9+2026-08-editorial-v11+2026-08-editorial-v12+2026-08-editorial-v13+2026-08-editorial-v14+2026-08-editorial-v15+2026-08-editorial-v16+2026-08-editorial-v17+2026-08-editorial-v18+2026-08-editorial-v19+2026-08-editorial-v20+2026-08-editorial-v21+2026-08-editorial-v22+2026-08-editorial-v23+2026-08-editorial-v24+2026-08-editorial-v25+2026-08-editorial-v26+2026-08-editorial-v27+2026-08-editorial-v28+2026-08-descriptive-evidence-v4+2026-08-descriptive-evidence-v5+2026-08-question-context-v33+2026-08-question-prompts-v1",
     "scoringVersion": "2026-08-13-taxonomy-v8",
     "taxonomyVersion": "2026-08-taxonomy-v13",
     "primaryMeasurementVersion": "2026-08-primary-core-v1",
     "modifierMeasurementVersion": "2026-08-modifier-construct-v1",
     "formVersion": "profile-form-v3",
     "schemaVersion": "2026-08-v19",
+    "consentVersion": "2026-08-12-v8",
+    "qualityRuleVersion": "data-quality-v2",
     "studyId": "community-2026-v5",
     "specialistRosterVersion": "2026-08-specialist-roster-v1",
     "specialistAssignmentStrategy": "balanced-hash-v2",
     "researchTaskBankVersion": "2026-08-research-task-bank-v3",
     "researchEstimatorVersion": "2026-08-research-estimators-v1",
     "descriptiveCalibrationVersion": "2026-08-descriptive-calibration-v1",
+    "strategyTaskBankVersion": "2026-08-strategy-task-bank-v2",
+    "normativeTradeoffVersion": "2026-08-normative-tradeoff-v1",
     "modelComparisonVersion": "2026-08-model-comparison-v1",
+    "unfoldingAnalysisVersion": "2026-08-unfolding-analysis-v1",
+    "perceptionGeometryVersion": "2026-08-perception-geometry-v1",
+    "profileDiscoveryVersion": "2026-08-profile-discovery-v1",
+    "prototypeCodingVersion": "2026-08-prototype-coding-v1",
     "deploymentScopeVersion": "2026-08-deployment-scope-v1",
+    "constructFamilyMapVersion": "2026-08-construct-family-map-v1",
+    "criterionPlanVersion": "2026-08-criterion-plan-v1",
+    "validatorBatteryVersion": "2026-08-validator-battery-v1",
+    "prototypeCalibrationVersion": "2026-08-prototype-calibration-v1",
+    "difPlanVersion": "2026-08-dif-plan-v1",
+    "contentReviewVersion": "2026-08-content-review-v1",
+    "cognitiveReviewVersion": "2026-08-cognitive-review-v1",
+    "labelExposureVersion": "2026-08-label-exposure-v2",
+    "formEquivalenceVersion": "2026-08-form-equivalence-v1",
+    "anchorRotationVersion": "2026-08-anchor-rotation-v1",
+    "validationReportVersion": "2026-08-validation-report-v1",
+    "itemMetadataVersion": "2026-08-item-metadata-v1",
     "vnextOntologyVersion": "2026-08-vnext-ontology-v1",
     "vnextGraphVersion": "2026-08-vnext-graph-v1",
     "vnextRolePolicyVersion": "2026-08-vnext-role-policy-v1",
@@ -38,8 +62,8 @@
     "vnextSurfaceManifestVersion": "2026-08-vnext-surface-manifests-v1"
   },
   "fingerprints": {
-    "ontology": "vnext_cd79f416",
-    "graph": "vnext_9305c022",
+    "ontology": "vnext_4635d133",
+    "graph": "vnext_72d37874",
     "constructs": "vnext_bdba44fb",
     "coreItems": "vnext_ccf53979",
     "specialistItems": "vnext_f473b915",
@@ -47,7 +71,7 @@
     "surfaces": "vnext_217fbb32",
     "validation": "vnext_14697783",
     "challengers": "vnext_fb04132b",
-    "evidenceCards": "vnext_b526b927"
+    "evidenceCards": "vnext_b4c6a2e0"
   },
   "qualityGateResults": {
     "status": "candidate-remediation-pending-final-gate",
@@ -65,29 +89,69 @@
     {
       "id": "P1-01",
       "status": "closed",
-      "implementationUnits": ["I-002", "I-006"]
+      "implementationUnits": ["I-002", "I-006"],
+      "evidence": [
+        "src/data/vnextOntologyRecords.ts",
+        "src/data/vnextGraphMigration.ts",
+        "src/data/vnextOntology.ts",
+        "src/data/vnextGraph.ts",
+        "src/validation/vnextGraph.ts"
+      ]
     },
     {
       "id": "P1-02",
       "status": "closed",
-      "implementationUnits": ["I-003", "I-006"]
+      "implementationUnits": ["I-003", "I-006"],
+      "evidence": [
+        "src/data/vnextOntologyRecords.ts",
+        "src/data/vnextAuthorityPolicy.ts",
+        "src/data/vnextRolePolicy.ts",
+        "src/validation/vnextRoleResolver.ts"
+      ]
     },
     {
       "id": "P1-03",
       "status": "closed",
-      "implementationUnits": ["I-004", "I-006"]
+      "implementationUnits": ["I-004", "I-006"],
+      "evidence": [
+        "src/data/vnextConstructRecords.ts",
+        "src/data/vnextConstructs.ts",
+        "src/validation/vnextConstructs.ts"
+      ]
     },
     {
       "id": "P1-04",
       "status": "closed",
-      "implementationUnits": ["I-005", "I-006"]
+      "implementationUnits": ["I-005", "I-006"],
+      "evidence": [
+        "scripts/generate-vnext-item-manifest.mjs",
+        "src/validation/vnextItems.ts",
+        "npm run vnext:items:check"
+      ]
     },
     {
       "id": "P1-05",
       "status": "closed",
-      "implementationUnits": ["I-008", "I-009"]
+      "implementationUnits": ["I-008", "I-009"],
+      "evidence": [
+        "src/data/vnextSurfaceRecords.ts",
+        "src/data/vnextSurfaceManifests.ts",
+        "src/validation/vnextSurfaceManifests.ts",
+        "src/data/vnextChallengers.ts"
+      ]
     },
-    { "id": "P1-06", "status": "closed", "implementationUnits": ["I-018"] }
+    {
+      "id": "P1-06",
+      "status": "closed",
+      "implementationUnits": ["I-018"],
+      "evidence": [
+        "src/data/vnextReleaseManifest.ts",
+        "release-manifest/vnext-release-manifest.json",
+        "scripts/check-vnext-authority.mts",
+        "scripts/check-vnext-release.mjs",
+        ".github/workflows/ci.yml"
+      ]
+    }
   ],
   "implementationUnits": {
     "I-001": "complete",
@@ -117,18 +181,18 @@
   },
   "rollbackReference": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
   "outstandingEmpiricalGates": [
-    "V2 response-process",
-    "V5 construct/facet structure",
-    "V6-V13 scoped evidence",
-    "M0/M1 held-out residual tests"
+    "V2 cognitive response-process evidence",
+    "V5 internal structure and facet separability",
+    "V6-V13 reliability, retest, criterion, fairness, replication, calibration, and display-value evidence",
+    "M0/M1 held-out compositional residual tests for every compound card"
   ],
   "outstandingGovernanceGates": [
-    "independent release signoff",
-    "promotion decision records",
-    "explicit v13 cutover decision"
+    "independent release audit/signoff",
+    "promotion decision records for any public vNext endpoint",
+    "explicit decision for any future v13-to-vNext cutover"
   ],
   "outstandingDeploymentGates": [
-    "merge and deployment approval",
-    "post-merge final-commit CI/browser evidence"
+    "merge decision and production deployment approval",
+    "post-merge CI and browser evidence on the final release commit"
   ]
 }

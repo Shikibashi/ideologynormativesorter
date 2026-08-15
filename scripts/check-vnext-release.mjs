@@ -3,11 +3,13 @@ import { execFileSync } from "node:child_process";
 
 const manifestPath = "release-manifest/vnext-release-manifest.json";
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-const candidate = "e298ccd5588708528db4b63e3e33ce6f19230d69";
 const baseline = "f0324dbf27dfc6e35ff557992e4643e3df15ee0e";
+const head = execFileSync("git", ["rev-parse", "HEAD"], {
+  encoding: "utf8",
+}).trim();
 const expectedFingerprints = {
-  ontology: "vnext_cd79f416",
-  graph: "vnext_9305c022",
+  ontology: "vnext_4635d133",
+  graph: "vnext_72d37874",
   constructs: "vnext_bdba44fb",
   coreItems: "vnext_ccf53979",
   specialistItems: "vnext_f473b915",
@@ -15,16 +17,15 @@ const expectedFingerprints = {
   surfaces: "vnext_217fbb32",
   validation: "vnext_14697783",
   challengers: "vnext_fb04132b",
-  evidenceCards: "vnext_b526b927",
+  evidenceCards: "vnext_b4c6a2e0",
 };
 const errors = [];
+const candidate = manifest.candidateCommit;
 if (
-  manifest.candidateCommit !== candidate ||
-  manifest.auditedCandidateCommit !== candidate
+  manifest.candidateCommit !== manifest.auditedCandidateCommit ||
+  !/^[0-9a-f]{40}$/.test(candidate)
 )
-  errors.push(
-    "release manifest candidate revision drifted from the audited candidate",
-  );
+  errors.push("release manifest candidate revision is missing or inconsistent");
 if (
   manifest.frozenBaselineCommit !== baseline ||
   manifest.rollbackReference !== baseline
@@ -32,22 +33,34 @@ if (
   errors.push("release manifest frozen baseline/rollback reference drifted");
 if (manifest.candidateCommit === manifest.frozenBaselineCommit)
   errors.push("candidate and frozen baseline must be distinct");
-if (
-  !/^[0-9a-f]{40}$/.test(manifest.candidateCommit) ||
-  !/^[0-9a-f]{40}$/.test(manifest.frozenBaselineCommit)
-)
+if (!/^[0-9a-f]{40}$/.test(manifest.frozenBaselineCommit))
   errors.push("release revisions must be full commit SHAs");
 try {
-  execFileSync("git", ["merge-base", "--is-ancestor", candidate, "HEAD"], {
-    stdio: "ignore",
-  });
+  if (manifest.candidateBinding === "exact-head") {
+    if (head !== candidate)
+      errors.push("exact-head release candidate does not equal git HEAD");
+  } else if (manifest.candidateBinding === "parent-bound-finalization") {
+    const parent = execFileSync("git", ["rev-parse", "HEAD^"], {
+      encoding: "utf8",
+    }).trim();
+    if (manifest.releaseMetadataParentCommit !== candidate)
+      errors.push("release metadata parent does not equal candidateCommit");
+    if (parent !== candidate)
+      errors.push(
+        "finalized release metadata is not immediately bound to the exact candidate parent",
+      );
+  } else {
+    errors.push("release manifest lacks the approved candidate binding mode");
+  }
 } catch {
-  errors.push("current checkout is not a descendant of the audited candidate");
+  errors.push("current checkout cannot be resolved for exact release binding");
 }
 if (manifest.manifestVersion !== "2026-08-vnext-release-manifest-v1")
   errors.push("release manifest version is stale");
 if (!manifest.branch || !manifest.reference)
   errors.push("release provenance is incomplete");
+if (manifest.candidateCommit === manifest.frozenBaselineCommit)
+  errors.push("candidate and frozen baseline must be distinct");
 const requiredFingerprints = [
   "ontology",
   "graph",

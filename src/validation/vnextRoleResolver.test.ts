@@ -13,6 +13,7 @@ describe("vNext role resolver", () => {
     expect(resolveVNextRole("social-democrat")?.roleBasis).toEqual(
       expect.arrayContaining([
         "conceptual-kind:broad-tradition",
+        "conceptual-status:current",
         "measurement-status:compatibility-scored-unvalidated",
         "compatibility-role:primary",
         "respondent-evidence:absent",
@@ -61,6 +62,25 @@ describe("vNext role resolver", () => {
     expect(specialistCompatibility.ordinaryScoringEligible).toBe(
       primaryCompatibility.ordinaryScoringEligible,
     );
+  });
+
+  it("uses the explicit ontology role view and ignores legacy roster membership", () => {
+    const view = resolveVNextRole("welfare-chauvinism");
+    expect(view).toMatchObject({
+      currentRole: "specialist",
+      derivedRole: "specialist",
+    });
+    const roleWithLegacyPrimary = resolveVNextRolePolicy({
+      conceptualKind: "compound-tradition",
+      secondaryKinds: ["hybrid-configuration"],
+      conceptualStatus: "current",
+      eligibleRoles: ["specialist"],
+      measurementStatus: "catalog-only",
+      relationTypes: ["hybrid_of"],
+      explicitPromotion: false,
+      currentRole: "primary",
+    });
+    expect(roleWithLegacyPrimary.derivedRole).toBe("specialist");
   });
 
   it("holds high-risk and evidence-incomplete candidates independently of conceptual role", () => {

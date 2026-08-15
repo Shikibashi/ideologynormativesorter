@@ -34,6 +34,14 @@ export function vnextConstructErrors(
   if (registry.facetMapVersion !== VNEXT_FACET_MAP_VERSION) {
     errors.push("facet map version is not current");
   }
+  if (registry.roots.length !== 26)
+    errors.push(`expected 26 roots, got ${registry.roots.length}`);
+  if (registry.facets.length !== 157)
+    errors.push(`expected 157 facets, got ${registry.facets.length}`);
+  if (registry.localConstructs.length !== 54)
+    errors.push(
+      `expected 54 local constructs, got ${registry.localConstructs.length}`,
+    );
   const axisIds = new Set(axes.map((axis) => axis.id));
   const rootIds = new Set<string>();
   for (const root of registry.roots) {
@@ -105,6 +113,11 @@ export function vnextConstructErrors(
     if (!facet.definition.trim() || facet.sourceRecordIds.length === 0) {
       errors.push(`${facet.id} is missing canonical definition or provenance`);
     }
+    if (
+      facet.definition.includes("the ") &&
+      facet.definition.includes(" dimension of the construct")
+    )
+      errors.push(`${facet.id} still uses a formulaic generic definition`);
     if (facet.version !== VNEXT_CONSTRUCTS_VERSION)
       errors.push(`${facet.id} has a stale construct version`);
     if (facet.applicableConfigurationIds.length === 0)
@@ -152,6 +165,10 @@ export function vnextConstructErrors(
     }
     if (!local.definition.trim() || local.sourceRecordIds.length === 0)
       errors.push(`${local.id} is missing definition or provenance`);
+    if (local.definition.startsWith("Module-local construct for"))
+      errors.push(
+        `${local.id} still uses a placeholder local-construct definition`,
+      );
     if (local.version !== VNEXT_CONSTRUCTS_VERSION)
       errors.push(`${local.id} has a stale construct version`);
     if (local.applicableRootIds.length === 0)

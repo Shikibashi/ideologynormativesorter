@@ -123,6 +123,11 @@ export interface VNextValidationManifest {
   optionFingerprint: string;
   formFingerprint: string;
   formId: string;
+  /** This aggregate roster is a design inventory, never an analysis surface. */
+  manifestPurpose: "aggregate-design-only";
+  analysisSurface: "none";
+  analysisEligible: false;
+  surfaceInterpretation: string;
   itemIds: readonly string[];
   itemVersions: Readonly<Record<string, string>>;
   splitRules: readonly VNextSplitRule[];

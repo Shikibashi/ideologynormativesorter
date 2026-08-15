@@ -41,8 +41,11 @@ export const VNEXT_RELEASE_MANIFEST_VERSION =
 
 export const VNEXT_FROZEN_BASELINE_COMMIT =
   "f0324dbf27dfc6e35ff557992e4643e3df15ee0e" as const;
-export const VNEXT_AUDITED_CANDIDATE_COMMIT =
+export const VNEXT_HISTORICAL_AUDIT_CANDIDATE_COMMIT =
   "e298ccd5588708528db4b63e3e33ce6f19230d69" as const;
+/** Updated only by the deterministic release finalization step. */
+export const VNEXT_RELEASE_CANDIDATE_COMMIT =
+  VNEXT_HISTORICAL_AUDIT_CANDIDATE_COMMIT;
 
 export const VNEXT_IMPLEMENTATION_DECISION_IDS = [
   "I-001",

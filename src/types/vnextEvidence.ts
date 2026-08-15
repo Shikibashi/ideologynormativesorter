@@ -60,6 +60,7 @@ export type VNextPromotionDecision =
 export interface VNextGraphParentRelation {
   relation: string;
   labelId: string;
+  direction?: "incoming" | "outgoing";
   note?: string;
 }
 

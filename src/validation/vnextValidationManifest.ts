@@ -44,6 +44,15 @@ export function vnextValidationManifestErrors(
     errors.push("initial vNext manifest must remain design-ready");
   }
   if (
+    manifest.manifestPurpose !== "aggregate-design-only" ||
+    manifest.analysisSurface !== "none" ||
+    manifest.analysisEligible !== false ||
+    !manifest.surfaceInterpretation.includes("never")
+  )
+    errors.push(
+      "aggregate validation manifest is not explicitly blocked from analysis-surface use",
+    );
+  if (
     manifest.preregistration.hypotheses.length === 0 ||
     manifest.preregistration.estimands.length === 0
   ) {

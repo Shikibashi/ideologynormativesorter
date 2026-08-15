@@ -667,3 +667,35 @@ This decision closes the six P1 implementation findings. It does not promote a
 label, facet, Modifier, Specialist, interpretation, scorer, public claim, or
 deployment. Those states remain subject to the evidence and governance gates
 listed in the release manifest.
+
+## D-133 — Independent audit remediation: explicit authority and release binding
+
+The independent audit of `de855b799dd778f7ef404bc8a9da4dde5e59f49e` identified
+remaining implementation defects in the authority boundary, historical graph
+coverage, construct scope, Specialist metadata, shadow tuple, aggregate
+manifest semantics, and candidate provenance. The remediation adopts the
+following implementation constraints:
+
+1. vNext authority is materialized in per-node, construct, facet, surface, and
+   graph-migration records. v13 role arrays, parent links, descriptions, and
+   relation notes are compatibility/provenance inputs only.
+2. Every historical 64-edge graph relationship has a machine-readable
+   retain/replace/split/supersede/remove disposition. The current graph must
+   carry an approved source anchor, methodological decision, relation-specific
+   constraint, scope, directionality, and edge-level adjudication record.
+3. Construct/facet scope is explicit and root-bounded. Context scope is empty
+   unless an approved Context record declares it; compound, Specialist,
+   Modifier, and high-risk metadata remain typed and evidence-gated.
+4. Aggregate 406-item inventories are design-only and cannot be consumed as a
+   core or production-baseline analysis surface. Specialist challenger inputs
+   remain module-local with explicit partition records.
+5. Shadow outputs remain research-only and abstain when facet-level evidence or
+   uncertainty is absent. Root-weight reuse is prohibited.
+6. Candidate release metadata uses an exact substantive candidate SHA and an
+   immediate-parent finalization binding for the metadata commit. The frozen
+   rollback baseline remains `f0324dbf27dfc6e35ff557992e4643e3df15ee0e`.
+
+These are implementation and provenance decisions only. They do not authorize
+v13 scorer changes, ordinary result-path changes, bank or routing changes,
+public-claim changes, respondent-evidence promotion, merge, deployment, or
+cutover.

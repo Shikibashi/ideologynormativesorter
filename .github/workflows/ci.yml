@@ -37,6 +37,9 @@ jobs:
       - name: Check reproducible generated vNext item manifest
         run: npm run vnext:items:check
 
+      - name: Check authoritative vNext ontology, graph, construct, surface, evidence, and shadow contracts
+        run: npm run vnext:contract:check
+
       - name: Run lint
         run: npm run lint
 

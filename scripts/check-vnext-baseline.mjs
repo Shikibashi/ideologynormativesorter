@@ -1,6 +1,9 @@
 import fs from "node:fs";
 
 const qualityGate = JSON.parse(fs.readFileSync("quality-gate.json", "utf8"));
+const releaseManifest = JSON.parse(
+  fs.readFileSync("release-manifest/vnext-release-manifest.json", "utf8"),
+);
 const contract = qualityGate.currentContract;
 const expected = {
   architectureVersion: "2026-08-measurement-architecture-v1",
@@ -28,14 +31,10 @@ if (
     "quality-gate baselineCommit drifted from the frozen release baseline",
   );
 }
-if (
-  qualityGate.artifact.candidateCommit !==
-  "e298ccd5588708528db4b63e3e33ce6f19230d69"
-) {
-  errors.push(
-    "quality-gate candidateCommit does not identify the audited candidate",
-  );
-}
+if (!/^[0-9a-f]{40}$/.test(qualityGate.artifact.candidateCommit))
+  errors.push("quality-gate candidateCommit is not a full SHA");
+if (qualityGate.artifact.candidateCommit !== releaseManifest.candidateCommit)
+  errors.push("quality-gate and release manifest candidate revisions disagree");
 for (const [key, value] of Object.entries(expected)) {
   if (contract[key] !== value) errors.push(`${key} expected ${value}`);
 }

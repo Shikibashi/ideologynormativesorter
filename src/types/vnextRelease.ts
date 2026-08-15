@@ -5,6 +5,9 @@ export interface VNextReleaseManifest {
   manifestVersion: string;
   candidateCommit: string;
   auditedCandidateCommit: string;
+  historicalAuditCandidateCommit?: string;
+  candidateBinding: "exact-head" | "parent-bound-finalization";
+  releaseMetadataParentCommit: string;
   frozenBaselineCommit: string;
   branch: string;
   reference: string;

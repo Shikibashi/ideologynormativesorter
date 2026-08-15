@@ -1,6 +1,11 @@
 import { vnextConstructRegistry } from "../data/vnextConstructs";
-import { vnextGraphEdges } from "../data/vnextGraph";
+import {
+  vnextGraphAdjudicationRecords,
+  vnextGraphEdges,
+} from "../data/vnextGraph";
+import { vnextGraphMigrationLedger } from "../data/vnextGraphMigration";
 import { vnextOntologyNodes } from "../data/vnextOntology";
+import { vnextOntologyErrors } from "./vnextOntology";
 import { VNEXT_GRAPH_VERSION } from "./vnextVersions";
 import {
   VNEXT_CONCEPTUAL_KINDS,
@@ -183,8 +188,15 @@ export function vnextGraphErrors(
       errors.push(`duplicate node ${node.id}`);
     errors.push(...nodeErrors(node, nodeIds));
   }
+  if (nodes === vnextOntologyNodes) errors.push(...vnextOntologyErrors(nodes));
   const edgeIds = new Set<string>();
   const relationTypes = new Set<VNextGraphRelationType>();
+  const adjudications = new Map(
+    vnextGraphAdjudicationRecords.map((record) => [
+      `${record.sourceId}:${record.type}:${record.targetId}`,
+      record,
+    ]),
+  );
   const facetIds = new Set(
     vnextConstructRegistry.facets.map((facet) => facet.id),
   );
@@ -202,6 +214,27 @@ export function vnextGraphErrors(
       errors.push(`${edge.id} is self-referential`);
     if (edge.graphVersion !== VNEXT_GRAPH_VERSION)
       errors.push(`${edge.id} has a stale graph version`);
+    const adjudication = adjudications.get(edge.id);
+    if (!adjudication || adjudication.status !== "approved")
+      errors.push(`${edge.id} lacks an approved edge adjudication record`);
+    else {
+      if (
+        adjudication.sourceId !== edge.sourceId ||
+        adjudication.targetId !== edge.targetId ||
+        adjudication.type !== edge.type
+      )
+        errors.push(`${edge.id} does not match its adjudication identity`);
+      if (
+        !adjudication.sourceRecordIds.includes(
+          `vnext-graph-adjudication:${edge.id}`,
+        )
+      )
+        errors.push(`${edge.id} lacks a unique edge-level adjudication source`);
+      if (!adjudication.sourceRecordIds.some((id) => id.startsWith("docs/")))
+        errors.push(`${edge.id} lacks a document source anchor`);
+      if (adjudication.decisionIds.length === 0)
+        errors.push(`${edge.id} lacks a methodological decision reference`);
+    }
     if (
       !edge.note.trim() ||
       edge.provenance.length === 0 ||
@@ -228,6 +261,54 @@ export function vnextGraphErrors(
       errors.push(`${edge.id} must declare directed directionality`);
     if (!ALLOWED_SCOPES_BY_RELATION[edge.type]?.includes(edge.scope))
       errors.push(`${edge.id} has an invalid scope for ${edge.type}`);
+    const sourceNode = nodes.find((node) => node.id === edge.sourceId);
+    const targetNode = nodes.find((node) => node.id === edge.targetId);
+    if (
+      edge.type === "hybrid_of" &&
+      ![
+        "compound-tradition",
+        "bridge-tradition",
+        "hybrid-configuration",
+        "regime-or-authoritarian-project",
+        "strategy-or-program",
+      ].includes(sourceNode?.conceptualKind ?? "") &&
+      !sourceNode?.secondaryKinds.includes("hybrid-configuration")
+    )
+      errors.push(
+        `${edge.id} hybrid_of source is not a compound/bridge object`,
+      );
+    if (
+      edge.type === "institutionalizes" &&
+      sourceNode?.conceptualKind !== "institutional-project"
+    )
+      errors.push(
+        `${edge.id} institutionalizes source is not an institutional project`,
+      );
+    if (
+      edge.type === "context_for" &&
+      sourceNode?.publicRoleView.defaultRole !== "context" &&
+      ![
+        "discourse-frame",
+        "intellectual-current",
+        "regional-historical-variant",
+      ].includes(sourceNode?.conceptualKind ?? "")
+    )
+      errors.push(`${edge.id} context_for source must be a Context object`);
+    if (
+      edge.type === "policy_expression_of" &&
+      sourceNode?.conceptualKind !== "policy-proposal"
+    )
+      errors.push(
+        `${edge.id} policy_expression_of source must be a policy proposal`,
+      );
+    if (
+      edge.type === "requires" &&
+      !targetNode?.evidenceRequirements.requiredConstructIds.length &&
+      !targetNode?.modifierMetadata
+    )
+      errors.push(
+        `${edge.id} requires target lacks an approved construct-bearing entity`,
+      );
     if (
       edge.type === "alias_of" &&
       nodes.find((node) => node.id === edge.sourceId)?.conceptualStatus !==
@@ -236,12 +317,6 @@ export function vnextGraphErrors(
       errors.push(`${edge.id} alias source must be retired`);
     if (edge.type === "incompatible_with_core" && edge.scope !== "measurement")
       errors.push(`${edge.id} core-incompatibility must be measurement-scoped`);
-    if (
-      edge.type === "context_for" &&
-      nodes.find((node) => node.id === edge.sourceId)?.publicRoleView
-        .defaultRole !== "context"
-    )
-      errors.push(`${edge.id} context_for source must be a Context object`);
     if (SYMMETRIC_TYPES.has(edge.type)) {
       const reverse = edges.find(
         (candidate) =>
@@ -259,6 +334,30 @@ export function vnextGraphErrors(
       );
   if (hasCycle(edges, new Set(["subtype_of", "alias_of"])))
     errors.push("subtype_of/alias_of relations contain a cycle");
+  const migrationRelationIds = new Set(
+    vnextGraphMigrationLedger.flatMap((record) => record.newRelationIds),
+  );
+  for (const record of vnextGraphMigrationLedger) {
+    if (record.disposition === "remove-with-rationale") {
+      if (record.newRelationIds.length > 0)
+        errors.push(
+          `${record.migrationId} removes a relation but names replacement edges`,
+        );
+      if (!record.rationale.trim() || !record.methodologicalDecision)
+        errors.push(
+          `${record.migrationId} lacks removal rationale or decision`,
+        );
+    } else {
+      for (const relationId of record.newRelationIds)
+        if (!edgeIds.has(relationId))
+          errors.push(
+            `${record.migrationId} names missing authoritative edge ${relationId}`,
+          );
+    }
+  }
+  for (const edgeId of migrationRelationIds)
+    if (!edgeIds.has(edgeId))
+      errors.push(`migration ledger edge ${edgeId} is absent`);
   return [...new Set(errors)];
 }
 

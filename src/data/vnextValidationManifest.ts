@@ -7,6 +7,7 @@ import {
   VNEXT_ITEM_ANNOTATIONS_VERSION,
   VNEXT_VALIDATION_MANIFEST_VERSION,
   VNEXT_FROZEN_BASELINE_COMMIT,
+  VNEXT_RELEASE_CANDIDATE_COMMIT,
 } from "../validation/vnextVersions";
 import { vnextSurfaceManifests } from "./vnextSurfaceManifests";
 import type {
@@ -112,7 +113,7 @@ export const vnextValidationManifest: VNextValidationManifest = {
     vnextItemAnnotationsVersion: VNEXT_ITEM_ANNOTATIONS_VERSION,
     frozenProductionBaselineCommit: VNEXT_FROZEN_BASELINE_COMMIT,
   },
-  codeRevision: "e298ccd5588708528db4b63e3e33ce6f19230d69",
+  codeRevision: VNEXT_RELEASE_CANDIDATE_COMMIT,
   frozenProductionBaselineRevision: VNEXT_FROZEN_BASELINE_COMMIT,
   surfaceManifestIds: vnextSurfaceManifests.map(
     (manifest) => manifest.manifestId,
@@ -122,6 +123,11 @@ export const vnextValidationManifest: VNextValidationManifest = {
   optionFingerprint: `${VNEXT_ITEM_ANNOTATIONS_VERSION}:statement-choice-options-v1`,
   formFingerprint,
   formId: "vnext-core-form-design-only",
+  manifestPurpose: "aggregate-design-only",
+  analysisSurface: "none",
+  analysisEligible: false,
+  surfaceInterpretation:
+    "Aggregate 406-item design inventory only. It must never be consumed as a core, Specialist, production-baseline, task, expert, or bridge analysis surface.",
   itemIds,
   itemVersions: Object.fromEntries(
     itemIds.map((itemId) => [itemId, VNEXT_ITEM_ANNOTATIONS_VERSION]),

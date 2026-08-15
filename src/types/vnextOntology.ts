@@ -101,6 +101,24 @@ export interface VNextPublicRoleView {
   derivationInputs: readonly string[];
 }
 
+export type VNextHighRiskClassification = "ordinary" | "high-risk";
+
+export interface VNextModifierMetadata {
+  domainId: string;
+  subdimensionId: string;
+  crossHost: boolean;
+  availability: "core-construct" | "focused-follow-up" | "catalog-only";
+  scoringState: "direct-indicator" | "follow-up-only" | "catalog-only";
+  evidenceRequirements: readonly string[];
+}
+
+export interface VNextContextMetadata {
+  contextKind: VNextConceptualKind;
+  route: "catalog" | "explainer" | "graph" | "research";
+  ordinaryScoring: false;
+  futureRoute?: string;
+}
+
 export interface VNextSemanticConstraint {
   code: string;
   statement: string;
@@ -129,6 +147,36 @@ export interface VNextGraphEdge {
   note: string;
   semanticConstraints: readonly VNextSemanticConstraint[];
   symmetricDerived?: boolean;
+}
+
+export type VNextGraphMigrationDisposition =
+  | "retain-unchanged"
+  | "replace"
+  | "split"
+  | "supersede"
+  | "remove-with-rationale";
+
+export interface VNextGraphMigrationRecord {
+  migrationId: string;
+  oldSourceId: string;
+  oldTargetId: string;
+  oldRelation: string;
+  disposition: VNextGraphMigrationDisposition;
+  newRelationIds: readonly string[];
+  methodologicalDecision: string;
+  sourceRecordIds: readonly string[];
+  rationale: string;
+}
+
+export interface VNextGraphAdjudicationRecord {
+  adjudicationId: string;
+  sourceId: string;
+  targetId: string;
+  type: VNextGraphRelationType;
+  status: "approved";
+  sourceRecordIds: readonly string[];
+  decisionIds: readonly string[];
+  rationale: string;
 }
 
 export interface VNextOntologyNode {
@@ -164,8 +212,19 @@ export interface VNextOntologyNode {
   };
   vNextMeasurementStatus: VNextMeasurementStatus;
   highRisk: boolean;
+  highRiskClassification: VNextHighRiskClassification;
+  specialistKind?: string;
+  modifierMetadata?: VNextModifierMetadata;
+  contextMetadata?: VNextContextMetadata;
   currentModuleId?: string;
 }
+
+/**
+ * The specification-owned ontology record. Compatibility decoding is
+ * intentionally absent: the v13 taxonomy is joined only after this record
+ * has been selected and validated.
+ */
+export type VNextOntologyRecord = Omit<VNextOntologyNode, "compatibility">;
 
 export interface VNextOntologyRegistry {
   ontologyVersion: string;

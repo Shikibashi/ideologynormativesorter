@@ -10,10 +10,12 @@ describe("vNext root and facet registry", () => {
     expect(() => assertVNextConstructs()).not.toThrow();
   });
 
-  it("marks facet records as planned rather than measured scores", () => {
+  it("records facet-level blueprint coverage without claiming respondent validation", () => {
     expect(
-      vnextConstructRegistry.facets.every((facet) =>
-        ["planned", "effectively-unmeasured"].includes(facet.coverageStatus),
+      vnextConstructRegistry.facets.every(
+        (facet) =>
+          !["validated-scoped"].includes(facet.measurementStatus) &&
+          facet.coverageStatus.length > 0,
       ),
     ).toBe(true);
   });

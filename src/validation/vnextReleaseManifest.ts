@@ -2,7 +2,7 @@ import { vnextReleaseManifest } from "../data/vnextReleaseManifest";
 import { vnextSurfaceManifestById } from "../data/vnextSurfaceManifests";
 import type { VNextReleaseManifest } from "../types";
 import {
-  VNEXT_AUDITED_CANDIDATE_COMMIT,
+  VNEXT_RELEASE_CANDIDATE_COMMIT,
   VNEXT_FROZEN_BASELINE_COMMIT,
   VNEXT_RELEASE_MANIFEST_VERSION,
 } from "./vnextVersions";
@@ -16,8 +16,8 @@ const REQUIRED_P1 = [
   "P1-06",
 ] as const;
 const EXPECTED_FINGERPRINTS: Readonly<Record<string, string>> = {
-  ontology: "vnext_cd79f416",
-  graph: "vnext_9305c022",
+  ontology: "vnext_4635d133",
+  graph: "vnext_72d37874",
   constructs: "vnext_bdba44fb",
   coreItems: "vnext_ccf53979",
   specialistItems: "vnext_f473b915",
@@ -25,7 +25,7 @@ const EXPECTED_FINGERPRINTS: Readonly<Record<string, string>> = {
   surfaces: "vnext_217fbb32",
   validation: "vnext_14697783",
   challengers: "vnext_fb04132b",
-  evidenceCards: "vnext_b526b927",
+  evidenceCards: "vnext_b4c6a2e0",
 };
 
 export function vnextReleaseManifestErrors(
@@ -35,11 +35,20 @@ export function vnextReleaseManifestErrors(
   if (manifest.manifestVersion !== VNEXT_RELEASE_MANIFEST_VERSION)
     errors.push("release manifest version is stale");
   if (
-    manifest.candidateCommit !== VNEXT_AUDITED_CANDIDATE_COMMIT ||
-    manifest.auditedCandidateCommit !== VNEXT_AUDITED_CANDIDATE_COMMIT
+    manifest.candidateCommit !== VNEXT_RELEASE_CANDIDATE_COMMIT ||
+    manifest.auditedCandidateCommit !== VNEXT_RELEASE_CANDIDATE_COMMIT
   )
     errors.push(
       "release manifest candidate revision does not identify the audited candidate",
+    );
+  if (
+    !["exact-head", "parent-bound-finalization"].includes(
+      manifest.candidateBinding,
+    ) ||
+    manifest.releaseMetadataParentCommit !== manifest.candidateCommit
+  )
+    errors.push(
+      "release manifest candidate binding is not explicit or does not name the implementation candidate",
     );
   if (
     manifest.frozenBaselineCommit !== VNEXT_FROZEN_BASELINE_COMMIT ||

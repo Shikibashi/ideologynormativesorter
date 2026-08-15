@@ -1,16 +1,6 @@
-import {
-  CONTEXT_LABEL_IDS,
-  RETIRED_LABEL_IDS,
-  SPECIALIST_LABEL_IDS,
-  labelTaxonomyById,
-  primaryScoringLabels,
-  specialistModuleByLabel,
-} from "./labelTaxonomy";
-import { labels } from "./labels";
-import { specialistModuleDefinitions } from "../specialist";
-import { vnextGraphEdgesBySource } from "./vnextGraph";
+import { vnextGraphEdges } from "./vnextGraph";
 import { vnextSurfaceManifestBySurface } from "./vnextSurfaceManifests";
-import { vnextOntologyById } from "./vnextOntology";
+import { vnextOntologyById, vnextOntologyNodes } from "./vnextOntology";
 import { CURRENT_RESEARCH_VERSION_BUNDLE } from "../validation/researchContracts";
 import {
   VNEXT_EVIDENCE_CARD_VERSION,
@@ -22,6 +12,11 @@ import {
   VNEXT_ITEM_ANNOTATIONS_VERSION,
   VNEXT_ONTOLOGY_VERSION,
   VNEXT_ROLE_POLICY_VERSION,
+  VNEXT_CHALLENGER_MODELS_VERSION,
+  VNEXT_SHADOW_SCORING_VERSION,
+  VNEXT_SURFACE_MANIFEST_VERSION,
+  VNEXT_RELEASE_CANDIDATE_COMMIT,
+  VNEXT_FROZEN_BASELINE_COMMIT,
 } from "../validation/vnextVersions";
 import type {
   VNextEvidenceCard,
@@ -33,9 +28,21 @@ import type {
 import { VNEXT_EVIDENCE_COMPONENT_IDS } from "../types";
 
 const CARD_DATE = "2026-08-15";
-const CONTEXT_LABEL_SET = new Set<string>(CONTEXT_LABEL_IDS);
-const RETIRED_LABEL_SET = new Set<string>(RETIRED_LABEL_IDS);
-const SPECIALIST_LABEL_SET = new Set<string>(SPECIALIST_LABEL_IDS);
+const CONTEXT_LABEL_SET = new Set(
+  vnextOntologyNodes
+    .filter((node) => node.publicRoleView.defaultRole === "context")
+    .map((node) => node.id),
+);
+const RETIRED_LABEL_SET = new Set(
+  vnextOntologyNodes
+    .filter((node) => node.publicRoleView.defaultRole === "retired")
+    .map((node) => node.id),
+);
+const SPECIALIST_LABEL_SET = new Set(
+  vnextOntologyNodes
+    .filter((node) => node.publicRoleView.defaultRole === "specialist")
+    .map((node) => node.id),
+);
 
 function initialComponent(scope: readonly string[]): VNextEvidenceComponent {
   return {
@@ -70,37 +77,20 @@ function publicState(labelId: string): VNextPromotionState {
     return "catalog-context";
   }
   if (SPECIALIST_LABEL_SET.has(labelId)) {
-    return specialistModuleByLabel[labelId]
+    return vnextOntologyById.get(labelId)?.currentModuleId
       ? "experimental-display"
       : "catalog-context";
   }
   return "compatibility-scored-unvalidated";
 }
 
-function constructScope(labelId: string, role: string): string[] {
+function constructScope(labelId: string): string[] {
   const node = vnextOntologyById.get(labelId);
-  if (node) {
-    return [
-      ...node.evidenceRequirements.requiredConstructIds,
-      ...node.evidenceRequirements.requiredFacetIds,
-    ];
-  }
-  if (role === "primary")
-    return [
-      ...(primaryScoringLabels.find((label) => label.id === labelId)
-        ?.scoringScope?.axisIds ?? []),
-    ];
-  const moduleId = specialistModuleByLabel[labelId];
-  const module = specialistModuleDefinitions.find(
-    (candidate) => candidate.id === moduleId,
-  );
-  if (!module) return [];
+  if (!node) return [];
   return [
-    ...new Set(
-      Object.values(module.constructWeightsByQuestionId).flatMap((weights) =>
-        Object.keys(weights),
-      ),
-    ),
+    ...node.evidenceRequirements.requiredConstructIds,
+    ...node.evidenceRequirements.requiredFacetIds,
+    ...node.evidenceRequirements.prerequisiteModuleIds,
   ];
 }
 
@@ -122,6 +112,7 @@ const COMPOUND_HOSTS: Readonly<Record<string, string>> = {
   "queer-politics": "feminist-orientation",
   "queer-anarchism": "social-anarchism",
   "welfare-chauvinism": "social-democrat",
+  geolibertarian: "georgism",
   "religious-nationalism": "national-conservatism",
   "cultural-populism": "populism",
   "bright-green-environmentalism": "green-politics",
@@ -133,24 +124,24 @@ const COMPOUND_HOSTS: Readonly<Record<string, string>> = {
 };
 
 function createCard(labelId: string): VNextEvidenceCard {
-  const label = labels.find((candidate) => candidate.id === labelId);
   const node = vnextOntologyById.get(labelId);
-  const taxonomy = labelTaxonomyById.get(labelId);
-  if (!label || !node || !taxonomy)
-    throw new Error(`Cannot build evidence card for ${labelId}`);
-  const scope = constructScope(labelId, taxonomy.role);
-  const graphParentsAndRelations = [
-    ...(vnextGraphEdgesBySource.get(labelId) ?? []).map((edge) => ({
+  if (!node) throw new Error(`Cannot build evidence card for ${labelId}`);
+  const role = node.publicRoleView.defaultRole;
+  const scope = constructScope(labelId);
+  const graphParentsAndRelations = vnextGraphEdges
+    .filter((edge) => edge.sourceId === labelId || edge.targetId === labelId)
+    .map((edge) => ({
       relation: edge.type,
-      labelId: edge.targetId,
+      labelId: edge.sourceId === labelId ? edge.targetId : edge.sourceId,
+      direction:
+        edge.sourceId === labelId
+          ? ("outgoing" as const)
+          : ("incoming" as const),
       ...(edge.note ? { note: edge.note } : {}),
-    })),
-  ];
+    }));
   const nearestNeighborIds = [
     ...new Set([
       ...graphParentsAndRelations.map((relation) => relation.labelId),
-      ...(primaryScoringLabels.find((candidate) => candidate.id === labelId)
-        ?.scoringScope?.sourceIds ?? []),
     ]),
   ].filter((id) => vnextOntologyById.has(id));
   const state = publicState(labelId);
@@ -160,12 +151,7 @@ function createCard(labelId: string): VNextEvidenceCard {
     "bridge-tradition",
     "hybrid-configuration",
   ].includes(node.conceptualKind);
-  const m0HostId = compound
-    ? (COMPOUND_HOSTS[labelId] ??
-      graphParentsAndRelations.find(
-        (relation) => relation.relation === "hybrid_of",
-      )?.labelId)
-    : undefined;
+  const m0HostId = compound ? COMPOUND_HOSTS[labelId] : undefined;
   const m0ModifierOrFacetIds = compound
     ? [...node.constitutiveFacetIds, ...node.associatedFacetIds.slice(0, 2)]
     : [];
@@ -178,18 +164,23 @@ function createCard(labelId: string): VNextEvidenceCard {
     vnextConstructsVersion: VNEXT_CONSTRUCTS_VERSION,
     vnextFacetMapVersion: VNEXT_FACET_MAP_VERSION,
     vnextItemAnnotationsVersion: VNEXT_ITEM_ANNOTATIONS_VERSION,
+    vnextSurfaceManifestVersion: VNEXT_SURFACE_MANIFEST_VERSION,
+    vnextChallengerModelsVersion: VNEXT_CHALLENGER_MODELS_VERSION,
+    vnextShadowScoringVersion: VNEXT_SHADOW_SCORING_VERSION,
+    codeRevision: VNEXT_RELEASE_CANDIDATE_COMMIT,
+    frozenProductionBaselineRevision: VNEXT_FROZEN_BASELINE_COMMIT,
   };
   return {
-    cardId: `${taxonomy.role}:${labelId}:validation-v1`,
+    cardId: `${role}:${labelId}:validation-v1`,
     cardVersion: VNEXT_EVIDENCE_CARD_VERSION,
     labelId,
-    canonicalName: label.name,
-    productRole: taxonomy.role,
+    canonicalName: node.canonicalName,
+    productRole: role,
     conceptualKind: node.conceptualKind,
     historicalScope: node.historicalScope,
     graphParentsAndRelations,
     publicMeasurementStatus: node.vNextMeasurementStatus,
-    currentCompatibilityStatus: taxonomy.measurementStatus,
+    currentCompatibilityStatus: node.compatibility.measurementStatus,
     constructScope: scope,
     constitutiveConstructIds: scope,
     optionalFacetIds: [...node.associatedFacetIds],
@@ -198,14 +189,12 @@ function createCard(labelId: string): VNextEvidenceCard {
     m0ModifierOrFacetIds,
     ...(m0HostId
       ? {
-          m1ResidualHypothesis: `After controlling for ${m0HostId} and the declared facets ${m0ModifierOrFacetIds.join(", ") || "in scope"}, ${label.name} must show preregistered held-out incremental residual value before any promotion.`,
+          m1ResidualHypothesis: `After controlling for ${m0HostId} and the declared facets ${m0ModifierOrFacetIds.join(", ") || "in scope"}, ${node.canonicalName} must show preregistered held-out incremental residual value before any promotion.`,
         }
       : {}),
-    ...(specialistModuleByLabel[labelId]
-      ? { moduleId: specialistModuleByLabel[labelId] }
-      : {}),
+    ...(node.currentModuleId ? { moduleId: node.currentModuleId } : {}),
     formAndPopulationScope: {
-      form: "current-v13-compatibility-scope; respondent validation not started",
+      form: "vNext surface manifest scope; respondent validation not started",
       population: "not authorized",
       language: "not authorized",
       region: "not authorized",
@@ -214,7 +203,7 @@ function createCard(labelId: string): VNextEvidenceCard {
     evidence: componentSet(scope),
     preregistrationIds: [],
     analysisManifestIds: [
-      (taxonomy.role === "specialist"
+      (role === "specialist"
         ? vnextSurfaceManifestBySurface.get("specialist")
         : vnextSurfaceManifestBySurface.get("core"))!.manifestId,
     ],
@@ -250,10 +239,11 @@ function createCard(labelId: string): VNextEvidenceCard {
   };
 }
 
-const CARD_LABEL_IDS = [
-  ...primaryScoringLabels.map((label) => label.id),
-  ...SPECIALIST_LABEL_IDS,
-];
+const CARD_LABEL_IDS = vnextOntologyNodes
+  .filter((node) =>
+    ["primary", "specialist"].includes(node.publicRoleView.defaultRole),
+  )
+  .map((node) => node.id);
 
 export const vnextEvidenceCards: readonly VNextEvidenceCard[] =
   CARD_LABEL_IDS.map(createCard);
@@ -265,8 +255,8 @@ export const vnextEvidenceCardByCardId = new Map(
 );
 
 export const vnextEvidenceCardByLegacyId = new Map<string, VNextEvidenceCard>(
-  RETIRED_LABEL_IDS.flatMap((legacyId) => {
-    const aliasOf = labelTaxonomyById.get(legacyId)?.aliasOf;
+  [...RETIRED_LABEL_SET].flatMap((legacyId) => {
+    const aliasOf = vnextOntologyById.get(legacyId)?.compatibility.aliasOf;
     const card = aliasOf ? vnextEvidenceCardById.get(aliasOf) : undefined;
     return card ? [[legacyId, card] as const] : [];
   }),

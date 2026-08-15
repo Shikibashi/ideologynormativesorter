@@ -1,7 +1,6 @@
 import { modifierMeasurementForLabel } from "../data/modifierMeasurement";
 import { vnextOntologyById } from "../data/vnextOntology";
-import { vnextGraphEdgesBySource } from "../data/vnextGraph";
-import { specialistModuleByLabel } from "../data/labelTaxonomy";
+import { vnextGraphEdges } from "../data/vnextGraph";
 import type { VNextRolePolicyResult } from "../data/vnextRolePolicy";
 import { resolveVNextRolePolicy } from "../data/vnextRolePolicy";
 
@@ -17,8 +16,9 @@ export function resolveVNextRole(labelId: string): VNextRoleView | undefined {
   const node = vnextOntologyById.get(labelId);
   if (!node) return undefined;
   const modifier = modifierMeasurementForLabel(labelId);
-  const relationTypes =
-    vnextGraphEdgesBySource.get(labelId)?.map((edge) => edge.type) ?? [];
+  const relationTypes = vnextGraphEdges
+    .filter((edge) => edge.sourceId === labelId || edge.targetId === labelId)
+    .map((edge) => edge.type);
   const policy = resolveVNextRolePolicy({
     conceptualKind: node.conceptualKind,
     secondaryKinds: node.secondaryKinds,
@@ -45,9 +45,7 @@ export function resolveVNextRole(labelId: string): VNextRoleView | undefined {
     conceptualKind: node.conceptualKind,
     measurementStatus: node.vNextMeasurementStatus,
     currentRole: node.compatibility.role,
-    ...(specialistModuleByLabel[labelId]
-      ? { currentModuleId: specialistModuleByLabel[labelId] }
-      : {}),
+    ...(node.currentModuleId ? { currentModuleId: node.currentModuleId } : {}),
     ...policy,
   };
 }

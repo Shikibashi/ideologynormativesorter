@@ -2,12 +2,13 @@ import { questions } from "../data/effectiveQuestions";
 import { specialistModuleDefinitions } from "../specialist";
 import {
   vnextSurfaceFingerprint,
+  vnextSpecialistItemIdsByModule,
   vnextSurfaceManifests,
 } from "../data/vnextSurfaceManifests";
 import { vnextItemAnnotations } from "../data/vnextItemAnnotations";
 import type { VNextSurfaceManifest } from "../types";
 import {
-  VNEXT_AUDITED_CANDIDATE_COMMIT,
+  VNEXT_RELEASE_CANDIDATE_COMMIT,
   VNEXT_FROZEN_BASELINE_COMMIT,
   VNEXT_SURFACE_MANIFEST_VERSION,
 } from "./vnextVersions";
@@ -57,12 +58,22 @@ export function vnextSurfaceManifestErrors(
       );
     if (specialist.moduleIds.length !== specialistModuleDefinitions.length)
       errors.push("Specialist surface does not declare every module");
+    const moduleItems = [...vnextSpecialistItemIdsByModule.values()].flat();
+    if (
+      JSON.stringify([...moduleItems].sort()) !==
+      JSON.stringify([...specialist.itemIds].sort())
+    )
+      errors.push(
+        "Specialist module-local rosters do not partition the Specialist surface",
+      );
+    if (new Set(moduleItems).size !== moduleItems.length)
+      errors.push("Specialist module-local rosters overlap");
   }
   const seen = new Map<string, string>();
   for (const manifest of manifests) {
     if (manifest.manifestVersion !== VNEXT_SURFACE_MANIFEST_VERSION)
       errors.push(`${manifest.surface} surface has a stale manifest version`);
-    if (manifest.candidateCodeRevision !== VNEXT_AUDITED_CANDIDATE_COMMIT)
+    if (manifest.candidateCodeRevision !== VNEXT_RELEASE_CANDIDATE_COMMIT)
       errors.push(
         `${manifest.surface} surface points at another candidate revision`,
       );
@@ -90,7 +101,9 @@ export function vnextSurfaceManifestErrors(
       manifest.versionTuple.vnextOntologyVersion === undefined ||
       manifest.versionTuple.vnextGraphVersion === undefined ||
       manifest.versionTuple.vnextConstructsVersion === undefined ||
-      manifest.versionTuple.vnextItemAnnotationsVersion === undefined
+      manifest.versionTuple.vnextItemAnnotationsVersion === undefined ||
+      manifest.versionTuple.vnextChallengerModelsVersion === undefined ||
+      manifest.versionTuple.vnextShadowScoringVersion === undefined
     )
       errors.push(
         `${manifest.surface} surface lacks ontology/graph/construct/item version tuple`,
@@ -111,6 +124,15 @@ export function vnextSurfaceManifestErrors(
     );
   for (const surface of ["research-task", "expert-review", "bridge"] as const) {
     const manifest = bySurface.get(surface);
+    if (
+      manifest &&
+      manifest.itemIds.length === 0 &&
+      manifest.status !== "not-applicable" &&
+      surface !== "research-task"
+    )
+      errors.push(
+        `${surface} empty design manifest must be explicitly not-applicable`,
+      );
     if (
       manifest &&
       manifest.itemIds.some((itemId) => seen.get(itemId) !== surface)

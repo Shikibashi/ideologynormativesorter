@@ -71,3 +71,19 @@ integrity, evidence-card completeness, V0 manifest leakage checks, challenger
 contracts, calibration/robustness contracts, and shadow-score missingness.
 The repository-wide gates and browser/worker/collector/R checks remain the
 release validation surface and are reported separately from this design status.
+
+## Independent-audit remediation detail
+
+The authoritative layer is now record-driven rather than compatibility-projected:
+
+- `src/data/vnextOntologyRecords.ts` contains 145 explicit node records. Legacy taxonomy data is joined only into the `compatibility` field after the record is selected.
+- `src/data/vnextGraphMigration.ts` contains all 64 historical compatibility edges, each with an explicit disposition, source anchors, decision reference, rationale, and replacement edge ID. The authoritative graph currently contains 100 typed edges and 100 edge-level adjudication records across all 17 approved relation types.
+- `src/data/vnextConstructRecords.ts` contains the 26-root, 157-facet, 54-local-construct Measurement Blueprint registry. Node-to-construct coverage is validated root-by-root; no facet may enter a node scope through a neighboring-root fallback.
+- `src/data/vnextSurfaceRecords.ts` contains the five partition manifests and explicit module-local Specialist rosters. The 406-item validation inventory is marked `aggregate-design-only`, `analysisSurface: none`, and `analysisEligible: false`.
+- `src/data/vnextShadow.ts` is a research-only, fail-closed contract with a complete version tuple, explicit missingness/refusal/evidence/uncertainty/claim metadata, and `rootWeightReuse: false`.
+
+The exact release binding uses the approved non-self-referential finalization
+convention: `candidateCommit` is the exact substantive implementation commit,
+and the final release-metadata commit must have that candidate as its immediate
+parent. This rejects arbitrary ancestry while avoiding an impossible SHA fixed
+point inside the commit that contains its own manifest.

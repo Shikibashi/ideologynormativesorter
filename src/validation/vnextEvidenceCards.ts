@@ -1,20 +1,22 @@
 import {
-  RETIRED_LABEL_IDS,
-  SPECIALIST_LABEL_IDS,
-  primaryScoringLabels,
-} from "../data/labelTaxonomy";
-import {
   vnextEvidenceCards,
   vnextEvidenceCardById,
   vnextEvidenceCardByLegacyId,
   vnextPromotionRecords,
 } from "../data/vnextEvidenceCards";
-import { vnextOntologyById } from "../data/vnextOntology";
+import { vnextOntologyById, vnextOntologyNodes } from "../data/vnextOntology";
 import { VNEXT_EVIDENCE_COMPONENT_IDS } from "../types";
 import type { VNextEvidenceCard } from "../types";
 
-const EXPECTED_CARD_COUNT =
-  primaryScoringLabels.length + SPECIALIST_LABEL_IDS.length;
+const CANONICAL_CARD_IDS = vnextOntologyNodes
+  .filter((node) =>
+    ["primary", "specialist"].includes(node.publicRoleView.defaultRole),
+  )
+  .map((node) => node.id);
+const RETIRED_LABEL_IDS = vnextOntologyNodes
+  .filter((node) => node.publicRoleView.defaultRole === "retired")
+  .map((node) => node.id);
+const EXPECTED_CARD_COUNT = CANONICAL_CARD_IDS.length;
 
 export function vnextEvidenceCardErrors(
   cards: readonly VNextEvidenceCard[] = vnextEvidenceCards,
@@ -75,11 +77,26 @@ export function vnextEvidenceCardErrors(
     if (card.m0HostId && card.m0ModifierOrFacetIds.length === 0) {
       errors.push(`${card.labelId} lacks M0 facet/residual scope`);
     }
+    if (
+      [
+        "compound-tradition",
+        "bridge-tradition",
+        "hybrid-configuration",
+      ].includes(card.conceptualKind) &&
+      !card.m1ResidualHypothesis?.trim()
+    )
+      errors.push(`${card.labelId} lacks an M1 residual hypothesis`);
+    for (const key of [
+      "vnextSurfaceManifestVersion",
+      "vnextChallengerModelsVersion",
+      "vnextShadowScoringVersion",
+      "codeRevision",
+      "frozenProductionBaselineRevision",
+    ])
+      if (!card.versionBundle[key]?.trim())
+        errors.push(`${card.labelId} lacks evidence-card version field ${key}`);
   }
-  for (const labelId of [
-    ...primaryScoringLabels.map((label) => label.id),
-    ...SPECIALIST_LABEL_IDS,
-  ]) {
+  for (const labelId of CANONICAL_CARD_IDS) {
     if (!labelIds.has(labelId))
       errors.push(`missing evidence card for ${labelId}`);
   }
