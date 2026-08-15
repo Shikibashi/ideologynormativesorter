@@ -2,7 +2,8 @@
   "artifact": {
     "status": "current",
     "asOf": "2026-08-15",
-    "baselineCommit": "3d1e2d09b76247ce91bb04a51bdd28033a7c50f9",
+    "baselineCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
+    "candidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
     "scope": "Measurement architecture and opt-in research-task contract baseline",
     "notes": "The baseline commit is the last frozen production scorer state; W2 response-process tasks, W3/W4 analysis contracts, and label-exposure instrumentation remain opt-in and research-only."
   },
@@ -47,9 +48,12 @@
     "specialistRoster": "2026-08-specialist-roster-v1"
   },
   "verification": {
-    "status": "passed-with-external-r-runtime",
+    "status": "passed-with-configured-r-runtime-and-external-release-gates",
     "commands": [
       "npm test",
+      "npm run vnext:items:check",
+      "npm run vnext:release:check",
+      "node scripts/check-vnext-baseline.mjs",
       "npm run format:check",
       "npm run lint",
       "npm run build",
@@ -59,14 +63,15 @@
       "npm run worker:check",
       "npm run research:r-syntax",
       "R Toolbox W3/W4 wrapper contract smoke",
-      "npx playwright test tests/browser/e2e/label-exposure.spec.ts --project=e2e",
-      "npm run test:e2e",
-      "npm run test:a11y",
-      "npm run test:ecw",
+      "npm run test:browser",
+      "distrobox enter --name ideologynormativesorter-r -- Rscript parse check",
       "node --check research-collector/server.mjs",
       "git diff --check"
     ],
-    "npm test": "123 test suites, 772 tests passed",
+    "npm test": "136 test files, 808 tests passed",
+    "npm run vnext:items:check": "passed; generated artifact is byte-identical",
+    "npm run vnext:release:check": "passed; candidate/baseline, exact fingerprints, P1 closure, I-001..I-018 parity, rollback, and external gates verified",
+    "node scripts/check-vnext-baseline.mjs": "passed; frozen baseline f0324dbf27dfc6e35ff557992e4643e3df15ee0e and candidate e298ccd5588708528db4b63e3e33ce6f19230d69 verified",
     "npm run format:check": "passed",
     "npm run lint": "passed with zero errors",
     "npm run build": "passed; Vite emitted the existing large-chunk warning",
@@ -74,18 +79,14 @@
     "npm run test:collector": "4 tests passed",
     "npm run test:worker": "11 tests passed",
     "npm run worker:check": "Cloudflare deploy dry run passed",
-    "npm run research:r-syntax": "host Rscript unavailable; 12-file parse verified in the ideologynormativesorter-r Toolbox container",
-    "R Toolbox W3/W4 wrapper contract smoke": "8 wrappers passed with the frozen fixture and reported insufficient-data without fabricating estimates",
-    "npx playwright test tests/browser/e2e/label-exposure.spec.ts --project=e2e": "1 three-arm D-27A acceptance test passed; common profile content and serialized presentation matched across arms, with canonical IDs, receipts, and result transition verified",
-    "npm run test:e2e": "21 tests passed",
-    "npm run test:a11y": "8 tests passed",
-    "npm run test:ecw": "28 tests passed",
+    "npm run research:r-syntax": "host Rscript unavailable; configured ideologynormativesorter-r Toolbox parsed all 12 analysis files successfully",
+    "npm run test:browser": "57 tests passed: 21 e2e, 8 accessibility, 28 ECW",
     "node --check research-collector/server.mjs": "passed",
     "git diff --check": "passed"
   },
   "codeReview": {
-    "status": "passed",
-    "recommendation": "keep research-task and estimator outputs outside production scoring until a new decision record approves promotion",
-    "evidence": "W0/W1 architecture contracts, W2 response-process tasks, and the W3 estimator scaffold are versioned separately; label-exposure-v2 now uses the approved 'near the midpoint' vocabulary, the fixed 'Substantive profile' heading, the named-label profile-similarity/identity boundary, and complete three-arm browser acceptance with common-content and serialized-presentation equivalence, canonical IDs, persisted outcomes, receipts, and result transition; the untracked root vite artifact remains preserved and unstaged."
+    "status": "passed-with-independent-signoff-pending",
+    "recommendation": "keep vNext registries, challengers, evidence cards, and shadow outputs outside production scoring until respondent gates and a new decision record approve promotion",
+    "evidence": "The candidate remediation adds independent ontology/graph/role/construct/item/surface/release contracts, preserves the frozen v13 scorer and ordinary result path, passes the full unit/build/browser/worker/collector contract, and leaves the untracked root vite artifact preserved and unstaged."
   }
 }

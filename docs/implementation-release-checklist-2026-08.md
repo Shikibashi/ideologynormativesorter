@@ -82,3 +82,33 @@ model silently.
 
 Until every applicable box is checked, release only the existing production
 scorer and clearly marked opt-in research surfaces.
+
+## Candidate e298 remediation contract
+
+The candidate-specific release record is
+`release-manifest/vnext-release-manifest.json`. The source-of-truth typed
+manifest is `src/data/vnextReleaseManifest.ts`; the committed JSON is checked
+for candidate, baseline, version-tuple, fingerprint, P1, implementation-unit,
+and outstanding-gate completeness.
+
+Before any future merge or production decision, run the complete contract:
+
+```text
+npm run vnext:items:check
+npm run vnext:release:check
+npm test
+npm run lint
+npm run build
+npm run research:check
+npm run test:collector
+npm run test:worker
+npm run worker:check
+npm run research:r-syntax
+npm run test:browser
+git diff --check
+```
+
+The contract must fail if a generated artifact drifts, if a manifest names a
+different candidate or frozen baseline, if any surface leaks across its
+declared boundary, or if a v13 production regression is detected. Passing the
+contract does not satisfy respondent, governance, deployment, or cutover gates.

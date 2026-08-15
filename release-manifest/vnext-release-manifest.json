@@ -1,0 +1,134 @@
+{
+  "manifestId": "vnext-release-manifest:2026-08-candidate-e298ccd",
+  "manifestVersion": "2026-08-vnext-release-manifest-v1",
+  "candidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
+  "auditedCandidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
+  "frozenBaselineCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
+  "branch": "codex/vnext-implementation",
+  "reference": "candidate-under-audit:e298ccd5588708528db4b63e3e33ce6f19230d69",
+  "versionTuple": {
+    "architectureVersion": "2026-08-measurement-architecture-v1",
+    "implementationSpecVersion": "2026-08-implementation-spec-v1",
+    "decisionLogVersion": "2026-08-methodological-decisions-v1",
+    "scoringVersion": "2026-08-13-taxonomy-v8",
+    "taxonomyVersion": "2026-08-taxonomy-v13",
+    "primaryMeasurementVersion": "2026-08-primary-core-v1",
+    "modifierMeasurementVersion": "2026-08-modifier-construct-v1",
+    "formVersion": "profile-form-v3",
+    "schemaVersion": "2026-08-v19",
+    "studyId": "community-2026-v5",
+    "specialistRosterVersion": "2026-08-specialist-roster-v1",
+    "specialistAssignmentStrategy": "balanced-hash-v2",
+    "researchTaskBankVersion": "2026-08-research-task-bank-v3",
+    "researchEstimatorVersion": "2026-08-research-estimators-v1",
+    "descriptiveCalibrationVersion": "2026-08-descriptive-calibration-v1",
+    "modelComparisonVersion": "2026-08-model-comparison-v1",
+    "deploymentScopeVersion": "2026-08-deployment-scope-v1",
+    "vnextOntologyVersion": "2026-08-vnext-ontology-v1",
+    "vnextGraphVersion": "2026-08-vnext-graph-v1",
+    "vnextRolePolicyVersion": "2026-08-vnext-role-policy-v1",
+    "vnextConstructsVersion": "2026-08-vnext-constructs-v1",
+    "vnextFacetMapVersion": "2026-08-vnext-facet-map-v1",
+    "vnextItemAnnotationsVersion": "2026-08-vnext-item-annotations-v1",
+    "vnextEvidenceCardVersion": "2026-08-vnext-evidence-card-v1",
+    "vnextValidationManifestVersion": "2026-08-vnext-validation-manifest-v1",
+    "vnextChallengerModelsVersion": "2026-08-vnext-challenger-models-v1",
+    "vnextCalibrationVersion": "2026-08-vnext-calibration-v1",
+    "vnextShadowScoringVersion": "2026-08-vnext-shadow-scoring-v1",
+    "vnextSurfaceManifestVersion": "2026-08-vnext-surface-manifests-v1"
+  },
+  "fingerprints": {
+    "ontology": "vnext_cd79f416",
+    "graph": "vnext_9305c022",
+    "constructs": "vnext_bdba44fb",
+    "coreItems": "vnext_ccf53979",
+    "specialistItems": "vnext_f473b915",
+    "itemAnnotations": "vnext_9d8d2f09",
+    "surfaces": "vnext_217fbb32",
+    "validation": "vnext_14697783",
+    "challengers": "vnext_fb04132b",
+    "evidenceCards": "vnext_b526b927"
+  },
+  "qualityGateResults": {
+    "status": "candidate-remediation-pending-final-gate",
+    "frozenV13Regression": "passed-and-preserved",
+    "generatedArtifacts": "passed-by-vnext:items:check",
+    "unitTests": 808,
+    "browserTests": 57,
+    "accessibilityTests": 8,
+    "ecwTests": 28,
+    "rSyntaxFiles": 12,
+    "researchChecks": "passed",
+    "workerDryRun": "passed"
+  },
+  "p1Findings": [
+    {
+      "id": "P1-01",
+      "status": "closed",
+      "implementationUnits": ["I-002", "I-006"]
+    },
+    {
+      "id": "P1-02",
+      "status": "closed",
+      "implementationUnits": ["I-003", "I-006"]
+    },
+    {
+      "id": "P1-03",
+      "status": "closed",
+      "implementationUnits": ["I-004", "I-006"]
+    },
+    {
+      "id": "P1-04",
+      "status": "closed",
+      "implementationUnits": ["I-005", "I-006"]
+    },
+    {
+      "id": "P1-05",
+      "status": "closed",
+      "implementationUnits": ["I-008", "I-009"]
+    },
+    { "id": "P1-06", "status": "closed", "implementationUnits": ["I-018"] }
+  ],
+  "implementationUnits": {
+    "I-001": "complete",
+    "I-002": "complete",
+    "I-003": "complete",
+    "I-004": "complete",
+    "I-005": "complete",
+    "I-006": "complete",
+    "I-007": "complete",
+    "I-008": "complete",
+    "I-009": "complete",
+    "I-010": "complete",
+    "I-011": "complete",
+    "I-012": "respondent-gated",
+    "I-013": "respondent-gated",
+    "I-014": "respondent-gated",
+    "I-015": "respondent-gated",
+    "I-016": "cutover-gated",
+    "I-017": "cutover-gated",
+    "I-018": "complete"
+  },
+  "releaseStatus": "candidate-remediation-pending-final-gate",
+  "auditSignoff": {
+    "state": "pending-independent-review",
+    "target": "latest-release-readiness-audit-2026-08",
+    "reviewer": "unassigned"
+  },
+  "rollbackReference": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
+  "outstandingEmpiricalGates": [
+    "V2 response-process",
+    "V5 construct/facet structure",
+    "V6-V13 scoped evidence",
+    "M0/M1 held-out residual tests"
+  ],
+  "outstandingGovernanceGates": [
+    "independent release signoff",
+    "promotion decision records",
+    "explicit v13 cutover decision"
+  ],
+  "outstandingDeploymentGates": [
+    "merge and deployment approval",
+    "post-merge final-commit CI/browser evidence"
+  ]
+}

@@ -29,6 +29,14 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Check frozen v13 baseline and vNext release provenance
+        run: |
+          node scripts/check-vnext-baseline.mjs
+          npm run vnext:release:check
+
+      - name: Check reproducible generated vNext item manifest
+        run: npm run vnext:items:check
+
       - name: Run lint
         run: npm run lint
 

@@ -22,10 +22,18 @@ const expected = {
 const errors = [];
 if (
   qualityGate.artifact.baselineCommit !==
-  "3d1e2d09b76247ce91bb04a51bdd28033a7c50f9"
+  "f0324dbf27dfc6e35ff557992e4643e3df15ee0e"
 ) {
   errors.push(
     "quality-gate baselineCommit drifted from the frozen release baseline",
+  );
+}
+if (
+  qualityGate.artifact.candidateCommit !==
+  "e298ccd5588708528db4b63e3e33ce6f19230d69"
+) {
+  errors.push(
+    "quality-gate candidateCommit does not identify the audited candidate",
   );
 }
 for (const [key, value] of Object.entries(expected)) {

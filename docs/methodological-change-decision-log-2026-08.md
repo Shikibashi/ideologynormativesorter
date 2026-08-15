@@ -645,3 +645,25 @@ confidence/reliability/affinity fields; U106 shadow/prod equivalence standard;
 U107 release rollback and reassessment cadence. These are implementation,
 measurement, or empirical questions, not permissions to change the frozen
 baseline.
+
+## D-132 — Candidate e298 vNext conformance remediation
+
+On 2026-08-15, candidate `e298ccd5588708528db4b63e3e33ce6f19230d69` was
+remediated against the approved integrated specification, Codex
+Implementation Specification, empirical validation architecture, release
+checklist, and latest release-readiness audit. The frozen production baseline
+is `f0324dbf27dfc6e35ff557992e4643e3df15ee0e`.
+
+| Decision                               | Adopted implementation boundary                                                                                                                                                                                                                                    |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Authoritative vNext ontology and graph | Add independent node metadata, canonical facets, polyhierarchical typed edges, provenance, semantic constraints, scope, directionality, and validation. Preserve v13 taxonomy and parent/relation fields as compatibility metadata only.                           |
+| Independent role policy                | Derive public/product role from conceptual kind, secondary kinds, graph relations, measurement state, explicit high-risk policy, evidence requirements/coverage, module prerequisites, and promotion input. Legacy `currentRole` cannot redefine the derived role. |
+| Construct and item contracts           | Replace placeholder construct metadata and permissive item parsing with canonical root/facet/local-construct registries, strict option-level reference checks, Unicode direction handling, and byte-reproducible generation.                                       |
+| Analysis surfaces                      | Separate core, Specialist, research-task, expert-review, and bridge manifests. Challenger specifications must name their surface and may not inherit the combined 406-item set.                                                                                    |
+| Evidence and shadow boundaries         | Add compositional-residual M0/M1 metadata for compound candidates and preserve respondent-dependent states. Shadow facet estimates fail closed rather than reusing root weights and never enter production.                                                        |
+| Release provenance and CI              | Record candidate and frozen baseline independently, bind all version/fingerprint tuples to the candidate, validate generated artifacts and surface partitioning, and retain the frozen baseline as rollback reference.                                             |
+
+This decision closes the six P1 implementation findings. It does not promote a
+label, facet, Modifier, Specialist, interpretation, scorer, public claim, or
+deployment. Those states remain subject to the evidence and governance gates
+listed in the release manifest.
