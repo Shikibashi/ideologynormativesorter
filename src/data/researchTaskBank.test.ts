@@ -22,9 +22,42 @@ describe("research task bank", () => {
   it("keeps task-family and domain context explicit", () => {
     for (const task of researchTaskBank) {
       expect(task.familyId).toBe(`domain:${task.domainId}`);
+      expect(task.stimulus.description).toBeTruthy();
+      expect(task.stimulus.constraints.length).toBeGreaterThan(0);
       expect(task.version).toBe(researchTaskBank[0].version);
       expect(researchTaskErrors(task)).toEqual([]);
     }
+  });
+
+  it("freezes complete format-specific stimulus descriptions", () => {
+    const forecast = researchTaskBank.find(
+      (task) => task.kind === "forecast",
+    ) as Extract<ResearchTask, { kind: "probability" | "forecast" }> & {
+      kind: "forecast";
+    };
+    const choice = researchTaskBank.find(
+      (task) => task.kind === "conjoint",
+    ) as Extract<ResearchTask, { kind: "constrained-choice" | "conjoint" }> & {
+      kind: "conjoint";
+    };
+    const allocation = researchTaskBank.find(
+      (task) => task.kind === "allocation",
+    ) as Extract<ResearchTask, { kind: "allocation" | "forced-tradeoff" }> & {
+      kind: "allocation";
+    };
+    const similarity = researchTaskBank.find(
+      (task) => task.kind === "similarity",
+    ) as Extract<ResearchTask, { kind: "similarity" | "sort" }> & {
+      kind: "similarity";
+    };
+    expect(forecast.outcomeDescription).toBeTruthy();
+    expect(choice.attributeProfiles.length).toBeGreaterThan(0);
+    expect(allocation.goodDescriptions).toEqual(
+      expect.objectContaining({ "income-floor": expect.any(String) }),
+    );
+    expect(similarity.stimuli.every((stimulus) => stimulus.description)).toBe(
+      true,
+    );
   });
 
   it("rejects invalid response-process states", () => {

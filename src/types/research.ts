@@ -63,6 +63,35 @@ export interface ResearchItemMetadata {
 }
 
 /** Common envelope for opt-in response-process research tasks. */
+export interface ResearchTaskConstraint {
+  id: string;
+  description: string;
+}
+
+export interface ResearchTaskStimulus {
+  description: string;
+  profileDescription?: string;
+  constraints: readonly ResearchTaskConstraint[];
+}
+
+export interface ResearchTaskAttribute {
+  id: string;
+  description: string;
+  levels: readonly string[];
+}
+
+export interface ResearchTaskAttributeProfile {
+  id: string;
+  description: string;
+  levels: Readonly<Record<string, string>>;
+}
+
+export interface ResearchTaskProfileStimulus {
+  id: string;
+  version: string;
+  description: string;
+}
+
 export interface ResearchTaskBase {
   id: string;
   version: string;
@@ -72,6 +101,7 @@ export interface ResearchTaskBase {
   theoryContext: TheoryContext;
   prompt: string;
   criterionIds: readonly string[];
+  stimulus: ResearchTaskStimulus;
   randomizationSeedKey?: string;
 }
 
@@ -83,28 +113,29 @@ export type ResearchTask =
       horizon: string;
       probabilityScale: "0-100";
       allowDontKnow: boolean;
+      outcomeDescription: string;
       resolutionSource?: string;
       outcomeVersion?: string;
     })
   | (ResearchTaskBase & {
       kind: "constrained-choice" | "conjoint";
       choiceSetId: string;
-      attributes: readonly {
-        id: string;
-        levels: readonly string[];
-      }[];
+      attributes: readonly ResearchTaskAttribute[];
+      attributeProfiles: readonly ResearchTaskAttributeProfile[];
       alternatives: readonly string[];
       constraintProfileId: string;
     })
   | (ResearchTaskBase & {
       kind: "allocation" | "forced-tradeoff";
       goods: readonly string[];
+      goodDescriptions: Readonly<Record<string, string>>;
       totalUnits: number;
       constraints: readonly string[];
     })
   | (ResearchTaskBase & {
       kind: "similarity" | "sort";
       stimulusIds: readonly string[];
+      stimuli: readonly ResearchTaskProfileStimulus[];
       responseScale: string;
     });
 
@@ -118,11 +149,13 @@ export type ResearchTaskResponse =
   | {
       taskId: string;
       kind: "constrained-choice" | "conjoint";
+      attributeProfile: ResearchTaskAttributeProfile;
       chosenAlternative: string;
     }
   | {
       taskId: string;
       kind: "constrained-choice" | "conjoint";
+      attributeProfile: ResearchTaskAttributeProfile;
       value: "none" | "prefer_not_to_answer";
     }
   | {

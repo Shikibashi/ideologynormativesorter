@@ -6,6 +6,7 @@ import {
   assignResearchTasks,
   researchTaskAssignmentErrors,
   researchTaskResponseErrors,
+  selectResearchTaskAttributeProfile,
 } from "./tasks";
 
 describe("research task assignment", () => {
@@ -43,6 +44,63 @@ describe("research task assignment", () => {
     );
   });
 
+  it("selects and validates one frozen attribute profile per participant seed", () => {
+    const choice = researchTaskBank.find(
+      (
+        task,
+      ): task is Extract<
+        ResearchTask,
+        { kind: "constrained-choice" | "conjoint" }
+      > => task.kind === "conjoint",
+    )!;
+    const assignment = assignResearchTasks(
+      researchTaskBank,
+      "participant-profile",
+      "choice",
+    );
+    const profile = selectResearchTaskAttributeProfile(
+      choice,
+      assignment.participantSeed,
+    );
+    expect(profile.levels).toMatchObject({
+      resources: expect.any(String),
+      "administrative-capacity": expect.any(String),
+      opposition: expect.any(String),
+      uncertainty: expect.any(String),
+      reversibility: expect.any(String),
+      "time-horizon": expect.any(String),
+      "political-constraints": expect.any(String),
+    });
+    expect(
+      researchTaskResponseErrors(
+        choice,
+        {
+          taskId: choice.id,
+          kind: "conjoint",
+          attributeProfile: profile,
+          chosenAlternative: choice.alternatives[0],
+        },
+        assignment.participantSeed,
+      ),
+    ).toEqual([]);
+    expect(
+      researchTaskResponseErrors(
+        choice,
+        {
+          taskId: choice.id,
+          kind: "conjoint",
+          attributeProfile: choice.attributeProfiles.find(
+            (candidate) => candidate.id !== profile.id,
+          )!,
+          chosenAlternative: choice.alternatives[0],
+        },
+        assignment.participantSeed,
+      ),
+    ).toContain(
+      "choice response attribute profile does not match its frozen seed",
+    );
+  });
+
   it("validates complete response shapes for each research format", () => {
     const forecast = researchTaskBank.find((task) => task.kind === "forecast")!;
     const choice = researchTaskBank.find(
@@ -70,6 +128,7 @@ describe("research task assignment", () => {
       researchTaskResponseErrors(choice, {
         taskId: choice.id,
         kind: "conjoint",
+        attributeProfile: choice.attributeProfiles[0],
         chosenAlternative: choice.alternatives[0],
       }),
     ).toEqual([]);

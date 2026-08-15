@@ -4,7 +4,7 @@ The browser application computes descriptive and classical diagnostics only when
 
 ## Inputs
 
-Use consented schema `2026-08-v17` records produced by contribution mode. The public flow omits `formSize` and contributes
+Use consented schema `2026-08-v18` records produced by contribution mode. The public flow omits `formSize` and contributes
 the complete selected Balanced or Full-depth profile. A controlled `research=1` URL can request a balanced matrix form
 with `formSize` for instrument analysis.
 
@@ -88,7 +88,7 @@ decisions, a single version bundle, and an analysis fingerprint, then writes
 The current entrypoints are:
 
 - `run_descriptive_calibration.R` — `2026-08-descriptive-calibration-v1`
-- `run_strategy_conjoint.R` — `2026-08-strategy-task-bank-v1`
+- `run_strategy_conjoint.R` — `2026-08-strategy-task-bank-v2`
 - `run_normative_tradeoffs.R` — `2026-08-normative-tradeoff-v1`
 - `run_model_comparison.R` — `2026-08-model-comparison-v1`
 - `run_perception_geometry.R` — `2026-08-perception-geometry-v1`

@@ -47,7 +47,7 @@ export const FROZEN_VERSION_VALUES = {
   specialistAssignmentStrategy: "balanced-hash-v2",
   researchEstimatorVersion: "2026-08-research-estimators-v1",
   descriptiveCalibrationVersion: "2026-08-descriptive-calibration-v1",
-  strategyTaskBankVersion: "2026-08-strategy-task-bank-v1",
+  strategyTaskBankVersion: "2026-08-strategy-task-bank-v2",
   normativeTradeoffVersion: "2026-08-normative-tradeoff-v1",
   modelComparisonVersion: "2026-08-model-comparison-v1",
   unfoldingAnalysisVersion: "2026-08-unfolding-analysis-v1",

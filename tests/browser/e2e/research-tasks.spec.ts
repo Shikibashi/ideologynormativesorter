@@ -27,6 +27,18 @@ test("explicit research task arms require consent and preserve task records", as
     "data-research-task-id",
     "conjoint-strategy-001",
   );
+  await expect(page.getByLabel("Frozen task stimulus")).toContainText(
+    "fixed political and administrative context",
+  );
+  await expect(page.getByLabel("Frozen task stimulus")).toContainText(
+    "Constraints",
+  );
+  await expect(page.getByLabel("Choice metadata")).toContainText(
+    "Presented attribute profile",
+  );
+  await expect(page.getByLabel("Presented attribute levels")).toContainText(
+    "Resources available",
+  );
   await page
     .getByRole("button", { name: "work through existing institutions" })
     .click();

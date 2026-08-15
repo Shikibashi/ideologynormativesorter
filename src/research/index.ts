@@ -234,6 +234,7 @@ export interface ResearchTaskFormMetadata {
 
 export interface ResearchTaskSubmission extends ResearchRecordBase {
   recordType: "research-task";
+  completionState: "complete";
   arm: ResearchTaskArm;
   taskBankVersion: string;
   assignment: ResearchTaskAssignment;
@@ -695,7 +696,11 @@ export function buildResearchTaskSubmission(input: {
       throw new Error(
         `Research response names unknown task ${response.taskId}.`,
       );
-    const errors = researchTaskResponseErrors(task, response);
+    const errors = researchTaskResponseErrors(
+      task,
+      response,
+      input.assignment.participantSeed,
+    );
     if (errors.length > 0) {
       throw new Error(`Research task response violation: ${errors.join("; ")}`);
     }
@@ -720,6 +725,7 @@ export function buildResearchTaskSubmission(input: {
     consent: input.consent,
     locale: normalizeLocale(input.locale),
     qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
+    completionState: "complete",
     arm: input.arm,
     taskBankVersion: input.assignment.taskBankVersion,
     assignment: input.assignment,

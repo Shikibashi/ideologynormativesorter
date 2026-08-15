@@ -20,7 +20,10 @@ import {
   type ResearchConsent,
 } from "./index";
 import { researchTaskBank } from "../data/researchTaskBank";
-import { assignResearchTasks } from "./tasks";
+import {
+  assignResearchTasks,
+  selectResearchTaskAttributeProfile,
+} from "./tasks";
 import {
   RESEARCH_TASK_FORM_VERSION,
   RESEARCH_TASK_BANK_VERSION,
@@ -216,6 +219,10 @@ describe("Cloudflare contribution collector compatibility", () => {
         {
           taskId: task.id,
           kind: "conjoint",
+          attributeProfile: selectResearchTaskAttributeProfile(
+            task,
+            assignment.participantSeed,
+          ),
           chosenAlternative: task.alternatives[0],
         },
       ],

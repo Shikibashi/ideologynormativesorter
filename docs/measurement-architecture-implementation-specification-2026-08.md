@@ -37,7 +37,8 @@ item metadata, and form manifests. W2 provides
 explicit `ResearchTaskScreen`/Worker path. Research task responses, criterion
 records, expert codes, and prototypes must not enter `buildResultProfile` or
 production label matching. Anchor/rotating item registries, calibrated
-estimators, and analysis scripts remain later-wave work.
+estimators, and analysis scripts remain research-only scaffolding; production
+use remains a later-wave evidence gate.
 
 The task-specific protocol is documented in
 [`docs/research-task-protocol-2026-08.md`](research-task-protocol-2026-08.md).
@@ -51,19 +52,19 @@ Current production identifiers remain unchanged during research waves:
 - taxonomy: `2026-08-taxonomy-v13`;
 - primary measurement: `2026-08-primary-core-v1`;
 - modifier measurement: `2026-08-modifier-construct-v1`;
-- research schema: `2026-08-v17`;
+- research schema: `2026-08-v18`;
 - consent: `2026-08-12-v8`;
 - quality rules: `data-quality-v2`;
 - form: `profile-form-v3`;
-- research task bank/form: `2026-08-research-task-bank-v2` /
-  `2026-08-research-task-form-v1`;
+- research task bank/form: `2026-08-research-task-bank-v3` /
+  `2026-08-research-task-form-v2`;
 - study: `community-2026-v5`;
 - specialist roster/assignment: `2026-08-specialist-roster-v1` /
   `balanced-hash-v2`.
 
 Research contracts use dedicated identifiers such as
-`2026-08-construct-family-map-v1`, `2026-08-research-task-bank-v2`,
-`2026-08-descriptive-calibration-v1`, `2026-08-strategy-task-bank-v1`,
+`2026-08-construct-family-map-v1`, `2026-08-research-task-bank-v3`,
+`2026-08-descriptive-calibration-v1`, `2026-08-strategy-task-bank-v2`,
 `2026-08-normative-tradeoff-v1`, `2026-08-research-estimators-v1`,
 `2026-08-model-comparison-v1`, `2026-08-unfolding-analysis-v1`,
 `2026-08-perception-geometry-v1`, `2026-08-profile-discovery-v1`,

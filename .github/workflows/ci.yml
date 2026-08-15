@@ -32,6 +32,12 @@ jobs:
       - name: Run lint
         run: npm run lint
 
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Check patch whitespace
+        run: git diff --check
+
       - name: Check collector syntax
         run: node --check research-collector/server.mjs
 
@@ -40,6 +46,9 @@ jobs:
 
       - name: Test edge collector
         run: npm run test:worker
+
+      - name: Check Worker deployment configuration
+        run: npm run worker:check
 
       - name: Build production bundle
         run: npm run build
@@ -59,6 +68,7 @@ jobs:
           Rscript -e "parse(file='analysis/run_validation.R')"
           Rscript -e "parse(file='analysis/run_data_quality.R')"
           Rscript -e "parse(file='analysis/run_specialist_validation.R')"
+          Rscript -e "parse(file='analysis/research_contracts.R')"
 
   browser-conformance:
     runs-on: ubuntu-latest

@@ -7,20 +7,20 @@ export const METHODOLOGICAL_DECISION_LOG_VERSION =
   "2026-08-methodological-decisions-v1" as const;
 export const IMPLEMENTATION_SPECIFICATION_VERSION =
   "2026-08-implementation-spec-v1" as const;
-export const RESEARCH_SCHEMA_VERSION = "2026-08-v17" as const;
+export const RESEARCH_SCHEMA_VERSION = "2026-08-v18" as const;
 export const RESEARCH_CONSENT_VERSION = "2026-08-12-v8" as const;
 export const RESEARCH_QUALITY_RULE_VERSION = "data-quality-v2" as const;
 export const RESEARCH_STUDY_ID = "community-2026-v5" as const;
 export const CONSTRUCT_FAMILY_MAP_VERSION =
   "2026-08-construct-family-map-v1" as const;
 export const RESEARCH_TASK_BANK_VERSION =
-  "2026-08-research-task-bank-v2" as const;
+  "2026-08-research-task-bank-v3" as const;
 export const RESEARCH_TASK_FORM_VERSION =
-  "2026-08-research-task-form-v1" as const;
+  "2026-08-research-task-form-v2" as const;
 export const DESCRIPTIVE_CALIBRATION_VERSION =
   "2026-08-descriptive-calibration-v1" as const;
 export const STRATEGY_TASK_BANK_VERSION =
-  "2026-08-strategy-task-bank-v1" as const;
+  "2026-08-strategy-task-bank-v2" as const;
 export const NORMATIVE_TRADEOFF_VERSION =
   "2026-08-normative-tradeoff-v1" as const;
 export const RESEARCH_ESTIMATOR_VERSION =

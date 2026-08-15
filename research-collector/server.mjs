@@ -6,6 +6,11 @@ import {
   FROZEN_VERSION_VALUES,
   versionBundleMatches,
 } from "../research-worker/src/researchVersionBundle.mjs";
+import {
+  taskMatchesResearchArm as taskMatchesResearchArmPayload,
+  validResearchTask as validResearchTaskPayload,
+  validResearchTaskResponse as validResearchTaskResponsePayload,
+} from "../research-worker/src/researchTaskContract.mjs";
 
 const port = Number(process.env.PORT ?? 8787);
 const outputFile = resolve(
@@ -22,7 +27,7 @@ const researchTaskOutputFile = resolve(
 const allowedOrigin = process.env.ALLOWED_ORIGIN ?? "http://localhost:5173";
 const maximumBodyBytes = Number(process.env.MAXIMUM_BODY_BYTES ?? 2_000_000);
 const expectedSchemaVersion =
-  process.env.RESEARCH_SCHEMA_VERSION ?? "2026-08-v17";
+  process.env.RESEARCH_SCHEMA_VERSION ?? "2026-08-v18";
 const expectedConsentVersion =
   process.env.RESEARCH_CONSENT_VERSION ?? "2026-08-12-v8";
 const expectedQualityRuleVersion =
@@ -30,9 +35,9 @@ const expectedQualityRuleVersion =
 const expectedFormVersion =
   process.env.RESEARCH_FORM_VERSION ?? "profile-form-v3";
 const expectedResearchTaskFormVersion =
-  process.env.RESEARCH_TASK_FORM_VERSION ?? "2026-08-research-task-form-v1";
+  process.env.RESEARCH_TASK_FORM_VERSION ?? "2026-08-research-task-form-v2";
 const expectedResearchTaskBankVersion =
-  process.env.RESEARCH_TASK_BANK_VERSION ?? "2026-08-research-task-bank-v2";
+  process.env.RESEARCH_TASK_BANK_VERSION ?? "2026-08-research-task-bank-v3";
 const expectedLabelExposureVersion =
   process.env.RESEARCH_LABEL_EXPOSURE_VERSION ?? "2026-08-label-exposure-v1";
 const expectedStudyId = process.env.RESEARCH_STUDY_ID?.trim() || null;
@@ -95,16 +100,6 @@ const RESPONSE_TYPES = new Set(["likert5", "likert7", "statementChoice"]);
 const REVIEW_STATUSES = new Set(["approved", "draft", "needs-rewrite"]);
 const TIERS = new Set(["blitz", "quick", "moderate", "extensive"]);
 const SALIENCE_VALUES = new Set([1, 3, 5]);
-const TASK_KINDS = new Set([
-  "probability",
-  "forecast",
-  "constrained-choice",
-  "conjoint",
-  "allocation",
-  "forced-tradeoff",
-  "similarity",
-  "sort",
-]);
 const LABEL_EXPOSURE_ARMS = new Set([
   "dimension-only",
   "unlabeled-profile",
@@ -785,143 +780,11 @@ function sameMembers(left, right) {
   );
 }
 
-function taskMatchesResearchArm(task, arm) {
-  if (arm === "probability")
-    return task.kind === "probability" || task.kind === "forecast";
-  if (arm === "choice")
-    return task.kind === "constrained-choice" || task.kind === "conjoint";
-  if (arm === "allocation")
-    return task.kind === "allocation" || task.kind === "forced-tradeoff";
-  if (arm === "similarity")
-    return task.kind === "similarity" || task.kind === "sort";
-  return true;
-}
-
-function validResearchTask(task) {
-  if (
-    !(
-      isObject(task) &&
-      validToken(task.id) &&
-      task.version === expectedResearchTaskBankVersion &&
-      validToken(task.domainId) &&
-      LAYERS.has(task.layer) &&
-      THEORY_CONTEXTS.has(task.theoryContext) &&
-      validNonemptyString(task.prompt, 10_000) &&
-      Array.isArray(task.criterionIds) &&
-      task.criterionIds.length > 0 &&
-      task.criterionIds.every((id) => validToken(id)) &&
-      TASK_KINDS.has(task.kind)
-    )
-  )
-    return false;
-  if (task.kind === "probability" || task.kind === "forecast") {
-    return (
-      validNonemptyString(task.propositionId, 256) &&
-      validNonemptyString(task.outcomeId, 256) &&
-      validNonemptyString(task.horizon, 256) &&
-      task.probabilityScale === "0-100" &&
-      typeof task.allowDontKnow === "boolean"
-    );
-  }
-  if (task.kind === "constrained-choice" || task.kind === "conjoint") {
-    return (
-      validNonemptyString(task.choiceSetId, 256) &&
-      Array.isArray(task.attributes) &&
-      task.attributes.length > 0 &&
-      task.attributes.every(
-        (attribute) =>
-          isObject(attribute) &&
-          validToken(attribute.id) &&
-          Array.isArray(attribute.levels) &&
-          attribute.levels.length > 1 &&
-          attribute.levels.every((level) => validNonemptyString(level, 256)),
-      ) &&
-      Array.isArray(task.alternatives) &&
-      task.alternatives.length > 1 &&
-      new Set(task.alternatives).size === task.alternatives.length &&
-      task.alternatives.every((alternative) =>
-        validNonemptyString(alternative, 512),
-      ) &&
-      validNonemptyString(task.constraintProfileId, 256)
-    );
-  }
-  if (task.kind === "allocation" || task.kind === "forced-tradeoff") {
-    return (
-      Array.isArray(task.goods) &&
-      task.goods.length > 1 &&
-      new Set(task.goods).size === task.goods.length &&
-      task.goods.every((good) => validNonemptyString(good, 256)) &&
-      Number.isInteger(task.totalUnits) &&
-      task.totalUnits > 0 &&
-      Array.isArray(task.constraints) &&
-      task.constraints.every((constraint) =>
-        validNonemptyString(constraint, 256),
-      )
-    );
-  }
-  return (
-    Array.isArray(task.stimulusIds) &&
-    task.stimulusIds.length > 1 &&
-    new Set(task.stimulusIds).size === task.stimulusIds.length &&
-    task.stimulusIds.every((stimulusId) => validToken(stimulusId)) &&
-    validNonemptyString(task.responseScale, 256)
-  );
-}
-
-function validResearchTaskResponse(task, response) {
-  if (
-    !isObject(response) ||
-    response.taskId !== task.id ||
-    response.kind !== task.kind
-  )
-    return false;
-  if (task.kind === "probability" || task.kind === "forecast") {
-    return (
-      (Number.isFinite(response.probability) &&
-        response.probability >= 0 &&
-        response.probability <= 100) ||
-      (response.value === "dont_know" && task.allowDontKnow) ||
-      response.value === "prefer_not_to_answer"
-    );
-  }
-  if (task.kind === "constrained-choice" || task.kind === "conjoint") {
-    return (
-      task.alternatives.includes(response.chosenAlternative) ||
-      response.value === "none" ||
-      response.value === "prefer_not_to_answer"
-    );
-  }
-  if (task.kind === "allocation" || task.kind === "forced-tradeoff") {
-    if (response.value === "prefer_not_to_answer") return true;
-    if (!isObject(response.allocations)) return false;
-    const values = Object.values(response.allocations);
-    return (
-      sameMembers(Object.keys(response.allocations), task.goods) &&
-      values.every((value) => Number.isInteger(value) && value >= 0) &&
-      values.reduce((sum, value) => sum + value, 0) === task.totalUnits
-    );
-  }
-  if (response.value === "prefer_not_to_answer") return true;
-  if (isObject(response.ratings)) {
-    const values = Object.values(response.ratings);
-    return (
-      sameMembers(Object.keys(response.ratings), task.stimulusIds) &&
-      values.every(
-        (value) => Number.isFinite(value) && value >= 0 && value <= 100,
-      )
-    );
-  }
-  return (
-    Array.isArray(response.order) &&
-    sameMembers(response.order, task.stimulusIds) &&
-    new Set(response.order).size === response.order.length
-  );
-}
-
 function validResearchTaskRecord(value) {
   return (
     validBaseRecord(value) &&
     value.recordType === "research-task" &&
+    value.completionState === "complete" &&
     ["probability", "choice", "allocation", "similarity"].includes(value.arm) &&
     value.taskBankVersion === expectedResearchTaskBankVersion &&
     isObject(value.assignment) &&
@@ -946,8 +809,12 @@ function validResearchTaskRecord(value) {
         .padStart(8, "0")}` &&
     Array.isArray(value.tasks) &&
     value.tasks.length === value.assignment.taskIds.length &&
-    value.tasks.every(validResearchTask) &&
-    value.tasks.every((task) => taskMatchesResearchArm(task, value.arm)) &&
+    value.tasks.every((task) =>
+      validResearchTaskPayload(task, expectedResearchTaskBankVersion),
+    ) &&
+    value.tasks.every((task) =>
+      taskMatchesResearchArmPayload(task, value.arm),
+    ) &&
     sameMembers(
       value.tasks.map((task) => task.id),
       value.assignment.taskIds,
@@ -960,7 +827,14 @@ function validResearchTaskRecord(value) {
       const task = value.tasks.find(
         (candidate) => candidate.id === response.taskId,
       );
-      return task && validResearchTaskResponse(task, response);
+      return (
+        task &&
+        validResearchTaskResponsePayload(
+          task,
+          response,
+          value.assignment.participantSeed,
+        )
+      );
     }) &&
     sameMembers(value.presentationOrder, value.assignment.presentationOrder) &&
     validVersionBundle(value, expectedResearchTaskFormVersion)

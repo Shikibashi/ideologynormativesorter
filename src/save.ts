@@ -236,6 +236,8 @@ function isPendingResearchRecord(
     typeof submission.studyId === "string" &&
     typeof submission.participantId === "string" &&
     isCompleteVersionBundle(versionBundle) &&
+    (submission.recordType !== "research-task" ||
+      submission.completionState === "complete") &&
     (submission.recordType === "core" ||
       submission.recordType === "specialist" ||
       submission.recordType === "specialist-disposition" ||

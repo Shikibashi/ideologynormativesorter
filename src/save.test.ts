@@ -1,5 +1,11 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { buildResearchSubmission, type ResearchConsent } from "./research";
+import {
+  buildResearchSubmission,
+  buildResearchTaskSubmission,
+  type ResearchConsent,
+} from "./research";
+import { researchTaskBank } from "./data/researchTaskBank";
+import { assignResearchTasks } from "./research/tasks";
 import {
   clearPendingResearchRecord,
   loadPendingResearchRecord,
@@ -133,5 +139,63 @@ describe("research recovery storage", () => {
       reason: "The completed research record is invalid.",
     });
     expect(loadPendingResearchRecord()).toBeNull();
+  });
+
+  it("retains a complete research-task record and rejects an incomplete task state", () => {
+    const assignment = assignResearchTasks(
+      researchTaskBank,
+      "p_task_save",
+      "probability",
+    );
+    const tasks = assignment.taskIds.map(
+      (taskId) => researchTaskBank.find((task) => task.id === taskId)!,
+    );
+    const submission = buildResearchTaskSubmission({
+      studyId: "study-test",
+      participantId: "p_task_save",
+      administration: "test",
+      consent,
+      scoringVersion: "score-v1",
+      arm: "probability",
+      assignment,
+      tasks,
+      responses: tasks.map((task) => {
+        if (task.kind !== "forecast") {
+          throw new Error(
+            "probability assignment returned a non-forecast task",
+          );
+        }
+        return { taskId: task.id, kind: task.kind, probability: 50 };
+      }),
+      startedAt: "2026-08-10T12:01:00.000Z",
+      completedAt: "2026-08-10T12:02:00.000Z",
+      submissionId: "task-submission-test",
+      submittedAt: "2026-08-10T12:03:00.000Z",
+    });
+
+    expect(
+      savePendingResearchRecord({
+        submission,
+        status: { status: "failed", reason: "fixture failure" },
+      }),
+    ).toEqual({ saved: true });
+    expect(loadPendingResearchRecord()).toEqual({
+      submission,
+      status: { status: "failed", reason: "fixture failure" },
+    });
+
+    const incomplete = {
+      ...submission,
+      completionState: "incomplete",
+    } as unknown as typeof submission;
+    expect(
+      savePendingResearchRecord({
+        submission: incomplete,
+        status: { status: "failed", reason: "fixture failure" },
+      }),
+    ).toEqual({
+      saved: false,
+      reason: "The completed research record is invalid.",
+    });
   });
 });

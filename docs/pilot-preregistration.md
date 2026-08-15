@@ -4,7 +4,7 @@ This document is a study template. It must be dated, assigned an immutable versi
 
 ## Instrument versions
 
-- Research schema: `2026-08-v17`
+- Research schema: `2026-08-v18`
 - Label-exposure experiment: `2026-08-label-exposure-v1`; assignment is deterministic by participant code and occurs only after substantive responses. All arms receive the same substantive profile; the named-label arm additionally receives the exposed label IDs.
 - Consent text: `2026-08-12-v8`
 - Form algorithm: `profile-form-v3`

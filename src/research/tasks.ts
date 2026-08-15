@@ -2,6 +2,7 @@
 import { domainById } from "../data/domains";
 import { RESEARCH_TASK_BANK_VERSION } from "./versions";
 import type {
+  ResearchTaskAttributeProfile,
   ResearchTask,
   ResearchTaskArm,
   ResearchTaskResponse,
@@ -29,6 +30,87 @@ function fingerprint(values: readonly string[]): string {
   return `rt_${hash32(`${RESEARCH_TASK_BANK_VERSION}:${values.join("|")}`)
     .toString(16)
     .padStart(8, "0")}`;
+}
+
+export function selectResearchTaskAttributeProfile(
+  task: Extract<ResearchTask, { kind: "constrained-choice" | "conjoint" }>,
+  participantSeed: string,
+): ResearchTaskAttributeProfile {
+  const seed = `${participantSeed}:${task.randomizationSeedKey ?? task.id}:attribute-profile`;
+  return task.attributeProfiles[hash32(seed) % task.attributeProfiles.length];
+}
+
+function exactKeys(values: unknown, expected: readonly string[]): boolean {
+  if (!values || typeof values !== "object" || Array.isArray(values)) {
+    return false;
+  }
+  return (
+    Object.keys(values as Record<string, unknown>)
+      .sort()
+      .join("|") === [...expected].sort().join("|")
+  );
+}
+
+function attributeProfileErrors(
+  task: Extract<ResearchTask, { kind: "constrained-choice" | "conjoint" }>,
+  profile: ResearchTaskAttributeProfile,
+  participantSeed?: string,
+): string[] {
+  const errors: string[] = [];
+  if (!profile || typeof profile !== "object") {
+    return ["choice response must record its attribute profile"];
+  }
+  if (!profile.id || !profile.description.trim()) {
+    errors.push("attribute profile must have an id and description");
+  }
+  if (
+    !profile.levels ||
+    typeof profile.levels !== "object" ||
+    Array.isArray(profile.levels)
+  ) {
+    return [...new Set([...errors, "attribute profile levels are required"])];
+  }
+  const profileDefinition = task.attributeProfiles.find(
+    (candidate) => candidate.id === profile.id,
+  );
+  if (!profileDefinition) {
+    errors.push("choice response names an unknown attribute profile");
+  } else {
+    if (profile.description !== profileDefinition.description) {
+      errors.push("choice response attribute profile description differs");
+    }
+    if (
+      !exactKeys(
+        profile.levels,
+        task.attributes.map((attribute) => attribute.id),
+      )
+    ) {
+      errors.push("choice response attribute profile levels are incomplete");
+    }
+    for (const attribute of task.attributes) {
+      if (!attribute.levels.includes(profile.levels[attribute.id])) {
+        errors.push(
+          `choice response attribute profile has an invalid ${attribute.id} level`,
+        );
+      }
+      if (
+        profile.levels[attribute.id] !== profileDefinition.levels[attribute.id]
+      ) {
+        errors.push(
+          `choice response attribute profile ${attribute.id} differs from the frozen profile`,
+        );
+      }
+    }
+  }
+  if (participantSeed && profileDefinition) {
+    const expected = selectResearchTaskAttributeProfile(task, participantSeed);
+    if (profile.id !== expected.id) {
+      errors.push(
+        "choice response attribute profile does not match its frozen seed",
+      );
+    }
+  }
+  return [...new Set(errors)];
 }
 
 export function taskMatchesResearchArm(
@@ -148,6 +230,37 @@ export function researchTaskErrors(task: ResearchTask): string[] {
   if (!task.prompt.trim()) errors.push("task prompt is required");
   if (task.criterionIds.length === 0)
     errors.push("task must name at least one criterion");
+  if (!task.stimulus || !task.stimulus.description.trim()) {
+    errors.push("task stimulus description is required");
+  } else {
+    if (
+      task.stimulus.profileDescription !== undefined &&
+      !task.stimulus.profileDescription.trim()
+    ) {
+      errors.push("task stimulus profileDescription cannot be empty");
+    }
+    if (
+      !Array.isArray(task.stimulus.constraints) ||
+      task.stimulus.constraints.length === 0
+    ) {
+      errors.push("task stimulus needs at least one constraint");
+    } else {
+      const constraintIds = task.stimulus.constraints.map(
+        (constraint) => constraint.id,
+      );
+      if (new Set(constraintIds).size !== constraintIds.length) {
+        errors.push("task stimulus constraints must be unique");
+      }
+      if (
+        task.stimulus.constraints.some(
+          (constraint) =>
+            !constraint.id.trim() || !constraint.description.trim(),
+        )
+      ) {
+        errors.push("task stimulus constraints need ids and descriptions");
+      }
+    }
+  }
   if (task.familyId && task.familyId !== `domain:${task.domainId}`) {
     errors.push("task family must match its domain-derived research family");
   }
@@ -157,15 +270,55 @@ export function researchTaskErrors(task: ResearchTask): string[] {
         "probability task requires proposition, outcome, and horizon",
       );
     }
+    if (!task.outcomeDescription?.trim()) {
+      errors.push("probability task requires an outcome description");
+    }
+    if (!task.resolutionSource?.trim() || !task.outcomeVersion?.trim()) {
+      errors.push("probability task requires resolution and outcome versions");
+    }
   }
   if (task.kind === "constrained-choice" || task.kind === "conjoint") {
+    if (!task.randomizationSeedKey?.trim()) {
+      errors.push("choice task requires a randomization seed key");
+    }
     if (task.alternatives.length < 2)
       errors.push("choice task needs at least two alternatives");
     if (new Set(task.alternatives).size !== task.alternatives.length) {
       errors.push("choice task alternatives must be unique");
     }
-    if (task.attributes.some((attribute) => attribute.levels.length < 2)) {
+    if (
+      task.attributes.some(
+        (attribute) =>
+          !attribute.description.trim() || attribute.levels.length < 2,
+      )
+    ) {
       errors.push("choice task attributes need at least two levels");
+    }
+    const attributeIds = task.attributes.map((attribute) => attribute.id);
+    if (new Set(attributeIds).size !== attributeIds.length) {
+      errors.push("choice task attributes must be unique");
+    }
+    if (task.attributeProfiles.length === 0) {
+      errors.push("choice task needs frozen attribute profiles");
+    }
+    const profileIds = task.attributeProfiles.map((profile) => profile.id);
+    if (new Set(profileIds).size !== profileIds.length) {
+      errors.push("choice task attribute profiles must be unique");
+    }
+    for (const profile of task.attributeProfiles) {
+      if (!profile.description.trim()) {
+        errors.push(`${profile.id}: attribute profile description is required`);
+      }
+      if (!exactKeys(profile.levels, attributeIds)) {
+        errors.push(`${profile.id}: attribute profile levels are incomplete`);
+      }
+      for (const attribute of task.attributes) {
+        if (!attribute.levels.includes(profile.levels[attribute.id])) {
+          errors.push(
+            `${profile.id}: ${attribute.id} has an invalid frozen level`,
+          );
+        }
+      }
     }
   }
   if (task.kind === "allocation" || task.kind === "forced-tradeoff") {
@@ -173,6 +326,16 @@ export function researchTaskErrors(task: ResearchTask): string[] {
       errors.push("allocation task needs at least two goods");
     if (new Set(task.goods).size !== task.goods.length)
       errors.push("allocation goods must be unique");
+    if (!exactKeys(task.goodDescriptions, task.goods)) {
+      errors.push("allocation goods need a description for every good");
+    }
+    if (
+      Object.values(task.goodDescriptions).some(
+        (description) => !description.trim(),
+      )
+    ) {
+      errors.push("allocation good descriptions cannot be empty");
+    }
     if (!Number.isInteger(task.totalUnits) || task.totalUnits <= 0) {
       errors.push("allocation task totalUnits must be a positive integer");
     }
@@ -182,6 +345,25 @@ export function researchTaskErrors(task: ResearchTask): string[] {
       errors.push("similarity task needs at least two stimuli");
     if (new Set(task.stimulusIds).size !== task.stimulusIds.length) {
       errors.push("similarity task stimuli must be unique");
+    }
+    const stimulusIds = task.stimuli.map((stimulus) => stimulus.id);
+    if (
+      stimulusIds.length !== task.stimulusIds.length ||
+      !exactKeys(
+        Object.fromEntries(stimulusIds.map((id) => [id, true])),
+        task.stimulusIds,
+      )
+    ) {
+      errors.push(
+        "similarity task stimuli descriptions must match stimulus IDs",
+      );
+    }
+    if (
+      task.stimuli.some(
+        (stimulus) => !stimulus.version.trim() || !stimulus.description.trim(),
+      )
+    ) {
+      errors.push("similarity task stimuli need versions and descriptions");
     }
   }
   return errors;
@@ -205,6 +387,7 @@ export function researchTaskBankErrors(
 export function researchTaskResponseErrors(
   task: ResearchTask,
   response: ResearchTaskResponse,
+  participantSeed?: string,
 ): string[] {
   const errors: string[] = [];
   if (response.taskId !== task.id)
@@ -235,6 +418,17 @@ export function researchTaskResponseErrors(
   }
 
   if (task.kind === "constrained-choice" || task.kind === "conjoint") {
+    if (!("attributeProfile" in response)) {
+      errors.push("choice response must record its attribute profile");
+    } else {
+      errors.push(
+        ...attributeProfileErrors(
+          task,
+          response.attributeProfile,
+          participantSeed,
+        ),
+      );
+    }
     if ("chosenAlternative" in response) {
       if (!task.alternatives.includes(response.chosenAlternative)) {
         errors.push("choice response names an unknown alternative");

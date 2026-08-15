@@ -46,9 +46,9 @@ function environment(overrides = {}) {
   return {
     ALLOWED_ORIGIN: ORIGIN,
     EXPECTED_STUDY_ID: "community-2026-v5",
-    EXPECTED_SCHEMA_VERSION: "2026-08-v17",
-    EXPECTED_RESEARCH_TASK_FORM_VERSION: "2026-08-research-task-form-v1",
-    EXPECTED_RESEARCH_TASK_BANK_VERSION: "2026-08-research-task-bank-v2",
+    EXPECTED_SCHEMA_VERSION: "2026-08-v18",
+    EXPECTED_RESEARCH_TASK_FORM_VERSION: "2026-08-research-task-form-v2",
+    EXPECTED_RESEARCH_TASK_BANK_VERSION: "2026-08-research-task-bank-v3",
     EXPECTED_LABEL_EXPOSURE_VERSION: "2026-08-label-exposure-v1",
     EXPECTED_CONSENT_VERSION: "2026-08-12-v8",
     EXPECTED_QUALITY_RULE_VERSION: "data-quality-v2",
@@ -88,16 +88,16 @@ function versionBundle(formVersion = "profile-form-v3") {
     primaryMeasurementVersion: "primary-measurement-v1",
     modifierMeasurementVersion: "modifier-measurement-v1",
     formVersion,
-    schemaVersion: "2026-08-v17",
+    schemaVersion: "2026-08-v18",
     consentVersion: "2026-08-12-v8",
     qualityRuleVersion: "data-quality-v2",
     studyId: "community-2026-v5",
     specialistRosterVersion: "2026-08-specialist-roster-v1",
     specialistAssignmentStrategy: "balanced-hash-v2",
-    researchTaskBankVersion: "2026-08-research-task-bank-v2",
+    researchTaskBankVersion: "2026-08-research-task-bank-v3",
     researchEstimatorVersion: "2026-08-research-estimators-v1",
     descriptiveCalibrationVersion: "2026-08-descriptive-calibration-v1",
-    strategyTaskBankVersion: "2026-08-strategy-task-bank-v1",
+    strategyTaskBankVersion: "2026-08-strategy-task-bank-v2",
     normativeTradeoffVersion: "2026-08-normative-tradeoff-v1",
     modelComparisonVersion: "2026-08-model-comparison-v1",
     unfoldingAnalysisVersion: "2026-08-unfolding-analysis-v1",
@@ -150,7 +150,7 @@ function coreSubmission(overrides = {}) {
     },
   ];
   return {
-    schemaVersion: "2026-08-v17",
+    schemaVersion: "2026-08-v18",
     submissionId: "submission_1",
     recordType: "core",
     studyId: "community-2026-v5",
@@ -214,31 +214,44 @@ function coreSubmission(overrides = {}) {
 function researchTaskSubmission(overrides = {}) {
   const task = {
     id: "forecast-state-capacity-001",
-    version: "2026-08-research-task-bank-v2",
+    version: "2026-08-research-task-bank-v3",
     domainId: "state-legitimacy",
     layer: "descriptive",
     theoryContext: "nonideal",
     prompt: "Estimate the outcome probability.",
     criterionIds: ["forecast-outcome-state-capacity-001"],
     randomizationSeedKey: "forecast-state-capacity-001",
+    stimulus: {
+      description:
+        "A public service is evaluated against a frozen outcome definition.",
+      profileDescription: "The forecast is research-only.",
+      constraints: [
+        {
+          id: "frozen-outcome-definition",
+          description: "Use the registered outcome definition.",
+        },
+      ],
+    },
     kind: "forecast",
     propositionId: "public-service-target-001",
     outcomeId: "target-reached-under-frozen-definition-001",
     horizon: "24 months after study close",
     probabilityScale: "0-100",
     allowDontKnow: true,
+    outcomeDescription:
+      "The target outcome is reached under the frozen definition.",
     resolutionSource: "study-outcome-register-v1",
     outcomeVersion: "outcome-register-v1",
   };
   const presentationOrder = [task.id];
   const assignment = {
-    taskBankVersion: "2026-08-research-task-bank-v2",
+    taskBankVersion: "2026-08-research-task-bank-v3",
     arm: "probability",
-    participantSeed: "2026-08-research-task-bank-v2:p_task:probability",
+    participantSeed: "2026-08-research-task-bank-v3:p_task:probability",
     taskIds: [task.id],
     presentationOrder,
     fingerprint: `rt_${hash32(
-      `2026-08-research-task-bank-v2:${presentationOrder.join("|")}`,
+      `2026-08-research-task-bank-v3:${presentationOrder.join("|")}`,
     )
       .toString(16)
       .padStart(8, "0")}`,
@@ -249,19 +262,111 @@ function researchTaskSubmission(overrides = {}) {
       participantId: "p_task",
     }),
     recordType: "research-task",
-    taskBankVersion: "2026-08-research-task-bank-v2",
+    taskBankVersion: "2026-08-research-task-bank-v3",
     arm: "probability",
     assignment,
     presentationOrder,
     form: {
-      algorithmVersion: "2026-08-research-task-form-v1",
+      algorithmVersion: "2026-08-research-task-form-v2",
       assignedTaskCount: 1,
       fingerprint: assignment.fingerprint,
     },
     tasks: [task],
     responses: [{ taskId: task.id, kind: "forecast", probability: 50 }],
-    versionBundle: versionBundle("2026-08-research-task-form-v1"),
+    completionState: "complete",
+    versionBundle: versionBundle("2026-08-research-task-form-v2"),
     ...overrides,
+  };
+}
+
+function choiceResearchTaskSubmission() {
+  const submission = researchTaskSubmission({
+    submissionId: "task_choice_submission_1",
+    participantId: "p_choice",
+  });
+  const task = {
+    ...submission.tasks[0],
+    id: "conjoint-strategy-001",
+    randomizationSeedKey: "conjoint-strategy-001",
+    stimulus: {
+      description:
+        "Choose between two public strategies under a frozen policy scenario.",
+      profileDescription: "The presented attribute profile is research-only.",
+      constraints: [
+        {
+          id: "fixed-choice-set",
+          description: "Choose one option from the registered choice set.",
+        },
+      ],
+    },
+    kind: "conjoint",
+    choiceSetId: "strategy-choice-set-001",
+    attributes: [
+      {
+        id: "resources",
+        description: "Available resources.",
+        levels: ["scarce", "adequate"],
+      },
+      {
+        id: "time-horizon",
+        description: "Implementation horizon.",
+        levels: ["short", "long"],
+      },
+    ],
+    attributeProfiles: [
+      {
+        id: "strategy-profile-scarce-short",
+        description: "Resources are scarce and the horizon is short.",
+        levels: { resources: "scarce", "time-horizon": "short" },
+      },
+      {
+        id: "strategy-profile-adequate-long",
+        description: "Resources are adequate and the horizon is long.",
+        levels: { resources: "adequate", "time-horizon": "long" },
+      },
+    ],
+    alternatives: ["incremental", "transformative"],
+    constraintProfileId: "strategy-constraints-v1",
+  };
+  const participantSeed = "2026-08-research-task-bank-v3:p_choice:choice";
+  const attributeProfile =
+    task.attributeProfiles[
+      hash32(
+        `${participantSeed}:${task.randomizationSeedKey}:attribute-profile`,
+      ) % task.attributeProfiles.length
+    ];
+  const presentationOrder = [task.id];
+  const assignment = {
+    ...submission.assignment,
+    arm: "choice",
+    participantSeed,
+    taskIds: [task.id],
+    presentationOrder,
+    fingerprint: `rt_${hash32(
+      `2026-08-research-task-bank-v3:${presentationOrder.join("|")}`,
+    )
+      .toString(16)
+      .padStart(8, "0")}`,
+  };
+  return {
+    ...submission,
+    arm: "choice",
+    assignment,
+    presentationOrder,
+    form: {
+      algorithmVersion: "2026-08-research-task-form-v2",
+      assignedTaskCount: 1,
+      fingerprint: assignment.fingerprint,
+    },
+    tasks: [task],
+    responses: [
+      {
+        taskId: task.id,
+        kind: "conjoint",
+        attributeProfile,
+        chosenAlternative: "incremental",
+      },
+    ],
   };
 }
 
@@ -458,6 +563,22 @@ describe("research contribution Worker", () => {
         itemMetadataVersion: "stale-item-metadata",
       },
     });
+    assert.equal((await handleRequest(postRequest(invalid), env)).status, 422);
+  });
+
+  it("requires the frozen seeded profile for choice task responses", async () => {
+    const env = environment();
+    const valid = choiceResearchTaskSubmission();
+    assert.equal((await handleRequest(postRequest(valid), env)).status, 202);
+
+    const wrongProfile = valid.tasks[0].attributeProfiles.find(
+      (profile) => profile.id !== valid.responses[0].attributeProfile.id,
+    );
+    const invalid = choiceResearchTaskSubmission();
+    invalid.submissionId = "task_choice_submission_invalid";
+    invalid.responses = [
+      { ...invalid.responses[0], attributeProfile: wrongProfile },
+    ];
     assert.equal((await handleRequest(postRequest(invalid), env)).status, 422);
   });
 

@@ -3,6 +3,7 @@ import { researchTaskBank } from "../data/researchTaskBank";
 import {
   assignResearchTasks,
   researchTaskResponseErrors,
+  selectResearchTaskAttributeProfile,
   type ResearchTaskAssignment,
 } from "../research/tasks";
 import { ResearchReceipt } from "./ResearchReceipt";
@@ -172,6 +173,10 @@ export function ResearchTaskScreen({
   if (!task) return null;
   const selectedResponse = responses[task.id];
   const isLast = index === orderedTasks.length - 1;
+  const selectedChoiceProfile =
+    task.kind === "constrained-choice" || task.kind === "conjoint"
+      ? selectResearchTaskAttributeProfile(task, assignment.participantSeed)
+      : null;
 
   function persist(
     nextResponses: Record<string, ResearchTaskResponse>,
@@ -186,7 +191,11 @@ export function ResearchTaskScreen({
   }
 
   async function record(response: ResearchTaskResponse): Promise<void> {
-    const errors = researchTaskResponseErrors(task, response);
+    const errors = researchTaskResponseErrors(
+      task,
+      response,
+      assignment.participantSeed,
+    );
     if (errors.length > 0) {
       setResponseError(errors.join(" "));
       return;
@@ -241,6 +250,26 @@ export function ResearchTaskScreen({
     };
   }
 
+  function recordChoice(
+    response:
+      | { chosenAlternative: string }
+      | { value: "none" | "prefer_not_to_answer" },
+  ): void {
+    if (
+      !selectedChoiceProfile ||
+      (task.kind !== "constrained-choice" && task.kind !== "conjoint")
+    ) {
+      setResponseError("The frozen choice profile is unavailable.");
+      return;
+    }
+    void record({
+      taskId: task.id,
+      kind: task.kind,
+      attributeProfile: selectedChoiceProfile,
+      ...response,
+    });
+  }
+
   function ratingResponse(): ResearchTaskResponse {
     const similarityTask = task as Extract<
       ResearchTask,
@@ -280,6 +309,20 @@ export function ResearchTaskScreen({
         {task.theoryContext}
       </p>
       <p className="prompt">{task.prompt}</p>
+      <div className="research-task-stimulus" aria-label="Frozen task stimulus">
+        <p>{task.stimulus.description}</p>
+        {task.stimulus.profileDescription && (
+          <p className="muted">{task.stimulus.profileDescription}</p>
+        )}
+        <h3>Constraints</h3>
+        <ul>
+          {task.stimulus.constraints.map((constraint) => (
+            <li key={constraint.id}>
+              <strong>{constraint.id}:</strong> {constraint.description}
+            </li>
+          ))}
+        </ul>
+      </div>
       <dl className="research-task-metadata" aria-label="Frozen task metadata">
         <div>
           <dt>Task version</dt>
@@ -302,7 +345,9 @@ export function ResearchTaskScreen({
           </div>
           <div>
             <dt>Outcome</dt>
-            <dd>{task.outcomeId}</dd>
+            <dd>
+              {task.outcomeId}: {task.outcomeDescription}
+            </dd>
           </div>
           <div>
             <dt>Horizon</dt>
@@ -332,10 +377,27 @@ export function ResearchTaskScreen({
           <ul>
             {task.attributes.map((attribute) => (
               <li key={attribute.id}>
-                {attribute.id}: {attribute.levels.join(", ")}
+                {attribute.id}: {attribute.levels.join(", ")} (
+                {attribute.description})
               </li>
             ))}
           </ul>
+          {selectedChoiceProfile && (
+            <>
+              <p>
+                <strong>Presented attribute profile:</strong>{" "}
+                {selectedChoiceProfile.description}
+              </p>
+              <ul aria-label="Presented attribute levels">
+                {task.attributes.map((attribute) => (
+                  <li key={attribute.id}>
+                    {attribute.description}:{" "}
+                    {selectedChoiceProfile.levels[attribute.id]}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
       )}
       {(task.kind === "allocation" || task.kind === "forced-tradeoff") && (
@@ -429,13 +491,7 @@ export function ResearchTaskScreen({
               key={alternative}
               type="button"
               className="statement-button"
-              onClick={() =>
-                void record({
-                  taskId: task.id,
-                  kind: task.kind,
-                  chosenAlternative: alternative,
-                })
-              }
+              onClick={() => recordChoice({ chosenAlternative: alternative })}
             >
               {alternative}
             </button>
@@ -443,22 +499,14 @@ export function ResearchTaskScreen({
           <button
             type="button"
             className="dont-know-button"
-            onClick={() =>
-              void record({ taskId: task.id, kind: task.kind, value: "none" })
-            }
+            onClick={() => recordChoice({ value: "none" })}
           >
             None of these
           </button>
           <button
             type="button"
             className="dont-know-button"
-            onClick={() =>
-              void record({
-                taskId: task.id,
-                kind: task.kind,
-                value: "prefer_not_to_answer",
-              })
-            }
+            onClick={() => recordChoice({ value: "prefer_not_to_answer" })}
           >
             Prefer not to answer
           </button>
@@ -472,7 +520,9 @@ export function ResearchTaskScreen({
             const draft = allocationDrafts[task.id] ?? initialAllocation(task);
             return (
               <label key={good} className="tier-option">
-                <span className="tier-option-label">{good}</span>
+                <span className="tier-option-label">
+                  {good}: {task.goodDescriptions[good]}
+                </span>
                 <input
                   type="number"
                   min="0"
@@ -520,9 +570,14 @@ export function ResearchTaskScreen({
           <legend>Similarity rating from 0 to 100</legend>
           {task.stimulusIds.map((stimulusId) => {
             const draft = ratingDrafts[task.id] ?? initialRatings(task);
+            const stimulus = task.stimuli.find(
+              (candidate) => candidate.id === stimulusId,
+            );
             return (
               <label key={stimulusId} className="tier-option">
-                <span className="tier-option-label">{stimulusId}</span>
+                <span className="tier-option-label">
+                  {stimulusId}: {stimulus?.description}
+                </span>
                 <input
                   type="range"
                   min="0"
