@@ -10,6 +10,9 @@ import { canonicalLabelId } from "../data/labelTaxonomy";
 import { coverageLabel } from "../resultLanguage";
 import { LABEL_EXPOSURE_VERSION } from "./versions";
 
+export const LABEL_EXPOSURE_NAMED_LABEL_EXPLANATION =
+  "These ideological names describe similarity to your measured political profile; they do not identify you or establish your ideological identity.";
+
 function hash32(value: string): number {
   let hash = 2166136261;
   for (let index = 0; index < value.length; index += 1) {

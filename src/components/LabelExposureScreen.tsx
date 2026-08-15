@@ -8,6 +8,7 @@ import type {
 import {
   canonicalLabelExposureLabelIds,
   buildLabelExposurePresentation,
+  LABEL_EXPOSURE_NAMED_LABEL_EXPLANATION,
   labelExposureCoverageText,
 } from "../research/labelExposure";
 
@@ -86,7 +87,7 @@ export function LabelExposureScreen({
         tentative when answer coverage is limited.
       </p>
       <div className="result-card" data-exposure-profile>
-        <h2>Your profile comparison</h2>
+        <h2>Substantive profile</h2>
         <p className="muted">
           The same substantive profile is shown in every presentation condition.
           Positions are described in plain language, with answer coverage shown
@@ -122,6 +123,7 @@ export function LabelExposureScreen({
         </ul>
         {assignment.arm === "named-label" && (
           <>
+            <p className="muted">{LABEL_EXPOSURE_NAMED_LABEL_EXPLANATION}</p>
             <h3>Closest current profile matches</h3>
             <ul aria-label="Closest current profile matches">
               {visibleMatches.map((match) => (

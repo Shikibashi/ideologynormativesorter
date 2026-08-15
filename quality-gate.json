@@ -59,13 +59,14 @@
       "npm run worker:check",
       "npm run research:r-syntax",
       "R Toolbox W3/W4 wrapper contract smoke",
+      "npx playwright test tests/browser/e2e/label-exposure.spec.ts --project=e2e",
       "npm run test:e2e",
       "npm run test:a11y",
       "npm run test:ecw",
       "node --check research-collector/server.mjs",
       "git diff --check"
     ],
-    "npm test": "122 test suites, 770 tests passed",
+    "npm test": "123 test suites, 772 tests passed",
     "npm run format:check": "passed",
     "npm run lint": "passed with zero errors",
     "npm run build": "passed; Vite emitted the existing large-chunk warning",
@@ -75,6 +76,7 @@
     "npm run worker:check": "Cloudflare deploy dry run passed",
     "npm run research:r-syntax": "host Rscript unavailable; 12-file parse verified in the ideologynormativesorter-r Toolbox container",
     "R Toolbox W3/W4 wrapper contract smoke": "8 wrappers passed with the frozen fixture and reported insufficient-data without fabricating estimates",
+    "npx playwright test tests/browser/e2e/label-exposure.spec.ts --project=e2e": "1 three-arm D-27A acceptance test passed; common profile content and serialized presentation matched across arms, with canonical IDs, receipts, and result transition verified",
     "npm run test:e2e": "21 tests passed",
     "npm run test:a11y": "8 tests passed",
     "npm run test:ecw": "28 tests passed",
@@ -84,6 +86,6 @@
   "codeReview": {
     "status": "passed",
     "recommendation": "keep research-task and estimator outputs outside production scoring until a new decision record approves promotion",
-    "evidence": "W0/W1 architecture contracts, W2 response-process tasks, and the W3 estimator scaffold are versioned separately; label-exposure-v2 now uses the approved 'near the midpoint' vocabulary and validates the exact canonical ordered top-three named-label IDs across the client, collector, and Worker; the untracked root vite artifact remains preserved and unstaged."
+    "evidence": "W0/W1 architecture contracts, W2 response-process tasks, and the W3 estimator scaffold are versioned separately; label-exposure-v2 now uses the approved 'near the midpoint' vocabulary, the fixed 'Substantive profile' heading, the named-label profile-similarity/identity boundary, and complete three-arm browser acceptance with common-content and serialized-presentation equivalence, canonical IDs, persisted outcomes, receipts, and result transition; the untracked root vite artifact remains preserved and unstaged."
   }
 }
