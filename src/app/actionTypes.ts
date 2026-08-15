@@ -42,6 +42,7 @@ export interface AppActionContext {
   researchSubmission: ResearchSubmission | null;
   researchStatus: ResearchSubmissionStatus | null;
   researchTaskArm: ResearchTaskArm | null;
+  labelExposureEnabled: boolean;
   labelExposureAssignment: import("../types").LabelExposureAssignment | null;
   labelExposureOutcome: LabelExposureOutcome | null;
   recruitmentSource: string | undefined;
@@ -72,6 +73,9 @@ export interface AppActionContext {
   setResearchSubmission: Setter<ResearchSubmission | null>;
   setResearchStatus: Setter<ResearchSubmissionStatus | null>;
   setLabelExposureOutcome: Setter<LabelExposureOutcome | null>;
+  setLabelExposureAssignment: Setter<
+    import("../types").LabelExposureAssignment | null
+  >;
   setResult: Setter<ResultProfile | null>;
   setResumeAfterConsent: Setter<"quiz" | "self-identification" | null>;
   setResumeIndex: Setter<number>;

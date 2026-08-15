@@ -17,6 +17,7 @@ import type {
   ExpertCodeRecord,
   LabelExposureOutcome,
 } from "../types";
+import { buildLabelExposureAssignment } from "./index";
 
 const scope: DeploymentScopeMetadata = {
   version: DEPLOYMENT_SCOPE_VERSION,
@@ -75,22 +76,34 @@ describe("research linking and exposure contracts", () => {
   });
 
   it("requires post-response randomized exposure and explicit missingness", () => {
+    const assignment = {
+      ...buildLabelExposureAssignment("study-1", "p1"),
+      version: LABEL_EXPOSURE_VERSION,
+      assignedAfterSubstantiveResponses: true,
+    } as const;
     const outcome: LabelExposureOutcome = {
-      assignment: {
-        version: LABEL_EXPOSURE_VERSION,
-        studyId: "study-1",
-        participantId: "p1",
-        arm: "named-label",
-        seed: "seed-1",
-        assignedAfterSubstantiveResponses: true,
-      },
+      assignment,
       exposureShown: true,
+      exposedLabelIds:
+        assignment.arm === "named-label" ? ["label-a"] : undefined,
       perceivedAccuracy: 4,
       identityAcceptance: 3,
       confidence: 4,
       affect: 2,
     };
     expect(labelExposureOutcomeErrors(outcome)).toEqual([]);
+    expect(
+      labelExposureOutcomeErrors({
+        ...outcome,
+        assignment: {
+          ...outcome.assignment,
+          arm:
+            outcome.assignment.arm === "named-label"
+              ? "dimension-only"
+              : "named-label",
+        },
+      }),
+    ).toContain("exposure arm does not match the frozen assignment rule");
     expect(
       labelExposureOutcomeErrors({
         ...outcome,

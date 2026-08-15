@@ -6,12 +6,6 @@ import { MODIFIER_MEASUREMENT_VERSION } from "../data/modifierMeasurement";
 import { PRIMARY_MEASUREMENT_VERSION } from "../data/primaryMeasurement";
 import { TAXONOMY_VERSION } from "../data/labelTaxonomy";
 import { ITEM_METADATA_VERSION } from "../data/itemMetadata";
-import {
-  RESEARCH_CONSENT_VERSION,
-  RESEARCH_QUALITY_RULE_VERSION,
-  RESEARCH_SCHEMA_VERSION,
-  RESEARCH_STUDY_ID,
-} from "../research";
 import { RESEARCH_FORM_VERSION } from "../research/forms";
 import {
   SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
@@ -39,6 +33,10 @@ import {
   PROFILE_DISCOVERY_VERSION,
   PROTOTYPE_CODING_VERSION,
   PROTOTYPE_CALIBRATION_VERSION,
+  RESEARCH_CONSENT_VERSION,
+  RESEARCH_QUALITY_RULE_VERSION,
+  RESEARCH_SCHEMA_VERSION,
+  RESEARCH_STUDY_ID,
   RESEARCH_ESTIMATOR_VERSION,
   RESEARCH_TASK_BANK_VERSION,
   RESEARCH_TASK_FORM_VERSION,
@@ -79,8 +77,8 @@ export {
 
 export interface MeasurementVersionBundle {
   architectureVersion: string;
-  implementationSpecVersion?: string;
-  decisionLogVersion?: string;
+  implementationSpecVersion: string;
+  decisionLogVersion: string;
   bankVersion: string;
   scoringVersion: string;
   taxonomyVersion: string;
@@ -91,31 +89,31 @@ export interface MeasurementVersionBundle {
   consentVersion: string;
   qualityRuleVersion: string;
   studyId: string;
-  specialistRosterVersion?: string;
-  specialistAssignmentStrategy?: string;
-  researchTaskBankVersion?: string;
-  researchEstimatorVersion?: string;
-  descriptiveCalibrationVersion?: string;
-  strategyTaskBankVersion?: string;
-  normativeTradeoffVersion?: string;
-  modelComparisonVersion?: string;
-  unfoldingAnalysisVersion?: string;
-  perceptionGeometryVersion?: string;
-  profileDiscoveryVersion?: string;
-  prototypeCodingVersion?: string;
-  deploymentScopeVersion?: string;
-  constructFamilyMapVersion?: string;
-  criterionPlanVersion?: string;
-  validatorBatteryVersion?: string;
-  prototypeCalibrationVersion?: string;
-  difPlanVersion?: string;
-  contentReviewVersion?: string;
-  cognitiveReviewVersion?: string;
-  labelExposureVersion?: string;
-  formEquivalenceVersion?: string;
-  anchorRotationVersion?: string;
-  validationReportVersion?: string;
-  itemMetadataVersion?: string;
+  specialistRosterVersion: string;
+  specialistAssignmentStrategy: string;
+  researchTaskBankVersion: string;
+  researchEstimatorVersion: string;
+  descriptiveCalibrationVersion: string;
+  strategyTaskBankVersion: string;
+  normativeTradeoffVersion: string;
+  modelComparisonVersion: string;
+  unfoldingAnalysisVersion: string;
+  perceptionGeometryVersion: string;
+  profileDiscoveryVersion: string;
+  prototypeCodingVersion: string;
+  deploymentScopeVersion: string;
+  constructFamilyMapVersion: string;
+  criterionPlanVersion: string;
+  validatorBatteryVersion: string;
+  prototypeCalibrationVersion: string;
+  difPlanVersion: string;
+  contentReviewVersion: string;
+  cognitiveReviewVersion: string;
+  labelExposureVersion: string;
+  formEquivalenceVersion: string;
+  anchorRotationVersion: string;
+  validationReportVersion: string;
+  itemMetadataVersion: string;
 }
 
 export const CURRENT_RESEARCH_VERSION_BUNDLE = {
@@ -159,28 +157,30 @@ export const CURRENT_RESEARCH_VERSION_BUNDLE = {
   itemMetadataVersion: ITEM_METADATA_VERSION,
 } satisfies MeasurementVersionBundle;
 
-const REQUIRED_VERSION_KEYS = [
-  "architectureVersion",
-  "implementationSpecVersion",
-  "decisionLogVersion",
-  "bankVersion",
-  "scoringVersion",
-  "taxonomyVersion",
-  "primaryMeasurementVersion",
-  "modifierMeasurementVersion",
-  "formVersion",
-  "schemaVersion",
-  "consentVersion",
-  "qualityRuleVersion",
-  "studyId",
-  "researchEstimatorVersion",
-] as const satisfies readonly (keyof MeasurementVersionBundle)[];
+const REQUIRED_VERSION_KEYS = Object.keys(
+  CURRENT_RESEARCH_VERSION_BUNDLE,
+) as Array<keyof MeasurementVersionBundle>;
+
+const VERSION_KEYS = new Set<keyof MeasurementVersionBundle>(
+  REQUIRED_VERSION_KEYS,
+);
+
+export function buildResearchVersionBundle(
+  overrides: Partial<MeasurementVersionBundle> = {},
+): MeasurementVersionBundle {
+  return { ...CURRENT_RESEARCH_VERSION_BUNDLE, ...overrides };
+}
 
 export function versionBundleErrors(
   bundle: Partial<MeasurementVersionBundle>,
   expected: Partial<MeasurementVersionBundle> = CURRENT_RESEARCH_VERSION_BUNDLE,
 ): string[] {
   const errors: string[] = [];
+  for (const key of Object.keys(bundle)) {
+    if (!VERSION_KEYS.has(key as keyof MeasurementVersionBundle)) {
+      errors.push(`${key} is not part of the frozen research contract`);
+    }
+  }
   for (const key of REQUIRED_VERSION_KEYS) {
     if (!bundle[key]) {
       errors.push(`${key} is required`);

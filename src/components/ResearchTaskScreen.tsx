@@ -32,7 +32,7 @@ interface ResearchTaskScreenProps {
     responses: ResearchTaskResponse[];
     startedAt: string;
     completedAt: string;
-  }) => Promise<void>;
+  }) => Promise<boolean>;
   onRestart: () => void;
 }
 
@@ -201,17 +201,31 @@ export function ResearchTaskScreen({
       return;
     }
     setSubmitting(true);
-    clearProgress(storageKey);
-    await onComplete({
-      assignment,
-      tasks,
-      responses: assignment.presentationOrder.map(
-        (taskId) => nextResponses[taskId],
-      ),
-      startedAt,
-      completedAt: new Date().toISOString(),
-    });
-    setSubmitting(false);
+    try {
+      const retained = await onComplete({
+        assignment,
+        tasks,
+        responses: assignment.presentationOrder.map(
+          (taskId) => nextResponses[taskId],
+        ),
+        startedAt,
+        completedAt: new Date().toISOString(),
+      });
+      if (retained) clearProgress(storageKey);
+      else {
+        persist(nextResponses, nextIndex);
+        setResponseError(
+          "The completed task record could not be retained. Your responses remain saved; please try again.",
+        );
+      }
+    } catch {
+      persist(nextResponses, nextIndex);
+      setResponseError(
+        "The completed task record could not be retained. Your responses remain saved; please try again.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function allocationResponse(): ResearchTaskResponse {
@@ -266,6 +280,85 @@ export function ResearchTaskScreen({
         {task.theoryContext}
       </p>
       <p className="prompt">{task.prompt}</p>
+      <dl className="research-task-metadata" aria-label="Frozen task metadata">
+        <div>
+          <dt>Task version</dt>
+          <dd>{task.version}</dd>
+        </div>
+        <div>
+          <dt>Research family</dt>
+          <dd>{task.familyId ?? `domain:${task.domainId}`}</dd>
+        </div>
+        <div>
+          <dt>Criterion</dt>
+          <dd>{task.criterionIds.join(", ")}</dd>
+        </div>
+      </dl>
+      {(task.kind === "probability" || task.kind === "forecast") && (
+        <dl className="research-task-metadata" aria-label="Forecast metadata">
+          <div>
+            <dt>Proposition</dt>
+            <dd>{task.propositionId}</dd>
+          </div>
+          <div>
+            <dt>Outcome</dt>
+            <dd>{task.outcomeId}</dd>
+          </div>
+          <div>
+            <dt>Horizon</dt>
+            <dd>{task.horizon}</dd>
+          </div>
+          <div>
+            <dt>Resolution source</dt>
+            <dd>{task.resolutionSource ?? "Not specified"}</dd>
+          </div>
+          <div>
+            <dt>Outcome version</dt>
+            <dd>{task.outcomeVersion ?? "Not specified"}</dd>
+          </div>
+        </dl>
+      )}
+      {(task.kind === "constrained-choice" || task.kind === "conjoint") && (
+        <div className="research-task-metadata" aria-label="Choice metadata">
+          <p>
+            <strong>Choice set:</strong> {task.choiceSetId}
+          </p>
+          <p>
+            <strong>Constraint profile:</strong> {task.constraintProfileId}
+          </p>
+          <p>
+            <strong>Attribute levels:</strong>
+          </p>
+          <ul>
+            {task.attributes.map((attribute) => (
+              <li key={attribute.id}>
+                {attribute.id}: {attribute.levels.join(", ")}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {(task.kind === "allocation" || task.kind === "forced-tradeoff") && (
+        <div
+          className="research-task-metadata"
+          aria-label="Allocation metadata"
+        >
+          <p>
+            <strong>Frozen constraints:</strong> {task.constraints.join(", ")}
+          </p>
+        </div>
+      )}
+      {(task.kind === "similarity" || task.kind === "sort") && (
+        <div className="research-task-metadata" aria-label="Stimulus metadata">
+          <p>
+            <strong>Frozen stimuli:</strong> {task.stimulusIds.join(", ")}
+          </p>
+          <p>
+            <strong>Response scale:</strong>{" "}
+            {task.responseScale ?? "Not specified"}
+          </p>
+        </div>
+      )}
       <p className="muted help-text">
         This task is research-only and does not change the ordinary profile
         score.

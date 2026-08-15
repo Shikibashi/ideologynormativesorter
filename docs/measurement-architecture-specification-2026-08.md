@@ -40,10 +40,10 @@ production promotion by itself.
 | Primary measurement                    | `2026-08-primary-core-v1`                                         |
 | Modifier measurement                   | `2026-08-modifier-construct-v1`                                   |
 | Production scoring                     | `2026-08-13-taxonomy-v8`                                          |
-| Research schema                        | `2026-08-v16`                                                     |
+| Research schema                        | `2026-08-v17`                                                     |
 | Research study                         | `community-2026-v5`                                               |
 | Research form                          | `profile-form-v3`                                                 |
-| Research task bank/form                | `2026-08-research-task-bank-v1` / `2026-08-research-task-form-v1` |
+| Research task bank/form                | `2026-08-research-task-bank-v2` / `2026-08-research-task-form-v1` |
 | Specialist roster                      | `2026-08-specialist-roster-v1`                                    |
 | Specialist assignment                  | `balanced-hash-v2`                                                |
 

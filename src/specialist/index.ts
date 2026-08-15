@@ -3,6 +3,7 @@ import { applyQuestionContext } from "../data/questionContext";
 import { applyEditorialNinthPass } from "../data/editorialNinthPass";
 import { applySpecialistDescriptiveEvidence } from "../data/specialistDescriptiveEvidence";
 import { applyQuestionPromptReview } from "../data/questionPromptReview";
+import { applyResearchItemMetadata } from "../data/itemMetadata";
 import {
   experimentalSpecialistModuleSpecs,
   type ExperimentalSpecialistModuleSpec,
@@ -115,9 +116,11 @@ export const SPECIALIST_ASSIGNMENT_MODULE_IDS = [
 ] as const satisfies readonly SpecialistModuleId[];
 
 function applySpecialistQuestionReview(question: Question): Question {
-  return applyQuestionPromptReview(
-    applyQuestionContext(
-      applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question)),
+  return applyResearchItemMetadata(
+    applyQuestionPromptReview(
+      applyQuestionContext(
+        applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question)),
+      ),
     ),
   );
 }

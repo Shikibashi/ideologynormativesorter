@@ -21,7 +21,7 @@ This brief records the current implementation contract for the ideology sorter. 
 
 ## Research, specialist modules, and collection
 
-- Research contract: study `community-2026-v5`, schema `2026-08-v15`, consent `2026-08-12-v8`, form `profile-form-v3`, and assignment strategy `balanced-hash-v2`.
+- Research contract: study `community-2026-v5`, schema `2026-08-v17`, consent `2026-08-12-v8`, profile form `profile-form-v3`, research-task form `2026-08-research-task-form-v1`, task bank `2026-08-research-task-bank-v2`, and assignment strategy `balanced-hash-v2`.
 - Research mode preserves the selected ordinary profile for contribution. Matrix/test-retest forms are explicit research requests and use deterministic membership, order, and fingerprints.
 - The frozen specialist roster is `2026-08-specialist-roster-v1` with nine modules. Specialist results expose evidence coverage and gates and do not silently change the ordinary result.
 - `research-collector/` provides dependency-free HTTP validation and NDJSON collection. `research-worker/` provides the Cloudflare Worker/D1 path, rate limiting, version checks, idempotency, and migrations.

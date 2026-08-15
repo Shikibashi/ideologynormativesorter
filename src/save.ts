@@ -3,6 +3,46 @@ import type { ResearchSubmission, ResearchSubmissionStatus } from "./research";
 
 const SAVE_KEY = "ideology-quiz-save";
 const PENDING_RESEARCH_KEY = "political-judgment-pending-research-record-v1";
+const REQUIRED_VERSION_BUNDLE_KEYS = [
+  "architectureVersion",
+  "implementationSpecVersion",
+  "decisionLogVersion",
+  "bankVersion",
+  "scoringVersion",
+  "taxonomyVersion",
+  "primaryMeasurementVersion",
+  "modifierMeasurementVersion",
+  "formVersion",
+  "schemaVersion",
+  "consentVersion",
+  "qualityRuleVersion",
+  "studyId",
+  "specialistRosterVersion",
+  "specialistAssignmentStrategy",
+  "researchTaskBankVersion",
+  "researchEstimatorVersion",
+  "descriptiveCalibrationVersion",
+  "strategyTaskBankVersion",
+  "normativeTradeoffVersion",
+  "modelComparisonVersion",
+  "unfoldingAnalysisVersion",
+  "perceptionGeometryVersion",
+  "profileDiscoveryVersion",
+  "prototypeCodingVersion",
+  "deploymentScopeVersion",
+  "constructFamilyMapVersion",
+  "criterionPlanVersion",
+  "validatorBatteryVersion",
+  "prototypeCalibrationVersion",
+  "difPlanVersion",
+  "contentReviewVersion",
+  "cognitiveReviewVersion",
+  "labelExposureVersion",
+  "formEquivalenceVersion",
+  "anchorRotationVersion",
+  "validationReportVersion",
+  "itemMetadataVersion",
+] as const;
 
 export interface QuizSave {
   questions: Question[];
@@ -68,6 +108,12 @@ export function clearQuizState(): boolean {
 export function savePendingResearchRecord(
   record: PendingResearchRecord,
 ): SaveResult {
+  if (!isPendingResearchRecord(record)) {
+    return {
+      saved: false,
+      reason: "The completed research record is invalid.",
+    };
+  }
   try {
     localStorage.setItem(PENDING_RESEARCH_KEY, JSON.stringify(record));
     return { saved: true };
@@ -182,11 +228,14 @@ function isPendingResearchRecord(
   if (!candidate.status || typeof candidate.status !== "object") return false;
   const submission = candidate.submission as Partial<ResearchSubmission>;
   const status = candidate.status as Partial<ResearchSubmissionStatus>;
+  const versionBundle = (submission as { versionBundle?: unknown })
+    .versionBundle;
   return (
     typeof submission.schemaVersion === "string" &&
     typeof submission.submissionId === "string" &&
     typeof submission.studyId === "string" &&
     typeof submission.participantId === "string" &&
+    isCompleteVersionBundle(versionBundle) &&
     (submission.recordType === "core" ||
       submission.recordType === "specialist" ||
       submission.recordType === "specialist-disposition" ||
@@ -194,5 +243,16 @@ function isPendingResearchRecord(
     (status.status === "submitted" ||
       status.status === "export-only" ||
       status.status === "failed")
+  );
+}
+
+function isCompleteVersionBundle(value: unknown): boolean {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const bundle = value as Record<string, unknown>;
+  return (
+    Object.keys(bundle).length === REQUIRED_VERSION_BUNDLE_KEYS.length &&
+    REQUIRED_VERSION_BUNDLE_KEYS.every(
+      (key) => typeof bundle[key] === "string" && bundle[key].trim().length > 0,
+    )
   );
 }

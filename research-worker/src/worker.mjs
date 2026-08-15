@@ -1,3 +1,8 @@
+import {
+  FROZEN_VERSION_VALUES,
+  versionBundleMatches,
+} from "./researchVersionBundle.mjs";
+
 const TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/;
 const RECORD_TYPES = new Set([
   "core",
@@ -21,6 +26,18 @@ const LABEL_EXPOSURE_ARMS = new Set([
   "dimension-only",
   "unlabeled-profile",
   "named-label",
+]);
+const CALIBRATION_ELIGIBILITY_VALUES = new Set([
+  "eligible",
+  "pending-review",
+  "ineligible",
+]);
+const ITEM_LINKING_ROLE_VALUES = new Set([
+  "anchor",
+  "rotating",
+  "contemporary",
+  "calibration",
+  "specialist-only",
 ]);
 const SALIENCE_VALUES = new Set([1, 3, 5]);
 
@@ -53,6 +70,30 @@ function validVersion(value, expected) {
     validString(value, 2048) &&
     typeof expected === "string" &&
     value === expected
+  );
+}
+
+function expectedVersionBundle(env, formVersion) {
+  return {
+    ...FROZEN_VERSION_VALUES,
+    bankVersion: env.EXPECTED_BANK_VERSION,
+    scoringVersion: env.EXPECTED_SCORING_VERSION,
+    taxonomyVersion: env.EXPECTED_TAXONOMY_VERSION,
+    primaryMeasurementVersion: env.EXPECTED_PRIMARY_MEASUREMENT_VERSION,
+    modifierMeasurementVersion: env.EXPECTED_MODIFIER_MEASUREMENT_VERSION,
+    formVersion,
+    schemaVersion: env.EXPECTED_SCHEMA_VERSION,
+    consentVersion: env.EXPECTED_CONSENT_VERSION,
+    qualityRuleVersion: env.EXPECTED_QUALITY_RULE_VERSION,
+    studyId: env.EXPECTED_STUDY_ID,
+    researchTaskBankVersion: env.EXPECTED_RESEARCH_TASK_BANK_VERSION,
+  };
+}
+
+function validVersionBundle(submission, env, formVersion) {
+  return versionBundleMatches(
+    submission.versionBundle,
+    expectedVersionBundle(env, formVersion),
   );
 }
 
@@ -158,7 +199,15 @@ function validItem(item) {
     LAYERS.has(item.layer) &&
     Array.isArray(item.responseOptions) &&
     item.responseOptions.length > 0 &&
-    item.responseOptions.every(validResponseOption)
+    item.responseOptions.every(validResponseOption) &&
+    validString(item.familyId, 256) &&
+    CALIBRATION_ELIGIBILITY_VALUES.has(item.calibrationEligibility) &&
+    (item.linkingRole === undefined ||
+      ITEM_LINKING_ROLE_VALUES.has(item.linkingRole)) &&
+    validString(item.wordingFormId, 512) &&
+    Array.isArray(item.responseProcessTags) &&
+    item.responseProcessTags.length > 0 &&
+    item.responseProcessTags.every((tag) => validString(tag, 256))
   );
 }
 
@@ -284,6 +333,11 @@ function validLabelExposure(value, participantId, studyId, env) {
     assignment.participantId !== participantId ||
     !LABEL_EXPOSURE_ARMS.has(assignment.arm) ||
     !validToken(assignment.seed, 256) ||
+    assignment.seed !== `${studyId}_${participantId}_label-exposure-v1` ||
+    assignment.arm !==
+      ["dimension-only", "unlabeled-profile", "named-label"][
+        hash32(`${studyId}_${participantId}_label-exposure-v1`) % 3
+      ] ||
     assignment.assignedAfterSubstantiveResponses !== true ||
     typeof value.exposureShown !== "boolean"
   )
@@ -296,6 +350,19 @@ function validLabelExposure(value, participantId, studyId, env) {
     )
       return false;
   }
+  const exposedLabelCount = value.exposedLabelIds?.length ?? 0;
+  if (
+    value.exposureShown &&
+    assignment.arm === "named-label" &&
+    exposedLabelCount === 0
+  )
+    return false;
+  if (
+    value.exposureShown &&
+    assignment.arm !== "named-label" &&
+    exposedLabelCount > 0
+  )
+    return false;
   const ratings = [
     value.perceivedAccuracy,
     value.identityAcceptance,
@@ -350,6 +417,7 @@ function validCoreRecord(submission, env) {
   return (
     submission.recordType === "core" &&
     validAnsweredRecord(submission) &&
+    validVersionBundle(submission, env, env.EXPECTED_FORM_VERSION) &&
     (submission.tier === "moderate" || submission.tier === "extensive") &&
     (validProfileForm || validMatrixForm) &&
     typeof submission.resumed === "boolean" &&
@@ -466,6 +534,7 @@ function validSpecialistRecord(submission, env) {
   return (
     submission.recordType === "specialist" &&
     validAnsweredRecord(submission) &&
+    validVersionBundle(submission, env, env.EXPECTED_FORM_VERSION) &&
     validToken(submission.moduleId) &&
     validString(submission.moduleVersion, 512) &&
     validVersion(submission.bankVersion, env.EXPECTED_BANK_VERSION) &&
@@ -501,6 +570,7 @@ function validSpecialistRecord(submission, env) {
 function validSpecialistDisposition(submission, env) {
   return (
     submission.recordType === "specialist-disposition" &&
+    validVersionBundle(submission, env, env.EXPECTED_FORM_VERSION) &&
     validToken(submission.moduleId) &&
     validString(submission.moduleVersion, 512) &&
     validAssignment(
@@ -676,6 +746,8 @@ function validResearchTaskRecord(submission, env) {
       env.EXPECTED_RESEARCH_TASK_BANK_VERSION ||
     submission.assignment.arm !== submission.arm ||
     !validString(submission.assignment.participantSeed, 256) ||
+    submission.assignment.participantSeed !==
+      `${env.EXPECTED_RESEARCH_TASK_BANK_VERSION}:${submission.participantId}:${submission.arm}` ||
     !Array.isArray(submission.assignment.taskIds) ||
     !Array.isArray(submission.assignment.presentationOrder) ||
     !sameMembers(
@@ -690,6 +762,12 @@ function validResearchTaskRecord(submission, env) {
       submission.assignment.taskIds.length ||
     !validString(submission.form.fingerprint, 256) ||
     submission.form.fingerprint !== submission.assignment.fingerprint ||
+    submission.assignment.fingerprint !==
+      `rt_${hash32(
+        `${env.EXPECTED_RESEARCH_TASK_BANK_VERSION}:${submission.assignment.presentationOrder.join("|")}`,
+      )
+        .toString(16)
+        .padStart(8, "0")}` ||
     !Array.isArray(submission.tasks) ||
     submission.tasks.length !== submission.assignment.taskIds.length ||
     !submission.tasks.every((task) => validResearchTask(task, env)) ||
@@ -714,13 +792,11 @@ function validResearchTaskRecord(submission, env) {
       submission.presentationOrder,
       submission.assignment.presentationOrder,
     ) ||
-    !isObject(submission.versionBundle) ||
-    submission.versionBundle.studyId !== env.EXPECTED_STUDY_ID ||
-    submission.versionBundle.schemaVersion !== env.EXPECTED_SCHEMA_VERSION ||
-    submission.versionBundle.formVersion !==
-      env.EXPECTED_RESEARCH_TASK_FORM_VERSION ||
-    submission.versionBundle.researchTaskBankVersion !==
-      env.EXPECTED_RESEARCH_TASK_BANK_VERSION
+    !validVersionBundle(
+      submission,
+      env,
+      env.EXPECTED_RESEARCH_TASK_FORM_VERSION,
+    )
   )
     return false;
   return submission.assignment.presentationOrder.every((taskId) =>

@@ -72,7 +72,7 @@ export interface AppStageProps {
     responses: import("../types").ResearchTaskResponse[];
     startedAt: string;
     completedAt: string;
-  }) => Promise<void>;
+  }) => Promise<boolean>;
   labelExposureAssignment: LabelExposureAssignment | null;
   onLabelExposureComplete: (outcome: LabelExposureOutcome) => void;
   activeQuestions: Question[];

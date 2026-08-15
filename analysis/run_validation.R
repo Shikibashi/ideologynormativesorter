@@ -10,6 +10,13 @@ if (length(missing_packages) > 0) {
   )
 }
 
+analysis_script_path <- sub(
+  "^--file=",
+  "",
+  commandArgs(trailingOnly = FALSE)[grep("^--file=", commandArgs(trailingOnly = FALSE))][[1]],
+)
+source(file.path(dirname(analysis_script_path), "research_contracts.R"))
+
 `%||%` <- function(x, y) if (is.null(x) || length(x) == 0) y else x
 
 parse_iso_timestamp_ms <- function(value) {
@@ -65,7 +72,7 @@ bootstrap_replicates <- as.integer(Sys.getenv("PSYCH_BOOTSTRAP_REPLICATES", "100
 minimum_axis_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_AXIS_N", "100"))
 minimum_factor_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_FACTOR_N", "300"))
 minimum_dif_group_n <- as.integer(Sys.getenv("PSYCH_MINIMUM_DIF_GROUP_N", "100"))
-required_schema_version <- Sys.getenv("PSYCH_REQUIRED_SCHEMA_VERSION", "2026-08-v16")
+required_schema_version <- Sys.getenv("PSYCH_REQUIRED_SCHEMA_VERSION", "2026-08-v17")
 required_consent_version <- Sys.getenv("PSYCH_REQUIRED_CONSENT_VERSION", "2026-08-12-v8")
 required_form_version <- Sys.getenv("PSYCH_REQUIRED_FORM_VERSION", "profile-form-v3")
 required_quality_rule_version <- Sys.getenv("PSYCH_REQUIRED_QUALITY_RULE_VERSION", "data-quality-v2")
@@ -105,6 +112,7 @@ submissions <- submissions[vapply(submissions, function(record) {
     identical(record$recordType %||% "core", "core")
 }, logical(1))]
 if (length(submissions) == 0) stop("No valid research submissions were found.")
+invisible(lapply(submissions, version_bundle_for))
 
 if (!file.exists(manifest_path)) stop("Inclusion manifest does not exist: ", manifest_path)
 manifest <- utils::read.csv(manifest_path, stringsAsFactors = FALSE)

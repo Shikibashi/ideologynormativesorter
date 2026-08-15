@@ -73,6 +73,18 @@ describe("specialist module registry", () => {
     }
   });
 
+  it("exposes research metadata on every specialist item without changing scoring fields", () => {
+    for (const module of specialistModuleDefinitions) {
+      for (const question of module.questions) {
+        expect(question.familyId).toBe(`domain:${question.domain}`);
+        expect(question.calibrationEligibility).toBe("pending-review");
+        expect(question.linkingRole).toBe("specialist-only");
+        expect(question.wordingFormId).toContain("2026-08-item-metadata-v1:");
+        expect(question.responseProcessTags?.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
   it("assigns the same module across test and retest for a participant", () => {
     const first = assignSpecialistModule("p_example", "pilot");
     const second = assignSpecialistModule("p_example", "pilot");

@@ -46,7 +46,7 @@ export function LabelExposureScreen({
     ...result.scores.normative,
     ...result.scores.descriptive,
     ...result.scores.prescriptive,
-  ].slice(0, assignment.arm === "dimension-only" ? 8 : 12);
+  ];
 
   function complete(missingReason?: LabelExposureOutcome["missingReason"]) {
     if (submitted) return;
@@ -77,38 +77,38 @@ export function LabelExposureScreen({
         This optional research arm was assigned after your substantive answers.
         It does not change the score that was computed from those answers.
       </p>
-      {assignment.arm === "named-label" ? (
-        <div className="result-card">
-          <h2>Named-label presentation</h2>
-          <p className="muted">Your closest current matches are:</p>
-          <ul>
+      <div className="result-card">
+        <h2>
+          {assignment.arm === "named-label"
+            ? "Named-label presentation"
+            : assignment.arm === "dimension-only"
+              ? "Dimension-only presentation"
+              : "Unlabeled profile presentation"}
+        </h2>
+        <p className="muted">
+          {assignment.arm === "named-label"
+            ? "Your closest current matches are shown alongside the same substantive profile used by every arm."
+            : assignment.arm === "dimension-only"
+              ? "The display names dimensions without assigning an ideology label."
+              : "The display shows a profile without naming an ideology label."}
+        </p>
+        {assignment.arm === "named-label" && (
+          <ul aria-label="Closest current matches">
             {visibleMatches.map((match) => (
               <li key={String(match.labelId)}>{match.name}</li>
             ))}
           </ul>
-        </div>
-      ) : (
-        <div className="result-card">
-          <h2>
-            {assignment.arm === "dimension-only"
-              ? "Dimension-only presentation"
-              : "Unlabeled profile presentation"}
-          </h2>
-          <p className="muted">
-            {assignment.arm === "dimension-only"
-              ? "The display names dimensions without assigning an ideology label."
-              : "The display shows a profile without naming an ideology label."}
-          </p>
-          <ul>
-            {axisScores.map((score) => (
-              <li key={`${score.layer}-${score.axisId}`}>
-                {axisNames.get(score.axisId) ?? String(score.axisId)}:{" "}
-                {score.normalized.toFixed(2)}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+        )}
+        <h3>Substantive profile</h3>
+        <ul aria-label="Substantive profile dimensions">
+          {axisScores.map((score) => (
+            <li key={`${score.layer}-${score.axisId}`}>
+              {axisNames.get(score.axisId) ?? String(score.axisId)}:{" "}
+              {score.normalized.toFixed(2)}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className="form-grid">
         {RATING_FIELDS.map(([field, prompt]) => (
           <label className="form-field" key={field}>

@@ -6,6 +6,7 @@ import {
   LABEL_EXPOSURE_VERSION,
   PROTOTYPE_CODING_VERSION,
 } from "./versions";
+import { buildLabelExposureAssignment } from "./index";
 import type {
   BridgeResponseRecord,
   DeploymentScopeMetadata,
@@ -139,6 +140,18 @@ export function labelExposureAssignmentErrors(
   if (!EXPOSURE_ARMS.has(assignment.arm))
     errors.push("exposure arm is invalid");
   if (!assignment.seed.trim()) errors.push("exposure seed is required");
+  if (assignment.studyId.trim() && assignment.participantId.trim()) {
+    const expected = buildLabelExposureAssignment(
+      assignment.studyId,
+      assignment.participantId,
+    );
+    if (assignment.seed !== expected.seed) {
+      errors.push("exposure seed does not match the frozen assignment rule");
+    }
+    if (assignment.arm !== expected.arm) {
+      errors.push("exposure arm does not match the frozen assignment rule");
+    }
+  }
   if (assignment.assignedAfterSubstantiveResponses !== true) {
     errors.push("label exposure must be assigned after substantive responses");
   }
@@ -158,6 +171,21 @@ export function labelExposureOutcomeErrors(
     ) {
       errors.push("exposed label ids must be unique, non-empty ids");
     }
+  }
+  const exposedLabelCount = outcome.exposedLabelIds?.length ?? 0;
+  if (
+    outcome.exposureShown &&
+    outcome.assignment.arm === "named-label" &&
+    exposedLabelCount === 0
+  ) {
+    errors.push("named-label exposure must record the exposed label ids");
+  }
+  if (
+    outcome.exposureShown &&
+    outcome.assignment.arm !== "named-label" &&
+    exposedLabelCount > 0
+  ) {
+    errors.push("non-label exposure arms cannot record exposed label ids");
   }
   for (const [name, value] of [
     ["perceivedAccuracy", outcome.perceivedAccuracy],

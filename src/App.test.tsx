@@ -187,6 +187,11 @@ describe("App", () => {
     );
 
     expect(screen.getByText(/research task 1 of 1/i)).toBeInTheDocument();
+    expect(screen.getByText(/strategy-choice-set-v1/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/administrative-capacity: limited/i),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/strategy-constraints-v1/i)).toBeInTheDocument();
     fireEvent.click(
       screen.getByRole("button", {
         name: /work through existing institutions/i,

@@ -46,7 +46,9 @@ function environment(overrides = {}) {
   return {
     ALLOWED_ORIGIN: ORIGIN,
     EXPECTED_STUDY_ID: "community-2026-v5",
-    EXPECTED_SCHEMA_VERSION: "2026-08-v16",
+    EXPECTED_SCHEMA_VERSION: "2026-08-v17",
+    EXPECTED_RESEARCH_TASK_FORM_VERSION: "2026-08-research-task-form-v1",
+    EXPECTED_RESEARCH_TASK_BANK_VERSION: "2026-08-research-task-bank-v2",
     EXPECTED_LABEL_EXPOSURE_VERSION: "2026-08-label-exposure-v1",
     EXPECTED_CONSENT_VERSION: "2026-08-12-v8",
     EXPECTED_QUALITY_RULE_VERSION: "data-quality-v2",
@@ -75,6 +77,58 @@ function environment(overrides = {}) {
   };
 }
 
+function versionBundle(formVersion = "profile-form-v3") {
+  return {
+    architectureVersion: "2026-08-measurement-architecture-v1",
+    implementationSpecVersion: "2026-08-implementation-spec-v1",
+    decisionLogVersion: "2026-08-methodological-decisions-v1",
+    bankVersion: "bank-v1",
+    scoringVersion: "scoring-v1",
+    taxonomyVersion: "taxonomy-v1",
+    primaryMeasurementVersion: "primary-measurement-v1",
+    modifierMeasurementVersion: "modifier-measurement-v1",
+    formVersion,
+    schemaVersion: "2026-08-v17",
+    consentVersion: "2026-08-12-v8",
+    qualityRuleVersion: "data-quality-v2",
+    studyId: "community-2026-v5",
+    specialistRosterVersion: "2026-08-specialist-roster-v1",
+    specialistAssignmentStrategy: "balanced-hash-v2",
+    researchTaskBankVersion: "2026-08-research-task-bank-v2",
+    researchEstimatorVersion: "2026-08-research-estimators-v1",
+    descriptiveCalibrationVersion: "2026-08-descriptive-calibration-v1",
+    strategyTaskBankVersion: "2026-08-strategy-task-bank-v1",
+    normativeTradeoffVersion: "2026-08-normative-tradeoff-v1",
+    modelComparisonVersion: "2026-08-model-comparison-v1",
+    unfoldingAnalysisVersion: "2026-08-unfolding-analysis-v1",
+    perceptionGeometryVersion: "2026-08-perception-geometry-v1",
+    profileDiscoveryVersion: "2026-08-profile-discovery-v1",
+    prototypeCodingVersion: "2026-08-prototype-coding-v1",
+    deploymentScopeVersion: "2026-08-deployment-scope-v1",
+    constructFamilyMapVersion: "2026-08-construct-family-map-v1",
+    criterionPlanVersion: "2026-08-criterion-plan-v1",
+    validatorBatteryVersion: "2026-08-validator-battery-v1",
+    prototypeCalibrationVersion: "2026-08-prototype-calibration-v1",
+    difPlanVersion: "2026-08-dif-plan-v1",
+    contentReviewVersion: "2026-08-content-review-v1",
+    cognitiveReviewVersion: "2026-08-cognitive-review-v1",
+    labelExposureVersion: "2026-08-label-exposure-v1",
+    formEquivalenceVersion: "2026-08-form-equivalence-v1",
+    anchorRotationVersion: "2026-08-anchor-rotation-v1",
+    validationReportVersion: "2026-08-validation-report-v1",
+    itemMetadataVersion: "2026-08-item-metadata-v1",
+  };
+}
+
+function hash32(value) {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
 function coreSubmission(overrides = {}) {
   const itemMap = [
     {
@@ -89,10 +143,14 @@ function coreSubmission(overrides = {}) {
         { value: 1, label: "Agree" },
         { value: "prefer_not_to_answer", label: "Prefer not to answer" },
       ],
+      familyId: "domain:state-legitimacy",
+      calibrationEligibility: "pending-review",
+      wordingFormId: "2026-08-item-metadata-v1:q0001",
+      responseProcessTags: ["likert5"],
     },
   ];
   return {
-    schemaVersion: "2026-08-v16",
+    schemaVersion: "2026-08-v17",
     submissionId: "submission_1",
     recordType: "core",
     studyId: "community-2026-v5",
@@ -148,6 +206,61 @@ function coreSubmission(overrides = {}) {
     predictedModifierIds: [],
     answers: { q0001: { questionId: "q0001", value: 1 } },
     itemMap,
+    versionBundle: versionBundle(),
+    ...overrides,
+  };
+}
+
+function researchTaskSubmission(overrides = {}) {
+  const task = {
+    id: "forecast-state-capacity-001",
+    version: "2026-08-research-task-bank-v2",
+    domainId: "state-legitimacy",
+    layer: "descriptive",
+    theoryContext: "nonideal",
+    prompt: "Estimate the outcome probability.",
+    criterionIds: ["forecast-outcome-state-capacity-001"],
+    randomizationSeedKey: "forecast-state-capacity-001",
+    kind: "forecast",
+    propositionId: "public-service-target-001",
+    outcomeId: "target-reached-under-frozen-definition-001",
+    horizon: "24 months after study close",
+    probabilityScale: "0-100",
+    allowDontKnow: true,
+    resolutionSource: "study-outcome-register-v1",
+    outcomeVersion: "outcome-register-v1",
+  };
+  const presentationOrder = [task.id];
+  const assignment = {
+    taskBankVersion: "2026-08-research-task-bank-v2",
+    arm: "probability",
+    participantSeed: "2026-08-research-task-bank-v2:p_task:probability",
+    taskIds: [task.id],
+    presentationOrder,
+    fingerprint: `rt_${hash32(
+      `2026-08-research-task-bank-v2:${presentationOrder.join("|")}`,
+    )
+      .toString(16)
+      .padStart(8, "0")}`,
+  };
+  return {
+    ...coreSubmission({
+      submissionId: "task_submission_1",
+      participantId: "p_task",
+    }),
+    recordType: "research-task",
+    taskBankVersion: "2026-08-research-task-bank-v2",
+    arm: "probability",
+    assignment,
+    presentationOrder,
+    form: {
+      algorithmVersion: "2026-08-research-task-form-v1",
+      assignedTaskCount: 1,
+      fingerprint: assignment.fingerprint,
+    },
+    tasks: [task],
+    responses: [{ taskId: task.id, kind: "forecast", probability: 50 }],
+    versionBundle: versionBundle("2026-08-research-task-form-v1"),
     ...overrides,
   };
 }
@@ -329,6 +442,20 @@ describe("research contribution Worker", () => {
       labelExposure: {
         ...valid.labelExposure,
         perceivedAccuracy: 6,
+      },
+    });
+    assert.equal((await handleRequest(postRequest(invalid), env)).status, 422);
+  });
+
+  it("accepts a complete task record and rejects a mixed version bundle", async () => {
+    const env = environment();
+    const valid = researchTaskSubmission();
+    assert.equal((await handleRequest(postRequest(valid), env)).status, 202);
+    const invalid = researchTaskSubmission({
+      submissionId: "task_submission_invalid",
+      versionBundle: {
+        ...valid.versionBundle,
+        itemMetadataVersion: "stale-item-metadata",
       },
     });
     assert.equal((await handleRequest(postRequest(invalid), env)).status, 422);

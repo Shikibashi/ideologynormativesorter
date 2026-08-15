@@ -10,6 +10,13 @@ if (length(missing_packages) > 0) {
   )
 }
 
+analysis_script_path <- sub(
+  "^--file=",
+  "",
+  commandArgs(trailingOnly = FALSE)[grep("^--file=", commandArgs(trailingOnly = FALSE))][[1]],
+)
+source(file.path(dirname(analysis_script_path), "research_contracts.R"))
+
 `%||%` <- function(x, y) if (is.null(x) || length(x) == 0) y else x
 
 args <- commandArgs(trailingOnly = TRUE)
@@ -61,6 +68,7 @@ disposition_records <- specialist_input_records[vapply(specialist_input_records,
   identical(record$recordType, "specialist-disposition") &&
     !is.null(record$participantId) && !is.null(record$administration) && !is.null(record$moduleId)
 }, logical(1))]
+invisible(lapply(c(core_records, specialist_records, disposition_records), version_bundle_for))
 
 empty_csv <- function(path, columns) {
   frame <- as.data.frame(setNames(replicate(length(columns), character(0), simplify = FALSE), columns), stringsAsFactors = FALSE)

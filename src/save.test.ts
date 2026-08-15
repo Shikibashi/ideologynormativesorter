@@ -95,4 +95,43 @@ describe("research recovery storage", () => {
     expect(clearPendingResearchRecord()).toBe(true);
     expect(loadPendingResearchRecord()).toBeNull();
   });
+
+  it("does not retain a completed record with an incomplete version bundle", () => {
+    const submission = buildResearchSubmission({
+      studyId: "study-test",
+      participantId: "p_test",
+      administration: "test",
+      bankVersion: "bank-v1",
+      scoringVersion: "score-v1",
+      tier: "quick",
+      consent,
+      identity: {},
+      predictedLabelIds: [],
+      answers: { [question.id]: { questionId: question.id, value: 1 } },
+      questions: [question],
+      startedAt: "2026-08-10T12:01:00.000Z",
+      completedAt: "2026-08-10T12:02:00.000Z",
+      resumed: false,
+      submissionId: "submission-incomplete",
+      submittedAt: "2026-08-10T12:03:00.000Z",
+    });
+    const incomplete = {
+      ...submission,
+      versionBundle: {
+        ...submission.versionBundle,
+        itemMetadataVersion: "",
+      },
+    };
+
+    expect(
+      savePendingResearchRecord({
+        submission: incomplete,
+        status: { status: "failed", reason: "fixture failure" },
+      }),
+    ).toEqual({
+      saved: false,
+      reason: "The completed research record is invalid.",
+    });
+    expect(loadPendingResearchRecord()).toBeNull();
+  });
 });

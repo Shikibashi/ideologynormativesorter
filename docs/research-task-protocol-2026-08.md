@@ -22,7 +22,7 @@ returns to the ordinary start screen without starting a task module.
 ## Frozen task contract
 
 The current pilot scaffold is `RESEARCH_TASK_BANK_VERSION`
-`2026-08-research-task-bank-v1`; its presentation assignment uses
+`2026-08-research-task-bank-v2`; its presentation assignment uses
 `2026-08-research-task-form-v1`. Each task records its exact prompt, domain,
 layer, theory context, criterion IDs, response format, options or stimulus
 IDs, and optional task-level randomization key. The assignment records the

@@ -6,6 +6,23 @@ if (!requireNamespace("jsonlite", quietly = TRUE)) {
 
 `%||%` <- function(x, y) if (is.null(x) || length(x) == 0) y else x
 
+required_version_bundle_keys <- c(
+  "architectureVersion", "implementationSpecVersion", "decisionLogVersion",
+  "bankVersion", "scoringVersion", "taxonomyVersion",
+  "primaryMeasurementVersion", "modifierMeasurementVersion", "formVersion",
+  "schemaVersion", "consentVersion", "qualityRuleVersion", "studyId",
+  "specialistRosterVersion", "specialistAssignmentStrategy",
+  "researchTaskBankVersion", "researchEstimatorVersion",
+  "descriptiveCalibrationVersion", "strategyTaskBankVersion",
+  "normativeTradeoffVersion", "modelComparisonVersion",
+  "unfoldingAnalysisVersion", "perceptionGeometryVersion",
+  "profileDiscoveryVersion", "prototypeCodingVersion", "deploymentScopeVersion",
+  "constructFamilyMapVersion", "criterionPlanVersion", "validatorBatteryVersion",
+  "prototypeCalibrationVersion", "difPlanVersion", "contentReviewVersion",
+  "cognitiveReviewVersion", "labelExposureVersion", "formEquivalenceVersion",
+  "anchorRotationVersion", "validationReportVersion", "itemMetadataVersion"
+)
+
 contract_stop <- function(message) {
   stop(paste0("Research analysis contract violation: ", message), call. = FALSE)
 }
@@ -95,6 +112,15 @@ version_bundle_for <- function(record) {
   bundle <- record$versionBundle
   if (is.null(bundle) || !is.list(bundle) || length(bundle) == 0) {
     contract_stop(paste0("record ", record_id(record), " has no machine-readable versionBundle"))
+  }
+  missing_keys <- setdiff(required_version_bundle_keys, names(bundle))
+  extra_keys <- setdiff(names(bundle), required_version_bundle_keys)
+  if (length(missing_keys) > 0 || length(extra_keys) > 0) {
+    contract_stop(paste0(
+      "record ", record_id(record),
+      " has an incomplete versionBundle (missing: ", paste(missing_keys, collapse = ", "),
+      "; extra: ", paste(extra_keys, collapse = ", "), ")"
+    ))
   }
   values <- unlist(bundle, use.names = TRUE)
   values <- values[nzchar(names(values)) & !is.na(values)]

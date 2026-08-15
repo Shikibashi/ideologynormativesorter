@@ -23,7 +23,11 @@ import {
 } from "../save";
 import { announceStatus } from "../status";
 import { quizTierLabel } from "../quizTiers";
-import { getOrCreateParticipantId, type ResearchConsent } from "../research";
+import {
+  buildLabelExposureAssignment,
+  getOrCreateParticipantId,
+  type ResearchConsent,
+} from "../research";
 import { clearSpecialistProgress } from "../specialist/save";
 import type { AnswerMap, QuizTier } from "../types";
 import type { AppActionContext } from "./actionTypes";
@@ -277,9 +281,16 @@ export function handleComplete(
       modifierScoringLabels,
     ),
   );
+  const exposureAssignment =
+    context.researchEnabled &&
+    context.researchConsent &&
+    context.labelExposureEnabled
+      ? buildLabelExposureAssignment(context.studyId, context.participantId)
+      : null;
+  context.setLabelExposureAssignment(exposureAssignment);
   context.setStage(
     context.researchEnabled && context.researchConsent
-      ? context.labelExposureAssignment
+      ? exposureAssignment
         ? "label-exposure"
         : "self-identification"
       : "results",
@@ -340,6 +351,7 @@ export function handleRestart(context: AppActionContext): void {
   context.setResearchSubmission(null);
   context.setResearchStatus(null);
   context.setLabelExposureOutcome(null);
+  context.setLabelExposureAssignment(null);
   context.setSpecialistSubmission(null);
   context.setSpecialistStatus(null);
   context.setSpecialistProgress(null);

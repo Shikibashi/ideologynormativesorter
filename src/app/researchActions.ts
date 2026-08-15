@@ -138,7 +138,7 @@ export async function handleResearchTaskComplete(
     startedAt: string;
     completedAt: string;
   },
-): Promise<void> {
+): Promise<boolean> {
   if (!context.researchConsent || !context.researchTaskArm) {
     throw new Error("The research task arm is missing consent or arm context.");
   }
@@ -160,16 +160,27 @@ export async function handleResearchTaskComplete(
     submission,
     import.meta.env.VITE_RESEARCH_ENDPOINT,
   );
-  if (status.status === "submitted") clearPendingResearchRecord();
-  else savePendingResearchRecord({ submission, status });
-  context.setResearchSubmission(submission);
-  context.setResearchStatus(status);
-  context.setStage("research-tasks");
+  if (status.status === "submitted") {
+    clearPendingResearchRecord();
+  }
+  const pendingSave =
+    status.status === "submitted"
+      ? { saved: true }
+      : savePendingResearchRecord({ submission, status });
+  if (pendingSave.saved) {
+    context.setResearchSubmission(submission);
+    context.setResearchStatus(status);
+    context.setStage("research-tasks");
+  } else {
+    context.setResearchSubmission(null);
+    context.setResearchStatus(null);
+  }
   announceStatus(
     status.status === "failed"
       ? "Research task responses could not be submitted."
       : "Research task responses prepared.",
   );
+  return pendingSave.saved;
 }
 
 export function createResearchActions(context: AppActionContext) {

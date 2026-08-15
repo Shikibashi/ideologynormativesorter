@@ -20,7 +20,6 @@ import {
   type PresentedResponseOption,
 } from "../questionPresentation";
 import { RESEARCH_FORM_VERSION, researchFormFingerprint } from "./forms";
-import { QUESTION_BANK_VERSION } from "../data/effectiveQuestions";
 import {
   canonicalLabelId,
   modifierScoringLabels,
@@ -29,8 +28,11 @@ import {
 } from "../data/labelTaxonomy";
 import { MODIFIER_MEASUREMENT_VERSION } from "../data/modifierMeasurement";
 import { PRIMARY_MEASUREMENT_VERSION } from "../data/primaryMeasurement";
-import { RESULT_SCORING_VERSION } from "../scoring";
 import { labelRosterFingerprint } from "./taxonomyMetadata";
+import type {
+  CalibrationEligibility,
+  ItemLinkingRole,
+} from "../types/research";
 import type {
   SpecialistCriterionResponse,
   SpecialistMatch,
@@ -45,21 +47,20 @@ import {
 } from "./tasks";
 import type { MeasurementVersionBundle } from "../validation/researchContracts";
 import {
-  CONSTRUCT_FAMILY_MAP_VERSION,
-  IMPLEMENTATION_SPECIFICATION_VERSION,
   LABEL_EXPOSURE_VERSION,
-  MEASUREMENT_ARCHITECTURE_VERSION,
-  METHODOLOGICAL_DECISION_LOG_VERSION,
-  RESEARCH_ESTIMATOR_VERSION,
-  RESEARCH_TASK_BANK_VERSION,
   RESEARCH_TASK_FORM_VERSION,
+  RESEARCH_QUALITY_RULE_VERSION,
+  RESEARCH_SCHEMA_VERSION,
+  RESEARCH_STUDY_ID,
 } from "./versions";
+import { buildResearchVersionBundle } from "../validation/researchContracts";
 
-export const RESEARCH_SCHEMA_VERSION = "2026-08-v16";
-export const RESEARCH_CONSENT_VERSION = "2026-08-12-v8";
-export const RESEARCH_QUALITY_RULE_VERSION = "data-quality-v2";
-/** A new cohort isolates taxonomy and specialist-construct revisions from prior submissions. */
-export const RESEARCH_STUDY_ID = "community-2026-v5";
+export {
+  RESEARCH_CONSENT_VERSION,
+  RESEARCH_QUALITY_RULE_VERSION,
+  RESEARCH_SCHEMA_VERSION,
+  RESEARCH_STUDY_ID,
+} from "./versions";
 export const PUBLIC_RESEARCH_ENTRYPOINT =
   "?contribute=1&collection=community-2026-v5";
 export const PRIMARY_LABEL_ROSTER_FINGERPRINT = labelRosterFingerprint(
@@ -135,6 +136,11 @@ export interface ResearchItemSnapshot {
   evidenceNote?: string;
   contextNote?: string;
   sourceCount: number;
+  familyId: string;
+  calibrationEligibility: CalibrationEligibility;
+  linkingRole?: ItemLinkingRole;
+  wordingFormId: string;
+  responseProcessTags: string[];
 }
 
 interface ResearchRecordBase {
@@ -150,6 +156,7 @@ interface ResearchRecordBase {
   consent: ResearchConsent;
   locale: string;
   qualityRuleVersion: string;
+  versionBundle: MeasurementVersionBundle;
 }
 
 export interface ResearchFormMetadata {
@@ -234,7 +241,6 @@ export interface ResearchTaskSubmission extends ResearchRecordBase {
   form: ResearchTaskFormMetadata;
   tasks: ResearchTask[];
   responses: ResearchTaskResponse[];
-  versionBundle: MeasurementVersionBundle;
 }
 
 export type ResearchSubmission =
@@ -348,6 +354,14 @@ function buildItemMap(
     evidenceNote: question.evidenceNote,
     contextNote: question.contextNote,
     sourceCount: question.sources?.length ?? 0,
+    familyId: question.familyId ?? `domain:${String(question.domain)}`,
+    calibrationEligibility: question.calibrationEligibility ?? "pending-review",
+    linkingRole: question.linkingRole,
+    wordingFormId:
+      question.wordingFormId ?? `unversioned:${String(question.id)}`,
+    responseProcessTags: [
+      ...(question.responseProcessTags ?? [question.responseType]),
+    ],
   }));
 }
 
@@ -435,7 +449,7 @@ export function researchRecruitmentSource(
 export function getOrCreateParticipantId(
   storage: StorageLike = window.localStorage,
   createId: (() => string) | undefined = undefined,
-  studyId = RESEARCH_STUDY_ID,
+  studyId: string = RESEARCH_STUDY_ID,
 ): string {
   const storageKey = `${PARTICIPANT_STORAGE_KEY}:${safeToken(studyId) || RESEARCH_STUDY_ID}`;
   const existing = storage.getItem(storageKey);
@@ -470,11 +484,12 @@ export function buildResearchSubmission(input: {
   submittedAt?: string;
 }): CoreResearchSubmission {
   validateAnswerCoverage(input.answers, input.questions);
+  const studyId = safeToken(input.studyId) || RESEARCH_STUDY_ID;
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: "core",
-    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
+    studyId,
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? new Date().toISOString(),
@@ -496,6 +511,11 @@ export function buildResearchSubmission(input: {
     consent: input.consent,
     locale: normalizeLocale(input.locale),
     qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
+    versionBundle: buildResearchVersionBundle({
+      bankVersion: input.bankVersion,
+      scoringVersion: input.scoringVersion,
+      studyId,
+    }),
     identity: {
       ...input.identity,
       selfLabelId: input.identity.selfLabelId
@@ -552,11 +572,12 @@ export function buildSpecialistResearchSubmission(input: {
   submissionId?: string;
 }): SpecialistResearchSubmission {
   validateAnswerCoverage(input.answers, input.questions);
+  const studyId = safeToken(input.studyId) || RESEARCH_STUDY_ID;
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: "specialist",
-    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
+    studyId,
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? new Date().toISOString(),
@@ -566,6 +587,11 @@ export function buildSpecialistResearchSubmission(input: {
     consent: input.consent,
     locale: normalizeLocale(input.locale),
     qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
+    versionBundle: buildResearchVersionBundle({
+      bankVersion: input.bankVersion,
+      scoringVersion: input.scoringVersion,
+      studyId,
+    }),
     moduleId: input.moduleId,
     moduleVersion: input.moduleVersion,
     assignment: input.assignment,
@@ -599,11 +625,12 @@ export function buildSpecialistDispositionSubmission(input: {
 }): SpecialistDispositionSubmission {
   const completedAt = input.occurredAt ?? new Date().toISOString();
   const startedAt = input.startedAt ?? completedAt;
+  const studyId = safeToken(input.studyId) || RESEARCH_STUDY_ID;
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: "specialist-disposition",
-    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
+    studyId,
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? completedAt,
@@ -613,6 +640,7 @@ export function buildSpecialistDispositionSubmission(input: {
     consent: input.consent,
     locale: normalizeLocale(input.locale),
     qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
+    versionBundle: buildResearchVersionBundle({ studyId }),
     moduleId: input.moduleId,
     moduleVersion: input.moduleVersion,
     assignment: input.assignment,
@@ -672,29 +700,17 @@ export function buildResearchTaskSubmission(input: {
       throw new Error(`Research task response violation: ${errors.join("; ")}`);
     }
   }
-  const versionBundle: MeasurementVersionBundle = {
-    architectureVersion: MEASUREMENT_ARCHITECTURE_VERSION,
-    implementationSpecVersion: IMPLEMENTATION_SPECIFICATION_VERSION,
-    decisionLogVersion: METHODOLOGICAL_DECISION_LOG_VERSION,
-    bankVersion: QUESTION_BANK_VERSION,
-    scoringVersion: input.scoringVersion ?? RESULT_SCORING_VERSION,
-    taxonomyVersion: TAXONOMY_VERSION,
-    primaryMeasurementVersion: PRIMARY_MEASUREMENT_VERSION,
-    modifierMeasurementVersion: MODIFIER_MEASUREMENT_VERSION,
+  const studyId = safeToken(input.studyId) || RESEARCH_STUDY_ID;
+  const versionBundle = buildResearchVersionBundle({
     formVersion: RESEARCH_TASK_FORM_VERSION,
-    schemaVersion: RESEARCH_SCHEMA_VERSION,
-    consentVersion: RESEARCH_CONSENT_VERSION,
-    qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
-    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
-    researchTaskBankVersion: RESEARCH_TASK_BANK_VERSION,
-    researchEstimatorVersion: RESEARCH_ESTIMATOR_VERSION,
-    constructFamilyMapVersion: CONSTRUCT_FAMILY_MAP_VERSION,
-  };
+    scoringVersion: input.scoringVersion,
+    studyId,
+  });
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
     recordType: "research-task",
-    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
+    studyId,
     participantId: safeToken(input.participantId),
     administration: input.administration,
     submittedAt: input.submittedAt ?? new Date().toISOString(),

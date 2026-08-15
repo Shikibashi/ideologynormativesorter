@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   RESEARCH_SCHEMA_VERSION,
+  buildLabelExposureAssignment,
   type CoreResearchSubmission,
   type ResearchConsent,
   type ResearchSubmission,
@@ -11,7 +12,7 @@ import { RESULT_SCORING_VERSION } from "../scoring";
 import { RESEARCH_TASK_BANK_VERSION } from "../research/versions";
 import type { AppBootstrapState } from "./useAppBootstrapState";
 import type { Setter } from "./actionTypes";
-import type { LabelExposureOutcome } from "../types";
+import type { LabelExposureAssignment, LabelExposureOutcome } from "../types";
 
 export interface AppResearchState {
   pendingCoreResearch: NonNullable<
@@ -31,6 +32,8 @@ export interface AppResearchState {
   setResearchSubmission: Setter<ResearchSubmission | null>;
   labelExposureOutcome: LabelExposureOutcome | null;
   setLabelExposureOutcome: Setter<LabelExposureOutcome | null>;
+  labelExposureAssignment: LabelExposureAssignment | null;
+  setLabelExposureAssignment: Setter<LabelExposureAssignment | null>;
 }
 
 export function useAppResearchState(
@@ -92,6 +95,15 @@ export function useAppResearchState(
     );
   const [labelExposureOutcome, setLabelExposureOutcome] =
     useState<LabelExposureOutcome | null>(null);
+  const [labelExposureAssignment, setLabelExposureAssignment] =
+    useState<LabelExposureAssignment | null>(() =>
+      bootstrap.labelExposureEnabled && pendingCoreSubmission
+        ? buildLabelExposureAssignment(
+            bootstrap.studyId,
+            bootstrap.participantId,
+          )
+        : null,
+    );
 
   return {
     pendingCoreResearch,
@@ -107,5 +119,7 @@ export function useAppResearchState(
     setResearchSubmission,
     labelExposureOutcome,
     setLabelExposureOutcome,
+    labelExposureAssignment,
+    setLabelExposureAssignment,
   };
 }

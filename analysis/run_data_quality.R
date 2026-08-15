@@ -4,6 +4,13 @@ if (!requireNamespace("jsonlite", quietly = TRUE)) {
   stop("Missing required R package: jsonlite")
 }
 
+analysis_script_path <- sub(
+  "^--file=",
+  "",
+  commandArgs(trailingOnly = FALSE)[grep("^--file=", commandArgs(trailingOnly = FALSE))][[1]],
+)
+source(file.path(dirname(analysis_script_path), "research_contracts.R"))
+
 `%||%` <- function(x, y) if (is.null(x) || length(x) == 0) y else x
 
 parse_iso_timestamp_ms <- function(value) {
@@ -52,6 +59,7 @@ submissions <- submissions[vapply(submissions, function(record) {
   !is.null(record$schemaVersion) && !is.null(record$participantId) && !is.null(record$answers)
 }, logical(1))]
 if (length(submissions) == 0) stop("No valid research submissions were found.")
+invisible(lapply(submissions, version_bundle_for))
 
 normalize_self_reported_ideologies <- function(value) {
   if (is.null(value) || length(value) == 0 || !nzchar(trimws(as.character(value[[1]])))) {

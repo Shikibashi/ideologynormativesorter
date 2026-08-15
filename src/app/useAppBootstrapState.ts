@@ -6,13 +6,11 @@ import {
   isResearchMode,
   researchAdministration,
   researchRecruitmentSource,
-  buildLabelExposureAssignment,
   researchLabelExposureEnabled,
   researchStudyId,
   researchTaskArm,
 } from "../research";
 import type { ResearchTaskArm } from "../types";
-import type { LabelExposureAssignment } from "../types";
 import { researchFormSize } from "../research/forms";
 import { loadPendingResearchRecord, loadQuizState } from "../save";
 import { readSharedResult, type ShareMeta } from "../share";
@@ -24,7 +22,7 @@ export interface AppBootstrapState {
   formSize: number | null;
   initialResearchMode: boolean;
   initialResearchTaskArm: Exclude<ResearchTaskArm, "all"> | null;
-  labelExposureAssignment: LabelExposureAssignment | null;
+  labelExposureEnabled: boolean;
   loadedInitialQuiz: ReturnType<typeof loadQuizState>;
   loadedPendingResearch: ReturnType<typeof loadPendingResearchRecord>;
   participantId: string;
@@ -69,21 +67,13 @@ export function useAppBootstrapState(): AppBootstrapState {
       ? getOrCreateParticipantId(window.localStorage, undefined, studyId)
       : "";
   });
-  const labelExposureAssignment = useMemo(
-    () =>
-      labelExposureEnabled && participantId
-        ? buildLabelExposureAssignment(studyId, participantId)
-        : null,
-    [labelExposureEnabled, participantId, studyId],
-  );
-
   return {
     administration,
     contributionAvailable,
     formSize,
     initialResearchMode,
     initialResearchTaskArm,
-    labelExposureAssignment,
+    labelExposureEnabled,
     loadedInitialQuiz,
     loadedPendingResearch,
     participantId,

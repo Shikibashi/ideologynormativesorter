@@ -2,6 +2,10 @@ import { createServer } from "node:http";
 import { createHash } from "node:crypto";
 import { appendFile, mkdir, readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+import {
+  FROZEN_VERSION_VALUES,
+  versionBundleMatches,
+} from "../research-worker/src/researchVersionBundle.mjs";
 
 const port = Number(process.env.PORT ?? 8787);
 const outputFile = resolve(
@@ -18,7 +22,7 @@ const researchTaskOutputFile = resolve(
 const allowedOrigin = process.env.ALLOWED_ORIGIN ?? "http://localhost:5173";
 const maximumBodyBytes = Number(process.env.MAXIMUM_BODY_BYTES ?? 2_000_000);
 const expectedSchemaVersion =
-  process.env.RESEARCH_SCHEMA_VERSION ?? "2026-08-v16";
+  process.env.RESEARCH_SCHEMA_VERSION ?? "2026-08-v17";
 const expectedConsentVersion =
   process.env.RESEARCH_CONSENT_VERSION ?? "2026-08-12-v8";
 const expectedQualityRuleVersion =
@@ -28,7 +32,7 @@ const expectedFormVersion =
 const expectedResearchTaskFormVersion =
   process.env.RESEARCH_TASK_FORM_VERSION ?? "2026-08-research-task-form-v1";
 const expectedResearchTaskBankVersion =
-  process.env.RESEARCH_TASK_BANK_VERSION ?? "2026-08-research-task-bank-v1";
+  process.env.RESEARCH_TASK_BANK_VERSION ?? "2026-08-research-task-bank-v2";
 const expectedLabelExposureVersion =
   process.env.RESEARCH_LABEL_EXPOSURE_VERSION ?? "2026-08-label-exposure-v1";
 const expectedStudyId = process.env.RESEARCH_STUDY_ID?.trim() || null;
@@ -54,6 +58,36 @@ const expectedSpecialistAssignmentRosterVersion =
 const expectedSpecialistAssignmentModuleIds =
   process.env.RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS ??
   "feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module";
+
+function expectedVersionBundle(value, formVersion) {
+  return {
+    ...FROZEN_VERSION_VALUES,
+    bankVersion:
+      expectedBankVersion ??
+      value.bankVersion ??
+      value.versionBundle?.bankVersion,
+    scoringVersion:
+      expectedScoringVersion ??
+      value.scoringVersion ??
+      value.versionBundle?.scoringVersion,
+    taxonomyVersion: expectedTaxonomyVersion,
+    primaryMeasurementVersion: expectedPrimaryMeasurementVersion,
+    modifierMeasurementVersion: expectedModifierMeasurementVersion,
+    formVersion,
+    schemaVersion: expectedSchemaVersion,
+    consentVersion: expectedConsentVersion,
+    qualityRuleVersion: expectedQualityRuleVersion,
+    studyId: expectedStudyId ?? value.studyId,
+    researchTaskBankVersion: expectedResearchTaskBankVersion,
+  };
+}
+
+function validVersionBundle(value, formVersion) {
+  return versionBundleMatches(
+    value.versionBundle,
+    expectedVersionBundle(value, formVersion),
+  );
+}
 const TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/;
 const LAYERS = new Set(["normative", "descriptive", "prescriptive"]);
 const THEORY_CONTEXTS = new Set(["ideal", "nonideal", "mixed"]);
@@ -184,7 +218,23 @@ function validItemSnapshot(item) {
       !REVIEW_STATUSES.has(item.reviewStatus)) ||
     !Number.isInteger(item.sourceCount) ||
     item.sourceCount < 0 ||
-    !validSalienceSnapshot(item.salience, item.layer)
+    !validSalienceSnapshot(item.salience, item.layer) ||
+    !validNonemptyString(item.familyId, 256) ||
+    !["eligible", "pending-review", "ineligible"].includes(
+      item.calibrationEligibility,
+    ) ||
+    (item.linkingRole !== undefined &&
+      ![
+        "anchor",
+        "rotating",
+        "contemporary",
+        "calibration",
+        "specialist-only",
+      ].includes(item.linkingRole)) ||
+    !validNonemptyString(item.wordingFormId, 512) ||
+    !Array.isArray(item.responseProcessTags) ||
+    item.responseProcessTags.length === 0 ||
+    !item.responseProcessTags.every((tag) => validNonemptyString(tag, 256))
   )
     return false;
 
@@ -521,6 +571,11 @@ function validLabelExposure(value, participantId, studyId) {
     assignment.participantId !== participantId ||
     !LABEL_EXPOSURE_ARMS.has(assignment.arm) ||
     !validToken(assignment.seed, 256) ||
+    assignment.seed !== `${studyId}_${participantId}_label-exposure-v1` ||
+    assignment.arm !==
+      ["dimension-only", "unlabeled-profile", "named-label"][
+        hash32(`${studyId}_${participantId}_label-exposure-v1`) % 3
+      ] ||
     assignment.assignedAfterSubstantiveResponses !== true ||
     typeof value.exposureShown !== "boolean"
   )
@@ -533,6 +588,19 @@ function validLabelExposure(value, participantId, studyId) {
     )
       return false;
   }
+  const exposedLabelCount = value.exposedLabelIds?.length ?? 0;
+  if (
+    value.exposureShown &&
+    assignment.arm === "named-label" &&
+    exposedLabelCount === 0
+  )
+    return false;
+  if (
+    value.exposureShown &&
+    assignment.arm !== "named-label" &&
+    exposedLabelCount > 0
+  )
+    return false;
   const ratings = [
     value.perceivedAccuracy,
     value.identityAcceptance,
@@ -562,6 +630,7 @@ function validCoreRecord(value) {
   return (
     validAnsweredRecord(value) &&
     value.recordType === "core" &&
+    validVersionBundle(value, expectedFormVersion) &&
     typeof value.resumed === "boolean" &&
     validVersion(value.bankVersion, expectedBankVersion) &&
     validVersion(value.scoringVersion, expectedScoringVersion) &&
@@ -651,6 +720,7 @@ function validSpecialistRecord(value) {
   return (
     validAnsweredRecord(value) &&
     value.recordType === "specialist" &&
+    validVersionBundle(value, expectedFormVersion) &&
     validToken(value.moduleId, 128) &&
     validVersion(value.moduleVersion) &&
     validVersion(value.bankVersion, expectedBankVersion) &&
@@ -687,6 +757,7 @@ function validSpecialistDisposition(value) {
   return (
     validBaseRecord(value) &&
     value.recordType === "specialist-disposition" &&
+    validVersionBundle(value, expectedFormVersion) &&
     validToken(value.moduleId, 128) &&
     validVersion(value.moduleVersion) &&
     validAssignment(
@@ -857,6 +928,8 @@ function validResearchTaskRecord(value) {
     value.assignment.taskBankVersion === expectedResearchTaskBankVersion &&
     value.assignment.arm === value.arm &&
     validNonemptyString(value.assignment.participantSeed, 256) &&
+    value.assignment.participantSeed ===
+      `${expectedResearchTaskBankVersion}:${value.participantId}:${value.arm}` &&
     Array.isArray(value.assignment.taskIds) &&
     Array.isArray(value.assignment.presentationOrder) &&
     sameMembers(value.assignment.taskIds, value.assignment.presentationOrder) &&
@@ -865,6 +938,12 @@ function validResearchTaskRecord(value) {
     Number.isInteger(value.form.assignedTaskCount) &&
     value.form.assignedTaskCount === value.assignment.taskIds.length &&
     value.form.fingerprint === value.assignment.fingerprint &&
+    value.assignment.fingerprint ===
+      `rt_${hash32(
+        `${expectedResearchTaskBankVersion}:${value.assignment.presentationOrder.join("|")}`,
+      )
+        .toString(16)
+        .padStart(8, "0")}` &&
     Array.isArray(value.tasks) &&
     value.tasks.length === value.assignment.taskIds.length &&
     value.tasks.every(validResearchTask) &&
@@ -884,12 +963,7 @@ function validResearchTaskRecord(value) {
       return task && validResearchTaskResponse(task, response);
     }) &&
     sameMembers(value.presentationOrder, value.assignment.presentationOrder) &&
-    isObject(value.versionBundle) &&
-    value.versionBundle.studyId === value.studyId &&
-    value.versionBundle.schemaVersion === expectedSchemaVersion &&
-    value.versionBundle.formVersion === expectedResearchTaskFormVersion &&
-    value.versionBundle.researchTaskBankVersion ===
-      expectedResearchTaskBankVersion
+    validVersionBundle(value, expectedResearchTaskFormVersion)
   );
 }
 

@@ -153,9 +153,9 @@ const modifierLabelRosterFingerprint = labelRosterFingerprint(
 
 const contract = {
   study: configuredVar(worker, "EXPECTED_STUDY_ID"),
-  schema: constant(research, "RESEARCH_SCHEMA_VERSION"),
-  consent: constant(research, "RESEARCH_CONSENT_VERSION"),
-  quality: constant(research, "RESEARCH_QUALITY_RULE_VERSION"),
+  schema: constant(researchVersions, "RESEARCH_SCHEMA_VERSION"),
+  consent: constant(researchVersions, "RESEARCH_CONSENT_VERSION"),
+  quality: constant(researchVersions, "RESEARCH_QUALITY_RULE_VERSION"),
   primaryMeasurement: primaryMeasurementVersion,
   form: constant(forms, "RESEARCH_FORM_VERSION"),
   researchTaskBank: constant(researchVersions, "RESEARCH_TASK_BANK_VERSION"),
