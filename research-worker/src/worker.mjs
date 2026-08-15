@@ -371,7 +371,22 @@ function validIdentity(identity) {
   );
 }
 
-function validLabelExposure(value, participantId, studyId, env) {
+function sameSequence(left, right) {
+  return (
+    Array.isArray(left) &&
+    Array.isArray(right) &&
+    left.length === right.length &&
+    left.every((value, index) => value === right[index])
+  );
+}
+
+function validLabelExposure(
+  value,
+  participantId,
+  studyId,
+  env,
+  expectedNamedLabelIds,
+) {
   if (value === undefined) return true;
   if (!isObject(value) || !isObject(value.assignment)) return false;
   const assignment = value.assignment;
@@ -397,15 +412,15 @@ function validLabelExposure(value, participantId, studyId, env) {
   )
     return false;
   const exposedLabelCount = value.exposedLabelIds.length;
+  if (value.exposureShown && assignment.arm === "named-label") {
+    const expected = Array.isArray(expectedNamedLabelIds)
+      ? expectedNamedLabelIds.slice(0, 3)
+      : null;
+    if (!expected || !sameSequence(value.exposedLabelIds, expected))
+      return false;
+  }
   if (
-    value.exposureShown &&
-    assignment.arm === "named-label" &&
-    exposedLabelCount === 0
-  )
-    return false;
-  if (
-    value.exposureShown &&
-    assignment.arm !== "named-label" &&
+    (!value.exposureShown || assignment.arm !== "named-label") &&
     exposedLabelCount > 0
   )
     return false;
@@ -452,7 +467,7 @@ function validExposurePresentation(presentation) {
     return false;
   const layers = new Set(["normative", "descriptive", "prescriptive"]);
   const positions = new Set([
-    "near midpoint",
+    "near the midpoint",
     "slightly toward",
     "leans toward",
     "strongly toward",
@@ -473,7 +488,7 @@ function validExposurePresentation(presentation) {
         layers.has(axis.layer) &&
         positions.has(axis.position) &&
         coverageBands.has(axis.coverageBand) &&
-        (axis.position === "near midpoint" ||
+        (axis.position === "near the midpoint" ||
           axis.position === "unmeasured" ||
           validString(axis.pole)),
     )
@@ -614,6 +629,7 @@ function validCoreRecord(submission, env) {
       submission.participantId,
       submission.studyId,
       env,
+      submission.predictedLabelIds,
     )
   );
 }

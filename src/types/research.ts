@@ -411,7 +411,7 @@ export interface LabelExposureRatings {
 }
 
 export type LabelExposurePosition =
-  | "near midpoint"
+  | "near the midpoint"
   | "slightly toward"
   | "leans toward"
   | "strongly toward"

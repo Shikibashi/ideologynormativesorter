@@ -17,6 +17,7 @@ import { announceStatus } from "../status";
 import type { AppActionContext } from "./actionTypes";
 import { refreshSpecialistProgress } from "./specialistActions";
 import { labelExposureOutcomeErrors } from "../research/linking";
+import { canonicalLabelExposureLabelIds } from "../research/labelExposure";
 
 export async function handleResearchIdentity(
   context: AppActionContext,
@@ -120,7 +121,10 @@ export function handleLabelExposureComplete(
       "The label-exposure assignment does not match this session.",
     );
   }
-  const errors = labelExposureOutcomeErrors(outcome);
+  const errors = labelExposureOutcomeErrors(
+    outcome,
+    canonicalLabelExposureLabelIds(context.result),
+  );
   if (errors.length > 0) {
     throw new Error(`Label exposure response violation: ${errors.join("; ")}`);
   }

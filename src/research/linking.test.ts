@@ -77,11 +77,12 @@ describe("research linking and exposure contracts", () => {
   });
 
   it("requires post-response randomized exposure and explicit missingness", () => {
-    const assignment = {
-      ...buildLabelExposureAssignment("study-1", "p1"),
-      version: LABEL_EXPOSURE_VERSION,
-      assignedAfterSubstantiveResponses: true,
-    } as const;
+    const assignment = Array.from({ length: 20 }, (_, index) =>
+      buildLabelExposureAssignment("study-1", `p${index}`),
+    ).find((candidate) => candidate.arm === "named-label");
+    if (!assignment)
+      throw new Error("test fixture did not produce named-label");
+    expect(assignment.version).toBe(LABEL_EXPOSURE_VERSION);
     const outcome: LabelExposureOutcome = {
       assignment,
       exposureShown: true,
@@ -92,13 +93,13 @@ describe("research linking and exposure contracts", () => {
             axisId: "authority-legitimacy",
             layer: "normative",
             name: "Authority Legitimacy",
-            position: "near midpoint",
+            position: "near the midpoint",
             coverageBand: "insufficient",
           },
         ],
         fingerprint: "",
       },
-      exposedLabelIds: assignment.arm === "named-label" ? ["label-a"] : [],
+      exposedLabelIds: ["label-a", "label-b", "label-c"],
       ratings: {
         perceivedAccuracy: 4,
         identityAcceptance: 3,
@@ -110,24 +111,47 @@ describe("research linking and exposure contracts", () => {
     outcome.presentation!.fingerprint = labelExposurePresentationFingerprint(
       outcome.presentation!.axes,
     );
-    expect(labelExposureOutcomeErrors(outcome)).toEqual([]);
+    const canonicalIds = ["label-a", "label-b", "label-c"];
+    expect(labelExposureOutcomeErrors(outcome, canonicalIds)).toEqual([]);
+    for (const exposedLabelIds of [
+      ["label-b", "label-a", "label-c"],
+      ["label-a", "label-b"],
+      ["label-a", "label-b", "label-d"],
+      ["label-a", "label-b", "label-b"],
+      ["label-a", "label-b", "label-c", "label-d"],
+    ]) {
+      expect(
+        labelExposureOutcomeErrors(
+          { ...outcome, exposedLabelIds },
+          canonicalIds,
+        ),
+      ).toContain(
+        "named-label exposure ids must exactly match canonical ordered top-three label ids",
+      );
+    }
     expect(
-      labelExposureOutcomeErrors({
-        ...outcome,
-        assignment: {
-          ...outcome.assignment,
-          arm:
-            outcome.assignment.arm === "named-label"
-              ? "dimension-only"
-              : "named-label",
+      labelExposureOutcomeErrors(
+        {
+          ...outcome,
+          assignment: {
+            ...outcome.assignment,
+            arm:
+              outcome.assignment.arm === "named-label"
+                ? "dimension-only"
+                : "named-label",
+          },
         },
-      }),
+        canonicalIds,
+      ),
     ).toContain("exposure arm does not match the frozen assignment rule");
     expect(
-      labelExposureOutcomeErrors({
-        ...outcome,
-        exposureShown: false,
-      }),
+      labelExposureOutcomeErrors(
+        {
+          ...outcome,
+          exposureShown: false,
+        },
+        canonicalIds,
+      ),
     ).toContain("unshown exposure outcomes require a missingReason");
   });
 });

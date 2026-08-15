@@ -1,7 +1,7 @@
 {
   "artifact": {
     "status": "current",
-    "asOf": "2026-08-14",
+    "asOf": "2026-08-15",
     "baselineCommit": "3d1e2d09b76247ce91bb04a51bdd28033a7c50f9",
     "scope": "Measurement architecture and opt-in research-task contract baseline",
     "notes": "The baseline commit is the last frozen production scorer state; W2 response-process tasks, W3/W4 analysis contracts, and label-exposure instrumentation remain opt-in and research-only."
@@ -84,6 +84,6 @@
   "codeReview": {
     "status": "passed",
     "recommendation": "keep research-task and estimator outputs outside production scoring until a new decision record approves promotion",
-    "evidence": "W0/W1 architecture contracts, W2 response-process tasks, and the W3 estimator scaffold are versioned separately; the approved D-27A presentation is implemented as label-exposure-v2; the untracked root vite artifact remains preserved and unstaged."
+    "evidence": "W0/W1 architecture contracts, W2 response-process tasks, and the W3 estimator scaffold are versioned separately; label-exposure-v2 now uses the approved 'near the midpoint' vocabulary and validates the exact canonical ordered top-three named-label IDs across the client, collector, and Worker; the untracked root vite artifact remains preserved and unstaged."
   }
 }

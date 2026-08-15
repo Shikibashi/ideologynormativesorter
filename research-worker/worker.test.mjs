@@ -58,7 +58,7 @@ function environment(overrides = {}) {
     EXPECTED_TAXONOMY_VERSION: "taxonomy-v1",
     EXPECTED_PRIMARY_MEASUREMENT_VERSION: "primary-measurement-v1",
     EXPECTED_MODIFIER_MEASUREMENT_VERSION: "modifier-measurement-v1",
-    EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT: "lr_6e7558bc",
+    EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT: "lr_62f8c1d9",
     EXPECTED_MODIFIER_LABEL_ROSTER_FINGERPRINT: "lr_28f0d466",
     EXPECTED_SPECIALIST_ASSIGNMENT_STRATEGY: "balanced-hash-v2",
     EXPECTED_SPECIALIST_ASSIGNMENT_ROSTER_VERSION:
@@ -176,7 +176,7 @@ function exposurePresentation() {
       axisId: "authority-legitimacy",
       layer: "normative",
       name: "Authority Legitimacy",
-      position: "near midpoint",
+      position: "near the midpoint",
       coverageBand: "insufficient",
     },
   ];
@@ -268,13 +268,18 @@ function coreSubmission(overrides = {}) {
     taxonomyVersion: "taxonomy-v1",
     primaryMeasurementVersion: "primary-measurement-v1",
     modifierMeasurementVersion: "modifier-measurement-v1",
-    primaryLabelIds: ["conservative"],
+    primaryLabelIds: [
+      "conservative",
+      "liberal",
+      "social-democracy",
+      "socialist",
+    ],
     modifierLabelIds: ["progressivism"],
-    primaryLabelRosterFingerprint: "lr_6e7558bc",
+    primaryLabelRosterFingerprint: "lr_62f8c1d9",
     modifierLabelRosterFingerprint: "lr_28f0d466",
     tier: "moderate",
     identity: {},
-    predictedLabelIds: [],
+    predictedLabelIds: ["conservative", "liberal", "social-democracy"],
     predictedModifierIds: [],
     answers: { q0001: { questionId: "q0001", value: 1 } },
     itemMap,
@@ -614,7 +619,7 @@ describe("research contribution Worker", () => {
     );
   });
 
-  it("accepts a valid post-response label-exposure outcome and rejects invalid ratings", async () => {
+  it("requires the exact canonical ordered top-three named labels", async () => {
     const env = environment();
     const valid = coreSubmission({
       submissionId: "submission_exposure",
@@ -629,7 +634,7 @@ describe("research contribution Worker", () => {
         },
         exposureShown: true,
         presentation: exposurePresentation(),
-        exposedLabelIds: ["conservative"],
+        exposedLabelIds: ["conservative", "liberal", "social-democracy"],
         ratings: {
           perceivedAccuracy: 4,
           identityAcceptance: 3,
@@ -640,14 +645,36 @@ describe("research contribution Worker", () => {
       },
     });
     assert.equal((await handleRequest(postRequest(valid), env)).status, 202);
-    const invalid = coreSubmission({
-      submissionId: "submission_exposure_invalid",
+    for (const [suffix, exposedLabelIds] of [
+      ["reordered", ["liberal", "conservative", "social-democracy"]],
+      ["missing", ["conservative", "liberal"]],
+      ["substituted", ["conservative", "liberal", "socialist"]],
+      ["duplicate", ["conservative", "liberal", "liberal"]],
+      [
+        "additional",
+        ["conservative", "liberal", "social-democracy", "socialist"],
+      ],
+    ]) {
+      const invalid = coreSubmission({
+        submissionId: `submission_exposure_${suffix}`,
+        labelExposure: { ...valid.labelExposure, exposedLabelIds },
+      });
+      assert.equal(
+        (await handleRequest(postRequest(invalid), env)).status,
+        422,
+      );
+    }
+    const invalidRating = coreSubmission({
+      submissionId: "submission_exposure_invalid_rating",
       labelExposure: {
         ...valid.labelExposure,
         ratings: { ...valid.labelExposure.ratings, perceivedAccuracy: 6 },
       },
     });
-    assert.equal((await handleRequest(postRequest(invalid), env)).status, 422);
+    assert.equal(
+      (await handleRequest(postRequest(invalidRating), env)).status,
+      422,
+    );
   });
 
   it("accepts a complete task record and rejects a mixed version bundle", async () => {

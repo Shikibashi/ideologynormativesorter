@@ -161,31 +161,51 @@ export function labelExposureAssignmentErrors(
 
 export function labelExposureOutcomeErrors(
   outcome: LabelExposureOutcome,
+  expectedNamedLabelIds?: readonly string[],
 ): string[] {
   const errors = labelExposureAssignmentErrors(outcome.assignment);
   if (
     !Array.isArray(outcome.exposedLabelIds) ||
     new Set(outcome.exposedLabelIds).size !== outcome.exposedLabelIds.length ||
-    outcome.exposedLabelIds.some((labelId) => !labelId.trim())
+    !outcome.exposedLabelIds.every(
+      (labelId) => typeof labelId === "string" && labelId.trim().length > 0,
+    )
   ) {
     errors.push("exposed label ids must be unique, non-empty ids");
   }
   const exposedLabelCount = Array.isArray(outcome.exposedLabelIds)
     ? outcome.exposedLabelIds.length
     : 0;
-  if (
-    outcome.exposureShown &&
-    outcome.assignment.arm === "named-label" &&
-    exposedLabelCount === 0
-  ) {
-    errors.push("named-label exposure must record the exposed label ids");
+  const exposedLabelIds = Array.isArray(outcome.exposedLabelIds)
+    ? outcome.exposedLabelIds
+    : [];
+  if (outcome.exposureShown && outcome.assignment.arm === "named-label") {
+    const expected = Array.isArray(expectedNamedLabelIds)
+      ? expectedNamedLabelIds.slice(0, 3)
+      : null;
+    if (
+      !expected ||
+      !expected.every(
+        (labelId) => typeof labelId === "string" && labelId.trim().length > 0,
+      )
+    ) {
+      errors.push(
+        "named-label exposure validation requires canonical ordered label ids",
+      );
+    } else if (
+      exposedLabelCount !== expected.length ||
+      exposedLabelIds.some((labelId, index) => labelId !== expected[index])
+    ) {
+      errors.push(
+        "named-label exposure ids must exactly match canonical ordered top-three label ids",
+      );
+    }
   }
   if (
-    outcome.exposureShown &&
-    outcome.assignment.arm !== "named-label" &&
+    (!outcome.exposureShown || outcome.assignment.arm !== "named-label") &&
     exposedLabelCount > 0
   ) {
-    errors.push("non-label exposure arms cannot record exposed label ids");
+    errors.push("unshown or no-label exposure arms cannot record label ids");
   }
   if (outcome.exposureShown) {
     if (!outcome.presentation) {
@@ -232,8 +252,9 @@ export function assertBridgeResponseRecord(record: BridgeResponseRecord): void {
 
 export function assertLabelExposureOutcome(
   outcome: LabelExposureOutcome,
+  expectedNamedLabelIds?: readonly string[],
 ): void {
-  const errors = labelExposureOutcomeErrors(outcome);
+  const errors = labelExposureOutcomeErrors(outcome, expectedNamedLabelIds);
   if (errors.length > 0)
     throw new Error(`Label exposure violation: ${errors.join("; ")}`);
 }

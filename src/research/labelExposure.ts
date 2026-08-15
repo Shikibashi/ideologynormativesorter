@@ -6,6 +6,7 @@ import type {
   LabelExposurePresentation,
   ResultProfile,
 } from "../types";
+import { canonicalLabelId } from "../data/labelTaxonomy";
 import { coverageLabel } from "../resultLanguage";
 import { LABEL_EXPOSURE_VERSION } from "./versions";
 
@@ -40,7 +41,7 @@ function positionFor(
   normalized: number,
   axis: Axis,
 ): Pick<LabelExposureAxisSnapshot, "position" | "pole"> {
-  if (Math.abs(normalized) < 0.12) return { position: "near midpoint" };
+  if (Math.abs(normalized) < 0.12) return { position: "near the midpoint" };
   const strength = Math.abs(normalized);
   const position: LabelExposurePosition =
     strength < 0.35
@@ -52,6 +53,15 @@ function positionFor(
     position,
     pole: normalized > 0 ? axis.positivePole : axis.negativePole,
   };
+}
+
+/** The exact ordered label IDs shown by the named-label arm. */
+export function canonicalLabelExposureLabelIds(
+  result: ResultProfile,
+): string[] {
+  return result.nearestLabels
+    .slice(0, 3)
+    .map((match) => canonicalLabelId(match.labelId));
 }
 
 function coverageFor(
@@ -107,7 +117,7 @@ export function labelExposurePresentationErrors(
   const errors: string[] = [];
   const layers = new Set(["normative", "descriptive", "prescriptive"]);
   const positions = new Set([
-    "near midpoint",
+    "near the midpoint",
     "slightly toward",
     "leans toward",
     "strongly toward",
@@ -136,7 +146,7 @@ export function labelExposurePresentationErrors(
       !layers.has(axis.layer) ||
       !positions.has(axis.position) ||
       !coverageBands.has(axis.coverageBand) ||
-      (axis.position !== "near midpoint" &&
+      (axis.position !== "near the midpoint" &&
         axis.position !== "unmeasured" &&
         !axis.pole?.trim())
     ) {

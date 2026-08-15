@@ -15,7 +15,7 @@ interface SubmittedExposure {
   ratings: Record<string, unknown>;
 }
 
-test("label exposure is assigned after substantive responses and leaves the score boundary intact", async ({
+test("named-label exposure preserves the canonical top-three outcome and score boundary", async ({
   page,
 }) => {
   let submittedPayload: { labelExposure?: SubmittedExposure } | null = null;
@@ -23,6 +23,12 @@ test("label exposure is assigned after substantive responses and leaves the scor
     if (route.request().method() === "POST")
       submittedPayload = route.request().postDataJSON();
     await route.fulfill({ status: 202, body: "{}" });
+  });
+  await page.addInitScript(() => {
+    localStorage.setItem(
+      "political-judgment-research-participant-v1:exposure-pilot",
+      "p_test",
+    );
   });
   await page.goto("/?research=1&exposure=1&study=exposure-pilot&formSize=12");
 
@@ -53,11 +59,19 @@ test("label exposure is assigned after substantive responses and leaves the scor
     /normalized|posterior|probabilit(?:y|ies)|margin|%/i,
   );
   await expect(page.locator("[data-exposure-profile]")).toContainText(
-    /near midpoint|slightly toward|leans toward|strongly toward|unmeasured/,
+    /near the midpoint|slightly toward|leans toward|strongly toward|unmeasured/,
   );
   await expect(
     page.getByText(/This is a profile-similarity comparison/),
   ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Closest current profile matches" }),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("list", { name: "Closest current profile matches" })
+      .getByRole("listitem"),
+  ).toHaveCount(3);
 
   await page
     .getByRole("button", { name: "Continue to optional profile fields" })
@@ -79,7 +93,8 @@ test("label exposure is assigned after substantive responses and leaves the scor
     exposureShown: true,
     presentation: { version: LABEL_EXPOSURE_VERSION },
   });
-  expect(Array.isArray(exposure.exposedLabelIds)).toBe(true);
+  expect(exposure.assignment.arm).toBe("named-label");
+  expect(exposure.exposedLabelIds).toHaveLength(3);
   expect(Object.keys(exposure.ratings).sort()).toEqual([
     "affect",
     "confidence",

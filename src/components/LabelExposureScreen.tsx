@@ -6,6 +6,7 @@ import type {
   ResultProfile,
 } from "../types";
 import {
+  canonicalLabelExposureLabelIds,
   buildLabelExposurePresentation,
   labelExposureCoverageText,
 } from "../research/labelExposure";
@@ -44,7 +45,7 @@ export function LabelExposureScreen({
   const visibleMatches = result.nearestLabels.slice(0, 3);
   const exposedLabelIds =
     assignment.arm === "named-label"
-      ? visibleMatches.map((match) => String(match.labelId))
+      ? canonicalLabelExposureLabelIds(result)
       : [];
 
   function complete(): void {
@@ -98,7 +99,7 @@ export function LabelExposureScreen({
               (candidate) => String(candidate.axisId) === axis.axisId,
             );
             const position =
-              axis.position === "near midpoint" ||
+              axis.position === "near the midpoint" ||
               axis.position === "unmeasured"
                 ? axis.position
                 : `${axis.position} ${axis.pole}`;

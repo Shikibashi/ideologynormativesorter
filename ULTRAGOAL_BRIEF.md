@@ -6,7 +6,7 @@ This brief records the current implementation contract for the ideology sorter. 
 
 - Stack: Vite 8, React 19, TypeScript 6, Vitest 4, ESLint 10, and Playwright. The frontend has no router or application database.
 - Entry flow: `src/main.tsx` mounts `App`; `src/App.tsx` delegates orchestration to `src/app/useAppController.ts`; `src/components/AppStage.tsx` renders the current stage.
-- Stages: intro, methodology, consent, core quiz, self-identification, optional specialist invitation/quiz/criterion/result, and final results.
+- Stages: intro, methodology, consent, the opt-in research-task stage when a supported controlled arm is requested, core quiz, the opt-in label-exposure stage after substantive responses, self-identification, optional specialist invitation/quiz/criterion/result, and final results.
 - Public quiz tiers: Balanced (`moderate`, 206 active core questions) and Full-depth (`extensive`, 338 active core questions). `blitz` and `quick` remain nested internal/legacy tiers and are not public intro choices.
 - Effective live bank: 338 active core questions plus 68 respondent-facing specialist questions, for 406 live questions. The effective bank is the runtime source of truth; raw question files and historical audit tables are not substitutes for it.
 
@@ -23,6 +23,8 @@ This brief records the current implementation contract for the ideology sorter. 
 
 - Research contract: study `community-2026-v5`, schema `2026-08-v19`, consent `2026-08-12-v8`, profile form `profile-form-v3`, research-task form `2026-08-research-task-form-v2`, task bank `2026-08-research-task-bank-v3`, strategy task bank `2026-08-strategy-task-bank-v2`, and assignment strategy `balanced-hash-v2`.
 - Research mode preserves the selected ordinary profile for contribution. Matrix/test-retest forms are explicit research requests and use deterministic membership, order, and fingerprints.
+- Research-task and label-exposure stages are opt-in research-only surfaces. They preserve the ordinary profile and do not change production scoring, taxonomy matching, or ordinary result language.
+- W3/W4 analysis, comparison, and calibration paths remain research-only scaffolding; they are not empirically operational and do not supply production estimators or validation claims.
 - The frozen specialist roster is `2026-08-specialist-roster-v1` with nine modules. Specialist results expose evidence coverage and gates and do not silently change the ordinary result.
 - `research-collector/` provides dependency-free HTTP validation and NDJSON collection. `research-worker/` provides the Cloudflare Worker/D1 path, rate limiting, version checks, idempotency, and migrations.
 
