@@ -57,3 +57,137 @@ These unresolved decisions permit documentation and research scaffolding. They
 keep production taxonomy, scoring, ranking, public probabilities, subgroup
 claims, cross-national claims, and population claims at the current evidence
 boundary.
+
+## D-27A — Label-exposure presentation contract
+
+**Status:** adopted methodological clarification; research-only. This decision
+does not alter `buildResultProfile`, axis aggregation, label matching, ordinary
+result language, or the deterministic post-response assignment in D-27. It
+defines the presentation that must be implemented before collecting data under a
+new label-exposure presentation version. The existing `2026-08-label-exposure-v1`
+contract must not be silently reinterpreted; implementation of this clarification
+requires a presentation-version bump and a preregistration amendment before
+field use.
+
+### Design invariant
+
+All three randomized arms receive the same substantive profile. The profile is
+computed once from the completed core answers and the frozen production
+question-bank, taxonomy, and scoring versions. It is rendered through one common
+presentation component with the same axis set, layer grouping, axis order,
+axis names, qualitative positions, evidence-coverage wording, uncertainty note,
+and rating questions in every arm.
+
+`dimension-only` and `unlabeled-profile` remain separate assignment values for
+the preregistered randomization and analysis record, but they are the same
+participant-facing no-label control. Their headings or arm metadata must not
+create a substantive-information difference. The study must not compare them as
+different presentation treatments unless a later preregistration explicitly
+authorizes and versions a framing experiment.
+
+### Common participant-facing information
+
+Every arm may display:
+
+- the fixed heading `Substantive profile`;
+- the same three layer sections: `Normative`, `Descriptive`, and `Prescriptive`;
+- every axis in the frozen result profile, in the same deterministic order;
+- each axis name and pole names;
+- one qualitative axis-position phrase from the existing result-language
+  contract: `near the midpoint`, `slightly toward [pole]`, `leans toward
+[pole]`, or `strongly toward [pole]`;
+- one qualitative evidence-coverage phrase from the existing coverage contract:
+  `broad answer coverage`, `moderate answer coverage`, `limited answer
+coverage`, or `too little answer coverage`; an axis with `itemCount = 0` is
+  shown as `unmeasured`;
+- the same fixed notice: `This is a profile-similarity comparison, not a
+diagnosis, probability, validated identity, or population claim. Some
+dimensions are more tentative when answer coverage is limited.`;
+- the same five optional post-exposure rating questions and the same explicit
+  `Prefer not to answer` path.
+
+The common profile must not omit an axis because it is unmeasured, and it must
+not impute or substitute a value for an unmeasured axis. Evidence coverage is a
+descriptive disclosure of observed answer coverage, not a reliability,
+accuracy, posterior, or validity claim.
+
+### Exact arm difference
+
+| Arm                 | Participant-facing content                                                                                                                                                              |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dimension-only`    | The common substantive profile only. No ideology, tradition, family, or label name is shown.                                                                                            |
+| `unlabeled-profile` | Exactly the same visible content as `dimension-only`. The distinction exists only in the randomized assignment and persisted arm field.                                                 |
+| `named-label`       | The common substantive profile plus an ordered list of up to three `nearestLabels` names, using the frozen current roster. The list is introduced as `Closest current profile matches`. |
+
+The named-label arm may add only the label names and their frozen order. It must
+not add label descriptions, family or subfamily names, fit scores, distances,
+runner-up margins, percentages, probabilities, posteriors, or label-specific
+confidence/uncertainty numbers. Its explanatory notice must say that the names
+describe similarity in the measured profile and do not identify the participant.
+
+### Numeric precision and terminology
+
+Raw and normalized axis values are computation-only. Neither may appear in the
+participant-facing label-exposure screen, including as decimals, percentages,
+tooltips, ARIA text, data labels, bars with numeric equivalents, or serialized
+presentation text intended for display. No axis score is rounded for display;
+there is therefore no permitted display precision for axis scores.
+
+The qualitative position and coverage phrases above are the complete permitted
+display precision. The 1–5 response options for the post-exposure rating
+questions remain allowed because they are outcome-response scales, not axis
+scores. Participant-facing copy must use `profile`, `profile similarity`,
+`profile match`, `evidence coverage`, `unmeasured`, and `tentative` language.
+It must not use `you are [label]`, `identity`, `diagnosis`, `probability`,
+`posterior`, `population`, `representative`, or numeric `confidence` language.
+The existing self-report prompt about confidence in the participant's reaction
+and its 1–5 response scale remain permitted; that response is an outcome
+measure, not a claim about profile or label certainty.
+
+### Persisted outcome contract
+
+Every completed or explicitly unshown outcome must persist:
+
+- the assignment object, including presentation version, study ID, participant
+  code, arm, deterministic seed, and the fact that assignment occurred after
+  substantive responses;
+- `exposureShown` and, when applicable, `missingReason`;
+- the common-profile presentation fingerprint plus the ordered axis IDs,
+  layer values, qualitative position tokens, and evidence-coverage bands that
+  were rendered;
+- `exposedLabelIds` as an ordered list matching the displayed names in the
+  `named-label` arm, and an empty list for both no-label arms;
+- the existing perceived-accuracy, identity-acceptance, reaction-confidence,
+  affect, and expected-follow-up-stability responses, preserving omitted and
+  refused values as missing rather than midpoint values.
+
+The persisted presentation snapshot must contain no raw or normalized axis
+values. Core answers and frozen version metadata remain the source for later
+recomputation; the snapshot records what was actually presented.
+
+### Implementation acceptance criteria
+
+Codex implementation is accepted only when:
+
+1. all three arms render the same common-profile component from the same result
+   object and have identical axis IDs, layer grouping, ordering, qualitative
+   position tokens, coverage bands, notice text, and rating-field order;
+2. the two no-label arms render no ideology/tradition/family/label names and
+   differ only in the persisted arm assignment, not visible content;
+3. the named-label arm renders exactly the ordered top-three-or-fewer label
+   names and persists the same ordered label IDs;
+4. no raw/normalized axis number, percentage, fit, distance, margin,
+   posterior, or probability appears in rendered text, accessible text,
+   tooltips, or presentation snapshots;
+5. unmeasured axes remain visible as `unmeasured`, and coverage wording is
+   identical across arms;
+6. outcome validation rejects label IDs in either no-label arm, rejects a
+   missing or reordered named-label list, rejects a missing common-profile
+   fingerprint/snapshot, and preserves explicit missingness for all ratings;
+7. browser tests visit all three arms, compare the common-profile DOM/content
+   snapshots, assert the exact named-label-only difference, scan accessible
+   text for forbidden numeric/result-language terms, complete each arm, and
+   verify the serialized outcome and receipt;
+8. unit tests prove deterministic arm assignment, qualitative position/coverage
+   formatting, exact top-label selection, and versioned presentation-fingerprint
+   validation.
