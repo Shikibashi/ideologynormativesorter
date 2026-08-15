@@ -8,6 +8,7 @@ import {
   VNEXT_VALIDATION_MANIFEST_VERSION,
   VNEXT_FROZEN_BASELINE_COMMIT,
 } from "../validation/vnextVersions";
+import { vnextSurfaceManifests } from "./vnextSurfaceManifests";
 import type {
   VNextAnalysisSplit,
   VNextValidationManifest,
@@ -111,7 +112,11 @@ export const vnextValidationManifest: VNextValidationManifest = {
     vnextItemAnnotationsVersion: VNEXT_ITEM_ANNOTATIONS_VERSION,
     frozenProductionBaselineCommit: VNEXT_FROZEN_BASELINE_COMMIT,
   },
-  codeRevision: VNEXT_FROZEN_BASELINE_COMMIT,
+  codeRevision: "e298ccd5588708528db4b63e3e33ce6f19230d69",
+  frozenProductionBaselineRevision: VNEXT_FROZEN_BASELINE_COMMIT,
+  surfaceManifestIds: vnextSurfaceManifests.map(
+    (manifest) => manifest.manifestId,
+  ),
   seed: 0,
   itemFingerprint: `${VNEXT_ITEM_ANNOTATIONS_VERSION}:${itemIds.join("|")}`,
   optionFingerprint: `${VNEXT_ITEM_ANNOTATIONS_VERSION}:statement-choice-options-v1`,

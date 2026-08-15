@@ -8,7 +8,7 @@ import {
 
 describe("vNext challenger contracts", () => {
   it("registers the baseline and every research-only challenger family", () => {
-    expect(vnextChallengerSpecifications).toHaveLength(6);
+    expect(vnextChallengerSpecifications).toHaveLength(15);
     expect(vnextChallengerSpecificationErrors()).toEqual([]);
     expect(() => assertVNextChallengers()).not.toThrow();
   });

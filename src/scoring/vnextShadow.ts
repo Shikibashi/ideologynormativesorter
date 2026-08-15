@@ -1,6 +1,8 @@
 import { questions as defaultQuestions } from "../data/effectiveQuestions";
 import { vnextFacetById, vnextRootById } from "../data/vnextConstructs";
 import { vnextItemAnnotationById } from "../data/vnextItemAnnotations";
+import { vnextSurfaceManifestBySurface } from "../data/vnextSurfaceManifests";
+import { CURRENT_RESEARCH_VERSION_BUNDLE } from "../validation/researchContracts";
 import { contributionForQuestionAxis } from "./aggregate";
 import { VNEXT_SHADOW_SCORING_VERSION } from "../validation/vnextVersions";
 import type {
@@ -34,6 +36,7 @@ function estimate(
   }[],
   eligibleItemCount: number,
   missingness: Readonly<Record<string, number>>,
+  abstentionRationale?: string,
 ): VNextShadowEstimate {
   const answered = entries.filter((entry) => entry.answerValue !== undefined);
   const weightSum = answered.reduce(
@@ -42,6 +45,13 @@ function estimate(
   );
   const raw = answered.reduce((sum, entry) => sum + entry.contribution, 0);
   const measured = answered.length > 0 && weightSum > 0;
+  const evidenceStatus = measured
+    ? answered.length < eligibleItemCount
+      ? "partial"
+      : "measured"
+    : abstentionRationale
+      ? "abstained"
+      : "unmeasured";
   return {
     id,
     layer,
@@ -53,6 +63,14 @@ function estimate(
     weightSum,
     coverage: eligibleItemCount > 0 ? answered.length / eligibleItemCount : 0,
     missingness,
+    evidenceStatus,
+    uncertainty: {
+      kind: "unquantified",
+      reason:
+        "Respondent calibration, uncertainty, and promotion evidence are not available in the design-only shadow contract.",
+    },
+    claimCeiling: "PC0",
+    ...(abstentionRationale ? { abstentionRationale } : {}),
   };
 }
 
@@ -108,6 +126,34 @@ function buildEstimate(
   return estimate(id, layer, entries, selected.length, missingness);
 }
 
+function buildFacetEstimate(
+  id: string,
+  layer: Layer,
+  questions: readonly Question[],
+  answers: AnswerMap,
+  include: (itemId: string) => boolean,
+): VNextShadowEstimate {
+  const selected = questions.filter((question) => include(question.id));
+  const missingness = emptyMissingness();
+  let answeredWithoutFacetContract = 0;
+  for (const question of selected) {
+    const state = answerState(answers[question.id]);
+    if (state !== "answered")
+      missingness[state] = (missingness[state] ?? 0) + 1;
+    else answeredWithoutFacetContract += 1;
+  }
+  if (answeredWithoutFacetContract > 0)
+    missingness.blocked = answeredWithoutFacetContract;
+  return estimate(
+    id,
+    layer,
+    [],
+    selected.length,
+    missingness,
+    "No approved facet-level weight/estimator is attached to this item; root weights cannot be reused for a facet estimate.",
+  );
+}
+
 function duplicateIds(questions: readonly Question[]): string[] {
   const seen = new Set<string>();
   const duplicate = new Set<string>();
@@ -159,7 +205,7 @@ export function computeVNextShadowScores(
     ),
   );
   const facetScores = facets.map((facet) =>
-    buildEstimate(
+    buildFacetEstimate(
       facet.id,
       facet.layer,
       usableQuestions.filter((question) => question.layer === facet.layer),
@@ -167,8 +213,21 @@ export function computeVNextShadowScores(
       (itemId) =>
         vnextItemAnnotationById.get(itemId)?.facetIds.includes(facet.id) ??
         false,
-      facet.rootId,
     ),
+  );
+  const allMeasured = [...rootScores, ...facetScores].some(
+    (score) => score.measured,
+  );
+  const surfaceManifestId = usableQuestions.every((question) =>
+    vnextSurfaceManifestBySurface.get("core")?.itemIds.includes(question.id),
+  )
+    ? vnextSurfaceManifestBySurface.get("core")!.manifestId
+    : (vnextSurfaceManifestBySurface.get("specialist")?.manifestId ??
+      "vnext-analysis-surface:unresolved");
+  const abstentionRationale = facetScores.flatMap((score) =>
+    score.abstentionRationale
+      ? [`${score.id}: ${score.abstentionRationale}`]
+      : [],
   );
   return {
     scoringVersion: VNEXT_SHADOW_SCORING_VERSION,
@@ -183,5 +242,14 @@ export function computeVNextShadowScores(
     ) as Record<Layer, boolean>,
     excludedItemIds,
     warnings: [...new Set(warnings)],
+    evidenceStatus: allMeasured ? "partial" : "design-only",
+    claimCeiling: "PC0",
+    versionTuple: {
+      ...CURRENT_RESEARCH_VERSION_BUNDLE,
+      vnextShadowScoringVersion: VNEXT_SHADOW_SCORING_VERSION,
+      vnextSurfaceManifestVersion: "2026-08-vnext-surface-manifests-v1",
+    },
+    surfaceManifestId,
+    abstentionRationale,
   };
 }

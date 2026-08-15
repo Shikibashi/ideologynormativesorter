@@ -29,6 +29,8 @@ export interface VNextChallengerSpecification {
   family: VNextChallengerFamily;
   objectIds: readonly string[];
   itemIds: readonly string[];
+  surfaceManifestId: string;
+  moduleId?: string;
   estimand: string;
   heldOutSplit: "confirmation" | "replication";
   seed: number;

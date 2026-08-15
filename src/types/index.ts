@@ -12,5 +12,7 @@ export * from "./vnextValidation";
 export * from "./vnextChallengers";
 export * from "./vnextCalibration";
 export * from "./vnextShadow";
+export * from "./vnextSurfaces";
+export * from "./vnextRelease";
 export * from "./label";
 export * from "./research";

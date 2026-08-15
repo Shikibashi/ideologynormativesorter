@@ -9,6 +9,7 @@ import {
   vnextEvidenceCardByLegacyId,
   vnextPromotionRecords,
 } from "../data/vnextEvidenceCards";
+import { vnextOntologyById } from "../data/vnextOntology";
 import { VNEXT_EVIDENCE_COMPONENT_IDS } from "../types";
 import type { VNextEvidenceCard } from "../types";
 
@@ -60,6 +61,19 @@ export function vnextEvidenceCardErrors(
       errors.push(
         `${card.labelId} exceeds the current PC0/qualified-PC1 ceiling`,
       );
+    }
+    if (
+      [
+        "compound-tradition",
+        "bridge-tradition",
+        "hybrid-configuration",
+      ].includes(card.conceptualKind) &&
+      (!card.m0HostId || !vnextOntologyById.has(card.m0HostId))
+    ) {
+      errors.push(`${card.labelId} lacks an authoritative M0 host`);
+    }
+    if (card.m0HostId && card.m0ModifierOrFacetIds.length === 0) {
+      errors.push(`${card.labelId} lacks M0 facet/residual scope`);
     }
   }
   for (const labelId of [

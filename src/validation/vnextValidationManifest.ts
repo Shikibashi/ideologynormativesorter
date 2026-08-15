@@ -2,6 +2,7 @@ import { VNEXT_ANALYSIS_SPLITS, VNEXT_VALIDATION_STAGES } from "../types";
 import type { VNextValidationManifest, VNextRawResponseRecord } from "../types";
 import { vnextEvidenceCardByCardId } from "../data/vnextEvidenceCards";
 import { vnextValidationManifest } from "../data/vnextValidationManifest";
+import { vnextSurfaceManifestById } from "../data/vnextSurfaceManifests";
 
 function hasFingerprint(value: string): boolean {
   return value.trim().length >= 8;
@@ -60,6 +61,19 @@ export function vnextValidationManifestErrors(
   }
   if (!Number.isInteger(manifest.seed) || manifest.seed < 0)
     errors.push("seed must be a non-negative integer");
+  if (!/^[0-9a-f]{40}$/.test(manifest.codeRevision))
+    errors.push("codeRevision must be a full candidate commit SHA");
+  if (!/^[0-9a-f]{40}$/.test(manifest.frozenProductionBaselineRevision))
+    errors.push(
+      "frozen production baseline revision must be a full commit SHA",
+    );
+  if (manifest.codeRevision === manifest.frozenProductionBaselineRevision)
+    errors.push("candidate and frozen baseline revisions must be distinct");
+  if (manifest.surfaceManifestIds.length === 0)
+    errors.push("validation manifest must declare analysis surfaces");
+  for (const surfaceManifestId of manifest.surfaceManifestIds)
+    if (!vnextSurfaceManifestById.has(surfaceManifestId))
+      errors.push(`unknown analysis surface manifest ${surfaceManifestId}`);
   for (const [name, fingerprint] of Object.entries({
     item: manifest.itemFingerprint,
     option: manifest.optionFingerprint,

@@ -116,6 +116,8 @@ export interface VNextValidationManifest {
   };
   versionBundle: Readonly<Record<string, string>>;
   codeRevision: string;
+  frozenProductionBaselineRevision: string;
+  surfaceManifestIds: readonly string[];
   seed: number;
   itemFingerprint: string;
   optionFingerprint: string;

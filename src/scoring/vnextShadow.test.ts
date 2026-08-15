@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { computeVNextShadowScores } from "./vnextShadow";
+import { vnextItemAnnotations } from "../data/vnextItemAnnotations";
 import type { AnswerMap, Question } from "../types";
 
 function question(overrides: Partial<Question> = {}): Question {
@@ -92,5 +93,39 @@ describe("vNext shadow scorer", () => {
       score: -1,
       answeredItemCount: 1,
     });
+  });
+
+  it("fails closed for answered items without an approved facet estimator", () => {
+    const annotation = vnextItemAnnotations.find((item) =>
+      item.facetIds.includes("authority.accountability"),
+    );
+    expect(annotation).toBeDefined();
+    const q = question({
+      id: annotation!.itemId,
+      axisWeights: [{ axisId: annotation!.intendedRootIds[0]!, weight: 1 }],
+    });
+    const result = computeVNextShadowScores([q], {
+      [q.id]: { questionId: q.id, value: 6 },
+    });
+    expect(
+      result.facetScores.find(
+        (score) => score.id === "authority.accountability",
+      ),
+    ).toMatchObject({
+      measured: false,
+      evidenceStatus: "abstained",
+      answeredItemCount: 0,
+      eligibleItemCount: 1,
+      claimCeiling: "PC0",
+      abstentionRationale: expect.stringContaining(
+        "root weights cannot be reused",
+      ),
+    });
+    expect(result.surfaceManifestId).toBe(
+      "vnext-analysis-surface:core:2026-08-v1",
+    );
+    expect(result.versionTuple.vnextSurfaceManifestVersion).toBe(
+      "2026-08-vnext-surface-manifests-v1",
+    );
   });
 });

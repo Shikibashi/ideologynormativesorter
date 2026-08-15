@@ -7,6 +7,10 @@ import {
   vnextChallengerSpecifications,
   vnextChallengerSpecificationById,
 } from "../data/vnextChallengers";
+import {
+  vnextSpecialistItemIdsByModule,
+  vnextSurfaceManifestById,
+} from "../data/vnextSurfaceManifests";
 
 export function vnextChallengerSpecificationErrors(
   specifications: readonly VNextChallengerSpecification[] = vnextChallengerSpecifications,
@@ -41,6 +45,56 @@ export function vnextChallengerSpecificationErrors(
     }
     if (!specification.provenance.includes("I-009"))
       errors.push(`${specification.id} lacks I-009 traceability`);
+    const surface = vnextSurfaceManifestById.get(
+      specification.surfaceManifestId,
+    );
+    if (!surface) {
+      errors.push(
+        `${specification.id} references an unknown analysis surface manifest`,
+      );
+    } else if (specification.moduleId) {
+      if (surface.surface !== "specialist")
+        errors.push(
+          `${specification.id} Specialist challenger is not scoped to the Specialist surface`,
+        );
+      const expected =
+        vnextSpecialistItemIdsByModule.get(specification.moduleId) ?? [];
+      if (
+        JSON.stringify([...specification.itemIds].sort()) !==
+        JSON.stringify([...expected].sort())
+      )
+        errors.push(
+          `${specification.id} does not consume its declared module-local roster`,
+        );
+      if (
+        specification.itemIds.some(
+          (itemId) => !surface.itemIds.includes(itemId),
+        )
+      )
+        errors.push(
+          `${specification.id} contains an item outside the Specialist surface manifest`,
+        );
+    } else {
+      if (surface.surface !== "core")
+        errors.push(
+          `${specification.id} non-Specialist challenger is not scoped to core`,
+        );
+      if (
+        specification.itemIds.some(
+          (itemId) => !surface.itemIds.includes(itemId),
+        )
+      )
+        errors.push(
+          `${specification.id} contains an item outside the core surface manifest`,
+        );
+    }
+    if (
+      specification.family === "production-baseline" &&
+      (surface?.surface !== "core" || specification.moduleId)
+    )
+      errors.push(
+        "production baseline challenger may consume only the core surface",
+      );
   }
   const families = new Set(
     specifications.map((specification) => specification.family),

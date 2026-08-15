@@ -8,12 +8,20 @@ import {
 } from "./labelTaxonomy";
 import { labels } from "./labels";
 import { specialistModuleDefinitions } from "../specialist";
+import { vnextGraphEdgesBySource } from "./vnextGraph";
+import { vnextSurfaceManifestBySurface } from "./vnextSurfaceManifests";
 import { vnextOntologyById } from "./vnextOntology";
 import { CURRENT_RESEARCH_VERSION_BUNDLE } from "../validation/researchContracts";
 import {
   VNEXT_EVIDENCE_CARD_VERSION,
   VNEXT_IMPLEMENTATION_DECISION_IDS,
   VNEXT_PROMOTION_RECORD_VERSION,
+  VNEXT_CONSTRUCTS_VERSION,
+  VNEXT_FACET_MAP_VERSION,
+  VNEXT_GRAPH_VERSION,
+  VNEXT_ITEM_ANNOTATIONS_VERSION,
+  VNEXT_ONTOLOGY_VERSION,
+  VNEXT_ROLE_POLICY_VERSION,
 } from "../validation/vnextVersions";
 import type {
   VNextEvidenceCard,
@@ -70,12 +78,18 @@ function publicState(labelId: string): VNextPromotionState {
 }
 
 function constructScope(labelId: string, role: string): string[] {
-  if (role === "primary") {
+  const node = vnextOntologyById.get(labelId);
+  if (node) {
+    return [
+      ...node.evidenceRequirements.requiredConstructIds,
+      ...node.evidenceRequirements.requiredFacetIds,
+    ];
+  }
+  if (role === "primary")
     return [
       ...(primaryScoringLabels.find((label) => label.id === labelId)
         ?.scoringScope?.axisIds ?? []),
     ];
-  }
   const moduleId = specialistModuleByLabel[labelId];
   const module = specialistModuleDefinitions.find(
     (candidate) => candidate.id === moduleId,
@@ -90,6 +104,34 @@ function constructScope(labelId: string, role: string): string[] {
   ];
 }
 
+const COMPOUND_HOSTS: Readonly<Record<string, string>> = {
+  "christian-democrat": "social-democrat",
+  "democratic-socialist": "social-democrat",
+  "national-conservatism": "conservative",
+  "liberal-conservatism": "classical-liberalism",
+  "marxist-leninist": "marxian-socialism",
+  "anarcho-capitalist": "market-right-libertarianism",
+  "anarcha-feminism": "social-anarchism",
+  "bleeding-heart-libertarianism": "market-right-libertarianism",
+  "christian-socialism": "social-democrat",
+  ecosocialist: "green-politics",
+  "left-wing-market-anarchism": "market-anarchism",
+  "market-socialist": "social-democrat",
+  "socialist-feminism": "feminist-orientation",
+  "black-feminism": "feminist-orientation",
+  "queer-politics": "feminist-orientation",
+  "queer-anarchism": "social-anarchism",
+  "welfare-chauvinism": "social-democrat",
+  "religious-nationalism": "national-conservatism",
+  "cultural-populism": "populism",
+  "bright-green-environmentalism": "green-politics",
+  "civil-libertarian-cosmopolitan": "civil-libertarianism",
+  "decentralist-market-skeptic-of-state": "decentralist-orientation",
+  "egalitarian-statist": "social-democrat",
+  "national-traditionalist": "national-conservatism",
+  "revolutionary-collectivist": "marxian-socialism",
+};
+
 function createCard(labelId: string): VNextEvidenceCard {
   const label = labels.find((candidate) => candidate.id === labelId);
   const node = vnextOntologyById.get(labelId);
@@ -98,13 +140,10 @@ function createCard(labelId: string): VNextEvidenceCard {
     throw new Error(`Cannot build evidence card for ${labelId}`);
   const scope = constructScope(labelId, taxonomy.role);
   const graphParentsAndRelations = [
-    ...(node.compatibility.parentId
-      ? [{ relation: "subtype_of", labelId: node.compatibility.parentId }]
-      : []),
-    ...node.compatibility.relations.map((relation) => ({
-      relation: relation.type,
-      labelId: relation.labelId,
-      ...(relation.note ? { note: relation.note } : {}),
+    ...(vnextGraphEdgesBySource.get(labelId) ?? []).map((edge) => ({
+      relation: edge.type,
+      labelId: edge.targetId,
+      ...(edge.note ? { note: edge.note } : {}),
     })),
   ];
   const nearestNeighborIds = [
@@ -116,9 +155,29 @@ function createCard(labelId: string): VNextEvidenceCard {
   ].filter((id) => vnextOntologyById.has(id));
   const state = publicState(labelId);
   const claimTierCeiling = state === "catalog-context" ? "PC0" : "PC1";
+  const compound = [
+    "compound-tradition",
+    "bridge-tradition",
+    "hybrid-configuration",
+  ].includes(node.conceptualKind);
+  const m0HostId = compound
+    ? (COMPOUND_HOSTS[labelId] ??
+      graphParentsAndRelations.find(
+        (relation) => relation.relation === "hybrid_of",
+      )?.labelId)
+    : undefined;
+  const m0ModifierOrFacetIds = compound
+    ? [...node.constitutiveFacetIds, ...node.associatedFacetIds.slice(0, 2)]
+    : [];
   const versionBundle = {
     ...CURRENT_RESEARCH_VERSION_BUNDLE,
     vnextEvidenceCardVersion: VNEXT_EVIDENCE_CARD_VERSION,
+    vnextOntologyVersion: VNEXT_ONTOLOGY_VERSION,
+    vnextGraphVersion: VNEXT_GRAPH_VERSION,
+    vnextRolePolicyVersion: VNEXT_ROLE_POLICY_VERSION,
+    vnextConstructsVersion: VNEXT_CONSTRUCTS_VERSION,
+    vnextFacetMapVersion: VNEXT_FACET_MAP_VERSION,
+    vnextItemAnnotationsVersion: VNEXT_ITEM_ANNOTATIONS_VERSION,
   };
   return {
     cardId: `${taxonomy.role}:${labelId}:validation-v1`,
@@ -133,9 +192,15 @@ function createCard(labelId: string): VNextEvidenceCard {
     currentCompatibilityStatus: taxonomy.measurementStatus,
     constructScope: scope,
     constitutiveConstructIds: scope,
-    optionalFacetIds: node.associatedFacetIds,
+    optionalFacetIds: [...node.associatedFacetIds],
     nearestNeighborIds,
-    m0ModifierOrFacetIds: [],
+    ...(m0HostId ? { m0HostId } : {}),
+    m0ModifierOrFacetIds,
+    ...(m0HostId
+      ? {
+          m1ResidualHypothesis: `After controlling for ${m0HostId} and the declared facets ${m0ModifierOrFacetIds.join(", ") || "in scope"}, ${label.name} must show preregistered held-out incremental residual value before any promotion.`,
+        }
+      : {}),
     ...(specialistModuleByLabel[labelId]
       ? { moduleId: specialistModuleByLabel[labelId] }
       : {}),
@@ -148,7 +213,11 @@ function createCard(labelId: string): VNextEvidenceCard {
     },
     evidence: componentSet(scope),
     preregistrationIds: [],
-    analysisManifestIds: [],
+    analysisManifestIds: [
+      (taxonomy.role === "specialist"
+        ? vnextSurfaceManifestBySurface.get("specialist")
+        : vnextSurfaceManifestBySurface.get("core"))!.manifestId,
+    ],
     dataSplits: [],
     versionBundle,
     claimTierCeiling: claimTierCeiling as "PC0" | "PC1",

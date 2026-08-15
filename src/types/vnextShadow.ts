@@ -11,6 +11,13 @@ export interface VNextShadowEstimate {
   weightSum: number;
   coverage: number;
   missingness: Readonly<Record<string, number>>;
+  evidenceStatus: "unmeasured" | "partial" | "measured" | "abstained";
+  uncertainty: Readonly<{
+    kind: "not-estimable" | "unquantified";
+    reason: string;
+  }>;
+  claimCeiling: "PC0" | "PC1";
+  abstentionRationale?: string;
 }
 
 export interface VNextShadowResult {
@@ -21,4 +28,9 @@ export interface VNextShadowResult {
   measuredLayerMask: Readonly<Record<Layer, boolean>>;
   excludedItemIds: readonly string[];
   warnings: readonly string[];
+  evidenceStatus: "design-only" | "partial" | "measured";
+  claimCeiling: "PC0" | "PC1";
+  versionTuple: Readonly<Record<string, string>>;
+  surfaceManifestId: string;
+  abstentionRationale: readonly string[];
 }
