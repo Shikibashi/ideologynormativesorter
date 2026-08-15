@@ -3,7 +3,7 @@
     "status": "current",
     "asOf": "2026-08-15",
     "baselineCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
-    "candidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
+    "candidateCommit": "0a6ed42e361e9be7893861a65f537a3115adf37b",
     "scope": "Measurement architecture and opt-in research-task contract baseline",
     "notes": "The baseline commit is the last frozen production scorer state; W2 response-process tasks, W3/W4 analysis contracts, and label-exposure instrumentation remain opt-in and research-only."
   },
@@ -52,6 +52,7 @@
     "commands": [
       "npm test",
       "npm run vnext:items:check",
+      "npm run vnext:contract:check",
       "npm run vnext:release:check",
       "node scripts/check-vnext-baseline.mjs",
       "npm run format:check",
@@ -68,10 +69,11 @@
       "node --check research-collector/server.mjs",
       "git diff --check"
     ],
-    "npm test": "136 test files, 808 tests passed",
+    "npm test": "137 test files, 813 tests passed",
     "npm run vnext:items:check": "passed; generated artifact is byte-identical",
+    "npm run vnext:contract:check": "passed; authoritative ontology, graph migration, construct registry, evidence, shadow, and surface contracts verified",
     "npm run vnext:release:check": "passed; candidate/baseline, exact fingerprints, P1 closure, I-001..I-018 parity, rollback, and external gates verified",
-    "node scripts/check-vnext-baseline.mjs": "passed; frozen baseline f0324dbf27dfc6e35ff557992e4643e3df15ee0e and candidate e298ccd5588708528db4b63e3e33ce6f19230d69 verified",
+    "node scripts/check-vnext-baseline.mjs": "passed; frozen baseline f0324dbf27dfc6e35ff557992e4643e3df15ee0e and candidate 0a6ed42e361e9be7893861a65f537a3115adf37b verified",
     "npm run format:check": "passed",
     "npm run lint": "passed with zero errors",
     "npm run build": "passed; Vite emitted the existing large-chunk warning",

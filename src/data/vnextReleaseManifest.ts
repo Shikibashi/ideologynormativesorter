@@ -36,7 +36,7 @@ function fingerprint(values: readonly string[]): string {
 }
 
 export const vnextReleaseManifest: VNextReleaseManifest = {
-  manifestId: "vnext-release-manifest:2026-08-candidate-e298ccd",
+  manifestId: "vnext-release-manifest:2026-08-finalized",
   manifestVersion: VNEXT_RELEASE_MANIFEST_VERSION,
   candidateCommit: VNEXT_RELEASE_CANDIDATE_COMMIT,
   auditedCandidateCommit: VNEXT_RELEASE_CANDIDATE_COMMIT,
@@ -111,10 +111,10 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
     ),
   },
   qualityGateResults: {
-    status: "candidate-remediation-pending-final-gate",
+    status: "passed-with-external-gates",
     frozenV13Regression: "passed-and-preserved",
     generatedArtifacts: "passed-by-vnext:items:check",
-    unitTests: 808,
+    unitTests: 813,
     browserTests: 57,
     accessibilityTests: 8,
     ecwTests: 28,
@@ -210,7 +210,7 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
     "I-017": "cutover-gated",
     "I-018": "complete",
   },
-  releaseStatus: "candidate-remediation-pending-final-gate",
+  releaseStatus: "candidate-ready-for-merge-decision",
   auditSignoff: {
     state: "pending-independent-review",
     target: "latest-release-readiness-audit-2026-08",

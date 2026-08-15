@@ -676,6 +676,10 @@ coverage, construct scope, Specialist metadata, shadow tuple, aggregate
 manifest semantics, and candidate provenance. The remediation adopts the
 following implementation constraints:
 
+The substantive implementation candidate is
+`0a6ed42e361e9be7893861a65f537a3115adf37b`; its release metadata is finalized
+in the immediate child commit under the parent-bound convention below.
+
 1. vNext authority is materialized in per-node, construct, facet, surface, and
    graph-migration records. v13 role arrays, parent links, descriptions, and
    relation notes are compatibility/provenance inputs only.

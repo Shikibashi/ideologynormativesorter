@@ -1,14 +1,14 @@
 {
-  "manifestId": "vnext-release-manifest:2026-08-candidate-e298ccd",
+  "manifestId": "vnext-release-manifest:2026-08-finalized",
   "manifestVersion": "2026-08-vnext-release-manifest-v1",
-  "candidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
-  "auditedCandidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
+  "candidateCommit": "0a6ed42e361e9be7893861a65f537a3115adf37b",
+  "auditedCandidateCommit": "0a6ed42e361e9be7893861a65f537a3115adf37b",
   "historicalAuditCandidateCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
   "candidateBinding": "parent-bound-finalization",
-  "releaseMetadataParentCommit": "e298ccd5588708528db4b63e3e33ce6f19230d69",
+  "releaseMetadataParentCommit": "0a6ed42e361e9be7893861a65f537a3115adf37b",
   "frozenBaselineCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
   "branch": "codex/vnext-implementation",
-  "reference": "release-candidate:e298ccd5588708528db4b63e3e33ce6f19230d69",
+  "reference": "release-candidate:0a6ed42e361e9be7893861a65f537a3115adf37b",
   "versionTuple": {
     "architectureVersion": "2026-08-measurement-architecture-v1",
     "implementationSpecVersion": "2026-08-implementation-spec-v1",
@@ -74,10 +74,10 @@
     "evidenceCards": "vnext_b4c6a2e0"
   },
   "qualityGateResults": {
-    "status": "candidate-remediation-pending-final-gate",
+    "status": "passed-with-external-gates",
     "frozenV13Regression": "passed-and-preserved",
     "generatedArtifacts": "passed-by-vnext:items:check",
-    "unitTests": 808,
+    "unitTests": 813,
     "browserTests": 57,
     "accessibilityTests": 8,
     "ecwTests": 28,
@@ -173,7 +173,7 @@
     "I-017": "cutover-gated",
     "I-018": "complete"
   },
-  "releaseStatus": "candidate-remediation-pending-final-gate",
+  "releaseStatus": "candidate-ready-for-merge-decision",
   "auditSignoff": {
     "state": "pending-independent-review",
     "target": "latest-release-readiness-audit-2026-08",
