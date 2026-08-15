@@ -63,6 +63,27 @@ const ALLOWED_SCOPES_BY_RELATION: Readonly<
   not_equivalent_to: ["conceptual", "measurement"],
   incompatible_with_core: ["measurement"],
 };
+const REQUIRED_CONSTRAINT_PREFIX: Readonly<
+  Record<VNextGraphRelationType, string>
+> = {
+  subtype_of: "subtype-",
+  family_member_of: "family-",
+  hybrid_of: "hybrid-",
+  configures: "configuration-",
+  often_combines_with: "symmetric-",
+  overlaps_with: "symmetric-",
+  contrasts_with: "symmetric-",
+  requires: "required-",
+  regional_variant_of: "regional-",
+  historical_predecessor_of: "historical-",
+  influenced_by: "influence-",
+  institutionalizes: "institutional-",
+  context_for: "context-",
+  policy_expression_of: "policy-",
+  alias_of: "alias-",
+  not_equivalent_to: "symmetric-",
+  incompatible_with_core: "core-entry-",
+};
 
 function hasCycle(
   edges: readonly VNextGraphEdge[],
@@ -188,6 +209,17 @@ export function vnextGraphErrors(
       edge.semanticConstraints.length === 0
     )
       errors.push(`${edge.id} lacks note, provenance, or semantic constraints`);
+    if (
+      edge.semanticConstraints.some(
+        (constraint) => !constraint.code.trim() || !constraint.statement.trim(),
+      ) ||
+      !edge.semanticConstraints.some((constraint) =>
+        constraint.code.startsWith(REQUIRED_CONSTRAINT_PREFIX[edge.type]),
+      )
+    )
+      errors.push(
+        `${edge.id} lacks the required relation-specific semantic constraint`,
+      );
     if (!edge.facet.differentiatingConstructIds?.some((id) => facetIds.has(id)))
       errors.push(`${edge.id} lacks a canonical facet reference`);
     if (SYMMETRIC_TYPES.has(edge.type) && edge.directionality !== "symmetric")

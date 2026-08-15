@@ -253,7 +253,7 @@ const AUTHORITATIVE_RELATIONS: readonly RelationSeed[] = [
     "historical",
     "political-community-boundary",
     "Hindutva is a regionally bounded civilizational-national expression with its own membership and public-law questions.",
-    "regional-subtype-retains-morphology",
+    "subtype-acyclic",
   ),
   seed(
     "strasserism",
