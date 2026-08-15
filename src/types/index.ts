@@ -4,5 +4,8 @@ export * from "./axis";
 export * from "./question";
 export * from "./response";
 export * from "./scoring";
+export * from "./vnextOntology";
+export * from "./vnextConstructs";
+export * from "./vnextItems";
 export * from "./label";
 export * from "./research";
