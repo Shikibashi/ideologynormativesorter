@@ -100,7 +100,7 @@ export interface VNextOntologyNode {
     parentId?: string;
     aliasOf?: string;
     relations: readonly {
-      type: string;
+      type: VNextGraphRelationType;
       labelId: string;
       note?: string;
     }[];

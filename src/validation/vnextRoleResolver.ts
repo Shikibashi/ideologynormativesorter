@@ -16,6 +16,10 @@ export function resolveVNextRole(labelId: string): VNextRoleView | undefined {
   const node = vnextOntologyById.get(labelId);
   if (!node) return undefined;
   const modifier = modifierMeasurementForLabel(labelId);
+  const relationTypes = [
+    ...(node.compatibility.parentId ? ["subtype_of" as const] : []),
+    ...node.compatibility.relations.map((relation) => relation.type),
+  ];
   const policy = resolveVNextRolePolicy({
     conceptualKind: node.conceptualKind,
     currentRole: node.compatibility.role,
@@ -24,6 +28,7 @@ export function resolveVNextRole(labelId: string): VNextRoleView | undefined {
     hasDirectConstructEvidence: modifier?.availability === "core-construct",
     hasRespondentEvidence: false,
     explicitPromotion: false,
+    relationTypes,
   });
   return {
     labelId,

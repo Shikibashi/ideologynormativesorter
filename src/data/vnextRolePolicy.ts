@@ -1,5 +1,6 @@
 import type {
   VNextConceptualKind,
+  VNextGraphRelationType,
   VNextMeasurementStatus,
   VNextPublicRole,
 } from "../types";
@@ -13,6 +14,7 @@ export interface VNextRolePolicyInput {
   hasDirectConstructEvidence: boolean;
   hasRespondentEvidence: boolean;
   explicitPromotion: boolean;
+  relationTypes: readonly VNextGraphRelationType[];
 }
 
 export interface VNextRolePolicyResult {
@@ -21,16 +23,44 @@ export interface VNextRolePolicyResult {
   ordinaryScoringEligible: boolean;
   publicDisplayEligible: boolean;
   blockingReasons: readonly string[];
+  roleBasis: readonly string[];
+}
+
+function deriveRole(input: VNextRolePolicyInput): {
+  role: VNextPublicRole;
+  basis: string[];
+} {
+  const basis = [
+    `conceptual-kind:${input.conceptualKind}`,
+    `measurement-status:${input.measurementStatus}`,
+    `compatibility-role:${input.currentRole}`,
+    `graph-relations:${[...input.relationTypes].sort().join(",") || "none"}`,
+    `high-risk:${input.highRisk ? "restricted" : "ordinary-policy"}`,
+    `respondent-evidence:${input.hasRespondentEvidence ? "present" : "absent"}`,
+    `promotion:${input.explicitPromotion ? "explicit" : "none"}`,
+  ];
+  if (
+    input.currentRole === "retired" ||
+    input.measurementStatus === "retired-alias" ||
+    input.relationTypes.includes("alias_of")
+  ) {
+    return { role: "retired", basis };
+  }
+  if (input.currentRole === "context") return { role: "context", basis };
+  if (input.currentRole === "modifier") return { role: "modifier", basis };
+  if (input.currentRole === "specialist") return { role: "specialist", basis };
+  return { role: "primary", basis };
 }
 
 export function resolveVNextRolePolicy(
   input: VNextRolePolicyInput,
 ): VNextRolePolicyResult {
   const blockingReasons: string[] = [];
-  if (input.currentRole === "context") {
+  const derived = deriveRole(input);
+  if (derived.role === "context") {
     blockingReasons.push("Context objects are not ordinary scoring endpoints");
   }
-  if (input.currentRole === "retired") {
+  if (derived.role === "retired") {
     blockingReasons.push("Retired compatibility objects cannot be reactivated");
   }
   if (!input.hasRespondentEvidence) {
@@ -50,7 +80,7 @@ export function resolveVNextRolePolicy(
       "high-risk object requires an explicit scoped promotion",
     );
   }
-  if (input.currentRole === "modifier" && !input.hasDirectConstructEvidence) {
+  if (derived.role === "modifier" && !input.hasDirectConstructEvidence) {
     blockingReasons.push(
       "ordinary Modifier output requires direct construct evidence",
     );
@@ -61,13 +91,14 @@ export function resolveVNextRolePolicy(
     input.hasRespondentEvidence;
   return {
     policyVersion: VNEXT_ROLE_POLICY_VERSION,
-    derivedRole: input.currentRole,
-    ordinaryScoringEligible: input.currentRole === "primary" && approved,
+    derivedRole: derived.role,
+    ordinaryScoringEligible: derived.role === "primary" && approved,
     publicDisplayEligible:
-      input.currentRole !== "context" &&
-      input.currentRole !== "retired" &&
+      derived.role !== "context" &&
+      derived.role !== "retired" &&
       approved &&
       (!input.highRisk || input.explicitPromotion),
     blockingReasons,
+    roleBasis: derived.basis,
   };
 }

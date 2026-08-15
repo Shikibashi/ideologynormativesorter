@@ -9,6 +9,14 @@ describe("vNext role resolver", () => {
       derivedRole: "primary",
       ordinaryScoringEligible: false,
     });
+    expect(resolveVNextRole("social-democrat")?.roleBasis).toEqual(
+      expect.arrayContaining([
+        "conceptual-kind:broad-tradition",
+        "measurement-status:compatibility-scored-unvalidated",
+        "compatibility-role:primary",
+        "respondent-evidence:absent",
+      ]),
+    );
   });
 
   it("keeps Specialist, Context, and retired boundaries explicit", () => {
