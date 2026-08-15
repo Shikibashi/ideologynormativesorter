@@ -26,3 +26,14 @@ The map is deliberately domain-derived in this first wave. A future matched
 family may split a domain into multiple substantive problems, join items across
 domains, or add research-only task IDs after D-02 review. Such changes require
 an updated map version and a frozen review record.
+
+## Relationship to the vNext semantic construct blueprint
+
+The domain-derived W1 map remains the auditable implementation inventory
+described above. The authoritative semantic construct/facet architecture is
+recorded in
+[`vnext-construct-architecture-measurement-blueprint-2026-08.md`](vnext-construct-architecture-measurement-blueprint-2026-08.md).
+That blueprint preserves this map as provenance and coverage evidence while
+separating substantive constructs, facets, configurations, Specialist-local
+constructs, and measurement status. It does not imply that a domain family is
+one latent construct or alter the frozen runtime registry.

@@ -3,6 +3,11 @@
 Implementation-specification version: `2026-08-implementation-spec-v1`
 Status: approved implementation plan; production promotions remain evidence-gated.
 
+Frozen-baseline implementation authority. The dependency-ordered vNext plan is
+[`vnext-codex-implementation-specification-2026-08.md`](vnext-codex-implementation-specification-2026-08.md),
+which supersedes this document only for future vNext work and does not alter
+the frozen implementation baseline.
+
 This repository mirror records the executable batch order from the approved
 implementation specification. The architecture and decision-log documents
 define meaning and authorization; this document defines file boundaries,

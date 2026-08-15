@@ -5,6 +5,10 @@ Status: approved architecture; production promotions remain evidence-gated.
 Architecture version: `2026-08-measurement-architecture-v1`
 Approval authority: [`docs/methodological-change-decision-log-2026-08.md`](methodological-change-decision-log-2026-08.md)
 Implementation authority: [`docs/measurement-architecture-implementation-specification-2026-08.md`](measurement-architecture-implementation-specification-2026-08.md)
+Integrated vNext authority: [`vnext-integrated-system-specification-2026-08.md`](vnext-integrated-system-specification-2026-08.md)
+
+This document remains the frozen baseline. The integrated vNext authority
+extends it without reopening or silently changing its production contract.
 
 ## Purpose and precedence
 
