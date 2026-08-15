@@ -5,3 +5,4 @@ export * from "./question";
 export * from "./response";
 export * from "./scoring";
 export * from "./label";
+export * from "./research";

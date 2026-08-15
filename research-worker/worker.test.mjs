@@ -46,7 +46,8 @@ function environment(overrides = {}) {
   return {
     ALLOWED_ORIGIN: ORIGIN,
     EXPECTED_STUDY_ID: "community-2026-v5",
-    EXPECTED_SCHEMA_VERSION: "2026-08-v15",
+    EXPECTED_SCHEMA_VERSION: "2026-08-v16",
+    EXPECTED_LABEL_EXPOSURE_VERSION: "2026-08-label-exposure-v1",
     EXPECTED_CONSENT_VERSION: "2026-08-12-v8",
     EXPECTED_QUALITY_RULE_VERSION: "data-quality-v2",
     EXPECTED_FORM_VERSION: "profile-form-v3",
@@ -91,7 +92,7 @@ function coreSubmission(overrides = {}) {
     },
   ];
   return {
-    schemaVersion: "2026-08-v15",
+    schemaVersion: "2026-08-v16",
     submissionId: "submission_1",
     recordType: "core",
     studyId: "community-2026-v5",
@@ -299,6 +300,38 @@ describe("research contribution Worker", () => {
       (await handleRequest(postRequest(legacyFull), env)).status,
       202,
     );
+  });
+
+  it("accepts a valid post-response label-exposure outcome and rejects invalid ratings", async () => {
+    const env = environment();
+    const valid = coreSubmission({
+      submissionId: "submission_exposure",
+      labelExposure: {
+        assignment: {
+          version: "2026-08-label-exposure-v1",
+          studyId: "community-2026-v5",
+          participantId: "p_test",
+          arm: "named-label",
+          seed: "community-2026-v5_p_test_label-exposure-v1",
+          assignedAfterSubstantiveResponses: true,
+        },
+        exposureShown: true,
+        exposedLabelIds: ["conservative"],
+        perceivedAccuracy: 4,
+        identityAcceptance: 3,
+        confidence: 4,
+        affect: 2,
+      },
+    });
+    assert.equal((await handleRequest(postRequest(valid), env)).status, 202);
+    const invalid = coreSubmission({
+      submissionId: "submission_exposure_invalid",
+      labelExposure: {
+        ...valid.labelExposure,
+        perceivedAccuracy: 6,
+      },
+    });
+    assert.equal((await handleRequest(postRequest(invalid), env)).status, 422);
   });
 
   it("rejects a conflicting payload that reuses a submission ID", async () => {

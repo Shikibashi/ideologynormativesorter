@@ -19,6 +19,7 @@ interface ShellContextInput {
   savedProgress: boolean;
   specialistProgress: boolean;
   specialistStatus?: string;
+  researchTaskArm?: string | null;
   studyId: string;
 }
 
@@ -35,6 +36,7 @@ export function buildShellContext({
   savedProgress,
   specialistProgress,
   specialistStatus,
+  researchTaskArm,
   studyId,
 }: ShellContextInput): ShellContext {
   const composition: ShellContext["composition"] =
@@ -88,17 +90,50 @@ export function buildShellContext({
       { label: "LAYER", value: quizShellStatus.layer },
       { label: "SAVE", value: quizShellStatus.save },
     ];
-  } else if (stage === "consent" || stage === "self-identification") {
+  } else if (
+    stage === "consent" ||
+    stage === "self-identification" ||
+    stage === "research-tasks" ||
+    stage === "label-exposure"
+  ) {
     contextItems = [
-      { label: "MODE", value: "CONTRIBUTION" },
+      {
+        label: "MODE",
+        value:
+          stage === "research-tasks"
+            ? "RESEARCH TASK"
+            : stage === "label-exposure"
+              ? "LABEL EXPOSURE"
+              : "CONTRIBUTION",
+      },
       { label: "COLLECTION", value: studyId },
       { label: "ADMIN", value: administration },
-      { label: "FORM", value: String(expectedResearchItemCount) },
+      {
+        label:
+          stage === "research-tasks"
+            ? "ARM"
+            : stage === "label-exposure"
+              ? "EXPERIMENT"
+              : "FORM",
+        value:
+          stage === "research-tasks"
+            ? (researchTaskArm ?? "unknown")
+            : stage === "label-exposure"
+              ? "POST-RESPONSE"
+              : String(expectedResearchItemCount),
+      },
     ];
     statusItems = [
       {
         label: "STAGE",
-        value: stage === "consent" ? "PRIVACY CHOICE" : "OPTIONAL PROFILE",
+        value:
+          stage === "consent"
+            ? "PRIVACY CHOICE"
+            : stage === "research-tasks"
+              ? "RESEARCH TASKS"
+              : stage === "label-exposure"
+                ? "LABEL EXPOSURE"
+                : "OPTIONAL PROFILE",
       },
       { label: "SUBMISSION", value: researchStatus ?? "NOT SENT" },
       { label: "SAVE", value: "LOCAL" },

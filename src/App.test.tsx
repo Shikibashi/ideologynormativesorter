@@ -168,6 +168,38 @@ function handleSalienceIfPresent() {
 }
 
 describe("App", () => {
+  it("keeps an explicit research task arm outside the ordinary profile flow", async () => {
+    window.history.replaceState(
+      null,
+      "",
+      "/?research=1&arm=choice&study=task-pilot",
+    );
+
+    render(<App />);
+
+    expect(
+      screen.getByRole("heading", { name: /optional research task/i }),
+    ).toBeInTheDocument();
+    for (const checkbox of screen.getAllByRole("checkbox"))
+      fireEvent.click(checkbox);
+    fireEvent.click(
+      screen.getByRole("button", { name: /continue to research task/i }),
+    );
+
+    expect(screen.getByText(/research task 1 of 1/i)).toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: /work through existing institutions/i,
+      }),
+    );
+    expect(
+      await screen.findByText(/research task module/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText(/very close axis profile/i),
+    ).not.toBeInTheDocument();
+  });
+
   it("upgrades an old public 120-item link to the complete Balanced profile at consent", () => {
     window.history.replaceState(
       null,

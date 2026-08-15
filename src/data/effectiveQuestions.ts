@@ -132,6 +132,7 @@ import {
   applyQuestionPromptReview,
   QUESTION_PROMPT_REVIEW_VERSION,
 } from "./questionPromptReview";
+import { applyResearchItemMetadata } from "./itemMetadata";
 
 export const QUESTION_BANK_VERSION = [
   RAW_QUESTION_BANK_VERSION,
@@ -241,7 +242,9 @@ function applyEffectiveReview(question: Question): Question {
   reviewed = applyEditorialTwentyEighthPass(reviewed);
   reviewed = applyDescriptiveEvidenceFourthPass(reviewed);
   reviewed = applyDescriptiveEvidenceFifthPass(reviewed);
-  return applyQuestionPromptReview(applyQuestionContext(reviewed));
+  return applyResearchItemMetadata(
+    applyQuestionPromptReview(applyQuestionContext(reviewed)),
+  );
 }
 
 /** All reviewed core items, including deactivated items retained for traceability. */

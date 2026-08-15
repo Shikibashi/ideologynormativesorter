@@ -4,13 +4,14 @@ The browser application computes descriptive and classical diagnostics only when
 
 ## Inputs
 
-Use consented schema `2026-08-v15` records produced by contribution mode. The public flow omits `formSize` and contributes
+Use consented schema `2026-08-v16` records produced by contribution mode. The public flow omits `formSize` and contributes
 the complete selected Balanced or Full-depth profile. A controlled `research=1` URL can request a balanced matrix form
 with `formSize` for instrument analysis.
 
 ```text
 https://your-site.example/?research=1&study=community-2026-v5&formSize=120
 https://your-site.example/?research=1&study=community-2026-v5&administration=retest&formSize=120
+https://your-site.example/?research=1&exposure=1&study=community-2026-v5&formSize=120
 ```
 
 The same browser keeps a stable random participant code. Test and retest core forms preserve the same participant-specific item membership but use a different deterministic presentation order. The record stores the form algorithm version, membership fingerprint, exact presented wording/options, and open-opt-in recruitment source. Research participants are also deterministically assigned one optional specialist module. The same participant receives the same specialist module at test and retest under the frozen `2026-08-specialist-roster-v1` / `balanced-hash-v2` contract, while specialist item order changes by administration.
@@ -45,6 +46,12 @@ The reference collector is deliberately small. Deploy it only behind HTTPS, orig
 install.packages(c("jsonlite", "psych", "lavaan", "mirt", "boot"))
 ```
 
+On the Bluefin development image used for this repository, R is installed in
+the dedicated Toolbx container `ideologynormativesorter-r`. Run the commands
+below through that container and set `R_LIBS_USER=/home/tcs/R/library` when
+using the user-installed packages. The host shell does not need a system-wide
+R installation.
+
 ## Run core validation
 
 First generate quality flags without deleting any records:
@@ -66,6 +73,50 @@ Rscript analysis/run_validation.R \
   analysis/output \
   analysis/output/analysis-inclusion-manifest.csv
 ```
+
+## Research-only analysis entrypoints
+
+The implementation specification's W3/W4 entrypoints all use the same
+fail-closed contract loader in `analysis/research_contracts.R`. Each requires
+`<records> <output-directory> <analysis-inclusion-manifest.csv>`, verifies
+unique record IDs, exact manifest coverage, explicit `include`/`exclude`
+decisions, a single version bundle, and an analysis fingerprint, then writes
+`analysis-metadata.json`, `analysis-results.json`, `analysis-status.json`, and
+`observation-summary.csv`. An insufficient sample is reported as
+`insufficient-data`; it is never converted into a fabricated estimate.
+
+The current entrypoints are:
+
+- `run_descriptive_calibration.R` — `2026-08-descriptive-calibration-v1`
+- `run_strategy_conjoint.R` — `2026-08-strategy-task-bank-v1`
+- `run_normative_tradeoffs.R` — `2026-08-normative-tradeoff-v1`
+- `run_model_comparison.R` — `2026-08-model-comparison-v1`
+- `run_perception_geometry.R` — `2026-08-perception-geometry-v1`
+- `run_profiles.R` — `2026-08-profile-discovery-v1`
+- `run_prototype_calibration.R` — `2026-08-prototype-calibration-v1`
+- `run_linking.R` — `2026-08-unfolding-analysis-v1`
+
+Before a field run, set `ANALYSIS_CODE_REVISION`, `ANALYSIS_STUDY_ID`,
+`ANALYSIS_SEED`, and `ANALYSIS_FINGERPRINT` to the preregistered values. A
+fixture smoke run is checked in under `analysis/fixtures/`:
+
+```bash
+toolbox run --container ideologynormativesorter-r bash -lc \
+  'ANALYSIS_CODE_REVISION=fixture-revision \
+   ANALYSIS_STUDY_ID=fixture-study \
+   ANALYSIS_FINGERPRINT=fixture-form-v1 \
+   R_LIBS_USER=/home/tcs/R/library \
+   Rscript /var/home/tcs/Code/ideologynormativesorter/analysis/run_descriptive_calibration.R \
+   /var/home/tcs/Code/ideologynormativesorter/analysis/fixtures/research-contract-fixture.ndjson \
+   /tmp/descriptive-calibration-output \
+   /var/home/tcs/Code/ideologynormativesorter/analysis/fixtures/research-contract-manifest.csv'
+```
+
+These entrypoints serialize analysis provenance and comparison status only;
+they do not alter `buildResultProfile`, production labels, or the current
+scoring version. Optional estimators such as `mirt` remain an explicit
+environment prerequisite for the existing DIF workflow rather than a reason
+to emit an unvalidated result.
 
 Optional core psychometric environment variables:
 
@@ -119,6 +170,28 @@ The specialist workflow currently evaluates:
 A respondent may fit more than one specialist tradition. Criterion analysis therefore preserves multi-select self-identification and, where relevant, both tradition-level and variant-level concordance rather than forcing every respondent into one exclusive class.
 
 ## Outputs
+
+## Research estimator comparison contract
+
+Layer-specific estimators are research outputs only. The current production
+score remains the comparison baseline and is never replaced implicitly by an
+estimator result. Every estimator output must identify the respondent, study,
+axis, layer, estimator ID/version, estimand, observed and missing counts, and
+precision status. Missing responses are retained with explicit reasons; they
+are not converted to observed midpoints.
+
+| Estimator path                | Estimand                                   | Input                                           | Missingness                                                                       | Criterion                                  | Release status                                  |
+| ----------------------------- | ------------------------------------------ | ----------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------- |
+| Current scorer                | Versioned weighted axis/result contract    | Production answer map                           | Existing production response rules                                                | Baseline score and label fixture stability | Production baseline                             |
+| Research layer mean           | Observed normalized mean by axis and layer | Research observations with explicit missingness | Pairwise observed responses; insufficient-data state below the configured minimum | Held-out criterion and precision report    | Research-only, `2026-08-research-estimators-v1` |
+| Forecast calibration          | Resolved probability/forecast accuracy     | Versioned research task and outcome records     | Unresolved outcome remains unresolved                                             | Resolution-specific Brier/log score        | Research-only; preregister before fielding      |
+| Strategy/trade-off estimators | Task-specific attribute or value effects   | Frozen choice/allocation task records           | Incomplete task handling is format-specific                                       | Held-out task and criterion performance    | Research-only; production hold                  |
+
+Estimator comparisons must freeze the item/task bank, split seed, development
+and confirmation membership, eligibility rules, criterion timing, and code
+revision before inspecting outcomes. A candidate production path requires a
+new scoring version, compatibility decision, and methodological decision
+record. The estimator version is carried in the research version bundle.
 
 The data-quality workflow writes:
 

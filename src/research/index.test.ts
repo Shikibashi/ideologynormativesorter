@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import type { AnswerMap, Question } from "../types";
 import {
+  buildLabelExposureAssignment,
   buildResearchSubmission,
   buildSpecialistDispositionSubmission,
   buildSpecialistResearchSubmission,
@@ -60,6 +61,16 @@ const timing = {
 };
 
 describe("research submission", () => {
+  it("assigns a deterministic post-response label-exposure arm", () => {
+    const first = buildLabelExposureAssignment("study-1", "p-1");
+    const second = buildLabelExposureAssignment("study-1", "p-1");
+    expect(first).toEqual(second);
+    expect(["dimension-only", "unlabeled-profile", "named-label"]).toContain(
+      first.arm,
+    );
+    expect(first.assignedAfterSubstantiveResponses).toBe(true);
+  });
+
   it("copies the final interrogative prompt into research item snapshots", () => {
     const effectiveQuestion = questionById.get("q0067")!;
     const submission = buildResearchSubmission({

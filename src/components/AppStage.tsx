@@ -7,6 +7,8 @@ import type {
   Question,
   QuizTier,
   ResultProfile,
+  LabelExposureAssignment,
+  LabelExposureOutcome,
 } from "../types";
 import type {
   ResearchConsent,
@@ -27,6 +29,8 @@ import { MethodologyScreen } from "./MethodologyScreen";
 import { QuizScreen } from "./QuizScreen";
 import { ResearchConsentScreen } from "./ResearchConsentScreen";
 import { ResearchReceipt } from "./ResearchReceipt";
+import { ResearchTaskScreen } from "./ResearchTaskScreen";
+import { LabelExposureScreen } from "./LabelExposureScreen";
 import { ResultsScreen } from "./ResultsScreen";
 import { SelfIdentificationScreen } from "./SelfIdentificationScreen";
 import { SpecialistCriterionScreen } from "./SpecialistCriterionScreen";
@@ -50,6 +54,7 @@ export interface AppStageProps {
   onDismissLoadError: () => void;
   onMethodologyBack: () => void;
   participantId: string;
+  studyId: string;
   administration: ResearchAdministration;
   expectedResearchItemCount: number;
   pendingTier: QuizTier;
@@ -60,6 +65,16 @@ export interface AppStageProps {
   retentionNotice?: string;
   onConsent: (consent: ResearchConsent) => void;
   onResearchCancel: () => void;
+  researchTaskArm: Exclude<import("../types").ResearchTaskArm, "all"> | null;
+  onResearchTaskComplete: (input: {
+    assignment: import("../research/tasks").ResearchTaskAssignment;
+    tasks: import("../types").ResearchTask[];
+    responses: import("../types").ResearchTaskResponse[];
+    startedAt: string;
+    completedAt: string;
+  }) => Promise<void>;
+  labelExposureAssignment: LabelExposureAssignment | null;
+  onLabelExposureComplete: (outcome: LabelExposureOutcome) => void;
   activeQuestions: Question[];
   answers: AnswerMap;
   resuming: boolean;
@@ -137,6 +152,22 @@ function ConsentStage(props: AppStageProps): ReactElement {
       retentionNotice={props.retentionNotice}
       onConsent={props.onConsent}
       onCancel={props.onResearchCancel}
+      researchTaskArm={props.researchTaskArm}
+    />
+  );
+}
+
+function ResearchTasksStage(props: AppStageProps): ReactElement | null {
+  if (!props.researchTaskArm) return null;
+  return (
+    <ResearchTaskScreen
+      arm={props.researchTaskArm}
+      participantId={props.participantId}
+      studyId={props.studyId}
+      submission={props.researchSubmission}
+      status={props.researchStatus}
+      onComplete={props.onResearchTaskComplete}
+      onRestart={props.onRestart}
     />
   );
 }
@@ -152,6 +183,18 @@ function QuizStage(props: AppStageProps): ReactElement {
       allowRefusal={props.researchEnabled}
       onStatusChange={props.onQuizStatusChange}
       onComplete={props.onComplete}
+    />
+  );
+}
+
+function LabelExposureStage(props: AppStageProps): ReactElement | null {
+  if (!props.labelExposureAssignment || !props.result) return null;
+  return (
+    <LabelExposureScreen
+      assignment={props.labelExposureAssignment}
+      result={props.result}
+      axes={props.axes}
+      onComplete={props.onLabelExposureComplete}
     />
   );
 }
@@ -269,6 +312,10 @@ export function AppStage(props: AppStageProps): ReactElement | null {
   if (props.stage === "methodology")
     return <MethodologyScreen onBack={props.onMethodologyBack} />;
   if (props.stage === "consent") return <ConsentStage {...props} />;
+  if (props.stage === "research-tasks")
+    return <ResearchTasksStage {...props} />;
+  if (props.stage === "label-exposure")
+    return <LabelExposureStage {...props} />;
   if (props.stage === "quiz") return <QuizStage {...props} />;
   if (props.stage === "self-identification")
     return <SelfIdentificationStage {...props} />;

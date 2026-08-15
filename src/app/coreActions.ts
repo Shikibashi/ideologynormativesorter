@@ -194,6 +194,12 @@ export function handleConsent(
   consent: ResearchConsent,
 ): void {
   context.setResearchConsent(consent);
+  if (context.researchTaskArm) {
+    context.setResumeAfterConsent(null);
+    context.setStage("research-tasks");
+    announceStatus("Research task arm ready.");
+    return;
+  }
   if (context.resumeAfterConsent) {
     const destination = context.resumeAfterConsent;
     context.setResumeAfterConsent(null);
@@ -213,6 +219,11 @@ export function handleConsent(
 export function handleResearchCancel(context: AppActionContext): void {
   context.setResearchEnabled(false);
   context.setResearchConsent(null);
+  if (context.researchTaskArm) {
+    context.setStage("intro");
+    announceStatus("Research task arm declined.");
+    return;
+  }
   if (context.resumeAfterConsent) {
     const destination =
       context.resumeAfterConsent === "self-identification" ? "results" : "quiz";
@@ -268,7 +279,9 @@ export function handleComplete(
   );
   context.setStage(
     context.researchEnabled && context.researchConsent
-      ? "self-identification"
+      ? context.labelExposureAssignment
+        ? "label-exposure"
+        : "self-identification"
       : "results",
   );
   announceStatus("Assessment complete. Results are ready.");
@@ -326,6 +339,7 @@ export function handleRestart(context: AppActionContext): void {
   context.setResearchConsent(null);
   context.setResearchSubmission(null);
   context.setResearchStatus(null);
+  context.setLabelExposureOutcome(null);
   context.setSpecialistSubmission(null);
   context.setSpecialistStatus(null);
   context.setSpecialistProgress(null);

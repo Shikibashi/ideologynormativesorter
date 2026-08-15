@@ -100,9 +100,11 @@ export function useAppQuizState({
       ? "results"
       : requestedMethodology()
         ? "methodology"
-        : bootstrap.initialResearchMode
-          ? "consent"
-          : "intro",
+        : bootstrap.initialResearchTaskArm && research.pendingTaskResearch
+          ? "research-tasks"
+          : bootstrap.initialResearchMode
+            ? "consent"
+            : "intro",
   );
   const [activeQuestions, setActiveQuestions] = useState<Question[]>(
     research.pendingCoreSubmission

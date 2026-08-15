@@ -2,11 +2,14 @@
   "artifact": {
     "status": "current",
     "asOf": "2026-08-14",
-    "baselineCommit": "d104f0fd514eff03dee5d7376853b62f763ba1fa",
-    "scope": "Repository documentation and executable-contract baseline",
-    "notes": "This record replaces the stale pre-release quality gate. No application source was changed for this documentation update."
+    "baselineCommit": "3d1e2d09b76247ce91bb04a51bdd28033a7c50f9",
+    "scope": "Measurement architecture and opt-in research-task contract baseline",
+    "notes": "The baseline commit is the last frozen production scorer state; W2 response-process tasks, W3/W4 analysis contracts, and label-exposure instrumentation remain opt-in and research-only."
   },
   "currentContract": {
+    "architectureVersion": "2026-08-measurement-architecture-v1",
+    "decisionLogVersion": "2026-08-methodological-decisions-v1",
+    "implementationSpecVersion": "2026-08-implementation-spec-v1",
     "activeCoreQuestions": 338,
     "specialistQuestions": 68,
     "liveQuestions": 406,
@@ -19,8 +22,27 @@
     "modifierMeasurementVersion": "2026-08-modifier-construct-v1",
     "scoringVersion": "2026-08-13-taxonomy-v8",
     "researchStudy": "community-2026-v5",
-    "researchSchema": "2026-08-v15",
+    "researchSchema": "2026-08-v16",
     "researchForm": "profile-form-v3",
+    "researchTaskBank": "2026-08-research-task-bank-v1",
+    "researchTaskForm": "2026-08-research-task-form-v1",
+    "researchEstimator": "2026-08-research-estimators-v1",
+    "descriptiveCalibration": "2026-08-descriptive-calibration-v1",
+    "strategyTaskBank": "2026-08-strategy-task-bank-v1",
+    "normativeTradeoff": "2026-08-normative-tradeoff-v1",
+    "modelComparison": "2026-08-model-comparison-v1",
+    "unfoldingAnalysis": "2026-08-unfolding-analysis-v1",
+    "perceptionGeometry": "2026-08-perception-geometry-v1",
+    "profileDiscovery": "2026-08-profile-discovery-v1",
+    "prototypeCoding": "2026-08-prototype-coding-v1",
+    "deploymentScope": "2026-08-deployment-scope-v1",
+    "difPlan": "2026-08-dif-plan-v1",
+    "labelExposure": "2026-08-label-exposure-v1",
+    "formEquivalence": "2026-08-form-equivalence-v1",
+    "anchorRotation": "2026-08-anchor-rotation-v1",
+    "validationReport": "2026-08-validation-report-v1",
+    "criterionPlan": "2026-08-criterion-plan-v1",
+    "prototypeCalibration": "2026-08-prototype-calibration-v1",
     "specialistAssignment": "balanced-hash-v2",
     "specialistRoster": "2026-08-specialist-roster-v1"
   },
@@ -36,18 +58,18 @@
       "npm run test:browser",
       "git diff --check"
     ],
-    "npm test": "110 test files, 719 tests passed",
+    "npm test": "122 test suites, 760 tests passed",
     "npm run lint": "passed with zero errors",
     "npm run build": "passed; Vite emitted the existing large-chunk warning",
     "npm run research:check": "passed",
-    "npm run test:worker": "8 tests passed",
+    "npm run test:worker": "9 tests passed",
     "npm run worker:check": "Cloudflare deploy dry run passed",
-    "npm run test:browser": "50 tests passed across e2e, accessibility, and ECW projects",
+    "npm run test:browser": "54 tests passed across e2e, accessibility, and ECW projects",
     "git diff --check": "passed"
   },
   "codeReview": {
-    "status": "documentation-only",
-    "recommendation": "no source regression identified",
-    "evidence": "The update aligns this artifact with the current executable counts, version contracts, research boundaries, and validation commands. The untracked root vite artifact remains preserved and unstaged."
+    "status": "passed",
+    "recommendation": "keep research-task and estimator outputs outside production scoring until a new decision record approves promotion",
+    "evidence": "W0/W1 architecture contracts, W2 response-process tasks, and the W3 estimator scaffold are versioned separately; the untracked root vite artifact remains preserved and unstaged."
   }
 }

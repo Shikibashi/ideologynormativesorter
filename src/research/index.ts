@@ -1,4 +1,14 @@
-import type { AnswerMap, Question, QuizTier } from "../types";
+import type {
+  AnswerMap,
+  Question,
+  QuizTier,
+  ResearchTask,
+  ResearchTaskArm,
+  ResearchTaskResponse,
+  LabelExposureArm,
+  LabelExposureAssignment,
+  LabelExposureOutcome,
+} from "../types";
 import {
   getQuestionHelpText,
   getSalienceHelpText,
@@ -10,6 +20,7 @@ import {
   type PresentedResponseOption,
 } from "../questionPresentation";
 import { RESEARCH_FORM_VERSION, researchFormFingerprint } from "./forms";
+import { QUESTION_BANK_VERSION } from "../data/effectiveQuestions";
 import {
   canonicalLabelId,
   modifierScoringLabels,
@@ -18,6 +29,7 @@ import {
 } from "../data/labelTaxonomy";
 import { MODIFIER_MEASUREMENT_VERSION } from "../data/modifierMeasurement";
 import { PRIMARY_MEASUREMENT_VERSION } from "../data/primaryMeasurement";
+import { RESULT_SCORING_VERSION } from "../scoring";
 import { labelRosterFingerprint } from "./taxonomyMetadata";
 import type {
   SpecialistCriterionResponse,
@@ -26,8 +38,24 @@ import type {
   SpecialistModuleId,
   SpecialistOutcome,
 } from "../specialist";
+import {
+  researchTaskAssignmentErrors,
+  researchTaskResponseErrors,
+  type ResearchTaskAssignment,
+} from "./tasks";
+import type { MeasurementVersionBundle } from "../validation/researchContracts";
+import {
+  CONSTRUCT_FAMILY_MAP_VERSION,
+  IMPLEMENTATION_SPECIFICATION_VERSION,
+  LABEL_EXPOSURE_VERSION,
+  MEASUREMENT_ARCHITECTURE_VERSION,
+  METHODOLOGICAL_DECISION_LOG_VERSION,
+  RESEARCH_ESTIMATOR_VERSION,
+  RESEARCH_TASK_BANK_VERSION,
+  RESEARCH_TASK_FORM_VERSION,
+} from "./versions";
 
-export const RESEARCH_SCHEMA_VERSION = "2026-08-v15";
+export const RESEARCH_SCHEMA_VERSION = "2026-08-v16";
 export const RESEARCH_CONSENT_VERSION = "2026-08-12-v8";
 export const RESEARCH_QUALITY_RULE_VERSION = "data-quality-v2";
 /** A new cohort isolates taxonomy and specialist-construct revisions from prior submissions. */
@@ -46,6 +74,8 @@ export const MODIFIER_LABEL_ROSTER_FINGERPRINT = labelRosterFingerprint(
   TAXONOMY_VERSION,
   MODIFIER_MEASUREMENT_VERSION,
 );
+export { RESEARCH_TASK_BANK_VERSION } from "./versions";
+export { LABEL_EXPOSURE_VERSION } from "./versions";
 const PARTICIPANT_STORAGE_KEY = "political-judgment-research-participant-v1";
 
 export type ResearchAdministration = "test" | "retest";
@@ -159,6 +189,7 @@ export interface CoreResearchSubmission extends ResearchRecordBase {
   predictedLabelIds: string[];
   predictedModifierIds: string[];
   specialistAssignment?: SpecialistModuleAssignment;
+  labelExposure?: LabelExposureOutcome;
   answers: AnswerMap;
   itemMap: ResearchItemSnapshot[];
 }
@@ -188,10 +219,29 @@ export interface SpecialistDispositionSubmission extends ResearchRecordBase {
   answeredCount: number;
 }
 
+export interface ResearchTaskFormMetadata {
+  algorithmVersion: string;
+  assignedTaskCount: number;
+  fingerprint: string;
+}
+
+export interface ResearchTaskSubmission extends ResearchRecordBase {
+  recordType: "research-task";
+  arm: ResearchTaskArm;
+  taskBankVersion: string;
+  assignment: ResearchTaskAssignment;
+  presentationOrder: string[];
+  form: ResearchTaskFormMetadata;
+  tasks: ResearchTask[];
+  responses: ResearchTaskResponse[];
+  versionBundle: MeasurementVersionBundle;
+}
+
 export type ResearchSubmission =
   | CoreResearchSubmission
   | SpecialistResearchSubmission
-  | SpecialistDispositionSubmission;
+  | SpecialistDispositionSubmission
+  | ResearchTaskSubmission;
 
 export type ResearchSubmissionStatus =
   | { status: "submitted"; endpoint: string }
@@ -306,6 +356,59 @@ export function isResearchMode(search = window.location.search): boolean {
   return params.get("contribute") === "1" || params.get("research") === "1";
 }
 
+function hash32(value: string): number {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+export function researchLabelExposureEnabled(
+  search = window.location.search,
+): boolean {
+  const params = new URLSearchParams(search);
+  return params.get("research") === "1" && params.get("exposure") === "1";
+}
+
+export function buildLabelExposureAssignment(
+  studyId: string,
+  participantId: string,
+): LabelExposureAssignment {
+  const seed = `${safeToken(studyId)}_${safeToken(participantId)}_label-exposure-v1`;
+  const arms: LabelExposureArm[] = [
+    "dimension-only",
+    "unlabeled-profile",
+    "named-label",
+  ];
+  return {
+    version: LABEL_EXPOSURE_VERSION,
+    studyId: safeToken(studyId) || RESEARCH_STUDY_ID,
+    participantId: safeToken(participantId),
+    arm: arms[hash32(seed) % arms.length],
+    seed,
+    assignedAfterSubstantiveResponses: true,
+  };
+}
+
+export function researchTaskArm(
+  search = window.location.search,
+): Exclude<ResearchTaskArm, "all"> | null {
+  const params = new URLSearchParams(search);
+  if (params.get("research") !== "1") return null;
+  const arm = params.get("arm");
+  if (
+    arm === "probability" ||
+    arm === "choice" ||
+    arm === "allocation" ||
+    arm === "similarity"
+  ) {
+    return arm;
+  }
+  return null;
+}
+
 export function researchAdministration(
   search = window.location.search,
 ): ResearchAdministration {
@@ -362,6 +465,7 @@ export function buildResearchSubmission(input: {
   requestedFormSize?: number | null;
   recruitmentSource?: string;
   locale?: string;
+  labelExposureOutcome?: LabelExposureOutcome;
   submissionId?: string;
   submittedAt?: string;
 }): CoreResearchSubmission {
@@ -406,6 +510,7 @@ export function buildResearchSubmission(input: {
       .map(canonicalLabelId),
     predictedModifierIds: (input.predictedModifierIds ?? []).slice(0, 5),
     specialistAssignment: input.specialistAssignment,
+    labelExposure: input.labelExposureOutcome,
     form: {
       algorithmVersion: RESEARCH_FORM_VERSION,
       requestedItemCount: input.requestedFormSize ?? null,
@@ -513,6 +618,104 @@ export function buildSpecialistDispositionSubmission(input: {
     assignment: input.assignment,
     disposition: input.disposition,
     answeredCount: Math.max(0, Math.floor(input.answeredCount)),
+  };
+}
+
+export function buildResearchTaskSubmission(input: {
+  studyId: string;
+  participantId: string;
+  administration: ResearchAdministration;
+  consent: ResearchConsent;
+  scoringVersion: string;
+  arm: ResearchTaskArm;
+  assignment: ResearchTaskAssignment;
+  tasks: ResearchTask[];
+  responses: ResearchTaskResponse[];
+  startedAt: string;
+  completedAt: string;
+  submittedAt?: string;
+  locale?: string;
+  submissionId?: string;
+}): ResearchTaskSubmission {
+  const assignmentErrors = researchTaskAssignmentErrors(
+    input.assignment,
+    input.tasks,
+  );
+  if (input.assignment.arm !== input.arm) {
+    assignmentErrors.push(
+      "task assignment arm does not match the submission arm",
+    );
+  }
+  if (assignmentErrors.length > 0) {
+    throw new Error(
+      `Research task assignment violation: ${assignmentErrors.join("; ")}`,
+    );
+  }
+  const tasksById = new Map(input.tasks.map((task) => [task.id, task]));
+  if (
+    input.responses.length !== input.tasks.length ||
+    new Set(input.responses.map((response) => response.taskId)).size !==
+      input.responses.length
+  ) {
+    throw new Error(
+      "Research task responses must contain one response per task.",
+    );
+  }
+  for (const response of input.responses) {
+    const task = tasksById.get(response.taskId);
+    if (!task)
+      throw new Error(
+        `Research response names unknown task ${response.taskId}.`,
+      );
+    const errors = researchTaskResponseErrors(task, response);
+    if (errors.length > 0) {
+      throw new Error(`Research task response violation: ${errors.join("; ")}`);
+    }
+  }
+  const versionBundle: MeasurementVersionBundle = {
+    architectureVersion: MEASUREMENT_ARCHITECTURE_VERSION,
+    implementationSpecVersion: IMPLEMENTATION_SPECIFICATION_VERSION,
+    decisionLogVersion: METHODOLOGICAL_DECISION_LOG_VERSION,
+    bankVersion: QUESTION_BANK_VERSION,
+    scoringVersion: input.scoringVersion ?? RESULT_SCORING_VERSION,
+    taxonomyVersion: TAXONOMY_VERSION,
+    primaryMeasurementVersion: PRIMARY_MEASUREMENT_VERSION,
+    modifierMeasurementVersion: MODIFIER_MEASUREMENT_VERSION,
+    formVersion: RESEARCH_TASK_FORM_VERSION,
+    schemaVersion: RESEARCH_SCHEMA_VERSION,
+    consentVersion: RESEARCH_CONSENT_VERSION,
+    qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
+    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
+    researchTaskBankVersion: RESEARCH_TASK_BANK_VERSION,
+    researchEstimatorVersion: RESEARCH_ESTIMATOR_VERSION,
+    constructFamilyMapVersion: CONSTRUCT_FAMILY_MAP_VERSION,
+  };
+  return {
+    schemaVersion: RESEARCH_SCHEMA_VERSION,
+    submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
+    recordType: "research-task",
+    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
+    participantId: safeToken(input.participantId),
+    administration: input.administration,
+    submittedAt: input.submittedAt ?? new Date().toISOString(),
+    startedAt: input.startedAt,
+    completedAt: input.completedAt,
+    durationMs: durationBetween(input.startedAt, input.completedAt),
+    consent: input.consent,
+    locale: normalizeLocale(input.locale),
+    qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
+    arm: input.arm,
+    taskBankVersion: input.assignment.taskBankVersion,
+    assignment: input.assignment,
+    presentationOrder: [...input.assignment.presentationOrder],
+    form: {
+      algorithmVersion: RESEARCH_TASK_FORM_VERSION,
+      assignedTaskCount: input.tasks.length,
+      fingerprint: input.assignment.fingerprint,
+    },
+    tasks: input.tasks,
+    responses: input.responses,
+    versionBundle,
   };
 }
 

@@ -8,6 +8,7 @@ import type {
   ResponseType,
   TheoryContext,
 } from "./common";
+import type { CalibrationEligibility, ItemLinkingRole } from "./research";
 
 export interface AxisWeight {
   axisId: AxisId;
@@ -80,4 +81,10 @@ export interface Question {
   deprecationReason?: string;
   sourceStatus?: "clean_room" | "original";
   textHash?: string;
+  /** Research-only family and response-process metadata; no scoring weights. */
+  familyId?: string;
+  calibrationEligibility?: CalibrationEligibility;
+  linkingRole?: ItemLinkingRole;
+  wordingFormId?: string;
+  responseProcessTags?: readonly string[];
 }

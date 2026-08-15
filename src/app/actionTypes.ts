@@ -13,6 +13,8 @@ import type {
   ResearchSubmissionStatus,
   SpecialistResearchSubmission,
 } from "../research";
+import type { ResearchTaskArm } from "../types";
+import type { LabelExposureOutcome } from "../types";
 import type {
   SpecialistModuleAssignment,
   SpecialistModuleDefinition,
@@ -39,6 +41,9 @@ export interface AppActionContext {
   researchEnabled: boolean;
   researchSubmission: ResearchSubmission | null;
   researchStatus: ResearchSubmissionStatus | null;
+  researchTaskArm: ResearchTaskArm | null;
+  labelExposureAssignment: import("../types").LabelExposureAssignment | null;
+  labelExposureOutcome: LabelExposureOutcome | null;
   recruitmentSource: string | undefined;
   result: ResultProfile | null;
   resumeAfterConsent: "quiz" | "self-identification" | null;
@@ -66,6 +71,7 @@ export interface AppActionContext {
   setResearchEnabled: Setter<boolean>;
   setResearchSubmission: Setter<ResearchSubmission | null>;
   setResearchStatus: Setter<ResearchSubmissionStatus | null>;
+  setLabelExposureOutcome: Setter<LabelExposureOutcome | null>;
   setResult: Setter<ResultProfile | null>;
   setResumeAfterConsent: Setter<"quiz" | "self-identification" | null>;
   setResumeIndex: Setter<number>;

@@ -122,6 +122,7 @@ deployments:
 ```bash
 ALLOWED_ORIGIN=http://localhost:5173 \
 RESEARCH_OUTPUT_FILE=./private-data/submissions.ndjson \
+RESEARCH_TASK_OUTPUT_FILE=./private-data/research-task-submissions.ndjson \
 RESEARCH_STUDY_ID=community-2026-v5 \
 RESEARCH_BANK_VERSION='the-frozen-bank-version' \
 RESEARCH_SCORING_VERSION='the-frozen-scoring-version' \
@@ -180,6 +181,11 @@ Detailed inputs, thresholds, and outputs are documented in `analysis/README.md`.
 
 ## Study documents
 
+- `docs/measurement-architecture-specification-2026-08.md`
+- `docs/methodological-change-decision-log-2026-08.md`
+- `docs/measurement-architecture-implementation-specification-2026-08.md`
+- `docs/construct-family-map-2026-08.md`
+- `docs/research-task-protocol-2026-08.md`
 - `docs/semantic-question-audit-2026-07.md`
 - `docs/primary-core-measurement-audit-2026-08.md`
 - `docs/psychometric-validation-protocol.md`

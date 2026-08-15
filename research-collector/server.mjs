@@ -11,16 +11,26 @@ const specialistOutputFile = resolve(
   process.env.SPECIALIST_RESEARCH_OUTPUT_FILE ??
     "./private-data/specialist-submissions.ndjson",
 );
+const researchTaskOutputFile = resolve(
+  process.env.RESEARCH_TASK_OUTPUT_FILE ??
+    "./private-data/research-task-submissions.ndjson",
+);
 const allowedOrigin = process.env.ALLOWED_ORIGIN ?? "http://localhost:5173";
 const maximumBodyBytes = Number(process.env.MAXIMUM_BODY_BYTES ?? 2_000_000);
 const expectedSchemaVersion =
-  process.env.RESEARCH_SCHEMA_VERSION ?? "2026-08-v15";
+  process.env.RESEARCH_SCHEMA_VERSION ?? "2026-08-v16";
 const expectedConsentVersion =
   process.env.RESEARCH_CONSENT_VERSION ?? "2026-08-12-v8";
 const expectedQualityRuleVersion =
   process.env.RESEARCH_QUALITY_RULE_VERSION ?? "data-quality-v2";
 const expectedFormVersion =
   process.env.RESEARCH_FORM_VERSION ?? "profile-form-v3";
+const expectedResearchTaskFormVersion =
+  process.env.RESEARCH_TASK_FORM_VERSION ?? "2026-08-research-task-form-v1";
+const expectedResearchTaskBankVersion =
+  process.env.RESEARCH_TASK_BANK_VERSION ?? "2026-08-research-task-bank-v1";
+const expectedLabelExposureVersion =
+  process.env.RESEARCH_LABEL_EXPOSURE_VERSION ?? "2026-08-label-exposure-v1";
 const expectedStudyId = process.env.RESEARCH_STUDY_ID?.trim() || null;
 const expectedBankVersion = process.env.RESEARCH_BANK_VERSION?.trim() || null;
 const expectedScoringVersion =
@@ -51,10 +61,26 @@ const RESPONSE_TYPES = new Set(["likert5", "likert7", "statementChoice"]);
 const REVIEW_STATUSES = new Set(["approved", "draft", "needs-rewrite"]);
 const TIERS = new Set(["blitz", "quick", "moderate", "extensive"]);
 const SALIENCE_VALUES = new Set([1, 3, 5]);
+const TASK_KINDS = new Set([
+  "probability",
+  "forecast",
+  "constrained-choice",
+  "conjoint",
+  "allocation",
+  "forced-tradeoff",
+  "similarity",
+  "sort",
+]);
+const LABEL_EXPOSURE_ARMS = new Set([
+  "dimension-only",
+  "unlabeled-profile",
+  "named-label",
+]);
 
 await Promise.all([
   mkdir(dirname(outputFile), { recursive: true }),
   mkdir(dirname(specialistOutputFile), { recursive: true }),
+  mkdir(dirname(researchTaskOutputFile), { recursive: true }),
 ]);
 
 function isObject(value) {
@@ -312,6 +338,7 @@ async function loadSubmissionDigests(paths) {
 const submissionDigests = await loadSubmissionDigests([
   outputFile,
   specialistOutputFile,
+  researchTaskOutputFile,
 ]);
 let writeQueue = Promise.resolve();
 
@@ -484,6 +511,53 @@ function validIdentity(identity) {
   );
 }
 
+function validLabelExposure(value, participantId, studyId) {
+  if (value === undefined) return true;
+  if (!isObject(value) || !isObject(value.assignment)) return false;
+  const assignment = value.assignment;
+  if (
+    assignment.version !== expectedLabelExposureVersion ||
+    assignment.studyId !== studyId ||
+    assignment.participantId !== participantId ||
+    !LABEL_EXPOSURE_ARMS.has(assignment.arm) ||
+    !validToken(assignment.seed, 256) ||
+    assignment.assignedAfterSubstantiveResponses !== true ||
+    typeof value.exposureShown !== "boolean"
+  )
+    return false;
+  if (value.exposedLabelIds !== undefined) {
+    if (
+      !Array.isArray(value.exposedLabelIds) ||
+      new Set(value.exposedLabelIds).size !== value.exposedLabelIds.length ||
+      !value.exposedLabelIds.every((labelId) => validToken(labelId, 128))
+    )
+      return false;
+  }
+  const ratings = [
+    value.perceivedAccuracy,
+    value.identityAcceptance,
+    value.confidence,
+    value.affect,
+    value.followUpStability,
+  ];
+  if (
+    ratings.some(
+      (rating) =>
+        rating !== undefined &&
+        (!Number.isInteger(rating) || rating < 1 || rating > 5),
+    )
+  )
+    return false;
+  if (!value.exposureShown && typeof value.missingReason !== "string")
+    return false;
+  if (
+    value.missingReason !== undefined &&
+    !["declined", "not-shown", "unresolved"].includes(value.missingReason)
+  )
+    return false;
+  return !(value.exposureShown && value.missingReason === "not-shown");
+}
+
 function validCoreRecord(value) {
   return (
     validAnsweredRecord(value) &&
@@ -568,7 +642,8 @@ function validCoreRecord(value) {
         value.specialistAssignment.moduleId,
         value.participantId,
         value.studyId,
-      ))
+      )) &&
+    validLabelExposure(value.labelExposure, value.participantId, value.studyId)
   );
 }
 
@@ -630,11 +705,200 @@ function validSpecialistDisposition(value) {
   );
 }
 
+function sameMembers(left, right) {
+  return (
+    Array.isArray(left) &&
+    Array.isArray(right) &&
+    left.length === right.length &&
+    [...left].sort().join("|") === [...right].sort().join("|")
+  );
+}
+
+function taskMatchesResearchArm(task, arm) {
+  if (arm === "probability")
+    return task.kind === "probability" || task.kind === "forecast";
+  if (arm === "choice")
+    return task.kind === "constrained-choice" || task.kind === "conjoint";
+  if (arm === "allocation")
+    return task.kind === "allocation" || task.kind === "forced-tradeoff";
+  if (arm === "similarity")
+    return task.kind === "similarity" || task.kind === "sort";
+  return true;
+}
+
+function validResearchTask(task) {
+  if (
+    !(
+      isObject(task) &&
+      validToken(task.id) &&
+      task.version === expectedResearchTaskBankVersion &&
+      validToken(task.domainId) &&
+      LAYERS.has(task.layer) &&
+      THEORY_CONTEXTS.has(task.theoryContext) &&
+      validNonemptyString(task.prompt, 10_000) &&
+      Array.isArray(task.criterionIds) &&
+      task.criterionIds.length > 0 &&
+      task.criterionIds.every((id) => validToken(id)) &&
+      TASK_KINDS.has(task.kind)
+    )
+  )
+    return false;
+  if (task.kind === "probability" || task.kind === "forecast") {
+    return (
+      validNonemptyString(task.propositionId, 256) &&
+      validNonemptyString(task.outcomeId, 256) &&
+      validNonemptyString(task.horizon, 256) &&
+      task.probabilityScale === "0-100" &&
+      typeof task.allowDontKnow === "boolean"
+    );
+  }
+  if (task.kind === "constrained-choice" || task.kind === "conjoint") {
+    return (
+      validNonemptyString(task.choiceSetId, 256) &&
+      Array.isArray(task.attributes) &&
+      task.attributes.length > 0 &&
+      task.attributes.every(
+        (attribute) =>
+          isObject(attribute) &&
+          validToken(attribute.id) &&
+          Array.isArray(attribute.levels) &&
+          attribute.levels.length > 1 &&
+          attribute.levels.every((level) => validNonemptyString(level, 256)),
+      ) &&
+      Array.isArray(task.alternatives) &&
+      task.alternatives.length > 1 &&
+      new Set(task.alternatives).size === task.alternatives.length &&
+      task.alternatives.every((alternative) =>
+        validNonemptyString(alternative, 512),
+      ) &&
+      validNonemptyString(task.constraintProfileId, 256)
+    );
+  }
+  if (task.kind === "allocation" || task.kind === "forced-tradeoff") {
+    return (
+      Array.isArray(task.goods) &&
+      task.goods.length > 1 &&
+      new Set(task.goods).size === task.goods.length &&
+      task.goods.every((good) => validNonemptyString(good, 256)) &&
+      Number.isInteger(task.totalUnits) &&
+      task.totalUnits > 0 &&
+      Array.isArray(task.constraints) &&
+      task.constraints.every((constraint) =>
+        validNonemptyString(constraint, 256),
+      )
+    );
+  }
+  return (
+    Array.isArray(task.stimulusIds) &&
+    task.stimulusIds.length > 1 &&
+    new Set(task.stimulusIds).size === task.stimulusIds.length &&
+    task.stimulusIds.every((stimulusId) => validToken(stimulusId)) &&
+    validNonemptyString(task.responseScale, 256)
+  );
+}
+
+function validResearchTaskResponse(task, response) {
+  if (
+    !isObject(response) ||
+    response.taskId !== task.id ||
+    response.kind !== task.kind
+  )
+    return false;
+  if (task.kind === "probability" || task.kind === "forecast") {
+    return (
+      (Number.isFinite(response.probability) &&
+        response.probability >= 0 &&
+        response.probability <= 100) ||
+      (response.value === "dont_know" && task.allowDontKnow) ||
+      response.value === "prefer_not_to_answer"
+    );
+  }
+  if (task.kind === "constrained-choice" || task.kind === "conjoint") {
+    return (
+      task.alternatives.includes(response.chosenAlternative) ||
+      response.value === "none" ||
+      response.value === "prefer_not_to_answer"
+    );
+  }
+  if (task.kind === "allocation" || task.kind === "forced-tradeoff") {
+    if (response.value === "prefer_not_to_answer") return true;
+    if (!isObject(response.allocations)) return false;
+    const values = Object.values(response.allocations);
+    return (
+      sameMembers(Object.keys(response.allocations), task.goods) &&
+      values.every((value) => Number.isInteger(value) && value >= 0) &&
+      values.reduce((sum, value) => sum + value, 0) === task.totalUnits
+    );
+  }
+  if (response.value === "prefer_not_to_answer") return true;
+  if (isObject(response.ratings)) {
+    const values = Object.values(response.ratings);
+    return (
+      sameMembers(Object.keys(response.ratings), task.stimulusIds) &&
+      values.every(
+        (value) => Number.isFinite(value) && value >= 0 && value <= 100,
+      )
+    );
+  }
+  return (
+    Array.isArray(response.order) &&
+    sameMembers(response.order, task.stimulusIds) &&
+    new Set(response.order).size === response.order.length
+  );
+}
+
+function validResearchTaskRecord(value) {
+  return (
+    validBaseRecord(value) &&
+    value.recordType === "research-task" &&
+    ["probability", "choice", "allocation", "similarity"].includes(value.arm) &&
+    value.taskBankVersion === expectedResearchTaskBankVersion &&
+    isObject(value.assignment) &&
+    value.assignment.taskBankVersion === expectedResearchTaskBankVersion &&
+    value.assignment.arm === value.arm &&
+    validNonemptyString(value.assignment.participantSeed, 256) &&
+    Array.isArray(value.assignment.taskIds) &&
+    Array.isArray(value.assignment.presentationOrder) &&
+    sameMembers(value.assignment.taskIds, value.assignment.presentationOrder) &&
+    isObject(value.form) &&
+    value.form.algorithmVersion === expectedResearchTaskFormVersion &&
+    Number.isInteger(value.form.assignedTaskCount) &&
+    value.form.assignedTaskCount === value.assignment.taskIds.length &&
+    value.form.fingerprint === value.assignment.fingerprint &&
+    Array.isArray(value.tasks) &&
+    value.tasks.length === value.assignment.taskIds.length &&
+    value.tasks.every(validResearchTask) &&
+    value.tasks.every((task) => taskMatchesResearchArm(task, value.arm)) &&
+    sameMembers(
+      value.tasks.map((task) => task.id),
+      value.assignment.taskIds,
+    ) &&
+    Array.isArray(value.responses) &&
+    value.responses.length === value.tasks.length &&
+    new Set(value.responses.map((response) => response.taskId)).size ===
+      value.responses.length &&
+    value.responses.every((response) => {
+      const task = value.tasks.find(
+        (candidate) => candidate.id === response.taskId,
+      );
+      return task && validResearchTaskResponse(task, response);
+    }) &&
+    sameMembers(value.presentationOrder, value.assignment.presentationOrder) &&
+    isObject(value.versionBundle) &&
+    value.versionBundle.studyId === value.studyId &&
+    value.versionBundle.schemaVersion === expectedSchemaVersion &&
+    value.versionBundle.formVersion === expectedResearchTaskFormVersion &&
+    value.versionBundle.researchTaskBankVersion ===
+      expectedResearchTaskBankVersion
+  );
+}
+
 function validSubmission(value) {
   return (
     validCoreRecord(value) ||
     validSpecialistRecord(value) ||
-    validSpecialistDisposition(value)
+    validSpecialistDisposition(value) ||
+    validResearchTaskRecord(value)
   );
 }
 
@@ -734,7 +998,9 @@ const server = createServer(async (request, response) => {
     submission.recordType === "specialist" ||
     submission.recordType === "specialist-disposition"
       ? specialistOutputFile
-      : outputFile;
+      : submission.recordType === "research-task"
+        ? researchTaskOutputFile
+        : outputFile;
   let persistence;
   try {
     persistence = await persistSubmission(submission, targetFile);
@@ -768,6 +1034,7 @@ server.listen(port, () => {
   console.log(
     `Writing specialist pseudonymous records and dispositions to ${specialistOutputFile}`,
   );
+  console.log(`Writing research task records to ${researchTaskOutputFile}`);
   console.log(
     `Loaded ${submissionDigests.size} existing submission ID(s) for idempotency checks`,
   );

@@ -2,6 +2,8 @@ export type Stage =
   | "intro"
   | "methodology"
   | "consent"
+  | "research-tasks"
+  | "label-exposure"
   | "quiz"
   | "self-identification"
   | "specialist-invite"

@@ -1,0 +1,3 @@
+submission_id,study_id,participant_id,decision
+fixture_submission_1,fixture-study,fixture-participant-1,include
+fixture_submission_2,fixture-study,fixture-participant-2,include

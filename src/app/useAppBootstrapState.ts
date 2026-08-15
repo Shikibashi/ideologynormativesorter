@@ -6,8 +6,13 @@ import {
   isResearchMode,
   researchAdministration,
   researchRecruitmentSource,
+  buildLabelExposureAssignment,
+  researchLabelExposureEnabled,
   researchStudyId,
+  researchTaskArm,
 } from "../research";
+import type { ResearchTaskArm } from "../types";
+import type { LabelExposureAssignment } from "../types";
 import { researchFormSize } from "../research/forms";
 import { loadPendingResearchRecord, loadQuizState } from "../save";
 import { readSharedResult, type ShareMeta } from "../share";
@@ -18,6 +23,8 @@ export interface AppBootstrapState {
   contributionAvailable: boolean;
   formSize: number | null;
   initialResearchMode: boolean;
+  initialResearchTaskArm: Exclude<ResearchTaskArm, "all"> | null;
+  labelExposureAssignment: LabelExposureAssignment | null;
   loadedInitialQuiz: ReturnType<typeof loadQuizState>;
   loadedPendingResearch: ReturnType<typeof loadPendingResearchRecord>;
   participantId: string;
@@ -39,10 +46,15 @@ export function useAppBootstrapState(): AppBootstrapState {
   );
   const [shareLoad] = useState(() => readSharedResult(shareMeta));
   const initialResearchMode = useMemo(() => isResearchMode(), []);
+  const initialResearchTaskArm = useMemo(() => researchTaskArm(), []);
   const administration = useMemo(() => researchAdministration(), []);
   const studyId = useMemo(() => researchStudyId(), []);
   const recruitmentSource = useMemo(() => researchRecruitmentSource(), []);
   const formSize = useMemo(() => researchFormSize(), []);
+  const labelExposureEnabled = useMemo(
+    () => researchLabelExposureEnabled(),
+    [],
+  );
   const contributionAvailable =
     Boolean(import.meta.env.VITE_RESEARCH_ENDPOINT?.trim()) ||
     import.meta.env.DEV;
@@ -57,12 +69,21 @@ export function useAppBootstrapState(): AppBootstrapState {
       ? getOrCreateParticipantId(window.localStorage, undefined, studyId)
       : "";
   });
+  const labelExposureAssignment = useMemo(
+    () =>
+      labelExposureEnabled && participantId
+        ? buildLabelExposureAssignment(studyId, participantId)
+        : null,
+    [labelExposureEnabled, participantId, studyId],
+  );
 
   return {
     administration,
     contributionAvailable,
     formSize,
     initialResearchMode,
+    initialResearchTaskArm,
+    labelExposureAssignment,
     loadedInitialQuiz,
     loadedPendingResearch,
     participantId,

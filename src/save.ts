@@ -189,7 +189,8 @@ function isPendingResearchRecord(
     typeof submission.participantId === "string" &&
     (submission.recordType === "core" ||
       submission.recordType === "specialist" ||
-      submission.recordType === "specialist-disposition") &&
+      submission.recordType === "specialist-disposition" ||
+      submission.recordType === "research-task") &&
     (status.status === "submitted" ||
       status.status === "export-only" ||
       status.status === "failed")

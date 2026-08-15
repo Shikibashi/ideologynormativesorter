@@ -1,7 +1,22 @@
-import type { Question } from "../types";
+import type { Layer, Question, QuizTier } from "../types";
 import type { ResearchAdministration } from "./index";
 
 export const RESEARCH_FORM_VERSION = "profile-form-v3";
+
+export type ResearchFormRole = "consumer-profile" | "controlled-matrix";
+
+export interface ResearchFormManifest {
+  algorithmVersion: string;
+  role: ResearchFormRole;
+  sourceTier: QuizTier;
+  administration: ResearchAdministration;
+  requestedItemCount: number | null;
+  assignedItemCount: number;
+  membershipFingerprint: string;
+  presentationFingerprint: string;
+  layerCounts: Record<Layer, number>;
+  axisIds: string[];
+}
 
 function hash32(value: string): number {
   let hash = 2166136261;
@@ -135,4 +150,166 @@ export function researchFormFingerprint(questions: Question[]): string {
     .sort()
     .join("|");
   return `rf_${hash32(`${RESEARCH_FORM_VERSION}:${canonical}`).toString(16).padStart(8, "0")}`;
+}
+
+export function researchPresentationFingerprint(
+  questions: Question[],
+  administration: ResearchAdministration,
+): string {
+  const ordered = questions.map((question) => String(question.id)).join("|");
+  return `rfo_${hash32(`${RESEARCH_FORM_VERSION}:${administration}:${ordered}`).toString(16).padStart(8, "0")}`;
+}
+
+export function researchFormManifest(
+  questionPool: Question[],
+  participantId: string,
+  administration: ResearchAdministration,
+  requestedSize: number | null,
+  sourceTier: QuizTier = "extensive",
+): ResearchFormManifest {
+  const form = buildContributionQuestionForm(
+    questionPool,
+    participantId,
+    administration,
+    requestedSize,
+  );
+  const layerCounts: Record<Layer, number> = {
+    normative: 0,
+    descriptive: 0,
+    prescriptive: 0,
+  };
+  const axisIds = new Set<string>();
+  for (const question of form) {
+    layerCounts[question.layer] += 1;
+    for (const weight of question.axisWeights)
+      axisIds.add(String(weight.axisId));
+    for (const option of question.statementOptions ?? []) {
+      for (const weight of option.axisWeights)
+        axisIds.add(String(weight.axisId));
+    }
+  }
+  return {
+    algorithmVersion: RESEARCH_FORM_VERSION,
+    role: requestedSize === null ? "consumer-profile" : "controlled-matrix",
+    sourceTier,
+    administration,
+    requestedItemCount: requestedSize,
+    assignedItemCount: form.length,
+    membershipFingerprint: researchFormFingerprint(form),
+    presentationFingerprint: researchPresentationFingerprint(
+      form,
+      administration,
+    ),
+    layerCounts,
+    axisIds: [...axisIds].sort(),
+  };
+}
+
+export function researchFormManifestErrors(
+  manifest: ResearchFormManifest,
+  form: Question[],
+  requiredAxisIds: readonly string[] = [],
+): string[] {
+  const errors: string[] = [];
+  if (manifest.algorithmVersion !== RESEARCH_FORM_VERSION) {
+    errors.push("form manifest version does not match the current form");
+  }
+  if (manifest.assignedItemCount !== form.length) {
+    errors.push("form manifest item count does not match assigned items");
+  }
+  if (manifest.membershipFingerprint !== researchFormFingerprint(form)) {
+    errors.push("form manifest membership fingerprint does not match items");
+  }
+  if (
+    manifest.presentationFingerprint !==
+    researchPresentationFingerprint(form, manifest.administration)
+  ) {
+    errors.push("form manifest presentation fingerprint does not match items");
+  }
+  const layerTotal = Object.values(manifest.layerCounts).reduce(
+    (sum, count) => sum + count,
+    0,
+  );
+  if (layerTotal !== form.length) {
+    errors.push("form manifest layer counts do not sum to assigned items");
+  }
+  if (
+    form.length > 0 &&
+    Object.values(manifest.layerCounts).some((count) => count === 0)
+  ) {
+    errors.push(
+      "form must retain at least one item from each measurement layer",
+    );
+  }
+  const actualAxisIds = new Set<string>();
+  for (const question of form) {
+    for (const weight of question.axisWeights)
+      actualAxisIds.add(String(weight.axisId));
+    for (const option of question.statementOptions ?? []) {
+      for (const weight of option.axisWeights)
+        actualAxisIds.add(String(weight.axisId));
+    }
+  }
+  if (
+    [...actualAxisIds].sort().join("|") !==
+    [...manifest.axisIds].sort().join("|")
+  ) {
+    errors.push("form manifest axis coverage does not match assigned items");
+  }
+  if (requiredAxisIds.some((axisId) => !actualAxisIds.has(axisId))) {
+    errors.push("form is missing a required axis");
+  }
+  return errors;
+}
+
+export function researchFormAssignmentErrors(
+  testForm: Question[],
+  retestForm: Question[],
+  expectedItemCount?: number,
+): string[] {
+  const errors: string[] = [];
+  const testIds = testForm.map((question) => String(question.id));
+  const retestIds = retestForm.map((question) => String(question.id));
+  if (new Set(testIds).size !== testIds.length) {
+    errors.push("test form has duplicate items");
+  }
+  if (new Set(retestIds).size !== retestIds.length) {
+    errors.push("retest form has duplicate items");
+  }
+  if (
+    researchFormFingerprint(testForm) !== researchFormFingerprint(retestForm)
+  ) {
+    errors.push("test/retest membership fingerprints differ");
+  }
+  for (const [name, form] of [
+    ["test", testForm],
+    ["retest", retestForm],
+  ] as const) {
+    const layers = new Set(form.map((question) => question.layer));
+    if (form.length > 0 && layers.size < 3)
+      errors.push(`${name} form does not cover all measurement layers`);
+  }
+  if (
+    expectedItemCount !== undefined &&
+    testForm.length !== expectedItemCount
+  ) {
+    errors.push("test form item count does not match the requested count");
+  }
+  if (
+    testForm.some(
+      (question) =>
+        question.active === false || question.reviewStatus === "needs-rewrite",
+    )
+  ) {
+    errors.push("test form contains an inactive or needs-rewrite item");
+  }
+  if (
+    retestForm.some(
+      (question) =>
+        question.active === false || question.reviewStatus === "needs-rewrite",
+    )
+  ) {
+    errors.push("retest form contains an inactive or needs-rewrite item");
+  }
+  return errors;
 }

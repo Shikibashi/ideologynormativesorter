@@ -100,6 +100,7 @@ const taxonomy = await read("src/data/labelTaxonomy.ts");
 const primaryMeasurement = await read("src/data/primaryMeasurement.ts");
 const modifierMeasurement = await read("src/data/modifierMeasurement.ts");
 const forms = await read("src/research/forms.ts");
+const researchVersions = await read("src/research/versions.ts");
 const specialist = await read("src/specialist/index.ts");
 const worker = await read("research-worker/wrangler.jsonc");
 const collector = await read("research-collector/server.mjs");
@@ -157,6 +158,9 @@ const contract = {
   quality: constant(research, "RESEARCH_QUALITY_RULE_VERSION"),
   primaryMeasurement: primaryMeasurementVersion,
   form: constant(forms, "RESEARCH_FORM_VERSION"),
+  researchTaskBank: constant(researchVersions, "RESEARCH_TASK_BANK_VERSION"),
+  researchTaskForm: constant(researchVersions, "RESEARCH_TASK_FORM_VERSION"),
+  researchEstimator: constant(researchVersions, "RESEARCH_ESTIMATOR_VERSION"),
   assignment: constant(specialist, "SPECIALIST_ASSIGNMENT_STRATEGY"),
   assignmentRoster: constant(
     specialist,
@@ -228,6 +232,16 @@ assertEqual(
   configuredVar(worker, "EXPECTED_FORM_VERSION"),
 );
 assertEqual(
+  "Worker research task bank",
+  contract.researchTaskBank,
+  configuredVar(worker, "EXPECTED_RESEARCH_TASK_BANK_VERSION"),
+);
+assertEqual(
+  "Worker research task form",
+  contract.researchTaskForm,
+  configuredVar(worker, "EXPECTED_RESEARCH_TASK_FORM_VERSION"),
+);
+assertEqual(
   "Worker bank",
   documentedBankVersion,
   configuredVar(worker, "EXPECTED_BANK_VERSION"),
@@ -296,6 +310,16 @@ assertEqual(
   "Collector form",
   contract.form,
   collectorDefault(collector, "RESEARCH_FORM_VERSION"),
+);
+assertEqual(
+  "Collector research task bank",
+  contract.researchTaskBank,
+  collectorDefault(collector, "RESEARCH_TASK_BANK_VERSION"),
+);
+assertEqual(
+  "Collector research task form",
+  contract.researchTaskForm,
+  collectorDefault(collector, "RESEARCH_TASK_FORM_VERSION"),
 );
 assertEqual(
   "Collector taxonomy",

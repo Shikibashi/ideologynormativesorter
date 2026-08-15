@@ -4,6 +4,7 @@ import {
   type ResearchConsent,
   type ResearchAdministration,
 } from "../research";
+import type { ResearchTaskArm } from "../types";
 
 interface ResearchConsentScreenProps {
   participantId: string;
@@ -16,6 +17,7 @@ interface ResearchConsentScreenProps {
   retentionNotice?: string;
   onConsent: (consent: ResearchConsent) => void;
   onCancel: () => void;
+  researchTaskArm?: ResearchTaskArm | null;
 }
 
 export function ResearchConsentScreen({
@@ -29,6 +31,7 @@ export function ResearchConsentScreen({
   retentionNotice,
   onConsent,
   onCancel,
+  researchTaskArm = null,
 }: ResearchConsentScreenProps) {
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [voluntaryParticipation, setVoluntaryParticipation] = useState(false);
@@ -43,6 +46,7 @@ export function ResearchConsentScreen({
   const contactNotice = researchContact
     ? `Site owner contact: ${researchContact}`
     : "No public site-owner contact was displayed.";
+  const taskMode = researchTaskArm !== null;
 
   function continueToStudy(): void {
     if (!complete) return;
@@ -67,20 +71,41 @@ export function ResearchConsentScreen({
         <span className="section-band-label">COMMUNITY INPUT / PRIVACY</span>
         <span className="section-band-status">NO ACCOUNT REQUIRED</span>
       </div>
-      <h1>Optional profile contribution</h1>
-      <p>
-        You selected the {profileLabel.toLowerCase()}. This optional{" "}
-        {administration === "retest" ? "follow-up" : "initial"} contribution
-        uses that same assessment and result; it is not a separate test.
-        Declining continues with the selected profile without sending a
-        contribution.
-      </p>
-      <p className="muted">
-        The selected profile contains {expectedCoreItemCount} questions,
-        optional profile fields, and possibly one optional topic follow-up. It
-        is long, and some political or identity questions may be uncomfortable.
-        You can stop or choose “Prefer not to answer” at any time.
-      </p>
+      <h1>
+        {taskMode ? "Optional research task" : "Optional profile contribution"}
+      </h1>
+      {taskMode ? (
+        <>
+          <p>
+            You selected an opt-in {researchTaskArm} research arm. This short
+            module studies a response process separately from the site’s
+            ordinary profile score. It does not change your result or assign a
+            probability to your political outlook.
+          </p>
+          <p className="muted">
+            Tasks may ask for a forecast, constrained choice, allocation, or
+            similarity rating. You can stop or choose an explicit nonresponse
+            option at any time.
+          </p>
+        </>
+      ) : (
+        <>
+          <p>
+            You selected the {profileLabel.toLowerCase()}. This optional{" "}
+            {administration === "retest" ? "follow-up" : "initial"} contribution
+            uses that same assessment and result; it is not a separate test.
+            Declining continues with the selected profile without sending a
+            contribution.
+          </p>
+          <p className="muted">
+            The selected profile contains {expectedCoreItemCount} questions,
+            optional profile fields, and possibly one optional topic follow-up.
+            It is long, and some political or identity questions may be
+            uncomfortable. You can stop or choose “Prefer not to answer” at any
+            time.
+          </p>
+        </>
+      )}
       <p className="muted">
         The contribution contains your answers, broad optional demographic
         groups, optional ideology names, version information, elapsed time, and
@@ -142,7 +167,7 @@ export function ResearchConsentScreen({
         disabled={!complete || (!endpointConfigured && !allowOfflinePreview)}
         onClick={continueToStudy}
       >
-        Continue to {profileLabel}
+        {taskMode ? "Continue to research task" : `Continue to ${profileLabel}`}
       </button>
       <button type="button" className="back-link" onClick={onCancel}>
         Continue without contributing

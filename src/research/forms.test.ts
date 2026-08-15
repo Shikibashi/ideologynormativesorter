@@ -3,7 +3,10 @@ import type { Question } from "../types";
 import {
   buildContributionQuestionForm,
   buildResearchQuestionForm,
+  researchFormAssignmentErrors,
   researchFormFingerprint,
+  researchFormManifest,
+  researchFormManifestErrors,
   researchFormSize,
 } from "./forms";
 
@@ -88,5 +91,38 @@ describe("research forms", () => {
     );
     expect(form).toHaveLength(6);
     expect(keys.size).toBe(6);
+  });
+
+  it("emits a reproducible form manifest and checks retest membership", () => {
+    const testForm = buildResearchQuestionForm(pool, "p_manifest", "test", 6);
+    const retestForm = buildResearchQuestionForm(
+      pool,
+      "p_manifest",
+      "retest",
+      6,
+    );
+    const manifest = researchFormManifest(
+      pool,
+      "p_manifest",
+      "test",
+      6,
+      "extensive",
+    );
+    expect(manifest.role).toBe("controlled-matrix");
+    expect(manifest.assignedItemCount).toBe(6);
+    expect(manifest.layerCounts.normative).toBeGreaterThan(0);
+    expect(manifest.membershipFingerprint).toBe(
+      researchFormFingerprint(testForm),
+    );
+    expect(researchFormManifestErrors(manifest, testForm)).toEqual([]);
+    expect(
+      researchFormManifestErrors(
+        { ...manifest, layerCounts: { ...manifest.layerCounts, normative: 0 } },
+        testForm,
+      ),
+    ).toContain(
+      "form must retain at least one item from each measurement layer",
+    );
+    expect(researchFormAssignmentErrors(testForm, retestForm, 6)).toEqual([]);
   });
 });

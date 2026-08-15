@@ -1,6 +1,27 @@
 const TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/;
-const RECORD_TYPES = new Set(["core", "specialist", "specialist-disposition"]);
+const RECORD_TYPES = new Set([
+  "core",
+  "specialist",
+  "specialist-disposition",
+  "research-task",
+]);
 const LAYERS = new Set(["normative", "descriptive", "prescriptive"]);
+const THEORY_CONTEXTS = new Set(["ideal", "nonideal", "mixed"]);
+const TASK_KINDS = new Set([
+  "probability",
+  "forecast",
+  "constrained-choice",
+  "conjoint",
+  "allocation",
+  "forced-tradeoff",
+  "similarity",
+  "sort",
+]);
+const LABEL_EXPOSURE_ARMS = new Set([
+  "dimension-only",
+  "unlabeled-profile",
+  "named-label",
+]);
 const SALIENCE_VALUES = new Set([1, 3, 5]);
 
 function isObject(value) {
@@ -252,6 +273,54 @@ function validIdentity(identity) {
   );
 }
 
+function validLabelExposure(value, participantId, studyId, env) {
+  if (value === undefined) return true;
+  if (!isObject(value) || !isObject(value.assignment)) return false;
+  const assignment = value.assignment;
+  if (
+    assignment.version !==
+      (env.EXPECTED_LABEL_EXPOSURE_VERSION ?? "2026-08-label-exposure-v1") ||
+    assignment.studyId !== studyId ||
+    assignment.participantId !== participantId ||
+    !LABEL_EXPOSURE_ARMS.has(assignment.arm) ||
+    !validToken(assignment.seed, 256) ||
+    assignment.assignedAfterSubstantiveResponses !== true ||
+    typeof value.exposureShown !== "boolean"
+  )
+    return false;
+  if (value.exposedLabelIds !== undefined) {
+    if (
+      !Array.isArray(value.exposedLabelIds) ||
+      new Set(value.exposedLabelIds).size !== value.exposedLabelIds.length ||
+      !value.exposedLabelIds.every((labelId) => validToken(labelId, 128))
+    )
+      return false;
+  }
+  const ratings = [
+    value.perceivedAccuracy,
+    value.identityAcceptance,
+    value.confidence,
+    value.affect,
+    value.followUpStability,
+  ];
+  if (
+    ratings.some(
+      (rating) =>
+        rating !== undefined &&
+        (!Number.isInteger(rating) || rating < 1 || rating > 5),
+    )
+  )
+    return false;
+  if (!value.exposureShown && typeof value.missingReason !== "string")
+    return false;
+  if (
+    value.missingReason !== undefined &&
+    !["declined", "not-shown", "unresolved"].includes(value.missingReason)
+  )
+    return false;
+  return !(value.exposureShown && value.missingReason === "not-shown");
+}
+
 function validCoreRecord(submission, env) {
   const expectedProfileCount =
     submission.tier === "moderate"
@@ -361,7 +430,13 @@ function validCoreRecord(submission, env) {
         submission.participantId,
         submission.studyId,
         env,
-      ))
+      )) &&
+    validLabelExposure(
+      submission.labelExposure,
+      submission.participantId,
+      submission.studyId,
+      env,
+    )
   );
 }
 
@@ -445,11 +520,221 @@ function validSpecialistDisposition(submission, env) {
   );
 }
 
+function validResearchTask(task, env) {
+  if (
+    !(
+      isObject(task) &&
+      validToken(task.id) &&
+      task.version === env.EXPECTED_RESEARCH_TASK_BANK_VERSION &&
+      validToken(task.domainId) &&
+      LAYERS.has(task.layer) &&
+      THEORY_CONTEXTS.has(task.theoryContext) &&
+      validString(task.prompt) &&
+      Array.isArray(task.criterionIds) &&
+      task.criterionIds.length > 0 &&
+      task.criterionIds.every((id) => validToken(id)) &&
+      TASK_KINDS.has(task.kind)
+    )
+  )
+    return false;
+  if (task.familyId !== undefined && !validString(task.familyId, 256))
+    return false;
+  if (task.kind === "probability" || task.kind === "forecast") {
+    return (
+      validString(task.propositionId, 256) &&
+      validString(task.outcomeId, 256) &&
+      validString(task.horizon, 256) &&
+      task.probabilityScale === "0-100" &&
+      typeof task.allowDontKnow === "boolean" &&
+      (task.resolutionSource === undefined ||
+        validString(task.resolutionSource, 256)) &&
+      (task.outcomeVersion === undefined ||
+        validString(task.outcomeVersion, 256))
+    );
+  }
+  if (task.kind === "constrained-choice" || task.kind === "conjoint") {
+    return (
+      validString(task.choiceSetId, 256) &&
+      Array.isArray(task.attributes) &&
+      task.attributes.length > 0 &&
+      task.attributes.every(
+        (attribute) =>
+          isObject(attribute) &&
+          validToken(attribute.id) &&
+          Array.isArray(attribute.levels) &&
+          attribute.levels.length > 1 &&
+          attribute.levels.every((level) => validString(level, 256)),
+      ) &&
+      Array.isArray(task.alternatives) &&
+      task.alternatives.length > 1 &&
+      new Set(task.alternatives).size === task.alternatives.length &&
+      task.alternatives.every((alternative) => validString(alternative, 512)) &&
+      validString(task.constraintProfileId, 256)
+    );
+  }
+  if (task.kind === "allocation" || task.kind === "forced-tradeoff") {
+    return (
+      Array.isArray(task.goods) &&
+      task.goods.length > 1 &&
+      new Set(task.goods).size === task.goods.length &&
+      task.goods.every((good) => validString(good, 256)) &&
+      Number.isInteger(task.totalUnits) &&
+      task.totalUnits > 0 &&
+      Array.isArray(task.constraints) &&
+      task.constraints.every((constraint) => validString(constraint, 256))
+    );
+  }
+  return (
+    Array.isArray(task.stimulusIds) &&
+    task.stimulusIds.length > 1 &&
+    new Set(task.stimulusIds).size === task.stimulusIds.length &&
+    task.stimulusIds.every((stimulusId) => validToken(stimulusId)) &&
+    validString(task.responseScale, 256)
+  );
+}
+
+function sameMembers(left, right) {
+  return (
+    Array.isArray(left) &&
+    Array.isArray(right) &&
+    left.length === right.length &&
+    [...left].sort().join("|") === [...right].sort().join("|")
+  );
+}
+
+function taskMatchesResearchArm(task, arm) {
+  if (arm === "probability")
+    return task.kind === "probability" || task.kind === "forecast";
+  if (arm === "choice")
+    return task.kind === "constrained-choice" || task.kind === "conjoint";
+  if (arm === "allocation")
+    return task.kind === "allocation" || task.kind === "forced-tradeoff";
+  if (arm === "similarity")
+    return task.kind === "similarity" || task.kind === "sort";
+  return true;
+}
+
+function validResearchTaskResponse(task, response) {
+  if (
+    !isObject(response) ||
+    response.taskId !== task.id ||
+    response.kind !== task.kind
+  )
+    return false;
+  if (task.kind === "probability" || task.kind === "forecast") {
+    return (
+      (Number.isFinite(response.probability) &&
+        response.probability >= 0 &&
+        response.probability <= 100) ||
+      (response.value === "dont_know" && task.allowDontKnow) ||
+      response.value === "prefer_not_to_answer"
+    );
+  }
+  if (task.kind === "constrained-choice" || task.kind === "conjoint") {
+    return (
+      task.alternatives.includes(response.chosenAlternative) ||
+      response.value === "none" ||
+      response.value === "prefer_not_to_answer"
+    );
+  }
+  if (task.kind === "allocation" || task.kind === "forced-tradeoff") {
+    if (response.value === "prefer_not_to_answer") return true;
+    if (!isObject(response.allocations)) return false;
+    const values = Object.values(response.allocations);
+    return (
+      sameMembers(Object.keys(response.allocations), task.goods) &&
+      values.every((value) => Number.isInteger(value) && value >= 0) &&
+      values.reduce((sum, value) => sum + value, 0) === task.totalUnits
+    );
+  }
+  if (response.value === "prefer_not_to_answer") return true;
+  if (isObject(response.ratings)) {
+    const values = Object.values(response.ratings);
+    return (
+      sameMembers(Object.keys(response.ratings), task.stimulusIds) &&
+      values.every(
+        (value) => Number.isFinite(value) && value >= 0 && value <= 100,
+      )
+    );
+  }
+  return (
+    Array.isArray(response.order) &&
+    sameMembers(response.order, task.stimulusIds) &&
+    new Set(response.order).size === response.order.length
+  );
+}
+
+function validResearchTaskRecord(submission, env) {
+  if (
+    submission.recordType !== "research-task" ||
+    !["probability", "choice", "allocation", "similarity"].includes(
+      submission.arm,
+    ) ||
+    submission.taskBankVersion !== env.EXPECTED_RESEARCH_TASK_BANK_VERSION ||
+    !isObject(submission.assignment) ||
+    submission.assignment.taskBankVersion !==
+      env.EXPECTED_RESEARCH_TASK_BANK_VERSION ||
+    submission.assignment.arm !== submission.arm ||
+    !validString(submission.assignment.participantSeed, 256) ||
+    !Array.isArray(submission.assignment.taskIds) ||
+    !Array.isArray(submission.assignment.presentationOrder) ||
+    !sameMembers(
+      submission.assignment.taskIds,
+      submission.assignment.presentationOrder,
+    ) ||
+    !validToken(submission.form?.algorithmVersion) ||
+    submission.form.algorithmVersion !==
+      env.EXPECTED_RESEARCH_TASK_FORM_VERSION ||
+    !Number.isInteger(submission.form.assignedTaskCount) ||
+    submission.form.assignedTaskCount !==
+      submission.assignment.taskIds.length ||
+    !validString(submission.form.fingerprint, 256) ||
+    submission.form.fingerprint !== submission.assignment.fingerprint ||
+    !Array.isArray(submission.tasks) ||
+    submission.tasks.length !== submission.assignment.taskIds.length ||
+    !submission.tasks.every((task) => validResearchTask(task, env)) ||
+    !submission.tasks.every((task) =>
+      taskMatchesResearchArm(task, submission.arm),
+    ) ||
+    !sameMembers(
+      submission.tasks.map((task) => task.id),
+      submission.assignment.taskIds,
+    ) ||
+    !Array.isArray(submission.responses) ||
+    submission.responses.length !== submission.tasks.length ||
+    new Set(submission.responses.map((response) => response.taskId)).size !==
+      submission.responses.length ||
+    !submission.responses.every((response) => {
+      const task = submission.tasks.find(
+        (candidate) => candidate.id === response.taskId,
+      );
+      return task && validResearchTaskResponse(task, response);
+    }) ||
+    !sameMembers(
+      submission.presentationOrder,
+      submission.assignment.presentationOrder,
+    ) ||
+    !isObject(submission.versionBundle) ||
+    submission.versionBundle.studyId !== env.EXPECTED_STUDY_ID ||
+    submission.versionBundle.schemaVersion !== env.EXPECTED_SCHEMA_VERSION ||
+    submission.versionBundle.formVersion !==
+      env.EXPECTED_RESEARCH_TASK_FORM_VERSION ||
+    submission.versionBundle.researchTaskBankVersion !==
+      env.EXPECTED_RESEARCH_TASK_BANK_VERSION
+  )
+    return false;
+  return submission.assignment.presentationOrder.every((taskId) =>
+    submission.tasks.some((task) => task.id === taskId),
+  );
+}
+
 export function validateSubmission(submission, env) {
   if (!validBaseRecord(submission, env)) return false;
   if (submission.recordType === "core") return validCoreRecord(submission, env);
   if (submission.recordType === "specialist")
     return validSpecialistRecord(submission, env);
+  if (submission.recordType === "research-task")
+    return validResearchTaskRecord(submission, env);
   return validSpecialistDisposition(submission, env);
 }
 

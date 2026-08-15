@@ -9,7 +9,9 @@ export function ResearchReceipt({ submission, status }: ResearchReceiptProps) {
   const recordLabel =
     submission.recordType === "specialist"
       ? "Topic follow-up"
-      : "Main contribution";
+      : submission.recordType === "research-task"
+        ? "Research task module"
+        : "Main contribution";
   const message =
     status.status === "submitted"
       ? "Your pseudonymous contribution was received. Thank you for helping improve the site."
@@ -19,7 +21,9 @@ export function ResearchReceipt({ submission, status }: ResearchReceiptProps) {
   const detail =
     submission.recordType === "specialist"
       ? ` · module: ${submission.moduleId}`
-      : "";
+      : submission.recordType === "research-task"
+        ? ` · arm: ${submission.arm}`
+        : "";
 
   return (
     <section

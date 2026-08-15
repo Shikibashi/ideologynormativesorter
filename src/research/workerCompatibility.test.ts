@@ -5,8 +5,9 @@ import {
 } from "../data/effectiveQuestions";
 import { RESULT_SCORING_VERSION } from "../scoring";
 import { TAXONOMY_VERSION } from "../data/labelTaxonomy";
-import type { AnswerMap } from "../types";
+import type { AnswerMap, ResearchTask } from "../types";
 import {
+  buildResearchTaskSubmission,
   buildResearchSubmission,
   buildSpecialistDispositionSubmission,
   buildSpecialistResearchSubmission,
@@ -18,6 +19,12 @@ import {
   RESEARCH_STUDY_ID,
   type ResearchConsent,
 } from "./index";
+import { researchTaskBank } from "../data/researchTaskBank";
+import { assignResearchTasks } from "./tasks";
+import {
+  RESEARCH_TASK_FORM_VERSION,
+  RESEARCH_TASK_BANK_VERSION,
+} from "./versions";
 import { MODIFIER_MEASUREMENT_VERSION } from "../data/modifierMeasurement";
 import { PRIMARY_MEASUREMENT_VERSION } from "../data/primaryMeasurement";
 import { buildContributionQuestionForm, RESEARCH_FORM_VERSION } from "./forms";
@@ -38,6 +45,8 @@ const collectorEnvironment = {
   EXPECTED_CONSENT_VERSION: RESEARCH_CONSENT_VERSION,
   EXPECTED_QUALITY_RULE_VERSION: RESEARCH_QUALITY_RULE_VERSION,
   EXPECTED_FORM_VERSION: RESEARCH_FORM_VERSION,
+  EXPECTED_RESEARCH_TASK_FORM_VERSION: RESEARCH_TASK_FORM_VERSION,
+  EXPECTED_RESEARCH_TASK_BANK_VERSION: RESEARCH_TASK_BANK_VERSION,
   EXPECTED_BANK_VERSION: QUESTION_BANK_VERSION,
   EXPECTED_SCORING_VERSION: RESULT_SCORING_VERSION,
   EXPECTED_TAXONOMY_VERSION: TAXONOMY_VERSION,
@@ -178,5 +187,45 @@ describe("Cloudflare contribution collector compatibility", () => {
     expect(questions.length).toBeGreaterThan(0);
     expect(validateSubmission(specialist, collectorEnvironment)).toBe(true);
     expect(validateSubmission(disposition, collectorEnvironment)).toBe(true);
+  });
+
+  it("accepts a versioned research task record without treating it as a core score", () => {
+    const assignment = assignResearchTasks(
+      researchTaskBank,
+      "p_compatibility",
+      "choice",
+    );
+    const task = researchTaskBank.find(
+      (
+        candidate,
+      ): candidate is Extract<
+        ResearchTask,
+        { kind: "constrained-choice" | "conjoint" }
+      > => candidate.kind === "conjoint",
+    )!;
+    const submission = buildResearchTaskSubmission({
+      studyId: RESEARCH_STUDY_ID,
+      participantId: "p_compatibility",
+      administration: "test",
+      consent: endpointConsent(),
+      scoringVersion: RESULT_SCORING_VERSION,
+      arm: "choice",
+      assignment,
+      tasks: [task],
+      responses: [
+        {
+          taskId: task.id,
+          kind: "conjoint",
+          chosenAlternative: task.alternatives[0],
+        },
+      ],
+      startedAt: "2026-08-10T12:30:00.000Z",
+      completedAt: "2026-08-10T12:32:00.000Z",
+      submittedAt: "2026-08-10T12:32:00.000Z",
+      submissionId: "research_task_compatibility",
+    });
+
+    expect(submission.recordType).toBe("research-task");
+    expect(validateSubmission(submission, collectorEnvironment)).toBe(true);
   });
 });
