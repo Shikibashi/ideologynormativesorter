@@ -43,6 +43,32 @@ export function vnextConstructErrors(
     if (!VALID_COVERAGE.has(root.coverageStatus)) {
       errors.push(`${root.id} has an invalid coverage status`);
     }
+    if (!root.definition.trim() || root.sourceRecordIds.length === 0) {
+      errors.push(`${root.id} is missing canonical definition or provenance`);
+    }
+    if (root.facetIds.length === 0 || root.expectedConfigurations.length === 0)
+      errors.push(`${root.id} lacks canonical facets or configurations`);
+    if (root.version !== VNEXT_CONSTRUCTS_VERSION)
+      errors.push(`${root.id} has a stale construct version`);
+    if (root.measurementStatus === "validated-scoped") {
+      errors.push(
+        `${root.id} cannot be respondent-validated in the design registry`,
+      );
+    }
+    for (const neighborId of root.neighboringRootIds) {
+      if (!axisIds.has(neighborId))
+        errors.push(
+          `${root.id} references unknown neighboring root ${neighborId}`,
+        );
+      if (neighborId === root.id)
+        errors.push(`${root.id} cannot neighbor itself`);
+    }
+    for (const primaryId of root.applicablePrimaryIds) {
+      if (!vnextKnownOntologyLabelIds.has(primaryId))
+        errors.push(
+          `${root.id} references unknown applicable Primary ${primaryId}`,
+        );
+    }
     for (const labelId of root.applicableLabelIds) {
       if (!vnextKnownOntologyLabelIds.has(labelId)) {
         errors.push(`${root.id} references unknown label ${labelId}`);
@@ -76,11 +102,63 @@ export function vnextConstructErrors(
     if (!root?.facetIds.includes(facet.id)) {
       errors.push(`${facet.id} is not declared by its root`);
     }
+    if (!facet.definition.trim() || facet.sourceRecordIds.length === 0) {
+      errors.push(`${facet.id} is missing canonical definition or provenance`);
+    }
+    if (facet.version !== VNEXT_CONSTRUCTS_VERSION)
+      errors.push(`${facet.id} has a stale construct version`);
+    if (facet.applicableConfigurationIds.length === 0)
+      errors.push(`${facet.id} lacks applicable ideological configurations`);
+    if (facet.measurementStatus === "validated-scoped") {
+      errors.push(
+        `${facet.id} cannot be respondent-validated in the design registry`,
+      );
+    }
+    for (const neighborId of facet.neighboringRootIds) {
+      if (!axisIds.has(neighborId))
+        errors.push(
+          `${facet.id} references unknown neighboring root ${neighborId}`,
+        );
+    }
+    for (const primaryId of facet.applicablePrimaryIds) {
+      if (!vnextKnownOntologyLabelIds.has(primaryId))
+        errors.push(
+          `${facet.id} references unknown applicable Primary ${primaryId}`,
+        );
+    }
+    for (const moduleId of facet.applicableModuleIds) {
+      if (!specialistModuleDefinitions.some((module) => module.id === moduleId))
+        errors.push(
+          `${facet.id} references unknown applicable module ${moduleId}`,
+        );
+    }
   }
   for (const root of registry.roots) {
     for (const facetId of root.facetIds) {
       if (!facetIds.has(facetId))
         errors.push(`${root.id} is missing facet ${facetId}`);
+    }
+  }
+  const localIds = new Set<string>();
+  for (const local of registry.localConstructs) {
+    if (localIds.has(local.id))
+      errors.push(`duplicate local construct ${local.id}`);
+    localIds.add(local.id);
+    if (!rootIds.has(local.rootId))
+      errors.push(`${local.id} references unknown root ${local.rootId}`);
+    for (const rootId of local.applicableRootIds) {
+      if (!rootIds.has(rootId))
+        errors.push(`${local.id} references unknown applicable root ${rootId}`);
+    }
+    if (!local.definition.trim() || local.sourceRecordIds.length === 0)
+      errors.push(`${local.id} is missing definition or provenance`);
+    if (local.version !== VNEXT_CONSTRUCTS_VERSION)
+      errors.push(`${local.id} has a stale construct version`);
+    if (local.applicableRootIds.length === 0)
+      errors.push(`${local.id} lacks applicable root scope`);
+    for (const moduleId of local.moduleIds) {
+      if (!specialistModuleDefinitions.some((module) => module.id === moduleId))
+        errors.push(`${local.id} references unknown module ${moduleId}`);
     }
   }
   return errors;

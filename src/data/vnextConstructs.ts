@@ -3,11 +3,13 @@ import { questions } from "./effectiveQuestions";
 import { modifierMeasurementDefinitions } from "./modifierMeasurement";
 import { primaryScoringLabels, specialistModuleByLabel } from "./labelTaxonomy";
 import { specialistModuleDefinitions } from "../specialist";
-import { vnextOntologyNodes } from "./vnextOntology";
+import { vnextItemAnnotations } from "./vnextItemAnnotations";
 import type {
   VNextConstructCoverageStatus,
+  VNextConstructMeasurementStatus,
   VNextConstructRegistry,
   VNextFacetConstruct,
+  VNextLocalConstruct,
   VNextRootConstruct,
 } from "../types";
 import {
@@ -102,7 +104,7 @@ const FACETS_BY_ROOT: Readonly<Record<string, readonly string[]>> = {
     "market.externalities",
     "market.concentration",
     "market.distribution",
-    "market-alternative",
+    "market.alternative",
   ],
   "state-capacity-confidence": [
     "state.implementation",
@@ -364,6 +366,211 @@ const CONFIGURATIONS_BY_ROOT: Readonly<Record<string, readonly string[]>> = {
   ],
 };
 
+const NEIGHBOR_ROOTS_BY_ROOT: Readonly<Record<string, readonly string[]>> = {
+  "authority-legitimacy": [
+    "anti-domination",
+    "centralization-preference",
+    "secularism-religious",
+  ],
+  "property-legitimacy": [
+    "equality-theory",
+    "anti-domination",
+    "market-process-confidence",
+  ],
+  "liberty-noninterference": [
+    "anti-domination",
+    "authority-legitimacy",
+    "state-action-vs-exit",
+  ],
+  "equality-theory": [
+    "property-legitimacy",
+    "anti-domination",
+    "redistribution-vs-predistribution",
+  ],
+  "political-community-boundary": [
+    "moral-traditionalism",
+    "secularism-religious",
+    "anti-domination",
+  ],
+  "moral-traditionalism": [
+    "political-community-boundary",
+    "secularism-religious",
+    "cultural-plasticity",
+  ],
+  "anti-domination": [
+    "authority-legitimacy",
+    "liberty-noninterference",
+    "property-legitimacy",
+  ],
+  "human-nature-priority": [
+    "regulation-vs-deregulation",
+    "market-process-confidence",
+    "state-action-vs-exit",
+  ],
+  "militarism-pacifism": [
+    "coercion-strategy",
+    "authority-legitimacy",
+    "political-community-boundary",
+  ],
+  "secularism-religious": [
+    "authority-legitimacy",
+    "moral-traditionalism",
+    "political-community-boundary",
+  ],
+  "market-process-confidence": [
+    "property-legitimacy",
+    "state-capacity-confidence",
+    "public-choice-skepticism",
+  ],
+  "state-capacity-confidence": [
+    "market-process-confidence",
+    "expert-confidence",
+    "centralization-preference",
+  ],
+  "public-choice-skepticism": [
+    "market-process-confidence",
+    "democratic-confidence",
+    "state-capacity-confidence",
+  ],
+  "democratic-confidence": [
+    "expert-confidence",
+    "authority-legitimacy",
+    "public-choice-skepticism",
+  ],
+  "expert-confidence": [
+    "state-capacity-confidence",
+    "democratic-confidence",
+    "authority-legitimacy",
+  ],
+  "cultural-plasticity": [
+    "moral-traditionalism",
+    "reform-vs-revolution",
+    "gradualism-vs-immediatism",
+  ],
+  "coordination-optimism": [
+    "market-process-confidence",
+    "state-capacity-confidence",
+    "centralization-preference",
+  ],
+  "centralization-preference": [
+    "authority-legitimacy",
+    "coordination-optimism",
+    "state-action-vs-exit",
+  ],
+  "reform-vs-revolution": [
+    "gradualism-vs-immediatism",
+    "cultural-plasticity",
+    "electoralism-vs-direct-action",
+  ],
+  "gradualism-vs-immediatism": [
+    "reform-vs-revolution",
+    "compromise-vs-persistence",
+    "coercion-strategy",
+  ],
+  "state-action-vs-exit": [
+    "centralization-preference",
+    "liberty-noninterference",
+    "regulation-vs-deregulation",
+  ],
+  "electoralism-vs-direct-action": [
+    "reform-vs-revolution",
+    "coercion-strategy",
+    "authority-legitimacy",
+  ],
+  "compromise-vs-persistence": [
+    "reform-vs-revolution",
+    "electoralism-vs-direct-action",
+    "gradualism-vs-immediatism",
+  ],
+  "coercion-strategy": [
+    "militarism-pacifism",
+    "authority-legitimacy",
+    "electoralism-vs-direct-action",
+  ],
+  "regulation-vs-deregulation": [
+    "state-action-vs-exit",
+    "market-process-confidence",
+    "human-nature-priority",
+  ],
+  "redistribution-vs-predistribution": [
+    "equality-theory",
+    "property-legitimacy",
+    "regulation-vs-deregulation",
+  ],
+};
+
+const FACET_DEFINITION_PREFIXES: Readonly<Record<string, string>> = {
+  authority:
+    "the source, reach, accountability, contestability, or coercive justification of political power",
+  property:
+    "the subject, object, control rule, acquisition rule, exclusion boundary, or common claim at issue in ownership",
+  liberty:
+    "the specific condition under which a person is unimpeded, capable, private, expressive, or able to exit and receive due process",
+  equality:
+    "the particular status, opportunity, distributive, capability, relational, or remedial dimension of equality",
+  community:
+    "the moral scope, obligation, membership, sovereignty, layered belonging, or outsider standing of political community",
+  tradition:
+    "the inherited, familial, sexual, religious, enforcement, or pluralist dimension of moral continuity",
+  domination:
+    "the mechanism by which arbitrary dependence, hierarchy, workplace power, or public/private power can be contested",
+  ecology:
+    "the standing, limits, duties, systems, or human-use boundary through which nature has political and moral relevance",
+  force:
+    "the justification, defense, intervention, civilian-harm, regime-change, or institutional dimension of organized force",
+  religion:
+    "the neutrality, expression, establishment, legal authority, clerical power, or pluralist boundary of religion in public order",
+  market:
+    "the information, discovery, incentive, externality, concentration, distribution, or alternative mechanism of market coordination",
+  state:
+    "the implementation, coordination, administrative, autonomy, accountability, or failure condition of state capacity",
+  "public-choice":
+    "the capture, principal-agent, concentrated-benefit, information, or correction mechanism in public institutions",
+  democracy:
+    "the information, aggregation, deliberative, majoritarian, responsive, or learning condition of democratic judgment",
+  expert:
+    "the competence, uncertainty, transparency, accountability, capture, or public-knowledge boundary of expertise",
+  culture:
+    "the path-dependent, malleable, diffusive, socialized, feedback, or persistent dimension of cultural change",
+  coordination:
+    "the trust, monitoring, information, scale, polycentric, or failure condition of coordination",
+  centralization:
+    "the level, uniformity, local autonomy, federal, polycentric, or exit dimension of institutional concentration",
+  change:
+    "the continuity, rupture, transition, legitimacy, movement, or institution-building dimension of political change",
+  pace: "the sequencing, transition-risk, crisis, experimentation, or irreversibility condition of change speed",
+  remedy:
+    "the public-provision, private-exit, voice, public-good, counter-institution, or enforcement route for remedy",
+  strategy:
+    "the electoral, legal, movement, disruption, direct-action, or separately assessed violence route of political strategy",
+  bargaining:
+    "the partial-gain, issue-firmness, coalition, principle, opposition, or long-horizon condition of compromise",
+  coercion:
+    "the threshold, target, legality, violence, repression, or nonviolence boundary of coercive strategy",
+  regulation:
+    "the domain, enforcement, entry, precaution, consumer, labor, environmental, or technology scope of regulation",
+  distribution:
+    "the transfer, service, taxation, ownership, labor-rule, capability, or rule-setting mechanism of distribution",
+};
+
+function facetNamespace(facetId: string): string {
+  return facetId.slice(0, facetId.indexOf("."));
+}
+
+function facetDefinition(facetId: string, rootName: string): string {
+  const namespace = facetNamespace(facetId);
+  const detail = facetId.slice(facetId.indexOf(".") + 1).replaceAll("-", " ");
+  return `${FACET_DEFINITION_PREFIXES[namespace] ?? `the ${detail} dimension of the construct`} (${detail}) within ${rootName}; this is a declared research construct and not an independently validated public score.`;
+}
+
+function measurementStatusForCoverage(
+  coverage: VNextConstructCoverageStatus,
+): VNextConstructMeasurementStatus {
+  return coverage === "adequate"
+    ? "research-candidate"
+    : "effectively-unmeasured";
+}
+
 function hasAxis(
   question: (typeof questions)[number],
   rootId: string,
@@ -417,15 +624,38 @@ function facetRecord(
   return {
     id: facetId,
     rootId: root.id,
+    version: VNEXT_CONSTRUCTS_VERSION,
     name: facetId.slice(facetId.indexOf(".") + 1).replaceAll("-", " "),
     layer: root.layer,
-    definition: `A vNext facet of ${root.name}; it is not an independently validated score in this release.`,
-    neighboringRootIds: axes
-      .filter((candidate) => candidate.id !== root.id)
-      .slice(0, 3)
-      .map((candidate) => candidate.id),
+    definition: facetDefinition(facetId, root.name),
+    neighboringRootIds: NEIGHBOR_ROOTS_BY_ROOT[root.id] ?? [],
+    applicableConfigurationIds: CONFIGURATIONS_BY_ROOT[root.id] ?? [],
     discriminantRoles: [
       "separate from neighboring roots before interpretation",
+    ],
+    applicablePrimaryIds: applicableLabelIds.filter((id) =>
+      primaryScoringLabels.some((label) => label.id === id),
+    ),
+    applicableSpecialistModuleIds: applicableModuleIds,
+    applicableModifierDomainIds: applicableLabelIds.filter((id) =>
+      modifierMeasurementDefinitions.some(
+        (definition) => definition.labelId === id,
+      ),
+    ),
+    indicatorRequirementIds: [
+      `${facetId}:content`,
+      `${facetId}:response-process`,
+      `${facetId}:structure`,
+    ],
+    measurementStatus: measurementStatusForCoverage(
+      COVERAGE_BY_ROOT[root.id] ?? "planned",
+    ),
+    validationRequirements: [
+      "content-validity",
+      "response-process",
+      "internal-structure",
+      "discriminant-validity",
+      "missingness-and-fairness",
     ],
     riskFlags: ["respondent-validation-required"],
     applicableLabelIds,
@@ -445,18 +675,40 @@ const roots: VNextRootConstruct[] = axes.map((axis) => {
   const moduleIds = applicableModules(axis.id);
   return {
     id: axis.id,
+    version: VNEXT_CONSTRUCTS_VERSION,
     name: axis.name,
     layer: axis.layer,
     definition: axis.description,
     facetIds,
-    neighboringRootIds: axes
-      .filter((candidate) => candidate.id !== axis.id)
-      .slice(0, 3)
-      .map((candidate) => candidate.id),
+    neighboringRootIds: NEIGHBOR_ROOTS_BY_ROOT[axis.id] ?? [],
     expectedConfigurations: CONFIGURATIONS_BY_ROOT[axis.id] ?? [],
     discriminantRoles: [
       "root comparison only",
       "do not infer adjacent facets from this root",
+    ],
+    applicablePrimaryIds: labelIds.filter((id) =>
+      primaryScoringLabels.some((label) => label.id === id),
+    ),
+    applicableSpecialistModuleIds: moduleIds,
+    applicableModifierDomainIds: labelIds.filter((id) =>
+      modifierMeasurementDefinitions.some(
+        (definition) => definition.labelId === id,
+      ),
+    ),
+    indicatorRequirementIds: [
+      `${axis.id}:content`,
+      `${axis.id}:response-process`,
+      `${axis.id}:structure`,
+    ],
+    measurementStatus: measurementStatusForCoverage(
+      COVERAGE_BY_ROOT[axis.id] ?? "planned",
+    ),
+    validationRequirements: [
+      "content-validity",
+      "response-process",
+      "internal-structure",
+      "discriminant-validity",
+      "missingness-and-fairness",
     ],
     riskFlags: ROOT_RISKS[axis.id] ?? ["respondent-validation-required"],
     applicableLabelIds: labelIds,
@@ -493,18 +745,70 @@ const facets = roots.flatMap((root) => {
   );
 });
 
+const localConstructs: VNextLocalConstruct[] = [
+  ...vnextItemAnnotations
+    .reduce((records, annotation) => {
+      for (const localConstructId of annotation.localConstructIds) {
+        const current = records.get(localConstructId);
+        const moduleIds = annotation.moduleId ? [annotation.moduleId] : [];
+        records.set(localConstructId, {
+          id: localConstructId,
+          version: VNEXT_CONSTRUCTS_VERSION,
+          rootId: current?.rootId ?? annotation.intendedRootIds[0]!,
+          applicableRootIds: [
+            ...new Set([
+              ...(current?.applicableRootIds ?? []),
+              ...annotation.intendedRootIds,
+            ]),
+          ],
+          name: localConstructId.replaceAll("-", " "),
+          layer: annotation.layer,
+          definition: `Module-local construct for ${localConstructId.replaceAll("-", " ")}; it is scoped to the declared Specialist module and cannot be imputed to a core root.`,
+          moduleIds: [
+            ...new Set([...(current?.moduleIds ?? []), ...moduleIds]),
+          ],
+          indicatorIds: [
+            ...new Set([...(current?.indicatorIds ?? []), annotation.itemId]),
+          ],
+          measurementStatus: "effectively-unmeasured",
+          validationRequirements: [
+            "module-local-content",
+            "response-process",
+            "internal-structure",
+            "incremental-validity",
+          ],
+          sourceRecordIds: [
+            "full-effective-item-audit-2026-08",
+            `full-effective-item-audit-2026-08:${localConstructId}`,
+          ],
+          implementationIds: ["I-004", "I-005"],
+          decisionIds: ["D-76", "D-85", "D-86"],
+        });
+      }
+      return records;
+    }, new Map<string, VNextLocalConstruct>())
+    .values(),
+];
+
 export const vnextConstructRegistry: VNextConstructRegistry = {
   constructsVersion: VNEXT_CONSTRUCTS_VERSION,
   facetMapVersion: VNEXT_FACET_MAP_VERSION,
   roots,
   facets,
+  localConstructs,
 };
 
 export const vnextRootById = new Map(roots.map((root) => [root.id, root]));
 export const vnextFacetById = new Map(facets.map((facet) => [facet.id, facet]));
-
-// Keep the ontology import live in this research registry so a deleted or
-// retired label cannot become a silent construct reference.
-export const vnextKnownOntologyLabelIds = new Set(
-  vnextOntologyNodes.map((node) => node.id),
+export const vnextLocalConstructById = new Map(
+  localConstructs.map((construct) => [construct.id, construct]),
 );
+
+// Keep a roster-derived label set in this research registry so a deleted or
+// retired label cannot become a silent construct reference. This is a roster
+// integrity input, not an ontology projection.
+export const vnextKnownOntologyLabelIds = new Set([
+  ...primaryScoringLabels.map((label) => label.id),
+  ...Object.keys(specialistModuleByLabel),
+  ...modifierMeasurementDefinitions.map((definition) => definition.labelId),
+]);

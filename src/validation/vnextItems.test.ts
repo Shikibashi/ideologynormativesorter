@@ -4,7 +4,11 @@ import {
   vnextHistoricalCoreItemIds,
   vnextItemDispositionCounts,
 } from "../data/vnextItemDispositions";
-import { assertVNextItems, vnextItemErrors } from "./vnextItems";
+import {
+  assertVNextItems,
+  parseVNextSemanticDirection,
+  vnextItemErrors,
+} from "./vnextItems";
 
 describe("vNext item audit manifest", () => {
   it("covers all 406 effective core and Specialist items", () => {
@@ -25,5 +29,32 @@ describe("vNext item audit manifest", () => {
       vnextItemAnnotations.filter((item) => item.itemId.startsWith("sq")),
     ).toHaveLength(6);
     expect(vnextHistoricalCoreItemIds.length).toBeGreaterThan(0);
+  });
+
+  it("parses ASCII plus, ASCII hyphen, and Unicode minus without splitting hyphenated roots", () => {
+    expect(
+      parseVNextSemanticDirection(
+        "+political-community-boundary; −anti-domination",
+      ),
+    ).toEqual([
+      { sign: "+", rootId: "political-community-boundary" },
+      { sign: "−", rootId: "anti-domination" },
+    ]);
+    expect(() => parseVNextSemanticDirection("+unknown root")).toThrow(
+      "Malformed semantic-direction",
+    );
+  });
+
+  it("maps every statement-choice option to canonical roots and facets", () => {
+    for (const item of vnextItemAnnotations.filter((candidate) =>
+      candidate.itemId.startsWith("sq"),
+    )) {
+      expect(item.optionRecords).toHaveLength(4);
+      for (const option of item.optionRecords ?? []) {
+        expect(option.rootIds.length).toBeGreaterThan(0);
+        expect(option.facetIds.length).toBeGreaterThan(0);
+        expect(option.localConstructIds).toEqual([]);
+      }
+    }
   });
 });

@@ -34,9 +34,15 @@ export const VNEXT_UNCERTAINTY_VERSION =
 export const VNEXT_ROBUSTNESS_VERSION = "2026-08-vnext-robustness-v1" as const;
 export const VNEXT_SHADOW_SCORING_VERSION =
   "2026-08-vnext-shadow-scoring-v1" as const;
+export const VNEXT_SURFACE_MANIFEST_VERSION =
+  "2026-08-vnext-surface-manifests-v1" as const;
+export const VNEXT_RELEASE_MANIFEST_VERSION =
+  "2026-08-vnext-release-manifest-v1" as const;
 
 export const VNEXT_FROZEN_BASELINE_COMMIT =
   "f0324dbf27dfc6e35ff557992e4643e3df15ee0e" as const;
+export const VNEXT_AUDITED_CANDIDATE_COMMIT =
+  "e298ccd5588708528db4b63e3e33ce6f19230d69" as const;
 
 export const VNEXT_IMPLEMENTATION_DECISION_IDS = [
   "I-001",
@@ -50,4 +56,11 @@ export const VNEXT_IMPLEMENTATION_DECISION_IDS = [
   "I-009",
   "I-010",
   "I-011",
+  "I-012",
+  "I-013",
+  "I-014",
+  "I-015",
+  "I-016",
+  "I-017",
+  "I-018",
 ] as const;

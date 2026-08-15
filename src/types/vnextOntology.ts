@@ -35,6 +35,16 @@ export const VNEXT_MEASUREMENT_STATUSES = [
 export type VNextMeasurementStatus =
   (typeof VNEXT_MEASUREMENT_STATUSES)[number];
 
+export const VNEXT_CONCEPTUAL_STATUSES = [
+  "current",
+  "historical",
+  "proposed",
+  "contested",
+  "compatibility",
+  "retired",
+] as const;
+export type VNextConceptualStatus = (typeof VNEXT_CONCEPTUAL_STATUSES)[number];
+
 export type VNextPublicRole =
   | "primary"
   | "specialist"
@@ -61,6 +71,41 @@ export type VNextGraphRelationType =
   | "not_equivalent_to"
   | "incompatible_with_core";
 
+export type VNextRelationDirectionality = "directed" | "symmetric";
+export type VNextRelationScope =
+  | "conceptual"
+  | "historical"
+  | "institutional"
+  | "measurement"
+  | "catalog";
+
+export interface VNextEvidenceRequirements {
+  requiredConstructIds: readonly string[];
+  requiredFacetIds: readonly string[];
+  requiredEvidenceComponents: readonly string[];
+  prerequisiteModuleIds: readonly string[];
+  minimumEvidenceState:
+    | "none"
+    | "content-ready"
+    | "respondent-supported"
+    | "validated-scoped";
+  abstentionRule: string;
+}
+
+export interface VNextPublicRoleView {
+  eligibleRoles: readonly VNextPublicRole[];
+  defaultRole: VNextPublicRole;
+  ordinarySurface: "core" | "specialist" | "modifier" | "context" | "none";
+  moduleId?: string;
+  activationState: "compatibility" | "research-only" | "gated" | "retired";
+  derivationInputs: readonly string[];
+}
+
+export interface VNextSemanticConstraint {
+  code: string;
+  statement: string;
+}
+
 export interface VNextRelationFacet {
   domain?: string;
   layers?: readonly Layer[];
@@ -75,8 +120,14 @@ export interface VNextGraphEdge {
   sourceId: string;
   targetId: string;
   type: VNextGraphRelationType;
-  facet?: VNextRelationFacet;
+  graphVersion: string;
+  directionality: VNextRelationDirectionality;
+  scope: VNextRelationScope;
+  facet: VNextRelationFacet;
   sourceRecordIds: readonly string[];
+  provenance: readonly string[];
+  note: string;
+  semanticConstraints: readonly VNextSemanticConstraint[];
   symmetricDerived?: boolean;
 }
 
@@ -84,7 +135,10 @@ export interface VNextOntologyNode {
   id: string;
   canonicalName: string;
   alternateNames: readonly string[];
+  aliases: readonly string[];
   conceptualKind: VNextConceptualKind;
+  secondaryKinds: readonly VNextConceptualKind[];
+  conceptualStatus: VNextConceptualStatus;
   constitutiveFacetIds: readonly string[];
   associatedFacetIds: readonly string[];
   nonConstitutiveFacetIds: readonly string[];
@@ -94,6 +148,9 @@ export interface VNextOntologyNode {
   canonicalDefinition: string;
   boundaryStatement: string;
   sourceRecordIds: readonly string[];
+  version: string;
+  evidenceRequirements: VNextEvidenceRequirements;
+  publicRoleView: VNextPublicRoleView;
   compatibility: {
     role: VNextPublicRole;
     measurementStatus: string;

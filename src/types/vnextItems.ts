@@ -43,4 +43,5 @@ export interface VNextItemAnnotation {
   replacementQuestionId?: QuestionId;
   analysisEligibility: VNextItemAnalysisEligibility;
   optionRecords?: readonly VNextStatementOptionAnnotation[];
+  facetWeights?: Readonly<Record<string, number>>;
 }

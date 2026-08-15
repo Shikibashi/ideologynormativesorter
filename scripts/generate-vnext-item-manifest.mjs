@@ -1,11 +1,12 @@
 import fs from "node:fs";
+import prettier from "prettier";
 
 const auditPath = "docs/full-effective-item-audit-2026-08.md";
 const outputPath = "src/data/vnextItemAnnotations.ts";
 const text = fs.readFileSync(auditPath, "utf8");
 const lines = text.split(/\r?\n/);
 const itemPattern = /^(?:q\d{4}|sq\d+|fm-[a-z]+-\d+)$/;
-const rootPattern = /[+-]([a-z][a-z0-9-]+)/g;
+const directionTokenPattern = /^([+\-−])?\s*([a-z][a-z0-9-]*)$/;
 
 function fields(line) {
   return line
@@ -14,13 +15,31 @@ function fields(line) {
     .map((field) => field.trim());
 }
 
+function parseSemanticDirection(direction) {
+  return direction
+    .split(";")
+    .map((token) => token.trim())
+    .filter(Boolean)
+    .map((token) => {
+      const match = directionTokenPattern.exec(token.replaceAll("−", "-"));
+      if (!match)
+        throw new Error(`Malformed semantic-direction token: ${token}`);
+      return {
+        sign: match[1] === "-" ? "−" : (match[1] ?? "+"),
+        rootId: match[2],
+      };
+    });
+}
+
 function rootsFromDirection(direction) {
-  return [...direction.matchAll(rootPattern)].map((match) => match[1]);
+  return [
+    ...new Set(parseSemanticDirection(direction).map((entry) => entry.rootId)),
+  ];
 }
 
 function tokens(value) {
   return value
-    .split(";")
+    .split(/[;,]/)
     .map((token) => token.trim())
     .filter(Boolean);
 }
@@ -28,12 +47,48 @@ function tokens(value) {
 const LEGACY_FACET_ALIASES = {
   "regulation.scope": "regulation.domain",
   "regulation.domain-specific": "regulation.domain",
-  "market.alternative": "market-alternative",
+  "market.alternative": "market.alternative",
+  "market-alternative": "market.alternative",
+  domination: "domination.arbitrariness",
+  legitimacy: "authority.source",
+  theory: "equality.formal-status",
+  "community-boundary": "community.moral-scope",
+  traditionalism: "tradition.inherited-authority",
+  "nature-priority": "ecology.intrinsic-standing",
 };
 
 function canonicalFacetId(facetId) {
   return LEGACY_FACET_ALIASES[facetId] ?? facetId;
 }
+
+const OPTION_FACET_BY_ROOT = {
+  "authority-legitimacy": "authority.source",
+  "property-legitimacy": "property.control-v-title",
+  "liberty-noninterference": "liberty.noninterference",
+  "equality-theory": "equality.formal-status",
+  "political-community-boundary": "community.moral-scope",
+  "moral-traditionalism": "tradition.inherited-authority",
+  "anti-domination": "domination.contestability",
+  "human-nature-priority": "ecology.intrinsic-standing",
+  "militarism-pacifism": "force.justification",
+  "secularism-religious": "religion.state-neutrality",
+  "market-process-confidence": "market.information",
+  "state-capacity-confidence": "state.implementation",
+  "public-choice-skepticism": "public-choice.capture",
+  "democratic-confidence": "democracy.aggregation",
+  "expert-confidence": "expert.competence",
+  "cultural-plasticity": "culture.policy-malleability",
+  "coordination-optimism": "coordination.trust",
+  "centralization-preference": "centralization.level",
+  "reform-vs-revolution": "change.transition",
+  "gradualism-vs-immediatism": "pace.sequencing",
+  "state-action-vs-exit": "remedy.state-provision",
+  "electoralism-vs-direct-action": "strategy.electoral",
+  "compromise-vs-persistence": "bargaining.partial-gain",
+  "coercion-strategy": "coercion.threshold",
+  "regulation-vs-deregulation": "regulation.domain",
+  "redistribution-vs-predistribution": "distribution.transfer",
+};
 
 const rows = [];
 let inItemRegister = false;
@@ -79,11 +134,10 @@ for (const line of lines) {
         coverageConsequence,
       ] = row;
       const facetTokens = tokens(facetField);
-      const facetIds = facetTokens
-        .filter((token) => token.includes("."))
-        .map(canonicalFacetId);
+      const canonicalTokens = facetTokens.map(canonicalFacetId);
+      const facetIds = canonicalTokens.filter((token) => token.includes("."));
       const localConstructIds = facetTokens.filter(
-        (token) => !token.includes("."),
+        (token) => !canonicalFacetId(token).includes("."),
       );
       const replacementRequired =
         disposition === "rewrite" || disposition === "replace";
@@ -136,7 +190,9 @@ for (const line of lines) {
         text: optionText,
         semanticDirection: direction,
         rootIds: directionRoots,
-        facetIds: [],
+        facetIds: directionRoots
+          .map((rootId) => OPTION_FACET_BY_ROOT[rootId])
+          .filter(Boolean),
         localConstructIds: [],
       };
       optionsByItem.set(itemId, [...(optionsByItem.get(itemId) ?? []), option]);
@@ -184,5 +240,17 @@ if (
 }
 
 const output = `// Generated from ${auditPath}; do not hand-edit.\n// I-005 / D-38, D-86-D-90, D-115-D-117.\nimport type { VNextItemAnnotation } from "../types";\nimport { VNEXT_ITEM_ANNOTATIONS_VERSION } from "../validation/vnextVersions";\n\nexport const VNEXT_ITEM_ANNOTATIONS_SOURCE = "${auditPath}" as const;\nexport const vnextItemAnnotationsVersion = VNEXT_ITEM_ANNOTATIONS_VERSION;\nexport const vnextItemAnnotations: readonly VNextItemAnnotation[] = ${JSON.stringify(rows, null, 2)} as const;\n\nexport const vnextItemAnnotationById = new Map(\n  vnextItemAnnotations.map((annotation) => [annotation.itemId, annotation]),\n);\n`;
-fs.writeFileSync(outputPath, output);
+const formattedOutput = await prettier.format(output, { parser: "typescript" });
+const checkOnly = process.argv.includes("--check");
+if (checkOnly) {
+  const current = fs.readFileSync(outputPath, "utf8");
+  if (current !== formattedOutput) {
+    console.error(`${outputPath} is not reproducible from ${auditPath}`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Reproducible generated artifact verified: ${outputPath}`);
+  }
+} else {
+  fs.writeFileSync(outputPath, formattedOutput);
+}
 console.log(`Generated ${rows.length} vNext item annotations at ${outputPath}`);

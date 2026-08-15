@@ -9,6 +9,7 @@ import {
   vnextItemAnnotations,
 } from "../data/vnextItemAnnotations";
 import { vnextFacetById, vnextRootById } from "../data/vnextConstructs";
+import { vnextLocalConstructById } from "../data/vnextConstructs";
 import { specialistModuleDefinitions } from "../specialist";
 import type { VNextItemAnnotation } from "../types";
 
@@ -19,6 +20,20 @@ const EXPECTED_DISPOSITION_COUNTS = {
   replace: 10,
   "retain with minor edit": 3,
 } as const;
+
+const SEMANTIC_DIRECTION_TOKEN = /^([+\-−])\s*([a-z][a-z0-9-]*)$/;
+
+export function parseVNextSemanticDirection(
+  direction: string,
+): readonly { sign: "+" | "−"; rootId: string }[] {
+  return direction.split(";").map((raw) => {
+    const token = raw.trim().replaceAll("−", "-");
+    const match = SEMANTIC_DIRECTION_TOKEN.exec(token);
+    if (!match)
+      throw new Error(`Malformed semantic-direction token: ${raw.trim()}`);
+    return { sign: match[1] === "-" ? "−" : "+", rootId: match[2]! };
+  });
+}
 
 function effectiveQuestions() {
   return [
@@ -53,7 +68,58 @@ export function vnextItemErrors(
     for (const facetId of annotation.facetIds) {
       if (!vnextFacetById.has(facetId)) {
         errors.push(`${annotation.itemId} has unknown facet ${facetId}`);
+      } else if (
+        !annotation.intendedRootIds.includes(
+          vnextFacetById.get(facetId)!.rootId,
+        )
+      ) {
+        errors.push(
+          `${annotation.itemId} maps facet ${facetId} outside its declared roots`,
+        );
       }
+    }
+    for (const localConstructId of annotation.localConstructIds) {
+      const local = vnextLocalConstructById.get(localConstructId);
+      if (!local)
+        errors.push(
+          `${annotation.itemId} has unknown local construct ${localConstructId}`,
+        );
+      else if (
+        !local.applicableRootIds.some((rootId) =>
+          annotation.intendedRootIds.includes(rootId),
+        )
+      )
+        errors.push(
+          `${annotation.itemId} maps local construct ${localConstructId} outside its declared roots`,
+        );
+      if (annotation.surface === "core")
+        errors.push(
+          `${annotation.itemId} exposes a module-local construct on the core surface`,
+        );
+    }
+    if (!annotation.itemId.startsWith("sq")) {
+      try {
+        for (const entry of parseVNextSemanticDirection(
+          annotation.semanticDirection,
+        )) {
+          if (!vnextRootById.has(entry.rootId))
+            errors.push(
+              `${annotation.itemId} has unknown semantic-direction root ${entry.rootId}`,
+            );
+        }
+      } catch (error) {
+        errors.push(
+          `${annotation.itemId} has malformed semantic direction: ${error instanceof Error ? error.message : String(error)}`,
+        );
+      }
+    }
+    if (
+      annotation.sourceRecordIds.length < 2 ||
+      !annotation.sourceRecordIds.some((source) =>
+        source.endsWith(`:${annotation.itemId}`),
+      )
+    ) {
+      errors.push(`${annotation.itemId} lacks stable item-level provenance`);
     }
     if (annotation.surface === "core" && annotation.moduleId) {
       errors.push(`${annotation.itemId} incorrectly declares a core module`);
@@ -75,6 +141,42 @@ export function vnextItemErrors(
       }
       if (annotation.analysisEligibility !== "ipsative-only") {
         errors.push(`${annotation.itemId} must remain ipsative-only`);
+      }
+      for (const option of annotation.optionRecords ?? []) {
+        for (const rootId of option.rootIds)
+          if (!vnextRootById.has(rootId))
+            errors.push(
+              `${annotation.itemId}:${option.optionId} has unknown option root ${rootId}`,
+            );
+        for (const facetId of option.facetIds) {
+          const facet = vnextFacetById.get(facetId);
+          if (!facet)
+            errors.push(
+              `${annotation.itemId}:${option.optionId} has unknown option facet ${facetId}`,
+            );
+          else if (!option.rootIds.includes(facet.rootId))
+            errors.push(
+              `${annotation.itemId}:${option.optionId} has incompatible option facet ${facetId}`,
+            );
+        }
+        for (const localId of option.localConstructIds)
+          if (!vnextLocalConstructById.has(localId))
+            errors.push(
+              `${annotation.itemId}:${option.optionId} has unknown option local construct ${localId}`,
+            );
+        try {
+          for (const entry of parseVNextSemanticDirection(
+            option.semanticDirection,
+          ))
+            if (!option.rootIds.includes(entry.rootId))
+              errors.push(
+                `${annotation.itemId}:${option.optionId} direction root ${entry.rootId} is not mapped to the option`,
+              );
+        } catch (error) {
+          errors.push(
+            `${annotation.itemId}:${option.optionId} has malformed semantic direction: ${error instanceof Error ? error.message : String(error)}`,
+          );
+        }
       }
     }
   }
