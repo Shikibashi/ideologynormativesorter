@@ -47,7 +47,7 @@ export const VNEXT_HISTORICAL_AUDIT_CANDIDATE_COMMIT =
   "e298ccd5588708528db4b63e3e33ce6f19230d69" as const;
 /** Updated only by the deterministic release finalization step. */
 export const VNEXT_RELEASE_CANDIDATE_COMMIT =
-  "0a6ed42e361e9be7893861a65f537a3115adf37b" as const;
+  "89ebc529ce552f999ae153a942b54448f3020984" as const;
 
 export const VNEXT_IMPLEMENTATION_DECISION_IDS = [
   "I-001",

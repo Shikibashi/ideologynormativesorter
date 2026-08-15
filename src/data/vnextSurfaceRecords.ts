@@ -481,7 +481,7 @@ export const vnextSurfaceRecords: readonly VNextSurfaceManifest[] = [
       "tradition.religious-morality",
       "tradition.sexual-morality",
     ],
-    candidateCodeRevision: "0a6ed42e361e9be7893861a65f537a3115adf37b",
+    candidateCodeRevision: "89ebc529ce552f999ae153a942b54448f3020984",
     frozenProductionBaselineRevision:
       "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
     versionTuple: {
@@ -714,7 +714,7 @@ export const vnextSurfaceRecords: readonly VNextSurfaceManifest[] = [
       "structural-patriarchy",
       "territorial-separatism",
     ],
-    candidateCodeRevision: "0a6ed42e361e9be7893861a65f537a3115adf37b",
+    candidateCodeRevision: "89ebc529ce552f999ae153a942b54448f3020984",
     frozenProductionBaselineRevision:
       "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
     versionTuple: {
@@ -786,7 +786,7 @@ export const vnextSurfaceRecords: readonly VNextSurfaceManifest[] = [
     itemFingerprint: "vnext_811c9dc5",
     formFingerprint: "vnext_007ff14e",
     constructScope: [],
-    candidateCodeRevision: "0a6ed42e361e9be7893861a65f537a3115adf37b",
+    candidateCodeRevision: "89ebc529ce552f999ae153a942b54448f3020984",
     frozenProductionBaselineRevision:
       "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
     versionTuple: {
@@ -858,7 +858,7 @@ export const vnextSurfaceRecords: readonly VNextSurfaceManifest[] = [
     itemFingerprint: "vnext_811c9dc5",
     formFingerprint: "vnext_fa84c365",
     constructScope: [],
-    candidateCodeRevision: "0a6ed42e361e9be7893861a65f537a3115adf37b",
+    candidateCodeRevision: "89ebc529ce552f999ae153a942b54448f3020984",
     frozenProductionBaselineRevision:
       "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
     versionTuple: {
@@ -930,7 +930,7 @@ export const vnextSurfaceRecords: readonly VNextSurfaceManifest[] = [
     itemFingerprint: "vnext_811c9dc5",
     formFingerprint: "vnext_95f8dbe3",
     constructScope: [],
-    candidateCodeRevision: "0a6ed42e361e9be7893861a65f537a3115adf37b",
+    candidateCodeRevision: "89ebc529ce552f999ae153a942b54448f3020984",
     frozenProductionBaselineRevision:
       "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
     versionTuple: {

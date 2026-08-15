@@ -124,7 +124,7 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
     status: "passed-with-external-gates",
     frozenV13Regression: "passed-and-preserved",
     generatedArtifacts: "passed-by-vnext:items:check",
-    unitTests: 813,
+    unitTests: 814,
     browserTests: 57,
     accessibilityTests: 8,
     ecwTests: 28,
@@ -223,7 +223,7 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
     "I-017": "cutover-gated",
     "I-018": "complete",
   },
-  releaseStatus: "candidate-remediation-pending-final-gate",
+  releaseStatus: "candidate-ready-for-merge-decision",
   auditSignoff: {
     state: "pending-independent-review",
     target: "latest-release-readiness-audit-2026-08",
