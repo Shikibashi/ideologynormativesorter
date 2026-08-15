@@ -1,8 +1,8 @@
 import { questions as defaultQuestions } from "../data/effectiveQuestions";
 import { vnextFacetById, vnextRootById } from "../data/vnextConstructs";
 import { vnextItemAnnotationById } from "../data/vnextItemAnnotations";
+import { vnextShadowVersionTuple } from "../data/vnextShadow";
 import { vnextSurfaceManifestBySurface } from "../data/vnextSurfaceManifests";
-import { CURRENT_RESEARCH_VERSION_BUNDLE } from "../validation/researchContracts";
 import { contributionForQuestionAxis } from "./aggregate";
 import { VNEXT_SHADOW_SCORING_VERSION } from "../validation/vnextVersions";
 import type {
@@ -229,7 +229,39 @@ export function computeVNextShadowScores(
       ? [`${score.id}: ${score.abstentionRationale}`]
       : [],
   );
+  const surfaceManifest = [...vnextSurfaceManifestBySurface.values()].find(
+    (manifest) => manifest.manifestId === surfaceManifestId,
+  );
+  const facetEstimates = facetScores.map((score) => ({
+    facetId: score.id,
+    status: score.measured ? ("estimated" as const) : ("abstained" as const),
+    ...(score.score === undefined ? {} : { value: score.score }),
+    uncertainty: score.uncertainty.reason,
+    ...(score.abstentionRationale
+      ? { abstentionRationale: score.abstentionRationale }
+      : {}),
+  }));
   return {
+    resultId: `vnext-shadow-run:${surfaceManifestId}:${questions.length}`,
+    researchOnly: true,
+    productionConsumed: false,
+    failClosed: true,
+    versionTuple: vnextShadowVersionTuple,
+    itemFingerprint: surfaceManifest?.itemFingerprint ?? "unresolved",
+    missingnessStatus: allMeasured ? "partial" : "missing",
+    refusalHandling:
+      "Refusal, dont-know, omitted, blocked, and invalid responses remain explicit missingness states and cannot be coerced into directional estimates.",
+    uncertaintyStatus: "not-estimable",
+    claimTierCeiling: "PC0",
+    rootEstimates: Object.fromEntries(
+      rootScores.flatMap((score) =>
+        score.score === undefined ? [] : [[score.id, score.score]],
+      ),
+    ),
+    facetEstimates,
+    facetEstimationRule:
+      "Estimate a facet only from its declared facet-level model and evidence; never reuse a root weight or impute an absent facet.",
+    rootWeightReuse: false,
     scoringVersion: VNEXT_SHADOW_SCORING_VERSION,
     questionIds: questions.map((question) => question.id),
     rootScores,
@@ -244,11 +276,6 @@ export function computeVNextShadowScores(
     warnings: [...new Set(warnings)],
     evidenceStatus: allMeasured ? "partial" : "design-only",
     claimCeiling: "PC0",
-    versionTuple: {
-      ...CURRENT_RESEARCH_VERSION_BUNDLE,
-      vnextShadowScoringVersion: VNEXT_SHADOW_SCORING_VERSION,
-      vnextSurfaceManifestVersion: "2026-08-vnext-surface-manifests-v1",
-    },
     surfaceManifestId,
     abstentionRationale,
   };

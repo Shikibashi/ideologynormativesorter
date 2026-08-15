@@ -36,6 +36,26 @@ export interface VNextShadowFacetEstimate {
   abstentionRationale?: string;
 }
 
+export interface VNextShadowEstimate {
+  id: string;
+  layer: import("./common").Layer;
+  measured: boolean;
+  score?: number;
+  answeredItemIds: readonly string[];
+  eligibleItemCount: number;
+  answeredItemCount: number;
+  weightSum: number;
+  coverage: number;
+  missingness: Readonly<Record<string, number>>;
+  evidenceStatus: "unmeasured" | "partial" | "measured" | "abstained";
+  uncertainty: Readonly<{
+    kind: "not-estimable" | "unquantified";
+    reason: string;
+  }>;
+  claimCeiling: "PC0" | "PC1";
+  abstentionRationale?: string;
+}
+
 export interface VNextShadowResult {
   resultId: string;
   researchOnly: true;
@@ -46,12 +66,20 @@ export interface VNextShadowResult {
   itemFingerprint: string;
   missingnessStatus: VNextShadowMissingnessStatus;
   refusalHandling: string;
-  evidenceStatus: VNextEvidenceStatus;
+  evidenceStatus: VNextEvidenceStatus | "design-only" | "partial" | "measured";
   uncertaintyStatus: VNextShadowUncertaintyStatus;
   claimTierCeiling: VNextClaimTier;
-  abstentionRationale?: string;
+  abstentionRationale?: string | readonly string[];
   rootEstimates: Readonly<Record<string, number>>;
   facetEstimates: readonly VNextShadowFacetEstimate[];
   facetEstimationRule: string;
   rootWeightReuse: false;
+  scoringVersion: string;
+  questionIds: readonly string[];
+  rootScores: readonly VNextShadowEstimate[];
+  facetScores: readonly VNextShadowEstimate[];
+  measuredLayerMask: Readonly<Record<import("./common").Layer, boolean>>;
+  excludedItemIds: readonly string[];
+  warnings: readonly string[];
+  claimCeiling: "PC0" | "PC1";
 }

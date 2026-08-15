@@ -52,4 +52,16 @@ export const vnextShadowResultContract: VNextShadowResult = {
   facetEstimationRule:
     "Estimate a facet only from its declared facet-level model and evidence; never reuse a root weight or impute an absent facet.",
   rootWeightReuse: false,
+  scoringVersion: VNEXT_SHADOW_SCORING_VERSION,
+  questionIds: [],
+  rootScores: [],
+  facetScores: [],
+  measuredLayerMask: {
+    normative: false,
+    descriptive: false,
+    prescriptive: false,
+  },
+  excludedItemIds: [],
+  warnings: [],
+  claimCeiling: "PC0",
 };
