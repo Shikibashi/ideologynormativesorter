@@ -9,7 +9,8 @@ const head = execFileSync("git", ["rev-parse", "HEAD"], {
 }).trim();
 const expectedFingerprints = {
   ontology: "vnext_4635d133",
-  graph: "vnext_72d37874",
+  graph: "vnext_31c2a612",
+  specialistRelationCoverage: "vnext_069715e3",
   constructs: "vnext_bdba44fb",
   coreItems: "vnext_ccf53979",
   specialistItems: "vnext_f473b915",
@@ -55,6 +56,15 @@ try {
 } catch {
   errors.push("current checkout cannot be resolved for exact release binding");
 }
+try {
+  execFileSync("git", ["diff", "--quiet", "HEAD", "--"]);
+} catch (error) {
+  if (error?.status === 1)
+    errors.push(
+      "tracked working-tree changes are not bound to the release candidate commit",
+    );
+  else errors.push("current checkout cannot verify tracked working-tree state");
+}
 if (manifest.manifestVersion !== "2026-08-vnext-release-manifest-v1")
   errors.push("release manifest version is stale");
 if (!manifest.branch || !manifest.reference)
@@ -64,6 +74,7 @@ if (manifest.candidateCommit === manifest.frozenBaselineCommit)
 const requiredFingerprints = [
   "ontology",
   "graph",
+  "specialistRelationCoverage",
   "constructs",
   "coreItems",
   "specialistItems",

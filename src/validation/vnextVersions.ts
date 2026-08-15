@@ -9,6 +9,8 @@ export const VNEXT_BASELINE_CHECK_VERSION =
   "2026-08-vnext-baseline-check-v1" as const;
 export const VNEXT_ONTOLOGY_VERSION = "2026-08-vnext-ontology-v1" as const;
 export const VNEXT_GRAPH_VERSION = "2026-08-vnext-graph-v1" as const;
+export const VNEXT_SPECIALIST_RELATION_COVERAGE_VERSION =
+  "2026-08-vnext-specialist-relation-coverage-v1" as const;
 export const VNEXT_ROLE_POLICY_VERSION =
   "2026-08-vnext-role-policy-v1" as const;
 export const VNEXT_ROSTER_INTEGRITY_VERSION =

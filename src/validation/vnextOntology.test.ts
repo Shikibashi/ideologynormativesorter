@@ -6,7 +6,12 @@ import {
 import { vnextGraphMigrationLedger } from "../data/vnextGraphMigration";
 import { vnextOntologyNodes } from "../data/vnextOntology";
 import { vnextOntologyRecords } from "../data/vnextOntologyRecords";
-import { assertVNextGraph, vnextGraphErrors } from "./vnextGraph";
+import { vnextSpecialistRelationCoverage } from "../data/vnextSpecialistRelationCoverage";
+import {
+  assertVNextGraph,
+  vnextGraphErrors,
+  vnextSpecialistRelationCoverageErrors,
+} from "./vnextGraph";
 import { assertVNextOntology, vnextOntologyErrors } from "./vnextOntology";
 
 describe("vNext ontology and graph", () => {
@@ -133,6 +138,73 @@ describe("vNext ontology and graph", () => {
         ),
       ).toBe(true);
     }
+  });
+
+  it("covers every approved Specialist family-graph row without inventing anchors", () => {
+    expect(vnextSpecialistRelationCoverageErrors()).toEqual([]);
+    const specialistIds = new Set(
+      vnextOntologyNodes
+        .filter((node) => node.publicRoleView.defaultRole === "specialist")
+        .map((node) => node.id),
+    );
+    expect(specialistIds.size).toBe(78);
+    expect(
+      new Set(vnextSpecialistRelationCoverage.map((record) => record.sourceId)),
+    ).toEqual(specialistIds);
+    const connectedNodeIds = new Set(
+      vnextGraphEdges.flatMap((edge) => [edge.sourceId, edge.targetId]),
+    );
+    for (const specialistId of specialistIds) {
+      if (connectedNodeIds.has(specialistId)) continue;
+      const records = vnextSpecialistRelationCoverage.filter(
+        (record) => record.sourceId === specialistId,
+      );
+      expect(records.length, specialistId).toBeGreaterThan(0);
+      expect(
+        records.every(
+          (record) =>
+            record.status === "dispositioned" ||
+            record.status === "no_typed_relation_declared",
+        ),
+        specialistId,
+      ).toBe(true);
+    }
+    expect(
+      vnextSpecialistRelationCoverage.filter(
+        (record) => record.status === "dispositioned",
+      ).length,
+    ).toBeGreaterThan(0);
+    for (const [sourceId, relationType, targetId] of [
+      ["agorist", "subtype_of", "market-anarchism"],
+      ["anarcho-primitivism", "overlaps_with", "deep-ecology"],
+      ["green-capitalism", "hybrid_of", "green-politics"],
+      ["one-nation-conservatism", "subtype_of", "conservative"],
+      ["socialist-feminism", "hybrid_of", "feminist-orientation"],
+      ["socialist-feminism", "hybrid_of", "marxian-socialism"],
+      ["maoism", "influenced_by", "marxist-leninist"],
+      ["syndicalist", "overlaps_with", "anarcho-syndicalism"],
+      ["trotskyism", "influenced_by", "marxist-leninist"],
+      ["strasserism", "subtype_of", "fascist-authoritarian"],
+      ["technocratic-centralist", "hybrid_of", "technocratic-orientation"],
+    ] as const) {
+      expect(vnextSpecialistRelationCoverage).toContainEqual(
+        expect.objectContaining({
+          sourceId,
+          relationType,
+          targetId,
+          status: "represented",
+        }),
+      );
+    }
+    for (const sourceId of ["techno-anarchism", "zionism", "theocrat"])
+      expect(
+        vnextSpecialistRelationCoverage.some(
+          (record) =>
+            record.sourceId === sourceId &&
+            record.status === "dispositioned" &&
+            record.rationale.length > 0,
+        ),
+      ).toBe(true);
   });
 
   it("does not expose Context or retired nodes as public measurement", () => {

@@ -50,6 +50,7 @@
     "itemMetadataVersion": "2026-08-item-metadata-v1",
     "vnextOntologyVersion": "2026-08-vnext-ontology-v1",
     "vnextGraphVersion": "2026-08-vnext-graph-v1",
+    "vnextSpecialistRelationCoverageVersion": "2026-08-vnext-specialist-relation-coverage-v1",
     "vnextRolePolicyVersion": "2026-08-vnext-role-policy-v1",
     "vnextConstructsVersion": "2026-08-vnext-constructs-v1",
     "vnextFacetMapVersion": "2026-08-vnext-facet-map-v1",
@@ -63,7 +64,8 @@
   },
   "fingerprints": {
     "ontology": "vnext_4635d133",
-    "graph": "vnext_72d37874",
+    "graph": "vnext_31c2a612",
+    "specialistRelationCoverage": "vnext_069715e3",
     "constructs": "vnext_bdba44fb",
     "coreItems": "vnext_ccf53979",
     "specialistItems": "vnext_f473b915",
@@ -95,6 +97,7 @@
         "src/data/vnextGraphMigration.ts",
         "src/data/vnextOntology.ts",
         "src/data/vnextGraph.ts",
+        "src/data/vnextSpecialistRelationCoverage.ts",
         "src/validation/vnextGraph.ts"
       ]
     },
@@ -147,6 +150,8 @@
       "evidence": [
         "src/data/vnextReleaseManifest.ts",
         "release-manifest/vnext-release-manifest.json",
+        "src/data/vnextSpecialistRelationCoverage.ts",
+        "src/validation/vnextGraph.ts",
         "scripts/check-vnext-authority.mts",
         "scripts/check-vnext-release.mjs",
         ".github/workflows/ci.yml"
@@ -173,7 +178,7 @@
     "I-017": "cutover-gated",
     "I-018": "complete"
   },
-  "releaseStatus": "candidate-ready-for-merge-decision",
+  "releaseStatus": "candidate-remediation-pending-final-gate",
   "auditSignoff": {
     "state": "pending-independent-review",
     "target": "latest-release-readiness-audit-2026-08",

@@ -179,6 +179,29 @@ export interface VNextGraphAdjudicationRecord {
   rationale: string;
 }
 
+export type VNextSpecialistRelationCoverageStatus =
+  | "represented"
+  | "dispositioned"
+  | "no_typed_relation_declared";
+
+/**
+ * Machine-readable coverage of the approved Specialist family-graph column.
+ * A disposition is intentional: it records why an approved phrase could not
+ * become a graph edge without inventing an ontology anchor or resolving an
+ * ambiguity that the architecture has not decided.
+ */
+export interface VNextSpecialistRelationCoverageRecord {
+  coverageId: string;
+  sourceId: string;
+  sourceRecordId: string;
+  relationType?: VNextGraphRelationType;
+  targetLabel?: string;
+  targetId?: string;
+  edgeId?: string;
+  status: VNextSpecialistRelationCoverageStatus;
+  rationale: string;
+}
+
 export interface VNextOntologyNode {
   id: string;
   canonicalName: string;

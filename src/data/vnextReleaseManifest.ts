@@ -4,6 +4,7 @@ import { vnextEvidenceCards } from "./vnextEvidenceCards";
 import { vnextGraphEdges } from "./vnextGraph";
 import { vnextItemAnnotations } from "./vnextItemAnnotations";
 import { vnextOntologyNodes } from "./vnextOntology";
+import { vnextSpecialistRelationCoverage } from "./vnextSpecialistRelationCoverage";
 import {
   vnextSurfaceManifests,
   vnextSurfaceManifestBySurface,
@@ -26,6 +27,7 @@ import {
   VNEXT_ONTOLOGY_VERSION,
   VNEXT_RELEASE_MANIFEST_VERSION,
   VNEXT_ROLE_POLICY_VERSION,
+  VNEXT_SPECIALIST_RELATION_COVERAGE_VERSION,
   VNEXT_SHADOW_SCORING_VERSION,
   VNEXT_SURFACE_MANIFEST_VERSION,
   VNEXT_VALIDATION_MANIFEST_VERSION,
@@ -50,6 +52,8 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
     ...CURRENT_RESEARCH_VERSION_BUNDLE,
     vnextOntologyVersion: VNEXT_ONTOLOGY_VERSION,
     vnextGraphVersion: VNEXT_GRAPH_VERSION,
+    vnextSpecialistRelationCoverageVersion:
+      VNEXT_SPECIALIST_RELATION_COVERAGE_VERSION,
     vnextRolePolicyVersion: VNEXT_ROLE_POLICY_VERSION,
     vnextConstructsVersion: VNEXT_CONSTRUCTS_VERSION,
     vnextFacetMapVersion: VNEXT_FACET_MAP_VERSION,
@@ -72,6 +76,12 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
       vnextGraphEdges.map(
         (edge) =>
           `${edge.id}:${edge.graphVersion}:${edge.scope}:${edge.facet.differentiatingConstructIds?.join(",") ?? ""}`,
+      ),
+    ),
+    specialistRelationCoverage: fingerprint(
+      vnextSpecialistRelationCoverage.map(
+        (record) =>
+          `${record.coverageId}:${record.status}:${record.targetId ?? ""}:${record.rationale}`,
       ),
     ),
     constructs: fingerprint(
@@ -132,6 +142,7 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
         "src/data/vnextGraphMigration.ts",
         "src/data/vnextOntology.ts",
         "src/data/vnextGraph.ts",
+        "src/data/vnextSpecialistRelationCoverage.ts",
         "src/validation/vnextGraph.ts",
       ],
     },
@@ -184,6 +195,8 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
       evidence: [
         "src/data/vnextReleaseManifest.ts",
         "release-manifest/vnext-release-manifest.json",
+        "src/data/vnextSpecialistRelationCoverage.ts",
+        "src/validation/vnextGraph.ts",
         "scripts/check-vnext-authority.mts",
         "scripts/check-vnext-release.mjs",
         ".github/workflows/ci.yml",
@@ -210,7 +223,7 @@ export const vnextReleaseManifest: VNextReleaseManifest = {
     "I-017": "cutover-gated",
     "I-018": "complete",
   },
-  releaseStatus: "candidate-ready-for-merge-decision",
+  releaseStatus: "candidate-remediation-pending-final-gate",
   auditSignoff: {
     state: "pending-independent-review",
     target: "latest-release-readiness-audit-2026-08",

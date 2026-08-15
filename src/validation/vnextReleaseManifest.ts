@@ -17,7 +17,8 @@ const REQUIRED_P1 = [
 ] as const;
 const EXPECTED_FINGERPRINTS: Readonly<Record<string, string>> = {
   ontology: "vnext_4635d133",
-  graph: "vnext_72d37874",
+  graph: "vnext_31c2a612",
+  specialistRelationCoverage: "vnext_069715e3",
   constructs: "vnext_bdba44fb",
   coreItems: "vnext_ccf53979",
   specialistItems: "vnext_f473b915",
@@ -62,6 +63,7 @@ export function vnextReleaseManifestErrors(
   for (const key of [
     "ontology",
     "graph",
+    "specialistRelationCoverage",
     "constructs",
     "coreItems",
     "specialistItems",

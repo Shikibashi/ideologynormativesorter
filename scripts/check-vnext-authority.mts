@@ -3,6 +3,7 @@ import {
   vnextGraphAdjudicationRecords,
 } from "../src/data/vnextGraph";
 import { vnextGraphMigrationLedger } from "../src/data/vnextGraphMigration";
+import { vnextSpecialistRelationCoverage } from "../src/data/vnextSpecialistRelationCoverage";
 import { vnextConstructRegistry } from "../src/data/vnextConstructs";
 import { vnextEvidenceCards } from "../src/data/vnextEvidenceCards";
 import { vnextOntologyNodes } from "../src/data/vnextOntology";
@@ -36,6 +37,7 @@ console.log(
       ontologyNodes: vnextOntologyNodes.length,
       graphEdges: vnextGraphEdges.length,
       graphAdjudications: vnextGraphAdjudicationRecords.length,
+      specialistRelationCoverage: vnextSpecialistRelationCoverage.length,
       historicalGraphEdges: vnextGraphMigrationLedger.length,
       roots: vnextConstructRegistry.roots.length,
       facets: vnextConstructRegistry.facets.length,

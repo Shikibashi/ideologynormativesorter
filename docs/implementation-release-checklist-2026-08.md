@@ -83,7 +83,7 @@ model silently.
 Until every applicable box is checked, release only the existing production
 scorer and clearly marked opt-in research surfaces.
 
-## Candidate e298 remediation contract
+## Historical Candidate e298 remediation contract (reference)
 
 The candidate-specific release record is
 `release-manifest/vnext-release-manifest.json`. The source-of-truth typed

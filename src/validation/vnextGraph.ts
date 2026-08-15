@@ -5,6 +5,7 @@ import {
 } from "../data/vnextGraph";
 import { vnextGraphMigrationLedger } from "../data/vnextGraphMigration";
 import { vnextOntologyNodes } from "../data/vnextOntology";
+import { vnextSpecialistRelationCoverage } from "../data/vnextSpecialistRelationCoverage";
 import { vnextOntologyErrors } from "./vnextOntology";
 import { VNEXT_GRAPH_VERSION } from "./vnextVersions";
 import {
@@ -177,6 +178,101 @@ function nodeErrors(
   return errors;
 }
 
+export function vnextSpecialistRelationCoverageErrors(
+  nodes: readonly VNextOntologyNode[] = vnextOntologyNodes,
+  edges: readonly VNextGraphEdge[] = vnextGraphEdges,
+  records = vnextSpecialistRelationCoverage,
+): string[] {
+  const errors: string[] = [];
+  const nodeById = new Map(nodes.map((node) => [node.id, node]));
+  const specialistIds = new Set(
+    nodes
+      .filter((node) => node.publicRoleView.defaultRole === "specialist")
+      .map((node) => node.id),
+  );
+  const coverageIds = new Set<string>();
+  const assertionIds = new Set<string>();
+  const coveredSourceIds = new Set<string>();
+
+  for (const record of records) {
+    if (coverageIds.has(record.coverageId))
+      errors.push(
+        `duplicate Specialist relation coverage ${record.coverageId}`,
+      );
+    coverageIds.add(record.coverageId);
+    if (!specialistIds.has(record.sourceId))
+      errors.push(
+        `${record.coverageId} source ${record.sourceId} is not an authoritative Specialist`,
+      );
+    coveredSourceIds.add(record.sourceId);
+    if (!record.sourceRecordId.startsWith("docs/"))
+      errors.push(`${record.coverageId} lacks a document source anchor`);
+    if (!record.rationale.trim())
+      errors.push(`${record.coverageId} lacks disposition rationale`);
+
+    if (record.status === "represented") {
+      if (
+        !record.relationType ||
+        !record.targetId ||
+        !record.targetLabel?.trim() ||
+        !record.edgeId
+      ) {
+        errors.push(
+          `${record.coverageId} represented relation lacks type, target, label, or edge ID`,
+        );
+        continue;
+      }
+      const expectedEdgeId = `${record.sourceId}:${record.relationType}:${record.targetId}`;
+      if (record.edgeId !== expectedEdgeId)
+        errors.push(`${record.coverageId} names an incorrect edge ID`);
+      if (!nodeById.has(record.targetId))
+        errors.push(`${record.coverageId} names an unknown ontology target`);
+      const edge = edges.find((candidate) => candidate.id === record.edgeId);
+      if (!edge)
+        errors.push(
+          `${record.coverageId} is represented but its authoritative edge is missing`,
+        );
+      else if (
+        edge.sourceId !== record.sourceId ||
+        edge.targetId !== record.targetId ||
+        edge.type !== record.relationType
+      )
+        errors.push(
+          `${record.coverageId} does not match its authoritative edge`,
+        );
+      if (assertionIds.has(expectedEdgeId))
+        errors.push(`${record.coverageId} duplicates a represented relation`);
+      assertionIds.add(expectedEdgeId);
+    } else if (record.status === "dispositioned") {
+      if (
+        !record.relationType ||
+        !record.targetLabel?.trim() ||
+        record.targetId ||
+        record.edgeId
+      )
+        errors.push(
+          `${record.coverageId} disposition must name a typed phrase without a runtime target or edge`,
+        );
+    } else if (
+      record.relationType ||
+      record.targetLabel ||
+      record.targetId ||
+      record.edgeId
+    ) {
+      errors.push(
+        `${record.coverageId} no-typed-relation record contains typed relation fields`,
+      );
+    }
+  }
+
+  for (const specialistId of specialistIds)
+    if (!coveredSourceIds.has(specialistId))
+      errors.push(
+        `${specialistId} lacks a Specialist family-graph coverage disposition`,
+      );
+  return [...new Set(errors)];
+}
+
 export function vnextGraphErrors(
   nodes: readonly VNextOntologyNode[] = vnextOntologyNodes,
   edges: readonly VNextGraphEdge[] = vnextGraphEdges,
@@ -271,6 +367,9 @@ export function vnextGraphErrors(
         "hybrid-configuration",
         "regime-or-authoritarian-project",
         "strategy-or-program",
+        "subtype-tradition",
+        "regional-historical-variant",
+        "intellectual-current",
       ].includes(sourceNode?.conceptualKind ?? "") &&
       !sourceNode?.secondaryKinds.includes("hybrid-configuration")
     )
@@ -358,6 +457,8 @@ export function vnextGraphErrors(
   for (const edgeId of migrationRelationIds)
     if (!edgeIds.has(edgeId))
       errors.push(`migration ledger edge ${edgeId} is absent`);
+  if (nodes === vnextOntologyNodes && edges === vnextGraphEdges)
+    errors.push(...vnextSpecialistRelationCoverageErrors());
   return [...new Set(errors)];
 }
 
