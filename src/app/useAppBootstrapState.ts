@@ -9,7 +9,11 @@ import {
   researchStudyId,
 } from "../research";
 import { researchFormSize } from "../research/forms";
-import { loadPendingResearchRecord, loadQuizState } from "../save";
+import {
+  loadPendingResearchRecord,
+  loadPendingResearchRecords,
+  loadQuizState,
+} from "../save";
 import { readSharedResult, type ShareMeta } from "../share";
 import type { Setter } from "./actionTypes";
 
@@ -20,6 +24,7 @@ export interface AppBootstrapState {
   initialResearchMode: boolean;
   loadedInitialQuiz: ReturnType<typeof loadQuizState>;
   loadedPendingResearch: ReturnType<typeof loadPendingResearchRecord>;
+  loadedPendingResearchRecords: ReturnType<typeof loadPendingResearchRecords>;
   participantId: string;
   setParticipantId: Setter<string>;
   recruitmentSource: string | undefined;
@@ -65,6 +70,15 @@ export function useAppBootstrapState(): AppBootstrapState {
       ? getOrCreateParticipantId(window.localStorage, undefined, studyId)
       : "";
   });
+  const loadedPendingResearchRecords = useMemo(
+    () =>
+      loadPendingResearchRecords({
+        studyId,
+        administration,
+        participantId,
+      }),
+    [administration, participantId, studyId],
+  );
 
   return {
     administration,
@@ -73,6 +87,7 @@ export function useAppBootstrapState(): AppBootstrapState {
     initialResearchMode,
     loadedInitialQuiz,
     loadedPendingResearch,
+    loadedPendingResearchRecords,
     participantId,
     setParticipantId,
     recruitmentSource,
