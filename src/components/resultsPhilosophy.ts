@@ -1,6 +1,6 @@
 import type { Axis, AxisId, AxisScore, Layer, ResultProfile } from "../types";
 import type { IdeologyLabel } from "../types/label";
-import type { LabelTaxonomyMetadata } from "../data/labelTaxonomy";
+import type { LabelTaxonomyMetadata } from "../domain/selectors";
 
 export type LabelWithInfluences = IdeologyLabel & {
   taxonomy?: LabelTaxonomyMetadata;

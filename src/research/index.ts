@@ -1,23 +1,31 @@
 import type { AnswerMap, Question, QuizTier } from "../types";
-import {
-  getQuestionHelpText,
-  getSalienceHelpText,
-} from "../data/questionHelpText";
+import { getQuestionHelpText, getSalienceHelpText } from "../domain/selectors";
 import {
   DEFAULT_CONFIDENCE_PROMPT,
   SALIENCE_LEVELS,
   presentedResponseOptions,
   type PresentedResponseOption,
 } from "../questionPresentation";
-import { RESEARCH_FORM_VERSION, researchFormFingerprint } from "./forms";
+import { canonicalize } from "../domain/canonicalSerialization";
+import {
+  RESEARCH_FORM_VERSION,
+  researchFormFingerprint,
+  RESEARCH_CONTRACT_ROUTE as FORM_CONTRACT_ROUTE,
+  RESEARCH_COHORT as FORM_COHORT,
+  RESEARCH_COHORT_VERSION as FORM_COHORT_VERSION,
+  RESEARCH_COHORT_FINGERPRINT as FORM_COHORT_FINGERPRINT,
+  RESEARCH_MANIFEST_VERSION as FORM_MANIFEST_VERSION,
+  RESEARCH_MANIFEST_FINGERPRINT as FORM_MANIFEST_FINGERPRINT,
+  RESEARCH_SERIALIZATION_VERSION as FORM_SERIALIZATION_VERSION,
+} from "./forms";
 import {
   canonicalLabelId,
   modifierScoringLabels,
   primaryScoringLabels,
   TAXONOMY_VERSION,
-} from "../data/labelTaxonomy";
-import { MODIFIER_MEASUREMENT_VERSION } from "../data/modifierMeasurement";
-import { PRIMARY_MEASUREMENT_VERSION } from "../data/primaryMeasurement";
+} from "../domain/selectors";
+import { MODIFIER_MEASUREMENT_VERSION } from "../domain/selectors";
+import { PRIMARY_MEASUREMENT_VERSION } from "../domain/selectors";
 import { labelRosterFingerprint } from "./taxonomyMetadata";
 import type {
   SpecialistCriterionResponse,
@@ -26,12 +34,27 @@ import type {
   SpecialistModuleId,
   SpecialistOutcome,
 } from "../specialist";
+export * from "./contractSnapshot";
+import {
+  type ResearchContractProvenance,
+  type ResearchContractRefusal,
+  type ResearchObservation,
+} from "./contractSnapshot";
 
 export const RESEARCH_SCHEMA_VERSION = "2026-08-v15";
 export const RESEARCH_CONSENT_VERSION = "2026-08-12-v8";
 export const RESEARCH_QUALITY_RULE_VERSION = "data-quality-v2";
 /** A new cohort isolates taxonomy and specialist-construct revisions from prior submissions. */
 export const RESEARCH_STUDY_ID = "community-2026-v5";
+export const RESEARCH_MANIFEST_VERSION = FORM_MANIFEST_VERSION;
+export const RESEARCH_MANIFEST_FINGERPRINT = FORM_MANIFEST_FINGERPRINT;
+export const RESEARCH_SERIALIZATION_VERSION = FORM_SERIALIZATION_VERSION;
+export const RESEARCH_RECORD_CONTRACT_VERSION = "2026-08-v19";
+export const RESEARCH_CONTRACT_ROUTE = FORM_CONTRACT_ROUTE;
+export const RESEARCH_COHORT = FORM_COHORT;
+export const RESEARCH_COHORT_VERSION = FORM_COHORT_VERSION;
+export const RESEARCH_COHORT_FINGERPRINT = FORM_COHORT_FINGERPRINT;
+export const RESEARCH_COHORT_ID = RESEARCH_COHORT;
 export const PUBLIC_RESEARCH_ENTRYPOINT =
   "?contribute=1&collection=community-2026-v5";
 export const PRIMARY_LABEL_ROSTER_FINGERPRINT = labelRosterFingerprint(
@@ -66,6 +89,18 @@ export interface ResearchConsent {
     retentionNotice: string;
     contactNotice: string;
   };
+}
+export interface ResearchSubmissionContractMetadata {
+  manifestVersion?: string;
+  manifestFingerprint?: string;
+  serializationVersion?: string;
+  contractVersion?: string;
+  contractRoute?: string;
+  cohort?: string;
+  cohortVersion?: string;
+  cohortFingerprint?: string;
+  provenance?: ResearchContractProvenance;
+  refusal?: ResearchContractRefusal | null;
 }
 
 export interface ResearchIdentity {
@@ -120,6 +155,17 @@ interface ResearchRecordBase {
   consent: ResearchConsent;
   locale: string;
   qualityRuleVersion: string;
+  manifestVersion: string;
+  manifestFingerprint: string;
+  serializationVersion: string;
+  contractVersion: string;
+  contractRoute: string;
+  cohort: string;
+  cohortVersion: string;
+  cohortFingerprint: string;
+  provenance: ResearchContractProvenance;
+  refusal: ResearchContractRefusal | null;
+  observations: Readonly<Record<string, ResearchObservation>>;
 }
 
 export interface ResearchFormMetadata {
@@ -221,6 +267,76 @@ function normalizeSelfReportedIdeologies(value?: string): string | undefined {
 
 function normalizeLocale(value?: string): string {
   return value?.replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 32) || "und";
+}
+function browserObservation<T>(
+  value: T | undefined,
+  observedAt: string,
+): ResearchObservation<T | null> {
+  return {
+    kind: "browser-observation",
+    source: "browser",
+    value: value === undefined ? null : value,
+    observedAt,
+  };
+}
+
+function buildContractMetadata(input: {
+  submittedAt: string;
+  contractMetadata?: ResearchSubmissionContractMetadata;
+  refusal?: ResearchContractRefusal | null;
+  observations: Readonly<Record<string, ResearchObservation>>;
+}): Pick<
+  ResearchRecordBase,
+  | "manifestVersion"
+  | "manifestFingerprint"
+  | "serializationVersion"
+  | "contractVersion"
+  | "contractRoute"
+  | "cohort"
+  | "cohortVersion"
+  | "cohortFingerprint"
+  | "provenance"
+  | "refusal"
+  | "observations"
+> {
+  const expected = {
+    manifestVersion: RESEARCH_MANIFEST_VERSION,
+    manifestFingerprint: RESEARCH_MANIFEST_FINGERPRINT,
+    serializationVersion: RESEARCH_SERIALIZATION_VERSION,
+    contractVersion: RESEARCH_RECORD_CONTRACT_VERSION,
+    contractRoute: RESEARCH_CONTRACT_ROUTE,
+    cohort: RESEARCH_COHORT,
+    cohortVersion: RESEARCH_COHORT_VERSION,
+    cohortFingerprint: RESEARCH_COHORT_FINGERPRINT,
+    provenance: {
+      source: "browser" as const,
+      capturedAt: input.submittedAt,
+      surface: "research-form",
+    },
+    refusal: input.refusal ?? null,
+  };
+  if (input.contractMetadata !== undefined) {
+    const supplied = input.contractMetadata as Record<string, unknown>;
+    const expectedKeys = Object.keys(expected).sort();
+    const suppliedKeys = Object.keys(supplied).sort();
+    if (
+      expectedKeys.length !== suppliedKeys.length ||
+      expectedKeys.some((key, index) => key !== suppliedKeys[index]) ||
+      expectedKeys.some(
+        (key) =>
+          canonicalize(supplied[key]) !==
+          canonicalize(expected[key as keyof typeof expected]),
+      )
+    ) {
+      throw new Error(
+        "Research contract metadata must match the canonical browser contract exactly.",
+      );
+    }
+  }
+  return {
+    ...expected,
+    observations: input.observations,
+  };
 }
 
 function validateAnswerCoverage(
@@ -364,8 +480,36 @@ export function buildResearchSubmission(input: {
   locale?: string;
   submissionId?: string;
   submittedAt?: string;
+  contractMetadata?: ResearchSubmissionContractMetadata;
 }): CoreResearchSubmission {
   validateAnswerCoverage(input.answers, input.questions);
+  const submittedAt = input.submittedAt ?? new Date().toISOString();
+  const identity: ResearchIdentity = {
+    ...input.identity,
+    selfLabelId: input.identity.selfLabelId
+      ? canonicalLabelId(input.identity.selfLabelId)
+      : undefined,
+    selfReportedIdeologies: normalizeSelfReportedIdeologies(
+      input.identity.selfReportedIdeologies,
+    ),
+  };
+  const predictedLabelIds = input.predictedLabelIds
+    .slice(0, 5)
+    .map(canonicalLabelId);
+  const predictedModifierIds = (input.predictedModifierIds ?? []).slice(0, 5);
+  const contract = buildContractMetadata({
+    submittedAt,
+    contractMetadata: input.contractMetadata,
+    observations: {
+      identity: browserObservation(identity, submittedAt),
+      predictedLabelIds: browserObservation(predictedLabelIds, submittedAt),
+      predictedModifierIds: browserObservation(
+        predictedModifierIds,
+        submittedAt,
+      ),
+      answers: browserObservation(input.answers, input.completedAt),
+    },
+  });
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
@@ -373,7 +517,7 @@ export function buildResearchSubmission(input: {
     studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
     participantId: safeToken(input.participantId),
     administration: input.administration,
-    submittedAt: input.submittedAt ?? new Date().toISOString(),
+    submittedAt,
     startedAt: input.startedAt,
     completedAt: input.completedAt,
     durationMs: durationBetween(input.startedAt, input.completedAt),
@@ -392,19 +536,10 @@ export function buildResearchSubmission(input: {
     consent: input.consent,
     locale: normalizeLocale(input.locale),
     qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
-    identity: {
-      ...input.identity,
-      selfLabelId: input.identity.selfLabelId
-        ? canonicalLabelId(input.identity.selfLabelId)
-        : undefined,
-      selfReportedIdeologies: normalizeSelfReportedIdeologies(
-        input.identity.selfReportedIdeologies,
-      ),
-    },
-    predictedLabelIds: input.predictedLabelIds
-      .slice(0, 5)
-      .map(canonicalLabelId),
-    predictedModifierIds: (input.predictedModifierIds ?? []).slice(0, 5),
+    ...contract,
+    identity,
+    predictedLabelIds,
+    predictedModifierIds,
     specialistAssignment: input.specialistAssignment,
     form: {
       algorithmVersion: RESEARCH_FORM_VERSION,
@@ -445,8 +580,24 @@ export function buildSpecialistResearchSubmission(input: {
   submittedAt?: string;
   locale?: string;
   submissionId?: string;
+  contractMetadata?: ResearchSubmissionContractMetadata;
 }): SpecialistResearchSubmission {
   validateAnswerCoverage(input.answers, input.questions);
+  const submittedAt = input.submittedAt ?? new Date().toISOString();
+  const contract = buildContractMetadata({
+    submittedAt,
+    contractMetadata: input.contractMetadata,
+    observations: {
+      criterion: browserObservation(input.criterion, submittedAt),
+      answers: browserObservation(input.answers, input.completedAt),
+      constructScores: browserObservation(
+        input.outcome.constructScores,
+        input.completedAt,
+      ),
+      matches: browserObservation(input.outcome.matches, input.completedAt),
+      evidence: browserObservation(input.outcome.evidence, input.completedAt),
+    },
+  });
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
@@ -454,13 +605,14 @@ export function buildSpecialistResearchSubmission(input: {
     studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
     participantId: safeToken(input.participantId),
     administration: input.administration,
-    submittedAt: input.submittedAt ?? new Date().toISOString(),
+    submittedAt,
     startedAt: input.startedAt,
     completedAt: input.completedAt,
     durationMs: durationBetween(input.startedAt, input.completedAt),
     consent: input.consent,
     locale: normalizeLocale(input.locale),
     qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
+    ...contract,
     moduleId: input.moduleId,
     moduleVersion: input.moduleVersion,
     assignment: input.assignment,
@@ -491,9 +643,25 @@ export function buildSpecialistDispositionSubmission(input: {
   submittedAt?: string;
   locale?: string;
   submissionId?: string;
+  contractMetadata?: ResearchSubmissionContractMetadata;
 }): SpecialistDispositionSubmission {
   const completedAt = input.occurredAt ?? new Date().toISOString();
   const startedAt = input.startedAt ?? completedAt;
+  const submittedAt = input.submittedAt ?? completedAt;
+  const answeredCount = Math.max(0, Math.floor(input.answeredCount));
+  const contract = buildContractMetadata({
+    submittedAt,
+    contractMetadata: input.contractMetadata,
+    refusal: {
+      status: "refused",
+      reason: input.disposition,
+      refusedAt: completedAt,
+    },
+    observations: {
+      disposition: browserObservation(input.disposition, completedAt),
+      answeredCount: browserObservation(answeredCount, completedAt),
+    },
+  });
   return {
     schemaVersion: RESEARCH_SCHEMA_VERSION,
     submissionId: safeToken(input.submissionId ?? crypto.randomUUID()),
@@ -501,18 +669,19 @@ export function buildSpecialistDispositionSubmission(input: {
     studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
     participantId: safeToken(input.participantId),
     administration: input.administration,
-    submittedAt: input.submittedAt ?? completedAt,
+    submittedAt,
     startedAt,
     completedAt,
     durationMs: durationBetween(startedAt, completedAt),
     consent: input.consent,
     locale: normalizeLocale(input.locale),
     qualityRuleVersion: RESEARCH_QUALITY_RULE_VERSION,
+    ...contract,
     moduleId: input.moduleId,
     moduleVersion: input.moduleVersion,
     assignment: input.assignment,
     disposition: input.disposition,
-    answeredCount: Math.max(0, Math.floor(input.answeredCount)),
+    answeredCount,
   };
 }
 

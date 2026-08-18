@@ -34,6 +34,11 @@ class FakeDatabase {
           schema_version: parameters[4],
           received_at: parameters[5],
           payload_sha256: parameters[6],
+          canonical_manifest_version: parameters[8],
+          canonical_manifest_fingerprint: parameters[9],
+          serialization_version: parameters[10],
+          contract_route: parameters[11],
+          contract_cohort: parameters[12],
           payload_json: parameters[7],
         });
         return { success: true };
@@ -62,6 +67,7 @@ function environment(overrides = {}) {
       "2026-08-specialist-roster-v1",
     EXPECTED_SPECIALIST_ASSIGNMENT_MODULE_IDS:
       "feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module",
+    WRITE_MODE: "open",
     EXPECTED_MODERATE_ITEM_COUNT: "1",
     EXPECTED_EXTENSIVE_ITEM_COUNT: "2",
     ALLOWED_LEGACY_MODERATE_ITEM_COUNTS: "3",
@@ -336,6 +342,189 @@ describe("research contribution Worker", () => {
     });
     const response = await handleRequest(postRequest(coreSubmission()), env);
     assert.equal(response.status, 429);
+    assert.equal(env.DB.rows.size, 0);
+  });
+  it("persists canonical contract metadata columns", async () => {
+    const env = environment({
+      EXPECTED_CONTRACT_ROUTE: "research-browser",
+      EXPECTED_MANIFEST_VERSION: "clean-rebuild-v1",
+      EXPECTED_MANIFEST_FINGERPRINT: "fp-smoke",
+      EXPECTED_SERIALIZATION_VERSION: "canonical-json-v1",
+      EXPECTED_COHORT: "community-2026-v5",
+      EXPECTED_COHORT_VERSION: "clean-rebuild-v1",
+      EXPECTED_COHORT_FINGERPRINT: "clean-rebuild-fingerprint-v1",
+      EXPECTED_CONTRACT_VERSION: "2026-08-v19",
+    });
+    const submission = coreSubmission({
+      contractRoute: "research-browser",
+      manifestVersion: "clean-rebuild-v1",
+      contractVersion: "2026-08-v19",
+      manifestFingerprint: "fp-smoke",
+      serializationVersion: "canonical-json-v1",
+      cohort: "community-2026-v5",
+      cohortVersion: "clean-rebuild-v1",
+      cohortFingerprint: "clean-rebuild-fingerprint-v1",
+    });
+
+    const response = await handleRequest(postRequest(submission), env);
+    assert.equal(response.status, 202);
+    const row = env.DB.rows.get(submission.submissionId);
+    assert.deepEqual(
+      {
+        canonical_manifest_version: row.canonical_manifest_version,
+        canonical_manifest_fingerprint: row.canonical_manifest_fingerprint,
+        serialization_version: row.serialization_version,
+        contract_route: row.contract_route,
+        contract_cohort: row.contract_cohort,
+      },
+      {
+        canonical_manifest_version: "clean-rebuild-v1",
+        canonical_manifest_fingerprint: "fp-smoke",
+        serialization_version: "canonical-json-v1",
+        contract_route: "research-browser",
+        contract_cohort: "community-2026-v5",
+      },
+    );
+    const health = await handleRequest(
+      new Request("https://collector.example/health"),
+      env,
+    );
+    assert.equal(health.status, 200);
+    assert.deepEqual(await health.json(), {
+      ok: true,
+      contractRoute: "research-browser",
+      manifestVersion: "clean-rebuild-v1",
+      manifestFingerprint: "fp-smoke",
+      serializationVersion: "canonical-json-v1",
+      serializationFingerprint: null,
+      cohort: "community-2026-v5",
+      cohortVersion: "clean-rebuild-v1",
+      cohortFingerprint: "clean-rebuild-fingerprint-v1",
+      writeMode: "open",
+    });
+  });
+  it("binds records to the generated artifact projection and rejects partial metadata", async () => {
+    const env = environment({
+      CANONICAL_CONTRACT_ARTIFACT: JSON.stringify({
+        contractVersion: "2026-08-v19",
+        sourceManifestSha256: "a".repeat(64),
+        manifestVersion: "ideology-registry-2026-08-clean-v1",
+        canonicalManifestFingerprint:
+          "9283cf5d1894bfa8c78cfdb0d2cc67ca92d44ec0ac702d40de697b8d493522d2",
+        serializationVersion: "canonical-json-v1",
+        cohortVersion: "clean-rebuild-v1",
+        cohortFingerprint: "clean-rebuild-fingerprint-v1",
+      }),
+      EXPECTED_CONTRACT_ROUTE: "research-browser",
+      EXPECTED_COHORT: "community-2026-v5",
+    });
+    const metadata = {
+      contractVersion: "2026-08-v19",
+      contractRoute: "research-browser",
+      manifestVersion: "ideology-registry-2026-08-clean-v1",
+      manifestFingerprint:
+        "9283cf5d1894bfa8c78cfdb0d2cc67ca92d44ec0ac702d40de697b8d493522d2",
+      serializationVersion: "canonical-json-v1",
+      cohort: "community-2026-v5",
+      cohortVersion: "clean-rebuild-v1",
+      cohortFingerprint: "clean-rebuild-fingerprint-v1",
+    };
+    const accepted = await handleRequest(
+      postRequest(coreSubmission(metadata)),
+      env,
+    );
+    assert.equal(accepted.status, 202);
+    const rejected = await handleRequest(
+      postRequest(
+        coreSubmission({
+          submissionId: "submission_partial_contract",
+          ...metadata,
+          manifestFingerprint: undefined,
+        }),
+      ),
+      env,
+    );
+    assert.equal(rejected.status, 422);
+  });
+
+  it("rejects mismatched configured contract route and canonical metadata", async () => {
+    const env = environment({
+      EXPECTED_CONTRACT_VERSION: "2026-08-v19",
+      EXPECTED_CONTRACT_ROUTE: "research-browser",
+      EXPECTED_MANIFEST_VERSION: "clean-rebuild-v1",
+      EXPECTED_MANIFEST_FINGERPRINT: "fp-smoke",
+      EXPECTED_SERIALIZATION_VERSION: "canonical-json-v1",
+      EXPECTED_COHORT: "community-2026-v5",
+      EXPECTED_COHORT_VERSION: "clean-rebuild-v1",
+      EXPECTED_COHORT_FINGERPRINT: "clean-rebuild-fingerprint-v1",
+    });
+    const response = await handleRequest(
+      postRequest(
+        coreSubmission({
+          contractVersion: "2026-08-v19",
+          contractRoute: "legacy-route",
+          manifestVersion: "legacy-manifest",
+          manifestFingerprint: "fp-smoke",
+          serializationVersion: "canonical-json-v1",
+          cohort: "community-2026-v5",
+          cohortVersion: "clean-rebuild-v1",
+          cohortFingerprint: "clean-rebuild-fingerprint-v1",
+        }),
+      ),
+      env,
+    );
+    assert.equal(response.status, 422);
+    assert.equal(env.DB.rows.size, 0);
+    const graceEnv = environment({
+      EXPECTED_CONTRACT_VERSION: "2026-08-v19",
+      EXPECTED_CONTRACT_ROUTE: "research-browser",
+      ALLOWED_LEGACY_CONTRACT_ROUTES: "legacy-route",
+      EXPECTED_MANIFEST_VERSION: "clean-rebuild-v1",
+      EXPECTED_MANIFEST_FINGERPRINT: "fp-smoke",
+      EXPECTED_SERIALIZATION_VERSION: "canonical-json-v1",
+      EXPECTED_COHORT: "community-2026-v5",
+      EXPECTED_COHORT_VERSION: "clean-rebuild-v1",
+      EXPECTED_COHORT_FINGERPRINT: "clean-rebuild-fingerprint-v1",
+    });
+    const graceResponse = await handleRequest(
+      postRequest(
+        coreSubmission({
+          submissionId: "submission_legacy_route",
+          contractVersion: "2026-08-v19",
+          contractRoute: "legacy-route",
+          manifestVersion: "clean-rebuild-v1",
+          manifestFingerprint: "fp-smoke",
+          serializationVersion: "canonical-json-v1",
+          cohort: "community-2026-v5",
+          cohortVersion: "clean-rebuild-v1",
+          cohortFingerprint: "clean-rebuild-fingerprint-v1",
+        }),
+      ),
+      graceEnv,
+    );
+    assert.equal(graceResponse.status, 202);
+  });
+
+  it("fails closed when write mode is unresolved and keeps health metadata safe", async () => {
+    const env = environment({
+      WRITE_MODE: "REPLACE_WITH_OWNER_APPROVED_WRITE_MODE__drain_or_open",
+    });
+    const health = await handleRequest(
+      new Request("https://collector.example/health"),
+      env,
+    );
+    assert.equal(health.status, 503);
+    const healthBody = await health.json();
+    assert.equal(healthBody.ok, false);
+    assert.equal(healthBody.writeMode, "unresolved");
+    assert.equal("payload" in healthBody, false);
+    assert.equal("participantId" in healthBody, false);
+
+    const response = await handleRequest(postRequest(coreSubmission()), env);
+    assert.equal(response.status, 503);
+    assert.deepEqual(await response.json(), {
+      error: "write-mode-unresolved",
+    });
     assert.equal(env.DB.rows.size, 0);
   });
 });

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { QUESTION_BANK_VERSION } from "../data/effectiveQuestions";
+import { QUESTION_BANK_VERSION } from "../domain/selectors";
 import { RESULT_SCORING_VERSION } from "../scoring";
 import {
   getOrCreateParticipantId,

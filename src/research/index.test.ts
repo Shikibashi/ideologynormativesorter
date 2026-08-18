@@ -8,8 +8,19 @@ import {
   MODIFIER_LABEL_ROSTER_FINGERPRINT,
   PRIMARY_LABEL_ROSTER_FINGERPRINT,
   submitResearchSubmission,
+  RESEARCH_CONTRACT_VERSION,
+  createResearchContractSnapshot,
+  isValidResearchContractSnapshot,
+  validateResearchContractSnapshot,
+  type ResearchContractSnapshot,
+  type ResearchContractSnapshotInput,
   type ResearchConsent,
+  RESEARCH_MANIFEST_VERSION,
+  RESEARCH_SERIALIZATION_VERSION,
+  RESEARCH_CONTRACT_ROUTE,
+  RESEARCH_COHORT,
 } from "./index";
+import { canonicalizeBytes } from "../domain/canonicalSerialization";
 import {
   SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
   SPECIALIST_ASSIGNMENT_STRATEGY,
@@ -58,8 +69,116 @@ const timing = {
   completedAt: "2026-07-18T12:20:00.000Z",
   resumed: false,
 };
+function deterministicCoreSubmission() {
+  return buildResearchSubmission({
+    studyId: "pilot",
+    participantId: "p_fixed",
+    administration: "test",
+    bankVersion: "bank-v1",
+    scoringVersion: "score-v1",
+    tier: "quick",
+    consent,
+    identity: {},
+    predictedLabelIds: ["market-liberal"],
+    answers,
+    questions: [question],
+    startedAt: timing.startedAt,
+    completedAt: timing.completedAt,
+    resumed: timing.resumed,
+    submissionId: "submission-fixed",
+    submittedAt: "2026-07-18T12:30:00.000Z",
+  });
+}
 
 describe("research submission", () => {
+  it("keeps the existing research API while exposing contract snapshots", () => {
+    const factory: (
+      input: ResearchContractSnapshotInput,
+    ) => ResearchContractSnapshot = createResearchContractSnapshot;
+
+    expect(factory).toBe(createResearchContractSnapshot);
+    expect(RESEARCH_CONTRACT_VERSION).toBe("research-contract-v1");
+    expect(validateResearchContractSnapshot).toBeTypeOf("function");
+    expect(isValidResearchContractSnapshot).toBeTypeOf("function");
+    expect(buildResearchSubmission).toBeTypeOf("function");
+    expect(buildSpecialistResearchSubmission).toBeTypeOf("function");
+    expect(buildSpecialistDispositionSubmission).toBeTypeOf("function");
+    expect(submitResearchSubmission).toBeTypeOf("function");
+    expect(getOrCreateParticipantId).toBeTypeOf("function");
+  });
+  it("emits deterministic contract metadata and browser observation markers", () => {
+    const first = deterministicCoreSubmission();
+    const second = deterministicCoreSubmission();
+
+    expect(first.manifestVersion).toBe(RESEARCH_MANIFEST_VERSION);
+    expect(first.manifestFingerprint).toBe(
+      "9283cf5d1894bfa8c78cfdb0d2cc67ca92d44ec0ac702d40de697b8d493522d2",
+    );
+    expect(first.serializationVersion).toBe(RESEARCH_SERIALIZATION_VERSION);
+    expect(first.contractRoute).toBe(RESEARCH_CONTRACT_ROUTE);
+    expect(first.cohort).toBe(RESEARCH_COHORT);
+    expect(first.cohortVersion).toBe("clean-rebuild-v1");
+    expect(first.cohortFingerprint).toBe("clean-rebuild-fingerprint-v1");
+    expect(first.provenance).toEqual({
+      source: "browser",
+      capturedAt: "2026-07-18T12:30:00.000Z",
+      surface: "research-form",
+    });
+    expect(first.observations.answers).toMatchObject({
+      kind: "browser-observation",
+      source: "browser",
+      observedAt: timing.completedAt,
+    });
+    expect(Array.from(canonicalizeBytes(first))).toEqual(
+      Array.from(canonicalizeBytes(second)),
+    );
+  });
+  it("rejects partial or caller-overridden contract metadata", () => {
+    const base = {
+      studyId: "pilot",
+      participantId: "p_fixed",
+      administration: "test" as const,
+      bankVersion: "bank-v1",
+      scoringVersion: "score-v1",
+      tier: "quick" as const,
+      consent,
+      identity: {},
+      predictedLabelIds: ["market-liberal"],
+      answers,
+      questions: [question],
+      startedAt: timing.startedAt,
+      completedAt: timing.completedAt,
+      resumed: false,
+    };
+    expect(() =>
+      buildResearchSubmission({
+        ...base,
+        contractMetadata: { manifestVersion: RESEARCH_MANIFEST_VERSION },
+      }),
+    ).toThrow(/canonical browser contract/);
+    expect(() =>
+      buildResearchSubmission({
+        ...base,
+        contractMetadata: {
+          manifestVersion: "caller-override",
+          manifestFingerprint:
+            "9283cf5d1894bfa8c78cfdb0d2cc67ca92d44ec0ac702d40de697b8d493522d2",
+          serializationVersion: RESEARCH_SERIALIZATION_VERSION,
+          contractVersion: "2026-08-v19",
+          contractRoute: RESEARCH_CONTRACT_ROUTE,
+          cohort: RESEARCH_COHORT,
+          cohortVersion: "clean-rebuild-v1",
+          cohortFingerprint: "clean-rebuild-fingerprint-v1",
+          provenance: {
+            source: "browser",
+            capturedAt: "2026-07-18T12:30:00.000Z",
+            surface: "research-form",
+          },
+          refusal: null,
+        },
+      }),
+    ).toThrow(/canonical browser contract/);
+  });
   it("copies the final interrogative prompt into research item snapshots", () => {
     const effectiveQuestion = questionById.get("q0067")!;
     const submission = buildResearchSubmission({
@@ -262,6 +381,14 @@ describe("research submission", () => {
       "legal-equality-reform": 1,
     });
     expect(submission.durationMs).toBe(600_000);
+    expect(submission.manifestVersion).toBe(RESEARCH_MANIFEST_VERSION);
+    expect(submission.serializationVersion).toBe(
+      RESEARCH_SERIALIZATION_VERSION,
+    );
+    expect(submission.observations.constructScores).toMatchObject({
+      kind: "browser-observation",
+      source: "browser",
+    });
   });
 
   it("builds a lightweight specialist disposition record for explicit nonresponse", () => {
@@ -287,6 +414,23 @@ describe("research submission", () => {
     expect(submission.disposition).toBe("declined-after-partial");
     expect(submission.answeredCount).toBe(4);
     expect(submission.durationMs).toBe(240_000);
+    expect(submission.manifestVersion).toBe(RESEARCH_MANIFEST_VERSION);
+    expect(submission.serializationVersion).toBe(
+      RESEARCH_SERIALIZATION_VERSION,
+    );
+    expect(submission.refusal).toEqual({
+      status: "refused",
+      reason: "declined-after-partial",
+      refusedAt: "2026-07-18T12:14:00.000Z",
+    });
+    expect(submission.provenance).toMatchObject({
+      source: "browser",
+      capturedAt: "2026-07-18T12:14:00.000Z",
+    });
+    expect(submission.observations.disposition).toMatchObject({
+      kind: "browser-observation",
+      source: "browser",
+    });
   });
 
   it("does not transmit when no endpoint is configured", async () => {

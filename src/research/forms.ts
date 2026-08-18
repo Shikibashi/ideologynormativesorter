@@ -1,7 +1,30 @@
+import { CANONICAL_JSON_VERSION } from "../domain/canonicalSerialization";
+import { CANONICAL_MANIFEST } from "../domain/canonicalManifest";
 import type { Question } from "../types";
 import type { ResearchAdministration } from "./index";
 
 export const RESEARCH_FORM_VERSION = "profile-form-v3";
+export const RESEARCH_CONTRACT_ROUTE = "research-browser";
+export const RESEARCH_COHORT = "community-2026-v5";
+/** Version and fingerprints projected from the checked-in canonical contract artifact. */
+export const RESEARCH_COHORT_VERSION = "clean-rebuild-v1";
+export const RESEARCH_COHORT_FINGERPRINT = "clean-rebuild-fingerprint-v1";
+export const RESEARCH_MANIFEST_VERSION = CANONICAL_MANIFEST.metadata.version;
+const canonicalManifestFingerprint = CANONICAL_MANIFEST.metadata.fingerprint;
+if (!canonicalManifestFingerprint) {
+  throw new Error("Canonical research manifest fingerprint is required.");
+}
+export const RESEARCH_MANIFEST_FINGERPRINT = canonicalManifestFingerprint;
+export const RESEARCH_SERIALIZATION_VERSION = CANONICAL_JSON_VERSION;
+export const RESEARCH_FORM_CONTRACT_METADATA = Object.freeze({
+  manifestVersion: RESEARCH_MANIFEST_VERSION,
+  manifestFingerprint: RESEARCH_MANIFEST_FINGERPRINT,
+  serializationVersion: RESEARCH_SERIALIZATION_VERSION,
+  contractRoute: RESEARCH_CONTRACT_ROUTE,
+  cohort: RESEARCH_COHORT,
+  cohortVersion: RESEARCH_COHORT_VERSION,
+  cohortFingerprint: RESEARCH_COHORT_FINGERPRINT,
+});
 
 function hash32(value: string): number {
   let hash = 2166136261;

@@ -1,13 +1,11 @@
-import {
-  coreQuestions,
-  QUESTION_BANK_VERSION,
-} from "../data/effectiveQuestions";
-import { TAXONOMY_VERSION } from "../data/labelTaxonomy";
-import { IDEOLOGY_SCALE_VERSION } from "../data/ideologyScales";
+import { coreQuestions, QUESTION_BANK_VERSION } from "../domain/selectors";
+import { TAXONOMY_VERSION } from "../domain/selectors";
+import { IDEOLOGY_SCALE_VERSION } from "../domain/selectors";
 import { RESULT_SCORING_VERSION } from "../scoring";
-import { specialistModuleDefinitions } from "../specialist";
+import { listCanonicalSpecialistModules } from "../specialist/canonicalAdapter";
 
 export function MethodologyScreen({ onBack }: { onBack: () => void }) {
+  const specialistModuleDefinitions = listCanonicalSpecialistModules();
   const activeDescriptive = [
     ...coreQuestions.filter(
       (question) =>
@@ -64,7 +62,8 @@ export function MethodologyScreen({ onBack }: { onBack: () => void }) {
       <p data-testid="instrument-version">
         Public contract: taxonomy <code>{TAXONOMY_VERSION}</code>; scoring{" "}
         <code>{RESULT_SCORING_VERSION}</code>; question bank{" "}
-        <code>{QUESTION_BANK_VERSION}</code>.
+        <code>{QUESTION_BANK_VERSION}</code> (legacy editorial compatibility{" "}
+        <code>2026-08-editorial-v16</code>).
       </p>
       <p>
         The label catalog now separates broad primary families, directly

@@ -6,7 +6,7 @@ import {
   type ResearchSubmission,
   type ResearchSubmissionStatus,
 } from "../research";
-import { QUESTION_BANK_VERSION } from "../data/effectiveQuestions";
+import { QUESTION_BANK_VERSION } from "../domain/selectors";
 import { RESULT_SCORING_VERSION } from "../scoring";
 import type { AppBootstrapState } from "./useAppBootstrapState";
 import type { Setter } from "./actionTypes";

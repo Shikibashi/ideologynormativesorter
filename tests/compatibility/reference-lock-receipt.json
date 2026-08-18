@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "type": "cli-replay",
+  "id": "reference-lock",
+  "status": "passed",
+  "command": "npm run reference-lock:replay && npm run reference-lock:diff",
+  "result": "passed"
+}

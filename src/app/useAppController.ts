@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 import type { AppStageProps } from "../components/AppStage";
 import type { ShellContext } from "../components/SiteShell";
-import { axes } from "../data/axes";
-import { domains } from "../data/domains";
+import { axes } from "../domain/selectors";
+import { domains } from "../domain/selectors";
 import {
   publicCatalogLabels,
   researchIdentityLabels,
-} from "../data/labelTaxonomy";
+} from "../domain/selectors";
 import { quizTierLabel } from "../quizTiers";
 import { useAppActions } from "./useAppActions";
 import type { AppActionContext } from "./actionTypes";

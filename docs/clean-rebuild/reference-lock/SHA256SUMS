@@ -1,0 +1,5 @@
+02c345daaa0a4a4367eb23bbfbe5db6ba955a75e3688e59f6a108cc099426a38  docs/clean-rebuild/reference-lock/manifest.json
+ac419d89998f7001e8c98f14636dbca93a1fb118f41fa94647e5c9d58d2e19a4  docs/clean-rebuild/reference-lock/cases.json
+f501970dc5a2fb3022ec0463c8c9adfe38d6adf51dd844494cb4976dbee64cfc  docs/clean-rebuild/reference-lock/screenshots/landing-desktop.png
+f3a45e9bb94671770e8c01a74fd3dfdb6e4062b503b81ab3a0cc16a21544f279  scripts/replay-reference-lock.mjs
+ae0c2be121e155fdaa2d04ad81b6734bd6e94f116f7796d9817bb79704a38588  scripts/compare-reference-lock.mjs

@@ -13,13 +13,13 @@ import type {
   ResultProfile,
 } from "../types";
 import {
-  feministSpecialistCandidates,
-  type FeministSpecialistCandidate,
-} from "../data/feministBreadth";
+  listCanonicalSpecialistCandidates,
+  type CanonicalSpecialistCandidate,
+} from "../specialist/canonicalAdapter";
 import {
   catalogRelatedTraditions,
   type CatalogRelatedTradition,
-} from "../data/catalogRelatedTraditions";
+} from "../domain/selectors";
 import { AxisBar } from "./AxisBar";
 import { LabelCard } from "./LabelCard";
 import { CompassPlot } from "./CompassPlot";
@@ -187,14 +187,14 @@ function relatedTraditionMatchesSearch(
 }
 
 function focusedFeministTradition(
-  candidate: FeministSpecialistCandidate,
+  candidate: CanonicalSpecialistCandidate,
 ): BrowserRelatedTradition {
   return {
     id: candidate.id,
     name: candidate.name,
     family: "feminist",
     subfamily: "feminist-specialist",
-    aliases: candidate.aliases,
+    aliases: candidate.node?.aliases,
     description: candidate.description,
     availability: "focused-follow-up",
   };
@@ -242,7 +242,7 @@ export function ResultsScreen({
   );
   const publicLabelIds = new Set(labels.map((label) => label.id));
   const relatedTraditions: BrowserRelatedTradition[] = [
-    ...feministSpecialistCandidates
+    ...listCanonicalSpecialistCandidates("feminist-faction-module")
       .filter(
         (candidate) =>
           candidate.status === "candidate-specialist" &&
@@ -883,9 +883,8 @@ export function ResultsScreen({
             {visibleRelatedTraditions.length > 0 && (
               <section
                 className="focused-traditions"
-                aria-labelledby="focused-traditions-heading"
+                aria-label="Related traditions"
               >
-                <h3 id="focused-traditions-heading">Related traditions</h3>
                 <p className="muted">
                   These historically meaningful traditions are not ranked by the
                   general quiz. A focused follow-up is available where the

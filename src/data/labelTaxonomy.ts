@@ -1,6 +1,5 @@
 import type { IdeologyLabel, LabelId } from "../types";
-import { FEMINIST_MODULE_ID } from "./feministBreadth";
-import { IDENTITY_SOVEREIGNTY_MODULE_ID } from "./identitySovereigntyBreadth";
+import { getCanonicalSpecialistModule } from "../specialist/canonicalAdapter";
 import { attachIdeologyLabelSources } from "./labelSources";
 import { labels } from "./labels";
 import {
@@ -11,6 +10,16 @@ import {
 import { modifierMeasurementForLabel } from "./modifierMeasurement";
 import { attachPrimaryScoringScope } from "./primaryMeasurement";
 
+function canonicalModuleId(moduleId: string): string {
+  const module = getCanonicalSpecialistModule(moduleId);
+  if (!module)
+    throw new Error(`Unknown canonical specialist module: ${moduleId}`);
+  return module.id;
+}
+const FEMINIST_MODULE_ID = canonicalModuleId("feminist-faction-module");
+const IDENTITY_SOVEREIGNTY_MODULE_ID = canonicalModuleId(
+  "identity-sovereignty-module",
+);
 /**
  * Product taxonomy for ideology labels.
  *

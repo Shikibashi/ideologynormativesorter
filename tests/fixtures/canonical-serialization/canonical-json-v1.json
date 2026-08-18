@@ -1,0 +1,64 @@
+{
+  "version": "canonical-json-v1",
+  "sourceManifest": "src/domain/canonicalManifest.ts",
+  "sourceManifestSha256": "1d8502aef3310f5a5c7020d4647fa657abce968b8891e15628952bd62455c524",
+  "vectors": [
+    {
+      "name": "empty-object",
+      "value": {},
+      "canonical": "{}",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "name": "unicode-and-escaping",
+      "value": {
+        "text": "é",
+        "emoji": "😀",
+        "escaped": "quote \" \\ newline\n"
+      },
+      "canonical": "{\"emoji\":\"😀\",\"escaped\":\"quote \\\" \\\\ newline\\n\",\"text\":\"é\"}",
+      "sha256": "8d76b48bb55b905d29026227b1da9d09830d150fc9acde9e3e364ebe4644a339"
+    },
+    {
+      "name": "finite-numbers-and-negative-zero",
+      "value": {
+        "negativeZero": -0,
+        "integer": 1,
+        "decimal": 1.5,
+        "exponent": 1e-7
+      },
+      "canonical": "{\"decimal\":1.5,\"exponent\":1e-7,\"integer\":1,\"negativeZero\":0}",
+      "sha256": "02bcf3dd01fda9f5300a32ddbb40472daa16ae4feb8082d0195571ad82b79700"
+    },
+    {
+      "name": "null-and-omission",
+      "value": {
+        "nullValue": null,
+        "present": true
+      },
+      "canonical": "{\"nullValue\":null,\"present\":true}",
+      "sha256": "a775f4d1d83c91bc811bfd8c4bdf75d8680a5a3592754a1322c73d0aab73db5a"
+    },
+    {
+      "name": "ordered-array",
+      "value": {
+        "items": [2, 1]
+      },
+      "canonical": "{\"items\":[2,1]}",
+      "sha256": "999e7876bd6caa905b1c5fd6e9a875224c9523c3f71d792d62de83fb5201ade1"
+    },
+    {
+      "name": "set-array",
+      "schema": {
+        "arrays": {
+          "/tags": "set"
+        }
+      },
+      "value": {
+        "tags": ["beta", "alpha"]
+      },
+      "canonical": "{\"tags\":[\"alpha\",\"beta\"]}",
+      "sha256": "cfab84607dcb846283b559d1f22fc205053e7992dea2b8374580c3417b9b1a64"
+    }
+  ]
+}

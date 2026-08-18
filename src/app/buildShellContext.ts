@@ -1,6 +1,6 @@
 import type { ResearchAdministration } from "../research";
 import { quizTierLabel } from "../quizTiers";
-import { TAXONOMY_VERSION } from "../data/labelTaxonomy";
+import { TAXONOMY_VERSION } from "../domain/selectors";
 import type { QuizTier } from "../types";
 import type { QuizScreenStatus } from "../components/QuizScreen";
 import type { ShellContext } from "../components/SiteShell";

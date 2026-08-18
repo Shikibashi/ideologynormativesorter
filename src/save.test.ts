@@ -61,6 +61,47 @@ describe("research recovery storage", () => {
 
     expect(loadQuizState()?.completedAt).toBe("2026-08-10T12:02:00.000Z");
   });
+  it("rejects malformed indexes, timestamps, and answer IDs on load", () => {
+    const base = {
+      questions: [question],
+      answers: { [question.id]: { questionId: question.id, value: 1 } },
+      index: 0,
+      tier: "quick" as const,
+      startedAt: "2026-08-10T12:01:00.000Z",
+    };
+    for (const malformed of [
+      { ...base, index: Number.POSITIVE_INFINITY },
+      { ...base, startedAt: "not-a-timestamp" },
+      {
+        ...base,
+        answers: {
+          ...base.answers,
+          extra: { questionId: "extra", value: 1 },
+        },
+      },
+      {
+        ...base,
+        answers: { [question.id]: { questionId: "other", value: 1 } },
+      },
+    ]) {
+      localStorage.setItem("ideology-quiz-save", JSON.stringify(malformed));
+      expect(loadQuizState()).toBeNull();
+      expect(localStorage.getItem("ideology-quiz-save")).toBeNull();
+    }
+  });
+
+  it("does not write malformed quiz progress", () => {
+    expect(
+      saveQuizState({
+        questions: [question],
+        answers: {
+          unknown: { questionId: "unknown", value: 1 },
+        },
+        index: 0,
+        tier: "quick",
+      } as never),
+    ).toEqual({ saved: false, reason: "The saved quiz progress is invalid." });
+  });
 
   it("persists an export-only record until it is explicitly cleared", () => {
     const submission = buildResearchSubmission({

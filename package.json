@@ -17,7 +17,12 @@
     "test:ecw": "playwright test --project=ecw",
     "test:browser": "playwright test",
     "research:check": "node scripts/check-research-contract.mjs",
+    "canonical:migrate": "node scripts/migrate-canonical-manifest.mjs",
+    "canonical:check": "node scripts/check-canonical-imports.mjs --check",
+    "reference-lock:replay": "node scripts/replay-reference-lock.mjs --baseline docs/clean-rebuild/reference-lock --actual artifacts/reference-lock/current",
+    "reference-lock:diff": "node scripts/compare-reference-lock.mjs --baseline docs/clean-rebuild/reference-lock --actual artifacts/reference-lock/current",
     "test:worker": "node --test research-worker/worker.test.mjs",
+    "analysis:smoke": "bash scripts/run-r-smoke.sh",
     "worker:check": "wrangler deploy --dry-run --config research-worker/wrangler.jsonc",
     "worker:migrate": "wrangler d1 migrations apply political-judgment-contributions --remote --config research-worker/wrangler.jsonc",
     "worker:deploy": "wrangler deploy --config research-worker/wrangler.jsonc"

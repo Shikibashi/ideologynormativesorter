@@ -10,7 +10,7 @@ import {
   getIdeologyLayerSummary,
   getIdeologyTermDefinitions,
   LAYER_EXPLAINERS,
-} from "../data/ideologyExplainers";
+} from "../domain/selectors";
 import {
   coverageLabel,
   axisPositionLabel,
@@ -111,7 +111,7 @@ function LabelCardSummary({
 }: LabelCardProps): ReactElement {
   return (
     <>
-      <h5>{label.name}</h5>
+      <h5 aria-hidden={compact || undefined}>{label.name}</h5>
       {taxonomyStatusLabel(label.taxonomy) && (
         <p className="muted label-taxonomy-status">
           {taxonomyStatusLabel(label.taxonomy)}

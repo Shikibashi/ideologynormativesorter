@@ -24,6 +24,7 @@ export default defineConfig({
       ...configDefaults.exclude,
       "tests/browser/**",
       "research-worker/**",
+      "tests/compatibility/**/*.test.mjs",
     ],
   },
 });

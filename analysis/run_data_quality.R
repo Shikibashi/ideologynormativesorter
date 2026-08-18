@@ -28,6 +28,88 @@ maximum_missing_rate <- as.numeric(Sys.getenv("QUALITY_MAXIMUM_MISSING_RATE", "0
 maximum_invariant_rate <- as.numeric(Sys.getenv("QUALITY_MAXIMUM_INVARIANT_RATE", "0.95"))
 required_consent_version <- Sys.getenv("QUALITY_REQUIRED_CONSENT_VERSION", "2026-08-12-v8")
 
+clean_contract_fields <- c(
+  "manifest_version",
+  "manifest_fingerprint",
+  "serialization_version",
+  "contract_route",
+  "contract_cohort"
+)
+
+metadata_value_present <- function(value) {
+  is.character(value) &&
+    length(value) == 1 &&
+    !is.na(value) &&
+    nzchar(trimws(value))
+}
+
+extract_contract_metadata <- function(record) {
+  sources <- list(
+    record,
+    record$contractMetadata,
+    record$researchContract,
+    record$canonicalContract,
+    record$contract
+  )
+  sources <- sources[vapply(sources, is.list, logical(1))]
+  value_for <- function(keys) {
+    for (source in sources) {
+      for (key in keys) {
+        value <- source[[key]]
+        if (metadata_value_present(value)) return(trimws(value))
+      }
+    }
+    ""
+  }
+  list(
+    manifest_version = value_for(c("manifestVersion", "canonicalManifestVersion", "manifest_version")),
+    manifest_fingerprint = value_for(c("manifestFingerprint", "canonicalManifestFingerprint", "manifest_fingerprint")),
+    serialization_version = value_for(c("serializationVersion", "serialization_version")),
+    contract_route = value_for(c("contractRoute", "contract_route", "route")),
+    contract_cohort = value_for(c("cohort", "contractCohort", "contract_cohort"))
+  )
+}
+
+validate_contract_metadata <- function(metadata) {
+  if (length(metadata) == 0) return(invisible(NULL))
+  clean_flags <- vapply(metadata, function(entry) {
+    any(vapply(entry[clean_contract_fields], metadata_value_present, logical(1)))
+  }, logical(1))
+  if (any(clean_flags)) {
+    missing <- vapply(metadata, function(entry) {
+      missing_fields <- clean_contract_fields[!vapply(entry[clean_contract_fields], metadata_value_present, logical(1))]
+      if (length(missing_fields) == 0) "" else paste(missing_fields, collapse = ", ")
+    }, character(1))
+    if (any(!clean_flags | nzchar(missing))) {
+      stop(
+        "Clean contract metadata requires non-empty ",
+        paste(clean_contract_fields, collapse = ", "),
+        " for every input record; missing fields: ",
+        paste(unique(missing[nzchar(missing) | !clean_flags]), collapse = "; ")
+      )
+    }
+    for (entry in metadata) {
+      if (any(vapply(entry[clean_contract_fields], function(value) {
+        identical(tolower(trimws(value)), "unknown")
+      }, logical(1)))) {
+        stop("Clean contract metadata must not contain unknown values.")
+      }
+    }
+  }
+  for (field in clean_contract_fields) {
+    values <- unique(vapply(metadata, `[[`, character(1), field))
+    values <- values[nzchar(values)]
+    if (length(values) > 1) {
+      stop("Mixed non-empty ", field, " values detected in input fixture: ", paste(values, collapse = ", "))
+    }
+  }
+  invisible(NULL)
+}
+
+contract_metadata_or_unknown <- function(value) {
+  if (metadata_value_present(value)) value else "unknown"
+}
+
 read_json_file <- function(path) {
   parsed <- jsonlite::fromJSON(path, simplifyVector = FALSE)
   if (!is.null(parsed$schemaVersion)) list(parsed) else parsed
@@ -52,6 +134,9 @@ submissions <- submissions[vapply(submissions, function(record) {
   !is.null(record$schemaVersion) && !is.null(record$participantId) && !is.null(record$answers)
 }, logical(1))]
 if (length(submissions) == 0) stop("No valid research submissions were found.")
+
+contract_metadata <- lapply(submissions, extract_contract_metadata)
+validate_contract_metadata(contract_metadata)
 
 normalize_self_reported_ideologies <- function(value) {
   if (is.null(value) || length(value) == 0 || !nzchar(trimws(as.character(value[[1]])))) {
@@ -196,6 +281,11 @@ for (record_index in seq_along(submissions)) {
     schema_version = record$schemaVersion %||% "unknown",
     bank_version = record$bankVersion %||% "unknown",
     scoring_version = record$scoringVersion %||% "unknown",
+    manifest_version = contract_metadata_or_unknown(contract_metadata[[record_index]]$manifest_version),
+    manifest_fingerprint = contract_metadata_or_unknown(contract_metadata[[record_index]]$manifest_fingerprint),
+    serialization_version = contract_metadata_or_unknown(contract_metadata[[record_index]]$serialization_version),
+    contract_route = contract_metadata_or_unknown(contract_metadata[[record_index]]$contract_route),
+    contract_cohort = contract_metadata_or_unknown(contract_metadata[[record_index]]$contract_cohort),
     assigned_item_count = total_count,
     observed_count = observed_count,
     likert_observed_count = likert_observed_count,
@@ -302,7 +392,8 @@ utils::write.csv(
 )
 
 inclusion_manifest <- submission_quality[, c(
-  "submission_id", "study_id", "participant_id", "administration", "record_type", "schema_version", "bank_version", "scoring_version"
+  "submission_id", "study_id", "participant_id", "administration", "record_type", "schema_version", "bank_version", "scoring_version",
+  "manifest_version", "manifest_fingerprint", "serialization_version", "contract_route", "contract_cohort"
 ), drop = FALSE]
 inclusion_manifest$decision <- ifelse(submission_quality$exclusion_candidate, "review-required", "include")
 inclusion_manifest$reason <- ifelse(

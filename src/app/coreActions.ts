@@ -4,15 +4,16 @@ import {
   researchFormFingerprint,
 } from "../research/forms";
 import {
+  isCompatibleQuestionBankVersion,
   QUESTION_BANK_VERSION,
   questionById,
   questions,
   questionsForTier,
-} from "../data/effectiveQuestions";
+} from "../domain/selectors";
 import {
   modifierScoringLabels,
   primaryScoringLabels,
-} from "../data/labelTaxonomy";
+} from "../domain/selectors";
 import { buildResultProfile } from "../scoring";
 import {
   clearPendingResearchRecord,
@@ -89,7 +90,10 @@ export function restoreSavedQuiz(
     saved.research.participantId === context.participantId &&
     saved.research.studyId === context.studyId &&
     saved.research.administration === context.administration &&
-    saved.research.bankVersion === QUESTION_BANK_VERSION &&
+    isCompatibleQuestionBankVersion(
+      saved.research.bankVersion,
+      QUESTION_BANK_VERSION,
+    ) &&
     saved.research.formVersion === RESEARCH_FORM_VERSION &&
     saved.research.requestedItemCount === context.formSize &&
     saved.research.formFingerprint ===

@@ -21,6 +21,16 @@ const expectedQualityRuleVersion =
   process.env.RESEARCH_QUALITY_RULE_VERSION ?? "data-quality-v2";
 const expectedFormVersion =
   process.env.RESEARCH_FORM_VERSION ?? "profile-form-v3";
+const expectedContractRoute =
+  process.env.RESEARCH_CONTRACT_ROUTE?.trim() || "research-browser";
+const expectedCohort =
+  process.env.RESEARCH_COHORT?.trim() || "community-2026-v5";
+const allowedLegacyContractRoutes = (
+  process.env.ALLOWED_LEGACY_CONTRACT_ROUTES ?? ""
+)
+  .split(",")
+  .map((value) => value.trim())
+  .filter((value) => validToken(value, 128));
 const expectedStudyId = process.env.RESEARCH_STUDY_ID?.trim() || null;
 const expectedBankVersion = process.env.RESEARCH_BANK_VERSION?.trim() || null;
 const expectedScoringVersion =
@@ -51,6 +61,11 @@ const RESPONSE_TYPES = new Set(["likert5", "likert7", "statementChoice"]);
 const REVIEW_STATUSES = new Set(["approved", "draft", "needs-rewrite"]);
 const TIERS = new Set(["blitz", "quick", "moderate", "extensive"]);
 const SALIENCE_VALUES = new Set([1, 3, 5]);
+const canonicalContractArtifactPath = resolve(
+  process.env.RESEARCH_CONTRACT_ARTIFACT?.trim() ||
+    process.env.CANONICAL_CONTRACT_ARTIFACT?.trim() ||
+    "./research-worker/generated/canonical-contract.json",
+);
 
 await Promise.all([
   mkdir(dirname(outputFile), { recursive: true }),
@@ -90,6 +105,216 @@ function validVersion(value, expected = null) {
   return (
     validNonemptyString(value, 512) && (expected === null || value === expected)
   );
+}
+
+function contractArtifactMetadata(artifact) {
+  if (!isObject(artifact)) return { invalid: true };
+  const metadataSource = isObject(artifact.metadata) ? artifact.metadata : {};
+  const manifest = isObject(artifact.manifest)
+    ? artifact.manifest
+    : isObject(metadataSource.manifest)
+      ? metadataSource.manifest
+      : {};
+  const serialization = isObject(artifact.serialization)
+    ? artifact.serialization
+    : isObject(metadataSource.serialization)
+      ? metadataSource.serialization
+      : {};
+  const schema = isObject(artifact.schema)
+    ? artifact.schema
+    : isObject(metadataSource.schema)
+      ? metadataSource.schema
+      : {};
+  const cohort = isObject(artifact.cohort)
+    ? artifact.cohort
+    : isObject(metadataSource.cohort)
+      ? metadataSource.cohort
+      : {};
+  const contract = isObject(artifact.contract)
+    ? artifact.contract
+    : isObject(metadataSource.contract)
+      ? metadataSource.contract
+      : {};
+  const metadata = {
+    contractVersion:
+      artifact.contractVersion ??
+      metadataSource.contractVersion ??
+      contract.version,
+    sourceManifestSha256:
+      artifact.sourceManifestSha256 ??
+      metadataSource.sourceManifestSha256 ??
+      manifest.sourceManifestSha256,
+    manifestSchemaVersion:
+      artifact.manifestSchemaVersion ??
+      metadataSource.manifestSchemaVersion ??
+      manifest.schemaVersion,
+    manifestVersion:
+      artifact.manifestVersion ??
+      metadataSource.manifestVersion ??
+      manifest.version,
+    manifestFingerprint:
+      artifact.manifestFingerprint ??
+      artifact.canonicalManifestFingerprint ??
+      metadataSource.manifestFingerprint ??
+      metadataSource.canonicalManifestFingerprint ??
+      manifest.fingerprint,
+    serializationVersion:
+      artifact.serializationVersion ??
+      metadataSource.serializationVersion ??
+      serialization.version,
+    serializationFingerprint:
+      artifact.serializationFingerprint ??
+      metadataSource.serializationFingerprint ??
+      serialization.fingerprint,
+    schemaContractVersion:
+      artifact.schemaContractVersion ??
+      metadataSource.schemaContractVersion ??
+      artifact.schemaVersion ??
+      schema.version,
+    schemaFingerprint:
+      artifact.schemaFingerprint ??
+      metadataSource.schemaFingerprint ??
+      schema.fingerprint,
+    contractRoute:
+      artifact.contractRoute ??
+      metadataSource.contractRoute ??
+      artifact.route ??
+      metadataSource.route ??
+      expectedContractRoute,
+    cohort:
+      typeof artifact.cohort === "string"
+        ? artifact.cohort
+        : typeof metadataSource.cohort === "string"
+          ? metadataSource.cohort
+          : expectedCohort,
+    cohortVersion:
+      artifact.cohortVersion ?? metadataSource.cohortVersion ?? cohort.version,
+    cohortFingerprint:
+      artifact.cohortFingerprint ??
+      metadataSource.cohortFingerprint ??
+      cohort.fingerprint,
+  };
+  if (
+    !validNonemptyString(metadata.contractVersion, 512) ||
+    !/^[0-9a-f]{64}$/u.test(metadata.sourceManifestSha256 ?? "") ||
+    !validNonemptyString(metadata.manifestVersion, 512) ||
+    !/^[0-9a-f]{64}$/u.test(metadata.manifestFingerprint ?? "") ||
+    !validNonemptyString(metadata.serializationVersion, 512) ||
+    !validNonemptyString(metadata.contractRoute, 128) ||
+    !validNonemptyString(metadata.cohort, 128) ||
+    !validNonemptyString(metadata.cohortVersion, 512) ||
+    !validNonemptyString(metadata.cohortFingerprint, 512)
+  )
+    return { invalid: true };
+  return metadata;
+}
+
+async function loadCanonicalContract() {
+  const configured =
+    process.env.RESEARCH_CONTRACT_ARTIFACT?.trim() ||
+    process.env.CANONICAL_CONTRACT_ARTIFACT?.trim();
+  let source;
+  if (configured?.startsWith("{")) {
+    source = configured;
+  } else {
+    try {
+      source = await readFile(
+        configured ? resolve(configured) : canonicalContractArtifactPath,
+        "utf8",
+      );
+    } catch (error) {
+      if (error?.code === "ENOENT") return null;
+      throw error;
+    }
+  }
+  let artifact;
+  try {
+    artifact = JSON.parse(source);
+  } catch {
+    throw new Error("Canonical contract artifact is not valid JSON.");
+  }
+  const metadata = contractArtifactMetadata(artifact);
+  if (metadata.invalid)
+    throw new Error("Canonical contract artifact is incomplete.");
+  return metadata;
+}
+
+function suppliedContractMetadata(submission) {
+  if (!isObject(submission)) return null;
+  const candidates = [
+    submission.researchContract,
+    submission.contractMetadata,
+    submission.canonicalContract,
+    submission.contract,
+  ];
+  const fields = [
+    "contractVersion",
+    "sourceManifestSha256",
+    "manifestSchemaVersion",
+    "manifestVersion",
+    "manifestFingerprint",
+    "serializationVersion",
+    "serializationFingerprint",
+    "schemaContractVersion",
+    "schemaFingerprint",
+    "contractRoute",
+    "cohort",
+    "cohortVersion",
+    "cohortFingerprint",
+  ];
+  if (fields.some((key) => submission[key] !== undefined))
+    candidates.push(submission);
+  const supplied = {};
+  let found = false;
+  for (const candidate of candidates) {
+    if (!isObject(candidate)) continue;
+    const candidateFields = fields.filter(
+      (field) => candidate[field] !== undefined,
+    );
+    if (candidateFields.length > 0 && candidateFields.length !== fields.length)
+      return { invalid: true };
+    for (const field of fields) {
+      if (candidate[field] === undefined) continue;
+      if (supplied[field] !== undefined && supplied[field] !== candidate[field])
+        return { invalid: true };
+      supplied[field] = candidate[field];
+      found = true;
+    }
+  }
+  return found ? supplied : null;
+}
+
+function contractMetadataMatches(submission) {
+  if (!canonicalContract) return true;
+  const supplied = suppliedContractMetadata(submission);
+  if (!supplied || supplied.invalid) return false;
+  const fields = [
+    "contractVersion",
+    "manifestVersion",
+    "manifestFingerprint",
+    "serializationVersion",
+    "contractRoute",
+    "cohort",
+    "cohortVersion",
+    "cohortFingerprint",
+  ];
+  return fields.every((field) => {
+    if (supplied[field] === canonicalContract[field]) return true;
+    return (
+      field === "contractRoute" &&
+      allowedLegacyContractRoutes.includes(supplied[field])
+    );
+  });
+}
+
+function attachContractMetadata(submission) {
+  if (!canonicalContract) return submission;
+  return {
+    ...submission,
+    researchContract: {
+      ...canonicalContract,
+    },
+  };
 }
 
 function configuredTokenList(value) {
@@ -313,6 +538,7 @@ const submissionDigests = await loadSubmissionDigests([
   outputFile,
   specialistOutputFile,
 ]);
+const canonicalContract = await loadCanonicalContract();
 let writeQueue = Promise.resolve();
 
 function setCors(response, origin) {
@@ -325,6 +551,57 @@ function setCors(response, origin) {
   response.setHeader("x-content-type-options", "nosniff");
 }
 
+function validBrowserContractMetadata(value) {
+  if (!isObject(value)) return false;
+  if (!canonicalContract) {
+    return (
+      allowedLegacyContractRoutes.includes(value.contractRoute) &&
+      validNonemptyString(value.contractVersion, 128) &&
+      validNonemptyString(value.manifestVersion, 512) &&
+      /^[0-9a-f]{64}$/u.test(value.manifestFingerprint ?? "") &&
+      validNonemptyString(value.serializationVersion, 128) &&
+      validNonemptyString(value.cohort, 128) &&
+      validNonemptyString(value.cohortVersion, 512) &&
+      validNonemptyString(value.cohortFingerprint, 512) &&
+      isObject(value.provenance) &&
+      value.provenance?.source === "browser" &&
+      validIsoTimestamp(value.provenance?.capturedAt) &&
+      isObject(value.observations) &&
+      Object.values(value.observations ?? {}).every(
+        (observation) =>
+          isObject(observation) &&
+          observation.kind === "browser-observation" &&
+          observation.source === "browser" &&
+          validIsoTimestamp(observation.observedAt),
+      )
+    );
+  }
+  const routeValid =
+    value.contractRoute === canonicalContract.contractRoute ||
+    allowedLegacyContractRoutes.includes(value.contractRoute);
+  return (
+    value.manifestVersion === canonicalContract.manifestVersion &&
+    value.manifestFingerprint === canonicalContract.manifestFingerprint &&
+    value.serializationVersion === canonicalContract.serializationVersion &&
+    value.contractVersion === canonicalContract.contractVersion &&
+    routeValid &&
+    value.cohort === canonicalContract.cohort &&
+    value.cohortVersion === canonicalContract.cohortVersion &&
+    value.cohortFingerprint === canonicalContract.cohortFingerprint &&
+    isObject(value.provenance) &&
+    value.provenance.source === "browser" &&
+    validIsoTimestamp(value.provenance.capturedAt) &&
+    validNonemptyString(value.provenance.surface, 128) &&
+    isObject(value.observations) &&
+    Object.values(value.observations).every(
+      (observation) =>
+        isObject(observation) &&
+        observation.kind === "browser-observation" &&
+        observation.source === "browser" &&
+        validIsoTimestamp(observation.observedAt),
+    )
+  );
+}
 function validBaseRecord(value) {
   if (
     !(
@@ -335,6 +612,7 @@ function validBaseRecord(value) {
       (expectedStudyId === null || value.studyId === expectedStudyId) &&
       validToken(value.participantId) &&
       (value.administration === "test" || value.administration === "retest") &&
+      validBrowserContractMetadata(value) &&
       validIsoTimestamp(value.submittedAt) &&
       validIsoTimestamp(value.startedAt) &&
       validIsoTimestamp(value.completedAt) &&
@@ -632,9 +910,10 @@ function validSpecialistDisposition(value) {
 
 function validSubmission(value) {
   return (
-    validCoreRecord(value) ||
-    validSpecialistRecord(value) ||
-    validSpecialistDisposition(value)
+    contractMetadataMatches(value) &&
+    (validCoreRecord(value) ||
+      validSpecialistRecord(value) ||
+      validSpecialistDisposition(value))
   );
 }
 
@@ -723,12 +1002,19 @@ const server = createServer(async (request, response) => {
     return;
   }
 
+  if (!contractMetadataMatches(submission)) {
+    response
+      .writeHead(422, { "content-type": "application/json" })
+      .end(JSON.stringify({ error: "invalid-submission" }));
+    return;
+  }
   if (!validSubmission(submission)) {
     response
       .writeHead(422, { "content-type": "application/json" })
       .end(JSON.stringify({ error: "invalid-submission" }));
     return;
   }
+  submission = attachContractMetadata(submission);
 
   const targetFile =
     submission.recordType === "specialist" ||

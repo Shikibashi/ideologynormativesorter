@@ -6,6 +6,7 @@ import type {
   TheoryContext,
 } from "./common";
 import type { LabelId } from "./common";
+import type { ProductionResult } from "../production";
 
 export interface AxisScore {
   axisId: AxisId;
@@ -188,6 +189,8 @@ export interface ResultProfile {
   reasonBreakdowns?: ReasonBreakdown[];
   bankVersion?: string;
   scoringVersion?: string;
+  /** Deterministic production-contract result; legacy scoring remains the source of UI fields. */
+  production?: ProductionResult;
   /** Nearest labels grouped by family for the family-tree display. */
   familyTree?: Record<string, LabelMatch[]>;
   /** Nearest labels grouped family -> subfamily -> labels for the two-level family-tree display. */

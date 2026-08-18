@@ -1,0 +1,32 @@
+[
+  {
+    "schemaVersion": "2026-08-v15",
+    "studyId": "community-2026-v5",
+    "participantId": "p1",
+    "submissionId": "sp1",
+    "administration": "test",
+    "recordType": "specialist-disposition",
+    "moduleId": "feminist-faction-module",
+    "disposition": "declined-before-start",
+    "answeredCount": 0,
+    "durationMs": 0,
+    "completedAt": "2026-08-18T00:00:01.000Z",
+    "assignment": {
+      "moduleId": "feminist-faction-module",
+      "strategy": "balanced-hash-v2",
+      "rosterVersion": "2026-08-specialist-roster-v1"
+    },
+    "manifestVersion": "clean-rebuild-v1",
+    "manifestFingerprint": "fp-smoke",
+    "serializationVersion": "canonical-json-v1",
+    "contractVersion": "2026-08-v19",
+    "contractRoute": "research-browser",
+    "cohort": "community-2026-v5",
+    "cohortVersion": "2026-08-v5",
+    "cohortFingerprint": "cohort-fp-smoke",
+    "provenance": {
+      "source": "synthetic-clean-rebuild-smoke",
+      "synthetic": true
+    }
+  }
+]

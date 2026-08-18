@@ -1,13 +1,9 @@
+import { buildResearchSubmission, type ResearchIdentity } from "../research";
 import {
-  buildResearchSubmission,
-  submitResearchSubmission,
-  type ResearchIdentity,
-} from "../research";
-import {
-  clearPendingResearchRecord,
-  clearQuizState,
-  savePendingResearchRecord,
-} from "../save";
+  deletePendingResearchSubmission,
+  submitPendingResearchSubmission,
+} from "../research/pendingSubmission";
+import { clearQuizState } from "../save";
 import { announceStatus } from "../status";
 import type { AppActionContext } from "./actionTypes";
 import { refreshSpecialistProgress } from "./specialistActions";
@@ -52,21 +48,17 @@ export async function handleResearchIdentity(
     recruitmentSource: context.recruitmentSource,
     locale: navigator.language,
   });
-  const status = await submitResearchSubmission(
+  const pendingResult = await submitPendingResearchSubmission(
     submission,
     import.meta.env.VITE_RESEARCH_ENDPOINT,
   );
+  const status = pendingResult.status;
 
-  if (status.status === "submitted") {
-    clearPendingResearchRecord();
+  if (status.status === "submitted" || pendingResult.persisted) {
+    if (status.status === "submitted")
+      deletePendingResearchSubmission(submission.submissionId);
     clearQuizState();
     context.setSavedProgress(null);
-  } else {
-    const pendingSave = savePendingResearchRecord({ submission, status });
-    if (pendingSave.saved) {
-      clearQuizState();
-      context.setSavedProgress(null);
-    }
   }
 
   context.setResearchSubmission(submission);
@@ -87,7 +79,9 @@ export async function handleResearchIdentity(
 
 export function handleSkipResearchSubmission(context: AppActionContext): void {
   clearQuizState();
-  clearPendingResearchRecord();
+  if (context.researchSubmission) {
+    deletePendingResearchSubmission(context.researchSubmission.submissionId);
+  }
   context.setSavedProgress(null);
   context.setResearchEnabled(false);
   context.setResearchConsent(null);

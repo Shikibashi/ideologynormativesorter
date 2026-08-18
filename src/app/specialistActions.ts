@@ -2,10 +2,12 @@ import type { AnswerMap, Question } from "../types";
 import {
   buildSpecialistDispositionSubmission,
   buildSpecialistResearchSubmission,
-  submitResearchSubmission,
   type SpecialistDisposition,
 } from "../research";
+import { submitPendingResearchSubmission } from "../research/pendingSubmission";
 import {
+  assertSpecialistAssignment,
+  assertSpecialistCriterion,
   buildSpecialistQuestionForm,
   scoreSpecialistModule,
   type SpecialistCriterionResponse,
@@ -27,10 +29,32 @@ function answersForQuestions(
     Object.entries(source).filter(([questionId]) => allowed.has(questionId)),
   ) as AnswerMap;
 }
+function assertSpecialistContext(context: AppActionContext): void {
+  if (!context.specialistAssignment && !context.assignedSpecialistModule)
+    return;
+  if (!context.specialistAssignment || !context.assignedSpecialistModule) {
+    throw new Error(
+      "The specialist assignment is missing its canonical module context.",
+    );
+  }
+  if (
+    context.specialistAssignment.moduleId !==
+    context.assignedSpecialistModule.id
+  ) {
+    throw new Error(
+      "The specialist assignment does not match the canonical module context.",
+    );
+  }
+  assertSpecialistAssignment(
+    context.specialistAssignment,
+    context.assignedSpecialistModule.version,
+  );
+}
 
 export function refreshSpecialistProgress(
   context: AppActionContext,
 ): SpecialistProgressSave | null {
+  assertSpecialistContext(context);
   if (!context.specialistAssignment) {
     context.setSpecialistProgress(null);
     return null;
@@ -45,6 +69,7 @@ export function refreshSpecialistProgress(
 }
 
 export function handleStartSpecialist(context: AppActionContext): void {
+  assertSpecialistContext(context);
   if (!context.specialistAssignment || !context.assignedSpecialistModule) {
     context.setStage("results");
     return;
@@ -86,12 +111,13 @@ export function handleExitSpecialistQuiz(context: AppActionContext): void {
   context.setStage("specialist-invite");
 }
 
-export function recordSpecialistDisposition(
+export async function recordSpecialistDisposition(
   context: AppActionContext,
   disposition: SpecialistDisposition,
   answeredCount: number,
   startedAt?: string,
-): void {
+): Promise<void> {
+  assertSpecialistContext(context);
   if (
     !context.researchConsent ||
     !context.specialistAssignment ||
@@ -110,13 +136,16 @@ export function recordSpecialistDisposition(
     answeredCount,
     startedAt,
   });
-  void submitResearchSubmission(
+  await submitPendingResearchSubmission(
     submission,
     import.meta.env.VITE_RESEARCH_ENDPOINT,
   );
 }
 
-export function handleSkipSpecialist(context: AppActionContext): void {
+export async function handleSkipSpecialist(
+  context: AppActionContext,
+): Promise<void> {
+  assertSpecialistContext(context);
   let answeredCount = 0;
   let startedAt: string | undefined;
   if (context.specialistAssignment) {
@@ -133,7 +162,7 @@ export function handleSkipSpecialist(context: AppActionContext): void {
       context.specialistAssignment.moduleId,
     );
   }
-  recordSpecialistDisposition(
+  await recordSpecialistDisposition(
     context,
     answeredCount > 0 ? "declined-after-partial" : "declined-before-start",
     answeredCount,
@@ -153,6 +182,7 @@ export function handleSpecialistComplete(
   context: AppActionContext,
   newAnswers: AnswerMap,
 ): void {
+  assertSpecialistContext(context);
   if (!context.specialistAssignment) {
     context.setStage("results");
     return;
@@ -176,6 +206,7 @@ export async function handleSpecialistCriterion(
   context: AppActionContext,
   criterion: SpecialistCriterionResponse,
 ): Promise<void> {
+  assertSpecialistContext(context);
   if (
     !context.result ||
     !context.researchConsent ||
@@ -188,6 +219,7 @@ export async function handleSpecialistCriterion(
       "The topic contribution is missing its consent, assignment, timing, or module context.",
     );
   }
+  assertSpecialistCriterion(context.specialistAssignment.moduleId, criterion);
 
   const outcome =
     context.specialistOutcome ??
@@ -215,10 +247,11 @@ export async function handleSpecialistCriterion(
     completedAt: new Date().toISOString(),
     locale: navigator.language,
   });
-  const status = await submitResearchSubmission(
+  const pendingResult = await submitPendingResearchSubmission(
     submission,
     import.meta.env.VITE_RESEARCH_ENDPOINT,
   );
+  const status = pendingResult.status;
   context.setSpecialistOutcome(outcome);
   context.setSpecialistSubmission(submission);
   context.setSpecialistStatus(status);
@@ -230,10 +263,10 @@ export async function handleSpecialistCriterion(
   );
 }
 
-export function handleDiscardSpecialistAfterCompletion(
+export async function handleDiscardSpecialistAfterCompletion(
   context: AppActionContext,
-): void {
-  recordSpecialistDisposition(
+): Promise<void> {
+  await recordSpecialistDisposition(
     context,
     "declined-after-completion",
     Object.keys(context.specialistAnswers).length,

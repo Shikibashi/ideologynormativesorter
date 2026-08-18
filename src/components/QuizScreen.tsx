@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  getQuestionHelpText,
-  getSalienceHelpText,
-} from "../data/questionHelpText";
+import { getQuestionHelpText, getSalienceHelpText } from "../domain/selectors";
 import {
   DEFAULT_CONFIDENCE_PROMPT,
   DEFAULT_PRIORITY_PROMPT,

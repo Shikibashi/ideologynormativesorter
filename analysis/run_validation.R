@@ -77,6 +77,87 @@ required_modifier_measurement_version <- Sys.getenv("PSYCH_REQUIRED_MODIFIER_MEA
 required_primary_label_roster_fingerprint <- Sys.getenv("PSYCH_REQUIRED_PRIMARY_LABEL_ROSTER_FINGERPRINT", "lr_3cc0f435")
 required_modifier_label_roster_fingerprint <- Sys.getenv("PSYCH_REQUIRED_MODIFIER_LABEL_ROSTER_FINGERPRINT", "lr_eb26ed76")
 set.seed(as.integer(Sys.getenv("PSYCH_RANDOM_SEED", "20260718")))
+clean_contract_fields <- c(
+  "manifest_version",
+  "manifest_fingerprint",
+  "serialization_version",
+  "contract_route",
+  "contract_cohort"
+)
+
+metadata_value_present <- function(value) {
+  is.character(value) &&
+    length(value) == 1 &&
+    !is.na(value) &&
+    nzchar(trimws(value))
+}
+
+extract_contract_metadata <- function(record) {
+  sources <- list(
+    record,
+    record$contractMetadata,
+    record$researchContract,
+    record$canonicalContract,
+    record$contract
+  )
+  sources <- sources[vapply(sources, is.list, logical(1))]
+  value_for <- function(keys) {
+    for (source in sources) {
+      for (key in keys) {
+        value <- source[[key]]
+        if (metadata_value_present(value)) return(trimws(value))
+      }
+    }
+    ""
+  }
+  list(
+    manifest_version = value_for(c("manifestVersion", "canonicalManifestVersion", "manifest_version")),
+    manifest_fingerprint = value_for(c("manifestFingerprint", "canonicalManifestFingerprint", "manifest_fingerprint")),
+    serialization_version = value_for(c("serializationVersion", "serialization_version")),
+    contract_route = value_for(c("contractRoute", "contract_route", "route")),
+    contract_cohort = value_for(c("cohort", "contractCohort", "contract_cohort"))
+  )
+}
+
+validate_contract_metadata <- function(metadata) {
+  if (length(metadata) == 0) return(invisible(NULL))
+  clean_flags <- vapply(metadata, function(entry) {
+    any(vapply(entry[clean_contract_fields], metadata_value_present, logical(1)))
+  }, logical(1))
+  if (any(clean_flags)) {
+    missing <- vapply(metadata, function(entry) {
+      missing_fields <- clean_contract_fields[!vapply(entry[clean_contract_fields], metadata_value_present, logical(1))]
+      if (length(missing_fields) == 0) "" else paste(missing_fields, collapse = ", ")
+    }, character(1))
+    if (any(!clean_flags | nzchar(missing))) {
+      stop(
+        "Clean contract metadata requires non-empty ",
+        paste(clean_contract_fields, collapse = ", "),
+        " for every input record; missing fields: ",
+        paste(unique(missing[nzchar(missing) | !clean_flags]), collapse = "; ")
+      )
+    }
+    for (entry in metadata) {
+      if (any(vapply(entry[clean_contract_fields], function(value) {
+        identical(tolower(trimws(value)), "unknown")
+      }, logical(1)))) {
+        stop("Clean contract metadata must not contain unknown values.")
+      }
+    }
+  }
+  for (field in clean_contract_fields) {
+    values <- unique(vapply(metadata, `[[`, character(1), field))
+    values <- values[nzchar(values)]
+    if (length(values) > 1) {
+      stop("Mixed non-empty ", field, " values detected in input fixture: ", paste(values, collapse = ", "))
+    }
+  }
+  invisible(NULL)
+}
+
+contract_metadata_or_unknown <- function(value) {
+  if (metadata_value_present(value)) value else "unknown"
+}
 
 read_json_file <- function(path) {
   parsed <- jsonlite::fromJSON(path, simplifyVector = FALSE)
@@ -146,6 +227,23 @@ included_administration_keys <- vapply(submissions, function(record) {
 if (anyDuplicated(included_administration_keys)) {
   stop("The resolved manifest includes more than one core record for the same study, participant, and administration.")
 }
+contract_metadata <- lapply(submissions, extract_contract_metadata)
+validate_contract_metadata(contract_metadata)
+manifest_versions <- unique(vapply(contract_metadata, function(metadata) {
+  contract_metadata_or_unknown(metadata$manifest_version)
+}, character(1)))
+manifest_fingerprints <- unique(vapply(contract_metadata, function(metadata) {
+  contract_metadata_or_unknown(metadata$manifest_fingerprint)
+}, character(1)))
+serialization_versions <- unique(vapply(contract_metadata, function(metadata) {
+  contract_metadata_or_unknown(metadata$serialization_version)
+}, character(1)))
+contract_routes <- unique(vapply(contract_metadata, function(metadata) {
+  contract_metadata_or_unknown(metadata$contract_route)
+}, character(1)))
+contract_cohorts <- unique(vapply(contract_metadata, function(metadata) {
+  contract_metadata_or_unknown(metadata$contract_cohort)
+}, character(1)))
 
 study_ids <- unique(vapply(submissions, function(record) record$studyId %||% "unknown", character(1)))
 schema_versions <- unique(vapply(submissions, function(record) record$schemaVersion %||% "unknown", character(1)))
@@ -880,6 +978,11 @@ summary <- list(
   schemaVersions = schema_versions,
   formVersions = form_versions,
   qualityRuleVersions = quality_rule_versions,
+  manifestVersions = manifest_versions,
+  manifestFingerprints = manifest_fingerprints,
+  serializationVersions = serialization_versions,
+  contractRoutes = contract_routes,
+  contractCohorts = contract_cohorts,
   requiredMethodContract = list(
     schemaVersion = required_schema_version,
     consentVersion = required_consent_version,

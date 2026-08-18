@@ -1,0 +1,10 @@
+{
+  "commands": {
+    "drain": "echo drain",
+    "rollback": "echo rollback"
+  },
+  "endpoints": {
+    "old": { "route": "v1", "cohort": "legacy" },
+    "new": { "route": "v2", "cohort": "clean-rebuild-v1" }
+  }
+}

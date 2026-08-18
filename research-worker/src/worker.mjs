@@ -3,6 +3,308 @@ const RECORD_TYPES = new Set(["core", "specialist", "specialist-disposition"]);
 const LAYERS = new Set(["normative", "descriptive", "prescriptive"]);
 const SALIENCE_VALUES = new Set([1, 3, 5]);
 
+/*
+ * The canonical contract is generated outside this bounded Worker source
+ * tree. Deployments may provide its JSON value through a Wrangler secret/var;
+ * local and legacy deployments simply omit it. Keeping the artifact optional
+ * preserves the existing /submit route while still making a supplied artifact
+ * authoritative.
+ */
+const CONTRACT_METADATA_FIELDS = [
+  "contractVersion",
+  "sourceManifestSha256",
+  "manifestSchemaVersion",
+  "manifestVersion",
+  "manifestFingerprint",
+  "serializationVersion",
+  "serializationFingerprint",
+  "schemaContractVersion",
+  "schemaFingerprint",
+  "contractRoute",
+  "cohort",
+  "cohortVersion",
+  "cohortFingerprint",
+];
+const REQUIRED_BROWSER_CONTRACT_FIELDS = [
+  "contractVersion",
+  "manifestVersion",
+  "manifestFingerprint",
+  "serializationVersion",
+  "contractRoute",
+  "cohort",
+  "cohortVersion",
+  "cohortFingerprint",
+];
+
+function nonEmptyValue(value) {
+  return typeof value === "string" && value.trim() !== "" ? value : undefined;
+}
+
+function contractArtifactSource(env) {
+  return (
+    env.CANONICAL_CONTRACT_ARTIFACT ??
+    env.RESEARCH_CONTRACT_ARTIFACT ??
+    env.CANONICAL_CONTRACT_JSON ??
+    env.CANONICAL_CONTRACT
+  );
+}
+
+function configuredContractMetadata(env) {
+  const values = {
+    contractVersion: env.EXPECTED_CONTRACT_VERSION,
+    sourceManifestSha256: env.EXPECTED_SOURCE_MANIFEST_SHA256,
+    manifestSchemaVersion: env.EXPECTED_MANIFEST_SCHEMA_VERSION,
+    manifestVersion: env.EXPECTED_MANIFEST_VERSION,
+    manifestFingerprint: env.EXPECTED_MANIFEST_FINGERPRINT,
+    serializationVersion: env.EXPECTED_SERIALIZATION_VERSION,
+    serializationFingerprint: env.EXPECTED_SERIALIZATION_FINGERPRINT,
+    schemaContractVersion: env.EXPECTED_CONTRACT_SCHEMA_VERSION,
+    schemaFingerprint: env.EXPECTED_SCHEMA_FINGERPRINT,
+    contractRoute: env.EXPECTED_CONTRACT_ROUTE,
+    cohort: env.EXPECTED_COHORT ?? env.EXPECTED_CONTRACT_COHORT,
+    cohortVersion: env.EXPECTED_COHORT_VERSION,
+    cohortFingerprint: env.EXPECTED_COHORT_FINGERPRINT,
+  };
+  return Object.fromEntries(
+    Object.entries(values)
+      .map(([key, value]) => [key, nonEmptyValue(value)])
+      .filter(([, value]) => value !== undefined),
+  );
+}
+function configuredLegacyContractRoutes(env) {
+  if (typeof env.ALLOWED_LEGACY_CONTRACT_ROUTES !== "string") return [];
+  return env.ALLOWED_LEGACY_CONTRACT_ROUTES.split(",")
+    .map((value) => value.trim())
+    .filter((value) => validString(value, 512));
+}
+
+function contractArtifactMetadata(env) {
+  const source = contractArtifactSource(env);
+  const configured = configuredContractMetadata(env);
+  if (
+    (source === undefined || source === null || source === "") &&
+    Object.keys(configured).length === 0
+  )
+    return null;
+
+  let artifact = source;
+  if (typeof source === "string") {
+    try {
+      artifact = JSON.parse(source);
+    } catch {
+      return { invalid: true };
+    }
+  }
+  if (artifact !== undefined && !isObject(artifact)) return { invalid: true };
+
+  const metadataSource = isObject(artifact?.metadata) ? artifact.metadata : {};
+  const manifest = isObject(artifact?.manifest)
+    ? artifact.manifest
+    : isObject(metadataSource.manifest)
+      ? metadataSource.manifest
+      : {};
+  const serialization = isObject(artifact?.serialization)
+    ? artifact.serialization
+    : isObject(metadataSource.serialization)
+      ? metadataSource.serialization
+      : {};
+  const schema = isObject(artifact?.schema)
+    ? artifact.schema
+    : isObject(metadataSource.schema)
+      ? metadataSource.schema
+      : {};
+  const cohortObject = isObject(artifact?.cohort)
+    ? artifact.cohort
+    : isObject(metadataSource.cohort)
+      ? metadataSource.cohort
+      : {};
+  const contract = isObject(artifact?.contract)
+    ? artifact.contract
+    : isObject(metadataSource.contract)
+      ? metadataSource.contract
+      : {};
+
+  const metadata = {
+    contractVersion:
+      artifact?.contractVersion ??
+      metadataSource.contractVersion ??
+      contract.version,
+    sourceManifestSha256:
+      artifact?.sourceManifestSha256 ??
+      metadataSource.sourceManifestSha256 ??
+      manifest.sourceManifestSha256,
+    manifestSchemaVersion:
+      artifact?.manifestSchemaVersion ??
+      metadataSource.manifestSchemaVersion ??
+      manifest.schemaVersion,
+    manifestVersion:
+      artifact?.manifestVersion ??
+      metadataSource.manifestVersion ??
+      manifest.version,
+    manifestFingerprint:
+      artifact?.manifestFingerprint ??
+      artifact?.canonicalManifestFingerprint ??
+      metadataSource.manifestFingerprint ??
+      metadataSource.canonicalManifestFingerprint ??
+      manifest.fingerprint,
+    serializationVersion:
+      artifact?.serializationVersion ??
+      metadataSource.serializationVersion ??
+      serialization.version,
+    serializationFingerprint:
+      artifact?.serializationFingerprint ??
+      metadataSource.serializationFingerprint ??
+      serialization.fingerprint,
+    schemaContractVersion:
+      artifact?.schemaContractVersion ??
+      metadataSource.schemaContractVersion ??
+      artifact?.schemaVersion ??
+      schema.version,
+    schemaFingerprint:
+      artifact?.schemaFingerprint ??
+      metadataSource.schemaFingerprint ??
+      schema.fingerprint,
+    contractRoute:
+      artifact?.contractRoute ??
+      metadataSource.contractRoute ??
+      artifact?.route ??
+      metadataSource.route ??
+      configured.contractRoute,
+    cohort:
+      typeof artifact?.cohort === "string"
+        ? artifact.cohort
+        : typeof metadataSource.cohort === "string"
+          ? metadataSource.cohort
+          : configured.cohort,
+    cohortVersion:
+      artifact?.cohortVersion ??
+      metadataSource.cohortVersion ??
+      cohortObject.version,
+    cohortFingerprint:
+      artifact?.cohortFingerprint ??
+      metadataSource.cohortFingerprint ??
+      cohortObject.fingerprint,
+  };
+
+  for (const field of CONTRACT_METADATA_FIELDS) {
+    const value = nonEmptyValue(metadata[field] ?? configured[field]);
+    if (value !== undefined) metadata[field] = value;
+    else delete metadata[field];
+  }
+
+  if (
+    (metadata.sourceManifestSha256 !== undefined &&
+      !/^[0-9a-f]{64}$/u.test(metadata.sourceManifestSha256)) ||
+    Object.entries(metadata).some(
+      ([field, value]) =>
+        field !== "sourceManifestSha256" && !validString(value, 2048),
+    )
+  ) {
+    return { invalid: true };
+  }
+  return metadata;
+}
+
+function suppliedContractMetadata(submission) {
+  if (!isObject(submission)) return null;
+  const candidates = [
+    submission.researchContract,
+    submission.contractMetadata,
+    submission.canonicalContract,
+    submission.contract,
+  ];
+  const result = {};
+  for (const candidate of candidates) {
+    if (!isObject(candidate)) continue;
+    const candidateFields = CONTRACT_METADATA_FIELDS.filter(
+      (field) => candidate[field] !== undefined,
+    );
+    if (
+      candidateFields.length > 0 &&
+      !REQUIRED_BROWSER_CONTRACT_FIELDS.every(
+        (field) => candidate[field] !== undefined,
+      )
+    )
+      return { invalid: true };
+    for (const field of CONTRACT_METADATA_FIELDS) {
+      if (candidate[field] === undefined) continue;
+      if (result[field] !== undefined && result[field] !== candidate[field])
+        return { invalid: true };
+      result[field] = candidate[field];
+    }
+  }
+  const topLevelFields = CONTRACT_METADATA_FIELDS.filter(
+    (field) => submission[field] !== undefined,
+  );
+  if (
+    topLevelFields.length > 0 &&
+    !REQUIRED_BROWSER_CONTRACT_FIELDS.every(
+      (field) => submission[field] !== undefined,
+    )
+  )
+    return { invalid: true };
+  for (const field of CONTRACT_METADATA_FIELDS) {
+    if (submission[field] === undefined) continue;
+    if (result[field] !== undefined && result[field] !== submission[field])
+      return { invalid: true };
+    result[field] = submission[field];
+  }
+  return Object.keys(result).length > 0 ? result : null;
+}
+
+function contractMetadataMatches(submission, env) {
+  const expected = contractArtifactMetadata(env);
+  if (expected?.invalid) return false;
+  if (!expected) return true;
+  const supplied = suppliedContractMetadata(submission);
+  if (!supplied || supplied.invalid) return false;
+  return REQUIRED_BROWSER_CONTRACT_FIELDS.every((field) => {
+    if (expected[field] === undefined) return false;
+    if (supplied[field] === expected[field]) return true;
+    return (
+      field === "contractRoute" &&
+      configuredLegacyContractRoutes(env).includes(supplied[field])
+    );
+  });
+}
+function requestContractMetadataMatches(request, submission, env) {
+  if (!contractMetadataMatches(submission, env)) return false;
+  const expected = contractArtifactMetadata(env);
+  if (!expected || expected.invalid) return !expected?.invalid;
+  for (const [header, field] of [
+    ["x-contract-route", "contractRoute"],
+    ["x-cohort", "cohort"],
+  ]) {
+    const supplied = request.headers.get(header);
+    const expectedValue =
+      field === "cohort"
+        ? (expected.cohort ?? expected.cohortVersion)
+        : expected[field];
+    if (
+      supplied !== null &&
+      expectedValue !== undefined &&
+      supplied !== expectedValue &&
+      !(
+        field === "contractRoute" &&
+        configuredLegacyContractRoutes(env).includes(supplied)
+      )
+    )
+      return false;
+  }
+  return true;
+}
+
+function attachContractMetadata(submission, env) {
+  const metadata = contractArtifactMetadata(env);
+  if (!metadata || metadata.invalid) return submission;
+  return {
+    ...submission,
+    researchContract: {
+      ...metadata,
+    },
+  };
+}
+
 function isObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
@@ -446,6 +748,7 @@ function validSpecialistDisposition(submission, env) {
 }
 
 export function validateSubmission(submission, env) {
+  if (!contractMetadataMatches(submission, env)) return false;
   if (!validBaseRecord(submission, env)) return false;
   if (submission.recordType === "core") return validCoreRecord(submission, env);
   if (submission.recordType === "specialist")
@@ -490,6 +793,45 @@ function jsonResponse(status, body, origin, env) {
     headers: responseHeaders(origin, env),
   });
 }
+function resolvedWriteMode(env) {
+  const mode = nonEmptyValue(env.WRITE_MODE)?.toLowerCase();
+  return mode === "open" || mode === "drain" ? mode : null;
+}
+
+function safeHealthMetadata(env, writeMode) {
+  const contract = contractArtifactMetadata(env);
+  const metadata = contract?.invalid ? {} : (contract ?? {});
+  return {
+    contractRoute: metadata.contractRoute ?? null,
+    manifestVersion: metadata.manifestVersion ?? null,
+    manifestFingerprint: metadata.manifestFingerprint ?? null,
+    serializationVersion: metadata.serializationVersion ?? null,
+    serializationFingerprint: metadata.serializationFingerprint ?? null,
+    cohort: metadata.cohort ?? metadata.cohortVersion ?? null,
+    cohortVersion: metadata.cohortVersion ?? null,
+    cohortFingerprint: metadata.cohortFingerprint ?? null,
+    writeMode: writeMode ?? "unresolved",
+  };
+}
+
+function persistedContractColumns(submission) {
+  const metadata = suppliedContractMetadata(submission) ?? {};
+  return {
+    canonicalManifestVersion:
+      submission.manifestVersion ?? metadata.manifestVersion ?? null,
+    canonicalManifestFingerprint:
+      submission.manifestFingerprint ?? metadata.manifestFingerprint ?? null,
+    serializationVersion:
+      submission.serializationVersion ?? metadata.serializationVersion ?? null,
+    contractRoute: submission.contractRoute ?? metadata.contractRoute ?? null,
+    contractCohort:
+      submission.cohort ??
+      metadata.cohort ??
+      submission.cohortVersion ??
+      metadata.cohortVersion ??
+      null,
+  };
+}
 
 async function persistSubmission(submission, env) {
   const digest = await submissionDigest(submission);
@@ -505,11 +847,14 @@ async function persistSubmission(submission, env) {
   }
 
   const receivedAt = new Date().toISOString();
+  const contractColumns = persistedContractColumns(submission);
   const result = await env.DB.prepare(
     `INSERT OR IGNORE INTO submissions (
       submission_id, record_type, participant_id, study_id, schema_version,
-      received_at, payload_sha256, payload_json
-    ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)`,
+      received_at, payload_sha256, payload_json,
+      canonical_manifest_version, canonical_manifest_fingerprint,
+      serialization_version, contract_route, contract_cohort
+    ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)`,
   )
     .bind(
       submission.submissionId,
@@ -520,6 +865,11 @@ async function persistSubmission(submission, env) {
       receivedAt,
       digest,
       JSON.stringify({ ...submission, receivedAt }),
+      contractColumns.canonicalManifestVersion,
+      contractColumns.canonicalManifestFingerprint,
+      contractColumns.serializationVersion,
+      contractColumns.contractRoute,
+      contractColumns.contractCohort,
     )
     .run();
   if (result?.success === false) throw new Error("D1 insert failed");
@@ -541,7 +891,24 @@ export async function handleRequest(request, env) {
   const url = new URL(request.url);
 
   if (request.method === "GET" && url.pathname === "/health") {
-    return jsonResponse(200, { ok: true }, origin, env);
+    const contract = contractArtifactMetadata(env);
+    const writeMode = resolvedWriteMode(env);
+    const healthy = writeMode !== null && !contract?.invalid;
+    const metadata = safeHealthMetadata(env, healthy ? writeMode : null);
+    const response = jsonResponse(
+      healthy ? 200 : 503,
+      {
+        ok: healthy,
+        ...metadata,
+      },
+      origin,
+      env,
+    );
+    if (metadata.contractRoute !== null)
+      response.headers.set("x-contract-route", metadata.contractRoute);
+    if (metadata.cohort !== null)
+      response.headers.set("x-cohort", metadata.cohort);
+    return response;
   }
 
   if (request.method === "OPTIONS" && url.pathname === "/submit") {
@@ -564,6 +931,23 @@ export async function handleRequest(request, env) {
       .startsWith("application/json")
   ) {
     return jsonResponse(415, { error: "json-required" }, origin, env);
+  }
+  const writeMode = resolvedWriteMode(env);
+  if (writeMode === null)
+    return jsonResponse(503, { error: "write-mode-unresolved" }, origin, env);
+  if (writeMode === "drain") {
+    const retryAfterSeconds = configuredInteger(
+      env.WRITE_MODE_GRACE_SECONDS,
+      60,
+    );
+    const response = jsonResponse(
+      503,
+      { error: "writes-draining" },
+      origin,
+      env,
+    );
+    response.headers.set("retry-after", String(retryAfterSeconds));
+    return response;
   }
 
   if (env.RESEARCH_RATE_LIMITER?.limit) {
@@ -589,9 +973,17 @@ export async function handleRequest(request, env) {
   } catch {
     return jsonResponse(400, { error: "invalid-json" }, origin, env);
   }
+  const contract = contractArtifactMetadata(env);
+  if (contract?.invalid) {
+    return jsonResponse(503, { error: "contract-unavailable" }, origin, env);
+  }
+  if (!requestContractMetadataMatches(request, submission, env)) {
+    return jsonResponse(422, { error: "invalid-submission" }, origin, env);
+  }
   if (!validateSubmission(submission, env)) {
     return jsonResponse(422, { error: "invalid-submission" }, origin, env);
   }
+  submission = attachContractMetadata(submission, env);
 
   try {
     const persistence = await persistSubmission(submission, env);

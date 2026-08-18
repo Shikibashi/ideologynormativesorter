@@ -37,6 +37,8 @@ jobs:
 
       - name: Check research version contract
         run: npm run research:check
+      - name: Check canonical imports
+        run: npm run canonical:check
 
       - name: Test edge collector
         run: npm run test:worker
@@ -54,11 +56,22 @@ jobs:
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
 
+      - name: Install R analysis dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            jsonlite
+            psych
+            lavaan
+            mirt
+            boot
       - name: Parse external validation pipelines
         run: |
           Rscript -e "parse(file='analysis/run_validation.R')"
           Rscript -e "parse(file='analysis/run_data_quality.R')"
           Rscript -e "parse(file='analysis/run_specialist_validation.R')"
+      - name: Run R synthetic smoke pipeline
+        run: bash scripts/run-r-smoke.sh artifacts/r-smoke
 
   browser-conformance:
     runs-on: ubuntu-latest
@@ -78,6 +91,10 @@ jobs:
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+      - name: Replay and diff reference lock
+        run: |
+          npm run reference-lock:replay
+          npm run reference-lock:diff
 
       - name: Run browser flows
         run: npm run test:e2e

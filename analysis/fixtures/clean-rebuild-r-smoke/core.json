@@ -1,0 +1,253 @@
+[
+  {
+    "schemaVersion": "2026-08-v15",
+    "studyId": "community-2026-v5",
+    "participantId": "p1",
+    "submissionId": "s1",
+    "administration": "test",
+    "recordType": "core",
+    "bankVersion": "bank-v1",
+    "scoringVersion": "scoring-v1",
+    "taxonomyVersion": "2026-08-taxonomy-v13",
+    "primaryMeasurementVersion": "2026-08-primary-core-v1",
+    "modifierMeasurementVersion": "2026-08-modifier-construct-v1",
+    "primaryLabelRosterFingerprint": "lr_3cc0f435",
+    "modifierLabelRosterFingerprint": "lr_eb26ed76",
+    "qualityRuleVersion": "data-quality-v2",
+    "manifestVersion": "clean-rebuild-v1",
+    "manifestFingerprint": "fp-smoke",
+    "serializationVersion": "canonical-json-v1",
+    "contractVersion": "2026-08-v19",
+    "contractRoute": "research-browser",
+    "cohort": "community-2026-v5",
+    "cohortVersion": "2026-08-v5",
+    "cohortFingerprint": "cohort-fp-smoke",
+    "provenance": {
+      "source": "synthetic-clean-rebuild-smoke",
+      "synthetic": true
+    },
+    "startedAt": "2026-08-18T00:00:00.000Z",
+    "completedAt": "2026-08-18T00:00:01.000Z",
+    "submittedAt": "2026-08-18T00:00:01.000Z",
+    "durationMs": 1000,
+    "consent": {
+      "ageConfirmed": true,
+      "voluntaryParticipation": true,
+      "dataUseAccepted": true,
+      "consentVersion": "2026-08-12-v8",
+      "consentedAt": "2026-08-18T00:00:00.000Z",
+      "disclosureSnapshot": {
+        "endpointConfigured": false,
+        "transferAndWithdrawalNotice": "synthetic",
+        "retentionNotice": "synthetic",
+        "contactNotice": "synthetic"
+      }
+    },
+    "form": {
+      "algorithmVersion": "profile-form-v3",
+      "assignedItemCount": 12,
+      "requestedItemCount": 12,
+      "fingerprint": "rf_67714628"
+    },
+    "sampling": {
+      "design": "open-opt-in-nonprobability",
+      "populationInference": false,
+      "weighting": "none",
+      "recruitmentSourceProvenance": "url-parameter-unverified",
+      "recruitmentSource": "synthetic"
+    },
+    "itemMap": [
+      {
+        "questionId": "q1",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q2",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q3",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q4",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q5",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q6",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q7",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q8",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q9",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q10",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q11",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      },
+      {
+        "questionId": "q12",
+        "layer": "normative",
+        "responseType": "likert5",
+        "responseOptions": [
+          { "value": -2 },
+          { "value": -1 },
+          { "value": 0 },
+          { "value": 1 },
+          { "value": 2 }
+        ],
+        "axisWeights": [{ "axisId": "axis-a", "weight": 1 }]
+      }
+    ],
+    "presentationOrder": [
+      "q1",
+      "q2",
+      "q3",
+      "q4",
+      "q5",
+      "q6",
+      "q7",
+      "q8",
+      "q9",
+      "q10",
+      "q11",
+      "q12"
+    ],
+    "answers": {
+      "q1": { "questionId": "q1", "value": 1, "salienceSkipped": false },
+      "q2": { "questionId": "q2", "value": 1, "salienceSkipped": false },
+      "q3": { "questionId": "q3", "value": 1, "salienceSkipped": false },
+      "q4": { "questionId": "q4", "value": 1, "salienceSkipped": false },
+      "q5": { "questionId": "q5", "value": 1, "salienceSkipped": false },
+      "q6": { "questionId": "q6", "value": 1, "salienceSkipped": false },
+      "q7": { "questionId": "q7", "value": 1, "salienceSkipped": false },
+      "q8": { "questionId": "q8", "value": 1, "salienceSkipped": false },
+      "q9": { "questionId": "q9", "value": 1, "salienceSkipped": false },
+      "q10": { "questionId": "q10", "value": 1, "salienceSkipped": false },
+      "q11": { "questionId": "q11", "value": 1, "salienceSkipped": false },
+      "q12": { "questionId": "q12", "value": 1, "salienceSkipped": false }
+    },
+    "specialistAssignment": {
+      "moduleId": "feminist-faction-module",
+      "strategy": "balanced-hash-v2",
+      "rosterVersion": "2026-08-specialist-roster-v1"
+    },
+    "identity": { "selfLabelId": "label-a" },
+    "predictedLabelIds": ["label-a"]
+  }
+]

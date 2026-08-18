@@ -1,42 +1,25 @@
 import type { AnswerMap, Question } from "../types";
-import { applyQuestionContext } from "../data/questionContext";
-import { applyEditorialNinthPass } from "../data/editorialNinthPass";
-import { applySpecialistDescriptiveEvidence } from "../data/specialistDescriptiveEvidence";
-import { applyQuestionPromptReview } from "../data/questionPromptReview";
 import {
-  experimentalSpecialistModuleSpecs,
-  type ExperimentalSpecialistModuleSpec,
-} from "../data/experimentalSpecialists";
-import {
-  evaluateSpecialistConstructGates,
-  profileDistanceConstructIds,
-  profileEvidence,
-  summarizeSpecialistEvidence,
-} from "../data/specialistEvidence";
-import {
-  FEMINIST_MODULE_ID,
-  feministModuleItems,
-  feministModuleQuestions,
-  feministSpecialistEvidence,
-  feministSpecialistCandidates,
-  scoreFeministConstructs,
-  scoreFeministSpecialists,
-} from "../data/feministBreadth";
-import type { SpecialistEvidenceSummary } from "../data/specialistEvidence";
-import {
-  IDENTITY_SOVEREIGNTY_MODULE_ID,
-  identitySovereigntyModuleItems,
-  identitySovereigntyModuleQuestions,
-  identitySovereigntySpecialistEvidence,
-  identitySovereigntyTraditionProfiles,
-  scoreIdentitySovereigntyConstructs,
-  scoreIdentitySovereigntyTraditions,
-} from "../data/identitySovereigntyBreadth";
+  assertCanonicalSpecialistAssignment,
+  canonicalCriterionOptions,
+  listCanonicalSpecialistModules,
+  scoreExperimentalSpecialistModule,
+  scoreFeministModule,
+  scoreIdentitySovereigntyModule,
+  type CanonicalSpecialistModule,
+  type SpecialistEvidenceSummary,
+} from "./canonicalAdapter";
 
 export type SpecialistModuleId =
-  | typeof FEMINIST_MODULE_ID
-  | typeof IDENTITY_SOVEREIGNTY_MODULE_ID
-  | (typeof experimentalSpecialistModuleSpecs)[number]["id"];
+  | "feminist-faction-module"
+  | "identity-sovereignty-module"
+  | "anarchist-families-module"
+  | "green-morphology-module"
+  | "socialist-families-module"
+  | "conservative-variants-module"
+  | "religious-national-politics-module"
+  | "technology-governance-module"
+  | "monarchist-municipal-module";
 export type SpecialistCriterionConfidence = "low" | "medium" | "high";
 
 export interface SpecialistCriterionOption {
@@ -57,6 +40,7 @@ export interface SpecialistMatch {
   id: string;
   name: string;
   variant?: string;
+  nodeId?: string;
   status: string;
   fit: number;
   evidenceStatus?: "sufficient" | "insufficient-evidence";
@@ -78,6 +62,9 @@ export interface SpecialistOutcome {
 export interface SpecialistModuleDefinition {
   id: SpecialistModuleId;
   version: string;
+  itemIds?: readonly string[];
+  candidateIds?: readonly string[];
+  canonicalVersion?: string;
   title: string;
   shortTitle: string;
   description: string;
@@ -93,6 +80,9 @@ export type SpecialistAssignmentStrategy =
   | "balanced-hash-v1"
   | "balanced-hash-v2";
 export const SPECIALIST_ASSIGNMENT_STRATEGY = "balanced-hash-v2" as const;
+export const SPECIALIST_ASSIGNMENT_ROSTER_VERSION =
+  "2026-08-specialist-roster-v1" as const;
+
 /**
  * Frozen ordered module roster for the existing balanced-hash-v2 cohort.
  *
@@ -100,8 +90,6 @@ export const SPECIALIST_ASSIGNMENT_STRATEGY = "balanced-hash-v2" as const;
  * change the study cohort or assignment strategy first. Keeping the v2 hash
  * seed unchanged preserves existing test/retest allocation.
  */
-export const SPECIALIST_ASSIGNMENT_ROSTER_VERSION =
-  "2026-08-specialist-roster-v1" as const;
 export const SPECIALIST_ASSIGNMENT_MODULE_IDS = [
   "feminist-faction-module",
   "identity-sovereignty-module",
@@ -114,281 +102,97 @@ export const SPECIALIST_ASSIGNMENT_MODULE_IDS = [
   "monarchist-municipal-module",
 ] as const satisfies readonly SpecialistModuleId[];
 
-function applySpecialistQuestionReview(question: Question): Question {
-  return applyQuestionPromptReview(
-    applyQuestionContext(
-      applySpecialistDescriptiveEvidence(applyEditorialNinthPass(question)),
-    ),
-  );
-}
-
 export interface SpecialistModuleAssignment {
   moduleId: SpecialistModuleId;
   strategy: SpecialistAssignmentStrategy;
   rosterVersion: string;
 }
 
-function numericAnswers(
-  answers: AnswerMap,
-): Record<string, number | undefined> {
-  return Object.fromEntries(
-    Object.entries(answers).map(([questionId, answer]) => [
-      questionId,
-      typeof answer.value === "number" ? answer.value : undefined,
-    ]),
-  );
-}
-
-function copyConstructWeights(
-  items: Array<{
-    question: Question;
-    constructWeights: Record<string, number> | Partial<Record<string, number>>;
-  }>,
-): Record<string, Record<string, number>> {
-  return Object.fromEntries(
-    items.map((item) => [
-      item.question.id,
-      Object.fromEntries(
-        Object.entries(item.constructWeights).filter(
-          (entry): entry is [string, number] => typeof entry[1] === "number",
-        ),
-      ),
-    ]),
-  );
-}
-
-const feministCriterionOptions: SpecialistCriterionOption[] =
-  feministSpecialistCandidates.map((candidate) => ({
-    id: candidate.id,
-    traditionId: candidate.id,
-    label: candidate.name,
-    description: candidate.description,
-  }));
-
-const identityCriterionOptions: SpecialistCriterionOption[] =
-  identitySovereigntyTraditionProfiles.map((profile) => {
-    const variantIds: Record<string, string> = {
-      "black-nationalism:community nationalism": "black-nationalism:community",
-      "black-nationalism:separatist nationalism":
-        "black-nationalism:separatist",
-      "indigenism:institutional self-government": "indigenism:institutional",
-      "indigenism:resurgence and refusal": "indigenism:resurgence",
-    };
-    const id = variantIds[`${profile.id}:${profile.variant}`] ?? profile.id;
-    return {
-      id,
-      traditionId: profile.id,
-      label: profile.name,
-      variant: profile.variant,
-      description: profile.description,
-    };
-  });
-
-const specialistModules: SpecialistModuleDefinition[] = [
-  {
-    id: FEMINIST_MODULE_ID,
-    version: "2026-08-v6",
-    title: "Feminist political traditions",
-    shortTitle: "Feminist traditions",
-    description:
-      "A short follow-up that tests whether legal-equality, structural-patriarchy, socialist/materialist, and anti-hierarchical feminist traditions can be distinguished reliably.",
-    invitationNote:
-      "Questions concern gender, family, work, hierarchy, and political strategy. You may skip the module without affecting your main result or study participation.",
-    estimatedMinutes: 3,
-    questions: feministModuleQuestions.map(applySpecialistQuestionReview),
-    criterionOptions: feministCriterionOptions,
-    constructWeightsByQuestionId: copyConstructWeights(feministModuleItems),
-    score: (answers) => {
-      const numeric = numericAnswers(answers);
-      const matches = scoreFeministSpecialists(numeric);
-      return {
-        moduleId: FEMINIST_MODULE_ID,
-        constructScores: scoreFeministConstructs(numeric),
-        evidence: feministSpecialistEvidence(numeric),
-        matches: matches.map((match) => ({
-          id: match.id,
-          name: match.name,
-          status: match.status,
-          fit: match.fit,
-          ...match.evidence,
-        })),
-      };
-    },
-  },
-  {
-    id: IDENTITY_SOVEREIGNTY_MODULE_ID,
-    version: "2026-08-v5",
-    title: "Identity, nationalism, and sovereignty",
-    shortTitle: "Identity and sovereignty",
-    description:
-      "A follow-up that separates ethnonationalism, multicultural accommodation, minority self-government, Black nationalism, Indigenous sovereignty, and Pan-African solidarity.",
-    invitationNote:
-      "Questions concern race, ethnicity, nationhood, colonialism, Indigenous sovereignty, Black political autonomy, and Pan-Africanism. You may skip the module without affecting your main result or study participation.",
-    estimatedMinutes: 6,
-    questions: identitySovereigntyModuleQuestions.map(
-      applySpecialistQuestionReview,
-    ),
-    criterionOptions: identityCriterionOptions,
-    constructWeightsByQuestionId: copyConstructWeights(
-      identitySovereigntyModuleItems,
-    ),
-    score: (answers) => {
-      const numeric = numericAnswers(answers);
-      const matches = scoreIdentitySovereigntyTraditions(numeric);
-      return {
-        moduleId: IDENTITY_SOVEREIGNTY_MODULE_ID,
-        constructScores: scoreIdentitySovereigntyConstructs(numeric),
-        evidence: identitySovereigntySpecialistEvidence(numeric),
-        matches: matches.map((match) => ({
-          id: match.id,
-          name: match.name,
-          variant: match.variant,
-          status: match.status,
-          fit: match.fit,
-          ...match.evidence,
-        })),
-      };
-    },
-  },
-];
-
-function scoreExperimentalModule(
-  spec: ExperimentalSpecialistModuleSpec,
+function scoreCanonicalModule(
+  module: CanonicalSpecialistModule,
   answers: AnswerMap,
 ): SpecialistOutcome {
-  const numericAnswers: Record<string, number | undefined> = Object.fromEntries(
-    Object.entries(answers).map(([questionId, answer]) => [
-      questionId,
-      typeof answer.value === "number" ? answer.value / 3 : undefined,
-    ]),
-  );
-  const summary = summarizeSpecialistEvidence(
-    spec.questions.map((question) => ({
-      question,
-      constructWeights:
-        spec.constructWeightsByQuestionId[String(question.id)] ?? {},
-    })),
-    numericAnswers,
-    spec.constructIds,
-  );
-  const constructScores: Record<string, number> = {};
-  for (const constructId of spec.constructIds) {
-    let weighted = 0;
-    let weightTotal = 0;
-    for (const question of spec.questions) {
-      const weight =
-        spec.constructWeightsByQuestionId[String(question.id)]?.[constructId];
-      const answer = numericAnswers[String(question.id)];
-      if (typeof weight !== "number" || typeof answer !== "number") continue;
-      weighted += answer * weight;
-      weightTotal += Math.abs(weight);
-    }
-    constructScores[constructId] =
-      weightTotal > 0 ? Math.max(-1, Math.min(1, weighted / weightTotal)) : 0;
-  }
-
-  const matches = spec.candidates
-    .map((candidate) => {
-      const covered = profileDistanceConstructIds(summary, candidate.signals);
-      const distance =
-        covered.length === 0
-          ? Number.POSITIVE_INFINITY
-          : Math.sqrt(
-              covered.reduce(
-                (sum, constructId) =>
-                  sum +
-                  (constructScores[constructId] -
-                    candidate.signals[constructId]) **
-                    2,
-                0,
-              ) / covered.length,
-            );
-      const evidence = profileEvidence(summary, candidate.signals);
-      const gateEvaluation = evaluateSpecialistConstructGates(
-        summary,
-        constructScores,
-        candidate.gates,
-      );
-      const insufficientEvidence =
-        evidence.insufficientEvidence ||
-        gateEvaluation.status === "insufficient-evidence";
-      const blocked = gateEvaluation.status === "blocked";
-      return {
-        id: candidate.id,
-        name: candidate.name,
-        status: insufficientEvidence
-          ? "insufficient evidence"
-          : blocked
-            ? "blocked by constitutive gate"
-            : "experimental",
-        fit: !blocked && covered.length > 0 ? Math.max(0, 1 - distance / 2) : 0,
-        evidence,
-        gateStatus: gateEvaluation.status,
-        gateFailures: gateEvaluation.failedConstructIds,
-        distance,
-        description: candidate.description,
-      };
-    })
-    .sort((left, right) => right.fit - left.fit);
-
+  const result =
+    module.id === "feminist-faction-module"
+      ? scoreFeministModule(module, answers)
+      : module.id === "identity-sovereignty-module"
+        ? scoreIdentitySovereigntyModule(module, answers)
+        : scoreExperimentalSpecialistModule(module, answers);
   return {
-    moduleId: spec.id,
-    constructScores,
-    matches: matches.map((match) => ({
-      id: match.id,
-      name: match.name,
-      status: match.status,
-      fit: match.fit,
-      gateStatus: match.gateStatus,
-      gateFailures: match.gateFailures,
-      ...match.evidence,
-    })),
-    evidence: summary,
+    moduleId: module.id as SpecialistModuleId,
+    constructScores: result.constructScores,
+    matches: result.matches.map(({ distance, ...match }) => {
+      void distance;
+      return match;
+    }),
+    evidence: result.evidence,
   };
 }
 
-for (const spec of experimentalSpecialistModuleSpecs) {
-  specialistModules.push({
-    id: spec.id,
-    version: spec.version,
-    title: spec.title,
-    shortTitle: spec.shortTitle,
-    description: spec.description,
-    invitationNote: spec.invitationNote,
-    estimatedMinutes: spec.estimatedMinutes,
-    questions: spec.questions.map(applySpecialistQuestionReview),
-    criterionOptions: spec.candidates.map((candidate) => ({
-      id: candidate.id,
-      traditionId: candidate.id,
-      label: candidate.name,
-      description: candidate.description,
+function buildDefinition(
+  module: CanonicalSpecialistModule,
+): SpecialistModuleDefinition {
+  const publicVersion =
+    module.id === "feminist-faction-module" ||
+    module.id === "identity-sovereignty-module"
+      ? `2026-08-${module.version}`
+      : module.version;
+  return {
+    id: module.id as SpecialistModuleId,
+    version: publicVersion,
+    itemIds: [...module.itemIds],
+    candidateIds: [...module.candidateIds],
+    canonicalVersion: module.version,
+    title: module.title,
+    shortTitle: module.shortTitle,
+    description: module.description,
+    invitationNote: module.invitationNote,
+    estimatedMinutes: module.estimatedMinutes,
+    questions: [...module.questions],
+    criterionOptions: canonicalCriterionOptions(module).map((option) => ({
+      ...option,
     })),
-    constructWeightsByQuestionId: spec.constructWeightsByQuestionId,
-    score: (answers) => scoreExperimentalModule(spec, answers),
-  });
+    constructWeightsByQuestionId: Object.fromEntries(
+      Object.entries(module.constructWeightsByQuestionId).map(
+        ([questionId, weights]) => [questionId, { ...weights }],
+      ),
+    ),
+    score: (answers) => scoreCanonicalModule(module, answers),
+  };
 }
 
-export const specialistModuleDefinitions: readonly SpecialistModuleDefinition[] =
-  specialistModules;
-export const specialistModuleById = new Map(
-  specialistModules.map((module) => [module.id, module]),
+const canonicalDefinitions = new Map(
+  listCanonicalSpecialistModules().map((module) => [
+    module.id,
+    buildDefinition(module),
+  ]),
 );
 
 function assertFrozenAssignmentRoster(): void {
-  const registeredIds = specialistModuleDefinitions.map((module) => module.id);
+  const registeredIds = [...canonicalDefinitions.keys()];
   const rosterIds = [...SPECIALIST_ASSIGNMENT_MODULE_IDS];
-  const unchanged =
-    registeredIds.length === rosterIds.length &&
-    registeredIds.every((moduleId, index) => moduleId === rosterIds[index]) &&
-    new Set(rosterIds).size === rosterIds.length;
-  if (!unchanged) {
+  if (
+    registeredIds.length !== rosterIds.length ||
+    rosterIds.some((moduleId) => !canonicalDefinitions.has(moduleId)) ||
+    new Set(rosterIds).size !== rosterIds.length
+  ) {
     throw new Error(
-      "Specialist assignment roster no longer matches the registered module order. Create a new assignment strategy or study cohort before changing the roster.",
+      "Specialist assignment roster no longer matches canonical specialist modules. Create a new assignment strategy or study cohort before changing the roster.",
     );
   }
 }
 
 assertFrozenAssignmentRoster();
+
+export const specialistModuleDefinitions: readonly SpecialistModuleDefinition[] =
+  SPECIALIST_ASSIGNMENT_MODULE_IDS.map(
+    (moduleId) => canonicalDefinitions.get(moduleId)!,
+  ).filter(
+    (module): module is SpecialistModuleDefinition => module !== undefined,
+  );
+export const specialistModuleById = new Map(
+  specialistModuleDefinitions.map((module) => [module.id, module]),
+);
 
 function hash32(value: string): number {
   let hash = 2166136261;
@@ -410,6 +214,9 @@ export function assignSpecialistModule(
     SPECIALIST_ASSIGNMENT_MODULE_IDS.length;
   const moduleId = SPECIALIST_ASSIGNMENT_MODULE_IDS[index];
   if (!moduleId) throw new Error("Specialist assignment roster is empty.");
+  const module = specialistModuleById.get(moduleId);
+  if (!module)
+    throw new Error(`Unknown canonical specialist module: ${moduleId}`);
   return {
     moduleId,
     strategy: SPECIALIST_ASSIGNMENT_STRATEGY,
@@ -441,4 +248,60 @@ export function scoreSpecialistModule(
   const module = specialistModuleById.get(moduleId);
   if (!module) throw new Error(`Unknown specialist module: ${moduleId}`);
   return module.score(answers);
+}
+
+/** Validate the persisted assignment against the canonical module/version boundary. */
+export function assertSpecialistAssignment(
+  assignment: SpecialistModuleAssignment,
+  moduleVersion: string,
+): void {
+  if (assignment.strategy !== SPECIALIST_ASSIGNMENT_STRATEGY) {
+    throw new Error(
+      `Unsupported specialist assignment strategy: ${assignment.strategy}`,
+    );
+  }
+  if (assignment.rosterVersion !== SPECIALIST_ASSIGNMENT_ROSTER_VERSION) {
+    throw new Error(
+      `Unsupported specialist roster version: ${assignment.rosterVersion}`,
+    );
+  }
+  assertCanonicalSpecialistAssignment(
+    assignment.moduleId,
+    moduleVersion,
+    assignment.moduleId,
+  );
+}
+
+/**
+ * Catalog-only and unknown candidate IDs are never accepted as a self-description.
+ * Variant option IDs are accepted only when they resolve to a canonical candidate.
+ */
+export function assertSpecialistCriterion(
+  moduleId: SpecialistModuleId,
+  criterion: SpecialistCriterionResponse,
+): void {
+  const module = specialistModuleById.get(moduleId);
+  if (!module) throw new Error(`Unknown specialist module: ${moduleId}`);
+  if (criterion.noneOrUnsure) {
+    if (criterion.selectedIds.length > 0) {
+      throw new Error("A specialist abstention cannot include candidate IDs.");
+    }
+    return;
+  }
+  if (criterion.selectedIds.length === 0) {
+    throw new Error(
+      "A specialist criterion must select a candidate or abstain.",
+    );
+  }
+  if (new Set(criterion.selectedIds).size !== criterion.selectedIds.length) {
+    throw new Error("A specialist criterion cannot repeat candidate IDs.");
+  }
+  const allowed = new Set(module.criterionOptions.map((option) => option.id));
+  for (const candidateId of criterion.selectedIds) {
+    if (!allowed.has(candidateId)) {
+      throw new Error(
+        `Unknown or catalog-only specialist candidate: ${candidateId}`,
+      );
+    }
+  }
 }

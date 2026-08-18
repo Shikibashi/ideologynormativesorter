@@ -13,6 +13,7 @@ dist-ssr
 *.local
 playwright-report/
 test-results/
+artifacts/reference-lock/current/
 coverage/
 private-data/
 

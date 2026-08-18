@@ -9,6 +9,8 @@ import {
   buildSpecialistQuestionForm,
   scoreSpecialistModule,
   specialistModuleDefinitions,
+  assertSpecialistAssignment,
+  assertSpecialistCriterion,
   specialistModuleById,
 } from "./index";
 
@@ -35,6 +37,31 @@ describe("specialist module registry", () => {
         new Set(module.questions.map((question) => question.id)).size,
       ).toBe(module.questions.length);
     }
+  });
+  it("binds public module versions to canonical versions", () => {
+    expect(
+      specialistModuleById.get("feminist-faction-module")?.canonicalVersion,
+    ).toBe("v6");
+    expect(
+      specialistModuleById.get("identity-sovereignty-module")?.canonicalVersion,
+    ).toBe("v5");
+    expect(
+      specialistModuleById.get("monarchist-municipal-module")?.canonicalVersion,
+    ).toBe("2026-08-specialist-v11");
+  });
+
+  it("rejects stale assignments and unknown criterion IDs", () => {
+    const assignment = assignSpecialistModule("p_example", "pilot");
+    expect(() =>
+      assertSpecialistAssignment(assignment, "stale-version"),
+    ).toThrow(/version/);
+    expect(() =>
+      assertSpecialistCriterion("feminist-faction-module", {
+        selectedIds: ["not-canonical"],
+        noneOrUnsure: false,
+        confidence: "medium",
+      }),
+    ).toThrow(/candidate/);
   });
 
   it("freezes the ordered assignment roster against the registered modules", () => {

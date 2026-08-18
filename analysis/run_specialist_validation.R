@@ -11,6 +11,83 @@ if (length(missing_packages) > 0) {
 }
 
 `%||%` <- function(x, y) if (is.null(x) || length(x) == 0) y else x
+clean_contract_fields <- c(
+  "manifest_version",
+  "manifest_fingerprint",
+  "serialization_version",
+  "contract_route",
+  "contract_cohort"
+)
+
+metadata_value_present <- function(value) {
+  is.character(value) &&
+    length(value) == 1 &&
+    !is.na(value) &&
+    nzchar(trimws(value))
+}
+
+extract_contract_metadata <- function(record) {
+  sources <- list(
+    record,
+    record$contractMetadata,
+    record$researchContract,
+    record$canonicalContract,
+    record$contract
+  )
+  sources <- sources[vapply(sources, is.list, logical(1))]
+  value_for <- function(keys) {
+    for (source in sources) {
+      for (key in keys) {
+        value <- source[[key]]
+        if (metadata_value_present(value)) return(trimws(value))
+      }
+    }
+    ""
+  }
+  list(
+    manifest_version = value_for(c("manifestVersion", "canonicalManifestVersion", "manifest_version")),
+    manifest_fingerprint = value_for(c("manifestFingerprint", "canonicalManifestFingerprint", "manifest_fingerprint")),
+    serialization_version = value_for(c("serializationVersion", "serialization_version")),
+    contract_route = value_for(c("contractRoute", "contract_route", "route")),
+    contract_cohort = value_for(c("cohort", "contractCohort", "contract_cohort"))
+  )
+}
+
+validate_contract_metadata <- function(metadata) {
+  if (length(metadata) == 0) return(invisible(NULL))
+  clean_flags <- vapply(metadata, function(entry) {
+    any(vapply(entry[clean_contract_fields], metadata_value_present, logical(1)))
+  }, logical(1))
+  if (any(clean_flags)) {
+    missing <- vapply(metadata, function(entry) {
+      missing_fields <- clean_contract_fields[!vapply(entry[clean_contract_fields], metadata_value_present, logical(1))]
+      if (length(missing_fields) == 0) "" else paste(missing_fields, collapse = ", ")
+    }, character(1))
+    if (any(!clean_flags | nzchar(missing))) {
+      stop(
+        "Clean contract metadata requires non-empty ",
+        paste(clean_contract_fields, collapse = ", "),
+        " for every input record; missing fields: ",
+        paste(unique(missing[nzchar(missing) | !clean_flags]), collapse = "; ")
+      )
+    }
+    for (entry in metadata) {
+      if (any(vapply(entry[clean_contract_fields], function(value) {
+        identical(tolower(trimws(value)), "unknown")
+      }, logical(1)))) {
+        stop("Clean contract metadata must not contain unknown values.")
+      }
+    }
+  }
+  for (field in clean_contract_fields) {
+    values <- unique(vapply(metadata, `[[`, character(1), field))
+    values <- values[nzchar(values)]
+    if (length(values) > 1) {
+      stop("Mixed non-empty ", field, " values detected in Specialist fixture: ", paste(values, collapse = ", "))
+    }
+  }
+  invisible(NULL)
+}
 
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) < 3) {
@@ -61,6 +138,11 @@ disposition_records <- specialist_input_records[vapply(specialist_input_records,
   identical(record$recordType, "specialist-disposition") &&
     !is.null(record$participantId) && !is.null(record$administration) && !is.null(record$moduleId)
 }, logical(1))]
+specialist_contract_metadata <- lapply(
+  c(core_records, specialist_records, disposition_records),
+  extract_contract_metadata
+)
+validate_contract_metadata(specialist_contract_metadata)
 
 empty_csv <- function(path, columns) {
   frame <- as.data.frame(setNames(replicate(length(columns), character(0), simplify = FALSE), columns), stringsAsFactors = FALSE)

@@ -1,13 +1,9 @@
 import { useMemo, useState } from "react";
-import {
-  questionById,
-  questions,
-  questionsForTier,
-} from "../data/effectiveQuestions";
+import { questionById, questions, questionsForTier } from "../domain/selectors";
 import {
   modifierScoringLabels,
   primaryScoringLabels,
-} from "../data/labelTaxonomy";
+} from "../domain/selectors";
 import { buildContributionQuestionForm } from "../research/forms";
 import { buildResultProfile } from "../scoring";
 import { getQuizProgress } from "../save";

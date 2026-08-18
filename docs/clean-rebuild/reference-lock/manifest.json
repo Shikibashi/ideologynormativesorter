@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "lockId": "clean-rebuild-reference-lock",
+  "status": "metadata-only",
+  "visualParityClaim": false,
+  "approvedCommitRefs": ["d104f0fd", "b1ac3e3", "f0324db"],
+  "approvedCommits": [
+    {
+      "ref": "d104f0fd",
+      "resolved": "d104f0fd514eff03dee5d7376853b62f763ba1fa"
+    },
+    {
+      "ref": "b1ac3e3",
+      "resolved": "b1ac3e3e147e3761faccec8588d7c822a875d4dc"
+    },
+    {
+      "ref": "f0324db",
+      "resolved": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e"
+    }
+  ],
+  "environmentPins": {
+    "node": "24.12.3",
+    "npm": "11.4.2",
+    "packageLockVersion": 3,
+    "browser": "chromium",
+    "browserVersion": null,
+    "playwright": "1.62.1",
+    "locale": "en-US",
+    "timezone": "UTC",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "deviceScaleFactor": 1
+    },
+    "colorScheme": "light",
+    "reducedMotion": true
+  },
+  "contractCategories": [
+    "routing",
+    "semantic-content",
+    "interaction-state",
+    "accessibility",
+    "responsive-layout",
+    "visual-rendering"
+  ],
+  "paths": {
+    "baseline": "artifacts/reference-lock/baseline",
+    "actual": "artifacts/reference-lock/current"
+  },
+  "expectedFiles": ["screenshots/landing-desktop.png"],
+  "capture": {
+    "mode": "tracked-screenshot",
+    "screenshotsCaptured": true,
+    "fixtures": "landing-desktop",
+    "note": "This lock records deterministic replay metadata only. It does not contain screenshots and makes no visual-parity claim."
+  },
+  "maskedDiffPolicy": {
+    "allowedRatio": 0.001,
+    "allowedPercent": "0.1%",
+    "description": "For a declared screenshot, compare differing unmasked pixels divided by all unmasked pixels; the ratio must be at most 0.001. Masks are explicit rectangles in the manifest and never hide missing or unexpected files.",
+    "masks": [],
+    "unsupportedImageBehavior": "fail-closed"
+  },
+  "replayPolicy": {
+    "requireExplicitPaths": true,
+    "cleanActualBeforeReplay": true,
+    "rejectStaleFiles": true,
+    "rejectUnexpectedFiles": true,
+    "rejectBaselineActualCollision": true
+  }
+}

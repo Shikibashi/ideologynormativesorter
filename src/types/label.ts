@@ -90,3 +90,53 @@ export interface IdeologyLabel {
     affectedAxes: AxisId[];
   }>;
 }
+export type LabelRole =
+  | "primary"
+  | "specialist"
+  | "modifier"
+  | "context"
+  | "retired";
+
+export type LabelMeasurementStatus =
+  | "core-primary"
+  | "modifier-scored"
+  | "modifier-follow-up"
+  | "modifier-catalog-only"
+  | "validated-specialist"
+  | "provisional-specialist"
+  | "context-only"
+  | "retired-alias";
+
+export interface IdeologyScaleSource {
+  sourceId: string;
+  title: string;
+  publisher: string;
+  url: string;
+  note: string;
+}
+
+export interface IdeologyScaleMetadata {
+  commonScales: readonly ("macro" | "meso" | "micro")[];
+  respondentMeasurementScale: "micro" | null;
+  note: string;
+  sources: readonly IdeologyScaleSource[];
+}
+
+export interface LabelRelation {
+  type: string;
+  labelId: string;
+  note?: string;
+}
+
+export interface LabelTaxonomyMetadata {
+  role: LabelRole;
+  measurementStatus: LabelMeasurementStatus;
+  parentId?: LabelId;
+  aliasOf?: LabelId;
+  legacyDisposition?: "alias" | "split" | "keep-retired";
+  legacyComponents?: readonly LabelId[];
+  relations: readonly LabelRelation[];
+  rationale: string;
+  analyticalScale: IdeologyScaleMetadata;
+  analyticalScaleVersion: string;
+}

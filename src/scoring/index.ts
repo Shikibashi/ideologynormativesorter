@@ -11,8 +11,15 @@ import type {
   LabelReliability,
   Contribution,
 } from "../types";
-import { QUESTION_BANK_VERSION } from "../data/effectiveQuestions";
-import { domains } from "../data/domains";
+import { canonicalRegistry } from "../domain/registry";
+import type { CanonicalRegistry } from "../domain/registry";
+import type {
+  ProductionLabelEndpoint,
+  ProductionResponse,
+} from "../production";
+import { canonicalProductionLabels, scoreProduction } from "../production";
+import { QUESTION_BANK_VERSION } from "../domain/selectors";
+import { domains } from "../domain/selectors";
 import { computeScoreBreakdown } from "./aggregate";
 import { detectDivergencesAndContradictions } from "./divergence";
 import { computeDomainMiniResults } from "./domainResults";
@@ -22,6 +29,7 @@ import { computeConflatedLabels, computeLabelMatches } from "./labelMatch";
 import { computeDirectModifierMatches } from "./modifierConstructMatch";
 import { computeReasonBreakdowns } from "./reasonDecomposition";
 import { reliabilityForAxis, reliabilityForLabel } from "./reliability";
+import { normalizeAnswer } from "./normalize";
 
 /** Bumped when ordinary output eligibility changes or research cohorts must remain distinct. */
 export const RESULT_SCORING_VERSION = "2026-08-13-taxonomy-v8";
@@ -44,6 +52,75 @@ export { contributionsForAxis } from "./explain";
 export { detectDivergencesAndContradictions } from "./divergence";
 export { computeDomainMiniResults } from "./domainResults";
 export { computeReasonBreakdowns } from "./reasonDecomposition";
+export interface CanonicalProductionInput {
+  readonly responses: readonly ProductionResponse[];
+  readonly labels?: readonly ProductionLabelEndpoint[];
+  readonly registry?: CanonicalRegistry;
+}
+
+/**
+ * Convert UI answers into canonical production evidence. Canonical item
+ * mappings remain authoritative for dimensions; this function only translates
+ * response controls into the production response contract.
+ */
+export function canonicalProductionResponses(
+  questions: readonly Question[],
+  answers: AnswerMap,
+  registry: CanonicalRegistry = canonicalRegistry,
+): readonly ProductionResponse[] {
+  const responses: ProductionResponse[] = [];
+  for (const question of questions) {
+    const item = registry.get("item", question.id);
+    const answer = answers[question.id];
+    if (!item || !answer) continue;
+
+    if (answer.value === "dont_know") {
+      responses.push({ itemId: item.id, status: "abstained" });
+      continue;
+    }
+    if (answer.value === "prefer_not_to_answer") {
+      responses.push({ itemId: item.id, status: "refused" });
+      continue;
+    }
+
+    if (question.responseType === "statementChoice") {
+      const optionIndex =
+        typeof answer.value === "number" && Number.isInteger(answer.value)
+          ? answer.value
+          : -1;
+      const option = item.statementOptions?.[optionIndex];
+      if (!option) {
+        responses.push({ itemId: item.id, status: "abstained" });
+        continue;
+      }
+      responses.push({
+        itemId: item.id,
+        value: 1,
+        constructValues: option.rootConstructWeights,
+      });
+      continue;
+    }
+
+    const value = normalizeAnswer(question, answer);
+    if (value === null) {
+      responses.push({ itemId: item.id, status: "abstained" });
+      continue;
+    }
+    responses.push({ itemId: item.id, value });
+  }
+  return responses;
+}
+
+export function scoreCanonicalProduction(input?: CanonicalProductionInput) {
+  const registry = input?.registry ?? canonicalRegistry;
+  return scoreProduction(
+    {
+      responses: input?.responses ?? [],
+      labels: input?.labels ?? canonicalProductionLabels(registry),
+    },
+    { registry },
+  );
+}
 
 export function buildResultProfile(
   questions: Question[],
@@ -51,6 +128,7 @@ export function buildResultProfile(
   axes: Axis[],
   labels: IdeologyLabel[],
   modifierLabels: IdeologyLabel[] = [],
+  productionInput?: CanonicalProductionInput,
 ): ResultProfile {
   const scores = computeScoreBreakdown(questions, answers, axes);
   const gaps = computeIdealNonIdealGaps(questions, answers);
@@ -96,6 +174,12 @@ export function buildResultProfile(
   );
   const reasonBreakdowns = computeReasonBreakdowns(questions, answers, axes);
 
+  const production = scoreCanonicalProduction(
+    productionInput ?? {
+      responses: canonicalProductionResponses(questions, answers),
+    },
+  );
+
   const familyTree: Record<string, LabelMatch[]> = {};
   const familySubtree: Record<string, Record<string, LabelMatch[]>> = {};
   for (const match of nearestLabels) {
@@ -131,6 +215,7 @@ export function buildResultProfile(
     reasonBreakdowns,
     bankVersion: QUESTION_BANK_VERSION,
     scoringVersion: RESULT_SCORING_VERSION,
+    production,
     familyTree,
     familySubtree,
   };

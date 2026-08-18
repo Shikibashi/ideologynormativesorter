@@ -1,4 +1,4 @@
-import { QUESTION_BANK_VERSION } from "../data/effectiveQuestions";
+import { QUESTION_BANK_VERSION } from "../domain/selectors";
 import {
   RESEARCH_FORM_VERSION,
   researchFormFingerprint,

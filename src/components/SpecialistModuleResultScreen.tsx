@@ -3,8 +3,8 @@ import type {
   SpecialistModuleDefinition,
   SpecialistOutcome,
 } from "../specialist";
-import { labelById } from "../data/labels";
-import { getIdeologyLabelSources } from "../data/labelSources";
+import { labelById } from "../domain/selectors";
+import { getIdeologyLabelSources } from "../domain/selectors";
 import { constructSignalLabel, labelProximityLabel } from "../resultLanguage";
 
 interface SpecialistModuleResultScreenProps {

@@ -1,4 +1,5 @@
 import type { Answer, AnswerMap } from "../types";
+import { isCompatibleQuestionBankVersion } from "../domain/selectors";
 
 type EncodedAnswer = [string, Answer["value"], number?, number?, true?];
 
@@ -154,7 +155,12 @@ function metadataMatches(
 ): boolean {
   if (!actual) return false;
   return (
-    (!expected.bankVersion || actual.bankVersion === expected.bankVersion) &&
+    (!expected.bankVersion ||
+      (actual.bankVersion !== undefined &&
+        isCompatibleQuestionBankVersion(
+          actual.bankVersion,
+          expected.bankVersion,
+        ))) &&
     (!expected.scoringVersion ||
       actual.scoringVersion === expected.scoringVersion)
   );

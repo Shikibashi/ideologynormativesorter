@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { questions } from "../data/effectiveQuestions";
+import { questions } from "../domain/selectors";
 import {
   modifierScoringLabels,
   primaryScoringLabels,
-} from "../data/labelTaxonomy";
+} from "../domain/selectors";
 import { buildResultProfile } from "../scoring";
 import { readCompareAnswers, readSharedResult, type ShareMeta } from "../share";
 import type { AnswerMap, Axis, ResultProfile } from "../types";
