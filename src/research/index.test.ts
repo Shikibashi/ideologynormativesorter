@@ -133,6 +133,26 @@ describe("research submission", () => {
       Array.from(canonicalizeBytes(second)),
     );
   });
+  it("emits one complete canonical contract envelope for core records", () => {
+    const submission = deterministicCoreSubmission();
+    expect(submission.manifestSchemaVersion).toBe("canonical-domain-v2");
+    expect(submission.sourceManifestSha256).toMatch(/^[0-9a-f]{64}$/);
+    expect(submission.serializationFingerprint).toMatch(/^[0-9a-f]{64}$/);
+    expect(submission.schemaContractVersion).toBe("research-schema-v1");
+    expect(submission.schemaFingerprint).toMatch(/^[0-9a-f]{64}$/);
+    expect(submission.contractFingerprint).toMatch(/^[0-9a-f]{64}$/);
+    expect(submission.contractMetadata.snapshot).toBeDefined();
+    expect(
+      validateResearchContractSnapshot(submission.contractMetadata.snapshot)
+        .valid,
+    ).toBe(true);
+    expect(
+      submission.contractMetadata.snapshot?.observations.canonicalItems.value,
+    ).toEqual(submission.itemMap);
+    expect(
+      submission.contractMetadata.snapshot?.observations.canonicalForm.value,
+    ).toEqual(submission.form);
+  });
   it("rejects partial or caller-overridden contract metadata", () => {
     const base = {
       studyId: "pilot",

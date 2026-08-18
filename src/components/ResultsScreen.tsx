@@ -222,8 +222,14 @@ export function ResultsScreen({
 }: ResultsScreenProps) {
   const axisById = new Map(axes.map((a) => [a.id, a]));
   const domainById = new Map(domains.map((d) => [d.id, d]));
+  const productionLabelIds = new Set(
+    result.production?.labels.map((match) => match.labelId) ?? [],
+  );
+  const nearestLabels = result.nearestLabels.filter((match) =>
+    productionLabelIds.has(match.labelId),
+  );
   const nearestById = new Map(
-    result.nearestLabels.map((match) => [match.labelId, match]),
+    nearestLabels.map((match) => [match.labelId, match]),
   );
   const modifierMatches = result.modifierMatches ?? [];
   const philosophyRows = buildPhilosophyRows(result, labels, axes);
@@ -255,7 +261,7 @@ export function ResultsScreen({
     relatedTraditionMatchesSearch(candidate, labelSearch),
   );
   const groupedLabels = groupLabels(visibleLabels);
-  const nearestPreview = result.nearestLabels.slice(
+  const nearestPreview = nearestLabels.slice(
     0,
     NEAREST_LABEL_PREVIEW_COUNT,
   );
@@ -741,7 +747,7 @@ export function ResultsScreen({
               important disagreements; open “Why is this nearby?” to compare
               directions.
             </p>
-            {result.nearestLabels.length > NEAREST_LABEL_PREVIEW_COUNT && (
+            {nearestLabels.length > NEAREST_LABEL_PREVIEW_COUNT && (
               <p className="muted nearest-preview-note">
                 Showing the five closest profiles. Browse the full catalog below
                 to inspect every label.

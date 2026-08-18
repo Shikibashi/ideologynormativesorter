@@ -9,6 +9,19 @@ export const RESEARCH_COHORT = "community-2026-v5";
 /** Version and fingerprints projected from the checked-in canonical contract artifact. */
 export const RESEARCH_COHORT_VERSION = "clean-rebuild-v1";
 export const RESEARCH_COHORT_FINGERPRINT = "clean-rebuild-fingerprint-v1";
+/** Exact metadata emitted by the clean browser contract. */
+export const RESEARCH_MANIFEST_SCHEMA_VERSION =
+  CANONICAL_MANIFEST.metadata.schemaVersion;
+export const RESEARCH_SOURCE_MANIFEST_SHA256 =
+  "85205575e0aeb218372a31fa6a704cb7399294aaf8ef95ce85a8ef1dd50230a3";
+export const RESEARCH_SERIALIZATION_FINGERPRINT =
+  "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc";
+export const RESEARCH_SCHEMA_CONTRACT_VERSION = "research-schema-v1";
+export const RESEARCH_SCHEMA_FINGERPRINT =
+  "24c5a9e75c4fef6c9f36445588cd143f8074b3015b62ed9d6e3be171291413f0";
+export const RESEARCH_CONTRACT_FINGERPRINT =
+  "22dfcf63b73be7c5da79e9128bec75e9b777334e072a5b37b452a5766751dee5";
+export const RESEARCH_RECORD_CONTRACT_VERSION = "2026-08-v19";
 export const RESEARCH_MANIFEST_VERSION = CANONICAL_MANIFEST.metadata.version;
 const canonicalManifestFingerprint = CANONICAL_MANIFEST.metadata.fingerprint;
 if (!canonicalManifestFingerprint) {
@@ -19,7 +32,14 @@ export const RESEARCH_SERIALIZATION_VERSION = CANONICAL_JSON_VERSION;
 export const RESEARCH_FORM_CONTRACT_METADATA = Object.freeze({
   manifestVersion: RESEARCH_MANIFEST_VERSION,
   manifestFingerprint: RESEARCH_MANIFEST_FINGERPRINT,
+  manifestSchemaVersion: RESEARCH_MANIFEST_SCHEMA_VERSION,
+  sourceManifestSha256: RESEARCH_SOURCE_MANIFEST_SHA256,
   serializationVersion: RESEARCH_SERIALIZATION_VERSION,
+  serializationFingerprint: RESEARCH_SERIALIZATION_FINGERPRINT,
+  schemaContractVersion: RESEARCH_SCHEMA_CONTRACT_VERSION,
+  schemaFingerprint: RESEARCH_SCHEMA_FINGERPRINT,
+  contractFingerprint: RESEARCH_CONTRACT_FINGERPRINT,
+  contractVersion: RESEARCH_RECORD_CONTRACT_VERSION,
   contractRoute: RESEARCH_CONTRACT_ROUTE,
   cohort: RESEARCH_COHORT,
   cohortVersion: RESEARCH_COHORT_VERSION,

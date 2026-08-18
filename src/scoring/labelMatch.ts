@@ -8,7 +8,8 @@ import type {
   Layer,
   ScoreBreakdown,
 } from "../types";
-import { compoundGateByLabelId } from "../data/compoundGates";
+import type { ProductionLabelMatch } from "../production";
+import { canonicalRegistry } from "../domain/registry";
 
 const NEAREST_LABEL_COUNT = 20;
 export const MODIFIER_MATCH_LIMIT = 5;
@@ -33,20 +34,25 @@ function compoundGateStatus(
   breakdown: ScoreBreakdown,
   label: IdeologyLabel,
 ): LabelMatch["compoundGateStatus"] {
-  const gate = compoundGateByLabelId.get(label.id);
-  if (!gate) return undefined;
+  const canonicalNode = canonicalRegistry.manifest.nodes?.find(
+    (node) => node.id === label.id,
+  );
+  if (canonicalNode?.conceptualKind !== "regime-or-authoritarian-project")
+    return undefined;
 
   const scoreMap = measuredScoreMap(breakdown);
   let insufficient = false;
-  for (const requirement of gate.allOf) {
-    const score = scoreMap.get(requirement.axisId);
+  for (const [axisId, target] of Object.entries(label.centroid)) {
+    const score = scoreMap.get(axisId);
     if (!score || score.itemCount === 0) {
       insufficient = true;
       continue;
     }
-    if (requirement.min !== undefined && score.normalized < requirement.min)
-      return "blocked";
-    if (requirement.max !== undefined && score.normalized > requirement.max)
+    if (
+      Math.abs(target) >= 0.75 &&
+      Math.abs(score.normalized) >= 0.75 &&
+      Math.sign(target) !== Math.sign(score.normalized)
+    )
       return "blocked";
   }
   return insufficient ? "insufficient-evidence" : "passed";
@@ -268,6 +274,37 @@ export function computeLabelMatches(
   }
 
   return top;
+}
+/**
+ * Convert canonical production label matches into the established
+ * ResultProfile LabelMatch shape. Production similarity and evidence remain
+ * authoritative; catalog metadata is only presentation context.
+ */
+export function adaptProductionLabelMatches(
+  productionMatches: readonly ProductionLabelMatch[],
+  labels: readonly IdeologyLabel[],
+): LabelMatch[] {
+  const metadataById = new Map(labels.map((label) => [label.id, label]));
+  return productionMatches.map((match) => {
+    const metadata = metadataById.get(match.labelId);
+    return {
+      labelId: match.labelId,
+      name: metadata?.name ?? match.name,
+      description: metadata?.description,
+      cautionNote: metadata?.cautionNote,
+      usageNote: metadata?.usageNote,
+      distance: Math.max(0, (1 - match.similarity) * 2),
+      fit: match.similarity,
+      evidenceStrength: match.evidenceCoverage.coverage,
+      measuredAxisCount: match.evidenceCoverage.answeredItems,
+      totalAxisCount: match.evidenceCoverage.expectedItems,
+      ...(match.runnerUpMargin === undefined
+        ? {}
+        : { runnerUpMargin: match.runnerUpMargin }),
+      uncertaintyBand: match.uncertainty.band,
+      coreGateStatus: "passed",
+    };
+  });
 }
 
 /**

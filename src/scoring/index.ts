@@ -17,7 +17,10 @@ import type {
   ProductionLabelEndpoint,
   ProductionResponse,
 } from "../production";
-import { canonicalProductionLabels, scoreProduction } from "../production";
+import {
+  canonicalProductionLabels,
+  scoreProduction,
+} from "../production";
 import { QUESTION_BANK_VERSION } from "../domain/selectors";
 import { domains } from "../domain/selectors";
 import { computeScoreBreakdown } from "./aggregate";
@@ -25,8 +28,11 @@ import { detectDivergencesAndContradictions } from "./divergence";
 import { computeDomainMiniResults } from "./domainResults";
 import { contributionsForAxis } from "./explain";
 import { computeIdealNonIdealGaps } from "./gap";
-import { computeConflatedLabels, computeLabelMatches } from "./labelMatch";
-import { computeDirectModifierMatches } from "./modifierConstructMatch";
+import {
+  adaptProductionLabelMatches,
+  computeConflatedLabels,
+} from "./labelMatch";
+import { computeCanonicalModifierMatches } from "./modifierConstructMatch";
 import { computeReasonBreakdowns } from "./reasonDecomposition";
 import { reliabilityForAxis, reliabilityForLabel } from "./reliability";
 import { normalizeAnswer } from "./normalize";
@@ -42,11 +48,15 @@ export {
 } from "./aggregate";
 export { computeIdealNonIdealGaps } from "./gap";
 export {
+  adaptProductionLabelMatches,
   computeConflatedLabels,
   computeLabelMatches,
   computeModifierMatches,
 } from "./labelMatch";
-export { computeDirectModifierMatches } from "./modifierConstructMatch";
+export {
+  computeCanonicalModifierMatches,
+  computeDirectModifierMatches,
+} from "./modifierConstructMatch";
 export { reliabilityForAxis, reliabilityForLabel } from "./reliability";
 export { contributionsForAxis } from "./explain";
 export { detectDivergencesAndContradictions } from "./divergence";
@@ -132,12 +142,6 @@ export function buildResultProfile(
 ): ResultProfile {
   const scores = computeScoreBreakdown(questions, answers, axes);
   const gaps = computeIdealNonIdealGaps(questions, answers);
-  const nearestLabels = computeLabelMatches(scores, labels, axes);
-  const modifierMatches = computeDirectModifierMatches(
-    questions,
-    answers,
-    modifierLabels,
-  );
   const conflatedLabels = computeConflatedLabels(scores, labels, axes);
 
   const axisScoresMap = new Map(
@@ -174,10 +178,21 @@ export function buildResultProfile(
   );
   const reasonBreakdowns = computeReasonBreakdowns(questions, answers, axes);
 
+  const productionRegistry = productionInput?.registry ?? canonicalRegistry;
+  const canonicalResponses =
+    productionInput?.responses ??
+    canonicalProductionResponses(questions, answers, productionRegistry);
   const production = scoreCanonicalProduction(
     productionInput ?? {
-      responses: canonicalProductionResponses(questions, answers),
+      responses: canonicalResponses,
+      registry: productionRegistry,
     },
+  );
+  const nearestLabels = adaptProductionLabelMatches(production.labels, labels);
+  const modifierMatches = computeCanonicalModifierMatches(
+    canonicalResponses,
+    modifierLabels,
+    productionRegistry,
   );
 
   const familyTree: Record<string, LabelMatch[]> = {};

@@ -22,22 +22,29 @@ export async function handleResearchIdentity(
       "The contribution is missing its consent, timing, or result context.",
     );
   }
+  const predictedLabelIds = (context.result.production?.labels ?? [])
+    .slice(0, 5)
+    .map((match) => String(match.labelId));
+  const predictedModifierIds = context.result.production
+    ? (context.result.modifierMatches ?? [])
+        .slice(0, 5)
+        .map((match) => String(match.labelId))
+    : [];
 
   const submission = buildResearchSubmission({
     studyId: context.studyId,
     participantId: context.participantId,
     administration: context.administration,
     bankVersion: context.result.bankVersion ?? "unknown-bank",
-    scoringVersion: context.result.scoringVersion ?? "unknown-scoring",
+    scoringVersion:
+      context.result.production?.interpretation.scoringVersion ??
+      context.result.scoringVersion ??
+      "unknown-scoring",
     tier: context.pendingTier,
     consent: context.researchConsent,
     identity,
-    predictedLabelIds: context.result.nearestLabels
-      .slice(0, 5)
-      .map((match) => String(match.labelId)),
-    predictedModifierIds: (context.result.modifierMatches ?? [])
-      .slice(0, 5)
-      .map((match) => String(match.labelId)),
+    predictedLabelIds,
+    predictedModifierIds,
     specialistAssignment: context.specialistAssignment ?? undefined,
     answers: context.answers,
     questions: context.activeQuestions,

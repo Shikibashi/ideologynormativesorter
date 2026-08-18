@@ -714,6 +714,133 @@ export function canonicalProductionLabels(
       };
     });
 }
+export interface CanonicalProductionModifierMatch {
+  readonly labelId: StableId;
+  readonly name: string;
+  readonly distance: number;
+  readonly fit: number;
+  readonly evidenceStrength: number;
+  readonly measuredItemCount: number;
+  readonly totalItemCount: number;
+  readonly uncertaintyBand: ProductionUncertainty["band"];
+  readonly modifierConstruct: {
+    readonly measurementVersion: string;
+    readonly name: string;
+    readonly note: string;
+    readonly answeredQuestionIds: readonly string[];
+    readonly indicatorQuestionIds: readonly string[];
+    readonly minimumAnsweredItems: number;
+  };
+}
+
+const CANONICAL_MODIFIER_FIT_THRESHOLD = 0.65;
+const CANONICAL_MODIFIER_EVIDENCE_THRESHOLD = 0.4;
+const CANONICAL_MODIFIER_MATCH_LIMIT = 5;
+
+function canonicalModifierUncertainty(
+  evidenceStrength: number,
+  measuredItemCount: number,
+  totalItemCount: number,
+): ProductionUncertainty["band"] {
+  if (
+    evidenceStrength < CANONICAL_MODIFIER_EVIDENCE_THRESHOLD ||
+    measuredItemCount < 2
+  )
+    return "high";
+  if (evidenceStrength < 0.7 || measuredItemCount < totalItemCount)
+    return "medium";
+  return "low";
+}
+
+/**
+ * Match canonical modifier contracts against canonical, normalized item
+ * responses. Modifier evidence is deliberately independent from primary
+ * profile coverage: a well-measured construct can be exposed even when the
+ * whole production profile abstains.
+ */
+export function canonicalProductionModifierMatches(
+  responses: readonly ProductionResponse[],
+  registry: CanonicalRegistry = canonicalRegistry,
+): readonly CanonicalProductionModifierMatch[] {
+  const normalized = normalizeProductionResponses(responses, registry);
+  const responseByItemId = new Map(
+    normalized.responses.map((response) => [response.itemId, response]),
+  );
+  const nodes = new Map(
+    (registry.manifest.nodes ?? []).map((node) => [node.id, node]),
+  );
+  const matches: CanonicalProductionModifierMatch[] = [];
+
+  for (const contract of registry.manifest.modifierContracts ?? []) {
+    if (contract.availability !== "core-construct" || !contract.indicators)
+      continue;
+
+    let squaredDistance = 0;
+    let measuredItemCount = 0;
+    const answeredQuestionIds: string[] = [];
+    for (const indicator of contract.indicators) {
+      const response = responseByItemId.get(indicator.questionId);
+      if (!response) continue;
+      const directedValue = response.value * indicator.direction;
+      squaredDistance += (directedValue - 1) ** 2;
+      measuredItemCount += 1;
+      answeredQuestionIds.push(indicator.questionId);
+    }
+
+    const totalItemCount = contract.indicators.length;
+    const evidenceStrength =
+      totalItemCount > 0 ? measuredItemCount / totalItemCount : 0;
+    const distance =
+      measuredItemCount > 0
+        ? Math.sqrt(squaredDistance / measuredItemCount)
+        : Number.POSITIVE_INFINITY;
+    const fit = measuredItemCount > 0 ? Math.max(0, 1 - distance / 2) : 0;
+    const minimumAnsweredItems =
+      contract.minimumAnsweredItems ?? totalItemCount;
+    const uncertaintyBand = canonicalModifierUncertainty(
+      evidenceStrength,
+      measuredItemCount,
+      totalItemCount,
+    );
+
+    if (
+      measuredItemCount < minimumAnsweredItems ||
+      fit < CANONICAL_MODIFIER_FIT_THRESHOLD ||
+      evidenceStrength < CANONICAL_MODIFIER_EVIDENCE_THRESHOLD ||
+      uncertaintyBand === "high"
+    )
+      continue;
+
+    const node = nodes.get(contract.nodeId);
+    matches.push({
+      labelId: contract.labelId,
+      name: node?.canonicalName ?? contract.labelId,
+      distance,
+      fit,
+      evidenceStrength,
+      measuredItemCount,
+      totalItemCount,
+      uncertaintyBand,
+      modifierConstruct: {
+        measurementVersion: registry.manifest.metadata.version,
+        name: contract.constructName,
+        note: contract.note,
+        answeredQuestionIds,
+        indicatorQuestionIds: contract.indicators.map(
+          (indicator) => indicator.questionId,
+        ),
+        minimumAnsweredItems,
+      },
+    });
+  }
+
+  return matches
+    .sort(
+      (left, right) =>
+        right.fit - left.fit || compareStable(left.labelId, right.labelId),
+    )
+    .slice(0, CANONICAL_MODIFIER_MATCH_LIMIT);
+}
 
 /**
  * Empty evidence still goes through the canonical scorer. This helper remains

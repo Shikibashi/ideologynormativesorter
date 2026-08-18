@@ -93,6 +93,8 @@ export interface ResearchContractSnapshotInput {
   readonly provenance: ResearchContractProvenance;
   readonly consent?: ResearchContractConsent | null;
   readonly refusal?: ResearchContractRefusal | null;
+  readonly sourceManifestSha256?: string;
+  readonly contractFingerprint?: string;
   readonly observations: ResearchObservationMap;
 }
 
@@ -107,6 +109,8 @@ export interface ResearchContractSnapshot {
   readonly schemaFingerprint: string;
   readonly cohortVersion: string;
   readonly cohortFingerprint: string;
+  readonly sourceManifestSha256?: string;
+  readonly contractFingerprint?: string;
   readonly study: ResearchContractStudy;
   readonly form: ResearchContractForm;
   readonly provenance: ResearchContractProvenance;
@@ -196,6 +200,8 @@ const TOP_LEVEL_KEYS = new Set([
   "schemaFingerprint",
   "cohortVersion",
   "cohortFingerprint",
+  "sourceManifestSha256",
+  "contractFingerprint",
   "versionBundle",
   "study",
   "form",
@@ -262,9 +268,10 @@ function scanForbiddenKeys(
         );
       }
       if (
-        CONTEXT_KEYS.has(key) ||
-        /^context(?:$|[A-Z_])/u.test(key) ||
-        key === "publicRole"
+        (CONTEXT_KEYS.has(key) ||
+          /^context(?:$|[A-Z_])/u.test(key) ||
+          key === "publicRole") &&
+        key !== "contextNote"
       ) {
         issue(
           issues,
@@ -351,6 +358,12 @@ export function createResearchContractSnapshot(
     schemaFingerprint: input.schema.fingerprint,
     cohortVersion: input.cohort.version,
     cohortFingerprint: input.cohort.fingerprint,
+    ...(input.sourceManifestSha256 === undefined
+      ? {}
+      : { sourceManifestSha256: input.sourceManifestSha256 }),
+    ...(input.contractFingerprint === undefined
+      ? {}
+      : { contractFingerprint: input.contractFingerprint }),
     study: input.study,
     form: input.form,
     provenance: input.provenance,
@@ -470,6 +483,21 @@ export function validateResearchContractSnapshot(
   for (const field of fingerprintFields) {
     if (!nonEmptyString(value[field])) {
       issue(issues, "missing-fingerprint", `${field} is required`, field);
+    }
+  }
+  for (const field of ["sourceManifestSha256", "contractFingerprint"] as const) {
+    if (value[field] !== undefined && !nonEmptyString(value[field])) {
+      issue(issues, "missing-fingerprint", `${field} must be non-empty`, field);
+    } else if (
+      value[field] !== undefined &&
+      !/^[0-9a-f]{64}$/u.test(value[field] as string)
+    ) {
+      issue(
+        issues,
+        "missing-fingerprint",
+        `${field} must be a SHA-256 fingerprint`,
+        field,
+      );
     }
   }
 

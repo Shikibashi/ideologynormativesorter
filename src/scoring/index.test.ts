@@ -148,5 +148,14 @@ describe("buildResultProfile production metadata", () => {
         }),
       ],
     });
+    expect(first.nearestLabels).toMatchObject([
+      {
+        labelId: "label/test",
+        name: "Test endpoint",
+        fit: 1,
+        distance: 0,
+        evidenceStrength: 1,
+      },
+    ]);
   });
 });

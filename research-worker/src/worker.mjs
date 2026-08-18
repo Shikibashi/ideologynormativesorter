@@ -1,14 +1,74 @@
+import canonicalManifestArtifact from "../generated/canonical-manifest.json" with {
+  type: "json",
+};
 const TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/;
 const RECORD_TYPES = new Set(["core", "specialist", "specialist-disposition"]);
 const LAYERS = new Set(["normative", "descriptive", "prescriptive"]);
 const SALIENCE_VALUES = new Set([1, 3, 5]);
+const CANONICAL_MANIFEST = isObject(canonicalManifestArtifact?.manifest)
+  ? canonicalManifestArtifact.manifest
+  : {};
+const CANONICAL_MANIFEST_METADATA = isObject(CANONICAL_MANIFEST.metadata)
+  ? CANONICAL_MANIFEST.metadata
+  : {};
+const CANONICAL_ITEMS = Array.isArray(CANONICAL_MANIFEST.items)
+  ? CANONICAL_MANIFEST.items
+  : [];
+const CANONICAL_ITEM_BY_ID = new Map(
+  CANONICAL_ITEMS
+    .filter((item) => isObject(item) && validToken(item.id))
+    .map((item) => [item.id, item]),
+);
+const ACTIVE_CORE_ITEM_IDS = new Set(
+  Array.isArray(CANONICAL_MANIFEST.activeCoreItemIds)
+    ? CANONICAL_MANIFEST.activeCoreItemIds
+    : [],
+);
+const CONDITIONAL_SPECIALIST_ITEM_IDS = new Set(
+  Array.isArray(CANONICAL_MANIFEST.conditionalSpecialistItemIds)
+    ? CANONICAL_MANIFEST.conditionalSpecialistItemIds
+    : [],
+);
+const DEFAULT_CONFIDENCE_PROMPT =
+  "How confident are you in the answer you just gave?";
+const DEFAULT_PRIORITY_PROMPT =
+  "How important is the policy or strategy you selected, relative to other changes?";
+const SALIENCE_HELP_TEXT = {
+  confidence:
+    "“Confidence” means how sure you are that your answer is accurate. This rating controls how strongly this empirical answer counts in your result. Skipping the rating excludes the answer from your result.",
+  priority:
+    "“Priority” means how important this policy or strategy is compared with other changes. This rating controls how strongly this preference counts in your result. Skipping the rating excludes the answer from your result.",
+};
+const SALIENCE_OPTIONS = [
+  { value: 1, label: "Low" },
+  { value: 3, label: "Medium" },
+  { value: 5, label: "High" },
+  { value: "skipped", label: "Skip rating" },
+];
+const LIKERT_LABELS = {
+  likert5: {
+    "-2": "Disagree",
+    "-1": "Somewhat disagree",
+    "0": "Neutral",
+    "1": "Somewhat agree",
+    "2": "Agree",
+  },
+  likert7: {
+    "-3": "Strongly disagree",
+    "-2": "Disagree",
+    "-1": "Somewhat disagree",
+    "0": "Neutral",
+    "1": "Somewhat agree",
+    "2": "Agree",
+    "3": "Strongly agree",
+  },
+};
 
 /*
- * The canonical contract is generated outside this bounded Worker source
- * tree. Deployments may provide its JSON value through a Wrangler secret/var;
- * local and legacy deployments simply omit it. Keeping the artifact optional
- * preserves the existing /submit route while still making a supplied artifact
- * authoritative.
+ * The canonical contract and item manifest are generated outside this bounded
+ * Worker source tree. Deployments may provide contract metadata through
+ * Wrangler vars, but both generated artifacts remain authoritative.
+ * Missing or incomplete metadata fails closed.
  */
 const CONTRACT_METADATA_FIELDS = [
   "contractVersion",
@@ -80,12 +140,17 @@ function configuredLegacyContractRoutes(env) {
 
 function contractArtifactMetadata(env) {
   const source = contractArtifactSource(env);
+  const hasArtifactSource = !(
+    source === undefined ||
+    source === null ||
+    source === ""
+  );
   const configured = configuredContractMetadata(env);
   if (
     (source === undefined || source === null || source === "") &&
     Object.keys(configured).length === 0
   )
-    return null;
+    return { invalid: true };
 
   let artifact = source;
   if (typeof source === "string") {
@@ -103,6 +168,7 @@ function contractArtifactMetadata(env) {
     : isObject(metadataSource.manifest)
       ? metadataSource.manifest
       : {};
+  const manifestMetadata = isObject(manifest.metadata) ? manifest.metadata : {};
   const serialization = isObject(artifact?.serialization)
     ? artifact.serialization
     : isObject(metadataSource.serialization)
@@ -132,21 +198,29 @@ function contractArtifactMetadata(env) {
     sourceManifestSha256:
       artifact?.sourceManifestSha256 ??
       metadataSource.sourceManifestSha256 ??
-      manifest.sourceManifestSha256,
+      manifest.sourceManifestSha256 ??
+      manifestMetadata.sourceManifestSha256,
     manifestSchemaVersion:
       artifact?.manifestSchemaVersion ??
       metadataSource.manifestSchemaVersion ??
-      manifest.schemaVersion,
+      manifest.schemaVersion ??
+      manifestMetadata.schemaVersion ??
+      manifestMetadata.manifestSchemaVersion,
     manifestVersion:
       artifact?.manifestVersion ??
       metadataSource.manifestVersion ??
-      manifest.version,
+      manifest.version ??
+      manifestMetadata.version ??
+      manifestMetadata.manifestVersion,
     manifestFingerprint:
       artifact?.manifestFingerprint ??
       artifact?.canonicalManifestFingerprint ??
       metadataSource.manifestFingerprint ??
       metadataSource.canonicalManifestFingerprint ??
-      manifest.fingerprint,
+      manifest.fingerprint ??
+      manifest.canonicalManifestFingerprint ??
+      manifestMetadata.fingerprint ??
+      manifestMetadata.manifestFingerprint,
     serializationVersion:
       artifact?.serializationVersion ??
       metadataSource.serializationVersion ??
@@ -169,13 +243,16 @@ function contractArtifactMetadata(env) {
       metadataSource.contractRoute ??
       artifact?.route ??
       metadataSource.route ??
-      configured.contractRoute,
+      (hasArtifactSource ? undefined : configured.contractRoute),
     cohort:
       typeof artifact?.cohort === "string"
         ? artifact.cohort
         : typeof metadataSource.cohort === "string"
           ? metadataSource.cohort
-          : configured.cohort,
+          : cohortObject.id ??
+            cohortObject.name ??
+            cohortObject.cohort ??
+            (hasArtifactSource ? undefined : configured.cohort),
     cohortVersion:
       artifact?.cohortVersion ??
       metadataSource.cohortVersion ??
@@ -187,11 +264,30 @@ function contractArtifactMetadata(env) {
   };
 
   for (const field of CONTRACT_METADATA_FIELDS) {
-    const value = nonEmptyValue(metadata[field] ?? configured[field]);
+    const value = nonEmptyValue(
+      metadata[field] ?? (hasArtifactSource ? undefined : configured[field]),
+    );
     if (value !== undefined) metadata[field] = value;
     else delete metadata[field];
   }
+  if (
+    !REQUIRED_BROWSER_CONTRACT_FIELDS.every(
+      (field) => nonEmptyValue(metadata[field]) !== undefined,
+    ) ||
+    metadata.manifestSchemaVersion !== CANONICAL_MANIFEST_METADATA.schemaVersion ||
+    metadata.manifestVersion !== CANONICAL_MANIFEST_METADATA.version ||
+    metadata.manifestFingerprint !== CANONICAL_MANIFEST_METADATA.fingerprint ||
+    metadata.serializationVersion !== "canonical-json-v1"
+  ) {
+    return { invalid: true };
+  }
 
+  if (
+    nonEmptyValue(env.EXPECTED_BANK_VERSION) !==
+    CANONICAL_MANIFEST_METADATA.version
+  ) {
+    return { invalid: true };
+  }
   if (
     (metadata.sourceManifestSha256 !== undefined &&
       !/^[0-9a-f]{64}$/u.test(metadata.sourceManifestSha256)) ||
@@ -442,6 +538,160 @@ function validItem(item) {
     item.responseOptions.every(validResponseOption)
   );
 }
+const TIER_RANK = {
+  blitz: 0,
+  quick: 1,
+  moderate: 2,
+  extensive: 3,
+};
+const ITEM_SNAPSHOT_FIELDS = new Set([
+  "questionId",
+  "prompt",
+  "helpText",
+  "domain",
+  "layer",
+  "theoryContext",
+  "responseType",
+  "responseOptions",
+  "axisWeights",
+  "statementOptions",
+  "constructWeights",
+  "reverseScored",
+  "confidencePrompt",
+  "priorityPrompt",
+  "salience",
+  "reviewStatus",
+  "evidenceNote",
+  "contextNote",
+  "sourceCount",
+]);
+
+function canonicalResponseOptions(item) {
+  const responseType = item.responseType ?? "likert7";
+  const options =
+    responseType === "statementChoice"
+      ? (Array.isArray(item.statementOptions) ? item.statementOptions : []).map(
+          (option, index) => ({
+            value: index,
+            label: option.text,
+            optionId: option.id,
+          }),
+        )
+      : (responseType === "likert5"
+          ? [-2, -1, 0, 1, 2]
+          : [-3, -2, -1, 0, 1, 2, 3]
+        ).map((value) => ({
+          value,
+          label: LIKERT_LABELS[responseType === "likert5" ? "likert5" : "likert7"][
+            String(value)
+          ],
+        }));
+  if (item.layer === "descriptive" || item.allowDontKnow === true) {
+    options.push({ value: "dont_know", label: "I don't know" });
+  }
+  options.push({ value: "prefer_not_to_answer", label: "Prefer not to answer" });
+  return options;
+}
+
+function canonicalAxisWeights(item) {
+  return Object.entries(item.rootConstructWeights ?? {}).map(
+    ([axisId, weight]) => ({ axisId, weight }),
+  );
+}
+
+function canonicalStatementOptions(item) {
+  if (!Array.isArray(item.statementOptions)) return undefined;
+  return item.statementOptions.map((option) => ({
+    id: option.id,
+    text: option.text,
+    axisWeights: Object.entries(option.rootConstructWeights ?? {}).map(
+      ([axisId, weight]) => ({ axisId, weight }),
+    ),
+  }));
+}
+
+function canonicalSalience(item) {
+  if (item.layer !== "descriptive" && item.layer !== "prescriptive")
+    return undefined;
+  const kind = item.layer === "descriptive" ? "confidence" : "priority";
+  return {
+    kind,
+    prompt:
+      kind === "confidence"
+        ? (item.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT)
+        : (item.priorityPrompt ?? ""),
+    helpText: SALIENCE_HELP_TEXT[kind],
+    options: SALIENCE_OPTIONS,
+  };
+}
+
+function canonicalItemContentMatches(item, canonical) {
+  if (!Object.keys(item).every((field) => ITEM_SNAPSHOT_FIELDS.has(field)))
+    return false;
+  const expected = {
+    questionId: canonical.id,
+    prompt: canonical.prompt,
+    domain: canonical.domain,
+    layer: canonical.layer,
+    theoryContext: "mixed",
+    responseType: canonical.responseType ?? "likert7",
+    responseOptions: canonicalResponseOptions(canonical),
+    axisWeights: canonicalAxisWeights(canonical),
+    reverseScored: canonical.reverseScored === true,
+    reviewStatus: "approved",
+  };
+  if (Array.isArray(canonical.sources))
+    expected.sourceCount = canonical.sources.length;
+  const statementOptions = canonicalStatementOptions(canonical);
+  if (statementOptions === undefined && item.statementOptions !== undefined)
+    return false;
+  if (statementOptions !== undefined) expected.statementOptions = statementOptions;
+  if (canonical.localConstructWeights === undefined) {
+    if (item.constructWeights !== undefined) return false;
+  } else {
+    expected.constructWeights = canonical.localConstructWeights;
+  }
+  if (canonical.helpText !== undefined) expected.helpText = canonical.helpText;
+  if (canonical.evidenceNote !== undefined)
+    expected.evidenceNote = canonical.evidenceNote;
+  if (canonical.contextNote !== undefined)
+    expected.contextNote = canonical.contextNote;
+  if (canonical.layer === "descriptive") {
+    expected.confidencePrompt =
+      canonical.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT;
+  }
+  if (canonical.layer === "prescriptive" && canonical.priorityPrompt !== undefined)
+    expected.priorityPrompt = canonical.priorityPrompt;
+  const salience = canonicalSalience(canonical);
+  if (salience === undefined) delete expected.salience;
+  else expected.salience = salience;
+  return Object.entries(expected).every(
+    ([field, value]) =>
+      item[field] !== undefined && canonicalize(item[field]) === canonicalize(value),
+  );
+}
+
+function validCanonicalItemMap(submission) {
+  if (!Array.isArray(submission.itemMap)) return false;
+  const maxTier = TIER_RANK[submission.tier];
+  if (submission.recordType === "core" && maxTier === undefined) return false;
+  return submission.itemMap.every((item) => {
+    const canonical = CANONICAL_ITEM_BY_ID.get(item.questionId);
+    if (!canonical || !canonicalItemContentMatches(item, canonical)) return false;
+    if (submission.recordType === "core") {
+      return (
+        canonical.role === "core" &&
+        ACTIVE_CORE_ITEM_IDS.has(canonical.id) &&
+        TIER_RANK[canonical.tier] <= maxTier
+      );
+    }
+    return (
+      canonical.role === "specialist" &&
+      CONDITIONAL_SPECIALIST_ITEM_IDS.has(canonical.id) &&
+      canonical.moduleId === submission.moduleId
+    );
+  });
+}
 
 function validAnswer(answer, item) {
   if (!isObject(answer) || answer.questionId !== item.questionId) return false;
@@ -583,6 +833,7 @@ function validCoreRecord(submission, env) {
   return (
     submission.recordType === "core" &&
     validAnsweredRecord(submission) &&
+    validCanonicalItemMap(submission) &&
     (submission.tier === "moderate" || submission.tier === "extensive") &&
     (validProfileForm || validMatrixForm) &&
     typeof submission.resumed === "boolean" &&
@@ -693,6 +944,7 @@ function validSpecialistRecord(submission, env) {
   return (
     submission.recordType === "specialist" &&
     validAnsweredRecord(submission) &&
+    validCanonicalItemMap(submission) &&
     validToken(submission.moduleId) &&
     validString(submission.moduleVersion, 512) &&
     validVersion(submission.bankVersion, env.EXPECTED_BANK_VERSION) &&

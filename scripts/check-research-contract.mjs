@@ -211,6 +211,36 @@ function parseCanonicalArtifact(source) {
       ],
       "contractVersion",
     ),
+    bankVersion: consistentValues(
+      [
+        value.bankVersion,
+        metadataSource.bankVersion,
+        manifest.bankVersion,
+      ],
+      "bankVersion",
+    ),
+    contractRoute: consistentValues(
+      [
+        value.contractRoute,
+        metadataSource.contractRoute,
+        manifest.contractRoute,
+        manifestMetadata.contractRoute,
+      ],
+      "contractRoute",
+    ),
+    cohort: consistentValues(
+      [
+        typeof value.cohort === "string" ? value.cohort : undefined,
+        typeof metadataSource.cohort === "string"
+          ? metadataSource.cohort
+          : undefined,
+        cohortMetadata.cohort,
+        cohort.cohort,
+        cohort.id,
+        cohort.name,
+      ],
+      "cohort",
+    ),
     cohortVersion: consistentValues(
       [
         value.cohortVersion,
@@ -242,6 +272,9 @@ function parseCanonicalArtifact(source) {
     !/^[0-9a-f]{64}$/u.test(metadata.manifestFingerprint ?? "") ||
     !metadata.serializationVersion ||
     !metadata.contractVersion ||
+    !metadata.bankVersion ||
+    !metadata.contractRoute ||
+    !metadata.cohort ||
     !metadata.cohortVersion ||
     !metadata.cohortFingerprint
   ) {
@@ -368,9 +401,23 @@ const protocol = await read("docs/psychometric-validation-protocol.md");
 const canonicalManifestSource = await readOptional(
   "src/domain/canonicalManifest.ts",
 );
+const canonicalManifestArtifactSource = await readOptional(
+  "research-worker/generated/canonical-manifest.json",
+);
+const canonicalManifestArtifact = canonicalManifestArtifactSource
+  ? parseStrictJson(
+      canonicalManifestArtifactSource,
+      "Generated canonical manifest artifact: research-worker/generated/canonical-manifest.json",
+    )
+  : null;
 const canonicalArtifact = parseCanonicalArtifact(
   await readOptional("research-worker/generated/canonical-contract.json"),
 );
+if (!canonicalArtifact) {
+  throw new Error(
+    "Generated canonical contract artifact is required; empty contract metadata is not allowed.",
+  );
+}
 if (canonicalArtifact) {
   if (canonicalManifestSource === null)
     throw new Error(
@@ -380,6 +427,53 @@ if (canonicalArtifact) {
     throw new Error(
       "Canonical data source is required when the artifact is present.",
     );
+  if (!canonicalManifestArtifact || !record(canonicalManifestArtifact.manifest)) {
+    throw new Error(
+      "Generated canonical manifest artifact is required when the contract artifact is present.",
+    );
+  }
+  const generatedManifest = record(canonicalManifestArtifact.manifest);
+  const generatedManifestMetadata = record(generatedManifest.metadata);
+  const generatedItems = generatedManifest.items;
+  if (
+    !Array.isArray(generatedItems) ||
+    generatedItems.length === 0 ||
+    !generatedItems.every(
+      (item) =>
+        item &&
+        typeof item === "object" &&
+        !Array.isArray(item) &&
+        typeof item.id === "string" &&
+        item.id.length > 0,
+    ) ||
+    new Set(generatedItems.map((item) => item.id)).size !== generatedItems.length
+  ) {
+    throw new Error(
+      "Generated canonical manifest artifact must contain uniquely identified items.",
+    );
+  }
+  const generatedItemsById = new Map(
+    generatedItems.map((item) => [item.id, item]),
+  );
+  const activeCoreItemIds = generatedManifest.activeCoreItemIds;
+  const conditionalSpecialistItemIds =
+    generatedManifest.conditionalSpecialistItemIds;
+  if (
+    !Array.isArray(activeCoreItemIds) ||
+    !Array.isArray(conditionalSpecialistItemIds) ||
+    new Set([...activeCoreItemIds, ...conditionalSpecialistItemIds]).size !==
+      activeCoreItemIds.length + conditionalSpecialistItemIds.length ||
+    !activeCoreItemIds.every(
+      (id) => generatedItemsById.get(id)?.role === "core",
+    ) ||
+    !conditionalSpecialistItemIds.every(
+      (id) => generatedItemsById.get(id)?.role === "specialist",
+    )
+  ) {
+    throw new Error(
+      "Generated canonical manifest active item projections are inconsistent.",
+    );
+  }
   assertEqual(
     "Canonical manifest schema",
     constant(canonicalManifestSource, "CANONICAL_MANIFEST_SCHEMA_VERSION"),
@@ -407,6 +501,26 @@ if (canonicalArtifact) {
     "Canonical serialization",
     "canonical-json-v1",
     canonicalArtifact.serializationVersion,
+  );
+  assertEqual(
+    "Generated canonical manifest schema",
+    canonicalArtifact.manifestSchemaVersion,
+    generatedManifestMetadata.schemaVersion,
+  );
+  assertEqual(
+    "Generated canonical manifest version",
+    canonicalArtifact.manifestVersion,
+    generatedManifestMetadata.version,
+  );
+  assertEqual(
+    "Generated canonical manifest fingerprint",
+    canonicalArtifact.manifestFingerprint,
+    generatedManifestMetadata.fingerprint,
+  );
+  assertEqual(
+    "Canonical bank version",
+    canonicalArtifact.manifestVersion,
+    canonicalArtifact.bankVersion,
   );
 }
 
@@ -475,10 +589,6 @@ function documentedVersion(source, label) {
   return value.slice(1, -1);
 }
 
-const documentedBankVersion = documentedVersion(
-  preregistration,
-  "Question bank",
-);
 const documentedScoringVersion = documentedVersion(preregistration, "Scoring");
 const documentedTaxonomyVersion = documentedVersion(
   preregistration,
@@ -527,8 +637,28 @@ assertEqual(
 );
 assertEqual(
   "Worker bank",
-  documentedBankVersion,
+  canonicalArtifact.manifestVersion,
   configuredVar(worker, "EXPECTED_BANK_VERSION"),
+);
+assertEqual(
+  "Worker contract route",
+  canonicalArtifact.contractRoute,
+  configuredVar(worker, "EXPECTED_CONTRACT_ROUTE"),
+);
+assertEqual(
+  "Worker cohort",
+  canonicalArtifact.cohort,
+  configuredVar(worker, "EXPECTED_COHORT"),
+);
+assertEqual(
+  "Worker cohort version",
+  canonicalArtifact.cohortVersion,
+  configuredVar(worker, "EXPECTED_COHORT_VERSION"),
+);
+assertEqual(
+  "Worker cohort fingerprint",
+  canonicalArtifact.cohortFingerprint,
+  configuredVar(worker, "EXPECTED_COHORT_FINGERPRINT"),
 );
 assertEqual(
   "Worker scoring",

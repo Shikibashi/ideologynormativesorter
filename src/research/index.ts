@@ -17,6 +17,13 @@ import {
   RESEARCH_MANIFEST_VERSION as FORM_MANIFEST_VERSION,
   RESEARCH_MANIFEST_FINGERPRINT as FORM_MANIFEST_FINGERPRINT,
   RESEARCH_SERIALIZATION_VERSION as FORM_SERIALIZATION_VERSION,
+  RESEARCH_MANIFEST_SCHEMA_VERSION as FORM_MANIFEST_SCHEMA_VERSION,
+  RESEARCH_SOURCE_MANIFEST_SHA256 as FORM_SOURCE_MANIFEST_SHA256,
+  RESEARCH_SERIALIZATION_FINGERPRINT as FORM_SERIALIZATION_FINGERPRINT,
+  RESEARCH_SCHEMA_CONTRACT_VERSION as FORM_SCHEMA_CONTRACT_VERSION,
+  RESEARCH_SCHEMA_FINGERPRINT as FORM_SCHEMA_FINGERPRINT,
+  RESEARCH_CONTRACT_FINGERPRINT as FORM_CONTRACT_FINGERPRINT,
+  RESEARCH_RECORD_CONTRACT_VERSION as FORM_RECORD_CONTRACT_VERSION,
 } from "./forms";
 import {
   canonicalLabelId,
@@ -27,6 +34,7 @@ import {
 import { MODIFIER_MEASUREMENT_VERSION } from "../domain/selectors";
 import { PRIMARY_MEASUREMENT_VERSION } from "../domain/selectors";
 import { labelRosterFingerprint } from "./taxonomyMetadata";
+import { canonicalRegistry } from "../domain/registry";
 import type {
   SpecialistCriterionResponse,
   SpecialistMatch,
@@ -36,8 +44,11 @@ import type {
 } from "../specialist";
 export * from "./contractSnapshot";
 import {
+  createResearchContractSnapshot,
+  type ResearchContractConsent,
   type ResearchContractProvenance,
   type ResearchContractRefusal,
+  type ResearchContractSnapshot,
   type ResearchObservation,
 } from "./contractSnapshot";
 
@@ -48,8 +59,14 @@ export const RESEARCH_QUALITY_RULE_VERSION = "data-quality-v2";
 export const RESEARCH_STUDY_ID = "community-2026-v5";
 export const RESEARCH_MANIFEST_VERSION = FORM_MANIFEST_VERSION;
 export const RESEARCH_MANIFEST_FINGERPRINT = FORM_MANIFEST_FINGERPRINT;
+export const RESEARCH_MANIFEST_SCHEMA_VERSION = FORM_MANIFEST_SCHEMA_VERSION;
+export const RESEARCH_SOURCE_MANIFEST_SHA256 = FORM_SOURCE_MANIFEST_SHA256;
 export const RESEARCH_SERIALIZATION_VERSION = FORM_SERIALIZATION_VERSION;
-export const RESEARCH_RECORD_CONTRACT_VERSION = "2026-08-v19";
+export const RESEARCH_SERIALIZATION_FINGERPRINT = FORM_SERIALIZATION_FINGERPRINT;
+export const RESEARCH_SCHEMA_CONTRACT_VERSION = FORM_SCHEMA_CONTRACT_VERSION;
+export const RESEARCH_SCHEMA_FINGERPRINT = FORM_SCHEMA_FINGERPRINT;
+export const RESEARCH_RECORD_CONTRACT_VERSION = FORM_RECORD_CONTRACT_VERSION;
+export const RESEARCH_CONTRACT_FINGERPRINT = FORM_CONTRACT_FINGERPRINT;
 export const RESEARCH_CONTRACT_ROUTE = FORM_CONTRACT_ROUTE;
 export const RESEARCH_COHORT = FORM_COHORT;
 export const RESEARCH_COHORT_VERSION = FORM_COHORT_VERSION;
@@ -93,14 +110,21 @@ export interface ResearchConsent {
 export interface ResearchSubmissionContractMetadata {
   manifestVersion?: string;
   manifestFingerprint?: string;
+  manifestSchemaVersion?: string;
+  sourceManifestSha256?: string;
   serializationVersion?: string;
+  serializationFingerprint?: string;
+  schemaContractVersion?: string;
+  schemaFingerprint?: string;
   contractVersion?: string;
+  contractFingerprint?: string;
   contractRoute?: string;
   cohort?: string;
   cohortVersion?: string;
   cohortFingerprint?: string;
   provenance?: ResearchContractProvenance;
   refusal?: ResearchContractRefusal | null;
+  snapshot?: ResearchContractSnapshot;
 }
 
 export interface ResearchIdentity {
@@ -155,10 +179,16 @@ interface ResearchRecordBase {
   consent: ResearchConsent;
   locale: string;
   qualityRuleVersion: string;
+  manifestSchemaVersion: string;
+  sourceManifestSha256: string;
   manifestVersion: string;
   manifestFingerprint: string;
   serializationVersion: string;
+  serializationFingerprint: string;
+  schemaContractVersion: string;
+  schemaFingerprint: string;
   contractVersion: string;
+  contractFingerprint: string;
   contractRoute: string;
   cohort: string;
   cohortVersion: string;
@@ -166,6 +196,7 @@ interface ResearchRecordBase {
   provenance: ResearchContractProvenance;
   refusal: ResearchContractRefusal | null;
   observations: Readonly<Record<string, ResearchObservation>>;
+  contractMetadata: ResearchSubmissionContractMetadata;
 }
 
 export interface ResearchFormMetadata {
@@ -282,15 +313,28 @@ function browserObservation<T>(
 
 function buildContractMetadata(input: {
   submittedAt: string;
+  studyId: string;
   contractMetadata?: ResearchSubmissionContractMetadata;
   refusal?: ResearchContractRefusal | null;
+  consent?: ResearchConsent | null;
+  form: {
+    formId: string;
+    formVersion: string;
+    fingerprint: string;
+  };
   observations: Readonly<Record<string, ResearchObservation>>;
 }): Pick<
   ResearchRecordBase,
+  | "manifestSchemaVersion"
+  | "sourceManifestSha256"
   | "manifestVersion"
   | "manifestFingerprint"
   | "serializationVersion"
+  | "serializationFingerprint"
+  | "schemaContractVersion"
+  | "schemaFingerprint"
   | "contractVersion"
+  | "contractFingerprint"
   | "contractRoute"
   | "cohort"
   | "cohortVersion"
@@ -298,27 +342,69 @@ function buildContractMetadata(input: {
   | "provenance"
   | "refusal"
   | "observations"
+  | "contractMetadata"
 > {
+  const provenance: ResearchContractProvenance = {
+    source: "browser",
+    capturedAt: input.submittedAt,
+    surface: "research-form",
+  };
+  const snapshot = createResearchContractSnapshot({
+    registry: canonicalRegistry,
+    serialization: {
+      version: RESEARCH_SERIALIZATION_VERSION,
+      fingerprint: RESEARCH_SERIALIZATION_FINGERPRINT,
+    },
+    schema: {
+      version: RESEARCH_SCHEMA_CONTRACT_VERSION,
+      fingerprint: RESEARCH_SCHEMA_FINGERPRINT,
+    },
+    cohort: {
+      version: RESEARCH_COHORT_VERSION,
+      fingerprint: RESEARCH_COHORT_FINGERPRINT,
+    },
+    sourceManifestSha256: RESEARCH_SOURCE_MANIFEST_SHA256,
+    contractFingerprint: RESEARCH_CONTRACT_FINGERPRINT,
+    study: {
+      studyId: input.studyId,
+      cohortId: RESEARCH_COHORT,
+    },
+    form: {
+      ...input.form,
+      contractRoute: RESEARCH_CONTRACT_ROUTE,
+      cohort: RESEARCH_COHORT,
+    },
+    provenance,
+    consent: input.consent
+      ? (input.consent as unknown as ResearchContractConsent)
+      : null,
+    refusal: input.refusal ?? null,
+    observations: input.observations,
+  });
   const expected = {
+    manifestSchemaVersion: RESEARCH_MANIFEST_SCHEMA_VERSION,
+    sourceManifestSha256: RESEARCH_SOURCE_MANIFEST_SHA256,
     manifestVersion: RESEARCH_MANIFEST_VERSION,
     manifestFingerprint: RESEARCH_MANIFEST_FINGERPRINT,
     serializationVersion: RESEARCH_SERIALIZATION_VERSION,
+    serializationFingerprint: RESEARCH_SERIALIZATION_FINGERPRINT,
+    schemaContractVersion: RESEARCH_SCHEMA_CONTRACT_VERSION,
+    schemaFingerprint: RESEARCH_SCHEMA_FINGERPRINT,
     contractVersion: RESEARCH_RECORD_CONTRACT_VERSION,
+    contractFingerprint: RESEARCH_CONTRACT_FINGERPRINT,
     contractRoute: RESEARCH_CONTRACT_ROUTE,
     cohort: RESEARCH_COHORT,
     cohortVersion: RESEARCH_COHORT_VERSION,
     cohortFingerprint: RESEARCH_COHORT_FINGERPRINT,
-    provenance: {
-      source: "browser" as const,
-      capturedAt: input.submittedAt,
-      surface: "research-form",
-    },
+    provenance,
     refusal: input.refusal ?? null,
   };
   if (input.contractMetadata !== undefined) {
     const supplied = input.contractMetadata as Record<string, unknown>;
+    const suppliedKeys = Object.keys(supplied)
+      .filter((key) => key !== "snapshot")
+      .sort();
     const expectedKeys = Object.keys(expected).sort();
-    const suppliedKeys = Object.keys(supplied).sort();
     if (
       expectedKeys.length !== suppliedKeys.length ||
       expectedKeys.some((key, index) => key !== suppliedKeys[index]) ||
@@ -332,10 +418,23 @@ function buildContractMetadata(input: {
         "Research contract metadata must match the canonical browser contract exactly.",
       );
     }
+    if (
+      supplied.snapshot !== undefined &&
+      canonicalize(supplied.snapshot) !== canonicalize(snapshot)
+    ) {
+      throw new Error(
+        "Research contract metadata must match the canonical browser contract exactly.",
+      );
+    }
   }
+  const contractMetadata: ResearchSubmissionContractMetadata = Object.freeze({
+    ...expected,
+    snapshot,
+  });
   return {
     ...expected,
     observations: input.observations,
+    contractMetadata,
   };
 }
 
@@ -362,59 +461,110 @@ function buildItemMap(
   questions: Question[],
   constructWeightsByQuestionId?: Record<string, Record<string, number>>,
 ): ResearchItemSnapshot[] {
-  return questions.map((question) => ({
-    questionId: String(question.id),
-    prompt: question.prompt,
-    helpText: question.helpText ?? getQuestionHelpText(question),
-    domain: String(question.domain),
-    layer: question.layer,
-    theoryContext: question.theoryContext,
-    responseType: question.responseType,
-    responseOptions: presentedResponseOptions(question, true),
-    axisWeights: question.axisWeights.map((weight) => ({
-      axisId: String(weight.axisId),
-      weight: weight.weight,
-    })),
-    statementOptions: question.statementOptions?.map((option) => ({
-      id: option.id,
-      text: option.text,
-      axisWeights: option.axisWeights.map((weight) => ({
+  return questions.map((question) => {
+    const questionId = String(question.id);
+    const canonical = canonicalRegistry.get("item", questionId);
+    const item: ResearchItemSnapshot = {
+      questionId,
+      prompt: question.prompt,
+      helpText: question.helpText ?? getQuestionHelpText(question),
+      domain: String(question.domain),
+      layer: question.layer,
+      theoryContext: question.theoryContext,
+      responseType: question.responseType,
+      responseOptions: presentedResponseOptions(question, true),
+      axisWeights: question.axisWeights.map((weight) => ({
         axisId: String(weight.axisId),
         weight: weight.weight,
       })),
-    })),
-    constructWeights: constructWeightsByQuestionId?.[String(question.id)],
-    reverseScored: question.reverseScored === true,
-    confidencePrompt:
-      question.layer === "descriptive"
-        ? (question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT)
-        : undefined,
-    priorityPrompt: question.priorityPrompt,
-    salience:
-      question.layer === "descriptive" || question.layer === "prescriptive"
-        ? {
-            kind: question.layer === "descriptive" ? "confidence" : "priority",
-            prompt:
-              question.layer === "descriptive"
-                ? (question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT)
-                : (question.priorityPrompt ?? ""),
-            helpText: getSalienceHelpText(
-              question.layer === "descriptive" ? "confidence" : "priority",
+      statementOptions: question.statementOptions?.map((option) => ({
+        id: option.id,
+        text: option.text,
+        axisWeights: option.axisWeights.map((weight) => ({
+          axisId: String(weight.axisId),
+          weight: weight.weight,
+        })),
+      })),
+      constructWeights: constructWeightsByQuestionId?.[questionId],
+      reverseScored: question.reverseScored === true,
+      confidencePrompt:
+        question.layer === "descriptive"
+          ? (question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT)
+          : undefined,
+      priorityPrompt: question.priorityPrompt,
+      salience:
+        question.layer === "descriptive" || question.layer === "prescriptive"
+          ? {
+              kind: question.layer === "descriptive" ? "confidence" : "priority",
+              prompt:
+                question.layer === "descriptive"
+                  ? (question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT)
+                  : (question.priorityPrompt ?? ""),
+              helpText: getSalienceHelpText(
+                question.layer === "descriptive" ? "confidence" : "priority",
+              ),
+              options: [
+                ...SALIENCE_LEVELS.map((level) => ({
+                  value: level.value,
+                  label: level.label,
+                })),
+                { value: "skipped" as const, label: "Skip rating" },
+              ],
+            }
+          : undefined,
+      reviewStatus: question.reviewStatus,
+      evidenceNote: question.evidenceNote,
+      contextNote: question.contextNote,
+      sourceCount: question.sources?.length ?? 0,
+    };
+    if (!canonical) return item;
+    const canonicalResponseType =
+      (canonical.responseType as Question["responseType"] | undefined) ??
+      question.responseType;
+    const canonicalAxisWeights = Object.entries(
+      canonical.rootConstructWeights ?? {},
+    ).map(([axisId, weight]) => ({ axisId, weight }));
+    const canonicalStatementOptions = canonical.statementOptions?.map(
+      (option) => ({
+        id: option.id,
+        text: option.text,
+        axisWeights: Object.entries(option.rootConstructWeights ?? {}).map(
+          ([axisId, weight]) => ({ axisId, weight }),
+        ),
+      }),
+    );
+    return {
+      ...item,
+      prompt: canonical.prompt,
+      domain: canonical.domain ?? item.domain,
+      layer: canonical.layer ?? item.layer,
+      theoryContext: "mixed",
+      responseType: canonicalResponseType,
+      axisWeights: canonicalAxisWeights,
+      responseOptions: presentedResponseOptions(
+        {
+          ...question,
+          responseType: canonicalResponseType,
+          statementOptions: canonical.statementOptions?.map((option) => ({
+            ...option,
+            axisWeights: Object.entries(option.rootConstructWeights ?? {}).map(
+              ([axisId, weight]) => ({ axisId, weight }),
             ),
-            options: [
-              ...SALIENCE_LEVELS.map((level) => ({
-                value: level.value,
-                label: level.label,
-              })),
-              { value: "skipped" as const, label: "Skip rating" },
-            ],
-          }
-        : undefined,
-    reviewStatus: question.reviewStatus,
-    evidenceNote: question.evidenceNote,
-    contextNote: question.contextNote,
-    sourceCount: question.sources?.length ?? 0,
-  }));
+          })),
+        },
+        true,
+      ),
+      ...(canonicalStatementOptions === undefined
+        ? { statementOptions: undefined }
+        : { statementOptions: canonicalStatementOptions }),
+      ...(canonical.localConstructWeights === undefined
+        ? { constructWeights: item.constructWeights }
+        : { constructWeights: { ...canonical.localConstructWeights } }),
+      reverseScored: canonical.reverseScored === true,
+      reviewStatus: "approved",
+      sourceCount: canonical.sources?.length ?? 0,
+    };
+  });
 }
 
 export function isResearchMode(search = window.location.search): boolean {
@@ -497,9 +647,23 @@ export function buildResearchSubmission(input: {
     .slice(0, 5)
     .map(canonicalLabelId);
   const predictedModifierIds = (input.predictedModifierIds ?? []).slice(0, 5);
+  const form = {
+    algorithmVersion: RESEARCH_FORM_VERSION,
+    requestedItemCount: input.requestedFormSize ?? null,
+    assignedItemCount: input.questions.length,
+    fingerprint: researchFormFingerprint(input.questions),
+  };
+  const itemMap = buildItemMap(input.questions);
   const contract = buildContractMetadata({
+    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
     submittedAt,
+    consent: input.consent,
     contractMetadata: input.contractMetadata,
+    form: {
+      formId: "core",
+      formVersion: RESEARCH_FORM_VERSION,
+      fingerprint: form.fingerprint,
+    },
     observations: {
       identity: browserObservation(identity, submittedAt),
       predictedLabelIds: browserObservation(predictedLabelIds, submittedAt),
@@ -508,6 +672,8 @@ export function buildResearchSubmission(input: {
         submittedAt,
       ),
       answers: browserObservation(input.answers, input.completedAt),
+      canonicalItems: browserObservation(itemMap, input.completedAt),
+      canonicalForm: browserObservation(form, submittedAt),
     },
   });
   return {
@@ -541,12 +707,7 @@ export function buildResearchSubmission(input: {
     predictedLabelIds,
     predictedModifierIds,
     specialistAssignment: input.specialistAssignment,
-    form: {
-      algorithmVersion: RESEARCH_FORM_VERSION,
-      requestedItemCount: input.requestedFormSize ?? null,
-      assignedItemCount: input.questions.length,
-      fingerprint: researchFormFingerprint(input.questions),
-    },
+    form,
     sampling: {
       design: "open-opt-in-nonprobability",
       populationInference: false,
@@ -556,7 +717,7 @@ export function buildResearchSubmission(input: {
       recruitmentSourceProvenance: "url-parameter-unverified",
     },
     answers: input.answers,
-    itemMap: buildItemMap(input.questions),
+    itemMap,
   };
 }
 
@@ -584,9 +745,21 @@ export function buildSpecialistResearchSubmission(input: {
 }): SpecialistResearchSubmission {
   validateAnswerCoverage(input.answers, input.questions);
   const submittedAt = input.submittedAt ?? new Date().toISOString();
+  const form = {
+    formId: `specialist-${input.moduleId}`,
+    formVersion: input.moduleVersion,
+    fingerprint: researchFormFingerprint(input.questions),
+  };
+  const itemMap = buildItemMap(
+    input.questions,
+    input.constructWeightsByQuestionId,
+  );
   const contract = buildContractMetadata({
+    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
     submittedAt,
+    consent: input.consent,
     contractMetadata: input.contractMetadata,
+    form,
     observations: {
       criterion: browserObservation(input.criterion, submittedAt),
       answers: browserObservation(input.answers, input.completedAt),
@@ -596,6 +769,8 @@ export function buildSpecialistResearchSubmission(input: {
       ),
       matches: browserObservation(input.outcome.matches, input.completedAt),
       evidence: browserObservation(input.outcome.evidence, input.completedAt),
+      canonicalItems: browserObservation(itemMap, input.completedAt),
+      canonicalForm: browserObservation(form, submittedAt),
     },
   });
   return {
@@ -621,7 +796,7 @@ export function buildSpecialistResearchSubmission(input: {
     scoringVersion: input.scoringVersion,
     criterion: input.criterion,
     answers: input.answers,
-    itemMap: buildItemMap(input.questions, input.constructWeightsByQuestionId),
+    itemMap,
     constructScores: input.outcome.constructScores,
     matches: input.outcome.matches,
     evidence: input.outcome.evidence,
@@ -650,12 +825,19 @@ export function buildSpecialistDispositionSubmission(input: {
   const submittedAt = input.submittedAt ?? completedAt;
   const answeredCount = Math.max(0, Math.floor(input.answeredCount));
   const contract = buildContractMetadata({
+    studyId: safeToken(input.studyId) || RESEARCH_STUDY_ID,
     submittedAt,
+    consent: null,
     contractMetadata: input.contractMetadata,
     refusal: {
       status: "refused",
       reason: input.disposition,
       refusedAt: completedAt,
+    },
+    form: {
+      formId: `specialist-disposition-${input.moduleId}`,
+      formVersion: input.moduleVersion,
+      fingerprint: researchFormFingerprint([]),
     },
     observations: {
       disposition: browserObservation(input.disposition, completedAt),
