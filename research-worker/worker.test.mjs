@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { handleRequest, researchFormFingerprint } from "./src/worker.mjs";
+import canonicalManifestArtifact from "./generated/canonical-manifest.json" with {
+  type: "json",
+};
 
 const ORIGIN = "https://ideologynormativesorter.edriffles.us";
 
@@ -204,6 +207,137 @@ function coreSubmission(overrides = {}) {
   };
 }
 
+const CANONICAL_MANIFEST = canonicalManifestArtifact.manifest;
+const SPECIALIST_MODULE = CANONICAL_MANIFEST.specialistModules.find(
+  (module) => module.id === "anarchist-families-module",
+);
+
+function specialistItemSnapshot(item) {
+  const responseOptions = [-3, -2, -1, 0, 1, 2, 3].map((value) => ({
+    value,
+    label: [
+      "Strongly disagree",
+      "Disagree",
+      "Somewhat disagree",
+      "Neutral",
+      "Somewhat agree",
+      "Agree",
+      "Strongly agree",
+    ][value + 3],
+  }));
+  if (item.layer === "descriptive" || item.allowDontKnow === true)
+    responseOptions.push({ value: "dont_know", label: "I don't know" });
+  responseOptions.push({
+    value: "prefer_not_to_answer",
+    label: "Prefer not to answer",
+  });
+
+  const snapshot = {
+    questionId: item.id,
+    prompt: item.prompt,
+    helpText: item.helpText ?? "Choose the response closest to your view.",
+    domain: item.domain,
+    layer: item.layer,
+    theoryContext: "mixed",
+    responseType: item.responseType ?? "likert7",
+    responseOptions,
+    axisWeights: Object.entries(item.rootConstructWeights ?? {}).map(
+      ([axisId, weight]) => ({ axisId, weight }),
+    ),
+    reverseScored: item.reverseScored === true,
+    reviewStatus: "approved",
+    sourceCount: item.sources?.length ?? 0,
+  };
+  if (item.localConstructWeights !== undefined)
+    snapshot.constructWeights = item.localConstructWeights;
+  if (item.evidenceNote !== undefined) snapshot.evidenceNote = item.evidenceNote;
+  if (item.contextNote !== undefined) snapshot.contextNote = item.contextNote;
+  if (item.layer === "descriptive") {
+    snapshot.confidencePrompt =
+      item.confidencePrompt ?? "How confident are you in the answer you just gave?";
+    snapshot.salience = {
+      kind: "confidence",
+      prompt: snapshot.confidencePrompt,
+      helpText:
+        "“Confidence” means how sure you are that your answer is accurate. This rating controls how strongly this empirical answer counts in your result. Skipping the rating excludes the answer from your result.",
+      options: [
+        { value: 1, label: "Low" },
+        { value: 3, label: "Medium" },
+        { value: 5, label: "High" },
+        { value: "skipped", label: "Skip rating" },
+      ],
+    };
+  }
+  if (item.layer === "prescriptive") {
+    if (item.priorityPrompt !== undefined)
+      snapshot.priorityPrompt = item.priorityPrompt;
+    snapshot.salience = {
+      kind: "priority",
+      prompt: item.priorityPrompt ?? "",
+      helpText:
+        "“Priority” means how important this policy or strategy is compared with other changes. This rating controls how strongly this preference counts in your result. Skipping the rating excludes the answer from your result.",
+      options: [
+        { value: 1, label: "Low" },
+        { value: 3, label: "Medium" },
+        { value: 5, label: "High" },
+        { value: "skipped", label: "Skip rating" },
+      ],
+    };
+  }
+  return snapshot;
+}
+
+function specialistSubmission(overrides = {}) {
+  const itemMap = SPECIALIST_MODULE.itemIds.map((itemId) =>
+    specialistItemSnapshot(
+      CANONICAL_MANIFEST.items.find((item) => item.id === itemId),
+    ),
+  );
+  return coreSubmission({
+    submissionId: "specialist_submission",
+    recordType: "specialist",
+    moduleId: SPECIALIST_MODULE.id,
+    moduleVersion: SPECIALIST_MODULE.version,
+    assignment: {
+      moduleId: SPECIALIST_MODULE.id,
+      strategy: "balanced-hash-v2",
+      rosterVersion: "2026-08-specialist-roster-v1",
+    },
+    presentationOrder: itemMap.map((item) => item.questionId),
+    answers: Object.fromEntries(
+      itemMap.map((item) => [
+        item.questionId,
+        { questionId: item.questionId, value: "prefer_not_to_answer" },
+      ]),
+    ),
+    itemMap,
+    criterion: {
+      selectedIds: [],
+      noneOrUnsure: true,
+      confidence: "low",
+    },
+    constructScores: {},
+    matches: [],
+    ...overrides,
+  });
+}
+
+function specialistDisposition(overrides = {}) {
+  return coreSubmission({
+    submissionId: "specialist_disposition",
+    recordType: "specialist-disposition",
+    moduleId: SPECIALIST_MODULE.id,
+    moduleVersion: SPECIALIST_MODULE.version,
+    assignment: {
+      moduleId: SPECIALIST_MODULE.id,
+      strategy: "balanced-hash-v2",
+      rosterVersion: "2026-08-specialist-roster-v1",
+    },
+    disposition: "declined-before-start",
+    answeredCount: 0,
+    ...overrides,
+  });
+}
 function postRequest(body, origin = ORIGIN) {
   return new Request("https://collector.example/submit", {
     method: "POST",
@@ -314,6 +448,100 @@ describe("research contribution Worker", () => {
         422,
       );
     }
+  });
+  it("enforces canonical specialist module coverage and disposition bounds", async () => {
+    const valid = specialistSubmission();
+    const validResponse = await handleRequest(
+      postRequest(valid),
+      environment(),
+    );
+    assert.equal(validResponse.status, 202);
+
+    for (const [suffix, itemMap] of [
+      ["empty", []],
+      ["partial", valid.itemMap.slice(0, -1)],
+      ["duplicate", [...valid.itemMap.slice(0, -1), valid.itemMap[0]]],
+    ]) {
+      const invalid = specialistSubmission({
+        submissionId: `specialist_invalid_map_${suffix}`,
+        itemMap,
+        presentationOrder: itemMap.map((item) => item.questionId),
+        answers: Object.fromEntries(
+          itemMap.map((item) => [
+            item.questionId,
+            { questionId: item.questionId, value: "prefer_not_to_answer" },
+          ]),
+        ),
+      });
+      assert.equal(
+        (await handleRequest(postRequest(invalid), environment())).status,
+        422,
+      );
+    }
+
+    assert.equal(
+      (
+        await handleRequest(
+          postRequest(
+            specialistSubmission({
+              submissionId: "specialist_stale_module_version",
+              moduleVersion: "stale-module-version",
+            }),
+          ),
+          environment(),
+        )
+      ).status,
+      422,
+    );
+
+    for (const answeredItemCount of [
+      -1,
+      1.5,
+      SPECIALIST_MODULE.itemIds.length + 1,
+    ]) {
+      assert.equal(
+        (
+          await handleRequest(
+            postRequest(
+              specialistSubmission({
+                submissionId: `specialist_bad_evidence_${String(answeredItemCount)}`,
+                evidence: { answeredItemCount },
+              }),
+            ),
+            environment(),
+          )
+        ).status,
+        422,
+      );
+    }
+
+    assert.equal(
+      (
+        await handleRequest(
+          postRequest(
+            specialistDisposition({
+              answeredCount: SPECIALIST_MODULE.itemIds.length,
+            }),
+          ),
+          environment(),
+        )
+      ).status,
+      202,
+    );
+    assert.equal(
+      (
+        await handleRequest(
+          postRequest(
+            specialistDisposition({
+              submissionId: "specialist_disposition_overflow",
+              answeredCount: SPECIALIST_MODULE.itemIds.length + 1,
+            }),
+          ),
+          environment(),
+        )
+      ).status,
+      422,
+    );
   });
 
   it("rejects canonical item-map content tampering", async () => {

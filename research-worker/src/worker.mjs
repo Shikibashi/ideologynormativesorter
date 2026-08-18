@@ -27,6 +27,13 @@ const CONDITIONAL_SPECIALIST_ITEM_IDS = new Set(
     ? CANONICAL_MANIFEST.conditionalSpecialistItemIds
     : [],
 );
+const CANONICAL_SPECIALIST_MODULE_BY_ID = new Map(
+  Array.isArray(CANONICAL_MANIFEST.specialistModules)
+    ? CANONICAL_MANIFEST.specialistModules
+        .filter((module) => isObject(module) && validToken(module.id))
+        .map((module) => [module.id, module])
+    : [],
+);
 const DEFAULT_CONFIDENCE_PROMPT =
   "How confident are you in the answer you just gave?";
 const DEFAULT_PRIORITY_PROMPT =
@@ -810,6 +817,42 @@ function validCanonicalItemMap(submission) {
     );
   });
 }
+function resolvedCanonicalSpecialistModule(moduleId) {
+  const module = CANONICAL_SPECIALIST_MODULE_BY_ID.get(moduleId);
+  if (
+    !isObject(module) ||
+    module.id !== moduleId ||
+    !validString(module.version, 512) ||
+    !Array.isArray(module.itemIds) ||
+    module.itemIds.length === 0 ||
+    !module.itemIds.every((itemId) => validToken(itemId)) ||
+    new Set(module.itemIds).size !== module.itemIds.length
+  )
+    return undefined;
+  return module;
+}
+
+function validSpecialistItemMap(submission, module) {
+  if (!validCanonicalItemMap(submission)) return false;
+  const itemIds = submission.itemMap.map((item) => item.questionId);
+  const expectedItemIds = new Set(module.itemIds);
+  return (
+    itemIds.length === expectedItemIds.size &&
+    new Set(itemIds).size === itemIds.length &&
+    itemIds.every((itemId) => expectedItemIds.has(itemId))
+  );
+}
+
+function validSpecialistEvidence(value, itemCount) {
+  if (value === undefined || value === null) return true;
+  return (
+    isObject(value) &&
+    (value.answeredItemCount === undefined ||
+      (Number.isInteger(value.answeredItemCount) &&
+        value.answeredItemCount >= 0 &&
+        value.answeredItemCount <= itemCount))
+  );
+}
 
 function validAnswer(answer, item) {
   if (!isObject(answer) || answer.questionId !== item.questionId) return false;
@@ -1059,12 +1102,16 @@ function validAssignment(assignment, moduleId, participantId, studyId, env) {
 }
 
 function validSpecialistRecord(submission, env) {
+  const module = resolvedCanonicalSpecialistModule(submission.moduleId);
+  const observedEvidence = submission.observations?.evidence?.value;
   return (
     submission.recordType === "specialist" &&
+    module !== undefined &&
     validAnsweredRecord(submission) &&
-    validCanonicalItemMap(submission) &&
-    validToken(submission.moduleId) &&
-    validString(submission.moduleVersion, 512) &&
+    validSpecialistItemMap(submission, module) &&
+    submission.moduleVersion === module.version &&
+    validSpecialistEvidence(submission.evidence, module.itemIds.length) &&
+    validSpecialistEvidence(observedEvidence, module.itemIds.length) &&
     validVersion(submission.bankVersion, env.EXPECTED_BANK_VERSION) &&
     validVersion(submission.scoringVersion, env.EXPECTED_SCORING_VERSION) &&
     validAssignment(
@@ -1096,10 +1143,11 @@ function validSpecialistRecord(submission, env) {
 }
 
 function validSpecialistDisposition(submission, env) {
+  const module = resolvedCanonicalSpecialistModule(submission.moduleId);
   return (
     submission.recordType === "specialist-disposition" &&
-    validToken(submission.moduleId) &&
-    validString(submission.moduleVersion, 512) &&
+    module !== undefined &&
+    submission.moduleVersion === module.version &&
     validAssignment(
       submission.assignment,
       submission.moduleId,
@@ -1113,9 +1161,11 @@ function validSpecialistDisposition(submission, env) {
       "declined-after-completion",
     ].includes(submission.disposition) &&
     Number.isInteger(submission.answeredCount) &&
-    submission.answeredCount >= 0
+    submission.answeredCount >= 0 &&
+    submission.answeredCount <= module.itemIds.length
   );
 }
+
 
 export function validateSubmission(submission, env) {
   if (!contractMetadataMatches(submission, env)) return false;
