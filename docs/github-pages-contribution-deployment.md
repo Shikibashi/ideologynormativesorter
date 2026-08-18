@@ -18,9 +18,7 @@ also verifies the configured `balanced-hash-v2` strategy, frozen roster version,
 mapping. It accepts the explicitly configured 120-item matrix form used by controlled research links and exposes no
 public read endpoint.
 
-Current profile counts are pinned separately from temporary legacy allowances. The Worker accepts 158/336- and
-149/309-item profiles only so sessions opened under the two preceding bank revisions can still finish; new Pages
-sessions use 206/338.
+Legacy profile counts are historical v1 compatibility notes, not a current clean-rebuild acceptance claim. The clean-rebuild Worker configuration leaves legacy allowances empty until a release owner approves and tests an explicit one-way grace boundary; new sessions use the canonical 206/338 profile counts.
 
 ## Current production resources
 
@@ -30,7 +28,7 @@ sessions use 206/338.
 - D1 database: `political-judgment-contributions` (`5681f1c3-960b-4872-b0ea-396a590d3708`)
 - Region: ENAM
 
-The Worker, schema, D1 binding, 20-request-per-minute rate limit, origin restriction, and live end-to-end persistence path were verified on 2026-08-10. The synthetic verification record was deleted and the database returned to zero rows. GitHub Pages collection is active with the repository URL as the public contact and a published 24-month retention period.
+The identifiers above document the prior 2026-08-10 production verification record. They are not evidence for the current clean-rebuild candidate: its staging scaffold retains unresolved owner/resource/write-mode sentinels, and no new deployment, migration, retention deletion, or traffic promotion is authorized from this repository state.
 
 ## One-time Cloudflare setup
 
