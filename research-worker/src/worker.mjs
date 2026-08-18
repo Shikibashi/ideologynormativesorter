@@ -1217,6 +1217,21 @@ function jsonResponse(status, body, origin, env) {
 }
 function resolvedWriteMode(env) {
    const mode = nonEmptyValue(env.WRITE_MODE)?.toLowerCase();
+   const operationalControls = [
+      "WRITE_MODE_GRACE_SECONDS",
+      "ACTIVE_SESSION_GRACE_DAYS",
+      "ACTIVE_SESSION_GRACE_END",
+      "STAGING_OWNER_APPROVAL",
+   ];
+   if (
+      operationalControls.some(
+         (key) =>
+            key in env &&
+            (nonEmptyValue(env[key]) === undefined ||
+               nonEmptyValue(env[key])?.includes("REPLACE_WITH")),
+      )
+   )
+      return null;
    return mode === "open" || mode === "drain" ? mode : null;
 }
 
