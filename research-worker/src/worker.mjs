@@ -83,16 +83,6 @@ const CONTRACT_METADATA_FIELDS = [
   "cohortVersion",
   "cohortFingerprint",
 ];
-const REQUIRED_BROWSER_CONTRACT_FIELDS = [
-  "contractVersion",
-  "manifestVersion",
-  "manifestFingerprint",
-  "serializationVersion",
-  "contractRoute",
-  "cohort",
-  "cohortVersion",
-  "cohortFingerprint",
-];
 
 function nonEmptyValue(value) {
   return typeof value === "string" && value.trim() !== "" ? value : undefined;
@@ -269,7 +259,7 @@ function contractArtifactMetadata(env) {
     else delete metadata[field];
   }
   if (
-    !REQUIRED_BROWSER_CONTRACT_FIELDS.every(
+    !CONTRACT_METADATA_FIELDS.every(
       (field) => nonEmptyValue(metadata[field]) !== undefined,
     ) ||
     metadata.manifestSchemaVersion !==
@@ -314,11 +304,29 @@ function suppliedContractMetadata(submission) {
     const candidateFields = CONTRACT_METADATA_FIELDS.filter(
       (field) => candidate[field] !== undefined,
     );
-    if (
-      candidateFields.length > 0 &&
-      !REQUIRED_BROWSER_CONTRACT_FIELDS.every(
-        (field) => candidate[field] !== undefined,
+    const candidateHasMetadata =
+      candidateFields.length > 0 || candidate === submission.contractMetadata;
+    if (candidateHasMetadata) {
+      if (
+        !CONTRACT_METADATA_FIELDS.every(
+          (field) => nonEmptyValue(candidate[field]) !== undefined,
+        )
       )
+        return { invalid: true };
+      if (
+        candidate === submission.contractMetadata &&
+        !validContractSnapshot(candidate.snapshot)
+      )
+        return { invalid: true };
+    }
+    if (
+      candidate.snapshot !== undefined &&
+      !validContractSnapshot(candidate.snapshot)
+    )
+      return { invalid: true };
+    if (
+      candidate.provenance !== undefined &&
+      !validBrowserProvenance(candidate.provenance)
     )
       return { invalid: true };
     for (const field of CONTRACT_METADATA_FIELDS) {
@@ -333,8 +341,8 @@ function suppliedContractMetadata(submission) {
   );
   if (
     topLevelFields.length > 0 &&
-    !REQUIRED_BROWSER_CONTRACT_FIELDS.every(
-      (field) => submission[field] !== undefined,
+    !CONTRACT_METADATA_FIELDS.every(
+      (field) => nonEmptyValue(submission[field]) !== undefined,
     )
   )
     return { invalid: true };
@@ -344,6 +352,16 @@ function suppliedContractMetadata(submission) {
       return { invalid: true };
     result[field] = submission[field];
   }
+  if (
+    submission.provenance !== undefined &&
+    !validBrowserProvenance(submission.provenance)
+  )
+    return { invalid: true };
+  if (
+    submission.observations !== undefined &&
+    !validBrowserObservations(submission.observations)
+  )
+    return { invalid: true };
   return Object.keys(result).length > 0 ? result : null;
 }
 
@@ -353,7 +371,7 @@ function contractMetadataMatches(submission, env) {
   if (!expected) return true;
   const supplied = suppliedContractMetadata(submission);
   if (!supplied || supplied.invalid) return false;
-  return REQUIRED_BROWSER_CONTRACT_FIELDS.every((field) => {
+  return CONTRACT_METADATA_FIELDS.every((field) => {
     if (expected[field] === undefined) return false;
     if (supplied[field] === expected[field]) return true;
     return (
@@ -436,6 +454,90 @@ function validTimestamp(value) {
   if (typeof value !== "string") return false;
   const parsed = Date.parse(value);
   return Number.isFinite(parsed) && new Date(parsed).toISOString() === value;
+}
+function validBrowserProvenance(value) {
+  return (
+    isObject(value) &&
+    value.source === "browser" &&
+    validTimestamp(value.capturedAt) &&
+    (value.surface === undefined || validString(value.surface, 512)) &&
+    (value.runtimeVersion === undefined ||
+      validString(value.runtimeVersion, 512))
+  );
+}
+
+function validBrowserObservation(value) {
+  return (
+    isObject(value) &&
+    value.kind === "browser-observation" &&
+    value.source === "browser" &&
+    "value" in value &&
+    (value.observedAt === undefined || validTimestamp(value.observedAt))
+  );
+}
+
+function validBrowserObservations(value) {
+  if (
+    !isObject(value) ||
+    Object.values(value).some(
+      (observation) => !validBrowserObservation(observation),
+    )
+  )
+    return false;
+  const canonicalItems = value.canonicalItems;
+  return (
+    canonicalItems === undefined ||
+    (Array.isArray(canonicalItems.value) &&
+      canonicalItems.value.every(validItem))
+  );
+}
+function validContractSnapshot(snapshot) {
+  if (!isObject(snapshot)) return false;
+  if (
+    ![
+      "contractVersion",
+      "manifestSchemaVersion",
+      "manifestVersion",
+      "manifestFingerprint",
+      "serializationVersion",
+      "serializationFingerprint",
+      "schemaVersion",
+      "schemaFingerprint",
+      "cohortVersion",
+      "cohortFingerprint",
+    ].every((field) => validString(snapshot[field], 2048))
+  )
+    return false;
+  if (
+    (snapshot.sourceManifestSha256 !== undefined &&
+      !/^[0-9a-f]{64}$/u.test(snapshot.sourceManifestSha256)) ||
+    (snapshot.contractFingerprint !== undefined &&
+      !/^[0-9a-f]{64}$/u.test(snapshot.contractFingerprint))
+  )
+    return false;
+  if (
+    !isObject(snapshot.study) ||
+    !validString(snapshot.study.studyId, 512) ||
+    !isObject(snapshot.form) ||
+    !validString(snapshot.form.formId, 512) ||
+    !validString(snapshot.form.formVersion, 512) ||
+    !validString(snapshot.form.fingerprint, 2048) ||
+    !validBrowserProvenance(snapshot.provenance) ||
+    !validBrowserObservations(snapshot.observations) ||
+    !isObject(snapshot.versionBundle)
+  )
+    return false;
+  if (
+    ![
+      "manifestSchemaVersion",
+      "manifestVersion",
+      "serializationVersion",
+      "schemaVersion",
+      "cohortVersion",
+    ].every((field) => snapshot.versionBundle[field] === snapshot[field])
+  )
+    return false;
+  return true;
 }
 
 function configuredInteger(value, fallback) {
@@ -534,7 +636,10 @@ function validItem(item) {
     LAYERS.has(item.layer) &&
     Array.isArray(item.responseOptions) &&
     item.responseOptions.length > 0 &&
-    item.responseOptions.every(validResponseOption)
+    item.responseOptions.every(validResponseOption) &&
+    (item.sourceCount === undefined ||
+      (Number.isInteger(item.sourceCount) && item.sourceCount >= 0)) &&
+    (item.provenance === undefined || validBrowserProvenance(item.provenance))
   );
 }
 const TIER_RANK = {

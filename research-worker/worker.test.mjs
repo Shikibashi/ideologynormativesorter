@@ -69,6 +69,11 @@ function environment(overrides = {}) {
     EXPECTED_MANIFEST_FINGERPRINT:
       "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
     EXPECTED_SERIALIZATION_VERSION: "canonical-json-v1",
+    EXPECTED_SERIALIZATION_FINGERPRINT:
+      "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc",
+    EXPECTED_CONTRACT_SCHEMA_VERSION: "research-schema-v1",
+    EXPECTED_SCHEMA_FINGERPRINT:
+      "24c5a9e75c4fef6c9f36445588cd143f8074b3015b62ed9d6e3be171291413f0",
     EXPECTED_CONTRACT_ROUTE: "research-browser",
     EXPECTED_COHORT: "community-2026-v5",
     EXPECTED_COHORT_VERSION: "clean-rebuild-v1",
@@ -172,7 +177,14 @@ function coreSubmission(overrides = {}) {
     manifestVersion: "ideology-registry-2026-08-clean-v1",
     manifestFingerprint:
       "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+    sourceManifestSha256: "a".repeat(64),
+    manifestSchemaVersion: "canonical-domain-v2",
     serializationVersion: "canonical-json-v1",
+    serializationFingerprint:
+      "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc",
+    schemaContractVersion: "research-schema-v1",
+    schemaFingerprint:
+      "24c5a9e75c4fef6c9f36445588cd143f8074b3015b62ed9d6e3be171291413f0",
     contractVersion: "2026-08-v19",
     contractRoute: "research-browser",
     cohort: "community-2026-v5",
@@ -480,7 +492,8 @@ describe("research contribution Worker", () => {
       manifestFingerprint:
         "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
       serializationVersion: "canonical-json-v1",
-      serializationFingerprint: null,
+      serializationFingerprint:
+        "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc",
       cohort: "community-2026-v5",
       cohortVersion: "clean-rebuild-v1",
       cohortFingerprint: "clean-rebuild-fingerprint-v1",
@@ -496,7 +509,12 @@ describe("research contribution Worker", () => {
         canonicalManifestFingerprint:
           "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
         serializationVersion: "canonical-json-v1",
+        serializationFingerprint:
+          "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc",
         manifestSchemaVersion: "canonical-domain-v2",
+        schemaContractVersion: "research-schema-v1",
+        schemaFingerprint:
+          "24c5a9e75c4fef6c9f36445588cd143f8074b3015b62ed9d6e3be171291413f0",
         cohortVersion: "clean-rebuild-v1",
         cohortFingerprint: "clean-rebuild-fingerprint-v1",
         contractRoute: "research-browser",
@@ -511,8 +529,15 @@ describe("research contribution Worker", () => {
       manifestVersion: "ideology-registry-2026-08-clean-v1",
       manifestFingerprint:
         "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+      sourceManifestSha256: "a".repeat(64),
       serializationVersion: "canonical-json-v1",
+      serializationFingerprint:
+        "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc",
+      schemaContractVersion: "research-schema-v1",
+      schemaFingerprint:
+        "24c5a9e75c4fef6c9f36445588cd143f8074b3015b62ed9d6e3be171291413f0",
       cohort: "community-2026-v5",
+      manifestSchemaVersion: "canonical-domain-v2",
       cohortVersion: "clean-rebuild-v1",
       cohortFingerprint: "clean-rebuild-fingerprint-v1",
     };
@@ -534,6 +559,70 @@ describe("research contribution Worker", () => {
     assert.equal(rejected.status, 422);
   });
 
+  it("requires complete browser metadata and typed provenance fields", async () => {
+    const env = environment();
+    const incomplete = await handleRequest(
+      postRequest(
+        coreSubmission({
+          submissionId: "submission_missing_schema_fingerprint",
+          schemaFingerprint: undefined,
+        }),
+      ),
+      env,
+    );
+    assert.equal(incomplete.status, 422);
+
+    const malformedSourceCount = await handleRequest(
+      postRequest({
+        ...coreSubmission({ submissionId: "submission_bad_source_count" }),
+        itemMap: [
+          {
+            ...coreSubmission().itemMap[0],
+            sourceCount: "0",
+          },
+        ],
+      }),
+      env,
+    );
+    assert.equal(malformedSourceCount.status, 422);
+
+    const malformedProvenance = await handleRequest(
+      postRequest(
+        coreSubmission({
+          submissionId: "submission_bad_provenance",
+          provenance: "browser",
+        }),
+      ),
+      env,
+    );
+    assert.equal(malformedProvenance.status, 422);
+
+    const nestedMetadataSubmission = coreSubmission({
+      submissionId: "submission_missing_snapshot",
+    });
+    nestedMetadataSubmission.contractMetadata = Object.fromEntries(
+      [
+        "contractVersion",
+        "sourceManifestSha256",
+        "manifestSchemaVersion",
+        "manifestVersion",
+        "manifestFingerprint",
+        "serializationVersion",
+        "serializationFingerprint",
+        "schemaContractVersion",
+        "schemaFingerprint",
+        "contractRoute",
+        "cohort",
+        "cohortVersion",
+        "cohortFingerprint",
+      ].map((field) => [field, nestedMetadataSubmission[field]]),
+    );
+    const missingSnapshot = await handleRequest(
+      postRequest(nestedMetadataSubmission),
+      env,
+    );
+    assert.equal(missingSnapshot.status, 422);
+  });
   it("rejects mismatched configured contract route and canonical metadata", async () => {
     const env = environment({
       EXPECTED_CONTRACT_VERSION: "2026-08-v19",
@@ -603,6 +692,9 @@ describe("research contribution Worker", () => {
       EXPECTED_MANIFEST_VERSION: "",
       EXPECTED_MANIFEST_FINGERPRINT: "",
       EXPECTED_SERIALIZATION_VERSION: "",
+      EXPECTED_SERIALIZATION_FINGERPRINT: "",
+      EXPECTED_CONTRACT_SCHEMA_VERSION: "",
+      EXPECTED_SCHEMA_FINGERPRINT: "",
       EXPECTED_CONTRACT_ROUTE: "",
       EXPECTED_COHORT: "",
       EXPECTED_COHORT_VERSION: "",
