@@ -1,10 +1,10 @@
 # Clean-rebuild staging and cutover runbook
 
-**Status: staging scaffold; not a deployment authorization.**
-
-This runbook implements the approved static Pages → Cloudflare Worker → private D1 topology. It is intentionally executable only after the release/infra owner fills every required field and signs the gates. The staging Wrangler file contains sentinels by design. No production resource ID, route, endpoint, credential, or secret belongs in it or in this runbook.
-
-No deployment or migration command was run while creating this scaffold.
+**Status: isolated staging deployed; production remains closed.**
+ 
+This runbook implements the approved static Pages → Cloudflare Worker → private D1 topology. The user-authorized staging execution below is isolated from production; production identifiers, routes, and secrets were not used. Production write mode remains sentinel-gated.
+ 
+Staging deployment and migration were executed on 2026-08-18 after explicit user authorization. Production deployment, production migration, traffic promotion, and production write opening were not executed.
 
 ## 1. Topology and invariants
 
@@ -21,10 +21,24 @@ isolated staging D1 (append-only submissions)
 The existing production Pages artifact and v1 Worker route remain the rollback target. New Pages traffic and persisted writes are separate approvals. There is no public D1 read endpoint. Staging records are synthetic only and are purged after evidence is archived.
 
 The staging Worker must use a distinct name/route, D1 database, rate-limit namespace, origin, and contract cohort. Pending records retain their original route and cohort. Structural registry/scoring changes use a new route/cohort; versions are never silently coerced.
+## Staging execution evidence (2026-08-18)
+
+- Pages project: `political-judgment-clean-staging`
+- Pages deployment: `https://95d672c2.political-judgment-clean-staging.pages.dev`
+- Worker: `political-judgment-contributions-clean-staging`
+- Worker endpoint: `https://political-judgment-contributions-clean-staging.hiramurayuki.workers.dev`
+- Worker version: `83433d29-4232-495e-8fc0-e5b7982bde4a`
+- D1: `political-judgment-contributions-clean-staging`
+- D1 ID: `2751b0b8-188e-45b2-a0bf-b075c96da7d7`
+- Rate-limit namespace: `24002`
+- Migration: `0001_create_submissions.sql` and `0002_clean_rebuild_contract.sql` applied remotely.
+- Health: HTTP 200, `ok: true`, expected manifest/serialization/cohort metadata, `writeMode: open`.
+- Synthetic probes: invalid payload returned 422; disallowed origin returned 403.
+- Production remains untouched. Retention/deletion, rollback drill, and traffic promotion remain separate gates.
 
 ## 2. Required fields and owners
 
-Fill the table before any dry-run, migration, traffic change, or write-mode change. A blank, `TBD`, or `REPLACE_WITH_*` value closes the gate.
+Fill all owner/governance fields before production migration, traffic promotion, retention/deletion operation, or rollback authorization. The staging execution evidence above records the user-authorized isolated deployment; unresolved governance fields keep production closed.
 
 | Field                            | Required value                                                                           | Owner / sign-off         |
 | -------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------ |
@@ -38,15 +52,15 @@ Fill the table before any dry-run, migration, traffic change, or write-mode chan
 | Persistence owner                | `[REQUIRED: name and pending/D1 probe sign-off]`                                         | Persistence              |
 | Specialist actions owner         | `[REQUIRED: name and Specialist/disposition probe sign-off]`                             | Specialist               |
 | Controller/stage UI owner        | `[REQUIRED: name and receipt/recovery sign-off]`                                         | UI                       |
-| Staging Pages artifact SHA       | `[REQUIRED: immutable release SHA]`                                                      | UI/reference             |
-| Staging Pages preview URL/origin | `[REQUIRED: non-production URL]`                                                         | Release/infra            |
-| Staging Worker name              | `[REQUIRED: isolated name; recommended clean-staging suffix]`                            | Release/infra            |
-| Staging Worker route/endpoint    | `[REQUIRED: versioned route and `/submit`, `/health` URLs]`                              | Release/infra            |
-| Staging D1 name                  | `[REQUIRED: newly provisioned isolated name]`                                            | Release/infra            |
-| Staging D1 ID                    | `[REQUIRED: newly provisioned ID]`                                                       | Release/infra            |
-| Staging rate-limit namespace ID  | `[REQUIRED: newly provisioned ID]`                                                       | Release/infra            |
-| `writeMode` control              | `[REQUIRED: audited drain/open toggle and command/API]`                                  | Release/infra            |
-| Grace start/end                  | `[REQUIRED: ISO-8601 dates; 14 days default, 30-day maximum without architect approval]` | Release/infra            |
+|| Staging Pages artifact SHA       | `clean-rebuild` Pages deployment `95d672c2` (immutable deployment URL above)                           | UI/reference             |
+|| Staging Pages preview URL/origin | `https://95d672c2.political-judgment-clean-staging.pages.dev`                                           | Release/infra            |
+|| Staging Worker name              | `political-judgment-contributions-clean-staging`                                                       | Release/infra            |
+|| Staging Worker route/endpoint    | `https://political-judgment-contributions-clean-staging.hiramurayuki.workers.dev/{submit,health}`    | Release/infra            |
+|| Staging D1 name                  | `political-judgment-contributions-clean-staging`                                                       | Release/infra            |
+|| Staging D1 ID                    | `2751b0b8-188e-45b2-a0bf-b075c96da7d7`                                                               | Release/infra            |
+|| Staging rate-limit namespace ID  | `24002`                                                                                               | Release/infra            |
+|| `writeMode` control              | `open`, user-authorized for isolated staging only; production remains sentinel-gated                 | Release/infra            |
+|| Grace start/end                  | `2026-08-18` → `2026-09-01T00:00:00Z`                                                                | Release/infra            |
 | Migration window                 | `[REQUIRED: start/end and 2× p99 latency evidence]`                                      | Worker/persistence       |
 | New study/schema/cohort IDs      | `[REQUIRED: approved values or explicit same-cohort decision]`                           | Research/data + analysis |
 | Promotion mechanism              | `[REQUIRED: immutable Pages promotion or approved route/DNS switch]`                     | Release/infra            |

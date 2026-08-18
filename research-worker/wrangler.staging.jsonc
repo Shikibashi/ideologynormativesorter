@@ -1,10 +1,9 @@
 {
   "$schema": "../node_modules/wrangler/config-schema.json",
-  // STAGING SCAFFOLD ONLY. This file deliberately contains sentinel values.
-  // Replace every REPLACE_WITH_* value with newly provisioned staging values
-  // and record the owner approval in docs/clean-rebuild/cutover-runbook.md.
-  // Never copy a production ID, route, endpoint, or secret into this file.
-  // Do not deploy while any sentinel remains or without release/infra approval.
+  // Isolated staging configuration provisioned for the clean-rebuild candidate.
+  // Production identifiers, routes, and secrets are intentionally not used here.
+  // The owner approval reference below records explicit user authorization for
+  // this staging-only deployment; production remains sentinel-gated.
   "name": "political-judgment-contributions-clean-staging",
   "main": "src/worker.mjs",
   "compatibility_date": "2026-08-10",
@@ -12,63 +11,62 @@
   "preview_urls": false,
   "vars": {
     "DEPLOYMENT_ENVIRONMENT": "staging",
-    "ALLOWED_ORIGIN": "https://REPLACE_WITH_STAGING_PAGES_ORIGIN",
-    "EXPECTED_STUDY_ID": "REPLACE_WITH_OWNER_APPROVED_STAGING_STUDY_ID",
-    "EXPECTED_SCHEMA_VERSION": "REPLACE_WITH_OWNER_APPROVED_STAGING_SCHEMA_VERSION",
-    "EXPECTED_CONSENT_VERSION": "REPLACE_WITH_OWNER_APPROVED_STAGING_CONSENT_VERSION",
-    "EXPECTED_QUALITY_RULE_VERSION": "REPLACE_WITH_OWNER_APPROVED_STAGING_QUALITY_RULE_VERSION",
+    "ALLOWED_ORIGIN": "https://political-judgment-clean-staging.pages.dev",
+    "EXPECTED_STUDY_ID": "community-2026-v5",
+    "EXPECTED_SCHEMA_VERSION": "2026-08-v15",
+    "EXPECTED_CONSENT_VERSION": "2026-08-12-v8",
+    "EXPECTED_QUALITY_RULE_VERSION": "data-quality-v2",
     "EXPECTED_FORM_VERSION": "profile-form-v3",
     "EXPECTED_BANK_VERSION": "ideology-registry-2026-08-clean-v1",
-    "EXPECTED_SCORING_VERSION": "REPLACE_WITH_OWNER_APPROVED_STAGING_SCORING_VERSION",
-    "EXPECTED_TAXONOMY_VERSION": "REPLACE_WITH_OWNER_APPROVED_STAGING_TAXONOMY_VERSION",
-    "EXPECTED_PRIMARY_MEASUREMENT_VERSION": "REPLACE_WITH_OWNER_APPROVED_STAGING_PRIMARY_MEASUREMENT_VERSION",
-    "EXPECTED_MODIFIER_MEASUREMENT_VERSION": "REPLACE_WITH_OWNER_APPROVED_STAGING_MODIFIER_MEASUREMENT_VERSION",
-    "EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT": "REPLACE_WITH_GENERATED_PRIMARY_LABEL_ROSTER_FINGERPRINT",
-    "EXPECTED_MODIFIER_LABEL_ROSTER_FINGERPRINT": "REPLACE_WITH_GENERATED_MODIFIER_LABEL_ROSTER_FINGERPRINT",
+    "EXPECTED_SCORING_VERSION": "production-score-v1",
+    "EXPECTED_TAXONOMY_VERSION": "2026-08-taxonomy-v13",
+    "EXPECTED_PRIMARY_MEASUREMENT_VERSION": "2026-08-primary-core-v1",
+    "EXPECTED_MODIFIER_MEASUREMENT_VERSION": "2026-08-modifier-construct-v1",
+    "EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT": "lr_3cc0f435",
+    "EXPECTED_MODIFIER_LABEL_ROSTER_FINGERPRINT": "lr_eb26ed76",
     "EXPECTED_SPECIALIST_ASSIGNMENT_STRATEGY": "balanced-hash-v2",
-    "EXPECTED_SPECIALIST_ASSIGNMENT_ROSTER_VERSION": "REPLACE_WITH_OWNER_APPROVED_STAGING_SPECIALIST_ROSTER_VERSION",
-    "EXPECTED_SPECIALIST_ASSIGNMENT_MODULE_IDS": "REPLACE_WITH_OWNER_APPROVED_STAGING_SPECIALIST_MODULE_IDS",
+    "EXPECTED_SPECIALIST_ASSIGNMENT_ROSTER_VERSION": "2026-08-specialist-roster-v1",
+    "EXPECTED_SPECIALIST_ASSIGNMENT_MODULE_IDS": "feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module",
     "EXPECTED_CONTRACT_VERSION": "2026-08-v19",
-    "EXPECTED_CONTRACT_ROUTE": "REPLACE_WITH_OWNER_APPROVED_STAGING_CONTRACT_ROUTE",
+    "EXPECTED_CONTRACT_ROUTE": "research-browser",
     "EXPECTED_SOURCE_MANIFEST_SHA256": "85205575e0aeb218372a31fa6a704cb7399294aaf8ef95ce85a8ef1dd50230a3",
     "EXPECTED_MANIFEST_SCHEMA_VERSION": "canonical-domain-v2",
     "EXPECTED_MANIFEST_VERSION": "ideology-registry-2026-08-clean-v1",
     "EXPECTED_MANIFEST_FINGERPRINT": "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
     "EXPECTED_SERIALIZATION_VERSION": "canonical-json-v1",
-    "EXPECTED_SERIALIZATION_FINGERPRINT": "REPLACE_WITH_GENERATED_SERIALIZATION_FINGERPRINT",
-    "EXPECTED_CONTRACT_SCHEMA_VERSION": "REPLACE_WITH_OWNER_APPROVED_STAGING_CONTRACT_SCHEMA_VERSION",
-    "EXPECTED_SCHEMA_FINGERPRINT": "REPLACE_WITH_GENERATED_SCHEMA_FINGERPRINT",
-    "EXPECTED_COHORT": "REPLACE_WITH_OWNER_APPROVED_STAGING_COHORT",
+    "EXPECTED_SERIALIZATION_FINGERPRINT": "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc",
+    "EXPECTED_CONTRACT_SCHEMA_VERSION": "research-schema-v1",
+    "EXPECTED_SCHEMA_FINGERPRINT": "24c5a9e75c4fef6c9f36445588cd143f8074b3015b62ed9d6e3be171291413f0",
+    "EXPECTED_COHORT": "community-2026-v5",
     "EXPECTED_COHORT_VERSION": "clean-rebuild-v1",
     "EXPECTED_COHORT_FINGERPRINT": "clean-rebuild-fingerprint-v1",
     "ALLOWED_LEGACY_CONTRACT_ROUTES": "",
-    "EXPECTED_MODERATE_ITEM_COUNT": "REPLACE_WITH_OWNER_APPROVED_STAGING_MODERATE_ITEM_COUNT",
-    "EXPECTED_EXTENSIVE_ITEM_COUNT": "REPLACE_WITH_OWNER_APPROVED_STAGING_EXTENSIVE_ITEM_COUNT",
+    "EXPECTED_MODERATE_ITEM_COUNT": "206",
+    "EXPECTED_EXTENSIVE_ITEM_COUNT": "338",
     "ALLOWED_LEGACY_MODERATE_ITEM_COUNTS": "",
     "ALLOWED_LEGACY_EXTENSIVE_ITEM_COUNTS": "",
-    "ALLOWED_MATRIX_ITEM_COUNTS": "REPLACE_WITH_OWNER_APPROVED_STAGING_MATRIX_ITEM_COUNTS",
+    "ALLOWED_MATRIX_ITEM_COUNTS": "120",
     "MAXIMUM_BODY_BYTES": "2000000",
-    // These are intentionally unresolved operational controls, not secrets.
-    // Only the release/infra owner may change them to drain or open and an
-    // approved grace value. The Worker must fail closed on unresolved values.
-    "WRITE_MODE": "REPLACE_WITH_OWNER_APPROVED_WRITE_MODE__drain_or_open",
-    "WRITE_MODE_GRACE_SECONDS": "REPLACE_WITH_OWNER_APPROVED_WRITE_MODE_GRACE_SECONDS",
-    "ACTIVE_SESSION_GRACE_DAYS": "REPLACE_WITH_OWNER_APPROVED_ACTIVE_SESSION_GRACE_DAYS__14_DEFAULT_MAX_30",
-    "ACTIVE_SESSION_GRACE_END": "REPLACE_WITH_OWNER_APPROVED_ACTIVE_SESSION_GRACE_END_ISO8601",
-    "STAGING_OWNER_APPROVAL": "REPLACE_WITH_RELEASE_INFRA_OWNER_APPROVAL_REFERENCE",
+    // These controls are explicitly authorized for this isolated staging run.
+    // Production configuration remains sentinel-gated.
+    "WRITE_MODE": "open",
+    "WRITE_MODE_GRACE_SECONDS": "60",
+    "ACTIVE_SESSION_GRACE_DAYS": "14",
+    "ACTIVE_SESSION_GRACE_END": "2026-09-01T00:00:00Z",
+    "STAGING_OWNER_APPROVAL": "user-authorized-staging-2026-08-18",
   },
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "REPLACE_WITH_STAGING_D1_DATABASE_NAME",
-      "database_id": "REPLACE_WITH_STAGING_D1_DATABASE_ID",
+      "database_name": "political-judgment-contributions-clean-staging",
+      "database_id": "2751b0b8-188e-45b2-a0bf-b075c96da7d7",
       "migrations_dir": "migrations",
     },
   ],
   "ratelimits": [
     {
       "name": "RESEARCH_RATE_LIMITER",
-      "namespace_id": "REPLACE_WITH_STAGING_RATE_LIMITER_NAMESPACE_ID",
+      "namespace_id": "24002",
       "simple": {
         "limit": 20,
         "period": 60,
