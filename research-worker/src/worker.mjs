@@ -638,7 +638,12 @@ function canonicalItemContentMatches(item, canonical) {
     layer: canonical.layer,
     theoryContext: "mixed",
     responseType: canonical.responseType ?? "likert7",
-    responseOptions: canonicalResponseOptions(canonical),
+    responseOptions:
+      canonical.allowDontKnow === true &&
+      Array.isArray(item.responseOptions) &&
+      !item.responseOptions.some((option) => option?.value === "dont_know")
+        ? canonicalResponseOptions({ ...canonical, allowDontKnow: false })
+        : canonicalResponseOptions(canonical),
     axisWeights: canonicalAxisWeights(canonical),
     reverseScored: canonical.reverseScored === true,
     reviewStatus: "approved",

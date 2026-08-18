@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
+import { sha256Canonical } from "../src/domain/canonicalSerialization.ts";
 
 const root = new URL("..", import.meta.url);
 
@@ -14,6 +15,11 @@ async function readOptional(relativePath) {
     if (error?.code === "ENOENT") return null;
     throw error;
   }
+}
+function generatedManifestFingerprintInput(manifest) {
+  const { fingerprint: _fingerprint, ...metadata } = manifest.metadata;
+  const { metadata: _manifestMetadata, ...payload } = manifest;
+  return { metadata, ...payload };
 }
 
 function scanWhitespace(text, index) {
@@ -212,11 +218,7 @@ function parseCanonicalArtifact(source) {
       "contractVersion",
     ),
     bankVersion: consistentValues(
-      [
-        value.bankVersion,
-        metadataSource.bankVersion,
-        manifest.bankVersion,
-      ],
+      [value.bankVersion, metadataSource.bankVersion, manifest.bankVersion],
       "bankVersion",
     ),
     contractRoute: consistentValues(
@@ -427,7 +429,10 @@ if (canonicalArtifact) {
     throw new Error(
       "Canonical data source is required when the artifact is present.",
     );
-  if (!canonicalManifestArtifact || !record(canonicalManifestArtifact.manifest)) {
+  if (
+    !canonicalManifestArtifact ||
+    !record(canonicalManifestArtifact.manifest)
+  ) {
     throw new Error(
       "Generated canonical manifest artifact is required when the contract artifact is present.",
     );
@@ -446,7 +451,8 @@ if (canonicalArtifact) {
         typeof item.id === "string" &&
         item.id.length > 0,
     ) ||
-    new Set(generatedItems.map((item) => item.id)).size !== generatedItems.length
+    new Set(generatedItems.map((item) => item.id)).size !==
+      generatedItems.length
   ) {
     throw new Error(
       "Generated canonical manifest artifact must contain uniquely identified items.",
@@ -474,6 +480,14 @@ if (canonicalArtifact) {
       "Generated canonical manifest active item projections are inconsistent.",
     );
   }
+  const generatedFingerprint = await sha256Canonical(
+    generatedManifestFingerprintInput(generatedManifest),
+  );
+  assertEqual(
+    "Generated canonical manifest payload fingerprint",
+    generatedFingerprint,
+    canonicalArtifact.manifestFingerprint,
+  );
   assertEqual(
     "Canonical manifest schema",
     constant(canonicalManifestSource, "CANONICAL_MANIFEST_SCHEMA_VERSION"),

@@ -16,7 +16,6 @@ import {
 } from "../domain/selectors";
 import { buildResultProfile } from "../scoring";
 import {
-  clearPendingResearchRecord,
   clearQuizState,
   loadQuizState,
   saveQuizState,
@@ -295,7 +294,6 @@ export function handleCompare(
 
 export function handleClearSavedProgress(context: AppActionContext): void {
   clearQuizState();
-  clearPendingResearchRecord();
   context.setSavedProgress(null);
   announceStatus("Saved assessment progress cleared.");
 }
@@ -315,7 +313,6 @@ export function handleRestart(context: AppActionContext): void {
       window.location.pathname + window.location.search,
     );
   clearQuizState();
-  clearPendingResearchRecord();
   if (context.specialistAssignment) {
     clearSpecialistProgress(
       context.participantId,

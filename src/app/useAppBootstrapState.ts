@@ -47,7 +47,15 @@ export function useAppBootstrapState(): AppBootstrapState {
     Boolean(import.meta.env.VITE_RESEARCH_ENDPOINT?.trim()) ||
     import.meta.env.DEV;
   const [loadedInitialQuiz] = useState(loadQuizState);
-  const [loadedPendingResearch] = useState(loadPendingResearchRecord);
+  const [loadedPendingResearch] = useState(() =>
+    loadPendingResearchRecord({
+      studyId,
+      administration,
+      participantId: loadedInitialQuiz?.research?.participantId,
+      bankVersion: QUESTION_BANK_VERSION,
+      formVersion: "profile-form-v3",
+    }),
+  );
   const [participantId, setParticipantId] = useState(() => {
     if (loadedInitialQuiz?.research?.participantId)
       return loadedInitialQuiz.research.participantId;

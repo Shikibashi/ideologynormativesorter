@@ -609,6 +609,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Prize lecture: Beyond Markets and States",
@@ -637,6 +638,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Prize lecture: Beyond Markets and States",
@@ -1089,6 +1091,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Property and Ownership",
@@ -1124,6 +1127,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Preventing Policy Capture",
@@ -1159,6 +1163,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "OECD Guidelines on Corporate Governance of State-Owned Enterprises 2024",
@@ -1674,6 +1679,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Prize lecture: The Pretence of Knowledge",
@@ -1704,6 +1710,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Prize lecture: The Pretence of Knowledge",
@@ -1737,6 +1744,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Regulatory Policy in Perspective",
@@ -2206,6 +2214,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Program Recertification Costs: Evidence from SNAP",
@@ -2680,6 +2689,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "A Welfare Analysis of Occupational Licensing in U.S. States",
@@ -3205,6 +3215,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "The Impact of Zoning on Housing Affordability",
@@ -3233,6 +3244,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "The Impact of Zoning on Housing Affordability",
@@ -3711,6 +3723,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Can Currency Competition Work?",
@@ -3746,6 +3759,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "The distributional footprint of monetary policy",
@@ -3776,6 +3790,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Licensing, transparency and preventing barriers to entry",
@@ -4279,6 +4294,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Stimulating digital innovation for growth and inclusiveness",
@@ -4314,6 +4330,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "The Evolving IP Marketplace: Aligning Patent Notice and Remedies With Competition",
@@ -4847,6 +4864,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Emergency Powers",
@@ -5392,6 +5410,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Implementing an Agency-Level Performance Measurement System",
@@ -5420,6 +5439,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Equitable Sharing Program",
@@ -5448,6 +5468,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "The Innocence Effect",
@@ -5932,6 +5953,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "The Contact Hypothesis Re-evaluated",
@@ -5965,6 +5987,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Do Interest Groups Affect Immigration?",
@@ -6469,6 +6492,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Ethnic Conflict and Civil Society: India and Beyond",
@@ -6950,6 +6974,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Many Countries Favor Specific Religions, Officially or Unofficially",
@@ -7516,6 +7541,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Benefit Coverage Rates and Household Typologies",
@@ -8332,6 +8358,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Superfund Liability",
@@ -8365,6 +8392,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Do Environmental Regulations Disproportionately Affect Small Businesses?",
@@ -8909,6 +8937,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Lessons from the Coalition: International Experiences from the Afghanistan Reconstruction",
@@ -8937,6 +8966,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "The Lion's Share: Evidence from Federal Contracts on the Value of Political Connections",
@@ -9357,6 +9387,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "A meta-analysis of the effects of democratic innovations on participants’ attitudes, behaviour and capabilities",
@@ -9385,6 +9416,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Democracy",
@@ -9420,6 +9452,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Designing Resistance: Democratic Institutions and the Threat of Backsliding",
@@ -9827,6 +9860,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Facial Recognition Services: Federal Law Enforcement Agencies Should Take Actions to Implement Training, and Policies for Civil Liberties",
@@ -11266,6 +11300,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "A meta-analysis of the effects of democratic innovations on participants’ attitudes, behaviour and capabilities",
@@ -11294,6 +11329,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Information and Political Accountability",
@@ -11327,6 +11363,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Information and Political Accountability",
@@ -11360,6 +11397,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Mobilising evidence for good governance",
@@ -11393,6 +11431,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Mobilising evidence for good governance",
@@ -11426,6 +11465,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Social Norms",
@@ -11748,6 +11788,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Social Norms",
@@ -11781,6 +11822,7 @@
         "measurementStatus": "candidate",
         "publicRoleStatus": "internal",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "sources": [
           {
             "title": "Social Norms",
@@ -12137,6 +12179,7 @@
         ],
         "evidenceNote": "This item is scoped to electoral accountability when voters can compare evidence and observe outcomes. Information effects vary with media, issue salience, and who receives the signal; the claim is not that elections always select competent leaders.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12169,6 +12212,7 @@
         ],
         "evidenceNote": "This item concerns retrospective attribution problems under competitive elections. Identity cues and misinformation are possible mechanisms, not universal explanations, and the item does not imply that voters cannot learn from outcomes.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12201,6 +12245,7 @@
         ],
         "evidenceNote": "This item separates participation from information and deliberative quality. It does not imply that mass participation is harmful or that expert filtering reliably produces better decisions.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12233,6 +12278,7 @@
         ],
         "evidenceNote": "This item concerns conditions that can make expert advice more useful: independent checking, transparent methods, and reported uncertainty. These design conditions do not guarantee correctness or replace public authorization.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12265,6 +12311,7 @@
         ],
         "evidenceNote": "This item tests a public-choice risk within professional expertise. It does not assert that all expert bodies are captured or that ordinary political control is free of status and self-interest effects.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12297,6 +12344,7 @@
         ],
         "evidenceNote": "This item asks whether contestable and bounded expertise can improve public decisions. It leaves the quality of evidence, reviewer independence, and allocation of final authority open.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12329,6 +12377,7 @@
         ],
         "evidenceNote": "This item tests a mediated account of legal norm change: rules matter partly through enforcement and social incentives. It does not claim that law alone changes culture or that every norm responds at the same speed.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12361,6 +12410,7 @@
         ],
         "evidenceNote": "This item isolates persistence under stable relational and economic dependencies. It does not make path dependence permanent or deny that legal change can alter incentives and reference groups.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12393,6 +12443,7 @@
         ],
         "evidenceNote": "This item separates institutional influence on expectations from unanimous moral conversion. It does not specify whether the change is desirable, how coercive the institution is, or whether effects are equal across groups.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12764,6 +12815,7 @@
         ],
         "evidenceNote": "This item distinguishes the analytic contribution of expert evidence from the normative choice among competing values and distributional priorities. Evidence-governance guidance treats transparent assumptions, uncertainty, contestability, and public representation as safeguards; the item does not imply that evidence is politically neutral or that expertise is dispensable.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v3",
         "active": true,
         "reviewStatus": "approved",
@@ -12801,6 +12853,7 @@
         ],
         "evidenceNote": "This item isolates implementation capacity from the desirability of a policy and from the state’s overall size. Research distinguishes the hypothetical potential of state capacity from actual bureaucratic performance and emphasizes information, incentives, coordination, and contextual constraints in implementation; failure is therefore conditional rather than inevitable.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v4",
         "active": true,
         "reviewStatus": "approved",
@@ -12838,6 +12891,7 @@
         ],
         "evidenceNote": "This item measures an evidence-oriented view of state capacity: the ability to implement public policy should be distinguished from announcing a policy or possessing formal authority. The measurement literature treats implementation outcomes as a validity problem and does not imply that one indicator captures every dimension of capacity.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v4",
         "active": true,
         "reviewStatus": "approved",
@@ -12875,6 +12929,7 @@
         ],
         "evidenceNote": "This item concerns the institutional conditions that can make expertise more publicly legitimate, not a guarantee that challenge improves technical accuracy in every case. Recent scholarship on evidence use treats expertise as politically contested and emphasizes inclusion, independence safeguards, transparency, and accountability.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v4",
         "active": true,
         "reviewStatus": "approved",
@@ -12912,6 +12967,7 @@
         ],
         "evidenceNote": "This item separates expert analysis from the democratic authorization of distributive or value-laden choices. Research on accountability identifies risks when delegation obscures responsibility or leaves affected people without effective scrutiny; it does not claim that all delegation is illegitimate or that public challenge supplies technical expertise by itself.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v4",
         "active": true,
         "reviewStatus": "approved",
@@ -12949,6 +13005,7 @@
         ],
         "evidenceNote": "This item isolates social reinforcement as a mechanism of durable norm change. Scholarship distinguishes formal legal rules from the expectations, sanctions, reference groups, and institutional practices that make behavior appear normal; the claim is conditional and does not deny that law can itself alter expectations.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v4",
         "active": true,
         "reviewStatus": "approved",
@@ -12986,6 +13043,7 @@
         ],
         "evidenceNote": "This item tests conditional persistence rather than cultural immobility. Research on formal and informal institutions describes culture and social norms as capable of persistence while also changing through interaction with law, authority, incentives, and collective action; the item does not make delay permanent or universal.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-confidence-coverage-v4",
         "active": true,
         "reviewStatus": "approved",
@@ -13645,6 +13703,7 @@
           }
         ],
         "contextNote": "This normative specialist item treats imposed political hierarchy as a problem not solved merely by making rulers answerable. It does not deny that accountability can reduce abuse or that coordination may require roles; authority, domination, consent, exit, reciprocity, and institutional replacement are separate dimensions.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -13688,6 +13747,7 @@
         "contextNote": "This descriptive specialist item asks whether markets and private exchange can coordinate social activity without a centralized state directing production. It does not claim that markets eliminate hierarchy, public goods, externalities, or coercion; price signals, polycentric rules, ownership, enforcement, and exit are distinct mechanisms.",
         "evidenceNote": "Scope to the institutional conditions under which market exchange and private coordination use dispersed information, including property rules, contract enforcement, infrastructure, and public goods. The claim does not say that markets are self-sufficient, that every market is competitive, or that decentralized exchange removes all state or corporate power; market performance varies by sector and institutional design.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -13734,6 +13794,7 @@
           }
         ],
         "contextNote": "This normative specialist item favors common or worker-and-community governance of productive resources over absentee control. It does not specify whether common ownership is municipal, cooperative, federated, or state-run; property, workplace authority, investment, coordination, and affected-community standing can be arranged differently.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -13780,6 +13841,7 @@
         ],
         "contextNote": "This prescriptive specialist item prioritizes federated association, mutual aid, and direct organization over capturing a central state. It does not imply that elections, public institutions, or delegated coordination are always rejected; sequencing, scale, accountability, legality, and resistance risk remain separate strategic questions.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -13818,6 +13880,7 @@
           }
         ],
         "contextNote": "This normative specialist item gives the nonhuman world moral standing that can constrain human convenience. It does not identify whether standing belongs to organisms, species, ecosystems, or relations, and it does not choose a policy instrument; necessity, distribution, ecological thresholds, and human welfare remain distinct.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -13862,6 +13925,7 @@
         ],
         "contextNote": "This prescriptive specialist item favors reducing material throughput in high-income societies rather than treating aggregate growth as the default solution. It does not equate GDP, energy use, material use, emissions, welfare, or poverty reduction; distribution, absolute decoupling, rebound effects, and feasibility require separate evaluation.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -13906,6 +13970,7 @@
         ],
         "contextNote": "This prescriptive specialist item treats private investment and technological innovation as central ecological-transition tools when public rules correct external harms. It does not imply that markets self-correct or that public ownership is excluded; finance, regulation, innovation, distribution, capture, and measured emissions outcomes are distinct.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -13950,6 +14015,7 @@
         ],
         "contextNote": "This prescriptive specialist item favors democratic and locally accountable control over both corporate and centralized state power. It does not assume local control automatically protects ecosystems or coordinates across borders; participation, expertise, federation, rights, scale, and ecological limits must be considered together.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -13995,6 +14061,7 @@
           }
         ],
         "contextNote": "This normative specialist item isolates collective or worker-and-community control of productive assets within ecological transition. It does not decide whether that control is cooperative, municipal, federated, or state-run, and it does not imply that private investment, markets, or technical expertise are absent from every ecosocialist proposal.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14040,6 +14107,7 @@
           }
         ],
         "contextNote": "This normative specialist item favors social or worker ownership of productive assets over control through private capital markets. It does not specify a single socialist institution or deny the need for investment and coordination; ownership, control, allocation, incentives, workplace voice, and public accountability are distinct.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14082,6 +14150,7 @@
         "contextNote": "This descriptive specialist item asks whether democratic planning and collective decision-making can coordinate complex production without relying entirely on prices. It does not claim that planning eliminates information problems or that prices are sufficient; knowledge, participation, computation, ownership, logistics, and correction are separate mechanisms.",
         "evidenceNote": "Scope to proposals and historical debates about democratic or participatory planning in which workers, consumers, or public institutions coordinate production through deliberation, negotiated plans, or computational tools. The claim does not equate democratic planning with centralized command, imply that planning always outperforms markets, or settle the information, incentive, and accountability tradeoffs across sectors.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14129,6 +14198,7 @@
         ],
         "contextNote": "This prescriptive specialist item favors durable socialist gains through elections, law, unions, and public institutions rather than immediate rupture. It does not imply that existing institutions are neutral or that rupture is never justified; coalition-building, reform feedback, labor power, repression, and transition risks remain distinct.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14175,6 +14245,7 @@
         ],
         "contextNote": "This prescriptive specialist item tests whether a disciplined revolutionary organization may centralize authority during transition. It does not establish that centralization is temporary, accountable, or effective; emergency power, opposition, coercion, organizational capacity, and post-transition institutional release require separate judgment.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14218,6 +14289,7 @@
           }
         ],
         "contextNote": "This normative specialist item values inherited institutional knowledge and cautions against deliberate redesign. It does not imply that all inherited institutions are legitimate or that reform is impossible; continuity, experimentation, path dependence, justice, and the distribution of authority are distinct considerations.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14264,6 +14336,7 @@
         ],
         "contextNote": "This prescriptive specialist item favors public law upholding inherited family and sexual norms over leaving those matters mainly to individual choice. It does not specify which norms or how to protect adults and dependents; tradition, consent, equality, religion, safety, and state coercion must be distinguished.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14309,6 +14382,7 @@
           }
         ],
         "contextNote": "This normative specialist item gives a historic national culture special priority in political community. It does not define whether continuity means civic institutions, language, religion, ancestry, or symbolic recognition; equal citizenship, minority rights, immigration, and ethnonational exclusion are separate possibilities.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14353,6 +14427,7 @@
         ],
         "contextNote": "This prescriptive specialist item supports assertive foreign policy and alliances as defenses of a liberal order. It does not settle when force, sanctions, arms, or alliance commitments are justified; deterrence, escalation, civilian harm, sovereignty, local agency, and accountability require separate analysis.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14398,6 +14473,7 @@
           }
         ],
         "contextNote": "This normative specialist item requires constitutional authority to remain publicly accountable even when religious law or tradition informs interpretation. It does not exclude religious reasoning or require one secular model; popular sovereignty, interpretive authority, rights, judicial review, and clerical power can be combined differently.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14442,6 +14518,7 @@
         ],
         "contextNote": "This prescriptive specialist item gives a recognized religious authority final power to reject conflicting civil laws. It does not identify which authority, interpretive school, or constitutional safeguard is intended, and it separates clerical veto power from private religious participation and equal citizenship.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14488,6 +14565,7 @@
           }
         ],
         "contextNote": "This normative specialist item tests whether the state should express a historic majority religious or civilizational identity rather than remain neutral. It does not by itself prescribe theocracy, unequal rights, or one nationalist program; establishment, accommodation, symbolism, coercion, and minority standing are distinct.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14533,6 +14611,7 @@
           }
         ],
         "contextNote": "This normative specialist item preserves equal legal and political standing for minorities even when the state adopts a majority religious or national tradition. It does not settle whether establishment is symbolic or coercive; citizenship, accommodation, representation, conversion, dissent, and institutional safeguards require separate assessment.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14577,6 +14656,7 @@
         ],
         "contextNote": "This prescriptive item isolates constitutional review as a rights constraint on ordinary lawmaking. Review may be judicial, legislative, or mixed, and systems differ over appointment, interpretive authority, amendment, and democratic control; the item does not imply that courts are always more legitimate or accurate than elected bodies.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14621,6 +14701,7 @@
         ],
         "contextNote": "This prescriptive item isolates peaceful party competition and alternation in government. Electoral eligibility, party organization, equal citizenship, constitutional limits, and religious or ideological restrictions are distinct design choices; support for competition does not settle every question about majoritarianism, judicial review, or state neutrality.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14666,6 +14747,7 @@
           }
         ],
         "contextNote": "This normative item tests whether Islamic ethical or legal traditions may contribute to constitutional public authority while equal civic standing and citizen accountability remain requirements. Islamic constitutionalism has multiple historical and institutional forms; the item does not identify one school of jurisprudence or require clerical rule.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14717,6 +14799,7 @@
         ],
         "contextNote": "This prescriptive item isolates who may interpret and contest Islamic principles in public law. Judicial review, party competition, constitutional rights, popular sovereignty, and clerical authority can be arranged in different combinations; support for interpretive pluralism is not a claim that courts or majorities are always correct.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14762,6 +14845,7 @@
           }
         ],
         "contextNote": "This normative item tests Hindu civilizational belonging as a specific account of Indian political membership, not Hinduism as a personal religion. Scholarship distinguishes several uses of Hindutva and debates how cultural identity, majoritarian citizenship, secularism, and state power relate; agreement does not specify one party program or treatment of minorities.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14807,6 +14891,7 @@
           }
         ],
         "contextNote": "This normative item isolates Jewish collective self-determination as a political aim while leaving borders, religion, economic system, and constitutional form open. Zionist currents have included liberal, socialist, religious, revisionist, and other projects; agreement does not identify one current government or one position on the Israeli-Palestinian conflict.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14852,6 +14937,7 @@
           }
         ],
         "contextNote": "This normative specialist item tests ultimate civil-law legitimacy within a recognized religious-legal authority arrangement. It does not identify one religion, doctrine, interpretive school, or regime form, and it is distinct from religious advocacy, establishment, statutory accommodation, or a religious party participating under pluralist constitutional rules.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14896,6 +14982,7 @@
         ],
         "contextNote": "This prescriptive item asks how technically complex decisions should allocate authority between qualified expertise and ordinary public accountability. Expertise can improve analysis without settling legitimacy, representation, value conflict, or appeal; the item therefore does not imply that experts should replace democratic institutions or that every technical decision needs the same delegation model.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14942,6 +15029,7 @@
         ],
         "contextNote": "This prescriptive specialist item permits algorithmic systems to substantially determine public decisions when measured performance exceeds human officials. It does not treat accuracy as sufficient for legitimacy; bias, objective choice, contestability, privacy, distribution, due process, and who remains accountable are separate requirements.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -14982,6 +15070,7 @@
         "contextNote": "This descriptive item separates technical affordances from political outcomes: cryptography can provide security services such as confidentiality, integrity, and authentication, while distributed or peer-to-peer architectures can alter where coordination and trust are placed. Those properties may reduce dependence on a central intermediary in some uses, but they do not by themselves establish democratic governance, equal control, or durable decentralization.",
         "evidenceNote": "Scope to technical and governance mechanisms rather than a universal political outcome: cryptography can provide confidentiality, integrity, and authentication, while distributed networks can change how trust and coordination are organized. The claim does not establish that such tools eliminate intermediaries, equalize control, or produce democratic decentralization in every deployment.",
         "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -15028,6 +15117,7 @@
         ],
         "contextNote": "This prescriptive specialist item favors rapid technological acceleration despite destabilizing existing institutions. It does not specify which technology or who bears the transition costs; acceleration, innovation, disruption, safety, labor, political power, and democratic capacity are distinct considerations.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -15069,6 +15159,7 @@
         ],
         "contextNote": "This prescriptive item isolates the direction of accelerationist strategy: intensifying market competition and existing economic dynamics rather than redirecting technological capacity toward post-capitalist ends. Accelerationism includes left, right, unconditional, and technology-centered uses; the item does not define the whole family or imply that disruption is beneficial in every context.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -15113,6 +15204,7 @@
         ],
         "contextNote": "This prescriptive specialist item isolates centralized administrative coordination from the separate question of whether technical expertise is valuable. A single national authority can be expert or non-expert, and local or voluntary institutions can use expertise; the item therefore does not by itself identify technocracy, cyberocracy, or any particular technology policy.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -15156,6 +15248,7 @@
           }
         ],
         "contextNote": "This normative specialist item treats hereditary or traditional authority as potentially legitimate without continuous ordinary election. It does not establish that inheritance supplies consent or competence; continuity, constitutional limits, equal citizenship, accountability, succession, and exit are separate grounds for evaluation.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -15200,6 +15293,7 @@
         ],
         "contextNote": "This prescriptive specialist item assigns a monarch a constitutional-symbolic role while reserving final political authority to elected institutions. It does not settle appointment powers, reserve powers, succession, neutrality, cost, or public consent; ceremonial status and effective authority must be distinguished.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -15243,6 +15337,7 @@
           }
         ],
         "contextNote": "This normative specialist item favors subsidiarity: local decision-making except where higher-level coordination is necessary. It does not imply that local units can solve every externality or that higher authority is illegitimate; scale, rights portability, mobility, fiscal capacity, federation, and polycentric coordination are separate questions.",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -15287,6 +15382,7 @@
         ],
         "contextNote": "This prescriptive item isolates a preference for confederal coordination among municipalities or regions, with higher-level authority limited rather than sovereign over local communities. It is distinct from generic decentralization, ordinary federalism, and the descriptive question of whether local units can coordinate effectively.",
         "priorityPrompt": "How important is this strategic distinction to your outlook?",
+        "allowDontKnow": false,
         "version": "2026-08-specialist-v11",
         "reviewStatus": "approved"
       },
@@ -15365,7 +15461,8 @@
         ],
         "contextNote": "This descriptive specialist item separates formal sex neutrality in law from persistent institutional and relational hierarchy. It does not claim that every unequal outcome proves male domination or that formal equality has no effect; enforcement, informal norms, care, violence, work, and representation are distinct mechanisms.",
         "evidenceNote": "Scope to cross-national comparisons such as the World Bank Women, Business and the Law 2024 study of 190 economies: distinguish formal legal rules from implementation systems and observed outcomes in safety, childcare, pay enforcement, and economic participation. The evidence does not create one universal measure of male dominance across every institution or relationship.",
-        "confidencePrompt": "How confident are you in this empirical claim?"
+        "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true
       },
       {
         "id": "fm-fem-3",
@@ -15447,7 +15544,8 @@
         ],
         "contextNote": "This descriptive specialist item links economic dependence to unpaid care, household labor, and the organization of paid work. It does not claim that all dependence has one cause or that paid employment automatically liberates; bargaining power, social provision, family structure, labor law, and choice are separate variables.",
         "evidenceNote": "Scope to time-use and labour-market studies summarized by the ILO across countries: compare women’s and men’s unpaid care and household-work hours with labour-force participation, employment, earnings, and progression. Treat unpaid care, household labour, and the organization of paid work as related but separately measured mechanisms rather than one universal causal coefficient.",
-        "confidencePrompt": "How confident are you in this empirical claim?"
+        "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true
       },
       {
         "id": "fm-fem-5",
@@ -16350,7 +16448,8 @@
         ],
         "contextNote": "This descriptive specialist item concerns the persistence of colonial dispossession through present institutions despite formal citizenship and voting rights. It does not claim that every disparity has one colonial cause or that formal rights are meaningless; land, jurisdiction, administration, material resources, and political voice are separate mechanisms.",
         "evidenceNote": "Scope to Indigenous peoples in countries with colonial or settler histories: compare formal citizenship and voting rights with recognition and implementation of collective land and territory rights, participation in decisions affecting traditional lands, treaty or consultation practice, and documented dispossession or forced relocation. The claim concerns institutional continuity, not every Indigenous experience or one global causal estimate.",
-        "confidencePrompt": "How confident are you in this empirical claim?"
+        "confidencePrompt": "How confident are you in this empirical claim?",
+        "allowDontKnow": true
       },
       {
         "id": "fm-id-14",
@@ -16821,7 +16920,8 @@
               "prescriptive"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "christian-democrat",
@@ -16881,7 +16981,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "classical-liberalism",
@@ -16926,7 +17027,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "democratic-socialist",
@@ -16981,7 +17083,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "green-politics",
@@ -17012,7 +17115,8 @@
               "normative"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "liberal-conservatism",
@@ -17056,7 +17160,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "libertarian-socialism",
@@ -17113,7 +17218,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "market-liberal",
@@ -17170,7 +17276,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "market-right-libertarianism",
@@ -17218,7 +17325,8 @@
               "prescriptive"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "marxian-socialism",
@@ -17262,7 +17370,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "marxist-leninist",
@@ -17317,7 +17426,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "national-conservatism",
@@ -17360,7 +17470,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "radical-democracy",
@@ -17417,7 +17528,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "republicanism",
@@ -17462,7 +17574,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "social-democrat",
@@ -17531,7 +17644,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "social-liberalism",
@@ -17588,7 +17702,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "primary"
       },
       {
         "id": "absolute-monarchist",
@@ -17617,7 +17732,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "agorist",
@@ -17646,7 +17762,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "agrarian-populism",
@@ -17690,7 +17807,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "anarcho-capitalist",
@@ -17722,7 +17840,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "anarcho-communist",
@@ -17768,7 +17887,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "anarcha-feminism",
@@ -17797,7 +17917,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "anarcho-primitivism",
@@ -17826,7 +17947,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "anarcho-syndicalism",
@@ -17857,7 +17979,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "bioregionalism",
@@ -17890,7 +18013,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "bleeding-heart-libertarianism",
@@ -17920,7 +18044,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "black-nationalism",
@@ -17971,7 +18096,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "christian-reconstructionism",
@@ -18000,7 +18126,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "christian-socialism",
@@ -18029,7 +18156,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "council-communist",
@@ -18059,7 +18187,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "democratic-confederalism",
@@ -18092,7 +18221,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "deep-ecology",
@@ -18137,7 +18267,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "degrowth-green",
@@ -18170,7 +18301,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "eco-fascism",
@@ -18200,7 +18332,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "eco-authoritarianism",
@@ -18231,7 +18364,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "ecomodernist",
@@ -18262,7 +18396,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "ecosocialist",
@@ -18294,7 +18429,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "fascist-authoritarian",
@@ -18352,7 +18488,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "georgism",
@@ -18384,7 +18521,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "geolibertarian",
@@ -18430,7 +18568,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "green-capitalism",
@@ -18462,7 +18601,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "guild-socialism",
@@ -18493,7 +18633,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "hindutva",
@@ -18536,7 +18677,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "indigenism",
@@ -18571,7 +18713,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "individualist-anarchism",
@@ -18600,7 +18743,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "integralism",
@@ -18645,7 +18789,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "islamic-democracy",
@@ -18702,7 +18847,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "juche",
@@ -18745,7 +18891,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "kemalism",
@@ -18778,7 +18925,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "left-wing-market-anarchism",
@@ -18807,7 +18955,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "market-anarchism",
@@ -18862,7 +19011,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "liberal-feminism",
@@ -18908,7 +19058,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "libertarian-municipalism",
@@ -18939,7 +19090,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "market-socialist",
@@ -18972,7 +19124,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "maoism",
@@ -19002,7 +19155,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "minarchist",
@@ -19049,7 +19203,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "mutualist",
@@ -19183,7 +19338,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "national-bolshevism",
@@ -19214,7 +19370,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "national-socialism",
@@ -19248,7 +19405,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "neoconservative",
@@ -19281,7 +19439,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "neoreactionary",
@@ -19313,7 +19472,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "objectivism",
@@ -19346,7 +19506,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "one-nation-conservatism",
@@ -19378,7 +19539,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "ordoliberalism",
@@ -19410,7 +19572,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "paleoconservatism",
@@ -19439,7 +19602,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "paleolibertarianism",
@@ -19469,7 +19633,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "pan-africanism",
@@ -19520,7 +19685,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "participism",
@@ -19550,7 +19716,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "political-islam",
@@ -19580,7 +19747,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "stirnerism",
@@ -19612,7 +19780,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "strasserism",
@@ -19642,7 +19811,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "socialist-feminism",
@@ -19671,7 +19841,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "syndicalist",
@@ -19700,7 +19871,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "traditional-monarchist",
@@ -19729,7 +19901,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "trotskyism",
@@ -19759,7 +19932,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "voluntaryism",
@@ -19788,7 +19962,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "zionism",
@@ -19844,7 +20019,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "third-way",
@@ -19880,7 +20056,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "distributism",
@@ -19913,7 +20090,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "neoliberalism",
@@ -19947,7 +20125,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "social-anarchism",
@@ -19980,7 +20159,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "developmentalism",
@@ -20026,7 +20206,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "pan-arabism",
@@ -20071,7 +20252,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "arab-socialism",
@@ -20115,7 +20297,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "radical-feminism",
@@ -20146,7 +20329,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "religious-nationalism",
@@ -20179,7 +20363,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "black-feminism",
@@ -20212,7 +20397,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "queer-politics",
@@ -20244,7 +20430,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "confucian-political-revival",
@@ -20277,7 +20464,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "techno-anarchism",
@@ -20320,7 +20508,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "technocratic-centralist",
@@ -20367,7 +20556,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "theocrat",
@@ -20411,7 +20601,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "queer-anarchism",
@@ -20440,7 +20631,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "welfare-chauvinism",
@@ -20473,7 +20665,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "specialist"
       },
       {
         "id": "anti-imperialism",
@@ -20518,7 +20711,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "civic-nationalist",
@@ -20563,7 +20757,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "communitarianism",
@@ -20608,7 +20803,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "cosmopolitanism",
@@ -20665,7 +20861,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "civil-libertarianism",
@@ -20722,7 +20919,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "decentralist-orientation",
@@ -20778,7 +20976,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "economic-nationalism",
@@ -20823,7 +21022,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "ethnonationalist",
@@ -20880,7 +21080,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "expansionist-nationalism",
@@ -20923,7 +21124,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "fiscal-conservatism",
@@ -20968,7 +21170,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "internationalism",
@@ -21023,7 +21226,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "feminist-orientation",
@@ -21056,7 +21260,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "left-wing-nationalism",
@@ -21101,7 +21306,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "left-wing-populism",
@@ -21157,7 +21363,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "multiculturalism",
@@ -21214,7 +21421,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "regionalism",
@@ -21272,7 +21480,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "right-wing-populism",
@@ -21328,7 +21537,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "separatist-nationalism",
@@ -21371,7 +21581,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "progressivism",
@@ -21426,7 +21637,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "social-conservatism",
@@ -21470,7 +21682,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "technocratic-orientation",
@@ -21513,7 +21726,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "nationalism",
@@ -21546,7 +21760,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "populism",
@@ -21604,7 +21819,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "transhumanism",
@@ -21647,7 +21863,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "modifier"
       },
       {
         "id": "accelerationism",
@@ -21703,7 +21920,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "asian-values",
@@ -21734,7 +21952,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "baathism",
@@ -21770,7 +21989,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "constitutional-monarchism",
@@ -21800,7 +22020,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "corporatism",
@@ -21829,7 +22050,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "cyberocracy",
@@ -21872,7 +22094,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "dataism",
@@ -21901,7 +22124,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "developmental-authoritarianism",
@@ -21937,7 +22161,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "fourth-theory",
@@ -21985,7 +22210,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "fundamentalist-theocracy",
@@ -22015,7 +22241,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "liquid-democracy",
@@ -22045,7 +22272,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "radical-centrism",
@@ -22077,7 +22305,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "singularitarianism",
@@ -22106,7 +22335,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "social-investment-state",
@@ -22137,7 +22367,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "platformism",
@@ -22166,7 +22397,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "panarchism",
@@ -22196,7 +22428,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "universal-basic-income",
@@ -22228,7 +22461,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "utopian-socialism",
@@ -22258,7 +22492,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "world-federalism",
@@ -22291,7 +22526,8 @@
               "boundary"
             ]
           }
-        ]
+        ],
+        "publicRoleStatus": "context"
       },
       {
         "id": "conservative-liberalism",
@@ -22307,7 +22543,8 @@
         "legacyDisposition": "alias",
         "legacyComponents": [
           "liberal-conservatism"
-        ]
+        ],
+        "publicRoleStatus": "retired"
       },
       {
         "id": "cultural-populism",
@@ -22321,7 +22558,8 @@
         "family": "populist",
         "subfamily": "right-populist",
         "boundaryStatement": "Populism is a thin ideology or political style rather than a complete doctrine; this label describes a right-leaning cultural host, not everyone who defends tradition or restricts immigration.",
-        "legacyDisposition": "keep-retired"
+        "legacyDisposition": "keep-retired",
+        "publicRoleStatus": "retired"
       },
       {
         "id": "bright-green-environmentalism",
@@ -22337,7 +22575,8 @@
         "legacyDisposition": "alias",
         "legacyComponents": [
           "ecomodernist"
-        ]
+        ],
+        "publicRoleStatus": "retired"
       },
       {
         "id": "civil-libertarian-cosmopolitan",
@@ -22354,7 +22593,8 @@
         "legacyComponents": [
           "civil-libertarianism",
           "cosmopolitanism"
-        ]
+        ],
+        "publicRoleStatus": "retired"
       },
       {
         "id": "decentralist-market-skeptic-of-state",
@@ -22371,7 +22611,8 @@
         "legacyComponents": [
           "market-liberal",
           "decentralist-orientation"
-        ]
+        ],
+        "publicRoleStatus": "retired"
       },
       {
         "id": "egalitarian-statist",
@@ -22384,7 +22625,8 @@
         "version": "ideology-registry-2026-08-clean-v1",
         "family": "social-democratic",
         "subfamily": "reformist-welfare",
-        "legacyDisposition": "keep-retired"
+        "legacyDisposition": "keep-retired",
+        "publicRoleStatus": "retired"
       },
       {
         "id": "national-traditionalist",
@@ -22401,7 +22643,8 @@
         "legacyComponents": [
           "national-conservatism",
           "social-conservatism"
-        ]
+        ],
+        "publicRoleStatus": "retired"
       },
       {
         "id": "revolutionary-collectivist",
@@ -22414,7 +22657,8 @@
         "version": "ideology-registry-2026-08-clean-v1",
         "family": "socialist",
         "subfamily": "state-socialist",
-        "legacyDisposition": "keep-retired"
+        "legacyDisposition": "keep-retired",
+        "publicRoleStatus": "retired"
       }
     ],
     "relations": [
