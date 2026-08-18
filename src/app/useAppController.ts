@@ -147,6 +147,9 @@ function buildStageProps(
     specialistOutcome: specialist.specialistOutcome,
     specialistSubmission: specialist.specialistSubmission,
     specialistStatus: specialist.specialistStatus,
+    onExportResearchSubmission: actions.handleExportResearchSubmission,
+    onDeleteResearchSubmission: actions.handleDeleteResearchSubmission,
+    onRetryResearchSubmission: actions.handleRetryResearchSubmission,
     onDiscardSpecialistAfterCompletion:
       actions.handleDiscardSpecialistAfterCompletion,
     onSpecialistResultContinue: () => quiz.setStage("results"),

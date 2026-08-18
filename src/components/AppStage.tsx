@@ -26,7 +26,10 @@ import { IntroScreen } from "./IntroScreen";
 import { MethodologyScreen } from "./MethodologyScreen";
 import { QuizScreen } from "./QuizScreen";
 import { ResearchConsentScreen } from "./ResearchConsentScreen";
-import { ResearchReceipt } from "./ResearchReceipt";
+import {
+  ResearchReceipt,
+  type ResearchRecoveryAction,
+} from "./ResearchReceipt";
 import { ResultsScreen } from "./ResultsScreen";
 import { SelfIdentificationScreen } from "./SelfIdentificationScreen";
 import { SpecialistCriterionScreen } from "./SpecialistCriterionScreen";
@@ -94,6 +97,9 @@ export interface AppStageProps {
   specialistOutcome: SpecialistOutcome | null;
   specialistSubmission: SpecialistResearchSubmission | null;
   specialistStatus: ResearchSubmissionStatus | null;
+  onExportResearchSubmission?: ResearchRecoveryAction;
+  onDeleteResearchSubmission?: ResearchRecoveryAction;
+  onRetryResearchSubmission?: ResearchRecoveryAction;
   onDiscardSpecialistAfterCompletion: () => void;
   onSpecialistResultContinue: () => void;
   researchSubmission: ResearchSubmission | null;
@@ -222,6 +228,9 @@ function SpecialistStage(props: AppStageProps): ReactElement | null {
           <ResearchReceipt
             submission={props.specialistSubmission}
             status={props.specialistStatus}
+            onExport={props.onExportResearchSubmission}
+            onDelete={props.onDeleteResearchSubmission}
+            onRetry={props.onRetryResearchSubmission}
           />
         )}
         <SpecialistModuleResultScreen
@@ -242,12 +251,18 @@ function ResultsStage(props: AppStageProps): ReactElement | null {
         <ResearchReceipt
           submission={props.researchSubmission}
           status={props.researchStatus}
+          onExport={props.onExportResearchSubmission}
+          onDelete={props.onDeleteResearchSubmission}
+          onRetry={props.onRetryResearchSubmission}
         />
       )}{" "}
       {props.specialistSubmission && props.specialistStatus && (
         <ResearchReceipt
           submission={props.specialistSubmission}
           status={props.specialistStatus}
+          onExport={props.onExportResearchSubmission}
+          onDelete={props.onDeleteResearchSubmission}
+          onRetry={props.onRetryResearchSubmission}
         />
       )}
       <ResultsScreen
