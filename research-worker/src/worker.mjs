@@ -1,5 +1,5 @@
 import canonicalManifestArtifact from "../generated/canonical-manifest.json" with { type: "json" };
-const TOKEN_PATTERN = /^[A-Za-z0-9_:-]+$/;
+const TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/;
 const RECORD_TYPES = new Set(["core", "specialist", "specialist-disposition"]);
 const LAYERS = new Set(["normative", "descriptive", "prescriptive"]);
 const SALIENCE_VALUES = new Set([1, 3, 5]);

@@ -54,7 +54,7 @@ const expectedSpecialistAssignmentRosterVersion =
 const expectedSpecialistAssignmentModuleIds =
   process.env.RESEARCH_SPECIALIST_ASSIGNMENT_MODULE_IDS ??
   "feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module";
-const TOKEN_PATTERN = /^[A-Za-z0-9_:-]+$/;
+const TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/;
 const LAYERS = new Set(["normative", "descriptive", "prescriptive"]);
 const THEORY_CONTEXTS = new Set(["ideal", "nonideal", "mixed"]);
 const RESPONSE_TYPES = new Set(["likert5", "likert7", "statementChoice"]);

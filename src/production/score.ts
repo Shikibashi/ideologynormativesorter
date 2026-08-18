@@ -131,7 +131,11 @@ function responsesFromRequest(
 ): readonly ProductionResponse[] {
   if (Array.isArray(responses))
     return responses as readonly ProductionResponse[];
-  if (isRecord(responses) && Array.isArray(responses.responses)) {
+  if (
+    isRecord(responses) &&
+    responses.contractVersion === PRODUCTION_CONTRACT_VERSION &&
+    Array.isArray(responses.responses)
+  ) {
     return responses.responses as readonly ProductionResponse[];
   }
   return [];
