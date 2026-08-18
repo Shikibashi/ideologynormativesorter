@@ -56,7 +56,7 @@ function environment(overrides = {}) {
     EXPECTED_QUALITY_RULE_VERSION: "data-quality-v2",
     EXPECTED_FORM_VERSION: "profile-form-v3",
     EXPECTED_BANK_VERSION: "ideology-registry-2026-08-clean-v1",
-    EXPECTED_SCORING_VERSION: "scoring-v1",
+    EXPECTED_SCORING_VERSION: "production-score-v1",
     EXPECTED_TAXONOMY_VERSION: "taxonomy-v1",
     EXPECTED_PRIMARY_MEASUREMENT_VERSION: "primary-measurement-v1",
     EXPECTED_MODIFIER_MEASUREMENT_VERSION: "modifier-measurement-v1",
@@ -165,7 +165,7 @@ function coreSubmission(overrides = {}) {
       recruitmentSourceProvenance: "url-parameter-unverified",
     },
     bankVersion: "ideology-registry-2026-08-clean-v1",
-    scoringVersion: "scoring-v1",
+    scoringVersion: "production-score-v1",
     taxonomyVersion: "taxonomy-v1",
     primaryMeasurementVersion: "primary-measurement-v1",
     modifierMeasurementVersion: "modifier-measurement-v1",
@@ -619,7 +619,9 @@ describe("research contribution Worker", () => {
       error: "contract-unavailable",
     });
     const artifactResponse = await handleRequest(
-      postRequest(coreSubmission({ submissionId: "submission_empty_artifact" })),
+      postRequest(
+        coreSubmission({ submissionId: "submission_empty_artifact" }),
+      ),
       environment({ CANONICAL_CONTRACT_ARTIFACT: "{}" }),
     );
     assert.equal(artifactResponse.status, 503);

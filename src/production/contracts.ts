@@ -6,6 +6,7 @@ import type { StableId } from "../domain/canonicalManifest";
 export const PRODUCTION_CONTRACT_VERSION = "production-response-v1";
 export const PRODUCTION_PROFILE_VERSION = "production-profile-v1";
 export const PRODUCTION_RESULT_VERSION = "production-result-v1";
+/** Canonical production scoring version used by result metadata and the Worker. */
 export const PRODUCTION_SCORING_VERSION = "production-score-v1";
 
 export type ProductionResponseStatus =

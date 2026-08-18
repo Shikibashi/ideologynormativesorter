@@ -4,7 +4,12 @@ import {
   CANONICAL_MANIFEST_SCHEMA_VERSION,
   type CanonicalManifest,
 } from "../domain/canonicalManifest";
-import { createProductionScorer, scoreProduction } from "./index";
+import {
+  PRODUCTION_SCORING_VERSION,
+  canonicalProductionLabels,
+  createProductionScorer,
+  scoreProduction,
+} from "./index";
 
 const manifest: CanonicalManifest = {
   metadata: {
@@ -64,6 +69,35 @@ const manifest: CanonicalManifest = {
 };
 
 const registry = createCanonicalRegistry(manifest);
+
+const gatedRegistry = createCanonicalRegistry({
+  ...manifest,
+  nodes: [
+    {
+      id: "node/gated",
+      canonicalName: "Gated profile",
+      conceptualKind: "broad-tradition",
+      canonicalDefinition: "A profile requiring constitutive evidence.",
+      conceptualStatus: "canonical",
+      measurementStatus: "compatibility-scored-unvalidated",
+      publicRoleStatus: "primary",
+      version: "test-registry-v1",
+    },
+  ],
+  productionProfiles: [
+    {
+      id: "profile/gated",
+      nodeId: "node/gated",
+      labelId: "label/gated",
+      version: "test-profile-v1",
+      rootConstructIds: ["construct/autonomy"],
+      centroid: { "construct/autonomy": 1 },
+      requiredRootConstructIds: ["construct/autonomy"],
+      minimumItemCounts: { "construct/autonomy": 1 },
+      status: "compatibility-scored-unvalidated",
+    },
+  ],
+});
 const labels = [
   {
     id: "label/balanced",
@@ -98,6 +132,10 @@ describe("production scoring boundary", () => {
 
     expect(second).toEqual(first);
     expect(first.decision).toBe("scored");
+    expect(first.profile.scoringVersion).toBe(PRODUCTION_SCORING_VERSION);
+    expect(first.interpretation.scoringVersion).toBe(
+      PRODUCTION_SCORING_VERSION,
+    );
     expect(first.profile.scores).toEqual([
       expect.objectContaining({ dimensionId: "construct/autonomy", value: 1 }),
       expect.objectContaining({ dimensionId: "construct/equality", value: 1 }),
@@ -196,5 +234,101 @@ describe("production scoring boundary", () => {
       { registry },
     );
     expect(result.decision).toBe("abstain");
+  });
+  it("requires constitutive evidence before exposing an unvalidated profile", () => {
+    const labelsWithoutGates = canonicalProductionLabels(gatedRegistry).map(
+      (label) => ({
+        ...label,
+        requiredRootConstructIds: [],
+        minimumItemCounts: {},
+      }),
+    );
+    const result = scoreProduction(
+      {
+        responses: [
+          { itemId: "item/autonomy", value: 1 },
+          { itemId: "item/equality", value: 1 },
+        ],
+        labels: labelsWithoutGates,
+      },
+      { registry: gatedRegistry },
+    );
+
+    expect(result.decision).toBe("abstain");
+    expect(result.labels).toEqual([]);
+  });
+
+  it("matches a gated profile on constitutive evidence despite unrelated sparse coverage", () => {
+    const labels = canonicalProductionLabels(gatedRegistry);
+    const result = scoreProduction(
+      {
+        responses: [{ itemId: "item/autonomy", value: 1 }],
+        labels,
+      },
+      { registry: gatedRegistry, minimumEvidenceCoverage: 1 },
+    );
+
+    expect(result.decision).toBe("scored");
+    expect(result.labels.map((label) => label.labelId)).toEqual([
+      "label/gated",
+    ]);
+    expect(result.labels[0]?.evidenceCoverage).toMatchObject({
+      answeredItems: 1,
+      expectedItems: 1,
+      status: "sufficient",
+    });
+    expect(result.evidenceCoverage.status).toBe("partial");
+  });
+
+  it("withholds a gated profile when its required construct is unanswered", () => {
+    const result = scoreProduction(
+      {
+        responses: [{ itemId: "item/equality", value: 1 }],
+        labels: canonicalProductionLabels(gatedRegistry),
+      },
+      { registry: gatedRegistry },
+    );
+
+    expect(result.decision).toBe("abstain");
+    expect(result.labels).toEqual([]);
+  });
+  it("enforces the declared minimum item count for a required construct", () => {
+    const labelsWithHigherMinimum = canonicalProductionLabels(
+      gatedRegistry,
+    ).map((label) => ({
+      ...label,
+      minimumItemCounts: { "construct/autonomy": 2 },
+    }));
+    const result = scoreProduction(
+      {
+        responses: [{ itemId: "item/autonomy", value: 1 }],
+        labels: labelsWithHigherMinimum,
+      },
+      { registry: gatedRegistry },
+    );
+
+    expect(result.decision).toBe("abstain");
+    expect(result.labels).toEqual([]);
+  });
+  it("does not throw on malformed profile gate metadata", () => {
+    expect(() =>
+      scoreProduction(
+        {
+          responses: [{ itemId: "item/autonomy", value: 1 }],
+          labels: [
+            {
+              id: "label/malformed-gate",
+              name: "Malformed gate",
+              centroid: { "construct/autonomy": 1 },
+              profileStatus: "compatibility-scored-unvalidated",
+              rootConstructIds: null,
+              requiredRootConstructIds: null,
+              minimumItemCounts: null,
+            },
+          ],
+        } as never,
+        { registry },
+      ),
+    ).not.toThrow();
   });
 });

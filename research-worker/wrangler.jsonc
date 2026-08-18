@@ -6,6 +6,8 @@
   "workers_dev": true,
   "preview_urls": false,
   "vars": {
+    // Production resource identifiers are non-secret; credentials never belong here.
+    "DEPLOYMENT_ENVIRONMENT": "production",
     "ALLOWED_ORIGIN": "https://ideologynormativesorter.edriffles.us",
     "EXPECTED_STUDY_ID": "community-2026-v5",
     "EXPECTED_SCHEMA_VERSION": "2026-08-v15",
@@ -13,7 +15,7 @@
     "EXPECTED_QUALITY_RULE_VERSION": "data-quality-v2",
     "EXPECTED_FORM_VERSION": "profile-form-v3",
     "EXPECTED_BANK_VERSION": "ideology-registry-2026-08-clean-v1",
-    "EXPECTED_SCORING_VERSION": "2026-08-13-taxonomy-v8",
+    "EXPECTED_SCORING_VERSION": "production-score-v1",
     "EXPECTED_TAXONOMY_VERSION": "2026-08-taxonomy-v13",
     "EXPECTED_PRIMARY_MEASUREMENT_VERSION": "2026-08-primary-core-v1",
     "EXPECTED_MODIFIER_MEASUREMENT_VERSION": "2026-08-modifier-construct-v1",
@@ -42,6 +44,14 @@
     "ALLOWED_LEGACY_EXTENSIVE_ITEM_COUNTS": "336,309",
     "ALLOWED_MATRIX_ITEM_COUNTS": "120",
     "MAXIMUM_BODY_BYTES": "2000000",
+    // Operational controls remain sentinel-gated until the release/infra owner
+    // records the audited mode and grace window. The Worker fails closed while
+    // any required control is unresolved.
+    "WRITE_MODE": "REPLACE_WITH_RELEASE_INFRA_APPROVED_WRITE_MODE__drain_or_open",
+    "WRITE_MODE_GRACE_SECONDS": "REPLACE_WITH_RELEASE_INFRA_APPROVED_WRITE_MODE_GRACE_SECONDS",
+    "ACTIVE_SESSION_GRACE_DAYS": "REPLACE_WITH_RELEASE_INFRA_APPROVED_ACTIVE_SESSION_GRACE_DAYS__14_DEFAULT_MAX_30",
+    "ACTIVE_SESSION_GRACE_END": "REPLACE_WITH_RELEASE_INFRA_APPROVED_ACTIVE_SESSION_GRACE_END_ISO8601",
+    "PRODUCTION_OWNER_APPROVAL": "REPLACE_WITH_RELEASE_INFRA_OWNER_APPROVAL_REFERENCE",
   },
   "d1_databases": [
     {

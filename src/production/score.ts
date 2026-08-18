@@ -26,7 +26,11 @@ import {
   PRODUCTION_RESULT_VERSION,
   PRODUCTION_SCORING_VERSION,
 } from "./contracts";
-import type { CanonicalItem, StableId } from "../domain/canonicalManifest";
+import type {
+  CanonicalItem,
+  MeasurementStatus,
+  StableId,
+} from "../domain/canonicalManifest";
 
 const DEFAULT_MINIMUM_COVERAGE = 0.5;
 const TRANSFORM = "weighted-mean-v1" as const;
@@ -511,10 +515,106 @@ function profileEvidence(
   return coverage(answeredCount, expected.size, minimumCoverage);
 }
 
+interface CanonicalProfileLabelEndpoint extends ProductionLabelEndpoint {
+  /**
+   * Profile metadata is intentionally carried alongside the public endpoint.
+   * It lets the scorer enforce canonical constitutive gates without trusting
+   * an unvalidated centroid as evidence.
+   */
+  readonly profileStatus?: MeasurementStatus;
+  readonly rootConstructIds?: readonly StableId[];
+  readonly requiredRootConstructIds?: readonly StableId[];
+  readonly minimumItemCounts?: Readonly<Record<StableId, number>>;
+}
+
+function profileLabelMetadata(
+  label: ProductionLabelEndpoint,
+): CanonicalProfileLabelEndpoint {
+  const candidate = label as ProductionLabelEndpoint &
+    Partial<CanonicalProfileLabelEndpoint>;
+  const rootConstructIds = Array.isArray(candidate.rootConstructIds)
+    ? [...candidate.rootConstructIds]
+    : undefined;
+  const requiredRootConstructIds = Array.isArray(
+    candidate.requiredRootConstructIds,
+  )
+    ? [...candidate.requiredRootConstructIds]
+    : undefined;
+  const minimumItemCounts = isRecord(candidate.minimumItemCounts)
+    ? { ...candidate.minimumItemCounts }
+    : undefined;
+  const metadata: CanonicalProfileLabelEndpoint = {
+    id: label.id,
+    name: label.name,
+    centroid: label.centroid,
+    ...(label.description === undefined
+      ? {}
+      : { description: label.description }),
+    ...(label.interpretation === undefined
+      ? {}
+      : { interpretation: label.interpretation }),
+    ...(candidate.profileStatus === undefined
+      ? {}
+      : { profileStatus: candidate.profileStatus }),
+    ...(rootConstructIds === undefined ? {} : { rootConstructIds }),
+    ...(requiredRootConstructIds === undefined
+      ? {}
+      : { requiredRootConstructIds }),
+    ...(minimumItemCounts === undefined ? {} : { minimumItemCounts }),
+  };
+  return metadata;
+}
+
+function requiredConstructGatePassed(
+  label: CanonicalProfileLabelEndpoint,
+  scores: ReadonlyMap<StableId, ProductionDimensionScore>,
+): boolean {
+  const required = label.requiredRootConstructIds ?? [];
+  if (
+    label.profileStatus === "compatibility-scored-unvalidated" &&
+    required.length === 0
+  )
+    return false;
+  if (
+    label.rootConstructIds !== undefined &&
+    required.some(
+      (constructId) => !label.rootConstructIds!.includes(constructId),
+    )
+  )
+    return false;
+
+  for (const constructId of required) {
+    if (!finiteUnit(label.centroid[constructId])) return false;
+    const score = scores.get(constructId);
+    const minimum = label.minimumItemCounts?.[constructId] ?? 1;
+    if (
+      !Number.isInteger(minimum) ||
+      minimum < 1 ||
+      score?.value === null ||
+      score === undefined ||
+      score.evidenceCoverage.answeredItems < minimum
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function comparisonConstructIds(
+  label: CanonicalProfileLabelEndpoint,
+): readonly StableId[] {
+  // Compatibility profiles are only comparable on declared constitutive
+  // constructs. Optional centroid dimensions must not substitute for them.
+  if (label.profileStatus === "compatibility-scored-unvalidated") {
+    return [...(label.requiredRootConstructIds ?? [])];
+  }
+  return [...(label.rootConstructIds ?? Object.keys(label.centroid))];
+}
+
 function validLabels(
   labels: readonly ProductionLabelEndpoint[],
-): readonly ProductionLabelEndpoint[] {
-  const byId = new Map<StableId, ProductionLabelEndpoint>();
+): readonly CanonicalProfileLabelEndpoint[] {
+  const byId = new Map<StableId, CanonicalProfileLabelEndpoint>();
   if (!Array.isArray(labels)) return [];
   for (const label of labels) {
     if (
@@ -533,7 +633,7 @@ function validLabels(
       if (finiteUnit(value)) centroid[dimensionId] = value;
     }
     if (Object.keys(centroid).length === 0) continue;
-    byId.set(label.id, {
+    const normalized = profileLabelMetadata({
       id: label.id,
       name: label.name,
       centroid,
@@ -544,6 +644,7 @@ function validLabels(
         ? { interpretation: label.interpretation }
         : {}),
     });
+    byId.set(label.id, normalized);
   }
   return [...byId.values()].sort((left, right) =>
     compareStable(left.id, right.id),
@@ -556,15 +657,18 @@ function compareLabels(
   minimumCoverage: number,
   profileUncertainty: ProductionUncertainty,
 ): readonly ProductionLabelMatch[] {
+  const scoreByDimension = new Map(
+    scores.map((score) => [score.dimensionId, score]),
+  );
   const measured = new Map(
     scores
       .filter((score) => score.value !== null)
       .map((score) => [score.dimensionId, score.value as number]),
   );
   const matches = validLabels(labels).flatMap((label) => {
-    const dimensions = Object.keys(label.centroid).filter((id) =>
-      measured.has(id),
-    );
+    if (!requiredConstructGatePassed(label, scoreByDimension)) return [];
+    const constructIds = comparisonConstructIds(label);
+    const dimensions = constructIds.filter((id) => measured.has(id));
     if (dimensions.length === 0) return [];
     let squaredDistance = 0;
     for (const dimensionId of dimensions) {
@@ -577,7 +681,7 @@ function compareLabels(
     const similarity = Math.max(0, Math.min(1, 1 - distance / 2));
     const evidence = coverage(
       dimensions.length,
-      Object.keys(label.centroid).length,
+      constructIds.length,
       minimumCoverage,
     );
     if (evidence.status !== "sufficient") return [];
@@ -696,7 +800,7 @@ export function buildProductionProfile(
 }
 export function canonicalProductionLabels(
   registry: CanonicalRegistry = canonicalRegistry,
-): readonly ProductionLabelEndpoint[] {
+): readonly CanonicalProfileLabelEndpoint[] {
   const validation = validateCanonicalRegistry(registry);
   if (!validation.valid) return [];
   const profiles = registry.manifest.productionProfiles ?? [];
@@ -711,6 +815,12 @@ export function canonicalProductionLabels(
         id: profile.labelId,
         name: node?.canonicalName ?? profile.labelId,
         centroid: profile.centroid,
+        profileStatus: profile.status,
+        rootConstructIds: [...profile.rootConstructIds],
+        requiredRootConstructIds: [...profile.requiredRootConstructIds],
+        ...(profile.minimumItemCounts === undefined
+          ? {}
+          : { minimumItemCounts: { ...profile.minimumItemCounts } }),
       };
     });
 }
@@ -904,17 +1014,21 @@ export function scoreProduction(
     output.refused,
   );
   const evidence = profile.evidenceCoverage;
+  const labels = !output.refused
+    ? compareLabels(
+        scoresForLabels(profile),
+        request.labels ?? [],
+        minimumCoverage,
+        profile.uncertainty,
+      )
+    : [];
   const decision =
-    !output.refused && evidence.status === "sufficient" ? "scored" : "abstain";
-  const labels =
-    decision === "scored"
-      ? compareLabels(
-          scoresForLabels(profile),
-          request.labels ?? [],
-          minimumCoverage,
-          profile.uncertainty,
-        )
-      : [];
+    !output.refused &&
+    (request.labels === undefined || request.labels.length === 0
+      ? evidence.status === "sufficient"
+      : labels.length > 0)
+      ? "scored"
+      : "abstain";
   const resultAbstentions = [...profile.abstentions];
   if (
     evidence.status !== "sufficient" &&

@@ -3,7 +3,7 @@ import {
   questionsForTier,
   QUESTION_BANK_VERSION,
 } from "../data/effectiveQuestions";
-import { RESULT_SCORING_VERSION } from "../scoring";
+import { PRODUCTION_SCORING_VERSION } from "../production";
 import { TAXONOMY_VERSION } from "../data/labelTaxonomy";
 import type { AnswerMap } from "../types";
 import {
@@ -39,7 +39,7 @@ const collectorEnvironment = {
   EXPECTED_QUALITY_RULE_VERSION: RESEARCH_QUALITY_RULE_VERSION,
   EXPECTED_FORM_VERSION: RESEARCH_FORM_VERSION,
   EXPECTED_BANK_VERSION: QUESTION_BANK_VERSION,
-  EXPECTED_SCORING_VERSION: RESULT_SCORING_VERSION,
+  EXPECTED_SCORING_VERSION: PRODUCTION_SCORING_VERSION,
   EXPECTED_TAXONOMY_VERSION: TAXONOMY_VERSION,
   EXPECTED_PRIMARY_MEASUREMENT_VERSION: PRIMARY_MEASUREMENT_VERSION,
   EXPECTED_MODIFIER_MEASUREMENT_VERSION: MODIFIER_MEASUREMENT_VERSION,
@@ -98,7 +98,7 @@ describe("Cloudflare contribution collector compatibility", () => {
         participantId: "p_compatibility",
         administration: "test",
         bankVersion: QUESTION_BANK_VERSION,
-        scoringVersion: RESULT_SCORING_VERSION,
+        scoringVersion: PRODUCTION_SCORING_VERSION,
         tier,
         consent: endpointConsent(),
         identity: { selfReportedIdeologies: "A tradition not yet listed" },
@@ -149,7 +149,7 @@ describe("Cloudflare contribution collector compatibility", () => {
       moduleVersion: module.version,
       assignment,
       bankVersion: QUESTION_BANK_VERSION,
-      scoringVersion: RESULT_SCORING_VERSION,
+      scoringVersion: PRODUCTION_SCORING_VERSION,
       criterion: { selectedIds: [], noneOrUnsure: true, confidence: "low" },
       answers,
       questions,
