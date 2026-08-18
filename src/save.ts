@@ -1,5 +1,6 @@
 import type { AnswerMap, Question, QuizTier } from "./types";
 import type { ResearchSubmission, ResearchSubmissionStatus } from "./research";
+import type { PendingSubmissionState } from "./research/pendingSubmission";
 import {
   clearAllPendingResearchSubmissions,
   deletePendingResearchSubmission,
@@ -169,24 +170,60 @@ export function loadPendingResearchRecord(
     )
     .sort(comparePendingResearchRecords)[0];
   if (!record) return null;
-  const status: ResearchSubmissionStatus =
-    record.state === "export-only"
-      ? { status: "export-only" }
-      : record.state === "submitted"
-        ? { status: "submitted", endpoint: record.route }
-        : record.state === "retention-expired"
-          ? {
-              status: "failed",
-              reason:
-                "The contribution is no longer eligible for retry because its retention period has expired.",
-            }
-          : {
-              status: "failed",
-              reason:
-                record.lastError ??
-                "The contribution is waiting for an explicit retry.",
-            };
-  return { submission: record.payload, status };
+  return {
+    submission: record.payload,
+    status: pendingResearchStatus(record),
+  };
+}
+
+export interface PendingResearchRecordView extends PendingResearchRecord {
+  readonly submissionId: string;
+  state: PendingSubmissionState;
+  route: string;
+  cohort: string;
+  updatedAt: string;
+  lastError?: string;
+  nextEligibleAt?: string;
+}
+
+export function loadPendingResearchRecords(
+  options: PendingResearchRecordLoadOptions = {},
+): PendingResearchRecordView[] {
+  return listPendingResearchSubmissions()
+    .filter((candidate) => matchesPendingResearchRecord(candidate, options))
+    .sort(comparePendingResearchRecords)
+    .map((record) => ({
+      submissionId: record.submissionId,
+      submission: record.payload,
+      status: pendingResearchStatus(record),
+      state: record.state,
+      route: record.route,
+      cohort: record.cohort,
+      updatedAt: record.updatedAt,
+      lastError: record.lastError,
+      nextEligibleAt: record.retryAfterAt,
+    }));
+}
+
+function pendingResearchStatus(
+  record: ReturnType<typeof listPendingResearchSubmissions>[number],
+): ResearchSubmissionStatus {
+  return record.state === "export-only"
+    ? { status: "export-only" }
+    : record.state === "submitted"
+      ? { status: "submitted", endpoint: record.route }
+      : record.state === "retention-expired"
+        ? {
+            status: "failed",
+            reason:
+              "The contribution is no longer eligible for retry because its retention period has expired.",
+          }
+        : {
+            status: "failed",
+            reason:
+              record.lastError ??
+              "The contribution is waiting for an explicit retry.",
+          };
 }
 
 function matchesPendingResearchRecord(
@@ -194,7 +231,12 @@ function matchesPendingResearchRecord(
   options: PendingResearchRecordLoadOptions,
 ): boolean {
   const payload = record.payload;
-  if (payload.recordType !== "core") return false;
+  const bankVersion =
+    "bankVersion" in payload ? payload.bankVersion : undefined;
+  const formVersion =
+    payload.recordType === "core"
+      ? payload.form.algorithmVersion
+      : payload.moduleVersion;
   return (
     (options.studyId === undefined || payload.studyId === options.studyId) &&
     (options.participantId === undefined ||
@@ -205,9 +247,9 @@ function matchesPendingResearchRecord(
     (options.cohort === undefined || record.cohort === options.cohort) &&
     (options.version === undefined || payload.schemaVersion === options.version) &&
     (options.bankVersion === undefined ||
-      payload.bankVersion === options.bankVersion) &&
+      bankVersion === options.bankVersion) &&
     (options.formVersion === undefined ||
-      payload.form.algorithmVersion === options.formVersion) &&
+      formVersion === options.formVersion) &&
     (options.cohortVersion === undefined ||
       payload.cohortVersion === options.cohortVersion) &&
     (options.contractVersion === undefined ||
