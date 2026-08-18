@@ -18,6 +18,7 @@ import type {
   ProductionResponse,
 } from "../production";
 import {
+  PRODUCTION_SCORING_VERSION,
   canonicalProductionLabels,
   scoreProduction,
 } from "../production";
@@ -37,8 +38,8 @@ import { computeReasonBreakdowns } from "./reasonDecomposition";
 import { reliabilityForAxis, reliabilityForLabel } from "./reliability";
 import { normalizeAnswer } from "./normalize";
 
-/** Bumped when ordinary output eligibility changes or research cohorts must remain distinct. */
-export const RESULT_SCORING_VERSION = "2026-08-13-taxonomy-v8";
+/** Canonical scoring version shared by production, research, recovery, and Worker contracts. */
+export const RESULT_SCORING_VERSION = PRODUCTION_SCORING_VERSION;
 
 export { normalizeAnswer, salienceFactor } from "./normalize";
 export {

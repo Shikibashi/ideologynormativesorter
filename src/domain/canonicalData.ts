@@ -4,7 +4,7 @@ export const CANONICAL_DATA = {
     schemaVersion: "canonical-domain-v2",
     version: "ideology-registry-2026-08-clean-v1",
     fingerprint:
-      "9283cf5d1894bfa8c78cfdb0d2cc67ca92d44ec0ac702d40de697b8d493522d2",
+      "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
     sourceCommit: "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
     methodologyCommit: "b1ac3e3e147e3761faccec8588d7c822a875d4dc",
     counts: {
@@ -13663,7 +13663,7 @@ export const CANONICAL_DATA = {
       statementOptions: [
         {
           id: "a",
-          text: "Whoever first transforms or improves a resource holds the strongest claim to it.",
+          text: "Whoever first transforms or improves a resource should normally hold the strongest claim to it.",
           axisWeights: [
             {
               axisId: "property-legitimacy",
@@ -13681,7 +13681,7 @@ export const CANONICAL_DATA = {
         },
         {
           id: "b",
-          text: "Ownership is a social convention that should be structured to narrow material gaps.",
+          text: "Productive assets should be governed by workers or other collective institutions to narrow material gaps.",
           axisWeights: [
             {
               axisId: "property-legitimacy",
@@ -13699,7 +13699,7 @@ export const CANONICAL_DATA = {
         },
         {
           id: "c",
-          text: "Private ownership is legitimate, but its scope should be limited to what one can personally use.",
+          text: "Private ownership is legitimate for personal-use property, but its scope should not extend to all productive capital.",
           axisWeights: [
             {
               axisId: "property-legitimacy",
@@ -13717,7 +13717,7 @@ export const CANONICAL_DATA = {
         },
         {
           id: "d",
-          text: "Ownership claims matter less than ensuring everyone has a secure baseline of resources.",
+          text: "The ownership form matters less than guaranteeing everyone a secure material baseline.",
           axisWeights: [
             {
               axisId: "property-legitimacy",
@@ -13948,7 +13948,7 @@ export const CANONICAL_DATA = {
       statementOptions: [
         {
           id: "a",
-          text: "Strong private title is the normal moral baseline for productive property.",
+          text: "Strong private title should be the normal baseline for productive property.",
           axisWeights: [
             {
               axisId: "property-legitimacy",
@@ -13966,7 +13966,7 @@ export const CANONICAL_DATA = {
         },
         {
           id: "b",
-          text: "Markets can be legitimate only when freed from state-backed privilege, rent, and monopoly.",
+          text: "Markets are legitimate only when state-backed privilege, rent, and monopoly are removed.",
           axisWeights: [
             {
               axisId: "property-legitimacy",
@@ -13984,7 +13984,7 @@ export const CANONICAL_DATA = {
         },
         {
           id: "c",
-          text: "Land and natural opportunities should be treated differently from things people actually produce.",
+          text: "Land and natural opportunities should follow a different moral rule from things people produce.",
           axisWeights: [
             {
               axisId: "property-legitimacy",
@@ -14002,7 +14002,7 @@ export const CANONICAL_DATA = {
         },
         {
           id: "d",
-          text: "Collective or cooperative ownership is morally superior for productive capital.",
+          text: "Productive capital should generally be owned or governed collectively by the people who work with it.",
           axisWeights: [
             {
               axisId: "property-legitimacy",
@@ -23720,9 +23720,15 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": 0.2,
         "secularism-religious": 0.2,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "cultural-plasticity",
+        "gradualism-vs-immediatism",
+      ],
+      minimumItemCounts: {
+        "cultural-plasticity": 1,
+        "gradualism-vs-immediatism": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -23786,9 +23792,19 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.2,
         "secularism-religious": 0.4,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "property-legitimacy",
+        "equality-theory",
+        "centralization-preference",
+        "secularism-religious",
+      ],
+      minimumItemCounts: {
+        "property-legitimacy": 1,
+        "equality-theory": 1,
+        "centralization-preference": 1,
+        "secularism-religious": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -23852,9 +23868,19 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.2,
         "secularism-religious": -0.3,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "authority-legitimacy",
+        "property-legitimacy",
+        "liberty-noninterference",
+        "market-process-confidence",
+      ],
+      minimumItemCounts: {
+        "authority-legitimacy": 1,
+        "property-legitimacy": 1,
+        "liberty-noninterference": 1,
+        "market-process-confidence": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -23918,9 +23944,17 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.4,
         "secularism-religious": -0.3,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "property-legitimacy",
+        "equality-theory",
+        "anti-domination",
+      ],
+      minimumItemCounts: {
+        "property-legitimacy": 1,
+        "equality-theory": 1,
+        "anti-domination": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -23984,9 +24018,13 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.25,
         "secularism-religious": -0.15,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "human-nature-priority",
+      ],
+      minimumItemCounts: {
+        "human-nature-priority": 2,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24050,9 +24088,19 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": 0,
         "secularism-religious": 0.1,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "property-legitimacy",
+        "liberty-noninterference",
+        "market-process-confidence",
+        "cultural-plasticity",
+      ],
+      minimumItemCounts: {
+        "property-legitimacy": 1,
+        "liberty-noninterference": 1,
+        "market-process-confidence": 1,
+        "cultural-plasticity": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24116,9 +24164,19 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.4,
         "secularism-religious": -0.4,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "authority-legitimacy",
+        "property-legitimacy",
+        "equality-theory",
+        "anti-domination",
+      ],
+      minimumItemCounts: {
+        "authority-legitimacy": 1,
+        "property-legitimacy": 1,
+        "equality-theory": 1,
+        "anti-domination": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24182,9 +24240,19 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.2,
         "secularism-religious": -0.2,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "authority-legitimacy",
+        "property-legitimacy",
+        "liberty-noninterference",
+        "market-process-confidence",
+      ],
+      minimumItemCounts: {
+        "authority-legitimacy": 1,
+        "property-legitimacy": 1,
+        "liberty-noninterference": 1,
+        "market-process-confidence": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24248,9 +24316,19 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.2,
         "secularism-religious": -0.3,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "authority-legitimacy",
+        "property-legitimacy",
+        "liberty-noninterference",
+        "market-process-confidence",
+      ],
+      minimumItemCounts: {
+        "authority-legitimacy": 1,
+        "property-legitimacy": 1,
+        "liberty-noninterference": 1,
+        "market-process-confidence": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24314,9 +24392,17 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.2,
         "secularism-religious": -0.3,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "property-legitimacy",
+        "equality-theory",
+        "anti-domination",
+      ],
+      minimumItemCounts: {
+        "property-legitimacy": 1,
+        "equality-theory": 1,
+        "anti-domination": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24380,9 +24466,21 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": 0.1,
         "secularism-religious": -0.4,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "authority-legitimacy",
+        "property-legitimacy",
+        "centralization-preference",
+        "reform-vs-revolution",
+        "state-action-vs-exit",
+      ],
+      minimumItemCounts: {
+        "authority-legitimacy": 1,
+        "property-legitimacy": 1,
+        "centralization-preference": 1,
+        "reform-vs-revolution": 1,
+        "state-action-vs-exit": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24446,9 +24544,15 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": 0.3,
         "secularism-religious": 0.3,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "political-community-boundary",
+        "cultural-plasticity",
+      ],
+      minimumItemCounts: {
+        "political-community-boundary": 1,
+        "cultural-plasticity": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24512,9 +24616,15 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.4,
         "secularism-religious": -0.3,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "equality-theory",
+        "anti-domination",
+      ],
+      minimumItemCounts: {
+        "equality-theory": 1,
+        "anti-domination": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24578,9 +24688,15 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.1,
         "secularism-religious": -0.2,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "liberty-noninterference",
+        "anti-domination",
+      ],
+      minimumItemCounts: {
+        "liberty-noninterference": 1,
+        "anti-domination": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24644,9 +24760,17 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.3,
         "secularism-religious": -0.2,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "property-legitimacy",
+        "equality-theory",
+        "state-action-vs-exit",
+      ],
+      minimumItemCounts: {
+        "property-legitimacy": 1,
+        "equality-theory": 1,
+        "state-action-vs-exit": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
     {
@@ -24710,9 +24834,17 @@ export const CANONICAL_DATA = {
         "militarism-pacifism": -0.2,
         "secularism-religious": -0.2,
       },
-      requiredRootConstructIds: [],
-      minimumItemCounts: {},
-      status: "compatibility-scored-unvalidated",
+      requiredRootConstructIds: [
+        "liberty-noninterference",
+        "equality-theory",
+        "state-action-vs-exit",
+      ],
+      minimumItemCounts: {
+        "liberty-noninterference": 1,
+        "equality-theory": 1,
+        "state-action-vs-exit": 1,
+      },
+      status: "validated-scoped-public",
       rationale: "",
     },
   ],

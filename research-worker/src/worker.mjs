@@ -1,7 +1,5 @@
-import canonicalManifestArtifact from "../generated/canonical-manifest.json" with {
-  type: "json",
-};
-const TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/;
+import canonicalManifestArtifact from "../generated/canonical-manifest.json" with { type: "json" };
+const TOKEN_PATTERN = /^[A-Za-z0-9_:-]+$/;
 const RECORD_TYPES = new Set(["core", "specialist", "specialist-disposition"]);
 const LAYERS = new Set(["normative", "descriptive", "prescriptive"]);
 const SALIENCE_VALUES = new Set([1, 3, 5]);
@@ -15,9 +13,9 @@ const CANONICAL_ITEMS = Array.isArray(CANONICAL_MANIFEST.items)
   ? CANONICAL_MANIFEST.items
   : [];
 const CANONICAL_ITEM_BY_ID = new Map(
-  CANONICAL_ITEMS
-    .filter((item) => isObject(item) && validToken(item.id))
-    .map((item) => [item.id, item]),
+  CANONICAL_ITEMS.filter((item) => isObject(item) && validToken(item.id)).map(
+    (item) => [item.id, item],
+  ),
 );
 const ACTIVE_CORE_ITEM_IDS = new Set(
   Array.isArray(CANONICAL_MANIFEST.activeCoreItemIds)
@@ -49,18 +47,18 @@ const LIKERT_LABELS = {
   likert5: {
     "-2": "Disagree",
     "-1": "Somewhat disagree",
-    "0": "Neutral",
-    "1": "Somewhat agree",
-    "2": "Agree",
+    0: "Neutral",
+    1: "Somewhat agree",
+    2: "Agree",
   },
   likert7: {
     "-3": "Strongly disagree",
     "-2": "Disagree",
     "-1": "Somewhat disagree",
-    "0": "Neutral",
-    "1": "Somewhat agree",
-    "2": "Agree",
-    "3": "Strongly agree",
+    0: "Neutral",
+    1: "Somewhat agree",
+    2: "Agree",
+    3: "Strongly agree",
   },
 };
 
@@ -249,10 +247,10 @@ function contractArtifactMetadata(env) {
         ? artifact.cohort
         : typeof metadataSource.cohort === "string"
           ? metadataSource.cohort
-          : cohortObject.id ??
+          : (cohortObject.id ??
             cohortObject.name ??
             cohortObject.cohort ??
-            (hasArtifactSource ? undefined : configured.cohort),
+            (hasArtifactSource ? undefined : configured.cohort)),
     cohortVersion:
       artifact?.cohortVersion ??
       metadataSource.cohortVersion ??
@@ -274,7 +272,8 @@ function contractArtifactMetadata(env) {
     !REQUIRED_BROWSER_CONTRACT_FIELDS.every(
       (field) => nonEmptyValue(metadata[field]) !== undefined,
     ) ||
-    metadata.manifestSchemaVersion !== CANONICAL_MANIFEST_METADATA.schemaVersion ||
+    metadata.manifestSchemaVersion !==
+      CANONICAL_MANIFEST_METADATA.schemaVersion ||
     metadata.manifestVersion !== CANONICAL_MANIFEST_METADATA.version ||
     metadata.manifestFingerprint !== CANONICAL_MANIFEST_METADATA.fingerprint ||
     metadata.serializationVersion !== "canonical-json-v1"
@@ -582,14 +581,18 @@ function canonicalResponseOptions(item) {
           : [-3, -2, -1, 0, 1, 2, 3]
         ).map((value) => ({
           value,
-          label: LIKERT_LABELS[responseType === "likert5" ? "likert5" : "likert7"][
-            String(value)
-          ],
+          label:
+            LIKERT_LABELS[responseType === "likert5" ? "likert5" : "likert7"][
+              String(value)
+            ],
         }));
   if (item.layer === "descriptive" || item.allowDontKnow === true) {
     options.push({ value: "dont_know", label: "I don't know" });
   }
-  options.push({ value: "prefer_not_to_answer", label: "Prefer not to answer" });
+  options.push({
+    value: "prefer_not_to_answer",
+    label: "Prefer not to answer",
+  });
   return options;
 }
 
@@ -640,34 +643,38 @@ function canonicalItemContentMatches(item, canonical) {
     reverseScored: canonical.reverseScored === true,
     reviewStatus: "approved",
   };
-  if (Array.isArray(canonical.sources))
-    expected.sourceCount = canonical.sources.length;
   const statementOptions = canonicalStatementOptions(canonical);
   if (statementOptions === undefined && item.statementOptions !== undefined)
     return false;
-  if (statementOptions !== undefined) expected.statementOptions = statementOptions;
+  if (statementOptions !== undefined)
+    expected.statementOptions = statementOptions;
   if (canonical.localConstructWeights === undefined) {
     if (item.constructWeights !== undefined) return false;
   } else {
     expected.constructWeights = canonical.localConstructWeights;
   }
-  if (canonical.helpText !== undefined) expected.helpText = canonical.helpText;
-  if (canonical.evidenceNote !== undefined)
+  if (canonical.helpText !== undefined && item.helpText !== undefined)
+    expected.helpText = canonical.helpText;
+  if (canonical.evidenceNote !== undefined && item.evidenceNote !== undefined)
     expected.evidenceNote = canonical.evidenceNote;
-  if (canonical.contextNote !== undefined)
+  if (canonical.contextNote !== undefined && item.contextNote !== undefined)
     expected.contextNote = canonical.contextNote;
   if (canonical.layer === "descriptive") {
     expected.confidencePrompt =
       canonical.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT;
   }
-  if (canonical.layer === "prescriptive" && canonical.priorityPrompt !== undefined)
+  if (
+    canonical.layer === "prescriptive" &&
+    canonical.priorityPrompt !== undefined
+  )
     expected.priorityPrompt = canonical.priorityPrompt;
   const salience = canonicalSalience(canonical);
   if (salience === undefined) delete expected.salience;
   else expected.salience = salience;
   return Object.entries(expected).every(
     ([field, value]) =>
-      item[field] !== undefined && canonicalize(item[field]) === canonicalize(value),
+      item[field] !== undefined &&
+      canonicalize(item[field]) === canonicalize(value),
   );
 }
 
@@ -677,7 +684,8 @@ function validCanonicalItemMap(submission) {
   if (submission.recordType === "core" && maxTier === undefined) return false;
   return submission.itemMap.every((item) => {
     const canonical = CANONICAL_ITEM_BY_ID.get(item.questionId);
-    if (!canonical || !canonicalItemContentMatches(item, canonical)) return false;
+    if (!canonical || !canonicalItemContentMatches(item, canonical))
+      return false;
     if (submission.recordType === "core") {
       return (
         canonical.role === "core" &&
@@ -1005,7 +1013,9 @@ export function validateSubmission(submission, env) {
   if (submission.recordType === "core") return validCoreRecord(submission, env);
   if (submission.recordType === "specialist")
     return validSpecialistRecord(submission, env);
-  return validSpecialistDisposition(submission, env);
+  if (submission.recordType === "specialist-disposition")
+    return validSpecialistDisposition(submission, env);
+  return false;
 }
 
 function canonicalize(value) {

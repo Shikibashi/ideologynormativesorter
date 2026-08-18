@@ -10,7 +10,7 @@ const SOURCE_COMMIT = "f0324dbf27dfc6e35ff557992e4643e3df15ee0e";
 const METHODOLOGY_COMMIT = "b1ac3e3e147e3761faccec8588d7c822a875d4dc";
 const VERSION = "ideology-registry-2026-08-clean-v1";
 const EXPECTED_FINGERPRINT =
-  "9283cf5d1894bfa8c78cfdb0d2cc67ca92d44ec0ac702d40de697b8d493522d2";
+  "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf";
 const EXPECTED_COUNTS = {
   roots: 26,
   primary: 16,

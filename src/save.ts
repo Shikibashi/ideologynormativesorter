@@ -143,13 +143,31 @@ export function savePendingResearchRecord(
   return { saved: true };
 }
 
-export function loadPendingResearchRecord(): PendingResearchRecord | null {
+export interface PendingResearchRecordLoadOptions {
+  studyId?: string;
+  participantId?: string;
+  administration?: "test" | "retest";
+  route?: string;
+  cohort?: string;
+  /** Matches the submission schema version. */
+  version?: string;
+  bankVersion?: string;
+  formVersion?: string;
+  cohortVersion?: string;
+  contractVersion?: string;
+}
+
+export function loadPendingResearchRecord(
+  options: PendingResearchRecordLoadOptions = {},
+): PendingResearchRecord | null {
   const records = listPendingResearchSubmissions();
   const record = records
-    .filter((candidate) => candidate.payload.recordType === "core")
-    .sort((left, right) =>
-      left.submissionId.localeCompare(right.submissionId),
-    )[0];
+    .filter(
+      (candidate) =>
+        candidate.payload.recordType === "core" &&
+        matchesPendingResearchRecord(candidate, options),
+    )
+    .sort(comparePendingResearchRecords)[0];
   if (!record) return null;
   const status: ResearchSubmissionStatus =
     record.state === "export-only"
@@ -169,6 +187,57 @@ export function loadPendingResearchRecord(): PendingResearchRecord | null {
                 "The contribution is waiting for an explicit retry.",
             };
   return { submission: record.payload, status };
+}
+
+function matchesPendingResearchRecord(
+  record: ReturnType<typeof listPendingResearchSubmissions>[number],
+  options: PendingResearchRecordLoadOptions,
+): boolean {
+  const payload = record.payload;
+  if (payload.recordType !== "core") return false;
+  return (
+    (options.studyId === undefined || payload.studyId === options.studyId) &&
+    (options.participantId === undefined ||
+      payload.participantId === options.participantId) &&
+    (options.administration === undefined ||
+      payload.administration === options.administration) &&
+    (options.route === undefined || record.route === options.route) &&
+    (options.cohort === undefined || record.cohort === options.cohort) &&
+    (options.version === undefined || payload.schemaVersion === options.version) &&
+    (options.bankVersion === undefined ||
+      payload.bankVersion === options.bankVersion) &&
+    (options.formVersion === undefined ||
+      payload.form.algorithmVersion === options.formVersion) &&
+    (options.cohortVersion === undefined ||
+      payload.cohortVersion === options.cohortVersion) &&
+    (options.contractVersion === undefined ||
+      payload.contractVersion === options.contractVersion)
+  );
+}
+
+function comparePendingResearchRecords(
+  left: ReturnType<typeof listPendingResearchSubmissions>[number],
+  right: ReturnType<typeof listPendingResearchSubmissions>[number],
+): number {
+  const retryPriority = (state: string) =>
+    state === "retryable" || state === "pending" ? 0 : 1;
+  const priorityDifference =
+    retryPriority(left.state) - retryPriority(right.state);
+  if (priorityDifference !== 0) return priorityDifference;
+  const updatedDifference =
+    parsedTimestamp(right.updatedAt) - parsedTimestamp(left.updatedAt);
+  if (updatedDifference !== 0) return updatedDifference;
+  const submittedDifference =
+    parsedTimestamp(right.payload.submittedAt) -
+    parsedTimestamp(left.payload.submittedAt);
+  if (submittedDifference !== 0) return submittedDifference;
+  return left.submissionId.localeCompare(right.submissionId);
+}
+
+function parsedTimestamp(value: unknown): number {
+  if (typeof value !== "string") return Number.NEGATIVE_INFINITY;
+  const parsed = Date.parse(value);
+  return Number.isFinite(parsed) ? parsed : Number.NEGATIVE_INFINITY;
 }
 
 export function clearPendingResearchRecord(submissionId?: string): boolean {

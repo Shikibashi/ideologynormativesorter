@@ -603,10 +603,12 @@ function requiredConstructGatePassed(
 function comparisonConstructIds(
   label: CanonicalProfileLabelEndpoint,
 ): readonly StableId[] {
-  // Compatibility profiles are only comparable on declared constitutive
-  // constructs. Optional centroid dimensions must not substitute for them.
-  if (label.profileStatus === "compatibility-scored-unvalidated") {
-    return [...(label.requiredRootConstructIds ?? [])];
+  // Compare only declared constitutive roots when a scoped gate exists.
+  if (
+    label.requiredRootConstructIds !== undefined &&
+    label.requiredRootConstructIds.length > 0
+  ) {
+    return [...label.requiredRootConstructIds];
   }
   return [...(label.rootConstructIds ?? Object.keys(label.centroid))];
 }
@@ -642,6 +644,18 @@ function validLabels(
         : {}),
       ...(label.interpretation !== undefined
         ? { interpretation: label.interpretation }
+        : {}),
+      ...(label.profileStatus !== undefined
+        ? { profileStatus: label.profileStatus }
+        : {}),
+      ...(Array.isArray(label.rootConstructIds)
+        ? { rootConstructIds: [...label.rootConstructIds] }
+        : {}),
+      ...(Array.isArray(label.requiredRootConstructIds)
+        ? { requiredRootConstructIds: [...label.requiredRootConstructIds] }
+        : {}),
+      ...(isRecord(label.minimumItemCounts)
+        ? { minimumItemCounts: { ...label.minimumItemCounts } }
         : {}),
     });
     byId.set(label.id, normalized);

@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
-  questionsForTier,
+  MODIFIER_MEASUREMENT_VERSION,
+  PRIMARY_MEASUREMENT_VERSION,
   QUESTION_BANK_VERSION,
-} from "../data/effectiveQuestions";
-import { PRODUCTION_SCORING_VERSION } from "../production";
-import { TAXONOMY_VERSION } from "../data/labelTaxonomy";
+  questionsForTier,
+  TAXONOMY_VERSION,
+} from "../domain/selectors";
+import { RESULT_SCORING_VERSION } from "../scoring";
 import type { AnswerMap } from "../types";
 import {
   buildResearchSubmission,
@@ -18,8 +20,6 @@ import {
   RESEARCH_STUDY_ID,
   type ResearchConsent,
 } from "./index";
-import { MODIFIER_MEASUREMENT_VERSION } from "../data/modifierMeasurement";
-import { PRIMARY_MEASUREMENT_VERSION } from "../data/primaryMeasurement";
 import { buildContributionQuestionForm, RESEARCH_FORM_VERSION } from "./forms";
 import {
   assignSpecialistModule,
@@ -29,22 +29,43 @@ import {
   SPECIALIST_ASSIGNMENT_STRATEGY,
   specialistModuleDefinitions,
 } from "../specialist";
+import canonicalContractArtifact from "../../research-worker/generated/canonical-contract.json";
 // @ts-expect-error The production Worker is a native JavaScript module outside the browser bundle.
 import { validateSubmission } from "../../research-worker/src/worker.mjs";
 
 const collectorEnvironment = {
+  CANONICAL_CONTRACT_ARTIFACT: JSON.stringify(canonicalContractArtifact),
   EXPECTED_STUDY_ID: RESEARCH_STUDY_ID,
   EXPECTED_SCHEMA_VERSION: RESEARCH_SCHEMA_VERSION,
   EXPECTED_CONSENT_VERSION: RESEARCH_CONSENT_VERSION,
   EXPECTED_QUALITY_RULE_VERSION: RESEARCH_QUALITY_RULE_VERSION,
   EXPECTED_FORM_VERSION: RESEARCH_FORM_VERSION,
-  EXPECTED_BANK_VERSION: QUESTION_BANK_VERSION,
-  EXPECTED_SCORING_VERSION: PRODUCTION_SCORING_VERSION,
+  EXPECTED_BANK_VERSION: canonicalContractArtifact.bankVersion,
+  EXPECTED_SCORING_VERSION: RESULT_SCORING_VERSION,
   EXPECTED_TAXONOMY_VERSION: TAXONOMY_VERSION,
   EXPECTED_PRIMARY_MEASUREMENT_VERSION: PRIMARY_MEASUREMENT_VERSION,
   EXPECTED_MODIFIER_MEASUREMENT_VERSION: MODIFIER_MEASUREMENT_VERSION,
   EXPECTED_PRIMARY_LABEL_ROSTER_FINGERPRINT: PRIMARY_LABEL_ROSTER_FINGERPRINT,
   EXPECTED_MODIFIER_LABEL_ROSTER_FINGERPRINT: MODIFIER_LABEL_ROSTER_FINGERPRINT,
+  EXPECTED_CONTRACT_VERSION: canonicalContractArtifact.contractVersion,
+  EXPECTED_SOURCE_MANIFEST_SHA256:
+    canonicalContractArtifact.sourceManifestSha256,
+  EXPECTED_MANIFEST_SCHEMA_VERSION:
+    canonicalContractArtifact.manifestSchemaVersion,
+  EXPECTED_MANIFEST_VERSION: canonicalContractArtifact.manifestVersion,
+  EXPECTED_MANIFEST_FINGERPRINT:
+    canonicalContractArtifact.canonicalManifestFingerprint,
+  EXPECTED_SERIALIZATION_VERSION:
+    canonicalContractArtifact.serializationVersion,
+  EXPECTED_SERIALIZATION_FINGERPRINT:
+    canonicalContractArtifact.serializationFingerprint,
+  EXPECTED_CONTRACT_SCHEMA_VERSION:
+    canonicalContractArtifact.schemaContractVersion,
+  EXPECTED_SCHEMA_FINGERPRINT: canonicalContractArtifact.schemaFingerprint,
+  EXPECTED_CONTRACT_ROUTE: canonicalContractArtifact.contractRoute,
+  EXPECTED_COHORT: canonicalContractArtifact.cohort,
+  EXPECTED_COHORT_VERSION: canonicalContractArtifact.cohortVersion,
+  EXPECTED_COHORT_FINGERPRINT: canonicalContractArtifact.cohortFingerprint,
   EXPECTED_SPECIALIST_ASSIGNMENT_STRATEGY: SPECIALIST_ASSIGNMENT_STRATEGY,
   EXPECTED_SPECIALIST_ASSIGNMENT_ROSTER_VERSION:
     SPECIALIST_ASSIGNMENT_ROSTER_VERSION,
@@ -52,9 +73,6 @@ const collectorEnvironment = {
     "feminist-faction-module,identity-sovereignty-module,anarchist-families-module,green-morphology-module,socialist-families-module,conservative-variants-module,religious-national-politics-module,technology-governance-module,monarchist-municipal-module",
   EXPECTED_MODERATE_ITEM_COUNT: "206",
   EXPECTED_EXTENSIVE_ITEM_COUNT: "338",
-  ALLOWED_LEGACY_MODERATE_ITEM_COUNTS: "158,149",
-  ALLOWED_LEGACY_EXTENSIVE_ITEM_COUNTS: "336,309",
-  ALLOWED_MATRIX_ITEM_COUNTS: "120",
 };
 
 function endpointConsent(): ResearchConsent {
@@ -98,7 +116,7 @@ describe("Cloudflare contribution collector compatibility", () => {
         participantId: "p_compatibility",
         administration: "test",
         bankVersion: QUESTION_BANK_VERSION,
-        scoringVersion: PRODUCTION_SCORING_VERSION,
+        scoringVersion: RESULT_SCORING_VERSION,
         tier,
         consent: endpointConsent(),
         identity: { selfReportedIdeologies: "A tradition not yet listed" },
@@ -146,10 +164,10 @@ describe("Cloudflare contribution collector compatibility", () => {
       administration: "test",
       consent: endpointConsent(),
       moduleId: module.id,
-      moduleVersion: module.version,
+      moduleVersion: module.canonicalVersion ?? module.version,
       assignment,
       bankVersion: QUESTION_BANK_VERSION,
-      scoringVersion: PRODUCTION_SCORING_VERSION,
+      scoringVersion: RESULT_SCORING_VERSION,
       criterion: { selectedIds: [], noneOrUnsure: true, confidence: "low" },
       answers,
       questions,

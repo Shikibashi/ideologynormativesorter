@@ -73,7 +73,7 @@
   "cohort": "community-2026-v5",
   "cohortVersion": "clean-rebuild-v1",
   "cohortFingerprint": "clean-rebuild-fingerprint-v1",
-  "canonicalManifestFingerprint": "9283cf5d1894bfa8c78cfdb0d2cc67ca92d44ec0ac702d40de697b8d493522d2",
+  "canonicalManifestFingerprint": "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
   "canonicalManifestArtifact": "research-worker/generated/canonical-manifest.json",
   "canonicalCounts": {
     "roots": 26,

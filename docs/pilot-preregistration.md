@@ -11,7 +11,7 @@ This document is a study template. It must be dated, assigned an immutable versi
 - Experimental specialist waves: `2026-08-specialist-v11`; the revised feminist breadth module is `2026-08-v6`, while identity/sovereignty is `2026-08-v5`.
 - Specialist assignment roster: `2026-08-specialist-roster-v1`
 - Specialist assignment strategy: `balanced-hash-v2`
-- Scoring: `2026-08-13-taxonomy-v8`
+- Scoring: `production-score-v1`
 - Taxonomy registry: `2026-08-taxonomy-v13`
 - Primary measurement registry: `2026-08-primary-core-v1`
 - Modifier measurement registry: `2026-08-modifier-construct-v1`; ordinary modifier output is limited to declared direct core indicators, while catalog-only and focused-follow-up modifiers must abstain.

@@ -112,7 +112,7 @@ describe("research submission", () => {
 
     expect(first.manifestVersion).toBe(RESEARCH_MANIFEST_VERSION);
     expect(first.manifestFingerprint).toBe(
-      "9283cf5d1894bfa8c78cfdb0d2cc67ca92d44ec0ac702d40de697b8d493522d2",
+      "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
     );
     expect(first.serializationVersion).toBe(RESEARCH_SERIALIZATION_VERSION);
     expect(first.contractRoute).toBe(RESEARCH_CONTRACT_ROUTE);
@@ -182,7 +182,7 @@ describe("research submission", () => {
         contractMetadata: {
           manifestVersion: "caller-override",
           manifestFingerprint:
-            "9283cf5d1894bfa8c78cfdb0d2cc67ca92d44ec0ac702d40de697b8d493522d2",
+            "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
           serializationVersion: RESEARCH_SERIALIZATION_VERSION,
           contractVersion: "2026-08-v19",
           contractRoute: RESEARCH_CONTRACT_ROUTE,

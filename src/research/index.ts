@@ -62,7 +62,8 @@ export const RESEARCH_MANIFEST_FINGERPRINT = FORM_MANIFEST_FINGERPRINT;
 export const RESEARCH_MANIFEST_SCHEMA_VERSION = FORM_MANIFEST_SCHEMA_VERSION;
 export const RESEARCH_SOURCE_MANIFEST_SHA256 = FORM_SOURCE_MANIFEST_SHA256;
 export const RESEARCH_SERIALIZATION_VERSION = FORM_SERIALIZATION_VERSION;
-export const RESEARCH_SERIALIZATION_FINGERPRINT = FORM_SERIALIZATION_FINGERPRINT;
+export const RESEARCH_SERIALIZATION_FINGERPRINT =
+  FORM_SERIALIZATION_FINGERPRINT;
 export const RESEARCH_SCHEMA_CONTRACT_VERSION = FORM_SCHEMA_CONTRACT_VERSION;
 export const RESEARCH_SCHEMA_FINGERPRINT = FORM_SCHEMA_FINGERPRINT;
 export const RESEARCH_RECORD_CONTRACT_VERSION = FORM_RECORD_CONTRACT_VERSION;
@@ -457,6 +458,8 @@ function validateAnswerCoverage(
   }
 }
 
+const CANONICAL_DEFAULT_CONFIDENCE_PROMPT =
+  "How confident are you in the answer you just gave?";
 function buildItemMap(
   questions: Question[],
   constructWeightsByQuestionId?: Record<string, Record<string, number>>,
@@ -495,7 +498,8 @@ function buildItemMap(
       salience:
         question.layer === "descriptive" || question.layer === "prescriptive"
           ? {
-              kind: question.layer === "descriptive" ? "confidence" : "priority",
+              kind:
+                question.layer === "descriptive" ? "confidence" : "priority",
               prompt:
                 question.layer === "descriptive"
                   ? (question.confidencePrompt ?? DEFAULT_CONFIDENCE_PROMPT)
@@ -545,6 +549,10 @@ function buildItemMap(
         {
           ...question,
           responseType: canonicalResponseType,
+          allowDontKnow: canonical.allowDontKnow === true,
+          confidencePrompt:
+            canonical.confidencePrompt ?? CANONICAL_DEFAULT_CONFIDENCE_PROMPT,
+          priorityPrompt: canonical.priorityPrompt ?? "",
           statementOptions: canonical.statementOptions?.map((option) => ({
             ...option,
             axisWeights: Object.entries(option.rootConstructWeights ?? {}).map(
@@ -562,6 +570,44 @@ function buildItemMap(
         : { constructWeights: { ...canonical.localConstructWeights } }),
       reverseScored: canonical.reverseScored === true,
       reviewStatus: "approved",
+      ...(canonical.layer === "descriptive"
+        ? {
+            confidencePrompt:
+              canonical.confidencePrompt ?? CANONICAL_DEFAULT_CONFIDENCE_PROMPT,
+            salience: {
+              kind: "confidence" as const,
+              prompt:
+                canonical.confidencePrompt ??
+                CANONICAL_DEFAULT_CONFIDENCE_PROMPT,
+              helpText: getSalienceHelpText("confidence"),
+              options: [
+                ...SALIENCE_LEVELS.map((level) => ({
+                  value: level.value,
+                  label: level.label,
+                })),
+                { value: "skipped" as const, label: "Skip rating" },
+              ],
+            },
+          }
+        : canonical.layer === "prescriptive"
+          ? {
+              ...(canonical.priorityPrompt === undefined
+                ? {}
+                : { priorityPrompt: canonical.priorityPrompt }),
+              salience: {
+                kind: "priority" as const,
+                prompt: canonical.priorityPrompt ?? "",
+                helpText: getSalienceHelpText("priority"),
+                options: [
+                  ...SALIENCE_LEVELS.map((level) => ({
+                    value: level.value,
+                    label: level.label,
+                  })),
+                  { value: "skipped" as const, label: "Skip rating" },
+                ],
+              },
+            }
+          : {}),
       sourceCount: canonical.sources?.length ?? 0,
     };
   });
