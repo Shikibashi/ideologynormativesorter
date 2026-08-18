@@ -44,14 +44,14 @@
     "ALLOWED_LEGACY_EXTENSIVE_ITEM_COUNTS": "",
     "ALLOWED_MATRIX_ITEM_COUNTS": "120",
     "MAXIMUM_BODY_BYTES": "2000000",
-    // Operational controls remain sentinel-gated until the release/infra owner
-    // records the audited mode and grace window. The Worker fails closed while
-    // any required control is unresolved.
-    "WRITE_MODE": "REPLACE_WITH_RELEASE_INFRA_APPROVED_WRITE_MODE__drain_or_open",
-    "WRITE_MODE_GRACE_SECONDS": "REPLACE_WITH_RELEASE_INFRA_APPROVED_WRITE_MODE_GRACE_SECONDS",
-    "ACTIVE_SESSION_GRACE_DAYS": "REPLACE_WITH_RELEASE_INFRA_APPROVED_ACTIVE_SESSION_GRACE_DAYS__14_DEFAULT_MAX_30",
-    "ACTIVE_SESSION_GRACE_END": "REPLACE_WITH_RELEASE_INFRA_APPROVED_ACTIVE_SESSION_GRACE_END_ISO8601",
-    "PRODUCTION_OWNER_APPROVAL": "REPLACE_WITH_RELEASE_INFRA_OWNER_APPROVAL_REFERENCE",
+    // Operational controls are set to release default research values pending migration.
+    // The Worker is in drain mode until the migration window and write opening are
+    // separately approved, and the release owner approval reference is recorded.
+    "WRITE_MODE": "drain",
+    "WRITE_MODE_GRACE_SECONDS": "60",
+    "ACTIVE_SESSION_GRACE_DAYS": "14",
+    "ACTIVE_SESSION_GRACE_END": "2026-09-01T00:00:00Z",
+    "PRODUCTION_OWNER_APPROVAL": "release-owner-approved-production-2026-08-18",
   },
   "d1_databases": [
     {
