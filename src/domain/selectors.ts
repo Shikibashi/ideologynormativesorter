@@ -25,6 +25,10 @@ import {
   type CanonicalItem,
   type IdeologyNode,
 } from "./canonicalManifest";
+import {
+  CANONICAL_PRESENTATION_VERSION,
+  CANONICAL_QUESTION_PRESENTATION,
+} from "./canonicalPresentation";
 export type {
   LabelMeasurementStatus,
   LabelRole,
@@ -193,9 +197,15 @@ const itemById = new Map(
   CANONICAL_MANIFEST.items.map((item) => [item.id, item]),
 );
 const activeCoreItemIds = new Set(CANONICAL_MANIFEST.activeCoreItemIds ?? []);
+export const QUESTION_BANK_VERSION = `${CANONICAL_MANIFEST.metadata.version}+${CANONICAL_PRESENTATION_VERSION}`;
 
 function questionProjection(item: CanonicalItem): Question {
   const layer = (item.layer ?? "normative") as Layer;
+  const presentation = CANONICAL_QUESTION_PRESENTATION[item.id];
+  const evidenceNote = presentation?.evidenceNote ?? item.evidenceNote;
+  const confidencePrompt =
+    presentation?.confidencePrompt ?? item.confidencePrompt;
+  const priorityPrompt = presentation?.priorityPrompt ?? item.priorityPrompt;
   const axisWeights = Object.entries(item.rootConstructWeights ?? {}).map(
     ([axisId, weight]) => ({ axisId, weight }),
   );
@@ -210,10 +220,10 @@ function questionProjection(item: CanonicalItem): Question {
   );
   return freeze({
     id: item.id,
-    prompt: item.prompt,
+    prompt: presentation?.prompt ?? item.prompt,
     domain: item.domain ?? "unknown",
     layer,
-    theoryContext: "mixed",
+    theoryContext: presentation?.theoryContext ?? "mixed",
     responseType: (item.responseType ?? "likert7") as ResponseType,
     tier: (item.tier ?? "extensive") as QuizTier,
     axisWeights,
@@ -221,7 +231,7 @@ function questionProjection(item: CanonicalItem): Question {
     ...(item.moduleId ? { module: item.moduleId } : {}),
     ...(item.explanation ? { explanation: item.explanation } : {}),
     ...(item.helpText ? { helpText: item.helpText } : {}),
-    ...(item.evidenceNote ? { evidenceNote: item.evidenceNote } : {}),
+    ...(evidenceNote ? { evidenceNote } : {}),
     ...(item.sources
       ? {
           sources: item.sources.map((source) => ({ ...source })),
@@ -231,16 +241,14 @@ function questionProjection(item: CanonicalItem): Question {
     ...(item.allowDontKnow !== undefined
       ? { allowDontKnow: item.allowDontKnow }
       : {}),
-    ...(item.confidencePrompt
-      ? { confidencePrompt: item.confidencePrompt }
-      : {}),
-    ...(item.priorityPrompt ? { priorityPrompt: item.priorityPrompt } : {}),
+    ...(confidencePrompt ? { confidencePrompt } : {}),
+    ...(priorityPrompt ? { priorityPrompt } : {}),
     ...(item.reverseScored !== undefined
       ? { reverseScored: item.reverseScored }
       : {}),
     active: item.role === "core" ? activeCoreItemIds.has(item.id) : true,
     reviewStatus: "approved",
-    version: CANONICAL_MANIFEST.metadata.version,
+    version: QUESTION_BANK_VERSION,
     sourceStatus: "clean_room",
     ...(item.textHash ? { textHash: item.textHash } : {}),
   });
@@ -295,7 +303,6 @@ export function questionsForTier(tier: QuizTier): Question[] {
   return tier === "quick" ? diversifyQuickOrder(selected) : selected;
 }
 
-export const QUESTION_BANK_VERSION = CANONICAL_MANIFEST.metadata.version;
 export const SCORING_VERSION = CANONICAL_MANIFEST.metadata.version;
 export function getBankFingerprint(): string {
   return CANONICAL_MANIFEST.metadata.fingerprint ?? QUESTION_BANK_VERSION;
@@ -347,7 +354,11 @@ function roleForNode(node: IdeologyNode): LabelRole {
 
 function measurementStatusForNode(node: IdeologyNode): LabelMeasurementStatus {
   const role = roleForNode(node);
-  if (role === "primary") return "core-primary";
+  if (role === "primary") {
+    return node.measurementStatus === "validated-scoped-public"
+      ? "core-primary"
+      : "core-primary-unvalidated";
+  }
   if (role === "specialist") {
     return node.measurementStatus === "validated-scoped-public"
       ? "validated-specialist"

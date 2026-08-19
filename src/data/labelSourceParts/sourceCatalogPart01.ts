@@ -643,13 +643,13 @@ export const sourceCatalogPart01: Record<string, SourceDefinition> = {
     kind: "scholarly",
     note: "Supports separating asset ownership from control of production and locating market socialism among models that combine social or public ownership with market allocation; it does not validate one institutional design.",
   },
-  "sep-radical-democracy": {
-    sourceId: "sep-radical-democracy",
-    title: "Global Democracy",
-    publisher: "Stanford Encyclopedia of Philosophy",
-    url: "https://plato.stanford.edu/archives/fall2025/entries/global-democracy/",
+  "oxford-radical-democracy-constituent-power": {
+    sourceId: "oxford-radical-democracy-constituent-power",
+    title: "Radical Democracy and Constituent Power",
+    publisher: "Oxford University Press / Oxford Handbooks",
+    url: "https://academic.oup.com/edited-volume/62370/chapter-abstract/554752351",
     kind: "scholarly",
-    note: "Supports the distinction between radical democracy and a narrow electoral model by emphasizing plural solidarities, participation, contestation, and challenges to liberal-institutional closure; it does not establish one radical-democratic blueprint.",
+    note: "Directly supports radical democracy as a contested theory of constituent and popular power that prioritizes free and equal democratic contestation beyond fixed representative institutions; it does not establish one radical-democratic blueprint.",
   },
   "wiley-one-nation-conservatism": {
     sourceId: "wiley-one-nation-conservatism",

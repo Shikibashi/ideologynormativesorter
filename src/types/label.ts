@@ -99,6 +99,7 @@ export type LabelRole =
 
 export type LabelMeasurementStatus =
   | "core-primary"
+  | "core-primary-unvalidated"
   | "modifier-scored"
   | "modifier-follow-up"
   | "modifier-catalog-only"

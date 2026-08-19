@@ -74,6 +74,7 @@ PSYCH_BOOTSTRAP_REPLICATES=1000
 PSYCH_MINIMUM_AXIS_N=100
 PSYCH_MINIMUM_FACTOR_N=300
 PSYCH_MINIMUM_DIF_GROUP_N=100
+PSYCH_DIF_GROUPS=ageBand,genderGroup
 PSYCH_RANDOM_SEED=20260718
 PSYCH_REQUIRED_CONSENT_VERSION=2026-08-12-v8
 PSYCH_REQUIRED_FORM_VERSION=profile-form-v3
@@ -134,7 +135,7 @@ The core psychometric workflow writes:
 - `validation-summary.json`
 - `axis-reliability.csv` with alpha, omega total, and percentile bootstrap intervals
 - `item-total-correlations.csv` with the observed pair count and a corrected correlation against the respondent's available mean across the remaining axis items
-- `test-retest.csv` with rank-order correlation, concordance, and change distributions for the primary-axis item model
+- `test-retest.csv` with rank-order correlation, concordance, change distributions, standard error of measurement, and 95% minimally detectable change for the primary-axis item model
 - `production-axis-scores.csv` reconstructed with every production weight and confidence/priority multiplier
 - `production-score-test-retest.csv` with agreement and change distributions for the exact production score contract
 - `form-incidence-summary.csv`, `item-assignment-counts.csv`, `item-pair-overlap.csv`, and `item-position-distribution.csv` for auditing achieved matrix-form connectivity and order balance

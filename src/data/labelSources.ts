@@ -141,7 +141,7 @@ const EXPLICIT_SOURCE_IDS_BY_LABEL_ID: Partial<
   "classical-liberalism": ["sep-liberalism"],
   ordoliberalism: ["cambridge-ordoliberalism"],
   multiculturalism: ["sep-multiculturalism"],
-  "radical-democracy": ["sep-radical-democracy"],
+  "radical-democracy": ["oxford-radical-democracy-constituent-power"],
   "one-nation-conservatism": ["wiley-one-nation-conservatism"],
   "democratic-confederalism": ["open-democratic-confederalism"],
   "liberal-feminism": [
