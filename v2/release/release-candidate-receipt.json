@@ -1,0 +1,127 @@
+{
+  "phase": "15",
+  "status": "NO-GO",
+  "releaseCandidateOnly": true,
+  "productionWritesEnabled": false,
+  "trafficCutoverAuthorized": false,
+  "empiricalEvidenceStatus": "NOT_EVALUATED",
+  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "analysisFingerprint": "e586f159b41d82d56d959438e2e515af907dc4ef464219d1ed728f6a6f84b881",
+  "canonicalCounts": {
+    "domains": 20,
+    "constructsRoot": 26,
+    "constructsSpecialist": 54,
+    "constructsTotal": 80,
+    "constructsByFamily": {
+      "descriptive": 7,
+      "normative": 10,
+      "prescriptive": 9,
+      "specialist": 54
+    },
+    "coreItems": 338,
+    "specialistItems": 68,
+    "responseTypes": {
+      "likert7": 400,
+      "statement-choice": 6
+    },
+    "reversedItems": 0,
+    "statementChoiceItems": 6,
+    "primaryProfiles": 16,
+    "modifierProfiles": 24,
+    "specialistProfiles": 78,
+    "specialistCandidates": 57,
+    "specialistModules": 9,
+    "ontologyNodes": 145,
+    "ontologyRelations": 42,
+    "diagnosticRelations": 4,
+    "explicitContributionMappings": 1013,
+    "contentVersion": "v2-content-phase8.1",
+    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72"
+  },
+  "syntheticAnalysis": {
+    "datasetKind": "synthetic-regression-fixture",
+    "submissions": 40
+  },
+  "legacySuite": {
+    "status": "KNOWN_PRE_EXISTING_FAILURES",
+    "failureCount": 5,
+    "details": "The untouched v1 suite retains the canonical manifest fingerprint failure, three legacy Worker compatibility failures, and one primary measurement disclosure failure recorded in the Phase 13 receipt."
+  },
+  "verification": {
+    "phase13Go": true,
+    "phase14Go": true,
+    "freshInstallBuild": true,
+    "canonicalAudit": true,
+    "deterministicArtifacts": true,
+    "scoringAuthorityBoundary": true,
+    "cleanRoomBoundary": true,
+    "browserMatrix": false,
+    "accessibility": true,
+    "visualRegression": true,
+    "responsiveChecks": true,
+    "performance": true,
+    "privacySecurity": true,
+    "documentation": true,
+    "releaseTests": true
+  },
+  "missingDocs": [],
+  "unrelatedWorktreeChanges": [
+    "M analysis/README.md",
+    " M analysis/run_validation.R",
+    " M docs/pilot-preregistration.md",
+    " M docs/psychometric-validation-protocol.md",
+    " M research-worker/generated/canonical-manifest.json",
+    " M src/components/LabelCard.tsx",
+    " M src/data/labelCatalogParts/broadLabelsPart01.ts",
+    " M src/data/labelSourceParts/sourceCatalogPart01.ts",
+    " M src/data/labelSources.test.ts",
+    " M src/data/labelSources.ts",
+    " M src/data/labelTaxonomy.ts",
+    " M src/domain/canonicalData.ts",
+    " M src/domain/selectors.ts",
+    " M src/research/forms.ts",
+    " M src/types/label.ts",
+    "?? analysis/run_known_groups.R",
+    "?? docs/empirical-validation-operations-2026-08.md",
+    "?? docs/endpoint-validity-gates-2026-08.md",
+    "?? docs/ideology-definition-audit-2026-08.md",
+    "?? docs/research-readiness-2026-08.md",
+    "?? src/domain/canonicalPresentation.test.ts",
+    "?? src/domain/canonicalPresentation.ts",
+    "?? v2/.local-d1/v3/cache/miniflare-CacheObject/metadata.sqlite",
+    "?? v2/.local-d1/v3/cache/miniflare-CacheObject/metadata.sqlite-shm",
+    "?? v2/.local-d1/v3/cache/miniflare-CacheObject/metadata.sqlite-wal",
+    "?? v2/.local-d1/v3/d1/miniflare-D1DatabaseObject/e1d57d4c6cd06d7eaacf6f5adf9aac691a274fee12cbd227e04b1a4023e40cef.sqlite",
+    "?? v2/.local-d1/v3/d1/miniflare-D1DatabaseObject/e1d57d4c6cd06d7eaacf6f5adf9aac691a274fee12cbd227e04b1a4023e40cef.sqlite-shm",
+    "?? v2/.local-d1/v3/d1/miniflare-D1DatabaseObject/e1d57d4c6cd06d7eaacf6f5adf9aac691a274fee12cbd227e04b1a4023e40cef.sqlite-wal",
+    "?? v2/.local-d1/v3/d1/miniflare-D1DatabaseObject/metadata.sqlite",
+    "?? v2/.local-d1/v3/d1/miniflare-D1DatabaseObject/metadata.sqlite-shm",
+    "?? v2/.local-d1/v3/d1/miniflare-D1DatabaseObject/metadata.sqlite-wal",
+    "?? v2/.local-d1/v3/observability/miniflare-wobs-trace-store/a590acd76969f996ec6e4b599c3c09f58c283a76f2d61392b5d3046caf557602.sqlite",
+    "?? v2/.local-d1/v3/observability/miniflare-wobs-trace-store/a590acd76969f996ec6e4b599c3c09f58c283a76f2d61392b5d3046caf557602.sqlite-shm",
+    "?? v2/.local-d1/v3/observability/miniflare-wobs-trace-store/a590acd76969f996ec6e4b599c3c09f58c283a76f2d61392b5d3046caf557602.sqlite-wal",
+    "?? v2/.local-d1/v3/observability/miniflare-wobs-trace-store/metadata.sqlite",
+    "?? v2/.local-d1/v3/observability/miniflare-wobs-trace-store/metadata.sqlite-shm",
+    "?? v2/.local-d1/v3/observability/miniflare-wobs-trace-store/metadata.sqlite-wal",
+    "?? v2/dist-v2/assets/index-BweAj-yY.js",
+    "?? v2/dist-v2/assets/index-DdO8GFGr.css",
+    "?? v2/dist-v2/index.html"
+  ],
+  "blockers": [
+    {
+      "id": "VERIFY_BROWSERMATRIX",
+      "severity": "blocking",
+      "detail": "browserMatrix has not been verified in this release-candidate run"
+    },
+    {
+      "id": "WORKTREE_NOT_CLEAN",
+      "severity": "blocking",
+      "detail": "Unrelated pre-existing worktree changes remain outside the release-owned file set"
+    }
+  ],
+  "rollback": {
+    "requiredBeforeCutover": true,
+    "productionCutoverPerformed": false,
+    "v1Retained": true
+  }
+}

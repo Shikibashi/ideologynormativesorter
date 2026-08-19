@@ -3,5 +3,5 @@
   "payloadBytes": 16191,
   "maxPayloadBytes": 131072,
   "withinLimit": true,
-  "projectionMilliseconds": 0.15
+  "projectionMilliseconds": 0.16
 }

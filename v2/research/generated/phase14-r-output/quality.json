@@ -1,0 +1,12 @@
+{
+  "accepted_submissions": 40,
+  "rows": 16240,
+  "observed_rows": 13520,
+  "missing_rows": 0,
+  "structural_not_applicable_rows": 2720,
+  "state_counts": {
+    "answered": 13520,
+    "structural_not_applicable": 2720
+  },
+  "version_issues": []
+}

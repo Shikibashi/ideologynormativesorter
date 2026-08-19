@@ -1,0 +1,50 @@
+[
+  {
+    "id": "reliability",
+    "claim": "Empirical measurement claim requires approved real-data analysis",
+    "status": "NOT_EVALUABLE",
+    "evidence_source": "synthetic-fixture",
+    "eligible_for_production_claim": false,
+    "reason": "Synthetic data exercises code paths but cannot establish population or psychometric claims"
+  },
+  {
+    "id": "dimensionality",
+    "claim": "Empirical measurement claim requires approved real-data analysis",
+    "status": "NOT_EVALUABLE",
+    "evidence_source": "synthetic-fixture",
+    "eligible_for_production_claim": false,
+    "reason": "Synthetic data exercises code paths but cannot establish population or psychometric claims"
+  },
+  {
+    "id": "item_analysis",
+    "claim": "Empirical measurement claim requires approved real-data analysis",
+    "status": "NOT_EVALUABLE",
+    "evidence_source": "synthetic-fixture",
+    "eligible_for_production_claim": false,
+    "reason": "Synthetic data exercises code paths but cannot establish population or psychometric claims"
+  },
+  {
+    "id": "invariance",
+    "claim": "Empirical measurement claim requires approved real-data analysis",
+    "status": "NOT_EVALUABLE",
+    "evidence_source": "synthetic-fixture",
+    "eligible_for_production_claim": false,
+    "reason": "Synthetic data exercises code paths but cannot establish population or psychometric claims"
+  },
+  {
+    "id": "test_retest",
+    "claim": "Empirical measurement claim requires approved real-data analysis",
+    "status": "NOT_EVALUABLE",
+    "evidence_source": "synthetic-fixture",
+    "eligible_for_production_claim": false,
+    "reason": "Synthetic data exercises code paths but cannot establish population or psychometric claims"
+  },
+  {
+    "id": "profile_analysis",
+    "claim": "Empirical measurement claim requires approved real-data analysis",
+    "status": "NOT_EVALUABLE",
+    "evidence_source": "synthetic-fixture",
+    "eligible_for_production_claim": false,
+    "reason": "Synthetic data exercises code paths but cannot establish population or psychometric claims"
+  }
+]
