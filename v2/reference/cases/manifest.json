@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "referenceManifest": "v2/reference/v1/manifest.json",
+  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "cases": [
+    {
+      "id": "empty-core",
+      "description": "No core responses; every construct must remain explicitly unmeasured.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/empty-core/input.json",
+      "expectedV1": "v2/reference/cases/empty-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/empty-core/expected-v2.json",
+      "expectedDifferences": [
+        "K-003",
+        "KD-007",
+        "KD-008"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "min-core",
+      "description": "One answered core item with all other items absent.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/min-core/input.json",
+      "expectedV1": "v2/reference/cases/min-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/min-core/expected-v2.json",
+      "expectedDifferences": [
+        "K-002",
+        "P-002"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "complete-core",
+      "description": "The complete active core corpus is answered deterministically.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/complete-core/input.json",
+      "expectedV1": "v2/reference/cases/complete-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/complete-core/expected-v2.json",
+      "expectedDifferences": [
+        "V-001",
+        "V-003",
+        "VER-001",
+        "VER-002",
+        "VER-003"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "mid-core",
+      "description": "All core Likert values at midpoint and statement options at their first choice.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/mid-core/input.json",
+      "expectedV1": "v2/reference/cases/mid-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/mid-core/expected-v2.json",
+      "expectedDifferences": [
+        "K-001",
+        "P-003"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "max-core",
+      "description": "All active core items at their positive endpoint.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/max-core/input.json",
+      "expectedV1": "v2/reference/cases/max-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/max-core/expected-v2.json",
+      "expectedDifferences": [
+        "C-001",
+        "P-005",
+        "M-002"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "alternating-core",
+      "description": "Deterministic alternating endpoints across every core item.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/alternating-core/input.json",
+      "expectedV1": "v2/reference/cases/alternating-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/alternating-core/expected-v2.json",
+      "expectedDifferences": [
+        "D-002",
+        "VER-002"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "mixed-states",
+      "description": "Answered, missing, skipped, abstained, and refused states in one input.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/mixed-states/input.json",
+      "expectedV1": "v2/reference/cases/mixed-states/expected-v1.json",
+      "expectedV2": "v2/reference/cases/mixed-states/expected-v2.json",
+      "expectedDifferences": [
+        "S-001",
+        "S-002",
+        "S-003",
+        "S-004",
+        "K-004"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "statement-choice",
+      "description": "Every statement-choice item is answered explicitly by option ID.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/statement-choice/input.json",
+      "expectedV1": "v2/reference/cases/statement-choice/expected-v1.json",
+      "expectedV2": "v2/reference/cases/statement-choice/expected-v2.json",
+      "expectedDifferences": [
+        "ST-001",
+        "ST-002",
+        "C-003"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "salience-low",
+      "description": "Non-normative items use minimum valid confidence or priority.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/salience-low/input.json",
+      "expectedV1": "v2/reference/cases/salience-low/expected-v1.json",
+      "expectedV2": "v2/reference/cases/salience-low/expected-v2.json",
+      "expectedDifferences": [
+        "SA-001",
+        "SA-002",
+        "SA-004"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "salience-high",
+      "description": "Non-normative items use maximum confidence or priority.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/salience-high/input.json",
+      "expectedV1": "v2/reference/cases/salience-high/expected-v1.json",
+      "expectedV2": "v2/reference/cases/salience-high/expected-v2.json",
+      "expectedDifferences": [
+        "SA-001",
+        "SA-002",
+        "SA-003"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "random-seed-20260819",
+      "description": "Fixed-seed deterministic pseudo-random core responses.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/random-seed-20260819/input.json",
+      "expectedV1": "v2/reference/cases/random-seed-20260819/expected-v1.json",
+      "expectedV2": "v2/reference/cases/random-seed-20260819/expected-v2.json",
+      "expectedDifferences": [
+        "P-005",
+        "VER-002"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "boundary-thresholds",
+      "description": "Small evidence boundary input used for gate, tie, and strict validation checks.",
+      "classificationScope": [
+        "scoring",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/boundary-thresholds/input.json",
+      "expectedV1": "v2/reference/cases/boundary-thresholds/expected-v1.json",
+      "expectedV2": "v2/reference/cases/boundary-thresholds/expected-v2.json",
+      "expectedDifferences": [
+        "V-002",
+        "V-004",
+        "N-004",
+        "P-004",
+        "KD-009"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/behavioral-migration-receipt.md"
+      ]
+    },
+    {
+      "id": "specialist-anarchist-families-module",
+      "description": "All items in specialist module anarchist-families-module answered with explicit activation.",
+      "classificationScope": [
+        "specialists",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/specialist-anarchist-families-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-anarchist-families-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-anarchist-families-module/expected-v2.json",
+      "expectedDifferences": [
+        "SP-001",
+        "SP-002",
+        "SP-003",
+        "SP-004",
+        "KD-010"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/known-defect-lockout.md"
+      ]
+    },
+    {
+      "id": "specialist-conservative-variants-module",
+      "description": "All items in specialist module conservative-variants-module answered with explicit activation.",
+      "classificationScope": [
+        "specialists",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/specialist-conservative-variants-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-conservative-variants-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-conservative-variants-module/expected-v2.json",
+      "expectedDifferences": [
+        "SP-001",
+        "SP-002",
+        "SP-003",
+        "SP-004",
+        "KD-010"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/known-defect-lockout.md"
+      ]
+    },
+    {
+      "id": "specialist-feminist-faction-module",
+      "description": "All items in specialist module feminist-faction-module answered with explicit activation.",
+      "classificationScope": [
+        "specialists",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/specialist-feminist-faction-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-feminist-faction-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-feminist-faction-module/expected-v2.json",
+      "expectedDifferences": [
+        "SP-001",
+        "SP-002",
+        "SP-003",
+        "SP-004",
+        "KD-010"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/known-defect-lockout.md"
+      ]
+    },
+    {
+      "id": "specialist-green-morphology-module",
+      "description": "All items in specialist module green-morphology-module answered with explicit activation.",
+      "classificationScope": [
+        "specialists",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/specialist-green-morphology-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-green-morphology-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-green-morphology-module/expected-v2.json",
+      "expectedDifferences": [
+        "SP-001",
+        "SP-002",
+        "SP-003",
+        "SP-004",
+        "KD-010"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/known-defect-lockout.md"
+      ]
+    },
+    {
+      "id": "specialist-identity-sovereignty-module",
+      "description": "All items in specialist module identity-sovereignty-module answered with explicit activation.",
+      "classificationScope": [
+        "specialists",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/specialist-identity-sovereignty-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-identity-sovereignty-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-identity-sovereignty-module/expected-v2.json",
+      "expectedDifferences": [
+        "SP-001",
+        "SP-002",
+        "SP-003",
+        "SP-004",
+        "KD-010"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/known-defect-lockout.md"
+      ]
+    },
+    {
+      "id": "specialist-monarchist-municipal-module",
+      "description": "All items in specialist module monarchist-municipal-module answered with explicit activation.",
+      "classificationScope": [
+        "specialists",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/specialist-monarchist-municipal-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-monarchist-municipal-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-monarchist-municipal-module/expected-v2.json",
+      "expectedDifferences": [
+        "SP-001",
+        "SP-002",
+        "SP-003",
+        "SP-004",
+        "KD-010"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/known-defect-lockout.md"
+      ]
+    },
+    {
+      "id": "specialist-religious-national-politics-module",
+      "description": "All items in specialist module religious-national-politics-module answered with explicit activation.",
+      "classificationScope": [
+        "specialists",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/specialist-religious-national-politics-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-religious-national-politics-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-religious-national-politics-module/expected-v2.json",
+      "expectedDifferences": [
+        "SP-001",
+        "SP-002",
+        "SP-003",
+        "SP-004",
+        "KD-010"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/known-defect-lockout.md"
+      ]
+    },
+    {
+      "id": "specialist-socialist-families-module",
+      "description": "All items in specialist module socialist-families-module answered with explicit activation.",
+      "classificationScope": [
+        "specialists",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/specialist-socialist-families-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-socialist-families-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-socialist-families-module/expected-v2.json",
+      "expectedDifferences": [
+        "SP-001",
+        "SP-002",
+        "SP-003",
+        "SP-004",
+        "KD-010"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/known-defect-lockout.md"
+      ]
+    },
+    {
+      "id": "specialist-technology-governance-module",
+      "description": "All items in specialist module technology-governance-module answered with explicit activation.",
+      "classificationScope": [
+        "specialists",
+        "reference-oracle"
+      ],
+      "input": "v2/reference/cases/specialist-technology-governance-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-technology-governance-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-technology-governance-module/expected-v2.json",
+      "expectedDifferences": [
+        "SP-001",
+        "SP-002",
+        "SP-003",
+        "SP-004",
+        "KD-010"
+      ],
+      "sourceVersion": {
+        "contentVersion": "v2-content-phase8.1",
+        "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+        "scoringVersion": "scoring-v2.phase7.1"
+      },
+      "rationaleRefs": [
+        "docs/v2/reference-oracle.md",
+        "docs/v2/known-defect-lockout.md"
+      ]
+    }
+  ]
+}

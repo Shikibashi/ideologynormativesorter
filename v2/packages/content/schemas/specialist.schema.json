@@ -1,0 +1,43 @@
+{
+  "$id": "https://example.com/v2/specialist.schema.json",
+  "type": "object",
+  "required": ["id", "name", "role", "specialistId", "itemIds", "activation", "outputType", "requirements", "gates"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "role": { "const": "specialist" },
+    "specialistId": { "type": "string", "minLength": 1 },
+    "moduleId": { "type": "string", "minLength": 1 },
+    "itemIds": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "activation": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } },
+    "outputType": { "enum": ["primary", "diagnostic"] },
+    "requirements": { "type": "array", "items": { "$ref": "requirement.schema.json" } },
+    "gates": { "type": "array", "items": { "$ref": "gate.schema.json" } },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "sourceKey", "name", "description", "status", "requirements", "gates"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "sourceKey": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "variant": { "type": "string" },
+          "status": { "type": "string", "minLength": 1 },
+          "requirements": { "type": "array", "items": { "$ref": "requirement.schema.json" } },
+          "gates": { "type": "array", "items": { "$ref": "gate.schema.json" } },
+          "provenanceRefs": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    },
+    "minimumEvidenceRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+    "status": { "type": "string" },
+    "version": { "type": "string" },
+    "targetNodeId": { "type": "string", "minLength": 1 },
+    "rationale": { "type": "string" },
+    "provenanceRefs": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

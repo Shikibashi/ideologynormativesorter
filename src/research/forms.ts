@@ -1,5 +1,6 @@
 import { CANONICAL_JSON_VERSION } from "../domain/canonicalSerialization";
 import { CANONICAL_MANIFEST } from "../domain/canonicalManifest";
+import { CANONICAL_PRESENTATION_VERSION } from "../domain/canonicalPresentation";
 import type { Question } from "../types";
 import type { ResearchAdministration } from "./index";
 
@@ -33,6 +34,7 @@ export const RESEARCH_FORM_CONTRACT_METADATA = Object.freeze({
   manifestVersion: RESEARCH_MANIFEST_VERSION,
   manifestFingerprint: RESEARCH_MANIFEST_FINGERPRINT,
   manifestSchemaVersion: RESEARCH_MANIFEST_SCHEMA_VERSION,
+  presentationVersion: CANONICAL_PRESENTATION_VERSION,
   sourceManifestSha256: RESEARCH_SOURCE_MANIFEST_SHA256,
   serializationVersion: RESEARCH_SERIALIZATION_VERSION,
   serializationFingerprint: RESEARCH_SERIALIZATION_FINGERPRINT,

@@ -1,0 +1,16 @@
+{
+  "$id": "https://example.com/v2/gate.schema.json",
+  "type": "object",
+  "required": ["id", "operator"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "operator": { "enum": ["minimum", "maximum", "interval", "evidenceMinimum", "conjunction", "disjunction"] },
+    "constructId": { "type": "string", "minLength": 1 },
+    "minimum": { "type": "number" },
+    "maximum": { "type": "number" },
+    "minimumEvidenceRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+    "minimumItemCount": { "type": "integer", "minimum": 0 },
+    "children": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+  },
+  "additionalProperties": false
+}

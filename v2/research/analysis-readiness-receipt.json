@@ -1,0 +1,33 @@
+{
+  "phase": "14",
+  "status": "GO",
+  "primaryStatisticalEnvironment": {
+    "name": "R",
+    "version": "4.6.1",
+    "packageLock": "v2/research/renv.lock"
+  },
+  "input": {
+    "researchSchemaVersion": "research-v2.phase13.1",
+    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+    "datasetKind": "synthetic-regression-fixture",
+    "acceptedSyntheticSubmissions": 40
+  },
+  "analysisSchemaVersion": "research-analysis-v2.phase14.1",
+  "analysisFingerprint": "e586f159b41d82d56d959438e2e515af907dc4ef464219d1ed728f6a6f84b881",
+  "empiricalEvidenceStatus": "NOT_EVALUATED",
+  "claimsEligibleForProduction": false,
+  "verification": {
+    "phase13Go": true,
+    "versionValidation": true,
+    "privacyBoundary": true,
+    "deterministicSyntheticRun": true,
+    "rPipeline": true,
+    "claimGuard": true,
+    "replayBridge": true
+  },
+  "notes": [
+    "The synthetic fixture is a regression input only and is not empirical evidence.",
+    "No production collection, D1 production write, scoring change, or route activation is authorized by this receipt.",
+    "Legacy v1 analysis scripts remain archive-only and were not imported into the v2 pipeline."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ideologynormativesorter-v2-research-local",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-08-11",
+  "workers_dev": false,
+  "vars": {
+    "DEPLOYMENT_ENVIRONMENT": "local",
+    "RESEARCH_WRITES_ENABLED": "true",
+    "RESEARCH_ALLOWED_ORIGINS": "http://127.0.0.1:4174"
+  },
+  "d1_databases": [
+    {
+      "binding": "RESEARCH_DB",
+      "database_name": "ideologynormativesorter-v2-research-local",
+      "database_id": "local-only",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

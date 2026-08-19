@@ -23728,7 +23728,7 @@ export const CANONICAL_DATA = {
         "cultural-plasticity": 1,
         "gradualism-vs-immediatism": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -23804,7 +23804,7 @@ export const CANONICAL_DATA = {
         "centralization-preference": 1,
         "secularism-religious": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -23880,7 +23880,7 @@ export const CANONICAL_DATA = {
         "liberty-noninterference": 1,
         "market-process-confidence": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -23954,7 +23954,7 @@ export const CANONICAL_DATA = {
         "equality-theory": 1,
         "anti-domination": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24024,7 +24024,7 @@ export const CANONICAL_DATA = {
       minimumItemCounts: {
         "human-nature-priority": 2,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24100,7 +24100,7 @@ export const CANONICAL_DATA = {
         "market-process-confidence": 1,
         "cultural-plasticity": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24176,7 +24176,7 @@ export const CANONICAL_DATA = {
         "equality-theory": 1,
         "anti-domination": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24252,7 +24252,7 @@ export const CANONICAL_DATA = {
         "liberty-noninterference": 1,
         "market-process-confidence": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24328,7 +24328,7 @@ export const CANONICAL_DATA = {
         "liberty-noninterference": 1,
         "market-process-confidence": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24402,7 +24402,7 @@ export const CANONICAL_DATA = {
         "equality-theory": 1,
         "anti-domination": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24480,7 +24480,7 @@ export const CANONICAL_DATA = {
         "reform-vs-revolution": 1,
         "state-action-vs-exit": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24552,7 +24552,7 @@ export const CANONICAL_DATA = {
         "political-community-boundary": 1,
         "cultural-plasticity": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24624,7 +24624,7 @@ export const CANONICAL_DATA = {
         "equality-theory": 1,
         "anti-domination": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24696,7 +24696,7 @@ export const CANONICAL_DATA = {
         "liberty-noninterference": 1,
         "anti-domination": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24770,7 +24770,7 @@ export const CANONICAL_DATA = {
         "equality-theory": 1,
         "state-action-vs-exit": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
     {
@@ -24844,7 +24844,7 @@ export const CANONICAL_DATA = {
         "equality-theory": 1,
         "state-action-vs-exit": 1,
       },
-      status: "validated-scoped-public",
+      status: "compatibility-scored-unvalidated",
       rationale: "",
     },
   ],

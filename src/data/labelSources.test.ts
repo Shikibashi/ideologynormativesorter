@@ -885,7 +885,7 @@ describe("ideology label sources", () => {
       "classical-liberalism": "sep-liberalism",
       ordoliberalism: "cambridge-ordoliberalism",
       multiculturalism: "sep-multiculturalism",
-      "radical-democracy": "sep-radical-democracy",
+      "radical-democracy": "oxford-radical-democracy-constituent-power",
       "one-nation-conservatism": "wiley-one-nation-conservatism",
       "democratic-confederalism": "open-democratic-confederalism",
       "liberal-feminism": "sep-feminist-political-philosophy",

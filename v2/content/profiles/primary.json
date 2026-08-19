@@ -1,0 +1,2727 @@
+[
+  {
+    "id": "profile:christian-democrat",
+    "name": "Christian Democrat",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": 0.4,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:christian-democrat:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:christian-democrat:evidence:equality-theory",
+        "operator": "evidenceMinimum",
+        "constructId": "equality-theory",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:christian-democrat:evidence:centralization-preference",
+        "operator": "evidenceMinimum",
+        "constructId": "centralization-preference",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:christian-democrat:evidence:secularism-religious",
+        "operator": "evidenceMinimum",
+        "constructId": "secularism-religious",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "christian-democrat",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0",
+      "citation:19f7801696d214cc",
+      "citation:361e419b1f2ade3e"
+    ]
+  },
+  {
+    "id": "profile:classical-liberalism",
+    "name": "Classical Liberalism",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": 0.9,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.3,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:classical-liberalism:evidence:authority-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "authority-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:classical-liberalism:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:classical-liberalism:evidence:liberty-noninterference",
+        "operator": "evidenceMinimum",
+        "constructId": "liberty-noninterference",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:classical-liberalism:evidence:market-process-confidence",
+        "operator": "evidenceMinimum",
+        "constructId": "market-process-confidence",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "classical-liberalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af"
+    ]
+  },
+  {
+    "id": "profile:conservative",
+    "name": "Conservative / Prudential Conservative",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0.25,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": 0.35,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": 0.2,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:conservative:evidence:cultural-plasticity",
+        "operator": "evidenceMinimum",
+        "constructId": "cultural-plasticity",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:conservative:evidence:gradualism-vs-immediatism",
+        "operator": "evidenceMinimum",
+        "constructId": "gradualism-vs-immediatism",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "conservative",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0"
+    ]
+  },
+  {
+    "id": "profile:democratic-socialist",
+    "name": "Democratic Socialist",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.3,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:democratic-socialist:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:democratic-socialist:evidence:equality-theory",
+        "operator": "evidenceMinimum",
+        "constructId": "equality-theory",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:democratic-socialist:evidence:anti-domination",
+        "operator": "evidenceMinimum",
+        "constructId": "anti-domination",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "democratic-socialist",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f",
+      "citation:258cbf6757349f69"
+    ]
+  },
+  {
+    "id": "profile:green-politics",
+    "name": "Green Politics / Political Ecology",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.15,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.35,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.25,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.25,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0.15,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.25,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.15,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:green-politics:evidence:human-nature-priority",
+        "operator": "evidenceMinimum",
+        "constructId": "human-nature-priority",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 2
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "green-politics",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:86698e89abab7360"
+    ]
+  },
+  {
+    "id": "profile:liberal-conservatism",
+    "name": "Liberal Conservatism",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": 0.1,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:liberal-conservatism:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:liberal-conservatism:evidence:liberty-noninterference",
+        "operator": "evidenceMinimum",
+        "constructId": "liberty-noninterference",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:liberal-conservatism:evidence:market-process-confidence",
+        "operator": "evidenceMinimum",
+        "constructId": "market-process-confidence",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:liberal-conservatism:evidence:cultural-plasticity",
+        "operator": "evidenceMinimum",
+        "constructId": "cultural-plasticity",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "liberal-conservatism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0",
+      "citation:16a3600798f070be"
+    ]
+  },
+  {
+    "id": "profile:libertarian-socialism",
+    "name": "Libertarian Socialism",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.4,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:libertarian-socialism:evidence:authority-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "authority-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:libertarian-socialism:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:libertarian-socialism:evidence:equality-theory",
+        "operator": "evidenceMinimum",
+        "constructId": "equality-theory",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:libertarian-socialism:evidence:anti-domination",
+        "operator": "evidenceMinimum",
+        "constructId": "anti-domination",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "libertarian-socialism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f",
+      "citation:1b5ab88e18ea0d1b"
+    ]
+  },
+  {
+    "id": "profile:market-liberal",
+    "name": "Market Liberal",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": -0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": -0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.2,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:market-liberal:evidence:authority-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "authority-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:market-liberal:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:market-liberal:evidence:liberty-noninterference",
+        "operator": "evidenceMinimum",
+        "constructId": "liberty-noninterference",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:market-liberal:evidence:market-process-confidence",
+        "operator": "evidenceMinimum",
+        "constructId": "market-process-confidence",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "market-liberal",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af",
+      "citation:66382c94a47a6629"
+    ]
+  },
+  {
+    "id": "profile:market-right-libertarianism",
+    "name": "Right-Libertarianism",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": 0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.3,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:market-right-libertarianism:evidence:authority-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "authority-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:market-right-libertarianism:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:market-right-libertarianism:evidence:liberty-noninterference",
+        "operator": "evidenceMinimum",
+        "constructId": "liberty-noninterference",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:market-right-libertarianism:evidence:market-process-confidence",
+        "operator": "evidenceMinimum",
+        "constructId": "market-process-confidence",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "market-right-libertarianism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af"
+    ]
+  },
+  {
+    "id": "profile:marxian-socialism",
+    "name": "Marxian Socialism (Non-Leninist)",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.3,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:marxian-socialism:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:marxian-socialism:evidence:equality-theory",
+        "operator": "evidenceMinimum",
+        "constructId": "equality-theory",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:marxian-socialism:evidence:anti-domination",
+        "operator": "evidenceMinimum",
+        "constructId": "anti-domination",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "marxian-socialism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f"
+    ]
+  },
+  {
+    "id": "profile:marxist-leninist",
+    "name": "Marxist-Leninist",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": -0.95,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.9,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": -0.9,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0.95,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": 0.9,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.9,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": -0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.4,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:marxist-leninist:evidence:authority-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "authority-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:marxist-leninist:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:marxist-leninist:evidence:centralization-preference",
+        "operator": "evidenceMinimum",
+        "constructId": "centralization-preference",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:marxist-leninist:evidence:reform-vs-revolution",
+        "operator": "evidenceMinimum",
+        "constructId": "reform-vs-revolution",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:marxist-leninist:evidence:state-action-vs-exit",
+        "operator": "evidenceMinimum",
+        "constructId": "state-action-vs-exit",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "marxist-leninist",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f",
+      "citation:ffb8b5e650c3af87"
+    ]
+  },
+  {
+    "id": "profile:national-conservatism",
+    "name": "National Conservatism",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": 0.3,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:national-conservatism:evidence:political-community-boundary",
+        "operator": "evidenceMinimum",
+        "constructId": "political-community-boundary",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:national-conservatism:evidence:cultural-plasticity",
+        "operator": "evidenceMinimum",
+        "constructId": "cultural-plasticity",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "national-conservatism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0",
+      "citation:e9afa3c3056240c5"
+    ]
+  },
+  {
+    "id": "profile:radical-democracy",
+    "name": "Radical Democracy",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.8,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.3,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:radical-democracy:evidence:equality-theory",
+        "operator": "evidenceMinimum",
+        "constructId": "equality-theory",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:radical-democracy:evidence:anti-domination",
+        "operator": "evidenceMinimum",
+        "constructId": "anti-domination",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "radical-democracy",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dc6dd83c651d43ae",
+      "citation:e718d25b9d38de9a",
+      "citation:5fcfd12a29651d07"
+    ]
+  },
+  {
+    "id": "profile:republicanism",
+    "name": "Republicanism",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.2,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:republicanism:evidence:liberty-noninterference",
+        "operator": "evidenceMinimum",
+        "constructId": "liberty-noninterference",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:republicanism:evidence:anti-domination",
+        "operator": "evidenceMinimum",
+        "constructId": "anti-domination",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "republicanism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:e718d25b9d38de9a",
+      "citation:dc6dd83c651d43ae"
+    ]
+  },
+  {
+    "id": "profile:social-democrat",
+    "name": "Social Democrat",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.9,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.7,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.2,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:social-democrat:evidence:property-legitimacy",
+        "operator": "evidenceMinimum",
+        "constructId": "property-legitimacy",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:social-democrat:evidence:equality-theory",
+        "operator": "evidenceMinimum",
+        "constructId": "equality-theory",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:social-democrat:evidence:state-action-vs-exit",
+        "operator": "evidenceMinimum",
+        "constructId": "state-action-vs-exit",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "social-democrat",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f",
+      "citation:4a2237dbb613d774",
+      "citation:0240bdf39260a47d"
+    ]
+  },
+  {
+    "id": "profile:social-liberalism",
+    "name": "Social Liberalism",
+    "role": "primary",
+    "requirements": [
+      {
+        "constructId": "authority-legitimacy",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "property-legitimacy",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "liberty-noninterference",
+        "targetValue": -0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "equality-theory",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "political-community-boundary",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "moral-traditionalism",
+        "targetValue": -0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "anti-domination",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "human-nature-priority",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "market-process-confidence",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "state-capacity-confidence",
+        "targetValue": 0.4,
+        "weight": 1
+      },
+      {
+        "constructId": "public-choice-skepticism",
+        "targetValue": 0,
+        "weight": 1
+      },
+      {
+        "constructId": "democratic-confidence",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "expert-confidence",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "cultural-plasticity",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "coordination-optimism",
+        "targetValue": 0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "centralization-preference",
+        "targetValue": 0.1,
+        "weight": 1
+      },
+      {
+        "constructId": "reform-vs-revolution",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "gradualism-vs-immediatism",
+        "targetValue": -0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "state-action-vs-exit",
+        "targetValue": 0.3,
+        "weight": 1
+      },
+      {
+        "constructId": "electoralism-vs-direct-action",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "compromise-vs-persistence",
+        "targetValue": 0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "coercion-strategy",
+        "targetValue": -0.6,
+        "weight": 1
+      },
+      {
+        "constructId": "regulation-vs-deregulation",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "targetValue": 0.5,
+        "weight": 1
+      },
+      {
+        "constructId": "militarism-pacifism",
+        "targetValue": -0.2,
+        "weight": 1
+      },
+      {
+        "constructId": "secularism-religious",
+        "targetValue": -0.2,
+        "weight": 1
+      }
+    ],
+    "gates": [
+      {
+        "id": "gate:social-liberalism:evidence:liberty-noninterference",
+        "operator": "evidenceMinimum",
+        "constructId": "liberty-noninterference",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:social-liberalism:evidence:equality-theory",
+        "operator": "evidenceMinimum",
+        "constructId": "equality-theory",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      },
+      {
+        "id": "gate:social-liberalism:evidence:state-action-vs-exit",
+        "operator": "evidenceMinimum",
+        "constructId": "state-action-vs-exit",
+        "minimumEvidenceRatio": 0.5,
+        "minimumItemCount": 1
+      }
+    ],
+    "minimumEvidenceRatio": 0.5,
+    "status": "compatibility-scored-unvalidated",
+    "version": "2026-08-primary-profile-v1",
+    "targetNodeId": "social-liberalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af",
+      "citation:087a8af0cb948f82"
+    ]
+  }
+]

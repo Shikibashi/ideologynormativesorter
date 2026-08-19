@@ -1,0 +1,35 @@
+{
+  "phase": "13",
+  "status": "GO",
+  "researchSchemaVersion": "research-v2.phase13.1",
+  "researchProtocolVersion": "research-protocol-v2.phase13.1",
+  "consentVersion": "consent-v2.phase13.1",
+  "acceptedVersions": {
+    "contentSchemaVersion": "content-schema-v2.phase8.1",
+    "contentVersion": "v2-content-phase8.1",
+    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+    "scoringVersion": "scoring-v2.phase7.1",
+    "responseSchemaVersion": "response-v2.phase1.1",
+    "resultSchemaVersion": "result-v2.phase9.1"
+  },
+  "activeAcceptedItems": 406,
+  "coreItems": 338,
+  "specialistItems": 68,
+  "specialistModules": 9,
+  "maxPayloadBytes": 131072,
+  "d1MigrationFingerprint": "f6f48f20e1f19318407b9bb8732d0c85b01c39af5edede7465979d3935dcb16b",
+  "workerSourceFingerprint": "9226651a90764ded65b767a04325c7d051ccc0e0049a4a3c1a6e3fc97a0c46b2",
+  "productionWritesEnabled": false,
+  "notes": [
+    "Phase 13 readiness is scoped to the isolated v2 research infrastructure.",
+    "The repository-wide legacy v1 suite retains five pre-existing failures in untouched files: canonical manifest fingerprint, three legacy Worker compatibility cases, and one primary measurement disclosure case."
+  ],
+  "verification": {
+    "typecheck": true,
+    "unitTests": true,
+    "workerTests": true,
+    "d1Migration": true,
+    "browserTests": true,
+    "architectureBoundary": true
+  }
+}

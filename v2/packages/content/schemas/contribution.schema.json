@@ -1,0 +1,11 @@
+{
+  "$id": "https://example.com/v2/contribution.schema.json",
+  "type": "object",
+  "required": ["constructId", "weight", "polarity"],
+  "properties": {
+    "constructId": { "type": "string", "minLength": 1 },
+    "weight": { "type": "number", "exclusiveMinimum": 0 },
+    "polarity": { "enum": [-1, 1] }
+  },
+  "additionalProperties": false
+}

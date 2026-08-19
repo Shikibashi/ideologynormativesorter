@@ -1,0 +1,34 @@
+[
+  {
+    "id": "divergence-liberty-regulation",
+    "type": "cross_dimension_pair",
+    "constructIds": ["liberty-noninterference", "regulation-vs-deregulation"],
+    "dimensionPair": "normative-prescriptive",
+    "secondDirection": -1,
+    "provenanceRefs": ["source:phase0-measurement-contract"]
+  },
+  {
+    "id": "divergence-equality-redistribution",
+    "type": "cross_dimension_pair",
+    "constructIds": ["equality-theory", "redistribution-vs-predistribution"],
+    "dimensionPair": "normative-prescriptive",
+    "secondDirection": 1,
+    "provenanceRefs": ["source:phase0-measurement-contract"]
+  },
+  {
+    "id": "divergence-authority-state-action",
+    "type": "cross_dimension_pair",
+    "constructIds": ["authority-legitimacy", "state-action-vs-exit"],
+    "dimensionPair": "normative-prescriptive",
+    "secondDirection": 1,
+    "provenanceRefs": ["source:phase0-measurement-contract"]
+  },
+  {
+    "id": "divergence-militarism-coercion",
+    "type": "cross_dimension_pair",
+    "constructIds": ["militarism-pacifism", "coercion-strategy"],
+    "dimensionPair": "normative-prescriptive",
+    "secondDirection": 1,
+    "provenanceRefs": ["source:phase0-measurement-contract"]
+  }
+]

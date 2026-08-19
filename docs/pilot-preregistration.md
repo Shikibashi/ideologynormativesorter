@@ -96,6 +96,12 @@ Numeric decision thresholds for retention must be registered before outcome anal
 - short-form/full-form agreement and score uncertainty;
 - label stability under respondent and item bootstrap resampling.
 
+## Respondent-only validity scope
+
+This preregistration collects evidence from consenting respondents only. Expert review and cognitive interviews are intentionally out of scope and must be reported as limitations, not as completed stages. The maximum status supported by this study is `respondent-supported-scored`; `validated-scoped-public` requires later content-validity and response-process evidence.
+
+Self-label concordance is a respondent criterion measure, but it is not sufficient by itself to validate an ideology endpoint. Endpoint promotion also requires pre-specified reliability, test-retest measurement error, dimensionality, known-groups or external-criterion validity, discriminant separation, and DIF review.
+
 ## Factor-analysis decisions
 
 The proposed axis map is the confirmatory model. EFA is allowed to identify alternatives in the development sample. Record factor-retention methods, rotation, excluded items, Heywood cases, non-convergence, cross-loading thresholds, and all model modifications.

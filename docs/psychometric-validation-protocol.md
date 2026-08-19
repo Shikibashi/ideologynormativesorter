@@ -2,7 +2,7 @@
 
 ## Status
 
-The collection and analysis apparatus is implemented, but empirical validation has not been established. This is a single-maintainer project; no external expert panel, cognitive-interview program, independent confirmation sample, or test-retest study is currently scheduled. The stages below state what stronger evidence would require, not a promised fieldwork program. Synthetic fixtures and software tests are not respondent evidence. No reliability, validity, fairness, or accuracy coefficient should be published until an appropriate consented respondent dataset has been collected and analyzed.
+The collection and analysis apparatus is implemented, but empirical validation has not been established. This study uses a respondent-only design: no external expert panel or cognitive-interview program will be conducted. Synthetic fixtures and software tests are not respondent evidence. Respondent data may support `respondent-supported-scored` after the registered analyses pass, but `validated-scoped-public` remains blocked because content and response-process validity were not assessed. No reliability, validity, fairness, or accuracy coefficient should be published until an appropriate consented respondent dataset has been collected and analyzed.
 
 The repository now includes:
 
@@ -169,6 +169,8 @@ Report loadings, cross-loadings, factor correlations, CFI, TLI, RMSEA, SRMR, con
 ### Temporal stability
 
 For each axis, report rank-order test-retest correlation, concordance, bootstrap intervals where defined, and score-change distributions. Report the primary-axis item model separately from the exact production score. Separate temporal instability from low internal consistency.
+
+Also report the standard error of measurement (SEM) and the 95% minimally detectable change (MDC95). Correlation and concordance describe stability or agreement; they do not by themselves quantify the amount of change needed to exceed expected measurement error.
 
 ### Criterion and convergent evidence
 

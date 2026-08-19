@@ -1,0 +1,22 @@
+{
+  "$id": "https://example.com/v2/content-manifest.schema.json",
+  "type": "object",
+  "required": ["metadata", "domains", "constructs", "items", "profiles", "modifiers", "specialists", "specialistModules", "specialistCandidates", "specialistAssignment", "ontologyNodes", "ontologyRelations", "diagnosticRelations", "provenanceSources"],
+  "properties": {
+    "metadata": { "$ref": "content-schema.schema.json" },
+    "domains": { "type": "array", "items": { "$ref": "domain.schema.json" } },
+    "constructs": { "type": "array", "items": { "$ref": "construct.schema.json" } },
+    "items": { "type": "array", "items": { "$ref": "item.schema.json" } },
+    "profiles": { "type": "array", "items": { "$ref": "profile.schema.json" } },
+    "modifiers": { "type": "array", "items": { "$ref": "modifier.schema.json" } },
+    "specialists": { "type": "array", "items": { "$ref": "specialist.schema.json" } },
+    "specialistModules": { "type": "array", "items": { "$ref": "specialist-module.schema.json" } },
+    "specialistCandidates": { "type": "array", "items": { "$ref": "specialist-candidate.schema.json" } },
+    "specialistAssignment": { "$ref": "specialist-assignment.schema.json" },
+    "ontologyNodes": { "type": "array", "items": { "$ref": "ontology-node.schema.json" } },
+    "ontologyRelations": { "type": "array", "items": { "$ref": "ontology-relation.schema.json" } },
+    "diagnosticRelations": { "type": "array", "items": { "$ref": "diagnostic-relation.schema.json" } },
+    "provenanceSources": { "type": "array", "items": { "$ref": "provenance-source.schema.json" } }
+  },
+  "additionalProperties": false
+}

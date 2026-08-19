@@ -1,0 +1,33 @@
+{
+  "manifest_schema_version": "research-dataset-manifest-v2.phase14.1",
+  "dataset_id": "synthetic-regression-fixture",
+  "dataset_kind": "synthetic-regression-fixture",
+  "analysis_schema_version": "research-analysis-v2.phase14.1",
+  "source_versions": {
+    "researchSchemaVersion": "research-v2.phase13.1",
+    "researchProtocolVersion": "research-protocol-v2.phase13.1",
+    "consentVersion": "consent-v2.phase13.1",
+    "contentSchemaVersion": "content-schema-v2.phase8.1",
+    "contentVersion": "v2-content-phase8.1",
+    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+    "scoringVersion": "scoring-v2.phase7.1",
+    "responseSchemaVersion": "response-v2.phase1.1",
+    "resultSchemaVersion": "result-v2.phase9.1"
+  },
+  "accepted_submissions": 40,
+  "row_count": 16240,
+  "direct_identifiers_in_analysis_outputs": false,
+  "submission_ids_emitted": false,
+  "transformations": ["version_validation", "duplicate_rejection", "subject_ordinal_projection", "structural_specialist_non_applicability"],
+  "missingness_policy": {
+    "answered": "observed",
+    "missing": "missing",
+    "skipped": "missing",
+    "abstained": "missing",
+    "refused": "missing",
+    "unrequestedSpecialist": "structural_not_applicable",
+    "noSilentImputation": true,
+    "noAutomaticMissingnessRepair": true
+  },
+  "empirical_evidence_status": "NOT_EVALUATED"
+}

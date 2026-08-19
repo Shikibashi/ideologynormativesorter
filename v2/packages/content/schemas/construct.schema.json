@@ -1,0 +1,28 @@
+{
+  "$id": "https://example.com/v2/construct.schema.json",
+  "type": "object",
+  "required": ["id", "name", "role", "scope"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "role": { "enum": ["normative", "descriptive", "prescriptive", "specialist"] },
+    "scope": { "enum": ["root", "specialist"] },
+    "domainId": { "type": "string", "minLength": 1 },
+    "moduleId": { "type": "string", "minLength": 1 },
+    "family": { "type": "string" },
+    "description": { "type": "string" },
+    "sourceKey": { "type": "string" },
+    "poles": {
+      "type": "object",
+      "properties": {
+        "negative": { "type": "string" },
+        "positive": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "lifecycle": { "type": "object", "additionalProperties": { "type": "string" } },
+    "display": { "type": "object", "additionalProperties": true },
+    "provenanceRefs": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

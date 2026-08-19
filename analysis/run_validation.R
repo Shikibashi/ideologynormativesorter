@@ -739,6 +739,8 @@ for (axis_id in axis_ids) {
   correlation <- if (nrow(paired_matrix) >= 30) stats::cor(paired_matrix[, 1], paired_matrix[, 2]) else NA_real_
   mean_change <- if (nrow(paired_matrix) > 0) mean(paired_matrix[, 2] - paired_matrix[, 1]) else NA_real_
   sd_change <- if (nrow(paired_matrix) > 1) stats::sd(paired_matrix[, 2] - paired_matrix[, 1]) else NA_real_
+  sem_estimate <- if (is.finite(sd_change)) sd_change / sqrt(2) else NA_real_
+  mdc95 <- if (is.finite(sem_estimate)) 1.96 * sqrt(2) * sem_estimate else NA_real_
   concordance <- if (nrow(paired_matrix) >= 30) {
     numerator <- 2 * stats::cov(paired_matrix[, 1], paired_matrix[, 2])
     denominator <- stats::var(paired_matrix[, 1]) + stats::var(paired_matrix[, 2]) +
@@ -755,6 +757,8 @@ for (axis_id in axis_ids) {
     concordance_correlation = concordance,
     mean_change = mean_change,
     sd_change = sd_change,
+    sem = sem_estimate,
+    mdc95 = mdc95,
     ci_low = ci[[1]],
     ci_high = ci[[2]],
     status = if (nrow(paired_matrix) < 30) "insufficient-data" else "estimated",
@@ -791,6 +795,8 @@ for (axis_id in production_axis_ids) {
     concordance_correlation = concordance,
     mean_change = if (nrow(paired_matrix) > 0) mean(paired_matrix[, 2] - paired_matrix[, 1]) else NA_real_,
     sd_change = if (nrow(paired_matrix) > 1) stats::sd(paired_matrix[, 2] - paired_matrix[, 1]) else NA_real_,
+    sem = if (nrow(paired_matrix) > 1) stats::sd(paired_matrix[, 2] - paired_matrix[, 1]) / sqrt(2) else NA_real_,
+    mdc95 = if (nrow(paired_matrix) > 1) 1.96 * stats::sd(paired_matrix[, 2] - paired_matrix[, 1]) else NA_real_,
     status = if (nrow(paired_matrix) < 30) "insufficient-data" else "estimated",
     stringsAsFactors = FALSE
   )
@@ -948,7 +954,13 @@ run_dif <- function(group_name) {
   if (length(results) == 0) data.frame() else do.call(rbind, results)
 }
 
-dif_results <- lapply(c("ageBand", "genderGroup"), run_dif)
+dif_group_names <- trimws(strsplit(
+  Sys.getenv("PSYCH_DIF_GROUPS", "ageBand,genderGroup"),
+  ",",
+  fixed = TRUE
+)[[1]])
+dif_group_names <- dif_group_names[nzchar(dif_group_names)]
+dif_results <- lapply(dif_group_names, run_dif)
 dif_results <- dif_results[vapply(dif_results, nrow, integer(1)) > 0]
 if (length(dif_results) > 0) utils::write.csv(do.call(rbind, dif_results), file.path(output_dir, "dif-results.csv"), row.names = FALSE)
 

@@ -1,0 +1,40 @@
+{
+  "analysisSchemaVersion": "research-analysis-v2.phase14.1",
+  "analysisVersion": "phase14.1",
+  "datasetKind": "synthetic-regression-fixture",
+  "expected": {
+    "researchSchemaVersion": "research-v2.phase13.1",
+    "researchProtocolVersion": "research-protocol-v2.phase13.1",
+    "consentVersion": "consent-v2.phase13.1",
+    "contentSchemaVersion": "content-schema-v2.phase8.1",
+    "contentVersion": "v2-content-phase8.1",
+    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+    "scoringVersion": "scoring-v2.phase7.1",
+    "responseSchemaVersion": "response-v2.phase1.1",
+    "resultSchemaVersion": "result-v2.phase9.1"
+  },
+  "missingness": {
+    "answered": "observed",
+    "missing": "missing",
+    "skipped": "missing",
+    "abstained": "missing",
+    "refused": "missing",
+    "unrequestedSpecialist": "structural_not_applicable",
+    "noSilentImputation": true,
+    "noAutomaticMissingnessRepair": true
+  },
+  "gates": {
+    "minimumDescriptiveSubmissions": 30,
+    "minimumReliabilitySubmissions": 100,
+    "minimumDimensionalitySubmissions": 200,
+    "minimumInvarianceGroupSize": 100,
+    "minimumRetestPairs": 100,
+    "minimumProfileCases": 100
+  },
+  "privacy": {
+    "directIdentifiersAllowed": false,
+    "outputSubmissionIds": false,
+    "outputRawPrompts": false,
+    "exportAccessClass": "restricted-research"
+  }
+}

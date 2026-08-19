@@ -1,0 +1,19 @@
+{
+  "$id": "https://example.com/v2/specialist-candidate.schema.json",
+  "type": "object",
+  "required": ["id", "sourceKey", "moduleId", "name", "description", "status", "requirements", "gates"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "sourceKey": { "type": "string", "minLength": 1 },
+    "nodeId": { "type": "string", "minLength": 1 },
+    "moduleId": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "minLength": 1 },
+    "variant": { "type": "string" },
+    "requirements": { "type": "array", "items": { "$ref": "requirement.schema.json" } },
+    "gates": { "type": "array", "items": { "$ref": "gate.schema.json" } },
+    "provenanceRefs": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

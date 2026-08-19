@@ -1,0 +1,4107 @@
+{
+  "dataset_kind": "synthetic-regression-fixture",
+  "sample_size": 40,
+  "row_count": 16240,
+  "state_counts": {
+    "answered": 13520,
+    "structural_not_applicable": 2720
+  },
+  "item_descriptives": [
+    {
+      "scope": "specialist",
+      "module_id": "anarchist-families-module",
+      "item_id": "fm-an-1",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "anarchist-families-module",
+      "item_id": "fm-an-2",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "anarchist-families-module",
+      "item_id": "fm-an-3",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "anarchist-families-module",
+      "item_id": "fm-an-4",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "conservative-variants-module",
+      "item_id": "fm-co-1",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "conservative-variants-module",
+      "item_id": "fm-co-2",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "conservative-variants-module",
+      "item_id": "fm-co-3",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "conservative-variants-module",
+      "item_id": "fm-co-4",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "feminist-faction-module",
+      "item_id": "fm-fem-1",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "feminist-faction-module",
+      "item_id": "fm-fem-2",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "feminist-faction-module",
+      "item_id": "fm-fem-3",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "feminist-faction-module",
+      "item_id": "fm-fem-4",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "feminist-faction-module",
+      "item_id": "fm-fem-5",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "feminist-faction-module",
+      "item_id": "fm-fem-6",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "feminist-faction-module",
+      "item_id": "fm-fem-7",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "feminist-faction-module",
+      "item_id": "fm-fem-8",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "green-morphology-module",
+      "item_id": "fm-gr-1",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "green-morphology-module",
+      "item_id": "fm-gr-2",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "green-morphology-module",
+      "item_id": "fm-gr-3",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "green-morphology-module",
+      "item_id": "fm-gr-4",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "green-morphology-module",
+      "item_id": "fm-gr-5",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-1",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-10",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-11",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-12",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-13",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-14",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-15",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-16",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-17",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-18",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-19",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-2",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-20",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-21",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-22",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-3",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-4",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-5",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-6",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-7",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-8",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "identity-sovereignty-module",
+      "item_id": "fm-id-9",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "monarchist-municipal-module",
+      "item_id": "fm-mm-1",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "monarchist-municipal-module",
+      "item_id": "fm-mm-2",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "monarchist-municipal-module",
+      "item_id": "fm-mm-3",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "monarchist-municipal-module",
+      "item_id": "fm-mm-4",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-1",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-10",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-11",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-2",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-3",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-4",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-5",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-6",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-7",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-8",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "religious-national-politics-module",
+      "item_id": "fm-rn-9",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "socialist-families-module",
+      "item_id": "fm-so-1",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "socialist-families-module",
+      "item_id": "fm-so-2",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "socialist-families-module",
+      "item_id": "fm-so-3",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "socialist-families-module",
+      "item_id": "fm-so-4",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "technology-governance-module",
+      "item_id": "fm-te-1",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "technology-governance-module",
+      "item_id": "fm-te-2",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "technology-governance-module",
+      "item_id": "fm-te-3",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "technology-governance-module",
+      "item_id": "fm-te-4",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "technology-governance-module",
+      "item_id": "fm-te-5",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "specialist",
+      "module_id": "technology-governance-module",
+      "item_id": "fm-te-6",
+      "response_type": "likert7",
+      "n_observed": 0
+    },
+    {
+      "scope": "core",
+      "item_id": "q0001",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0003",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0004",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0005",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0006",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0007",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0012",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0015",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0016",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0017",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0018",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0019",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0021",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0022",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0023",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0024",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0025",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0026",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0027",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0029",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0030",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0033",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0034",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0035",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0036",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0038",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0039",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0041",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0042",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0043",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0044",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0045",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0046",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0047",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0048",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0050",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0053",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0054",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0055",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0058",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0059",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0061",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0062",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0063",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0064",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0065",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0066",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0067",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0073",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0074",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0075",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0076",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0077",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0079",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0081",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0082",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0083",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0084",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0085",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0089",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0093",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0094",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0095",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0096",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0097",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0098",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0099",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0101",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0102",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0104",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0105",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0106",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0107",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0108",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0114",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0115",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0116",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0117",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0119",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0121",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0122",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0123",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0124",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0125",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0126",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0127",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0128",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0130",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0133",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0134",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0135",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0136",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0137",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0138",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0139",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0141",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0142",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0144",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0145",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0146",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0147",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0148",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0153",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0154",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0155",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0156",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0157",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0158",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0159",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0161",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0162",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0163",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0164",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0165",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0166",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0171",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0173",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0174",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0175",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0176",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0177",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0178",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0179",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0181",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0182",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0183",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0184",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0185",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0186",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0188",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0190",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0191",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0193",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0195",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0197",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0198",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0199",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0201",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0202",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0203",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0204",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0205",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0206",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0207",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0208",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0213",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0214",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0215",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0216",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0217",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0219",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0221",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0222",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0223",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0224",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0225",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0226",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0227",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0233",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0234",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0235",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0236",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0239",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0241",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0242",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0243",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0244",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0245",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0246",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0248",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0253",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0254",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0255",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0256",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0257",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0258",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0259",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0261",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0262",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0263",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0264",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0265",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0266",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0269",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0274",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0275",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0276",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0278",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0279",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0281",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0282",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0283",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0284",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0285",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0293",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0294",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0295",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0296",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0299",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0301",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0302",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0303",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0304",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0305",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0307",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0308",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0313",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0314",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0315",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0316",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0317",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0318",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0319",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0321",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0322",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0323",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0324",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0325",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0326",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0328",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0329",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0334",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0336",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0337",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0338",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0339",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0341",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0342",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0343",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0344",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0345",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0347",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0348",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0350",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0354",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0355",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0356",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0357",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0359",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0361",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0362",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0363",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0364",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0365",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0368",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0374",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0375",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0376",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0377",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0379",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0381",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0382",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0383",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0384",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0385",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0394",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0396",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0397",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0399",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0401",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0402",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0403",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0404",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0405",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0406",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0407",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0408",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0411",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0412",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0413",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0414",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0415",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0417",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0418",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0420",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0421",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0423",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0424",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0425",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0427",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0428",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0429",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0430",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0431",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0432",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0433",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0434",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0435",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0436",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0437",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0438",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0439",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0440",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0441",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0442",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0443",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0444",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0445",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0446",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0447",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0448",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0449",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0450",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0451",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0452",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0453",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0454",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0455",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0456",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0457",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0458",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0459",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0460",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0461",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0462",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0463",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0464",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0465",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0466",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0467",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0468",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0469",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0470",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0471",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0472",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0473",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0474",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.025000000000000001,
+      "sd": 2.0691568950686792,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0475",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0476",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": -0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0477",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0,
+      "sd": 1.9611613513818404,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0478",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.125,
+      "sd": 1.9895560643855537,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "q0479",
+      "response_type": "likert7",
+      "n_observed": 40,
+      "mean": 0.074999999999999997,
+      "sd": 2.0429679265025058,
+      "min": -3,
+      "max": 3
+    },
+    {
+      "scope": "core",
+      "item_id": "sq01",
+      "response_type": "statement-choice",
+      "n_observed": 0
+    },
+    {
+      "scope": "core",
+      "item_id": "sq02",
+      "response_type": "statement-choice",
+      "n_observed": 0
+    },
+    {
+      "scope": "core",
+      "item_id": "sq06",
+      "response_type": "statement-choice",
+      "n_observed": 0
+    },
+    {
+      "scope": "core",
+      "item_id": "sq07",
+      "response_type": "statement-choice",
+      "n_observed": 0
+    },
+    {
+      "scope": "core",
+      "item_id": "sq13",
+      "response_type": "statement-choice",
+      "n_observed": 0
+    },
+    {
+      "scope": "core",
+      "item_id": "sq15",
+      "response_type": "statement-choice",
+      "n_observed": 0
+    }
+  ],
+  "reliability": [
+    {
+      "construct_id": "anti-domination",
+      "n": 40,
+      "items": 103,
+      "alpha": -1.5682695792798009,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "authority-legitimacy",
+      "n": 40,
+      "items": 51,
+      "alpha": -5.2512000904448755,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "centralization-preference",
+      "n": 40,
+      "items": 62,
+      "alpha": -1.4085833627549715,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "coercion-strategy",
+      "n": 40,
+      "items": 22,
+      "alpha": 0.14804303251295151,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "compromise-vs-persistence",
+      "n": 40,
+      "items": 9,
+      "alpha": -0.67650503796110772,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "coordination-optimism",
+      "n": 40,
+      "items": 8,
+      "alpha": -0.6184633710541988,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "cultural-plasticity",
+      "n": 40,
+      "items": 9,
+      "alpha": -1.3656642815702957,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "democratic-confidence",
+      "n": 40,
+      "items": 9,
+      "alpha": -0.32999045432850738,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "electoralism-vs-direct-action",
+      "n": 40,
+      "items": 9,
+      "alpha": -0.05986048775212266,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "equality-theory",
+      "n": 40,
+      "items": 45,
+      "alpha": -1.3014499910507689,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "expert-confidence",
+      "n": 40,
+      "items": 8,
+      "alpha": -2.0434947665274694,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "gradualism-vs-immediatism",
+      "n": 40,
+      "items": 14,
+      "alpha": -3.4021377256001397,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "human-nature-priority",
+      "n": 40,
+      "items": 10,
+      "alpha": -0.39026786051607565,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "liberty-noninterference",
+      "n": 40,
+      "items": 95,
+      "alpha": -10.018985270049102,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "market-process-confidence",
+      "n": 40,
+      "items": 11,
+      "alpha": 0.42956829573401628,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "militarism-pacifism",
+      "n": 40,
+      "items": 10,
+      "alpha": 0.28127996590545867,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "moral-traditionalism",
+      "n": 40,
+      "items": 24,
+      "alpha": -3.3546666856782315,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "political-community-boundary",
+      "n": 40,
+      "items": 22,
+      "alpha": -0.68309792843691175,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "property-legitimacy",
+      "n": 40,
+      "items": 39,
+      "alpha": -1.8775651085907208,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "public-choice-skepticism",
+      "n": 40,
+      "items": 16,
+      "alpha": -0.22375425184977402,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "redistribution-vs-predistribution",
+      "n": 40,
+      "items": 20,
+      "alpha": -2.6235573830911205,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "reform-vs-revolution",
+      "n": 40,
+      "items": 9,
+      "alpha": 0.41901601314560027,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "regulation-vs-deregulation",
+      "n": 40,
+      "items": 77,
+      "alpha": -1.1367571976002411,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "secularism-religious",
+      "n": 40,
+      "items": 12,
+      "alpha": 0.44070205938064244,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "state-action-vs-exit",
+      "n": 40,
+      "items": 68,
+      "alpha": -3.6894101833164989,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    },
+    {
+      "construct_id": "state-capacity-confidence",
+      "n": 40,
+      "items": 9,
+      "alpha": -2.4924229808492924,
+      "status": "NOT_EVALUABLE",
+      "evidence_status": "NOT_EVALUATED"
+    }
+  ],
+  "dimensionality": {
+    "1": {
+      "module": "dimensionality",
+      "status": "NOT_EVALUABLE",
+      "n": 40,
+      "minimum": 200,
+      "reason": "synthetic_fixture_is_not_empirical_evidence"
+    },
+    "method": "polychoric_or_correlation_pca_in_approved_real_run",
+    "evidence_status": "NOT_EVALUATED"
+  },
+  "item_analysis": {
+    "status": "evaluated",
+    "evidence_status": "NOT_EVALUATED",
+    "n": 40,
+    "item_count": 406,
+    "outputs": "item-descriptives.csv"
+  },
+  "invariance": {
+    "module": "invariance",
+    "status": "NOT_EVALUABLE",
+    "n": 0,
+    "minimum": 100,
+    "reason": "no_approved_group_variable_in_research_envelope",
+    "evidence_status": "NOT_EVALUATED"
+  },
+  "test_retest": {
+    "module": "test_retest",
+    "status": "NOT_EVALUABLE",
+    "n": 0,
+    "minimum": 100,
+    "reason": "no_retest_pair_key_in_research_envelope",
+    "evidence_status": "NOT_EVALUATED"
+  },
+  "profile_analysis": {
+    "module": "profile_analysis",
+    "status": "NOT_EVALUABLE",
+    "n": 0,
+    "minimum": 100,
+    "reason": "raw_research_envelope_contains_no_profile_result_authority",
+    "evidence_status": "NOT_EVALUATED"
+  },
+  "missingness_policy": {
+    "answered": "observed",
+    "missing": "missing",
+    "skipped": "missing",
+    "abstained": "missing",
+    "refused": "missing",
+    "unrequestedSpecialist": "structural_not_applicable",
+    "noSilentImputation": true,
+    "noAutomaticMissingnessRepair": true
+  },
+  "empirical_evidence_status": "NOT_EVALUATED",
+  "claims_eligible_for_production": false
+}

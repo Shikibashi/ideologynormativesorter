@@ -1,0 +1,3117 @@
+[
+  {
+    "id": "absolute-monarchist",
+    "label": "Absolute Monarchist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Holds that supreme and largely unchecked authority should rest with a hereditary sovereign, valuing the stability, continuity, and unified will of personal rule over elected and deliberative government.",
+    "family": "authoritarian",
+    "subfamily": "monarchist-reactionary",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "Centered on the early-modern theoretical claim that sovereign power is by nature indivisible and unconditional (Bossuet, Filmer, the Hobbesian sovereign); compare Traditional Monarchist, which describes the modern royalist movement and identity more broadly."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:6a5fc5f74b53b6d4"
+    ]
+  },
+  {
+    "id": "accelerationism",
+    "label": "Technology-Centered Accelerationism",
+    "nodeScope": "context",
+    "canonicalDefinition": "Treats intensifying technological, capitalist, or modernizing forces as a strategy or diagnosis of systemic transformation. This provisional centroid is closest to technology-centered accelerationism; left, right, and other variants are not interchangeable.",
+    "boundaryStatement": "Accelerationism has incompatible left, right, and technology-centered variants. Some reactionary currents frame breakdown or conflict as a route to a new order, but this context label does not infer support for collapse, authoritarianism, or political violence; separate variant measurement is still required.",
+    "family": "technocratic",
+    "subfamily": "accelerationist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Accelerationism has incompatible left, right, and technology-centered variants. Some reactionary currents frame breakdown or conflict as a route to a new order, but this context label does not infer support for collapse, authoritarianism, or political violence; separate variant measurement is still required."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:3cec9f248c66c3ed",
+      "citation:a2937319cd34d058",
+      "citation:c0ac56609a28bea1"
+    ]
+  },
+  {
+    "id": "agorist",
+    "label": "Agorist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A market-anarchist strategy that places primary emphasis on counter-economics rather than electoral politics, seeking to dissolve or marginalize the state through untaxed or unlicensed black and grey markets and parallel institutions.",
+    "boundaryStatement": "Agorism names a counter-economic strategy associated with market anarchism, not all libertarian or pro-market politics; its claims about parallel markets and state dissolution remain contested and provisional.",
+    "family": "anarchist",
+    "subfamily": "market-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Agorism names a counter-economic strategy associated with market anarchism, not all libertarian or pro-market politics; its claims about parallel markets and state dissolution remain contested and provisional."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c56a6d0e34a4508c"
+    ]
+  },
+  {
+    "id": "agrarian-populism",
+    "label": "Agrarian Populism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A populist movement rooted in rural and farming communities that mobilizes against perceived exploitation by urban elites, financial interests, and corporate monopolies, advocating for economic reforms benefiting small producers and landholders.",
+    "boundaryStatement": "A rural producer base and people-versus-elite rhetoric do not determine agrarian populism’s race, class, economic, or institutional program; historical currents have combined it with different cooperative, socialist, market, or exclusionary projects.",
+    "family": "populist",
+    "subfamily": "left-populist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A rural producer base and people-versus-elite rhetoric do not determine agrarian populism’s race, class, economic, or institutional program; historical currents have combined it with different cooperative, socialist, market, or exclusionary projects.",
+      "usageNote": "Agrarian populism is a rural producer-centered form of thin populism; it can support cooperative, distributist, socialist, or market-oriented reforms and is not a synonym for all rural politics."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:67007bee6d5dd921",
+      "citation:ae5d57bb780f21b7"
+    ]
+  },
+  {
+    "id": "anarcha-feminism",
+    "label": "Anarcha-Feminism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Views patriarchy as a major structure of domination linked in different accounts to capitalism, statism, and other hierarchies; many anarcha-feminist currents favor decentralized, non-coercive social relations, but they differ over which institutions must be abolished or transformed.",
+    "family": "anarchist",
+    "subfamily": "social-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "A diverse feminist-anarchist tradition rather than one fixed theory of gender or organization; it addresses domination in intimate and economic life as well as access to formal political authority."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:fb7a357af1eb961e"
+    ]
+  },
+  {
+    "id": "anarcho-capitalist",
+    "label": "Anarcho-Capitalist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Seeks to replace the state and compulsory public-goods provision with social order based on voluntary contract, private property, and competing private providers of protection and arbitration.",
+    "boundaryStatement": "This is a right-libertarian market doctrine and is contested within anarchist studies because it accepts private property and market provision of law.",
+    "family": "anarchist",
+    "subfamily": "market-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "This is a right-libertarian market doctrine and is contested within anarchist studies because it accepts private property and market provision of law."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ebde5696ba452ecd"
+    ]
+  },
+  {
+    "id": "anarcho-communist",
+    "label": "Anarcho-Communist",
+    "nodeScope": "specialist",
+    "parentId": "social-anarchism",
+    "canonicalDefinition": "Seeks a stateless communist order in which productive resources are held in common, association is voluntary and decentralized, and distribution is organized around need; currents differ over transition, scale, and coordination.",
+    "boundaryStatement": "The label describes a family resemblance rather than one implementation: it should be distinguished from anarcho-capitalism, mutualism, and broader social anarchism even where they share opposition to centralized state authority.",
+    "family": "anarchist",
+    "subfamily": "social-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The label describes a family resemblance rather than one implementation: it should be distinguished from anarcho-capitalism, mutualism, and broader social anarchism even where they share opposition to centralized state authority.",
+      "usageNote": "Anarcho-communism is a socialist-anarchist current, not a synonym for every anti-state or anti-market position. Its historical advocates have differed over federated organization, revolutionary strategy, and how communal production should coordinate."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:cae6150e1295e405"
+    ]
+  },
+  {
+    "id": "anarcho-primitivism",
+    "label": "Anarcho-Primitivism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Rejects civilization, industrial technology, and mass organization as sources of domination and ecological collapse, seeking radically decentralized lifeways outside both state and market modernity.",
+    "family": "anarchist",
+    "subfamily": "anti-civilization",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "This is a specific anti-civilization current, not a generic name for environmentalism, simple technology skepticism, Indigenous lifeways, or Theodore Kaczynski’s distinct anti-technology ideology."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:7ca53bfc3d416121"
+    ]
+  },
+  {
+    "id": "anarcho-syndicalism",
+    "label": "Anarcho-Syndicalism",
+    "nodeScope": "specialist",
+    "parentId": "social-anarchism",
+    "canonicalDefinition": "A revolutionary, worker-centered variant of anarchism that seeks to replace capitalism and the state with a decentralized federation of democratically-run worker syndicates and communes, using direct action and solidarity rather than electoral politics.",
+    "boundaryStatement": "Anarcho-syndicalism centers worker organization, direct action, and syndicalist federation within anarchist politics; it is not identical to all syndicalism, all anarchism, or every anti-electoral movement.",
+    "family": "anarchist",
+    "subfamily": "social-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Anarcho-syndicalism centers worker organization, direct action, and syndicalist federation within anarchist politics; it is not identical to all syndicalism, all anarchism, or every anti-electoral movement."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:64c46c50723b6f05"
+    ]
+  },
+  {
+    "id": "anti-imperialism",
+    "label": "Anti-Imperialism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Opposes one state or power controlling other peoples through colonial rule, military domination, or unequal political dependence, and supports the self-determination of subordinated peoples.",
+    "boundaryStatement": "Opposition to external domination does not by itself settle a movement’s domestic regime, economic system, use of force, or treatment of minorities; different political programs can share anti-imperial language.",
+    "family": "anti-colonial",
+    "subfamily": "anti-imperialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Opposition to external domination does not by itself settle a movement’s domestic regime, economic system, use of force, or treatment of minorities; different political programs can share anti-imperial language.",
+      "usageNote": "Anti-imperialism is a family of positions opposed to colonial rule, foreign domination, and unequal dependence; projects vary across independence, non-alignment, international solidarity, socialist analysis, and broader decolonial or cosmopolitan reconstruction."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3",
+      "citation:ce96036bc5bbc094"
+    ]
+  },
+  {
+    "id": "arab-socialism",
+    "label": "Arab Socialism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A regional socialist family combining Arab national liberation or unity with state-led development, land reform, public control of strategic sectors, welfare, and anti-imperialism.",
+    "boundaryStatement": "Historical governments and parties used the term differently, so doctrine, organization, economic policy, and later regime practice must be kept distinct.",
+    "family": "socialist",
+    "subfamily": "arab-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Historical governments and parties used the term differently, so doctrine, organization, economic policy, and later regime practice must be kept distinct.",
+      "usageNote": "Arab Socialism includes Nasserist, Baʿthist, and other variants; it is not identical to Marxism-Leninism, generic state socialism, or every Arab nationalist movement."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:691425a994f59163",
+      "citation:84a0d2c5cfae2857"
+    ]
+  },
+  {
+    "id": "asian-values",
+    "label": "Asian Values Discourse",
+    "nodeScope": "context",
+    "canonicalDefinition": "A contested political discourse claiming that family, duty, social harmony, order, community, and development should receive distinctive weight in public life, often in contrast to individualized liberal rights.",
+    "boundaryStatement": "Do not infer authoritarianism, Confucian belief, or a single Asian political model from this context entry.",
+    "family": "communitarian",
+    "subfamily": "asian-values",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Do not infer authoritarianism, Confucian belief, or a single Asian political model from this context entry.",
+      "usageNote": "This is context-only: “Asian values” is a heterogeneous and sometimes strategic discourse, not a uniform regional culture or a settled ideology."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:e3b4a79f58cfb385"
+    ]
+  },
+  {
+    "id": "baathism",
+    "label": "Baʼthism / Arab Socialism",
+    "nodeScope": "context",
+    "canonicalDefinition": "A secular Arab-nationalist tradition seeking Arab unity, political independence, and social transformation through a vanguard party and state-led development; its historical branches differed sharply in constitutional claims, political repression, economic policy, and relations with religion.",
+    "boundaryStatement": "The ideology of Baʼth’s founders should not be collapsed into the later authoritarian records of the Syrian and Iraqi regimes; the label is a provisional specialist entry that keeps doctrine, organization, and regime practice analytically separate.",
+    "aliases": [
+      "Baathism",
+      "Arab Socialist Baʼth"
+    ],
+    "family": "nationalist",
+    "subfamily": "arab-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The ideology of Baʼth’s founders should not be collapsed into the later authoritarian records of the Syrian and Iraqi regimes; the label is a provisional specialist entry that keeps doctrine, organization, and regime practice analytically separate.",
+      "usageNote": "Baʼthism is not Marxism-Leninism, generic anti-imperialism, or Political Islam: its core synthesis is Arab national unity, freedom, and socialism, interpreted through historically distinct party-states and movements."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:84a0d2c5cfae2857"
+    ]
+  },
+  {
+    "id": "bioregionalism",
+    "label": "Bioregionalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A place-based ecological political current that links governance, economic life, and stewardship to ecologically and culturally understood regions rather than only inherited borders; proposals vary over watersheds, local resilience, and relations with existing states.",
+    "boundaryStatement": "Bioregions are not purely objective natural boundaries, and the label does not by itself reject nation-states, capitalism, markets, or larger institutions; those are separate political choices.",
+    "family": "green",
+    "subfamily": "bioregional",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Bioregions are not purely objective natural boundaries, and the label does not by itself reject nation-states, capitalism, markets, or larger institutions; those are separate political choices.",
+      "usageNote": "Bioregionalism is concerned with how people organize relationships within living regions and their ecosystems. Contemporary bioregioning includes changing, experimental spatial and governance practices rather than one fixed map."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:cf6f56d9b0dad323"
+    ]
+  },
+  {
+    "id": "black-feminism",
+    "label": "Black Feminism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A feminist tradition analyzing interlocking race, gender, class, sexuality, and state power from Black women’s political experience while developing autonomous organization, coalition, and liberation strategies.",
+    "boundaryStatement": "The tradition is internally plural and should not be reduced to one identity claim or one policy platform.",
+    "family": "feminist",
+    "subfamily": "black-feminist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The tradition is internally plural and should not be reduced to one identity claim or one policy platform.",
+      "usageNote": "Black feminism is not generic feminism, Black Nationalism, Socialist Feminism, or Multiculturalism, although it can overlap with each."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ffb3eafb4d6e07b0"
+    ]
+  },
+  {
+    "id": "black-nationalism",
+    "label": "Black Nationalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A heterogeneous set of Black political traditions emphasizing collective dignity, solidarity, self-determination, institutional power, or community autonomy in response to racial domination.",
+    "boundaryStatement": "The label is a specialist catalog entry and remains provisional until the identity-sovereignty follow-up establishes sufficient construct coverage.",
+    "aliases": [
+      "Black Political Nationalism"
+    ],
+    "family": "nationalist",
+    "subfamily": "black-nationalist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The label is a specialist catalog entry and remains provisional until the identity-sovereignty follow-up establishes sufficient construct coverage.",
+      "usageNote": "Black nationalism includes integrationist, community-nationalist, separatist, and internationalist variants; it should not be collapsed into generic ethnonationalism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9c8b2129a5ed334b",
+      "citation:9b4674300ce4501c"
+    ]
+  },
+  {
+    "id": "bleeding-heart-libertarianism",
+    "label": "Bleeding-Heart Libertarianism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A variant of libertarianism that combines strong commitments to individual liberty, free markets, and limited government with an emphasis on social justice, concern for the disadvantaged, and recognition that systemic inequality can undermine meaningful freedom.",
+    "boundaryStatement": "Bleeding-heart libertarianism is a contested attempt to combine strong liberty and market commitments with concern for poverty and social justice; it is not equivalent to welfare liberalism or to libertarianism as a whole.",
+    "family": "liberal",
+    "subfamily": "civil-libertarian",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Bleeding-heart libertarianism is a contested attempt to combine strong liberty and market commitments with concern for poverty and social justice; it is not equivalent to welfare liberalism or to libertarianism as a whole."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:7767e108efbc44f5"
+    ]
+  },
+  {
+    "id": "bright-green-environmentalism",
+    "label": "Bright Green Environmentalism",
+    "nodeScope": "retired",
+    "canonicalDefinition": "An optimistic, innovation-driven environmentalist orientation that treats technological progress, human ingenuity, and sometimes market mechanisms as ways to reduce ecological harm while supporting prosperity.",
+    "family": "green",
+    "subfamily": "techno-green",
+    "legacyDisposition": "alias",
+    "conceptualStatus": "deprecated",
+    "measurementStatus": "retired-alias",
+    "publicRoleStatus": "retired",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "legacyComponents": [
+        "ecomodernist"
+      ]
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "christian-democrat",
+    "label": "Christian Democrat",
+    "nodeScope": "primary",
+    "canonicalDefinition": "Draws on Christian social thought, subsidiarity, social-market economics, family and civil-society institutions, and democratic constitutionalism, combining moral traditionalism with welfare and labor protections.",
+    "boundaryStatement": "It is not equivalent to theocracy or distributism: religious inspiration can coexist with constitutional pluralism, and social-market policy does not require dispersed private productive property.",
+    "family": "conservative",
+    "subfamily": "religious-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "It is not equivalent to theocracy or distributism: religious inspiration can coexist with constitutional pluralism, and social-market policy does not require dispersed private productive property.",
+      "usageNote": "Christian democracy is a family of democratic movements rather than a single confessional state program; subsidiarity, social-market arrangements, family policy, and civil-society institutions are combined differently across countries."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0",
+      "citation:19f7801696d214cc",
+      "citation:361e419b1f2ade3e"
+    ]
+  },
+  {
+    "id": "christian-reconstructionism",
+    "label": "Christian Reconstructionism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A Reformed Calvinist theological and political movement that advocates for the reconstruction of society along Biblical law, seeking to apply Old Testament judicial standards to contemporary civil government and to establish a theonomic Christian commonwealth.",
+    "family": "conservative",
+    "subfamily": "religious-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "A small, specific theonomist current originating with R.J. Rushdoony; it is not representative of mainstream Christian conservatism, evangelicalism, or Christian Democracy, which generally do not seek to impose Mosaic civil law."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1530d5e1d71da69c"
+    ]
+  },
+  {
+    "id": "christian-socialism",
+    "label": "Christian Socialism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Applies Christian teachings about solidarity, justice, communal obligation, and concern for poor and working people to industrial capitalism; its currents have favored different combinations of cooperatives, labor reform, social provision, regulation, and social ownership.",
+    "family": "socialist",
+    "subfamily": "religious-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "Liberation Theology and the Social Gospel overlap with parts of this history but are related movements, not simple synonyms or subtypes. Christian Democracy is also distinct: it generally accepts a social-market economy rather than identifying as socialist."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:bfde3648ea3f8e21"
+    ]
+  },
+  {
+    "id": "civic-nationalist",
+    "label": "Civic Nationalist",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Grounds national belonging primarily in shared citizenship, institutions, laws, and civic commitment rather than ancestry; in principle, membership can be open to people who acquire civic standing, although language, cultural, and constitutional criteria may still restrict access.",
+    "boundaryStatement": "It is not automatically liberal, cosmopolitan, or non-coercive; a civic nation can still enforce borders, assimilation, or minority exclusion.",
+    "family": "nationalist",
+    "subfamily": "inclusive-national",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "It is not automatically liberal, cosmopolitan, or non-coercive; a civic nation can still enforce borders, assimilation, or minority exclusion.",
+      "usageNote": "Civic nationalism describes a political basis of belonging, but criteria such as language, constitutional loyalty, and citizenship can still be contested or exclusionary in practice."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3",
+      "citation:11f5a6d12b7e87c8"
+    ]
+  },
+  {
+    "id": "civil-libertarian-cosmopolitan",
+    "label": "Civil-Libertarian Cosmopolitan",
+    "nodeScope": "retired",
+    "canonicalDefinition": "Combines strong skepticism of concentrated authority with universalist obligations beyond national borders, favoring decentralized, low-regulation arrangements without a strong stance on property as such.",
+    "family": "liberal",
+    "subfamily": "civil-libertarian",
+    "legacyDisposition": "split",
+    "conceptualStatus": "deprecated",
+    "measurementStatus": "retired-alias",
+    "publicRoleStatus": "retired",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "legacyComponents": [
+        "civil-libertarianism",
+        "cosmopolitanism"
+      ]
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "civil-libertarianism",
+    "label": "Civil Libertarianism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A cross-cutting orientation giving strong presumptive protection to speech, press, privacy, association, religion, due process, protest, and bodily autonomy independent of economic ideology.",
+    "boundaryStatement": "Different civil-libertarian traditions disagree over emergency powers, economic regulation, equality, and the scope of bodily autonomy.",
+    "family": "liberal",
+    "subfamily": "civil-libertarian",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Different civil-libertarian traditions disagree over emergency powers, economic regulation, equality, and the scope of bodily autonomy.",
+      "usageNote": "Civil libertarianism is about personal and procedural freedom, not necessarily private property, market liberty, minimal government, or cosmopolitanism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af",
+      "citation:41164dc98af37868"
+    ]
+  },
+  {
+    "id": "classical-liberalism",
+    "label": "Classical Liberalism",
+    "nodeScope": "primary",
+    "canonicalDefinition": "A liberal tradition that makes individual liberty, private property, freedom of contract, rule of law, and constitutionally limited government central, while allowing disagreement about how much government social and economic policy requires.",
+    "boundaryStatement": "The tradition ranges from near-libertarian views to positions allowing public goods, regulation, or a modest social minimum. The label therefore does not imply laissez-faire absolutism, a fixed state size, or a contemporary party alignment.",
+    "family": "liberal",
+    "subfamily": "classical-liberal",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The tradition ranges from near-libertarian views to positions allowing public goods, regulation, or a modest social minimum. The label therefore does not imply laissez-faire absolutism, a fixed state size, or a contemporary party alignment.",
+      "usageNote": "Classical liberalism is historically variable and should not be treated as identical to contemporary neoliberal policy, minarchism, or every market-oriented position."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af"
+    ]
+  },
+  {
+    "id": "communitarianism",
+    "label": "Communitarianism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Holds that people’s identities and moral judgments are formed through shared communities and traditions, so justice should weigh common goods and the social bases of self-respect alongside individual rights. Communitarian positions vary over markets, welfare, state power, and civic participation.",
+    "boundaryStatement": "Communitarianism does not by definition reject individual rights, pluralism, or liberal democracy. Its variants differ over which communities matter, how traditions may be criticized, and when public authority may enforce common goods.",
+    "family": "communitarian",
+    "subfamily": "civic-communitarian",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Communitarianism does not by definition reject individual rights, pluralism, or liberal democracy. Its variants differ over which communities matter, how traditions may be criticized, and when public authority may enforce common goods.",
+      "usageNote": "Communitarianism is a critique of liberal individualism found across the political spectrum (Sandel, MacIntyre, Etzioni, Taylor); it is not primarily a socialist or Marxist tradition, despite some left-communitarian thinkers drawing on both."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:bd602f5962098c04",
+      "citation:267f05e8417dd262"
+    ]
+  },
+  {
+    "id": "confucian-political-revival",
+    "label": "Political Confucianism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A modern political family that applies Confucian ideas about moral cultivation, relational obligation, public virtue, merit, harmony, and humane government to contemporary institutions, with democratic, constitutional, perfectionist, and meritocratic branches.",
+    "boundaryStatement": "“Asian values” is a contested political discourse, not evidence that East Asian societies share one culture or that Confucianism is inherently incompatible with democracy.",
+    "family": "communitarian",
+    "subfamily": "confucian-political",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "“Asian values” is a contested political discourse, not evidence that East Asian societies share one culture or that Confucianism is inherently incompatible with democracy.",
+      "usageNote": "Political Confucianism is a specialist intellectual family rather than a synonym for Asian Values, Chinese state ideology, technocracy, or authoritarianism; modern Confucian thinkers have defended both democratic and meritocratic interpretations."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:b2a3461e1dcd0e9e"
+    ]
+  },
+  {
+    "id": "conservative",
+    "label": "Conservative / Prudential Conservative",
+    "nodeScope": "primary",
+    "canonicalDefinition": "A broad conservative orientation that gives weight to inherited institutions, social continuity, prudence, and gradual change while leaving economic policy, religion, nationalism, and democratic design open to variation.",
+    "boundaryStatement": "Conservatism is a family of historically varied arguments about prudence and institutional continuity rather than one fixed policy platform.",
+    "family": "conservative",
+    "subfamily": "prudential-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Conservatism is a family of historically varied arguments about prudence and institutional continuity rather than one fixed policy platform.",
+      "usageNote": "This is the broad family anchor, not a synonym for social conservatism, national conservatism, Christian democracy, or small government."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0"
+    ]
+  },
+  {
+    "id": "conservative-liberalism",
+    "label": "Conservative Liberalism",
+    "nodeScope": "retired",
+    "canonicalDefinition": "A liberal-family synthesis that pairs rights, rule of law, private property, and markets with conservative prudence, inherited institutions, and gradual change.",
+    "family": "liberal",
+    "subfamily": "conservative-liberal",
+    "legacyDisposition": "alias",
+    "conceptualStatus": "deprecated",
+    "measurementStatus": "retired-alias",
+    "publicRoleStatus": "retired",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "legacyComponents": [
+        "liberal-conservatism"
+      ]
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "constitutional-monarchism",
+    "label": "Constitutional Monarchism",
+    "nodeScope": "context",
+    "canonicalDefinition": "A political system that retains a hereditary monarch under constitutional rules that limit royal power; variants range from a ceremonial head of state in a parliamentary democracy to a monarch with constrained executive authority.",
+    "boundaryStatement": "Constitutional monarchism names a regime form, not a complete ideology: parliamentary ceremonial monarchy, executive constitutional monarchy, and the surrounding party and rights systems can differ substantially.",
+    "family": "monarchist",
+    "subfamily": "constitutional-monarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Constitutional monarchism names a regime form, not a complete ideology: parliamentary ceremonial monarchy, executive constitutional monarchy, and the surrounding party and rights systems can differ substantially."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:855c558d330f6d15"
+    ]
+  },
+  {
+    "id": "corporatism",
+    "label": "State Corporatism",
+    "nodeScope": "context",
+    "canonicalDefinition": "Organizes society into hierarchical functional groups (corporations) representing economic, professional, and cultural sectors, mediated by a strong state that claims to harmonize interests above class conflict and party politics.",
+    "family": "authoritarian",
+    "subfamily": "monarchist-reactionary",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "This label captures state or authoritarian corporatism specifically (Schmitter’s term), where the state creates and dominates these groups from above. Corporatism is a wider umbrella that can also describe self-organized or democratic societal arrangements; this result is distinct from the tripartite bargaining between labor, business, and the state found in democratic welfare states such as Austria or Sweden."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:10bf95339892d056"
+    ]
+  },
+  {
+    "id": "cosmopolitanism",
+    "label": "Cosmopolitanism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A cross-cutting orientation toward equal moral concern across nationality and some combination of open membership, transnational rights, international cooperation, or supranational institutions.",
+    "boundaryStatement": "Cosmopolitan commitments can coexist with local attachment, democratic borders, markets, welfare states, or strong civil liberties.",
+    "family": "liberal",
+    "subfamily": "cosmopolitan",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Cosmopolitan commitments can coexist with local attachment, democratic borders, markets, welfare states, or strong civil liberties.",
+      "usageNote": "Cosmopolitanism concerns the scope of moral and political obligation; it differs from Internationalism’s cooperation emphasis and World Federalism’s specific institutional project."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af",
+      "citation:24784aabe903e9e1"
+    ]
+  },
+  {
+    "id": "council-communist",
+    "label": "Council Communist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Rejects both the market and the vanguard party, holding that workers should govern production directly through federated councils rather than a state bureaucracy that would reproduce domination.",
+    "boundaryStatement": "Council communism is a distinct anti-vanguardist current centered on workers’ councils and direct self-government; it should not be collapsed into Marxism-Leninism, ordinary union democracy, or every form of libertarian socialism.",
+    "family": "socialist",
+    "subfamily": "libertarian-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Council communism is a distinct anti-vanguardist current centered on workers’ councils and direct self-government; it should not be collapsed into Marxism-Leninism, ordinary union democracy, or every form of libertarian socialism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:329630a4ced340a9"
+    ]
+  },
+  {
+    "id": "cultural-populism",
+    "label": "Cultural Populism",
+    "nodeScope": "retired",
+    "canonicalDefinition": "A populist orientation that frames political conflict through cultural identity, presenting ordinary people as opposed to distant or cosmopolitan elites and often emphasizing immigration, national identity, and family or lifestyle norms.",
+    "boundaryStatement": "Populism is a thin ideology or political style rather than a complete doctrine; this label describes a right-leaning cultural host, not everyone who defends tradition or restricts immigration.",
+    "family": "populist",
+    "subfamily": "right-populist",
+    "legacyDisposition": "keep-retired",
+    "conceptualStatus": "deprecated",
+    "measurementStatus": "retired-alias",
+    "publicRoleStatus": "retired",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "cyberocracy",
+    "label": "Cyberocratic Governance",
+    "nodeScope": "context",
+    "canonicalDefinition": "Treats information systems, networked administration, and algorithmic decision-support as central tools of governance, while leaving open whether human officials, democratic bodies, or automated systems retain final authority.",
+    "boundaryStatement": "An emerging and speculative governance concept with limited settled academic usage; read it as experimental rather than as a canonical ideology like liberalism or socialism.",
+    "family": "technocratic",
+    "subfamily": "cyberocratic",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "An emerging and speculative governance concept with limited settled academic usage; read it as experimental rather than as a canonical ideology like liberalism or socialism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:51ef6f2e921865f2",
+      "citation:45accb50dd98d36a"
+    ]
+  },
+  {
+    "id": "dataism",
+    "label": "Dataism",
+    "nodeScope": "context",
+    "canonicalDefinition": "A techno-philosophical worldview that treats data processing and information flows as a central lens for value and governance, favoring decisions informed by analytics, algorithmic systems, and quantified efficiency metrics.",
+    "family": "technocratic",
+    "subfamily": "cyberocratic",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "A popularizing term (associated with Yuval Noah Harari) for an emerging cultural and philosophical tendency, not an organized political movement or an established academic political-science category like the other labels in this set."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ce103804aedf7014"
+    ]
+  },
+  {
+    "id": "decentralist-market-skeptic-of-state",
+    "label": "Decentralist Market Liberal",
+    "nodeScope": "retired",
+    "canonicalDefinition": "Combines concern about concentrated power with skepticism toward centralized state administration, favoring decentralized market institutions, voluntary association, and exit rights as safeguards.",
+    "family": "liberal",
+    "subfamily": "decentralist-market",
+    "legacyDisposition": "split",
+    "conceptualStatus": "deprecated",
+    "measurementStatus": "retired-alias",
+    "publicRoleStatus": "retired",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "legacyComponents": [
+        "market-liberal",
+        "decentralist-orientation"
+      ]
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "decentralist-orientation",
+    "label": "Decentralist Orientation",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A cross-cutting preference for local, federal, municipal, polycentric, or voluntarily chosen institutions over concentrated and territorially uniform authority.",
+    "boundaryStatement": "The modifier measures authority distribution and institutional scale, not a complete economic or cultural program.",
+    "family": "regionalist",
+    "subfamily": "decentralist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The modifier measures authority distribution and institutional scale, not a complete economic or cultural program.",
+      "usageNote": "Decentralization can coexist with markets, socialism, nationalism, ecology, or capable national coordination; it is not a synonym for separatism, anarchism, or regionalism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3",
+      "citation:981b366400f0cd3c",
+      "citation:603ad4d08c5c3140"
+    ]
+  },
+  {
+    "id": "deep-ecology",
+    "label": "Deep Ecology",
+    "nodeScope": "specialist",
+    "parentId": "green-politics",
+    "canonicalDefinition": "Treats the nonhuman natural world as possessing intrinsic worth independent of human use, holding that ecological integrity requires restructuring social and economic life around biocentric limits rather than greening an essentially anthropocentric growth order.",
+    "boundaryStatement": "Deep ecology gives nonhuman nature intrinsic value and is distinct from conservation based mainly on human welfare, environmental regulation, or green growth; it does not by itself specify one political institution or economic program.",
+    "family": "green",
+    "subfamily": "ecocentric",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Deep ecology gives nonhuman nature intrinsic value and is distinct from conservation based mainly on human welfare, environmental regulation, or green growth; it does not by itself specify one political institution or economic program."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:5681c064ff89eeae",
+      "citation:baa98f7b835f0b14"
+    ]
+  },
+  {
+    "id": "degrowth-green",
+    "label": "Degrowth Green",
+    "nodeScope": "specialist",
+    "parentId": "green-politics",
+    "canonicalDefinition": "Holds that lasting sustainability requires a planned, democratic reduction of throughput in rich economies, rejecting growth as a goal in favor of sufficiency, localism, and a shift from material accumulation to shared well-being.",
+    "boundaryStatement": "Degrowth is a deliberately affluent-economy and material-throughput critique of growth-centered policy, not a synonym for recession, poverty reduction, or every form of environmentalism; currents differ over planning, technology, and distribution.",
+    "family": "green",
+    "subfamily": "post-growth",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Degrowth is a deliberately affluent-economy and material-throughput critique of growth-centered policy, not a synonym for recession, poverty reduction, or every form of environmentalism; currents differ over planning, technology, and distribution."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1ae79788486a6bdc"
+    ]
+  },
+  {
+    "id": "democratic-confederalism",
+    "label": "Democratic Confederalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Rejects centralized state authority in favor of decentralized, bottom-up democracy organized through communes, councils, and confederations, grounded in gender equality, ecology, and pluralistic self-governance.",
+    "boundaryStatement": "The label most closely names the Öcalan-linked project associated with Kurdish movements and related communalist experiments; institutional practice varies, and it should not be treated as a synonym for all confederalism, Kurdish politics, or local democracy.",
+    "family": "democratic",
+    "subfamily": "confederal-democratic",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The label most closely names the Öcalan-linked project associated with Kurdish movements and related communalist experiments; institutional practice varies, and it should not be treated as a synonym for all confederalism, Kurdish politics, or local democracy.",
+      "usageNote": "Democratic confederalism is a specific communalist and confederal project associated with bottom-up assemblies, ecology, and gender equality; it is not synonymous with ordinary federalism or decentralization."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:92cf18c2a150b81e"
+    ]
+  },
+  {
+    "id": "democratic-socialist",
+    "label": "Democratic Socialist",
+    "nodeScope": "primary",
+    "canonicalDefinition": "Seeks democratic control or social ownership of major productive assets while rejecting authoritarian one-party rule; distinct from social democracy, which usually reforms capitalism rather than replacing ownership structures.",
+    "boundaryStatement": "The contemporary social-ownership distinction is useful but not universal: some parties and historical traditions use democratic socialism for reformist social democracy. Agreement does not identify one ownership model, strategy, or party tradition.",
+    "family": "socialist",
+    "subfamily": "democratic-market-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The contemporary social-ownership distinction is useful but not universal: some parties and historical traditions use democratic socialism for reformist social democracy. Agreement does not identify one ownership model, strategy, or party tradition.",
+      "usageNote": "This follows the contemporary (especially U.S.) usage that sharply distinguishes democratic socialism from social democracy. Historically the Socialist International used \"democratic socialism\" as its own name for what is now usually called social democracy, so the term has shifted meaning over time."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f",
+      "citation:258cbf6757349f69"
+    ]
+  },
+  {
+    "id": "developmental-authoritarianism",
+    "label": "Developmental Authoritarianism",
+    "nodeScope": "context",
+    "canonicalDefinition": "A state-led developmental project that treats rapid industrialization, national economic transformation, and administrative capacity as sources of legitimacy, often pairing autonomous or technocratic bureaucracy with restricted pluralism or dominant-party rule.",
+    "boundaryStatement": "The specialist entry separates a policy-development model from a complete civilizational or cultural ideology; cases vary over markets, nationalism, welfare, coercion, and the degree of bureaucratic autonomy.",
+    "aliases": [
+      "Authoritarian Developmentalism",
+      "Developmental State Politics"
+    ],
+    "family": "authoritarian",
+    "subfamily": "developmental-state",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The specialist entry separates a policy-development model from a complete civilizational or cultural ideology; cases vary over markets, nationalism, welfare, coercion, and the degree of bureaucratic autonomy.",
+      "usageNote": "This label names an authoritarian variant of developmentalism, not developmental states in general: developmental strategies can also be pursued under democratic institutions, and authoritarian control does not guarantee developmental success."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:d39acc387130f9d3"
+    ]
+  },
+  {
+    "id": "developmentalism",
+    "label": "Developmentalism / Developmental-State Political Economy",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A political-economy family prioritizing industrial upgrading, productive capacity, infrastructure, technology acquisition, exports, and strategic coordination by a capable state and organized public-private institutions.",
+    "boundaryStatement": "This specialist separates state capacity and industrial strategy from regime type, nationalism, technocracy, and any one country case.",
+    "family": "technocratic",
+    "subfamily": "developmental-state",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "This specialist separates state capacity and industrial strategy from regime type, nationalism, technocracy, and any one country case.",
+      "usageNote": "Developmentalism is not synonymous with authoritarianism: developmental strategies can operate under democratic institutions, and authoritarian control does not guarantee developmental success."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:d06c3e01ad6cab01",
+      "citation:d39acc387130f9d3"
+    ]
+  },
+  {
+    "id": "distributism",
+    "label": "Distributism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Holds that widespread ownership of productive property by families and local guilds is morally preferable to both concentrated corporate capital and collective state ownership, grounding a decentralized moral economy in subsidiarity and the dignity of small ownership.",
+    "boundaryStatement": "It is not simply small-business advocacy, agrarian nostalgia, or state socialism: its defining claim concerns the distribution of productive ownership, including difficult questions about large-scale assets.",
+    "family": "distributist",
+    "subfamily": "catholic-localist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "It is not simply small-business advocacy, agrarian nostalgia, or state socialism: its defining claim concerns the distribution of productive ownership, including difficult questions about large-scale assets.",
+      "usageNote": "Distributism is a Catholic-influenced economic program centered on widespread ownership of productive property; family firms, guilds, cooperatives, and anti-monopoly measures are associated proposals rather than identical requirements."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:3164e9948bc10783"
+    ]
+  },
+  {
+    "id": "eco-authoritarianism",
+    "label": "Eco-Authoritarianism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Treats ecological crisis as the overriding political priority requiring a powerful centralized state—often technocratic or vanguardist—to enforce environmental discipline, irrespective of conventional left-right cultural positioning.",
+    "boundaryStatement": "This label refers to authoritarian environmental governance, not ecomodernism, ecosocialism, or ordinary climate policy.",
+    "family": "authoritarian",
+    "subfamily": "eco-authoritarian",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "This label refers to authoritarian environmental governance, not ecomodernism, ecosocialism, or ordinary climate policy.",
+      "usageNote": "This label marks a proposed ecological strategy that gives concentrated or less-liberal authority a central role in enforcing environmental limits. It is narrower than ordinary environmental regulation and distinct from eco-fascism, emergency stewardship, and democratic ecological planning."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c47aa20d18070c62"
+    ]
+  },
+  {
+    "id": "eco-fascism",
+    "label": "Eco-Fascism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Combines fascist ultranationalism and ethnonationalism with ecological politics, treating demographic control, ethnic homogeneity, and coercive state power as conditions for environmental preservation.",
+    "boundaryStatement": "Use narrowly for ecological themes joined to fascist or exclusionary ultranationalist politics, not for strong environmental regulation.",
+    "family": "authoritarian",
+    "subfamily": "eco-fascist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Use narrowly for ecological themes joined to fascist or exclusionary ultranationalist politics, not for strong environmental regulation."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:48b129384e541f92"
+    ]
+  },
+  {
+    "id": "ecomodernist",
+    "label": "Ecomodernist",
+    "nodeScope": "specialist",
+    "parentId": "green-politics",
+    "canonicalDefinition": "Argues that technological innovation, high-density energy, urbanization, and capable institutions can reduce ecological harm while supporting human flourishing; distinct from degrowth, deep ecology, and ecosocialist critiques of growth.",
+    "family": "green",
+    "subfamily": "ecomodernist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "This label is about ecological decoupling through technology and institutions, not generic technocracy or all market environmentalism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:88ca5b3bc9028f15"
+    ]
+  },
+  {
+    "id": "economic-nationalism",
+    "label": "Economic Nationalism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A cross-cutting orientation prioritizing national productive capacity, strategic autonomy, domestic industry, supply resilience, managed trade, or national control of key assets.",
+    "boundaryStatement": "The modifier measures national economic priority separately from the preferred ownership system, welfare regime, or level of state coercion.",
+    "family": "nationalist",
+    "subfamily": "economic-nationalism",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The modifier measures national economic priority separately from the preferred ownership system, welfare regime, or level of state coercion.",
+      "usageNote": "Economic nationalism can attach to conservative, socialist, developmental, populist, or anti-colonial hosts and is not identical to fiscal conservatism or protectionism in every instance."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3",
+      "citation:e2c106ebb1c104a9"
+    ]
+  },
+  {
+    "id": "ecosocialist",
+    "label": "Ecosocialist",
+    "nodeScope": "specialist",
+    "parentId": "green-politics",
+    "canonicalDefinition": "Treats ecological crisis as inseparable from capitalism, seeking collective ownership and democratic planning of production to serve both human need and ecological limits rather than profit or growth for its own sake.",
+    "boundaryStatement": "Ecosocialism joins ecological limits to socialist ownership and democratic planning; it is narrower than green politics generally and is not interchangeable with public investment, environmental regulation, or degrowth.",
+    "family": "green",
+    "subfamily": "red-green",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Ecosocialism joins ecological limits to socialist ownership and democratic planning; it is narrower than green politics generally and is not interchangeable with public investment, environmental regulation, or degrowth."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:baa98f7b835f0b14"
+    ]
+  },
+  {
+    "id": "egalitarian-statist",
+    "label": "State-Capacity Egalitarian",
+    "nodeScope": "retired",
+    "canonicalDefinition": "Prioritizes material equality and uses public institutions, state capacity, and social provision to reduce durable inequalities while assuming those institutions can be made competent and accountable.",
+    "family": "social-democratic",
+    "subfamily": "reformist-welfare",
+    "legacyDisposition": "keep-retired",
+    "conceptualStatus": "deprecated",
+    "measurementStatus": "retired-alias",
+    "publicRoleStatus": "retired",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "ethnonationalist",
+    "label": "Ethnonationalist",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Defines the nation primarily through shared descent, ethnicity, cultural ties, or inherited collective identity, prioritizing the political continuity and interests of that community over a purely civic account of membership.",
+    "boundaryStatement": "Ethnicity being politically central does not settle whether membership is inherited, assimilable, civic-ethnic, exclusionary, racialized, or compatible with minority self-determination. Those are distinct variants and should not be inferred from this broad label alone.",
+    "family": "nationalist",
+    "subfamily": "ethnic-national",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Ethnicity being politically central does not settle whether membership is inherited, assimilable, civic-ethnic, exclusionary, racialized, or compatible with minority self-determination. Those are distinct variants and should not be inferred from this broad label alone.",
+      "usageNote": "Ethnonationalism makes ethnic belonging central to national membership, but it does not by itself specify one legal membership rule, primordialist or racial-science doctrine, level of exclusion, or strategy toward minorities. Historical variants include self-determination and anti-colonial projects as well as exclusionary, assimilationist, or ethnocratic movements; the ordinary prototype should not be read as measuring all of these variants equally."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3",
+      "citation:d7d30e503d247c20",
+      "citation:30cf0fc9c298f63a"
+    ]
+  },
+  {
+    "id": "expansionist-nationalism",
+    "label": "Expansionist Nationalism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A nationalist ideology that asserts the right and duty of a nation to expand its territorial control, influence, and power over other peoples and regions, often invoking historical claims, civilizing missions, or strategic imperatives.",
+    "boundaryStatement": "The label concerns a commitment to territorial or imperial expansion, not every assertive foreign policy or strong national identity. Historical claims, irredentism, strategic influence, colonial rule, and the use of force can occur in different combinations and should be distinguished.",
+    "family": "nationalist",
+    "subfamily": "imperial-national",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The label concerns a commitment to territorial or imperial expansion, not every assertive foreign policy or strong national identity. Historical claims, irredentism, strategic influence, colonial rule, and the use of force can occur in different combinations and should be distinguished.",
+      "usageNote": "Expansionist nationalism is not synonymous with realism or Social Darwinism. Those may be invoked by some movements, but they are not required parts of the label; territorial expansion, imperial influence, or irredentist claims are the defining commitments."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3",
+      "citation:7d747dca5b73246e"
+    ]
+  },
+  {
+    "id": "fascist-authoritarian",
+    "label": "Fascist / Palingenetic Ultranationalist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Centers palingenetic ultranationalism: the idea of national rebirth through authoritarian mobilization, hierarchy, anti-liberal politics, and exclusionary or coercive state power. This is narrower than generic authoritarianism.",
+    "boundaryStatement": "Use narrowly: fascism here means palingenetic ultranationalist politics, not generic authoritarianism or ordinary conservatism.",
+    "family": "authoritarian",
+    "subfamily": "ultranationalist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Use narrowly: fascism here means palingenetic ultranationalist politics, not generic authoritarianism or ordinary conservatism.",
+      "usageNote": "Francoism and Salazarism are related conservative-authoritarian regimes, not treated here as uncontested subtypes of fascism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ae86ee74ed40118b",
+      "citation:4c1e6c151c24f1b5",
+      "citation:03c44e53b0f20961"
+    ]
+  },
+  {
+    "id": "feminist-orientation",
+    "label": "Feminist Orientation",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A cross-cutting orientation treating gendered power, exclusion, violence, care, reproduction, labor, or political representation as fundamental political concerns without selecting one feminist school.",
+    "boundaryStatement": "General support for equal treatment is not enough to identify a feminist school or a particular theory of patriarchy.",
+    "family": "feminist",
+    "subfamily": "feminist-orientation",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "General support for equal treatment is not enough to identify a feminist school or a particular theory of patriarchy.",
+      "usageNote": "This modifier supports specialist follow-ups for liberal, radical, socialist/Marxist, Black, anarchist, and queer feminisms; it is not itself one of those traditions."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f3abe9549d155858"
+    ]
+  },
+  {
+    "id": "fiscal-conservatism",
+    "label": "Fiscal Conservatism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Prioritizes sustainable public finances through some combination of debt sustainability, deficit restraint, fiscal rules, spending choices, and revenue policy. It does not by itself determine views on social issues, monetary policy, or the overall size of government.",
+    "boundaryStatement": "Fiscal conservatism should not be read as “small government” or as a mandate for spending cuts. A position may favor sustainable public finances through taxes, growth, spending priorities, countercyclical rules, or institutional constraints; the distributional and macroeconomic effects require separate analysis.",
+    "family": "conservative",
+    "subfamily": "fiscal-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Fiscal conservatism should not be read as “small government” or as a mandate for spending cuts. A position may favor sustainable public finances through taxes, growth, spending priorities, countercyclical rules, or institutional constraints; the distributional and macroeconomic effects require separate analysis.",
+      "usageNote": "This is a thin, historically variable fiscal orientation rather than a complete conservative ideology. Balanced-budget rules, tax cuts, spending restraint, supply-side policy, and austerity are distinct possible strategies, not subtypes or necessary commitments."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0",
+      "citation:7ab190b21440a090"
+    ]
+  },
+  {
+    "id": "fourth-theory",
+    "label": "Dugin’s Fourth Political Theory",
+    "nodeScope": "context",
+    "canonicalDefinition": "Aleksandr Dugin’s post-Soviet project declaring liberalism, communism, and fascism exhausted and seeking a traditionalist, anti-liberal alternative organized around distinct civilizations and a multipolar world. In Dugin’s formulation it overlaps with Neo-Eurasianism but does not provide one settled economic program.",
+    "aliases": [
+      "Fourth Political Theory",
+      "4PT",
+      "Duginism"
+    ],
+    "family": "authoritarian",
+    "subfamily": "neo-eurasian-radical-right",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "A single-author, non-canonical and explicitly incomplete project rather than an established academic category. Dugin presents it as rejecting fascism; scholarship disputes that claimed break and generally locates the project within or adjacent to the radical right. The label reports both the project’s self-description and that scholarly dispute."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:733cb06466110c3f",
+      "citation:33778edd1a3b9b9b"
+    ]
+  },
+  {
+    "id": "fundamentalist-theocracy",
+    "label": "Fundamentalist Theocracy",
+    "nodeScope": "context",
+    "canonicalDefinition": "A political system in which religious law and doctrine serve as the supreme authority for governance, with state institutions enforcing a strict, self-described fundamentalist interpretation of sacred texts and often restricting religious pluralism and secular alternatives.",
+    "boundaryStatement": "Fundamentalist theocracy is a strong analytical label that should be distinguished from religious establishment, clerical influence, or ordinary religious conservatism; the relevant doctrine, interpretive authority, and treatment of dissent vary by case.",
+    "family": "conservative",
+    "subfamily": "religious-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Fundamentalist theocracy is a strong analytical label that should be distinguished from religious establishment, clerical influence, or ordinary religious conservatism; the relevant doctrine, interpretive authority, and treatment of dissent vary by case."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:7ab28ada92460a06"
+    ]
+  },
+  {
+    "id": "geolibertarian",
+    "label": "Georgist Libertarian",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Treats exclusive private appropriation of natural opportunities—especially land and resource rents—as the central injustice, while leaving genuinely produced wealth to voluntary exchange; prefers land-value taxation and free migration to state micromanagement.",
+    "boundaryStatement": "Georgist-libertarian arguments distinguish natural opportunities from produced wealth, but they vary over the tax base, public services, compensation, and migration; this is not a generic endorsement of every land tax or every libertarian program.",
+    "family": "liberal",
+    "subfamily": "geoist-market",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Georgist-libertarian arguments distinguish natural opportunities from produced wealth, but they vary over the tax base, public services, compensation, and migration; this is not a generic endorsement of every land tax or every libertarian program.",
+      "usageNote": "Geolibertarianism combines libertarian self-ownership with a common claim on land and natural-resource rent; it is not simply laissez-faire libertarianism or every version of Georgism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c8d9dc64426ba5af",
+      "citation:04c4382f2d9846cd"
+    ]
+  },
+  {
+    "id": "georgism",
+    "label": "Georgism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A political and economic philosophy based on Henry George’s distinction between privately created value and socially generated land or resource rent, generally favoring public capture of that rent through land-value taxation; the historic “single tax” is one formulation, not the only one.",
+    "boundaryStatement": "Georgism is a land- and resource-rent doctrine, not simply a synonym for property taxation or small government; contemporary proposals differ over the tax base, public services, compensation, and treatment of other forms of property.",
+    "family": "liberal",
+    "subfamily": "geoist-market",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Georgism is a land- and resource-rent doctrine, not simply a synonym for property taxation or small government; contemporary proposals differ over the tax base, public services, compensation, and treatment of other forms of property."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:04c4382f2d9846cd"
+    ]
+  },
+  {
+    "id": "green-capitalism",
+    "label": "Green Capitalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "An approach to environmental protection that works within existing capitalist market structures, promoting green growth, carbon pricing, renewable energy markets, eco-labeling, and corporate sustainability as mechanisms for ecological transition without systemic economic transformation.",
+    "boundaryStatement": "Green-capitalist instruments can involve commodification, expert measurement, unequal bargaining power, and distributional tradeoffs; the label does not establish that markets alone are sufficient for ecological transition or that every market environmental policy is green capitalism.",
+    "family": "green",
+    "subfamily": "market-green",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Green-capitalist instruments can involve commodification, expert measurement, unequal bargaining power, and distributional tradeoffs; the label does not establish that markets alone are sufficient for ecological transition or that every market environmental policy is green capitalism.",
+      "usageNote": "Green capitalism identifies market-compatible transition instruments, not environmentalism in general; it differs from ecomodernism, ecosocialism, and degrowth even where policies overlap."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:31f76d2e42e72045"
+    ]
+  },
+  {
+    "id": "green-politics",
+    "label": "Green Politics / Political Ecology",
+    "nodeScope": "primary",
+    "canonicalDefinition": "A broad ecological political family that treats environmental limits and the human relationship with the nonhuman world as central while allowing substantial variation over growth, markets, technology, governance, and strategy.",
+    "boundaryStatement": "Green politics is multidimensional: ecological concern alone does not determine an economic system, level of state authority, or preferred political strategy.",
+    "family": "green",
+    "subfamily": "green-family-anchor",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Green politics is multidimensional: ecological concern alone does not determine an economic system, level of state authority, or preferred political strategy.",
+      "usageNote": "This family anchor does not decide between deep ecology, degrowth, ecosocialism, ecomodernism, green capitalism, or bioregionalism; those distinctions require independent dimensions or a specialist follow-up."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:86698e89abab7360"
+    ]
+  },
+  {
+    "id": "guild-socialism",
+    "label": "Guild Socialism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Advocates industrial self-government through democratic worker guilds that control production and negotiate with the public; historical proposals differed over whether ultimate ownership should be public, guild-based, or otherwise socialized.",
+    "boundaryStatement": "Guild socialism is an historical model of worker self-government organized through industrial guilds, distinct from both ordinary trade unionism and one fixed theory of public ownership; its proposals varied across authors and periods.",
+    "family": "socialist",
+    "subfamily": "guild-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Guild socialism is an historical model of worker self-government organized through industrial guilds, distinct from both ordinary trade unionism and one fixed theory of public ownership; its proposals varied across authors and periods."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:cb50703ee04f1ee6"
+    ]
+  },
+  {
+    "id": "hindutva",
+    "label": "Hindutva",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Frames Indian national identity through Hindu civilizational and cultural categories; in scholarly usage it often denotes Hindu nationalism, but formulations differ over belonging, secularism, minority citizenship, and state power.",
+    "boundaryStatement": "Hindutva is a contested political term, not Hinduism as a religion. Scholarly formulations range from cultural or civilizational accounts to majoritarian or exclusionary projects, so this provisional label does not infer a respondent’s religion or one party’s complete program.",
+    "family": "nationalist",
+    "subfamily": "hindutva",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Hindutva is a contested political term, not Hinduism as a religion. Scholarly formulations range from cultural or civilizational accounts to majoritarian or exclusionary projects, so this provisional label does not infer a respondent’s religion or one party’s complete program."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:767d8856723b95a6",
+      "citation:a5147528a12f169f"
+    ]
+  },
+  {
+    "id": "indigenism",
+    "label": "Indigenous Sovereignty / Self-Determination",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Prioritizes Indigenous peoples’ rights, sovereignty, land and cultural continuity, and decolonial forms of political authority in response to imposed state and market structures.",
+    "boundaryStatement": "A broad catalog heading for diverse Indigenous political traditions; “Indigenism” is retained only as a qualified search term because “indigenismo” has also named state-led integration projects.",
+    "aliases": [
+      "Indigenous Sovereignty",
+      "Indigenous Self-Determination",
+      "Indigenism"
+    ],
+    "family": "indigenist",
+    "subfamily": "indigenist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A broad catalog heading for diverse Indigenous political traditions; “Indigenism” is retained only as a qualified search term because “indigenismo” has also named state-led integration projects."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:79be53b8e73c74d3"
+    ]
+  },
+  {
+    "id": "individualist-anarchism",
+    "label": "Individualist Anarchism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A historically diverse anarchist family that centers individual autonomy and voluntary association while rejecting the state’s claim to compulsory political authority.",
+    "family": "anarchist",
+    "subfamily": "individualist-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "The natural-rights, mutualist, and egoist currents associated with figures such as Warren, Spooner, Tucker, and Stirner disagree over morality, property, and markets; the label is not a synonym for egoist anarchism, post-left anarchism, or anarcho-capitalism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:55f39f4302598e7c"
+    ]
+  },
+  {
+    "id": "integralism",
+    "label": "Integralism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Holds that Catholic faith should be the basis of public law and policy, rejecting the separation of church and state in favor of an organic society where civil authority is subordinate to divine moral order.",
+    "aliases": [
+      "Catholic Integralism"
+    ],
+    "family": "conservative",
+    "subfamily": "integralist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "A distinct Catholic political tradition predating fascism (19th-century ultramontanism) and continuing in non-fascist forms today; \"clerical fascism\" describes one specific 20th-century fusion of integralist and fascist movements, not a synonym for integralism as such."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:aadae1943ce48eac",
+      "citation:09ff4aa7bf0706ec"
+    ]
+  },
+  {
+    "id": "internationalism",
+    "label": "Internationalism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A political orientation that emphasizes cooperation and obligations across national boundaries, supports international institutions, and may draw on universal human-rights or cosmopolitan arguments without requiring one global state.",
+    "boundaryStatement": "Internationalism can be liberal, socialist, anti-imperialist, institutional, or state-cooperative. It does not by itself entail cosmopolitan individualism, military intervention, open borders, or a world federation.",
+    "family": "liberal",
+    "subfamily": "internationalist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Internationalism can be liberal, socialist, anti-imperialist, institutional, or state-cooperative. It does not by itself entail cosmopolitan individualism, military intervention, open borders, or a world federation.",
+      "usageNote": "Internationalism is broader than cosmopolitanism: it can describe cooperation among states, transnational solidarity, or universal rights, depending on the tradition."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af",
+      "citation:83a981290e953938"
+    ]
+  },
+  {
+    "id": "islamic-democracy",
+    "label": "Islamic Democratic Constitutionalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Argues that electoral government, constitutional limits, and public accountability can operate within an Islamic ethical or legal framework, while leaving the relationships among popular sovereignty, constitutional review, religious interpretation, clerical authority, minority rights, and party competition open to institutional disagreement.",
+    "boundaryStatement": "A contested family of ideas about democracy within Islamic constitutional or political frameworks; not identical to clerical theocracy or purely secular liberal democracy, and not reducible to any single country, party, interpretation of Sharia, or institutional design.",
+    "family": "religious-political",
+    "subfamily": "islamic-democratic",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A contested family of ideas about democracy within Islamic constitutional or political frameworks; not identical to clerical theocracy or purely secular liberal democracy, and not reducible to any single country, party, interpretation of Sharia, or institutional design."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ec6045e7e01624e9",
+      "citation:8390a3e0200ad47d",
+      "citation:dc31fecd0a6513ff"
+    ]
+  },
+  {
+    "id": "juche",
+    "label": "Juche",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "The DPRK/Kimist state ideology that frames political independence and state-directed self-reliance as central goods, alongside military self-defense, under a highly centralized party-state and supreme leader.",
+    "boundaryStatement": "This label refers to a historically developing DPRK/Kimist state ideology, not a general philosophy of personal self-reliance or a claim that North Korea was economically autarkic. Its Marxist-Leninist inheritance, leader-centered succession politics, and institutional emphases changed over time.",
+    "family": "socialist",
+    "subfamily": "juche",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "This label refers to a historically developing DPRK/Kimist state ideology, not a general philosophy of personal self-reliance or a claim that North Korea was economically autarkic. Its Marxist-Leninist inheritance, leader-centered succession politics, and institutional emphases changed over time."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:912a3311a441a2cd",
+      "citation:941f94ffd493d344"
+    ]
+  },
+  {
+    "id": "kemalism",
+    "label": "Kemalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A secular, modernizing, and statist nationalist ideology associated with republican state-building and rapid catch-up modernization, conventionally organized around the Six Arrows: republicanism, nationalism, peopleism (halkçılık), statism, laicism, and reformism.",
+    "aliases": [
+      "Atatürkism",
+      "Six Arrows"
+    ],
+    "family": "nationalist",
+    "subfamily": "civic-republican",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "Kemalist currents differ across periods and interpreters. Here peopleism means a claim to national unity and popular sovereignty, not necessarily contemporary anti-elite populism; industrialization and Westernization describe historical modernization aims rather than six additional mandatory principles."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:747dba903accb5ae"
+    ]
+  },
+  {
+    "id": "left-wing-market-anarchism",
+    "label": "Left-Wing Market Anarchism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "An anti-capitalist market-anarchist umbrella that defends voluntary exchange in freed markets while arguing that state privilege helps sustain concentrated corporate power and exploitation.",
+    "family": "anarchist",
+    "subfamily": "market-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "Currents disagree over property, wage labor, rent, and preferred institutions. The label overlaps with mutualist, agorist, and left-Rothbardian currents but is not synonymous with any one of them or with anarcho-capitalism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:5792231d022775b8"
+    ]
+  },
+  {
+    "id": "left-wing-nationalism",
+    "label": "Left-Wing Nationalism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Combines national self-determination with anti-colonial, redistributive, and popular-sovereignty commitments, framing national liberation as a precondition for social justice rather than ethnic hierarchy.",
+    "boundaryStatement": "An anti-colonial or egalitarian national project is not automatically cosmopolitan, inclusive in practice, or protective against state domination. The label leaves open how membership, minority rights, borders, and coercive power are handled.",
+    "family": "nationalist",
+    "subfamily": "inclusive-national",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "An anti-colonial or egalitarian national project is not automatically cosmopolitan, inclusive in practice, or protective against state domination. The label leaves open how membership, minority rights, borders, and coercive power are handled.",
+      "usageNote": "Left-wing nationalism here refers to anti-colonial or socially egalitarian self-determination; it is not equivalent to ethnonationalism and does not imply one economic or territorial strategy."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1"
+    ]
+  },
+  {
+    "id": "left-wing-populism",
+    "label": "Left-Wing Populism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Frames politics as a struggle between ordinary people and entrenched elites, channeling that antagonism toward redistribution, economic democracy, and majoritarian popular sovereignty rather than nationalist exclusion.",
+    "boundaryStatement": "Populism is a thin ideology or political style that divides a virtuous people from elites; this variant combines it with egalitarian or anti-oligarchic politics.",
+    "family": "populist",
+    "subfamily": "left-populist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Populism is a thin ideology or political style that divides a virtuous people from elites; this variant combines it with egalitarian or anti-oligarchic politics.",
+      "usageNote": "Left-wing populism uses the people-versus-elite frame with an egalitarian or anti-oligarchic host orientation. It can overlap with socialism, social democracy, or democratic reform without being identical to any of them or fixing one ownership model."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dc6dd83c651d43ae",
+      "citation:ae5d57bb780f21b7",
+      "citation:afe6f0375e77dd33"
+    ]
+  },
+  {
+    "id": "liberal-conservatism",
+    "label": "Liberal Conservatism",
+    "nodeScope": "primary",
+    "canonicalDefinition": "A conservative-family synthesis that pairs social continuity and cautious reform with liberal constitutionalism, civil liberty, limited government, and a market economy.",
+    "boundaryStatement": "Liberal conservatism is not a fixed midpoint between liberalism and conservatism. Historical variants differ over constitutional rights, state capacity, markets, social order, and the pace of reform, and can overlap with conservative liberalism or ordoliberalism without being interchangeable.",
+    "family": "conservative",
+    "subfamily": "conservative-liberal",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Liberal conservatism is not a fixed midpoint between liberalism and conservatism. Historical variants differ over constitutional rights, state capacity, markets, social order, and the pace of reform, and can overlap with conservative liberalism or ordoliberalism without being interchangeable.",
+      "usageNote": "This catalog uses the name for the conservative-family side of an overlapping liberal-conservative field. Academic and party usage varies by country and period, so the word order is not a universal taxonomy; compare the catalog’s liberal-family Conservative Liberalism label."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0",
+      "citation:16a3600798f070be"
+    ]
+  },
+  {
+    "id": "liberal-feminism",
+    "label": "Liberal Feminism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Seeks gender equality through legal reform, equal rights, and equal opportunity within existing liberal-democratic institutions, emphasizing individual autonomy and formal equality before the law.",
+    "boundaryStatement": "Liberal feminist traditions differ over structural inequality, care, affirmative action, and the limits of formal equality; this label identifies a rights-and-opportunity emphasis rather than a claim that other feminist concerns are irrelevant.",
+    "family": "liberal",
+    "subfamily": "civil-libertarian",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Liberal feminist traditions differ over structural inequality, care, affirmative action, and the limits of formal equality; this label identifies a rights-and-opportunity emphasis rather than a claim that other feminist concerns are irrelevant.",
+      "usageNote": "Liberal feminism emphasizes rights, legal status, and opportunity within liberal institutions; it is one feminist tradition rather than a synonym for feminism as a whole."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f3abe9549d155858",
+      "citation:cbaecaacf4dd9075"
+    ]
+  },
+  {
+    "id": "libertarian-municipalism",
+    "label": "Libertarian Municipalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Proposes a confederal network of directly-democratic municipal assemblies as the basis for a stateless, ecological, and ethical society, replacing both state sovereignty and capitalist markets with face-to-face popular governance.",
+    "boundaryStatement": "Libertarian municipalism is a specific Bookchin-linked project of municipal assemblies, ecology, and confederation; it is not generic local government, federalism, or every decentralized anarchist strategy.",
+    "family": "democratic",
+    "subfamily": "confederal-democratic",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Libertarian municipalism is a specific Bookchin-linked project of municipal assemblies, ecology, and confederation; it is not generic local government, federalism, or every decentralized anarchist strategy."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:e725d2d09db0e176"
+    ]
+  },
+  {
+    "id": "libertarian-socialism",
+    "label": "Libertarian Socialism",
+    "nodeScope": "primary",
+    "canonicalDefinition": "A broader anti-authoritarian socialism that opposes both capitalist concentration and centralized state socialism, seeking worker self-management and federated anti-hierarchical organization through a mix of reform and direct action rather than vanguard seizure.",
+    "boundaryStatement": "It is not right-libertarianism: the shared “libertarian” term refers here to opposition to hierarchical or coercive domination, while property and economic commitments differ.",
+    "family": "socialist",
+    "subfamily": "libertarian-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "It is not right-libertarianism: the shared “libertarian” term refers here to opposition to hierarchical or coercive domination, while property and economic commitments differ.",
+      "usageNote": "The term covers overlapping anarchist, councilist, autonomist, syndicalist, and other anti-authoritarian socialist currents; they disagree about organization, markets, property, and transition."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f",
+      "citation:1b5ab88e18ea0d1b"
+    ]
+  },
+  {
+    "id": "liquid-democracy",
+    "label": "Liquid Democracy",
+    "nodeScope": "context",
+    "canonicalDefinition": "A hybrid system of direct and representative democracy in which citizens may vote directly on issues or delegate their voting power to trusted representatives on a per-issue basis.",
+    "boundaryStatement": "Liquid democracy is primarily a voting and delegation procedure, not a complete ideology; its political meaning depends on whether delegations are revocable, how expertise is selected, and which decisions remain directly voted.",
+    "family": "democratic",
+    "subfamily": "liquid-democratic",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Liquid democracy is primarily a voting and delegation procedure, not a complete ideology; its political meaning depends on whether delegations are revocable, how expertise is selected, and which decisions remain directly voted."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c38b09dea29362d0"
+    ]
+  },
+  {
+    "id": "maoism",
+    "label": "Maoism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Extends revolutionary state socialism through mass line politics, protracted struggle, anti-revisionism, and peasant or peripheral mobilization, treating revolutionary transformation as a continuing process against bureaucratic restoration.",
+    "boundaryStatement": "Maoism is a historically specific and internally varied revolutionary current associated with mass-line politics, peasant mobilization, and continuing struggle; it is not simply a synonym for every communist party or for Marxism-Leninism in general.",
+    "family": "socialist",
+    "subfamily": "maoist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Maoism is a historically specific and internally varied revolutionary current associated with mass-line politics, peasant mobilization, and continuing struggle; it is not simply a synonym for every communist party or for Marxism-Leninism in general."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dbbdbf966d2a0ca3"
+    ]
+  },
+  {
+    "id": "market-anarchism",
+    "label": "Market Anarchism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A family of anarchist positions that combine rejection of centralized state authority with voluntary exchange, decentralized coordination, and non-state institutions; its variants disagree over property, exploitation, mutual credit, and the meaning of a market order.",
+    "boundaryStatement": "The label is a provisional specialist anchor: it does not decide whether markets are capitalist, reciprocal, counter-economic, or compatible with common ownership, and anarcho-capitalism remains contested within anarchist studies.",
+    "family": "anarchist",
+    "subfamily": "market-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The label is a provisional specialist anchor: it does not decide whether markets are capitalist, reciprocal, counter-economic, or compatible with common ownership, and anarcho-capitalism remains contested within anarchist studies.",
+      "usageNote": "Market Anarchism belongs in the anarchist family because its defining institutional claim concerns stateless or anti-state organization. Mutualism, agorism, left-wing market anarchism, and anarcho-capitalism are related but not interchangeable variants."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:c8d9dc64426ba5af",
+      "citation:5a562c689b1ef3bd"
+    ]
+  },
+  {
+    "id": "market-liberal",
+    "label": "Market Liberal",
+    "nodeScope": "primary",
+    "canonicalDefinition": "A contemporary market-liberal family that gives strong presumptive priority to competitive markets, private enterprise, trade, property, and rule-governed economic policy while accepting an enabling state, public goods, macroeconomic institutions, and a limited safety net.",
+    "boundaryStatement": "Market liberalism is broader than deregulation or small government: it can accept public goods, social insurance, regulation, and constitutional limits. It is distinct from classical liberalism, right-libertarianism, and neoliberal technocratic governance.",
+    "family": "liberal",
+    "subfamily": "market-liberal",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Market liberalism is broader than deregulation or small government: it can accept public goods, social insurance, regulation, and constitutional limits. It is distinct from classical liberalism, right-libertarianism, and neoliberal technocratic governance.",
+      "usageNote": "Use this as the broad contemporary pro-market liberal anchor. It describes a family of market-oriented institutional commitments, not a claim that every market liberal favors the same tax, welfare, trade, or regulatory program."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af",
+      "citation:66382c94a47a6629"
+    ]
+  },
+  {
+    "id": "market-right-libertarianism",
+    "label": "Right-Libertarianism",
+    "nodeScope": "primary",
+    "canonicalDefinition": "A broad right-libertarian family emphasizing voluntary exchange, strong personal liberty, private or use-based property claims, and skepticism toward centralized political authority while leaving room for disagreement over the state and institutional design.",
+    "boundaryStatement": "Right-libertarian traditions differ over the legitimacy of the state, property acquisition, public goods, social obligations, and whether anarcho-capitalism should count as anarchism.",
+    "aliases": [
+      "Market Libertarianism",
+      "Market / Right-Libertarianism"
+    ],
+    "family": "liberal",
+    "subfamily": "right-libertarian",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Right-libertarian traditions differ over the legitimacy of the state, property acquisition, public goods, social obligations, and whether anarcho-capitalism should count as anarchism.",
+      "usageNote": "This public name separates the right-libertarian property-and-state lineage from market anarchism as a broader and contested anarchist field. It is not a synonym for anarcho-capitalism, minarchism, Georgism, Objectivism, or every market-liberal position."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af"
+    ]
+  },
+  {
+    "id": "market-socialist",
+    "label": "Market Socialist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Combines social or cooperative ownership of productive capital with market pricing and competition, aiming to disperse economic power without abandoning the coordinating virtues of exchange.",
+    "boundaryStatement": "Market socialism is a family of economic-system proposals rather than one party or state model: worker cooperatives, public firms, and other forms of social ownership can coexist with markets, and the label is not synonymous with social democracy or private-market capitalism.",
+    "family": "socialist",
+    "subfamily": "democratic-market-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Market socialism is a family of economic-system proposals rather than one party or state model: worker cooperatives, public firms, and other forms of social ownership can coexist with markets, and the label is not synonymous with social democracy or private-market capitalism.",
+      "usageNote": "Market socialism concerns ownership and economic coordination, not merely welfare spending within private capitalism; its models differ over worker control, public ownership, and market design."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:2d99f6e2609c3939"
+    ]
+  },
+  {
+    "id": "marxian-socialism",
+    "label": "Marxian Socialism (Non-Leninist)",
+    "nodeScope": "primary",
+    "canonicalDefinition": "A broad Marxian socialist family focused on class power, social ownership or control of production, and transformation of capitalist institutions without assuming Leninist party-state organization.",
+    "boundaryStatement": "Marxian socialism includes divergent theories of democracy, revolution, planning, markets, and political organization.",
+    "family": "socialist",
+    "subfamily": "marxian-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Marxian socialism includes divergent theories of democracy, revolution, planning, markets, and political organization.",
+      "usageNote": "This family anchor is distinct from Marxism-Leninism, social democracy, democratic socialism, council communism, and other specialist strategies."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f"
+    ]
+  },
+  {
+    "id": "marxist-leninist",
+    "label": "Marxist-Leninist",
+    "nodeScope": "primary",
+    "canonicalDefinition": "Typically centers a disciplined vanguard party that seizes and wields centralized state power to abolish private capital and direct a planned or state-coordinated economy during a transition toward communism; national and historical variants differ substantially.",
+    "boundaryStatement": "This is a family-level label for vanguard-party state socialism, not a claim that Soviet, Chinese, Cuban, Vietnamese, or other national variants shared one economy, constitutional order, or historical practice.",
+    "family": "socialist",
+    "subfamily": "state-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "This is a family-level label for vanguard-party state socialism, not a claim that Soviet, Chinese, Cuban, Vietnamese, or other national variants shared one economy, constitutional order, or historical practice.",
+      "usageNote": "Titoism claimed continuity with Marxism-Leninism but is a heterodox/contested case: its market elements, worker self-management, and non-aligned foreign policy broke sharply enough from Soviet orthodoxy that Yugoslavia was expelled from the Cominform in 1948."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f",
+      "citation:ffb8b5e650c3af87"
+    ]
+  },
+  {
+    "id": "minarchist",
+    "label": "Minarchist",
+    "nodeScope": "specialist",
+    "parentId": "market-right-libertarianism",
+    "canonicalDefinition": "A libertarian doctrine that generally permits a minimal state for protecting against force, theft, fraud, and rights violations through courts, policing, and defense; minarchists differ over the state’s exact scope and justification.",
+    "boundaryStatement": "The night-watchman formulation is a family resemblance, not a single settled institutional blueprint; disagreements include public goods, adjudication, emergency powers, and the boundary between protection and regulation.",
+    "family": "liberal",
+    "subfamily": "minarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The night-watchman formulation is a family resemblance, not a single settled institutional blueprint; disagreements include public goods, adjudication, emergency powers, and the boundary between protection and regulation.",
+      "usageNote": "Minarchism names a minimal-state position within libertarian thought. It is narrower than classical liberalism and retains public authority, while anarcho-capitalism rejects the state rather than merely limiting it."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c8d9dc64426ba5af",
+      "citation:ffde273d907be80f"
+    ]
+  },
+  {
+    "id": "multiculturalism",
+    "label": "Multiculturalism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Holds that diverse cultural traditions can and should coexist peacefully within a single society, valuing cultural pluralism, anti-racism, and inclusive democratic citizenship over assimilation or monocultural nationalism.",
+    "boundaryStatement": "Multiculturalist approaches differ over individual rights, group-differentiated accommodation, integration, language, autonomy, and shared civic institutions. Support for recognition does not by itself entail separate sovereignty or exemption from equal-rights standards.",
+    "family": "liberal",
+    "subfamily": "multiculturalist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Multiculturalist approaches differ over individual rights, group-differentiated accommodation, integration, language, autonomy, and shared civic institutions. Support for recognition does not by itself entail separate sovereignty or exemption from equal-rights standards.",
+      "usageNote": "Multiculturalism is modeled as a cross-cutting recognition and accommodation commitment; it does not by itself prescribe separatism, one group-rights model, or a complete economic ideology."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af",
+      "citation:947e27d17c539f9c"
+    ]
+  },
+  {
+    "id": "mutualist",
+    "label": "Mutualist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A plural anarchist tradition associated first with Proudhon and later reworked in American individualist and contemporary currents. Its common themes include reciprocal association, opposition to state-granted privilege and exploitation, mutual credit, and federated or cooperative provision, while property, labor exchange, and market questions remain contested.",
+    "boundaryStatement": "Proudhonian, Tuckerite or other individualist, Swartz-associated, and contemporary mutualist formulations overlap without forming two fixed or exhaustive camps. C4SS is a contemporary left-market-anarchist organization with several currents, not a mutualist subtype or a single-author school; it predates Kevin Carson’s 2008 appointment as its first paid staff member. The catalog therefore does not infer C4SS or Kevin Carson affiliation—or any precise historical lineage—from a family-level affinity.",
+    "family": "anarchist",
+    "subfamily": "mutualist-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Proudhonian, Tuckerite or other individualist, Swartz-associated, and contemporary mutualist formulations overlap without forming two fixed or exhaustive camps. C4SS is a contemporary left-market-anarchist organization with several currents, not a mutualist subtype or a single-author school; it predates Kevin Carson’s 2008 appointment as its first paid staff member. The catalog therefore does not infer C4SS or Kevin Carson affiliation—or any precise historical lineage—from a family-level affinity.",
+      "usageNote": "For historical orientation, the catalog distinguishes Proudhonian mutualism; the Tucker-era American individualist-anarchist field, including Joseph (Jo) and Laurance Labadie; Clarence L. Swartz’s 1927 Mutualist Associates restatement; and later Proudhonian or left-market revivals. Across those overlapping lines, reciprocal exchange and mutual credit are recurring institutional ideas rather than a single shared program. The historical direction is principally Proudhon into part of the Tuckerite field; contemporary revivals are later reinterpretations, not historical origins of individualist anarchism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:a07d9f55ed4a9803",
+      "citation:887af70697d1f105",
+      "citation:73e68770cf82f4c6",
+      "citation:de5a40db4fcb95e6",
+      "citation:441a8fa6e6e65120",
+      "citation:5014fd2292d28306",
+      "citation:c3760ee42f90cdc6",
+      "citation:5ba61b9fd33536f4",
+      "citation:0f9a7b38e59547cd"
+    ]
+  },
+  {
+    "id": "national-bolshevism",
+    "label": "National Bolshevism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A historically variable set of attempts to combine radical nationalism with Bolshevik or revolutionary-socialist ideas. This catalog uses the post-Soviet authoritarian nationalist current associated with Limonov’s movement and Dugin’s early milieu as its reference case.",
+    "boundaryStatement": "This is a provisional, historically bounded specialist label: interwar German National Bolshevism, post-Soviet Limonov–Dugin politics, National Communism, and other red-brown currents do not share one settled program. The label does not make nationalism and socialism interchangeable or imply orthodox Marxism-Leninism.",
+    "family": "authoritarian",
+    "subfamily": "national-bolshevist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "This is a provisional, historically bounded specialist label: interwar German National Bolshevism, post-Soviet Limonov–Dugin politics, National Communism, and other red-brown currents do not share one settled program. The label does not make nationalism and socialism interchangeable or imply orthodox Marxism-Leninism.",
+      "usageNote": "The name has also described distinct interwar German currents, so it should not be read as one invariant doctrine. The post-Soviet form modeled here is commonly studied with the radical right and is not orthodox Marxism-Leninism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9071166f063d1fa4"
+    ]
+  },
+  {
+    "id": "national-conservatism",
+    "label": "National Conservatism",
+    "nodeScope": "primary",
+    "canonicalDefinition": "A conservative position that fuses traditional moral and social conservatism with a strong emphasis on national sovereignty, cultural identity, and the nation-state as the primary locus of political community and loyalty.",
+    "boundaryStatement": "A broad and contested contemporary family: it is not automatically ethnonationalist or fascist, but some movements described by the term reject liberal constraints. Economic and foreign-policy positions vary across cases.",
+    "family": "conservative",
+    "subfamily": "national-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A broad and contested contemporary family: it is not automatically ethnonationalist or fascist, but some movements described by the term reject liberal constraints. Economic and foreign-policy positions vary across cases.",
+      "usageNote": "The catalog uses national conservatism for a contested synthesis of national sovereignty or cultural continuity with social order and conservative change preferences. Its positions on democracy, immigration, markets, welfare, religion, and foreign policy vary across countries and movements."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0",
+      "citation:e9afa3c3056240c5"
+    ]
+  },
+  {
+    "id": "national-socialism",
+    "label": "National Socialism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "The Nazi ideology of ethnic nationalism, racial hierarchy, antisemitic exclusion, state-directed economic organization, militarist expansionism, and totalizing racial-national authority; its anti-capitalist rhetoric did not make it socialist.",
+    "boundaryStatement": "Use as the historical Nazi ideology and its closely related movements, not as a generic synonym for authoritarianism, nationalism, or state economic intervention.",
+    "aliases": [
+      "Nazism"
+    ],
+    "family": "authoritarian",
+    "subfamily": "ultranationalist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Use as the historical Nazi ideology and its closely related movements, not as a generic synonym for authoritarianism, nationalism, or state economic intervention."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:45c8d4991ce9d236"
+    ]
+  },
+  {
+    "id": "national-traditionalist",
+    "label": "National Traditionalist",
+    "nodeScope": "retired",
+    "canonicalDefinition": "Emphasizes national continuity, inherited institutions, social order, and cultural tradition while remaining analytically distinct from ethnonationalism and fascist ultranationalism.",
+    "family": "conservative",
+    "subfamily": "national-conservative",
+    "legacyDisposition": "split",
+    "conceptualStatus": "deprecated",
+    "measurementStatus": "retired-alias",
+    "publicRoleStatus": "retired",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "legacyComponents": [
+        "national-conservatism",
+        "social-conservatism"
+      ]
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "nationalism",
+    "label": "Nationalism / National Orientation",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A cross-cutting orientation that treats the nation as a valuable political community entitled to some combination of continuity, solidarity, priority, sovereignty, or self-government.",
+    "boundaryStatement": "Civic, ethnocultural, religious, left-wing, economic, separatist, and expansionist variants require separate evidence.",
+    "family": "nationalist",
+    "subfamily": "national-orientation",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Civic, ethnocultural, religious, left-wing, economic, separatist, and expansionist variants require separate evidence.",
+      "usageNote": "This modifier does not decide who belongs, what economic system the nation should adopt, or whether its territorial project is defensive, separatist, unifying, or expansionist."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3"
+    ]
+  },
+  {
+    "id": "neoconservative",
+    "label": "Neoconservative",
+    "nodeScope": "specialist",
+    "parentId": "conservative",
+    "canonicalDefinition": "Combines conservative or market-liberal domestic policy with an assertive international posture, including willingness to use American or allied power to defend strategic interests and promote liberal-democratic institutions abroad.",
+    "boundaryStatement": "Neoconservatism is a historically specific and internally changing U.S. current, not a synonym for every hawkish conservative, interventionist, or supporter of democracy promotion; its domestic-economic and foreign-policy emphases vary by period and author.",
+    "family": "conservative",
+    "subfamily": "national-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Neoconservatism is a historically specific and internally changing U.S. current, not a synonym for every hawkish conservative, interventionist, or supporter of democracy promotion; its domestic-economic and foreign-policy emphases vary by period and author.",
+      "usageNote": "This catalog uses the modern U.S. current, whose roots include Cold War liberal and anti-communist circles. Some neoconservatives were influenced by Leo Strauss or Straussians, but Straussian philosophy is not a definition or subtype of neoconservatism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9c44a8a1c2400720"
+    ]
+  },
+  {
+    "id": "neoliberalism",
+    "label": "Market-Governance Liberalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Describes a market-oriented liberal approach to governing capitalism through competition policy, privatization or outsourcing, independent expert institutions, and international economic rules; the term “neoliberalism” is broader and often polemical.",
+    "boundaryStatement": "The term neoliberalism is contested and often polemical; this label uses the narrower sense of market-governance liberalism.",
+    "aliases": [
+      "Neoliberalism"
+    ],
+    "family": "liberal",
+    "subfamily": "technocratic-liberal",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The term neoliberalism is contested and often polemical; this label uses the narrower sense of market-governance liberalism.",
+      "usageNote": "In this catalog, the operational meaning is a market-governance orientation: public authorities construct and police competitive markets through rules, privatization or outsourcing, expert institutions, and international economic coordination. It is not a claim that every market liberal, privatization policy, or austerity program is neoliberal."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1f4865a29afc1ad"
+    ]
+  },
+  {
+    "id": "neoreactionary",
+    "label": "Neoreactionary",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Rejects democracy as unstable and proposes governance modeled on a corporation run by an accountable sovereign-executive, with citizens as customers free to exit to competing sovereign jurisdictions rather than to vote.",
+    "boundaryStatement": "A niche internet-era anti-democratic current; use cautiously and do not treat it as a settled academic tradition.",
+    "family": "authoritarian",
+    "subfamily": "monarchist-reactionary",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A niche internet-era anti-democratic current; use cautiously and do not treat it as a settled academic tradition."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:2462735ddd0497b9"
+    ]
+  },
+  {
+    "id": "objectivism",
+    "label": "Objectivism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Ayn Rand’s philosophical system grounds morality in rational self-interest and productive achievement, defends individual rights, and presents laissez-faire capitalism with a limited rights-protecting government as its political-economic ideal.",
+    "boundaryStatement": "Its claims about rational egoism, absolute rights, and laissez-faire capitalism are Objectivist doctrines attributed to Rand, not synonyms for generic libertarianism, egoism, or every pro-market position.",
+    "family": "liberal",
+    "subfamily": "objectivist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Its claims about rational egoism, absolute rights, and laissez-faire capitalism are Objectivist doctrines attributed to Rand, not synonyms for generic libertarianism, egoism, or every pro-market position.",
+      "usageNote": "Objectivism is an author-specific philosophical doctrine spanning metaphysics, epistemology, ethics, aesthetics, and politics; this catalog uses the political commitments as one part of that larger system."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f608d8c3bcfb13cd"
+    ]
+  },
+  {
+    "id": "one-nation-conservatism",
+    "label": "One-Nation Conservatism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A paternalistic conservative tradition that accepts a role for the welfare state and moderate state intervention to preserve social cohesion, favoring gradual reform over radical change.",
+    "boundaryStatement": "The label refers to a historically British conservative response to class division and social dislocation; it does not by itself specify modern welfare levels, national identity, religion, or support for an interventionist state.",
+    "family": "conservative",
+    "subfamily": "one-nation-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The label refers to a historically British conservative response to class division and social dislocation; it does not by itself specify modern welfare levels, national identity, religion, or support for an interventionist state.",
+      "usageNote": "One-Nation Conservatism names a historically British paternalist tradition of social cohesion and gradual reform, not generic nationalism or every conservative welfare position."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9c8246b42e3ac101"
+    ]
+  },
+  {
+    "id": "ordoliberalism",
+    "label": "Ordoliberalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Holds that a competitive market order is itself a public good requiring a strong constitutional state that enforces competition against cartels and prevents interest-group capture through binding rules rather than discretionary intervention.",
+    "boundaryStatement": "Ordoliberalism’s strong state is primarily a constitutional rule-setting role that protects competitive order; it should not be collapsed into laissez-faire, generic economic regulation, or one settled welfare-state or democratic program.",
+    "family": "liberal",
+    "subfamily": "rule-bound-market",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Ordoliberalism’s strong state is primarily a constitutional rule-setting role that protects competitive order; it should not be collapsed into laissez-faire, generic economic regulation, or one settled welfare-state or democratic program.",
+      "usageNote": "Ordoliberalism is a rule-bound market-order tradition: it rejects both laissez-faire indifference to market power and unconstrained discretionary management, while varying over welfare and democracy."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:960a9402888e0cca"
+    ]
+  },
+  {
+    "id": "paleoconservatism",
+    "label": "Paleoconservatism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A U.S. current named in the 1980s to revive parts of the Old Right against neoconservatism and neoliberalism, combining cultural traditionalism and nationalism with localism, immigration restriction, skepticism toward free trade, and a generally non-interventionist foreign policy.",
+    "family": "conservative",
+    "subfamily": "paleoconservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "This is a specific modern U.S. movement, not a generic name for every old, traditional, or pre-Enlightenment conservative position."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:86edc17b1911c0ee"
+    ]
+  },
+  {
+    "id": "paleolibertarianism",
+    "label": "Paleolibertarianism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Combines a strict Rothbardian non-aggression and hard-money economics with a defense of inherited cultural and familial order, seeking a decentralized polity that secures property and liberty while leaving traditional communities free of central cultural engineering.",
+    "boundaryStatement": "A niche fusion of Rothbardian libertarian economics with cultural traditionalism; not the same as mainstream libertarianism.",
+    "family": "liberal",
+    "subfamily": "paleolibertarian",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A niche fusion of Rothbardian libertarian economics with cultural traditionalism; not the same as mainstream libertarianism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f9ea755ba47f4bcc"
+    ]
+  },
+  {
+    "id": "pan-africanism",
+    "label": "Pan-Africanism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A transnational tradition of African and African-descended solidarity, liberation, and political or cultural cooperation across colonial and state boundaries.",
+    "boundaryStatement": "This is a provisional specialist label tied to the identity-sovereignty module.",
+    "aliases": [
+      "Pan-African Unity"
+    ],
+    "family": "nationalist",
+    "subfamily": "pan-african",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "This is a provisional specialist label tied to the identity-sovereignty module.",
+      "usageNote": "Pan-Africanism is a solidarity and liberation tradition, not a single state model or synonym for Black separatism or ethnonationalism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c"
+    ]
+  },
+  {
+    "id": "pan-arabism",
+    "label": "Pan-Arabism / Arab Nationalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A pan-national tradition treating Arabic-speaking peoples as members of a wider Arab nation and favoring solidarity, sovereignty, cultural unity, or political integration across existing state borders.",
+    "boundaryStatement": "The specialist identifies a regional political tradition, not a claim that Arabic-speaking societies share one culture or one policy program.",
+    "family": "nationalist",
+    "subfamily": "pan-arab",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The specialist identifies a regional political tradition, not a claim that Arabic-speaking societies share one culture or one policy program.",
+      "usageNote": "Pan-Arabism is distinct from Arab Socialism, Baʿthism, Nasserism, Political Islam, and generic nationalism, although it has historically combined with each in different ways."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:d8c102378c0f1cac",
+      "citation:9e2ab644a76326e8"
+    ]
+  },
+  {
+    "id": "panarchism",
+    "label": "Panarchism",
+    "nodeScope": "context",
+    "canonicalDefinition": "Believes that the populace should have the right to choose the form of government (or lack thereof) they live under without having to change their physical residence, envisioning a free market of competing voluntary associations.",
+    "boundaryStatement": "A niche and highly theoretical doctrine of voluntary, overlapping governance systems; not a mainstream anarchist consensus.",
+    "family": "anarchist",
+    "subfamily": "panarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A niche and highly theoretical doctrine of voluntary, overlapping governance systems; not a mainstream anarchist consensus."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:603ad4d08c5c3140"
+    ]
+  },
+  {
+    "id": "participism",
+    "label": "Participism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Seeks a participatory economy organized around workers and consumers councils, balanced job complexes, and negotiated planning, rejecting both capitalist ownership and centralized command administration.",
+    "boundaryStatement": "A specific participatory-economics proposal rather than a broad name for all participatory democracy or socialism.",
+    "family": "socialist",
+    "subfamily": "participatory-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A specific participatory-economics proposal rather than a broad name for all participatory democracy or socialism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:202b304371d95506"
+    ]
+  },
+  {
+    "id": "platformism",
+    "label": "Platformism",
+    "nodeScope": "context",
+    "canonicalDefinition": "A tendency within anarchism that advocates for a unified, strategic anarchist organization with collective responsibility and tactical unity, rejecting both vanguardism and loose affinity-group models in favor of a disciplined yet decentralized revolutionary mass movement.",
+    "boundaryStatement": "Platformism is an organizational tendency emphasizing tactical unity and collective responsibility inside anarchism; it rejects a vanguard party but is more structured than loose affinity-group anarchism and is not the whole of anarcho-communism.",
+    "family": "anarchist",
+    "subfamily": "social-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Platformism is an organizational tendency emphasizing tactical unity and collective responsibility inside anarchism; it rejects a vanguard party but is more structured than loose affinity-group anarchism and is not the whole of anarcho-communism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:bb628b6ea2fdf1ed"
+    ]
+  },
+  {
+    "id": "political-islam",
+    "label": "Political Islam",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A broad family of projects that relates governance and public life to Islamic principles, sometimes including Sharia-based legislation, and ranging from democratic participation in pluralistic systems to more comprehensive Islamist state-building.",
+    "boundaryStatement": "A broad and internally diverse family of political projects, not a synonym for Islam, Muslim civic participation, or one fixed model of Islamic law and government.",
+    "family": "religious-political",
+    "subfamily": "political-islam",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A broad and internally diverse family of political projects, not a synonym for Islam, Muslim civic participation, or one fixed model of Islamic law and government."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:d08fadd20d9c7f4d"
+    ]
+  },
+  {
+    "id": "populism",
+    "label": "Populism / People-versus-Elite Orientation",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A thin cross-cutting orientation framing politics as a moral struggle between a virtuous people and a corrupt elite and treating popular sovereignty or a general will as especially authoritative.",
+    "boundaryStatement": "Do not infer anti-pluralism, fascism, nationalism, or a specific economic policy from anti-elite language alone.",
+    "family": "populist",
+    "subfamily": "thin-populism",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Do not infer anti-pluralism, fascism, nationalism, or a specific economic policy from anti-elite language alone.",
+      "usageNote": "Populism supplies a political frame rather than a complete economic or social program; left, right, agrarian, centrist, and authoritarian hosts must be distinguished separately."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dc6dd83c651d43ae",
+      "citation:afe6f0375e77dd33",
+      "citation:ae5d57bb780f21b7"
+    ]
+  },
+  {
+    "id": "progressivism",
+    "label": "Progressivism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Seeks deliberate social improvement through institutional reform, empirical inquiry, and public policy, with variants ranging from expert-led administration to participatory and movement-based reform.",
+    "boundaryStatement": "Progressivism is not synonymous with all left politics, technocracy, social liberalism, or contemporary policy positions that use the word. Its reform goals, constituencies, and attitudes toward expertise, participation, and state power vary by historical context.",
+    "family": "liberal",
+    "subfamily": "technocratic-liberal",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Progressivism is not synonymous with all left politics, technocracy, social liberalism, or contemporary policy positions that use the word. Its reform goals, constituencies, and attitudes toward expertise, participation, and state power vary by historical context.",
+      "usageNote": "A broad and historically changing family: this label should not be read as synonymous with technocracy or one specific contemporary policy platform."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af",
+      "citation:94feb21fae2b6729"
+    ]
+  },
+  {
+    "id": "queer-anarchism",
+    "label": "Queer Anarchism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A diverse theoretical and activist current connecting anarchist opposition to domination with queer resistance to institutions and norms that enforce sexual or gender conformity.",
+    "family": "anarchist",
+    "subfamily": "social-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "Queer anarchists do not share one required position on identity, family, gender abolition, or organization; the label identifies a shared anti-authoritarian orientation rather than a single program."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:a4b907a1e0417153"
+    ]
+  },
+  {
+    "id": "queer-politics",
+    "label": "Queer Liberation / Queer Politics",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A broad family seeking sexual and gender self-determination while critiquing heteronormativity, compulsory categories, policing, medicalization, and fixed identities; strategies range from rights reform to radical transformation.",
+    "boundaryStatement": "The specialist is intentionally plural and should not be inferred from support for one isolated equality or anti-discrimination policy.",
+    "family": "feminist",
+    "subfamily": "queer-politics",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The specialist is intentionally plural and should not be inferred from support for one isolated equality or anti-discrimination policy.",
+      "usageNote": "Broad queer politics is distinct from Queer Anarchism, Anarcha-Feminism, and any single theory of gender or sexuality."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:363e9f15af07ed6e"
+    ]
+  },
+  {
+    "id": "radical-centrism",
+    "label": "Radical Centrism",
+    "nodeScope": "context",
+    "canonicalDefinition": "A political orientation that rejects fixed left-right coalitions and favors pragmatic, evidence-informed synthesis across the spectrum, usually pursuing gradual reform through institutional channels.",
+    "aliases": [
+      "Radical Center"
+    ],
+    "family": "liberal",
+    "subfamily": "centrist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "A broad and contested political style rather than a single doctrine; “radical” refers to cross-cutting problem-solving, not necessarily to radical institutional change."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dddad58aea514030"
+    ]
+  },
+  {
+    "id": "radical-democracy",
+    "label": "Radical Democracy",
+    "nodeScope": "primary",
+    "canonicalDefinition": "Treats concentrated institutional and economic power as a standing threat to self-rule, favoring expansive participation, anti-elite institutional redesign, and democratized authority beyond periodic elections.",
+    "boundaryStatement": "Radical-democratic traditions vary among participatory, deliberative, agonistic, and constitutional approaches. The label does not mean direct democracy only, hostility to all institutions, or one predetermined economic program.",
+    "family": "democratic",
+    "subfamily": "participatory-democratic",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Radical-democratic traditions vary among participatory, deliberative, agonistic, and constitutional approaches. The label does not mean direct democracy only, hostility to all institutions, or one predetermined economic program.",
+      "usageNote": "Radical democracy extends participation and contestability beyond periodic elections; it is not a rejection of democracy or one fixed policy bundle."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dc6dd83c651d43ae",
+      "citation:e718d25b9d38de9a",
+      "citation:5fcfd12a29651d07"
+    ]
+  },
+  {
+    "id": "radical-feminism",
+    "label": "Radical Feminism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A feminist tradition treating patriarchy and male power as fundamental structures reproduced through sexuality, family, culture, violence, and control of reproduction.",
+    "boundaryStatement": "Historical and contemporary radical feminisms disagree over sexuality, gender identity, race, class, and political strategy; the label should not be inferred from generic gender equality alone.",
+    "family": "feminist",
+    "subfamily": "radical-feminist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Historical and contemporary radical feminisms disagree over sexuality, gender identity, race, class, and political strategy; the label should not be inferred from generic gender equality alone.",
+      "usageNote": "Radical feminism is distinct from liberal, socialist/Marxist, anarchist, Black, and queer feminist traditions even where they share critiques of gender domination."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f3abe9549d155858"
+    ]
+  },
+  {
+    "id": "regionalism",
+    "label": "Regionalism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A political ideology emphasizing the interests, culture, and autonomy of a particular region within a larger state or federation, advocating for greater decentralization, regional self-government, and the protection of regional cultural and economic distinctiveness.",
+    "boundaryStatement": "It is not automatically federalism or secession: a regionalist position can seek devolution within a unitary state, while some movements pursue independence or remain mainly developmental or cultural.",
+    "family": "regionalist",
+    "subfamily": "subnational",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "It is not automatically federalism or secession: a regionalist position can seek devolution within a unitary state, while some movements pursue independence or remain mainly developmental or cultural.",
+      "usageNote": "Regionalism can mean a movement for territorial autonomy, regional organization of state policy, or decentralization and regional self-government; these forms should not be collapsed into one program."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3",
+      "citation:02c39f2e94b1f5da",
+      "citation:981b366400f0cd3c"
+    ]
+  },
+  {
+    "id": "religious-nationalism",
+    "label": "Religious Nationalism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Connects national identity or sovereignty with a particular religious tradition; depending on the variant, religion may function as cultural identity, a membership boundary, a source of public authority, or a state-building project.",
+    "boundaryStatement": "A broad family rather than one doctrine: religious nationalism can range from cultural identity politics to projects that give religious law or institutions formal public authority.",
+    "family": "nationalist",
+    "subfamily": "religious-nationalist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A broad family rather than one doctrine: religious nationalism can range from cultural identity politics to projects that give religious law or institutions formal public authority.",
+      "usageNote": "Religious nationalism links the political nation or state’s legitimacy and membership story to a religious tradition. Variants differ over whether that link is symbolic, majoritarian, constitutional, or coercive, and over the status of dissenters and minorities."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:773c66fdd80832c7"
+    ]
+  },
+  {
+    "id": "republicanism",
+    "label": "Republicanism",
+    "nodeScope": "primary",
+    "canonicalDefinition": "Treats freedom as non-domination—security against arbitrary power—and emphasizes civic self-government, rule of law, accountable institutions, and the social conditions needed for citizens to stand as equals.",
+    "boundaryStatement": "Republicanism is a family of arguments about civic freedom, public accountability, and protection from arbitrary power; it does not by itself choose a single party system, economic model, level of centralization, or relation to liberalism.",
+    "family": "republican",
+    "subfamily": "civic-republican",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Republicanism is a family of arguments about civic freedom, public accountability, and protection from arbitrary power; it does not by itself choose a single party system, economic model, level of centralization, or relation to liberalism.",
+      "usageNote": "This means the political-theory tradition of civic self-government and non-domination, not a contemporary party label."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:e718d25b9d38de9a",
+      "citation:dc6dd83c651d43ae"
+    ]
+  },
+  {
+    "id": "revolutionary-collectivist",
+    "label": "Revolutionary State Socialist",
+    "nodeScope": "retired",
+    "canonicalDefinition": "Seeks a revolutionary break with capitalist property relations and uses centralized public ownership or state power as the main vehicle for transformation, rather than gradual reform within existing institutions.",
+    "family": "socialist",
+    "subfamily": "state-socialist",
+    "legacyDisposition": "keep-retired",
+    "conceptualStatus": "deprecated",
+    "measurementStatus": "retired-alias",
+    "publicRoleStatus": "retired",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "right-wing-populism",
+    "label": "Right-Wing Populism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Frames politics as a struggle between a corrupt elite and an authentic people, often combining majoritarian or extra-institutional mobilization with national sovereignty, traditional cultural order, and tighter boundaries around political membership.",
+    "boundaryStatement": "Populism is a thin ideology or political style that divides a virtuous people from elites; it is not a complete doctrine by itself.",
+    "family": "populist",
+    "subfamily": "right-populist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Populism is a thin ideology or political style that divides a virtuous people from elites; it is not a complete doctrine by itself.",
+      "usageNote": "Right-wing populism is a host-dependent combination of the people-versus-elite frame with some mix of national sovereignty, traditionalism, nativism, or market and welfare positions. The populist core should not be treated as a complete right-wing program or as evidence of one inevitable institutional outcome."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dc6dd83c651d43ae",
+      "citation:ae5d57bb780f21b7",
+      "citation:afe6f0375e77dd33"
+    ]
+  },
+  {
+    "id": "separatist-nationalism",
+    "label": "Separatist Nationalism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A nationalist movement seeking self-determination and political independence for a specific region, ethnic group, or cultural community from a larger existing state, often through secession or devolution of sovereignty.",
+    "boundaryStatement": "Separatist claims can be civic or ethnic and can pursue negotiated autonomy, federalism, or independence. Their legitimacy and likely effects depend on consent, minority safeguards, territorial feasibility, constitutional rules, and the strategy used; the label alone settles none of these.",
+    "family": "nationalist",
+    "subfamily": "subnational",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Separatist claims can be civic or ethnic and can pursue negotiated autonomy, federalism, or independence. Their legitimacy and likely effects depend on consent, minority safeguards, territorial feasibility, constitutional rules, and the strategy used; the label alone settles none of these.",
+      "usageNote": "Separatist nationalism can seek autonomy, federal reorganization, or independence. The label does not by itself establish a right to unilateral secession, ethnic exclusion, or violent strategy."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:72a144a375dd03d3",
+      "citation:bd6acf17db8b57cf"
+    ]
+  },
+  {
+    "id": "singularitarianism",
+    "label": "Singularitarianism",
+    "nodeScope": "context",
+    "canonicalDefinition": "A futurist movement focused on the possibility of a technological singularity and on accelerating or safely managing advanced artificial intelligence, human enhancement, and radical life extension.",
+    "family": "technocratic",
+    "subfamily": "techno-progressive",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "A future-oriented movement and set of arguments rather than a settled political program; views differ sharply on governance, safety, access, and whether acceleration is desirable."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:77f866bf6fc55f76"
+    ]
+  },
+  {
+    "id": "social-anarchism",
+    "label": "Social / Communal Anarchism",
+    "nodeScope": "specialist",
+    "parentId": "libertarian-socialism",
+    "canonicalDefinition": "A broad anti-authoritarian family centered on voluntary association, rejection of imposed hierarchy, and decentralized communal or federated forms of social organization.",
+    "boundaryStatement": "Anarchism is not one economic doctrine: anti-state commitments can coexist with different views of property, markets, technology, and organization.",
+    "family": "anarchist",
+    "subfamily": "social-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Anarchism is not one economic doctrine: anti-state commitments can coexist with different views of property, markets, technology, and organization.",
+      "usageNote": "This anchor covers social and communal anarchist commitments without deciding between communism, syndicalism, primitivism, feminism, or other specialist currents. Mutualism and market anarchism are adjacent anarchist currents, not required subtypes of this anchor."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1b5ab88e18ea0d1b"
+    ]
+  },
+  {
+    "id": "social-conservatism",
+    "label": "Social Conservatism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A conservative orientation centered on preserving traditional moral values, social norms, and established institutions, viewing them as essential to social cohesion and human flourishing against progressive cultural change.",
+    "boundaryStatement": "Social conservatism is not necessarily theocratic, nationalist, or anti-democratic. Secular and religious variants differ over whether norms should be sustained through persuasion, civil association, law, or state enforcement.",
+    "family": "conservative",
+    "subfamily": "social-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Social conservatism is not necessarily theocratic, nationalist, or anti-democratic. Secular and religious variants differ over whether norms should be sustained through persuasion, civil association, law, or state enforcement.",
+      "usageNote": "This is a social and moral orientation, not a complete economic or foreign-policy program; socially conservative positions can coexist with different views of markets, welfare, and international affairs."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:462f83960116c2c0",
+      "citation:89e0c7bafdb40f5f"
+    ]
+  },
+  {
+    "id": "social-democrat",
+    "label": "Social Democrat",
+    "nodeScope": "primary",
+    "canonicalDefinition": "Accepts a mixed economy and democratic institutions, then uses them to temper market outcomes through progressive taxation, public services, unions, and steady incremental reform.",
+    "boundaryStatement": "This is not synonymous with democratic socialism, which may seek social ownership, or with one fixed Nordic institutional model.",
+    "family": "social-democratic",
+    "subfamily": "reformist-welfare",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "This is not synonymous with democratic socialism, which may seek social ownership, or with one fixed Nordic institutional model.",
+      "usageNote": "In contemporary usage, social democracy usually refers to democratic reform and welfare institutions within a predominantly capitalist mixed economy; historical parties and theorists have used the term more broadly."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1300f36270734fe",
+      "citation:a0b0e7732c03769f",
+      "citation:4a2237dbb613d774",
+      "citation:0240bdf39260a47d"
+    ]
+  },
+  {
+    "id": "social-investment-state",
+    "label": "Social Investment State",
+    "nodeScope": "context",
+    "canonicalDefinition": "A social democratic approach that reorients the welfare state from passive income maintenance toward active social investment in human capital, education, childcare, lifelong learning, and labor market activation, seeking both economic efficiency and social inclusion.",
+    "boundaryStatement": "The social-investment state emphasizes capabilities and life-course investment but does not replace income security, care, or disability protection by definition; activation policies can be designed in supportive or punitive ways.",
+    "family": "social-democratic",
+    "subfamily": "welfare-liberal",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "The social-investment state emphasizes capabilities and life-course investment but does not replace income security, care, or disability protection by definition; activation policies can be designed in supportive or punitive ways."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c911f966a5134890"
+    ]
+  },
+  {
+    "id": "social-liberalism",
+    "label": "Social Liberalism",
+    "nodeScope": "primary",
+    "canonicalDefinition": "Accepts markets and private property as foundations but bounds them by a positive-liberty commitment to substantive opportunity, using targeted state provision and redistribution so that fair life chances are compatible with individual freedom.",
+    "boundaryStatement": "It is not social democracy by definition: the label leaves open the scale of redistribution, welfare provision, and market regulation, and it is not a synonym for progressive cultural politics.",
+    "family": "liberal",
+    "subfamily": "welfare-liberal",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "compatibility-scored-unvalidated",
+    "publicRoleStatus": "primary",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "It is not social democracy by definition: the label leaves open the scale of redistribution, welfare provision, and market regulation, and it is not a synonym for progressive cultural politics.",
+      "usageNote": "Social liberalism is a family of liberal arguments, historically associated with “new liberalism,” that treats effective opportunity or positive liberty as requiring some social provision and public action while retaining individual rights, markets, and pluralism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:267f05e8417dd262",
+      "citation:c8d9dc64426ba5af",
+      "citation:087a8af0cb948f82"
+    ]
+  },
+  {
+    "id": "socialist-feminism",
+    "label": "Socialist and Marxist Feminist Traditions",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Analyzes gender domination through its interaction with capitalism, class, paid labor, unpaid care, social reproduction, and patriarchy.",
+    "family": "socialist",
+    "subfamily": "socialist-feminist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "This combined specialist result covers overlapping traditions that the current questions do not separate; it should not be read as saying they are identical."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:efbc47adc614ad4d"
+    ]
+  },
+  {
+    "id": "stirnerism",
+    "label": "Egoist Anarchism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Centers Max Stirner’s philosophy of egoism, which criticizes fixed ideas and externally imposed authority as constraints on the unique individual and leaves room for temporary voluntary associations.",
+    "aliases": [
+      "Stirnerism"
+    ],
+    "family": "anarchist",
+    "subfamily": "individualist-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "A philosophical current rather than a single organized program; “egoist anarchism” describes its later anarchist reception, not a claim that every Stirnerite shares one policy platform."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:57a14b87949d679e"
+    ]
+  },
+  {
+    "id": "strasserism",
+    "label": "Strasserite Fascism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A radical fascist current within Nazism that combines palingenetic ultranationalism, authoritarian mass mobilization, and anti-capitalist rhetoric or demands; it should not be classified as socialism despite its historical use of socialist language.",
+    "boundaryStatement": "Use narrowly as a fascist far-right current; anti-capitalist rhetoric here does not make the label socialist in the academic sense.",
+    "family": "authoritarian",
+    "subfamily": "strasserist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Use narrowly as a fascist far-right current; anti-capitalist rhetoric here does not make the label socialist in the academic sense."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9071166f063d1fa4"
+    ]
+  },
+  {
+    "id": "syndicalist",
+    "label": "Syndicalist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Looks to federated labor unions, not parties or the state, as the vehicle for abolishing capitalism, with production coordinated directly through workers organizations won by direct action.",
+    "family": "socialist",
+    "subfamily": "libertarian-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "Revolutionary syndicalism's lineage (Sorel, the French CGT, Spanish CNT-FAI) is rooted at least as much in anarchism as in Marxism; it is listed here for its overlap with libertarian socialism and council communism, not as a Marxist-derived current."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:fe775ed350541829"
+    ]
+  },
+  {
+    "id": "techno-anarchism",
+    "label": "Techno-Anarchist / Crypto-Anarchist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Uses decentralizing technologies, cryptography, networks, or peer-to-peer infrastructure to reduce state and corporate control and enable voluntary anti-authoritarian coordination.",
+    "boundaryStatement": "A loose emerging current overlapping cypherpunk, crypto-anarchism, and networked anarchism; not a canonical anarchist school equivalent to mutualism or anarcho-communism.",
+    "family": "anarchist",
+    "subfamily": "techno-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "A loose emerging current overlapping cypherpunk, crypto-anarchism, and networked anarchism; not a canonical anarchist school equivalent to mutualism or anarcho-communism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:110d4ab1090b1d1f",
+      "citation:9534cf57bac8f9f1"
+    ]
+  },
+  {
+    "id": "technocratic-centralist",
+    "label": "Technocratic Centralism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A narrow compound position that assigns governing authority to technical or scientific experts and favors centralized administrative coordination in areas treated as technically complex; it is not a synonym for expert advice or evidence-informed policy.",
+    "boundaryStatement": "Do not infer this label from evidence-based policy, professional administration, state capacity, or technology optimism. Its proponents and critics differ over elections, accountability, rights review, and pluralism; those questions require separate evidence.",
+    "aliases": [
+      "Noocracy",
+      "Scientocracy"
+    ],
+    "family": "technocratic",
+    "subfamily": "technocratic",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Do not infer this label from evidence-based policy, professional administration, state capacity, or technology optimism. Its proponents and critics differ over elections, accountability, rights review, and pluralism; those questions require separate evidence.",
+      "usageNote": "Technocratic Centralism requires both expert-centered authority and concentrated administrative coordination. A respondent can value expertise while favoring democratic, federal, local, or pluralist institutions, so a general technocratic orientation is not enough."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9e1c40cea0982cc0",
+      "citation:c8e42489b2242b4d"
+    ]
+  },
+  {
+    "id": "technocratic-orientation",
+    "label": "Technocratic Orientation",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "A cross-cutting preference for technical expertise, evidence-guided administration, and competent implementation in public decision-making.",
+    "boundaryStatement": "Technocratic confidence and technocratic centralism are separate dimensions: support for expertise does not by itself establish support for concentrated authority.",
+    "family": "technocratic",
+    "subfamily": "technocratic-orientation",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Technocratic confidence and technocratic centralism are separate dimensions: support for expertise does not by itself establish support for concentrated authority.",
+      "usageNote": "This orientation can coexist with democratic, decentralized, liberal, socialist, or conservative commitments; it does not imply insulated rule by experts."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dc6dd83c651d43ae",
+      "citation:9e1c40cea0982cc0"
+    ]
+  },
+  {
+    "id": "theocrat",
+    "label": "Theocratic Politics",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Holds that legitimate public authority and civil law should derive from and enforce religious doctrine, with religious institutions or revealed law taking precedence over secular and pluralist norms.",
+    "boundaryStatement": "This identifies theocratic political ordering, not personal religious belief or religiously inspired democratic politics.",
+    "family": "conservative",
+    "subfamily": "religious-conservative",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "This identifies theocratic political ordering, not personal religious belief or religiously inspired democratic politics.",
+      "usageNote": "The defining claim is about the source of public authority: revealed or religious law or institutions are treated as controlling for civil legitimacy. Religious voters, parties, and laws can remain within a pluralist constitutional order when religious authority is influential rather than sovereign. The current opt-in comparison tests only final religious legal authority, not every historical or constitutional theocratic variation."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:bf65879819fb8f4d",
+      "citation:1281263f480658cd"
+    ]
+  },
+  {
+    "id": "third-way",
+    "label": "Third Way Social Democracy",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A late twentieth-century social-democratic variant that combines egalitarian aims and social investment with market coordination, active labour-market policy, fiscal discipline, and a stronger emphasis on individual responsibility than earlier welfare-state models.",
+    "boundaryStatement": "Scholars disagree over whether the Third Way was a distinct ideological synthesis or a market-oriented transformation of social democracy; the label describes that contested reform project rather than endorsing one government’s whole record.",
+    "aliases": [
+      "New Labour-style Social Democracy",
+      "Neue Mitte"
+    ],
+    "family": "social-democratic",
+    "subfamily": "third-way",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Scholars disagree over whether the Third Way was a distinct ideological synthesis or a market-oriented transformation of social democracy; the label describes that contested reform project rather than endorsing one government’s whole record.",
+      "usageNote": "Third Way is a historically bounded variant of social-democratic modernization associated especially with the Blair, Schröder, and related center-left reform debates; it is not a synonym for all pragmatism or all neoliberalism."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:fa0bbf92e00fbb53"
+    ]
+  },
+  {
+    "id": "traditional-monarchist",
+    "label": "Traditional Monarchist",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A conservative royalist movement that treats hereditary monarchy as historically or traditionally legitimate and often favors strong royal prerogative; positions differ on popular sovereignty, democratic representation, and constitutional limits.",
+    "family": "authoritarian",
+    "subfamily": "monarchist-reactionary",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "Describes the broader modern royalist movement and identity, which values monarchy chiefly for its historical continuity and legitimacy; compare Absolute Monarchist, which centers the narrower early-modern theoretical claim about indivisible sovereign power."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:2aff035965effa6a"
+    ]
+  },
+  {
+    "id": "transhumanism",
+    "label": "Transhumanism",
+    "nodeScope": "modifier",
+    "canonicalDefinition": "Supports using science and technology to improve human capacities, health, longevity, and well-being, while debating democratic oversight, safety, access, and whether enhancement should be market-led, state-supported, or decentralized.",
+    "family": "technocratic",
+    "subfamily": "techno-progressive",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "modifier",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "A broad family of arguments about human enhancement and technological change, not a single view on markets, state authority, risk, or access."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dc6dd83c651d43ae",
+      "citation:89fc98e5f47123b7"
+    ]
+  },
+  {
+    "id": "trotskyism",
+    "label": "Trotskyism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Combines revolutionary socialism with permanent international revolution, anti-Stalinist party politics, and critique of bureaucratic state socialism, rejecting both reformist gradualism and nationalist socialism.",
+    "boundaryStatement": "Trotskyism is a family of revolutionary Marxist currents centered on international revolution and critiques of Stalinist bureaucracy; organizations differ over party strategy, united fronts, and the meaning of permanent revolution.",
+    "family": "socialist",
+    "subfamily": "trotskyist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Trotskyism is a family of revolutionary Marxist currents centered on international revolution and critiques of Stalinist bureaucracy; organizations differ over party strategy, united fronts, and the meaning of permanent revolution."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:56017301d376fc2e"
+    ]
+  },
+  {
+    "id": "universal-basic-income",
+    "label": "Universal Basic Income Advocacy",
+    "nodeScope": "context",
+    "canonicalDefinition": "Advocacy for a regular, unconditional cash payment to every member of a defined population, intended to provide economic security and support individual autonomy; proposals differ over citizenship or residency, payment level, taxation, funding, and the role of existing services.",
+    "boundaryStatement": "Universal basic income is a policy proposal rather than a complete ideology; universality, residency, payment level, taxation, funding, and its relationship to public services or existing benefits are separate design choices.",
+    "family": "social-democratic",
+    "subfamily": "welfare-liberal",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Universal basic income is a policy proposal rather than a complete ideology; universality, residency, payment level, taxation, funding, and its relationship to public services or existing benefits are separate design choices."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:54bd558a003aac6c"
+    ]
+  },
+  {
+    "id": "utopian-socialism",
+    "label": "Utopian Socialism",
+    "nodeScope": "context",
+    "canonicalDefinition": "A retrospective label for diverse early socialist projects. Owenite and Fourierist currents emphasized cooperative communities, while Saint-Simonian currents placed more weight on expert-led industrial organization and rational administration.",
+    "boundaryStatement": "Utopian socialism is a retrospective umbrella for diverse nineteenth-century projects rather than one settled doctrine; cooperative, communal, and expert-administrative currents should not be treated as interchangeable.",
+    "family": "socialist",
+    "subfamily": "early-socialist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Utopian socialism is a retrospective umbrella for diverse nineteenth-century projects rather than one settled doctrine; cooperative, communal, and expert-administrative currents should not be treated as interchangeable."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ee34458a1205070b"
+    ]
+  },
+  {
+    "id": "voluntaryism",
+    "label": "Voluntaryism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "A family of views holding that political institutions should depend on voluntary support and association. Auberon Herbert defended a voluntarily funded minimal “Voluntary State”; later Voluntaryists developed anti-state and anti-electoral variants.",
+    "family": "anarchist",
+    "subfamily": "voluntaryist-anarchist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "usageNote": "Do not collapse Herbert’s voluntary-state theory into later anti-state Voluntaryism. The label covers a historical lineage whose members disagree about whether any minimal state remains legitimate."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:d5c3521c63ba5720"
+    ]
+  },
+  {
+    "id": "welfare-chauvinism",
+    "label": "Welfare Chauvinism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Combines a generous redistributive welfare state with a strictly bounded national membership, holding that social provision is a right of the in-group financed and reserved for citizens, while restricting immigration and access on grounds of national belonging and fiscal sustainability.",
+    "boundaryStatement": "It is narrower than opposition to immigration or support for a smaller welfare state: someone can favor generous provision for the in-group while restricting immigrant eligibility, and welfare ethnocentrism can target ethnic minorities who are citizens.",
+    "family": "nationalist",
+    "subfamily": "welfare-chauvinist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "It is narrower than opposition to immigration or support for a smaller welfare state: someone can favor generous provision for the in-group while restricting immigrant eligibility, and welfare ethnocentrism can target ethnic minorities who are citizens.",
+      "usageNote": "In political research, welfare chauvinism usually means restricting immigrants’ access to welfare benefits or services for a national or perceived native in-group; restrictions can be conditional or near-total."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:439260bf94ad6598"
+    ]
+  },
+  {
+    "id": "world-federalism",
+    "label": "World Federalism",
+    "nodeScope": "context",
+    "canonicalDefinition": "Advocates a democratic federal layer of global authority and enforceable international law to address peace, justice, and human-rights problems that cross national boundaries while retaining self-government at other levels.",
+    "boundaryStatement": "It is stronger than international cooperation alone but is not identical to cosmopolitanism, generic global governance, or a single centralized world state; the label does not settle feasibility or institutional design.",
+    "family": "liberal",
+    "subfamily": "world-federalist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "catalog-only",
+    "publicRoleStatus": "context",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "It is stronger than international cooperation alone but is not identical to cosmopolitanism, generic global governance, or a single centralized world state; the label does not settle feasibility or institutional design.",
+      "usageNote": "World federalism is a family of proposals for constitutional or federal global authority. Proposals differ over how powers would be divided among global, national, regional, and local institutions."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:02c39f588630cd2a"
+    ]
+  },
+  {
+    "id": "zionism",
+    "label": "Political Zionism",
+    "nodeScope": "specialist",
+    "canonicalDefinition": "Identifies Jewish national self-determination and statehood in the Land of Israel as a political aim, without treating liberal, socialist, religious, revisionist, or territorial positions within Zionism as the same doctrine.",
+    "boundaryStatement": "Political Zionism is internally diverse and historically contested; this label does not imply one view on borders, religion, minority rights, or any current government.",
+    "family": "nationalist",
+    "subfamily": "zionist",
+    "conceptualStatus": "canonical",
+    "measurementStatus": "research-candidate",
+    "publicRoleStatus": "specialist",
+    "metadata": {
+      "version": "ideology-registry-2026-08-clean-v1",
+      "cautionNote": "Political Zionism is internally diverse and historically contested; this label does not imply one view on borders, religion, minority rights, or any current government."
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:726584f99844985f",
+      "citation:e7eabd8358fb1923",
+      "citation:72db72dba5db2c2e"
+    ]
+  }
+]

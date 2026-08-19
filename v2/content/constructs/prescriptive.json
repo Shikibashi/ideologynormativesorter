@@ -1,0 +1,227 @@
+[
+  {
+    "id": "centralization-preference",
+    "name": "Centralization Preference",
+    "role": "prescriptive",
+    "scope": "root",
+    "description": "Whether power and policymaking should be concentrated or dispersed across smaller units.",
+    "poles": {
+      "negative": "Authority and decision-making should be decentralized",
+      "positive": "Authority and decision-making should be centralized"
+    },
+    "sourceKey": "centralization-preference",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Centralization Preference",
+      "longLabel": "Centralization Preference"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "coercion-strategy",
+    "name": "Coercion Strategy",
+    "role": "prescriptive",
+    "scope": "root",
+    "description": "Whether the use of coercive or forceful tactics, beyond ordinary persuasion and lawful process, can be justified to advance favored political ends.",
+    "poles": {
+      "negative": "Change should be pursued only through peaceful, non-coercive strategies",
+      "positive": "Change may be pursued through coercive strategies in some circumstances"
+    },
+    "sourceKey": "coercion-strategy",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Coercion Strategy",
+      "longLabel": "Coercion Strategy"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "compromise-vs-persistence",
+    "name": "Compromise vs Persistence",
+    "role": "prescriptive",
+    "scope": "root",
+    "description": "Whether achieving partial gains through negotiated compromise is preferable to holding out for a fuller, uncompromised outcome.",
+    "poles": {
+      "negative": "Ideological commitments should be held firm despite opposition",
+      "positive": "Practical compromise with opponents is usually worthwhile"
+    },
+    "sourceKey": "compromise-vs-persistence",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Compromise vs Persistence",
+      "longLabel": "Compromise vs Persistence"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "electoralism-vs-direct-action",
+    "name": "Electoralism vs Direct Action",
+    "role": "prescriptive",
+    "scope": "root",
+    "description": "Whether favored strategies for change rely on formal political and legal processes or on direct action that bypasses them.",
+    "poles": {
+      "negative": "Change should be pursued through direct action outside formal channels",
+      "positive": "Change should be pursued through electoral and institutional channels"
+    },
+    "sourceKey": "electoralism-vs-direct-action",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Electoralism vs Direct Action",
+      "longLabel": "Electoralism vs Direct Action"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "gradualism-vs-immediatism",
+    "name": "Gradualism vs Immediatism",
+    "role": "prescriptive",
+    "scope": "root",
+    "description": "Whether favored reforms should be sequenced slowly to manage transition costs, or enacted at once.",
+    "poles": {
+      "negative": "Change should be phased in gradually",
+      "positive": "Change should be implemented immediately"
+    },
+    "sourceKey": "gradualism-vs-immediatism",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Gradualism vs Immediatism",
+      "longLabel": "Gradualism vs Immediatism"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "redistribution-vs-predistribution",
+    "name": "Redistribution vs Predistribution",
+    "role": "prescriptive",
+    "scope": "root",
+    "description": "Whether the preferred remedy for unmet material need is transferring resources after the fact or changing the rules that shape market outcomes beforehand.",
+    "poles": {
+      "negative": "Underlying rules governing markets should be altered before distribution occurs",
+      "positive": "Material need is best addressed by redistributing after market outcomes occur"
+    },
+    "sourceKey": "redistribution-vs-predistribution",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Redistribution vs Predistribution",
+      "longLabel": "Redistribution vs Predistribution"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "reform-vs-revolution",
+    "name": "Reform vs Revolution",
+    "role": "prescriptive",
+    "scope": "root",
+    "description": "Whether desired change should be pursued by reforming current institutions or by replacing them outright.",
+    "poles": {
+      "negative": "Change should work through existing institutions",
+      "positive": "Existing institutions should be ruptured and replaced"
+    },
+    "sourceKey": "reform-vs-revolution",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Reform vs Revolution",
+      "longLabel": "Reform vs Revolution"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "regulation-vs-deregulation",
+    "name": "Regulation vs Deregulation",
+    "role": "prescriptive",
+    "scope": "root",
+    "description": "Whether the preferred policy direction is to reduce regulatory constraint or to add and strengthen oversight.",
+    "poles": {
+      "negative": "Regulatory constraints should be reduced or simplified",
+      "positive": "Regulatory constraints and oversight should be strengthened"
+    },
+    "sourceKey": "regulation-vs-deregulation",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Regulation vs Deregulation",
+      "longLabel": "Regulation vs Deregulation"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "state-action-vs-exit",
+    "name": "State Action vs Exit",
+    "role": "prescriptive",
+    "scope": "root",
+    "description": "Whether the preferred remedy to a given problem runs through state provision or through opting out into voluntary alternatives.",
+    "poles": {
+      "negative": "Problems are best solved by exit into private or counter-institutional alternatives",
+      "positive": "Problems are best solved through state action and public provision"
+    },
+    "sourceKey": "state-action-vs-exit",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "State Action vs Exit",
+      "longLabel": "State Action vs Exit"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  }
+]

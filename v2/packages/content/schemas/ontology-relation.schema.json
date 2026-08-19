@@ -1,0 +1,15 @@
+{
+  "$id": "https://example.com/v2/ontology-relation.schema.json",
+  "type": "object",
+  "required": ["id", "sourceNodeId", "targetNodeId", "relationType"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "sourceNodeId": { "type": "string", "minLength": 1 },
+    "targetNodeId": { "type": "string", "minLength": 1 },
+    "relationType": { "type": "string", "minLength": 1 },
+    "evidence": { "type": "number" },
+    "note": { "type": "string" },
+    "provenanceRefs": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

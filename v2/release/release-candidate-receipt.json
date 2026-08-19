@@ -1,0 +1,75 @@
+{
+  "phase": "15",
+  "status": "GO",
+  "releaseCandidateOnly": true,
+  "productionWritesEnabled": false,
+  "trafficCutoverAuthorized": false,
+  "empiricalEvidenceStatus": "NOT_EVALUATED",
+  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "analysisFingerprint": "e586f159b41d82d56d959438e2e515af907dc4ef464219d1ed728f6a6f84b881",
+  "canonicalCounts": {
+    "domains": 20,
+    "constructsRoot": 26,
+    "constructsSpecialist": 54,
+    "constructsTotal": 80,
+    "constructsByFamily": {
+      "descriptive": 7,
+      "normative": 10,
+      "prescriptive": 9,
+      "specialist": 54
+    },
+    "coreItems": 338,
+    "specialistItems": 68,
+    "responseTypes": {
+      "likert7": 400,
+      "statement-choice": 6
+    },
+    "reversedItems": 0,
+    "statementChoiceItems": 6,
+    "primaryProfiles": 16,
+    "modifierProfiles": 24,
+    "specialistProfiles": 78,
+    "specialistCandidates": 57,
+    "specialistModules": 9,
+    "ontologyNodes": 145,
+    "ontologyRelations": 42,
+    "diagnosticRelations": 4,
+    "explicitContributionMappings": 1013,
+    "contentVersion": "v2-content-phase8.1",
+    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72"
+  },
+  "syntheticAnalysis": {
+    "datasetKind": "synthetic-regression-fixture",
+    "submissions": 40
+  },
+  "legacySuite": {
+    "status": "KNOWN_PRE_EXISTING_FAILURES",
+    "failureCount": 5,
+    "details": "The untouched v1 suite retains the canonical manifest fingerprint failure, three legacy Worker compatibility failures, and one primary measurement disclosure failure recorded in the Phase 13 receipt."
+  },
+  "verification": {
+    "phase13Go": true,
+    "phase14Go": true,
+    "freshInstallBuild": true,
+    "canonicalAudit": true,
+    "deterministicArtifacts": true,
+    "scoringAuthorityBoundary": true,
+    "cleanRoomBoundary": true,
+    "browserMatrix": true,
+    "accessibility": true,
+    "visualRegression": true,
+    "responsiveChecks": true,
+    "performance": true,
+    "privacySecurity": true,
+    "documentation": true,
+    "releaseTests": true
+  },
+  "missingDocs": [],
+  "unrelatedWorktreeChanges": [],
+  "blockers": [],
+  "rollback": {
+    "requiredBeforeCutover": true,
+    "productionCutoverPerformed": false,
+    "v1Retained": true
+  }
+}

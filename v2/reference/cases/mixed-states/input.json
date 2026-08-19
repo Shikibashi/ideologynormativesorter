@@ -1,0 +1,30 @@
+{
+  "responseSchemaVersion": "response-v2.phase1.1",
+  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "coreResponses": [
+    {
+      "state": "answered",
+      "itemId": "q0001",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "missing",
+      "itemId": "q0003"
+    },
+    {
+      "state": "skipped",
+      "itemId": "q0004"
+    },
+    {
+      "state": "abstained",
+      "itemId": "q0005"
+    },
+    {
+      "state": "refused",
+      "itemId": "q0006"
+    }
+  ],
+  "specialistResponses": [],
+  "requestedSpecialistModuleIds": []
+}

@@ -1,0 +1,3899 @@
+[
+  {
+    "id": "profile:specialist:absolute-monarchist",
+    "name": "Absolute Monarchist",
+    "role": "specialist",
+    "specialistId": "absolute-monarchist",
+    "itemIds": [
+      "fm-mm-1",
+      "fm-mm-2",
+      "fm-mm-3",
+      "fm-mm-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "monarchist-municipal-module",
+    "variants": [
+      {
+        "id": "candidate:monarchist-municipal-module:absolute-monarchist:base",
+        "sourceKey": "absolute-monarchist",
+        "name": "Absolute Monarchism",
+        "description": "Hereditary authority with concentrated sovereign power.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+            "targetValue": -0.3,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "targetValue": -0.4,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "targetValue": -0.4,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:monarchist-municipal-module:absolute-monarchist:base:specialist:monarchist-municipal-module:hereditary-authority",
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "operator": "minimum",
+            "minimum": 0.7
+          },
+          {
+            "id": "gate:monarchist-municipal-module:absolute-monarchist:base:specialist:monarchist-municipal-module:constitutional-monarchy",
+            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+            "operator": "maximum",
+            "maximum": 0.1
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "absolute-monarchist",
+    "rationale": "Holds that supreme and largely unchecked authority should rest with a hereditary sovereign, valuing the stability, continuity, and unified will of personal rule over elected and deliberative government.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:6a5fc5f74b53b6d4"
+    ]
+  },
+  {
+    "id": "profile:specialist:agorist",
+    "name": "Agorist",
+    "role": "specialist",
+    "specialistId": "agorist",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "agorist",
+    "rationale": "A market-anarchist strategy that places primary emphasis on counter-economics rather than electoral politics, seeking to dissolve or marginalize the state through untaxed or unlicensed black and grey markets and parallel institutions.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c56a6d0e34a4508c"
+    ]
+  },
+  {
+    "id": "profile:specialist:agrarian-populism",
+    "name": "Agrarian Populism",
+    "role": "specialist",
+    "specialistId": "agrarian-populism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "agrarian-populism",
+    "rationale": "A populist movement rooted in rural and farming communities that mobilizes against perceived exploitation by urban elites, financial interests, and corporate monopolies, advocating for economic reforms benefiting small producers and landholders.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:67007bee6d5dd921",
+      "citation:ae5d57bb780f21b7"
+    ]
+  },
+  {
+    "id": "profile:specialist:anarcha-feminism",
+    "name": "Anarcha-Feminism",
+    "role": "specialist",
+    "specialistId": "anarcha-feminism",
+    "itemIds": [
+      "fm-fem-1",
+      "fm-fem-2",
+      "fm-fem-3",
+      "fm-fem-4",
+      "fm-fem-5",
+      "fm-fem-6",
+      "fm-fem-7",
+      "fm-fem-8"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "feminist-faction-module",
+    "variants": [
+      {
+        "id": "candidate:feminist-faction-module:anarcha-feminism:base",
+        "sourceKey": "anarcha-feminism",
+        "name": "Anarcha-Feminism",
+        "description": "Treats patriarchy as intertwined with state and other hierarchical domination and favors decentralized, anti-authoritarian forms of liberation and organization.",
+        "status": "existing-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+            "targetValue": -0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
+            "targetValue": 0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "anarcha-feminism",
+    "rationale": "Views patriarchy as a major structure of domination linked in different accounts to capitalism, statism, and other hierarchies; many anarcha-feminist currents favor decentralized, non-coercive social relations, but they differ over which institutions must be abolished or transformed.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:fb7a357af1eb961e"
+    ]
+  },
+  {
+    "id": "profile:specialist:anarcho-capitalist",
+    "name": "Anarcho-Capitalist",
+    "role": "specialist",
+    "specialistId": "anarcho-capitalist",
+    "itemIds": [
+      "fm-an-1",
+      "fm-an-2",
+      "fm-an-3",
+      "fm-an-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "anarchist-families-module",
+    "variants": [
+      {
+        "id": "candidate:anarchist-families-module:anarcho-capitalist:base",
+        "sourceKey": "anarcho-capitalist",
+        "name": "Anarcho-Capitalism",
+        "description": "Private property and market exchange without a state.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "targetValue": -0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "targetValue": 0.35,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:anarchist-families-module:anarcho-capitalist:base:specialist:anarchist-families-module:anti-authority",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "operator": "minimum",
+            "minimum": 0.6
+          },
+          {
+            "id": "gate:anarchist-families-module:anarcho-capitalist:base:specialist:anarchist-families-module:market-coordination",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          {
+            "id": "gate:anarchist-families-module:anarcho-capitalist:base:specialist:anarchist-families-module:communal-property",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "operator": "maximum",
+            "maximum": -0.35
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "anarcho-capitalist",
+    "rationale": "Seeks to replace the state and compulsory public-goods provision with social order based on voluntary contract, private property, and competing private providers of protection and arbitration.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ebde5696ba452ecd"
+    ]
+  },
+  {
+    "id": "profile:specialist:anarcho-communist",
+    "name": "Anarcho-Communist",
+    "role": "specialist",
+    "specialistId": "anarcho-communist",
+    "itemIds": [
+      "fm-an-1",
+      "fm-an-2",
+      "fm-an-3",
+      "fm-an-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "anarchist-families-module",
+    "variants": [
+      {
+        "id": "candidate:anarchist-families-module:anarcho-communist:base",
+        "sourceKey": "anarcho-communist",
+        "name": "Anarcho-Communism",
+        "description": "Communal ownership and anti-authoritarian federation.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "targetValue": -0.6,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "targetValue": 0.8,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:anarchist-families-module:anarcho-communist:base:specialist:anarchist-families-module:anti-authority",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "operator": "minimum",
+            "minimum": 0.6
+          },
+          {
+            "id": "gate:anarchist-families-module:anarcho-communist:base:specialist:anarchist-families-module:communal-property",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "operator": "minimum",
+            "minimum": 0.6
+          },
+          {
+            "id": "gate:anarchist-families-module:anarcho-communist:base:specialist:anarchist-families-module:market-coordination",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "operator": "maximum",
+            "maximum": 0.25
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "anarcho-communist",
+    "rationale": "Seeks a stateless communist order in which productive resources are held in common, association is voluntary and decentralized, and distribution is organized around need; currents differ over transition, scale, and coordination.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:cae6150e1295e405"
+    ]
+  },
+  {
+    "id": "profile:specialist:anarcho-primitivism",
+    "name": "Anarcho-Primitivism",
+    "role": "specialist",
+    "specialistId": "anarcho-primitivism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "anarcho-primitivism",
+    "rationale": "Rejects civilization, industrial technology, and mass organization as sources of domination and ecological collapse, seeking radically decentralized lifeways outside both state and market modernity.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:7ca53bfc3d416121"
+    ]
+  },
+  {
+    "id": "profile:specialist:anarcho-syndicalism",
+    "name": "Anarcho-Syndicalism",
+    "role": "specialist",
+    "specialistId": "anarcho-syndicalism",
+    "itemIds": [
+      "fm-an-1",
+      "fm-an-2",
+      "fm-an-3",
+      "fm-an-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "anarchist-families-module",
+    "variants": [
+      {
+        "id": "candidate:anarchist-families-module:anarcho-syndicalism:base",
+        "sourceKey": "anarcho-syndicalism",
+        "name": "Anarcho-Syndicalism",
+        "description": "Worker organization and direct industrial action under anarchist commitments.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "targetValue": 0.85,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "targetValue": -0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "targetValue": 0.65,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:anarchist-families-module:anarcho-syndicalism:base:specialist:anarchist-families-module:anti-authority",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "operator": "minimum",
+            "minimum": 0.6
+          },
+          {
+            "id": "gate:anarchist-families-module:anarcho-syndicalism:base:specialist:anarchist-families-module:communal-property",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "operator": "minimum",
+            "minimum": 0.45
+          },
+          {
+            "id": "gate:anarchist-families-module:anarcho-syndicalism:base:specialist:anarchist-families-module:direct-federation",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "operator": "minimum",
+            "minimum": 0.65
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "anarcho-syndicalism",
+    "rationale": "A revolutionary, worker-centered variant of anarchism that seeks to replace capitalism and the state with a decentralized federation of democratically-run worker syndicates and communes, using direct action and solidarity rather than electoral politics.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:64c46c50723b6f05"
+    ]
+  },
+  {
+    "id": "profile:specialist:arab-socialism",
+    "name": "Arab Socialism",
+    "role": "specialist",
+    "specialistId": "arab-socialism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "arab-socialism",
+    "rationale": "A regional socialist family combining Arab national liberation or unity with state-led development, land reform, public control of strategic sectors, welfare, and anti-imperialism.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:691425a994f59163",
+      "citation:84a0d2c5cfae2857"
+    ]
+  },
+  {
+    "id": "profile:specialist:bioregionalism",
+    "name": "Bioregionalism",
+    "role": "specialist",
+    "specialistId": "bioregionalism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "bioregionalism",
+    "rationale": "A place-based ecological political current that links governance, economic life, and stewardship to ecologically and culturally understood regions rather than only inherited borders; proposals vary over watersheds, local resilience, and relations with existing states.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:cf6f56d9b0dad323"
+    ]
+  },
+  {
+    "id": "profile:specialist:black-feminism",
+    "name": "Black Feminism",
+    "role": "specialist",
+    "specialistId": "black-feminism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "black-feminism",
+    "rationale": "A feminist tradition analyzing interlocking race, gender, class, sexuality, and state power from Black women’s political experience while developing autonomous organization, coalition, and liberation strategies.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ffb3eafb4d6e07b0"
+    ]
+  },
+  {
+    "id": "profile:specialist:black-nationalism",
+    "name": "Black Nationalism",
+    "role": "specialist",
+    "specialistId": "black-nationalism",
+    "itemIds": [
+      "fm-id-1",
+      "fm-id-2",
+      "fm-id-3",
+      "fm-id-4",
+      "fm-id-5",
+      "fm-id-19",
+      "fm-id-20",
+      "fm-id-21",
+      "fm-id-22",
+      "fm-id-6",
+      "fm-id-7",
+      "fm-id-8",
+      "fm-id-9",
+      "fm-id-10",
+      "fm-id-11",
+      "fm-id-12",
+      "fm-id-13",
+      "fm-id-14",
+      "fm-id-15",
+      "fm-id-16",
+      "fm-id-17",
+      "fm-id-18"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "identity-sovereignty-module",
+    "variants": [
+      {
+        "id": "candidate:identity-sovereignty-module:black-nationalism:community-nationalism",
+        "sourceKey": "black-nationalism",
+        "name": "Black community-autonomy orientation",
+        "description": "Emphasizes Black community autonomy, institution-building, self-reliance, and collective power without requiring territorial separation or independent statehood.",
+        "variant": "community nationalism",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:identity-sovereignty-module:community-autonomy",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
+            "targetValue": -0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+            "targetValue": 0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
+            "targetValue": 0.25,
+            "weight": 1
+          }
+        ],
+        "gates": [],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      },
+      {
+        "id": "candidate:identity-sovereignty-module:black-nationalism:separatist-nationalism-2",
+        "sourceKey": "black-nationalism",
+        "name": "Black separatist self-determination orientation",
+        "description": "Combines Black collective autonomy with a stronger preference for territorial separation, independent political authority, or separate statehood.",
+        "variant": "separatist nationalism",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:identity-sovereignty-module:community-autonomy",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+            "targetValue": 0.7,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
+            "targetValue": 0.2,
+            "weight": 1
+          }
+        ],
+        "gates": [],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "black-nationalism",
+    "rationale": "A heterogeneous set of Black political traditions emphasizing collective dignity, solidarity, self-determination, institutional power, or community autonomy in response to racial domination.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9c8b2129a5ed334b",
+      "citation:9b4674300ce4501c"
+    ]
+  },
+  {
+    "id": "profile:specialist:bleeding-heart-libertarianism",
+    "name": "Bleeding-Heart Libertarianism",
+    "role": "specialist",
+    "specialistId": "bleeding-heart-libertarianism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "bleeding-heart-libertarianism",
+    "rationale": "A variant of libertarianism that combines strong commitments to individual liberty, free markets, and limited government with an emphasis on social justice, concern for the disadvantaged, and recognition that systemic inequality can undermine meaningful freedom.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:7767e108efbc44f5"
+    ]
+  },
+  {
+    "id": "profile:specialist:christian-reconstructionism",
+    "name": "Christian Reconstructionism",
+    "role": "specialist",
+    "specialistId": "christian-reconstructionism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "christian-reconstructionism",
+    "rationale": "A Reformed Calvinist theological and political movement that advocates for the reconstruction of society along Biblical law, seeking to apply Old Testament judicial standards to contemporary civil government and to establish a theonomic Christian commonwealth.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1530d5e1d71da69c"
+    ]
+  },
+  {
+    "id": "profile:specialist:christian-socialism",
+    "name": "Christian Socialism",
+    "role": "specialist",
+    "specialistId": "christian-socialism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "christian-socialism",
+    "rationale": "Applies Christian teachings about solidarity, justice, communal obligation, and concern for poor and working people to industrial capitalism; its currents have favored different combinations of cooperatives, labor reform, social provision, regulation, and social ownership.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:bfde3648ea3f8e21"
+    ]
+  },
+  {
+    "id": "profile:specialist:confucian-political-revival",
+    "name": "Political Confucianism",
+    "role": "specialist",
+    "specialistId": "confucian-political-revival",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "confucian-political-revival",
+    "rationale": "A modern political family that applies Confucian ideas about moral cultivation, relational obligation, public virtue, merit, harmony, and humane government to contemporary institutions, with democratic, constitutional, perfectionist, and meritocratic branches.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:b2a3461e1dcd0e9e"
+    ]
+  },
+  {
+    "id": "profile:specialist:council-communist",
+    "name": "Council Communist",
+    "role": "specialist",
+    "specialistId": "council-communist",
+    "itemIds": [
+      "fm-so-1",
+      "fm-so-2",
+      "fm-so-3",
+      "fm-so-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "socialist-families-module",
+    "variants": [
+      {
+        "id": "candidate:socialist-families-module:council-communist:base",
+        "sourceKey": "council-communist",
+        "name": "Council Communism",
+        "description": "Worker councils and direct democratic control of production and politics.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "targetValue": 0.85,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:reformism",
+            "targetValue": -0.3,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "targetValue": 0.7,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:socialist-families-module:council-communist:base:specialist:socialist-families-module:social-ownership",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          {
+            "id": "gate:socialist-families-module:council-communist:base:specialist:socialist-families-module:democratic-planning",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          {
+            "id": "gate:socialist-families-module:council-communist:base:specialist:socialist-families-module:reformism",
+            "constructId": "specialist:socialist-families-module:reformism",
+            "operator": "maximum",
+            "maximum": 0.25
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "council-communist",
+    "rationale": "Rejects both the market and the vanguard party, holding that workers should govern production directly through federated councils rather than a state bureaucracy that would reproduce domination.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:329630a4ced340a9"
+    ]
+  },
+  {
+    "id": "profile:specialist:deep-ecology",
+    "name": "Deep Ecology",
+    "role": "specialist",
+    "specialistId": "deep-ecology",
+    "itemIds": [
+      "fm-gr-1",
+      "fm-gr-2",
+      "fm-gr-3",
+      "fm-gr-4",
+      "fm-gr-5"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "green-morphology-module",
+    "variants": [
+      {
+        "id": "candidate:green-morphology-module:deep-ecology:base",
+        "sourceKey": "deep-ecology",
+        "name": "Deep Ecology",
+        "description": "Strong independent moral standing for nonhuman nature.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "targetValue": 0.5,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "targetValue": -0.3,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "targetValue": 0.5,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:green-morphology-module:deep-ecology:base:specialist:green-morphology-module:ecological-standing",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "operator": "minimum",
+            "minimum": 0.6
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "deep-ecology",
+    "rationale": "Treats the nonhuman natural world as possessing intrinsic worth independent of human use, holding that ecological integrity requires restructuring social and economic life around biocentric limits rather than greening an essentially anthropocentric growth order.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:5681c064ff89eeae",
+      "citation:baa98f7b835f0b14"
+    ]
+  },
+  {
+    "id": "profile:specialist:degrowth-green",
+    "name": "Degrowth Green",
+    "role": "specialist",
+    "specialistId": "degrowth-green",
+    "itemIds": [
+      "fm-gr-1",
+      "fm-gr-2",
+      "fm-gr-3",
+      "fm-gr-4",
+      "fm-gr-5"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "green-morphology-module",
+    "variants": [
+      {
+        "id": "candidate:green-morphology-module:degrowth-green:base",
+        "sourceKey": "degrowth-green",
+        "name": "Degrowth Green",
+        "description": "Democratic reduction of material throughput in affluent economies.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "targetValue": -0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "targetValue": 0.65,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:green-morphology-module:degrowth-green:base:specialist:green-morphology-module:ecological-standing",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "operator": "minimum",
+            "minimum": 0.5
+          },
+          {
+            "id": "gate:green-morphology-module:degrowth-green:base:specialist:green-morphology-module:post-growth",
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "operator": "minimum",
+            "minimum": 0.65
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "degrowth-green",
+    "rationale": "Holds that lasting sustainability requires a planned, democratic reduction of throughput in rich economies, rejecting growth as a goal in favor of sufficiency, localism, and a shift from material accumulation to shared well-being.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1ae79788486a6bdc"
+    ]
+  },
+  {
+    "id": "profile:specialist:democratic-confederalism",
+    "name": "Democratic Confederalism",
+    "role": "specialist",
+    "specialistId": "democratic-confederalism",
+    "itemIds": [
+      "fm-mm-1",
+      "fm-mm-2",
+      "fm-mm-3",
+      "fm-mm-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "monarchist-municipal-module",
+    "variants": [
+      {
+        "id": "candidate:monarchist-municipal-module:democratic-confederalism:base",
+        "sourceKey": "democratic-confederalism",
+        "name": "Democratic Confederalism",
+        "description": "Decentralized, pluralist, and confederal democratic organization.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "targetValue": -0.65,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+            "targetValue": -0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "targetValue": 0.85,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:monarchist-municipal-module:democratic-confederalism:base:specialist:monarchist-municipal-module:municipal-autonomy",
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "operator": "minimum",
+            "minimum": 0.7
+          },
+          {
+            "id": "gate:monarchist-municipal-module:democratic-confederalism:base:specialist:monarchist-municipal-module:confederal-coordination",
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "operator": "minimum",
+            "minimum": 0.65
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "democratic-confederalism",
+    "rationale": "Rejects centralized state authority in favor of decentralized, bottom-up democracy organized through communes, councils, and confederations, grounded in gender equality, ecology, and pluralistic self-governance.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:92cf18c2a150b81e"
+    ]
+  },
+  {
+    "id": "profile:specialist:developmentalism",
+    "name": "Developmentalism / Developmental-State Political Economy",
+    "role": "specialist",
+    "specialistId": "developmentalism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "developmentalism",
+    "rationale": "A political-economy family prioritizing industrial upgrading, productive capacity, infrastructure, technology acquisition, exports, and strategic coordination by a capable state and organized public-private institutions.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:d06c3e01ad6cab01",
+      "citation:d39acc387130f9d3"
+    ]
+  },
+  {
+    "id": "profile:specialist:distributism",
+    "name": "Distributism",
+    "role": "specialist",
+    "specialistId": "distributism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "distributism",
+    "rationale": "Holds that widespread ownership of productive property by families and local guilds is morally preferable to both concentrated corporate capital and collective state ownership, grounding a decentralized moral economy in subsidiarity and the dignity of small ownership.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:3164e9948bc10783"
+    ]
+  },
+  {
+    "id": "profile:specialist:eco-authoritarianism",
+    "name": "Eco-Authoritarianism",
+    "role": "specialist",
+    "specialistId": "eco-authoritarianism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "eco-authoritarianism",
+    "rationale": "Treats ecological crisis as the overriding political priority requiring a powerful centralized state—often technocratic or vanguardist—to enforce environmental discipline, irrespective of conventional left-right cultural positioning.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c47aa20d18070c62"
+    ]
+  },
+  {
+    "id": "profile:specialist:eco-fascism",
+    "name": "Eco-Fascism",
+    "role": "specialist",
+    "specialistId": "eco-fascism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "eco-fascism",
+    "rationale": "Combines fascist ultranationalism and ethnonationalism with ecological politics, treating demographic control, ethnic homogeneity, and coercive state power as conditions for environmental preservation.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:48b129384e541f92"
+    ]
+  },
+  {
+    "id": "profile:specialist:ecomodernist",
+    "name": "Ecomodernist",
+    "role": "specialist",
+    "specialistId": "ecomodernist",
+    "itemIds": [
+      "fm-gr-1",
+      "fm-gr-2",
+      "fm-gr-3",
+      "fm-gr-4",
+      "fm-gr-5"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "green-morphology-module",
+    "variants": [
+      {
+        "id": "candidate:green-morphology-module:ecomodernist:base",
+        "sourceKey": "ecomodernist",
+        "name": "Ecomodernism",
+        "description": "Ecological improvement through innovation, infrastructure, and high-capacity institutions.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "targetValue": 0.55,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "targetValue": -0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "targetValue": 0.85,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "targetValue": 0.1,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:collective-ownership",
+            "targetValue": 0.05,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:green-morphology-module:ecomodernist:base:specialist:green-morphology-module:ecological-standing",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "operator": "minimum",
+            "minimum": 0.35
+          },
+          {
+            "id": "gate:green-morphology-module:ecomodernist:base:specialist:green-morphology-module:market-technology",
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "operator": "minimum",
+            "minimum": 0.55
+          },
+          {
+            "id": "gate:green-morphology-module:ecomodernist:base:specialist:green-morphology-module:collective-ownership",
+            "constructId": "specialist:green-morphology-module:collective-ownership",
+            "operator": "maximum",
+            "maximum": 0.5
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "ecomodernist",
+    "rationale": "Argues that technological innovation, high-density energy, urbanization, and capable institutions can reduce ecological harm while supporting human flourishing; distinct from degrowth, deep ecology, and ecosocialist critiques of growth.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:88ca5b3bc9028f15"
+    ]
+  },
+  {
+    "id": "profile:specialist:ecosocialist",
+    "name": "Ecosocialist",
+    "role": "specialist",
+    "specialistId": "ecosocialist",
+    "itemIds": [
+      "fm-gr-1",
+      "fm-gr-2",
+      "fm-gr-3",
+      "fm-gr-4",
+      "fm-gr-5"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "green-morphology-module",
+    "variants": [
+      {
+        "id": "candidate:green-morphology-module:ecosocialist:base",
+        "sourceKey": "ecosocialist",
+        "name": "Ecosocialism",
+        "description": "Ecological transformation joined to collective ownership and anti-capitalist politics.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "targetValue": 0.75,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "targetValue": -0.65,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "targetValue": 0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:collective-ownership",
+            "targetValue": 0.8,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:green-morphology-module:ecosocialist:base:specialist:green-morphology-module:ecological-standing",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "operator": "minimum",
+            "minimum": 0.5
+          },
+          {
+            "id": "gate:green-morphology-module:ecosocialist:base:specialist:green-morphology-module:collective-ownership",
+            "constructId": "specialist:green-morphology-module:collective-ownership",
+            "operator": "minimum",
+            "minimum": 0.55
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "ecosocialist",
+    "rationale": "Treats ecological crisis as inseparable from capitalism, seeking collective ownership and democratic planning of production to serve both human need and ecological limits rather than profit or growth for its own sake.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:baa98f7b835f0b14"
+    ]
+  },
+  {
+    "id": "profile:specialist:fascist-authoritarian",
+    "name": "Fascist / Palingenetic Ultranationalist",
+    "role": "specialist",
+    "specialistId": "fascist-authoritarian",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "fascist-authoritarian",
+    "rationale": "Centers palingenetic ultranationalism: the idea of national rebirth through authoritarian mobilization, hierarchy, anti-liberal politics, and exclusionary or coercive state power. This is narrower than generic authoritarianism.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ae86ee74ed40118b",
+      "citation:4c1e6c151c24f1b5",
+      "citation:03c44e53b0f20961"
+    ]
+  },
+  {
+    "id": "profile:specialist:geolibertarian",
+    "name": "Georgist Libertarian",
+    "role": "specialist",
+    "specialistId": "geolibertarian",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "geolibertarian",
+    "rationale": "Treats exclusive private appropriation of natural opportunities—especially land and resource rents—as the central injustice, while leaving genuinely produced wealth to voluntary exchange; prefers land-value taxation and free migration to state micromanagement.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c8d9dc64426ba5af",
+      "citation:04c4382f2d9846cd"
+    ]
+  },
+  {
+    "id": "profile:specialist:georgism",
+    "name": "Georgism",
+    "role": "specialist",
+    "specialistId": "georgism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "georgism",
+    "rationale": "A political and economic philosophy based on Henry George’s distinction between privately created value and socially generated land or resource rent, generally favoring public capture of that rent through land-value taxation; the historic “single tax” is one formulation, not the only one.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:04c4382f2d9846cd"
+    ]
+  },
+  {
+    "id": "profile:specialist:green-capitalism",
+    "name": "Green Capitalism",
+    "role": "specialist",
+    "specialistId": "green-capitalism",
+    "itemIds": [
+      "fm-gr-1",
+      "fm-gr-2",
+      "fm-gr-3",
+      "fm-gr-4",
+      "fm-gr-5"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "green-morphology-module",
+    "variants": [
+      {
+        "id": "candidate:green-morphology-module:green-capitalism:base",
+        "sourceKey": "green-capitalism",
+        "name": "Green Capitalism",
+        "description": "Market investment and regulation as the main route to ecological transition.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "targetValue": 0.55,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "targetValue": -0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:green-morphology-module:collective-ownership",
+            "targetValue": -0.55,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:green-morphology-module:green-capitalism:base:specialist:green-morphology-module:ecological-standing",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "operator": "minimum",
+            "minimum": 0.35
+          },
+          {
+            "id": "gate:green-morphology-module:green-capitalism:base:specialist:green-morphology-module:market-technology",
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "operator": "minimum",
+            "minimum": 0.55
+          },
+          {
+            "id": "gate:green-morphology-module:green-capitalism:base:specialist:green-morphology-module:collective-ownership",
+            "constructId": "specialist:green-morphology-module:collective-ownership",
+            "operator": "maximum",
+            "maximum": 0.2
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "green-capitalism",
+    "rationale": "An approach to environmental protection that works within existing capitalist market structures, promoting green growth, carbon pricing, renewable energy markets, eco-labeling, and corporate sustainability as mechanisms for ecological transition without systemic economic transformation.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:31f76d2e42e72045"
+    ]
+  },
+  {
+    "id": "profile:specialist:guild-socialism",
+    "name": "Guild Socialism",
+    "role": "specialist",
+    "specialistId": "guild-socialism",
+    "itemIds": [
+      "fm-so-1",
+      "fm-so-2",
+      "fm-so-3",
+      "fm-so-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "socialist-families-module",
+    "variants": [
+      {
+        "id": "candidate:socialist-families-module:guild-socialism:base",
+        "sourceKey": "guild-socialism",
+        "name": "Guild Socialism",
+        "description": "Democratic worker control and public or social ownership organized through self-governing functional associations.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "targetValue": 0.85,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "targetValue": 0.7,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:reformism",
+            "targetValue": 0.15,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "targetValue": 0.15,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:socialist-families-module:guild-socialism:base:specialist:socialist-families-module:social-ownership",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "operator": "minimum",
+            "minimum": 0.6
+          },
+          {
+            "id": "gate:socialist-families-module:guild-socialism:base:specialist:socialist-families-module:democratic-planning",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "operator": "minimum",
+            "minimum": 0.5
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "guild-socialism",
+    "rationale": "Advocates industrial self-government through democratic worker guilds that control production and negotiate with the public; historical proposals differed over whether ultimate ownership should be public, guild-based, or otherwise socialized.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:cb50703ee04f1ee6"
+    ]
+  },
+  {
+    "id": "profile:specialist:hindutva",
+    "name": "Hindutva",
+    "role": "specialist",
+    "specialistId": "hindutva",
+    "itemIds": [
+      "fm-rn-1",
+      "fm-rn-2",
+      "fm-rn-3",
+      "fm-rn-4",
+      "fm-rn-5",
+      "fm-rn-6",
+      "fm-rn-7",
+      "fm-rn-8",
+      "fm-rn-9",
+      "fm-rn-10",
+      "fm-rn-11"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "religious-national-politics-module",
+    "variants": [
+      {
+        "id": "candidate:religious-national-politics-module:hindutva:base",
+        "sourceKey": "hindutva",
+        "name": "Hindutva",
+        "description": "A majoritarian or civilizational account of Indian national identity centered on Hindu cultural belonging.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "targetValue": 0.25,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "targetValue": 0.25,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "targetValue": -0.25,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "targetValue": 0.25,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "targetValue": 0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:religious-national-politics-module:hindutva:base:specialist:religious-national-politics-module:hindu-civilizational-belonging",
+            "constructId": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
+            "operator": "minimum",
+            "minimum": 0.65
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "hindutva",
+    "rationale": "Frames Indian national identity through Hindu civilizational and cultural categories; in scholarly usage it often denotes Hindu nationalism, but formulations differ over belonging, secularism, minority citizenship, and state power.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:767d8856723b95a6",
+      "citation:a5147528a12f169f"
+    ]
+  },
+  {
+    "id": "profile:specialist:indigenism",
+    "name": "Indigenous Sovereignty / Self-Determination",
+    "role": "specialist",
+    "specialistId": "indigenism",
+    "itemIds": [
+      "fm-id-1",
+      "fm-id-2",
+      "fm-id-3",
+      "fm-id-4",
+      "fm-id-5",
+      "fm-id-19",
+      "fm-id-20",
+      "fm-id-21",
+      "fm-id-22",
+      "fm-id-6",
+      "fm-id-7",
+      "fm-id-8",
+      "fm-id-9",
+      "fm-id-10",
+      "fm-id-11",
+      "fm-id-12",
+      "fm-id-13",
+      "fm-id-14",
+      "fm-id-15",
+      "fm-id-16",
+      "fm-id-17",
+      "fm-id-18"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "identity-sovereignty-module",
+    "variants": [
+      {
+        "id": "candidate:identity-sovereignty-module:indigenism:institutional-self-government",
+        "sourceKey": "indigenism",
+        "name": "Indigenous sovereignty and resurgence",
+        "description": "Centers Indigenous collective self-government, treaty and territorial authority, and negotiated restoration of political jurisdiction within or alongside existing states.",
+        "variant": "institutional self-government",
+        "status": "existing-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
+            "targetValue": 0.85,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:institutional-recognition",
+            "targetValue": 0.55,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
+            "targetValue": 0.4,
+            "weight": 1
+          }
+        ],
+        "gates": [],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      },
+      {
+        "id": "candidate:identity-sovereignty-module:indigenism:resurgence-and-refusal-2",
+        "sourceKey": "indigenism",
+        "name": "Indigenous sovereignty and resurgence",
+        "description": "Treats settler-colonial authority and dispossession as continuing structures and emphasizes resurgence, refusal, land-based political relations, and rebuilding Indigenous institutions on their own terms.",
+        "variant": "resurgence and refusal",
+        "status": "existing-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:autonomous-resurgence",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:identity-sovereignty-module:community-autonomy",
+            "targetValue": 0.4,
+            "weight": 1
+          }
+        ],
+        "gates": [],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "indigenism",
+    "rationale": "Prioritizes Indigenous peoples’ rights, sovereignty, land and cultural continuity, and decolonial forms of political authority in response to imposed state and market structures.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:79be53b8e73c74d3"
+    ]
+  },
+  {
+    "id": "profile:specialist:individualist-anarchism",
+    "name": "Individualist Anarchism",
+    "role": "specialist",
+    "specialistId": "individualist-anarchism",
+    "itemIds": [
+      "fm-an-1",
+      "fm-an-2",
+      "fm-an-3",
+      "fm-an-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "anarchist-families-module",
+    "variants": [
+      {
+        "id": "candidate:anarchist-families-module:individualist-anarchism:base",
+        "sourceKey": "individualist-anarchism",
+        "name": "Individualist Anarchism",
+        "description": "Anti-authoritarian self-direction and voluntary association without a single required economic program.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "targetValue": 0.15,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "targetValue": -0.1,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "targetValue": 0.5,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:anarchist-families-module:individualist-anarchism:base:specialist:anarchist-families-module:anti-authority",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "operator": "minimum",
+            "minimum": 0.6
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "individualist-anarchism",
+    "rationale": "A historically diverse anarchist family that centers individual autonomy and voluntary association while rejecting the state’s claim to compulsory political authority.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:55f39f4302598e7c"
+    ]
+  },
+  {
+    "id": "profile:specialist:integralism",
+    "name": "Integralism",
+    "role": "specialist",
+    "specialistId": "integralism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "integralism",
+    "rationale": "Holds that Catholic faith should be the basis of public law and policy, rejecting the separation of church and state in favor of an organic society where civil authority is subordinate to divine moral order.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:aadae1943ce48eac",
+      "citation:09ff4aa7bf0706ec"
+    ]
+  },
+  {
+    "id": "profile:specialist:islamic-democracy",
+    "name": "Islamic Democratic Constitutionalism",
+    "role": "specialist",
+    "specialistId": "islamic-democracy",
+    "itemIds": [
+      "fm-rn-1",
+      "fm-rn-2",
+      "fm-rn-3",
+      "fm-rn-4",
+      "fm-rn-5",
+      "fm-rn-6",
+      "fm-rn-7",
+      "fm-rn-8",
+      "fm-rn-9",
+      "fm-rn-10",
+      "fm-rn-11"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "religious-national-politics-module",
+    "variants": [
+      {
+        "id": "candidate:religious-national-politics-module:islamic-democracy:base",
+        "sourceKey": "islamic-democracy",
+        "name": "Islamic Democratic Constitutionalism",
+        "description": "Popular sovereignty and constitutional competition interpreted through Islamic legal and ethical traditions.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "targetValue": 0.25,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "targetValue": 0.6,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "targetValue": 0.85,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "targetValue": 0.85,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:interpretive-pluralism",
+            "targetValue": 0.8,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:religious-national-politics-module:islamic-democracy:base:specialist:religious-national-politics-module:popular-constitutionalism",
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "operator": "minimum",
+            "minimum": 0.55
+          },
+          {
+            "id": "gate:religious-national-politics-module:islamic-democracy:base:specialist:religious-national-politics-module:constitutional-review",
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "operator": "minimum",
+            "minimum": 0.55
+          },
+          {
+            "id": "gate:religious-national-politics-module:islamic-democracy:base:specialist:religious-national-politics-module:party-competition",
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "operator": "minimum",
+            "minimum": 0.55
+          },
+          {
+            "id": "gate:religious-national-politics-module:islamic-democracy:base:specialist:religious-national-politics-module:islamic-public-law",
+            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+            "operator": "minimum",
+            "minimum": 0.55
+          },
+          {
+            "id": "gate:religious-national-politics-module:islamic-democracy:base:specialist:religious-national-politics-module:interpretive-pluralism",
+            "constructId": "specialist:religious-national-politics-module:interpretive-pluralism",
+            "operator": "minimum",
+            "minimum": 0.45
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "islamic-democracy",
+    "rationale": "Argues that electoral government, constitutional limits, and public accountability can operate within an Islamic ethical or legal framework, while leaving the relationships among popular sovereignty, constitutional review, religious interpretation, clerical authority, minority rights, and party competition open to institutional disagreement.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:ec6045e7e01624e9",
+      "citation:8390a3e0200ad47d",
+      "citation:dc31fecd0a6513ff"
+    ]
+  },
+  {
+    "id": "profile:specialist:juche",
+    "name": "Juche",
+    "role": "specialist",
+    "specialistId": "juche",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "juche",
+    "rationale": "The DPRK/Kimist state ideology that frames political independence and state-directed self-reliance as central goods, alongside military self-defense, under a highly centralized party-state and supreme leader.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:912a3311a441a2cd",
+      "citation:941f94ffd493d344"
+    ]
+  },
+  {
+    "id": "profile:specialist:kemalism",
+    "name": "Kemalism",
+    "role": "specialist",
+    "specialistId": "kemalism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "kemalism",
+    "rationale": "A secular, modernizing, and statist nationalist ideology associated with republican state-building and rapid catch-up modernization, conventionally organized around the Six Arrows: republicanism, nationalism, peopleism (halkçılık), statism, laicism, and reformism.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:747dba903accb5ae"
+    ]
+  },
+  {
+    "id": "profile:specialist:left-wing-market-anarchism",
+    "name": "Left-Wing Market Anarchism",
+    "role": "specialist",
+    "specialistId": "left-wing-market-anarchism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "left-wing-market-anarchism",
+    "rationale": "An anti-capitalist market-anarchist umbrella that defends voluntary exchange in freed markets while arguing that state privilege helps sustain concentrated corporate power and exploitation.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:5792231d022775b8"
+    ]
+  },
+  {
+    "id": "profile:specialist:liberal-feminism",
+    "name": "Liberal Feminism",
+    "role": "specialist",
+    "specialistId": "liberal-feminism",
+    "itemIds": [
+      "fm-fem-1",
+      "fm-fem-2",
+      "fm-fem-3",
+      "fm-fem-4",
+      "fm-fem-5",
+      "fm-fem-6",
+      "fm-fem-7",
+      "fm-fem-8"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "feminist-faction-module",
+    "variants": [
+      {
+        "id": "candidate:feminist-faction-module:liberal-feminism:base",
+        "sourceKey": "liberal-feminism",
+        "name": "Liberal Feminism",
+        "description": "Centers individual autonomy, equal citizenship, equal opportunity, and legal-institutional reform within a liberal-democratic framework.",
+        "status": "existing-primary",
+        "requirements": [
+          {
+            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+            "targetValue": 0.15,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
+            "targetValue": 0,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+            "targetValue": -0.7,
+            "weight": 1
+          }
+        ],
+        "gates": [],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "liberal-feminism",
+    "rationale": "Seeks gender equality through legal reform, equal rights, and equal opportunity within existing liberal-democratic institutions, emphasizing individual autonomy and formal equality before the law.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f3abe9549d155858",
+      "citation:cbaecaacf4dd9075"
+    ]
+  },
+  {
+    "id": "profile:specialist:libertarian-municipalism",
+    "name": "Libertarian Municipalism",
+    "role": "specialist",
+    "specialistId": "libertarian-municipalism",
+    "itemIds": [
+      "fm-mm-1",
+      "fm-mm-2",
+      "fm-mm-3",
+      "fm-mm-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "monarchist-municipal-module",
+    "variants": [
+      {
+        "id": "candidate:monarchist-municipal-module:libertarian-municipalism:base",
+        "sourceKey": "libertarian-municipalism",
+        "name": "Libertarian Municipalism",
+        "description": "Municipal democracy and confederal self-government.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "targetValue": -0.5,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+            "targetValue": -0.1,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "targetValue": 0.85,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:monarchist-municipal-module:libertarian-municipalism:base:specialist:monarchist-municipal-module:municipal-autonomy",
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "operator": "minimum",
+            "minimum": 0.7
+          },
+          {
+            "id": "gate:monarchist-municipal-module:libertarian-municipalism:base:specialist:monarchist-municipal-module:confederal-coordination",
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "operator": "minimum",
+            "minimum": 0.55
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "libertarian-municipalism",
+    "rationale": "Proposes a confederal network of directly-democratic municipal assemblies as the basis for a stateless, ecological, and ethical society, replacing both state sovereignty and capitalist markets with face-to-face popular governance.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:e725d2d09db0e176"
+    ]
+  },
+  {
+    "id": "profile:specialist:maoism",
+    "name": "Maoism",
+    "role": "specialist",
+    "specialistId": "maoism",
+    "itemIds": [
+      "fm-so-1",
+      "fm-so-2",
+      "fm-so-3",
+      "fm-so-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "socialist-families-module",
+    "variants": [
+      {
+        "id": "candidate:socialist-families-module:maoism:base",
+        "sourceKey": "maoism",
+        "name": "Maoism",
+        "description": "Revolutionary party organization, mass mobilization, and centralized transition.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "targetValue": 0.7,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:reformism",
+            "targetValue": -0.7,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:socialist-families-module:maoism:base:specialist:socialist-families-module:social-ownership",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          {
+            "id": "gate:socialist-families-module:maoism:base:specialist:socialist-families-module:revolutionary-strategy",
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          {
+            "id": "gate:socialist-families-module:maoism:base:specialist:socialist-families-module:reformism",
+            "constructId": "specialist:socialist-families-module:reformism",
+            "operator": "maximum",
+            "maximum": -0.35
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "maoism",
+    "rationale": "Extends revolutionary state socialism through mass line politics, protracted struggle, anti-revisionism, and peasant or peripheral mobilization, treating revolutionary transformation as a continuing process against bureaucratic restoration.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dbbdbf966d2a0ca3"
+    ]
+  },
+  {
+    "id": "profile:specialist:market-anarchism",
+    "name": "Market Anarchism",
+    "role": "specialist",
+    "specialistId": "market-anarchism",
+    "itemIds": [
+      "fm-an-1",
+      "fm-an-2",
+      "fm-an-3",
+      "fm-an-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "anarchist-families-module",
+    "variants": [
+      {
+        "id": "candidate:anarchist-families-module:market-anarchism:base",
+        "sourceKey": "market-anarchism",
+        "name": "Market Anarchism",
+        "description": "An anarchist family anchor for voluntary exchange and non-state coordination, without deciding among capitalist, mutualist, or counter-economic variants.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "targetValue": 0,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "targetValue": 0.65,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:anarchist-families-module:market-anarchism:base:specialist:anarchist-families-module:anti-authority",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "operator": "minimum",
+            "minimum": 0.6
+          },
+          {
+            "id": "gate:anarchist-families-module:market-anarchism:base:specialist:anarchist-families-module:market-coordination",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "operator": "minimum",
+            "minimum": 0.55
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "market-anarchism",
+    "rationale": "A family of anarchist positions that combine rejection of centralized state authority with voluntary exchange, decentralized coordination, and non-state institutions; its variants disagree over property, exploitation, mutual credit, and the meaning of a market order.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:c8d9dc64426ba5af",
+      "citation:5a562c689b1ef3bd"
+    ]
+  },
+  {
+    "id": "profile:specialist:market-socialist",
+    "name": "Market Socialist",
+    "role": "specialist",
+    "specialistId": "market-socialist",
+    "itemIds": [
+      "fm-so-1",
+      "fm-so-2",
+      "fm-so-3",
+      "fm-so-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "socialist-families-module",
+    "variants": [
+      {
+        "id": "candidate:socialist-families-module:market-socialist:base",
+        "sourceKey": "market-socialist",
+        "name": "Market Socialism",
+        "description": "Social ownership combined with market exchange or competition.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "targetValue": 0.15,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:reformism",
+            "targetValue": 0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "targetValue": -0.2,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:socialist-families-module:market-socialist:base:specialist:socialist-families-module:social-ownership",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "operator": "minimum",
+            "minimum": 0.6
+          },
+          {
+            "id": "gate:socialist-families-module:market-socialist:base:specialist:socialist-families-module:democratic-planning",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "operator": "maximum",
+            "maximum": 0.45
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "market-socialist",
+    "rationale": "Combines social or cooperative ownership of productive capital with market pricing and competition, aiming to disperse economic power without abandoning the coordinating virtues of exchange.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:2d99f6e2609c3939"
+    ]
+  },
+  {
+    "id": "profile:specialist:minarchist",
+    "name": "Minarchist",
+    "role": "specialist",
+    "specialistId": "minarchist",
+    "itemIds": [
+      "fm-an-1",
+      "fm-an-2",
+      "fm-an-3",
+      "fm-an-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "anarchist-families-module",
+    "variants": [
+      {
+        "id": "candidate:anarchist-families-module:minarchist:base",
+        "sourceKey": "minarchist",
+        "name": "Minarchism",
+        "description": "A minimal state limited to protective and adjudicative functions.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "targetValue": 0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "targetValue": -0.6,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "targetValue": -0.2,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:anarchist-families-module:minarchist:base:specialist:anarchist-families-module:market-coordination",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "operator": "minimum",
+            "minimum": 0.55
+          },
+          {
+            "id": "gate:anarchist-families-module:minarchist:base:specialist:anarchist-families-module:communal-property",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "operator": "maximum",
+            "maximum": -0.3
+          },
+          {
+            "id": "gate:anarchist-families-module:minarchist:base:specialist:anarchist-families-module:anti-authority",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "operator": "maximum",
+            "maximum": 0.7
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "minarchist",
+    "rationale": "A libertarian doctrine that generally permits a minimal state for protecting against force, theft, fraud, and rights violations through courts, policing, and defense; minarchists differ over the state’s exact scope and justification.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:c8d9dc64426ba5af",
+      "citation:ffde273d907be80f"
+    ]
+  },
+  {
+    "id": "profile:specialist:mutualist",
+    "name": "Mutualist",
+    "role": "specialist",
+    "specialistId": "mutualist",
+    "itemIds": [
+      "fm-an-1",
+      "fm-an-2",
+      "fm-an-3",
+      "fm-an-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "anarchist-families-module",
+    "variants": [
+      {
+        "id": "candidate:anarchist-families-module:mutualist:base",
+        "sourceKey": "mutualist",
+        "name": "Mutualism (family-level)",
+        "description": "A family-level affinity for reciprocal exchange, federated association, and opposition to privilege; it does not identify Proudhonian, Tuckerite, Labadie-line, Swartz-associated, or later mutualist and left-market variants—or affiliation with C4SS or any writer.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "targetValue": 0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "targetValue": 0.8,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:anarchist-families-module:mutualist:base:specialist:anarchist-families-module:anti-authority",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "operator": "minimum",
+            "minimum": 0.55
+          },
+          {
+            "id": "gate:anarchist-families-module:mutualist:base:specialist:anarchist-families-module:market-coordination",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "operator": "interval",
+            "minimum": 0.2,
+            "maximum": 0.75
+          },
+          {
+            "id": "gate:anarchist-families-module:mutualist:base:specialist:anarchist-families-module:direct-federation",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "operator": "minimum",
+            "minimum": 0.55
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "mutualist",
+    "rationale": "A plural anarchist tradition associated first with Proudhon and later reworked in American individualist and contemporary currents. Its common themes include reciprocal association, opposition to state-granted privilege and exploitation, mutual credit, and federated or cooperative provision, while property, labor exchange, and market questions remain contested.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:a07d9f55ed4a9803",
+      "citation:887af70697d1f105",
+      "citation:73e68770cf82f4c6",
+      "citation:de5a40db4fcb95e6",
+      "citation:441a8fa6e6e65120",
+      "citation:5014fd2292d28306",
+      "citation:c3760ee42f90cdc6",
+      "citation:5ba61b9fd33536f4",
+      "citation:0f9a7b38e59547cd"
+    ]
+  },
+  {
+    "id": "profile:specialist:national-bolshevism",
+    "name": "National Bolshevism",
+    "role": "specialist",
+    "specialistId": "national-bolshevism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "national-bolshevism",
+    "rationale": "A historically variable set of attempts to combine radical nationalism with Bolshevik or revolutionary-socialist ideas. This catalog uses the post-Soviet authoritarian nationalist current associated with Limonov’s movement and Dugin’s early milieu as its reference case.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9071166f063d1fa4"
+    ]
+  },
+  {
+    "id": "profile:specialist:national-socialism",
+    "name": "National Socialism",
+    "role": "specialist",
+    "specialistId": "national-socialism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "national-socialism",
+    "rationale": "The Nazi ideology of ethnic nationalism, racial hierarchy, antisemitic exclusion, state-directed economic organization, militarist expansionism, and totalizing racial-national authority; its anti-capitalist rhetoric did not make it socialist.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:45c8d4991ce9d236"
+    ]
+  },
+  {
+    "id": "profile:specialist:neoconservative",
+    "name": "Neoconservative",
+    "role": "specialist",
+    "specialistId": "neoconservative",
+    "itemIds": [
+      "fm-co-1",
+      "fm-co-2",
+      "fm-co-3",
+      "fm-co-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "conservative-variants-module",
+    "variants": [
+      {
+        "id": "candidate:conservative-variants-module:neoconservative:base",
+        "sourceKey": "neoconservative",
+        "name": "Neoconservatism",
+        "description": "Modern U.S. conservative internationalism with an assertive foreign-policy orientation.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:conservative-variants-module:prudence",
+            "targetValue": 0.4,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:conservative-variants-module:moral-traditionalism",
+            "targetValue": 0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:conservative-variants-module:national-continuity",
+            "targetValue": 0.25,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:conservative-variants-module:assertive-internationalism",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:conservative-variants-module:neoconservative:base:specialist:conservative-variants-module:assertive-internationalism",
+            "constructId": "specialist:conservative-variants-module:assertive-internationalism",
+            "operator": "minimum",
+            "minimum": 0.65
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "neoconservative",
+    "rationale": "Combines conservative or market-liberal domestic policy with an assertive international posture, including willingness to use American or allied power to defend strategic interests and promote liberal-democratic institutions abroad.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9c44a8a1c2400720"
+    ]
+  },
+  {
+    "id": "profile:specialist:neoliberalism",
+    "name": "Market-Governance Liberalism",
+    "role": "specialist",
+    "specialistId": "neoliberalism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "neoliberalism",
+    "rationale": "Describes a market-oriented liberal approach to governing capitalism through competition policy, privatization or outsourcing, independent expert institutions, and international economic rules; the term “neoliberalism” is broader and often polemical.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f1f4865a29afc1ad"
+    ]
+  },
+  {
+    "id": "profile:specialist:neoreactionary",
+    "name": "Neoreactionary",
+    "role": "specialist",
+    "specialistId": "neoreactionary",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "neoreactionary",
+    "rationale": "Rejects democracy as unstable and proposes governance modeled on a corporation run by an accountable sovereign-executive, with citizens as customers free to exit to competing sovereign jurisdictions rather than to vote.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:2462735ddd0497b9"
+    ]
+  },
+  {
+    "id": "profile:specialist:objectivism",
+    "name": "Objectivism",
+    "role": "specialist",
+    "specialistId": "objectivism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "objectivism",
+    "rationale": "Ayn Rand’s philosophical system grounds morality in rational self-interest and productive achievement, defends individual rights, and presents laissez-faire capitalism with a limited rights-protecting government as its political-economic ideal.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f608d8c3bcfb13cd"
+    ]
+  },
+  {
+    "id": "profile:specialist:one-nation-conservatism",
+    "name": "One-Nation Conservatism",
+    "role": "specialist",
+    "specialistId": "one-nation-conservatism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "one-nation-conservatism",
+    "rationale": "A paternalistic conservative tradition that accepts a role for the welfare state and moderate state intervention to preserve social cohesion, favoring gradual reform over radical change.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9c8246b42e3ac101"
+    ]
+  },
+  {
+    "id": "profile:specialist:ordoliberalism",
+    "name": "Ordoliberalism",
+    "role": "specialist",
+    "specialistId": "ordoliberalism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "ordoliberalism",
+    "rationale": "Holds that a competitive market order is itself a public good requiring a strong constitutional state that enforces competition against cartels and prevents interest-group capture through binding rules rather than discretionary intervention.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:960a9402888e0cca"
+    ]
+  },
+  {
+    "id": "profile:specialist:paleoconservatism",
+    "name": "Paleoconservatism",
+    "role": "specialist",
+    "specialistId": "paleoconservatism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "paleoconservatism",
+    "rationale": "A U.S. current named in the 1980s to revive parts of the Old Right against neoconservatism and neoliberalism, combining cultural traditionalism and nationalism with localism, immigration restriction, skepticism toward free trade, and a generally non-interventionist foreign policy.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:86edc17b1911c0ee"
+    ]
+  },
+  {
+    "id": "profile:specialist:paleolibertarianism",
+    "name": "Paleolibertarianism",
+    "role": "specialist",
+    "specialistId": "paleolibertarianism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "paleolibertarianism",
+    "rationale": "Combines a strict Rothbardian non-aggression and hard-money economics with a defense of inherited cultural and familial order, seeking a decentralized polity that secures property and liberty while leaving traditional communities free of central cultural engineering.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f9ea755ba47f4bcc"
+    ]
+  },
+  {
+    "id": "profile:specialist:pan-africanism",
+    "name": "Pan-Africanism",
+    "role": "specialist",
+    "specialistId": "pan-africanism",
+    "itemIds": [
+      "fm-id-1",
+      "fm-id-2",
+      "fm-id-3",
+      "fm-id-4",
+      "fm-id-5",
+      "fm-id-19",
+      "fm-id-20",
+      "fm-id-21",
+      "fm-id-22",
+      "fm-id-6",
+      "fm-id-7",
+      "fm-id-8",
+      "fm-id-9",
+      "fm-id-10",
+      "fm-id-11",
+      "fm-id-12",
+      "fm-id-13",
+      "fm-id-14",
+      "fm-id-15",
+      "fm-id-16",
+      "fm-id-17",
+      "fm-id-18"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "identity-sovereignty-module",
+    "variants": [
+      {
+        "id": "candidate:identity-sovereignty-module:pan-africanism:transnational-solidarity-and-unity",
+        "sourceKey": "pan-africanism",
+        "name": "Pan-African solidarity and unity",
+        "description": "Treats African peoples and African-descended diasporas as linked by political interests that can justify transnational solidarity, coordination, or African political unity across existing state borders.",
+        "variant": "transnational solidarity and unity",
+        "status": "candidate-role-review",
+        "requirements": [
+          {
+            "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "pan-africanism",
+    "rationale": "A transnational tradition of African and African-descended solidarity, liberation, and political or cultural cooperation across colonial and state boundaries.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c"
+    ]
+  },
+  {
+    "id": "profile:specialist:pan-arabism",
+    "name": "Pan-Arabism / Arab Nationalism",
+    "role": "specialist",
+    "specialistId": "pan-arabism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "pan-arabism",
+    "rationale": "A pan-national tradition treating Arabic-speaking peoples as members of a wider Arab nation and favoring solidarity, sovereignty, cultural unity, or political integration across existing state borders.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:d8c102378c0f1cac",
+      "citation:9e2ab644a76326e8"
+    ]
+  },
+  {
+    "id": "profile:specialist:participism",
+    "name": "Participism",
+    "role": "specialist",
+    "specialistId": "participism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "participism",
+    "rationale": "Seeks a participatory economy organized around workers and consumers councils, balanced job complexes, and negotiated planning, rejecting both capitalist ownership and centralized command administration.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:202b304371d95506"
+    ]
+  },
+  {
+    "id": "profile:specialist:political-islam",
+    "name": "Political Islam",
+    "role": "specialist",
+    "specialistId": "political-islam",
+    "itemIds": [
+      "fm-rn-1",
+      "fm-rn-2",
+      "fm-rn-3",
+      "fm-rn-4",
+      "fm-rn-5",
+      "fm-rn-6",
+      "fm-rn-7",
+      "fm-rn-8",
+      "fm-rn-9",
+      "fm-rn-10",
+      "fm-rn-11"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "religious-national-politics-module",
+    "variants": [
+      {
+        "id": "candidate:religious-national-politics-module:political-islam:base",
+        "sourceKey": "political-islam",
+        "name": "Political Islam",
+        "description": "Political projects that make Islamic identity or law central to state and movement politics.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "targetValue": 0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "targetValue": 0.65,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "targetValue": 0.55,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "targetValue": 0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "targetValue": 0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+            "targetValue": 0.7,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:interpretive-pluralism",
+            "targetValue": 0.15,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:religious-national-politics-module:political-islam:base:specialist:religious-national-politics-module:islamic-public-law",
+            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+            "operator": "minimum",
+            "minimum": 0.55
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "political-islam",
+    "rationale": "A broad family of projects that relates governance and public life to Islamic principles, sometimes including Sharia-based legislation, and ranging from democratic participation in pluralistic systems to more comprehensive Islamist state-building.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:d08fadd20d9c7f4d"
+    ]
+  },
+  {
+    "id": "profile:specialist:queer-anarchism",
+    "name": "Queer Anarchism",
+    "role": "specialist",
+    "specialistId": "queer-anarchism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "queer-anarchism",
+    "rationale": "A diverse theoretical and activist current connecting anarchist opposition to domination with queer resistance to institutions and norms that enforce sexual or gender conformity.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:a4b907a1e0417153"
+    ]
+  },
+  {
+    "id": "profile:specialist:queer-politics",
+    "name": "Queer Liberation / Queer Politics",
+    "role": "specialist",
+    "specialistId": "queer-politics",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "queer-politics",
+    "rationale": "A broad family seeking sexual and gender self-determination while critiquing heteronormativity, compulsory categories, policing, medicalization, and fixed identities; strategies range from rights reform to radical transformation.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:363e9f15af07ed6e"
+    ]
+  },
+  {
+    "id": "profile:specialist:radical-feminism",
+    "name": "Radical Feminism",
+    "role": "specialist",
+    "specialistId": "radical-feminism",
+    "itemIds": [
+      "fm-fem-1",
+      "fm-fem-2",
+      "fm-fem-3",
+      "fm-fem-4",
+      "fm-fem-5",
+      "fm-fem-6",
+      "fm-fem-7",
+      "fm-fem-8"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "feminist-faction-module",
+    "variants": [
+      {
+        "id": "candidate:feminist-faction-module:radical-feminism:base",
+        "sourceKey": "radical-feminism",
+        "name": "Radical Feminism",
+        "description": "Treats patriarchy and male dominance as a distinct structural system, with sexuality, reproduction, and family relations central sites of political power.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+            "targetValue": -0.1,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
+            "targetValue": 0.15,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+            "targetValue": 0,
+            "weight": 1
+          }
+        ],
+        "gates": [],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "radical-feminism",
+    "rationale": "A feminist tradition treating patriarchy and male power as fundamental structures reproduced through sexuality, family, culture, violence, and control of reproduction.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:f3abe9549d155858"
+    ]
+  },
+  {
+    "id": "profile:specialist:religious-nationalism",
+    "name": "Religious Nationalism",
+    "role": "specialist",
+    "specialistId": "religious-nationalism",
+    "itemIds": [
+      "fm-rn-1",
+      "fm-rn-2",
+      "fm-rn-3",
+      "fm-rn-4",
+      "fm-rn-5",
+      "fm-rn-6",
+      "fm-rn-7",
+      "fm-rn-8",
+      "fm-rn-9",
+      "fm-rn-10",
+      "fm-rn-11"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "religious-national-politics-module",
+    "variants": [
+      {
+        "id": "candidate:religious-national-politics-module:religious-nationalism:base",
+        "sourceKey": "religious-nationalism",
+        "name": "Religious Nationalism",
+        "description": "An umbrella fusion of religious identity and national goals whose institutional forms vary over law, citizenship, authority, and minority rights.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "targetValue": 0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "targetValue": 0.78,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:religious-national-fusion",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "targetValue": 0.05,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "targetValue": 0.25,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+            "targetValue": 0.15,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:jewish-national-self-determination",
+            "targetValue": 0.15,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:religious-national-politics-module:religious-nationalism:base:specialist:religious-national-politics-module:religious-national-fusion",
+            "constructId": "specialist:religious-national-politics-module:religious-national-fusion",
+            "operator": "minimum",
+            "minimum": 0.6
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "religious-nationalism",
+    "rationale": "Connects national identity or sovereignty with a particular religious tradition; depending on the variant, religion may function as cultural identity, a membership boundary, a source of public authority, or a state-building project.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:773c66fdd80832c7"
+    ]
+  },
+  {
+    "id": "profile:specialist:social-anarchism",
+    "name": "Social / Communal Anarchism",
+    "role": "specialist",
+    "specialistId": "social-anarchism",
+    "itemIds": [
+      "fm-an-1",
+      "fm-an-2",
+      "fm-an-3",
+      "fm-an-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "anarchist-families-module",
+    "variants": [
+      {
+        "id": "candidate:anarchist-families-module:social-anarchism:base",
+        "sourceKey": "social-anarchism",
+        "name": "Social / Communal Anarchism",
+        "description": "A family-level experimental affinity for anti-authoritarian, communal, and federated social organization. It does not make mutualism, market anarchism, syndicalism, anarcho-communism, or a single transition strategy a required subtype.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "targetValue": -0.25,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "targetValue": 0.7,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "targetValue": 0.8,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:anarchist-families-module:social-anarchism:base:specialist:anarchist-families-module:anti-authority",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "operator": "minimum",
+            "minimum": 0.6
+          },
+          {
+            "id": "gate:anarchist-families-module:social-anarchism:base:specialist:anarchist-families-module:communal-property",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "operator": "minimum",
+            "minimum": 0.35
+          },
+          {
+            "id": "gate:anarchist-families-module:social-anarchism:base:specialist:anarchist-families-module:direct-federation",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "operator": "minimum",
+            "minimum": 0.55
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "social-anarchism",
+    "rationale": "A broad anti-authoritarian family centered on voluntary association, rejection of imposed hierarchy, and decentralized communal or federated forms of social organization.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:1b5ab88e18ea0d1b"
+    ]
+  },
+  {
+    "id": "profile:specialist:socialist-feminism",
+    "name": "Socialist and Marxist Feminist Traditions",
+    "role": "specialist",
+    "specialistId": "socialist-feminism",
+    "itemIds": [
+      "fm-fem-1",
+      "fm-fem-2",
+      "fm-fem-3",
+      "fm-fem-4",
+      "fm-fem-5",
+      "fm-fem-6",
+      "fm-fem-7",
+      "fm-fem-8"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "feminist-faction-module",
+    "variants": [
+      {
+        "id": "candidate:feminist-faction-module:socialist-feminism:base",
+        "sourceKey": "socialist-feminism",
+        "name": "Socialist / Marxist Feminism",
+        "description": "Explains gender domination through the interaction of patriarchy with class, property, paid labor, unpaid care work, and social reproduction.",
+        "status": "existing-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+            "targetValue": 0,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+            "targetValue": 0.65,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+            "targetValue": -0.1,
+            "weight": 1
+          }
+        ],
+        "gates": [],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "socialist-feminism",
+    "rationale": "Analyzes gender domination through its interaction with capitalism, class, paid labor, unpaid care, social reproduction, and patriarchy.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:efbc47adc614ad4d"
+    ]
+  },
+  {
+    "id": "profile:specialist:stirnerism",
+    "name": "Egoist Anarchism",
+    "role": "specialist",
+    "specialistId": "stirnerism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "stirnerism",
+    "rationale": "Centers Max Stirner’s philosophy of egoism, which criticizes fixed ideas and externally imposed authority as constraints on the unique individual and leaves room for temporary voluntary associations.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:57a14b87949d679e"
+    ]
+  },
+  {
+    "id": "profile:specialist:strasserism",
+    "name": "Strasserite Fascism",
+    "role": "specialist",
+    "specialistId": "strasserism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "strasserism",
+    "rationale": "A radical fascist current within Nazism that combines palingenetic ultranationalism, authoritarian mass mobilization, and anti-capitalist rhetoric or demands; it should not be classified as socialism despite its historical use of socialist language.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9071166f063d1fa4"
+    ]
+  },
+  {
+    "id": "profile:specialist:syndicalist",
+    "name": "Syndicalist",
+    "role": "specialist",
+    "specialistId": "syndicalist",
+    "itemIds": [
+      "fm-so-1",
+      "fm-so-2",
+      "fm-so-3",
+      "fm-so-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "socialist-families-module",
+    "variants": [
+      {
+        "id": "candidate:socialist-families-module:syndicalist:base",
+        "sourceKey": "syndicalist",
+        "name": "Syndicalism",
+        "description": "Union organization and direct industrial action as the route to social transformation.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "targetValue": 0.8,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "targetValue": 0.65,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:reformism",
+            "targetValue": -0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "targetValue": 0.8,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:socialist-families-module:syndicalist:base:specialist:socialist-families-module:social-ownership",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "operator": "minimum",
+            "minimum": 0.55
+          },
+          {
+            "id": "gate:socialist-families-module:syndicalist:base:specialist:socialist-families-module:democratic-planning",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "operator": "minimum",
+            "minimum": 0.5
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "syndicalist",
+    "rationale": "Looks to federated labor unions, not parties or the state, as the vehicle for abolishing capitalism, with production coordinated directly through workers organizations won by direct action.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:fe775ed350541829"
+    ]
+  },
+  {
+    "id": "profile:specialist:techno-anarchism",
+    "name": "Techno-Anarchist / Crypto-Anarchist",
+    "role": "specialist",
+    "specialistId": "techno-anarchism",
+    "itemIds": [
+      "fm-te-1",
+      "fm-te-2",
+      "fm-te-3",
+      "fm-te-4",
+      "fm-te-5",
+      "fm-te-6"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "technology-governance-module",
+    "variants": [
+      {
+        "id": "candidate:technology-governance-module:techno-anarchism:base",
+        "sourceKey": "techno-anarchism",
+        "name": "Techno-Anarchism",
+        "description": "Decentralized technology and cryptography used against centralized control.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:technology-governance-module:expert-administration",
+            "targetValue": -0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:algorithmic-authority",
+            "targetValue": -0.25,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:decentralized-technology",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:accelerationist-strategy",
+            "targetValue": 0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:market-acceleration",
+            "targetValue": -0.1,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:centralized-administration",
+            "targetValue": -0.75,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:technology-governance-module:techno-anarchism:base:specialist:technology-governance-module:decentralized-technology",
+            "constructId": "specialist:technology-governance-module:decentralized-technology",
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          {
+            "id": "gate:technology-governance-module:techno-anarchism:base:specialist:technology-governance-module:centralized-administration",
+            "constructId": "specialist:technology-governance-module:centralized-administration",
+            "operator": "maximum",
+            "maximum": 0.2
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "techno-anarchism",
+    "rationale": "Uses decentralizing technologies, cryptography, networks, or peer-to-peer infrastructure to reduce state and corporate control and enable voluntary anti-authoritarian coordination.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:110d4ab1090b1d1f",
+      "citation:9534cf57bac8f9f1"
+    ]
+  },
+  {
+    "id": "profile:specialist:technocratic-centralist",
+    "name": "Technocratic Centralism",
+    "role": "specialist",
+    "specialistId": "technocratic-centralist",
+    "itemIds": [
+      "fm-te-1",
+      "fm-te-2",
+      "fm-te-3",
+      "fm-te-4",
+      "fm-te-5",
+      "fm-te-6"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "technology-governance-module",
+    "variants": [
+      {
+        "id": "candidate:technology-governance-module:technocratic-centralist:base",
+        "sourceKey": "technocratic-centralist",
+        "name": "Technocratic Centralism",
+        "description": "Centralized expert administration insulated from ordinary electoral pressure.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:technology-governance-module:expert-administration",
+            "targetValue": 0.95,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:algorithmic-authority",
+            "targetValue": 0.55,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:decentralized-technology",
+            "targetValue": -0.45,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:accelerationist-strategy",
+            "targetValue": 0.1,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:market-acceleration",
+            "targetValue": 0.15,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:technology-governance-module:centralized-administration",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:technology-governance-module:technocratic-centralist:base:specialist:technology-governance-module:expert-administration",
+            "constructId": "specialist:technology-governance-module:expert-administration",
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          {
+            "id": "gate:technology-governance-module:technocratic-centralist:base:specialist:technology-governance-module:centralized-administration",
+            "constructId": "specialist:technology-governance-module:centralized-administration",
+            "operator": "minimum",
+            "minimum": 0.6
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "technocratic-centralist",
+    "rationale": "A narrow compound position that assigns governing authority to technical or scientific experts and favors centralized administrative coordination in areas treated as technically complex; it is not a synonym for expert advice or evidence-informed policy.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:9e1c40cea0982cc0",
+      "citation:c8e42489b2242b4d"
+    ]
+  },
+  {
+    "id": "profile:specialist:theocrat",
+    "name": "Theocratic Politics",
+    "role": "specialist",
+    "specialistId": "theocrat",
+    "itemIds": [
+      "fm-rn-1",
+      "fm-rn-2",
+      "fm-rn-3",
+      "fm-rn-4",
+      "fm-rn-5",
+      "fm-rn-6",
+      "fm-rn-7",
+      "fm-rn-8",
+      "fm-rn-9",
+      "fm-rn-10",
+      "fm-rn-11"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "religious-national-politics-module",
+    "variants": [
+      {
+        "id": "candidate:religious-national-politics-module:theocrat:base",
+        "sourceKey": "theocrat",
+        "name": "Theocratic Politics (religious-legal authority)",
+        "description": "A family-level experimental affinity for final religious authority over civil-law legitimacy. It does not identify a religion, clerical office, constitutional form, or treatment of minorities.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:religious-national-politics-module:theocrat:base:specialist:religious-national-politics-module:religious-authority",
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "operator": "minimum",
+            "minimum": 0.65
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "theocrat",
+    "rationale": "Holds that legitimate public authority and civil law should derive from and enforce religious doctrine, with religious institutions or revealed law taking precedence over secular and pluralist norms.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:bf65879819fb8f4d",
+      "citation:1281263f480658cd"
+    ]
+  },
+  {
+    "id": "profile:specialist:third-way",
+    "name": "Third Way Social Democracy",
+    "role": "specialist",
+    "specialistId": "third-way",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "third-way",
+    "rationale": "A late twentieth-century social-democratic variant that combines egalitarian aims and social investment with market coordination, active labour-market policy, fiscal discipline, and a stronger emphasis on individual responsibility than earlier welfare-state models.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:fa0bbf92e00fbb53"
+    ]
+  },
+  {
+    "id": "profile:specialist:traditional-monarchist",
+    "name": "Traditional Monarchist",
+    "role": "specialist",
+    "specialistId": "traditional-monarchist",
+    "itemIds": [
+      "fm-mm-1",
+      "fm-mm-2",
+      "fm-mm-3",
+      "fm-mm-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "monarchist-municipal-module",
+    "variants": [
+      {
+        "id": "candidate:monarchist-municipal-module:traditional-monarchist:base",
+        "sourceKey": "traditional-monarchist",
+        "name": "Traditional Monarchism",
+        "description": "Hereditary authority grounded in historical and social continuity.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "targetValue": 0.85,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "targetValue": 0,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "targetValue": -0.1,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:monarchist-municipal-module:traditional-monarchist:base:specialist:monarchist-municipal-module:hereditary-authority",
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "operator": "minimum",
+            "minimum": 0.7
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "traditional-monarchist",
+    "rationale": "A conservative royalist movement that treats hereditary monarchy as historically or traditionally legitimate and often favors strong royal prerogative; positions differ on popular sovereignty, democratic representation, and constitutional limits.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:2aff035965effa6a"
+    ]
+  },
+  {
+    "id": "profile:specialist:trotskyism",
+    "name": "Trotskyism",
+    "role": "specialist",
+    "specialistId": "trotskyism",
+    "itemIds": [
+      "fm-so-1",
+      "fm-so-2",
+      "fm-so-3",
+      "fm-so-4"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "socialist-families-module",
+    "variants": [
+      {
+        "id": "candidate:socialist-families-module:trotskyism:base",
+        "sourceKey": "trotskyism",
+        "name": "Trotskyism",
+        "description": "Revolutionary Marxism emphasizing international transformation and party strategy.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "targetValue": 0.9,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "targetValue": 0.65,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:reformism",
+            "targetValue": -0.65,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "targetValue": 0.9,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:socialist-families-module:trotskyism:base:specialist:socialist-families-module:social-ownership",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          {
+            "id": "gate:socialist-families-module:trotskyism:base:specialist:socialist-families-module:revolutionary-strategy",
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          {
+            "id": "gate:socialist-families-module:trotskyism:base:specialist:socialist-families-module:reformism",
+            "constructId": "specialist:socialist-families-module:reformism",
+            "operator": "maximum",
+            "maximum": -0.3
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "trotskyism",
+    "rationale": "Combines revolutionary socialism with permanent international revolution, anti-Stalinist party politics, and critique of bureaucratic state socialism, rejecting both reformist gradualism and nationalist socialism.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:56017301d376fc2e"
+    ]
+  },
+  {
+    "id": "profile:specialist:voluntaryism",
+    "name": "Voluntaryism",
+    "role": "specialist",
+    "specialistId": "voluntaryism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "voluntaryism",
+    "rationale": "A family of views holding that political institutions should depend on voluntary support and association. Auberon Herbert defended a voluntarily funded minimal “Voluntary State”; later Voluntaryists developed anti-state and anti-electoral variants.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:d5c3521c63ba5720"
+    ]
+  },
+  {
+    "id": "profile:specialist:welfare-chauvinism",
+    "name": "Welfare Chauvinism",
+    "role": "specialist",
+    "specialistId": "welfare-chauvinism",
+    "itemIds": [],
+    "activation": {},
+    "outputType": "diagnostic",
+    "variants": [],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "welfare-chauvinism",
+    "rationale": "Combines a generous redistributive welfare state with a strictly bounded national membership, holding that social provision is a right of the in-group financed and reserved for citizens, while restricting immigration and access on grounds of national belonging and fiscal sustainability.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:439260bf94ad6598"
+    ]
+  },
+  {
+    "id": "profile:specialist:zionism",
+    "name": "Political Zionism",
+    "role": "specialist",
+    "specialistId": "zionism",
+    "itemIds": [
+      "fm-rn-1",
+      "fm-rn-2",
+      "fm-rn-3",
+      "fm-rn-4",
+      "fm-rn-5",
+      "fm-rn-6",
+      "fm-rn-7",
+      "fm-rn-8",
+      "fm-rn-9",
+      "fm-rn-10",
+      "fm-rn-11"
+    ],
+    "activation": {},
+    "outputType": "diagnostic",
+    "moduleId": "religious-national-politics-module",
+    "variants": [
+      {
+        "id": "candidate:religious-national-politics-module:zionism:base",
+        "sourceKey": "zionism",
+        "name": "Zionism",
+        "description": "A family of Jewish national self-determination projects with divergent territorial and constitutional variants.",
+        "status": "candidate-specialist",
+        "requirements": [
+          {
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "targetValue": 0.3,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "targetValue": 0.75,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "targetValue": 0.2,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "targetValue": 0.35,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "targetValue": 0.5,
+            "weight": 1
+          },
+          {
+            "constructId": "specialist:religious-national-politics-module:jewish-national-self-determination",
+            "targetValue": 0.95,
+            "weight": 1
+          }
+        ],
+        "gates": [
+          {
+            "id": "gate:religious-national-politics-module:zionism:base:specialist:religious-national-politics-module:jewish-national-self-determination",
+            "constructId": "specialist:religious-national-politics-module:jewish-national-self-determination",
+            "operator": "minimum",
+            "minimum": 0.65
+          }
+        ],
+        "provenanceRefs": [
+          "source:v1-canonical-manifest"
+        ]
+      }
+    ],
+    "requirements": [],
+    "gates": [],
+    "status": "research-candidate",
+    "version": "ideology-registry-2026-08-clean-v1",
+    "targetNodeId": "zionism",
+    "rationale": "Identifies Jewish national self-determination and statehood in the Land of Israel as a political aim, without treating liberal, socialist, religious, revisionist, or territorial positions within Zionism as the same doctrine.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "citation:726584f99844985f",
+      "citation:e7eabd8358fb1923",
+      "citation:72db72dba5db2c2e"
+    ]
+  }
+]

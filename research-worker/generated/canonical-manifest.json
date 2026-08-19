@@ -23378,7 +23378,7 @@
           "cultural-plasticity": 1,
           "gradualism-vs-immediatism": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -23454,7 +23454,7 @@
           "centralization-preference": 1,
           "secularism-religious": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -23530,7 +23530,7 @@
           "liberty-noninterference": 1,
           "market-process-confidence": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -23604,7 +23604,7 @@
           "equality-theory": 1,
           "anti-domination": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -23674,7 +23674,7 @@
         "minimumItemCounts": {
           "human-nature-priority": 2
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -23750,7 +23750,7 @@
           "market-process-confidence": 1,
           "cultural-plasticity": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -23826,7 +23826,7 @@
           "equality-theory": 1,
           "anti-domination": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -23902,7 +23902,7 @@
           "liberty-noninterference": 1,
           "market-process-confidence": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -23978,7 +23978,7 @@
           "liberty-noninterference": 1,
           "market-process-confidence": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -24052,7 +24052,7 @@
           "equality-theory": 1,
           "anti-domination": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -24130,7 +24130,7 @@
           "reform-vs-revolution": 1,
           "state-action-vs-exit": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -24202,7 +24202,7 @@
           "political-community-boundary": 1,
           "cultural-plasticity": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -24274,7 +24274,7 @@
           "equality-theory": 1,
           "anti-domination": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -24346,7 +24346,7 @@
           "liberty-noninterference": 1,
           "anti-domination": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -24420,7 +24420,7 @@
           "equality-theory": 1,
           "state-action-vs-exit": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       },
       {
@@ -24494,7 +24494,7 @@
           "equality-theory": 1,
           "state-action-vs-exit": 1
         },
-        "status": "validated-scoped-public",
+        "status": "compatibility-scored-unvalidated",
         "rationale": ""
       }
     ],

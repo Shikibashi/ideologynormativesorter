@@ -1,0 +1,618 @@
+[
+  {
+    "id": "profile:modifier:anti-imperialism",
+    "name": "Anti-imperial restraint",
+    "role": "modifier",
+    "modifierId": "modifier:anti-imperialism",
+    "availability": "core-construct",
+    "constructName": "Anti-imperial restraint",
+    "note": "This limited core construct concerns equal moral standing across borders and resistance to domination or externally imposed rule. It does not settle pacifism, defensive force, trade policy, or every historical anti-colonial program.",
+    "requirements": [],
+    "indicators": [
+      {
+        "itemId": "q0321",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Equal moral standing for foreign civilians."
+      },
+      {
+        "itemId": "q0322",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Rejects prestige-, empire-, or crusade-driven use of a state population."
+      },
+      {
+        "itemId": "q0323",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Distinguishes defense from regime transformation abroad."
+      },
+      {
+        "itemId": "q0326",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Separates solidarity with oppressed people from military control over them."
+      }
+    ],
+    "minimumAnsweredItems": 2,
+    "gates": [],
+    "status": "core-construct",
+    "version": "2026-08-modifier-construct-v2",
+    "targetNodeId": "anti-imperialism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "minimumEvidenceRatio": 0.4,
+    "fitThreshold": 0.65
+  },
+  {
+    "id": "profile:modifier:civic-nationalist",
+    "name": "Civic basis of national membership",
+    "role": "modifier",
+    "modifierId": "modifier:civic-nationalist",
+    "availability": "catalog-only",
+    "constructName": "Civic basis of national membership",
+    "note": "The core measures civic membership and rejection of ancestry-based exclusion, but not whether national attachment or self-determination is politically primary. It must not relabel liberal constitutionalism, cosmopolitanism, or equal-citizenship views as civic nationalism.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "civic-nationalist",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:civil-libertarianism",
+    "name": "Civil-liberties constraint",
+    "role": "modifier",
+    "modifierId": "modifier:civil-libertarianism",
+    "availability": "core-construct",
+    "constructName": "Civil-liberties constraint",
+    "note": "This construct concerns strong default protection for speech, privacy, association, religion, due process, and bodily autonomy. It does not infer a property theory, market program, or minimal-state position.",
+    "requirements": [],
+    "indicators": [
+      {
+        "itemId": "q0161",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests protection for dissenting and unpopular expression."
+      },
+      {
+        "itemId": "q0164",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests privacy as a condition for dissent and minority life."
+      },
+      {
+        "itemId": "q0173",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests a default rights regime across speech, encryption, association, religion, and due process."
+      }
+    ],
+    "minimumAnsweredItems": 2,
+    "gates": [],
+    "status": "core-construct",
+    "version": "2026-08-modifier-construct-v2",
+    "targetNodeId": "civil-libertarianism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "minimumEvidenceRatio": 0.4,
+    "fitThreshold": 0.65
+  },
+  {
+    "id": "profile:modifier:communitarianism",
+    "name": "Socially embedded obligation and the common good",
+    "role": "modifier",
+    "modifierId": "modifier:communitarianism",
+    "availability": "catalog-only",
+    "constructName": "Socially embedded obligation and the common good",
+    "note": "The core bank addresses community-related policies but does not yet distinguish a communitarian account of persons and obligations from conservative tradition, civic republicanism, welfare solidarity, or localism.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "communitarianism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:cosmopolitanism",
+    "name": "Equal moral concern across borders",
+    "role": "modifier",
+    "modifierId": "modifier:cosmopolitanism",
+    "availability": "core-construct",
+    "constructName": "Equal moral concern across borders",
+    "note": "This construct concerns moral standing and layered membership beyond nationality. It does not choose world government, open borders in every circumstance, or one theory of distributive justice.",
+    "requirements": [],
+    "indicators": [
+      {
+        "itemId": "q0201",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Rejects birthplace as a morally sufficient basis for excluding peaceful people from ordinary opportunity."
+      },
+      {
+        "itemId": "q0321",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Treats foreign civilians as no less morally important because of political borders."
+      },
+      {
+        "itemId": "q0233",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Permits local, regional, national, and cosmopolitan affiliations to coexist."
+      }
+    ],
+    "minimumAnsweredItems": 2,
+    "gates": [],
+    "status": "core-construct",
+    "version": "2026-08-modifier-construct-v2",
+    "targetNodeId": "cosmopolitanism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "minimumEvidenceRatio": 0.4,
+    "fitThreshold": 0.65
+  },
+  {
+    "id": "profile:modifier:decentralist-orientation",
+    "name": "Polycentric and decentralized institutional preference",
+    "role": "modifier",
+    "modifierId": "modifier:decentralist-orientation",
+    "availability": "core-construct",
+    "constructName": "Polycentric and decentralized institutional preference",
+    "note": "This construct concerns preference for plural, locally responsive, and contestable institutions. It does not identify separatism, anarchism, local-majoritarian rule, or one economic system.",
+    "requirements": [],
+    "indicators": [
+      {
+        "itemId": "q0015",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests dispersing reform authority across independently accountable institutions."
+      },
+      {
+        "itemId": "q0018",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests divided rather than unitary executive control of enforcement agencies."
+      },
+      {
+        "itemId": "q0053",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests decentralized experimentation instead of one mandatory production plan."
+      }
+    ],
+    "minimumAnsweredItems": 2,
+    "gates": [],
+    "status": "core-construct",
+    "version": "2026-08-modifier-construct-v2",
+    "targetNodeId": "decentralist-orientation",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "minimumEvidenceRatio": 0.4,
+    "fitThreshold": 0.65
+  },
+  {
+    "id": "profile:modifier:economic-nationalism",
+    "name": "National productive capacity and strategic autonomy",
+    "role": "modifier",
+    "modifierId": "modifier:economic-nationalism",
+    "availability": "catalog-only",
+    "constructName": "National productive capacity and strategic autonomy",
+    "note": "The core bank has trade and state-capacity material, but no direct construct set separating national productive priority from protectionism, developmentalism, public ownership, or ordinary market skepticism.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "economic-nationalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:ethnonationalist",
+    "name": "Ethnic centrality in national membership",
+    "role": "modifier",
+    "modifierId": "modifier:ethnonationalist",
+    "availability": "focused-follow-up",
+    "constructName": "Ethnic centrality in national membership",
+    "note": "Ethnic belonging, assimilation, minority self-determination, and exclusion are distinct variants. The identity-and-sovereignty follow-up is required instead of inferring this sensitive construct from nationalism, tradition, or immigration views.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "focused-follow-up",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "ethnonationalist",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:expansionist-nationalism",
+    "name": "Expansionist territorial-national project",
+    "role": "modifier",
+    "modifierId": "modifier:expansionist-nationalism",
+    "availability": "catalog-only",
+    "constructName": "Expansionist territorial-national project",
+    "note": "The core contains restraint and military-power material, but not a direct construct set for territorial expansion, imperial project, annexation, or irredentism.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "expansionist-nationalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:feminist-orientation",
+    "name": "Gendered power and liberation orientation",
+    "role": "modifier",
+    "modifierId": "modifier:feminist-orientation",
+    "availability": "core-construct",
+    "constructName": "Gendered power and liberation orientation",
+    "note": "This construct concerns gendered hierarchy, dependency, and liberation as political concerns. It does not select liberal, radical, socialist, Black, queer, or anarchist feminist theory; those remain focused follow-up distinctions.",
+    "requirements": [],
+    "indicators": [
+      {
+        "itemId": "q0261",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests freedom from coercive household forms."
+      },
+      {
+        "itemId": "q0264",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests whether formal family consent is adequate under blocked exit, violence, or dependency."
+      },
+      {
+        "itemId": "q0421",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests structural gender and sexual hierarchy beyond formal equal rights."
+      }
+    ],
+    "minimumAnsweredItems": 2,
+    "gates": [],
+    "status": "core-construct",
+    "version": "2026-08-modifier-construct-v2",
+    "targetNodeId": "feminist-orientation",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "minimumEvidenceRatio": 0.4,
+    "fitThreshold": 0.65
+  },
+  {
+    "id": "profile:modifier:fiscal-conservatism",
+    "name": "Fiscal restraint and public-finance orientation",
+    "role": "modifier",
+    "modifierId": "modifier:fiscal-conservatism",
+    "availability": "catalog-only",
+    "constructName": "Fiscal restraint and public-finance orientation",
+    "note": "Debt sustainability, deficit restraint, balanced-budget rules, tax structure, spending cuts, and austerity are not interchangeable. The present bank has no direct multi-item fiscal construct and must not use generic small-state or market views as a proxy.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "fiscal-conservatism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:internationalism",
+    "name": "Cooperation and solidarity across political communities",
+    "role": "modifier",
+    "modifierId": "modifier:internationalism",
+    "availability": "catalog-only",
+    "constructName": "Cooperation and solidarity across political communities",
+    "note": "The core distinguishes cross-border concern from institutional cooperation imperfectly. A future construct must separate international cooperation from cosmopolitan moral scope and from a specific world-federal institutional proposal.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "internationalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:left-wing-nationalism",
+    "name": "Left-national host combination",
+    "role": "modifier",
+    "modifierId": "modifier:left-wing-nationalism",
+    "availability": "catalog-only",
+    "constructName": "Left-national host combination",
+    "note": "This label combines a national orientation with a particular egalitarian or anti-colonial host ideology. It must not be reconstructed by merging nearby nationalism and left-primary scores without direct evidence of the combination.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "left-wing-nationalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:left-wing-populism",
+    "name": "Left-populist thin-plus-host combination",
+    "role": "modifier",
+    "modifierId": "modifier:left-wing-populism",
+    "availability": "catalog-only",
+    "constructName": "Left-populist thin-plus-host combination",
+    "note": "The core bank does not yet measure people-centrism, anti-elitism, and anti-pluralism as a distinct thin construct, so it cannot combine that absent evidence with an egalitarian host profile.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "left-wing-populism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:multiculturalism",
+    "name": "Plural accommodation with equal status",
+    "role": "modifier",
+    "modifierId": "modifier:multiculturalism",
+    "availability": "core-construct",
+    "constructName": "Plural accommodation with equal status",
+    "note": "This construct concerns equal standing alongside voluntary cultural association and plural difference. It does not settle every accommodation, self-government, representation, religious-exemption, or reparative-policy dispute.",
+    "requirements": [],
+    "indicators": [
+      {
+        "itemId": "q0281",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests rejection of inherited group status as a basis for legal standing and opportunity."
+      },
+      {
+        "itemId": "q0282",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests equal citizenship without making cultural uniformity a condition."
+      },
+      {
+        "itemId": "q0293",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests equal individual rights alongside voluntary cultural association."
+      }
+    ],
+    "minimumAnsweredItems": 2,
+    "gates": [],
+    "status": "core-construct",
+    "version": "2026-08-modifier-construct-v2",
+    "targetNodeId": "multiculturalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "minimumEvidenceRatio": 0.4,
+    "fitThreshold": 0.65
+  },
+  {
+    "id": "profile:modifier:nationalism",
+    "name": "National attachment, continuity, and civic membership",
+    "role": "modifier",
+    "modifierId": "modifier:nationalism",
+    "availability": "catalog-only",
+    "constructName": "National attachment, continuity, and civic membership",
+    "note": "The core contains individual questions about permissible civic belonging, national memory, and cultural continuity. It does not yet directly distinguish national political priority from cosmopolitan duty, civic patriotism, cultural conservatism, or immigration restriction, so it cannot support an ordinary nationalism result.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "nationalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:populism",
+    "name": "People-versus-elite thin ideology",
+    "role": "modifier",
+    "modifierId": "modifier:populism",
+    "availability": "catalog-only",
+    "constructName": "People-versus-elite thin ideology",
+    "note": "People-centrism, anti-elitism, and anti-pluralism require direct joint measurement. Generic distrust of institutions, nativism, direct democracy, or host ideology is not a valid proxy.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "populism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:progressivism",
+    "name": "Progressive social-improvement orientation",
+    "role": "modifier",
+    "modifierId": "modifier:progressivism",
+    "availability": "catalog-only",
+    "constructName": "Progressive social-improvement orientation",
+    "note": "Reform strategy and cultural change appear in the core bank, but it does not yet distinguish a progressive orientation from liberalism, social democracy, radical democracy, or a specific reform program.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "progressivism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:regionalism",
+    "name": "Regional political identity and authority",
+    "role": "modifier",
+    "modifierId": "modifier:regionalism",
+    "availability": "catalog-only",
+    "constructName": "Regional political identity and authority",
+    "note": "The core distinguishes local and national scale but does not directly measure regional identity, regional authority, or the institutional forms through which regionalism is expressed.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "regionalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:right-wing-populism",
+    "name": "Right-populist thin-plus-host combination",
+    "role": "modifier",
+    "modifierId": "modifier:right-wing-populism",
+    "availability": "catalog-only",
+    "constructName": "Right-populist thin-plus-host combination",
+    "note": "The core bank does not yet measure the required populist thin ideology separately from nationalism, nativism, social conservatism, or market and welfare views.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "right-wing-populism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:separatist-nationalism",
+    "name": "Separatist national self-determination project",
+    "role": "modifier",
+    "modifierId": "modifier:separatist-nationalism",
+    "availability": "catalog-only",
+    "constructName": "Separatist national self-determination project",
+    "note": "The core discusses safeguards around secession but does not measure whether a respondent favors independent statehood rather than autonomy, federation, or shared-state self-government.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "separatist-nationalism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:social-conservatism",
+    "name": "Social and moral traditionalism",
+    "role": "modifier",
+    "modifierId": "modifier:social-conservatism",
+    "availability": "catalog-only",
+    "constructName": "Social and moral traditionalism",
+    "note": "The core measures particular family, religion, and cultural-policy claims, but it does not yet isolate a non-theocratic, non-nationalist social-conservative orientation from support for any one religious or legal enforcement mechanism.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "social-conservatism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "profile:modifier:technocratic-orientation",
+    "name": "Accountable evidence-guided administration",
+    "role": "modifier",
+    "modifierId": "modifier:technocratic-orientation",
+    "availability": "core-construct",
+    "constructName": "Accountable evidence-guided administration",
+    "note": "This construct concerns confidence in transparent, contestable technical expertise and implementation. It does not infer insulated expert rule or centralized administration, which remain a separate specialist compound.",
+    "requirements": [],
+    "indicators": [
+      {
+        "itemId": "q0458",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests whether checkable methods and reported uncertainty improve expert advice."
+      },
+      {
+        "itemId": "q0460",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests whether independent technical expertise can improve public decisions when openly contestable."
+      },
+      {
+        "itemId": "q0476",
+        "direction": 1,
+        "weight": 1,
+        "rationale": "Tests accountable challenge, transparency, and limits around expert recommendations."
+      }
+    ],
+    "minimumAnsweredItems": 2,
+    "gates": [],
+    "status": "core-construct",
+    "version": "2026-08-modifier-construct-v2",
+    "targetNodeId": "technocratic-orientation",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "minimumEvidenceRatio": 0.4,
+    "fitThreshold": 0.65
+  },
+  {
+    "id": "profile:modifier:transhumanism",
+    "name": "Deliberate human enhancement orientation",
+    "role": "modifier",
+    "modifierId": "modifier:transhumanism",
+    "availability": "catalog-only",
+    "constructName": "Deliberate human enhancement orientation",
+    "note": "The core contains one human-enhancement item but no multi-item construct distinguishing voluntary enhancement from privacy, anti-surveillance, technology optimism, or coercive deployment.",
+    "requirements": [],
+    "indicators": [],
+    "gates": [],
+    "status": "catalog-only",
+    "version": "2026-08-modifier-construct-v1",
+    "targetNodeId": "transhumanism",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  }
+]

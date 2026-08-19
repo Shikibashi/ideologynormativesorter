@@ -151,9 +151,9 @@ export const broadLabelsPart01: IdeologyLabel[] = [
     family: "liberal",
     subfamily: "right-libertarian",
     description:
-      "A broad right-libertarian family emphasizing voluntary exchange, strong personal liberty, private or use-based property claims, and skepticism toward centralized political authority while leaving room for disagreement over the state and institutional design.",
+      "A broad right-libertarian family emphasizing voluntary exchange, strong personal liberty, rights-based private property claims, and skepticism toward centralized political authority while leaving room for disagreement over the state and institutional design.",
     usageNote:
-      "This public name separates the right-libertarian property-and-state lineage from market anarchism as a broader and contested anarchist field. It is not a synonym for anarcho-capitalism, minarchism, Georgism, Objectivism, or every market-liberal position.",
+      "This public name separates the rights-based right-libertarian property-and-state lineage from market anarchism as a broader and contested anarchist field. Use-based, mutualist, Georgist, and left-market property claims require separate specialist constructs. It is not a synonym for anarcho-capitalism, minarchism, Georgism, Objectivism, or every market-liberal position.",
     cautionNote:
       "Right-libertarian traditions differ over the legitimacy of the state, property acquisition, public goods, social obligations, and whether anarcho-capitalism should count as anarchism.",
     philosophies: ["Liberalism", "Libertarianism", "Right-Libertarianism"],

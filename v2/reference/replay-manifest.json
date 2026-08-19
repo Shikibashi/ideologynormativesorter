@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "replayVersion": "v2-replay-v2.phase10.1",
+  "referenceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
+  "caseManifest": "v2/reference/cases/manifest.json",
+  "deterministic": true,
+  "cases": [
+    {
+      "id": "empty-core",
+      "input": "v2/reference/cases/empty-core/input.json",
+      "expectedV1": "v2/reference/cases/empty-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/empty-core/expected-v2.json"
+    },
+    {
+      "id": "min-core",
+      "input": "v2/reference/cases/min-core/input.json",
+      "expectedV1": "v2/reference/cases/min-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/min-core/expected-v2.json"
+    },
+    {
+      "id": "complete-core",
+      "input": "v2/reference/cases/complete-core/input.json",
+      "expectedV1": "v2/reference/cases/complete-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/complete-core/expected-v2.json"
+    },
+    {
+      "id": "mid-core",
+      "input": "v2/reference/cases/mid-core/input.json",
+      "expectedV1": "v2/reference/cases/mid-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/mid-core/expected-v2.json"
+    },
+    {
+      "id": "max-core",
+      "input": "v2/reference/cases/max-core/input.json",
+      "expectedV1": "v2/reference/cases/max-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/max-core/expected-v2.json"
+    },
+    {
+      "id": "alternating-core",
+      "input": "v2/reference/cases/alternating-core/input.json",
+      "expectedV1": "v2/reference/cases/alternating-core/expected-v1.json",
+      "expectedV2": "v2/reference/cases/alternating-core/expected-v2.json"
+    },
+    {
+      "id": "mixed-states",
+      "input": "v2/reference/cases/mixed-states/input.json",
+      "expectedV1": "v2/reference/cases/mixed-states/expected-v1.json",
+      "expectedV2": "v2/reference/cases/mixed-states/expected-v2.json"
+    },
+    {
+      "id": "statement-choice",
+      "input": "v2/reference/cases/statement-choice/input.json",
+      "expectedV1": "v2/reference/cases/statement-choice/expected-v1.json",
+      "expectedV2": "v2/reference/cases/statement-choice/expected-v2.json"
+    },
+    {
+      "id": "salience-low",
+      "input": "v2/reference/cases/salience-low/input.json",
+      "expectedV1": "v2/reference/cases/salience-low/expected-v1.json",
+      "expectedV2": "v2/reference/cases/salience-low/expected-v2.json"
+    },
+    {
+      "id": "salience-high",
+      "input": "v2/reference/cases/salience-high/input.json",
+      "expectedV1": "v2/reference/cases/salience-high/expected-v1.json",
+      "expectedV2": "v2/reference/cases/salience-high/expected-v2.json"
+    },
+    {
+      "id": "random-seed-20260819",
+      "input": "v2/reference/cases/random-seed-20260819/input.json",
+      "expectedV1": "v2/reference/cases/random-seed-20260819/expected-v1.json",
+      "expectedV2": "v2/reference/cases/random-seed-20260819/expected-v2.json"
+    },
+    {
+      "id": "boundary-thresholds",
+      "input": "v2/reference/cases/boundary-thresholds/input.json",
+      "expectedV1": "v2/reference/cases/boundary-thresholds/expected-v1.json",
+      "expectedV2": "v2/reference/cases/boundary-thresholds/expected-v2.json"
+    },
+    {
+      "id": "specialist-anarchist-families-module",
+      "input": "v2/reference/cases/specialist-anarchist-families-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-anarchist-families-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-anarchist-families-module/expected-v2.json"
+    },
+    {
+      "id": "specialist-conservative-variants-module",
+      "input": "v2/reference/cases/specialist-conservative-variants-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-conservative-variants-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-conservative-variants-module/expected-v2.json"
+    },
+    {
+      "id": "specialist-feminist-faction-module",
+      "input": "v2/reference/cases/specialist-feminist-faction-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-feminist-faction-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-feminist-faction-module/expected-v2.json"
+    },
+    {
+      "id": "specialist-green-morphology-module",
+      "input": "v2/reference/cases/specialist-green-morphology-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-green-morphology-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-green-morphology-module/expected-v2.json"
+    },
+    {
+      "id": "specialist-identity-sovereignty-module",
+      "input": "v2/reference/cases/specialist-identity-sovereignty-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-identity-sovereignty-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-identity-sovereignty-module/expected-v2.json"
+    },
+    {
+      "id": "specialist-monarchist-municipal-module",
+      "input": "v2/reference/cases/specialist-monarchist-municipal-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-monarchist-municipal-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-monarchist-municipal-module/expected-v2.json"
+    },
+    {
+      "id": "specialist-religious-national-politics-module",
+      "input": "v2/reference/cases/specialist-religious-national-politics-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-religious-national-politics-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-religious-national-politics-module/expected-v2.json"
+    },
+    {
+      "id": "specialist-socialist-families-module",
+      "input": "v2/reference/cases/specialist-socialist-families-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-socialist-families-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-socialist-families-module/expected-v2.json"
+    },
+    {
+      "id": "specialist-technology-governance-module",
+      "input": "v2/reference/cases/specialist-technology-governance-module/input.json",
+      "expectedV1": "v2/reference/cases/specialist-technology-governance-module/expected-v1.json",
+      "expectedV2": "v2/reference/cases/specialist-technology-governance-module/expected-v2.json"
+    }
+  ]
+}

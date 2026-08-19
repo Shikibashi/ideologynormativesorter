@@ -35,6 +35,8 @@ function taxonomyStatusLabel(
   if (!taxonomy) return null;
   if (taxonomy.measurementStatus === "core-primary")
     return "primary scored family";
+  if (taxonomy.measurementStatus === "core-primary-unvalidated")
+    return "primary scored family; empirical validation pending";
   if (taxonomy.measurementStatus === "modifier-scored")
     return "modifier scored independently";
   if (taxonomy.measurementStatus === "modifier-follow-up")

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "v2-golden-v1",
+  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "resultSchemaVersion": "result-v2.phase9.1",
+  "cases": [
+    {
+      "id": "complete-core",
+      "input": "complete-core/input.json",
+      "expectedResult": "complete-core/expected-result.json",
+      "canonicalResult": "complete-core/expected-result.canonical.json",
+      "canonicalSha256": "bae2854ff7256ea207cea9a4b782d8e1e71d8d1e0694e32640d6c0a13ce6dc60"
+    }
+  ]
+}
