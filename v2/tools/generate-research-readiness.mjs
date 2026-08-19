@@ -51,6 +51,6 @@ const receipt = {
     architectureBoundary: process.env.RESEARCH_ARCHITECTURE_VERIFIED === "true",
   },
 };
-await mkdir(new URL("../v2/research/", root), { recursive: true });
-await writeFile(new URL("../v2/research/research-readiness-receipt.json", root), `${JSON.stringify(receipt, null, 2)}\n`);
+await mkdir(new URL("v2/research/", root), { recursive: true });
+await writeFile(new URL("v2/research/research-readiness-receipt.json", root), `${JSON.stringify(receipt, null, 2)}\n`);
 console.log(JSON.stringify(receipt));
