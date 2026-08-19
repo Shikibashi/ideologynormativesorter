@@ -1,0 +1,3865 @@
+{
+  "researchSchemaVersion": "research-v2.phase13.1",
+  "researchProtocolVersion": "research-protocol-v2.phase13.1",
+  "consentVersion": "consent-v2.phase13.1",
+  "maxPayloadBytes": 131072,
+  "metadata": {
+    "contentSchemaVersion": "content-schema-v2.phase8.1",
+    "contentVersion": "v2-content-phase8.1",
+    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+    "scoringVersion": "scoring-v2.phase7.1",
+    "responseSchemaVersion": "response-v2.phase1.1",
+    "resultSchemaVersion": "result-v2.phase9.1"
+  },
+  "items": [
+    {
+      "id": "fm-an-1",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "anarchist-families-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-an-2",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "anarchist-families-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-an-3",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "anarchist-families-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-an-4",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "anarchist-families-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-co-1",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "conservative-variants-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-co-2",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "conservative-variants-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-co-3",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "conservative-variants-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-co-4",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "conservative-variants-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-fem-1",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "feminist-faction-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-fem-2",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "feminist-faction-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-fem-3",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "feminist-faction-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-fem-4",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "feminist-faction-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-fem-5",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "feminist-faction-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-fem-6",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "feminist-faction-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-fem-7",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "feminist-faction-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-fem-8",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "feminist-faction-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-gr-1",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "green-morphology-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-gr-2",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "green-morphology-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-gr-3",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "green-morphology-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-gr-4",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "green-morphology-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-gr-5",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "green-morphology-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-1",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-10",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-11",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-12",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-13",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-14",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-15",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-16",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-17",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-18",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-19",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-2",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-20",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-21",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-22",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-3",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-4",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-5",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-6",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-7",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-8",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-id-9",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "identity-sovereignty-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-mm-1",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "monarchist-municipal-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-mm-2",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "monarchist-municipal-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-mm-3",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "monarchist-municipal-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-mm-4",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "monarchist-municipal-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-1",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-10",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-11",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-2",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-3",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-4",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-5",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-6",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-7",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-8",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-rn-9",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "religious-national-politics-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-so-1",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "socialist-families-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-so-2",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "socialist-families-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-so-3",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "socialist-families-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-so-4",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "socialist-families-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-te-1",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "technology-governance-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-te-2",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "technology-governance-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-te-3",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "technology-governance-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-te-4",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "technology-governance-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-te-5",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "technology-governance-module",
+      "optionIds": []
+    },
+    {
+      "id": "fm-te-6",
+      "role": "specialist",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "moduleId": "technology-governance-module",
+      "optionIds": []
+    },
+    {
+      "id": "q0001",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0003",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0004",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0005",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0006",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0007",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0012",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0015",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0016",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0017",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0018",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0019",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0021",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0022",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0023",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0024",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0025",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0026",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0027",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0029",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0030",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0033",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0034",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0035",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0036",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0038",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0039",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0041",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0042",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0043",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0044",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0045",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0046",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0047",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0048",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0050",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0053",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0054",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0055",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0058",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0059",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0061",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0062",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0063",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0064",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0065",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0066",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0067",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0073",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0074",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0075",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0076",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0077",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0079",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0081",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0082",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0083",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0084",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0085",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0089",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0093",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0094",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0095",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0096",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0097",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0098",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0099",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0101",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0102",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0104",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0105",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0106",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0107",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0108",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0114",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0115",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0116",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0117",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0119",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0121",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0122",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0123",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0124",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0125",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0126",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0127",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0128",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0130",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0133",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0134",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0135",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0136",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0137",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0138",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0139",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0141",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0142",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0144",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0145",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0146",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0147",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0148",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0153",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0154",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0155",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0156",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0157",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0158",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0159",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0161",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0162",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0163",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0164",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0165",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0166",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0171",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0173",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0174",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0175",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0176",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0177",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0178",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0179",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0181",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0182",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0183",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0184",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0185",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0186",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0188",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0190",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0191",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0193",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0195",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0197",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0198",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0199",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0201",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0202",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0203",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0204",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0205",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0206",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0207",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0208",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0213",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0214",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0215",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0216",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0217",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0219",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0221",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0222",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0223",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0224",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0225",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0226",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0227",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0233",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0234",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0235",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0236",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0239",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0241",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0242",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0243",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0244",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0245",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0246",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0248",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0253",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0254",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0255",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0256",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0257",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0258",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0259",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0261",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0262",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0263",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0264",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0265",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0266",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0269",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0274",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0275",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0276",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0278",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0279",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0281",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0282",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0283",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0284",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0285",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0293",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0294",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0295",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0296",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0299",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0301",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0302",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0303",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0304",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0305",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0307",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0308",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0313",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0314",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0315",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0316",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0317",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0318",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0319",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0321",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0322",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0323",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0324",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0325",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0326",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0328",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0329",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0334",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0336",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0337",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0338",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0339",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0341",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0342",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0343",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0344",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0345",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0347",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0348",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0350",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0354",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0355",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0356",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0357",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0359",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0361",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0362",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0363",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0364",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0365",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0368",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0374",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0375",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0376",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0377",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0379",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0381",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0382",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0383",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0384",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0385",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0394",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0396",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0397",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0399",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0401",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0402",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0403",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0404",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0405",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0406",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0407",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0408",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0411",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0412",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0413",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0414",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0415",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0417",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0418",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0420",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0421",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0423",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0424",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0425",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0427",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0428",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0429",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0430",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0431",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0432",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0433",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0434",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0435",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0436",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0437",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0438",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0439",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0440",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0441",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0442",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0443",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0444",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0445",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0446",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0447",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0448",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0449",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0450",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0451",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0452",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0453",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0454",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0455",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0456",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0457",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0458",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0459",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0460",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0461",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0462",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0463",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0464",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0465",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0466",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0467",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0468",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0469",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0470",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0471",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0472",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0473",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0474",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0475",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0476",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0477",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0478",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0479",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "sq01",
+      "role": "core",
+      "responseType": "statement-choice",
+      "optionIds": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "sq02",
+      "role": "core",
+      "responseType": "statement-choice",
+      "optionIds": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "sq06",
+      "role": "core",
+      "responseType": "statement-choice",
+      "optionIds": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "sq07",
+      "role": "core",
+      "responseType": "statement-choice",
+      "optionIds": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "sq13",
+      "role": "core",
+      "responseType": "statement-choice",
+      "optionIds": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "sq15",
+      "role": "core",
+      "responseType": "statement-choice",
+      "optionIds": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    }
+  ],
+  "specialistModules": [
+    {
+      "id": "anarchist-families-module",
+      "itemIds": [
+        "fm-an-1",
+        "fm-an-2",
+        "fm-an-3",
+        "fm-an-4"
+      ]
+    },
+    {
+      "id": "conservative-variants-module",
+      "itemIds": [
+        "fm-co-1",
+        "fm-co-2",
+        "fm-co-3",
+        "fm-co-4"
+      ]
+    },
+    {
+      "id": "feminist-faction-module",
+      "itemIds": [
+        "fm-fem-1",
+        "fm-fem-2",
+        "fm-fem-3",
+        "fm-fem-4",
+        "fm-fem-5",
+        "fm-fem-6",
+        "fm-fem-7",
+        "fm-fem-8"
+      ]
+    },
+    {
+      "id": "green-morphology-module",
+      "itemIds": [
+        "fm-gr-1",
+        "fm-gr-2",
+        "fm-gr-3",
+        "fm-gr-4",
+        "fm-gr-5"
+      ]
+    },
+    {
+      "id": "identity-sovereignty-module",
+      "itemIds": [
+        "fm-id-1",
+        "fm-id-10",
+        "fm-id-11",
+        "fm-id-12",
+        "fm-id-13",
+        "fm-id-14",
+        "fm-id-15",
+        "fm-id-16",
+        "fm-id-17",
+        "fm-id-18",
+        "fm-id-19",
+        "fm-id-2",
+        "fm-id-20",
+        "fm-id-21",
+        "fm-id-22",
+        "fm-id-3",
+        "fm-id-4",
+        "fm-id-5",
+        "fm-id-6",
+        "fm-id-7",
+        "fm-id-8",
+        "fm-id-9"
+      ]
+    },
+    {
+      "id": "monarchist-municipal-module",
+      "itemIds": [
+        "fm-mm-1",
+        "fm-mm-2",
+        "fm-mm-3",
+        "fm-mm-4"
+      ]
+    },
+    {
+      "id": "religious-national-politics-module",
+      "itemIds": [
+        "fm-rn-1",
+        "fm-rn-10",
+        "fm-rn-11",
+        "fm-rn-2",
+        "fm-rn-3",
+        "fm-rn-4",
+        "fm-rn-5",
+        "fm-rn-6",
+        "fm-rn-7",
+        "fm-rn-8",
+        "fm-rn-9"
+      ]
+    },
+    {
+      "id": "socialist-families-module",
+      "itemIds": [
+        "fm-so-1",
+        "fm-so-2",
+        "fm-so-3",
+        "fm-so-4"
+      ]
+    },
+    {
+      "id": "technology-governance-module",
+      "itemIds": [
+        "fm-te-1",
+        "fm-te-2",
+        "fm-te-3",
+        "fm-te-4",
+        "fm-te-5",
+        "fm-te-6"
+      ]
+    }
+  ]
+}

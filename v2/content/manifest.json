@@ -1,0 +1,95 @@
+{
+  "manifestVersion": "v2-content-source-manifest-1",
+  "metadata": {
+    "contentSchemaVersion": "content-schema-v2.phase8.1",
+    "contentVersion": "v2-content-phase8.1",
+    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+    "scoringVersion": "scoring-v2.phase7.1",
+    "responseSchemaVersion": "response-v2.phase1.1",
+    "resultSchemaVersion": "result-v2.phase9.1",
+    "researchSchemaVersion": "research-v2.phase1.1",
+    "sourceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
+    "methodologyCommit": "b1ac3e3e147e3761faccec8588d7c822a875d4dc",
+    "extractionVersion": "v2-phase8-diagnostic-relations-1",
+    "sourceArtifact": "research-worker/generated/canonical-manifest.json#manifest",
+    "counts": {
+      "domains": 20,
+      "constructsRoot": 26,
+      "constructsSpecialist": 54,
+      "constructsTotal": 80,
+      "coreItems": 338,
+      "specialistItems": 68,
+      "likert7Items": 400,
+      "statementChoiceItems": 6,
+      "reversedItems": 0,
+      "primaryProfiles": 16,
+      "modifierProfiles": 24,
+      "specialistProfiles": 78,
+      "specialistCandidates": 57,
+      "specialistModules": 9,
+      "ontologyNodes": 145,
+      "ontologyRelations": 42,
+      "diagnosticRelations": 4,
+      "explicitContributionMappings": 1013
+    }
+  },
+  "files": {
+    "domains": "domains.json",
+    "constructs": {
+      "normative": "constructs/normative.json",
+      "descriptive": "constructs/descriptive.json",
+      "prescriptive": "constructs/prescriptive.json",
+      "specialist": "constructs/specialist.json"
+    },
+    "items": {
+      "core": "items/core.json",
+      "specialist": "items/specialist.json"
+    },
+    "profiles": {
+      "primary": "profiles/primary.json",
+      "modifiers": "profiles/modifiers.json",
+      "specialists": "profiles/specialists.json"
+    },
+    "specialists": {
+      "modules": "specialists/modules.json",
+      "candidates": "specialists/candidates.json",
+      "assignment": "specialists/assignment.json"
+    },
+    "ontology": {
+      "nodes": "ontology/nodes.json",
+      "relations": "ontology/relations.json"
+    },
+    "diagnostics": {
+      "relations": "diagnostics/relations.json"
+    },
+    "provenance": {
+      "sources": "provenance/sources.json"
+    }
+  },
+  "extraction": {
+    "authority": "research-worker/generated/canonical-manifest.json#manifest",
+    "sourceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
+    "methodologyCommit": "b1ac3e3e147e3761faccec8588d7c822a875d4dc",
+    "extractionVersion": "v2-phase8-diagnostic-relations-1",
+    "generatedCounts": {
+      "domains": 20,
+      "constructsRoot": 26,
+      "constructsSpecialist": 54,
+      "constructsTotal": 80,
+      "coreItems": 338,
+      "specialistItems": 68,
+      "likert7Items": 400,
+      "statementChoiceItems": 6,
+      "reversedItems": 0,
+      "primaryProfiles": 16,
+      "modifierProfiles": 24,
+      "specialistProfiles": 78,
+      "specialistCandidates": 57,
+      "specialistModules": 9,
+      "ontologyNodes": 145,
+      "ontologyRelations": 42,
+      "diagnosticRelations": 4,
+      "explicitContributionMappings": 1013
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$id": "https://example.com/v2/requirement.schema.json",
+  "type": "object",
+  "required": ["constructId", "targetValue", "weight"],
+  "properties": {
+    "constructId": { "type": "string", "minLength": 1 },
+    "targetValue": { "type": "number" },
+    "weight": { "type": "number", "exclusiveMinimum": 0 },
+    "minimumAnsweredItems": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}

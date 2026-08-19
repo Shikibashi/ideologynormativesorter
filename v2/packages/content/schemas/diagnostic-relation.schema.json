@@ -1,0 +1,14 @@
+{
+  "$id": "https://example.com/v2/diagnostic-relation.schema.json",
+  "type": "object",
+  "required": ["id", "type", "constructIds", "dimensionPair", "secondDirection"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "type": { "const": "cross_dimension_pair" },
+    "constructIds": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 2, "maxItems": 2 },
+    "dimensionPair": { "enum": ["normative-descriptive", "normative-prescriptive", "descriptive-prescriptive"] },
+    "secondDirection": { "enum": [-1, 1] },
+    "provenanceRefs": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  },
+  "additionalProperties": false
+}

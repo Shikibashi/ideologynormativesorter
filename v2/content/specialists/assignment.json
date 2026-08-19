@@ -1,0 +1,15 @@
+{
+  "strategy": "balanced-hash-v2",
+  "rosterVersion": "2026-08-specialist-roster-v1",
+  "orderedModuleIds": [
+    "feminist-faction-module",
+    "identity-sovereignty-module",
+    "anarchist-families-module",
+    "green-morphology-module",
+    "socialist-families-module",
+    "conservative-variants-module",
+    "religious-national-politics-module",
+    "technology-governance-module",
+    "monarchist-municipal-module"
+  ]
+}

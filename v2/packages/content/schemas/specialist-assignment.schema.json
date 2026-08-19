@@ -1,0 +1,11 @@
+{
+  "$id": "https://example.com/v2/specialist-assignment.schema.json",
+  "type": "object",
+  "required": ["strategy", "rosterVersion", "orderedModuleIds"],
+  "properties": {
+    "strategy": { "type": "string", "minLength": 1 },
+    "rosterVersion": { "type": "string", "minLength": 1 },
+    "orderedModuleIds": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  },
+  "additionalProperties": false
+}

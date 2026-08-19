@@ -1,0 +1,13 @@
+{
+  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "contentVersion": "v2-content-phase8.1",
+  "researchSchemaVersion": "research-v2.phase13.1",
+  "responseSchemaVersion": "response-v2.phase1.1",
+  "scoringVersion": "scoring-v2.phase7.1",
+  "resultSchemaVersion": "result-v2.phase9.1",
+  "coreItems": 338,
+  "specialistItems": 68,
+  "modules": 9,
+  "activeItems": 406,
+  "maxPayloadBytes": 131072
+}

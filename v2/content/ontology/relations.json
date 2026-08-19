@@ -1,0 +1,395 @@
+[
+  {
+    "id": "relation:anarcho-capitalist:overlaps_with:market-anarchism",
+    "sourceNodeId": "anarcho-capitalist",
+    "targetNodeId": "market-anarchism",
+    "relationType": "overlaps_with",
+    "note": "A contested market-anarchist relative: it shares anti-statism and market coordination but adds a distinctive private-property account.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:anarcho-capitalist:overlaps_with:market-right-libertarianism",
+    "sourceNodeId": "anarcho-capitalist",
+    "targetNodeId": "market-right-libertarianism",
+    "relationType": "overlaps_with",
+    "note": "Shares the right-libertarian property and contract tradition, while rejecting the minimal state that some right-libertarians retain.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:baathism:regional_variant_of:arab-socialism",
+    "sourceNodeId": "baathism",
+    "targetNodeId": "arab-socialism",
+    "relationType": "regional_variant_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:baathism:regional_variant_of:pan-arabism",
+    "sourceNodeId": "baathism",
+    "targetNodeId": "pan-arabism",
+    "relationType": "regional_variant_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:black-nationalism:often_combines_with:nationalism",
+    "sourceNodeId": "black-nationalism",
+    "targetNodeId": "nationalism",
+    "relationType": "often_combines_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:black-nationalism:overlaps_with:pan-africanism",
+    "sourceNodeId": "black-nationalism",
+    "targetNodeId": "pan-africanism",
+    "relationType": "overlaps_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:bright-green-environmentalism:alias_of:ecomodernist",
+    "sourceNodeId": "bright-green-environmentalism",
+    "targetNodeId": "ecomodernist",
+    "relationType": "alias_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:civil-libertarian-cosmopolitan:alias_of:civil-libertarianism",
+    "sourceNodeId": "civil-libertarian-cosmopolitan",
+    "targetNodeId": "civil-libertarianism",
+    "relationType": "alias_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:civil-libertarian-cosmopolitan:alias_of:cosmopolitanism",
+    "sourceNodeId": "civil-libertarian-cosmopolitan",
+    "targetNodeId": "cosmopolitanism",
+    "relationType": "alias_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:confucian-political-revival:context_for:asian-values",
+    "sourceNodeId": "confucian-political-revival",
+    "targetNodeId": "asian-values",
+    "relationType": "context_for",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:confucian-political-revival:overlaps_with:communitarianism",
+    "sourceNodeId": "confucian-political-revival",
+    "targetNodeId": "communitarianism",
+    "relationType": "overlaps_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:developmental-authoritarianism:hybrid_of:developmentalism",
+    "sourceNodeId": "developmental-authoritarianism",
+    "targetNodeId": "developmentalism",
+    "relationType": "hybrid_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:developmental-authoritarianism:incompatible_with_core:radical-democracy",
+    "sourceNodeId": "developmental-authoritarianism",
+    "targetNodeId": "radical-democracy",
+    "relationType": "incompatible_with_core",
+    "note": "This is a derived context profile, not a standalone ideology.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:developmental-authoritarianism:requires:technocratic-orientation",
+    "sourceNodeId": "developmental-authoritarianism",
+    "targetNodeId": "technocratic-orientation",
+    "relationType": "requires",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:ecosocialist:hybrid_of:democratic-socialist",
+    "sourceNodeId": "ecosocialist",
+    "targetNodeId": "democratic-socialist",
+    "relationType": "hybrid_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:ecosocialist:hybrid_of:green-politics",
+    "sourceNodeId": "ecosocialist",
+    "targetNodeId": "green-politics",
+    "relationType": "hybrid_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:geolibertarian:hybrid_of:georgism",
+    "sourceNodeId": "geolibertarian",
+    "targetNodeId": "georgism",
+    "relationType": "hybrid_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:geolibertarian:hybrid_of:market-right-libertarianism",
+    "sourceNodeId": "geolibertarian",
+    "targetNodeId": "market-right-libertarianism",
+    "relationType": "hybrid_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:georgism:overlaps_with:market-liberal",
+    "sourceNodeId": "georgism",
+    "targetNodeId": "market-liberal",
+    "relationType": "overlaps_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:georgism:overlaps_with:market-right-libertarianism",
+    "sourceNodeId": "georgism",
+    "targetNodeId": "market-right-libertarianism",
+    "relationType": "overlaps_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:georgism:overlaps_with:social-liberalism",
+    "sourceNodeId": "georgism",
+    "targetNodeId": "social-liberalism",
+    "relationType": "overlaps_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:individualist-anarchism:influenced_by:mutualist",
+    "sourceNodeId": "individualist-anarchism",
+    "targetNodeId": "mutualist",
+    "relationType": "influenced_by",
+    "note": "Proudhonian mutualism influenced portions of the Tuckerite American individualist tradition, including figures linked to Joseph (Jo) and Laurance Labadie; later revivalist work is not treated as a historical parent, and the broader individualist field is not reducible to mutualism.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:market-anarchism:contrasts_with:anarcho-communist",
+    "sourceNodeId": "market-anarchism",
+    "targetNodeId": "anarcho-communist",
+    "relationType": "contrasts_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:market-anarchism:often_combines_with:individualist-anarchism",
+    "sourceNodeId": "market-anarchism",
+    "targetNodeId": "individualist-anarchism",
+    "relationType": "often_combines_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:market-anarchism:overlaps_with:anarcho-capitalist",
+    "sourceNodeId": "market-anarchism",
+    "targetNodeId": "anarcho-capitalist",
+    "relationType": "overlaps_with",
+    "note": "Both reject the state and value non-state market coordination, but anarcho-capitalism makes strong private-property commitments that market anarchism as a family does not settle.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:market-anarchism:overlaps_with:mutualist",
+    "sourceNodeId": "market-anarchism",
+    "targetNodeId": "mutualist",
+    "relationType": "overlaps_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:market-right-libertarianism:overlaps_with:anarcho-capitalist",
+    "sourceNodeId": "market-right-libertarianism",
+    "targetNodeId": "anarcho-capitalist",
+    "relationType": "overlaps_with",
+    "note": "Anarcho-capitalism is a stateless right-libertarian variant, but the broad family also includes minimal-state positions.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:market-socialist:contrasts_with:marxist-leninist",
+    "sourceNodeId": "market-socialist",
+    "targetNodeId": "marxist-leninist",
+    "relationType": "contrasts_with",
+    "note": "Market socialism does not by itself specify a Leninist party-state.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:market-socialist:overlaps_with:democratic-socialist",
+    "sourceNodeId": "market-socialist",
+    "targetNodeId": "democratic-socialist",
+    "relationType": "overlaps_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:marxian-socialism:contrasts_with:marxist-leninist",
+    "sourceNodeId": "marxian-socialism",
+    "targetNodeId": "marxist-leninist",
+    "relationType": "contrasts_with",
+    "note": "The non-Leninist anchor shares Marxian analysis but does not make vanguard-party organization or centralized transitional state power a defining commitment.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:marxist-leninist:contrasts_with:marxian-socialism",
+    "sourceNodeId": "marxist-leninist",
+    "targetNodeId": "marxian-socialism",
+    "relationType": "contrasts_with",
+    "note": "Marxism-Leninism combines Marxian analysis with a distinctive theory of revolutionary party organization and state power; it is not a subtype of the non-Leninist anchor.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:mutualist:often_combines_with:left-wing-market-anarchism",
+    "sourceNodeId": "mutualist",
+    "targetNodeId": "left-wing-market-anarchism",
+    "relationType": "often_combines_with",
+    "note": "Some contemporary writers connect mutualist anti-privilege arguments to left-wing market anarchism, but neither label is a subtype of the other.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:mutualist:overlaps_with:individualist-anarchism",
+    "sourceNodeId": "mutualist",
+    "targetNodeId": "individualist-anarchism",
+    "relationType": "overlaps_with",
+    "note": "Proudhon influenced portions of the Tuckerite American individualist-anarchist field, including Joseph (Jo) and Laurance Labadie. That field also includes natural-rights and egoist currents, so the relation is neither identity nor two exhaustive mutualist camps.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:mutualist:overlaps_with:market-anarchism",
+    "sourceNodeId": "mutualist",
+    "targetNodeId": "market-anarchism",
+    "relationType": "overlaps_with",
+    "note": "Mutualist and market-anarchist currents can share anti-statism and exchange, while differing over property, exploitation, rent, and the meaning of a freed market.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:mutualist:overlaps_with:social-anarchism",
+    "sourceNodeId": "mutualist",
+    "targetNodeId": "social-anarchism",
+    "relationType": "overlaps_with",
+    "note": "Mutualist federation and anti-domination can overlap with social or communal anarchism, but mutualism does not inherit that branch’s full economic program.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:pan-africanism:often_combines_with:internationalism",
+    "sourceNodeId": "pan-africanism",
+    "targetNodeId": "internationalism",
+    "relationType": "often_combines_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:pan-africanism:overlaps_with:black-nationalism",
+    "sourceNodeId": "pan-africanism",
+    "targetNodeId": "black-nationalism",
+    "relationType": "overlaps_with",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:social-anarchism:contrasts_with:marxist-leninist",
+    "sourceNodeId": "social-anarchism",
+    "targetNodeId": "marxist-leninist",
+    "relationType": "contrasts_with",
+    "note": "Both may seek social ownership, but they diverge over party-state authority and centralized transition.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:social-anarchism:subtype_of:libertarian-socialism",
+    "sourceNodeId": "social-anarchism",
+    "targetNodeId": "libertarian-socialism",
+    "relationType": "subtype_of",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:technocratic-centralist:requires:technocratic-orientation",
+    "sourceNodeId": "technocratic-centralist",
+    "targetNodeId": "technocratic-orientation",
+    "relationType": "requires",
+    "note": "Technocratic centralism adds concentrated administrative authority to a broader confidence in expert governance; expert advice alone is insufficient.",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:welfare-chauvinism:requires:nationalism",
+    "sourceNodeId": "welfare-chauvinism",
+    "targetNodeId": "nationalism",
+    "relationType": "requires",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  },
+  {
+    "id": "relation:welfare-chauvinism:requires:social-democrat",
+    "sourceNodeId": "welfare-chauvinism",
+    "targetNodeId": "social-democrat",
+    "relationType": "requires",
+    "provenanceRefs": [
+      "source:v1-canonical-manifest"
+    ]
+  }
+]

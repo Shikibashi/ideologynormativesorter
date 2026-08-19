@@ -1,0 +1,16 @@
+{
+  "$id": "https://example.com/v2/provenance-source.schema.json",
+  "type": "object",
+  "required": ["id", "kind", "title", "location"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["authority", "citation", "decision", "artifact", "archive"] },
+    "title": { "type": "string", "minLength": 1 },
+    "location": { "type": "string", "minLength": 1 },
+    "url": { "type": "string" },
+    "publisher": { "type": "string" },
+    "recordId": { "type": "string" },
+    "note": { "type": "string" }
+  },
+  "additionalProperties": false
+}

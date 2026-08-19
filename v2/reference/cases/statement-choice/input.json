@@ -1,0 +1,44 @@
+{
+  "responseSchemaVersion": "response-v2.phase1.1",
+  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "coreResponses": [
+    {
+      "state": "answered",
+      "itemId": "sq01",
+      "responseType": "statement-choice",
+      "optionId": "a"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq02",
+      "responseType": "statement-choice",
+      "optionId": "d"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq06",
+      "responseType": "statement-choice",
+      "optionId": "a"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq07",
+      "responseType": "statement-choice",
+      "optionId": "d"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq13",
+      "responseType": "statement-choice",
+      "optionId": "a"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq15",
+      "responseType": "statement-choice",
+      "optionId": "d"
+    }
+  ],
+  "specialistResponses": [],
+  "requestedSpecialistModuleIds": []
+}

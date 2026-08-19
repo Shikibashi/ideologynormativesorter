@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "status": "GO",
+  "frozenV1ReferenceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
+  "v2ContentVersion": "v2-content-phase8.1",
+  "v2ContentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "behaviorLedgerVersion": "behavior-ledger-v2.phase10.1",
+  "behaviorLedgerSha256": "6ef651b685fd14c6df7b6285725b9e172d367c6be7b757f0a192b4ed41863405",
+  "referenceManifestSha256": "1eaf3fba36164428c65cdd60d6195ae2d8bb4eef06f5c6125039eecd339259cc",
+  "replayManifestSha256": "a4a2d9db7ccc732e14447c656d627a87680ab3ff42e87506550f4bc3ad17904e",
+  "v2SourceTreeSha256": "761cfc213505bbe69826da5b489de4e8562fac9f008a650f85e2738415b4e383",
+  "repositoryHead": "fb8c02d3111c5159b2628019917bbcdcfcd64c27",
+  "workingTreeCommitStatus": "uncommitted-phase10-source",
+  "generatedAt": "2026-08-19",
+  "staleWhen": "Any change to v2 content, engine, contracts, reference cases, ledger, or version metadata requires regenerating this receipt.",
+  "noDeploymentClaim": true
+}

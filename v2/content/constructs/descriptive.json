@@ -1,0 +1,177 @@
+[
+  {
+    "id": "coordination-optimism",
+    "name": "Coordination Optimism",
+    "role": "descriptive",
+    "scope": "root",
+    "description": "Empirical expectation about whether decentralized, voluntary arrangements between individuals and groups tend to succeed or fail absent a central coordinator.",
+    "poles": {
+      "negative": "Decentralized coordination often fails without central direction",
+      "positive": "Decentralized coordination often succeeds without central direction"
+    },
+    "sourceKey": "coordination-optimism",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Coordination Optimism",
+      "longLabel": "Coordination Optimism"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "cultural-plasticity",
+    "name": "Cultural Plasticity vs Persistence",
+    "role": "descriptive",
+    "scope": "root",
+    "description": "Empirical belief about how malleable cultural patterns, norms, and behavior are in response to law and policy.",
+    "poles": {
+      "negative": "Culture and norms are path-dependent and resist deliberate policy change",
+      "positive": "Culture and norms respond readily to policy and institutional design"
+    },
+    "sourceKey": "cultural-plasticity",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Cultural Plasticity vs Persistence",
+      "longLabel": "Cultural Plasticity vs Persistence"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "democratic-confidence",
+    "name": "Democratic Confidence",
+    "role": "descriptive",
+    "scope": "root",
+    "description": "Empirical confidence that majoritarian democratic processes reliably produce good collective decisions.",
+    "poles": {
+      "negative": "Voters are often manipulable or poorly informed",
+      "positive": "Voters generally deliberate well and reach sound decisions"
+    },
+    "sourceKey": "democratic-confidence",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Democratic Confidence",
+      "longLabel": "Democratic Confidence"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "expert-confidence",
+    "name": "Expert Confidence",
+    "role": "descriptive",
+    "scope": "root",
+    "description": "Empirical confidence that technical or professional expertise, once given authority, tends to produce better outcomes rather than self-serving or insulated decision-making.",
+    "poles": {
+      "negative": "Expert bodies tend to cartelize or detach from public accountability",
+      "positive": "Delegating decisions to experts generally improves governance"
+    },
+    "sourceKey": "expert-confidence",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Expert Confidence",
+      "longLabel": "Expert Confidence"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "market-process-confidence",
+    "name": "Market-Process Confidence",
+    "role": "descriptive",
+    "scope": "root",
+    "description": "Empirical confidence that decentralized price-driven exchange tends to allocate resources effectively.",
+    "poles": {
+      "negative": "Markets routinely misallocate resources or produce harmful outcomes",
+      "positive": "Markets generally coordinate information and resources well"
+    },
+    "sourceKey": "market-process-confidence",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Market-Process Confidence",
+      "longLabel": "Market-Process Confidence"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "public-choice-skepticism",
+    "name": "Public-Choice Skepticism",
+    "role": "descriptive",
+    "scope": "root",
+    "description": "Empirical expectation that public institutions are bent toward the interests of insiders, regulators, or organized lobbies rather than the public.",
+    "poles": {
+      "negative": "Public institutions usually overcome self-interest and capture",
+      "positive": "Public institutions are often shaped by self-interest and capture"
+    },
+    "sourceKey": "public-choice-skepticism",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Public-Choice Skepticism",
+      "longLabel": "Public-Choice Skepticism"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "state-capacity-confidence",
+    "name": "State-Capacity Confidence",
+    "role": "descriptive",
+    "scope": "root",
+    "description": "Empirical confidence in the administrative capability of state institutions to carry out ambitious programs.",
+    "poles": {
+      "negative": "States usually fail to execute complex tasks well",
+      "positive": "States can competently execute complex policy"
+    },
+    "sourceKey": "state-capacity-confidence",
+    "lifecycle": {
+      "conceptualStatus": "canonical",
+      "measurementStatus": "candidate",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "State-Capacity Confidence",
+      "longLabel": "State-Capacity Confidence"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  }
+]

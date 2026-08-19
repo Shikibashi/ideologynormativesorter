@@ -1,0 +1,2179 @@
+{
+  "responseSchemaVersion": "response-v2.phase1.1",
+  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "coreResponses": [
+    {
+      "state": "answered",
+      "itemId": "q0001",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0003",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0004",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0005",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0006",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0007",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0012",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0015",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0016",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0017",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0018",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0019",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0021",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0022",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0023",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0024",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0025",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0026",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0027",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0029",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0030",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0033",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0034",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0035",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0036",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0038",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0039",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0041",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0042",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0043",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0044",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0045",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0046",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0047",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0048",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0050",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0053",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0054",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0055",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0058",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0059",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0061",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0062",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0063",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0064",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0065",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0066",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0067",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0073",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0074",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0075",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0076",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0077",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0079",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0081",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0082",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0083",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0084",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0085",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0089",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0093",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0094",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0095",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0096",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0097",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0098",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0099",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0101",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0102",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0104",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0105",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0106",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0107",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0108",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0114",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0115",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0116",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0117",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0119",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0121",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0122",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0123",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0124",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0125",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0126",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0127",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0128",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0130",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0133",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0134",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0135",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0136",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0137",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0138",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0139",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0141",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0142",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0144",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0145",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0146",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0147",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0148",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0153",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0154",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0155",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0156",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0157",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0158",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0159",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0161",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0162",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0163",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0164",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0165",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0166",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0171",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0173",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0174",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0175",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0176",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0177",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0178",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0179",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0181",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0182",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0183",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0184",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0185",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0186",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0188",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0190",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0191",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0193",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0195",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0197",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0198",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0199",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0201",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0202",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0203",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0204",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0205",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0206",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0207",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0208",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0213",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0214",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0215",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0216",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0217",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0219",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0221",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0222",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0223",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0224",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0225",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0226",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0227",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0233",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0234",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0235",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0236",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0239",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0241",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0242",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0243",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0244",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0245",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0246",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0248",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0253",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0254",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0255",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0256",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0257",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0258",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0259",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0261",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0262",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0263",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0264",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0265",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0266",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0269",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0274",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0275",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0276",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0278",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0279",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0281",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0282",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0283",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0284",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0285",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0293",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0294",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0295",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0296",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0299",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0301",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0302",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0303",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0304",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0305",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0307",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0308",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0313",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0314",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0315",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0316",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0317",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0318",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0319",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0321",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0322",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0323",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0324",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0325",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0326",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0328",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0329",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0334",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0336",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0337",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0338",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0339",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0341",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0342",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0343",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0344",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0345",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0347",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0348",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0350",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0354",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0355",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0356",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0357",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0359",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0361",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0362",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0363",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0364",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0365",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0368",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0374",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0375",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0376",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0377",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0379",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0381",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0382",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0383",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0384",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0385",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0394",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0396",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0397",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0399",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0401",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0402",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0403",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0404",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0405",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0406",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0407",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0408",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0411",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0412",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0413",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0414",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0415",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0417",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0418",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0420",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0421",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0423",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0424",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0425",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0427",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0428",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0429",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0430",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0431",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0432",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0433",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0434",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0435",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0436",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0437",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0438",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0439",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0440",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0441",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0442",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0443",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0444",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0445",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0446",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0447",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0448",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0449",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0450",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0451",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0452",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0453",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0454",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0455",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0456",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0457",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0458",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0459",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0460",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0461",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0462",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0463",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0464",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0465",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0466",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0467",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0468",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0469",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0470",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0471",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0472",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0473",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0474",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0475",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0476",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0477",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0478",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0479",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "sq01",
+      "responseType": "statement-choice",
+      "optionId": "a"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq02",
+      "responseType": "statement-choice",
+      "optionId": "a"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq06",
+      "responseType": "statement-choice",
+      "optionId": "a"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq07",
+      "responseType": "statement-choice",
+      "optionId": "a"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq13",
+      "responseType": "statement-choice",
+      "optionId": "a"
+    },
+    {
+      "state": "answered",
+      "itemId": "sq15",
+      "responseType": "statement-choice",
+      "optionId": "a"
+    }
+  ],
+  "specialistResponses": [
+    {
+      "state": "answered",
+      "itemId": "fm-id-1",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-10",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-11",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-12",
+      "responseType": "likert7",
+      "value": 3,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-13",
+      "responseType": "likert7",
+      "value": 3,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-14",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-15",
+      "responseType": "likert7",
+      "value": 3,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-16",
+      "responseType": "likert7",
+      "value": 3,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-17",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-18",
+      "responseType": "likert7",
+      "value": 3,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-19",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-2",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-20",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-21",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-22",
+      "responseType": "likert7",
+      "value": 3,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-3",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-4",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-5",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-6",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-7",
+      "responseType": "likert7",
+      "value": 3
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-8",
+      "responseType": "likert7",
+      "value": 3,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "fm-id-9",
+      "responseType": "likert7",
+      "value": 3,
+      "priority": 5
+    }
+  ],
+  "requestedSpecialistModuleIds": [
+    "identity-sovereignty-module"
+  ]
+}

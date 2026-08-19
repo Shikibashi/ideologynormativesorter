@@ -1,0 +1,920 @@
+[
+  {
+    "id": "specialist:anarchist-families-module:anti-authority",
+    "name": "Anti Authority",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "anarchist-families-module",
+    "sourceKey": "anti-authority",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:anarchist-families-module:communal-coordination",
+    "name": "Communal Coordination",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "anarchist-families-module",
+    "sourceKey": "communal-coordination",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:anarchist-families-module:communal-property",
+    "name": "Communal Property",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "anarchist-families-module",
+    "sourceKey": "communal-property",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:anarchist-families-module:direct-federation",
+    "name": "Direct Federation",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "anarchist-families-module",
+    "sourceKey": "direct-federation",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:anarchist-families-module:market-coordination",
+    "name": "Market Coordination",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "anarchist-families-module",
+    "sourceKey": "market-coordination",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:anarchist-families-module:market-property",
+    "name": "Market Property",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "anarchist-families-module",
+    "sourceKey": "market-property",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:conservative-variants-module:assertive-internationalism",
+    "name": "Assertive Internationalism",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "conservative-variants-module",
+    "sourceKey": "assertive-internationalism",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:conservative-variants-module:moral-traditionalism",
+    "name": "Moral Traditionalism",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "conservative-variants-module",
+    "sourceKey": "moral-traditionalism",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:conservative-variants-module:national-continuity",
+    "name": "National Continuity",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "conservative-variants-module",
+    "sourceKey": "national-continuity",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:conservative-variants-module:prudence",
+    "name": "Prudence",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "conservative-variants-module",
+    "sourceKey": "prudence",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+    "name": "Anti Hierarchy Strategy",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "feminist-faction-module",
+    "sourceKey": "anti-hierarchy-strategy",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:feminist-faction-module:class-social-reproduction",
+    "name": "Class Social Reproduction",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "feminist-faction-module",
+    "sourceKey": "class-social-reproduction",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:feminist-faction-module:legal-equality-reform",
+    "name": "Legal Equality Reform",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "feminist-faction-module",
+    "sourceKey": "legal-equality-reform",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:feminist-faction-module:structural-patriarchy",
+    "name": "Structural Patriarchy",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "feminist-faction-module",
+    "sourceKey": "structural-patriarchy",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:green-morphology-module:collective-ownership",
+    "name": "Collective Ownership",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "green-morphology-module",
+    "sourceKey": "collective-ownership",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:green-morphology-module:democratic-decentralism",
+    "name": "Democratic Decentralism",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "green-morphology-module",
+    "sourceKey": "democratic-decentralism",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:green-morphology-module:ecological-standing",
+    "name": "Ecological Standing",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "green-morphology-module",
+    "sourceKey": "ecological-standing",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:green-morphology-module:market-technology",
+    "name": "Market Technology",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "green-morphology-module",
+    "sourceKey": "market-technology",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:green-morphology-module:post-growth",
+    "name": "Post Growth",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "green-morphology-module",
+    "sourceKey": "post-growth",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:ascriptive-membership",
+    "name": "Ascriptive Membership",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "ascriptive-membership",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:autonomous-resurgence",
+    "name": "Autonomous Resurgence",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "autonomous-resurgence",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:community-autonomy",
+    "name": "Community Autonomy",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "community-autonomy",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
+    "name": "Decolonial Land Sovereignty",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "decolonial-land-sovereignty",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:dominant-nation-congruence",
+    "name": "Dominant Nation Congruence",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "dominant-nation-congruence",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:institutional-recognition",
+    "name": "Institutional Recognition",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "institutional-recognition",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:minority-self-government",
+    "name": "Minority Self Government",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "minority-self-government",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:pan-african-solidarity",
+    "name": "Pan African Solidarity",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "pan-african-solidarity",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:pluralist-accommodation",
+    "name": "Pluralist Accommodation",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "pluralist-accommodation",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:identity-sovereignty-module:territorial-separatism",
+    "name": "Territorial Separatism",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "identity-sovereignty-module",
+    "sourceKey": "territorial-separatism",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:monarchist-municipal-module:confederal-coordination",
+    "name": "Confederal Coordination",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "monarchist-municipal-module",
+    "sourceKey": "confederal-coordination",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:monarchist-municipal-module:constitutional-monarchy",
+    "name": "Constitutional Monarchy",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "monarchist-municipal-module",
+    "sourceKey": "constitutional-monarchy",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:monarchist-municipal-module:hereditary-authority",
+    "name": "Hereditary Authority",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "monarchist-municipal-module",
+    "sourceKey": "hereditary-authority",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:monarchist-municipal-module:municipal-autonomy",
+    "name": "Municipal Autonomy",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "monarchist-municipal-module",
+    "sourceKey": "municipal-autonomy",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:civilizational-nationalism",
+    "name": "Civilizational Nationalism",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "civilizational-nationalism",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:constitutional-review",
+    "name": "Constitutional Review",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "constitutional-review",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
+    "name": "Hindu Civilizational Belonging",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "hindu-civilizational-belonging",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:interpretive-pluralism",
+    "name": "Interpretive Pluralism",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "interpretive-pluralism",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:islamic-public-law",
+    "name": "Islamic Public Law",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "islamic-public-law",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:jewish-national-self-determination",
+    "name": "Jewish National Self Determination",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "jewish-national-self-determination",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:minority-citizenship",
+    "name": "Minority Citizenship",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "minority-citizenship",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:party-competition",
+    "name": "Party Competition",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "party-competition",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:popular-constitutionalism",
+    "name": "Popular Constitutionalism",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "popular-constitutionalism",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:religious-authority",
+    "name": "Religious Authority",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "religious-authority",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:religious-national-politics-module:religious-national-fusion",
+    "name": "Religious National Fusion",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "religious-national-politics-module",
+    "sourceKey": "religious-national-fusion",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:socialist-families-module:democratic-planning",
+    "name": "Democratic Planning",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "socialist-families-module",
+    "sourceKey": "democratic-planning",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:socialist-families-module:reformism",
+    "name": "Reformism",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "socialist-families-module",
+    "sourceKey": "reformism",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:socialist-families-module:revolutionary-strategy",
+    "name": "Revolutionary Strategy",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "socialist-families-module",
+    "sourceKey": "revolutionary-strategy",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:socialist-families-module:social-ownership",
+    "name": "Social Ownership",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "socialist-families-module",
+    "sourceKey": "social-ownership",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:technology-governance-module:accelerationist-strategy",
+    "name": "Accelerationist Strategy",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "technology-governance-module",
+    "sourceKey": "accelerationist-strategy",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:technology-governance-module:algorithmic-authority",
+    "name": "Algorithmic Authority",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "technology-governance-module",
+    "sourceKey": "algorithmic-authority",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:technology-governance-module:centralized-administration",
+    "name": "Centralized Administration",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "technology-governance-module",
+    "sourceKey": "centralized-administration",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:technology-governance-module:decentralized-technology",
+    "name": "Decentralized Technology",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "technology-governance-module",
+    "sourceKey": "decentralized-technology",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:technology-governance-module:expert-administration",
+    "name": "Expert Administration",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "technology-governance-module",
+    "sourceKey": "expert-administration",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  },
+  {
+    "id": "specialist:technology-governance-module:market-acceleration",
+    "name": "Market Acceleration",
+    "role": "specialist",
+    "scope": "specialist",
+    "moduleId": "technology-governance-module",
+    "sourceKey": "market-acceleration",
+    "lifecycle": {
+      "conceptualStatus": "candidate",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist"
+    },
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ]
+  }
+]

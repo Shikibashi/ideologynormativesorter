@@ -1,0 +1,435 @@
+[
+  {
+    "id": "anarchist-families-module",
+    "version": "2026-08-specialist-v11",
+    "title": "Anarchist and market-libertarian families",
+    "shortTitle": "Anarchist families",
+    "description": "Separates anti-authoritarian social organization, property and market commitments, and political strategy.",
+    "invitationNote": "This is an opt-in experimental follow-up. You may skip it without affecting your primary result or research participation.",
+    "estimatedMinutes": 3,
+    "itemIds": ["fm-an-1", "fm-an-2", "fm-an-3", "fm-an-4"],
+    "constructIds": [
+      "specialist:anarchist-families-module:anti-authority",
+      "specialist:anarchist-families-module:communal-coordination",
+      "specialist:anarchist-families-module:communal-property",
+      "specialist:anarchist-families-module:direct-federation",
+      "specialist:anarchist-families-module:market-coordination",
+      "specialist:anarchist-families-module:market-property"
+    ],
+    "candidateIds": [
+      "candidate:anarchist-families-module:anarcho-capitalist:base",
+      "candidate:anarchist-families-module:anarcho-communist:base",
+      "candidate:anarchist-families-module:anarcho-syndicalism:base",
+      "candidate:anarchist-families-module:individualist-anarchism:base",
+      "candidate:anarchist-families-module:market-anarchism:base",
+      "candidate:anarchist-families-module:minarchist:base",
+      "candidate:anarchist-families-module:mutualist:base",
+      "candidate:anarchist-families-module:social-anarchism:base"
+    ],
+    "outputProfileIds": [
+      "profile:specialist:anarcho-capitalist",
+      "profile:specialist:anarcho-communist",
+      "profile:specialist:anarcho-syndicalism",
+      "profile:specialist:individualist-anarchism",
+      "profile:specialist:market-anarchism",
+      "profile:specialist:minarchist",
+      "profile:specialist:mutualist",
+      "profile:specialist:social-anarchism"
+    ],
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "activation": {
+      "strategy": "explicit-request",
+      "minimumAnsweredItems": 2,
+      "minimumAnsweredWeightRatio": 0.5,
+      "minimumConstructCoverageRatio": 0.5
+    }
+  },
+  {
+    "id": "conservative-variants-module",
+    "version": "2026-08-specialist-v11",
+    "title": "Conservative variants",
+    "shortTitle": "Conservative variants",
+    "description": "Separates prudential continuity from moral traditionalism, nationalism, Christian democracy, liberal conservatism, and neoconservative strategy.",
+    "invitationNote": "This is an opt-in experimental follow-up. You may skip it without affecting your primary result or research participation.",
+    "estimatedMinutes": 3,
+    "itemIds": ["fm-co-1", "fm-co-2", "fm-co-3", "fm-co-4"],
+    "constructIds": [
+      "specialist:conservative-variants-module:assertive-internationalism",
+      "specialist:conservative-variants-module:moral-traditionalism",
+      "specialist:conservative-variants-module:national-continuity",
+      "specialist:conservative-variants-module:prudence"
+    ],
+    "candidateIds": [
+      "candidate:conservative-variants-module:conservative:base",
+      "candidate:conservative-variants-module:liberal-conservatism:base",
+      "candidate:conservative-variants-module:national-conservatism:base",
+      "candidate:conservative-variants-module:neoconservative:base",
+      "candidate:conservative-variants-module:social-conservatism:base"
+    ],
+    "outputProfileIds": ["profile:specialist:neoconservative"],
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "activation": {
+      "strategy": "explicit-request",
+      "minimumAnsweredItems": 2,
+      "minimumAnsweredWeightRatio": 0.5,
+      "minimumConstructCoverageRatio": 0.5
+    }
+  },
+  {
+    "id": "feminist-faction-module",
+    "version": "v6",
+    "title": "Feminist factions",
+    "shortTitle": "Feminist factions",
+    "description": "Focused comparison of feminist traditions.",
+    "invitationNote": "This is an opt-in experimental follow-up. You may skip it without affecting your primary result or research participation.",
+    "estimatedMinutes": 3,
+    "itemIds": [
+      "fm-fem-1",
+      "fm-fem-2",
+      "fm-fem-3",
+      "fm-fem-4",
+      "fm-fem-5",
+      "fm-fem-6",
+      "fm-fem-7",
+      "fm-fem-8"
+    ],
+    "constructIds": [
+      "specialist:feminist-faction-module:anti-hierarchy-strategy",
+      "specialist:feminist-faction-module:class-social-reproduction",
+      "specialist:feminist-faction-module:legal-equality-reform",
+      "specialist:feminist-faction-module:structural-patriarchy"
+    ],
+    "candidateIds": [
+      "candidate:feminist-faction-module:anarcha-feminism:base",
+      "candidate:feminist-faction-module:liberal-feminism:base",
+      "candidate:feminist-faction-module:radical-feminism:base",
+      "candidate:feminist-faction-module:socialist-feminism:base"
+    ],
+    "outputProfileIds": [
+      "profile:specialist:anarcha-feminism",
+      "profile:specialist:liberal-feminism",
+      "profile:specialist:radical-feminism",
+      "profile:specialist:socialist-feminism"
+    ],
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "activation": {
+      "strategy": "explicit-request",
+      "minimumAnsweredItems": 2,
+      "minimumAnsweredWeightRatio": 0.5,
+      "minimumConstructCoverageRatio": 0.5
+    }
+  },
+  {
+    "id": "green-morphology-module",
+    "version": "2026-08-specialist-v11",
+    "title": "Green political morphology",
+    "shortTitle": "Green morphology",
+    "description": "Measures ecological moral standing separately from growth, ownership, technology, governance, and strategy.",
+    "invitationNote": "This is an opt-in experimental follow-up. You may skip it without affecting your primary result or research participation.",
+    "estimatedMinutes": 3,
+    "itemIds": ["fm-gr-1", "fm-gr-2", "fm-gr-3", "fm-gr-4", "fm-gr-5"],
+    "constructIds": [
+      "specialist:green-morphology-module:collective-ownership",
+      "specialist:green-morphology-module:democratic-decentralism",
+      "specialist:green-morphology-module:ecological-standing",
+      "specialist:green-morphology-module:market-technology",
+      "specialist:green-morphology-module:post-growth"
+    ],
+    "candidateIds": [
+      "candidate:green-morphology-module:deep-ecology:base",
+      "candidate:green-morphology-module:degrowth-green:base",
+      "candidate:green-morphology-module:ecomodernist:base",
+      "candidate:green-morphology-module:ecosocialist:base",
+      "candidate:green-morphology-module:green-capitalism:base"
+    ],
+    "outputProfileIds": [
+      "profile:specialist:deep-ecology",
+      "profile:specialist:degrowth-green",
+      "profile:specialist:ecomodernist",
+      "profile:specialist:ecosocialist",
+      "profile:specialist:green-capitalism"
+    ],
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "activation": {
+      "strategy": "explicit-request",
+      "minimumAnsweredItems": 2,
+      "minimumAnsweredWeightRatio": 0.5,
+      "minimumConstructCoverageRatio": 0.5
+    }
+  },
+  {
+    "id": "identity-sovereignty-module",
+    "version": "v5",
+    "title": "Identity and sovereignty",
+    "shortTitle": "Identity and sovereignty",
+    "description": "Focused comparison of membership, sovereignty, and self-government traditions.",
+    "invitationNote": "This is an opt-in experimental follow-up. You may skip it without affecting your primary result or research participation.",
+    "estimatedMinutes": 4,
+    "itemIds": [
+      "fm-id-1",
+      "fm-id-10",
+      "fm-id-11",
+      "fm-id-12",
+      "fm-id-13",
+      "fm-id-14",
+      "fm-id-15",
+      "fm-id-16",
+      "fm-id-17",
+      "fm-id-18",
+      "fm-id-19",
+      "fm-id-2",
+      "fm-id-20",
+      "fm-id-21",
+      "fm-id-22",
+      "fm-id-3",
+      "fm-id-4",
+      "fm-id-5",
+      "fm-id-6",
+      "fm-id-7",
+      "fm-id-8",
+      "fm-id-9"
+    ],
+    "constructIds": [
+      "specialist:identity-sovereignty-module:ascriptive-membership",
+      "specialist:identity-sovereignty-module:autonomous-resurgence",
+      "specialist:identity-sovereignty-module:community-autonomy",
+      "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
+      "specialist:identity-sovereignty-module:dominant-nation-congruence",
+      "specialist:identity-sovereignty-module:institutional-recognition",
+      "specialist:identity-sovereignty-module:minority-self-government",
+      "specialist:identity-sovereignty-module:pan-african-solidarity",
+      "specialist:identity-sovereignty-module:pluralist-accommodation",
+      "specialist:identity-sovereignty-module:territorial-separatism"
+    ],
+    "candidateIds": [
+      "candidate:identity-sovereignty-module:black-nationalism:community-nationalism",
+      "candidate:identity-sovereignty-module:black-nationalism:separatist-nationalism-2",
+      "candidate:identity-sovereignty-module:ethnonationalist:core-ethnonationalism",
+      "candidate:identity-sovereignty-module:indigenism:institutional-self-government",
+      "candidate:identity-sovereignty-module:indigenism:resurgence-and-refusal-2",
+      "candidate:identity-sovereignty-module:multiculturalism:liberal-multiculturalism",
+      "candidate:identity-sovereignty-module:pan-africanism:transnational-solidarity-and-unity"
+    ],
+    "outputProfileIds": [
+      "profile:specialist:black-nationalism",
+      "profile:specialist:indigenism",
+      "profile:specialist:pan-africanism"
+    ],
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "activation": {
+      "strategy": "explicit-request",
+      "minimumAnsweredItems": 2,
+      "minimumAnsweredWeightRatio": 0.5,
+      "minimumConstructCoverageRatio": 0.5
+    }
+  },
+  {
+    "id": "monarchist-municipal-module",
+    "version": "2026-08-specialist-v11",
+    "title": "Monarchist and municipal/confederal families",
+    "shortTitle": "Regime and confederal variants",
+    "description": "Separates hereditary authority, constitutional limitation, municipal self-rule, and confederal coordination.",
+    "invitationNote": "This is an opt-in experimental follow-up. You may skip it without affecting your primary result or research participation.",
+    "estimatedMinutes": 3,
+    "itemIds": ["fm-mm-1", "fm-mm-2", "fm-mm-3", "fm-mm-4"],
+    "constructIds": [
+      "specialist:monarchist-municipal-module:confederal-coordination",
+      "specialist:monarchist-municipal-module:constitutional-monarchy",
+      "specialist:monarchist-municipal-module:hereditary-authority",
+      "specialist:monarchist-municipal-module:municipal-autonomy"
+    ],
+    "candidateIds": [
+      "candidate:monarchist-municipal-module:absolute-monarchist:base",
+      "candidate:monarchist-municipal-module:constitutional-monarchism:base",
+      "candidate:monarchist-municipal-module:democratic-confederalism:base",
+      "candidate:monarchist-municipal-module:libertarian-municipalism:base",
+      "candidate:monarchist-municipal-module:traditional-monarchist:base"
+    ],
+    "outputProfileIds": [
+      "profile:specialist:absolute-monarchist",
+      "profile:specialist:democratic-confederalism",
+      "profile:specialist:libertarian-municipalism",
+      "profile:specialist:traditional-monarchist"
+    ],
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "activation": {
+      "strategy": "explicit-request",
+      "minimumAnsweredItems": 2,
+      "minimumAnsweredWeightRatio": 0.5,
+      "minimumConstructCoverageRatio": 0.5
+    }
+  },
+  {
+    "id": "religious-national-politics-module",
+    "version": "2026-08-specialist-v11",
+    "title": "Religious and national political projects",
+    "shortTitle": "Religious-national politics",
+    "description": "Separates constitutional religious democracy, religious authority, civilizational nationalism, minority citizenship, and territorial projects.",
+    "invitationNote": "This is an opt-in experimental follow-up. You may skip it without affecting your primary result or research participation.",
+    "estimatedMinutes": 3,
+    "itemIds": [
+      "fm-rn-1",
+      "fm-rn-10",
+      "fm-rn-11",
+      "fm-rn-2",
+      "fm-rn-3",
+      "fm-rn-4",
+      "fm-rn-5",
+      "fm-rn-6",
+      "fm-rn-7",
+      "fm-rn-8",
+      "fm-rn-9"
+    ],
+    "constructIds": [
+      "specialist:religious-national-politics-module:civilizational-nationalism",
+      "specialist:religious-national-politics-module:constitutional-review",
+      "specialist:religious-national-politics-module:hindu-civilizational-belonging",
+      "specialist:religious-national-politics-module:interpretive-pluralism",
+      "specialist:religious-national-politics-module:islamic-public-law",
+      "specialist:religious-national-politics-module:jewish-national-self-determination",
+      "specialist:religious-national-politics-module:minority-citizenship",
+      "specialist:religious-national-politics-module:party-competition",
+      "specialist:religious-national-politics-module:popular-constitutionalism",
+      "specialist:religious-national-politics-module:religious-authority",
+      "specialist:religious-national-politics-module:religious-national-fusion"
+    ],
+    "candidateIds": [
+      "candidate:religious-national-politics-module:hindutva:base",
+      "candidate:religious-national-politics-module:islamic-democracy:base",
+      "candidate:religious-national-politics-module:political-islam:base",
+      "candidate:religious-national-politics-module:religious-nationalism:base",
+      "candidate:religious-national-politics-module:theocrat:base",
+      "candidate:religious-national-politics-module:zionism:base"
+    ],
+    "outputProfileIds": [
+      "profile:specialist:hindutva",
+      "profile:specialist:islamic-democracy",
+      "profile:specialist:political-islam",
+      "profile:specialist:religious-nationalism",
+      "profile:specialist:theocrat",
+      "profile:specialist:zionism"
+    ],
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "activation": {
+      "strategy": "explicit-request",
+      "minimumAnsweredItems": 2,
+      "minimumAnsweredWeightRatio": 0.5,
+      "minimumConstructCoverageRatio": 0.5
+    }
+  },
+  {
+    "id": "socialist-families-module",
+    "version": "2026-08-specialist-v11",
+    "title": "Socialist family variants",
+    "shortTitle": "Socialist variants",
+    "description": "Separates ownership, democratic control, planning, reform, and revolutionary strategy across socialist traditions.",
+    "invitationNote": "This is an opt-in experimental follow-up. You may skip it without affecting your primary result or research participation.",
+    "estimatedMinutes": 3,
+    "itemIds": ["fm-so-1", "fm-so-2", "fm-so-3", "fm-so-4"],
+    "constructIds": [
+      "specialist:socialist-families-module:democratic-planning",
+      "specialist:socialist-families-module:reformism",
+      "specialist:socialist-families-module:revolutionary-strategy",
+      "specialist:socialist-families-module:social-ownership"
+    ],
+    "candidateIds": [
+      "candidate:socialist-families-module:council-communist:base",
+      "candidate:socialist-families-module:democratic-socialist:base",
+      "candidate:socialist-families-module:guild-socialism:base",
+      "candidate:socialist-families-module:maoism:base",
+      "candidate:socialist-families-module:market-socialist:base",
+      "candidate:socialist-families-module:marxian-socialism:base",
+      "candidate:socialist-families-module:social-democrat:base",
+      "candidate:socialist-families-module:syndicalist:base",
+      "candidate:socialist-families-module:trotskyism:base"
+    ],
+    "outputProfileIds": [
+      "profile:specialist:council-communist",
+      "profile:specialist:guild-socialism",
+      "profile:specialist:maoism",
+      "profile:specialist:market-socialist",
+      "profile:specialist:syndicalist",
+      "profile:specialist:trotskyism"
+    ],
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "activation": {
+      "strategy": "explicit-request",
+      "minimumAnsweredItems": 2,
+      "minimumAnsweredWeightRatio": 0.5,
+      "minimumConstructCoverageRatio": 0.5
+    }
+  },
+  {
+    "id": "technology-governance-module",
+    "version": "2026-08-specialist-v11",
+    "title": "Technology and governance variants",
+    "shortTitle": "Technology and governance",
+    "description": "Separates expert administration, centralized governance, algorithmic authority, decentralized technology, and accelerationist strategy.",
+    "invitationNote": "This is an opt-in experimental follow-up. You may skip it without affecting your primary result or research participation.",
+    "estimatedMinutes": 3,
+    "itemIds": [
+      "fm-te-1",
+      "fm-te-2",
+      "fm-te-3",
+      "fm-te-4",
+      "fm-te-5",
+      "fm-te-6"
+    ],
+    "constructIds": [
+      "specialist:technology-governance-module:accelerationist-strategy",
+      "specialist:technology-governance-module:algorithmic-authority",
+      "specialist:technology-governance-module:centralized-administration",
+      "specialist:technology-governance-module:decentralized-technology",
+      "specialist:technology-governance-module:expert-administration",
+      "specialist:technology-governance-module:market-acceleration"
+    ],
+    "candidateIds": [
+      "candidate:technology-governance-module:accelerationism:base",
+      "candidate:technology-governance-module:cyberocracy:base",
+      "candidate:technology-governance-module:dataism:base",
+      "candidate:technology-governance-module:left-accelerationism:base",
+      "candidate:technology-governance-module:right-accelerationism:base",
+      "candidate:technology-governance-module:techno-anarchism:base",
+      "candidate:technology-governance-module:technocratic-centralist:base",
+      "candidate:technology-governance-module:technology-centered-accelerationism:base"
+    ],
+    "outputProfileIds": [
+      "profile:specialist:techno-anarchism",
+      "profile:specialist:technocratic-centralist"
+    ],
+    "provenanceRefs": [
+      "source:v1-canonical-manifest",
+      "source:phase0-measurement-contract"
+    ],
+    "activation": {
+      "strategy": "explicit-request",
+      "minimumAnsweredItems": 2,
+      "minimumAnsweredWeightRatio": 0.5,
+      "minimumConstructCoverageRatio": 0.5
+    }
+  }
+]

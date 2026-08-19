@@ -1,0 +1,212 @@
+{
+  "referenceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
+  "contentVersion": "v2-content-phase8.1",
+  "scoringVersion": "production-score-v1",
+  "decision": "scored",
+  "evidenceCoverage": {
+    "answeredItems": 1,
+    "expectedItems": 338,
+    "coverage": 0.0029585798816568047,
+    "status": "partial"
+  },
+  "uncertainty": {
+    "band": "high",
+    "reasons": [
+      "insufficient-evidence"
+    ]
+  },
+  "abstentionCodes": [
+    "insufficient-evidence"
+  ],
+  "dimensionScores": [
+    {
+      "dimensionId": "anti-domination",
+      "value": 0,
+      "answeredItems": 1,
+      "expectedItems": 106,
+      "coverage": 0.009433962264150943
+    },
+    {
+      "dimensionId": "authority-legitimacy",
+      "value": 0,
+      "answeredItems": 1,
+      "expectedItems": 53,
+      "coverage": 0.018867924528301886
+    },
+    {
+      "dimensionId": "centralization-preference",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 62,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "coercion-strategy",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 22,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "compromise-vs-persistence",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 9,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "coordination-optimism",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 8,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "cultural-plasticity",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 9,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "democratic-confidence",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 9,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "electoralism-vs-direct-action",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 9,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "equality-theory",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 47,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "expert-confidence",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 8,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "gradualism-vs-immediatism",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 14,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "human-nature-priority",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 11,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "liberty-noninterference",
+      "value": 0,
+      "answeredItems": 1,
+      "expectedItems": 96,
+      "coverage": 0.010416666666666666
+    },
+    {
+      "dimensionId": "market-process-confidence",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 11,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "militarism-pacifism",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 10,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "moral-traditionalism",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 25,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "political-community-boundary",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 24,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "property-legitimacy",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 41,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "public-choice-skepticism",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 16,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "redistribution-vs-predistribution",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 20,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "reform-vs-revolution",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 9,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "regulation-vs-deregulation",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 77,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "secularism-religious",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 13,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "state-action-vs-exit",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 68,
+      "coverage": 0
+    },
+    {
+      "dimensionId": "state-capacity-confidence",
+      "value": null,
+      "answeredItems": 0,
+      "expectedItems": 9,
+      "coverage": 0
+    }
+  ],
+  "labels": [
+    {
+      "labelId": "republicanism",
+      "similarity": 0.7238659745703184,
+      "rank": 1
+    }
+  ]
+}

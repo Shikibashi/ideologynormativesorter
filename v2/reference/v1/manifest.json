@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "referenceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
+  "methodologyCommit": "b1ac3e3e147e3761faccec8588d7c822a875d4dc",
+  "contentVersion": "ideology-registry-2026-08-clean-v1",
+  "scoringVersion": "production-score-v1",
+  "resultVersion": "production-result-v1",
+  "classificationLedgerVersion": "source-classification-v2.phase10.1",
+  "createdFrom": [
+    "src/domain/canonicalMigration.ts",
+    "src/domain/canonicalManifest.ts",
+    "docs/v2/source-classification.md",
+    "docs/v2/migration-decisions.md"
+  ],
+  "captureMode": "frozen-reference-boundary",
+  "notes": "This manifest freezes the v1 reference boundary. Differential tooling may execute a v1 adapter for captured cases, but v1 is never imported by v2 runtime packages and current-main changes are never treated as the reference automatically.",
+  "visualParityClaim": false
+}

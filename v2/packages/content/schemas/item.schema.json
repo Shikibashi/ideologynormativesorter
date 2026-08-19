@@ -1,0 +1,67 @@
+{
+  "$id": "https://example.com/v2/item.schema.json",
+  "type": "object",
+  "required": ["id", "domainId", "prompt", "responseType", "scoring", "role", "layer", "tier", "status", "reverseScored"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "domainId": { "type": "string", "minLength": 1 },
+    "prompt": { "type": "string", "minLength": 1 },
+    "responseType": { "enum": ["likert5", "likert7", "statement-choice"] },
+    "role": { "enum": ["core", "specialist"] },
+    "layer": { "enum": ["normative", "descriptive", "prescriptive"] },
+    "tier": { "enum": ["blitz", "quick", "moderate", "extensive"] },
+    "status": { "enum": ["active", "inactive"] },
+    "moduleId": { "type": "string", "minLength": 1 },
+    "reverseScored": { "type": "boolean" },
+    "allowDontKnow": { "type": "boolean" },
+    "confidencePrompt": { "type": "string" },
+    "priorityPrompt": { "type": "string" },
+    "contextNote": { "type": "string" },
+    "evidenceNote": { "type": "string" },
+    "reviewStatus": { "type": "string" },
+    "version": { "type": "string" },
+    "sourceKey": { "type": "string" },
+    "provenanceRefs": { "type": "array", "items": { "type": "string" } },
+    "scaleMin": { "type": "integer" },
+    "scaleMax": { "type": "integer" },
+    "scaleStep": { "type": "integer" },
+    "scoring": {
+      "type": "object",
+      "required": ["mappingMode", "contributions"],
+      "properties": {
+        "mappingMode": { "enum": ["item", "options"] },
+        "contributions": { "type": "array", "items": { "$ref": "contribution.schema.json" } }
+      },
+      "additionalProperties": false
+    },
+    "options": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "contributions"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "text": { "type": "string", "minLength": 1 },
+          "contributions": { "type": "array", "minItems": 1, "items": { "$ref": "contribution.schema.json" } }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "responseType": { "const": "likert5" } } },
+      "then": { "required": ["scaleMin", "scaleMax", "scaleStep"], "properties": { "scaleMin": { "const": -2 }, "scaleMax": { "const": 2 }, "scaleStep": { "const": 1 }, "scoring": { "properties": { "mappingMode": { "const": "item" }, "contributions": { "minItems": 1 } } } } }
+    },
+    {
+      "if": { "properties": { "responseType": { "const": "likert7" } } },
+      "then": { "required": ["scaleMin", "scaleMax", "scaleStep"], "properties": { "scaleMin": { "const": -3 }, "scaleMax": { "const": 3 }, "scaleStep": { "const": 1 }, "scoring": { "properties": { "mappingMode": { "const": "item" }, "contributions": { "minItems": 1 } } } } }
+    },
+    {
+      "if": { "properties": { "responseType": { "const": "statement-choice" } } },
+      "then": { "required": ["options"], "properties": { "scoring": { "properties": { "mappingMode": { "const": "options" }, "contributions": { "maxItems": 0 } } } } }
+    }
+  ],
+  "additionalProperties": false
+}

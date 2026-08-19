@@ -1,0 +1,325 @@
+{
+  "metadata": {
+    "contentSchemaVersion": "content-schema-v2.phase1-synthetic.1",
+    "contentVersion": "content-v2.synthetic-test.1",
+    "contentFingerprint": "synthetic-canonical-placeholder",
+    "scoringVersion": "scoring-v2.phase1.1",
+    "responseSchemaVersion": "response-v2.phase1.1",
+    "resultSchemaVersion": "result-v2.phase1.1",
+    "researchSchemaVersion": "research-v2.phase1.1"
+  },
+  "domains": [
+    {
+      "id": "domain:color",
+      "label": "Color Preference Domain",
+      "description": "Synthetic domain for phase-1 validation",
+      "display": {
+        "shortLabel": "Color",
+        "longLabel": "Color and pattern preferences"
+      }
+    }
+  ],
+  "constructs": [
+    {
+      "id": "construct:normative-harmony",
+      "domainId": "domain:color",
+      "name": "Harmony",
+      "role": "normative",
+      "scope": "root",
+      "display": {
+        "shortLabel": "Harmony",
+        "longLabel": "Harmony construct"
+      }
+    },
+    {
+      "id": "construct:descriptive-bright",
+      "domainId": "domain:color",
+      "name": "Brightness",
+      "role": "descriptive",
+      "scope": "root",
+      "display": {
+        "shortLabel": "Bright",
+        "longLabel": "Brightness preference"
+      }
+    },
+    {
+      "id": "construct:prescriptive-contrast",
+      "domainId": "domain:color",
+      "name": "Contrast",
+      "role": "prescriptive",
+      "scope": "root",
+      "display": {
+        "shortLabel": "Contrast",
+        "longLabel": "Contrast preference"
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "item:desc-likert5",
+      "role": "core",
+      "layer": "descriptive",
+      "tier": "moderate",
+      "status": "active",
+      "domainId": "domain:color",
+      "prompt": "Do you prefer warm colors?",
+      "responseType": "likert5",
+      "scaleMin": -2,
+      "scaleMax": 2,
+      "scaleStep": 1,
+      "reverseScored": false,
+      "scoring": {
+        "mappingMode": "item",
+        "contributions": [
+          {
+            "constructId": "construct:descriptive-bright",
+            "weight": 1,
+            "polarity": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "item:desc-likert5-reverse",
+      "role": "core",
+      "layer": "descriptive",
+      "tier": "moderate",
+      "status": "active",
+      "domainId": "domain:color",
+      "prompt": "Do you dislike bright environments?",
+      "responseType": "likert5",
+      "scaleMin": -2,
+      "scaleMax": 2,
+      "scaleStep": 1,
+      "reverseScored": true,
+      "scoring": {
+        "mappingMode": "item",
+        "contributions": [
+          {
+            "constructId": "construct:descriptive-bright",
+            "weight": 1,
+            "polarity": -1
+          }
+        ]
+      }
+    },
+    {
+      "id": "item:prescriptive-7",
+      "role": "core",
+      "layer": "prescriptive",
+      "tier": "moderate",
+      "status": "active",
+      "reverseScored": false,
+      "domainId": "domain:color",
+      "prompt": "How strongly should colors be clearly distinguished?",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "scoring": {
+        "mappingMode": "item",
+        "contributions": [
+          {
+            "constructId": "construct:prescriptive-contrast",
+            "weight": 1,
+            "polarity": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "item:statement-choice-harmony",
+      "role": "specialist",
+      "layer": "normative",
+      "tier": "moderate",
+      "status": "active",
+      "moduleId": "specialist:color-chooser",
+      "reverseScored": false,
+      "domainId": "domain:color",
+      "prompt": "Which color pairing do you prefer?",
+      "responseType": "statement-choice",
+      "options": [
+        {
+          "id": "option:warm",
+          "text": "Warm and vibrant tones",
+          "contributions": [
+            {
+              "constructId": "construct:normative-harmony",
+              "weight": 1,
+              "polarity": 1
+            }
+          ]
+        },
+        {
+          "id": "option:cool",
+          "text": "Cool and muted tones",
+          "contributions": [
+            {
+              "constructId": "construct:normative-harmony",
+              "weight": 1,
+              "polarity": -1
+            }
+          ]
+        }
+      ],
+      "scoring": {
+        "mappingMode": "options",
+        "contributions": []
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "id": "profile:color-baseline",
+      "name": "Color Baseline",
+      "role": "primary",
+      "requirements": [
+        {
+          "constructId": "construct:normative-harmony",
+          "targetValue": 0.25,
+          "weight": 1
+        },
+        {
+          "constructId": "construct:descriptive-bright",
+          "targetValue": 0,
+          "weight": 1
+        }
+      ],
+      "minimumEvidenceRatio": 0.5,
+      "gates": [
+        {
+          "id": "gate:primary:brightness-floor",
+          "operator": "minimum",
+          "constructId": "construct:descriptive-bright",
+          "minimum": 0.2
+        }
+      ]
+    }
+  ],
+  "modifiers": [
+    {
+      "id": "profile:color-variant",
+      "role": "modifier",
+      "name": "Contrast Variant",
+      "modifierId": "modifier:contrast-focus",
+      "availability": "core-construct",
+      "constructName": "Contrast",
+      "note": "Synthetic modifier used to exercise explicit item indicators.",
+      "requirements": [
+        {
+          "constructId": "construct:prescriptive-contrast",
+          "targetValue": 0.1,
+          "weight": 1
+        }
+      ],
+      "indicators": [
+        {
+          "itemId": "item:prescriptive-7",
+          "direction": 1,
+          "weight": 1,
+          "rationale": "Synthetic indicator."
+        }
+      ],
+    "gates": [],
+    "minimumEvidenceRatio": 0.35,
+    "minimumAnsweredItems": 1,
+    "fitThreshold": 0.65
+  }
+  ],
+  "specialists": [
+    {
+      "id": "profile:specialist:color-chooser",
+      "role": "specialist",
+      "name": "Color Specialist Module",
+      "specialistId": "node:specialist",
+      "moduleId": "specialist:color-chooser",
+      "itemIds": ["item:statement-choice-harmony"],
+      "activation": {
+        "minimumAnsweredItems": 1,
+        "minimumItemWeight": 0.5,
+        "requiredConstructCount": 1
+      },
+      "outputType": "primary",
+      "variants": [],
+      "requirements": [],
+      "gates": [
+        {
+          "id": "gate:specialist:minimum-coverage",
+          "operator": "minimum",
+          "constructId": "construct:normative-harmony",
+          "minimum": 0
+        }
+      ],
+      "minimumEvidenceRatio": 0.25,
+      "status": "research-candidate",
+      "version": "synthetic-1",
+      "provenanceRefs": []
+    }
+  ],
+  "specialistModules": [
+    {
+      "id": "specialist:color-chooser",
+      "version": "synthetic-1",
+      "title": "Color Chooser",
+      "shortTitle": "Color",
+      "description": "Synthetic specialist module.",
+      "invitationNote": "Optional synthetic module.",
+      "estimatedMinutes": 1,
+      "itemIds": ["item:statement-choice-harmony"],
+      "constructIds": [],
+      "candidateIds": [],
+      "outputProfileIds": ["profile:specialist:color-chooser"],
+      "provenanceRefs": []
+    }
+  ],
+  "specialistCandidates": [],
+  "specialistAssignment": {
+    "strategy": "fixed-roster",
+    "rosterVersion": "synthetic-1",
+    "orderedModuleIds": ["specialist:color-chooser"]
+  },
+  "ontologyNodes": [
+    {
+      "id": "node:normative",
+      "label": "Normative Node",
+      "domainId": "domain:color",
+      "weight": 1,
+      "nodeScope": "root",
+      "conceptualStatus": "canonical",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "ontology",
+      "provenanceRefs": []
+    },
+    {
+      "id": "node:descriptive",
+      "label": "Descriptive Node",
+      "domainId": "domain:color",
+      "weight": 1,
+      "nodeScope": "root",
+      "conceptualStatus": "canonical",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "ontology",
+      "provenanceRefs": []
+    },
+    {
+      "id": "node:specialist",
+      "label": "Specialist Node",
+      "domainId": "domain:color",
+      "weight": 1,
+      "nodeScope": "specialist",
+      "conceptualStatus": "canonical",
+      "measurementStatus": "research-candidate",
+      "publicRoleStatus": "specialist",
+      "provenanceRefs": []
+    }
+  ],
+  "ontologyRelations": [
+    {
+      "id": "relation:normative-to-descriptive",
+      "sourceNodeId": "node:normative",
+      "targetNodeId": "node:descriptive",
+      "relationType": "supports"
+    }
+  ],
+  "provenanceSources": []
+}

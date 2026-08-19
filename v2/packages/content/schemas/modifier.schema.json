@@ -1,0 +1,41 @@
+{
+  "$id": "https://example.com/v2/modifier.schema.json",
+  "type": "object",
+  "required": ["id", "name", "role", "modifierId", "availability", "constructName", "note", "indicators", "gates"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "role": { "const": "modifier" },
+    "modifierId": { "type": "string", "minLength": 1 },
+    "availability": { "enum": ["core-construct", "focused-follow-up", "catalog-only"] },
+    "constructName": { "type": "string", "minLength": 1 },
+    "note": { "type": "string", "minLength": 1 },
+    "requirements": { "type": "array", "items": { "$ref": "requirement.schema.json" } },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["itemId", "direction", "weight"],
+        "properties": {
+          "itemId": { "type": "string", "minLength": 1 },
+          "direction": { "enum": [-1, 1] },
+          "weight": { "type": "number", "exclusiveMinimum": 0 },
+          "targetValue": { "type": "number" },
+          "rationale": { "type": "string" },
+          "minimumEvidenceWeight": { "type": "number", "minimum": 0 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "minimumAnsweredItems": { "type": "integer", "minimum": 0 },
+    "fitThreshold": { "type": "number", "minimum": 0, "maximum": 1 },
+    "gates": { "type": "array", "items": { "$ref": "gate.schema.json" } },
+    "minimumEvidenceRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+    "status": { "type": "string" },
+    "version": { "type": "string" },
+    "targetNodeId": { "type": "string", "minLength": 1 },
+    "rationale": { "type": "string" },
+    "provenanceRefs": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
