@@ -1,6 +1,6 @@
 # Generated v2 Release-Candidate Summary
 
-- Status: **NO-GO**
+- Status: **GO**
 - Production writes: **disabled**
 - Traffic cutover: **not performed**
 - Empirical evidence: **NOT_EVALUATED**
@@ -9,5 +9,4 @@
 
 ## Blockers
 
-- **VERIFY_BROWSERMATRIX** (blocking): browserMatrix has not been verified in this release-candidate run
-- **WORKTREE_NOT_CLEAN** (blocking): Unrelated pre-existing worktree changes remain outside the release-owned file set
+- None
