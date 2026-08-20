@@ -13,6 +13,8 @@ import type {
   PrimaryProfileMatchResult,
   PrimaryProfileSupportSummary,
   ProfileAbstentionReason,
+  ProfileGateEvaluation,
+  ProfileGateStatus,
   ScoredPrimaryProfile,
 } from "../../../contracts/src/profiles";
 import { throwScoringError } from "../errors/scoring-error";
@@ -24,8 +26,20 @@ import {
   evaluateConstitutiveGates,
   validatePrimaryProfileConfiguration,
 } from "./profile-gates";
-import { computeProfileDistance } from "./profile-distance";
+import {
+  computeCommitmentAffinity,
+  computeProfileDistance,
+} from "./profile-distance";
 import { rankPrimaryProfiles } from "./profile-ranking";
+import {
+  commitmentCriterionSatisfied,
+  getPrimaryIdeologyCommitmentSpec,
+  isDecisiveCommitment,
+  isDemotedPrimaryProfile,
+  type CommitmentCriterion,
+  type PrimaryIdeologyCommitment,
+  type PrimaryIdeologyCommitmentSpec,
+} from "./ideology-commitments";
 
 function deepFreeze<T>(value: T): T {
   if (value === null || typeof value !== "object") return value;
@@ -138,14 +152,17 @@ function scoredResult(
   evidence: PrimaryProfileEvidence,
   comparisons: PrimaryProfileMatchResult["comparisons"],
   gates: PrimaryProfileMatchResult["gates"],
+  commitmentModel: boolean,
 ): ScoredPrimaryProfile {
-  const distance = computeProfileDistance(comparisons);
+  const score = commitmentModel
+    ? computeCommitmentAffinity(comparisons)
+    : computeProfileDistance(comparisons);
   return {
     profileId: profile.id,
     name: profile.name,
     status: "scored",
-    distance: distance.distance,
-    similarity: distance.similarity,
+    distance: score.distance,
+    similarity: score.similarity,
     rank: null,
     tieGroup: null,
     comparisons,
@@ -161,6 +178,127 @@ function sortConstructs(constructs: readonly ConstructResult[]): readonly Constr
   );
 }
 
+function criterionShapeValid(criterion: CommitmentCriterion): boolean {
+  if (criterion.operator === "minimum") {
+    return Number.isFinite(criterion.minimum) && criterion.minimum >= -1 && criterion.minimum <= 1;
+  }
+  if (criterion.operator === "maximum") {
+    return Number.isFinite(criterion.maximum) && criterion.maximum >= -1 && criterion.maximum <= 1;
+  }
+  return (
+    Number.isFinite(criterion.minimum) &&
+    Number.isFinite(criterion.maximum) &&
+    criterion.minimum >= -1 &&
+    criterion.maximum <= 1 &&
+    criterion.minimum <= criterion.maximum
+  );
+}
+
+function validateCommitmentSpec(
+  spec: PrimaryIdeologyCommitmentSpec,
+  knownConstructIds: ReadonlySet<string>,
+): string | undefined {
+  if (spec.commitments.length === 0) return "commitment model has no commitments";
+  const ids = new Set<string>();
+  for (const commitment of spec.commitments) {
+    if (!commitment.id || ids.has(commitment.id)) return `duplicate or empty commitment id ${commitment.id}`;
+    ids.add(commitment.id);
+    if (!knownConstructIds.has(commitment.constructId)) {
+      return `unknown commitment construct ${commitment.constructId}`;
+    }
+    if (
+      (commitment.relation === "constitutive" ||
+        commitment.relation === "core" ||
+        commitment.relation === "characteristic" ||
+        commitment.relation === "incompatible") &&
+      commitment.criterion === undefined
+    ) {
+      return `${commitment.id} requires an explicit criterion`;
+    }
+    if (commitment.criterion !== undefined && !criterionShapeValid(commitment.criterion)) {
+      return `${commitment.id} has an invalid criterion`;
+    }
+  }
+  if (!spec.commitments.some((entry) => entry.relation === "core" || entry.relation === "characteristic")) {
+    return "commitment model has no affinity-bearing commitments";
+  }
+  return undefined;
+}
+
+function commitmentReason(
+  criterion: CommitmentCriterion,
+  satisfied: boolean,
+): ProfileGateEvaluation["reason"] {
+  if (criterion.operator === "minimum") {
+    return satisfied ? "value_meets_threshold" : "value_below_minimum";
+  }
+  if (criterion.operator === "maximum") {
+    return satisfied ? "value_meets_threshold" : "value_above_maximum";
+  }
+  return satisfied ? "value_in_interval" : "value_outside_interval";
+}
+
+function commitmentEvaluation(
+  commitment: PrimaryIdeologyCommitment,
+  constructsById: ReadonlyMap<ConstructId, ConstructResult>,
+): ProfileGateEvaluation {
+  const criterion = commitment.criterion!;
+  const construct = constructsById.get(commitment.constructId as ConstructId);
+  const base = {
+    gateId: `commitment:${commitment.id}`,
+    operator: criterion.operator,
+    constructId: commitment.constructId as ConstructId,
+    ...(criterion.operator === "minimum" ? { minimum: criterion.minimum } : {}),
+    ...(criterion.operator === "maximum" ? { maximum: criterion.maximum } : {}),
+    ...(criterion.operator === "interval"
+      ? { minimum: criterion.minimum, maximum: criterion.maximum }
+      : {}),
+  } as const;
+  if (!construct || construct.status !== "scored" || !Number.isFinite(construct.score)) {
+    return Object.freeze({
+      ...base,
+      status: "unavailable" as const,
+      reason: "construct_unavailable" as const,
+    });
+  }
+  if (
+    commitment.minimumAnsweredItems !== undefined &&
+    construct.evidence.answeredItemCount < commitment.minimumAnsweredItems
+  ) {
+    return Object.freeze({
+      ...base,
+      observedValue: construct.score,
+      status: "unavailable" as const,
+      reason: "construct_unavailable" as const,
+    });
+  }
+  const criterionSatisfied = commitmentCriterionSatisfied(construct.score, criterion);
+  const passed =
+    commitment.relation === "incompatible" ? !criterionSatisfied : criterionSatisfied;
+  return Object.freeze({
+    ...base,
+    observedValue: construct.score,
+    status: passed ? "passed" : "failed",
+    reason: commitmentReason(criterion, criterionSatisfied),
+  });
+}
+
+function evaluateDecisiveCommitments(
+  spec: PrimaryIdeologyCommitmentSpec,
+  constructsById: ReadonlyMap<ConstructId, ConstructResult>,
+): { readonly evaluations: readonly ProfileGateEvaluation[]; readonly status: ProfileGateStatus } {
+  const evaluations = spec.commitments
+    .filter(isDecisiveCommitment)
+    .map((entry) => commitmentEvaluation(entry, constructsById))
+    .sort((left, right) => left.gateId.localeCompare(right.gateId));
+  const status: ProfileGateStatus = evaluations.some((entry) => entry.status === "failed")
+    ? "failed"
+    : evaluations.some((entry) => entry.status === "unavailable")
+      ? "unavailable"
+      : "passed";
+  return { evaluations: Object.freeze(evaluations), status };
+}
+
 export function scorePrimaryProfiles(
   assessment: ConstructAssessment,
   bundle: CanonicalContentBundle,
@@ -170,10 +308,15 @@ export function scorePrimaryProfiles(
   const knownConstructIds = new Set(bundle.constructs.map((construct) => String(construct.id)));
   const profiles: PrimaryProfileMatchResult[] = [];
 
-  for (const profile of [...bundle.profiles].sort((left, right) =>
-    String(left.id).localeCompare(String(right.id)),
-  )) {
-    const configurationError = validatePrimaryProfileConfiguration(profile, knownConstructIds);
+  for (const profile of [...bundle.profiles]
+    .sort((left, right) => String(left.id).localeCompare(String(right.id)))) {
+    const profileId = String(profile.id);
+    if (isDemotedPrimaryProfile(profileId)) continue;
+
+    const commitmentSpec = getPrimaryIdeologyCommitmentSpec(profileId);
+    const configurationError = commitmentSpec
+      ? validateCommitmentSpec(commitmentSpec, knownConstructIds)
+      : validatePrimaryProfileConfiguration(profile, knownConstructIds);
     if (configurationError) {
       const empty = emptyProfileEvidence(profile);
       profiles.push(
@@ -196,16 +339,31 @@ export function scorePrimaryProfiles(
       continue;
     }
 
-    const gateResult = evaluateConstitutiveGates(profile, {
+    const contentGateResult = evaluateConstitutiveGates(profile, {
       constructsById,
       profileEvidence: evaluated.evidence,
     });
+    const commitmentGateResult = commitmentSpec
+      ? evaluateDecisiveCommitments(commitmentSpec, constructsById)
+      : { evaluations: Object.freeze([]), status: "passed" as const };
+    const gateEvaluations = Object.freeze(
+      [...contentGateResult.evaluations, ...commitmentGateResult.evaluations].sort((left, right) =>
+        left.gateId.localeCompare(right.gateId),
+      ),
+    );
+    const combinedGateStatus: ProfileGateStatus =
+      contentGateResult.status === "failed" || commitmentGateResult.status === "failed"
+        ? "failed"
+        : contentGateResult.status === "unavailable" || commitmentGateResult.status === "unavailable"
+          ? "unavailable"
+          : "passed";
+
     const reason: ProfileAbstentionReason | undefined =
       evaluated.evidence.unavailableRequiredConstructCount > 0
         ? "required_construct_unavailable"
-        : gateResult.status === "failed"
+        : combinedGateStatus === "failed"
           ? "constitutive_gate_failed"
-          : gateResult.status === "unavailable"
+          : combinedGateStatus === "unavailable"
             ? "constitutive_gate_unavailable"
             : !evaluated.evidence.meetsMinimumEvidence
               ? "insufficient_evidence"
@@ -219,7 +377,7 @@ export function scorePrimaryProfiles(
           profile,
           evaluated.evidence,
           evaluated.comparisons,
-          gateResult.evaluations,
+          gateEvaluations,
           reason,
         ),
       );
@@ -230,7 +388,8 @@ export function scorePrimaryProfiles(
         profile,
         evaluated.evidence,
         evaluated.comparisons,
-        gateResult.evaluations,
+        gateEvaluations,
+        commitmentSpec !== undefined,
       ),
     );
   }
