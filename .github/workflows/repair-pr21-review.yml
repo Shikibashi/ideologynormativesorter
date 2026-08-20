@@ -1,0 +1,273 @@
+name: Repair PR21 review findings
+
+on:
+  push:
+    branches:
+      - refactor/specialist-commitment-scoring
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refactor/specialist-commitment-scoring
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Apply reviewed fixes
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text()
+              if old not in text:
+                  raise SystemExit(f"expected anchor missing in {path}: {old[:180]!r}")
+              p.write_text(text.replace(old, new, 1))
+
+          # Highest-affinity valid specialist variant must win, not declaration order.
+          replace_once(
+              "v2/packages/engine/src/specialists/index.ts",
+              '''  const validTargets = targets.filter(\n    (entry) =>\n      entry.evaluated.reason === undefined &&\n      entry.evaluated.affinity !== null,\n  );\n  const ordered = [...targets].sort((left, right) => {\n    const leftAffinity = left.evaluated.affinity ?? -1;\n    const rightAffinity = right.evaluated.affinity ?? -1;\n    return (\n      rightAffinity - leftAffinity ||\n      left.target.id.localeCompare(right.target.id)\n    );\n  });\n  const selected = (validTargets.length > 0 ? validTargets : ordered)[0];''',
+              '''  const ordered = [...targets].sort((left, right) => {\n    const leftAffinity = left.evaluated.affinity ?? -1;\n    const rightAffinity = right.evaluated.affinity ?? -1;\n    return (\n      rightAffinity - leftAffinity ||\n      left.target.id.localeCompare(right.target.id)\n    );\n  });\n  const selected =\n    ordered.find(\n      (entry) =>\n        entry.evaluated.reason === undefined &&\n        entry.evaluated.affinity !== null,\n    ) ?? ordered[0];''',
+          )
+
+          # Commitment criteria must be complete, bounded and internally ordered.
+          replace_once(
+              "v2/packages/content/src/validate-schema.ts",
+              '''      const operator = value.criterion.operator;\n      if (!["minimum", "maximum", "interval"].includes(String(operator))) {\n        addIssue(issues, `${commitmentPath}.criterion.operator`, "value", "Unknown criterion operator");\n      }\n      for (const key of ["minimum", "maximum"]) {\n        if (value.criterion[key] !== undefined && !isFiniteNumber(value.criterion[key])) {\n          addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${key} must be finite`);\n        }\n      }''',
+              '''      const operator = value.criterion.operator;\n      if (!["minimum", "maximum", "interval"].includes(String(operator))) {\n        addIssue(issues, `${commitmentPath}.criterion.operator`, "value", "Unknown criterion operator");\n        return;\n      }\n      const requiredBounds = operator === "interval" ? ["minimum", "maximum"] : [String(operator)];\n      for (const key of requiredBounds) {\n        if (value.criterion[key] === undefined) {\n          addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${operator} criterion requires ${key}`);\n        }\n      }\n      for (const key of ["minimum", "maximum"]) {\n        if (value.criterion[key] !== undefined && !isFiniteNumber(value.criterion[key])) {\n          addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${key} must be finite`);\n        } else if (\n          isFiniteNumber(value.criterion[key]) &&\n          (value.criterion[key] < -1 || value.criterion[key] > 1)\n        ) {\n          addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${key} must be within [-1,1]`);\n        }\n      }\n      if (\n        operator === "interval" &&\n        isFiniteNumber(value.criterion.minimum) &&\n        isFiniteNumber(value.criterion.maximum) &&\n        value.criterion.minimum > value.criterion.maximum\n      ) {\n        addIssue(issues, `${commitmentPath}.criterion`, "value", "Criterion interval minimum cannot exceed maximum");\n      }''',
+          )
+          replace_once(
+              "v2/packages/content/src/validate-schema.ts",
+              '  if (!record.commitments.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist variant requires commitments");',
+              '  if (!record.commitments?.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist variant requires commitments");',
+          )
+          replace_once(
+              "v2/packages/content/src/validate-schema.ts",
+              '  if (!record.commitments.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist candidate requires commitments");',
+              '  if (!record.commitments?.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist candidate requires commitments");',
+          )
+          replace_once(
+              "v2/packages/content/src/validate-schema.ts",
+              '''  validateRequirements(record.requirements ?? [], `${path}.requirements`, issues);\n  validateProfileGates(record.gates, `${path}.gates`, issues);''',
+              '''  validateRequirements(record.requirements ?? [], `${path}.requirements`, issues);\n  if (record.commitments !== undefined) validateCommitments(record.commitments, `${path}.commitments`, issues);\n  validateProfileGates(record.gates, `${path}.gates`, issues);''',
+          )
+
+          # Top-level legacy requirements are optional compatibility data, not a specialist requirement.
+          schema_path = Path("v2/packages/content/schemas/specialist.schema.json")
+          schema = json.loads(schema_path.read_text())
+          schema["required"] = [entry for entry in schema["required"] if entry != "requirements"]
+          schema_path.write_text(json.dumps(schema, indent=2) + "\n")
+
+          # Audit actual commitment-backed construct use separately from legacy compatibility requirements.
+          Path("scripts/audit-specialist-commitments.mjs").write_text(r'''import { readFileSync } from "node:fs";
+
+          const constructs = JSON.parse(readFileSync("v2/content/constructs/specialist.json", "utf8"));
+          const items = JSON.parse(readFileSync("v2/content/items/specialist.json", "utf8"));
+          const profiles = JSON.parse(readFileSync("v2/content/profiles/specialists.json", "utf8"));
+
+          const itemUses = new Map();
+          for (const item of items) {
+            for (const mapping of item?.scoring?.contributions ?? []) {
+              const id = String(mapping.constructId ?? "");
+              if (!id) continue;
+              const list = itemUses.get(id) ?? [];
+              list.push({
+                itemId: String(item.id),
+                prompt: String(item.prompt ?? item.text ?? ""),
+                weight: mapping.weight,
+                polarity: mapping.polarity,
+                optionId: mapping.optionId ?? null,
+              });
+              itemUses.set(id, list);
+            }
+          }
+
+          const commitmentUses = new Map();
+          const legacyRequirementUses = new Map();
+          const addCommitmentUse = (profile, variant, commitment) => {
+            const id = String(commitment?.constructId ?? "");
+            if (!id) return;
+            const list = commitmentUses.get(id) ?? [];
+            list.push({
+              profileId: String(profile.id),
+              variantId: variant ? String(variant.id) : null,
+              commitmentId: String(commitment.id ?? ""),
+              relation: commitment.relation ?? null,
+              criterion: commitment.criterion ?? null,
+              weight: commitment.weight ?? 1,
+              minimumAnsweredItems: commitment.minimumAnsweredItems ?? null,
+            });
+            commitmentUses.set(id, list);
+          };
+          const addLegacyRequirementUse = (profile, variant, requirement) => {
+            const id = String(requirement?.constructId ?? "");
+            if (!id) return;
+            const list = legacyRequirementUses.get(id) ?? [];
+            list.push({
+              profileId: String(profile.id),
+              variantId: variant ? String(variant.id) : null,
+              targetValue: requirement.targetValue,
+              weight: requirement.weight,
+              minimumAnsweredItems: requirement.minimumAnsweredItems ?? null,
+            });
+            legacyRequirementUses.set(id, list);
+          };
+          for (const profile of profiles) {
+            for (const commitment of profile.commitments ?? []) addCommitmentUse(profile, null, commitment);
+            for (const requirement of profile.requirements ?? []) addLegacyRequirementUse(profile, null, requirement);
+            for (const variant of profile.variants ?? []) {
+              for (const commitment of variant.commitments ?? []) addCommitmentUse(profile, variant, commitment);
+              for (const requirement of variant.requirements ?? []) addLegacyRequirementUse(profile, variant, requirement);
+            }
+          }
+
+          const useSort = (left, right) =>
+            `${left.profileId}:${left.variantId ?? ""}:${left.commitmentId ?? ""}`.localeCompare(
+              `${right.profileId}:${right.variantId ?? ""}:${right.commitmentId ?? ""}`,
+            );
+          const audit = constructs.map((construct) => ({
+            id: String(construct.id),
+            name: String(construct.name ?? construct.id),
+            moduleId: String(construct.moduleId ?? ""),
+            sourceKey: String(construct.sourceKey ?? ""),
+            description: construct.description ?? null,
+            poles: construct.poles ?? null,
+            boundaryStatement: construct.boundaryStatement ?? null,
+            items: (itemUses.get(String(construct.id)) ?? []).sort((a, b) => a.itemId.localeCompare(b.itemId)),
+            commitmentUses: (commitmentUses.get(String(construct.id)) ?? []).sort(useSort),
+            legacyRequirementUses: (legacyRequirementUses.get(String(construct.id)) ?? []).sort(useSort),
+          }));
+
+          console.log(JSON.stringify({
+            summary: {
+              constructCount: constructs.length,
+              itemCount: items.length,
+              profileCount: profiles.length,
+              constructsMissingDefinition: audit.filter(
+                (entry) => !entry.description || !entry.poles?.negative || !entry.poles?.positive || !entry.boundaryStatement,
+              ).length,
+              constructsWithoutMappedItems: audit.filter((entry) => entry.items.length === 0).length,
+              constructsWithoutCommitmentUses: audit.filter((entry) => entry.commitmentUses.length === 0).length,
+            },
+            constructs: audit,
+          }, null, 2));
+          ''')
+
+          # Mutate both historical profile-level and historical variant-level target vectors.
+          target_test = Path("tests/engine/v2-specialist-target-independence.spec.ts")
+          text = target_test.read_text()
+          old = '''      profile.requirements = [\n        {\n          constructId: hostileConstructId,\n          targetValue: -1,\n          weight: 999,\n          minimumAnsweredItems: 999,\n        },\n      ];'''
+          new = '''      const hostileRequirement = {\n        constructId: hostileConstructId,\n        targetValue: -1,\n        weight: 999,\n        minimumAnsweredItems: 999,\n      };\n      profile.requirements = [{ ...hostileRequirement }];\n      for (const variant of profile.variants ?? []) {\n        (variant as unknown as { requirements: unknown[] }).requirements = [\n          { ...hostileRequirement },\n        ];\n      }'''
+          if old not in text:
+              raise SystemExit("target independence mutation anchor missing")
+          target_test.write_text(text.replace(old, new, 1))
+
+          # Specialist consumers retain compatibility-shaped output but source it from canonical affinity.
+          replace_once(
+              "v2/packages/view-model/src/index.ts",
+              '''      similarity: profile.similarity,\n      similarityLabel: formatPercent(profile.similarity),''',
+              '''      similarity: profile.affinity,\n      similarityLabel: formatPercent(profile.affinity),''',
+          )
+          replace_once(
+              "v2/packages/persistence/src/share.ts",
+              'profiles: module.profiles.slice(0, options.topN ?? 3).map((profile) => ({ profileId: profile.profileId, name: profile.name, similarity: profile.similarity, rank: profile.rank, tieGroup: profile.tieGroup, status: profile.status }))',
+              'profiles: module.profiles.slice(0, options.topN ?? 3).map((profile) => ({ profileId: profile.profileId, name: profile.name, similarity: profile.affinity, rank: profile.rank, tieGroup: profile.tieGroup, status: profile.status }))',
+          )
+
+          # Regression coverage for malformed commitment criteria and validation stability.
+          Path("tests/architecture/v2-specialist-commitment-validation.spec.ts").write_text(r'''import { readFileSync } from "node:fs";
+          import { describe, expect, it } from "vitest";
+          import { validateContentSchema } from "../../v2/packages/content/src";
+          import type { CanonicalContentBundle } from "../../v2/packages/contracts/src/content";
+
+          const sourceBundle = JSON.parse(
+            readFileSync("v2/generated/content.bundle.json", "utf8"),
+          ) as CanonicalContentBundle;
+
+          function cloneBundle(): CanonicalContentBundle {
+            return JSON.parse(JSON.stringify(sourceBundle)) as CanonicalContentBundle;
+          }
+
+          function firstVariantCommitment(bundle: CanonicalContentBundle): Record<string, unknown> {
+            const variant = bundle.specialists.flatMap((profile) => profile.variants ?? []).find(
+              (entry) => entry.commitments.length > 0,
+            );
+            if (!variant) throw new Error("Canonical bundle has no specialist variant commitment");
+            return variant.commitments[0] as unknown as Record<string, unknown>;
+          }
+
+          describe("specialist commitment schema validation", () => {
+            it("rejects a missing operator operand without throwing", () => {
+              const bundle = cloneBundle();
+              firstVariantCommitment(bundle).criterion = { operator: "minimum" };
+              expect(() => validateContentSchema(bundle)).not.toThrow();
+              const report = validateContentSchema(bundle);
+              expect(report.success).toBe(false);
+              expect(report.issues.some((issue) => issue.path.endsWith(".criterion.minimum"))).toBe(true);
+            });
+
+            it("rejects out-of-range and inverted interval bounds", () => {
+              const outOfRange = cloneBundle();
+              firstVariantCommitment(outOfRange).criterion = { operator: "maximum", maximum: 1.5 };
+              const outOfRangeReport = validateContentSchema(outOfRange);
+              expect(outOfRangeReport.success).toBe(false);
+              expect(outOfRangeReport.issues.some((issue) => issue.message.includes("within [-1,1]"))).toBe(true);
+
+              const inverted = cloneBundle();
+              firstVariantCommitment(inverted).criterion = {
+                operator: "interval",
+                minimum: 0.7,
+                maximum: -0.2,
+              };
+              const invertedReport = validateContentSchema(inverted);
+              expect(invertedReport.success).toBe(false);
+              expect(invertedReport.issues.some((issue) => issue.message.includes("minimum cannot exceed maximum"))).toBe(true);
+            });
+
+            it("reports malformed commitment arrays instead of throwing", () => {
+              const bundle = cloneBundle();
+              const variant = bundle.specialists.flatMap((profile) => profile.variants ?? [])[0];
+              if (!variant) throw new Error("Canonical bundle has no specialist variant");
+              (variant as unknown as { commitments: unknown }).commitments = { malformed: true };
+              expect(() => validateContentSchema(bundle)).not.toThrow();
+              const report = validateContentSchema(bundle);
+              expect(report.success).toBe(false);
+              expect(report.issues.some((issue) => issue.path.endsWith(".commitments"))).toBe(true);
+            });
+          });
+          ''')
+      - name: Verify review repairs
+        run: |
+          set -euo pipefail
+          npx vitest run \
+            tests/engine/v2-specialist-variant-selection.spec.ts \
+            tests/engine/v2-specialist-target-independence.spec.ts \
+            tests/engine/v2-phase7-specialists.spec.ts \
+            tests/architecture/v2-specialist-commitment-validation.spec.ts \
+            tests/persistence/v2-phase12-persistence.test.ts \
+            tests/view-model/v2-phase11-view-model.test.ts
+          node scripts/audit-specialist-commitments.mjs >/tmp/specialist-audit.json
+          node -e 'const a=require("/tmp/specialist-audit.json"); if(a.summary.constructsMissingDefinition!==0) process.exit(1)'
+          npm run lint
+          npm run build
+      - name: Commit verified repair
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "4189822+github-actions[bot]@users.noreply.github.com"
+          git rm -f .github/workflows/repair-pr21-review.yml
+          git add -A
+          git status --short
+          git commit -m "fix: harden specialist commitment scoring"
+          git push origin HEAD:refactor/specialist-commitment-scoring
