@@ -1,2 +1,0 @@
-Trigger specialist commitment migration workflow.
-Migration persisted; run full PR gates on committed specialist commitments.

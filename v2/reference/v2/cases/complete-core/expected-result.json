@@ -3,7 +3,7 @@
   "resultSchemaVersion": "result-v2.phase9.1",
   "contentSchemaVersion": "content-schema-v2.phase8.1",
   "contentVersion": "v2-content-phase8.2-commitments",
-  "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+  "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
   "scoringVersion": "scoring-v2.commitment-v1",
   "researchSchemaVersion": "research-v2.phase1.1",
   "assessment": {
@@ -7574,12 +7574,12 @@
   "specialists": {
     "contentSchemaVersion": "content-schema-v2.phase8.1",
     "contentVersion": "v2-content-phase8.2-commitments",
-    "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+    "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
     "scoringVersion": "scoring-v2.commitment-v1",
     "responseSchemaVersion": "response-v2.phase1.1",
     "resultSchemaVersion": "result-v2.phase9.1",
     "researchSchemaVersion": "research-v2.phase1.1",
-    "coreAssessmentContentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+    "coreAssessmentContentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
     "modules": [
       {
         "moduleId": "anarchist-families-module",
@@ -7912,7 +7912,7 @@
     "responseSchemaVersion": "response-v2.phase1.1",
     "scoringVersion": "scoring-v2.commitment-v1",
     "contentVersion": "v2-content-phase8.2-commitments",
-    "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+    "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
     "resultSchemaVersion": "result-v2.phase9.1",
     "contributions": [
       {
