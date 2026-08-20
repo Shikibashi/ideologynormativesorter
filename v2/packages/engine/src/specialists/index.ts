@@ -1,6 +1,6 @@
 import type {
   CanonicalContentBundle,
-  ConstructRequirement,
+  SpecialistCommitmentRecord,
   SpecialistModuleRecord,
   SpecialistProfileRecord,
   SpecialistVariantRecord,
@@ -38,7 +38,6 @@ import type {
   SpecialistPreparedModule,
 } from "../types";
 
-const SPECIALIST_MAX_DISTANCE = 2;
 const SPECIALIST_TIE_TOLERANCE = 1e-12;
 
 function deepFreeze<T>(value: T): T {
@@ -405,30 +404,65 @@ function emptyModuleEvidence(
   });
 }
 
+function commitmentWeight(commitment: SpecialistCommitmentRecord): number {
+  const explicit = commitment.weight ?? 1;
+  if (!finite(explicit) || explicit <= 0) return 0;
+  if (commitment.relation === "core") return explicit * 1.25;
+  if (commitment.relation === "characteristic") return explicit;
+  return 0;
+}
+
+function commitmentIsEvidenceBearing(commitment: SpecialistCommitmentRecord): boolean {
+  return commitment.relation === "constitutive" ||
+    commitment.relation === "incompatible" ||
+    commitment.relation === "core" ||
+    commitment.relation === "characteristic";
+}
+
+function criterionSatisfied(score: number, criterion: SpecialistCommitmentRecord["criterion"]): boolean {
+  if (!criterion) return true;
+  if (criterion.operator === "minimum") return score >= criterion.minimum;
+  if (criterion.operator === "maximum") return score <= criterion.maximum;
+  return score >= criterion.minimum && score <= criterion.maximum;
+}
+
+function criterionSupport(score: number, criterion: SpecialistCommitmentRecord["criterion"]): number {
+  if (!criterion) return 0;
+  if (criterion.operator === "minimum") {
+    const minimum = criterion.minimum;
+    if (score >= minimum) return minimum >= 1 ? 1 : 0.5 + 0.5 * ratio(score - minimum, 1 - minimum);
+    return minimum <= -1 ? 0 : 0.5 * ratio(score + 1, minimum + 1);
+  }
+  if (criterion.operator === "maximum") {
+    const maximum = criterion.maximum;
+    if (score <= maximum) return maximum <= -1 ? 1 : 0.5 + 0.5 * ratio(maximum - score, maximum + 1);
+    return maximum >= 1 ? 0 : 0.5 * ratio(1 - score, 1 - maximum);
+  }
+  if (score >= criterion.minimum && score <= criterion.maximum) return 1;
+  if (score < criterion.minimum) return ratio(score + 1, criterion.minimum + 1);
+  return ratio(1 - score, 1 - criterion.maximum);
+}
+
 function emptyProfileEvidence(
-  requirements: readonly ConstructRequirement[],
+  commitments: readonly SpecialistCommitmentRecord[],
   minimumEvidenceRatio: number,
 ): SpecialistProfileEvidence {
-  const sorted = [...requirements].sort((left, right) =>
-    String(left.constructId).localeCompare(String(right.constructId)),
-  );
-  const totalWeight = sorted.reduce(
-    (sum, requirement) => sum + requirement.weight,
+  const evidenceBearing = commitments.filter(commitmentIsEvidenceBearing);
+  const totalWeight = evidenceBearing.reduce(
+    (sum, commitment) => sum + Math.max(commitmentWeight(commitment), commitment.relation === "constitutive" || commitment.relation === "incompatible" ? (commitment.weight ?? 1) : 0),
     0,
   );
   return Object.freeze({
-    requiredConstructCount: sorted.length,
+    requiredConstructCount: evidenceBearing.length,
     measuredRequiredConstructCount: 0,
-    unavailableRequiredConstructCount: sorted.length,
+    unavailableRequiredConstructCount: evidenceBearing.length,
     totalWeight,
     measuredWeight: 0,
     unavailableWeight: totalWeight,
     comparisonCoverage: 0,
     minimumEvidenceRatio,
     meetsMinimumEvidence: false,
-    unavailableConstructIds: Object.freeze(
-      sorted.map((requirement) => String(requirement.constructId)),
-    ),
+    unavailableConstructIds: Object.freeze([...new Set(evidenceBearing.map((entry) => String(entry.constructId)))].sort()),
   });
 }
 
@@ -606,7 +640,7 @@ interface VariantTarget {
   readonly description: string;
   readonly status: string;
   readonly variant?: string;
-  readonly requirements: readonly ConstructRequirement[];
+  readonly commitments: readonly SpecialistCommitmentRecord[];
   readonly gates: readonly ConstitutiveGate[];
 }
 
@@ -621,7 +655,7 @@ function profileTargets(
       description: variant.description,
       status: variant.status,
       ...(variant.variant === undefined ? {} : { variant: variant.variant }),
-      requirements: variant.requirements,
+      commitments: variant.commitments,
       gates: variant.gates,
     }));
   }
@@ -631,7 +665,7 @@ function profileTargets(
       name: profile.name,
       description: profile.rationale ?? profile.name,
       status: profile.status ?? "active",
-      requirements: profile.requirements ?? [],
+      commitments: profile.commitments ?? [],
       gates: profile.gates,
     },
   ];
@@ -647,154 +681,118 @@ function profileEvidence(
   readonly evidence: SpecialistProfileEvidence;
   readonly gates: readonly SpecialistGateEvaluation[];
   readonly gateStatus: "passed" | "failed" | "unavailable";
+  readonly affinity: number | null;
+  readonly support: number | null;
   readonly distance: number | null;
   readonly similarity: number | null;
   readonly reason?: string;
 } {
-  const requirements = [...target.requirements].sort((left, right) =>
-    String(left.constructId).localeCompare(String(right.constructId)),
-  );
-  const minimumEvidenceRatio =
-    profile.minimumEvidenceRatio ??
-    module.activation.minimumConstructCoverageRatio;
+  const commitments = [...target.commitments].sort((left, right) => left.id.localeCompare(right.id));
+  const evidenceBearing = commitments.filter(commitmentIsEvidenceBearing);
+  const minimumEvidenceRatio = profile.minimumEvidenceRatio ?? module.activation.minimumConstructCoverageRatio;
   const comparisons: SpecialistProfileConstructComparison[] = [];
   const unavailableConstructIds: string[] = [];
   let totalWeight = 0;
   let measuredWeight = 0;
-  for (const requirement of requirements) {
-    const constructId = String(requirement.constructId);
-    totalWeight += requirement.weight;
+  let affinityWeight = 0;
+  let affinityNumerator = 0;
+  let decisiveFailed = false;
+  let decisiveUnavailable = false;
+
+  for (const commitment of commitments) {
+    const constructId = String(commitment.constructId);
+    const evidenceWeight = commitmentIsEvidenceBearing(commitment)
+      ? Math.max(commitmentWeight(commitment), commitment.relation === "constitutive" || commitment.relation === "incompatible" ? (commitment.weight ?? 1) : 0)
+      : 0;
+    totalWeight += evidenceWeight;
     const construct = constructs.get(constructId);
-    const invalidRequirement =
-      !finite(requirement.weight) ||
-      requirement.weight <= 0 ||
-      !finite(requirement.targetValue) ||
-      requirement.targetValue < -1 ||
-      requirement.targetValue > 1;
-    if (
-      invalidRequirement ||
-      !construct ||
-      construct.status !== "scored" ||
-      !finite(construct.score) ||
-      (requirement.minimumAnsweredItems !== undefined &&
-        construct.evidence.answeredItemCount < requirement.minimumAnsweredItems)
-    ) {
-      unavailableConstructIds.push(constructId);
+    const unavailable = !construct || construct.status !== "scored" || !finite(construct.score) ||
+      (commitment.minimumAnsweredItems !== undefined && construct.evidence.answeredItemCount < commitment.minimumAnsweredItems);
+    if (unavailable) {
+      if (commitmentIsEvidenceBearing(commitment)) unavailableConstructIds.push(constructId);
+      if (commitment.relation === "constitutive" || commitment.relation === "incompatible") decisiveUnavailable = true;
       comparisons.push({
+        commitmentId: commitment.id,
         constructId,
-        targetValue: requirement.targetValue,
+        relation: commitment.relation,
+        ...(commitment.criterion === undefined ? {} : { criterion: commitment.criterion as unknown as Readonly<Record<string, unknown>> }),
         observedScore: construct?.score ?? null,
-        weight: requirement.weight,
-        squaredError: null,
-        weightedSquaredError: null,
+        weight: evidenceWeight,
+        commitmentSupport: null,
         included: false,
-        exclusionReason: invalidRequirement
-          ? "invalid_requirement"
-          : requirement.minimumAnsweredItems !== undefined && construct
-            ? "minimum_answered_items_not_met"
-            : "construct_unavailable",
+        exclusionReason: commitment.minimumAnsweredItems !== undefined && construct ? "minimum_answered_items_not_met" : "construct_unavailable",
       });
       continue;
     }
-    const squaredError = (construct.score - requirement.targetValue) ** 2;
-    measuredWeight += requirement.weight;
+
+    measuredWeight += evidenceWeight;
+    const criterion = commitment.criterion;
+    const satisfied = criterionSatisfied(construct.score, criterion);
+    const support = criterion === undefined ? null : criterionSupport(construct.score, criterion);
+    if (commitment.relation === "constitutive" && !satisfied) decisiveFailed = true;
+    if (commitment.relation === "incompatible" && satisfied) decisiveFailed = true;
+    const weight = commitmentWeight(commitment);
+    const affinityBearing = weight > 0 && support !== null;
+    if (affinityBearing) {
+      affinityWeight += weight;
+      affinityNumerator += weight * support;
+    }
     comparisons.push({
+      commitmentId: commitment.id,
       constructId,
-      targetValue: requirement.targetValue,
+      relation: commitment.relation,
+      ...(criterion === undefined ? {} : { criterion: criterion as unknown as Readonly<Record<string, unknown>> }),
       observedScore: construct.score,
-      weight: requirement.weight,
-      squaredError,
-      weightedSquaredError: requirement.weight * squaredError,
-      included: true,
+      weight,
+      commitmentSupport: support,
+      included: affinityBearing,
+      ...(affinityBearing ? {} : { exclusionReason: "non_affinity_relation" }),
     });
   }
+
   const comparisonCoverage = ratio(measuredWeight, totalWeight);
   const evidence = Object.freeze({
-    requiredConstructCount: requirements.length,
-    measuredRequiredConstructCount: comparisons.filter(
-      (comparison) => comparison.included,
-    ).length,
+    requiredConstructCount: evidenceBearing.length,
+    measuredRequiredConstructCount: evidenceBearing.length - unavailableConstructIds.length,
     unavailableRequiredConstructCount: unavailableConstructIds.length,
     totalWeight,
     measuredWeight,
-    unavailableWeight: totalWeight - measuredWeight,
+    unavailableWeight: Math.max(0, totalWeight - measuredWeight),
     comparisonCoverage,
     minimumEvidenceRatio,
-    meetsMinimumEvidence:
-      requirements.length > 0 && comparisonCoverage >= minimumEvidenceRatio,
-    unavailableConstructIds: Object.freeze(
-      [...new Set(unavailableConstructIds)].sort(),
-    ),
+    meetsMinimumEvidence: evidenceBearing.length > 0 && comparisonCoverage >= minimumEvidenceRatio,
+    unavailableConstructIds: Object.freeze([...new Set(unavailableConstructIds)].sort()),
   });
-  const gateEvaluation = evaluateSpecialistGates(
-    target.gates,
-    constructs,
+  const gateEvaluation = evaluateSpecialistGates(target.gates, constructs, evidence);
+
+  const abstain = (reason: string) => ({
+    comparisons: Object.freeze(comparisons),
     evidence,
-  );
-  if (requirements.length === 0) {
-    return {
-      comparisons: Object.freeze(comparisons),
-      evidence,
-      gates: gateEvaluation.evaluations,
-      gateStatus: gateEvaluation.status,
-      distance: null,
-      similarity: null,
-      reason: "no_comparable_constructs",
-    };
-  }
-  if (!evidence.meetsMinimumEvidence) {
-    return {
-      comparisons: Object.freeze(comparisons),
-      evidence,
-      gates: gateEvaluation.evaluations,
-      gateStatus: gateEvaluation.status,
-      distance: null,
-      similarity: null,
-      reason: "insufficient_evidence",
-    };
-  }
-  if (gateEvaluation.status === "failed") {
-    return {
-      comparisons: Object.freeze(comparisons),
-      evidence,
-      gates: gateEvaluation.evaluations,
-      gateStatus: gateEvaluation.status,
-      distance: null,
-      similarity: null,
-      reason: "constitutive_gate_failed",
-    };
-  }
-  if (gateEvaluation.status === "unavailable") {
-    return {
-      comparisons: Object.freeze(comparisons),
-      evidence,
-      gates: gateEvaluation.evaluations,
-      gateStatus: gateEvaluation.status,
-      distance: null,
-      similarity: null,
-      reason: "constitutive_gate_unavailable",
-    };
-  }
-  const included = comparisons.filter((comparison) => comparison.included);
-  const weightedSquaredDistance = included.reduce(
-    (sum, comparison) => sum + (comparison.weightedSquaredError ?? 0),
-    0,
-  );
-  const distance =
-    measuredWeight > 0
-      ? Math.sqrt(weightedSquaredDistance / measuredWeight)
-      : null;
-  const similarity =
-    distance === null || !finite(distance)
-      ? 0
-      : Math.max(0, Math.min(1, 1 - distance / SPECIALIST_MAX_DISTANCE));
+    gates: gateEvaluation.evaluations,
+    gateStatus: gateEvaluation.status,
+    affinity: null,
+    support: null,
+    distance: null,
+    similarity: null,
+    reason,
+  });
+
+  if (affinityWeight <= 0) return abstain("no_comparable_constructs");
+  if (decisiveUnavailable) return abstain("decisive_commitment_unavailable");
+  if (!evidence.meetsMinimumEvidence) return abstain("insufficient_evidence");
+  if (decisiveFailed || gateEvaluation.status === "failed") return abstain("constitutive_gate_failed");
+  if (gateEvaluation.status === "unavailable") return abstain("constitutive_gate_unavailable");
+
+  const affinity = Math.max(0, Math.min(1, affinityNumerator / affinityWeight));
   return {
     comparisons: Object.freeze(comparisons),
     evidence,
     gates: gateEvaluation.evaluations,
     gateStatus: gateEvaluation.status,
-    distance,
-    similarity,
+    affinity,
+    support: affinity,
+    distance: 1 - affinity,
+    similarity: affinity,
   };
 }
 
@@ -817,22 +815,20 @@ function matchProfile(
   const validTargets = targets.filter(
     (entry) =>
       entry.evaluated.reason === undefined &&
-      entry.evaluated.similarity !== null,
+      entry.evaluated.affinity !== null,
   );
   const ordered = [...targets].sort((left, right) => {
-    const leftSimilarity = left.evaluated.similarity ?? -1;
-    const rightSimilarity = right.evaluated.similarity ?? -1;
+    const leftAffinity = left.evaluated.affinity ?? -1;
+    const rightAffinity = right.evaluated.affinity ?? -1;
     return (
-      rightSimilarity - leftSimilarity ||
-      (left.evaluated.distance ?? Number.POSITIVE_INFINITY) -
-        (right.evaluated.distance ?? Number.POSITIVE_INFINITY) ||
+      rightAffinity - leftAffinity ||
       left.target.id.localeCompare(right.target.id)
     );
   });
   const selected = (validTargets.length > 0 ? validTargets : ordered)[0];
   if (!selected) {
     const empty = emptyProfileEvidence(
-      profile.requirements ?? [],
+      profile.commitments ?? [],
       module.activation.minimumConstructCoverageRatio,
     );
     return {
@@ -842,6 +838,8 @@ function matchProfile(
       outputType: profile.outputType,
       canonicalStatus: profile.status,
       status: "abstained",
+      affinity: null,
+      support: null,
       distance: null,
       similarity: null,
       rank: null,
@@ -885,6 +883,8 @@ function matchProfile(
       ? {}
       : { variant: selected.target.variant }),
     status: reason === undefined ? "scored" : "abstained",
+    affinity: reason === undefined ? evaluated.affinity : null,
+    support: reason === undefined ? evaluated.support : null,
     distance: reason === undefined ? evaluated.distance : null,
     similarity: reason === undefined ? evaluated.similarity : null,
     rank: null,
@@ -904,34 +904,34 @@ function rankProfiles(profiles: readonly SpecialistProfileMatchResult[]): {
 } {
   const scored = profiles
     .filter(
-      (profile) => profile.status === "scored" && profile.similarity !== null,
+      (profile) => profile.status === "scored" && profile.affinity !== null,
     )
     .sort(
       (left, right) =>
-        (right.similarity ?? -1) - (left.similarity ?? -1) ||
+        (right.affinity ?? -1) - (left.affinity ?? -1) ||
         left.profileId.localeCompare(right.profileId),
     );
   const rankByProfileId = new Map<
     string,
     { rank: number; tieGroup: string | null }
   >();
-  let lastSimilarity: number | undefined;
+  let lastAffinity: number | undefined;
   let rank = 0;
   let tieNumber = 0;
   for (const [index, profile] of scored.entries()) {
     if (
-      lastSimilarity === undefined ||
-      Math.abs((profile.similarity ?? 0) - lastSimilarity) >
+      lastAffinity === undefined ||
+      Math.abs((profile.affinity ?? 0) - lastAffinity) >
         SPECIALIST_TIE_TOLERANCE
     ) {
       rank = index + 1;
-      lastSimilarity = profile.similarity ?? 0;
+      lastAffinity = profile.affinity ?? 0;
       tieNumber += 1;
     }
     const tied =
       scored.filter(
         (candidate) =>
-          Math.abs((candidate.similarity ?? 0) - (profile.similarity ?? 0)) <=
+          Math.abs((candidate.affinity ?? 0) - (profile.affinity ?? 0)) <=
           SPECIALIST_TIE_TOLERANCE,
       ).length > 1;
     rankByProfileId.set(profile.profileId, {
@@ -951,7 +951,8 @@ function rankProfiles(profiles: readonly SpecialistProfileMatchResult[]): {
       return {
         profileId: profile.profileId,
         rank: position.rank,
-        similarity: profile.similarity!,
+        affinity: profile.affinity!,
+        similarity: profile.affinity!,
         tieGroup: position.tieGroup,
       };
     }),

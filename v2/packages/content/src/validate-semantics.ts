@@ -551,14 +551,14 @@ function validateCandidate(
     "ontology node",
     issues,
   );
-  for (const [index, requirement] of candidate.requirements.entries()) {
-    const construct = constructMap.get(requirement.constructId);
+  for (const [index, commitment] of candidate.commitments.entries()) {
+    const construct = constructMap.get(commitment.constructId);
     if (!construct)
       addIssue(
         issues,
-        `specialistCandidates[${candidate.id}].requirements[${index}].constructId`,
+        `specialistCandidates[${candidate.id}].commitments[${index}].constructId`,
         "ref",
-        `Unknown construct ${requirement.constructId}`,
+        `Unknown construct ${commitment.constructId}`,
       );
     else if (
       construct.scope !== "specialist" ||
@@ -566,9 +566,9 @@ function validateCandidate(
     )
       addIssue(
         issues,
-        `specialistCandidates[${candidate.id}].requirements[${index}].constructId`,
+        `specialistCandidates[${candidate.id}].commitments[${index}].constructId`,
         "scope",
-        "Candidate requirement is outside its module scope",
+        "Candidate commitment is outside its module scope",
       );
   }
   validateGateSet(
@@ -633,17 +633,14 @@ function validateSpecialistProfile(
     issues,
   );
   for (const [index, variant] of (profile.variants ?? []).entries()) {
-    for (const [
-      requirementIndex,
-      requirement,
-    ] of variant.requirements.entries()) {
-      const construct = constructMap.get(requirement.constructId);
+    for (const [commitmentIndex, commitment] of variant.commitments.entries()) {
+      const construct = constructMap.get(commitment.constructId);
       if (!construct)
         addIssue(
           issues,
-          `specialists[${profile.id}].variants[${index}].requirements[${requirementIndex}]`,
+          `specialists[${profile.id}].variants[${index}].commitments[${commitmentIndex}]`,
           "ref",
-          "Unknown variant construct",
+          "Unknown variant commitment construct",
         );
       else if (
         construct.scope !== "specialist" ||
@@ -651,9 +648,9 @@ function validateSpecialistProfile(
       )
         addIssue(
           issues,
-          `specialists[${profile.id}].variants[${index}].requirements[${requirementIndex}]`,
+          `specialists[${profile.id}].variants[${index}].commitments[${commitmentIndex}]`,
           "scope",
-          "Variant construct is outside profile module",
+          "Variant commitment construct is outside profile module",
         );
     }
     validateGateSet(
@@ -1091,8 +1088,8 @@ export function validateContentSemantics(
     for (const requirement of profile.requirements ?? [])
       constructCoverage.add(requirement.constructId);
   for (const candidate of bundle.specialistCandidates)
-    for (const requirement of candidate.requirements)
-      constructCoverage.add(requirement.constructId);
+    for (const commitment of candidate.commitments)
+      constructCoverage.add(commitment.constructId);
   for (const construct of bundle.constructs)
     if (!constructCoverage.has(construct.id))
       addIssue(
