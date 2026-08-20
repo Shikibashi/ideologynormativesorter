@@ -17,4 +17,156 @@ jobs:
         with:
           ref: refactor/commitment-based-ideology-scoring
           fetch-depth: 0
-      - run: echo ok
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Apply repair
+        shell: python
+        run: |
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text()
+              if old not in text:
+                  raise SystemExit(f"expected text not found in {path}: {old[:180]!r}")
+              p.write_text(text.replace(old, new, 1))
+
+          replace_once(
+              "v2/packages/engine/src/profiles/profile-matching.ts",
+              '''    const profileId = String(profile.id);\n    if (isDemotedPrimaryProfile(profileId)) continue;\n\n    const commitmentSpec = getPrimaryIdeologyCommitmentSpec(profileId);''',
+              '''    const profileId = String(profile.id);\n    if (isDemotedPrimaryProfile(profileId)) {\n      const demotedEvidence: PrimaryProfileEvidence = Object.freeze({\n        requiredConstructCount: 0,\n        measuredRequiredConstructCount: 0,\n        unavailableRequiredConstructCount: 0,\n        totalWeight: 0,\n        measuredWeight: 0,\n        unavailableWeight: 0,\n        comparisonCoverage: 0,\n        minimumEvidenceRatio: 1,\n        meetsMinimumEvidence: false,\n        unavailableConstructIds: Object.freeze([]),\n      });\n      profiles.push(\n        abstainedResult(\n          profile,\n          demotedEvidence,\n          Object.freeze([]),\n          Object.freeze([]),\n          "invalid_profile_configuration",\n        ),\n      );\n      continue;\n    }\n\n    const commitmentSpec = getPrimaryIdeologyCommitmentSpec(profileId);''',
+          )
+
+          replace_once(
+              "tests/engine/v2-phase5-profiles.spec.ts",
+              '''  it("scores every canonical primary profile from a complete construct assessment", () => {\n    const constructs = realBundle.constructs.map((construct) => scoredConstruct(String(construct.id), 0, 2));\n    const result = scorePrimaryProfiles(assessmentFor(realBundle, constructs), realBundle);\n    expect(result.profiles).toHaveLength(realBundle.profiles.length);\n    expect(result.ranking).toHaveLength(realBundle.profiles.length);\n    expect(result.profiles.every((profileResult) => profileResult.status === "scored")).toBe(true);\n    expect(result.profiles.every((profileResult) => profileResult.comparisons.length === 26)).toBe(true);\n    expect(new Set(result.ranking.map((entry) => entry.profileId))).toEqual(\n      new Set(realBundle.profiles.map((profileRecord) => String(profileRecord.id))),\n    );\n  });''',
+              '''  it("accounts for every canonical profile while keeping demoted compatibility profiles out of ranking", () => {\n    const constructs = realBundle.constructs.map((construct) => scoredConstruct(String(construct.id), 0, 2));\n    const result = scorePrimaryProfiles(assessmentFor(realBundle, constructs), realBundle);\n    const demoted = new Set([\n      "profile:liberal-conservatism",\n      "profile:market-liberal",\n      "profile:national-conservatism",\n      "profile:radical-democracy",\n    ]);\n    const demotedResults = result.profiles.filter((entry) => demoted.has(String(entry.profileId)));\n    const commitmentResults = result.profiles.filter((entry) => !demoted.has(String(entry.profileId)));\n\n    expect(result.profiles).toHaveLength(realBundle.profiles.length);\n    expect(demotedResults).toHaveLength(demoted.size);\n    expect(\n      demotedResults.every(\n        (entry) =>\n          entry.status === "abstained" &&\n          entry.abstentionReason === "invalid_profile_configuration" &&\n          entry.comparisons.length === 0,\n      ),\n    ).toBe(true);\n    expect(commitmentResults).toHaveLength(realBundle.profiles.length - demoted.size);\n    expect(commitmentResults.every((entry) => entry.comparisons.length > 0)).toBe(true);\n    expect(result.ranking.every((entry) => !demoted.has(String(entry.profileId)))).toBe(true);\n  });''',
+          )
+
+          replace_once(
+              "src/data/primaryMeasurement.ts",
+              '["sep-radical-democracy"]',
+              '["oxford-radical-democracy-constituent-power"]',
+          )
+
+          replace_once(
+              "v2/packages/engine/src/assessment/score-assessment.ts",
+              'export const SUPPORTED_SCORING_VERSION = "scoring-v2.phase7.1" as const;',
+              'export const SUPPORTED_SCORING_VERSION = "scoring-v2.commitment-v1" as const;',
+          )
+
+          replace_once(
+              "tests/engine/v2-primary-commitment-model.spec.ts",
+              '''    expect(result.profiles.map((entry) => String(entry.profileId)).sort()).toEqual(expected);\n    for (const demoted of DEMOTED_PRIMARY_PROFILE_IDS) {\n      expect(result.profiles.some((entry) => String(entry.profileId) === demoted)).toBe(false);\n    }''',
+              '''    expect(\n      result.profiles\n        .filter((entry) => !DEMOTED_PRIMARY_PROFILE_IDS.includes(String(entry.profileId) as never))\n        .map((entry) => String(entry.profileId))\n        .sort(),\n    ).toEqual(expected);\n    for (const demoted of DEMOTED_PRIMARY_PROFILE_IDS) {\n      expect(\n        result.profiles.find((entry) => String(entry.profileId) === demoted),\n      ).toMatchObject({\n        status: "abstained",\n        abstentionReason: "invalid_profile_configuration",\n      });\n      expect(result.ranking.some((entry) => String(entry.profileId) === demoted)).toBe(false);\n    }''',
+          )
+
+          replace_once(
+              "tests/architecture/v2-phase2.spec.ts",
+              '''    for (const item of bundle.items) {\n      expect(item.status).toBe("active");\n      if (item.responseType === "statement-choice") {''',
+              '''    const inactiveItemIds = bundle.items\n      .filter((item: JsonObject) => item.status === "inactive")\n      .map((item: JsonObject) => item.id)\n      .sort();\n    expect(inactiveItemIds).toEqual(["q0073", "q0074"]);\n    for (const item of bundle.items) {\n      expect(["active", "inactive"]).toContain(item.status);\n      if (item.status !== "active") continue;\n      if (item.responseType === "statement-choice") {''',
+          )
+
+          replace_once(
+              "tests/engine/v2-phase6-modifiers.spec.ts",
+              '''    const responses = generatedBundle.items.map((item) => item.responseType === "statement-choice"''',
+              '''    const responses = generatedBundle.items\n      .filter((item) => item.status === "active")\n      .map((item) => item.responseType === "statement-choice"''',
+          )
+
+          p = Path("tests/research/v2-phase13-research.test.ts")
+          text = p.read_text()
+          anchor = '''const bundle = bundleJson as unknown as ResearchBundle;\nconst missingInput = {'''
+          if anchor not in text:
+              raise SystemExit("phase13 active-core anchor not found")
+          text = text.replace(
+              anchor,
+              '''const bundle = bundleJson as unknown as ResearchBundle;\nconst activeCoreItemCount = bundle.items.filter(\n  (item) => item.role === "core" && item.status === "active",\n).length;\nconst missingInput = {''',
+              1,
+          )
+          text = text.replace('toHaveLength(338)', 'toHaveLength(activeCoreItemCount)')
+          text = text.replace(').size).toBe(338)', ').size).toBe(activeCoreItemCount)')
+          p.write_text(text)
+
+          p = Path("src/research/index.ts")
+          text = p.read_text()
+          canonical_anchor = '''      ...item,\n      prompt: canonical.prompt,\n      domain: canonical.domain ?? item.domain,'''
+          canonical_replacement = '''      ...item,\n      prompt: canonical.prompt,\n      helpText: canonical.helpText ?? item.helpText,\n      domain: canonical.domain ?? item.domain,'''
+          if canonical_anchor not in text:
+              raise SystemExit("canonical browser item anchor not found")
+          text = text.replace(canonical_anchor, canonical_replacement, 1)
+          review_anchor = '''      reverseScored: canonical.reverseScored === true,\n      reviewStatus: "approved",'''
+          review_replacement = '''      reverseScored: canonical.reverseScored === true,\n      reviewStatus: "approved",\n      evidenceNote: canonical.evidenceNote ?? item.evidenceNote,\n      contextNote: canonical.contextNote ?? item.contextNote,'''
+          if review_anchor not in text:
+              raise SystemExit("canonical browser note anchor not found")
+          text = text.replace(review_anchor, review_replacement, 1)
+          bank_count = text.count('bankVersion: input.bankVersion,')
+          if bank_count != 2:
+              raise SystemExit(f"expected two research bankVersion assignments, found {bank_count}")
+          text = text.replace('bankVersion: input.bankVersion,', 'bankVersion: RESEARCH_MANIFEST_VERSION,')
+          p.write_text(text)
+      - name: Synchronize canonical fingerprint
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          old = "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf"
+          new = "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d"
+          changed = []
+          for p in Path('.').rglob('*'):
+              if not p.is_file() or '.git' in p.parts or 'node_modules' in p.parts:
+                  continue
+              try:
+                  text = p.read_text()
+              except (UnicodeDecodeError, OSError):
+                  continue
+              if old not in text:
+                  continue
+              p.write_text(text.replace(old, new))
+              changed.append(str(p))
+          if not changed:
+              raise SystemExit("stale canonical fingerprint not found")
+          print("canonical fingerprint synchronized in:")
+          print("\n".join(changed))
+          PY
+          npm run canonical:migrate
+      - name: Regenerate v2 references
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes vite-node v2/tools/compile-content.ts
+          npx --yes vite-node v2/tools/generate-phase9-golden.ts
+          node scripts/v2-reference/generate-cases.mjs
+          V2_REFERENCE_CAPTURE=1 npx vitest run tests/v2-differential/capture.spec.ts
+          npm run v2:reference:coverage
+          npm run v2:reference:differential
+          npm run v2:reference:report
+          npm run v2:reference:hash
+          npm run v2:reference:verify
+      - name: Verify
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm test
+          npm run lint
+          node --check research-collector/server.mjs
+          npm run research:check
+          npm run canonical:check
+          npm run test:worker
+          npm run build
+      - name: Commit verified repair
+        shell: bash
+        env:
+          HEAD_BRANCH: refactor/commitment-based-ideology-scoring
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f .github/workflows/repair-pr18.yml
+          git add -A
+          git status --short
+          git commit -m "fix: synchronize commitment scoring migration"
+          git push origin "HEAD:${HEAD_BRANCH}"
