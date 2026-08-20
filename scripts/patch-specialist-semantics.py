@@ -101,5 +101,17 @@ if old_variant not in text:
     raise SystemExit("variant requirement semantic block not found")
 text = text.replace(old_variant, new_variant, 1)
 
+old_coverage = '''  for (const candidate of bundle.specialistCandidates)
+    for (const requirement of candidate.requirements)
+      constructCoverage.add(requirement.constructId);
+'''
+new_coverage = '''  for (const candidate of bundle.specialistCandidates)
+    for (const commitment of candidate.commitments)
+      constructCoverage.add(commitment.constructId);
+'''
+if old_coverage not in text:
+    raise SystemExit("candidate coverage requirement block not found")
+text = text.replace(old_coverage, new_coverage, 1)
+
 PATH.write_text(text)
 print("specialist semantic validation migrated")
