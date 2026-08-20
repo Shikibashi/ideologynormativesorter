@@ -7,6 +7,7 @@ import {
   researchAdministration,
   researchRecruitmentSource,
   researchStudyId,
+  RESEARCH_MANIFEST_VERSION,
 } from "../research";
 import { researchFormSize } from "../research/forms";
 import {
@@ -57,7 +58,7 @@ export function useAppBootstrapState(): AppBootstrapState {
       studyId,
       administration,
       participantId: loadedInitialQuiz?.research?.participantId,
-      bankVersion: QUESTION_BANK_VERSION,
+      bankVersion: RESEARCH_MANIFEST_VERSION,
       formVersion: "profile-form-v3",
     }),
   );
