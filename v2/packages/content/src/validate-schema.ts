@@ -10,11 +10,12 @@ import type {
   ProvenanceSourceRecord,
   ScoringContribution,
   SpecialistCandidateRecord,
+  SpecialistCommitmentRecord,
   SpecialistModuleRecord,
   SpecialistProfileRecord,
   SpecialistVariantRecord,
 } from "../../contracts/src/index";
-import { ONTOLOGY_RELATION_TYPES } from "../../contracts/src/index";
+import { COMMITMENT_RELATIONS, ONTOLOGY_RELATION_TYPES } from "../../contracts/src/index";
 
 export interface ValidationIssue {
   path: string;
@@ -179,6 +180,16 @@ function validateConstruct(
   optionalString(record.domainId, `${path}.domainId`, issues);
   optionalString(record.moduleId, `${path}.moduleId`, issues);
   optionalString(record.description, `${path}.description`, issues);
+  optionalString(record.boundaryStatement, `${path}.boundaryStatement`, issues);
+  if (record.scope === "specialist") {
+    requiredString(record.description, `${path}.description`, issues);
+    requiredString(record.boundaryStatement, `${path}.boundaryStatement`, issues);
+    if (!isObject(record.poles)) addIssue(issues, `${path}.poles`, "type", "Specialist construct requires explicit poles");
+    else {
+      requiredString(record.poles.negative, `${path}.poles.negative`, issues);
+      requiredString(record.poles.positive, `${path}.poles.positive`, issues);
+    }
+  }
   optionalString(record.sourceKey, `${path}.sourceKey`, issues);
   validateRefs(record.provenanceRefs, `${path}.provenanceRefs`, issues);
 }
@@ -330,6 +341,77 @@ function validateRequirements(
   });
 }
 
+function validateCommitments(
+  values: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void {
+  const commitments = requiredArray(values, path, issues);
+  if (!commitments) return;
+  const ids = new Set<string>();
+  commitments.forEach((value, index) => {
+    const commitmentPath = `${path}[${index}]`;
+    if (!isObject(value)) {
+      addIssue(issues, commitmentPath, "type", "Expected commitment object");
+      return;
+    }
+    requiredString(value.id, `${commitmentPath}.id`, issues);
+    requiredString(value.constructId, `${commitmentPath}.constructId`, issues);
+    requiredString(value.rationale, `${commitmentPath}.rationale`, issues);
+    if (typeof value.id === "string") {
+      if (ids.has(value.id)) addIssue(issues, `${commitmentPath}.id`, "collision", "Duplicate commitment id");
+      ids.add(value.id);
+    }
+    if (!COMMITMENT_RELATIONS.includes(value.relation as SpecialistCommitmentRecord["relation"])) {
+      addIssue(issues, `${commitmentPath}.relation`, "value", "Unknown commitment relation");
+    }
+    optionalFiniteNumber(value.weight, `${commitmentPath}.weight`, issues);
+    optionalFiniteNumber(value.minimumAnsweredItems, `${commitmentPath}.minimumAnsweredItems`, issues);
+    if (isFiniteNumber(value.weight) && value.weight <= 0) addIssue(issues, `${commitmentPath}.weight`, "value", "Commitment weight must be positive");
+    const decisive = value.relation === "constitutive" || value.relation === "incompatible";
+    const affinityBearing = value.relation === "core" || value.relation === "characteristic";
+    if ((decisive || affinityBearing) && !isObject(value.criterion)) {
+      addIssue(issues, `${commitmentPath}.criterion`, "value", "Decisive/core/characteristic commitment requires a criterion");
+      return;
+    }
+    if (value.criterion !== undefined) {
+      if (!isObject(value.criterion)) {
+        addIssue(issues, `${commitmentPath}.criterion`, "type", "Expected criterion object");
+        return;
+      }
+      const operator = value.criterion.operator;
+      if (!["minimum", "maximum", "interval"].includes(String(operator))) {
+        addIssue(issues, `${commitmentPath}.criterion.operator`, "value", "Unknown criterion operator");
+        return;
+      }
+      const requiredBounds = operator === "interval" ? ["minimum", "maximum"] : [String(operator)];
+      for (const key of requiredBounds) {
+        if (value.criterion[key] === undefined) {
+          addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${operator} criterion requires ${key}`);
+        }
+      }
+      for (const key of ["minimum", "maximum"]) {
+        if (value.criterion[key] !== undefined && !isFiniteNumber(value.criterion[key])) {
+          addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${key} must be finite`);
+        } else if (
+          isFiniteNumber(value.criterion[key]) &&
+          (value.criterion[key] < -1 || value.criterion[key] > 1)
+        ) {
+          addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${key} must be within [-1,1]`);
+        }
+      }
+      if (
+        operator === "interval" &&
+        isFiniteNumber(value.criterion.minimum) &&
+        isFiniteNumber(value.criterion.maximum) &&
+        value.criterion.minimum > value.criterion.maximum
+      ) {
+        addIssue(issues, `${commitmentPath}.criterion`, "value", "Criterion interval minimum cannot exceed maximum");
+      }
+    }
+  });
+}
+
 function validateProfileGates(
   gates: unknown,
   path: string,
@@ -379,7 +461,8 @@ function validateVariant(record: SpecialistVariantRecord, path: string, issues: 
   requiredString(record.sourceKey, `${path}.sourceKey`, issues);
   requiredString(record.name, `${path}.name`, issues);
   requiredString(record.description, `${path}.description`, issues);
-  validateRequirements(record.requirements, `${path}.requirements`, issues);
+  validateCommitments(record.commitments, `${path}.commitments`, issues);
+  if (!record.commitments?.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist variant requires commitments");
   validateProfileGates(record.gates, `${path}.gates`, issues);
   validateRefs(record.provenanceRefs, `${path}.provenanceRefs`, issues);
 }
@@ -393,6 +476,7 @@ function validateSpecialist(record: SpecialistProfileRecord, path: string, issue
   if (!isObject(record.activation)) addIssue(issues, `${path}.activation`, "type", "Expected activation object");
   if (record.outputType !== "primary" && record.outputType !== "diagnostic") addIssue(issues, `${path}.outputType`, "value", "Unknown specialist output type");
   validateRequirements(record.requirements ?? [], `${path}.requirements`, issues);
+  if (record.commitments !== undefined) validateCommitments(record.commitments, `${path}.commitments`, issues);
   validateProfileGates(record.gates, `${path}.gates`, issues);
   const variants = record.variants;
   if (variants !== undefined) variants.forEach((variant, index) => validateVariant(variant, `${path}.variants[${index}]`, issues));
@@ -405,7 +489,8 @@ function validateCandidate(record: SpecialistCandidateRecord, path: string, issu
   requiredString(record.moduleId, `${path}.moduleId`, issues);
   requiredString(record.name, `${path}.name`, issues);
   requiredString(record.description, `${path}.description`, issues);
-  validateRequirements(record.requirements, `${path}.requirements`, issues);
+  validateCommitments(record.commitments, `${path}.commitments`, issues);
+  if (!record.commitments?.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist candidate requires commitments");
   validateProfileGates(record.gates, `${path}.gates`, issues);
   validateRefs(record.provenanceRefs, `${path}.provenanceRefs`, issues);
 }

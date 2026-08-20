@@ -41,12 +41,18 @@ export interface SpecialistModuleEvidence {
 }
 
 export interface SpecialistProfileConstructComparison {
+  readonly commitmentId: string;
   readonly constructId: string;
-  readonly targetValue: number;
+  readonly relation: string;
+  readonly criterion?: Readonly<Record<string, unknown>>;
+  /** Deprecated compatibility field; commitment scoring never reads it. */
+  readonly targetValue?: number;
   readonly observedScore: number | null;
   readonly weight: number;
-  readonly squaredError: number | null;
-  readonly weightedSquaredError: number | null;
+  readonly commitmentSupport: number | null;
+  /** Deprecated compatibility fields; commitment scoring never populates them. */
+  readonly squaredError?: number | null;
+  readonly weightedSquaredError?: number | null;
   readonly included: boolean;
   readonly exclusionReason?: string;
 }
@@ -87,6 +93,9 @@ export interface SpecialistProfileMatchResult {
   readonly variantId?: string;
   readonly variant?: string;
   readonly status: SpecialistProfileResultStatus;
+  readonly affinity: number | null;
+  readonly support: number | null;
+  /** Deprecated aliases: distance = 1 - affinity, similarity = affinity. */
   readonly distance: number | null;
   readonly similarity: number | null;
   readonly rank: number | null;
@@ -100,6 +109,8 @@ export interface SpecialistProfileMatchResult {
 export interface SpecialistProfileRankingEntry {
   readonly profileId: string;
   readonly rank: number;
+  readonly affinity: number;
+  /** Deprecated alias for affinity. */
   readonly similarity: number;
   readonly tieGroup: string | null;
 }

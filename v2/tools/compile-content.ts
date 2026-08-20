@@ -124,6 +124,7 @@ function validateDeclaredJsonSchema(bundle: CanonicalContentBundle): void {
     "content-schema.schema.json",
     "contribution.schema.json",
     "requirement.schema.json",
+    "commitment.schema.json",
     "gate.schema.json",
     "domain.schema.json",
     "construct.schema.json",
@@ -168,7 +169,6 @@ writeJson("content-manifest.json", {
   contentVersion: compiled.inventory.contentVersion,
   contentFingerprint: compiled.fingerprint,
   counts: compiled.inventory,
-  serializedBytes: Buffer.byteLength(compiled.serialized, "utf8"),
 });
 mkdirSync(path.dirname(inventoryPath), { recursive: true });
 writeFileSync(inventoryPath, markdownInventory(compiled.inventory), "utf8");

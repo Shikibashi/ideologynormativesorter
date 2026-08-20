@@ -82,6 +82,8 @@ export interface ConstructRecord {
   moduleId?: SpecialistModuleId;
   family?: string;
   description?: string;
+  poles?: { negative: string; positive: string };
+  boundaryStatement?: string;
   sourceKey?: string;
   lifecycle?: {
     conceptualStatus?: string;
@@ -163,6 +165,32 @@ export interface ConstructRequirement {
   minimumAnsweredItems?: number;
 }
 
+export const COMMITMENT_RELATIONS = [
+  "constitutive",
+  "core",
+  "characteristic",
+  "contested",
+  "compatible",
+  "peripheral",
+  "incompatible",
+] as const;
+export type CommitmentRelation = (typeof COMMITMENT_RELATIONS)[number];
+
+export type CommitmentCriterion =
+  | { operator: "minimum"; minimum: number }
+  | { operator: "maximum"; maximum: number }
+  | { operator: "interval"; minimum: number; maximum: number };
+
+export interface SpecialistCommitmentRecord {
+  id: string;
+  constructId: ConstructId;
+  relation: CommitmentRelation;
+  criterion?: CommitmentCriterion;
+  weight?: number;
+  minimumAnsweredItems?: number;
+  rationale: string;
+}
+
 export interface BaseProfileRecord {
   id: ProfileId;
   name: string;
@@ -223,7 +251,7 @@ export interface SpecialistVariantRecord {
   description: string;
   variant?: string;
   status: string;
-  requirements: ConstructRequirement[];
+  commitments: SpecialistCommitmentRecord[];
   gates: ConstitutiveGate[];
   provenanceRefs?: string[];
 }
@@ -235,6 +263,7 @@ export interface SpecialistProfileRecord extends BaseProfileRecord {
   activation: SpecialistActivationCriteria;
   outputType: "primary" | "diagnostic";
   moduleId?: SpecialistModuleId;
+  commitments?: SpecialistCommitmentRecord[];
   variants?: SpecialistVariantRecord[];
 }
 
@@ -252,7 +281,7 @@ export interface SpecialistCandidateRecord {
   description: string;
   status: string;
   variant?: string;
-  requirements: ConstructRequirement[];
+  commitments: SpecialistCommitmentRecord[];
   gates: ConstitutiveGate[];
   provenanceRefs?: string[];
 }

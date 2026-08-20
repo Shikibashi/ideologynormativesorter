@@ -20,28 +20,6 @@
         "name": "Absolute Monarchism",
         "description": "Hereditary authority with concentrated sovereign power.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
-            "targetValue": -0.3,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
-            "targetValue": -0.4,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
-            "targetValue": -0.4,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:monarchist-municipal-module:absolute-monarchist:base:specialist:monarchist-municipal-module:hereditary-authority",
@@ -58,6 +36,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:monarchist-municipal-module:absolute-monarchist:base:commitment:1",
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.7
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Hereditary Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:absolute-monarchist:base:commitment:2",
+            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.1
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Constitutional Monarchy; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:absolute-monarchist:base:commitment:3",
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Municipal Autonomy in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:absolute-monarchist:base:commitment:4",
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Confederal Coordination in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       }
     ],
@@ -70,7 +94,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:6a5fc5f74b53b6d4"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:agorist",
@@ -90,7 +115,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c56a6d0e34a4508c"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:agrarian-populism",
@@ -111,7 +137,8 @@
       "source:v1-canonical-manifest",
       "citation:67007bee6d5dd921",
       "citation:ae5d57bb780f21b7"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:anarcha-feminism",
@@ -138,31 +165,55 @@
         "name": "Anarcha-Feminism",
         "description": "Treats patriarchy as intertwined with state and other hierarchical domination and favors decentralized, anti-authoritarian forms of liberation and organization.",
         "status": "existing-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
-            "targetValue": -0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
-            "targetValue": 0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:feminist-faction-module:anarcha-feminism:base:commitment:1",
+            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Legal Equality Reform in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:feminist-faction-module:anarcha-feminism:base:commitment:2",
+            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Structural Patriarchy in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:feminist-faction-module:anarcha-feminism:base:commitment:3",
+            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Class Social Reproduction in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:feminist-faction-module:anarcha-feminism:base:commitment:4",
+            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Anti Hierarchy Strategy in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          }
         ]
       }
     ],
@@ -175,7 +226,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:fb7a357af1eb961e"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:anarcho-capitalist",
@@ -198,28 +250,6 @@
         "name": "Anarcho-Capitalism",
         "description": "Private property and market exchange without a state.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:anarchist-families-module:anti-authority",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:market-coordination",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:communal-property",
-            "targetValue": -0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:direct-federation",
-            "targetValue": 0.35,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:anarchist-families-module:anarcho-capitalist:base:specialist:anarchist-families-module:anti-authority",
@@ -242,6 +272,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:anarchist-families-module:anarcho-capitalist:base:commitment:1",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Anti Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:anarcho-capitalist:base:commitment:2",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Market Coordination; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:anarcho-capitalist:base:commitment:3",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": -0.35
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Communal Property; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:anarcho-capitalist:base:commitment:4",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Direct Federation in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       }
     ],
@@ -254,7 +330,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:ebde5696ba452ecd"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:anarcho-communist",
@@ -277,28 +354,6 @@
         "name": "Anarcho-Communism",
         "description": "Communal ownership and anti-authoritarian federation.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:anarchist-families-module:anti-authority",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:market-coordination",
-            "targetValue": -0.6,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:communal-property",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:direct-federation",
-            "targetValue": 0.8,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:anarchist-families-module:anarcho-communist:base:specialist:anarchist-families-module:anti-authority",
@@ -321,6 +376,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:anarchist-families-module:anarcho-communist:base:commitment:1",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Anti Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:anarcho-communist:base:commitment:2",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Market Coordination; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:anarcho-communist:base:commitment:3",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Communal Property; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:anarcho-communist:base:commitment:4",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Direct Federation in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          }
         ]
       }
     ],
@@ -334,7 +435,8 @@
       "source:v1-canonical-manifest",
       "citation:1b5ab88e18ea0d1b",
       "citation:cae6150e1295e405"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:anarcho-primitivism",
@@ -354,7 +456,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:7ca53bfc3d416121"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:anarcho-syndicalism",
@@ -377,28 +480,6 @@
         "name": "Anarcho-Syndicalism",
         "description": "Worker organization and direct industrial action under anarchist commitments.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:anarchist-families-module:anti-authority",
-            "targetValue": 0.85,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:market-coordination",
-            "targetValue": -0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:communal-property",
-            "targetValue": 0.65,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:direct-federation",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:anarchist-families-module:anarcho-syndicalism:base:specialist:anarchist-families-module:anti-authority",
@@ -421,6 +502,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:anarchist-families-module:anarcho-syndicalism:base:commitment:1",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Anti Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:anarcho-syndicalism:base:commitment:2",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Market Coordination in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:anarchist-families-module:anarcho-syndicalism:base:commitment:3",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.45
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Communal Property; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:anarcho-syndicalism:base:commitment:4",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Direct Federation; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -433,7 +560,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:64c46c50723b6f05"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:arab-socialism",
@@ -454,7 +582,8 @@
       "source:v1-canonical-manifest",
       "citation:691425a994f59163",
       "citation:84a0d2c5cfae2857"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:bioregionalism",
@@ -474,7 +603,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:cf6f56d9b0dad323"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:black-feminism",
@@ -494,7 +624,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:ffb3eafb4d6e07b0"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:black-nationalism",
@@ -536,31 +667,55 @@
         "description": "Emphasizes Black community autonomy, institution-building, self-reliance, and collective power without requiring territorial separation or independent statehood.",
         "variant": "community nationalism",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:identity-sovereignty-module:community-autonomy",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
-            "targetValue": -0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
-            "targetValue": 0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
-            "targetValue": 0.25,
-            "weight": 1
-          }
-        ],
         "gates": [],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:identity-sovereignty-module:black-nationalism:community-nationalism:commitment:1",
+            "constructId": "specialist:identity-sovereignty-module:community-autonomy",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Community Autonomy in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:black-nationalism:community-nationalism:commitment:2",
+            "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Territorial Separatism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:black-nationalism:community-nationalism:commitment:3",
+            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Minority Self Government in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:black-nationalism:community-nationalism:commitment:4",
+            "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Pan African Solidarity in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       },
       {
@@ -570,31 +725,55 @@
         "description": "Combines Black collective autonomy with a stronger preference for territorial separation, independent political authority, or separate statehood.",
         "variant": "separatist nationalism",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:identity-sovereignty-module:community-autonomy",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
-            "targetValue": 0.7,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
-            "targetValue": 0.2,
-            "weight": 1
-          }
-        ],
         "gates": [],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:identity-sovereignty-module:black-nationalism:separatist-nationalism-2:commitment:1",
+            "constructId": "specialist:identity-sovereignty-module:community-autonomy",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Community Autonomy in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:black-nationalism:separatist-nationalism-2:commitment:2",
+            "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Territorial Separatism in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:black-nationalism:separatist-nationalism-2:commitment:3",
+            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Minority Self Government in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:black-nationalism:separatist-nationalism-2:commitment:4",
+            "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Pan African Solidarity in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       }
     ],
@@ -608,7 +787,8 @@
       "source:v1-canonical-manifest",
       "citation:9c8b2129a5ed334b",
       "citation:9b4674300ce4501c"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:bleeding-heart-libertarianism",
@@ -628,7 +808,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:7767e108efbc44f5"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:christian-reconstructionism",
@@ -648,7 +829,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:1530d5e1d71da69c"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:christian-socialism",
@@ -668,7 +850,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:bfde3648ea3f8e21"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:confucian-political-revival",
@@ -688,7 +871,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:b2a3461e1dcd0e9e"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:council-communist",
@@ -711,28 +895,6 @@
         "name": "Council Communism",
         "description": "Worker councils and direct democratic control of production and politics.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:socialist-families-module:social-ownership",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:democratic-planning",
-            "targetValue": 0.85,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:reformism",
-            "targetValue": -0.3,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
-            "targetValue": 0.7,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:socialist-families-module:council-communist:base:specialist:socialist-families-module:social-ownership",
@@ -755,6 +917,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:socialist-families-module:council-communist:base:commitment:1",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Social Ownership; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:council-communist:base:commitment:2",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Democratic Planning; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:council-communist:base:commitment:3",
+            "constructId": "specialist:socialist-families-module:reformism",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Reformism; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:council-communist:base:commitment:4",
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Revolutionary Strategy in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          }
         ]
       }
     ],
@@ -767,7 +975,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:329630a4ced340a9"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:deep-ecology",
@@ -791,28 +1000,6 @@
         "name": "Deep Ecology",
         "description": "Strong independent moral standing for nonhuman nature.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:green-morphology-module:ecological-standing",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:post-growth",
-            "targetValue": 0.5,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:market-technology",
-            "targetValue": -0.3,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:democratic-decentralism",
-            "targetValue": 0.5,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:green-morphology-module:deep-ecology:base:specialist:green-morphology-module:ecological-standing",
@@ -823,6 +1010,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:green-morphology-module:deep-ecology:base:commitment:1",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Ecological Standing; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:green-morphology-module:deep-ecology:base:commitment:2",
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Post Growth in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:green-morphology-module:deep-ecology:base:commitment:3",
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Market Technology in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:green-morphology-module:deep-ecology:base:commitment:4",
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Democratic Decentralism in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       }
     ],
@@ -836,7 +1069,8 @@
       "source:v1-canonical-manifest",
       "citation:5681c064ff89eeae",
       "citation:baa98f7b835f0b14"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:degrowth-green",
@@ -860,28 +1094,6 @@
         "name": "Degrowth Green",
         "description": "Democratic reduction of material throughput in affluent economies.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:green-morphology-module:ecological-standing",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:post-growth",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:market-technology",
-            "targetValue": -0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:democratic-decentralism",
-            "targetValue": 0.65,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:green-morphology-module:degrowth-green:base:specialist:green-morphology-module:ecological-standing",
@@ -898,6 +1110,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:green-morphology-module:degrowth-green:base:commitment:1",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.5
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Ecological Standing; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:green-morphology-module:degrowth-green:base:commitment:2",
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Post Growth; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:green-morphology-module:degrowth-green:base:commitment:3",
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Market Technology in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:green-morphology-module:degrowth-green:base:commitment:4",
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Democratic Decentralism in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          }
         ]
       }
     ],
@@ -910,7 +1168,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:1ae79788486a6bdc"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:democratic-confederalism",
@@ -933,28 +1192,6 @@
         "name": "Democratic Confederalism",
         "description": "Decentralized, pluralist, and confederal democratic organization.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
-            "targetValue": -0.65,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
-            "targetValue": -0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
-            "targetValue": 0.85,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:monarchist-municipal-module:democratic-confederalism:base:specialist:monarchist-municipal-module:municipal-autonomy",
@@ -971,6 +1208,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:monarchist-municipal-module:democratic-confederalism:base:commitment:1",
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "relation": "core",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": -0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core rejection of Hereditary Authority in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:democratic-confederalism:base:commitment:2",
+            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Constitutional Monarchy in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:democratic-confederalism:base:commitment:3",
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.7
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Municipal Autonomy; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:democratic-confederalism:base:commitment:4",
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Confederal Coordination; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -983,7 +1266,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:92cf18c2a150b81e"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:developmentalism",
@@ -1004,7 +1288,8 @@
       "source:v1-canonical-manifest",
       "citation:d06c3e01ad6cab01",
       "citation:d39acc387130f9d3"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:distributism",
@@ -1024,7 +1309,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:3164e9948bc10783"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:eco-authoritarianism",
@@ -1044,7 +1330,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c47aa20d18070c62"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:eco-fascism",
@@ -1064,7 +1351,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:48b129384e541f92"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:ecomodernist",
@@ -1088,33 +1376,6 @@
         "name": "Ecomodernism",
         "description": "Ecological improvement through innovation, infrastructure, and high-capacity institutions.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:green-morphology-module:ecological-standing",
-            "targetValue": 0.55,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:post-growth",
-            "targetValue": -0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:market-technology",
-            "targetValue": 0.85,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:democratic-decentralism",
-            "targetValue": 0.1,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:collective-ownership",
-            "targetValue": 0.05,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:green-morphology-module:ecomodernist:base:specialist:green-morphology-module:ecological-standing",
@@ -1137,6 +1398,64 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:green-morphology-module:ecomodernist:base:commitment:1",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.35
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Ecological Standing; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:green-morphology-module:ecomodernist:base:commitment:2",
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Post Growth in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:green-morphology-module:ecomodernist:base:commitment:3",
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Market Technology; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:green-morphology-module:ecomodernist:base:commitment:4",
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Democratic Decentralism in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:green-morphology-module:ecomodernist:base:commitment:5",
+            "constructId": "specialist:green-morphology-module:collective-ownership",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.5
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Collective Ownership; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -1149,7 +1468,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:88ca5b3bc9028f15"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:ecosocialist",
@@ -1173,33 +1493,6 @@
         "name": "Ecosocialism",
         "description": "Ecological transformation joined to collective ownership and anti-capitalist politics.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:green-morphology-module:ecological-standing",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:post-growth",
-            "targetValue": 0.75,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:market-technology",
-            "targetValue": -0.65,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:democratic-decentralism",
-            "targetValue": 0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:collective-ownership",
-            "targetValue": 0.8,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:green-morphology-module:ecosocialist:base:specialist:green-morphology-module:ecological-standing",
@@ -1216,6 +1509,63 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:green-morphology-module:ecosocialist:base:commitment:1",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.5
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Ecological Standing; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:green-morphology-module:ecosocialist:base:commitment:2",
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Post Growth in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:green-morphology-module:ecosocialist:base:commitment:3",
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "relation": "core",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": -0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core rejection of Market Technology in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:green-morphology-module:ecosocialist:base:commitment:4",
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Democratic Decentralism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:green-morphology-module:ecosocialist:base:commitment:5",
+            "constructId": "specialist:green-morphology-module:collective-ownership",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Collective Ownership; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -1228,7 +1578,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:baa98f7b835f0b14"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:fascist-authoritarian",
@@ -1250,7 +1601,8 @@
       "citation:ae86ee74ed40118b",
       "citation:4c1e6c151c24f1b5",
       "citation:03c44e53b0f20961"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:geolibertarian",
@@ -1271,7 +1623,8 @@
       "source:v1-canonical-manifest",
       "citation:c8d9dc64426ba5af",
       "citation:04c4382f2d9846cd"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:georgism",
@@ -1291,7 +1644,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:04c4382f2d9846cd"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:green-capitalism",
@@ -1315,33 +1669,6 @@
         "name": "Green Capitalism",
         "description": "Market investment and regulation as the main route to ecological transition.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:green-morphology-module:ecological-standing",
-            "targetValue": 0.55,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:post-growth",
-            "targetValue": -0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:market-technology",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:democratic-decentralism",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:green-morphology-module:collective-ownership",
-            "targetValue": -0.55,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:green-morphology-module:green-capitalism:base:specialist:green-morphology-module:ecological-standing",
@@ -1364,6 +1691,63 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:green-morphology-module:green-capitalism:base:commitment:1",
+            "constructId": "specialist:green-morphology-module:ecological-standing",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.35
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Ecological Standing; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:green-morphology-module:green-capitalism:base:commitment:2",
+            "constructId": "specialist:green-morphology-module:post-growth",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Post Growth in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:green-morphology-module:green-capitalism:base:commitment:3",
+            "constructId": "specialist:green-morphology-module:market-technology",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Market Technology; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:green-morphology-module:green-capitalism:base:commitment:4",
+            "constructId": "specialist:green-morphology-module:democratic-decentralism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Democratic Decentralism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:green-morphology-module:green-capitalism:base:commitment:5",
+            "constructId": "specialist:green-morphology-module:collective-ownership",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.2
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Collective Ownership; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -1376,7 +1760,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:31f76d2e42e72045"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:guild-socialism",
@@ -1399,28 +1784,6 @@
         "name": "Guild Socialism",
         "description": "Democratic worker control and public or social ownership organized through self-governing functional associations.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:socialist-families-module:social-ownership",
-            "targetValue": 0.85,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:democratic-planning",
-            "targetValue": 0.7,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:reformism",
-            "targetValue": 0.15,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
-            "targetValue": 0.15,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:socialist-families-module:guild-socialism:base:specialist:socialist-families-module:social-ownership",
@@ -1437,6 +1800,54 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:socialist-families-module:guild-socialism:base:commitment:1",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Social Ownership; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:guild-socialism:base:commitment:2",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.5
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Democratic Planning; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:guild-socialism:base:commitment:3",
+            "constructId": "specialist:socialist-families-module:reformism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Reformism in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:socialist-families-module:guild-socialism:base:commitment:4",
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Revolutionary Strategy in this module. The interval is categorical and not a retained numeric ideology target."
+          }
         ]
       }
     ],
@@ -1449,7 +1860,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:cb50703ee04f1ee6"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:hindutva",
@@ -1479,43 +1891,6 @@
         "name": "Hindutva",
         "description": "A majoritarian or civilizational account of Indian national identity centered on Hindu cultural belonging.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
-            "targetValue": 0.25,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:religious-authority",
-            "targetValue": 0.25,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
-            "targetValue": -0.25,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:constitutional-review",
-            "targetValue": 0.25,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:party-competition",
-            "targetValue": 0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:religious-national-politics-module:hindutva:base:specialist:religious-national-politics-module:hindu-civilizational-belonging",
@@ -1526,6 +1901,85 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:religious-national-politics-module:hindutva:base:commitment:1",
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Popular Constitutionalism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:hindutva:base:commitment:2",
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Religious Authority in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:hindutva:base:commitment:3",
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Civilizational Nationalism in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:hindutva:base:commitment:4",
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Minority Citizenship in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:hindutva:base:commitment:5",
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Constitutional Review in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:hindutva:base:commitment:6",
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Party Competition in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:hindutva:base:commitment:7",
+            "constructId": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Hindu Civilizational Belonging; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -1539,7 +1993,8 @@
       "source:v1-canonical-manifest",
       "citation:767d8856723b95a6",
       "citation:a5147528a12f169f"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:indigenism",
@@ -1581,31 +2036,55 @@
         "description": "Centers Indigenous collective self-government, treaty and territorial authority, and negotiated restoration of political jurisdiction within or alongside existing states.",
         "variant": "institutional self-government",
         "status": "existing-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
-            "targetValue": 0.85,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:institutional-recognition",
-            "targetValue": 0.55,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
-            "targetValue": 0.4,
-            "weight": 1
-          }
-        ],
         "gates": [],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:identity-sovereignty-module:indigenism:institutional-self-government:commitment:1",
+            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Minority Self Government in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:indigenism:institutional-self-government:commitment:2",
+            "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Decolonial Land Sovereignty in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:indigenism:institutional-self-government:commitment:3",
+            "constructId": "specialist:identity-sovereignty-module:institutional-recognition",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Institutional Recognition in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:indigenism:institutional-self-government:commitment:4",
+            "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Pluralist Accommodation in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       },
       {
@@ -1615,31 +2094,55 @@
         "description": "Treats settler-colonial authority and dispossession as continuing structures and emphasizes resurgence, refusal, land-based political relations, and rebuilding Indigenous institutions on their own terms.",
         "variant": "resurgence and refusal",
         "status": "existing-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:autonomous-resurgence",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:identity-sovereignty-module:community-autonomy",
-            "targetValue": 0.4,
-            "weight": 1
-          }
-        ],
         "gates": [],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:identity-sovereignty-module:indigenism:resurgence-and-refusal-2:commitment:1",
+            "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Minority Self Government in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:indigenism:resurgence-and-refusal-2:commitment:2",
+            "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Decolonial Land Sovereignty in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:indigenism:resurgence-and-refusal-2:commitment:3",
+            "constructId": "specialist:identity-sovereignty-module:autonomous-resurgence",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Autonomous Resurgence in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:identity-sovereignty-module:indigenism:resurgence-and-refusal-2:commitment:4",
+            "constructId": "specialist:identity-sovereignty-module:community-autonomy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Community Autonomy in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       }
     ],
@@ -1652,7 +2155,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:79be53b8e73c74d3"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:individualist-anarchism",
@@ -1675,28 +2179,6 @@
         "name": "Individualist Anarchism",
         "description": "Anti-authoritarian self-direction and voluntary association without a single required economic program.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:anarchist-families-module:anti-authority",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:market-coordination",
-            "targetValue": 0.15,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:communal-property",
-            "targetValue": -0.1,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:direct-federation",
-            "targetValue": 0.5,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:anarchist-families-module:individualist-anarchism:base:specialist:anarchist-families-module:anti-authority",
@@ -1707,6 +2189,54 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:anarchist-families-module:individualist-anarchism:base:commitment:1",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Anti Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:individualist-anarchism:base:commitment:2",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Market Coordination in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:anarchist-families-module:individualist-anarchism:base:commitment:3",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Communal Property in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:anarchist-families-module:individualist-anarchism:base:commitment:4",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Direct Federation in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       }
     ],
@@ -1719,7 +2249,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:55f39f4302598e7c"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:integralism",
@@ -1740,7 +2271,8 @@
       "source:v1-canonical-manifest",
       "citation:aadae1943ce48eac",
       "citation:09ff4aa7bf0706ec"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:islamic-democracy",
@@ -1770,48 +2302,6 @@
         "name": "Islamic Democratic Constitutionalism",
         "description": "Popular sovereignty and constitutional competition interpreted through Islamic legal and ethical traditions.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:religious-authority",
-            "targetValue": 0.25,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
-            "targetValue": 0.6,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:constitutional-review",
-            "targetValue": 0.85,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:party-competition",
-            "targetValue": 0.85,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:interpretive-pluralism",
-            "targetValue": 0.8,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:religious-national-politics-module:islamic-democracy:base:specialist:religious-national-politics-module:popular-constitutionalism",
@@ -1846,6 +2336,96 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:religious-national-politics-module:islamic-democracy:base:commitment:1",
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Popular Constitutionalism; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:islamic-democracy:base:commitment:2",
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Religious Authority in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:islamic-democracy:base:commitment:3",
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Civilizational Nationalism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:islamic-democracy:base:commitment:4",
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Minority Citizenship in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:islamic-democracy:base:commitment:5",
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Constitutional Review; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:islamic-democracy:base:commitment:6",
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Party Competition; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:islamic-democracy:base:commitment:7",
+            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Islamic Public Law; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:islamic-democracy:base:commitment:8",
+            "constructId": "specialist:religious-national-politics-module:interpretive-pluralism",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.45
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Interpretive Pluralism; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -1860,7 +2440,8 @@
       "citation:ec6045e7e01624e9",
       "citation:8390a3e0200ad47d",
       "citation:dc31fecd0a6513ff"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:juche",
@@ -1881,7 +2462,8 @@
       "source:v1-canonical-manifest",
       "citation:912a3311a441a2cd",
       "citation:941f94ffd493d344"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:kemalism",
@@ -1901,7 +2483,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:747dba903accb5ae"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:left-wing-market-anarchism",
@@ -1921,7 +2504,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:5792231d022775b8"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:liberal-feminism",
@@ -1948,31 +2532,57 @@
         "name": "Liberal Feminism",
         "description": "Centers individual autonomy, equal citizenship, equal opportunity, and legal-institutional reform within a liberal-democratic framework.",
         "status": "existing-primary",
-        "requirements": [
-          {
-            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
-            "targetValue": 0.15,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
-            "targetValue": 0,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
-            "targetValue": -0.7,
-            "weight": 1
-          }
-        ],
         "gates": [],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:feminist-faction-module:liberal-feminism:base:commitment:1",
+            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Legal Equality Reform in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:feminist-faction-module:liberal-feminism:base:commitment:2",
+            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Structural Patriarchy in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:feminist-faction-module:liberal-feminism:base:commitment:3",
+            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Class Social Reproduction in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:feminist-faction-module:liberal-feminism:base:commitment:4",
+            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+            "relation": "core",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": -0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core rejection of Anti Hierarchy Strategy in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          }
         ]
       }
     ],
@@ -1986,7 +2596,8 @@
       "source:v1-canonical-manifest",
       "citation:f3abe9549d155858",
       "citation:cbaecaacf4dd9075"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:libertarian-municipalism",
@@ -2009,28 +2620,6 @@
         "name": "Libertarian Municipalism",
         "description": "Municipal democracy and confederal self-government.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
-            "targetValue": -0.5,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
-            "targetValue": -0.1,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
-            "targetValue": 0.85,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:monarchist-municipal-module:libertarian-municipalism:base:specialist:monarchist-municipal-module:municipal-autonomy",
@@ -2047,6 +2636,53 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:monarchist-municipal-module:libertarian-municipalism:base:commitment:1",
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Hereditary Authority in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:libertarian-municipalism:base:commitment:2",
+            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Constitutional Monarchy in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:libertarian-municipalism:base:commitment:3",
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.7
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Municipal Autonomy; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:libertarian-municipalism:base:commitment:4",
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Confederal Coordination; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -2059,7 +2695,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:e725d2d09db0e176"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:maoism",
@@ -2082,28 +2719,6 @@
         "name": "Maoism",
         "description": "Revolutionary party organization, mass mobilization, and centralized transition.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:socialist-families-module:social-ownership",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:democratic-planning",
-            "targetValue": 0.7,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:reformism",
-            "targetValue": -0.7,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:socialist-families-module:maoism:base:specialist:socialist-families-module:social-ownership",
@@ -2126,6 +2741,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:socialist-families-module:maoism:base:commitment:1",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Social Ownership; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:maoism:base:commitment:2",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Democratic Planning in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:socialist-families-module:maoism:base:commitment:3",
+            "constructId": "specialist:socialist-families-module:reformism",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": -0.35
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Reformism; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:maoism:base:commitment:4",
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Revolutionary Strategy; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -2138,7 +2799,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:dbbdbf966d2a0ca3"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:market-anarchism",
@@ -2161,28 +2823,6 @@
         "name": "Market Anarchism",
         "description": "An anarchist family anchor for voluntary exchange and non-state coordination, without deciding among capitalist, mutualist, or counter-economic variants.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:anarchist-families-module:anti-authority",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:market-coordination",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:communal-property",
-            "targetValue": 0,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:direct-federation",
-            "targetValue": 0.65,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:anarchist-families-module:market-anarchism:base:specialist:anarchist-families-module:anti-authority",
@@ -2199,6 +2839,53 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:anarchist-families-module:market-anarchism:base:commitment:1",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Anti Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:market-anarchism:base:commitment:2",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Market Coordination; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:market-anarchism:base:commitment:3",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Communal Property in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:anarchist-families-module:market-anarchism:base:commitment:4",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Direct Federation in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          }
         ]
       }
     ],
@@ -2213,7 +2900,8 @@
       "citation:1b5ab88e18ea0d1b",
       "citation:c8d9dc64426ba5af",
       "citation:5a562c689b1ef3bd"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:market-socialist",
@@ -2236,28 +2924,6 @@
         "name": "Market Socialism",
         "description": "Social ownership combined with market exchange or competition.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:socialist-families-module:social-ownership",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:democratic-planning",
-            "targetValue": 0.15,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:reformism",
-            "targetValue": 0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
-            "targetValue": -0.2,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:socialist-families-module:market-socialist:base:specialist:socialist-families-module:social-ownership",
@@ -2274,6 +2940,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:socialist-families-module:market-socialist:base:commitment:1",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Social Ownership; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:market-socialist:base:commitment:2",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.45
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Democratic Planning; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:market-socialist:base:commitment:3",
+            "constructId": "specialist:socialist-families-module:reformism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Reformism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:socialist-families-module:market-socialist:base:commitment:4",
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Revolutionary Strategy in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       }
     ],
@@ -2286,7 +2998,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:2d99f6e2609c3939"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:minarchist",
@@ -2309,28 +3022,6 @@
         "name": "Minarchism",
         "description": "A minimal state limited to protective and adjudicative functions.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:anarchist-families-module:anti-authority",
-            "targetValue": 0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:market-coordination",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:communal-property",
-            "targetValue": -0.6,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:direct-federation",
-            "targetValue": -0.2,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:anarchist-families-module:minarchist:base:specialist:anarchist-families-module:market-coordination",
@@ -2353,6 +3044,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:anarchist-families-module:minarchist:base:commitment:1",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.7
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Anti Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:minarchist:base:commitment:2",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Market Coordination; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:minarchist:base:commitment:3",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": -0.3
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Communal Property; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:minarchist:base:commitment:4",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Direct Federation in this module. The criterion records direction rather than distance to the retired target vector."
+          }
         ]
       }
     ],
@@ -2366,7 +3103,8 @@
       "source:v1-canonical-manifest",
       "citation:c8d9dc64426ba5af",
       "citation:ffde273d907be80f"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:mutualist",
@@ -2389,28 +3127,6 @@
         "name": "Mutualism (family-level)",
         "description": "A family-level affinity for reciprocal exchange, federated association, and opposition to privilege; it does not identify Proudhonian, Tuckerite, Labadie-line, Swartz-associated, or later mutualist and left-market variants—or affiliation with C4SS or any writer.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:anarchist-families-module:anti-authority",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:market-coordination",
-            "targetValue": 0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:communal-property",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:direct-federation",
-            "targetValue": 0.8,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:anarchist-families-module:mutualist:base:specialist:anarchist-families-module:anti-authority",
@@ -2434,6 +3150,53 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:anarchist-families-module:mutualist:base:commitment:1",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Anti Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:mutualist:base:commitment:2",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "interval",
+              "minimum": 0.2,
+              "maximum": 0.75
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Market Coordination; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:mutualist:base:commitment:3",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Communal Property in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:anarchist-families-module:mutualist:base:commitment:4",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Direct Federation; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -2454,7 +3217,8 @@
       "citation:c3760ee42f90cdc6",
       "citation:5ba61b9fd33536f4",
       "citation:0f9a7b38e59547cd"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:national-bolshevism",
@@ -2474,7 +3238,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:9071166f063d1fa4"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:national-socialism",
@@ -2494,7 +3259,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:45c8d4991ce9d236"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:neoconservative",
@@ -2517,28 +3283,6 @@
         "name": "Neoconservatism",
         "description": "Modern U.S. conservative internationalism with an assertive foreign-policy orientation.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:conservative-variants-module:prudence",
-            "targetValue": 0.4,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:conservative-variants-module:moral-traditionalism",
-            "targetValue": 0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:conservative-variants-module:national-continuity",
-            "targetValue": 0.25,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:conservative-variants-module:assertive-internationalism",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:conservative-variants-module:neoconservative:base:specialist:conservative-variants-module:assertive-internationalism",
@@ -2549,6 +3293,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:conservative-variants-module:neoconservative:base:commitment:1",
+            "constructId": "specialist:conservative-variants-module:prudence",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Prudence in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:conservative-variants-module:neoconservative:base:commitment:2",
+            "constructId": "specialist:conservative-variants-module:moral-traditionalism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Moral Traditionalism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:conservative-variants-module:neoconservative:base:commitment:3",
+            "constructId": "specialist:conservative-variants-module:national-continuity",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of National Continuity in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:conservative-variants-module:neoconservative:base:commitment:4",
+            "constructId": "specialist:conservative-variants-module:assertive-internationalism",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Assertive Internationalism; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -2561,7 +3351,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:9c44a8a1c2400720"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:neoliberalism",
@@ -2581,7 +3372,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f1f4865a29afc1ad"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:neoreactionary",
@@ -2601,7 +3393,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:2462735ddd0497b9"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:objectivism",
@@ -2621,7 +3414,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f608d8c3bcfb13cd"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:one-nation-conservatism",
@@ -2641,7 +3435,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:9c8246b42e3ac101"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:ordoliberalism",
@@ -2661,7 +3456,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:960a9402888e0cca"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:paleoconservatism",
@@ -2681,7 +3477,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:86edc17b1911c0ee"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:paleolibertarianism",
@@ -2701,7 +3498,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f9ea755ba47f4bcc"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:pan-africanism",
@@ -2743,16 +3541,22 @@
         "description": "Treats African peoples and African-descended diasporas as linked by political interests that can justify transnational solidarity, coordination, or African political unity across existing state borders.",
         "variant": "transnational solidarity and unity",
         "status": "candidate-role-review",
-        "requirements": [
-          {
-            "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:identity-sovereignty-module:pan-africanism:transnational-solidarity-and-unity:commitment:1",
+            "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Pan African Solidarity in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          }
         ]
       }
     ],
@@ -2766,7 +3570,8 @@
       "source:v1-canonical-manifest",
       "citation:dda7d93939d1d146",
       "citation:9b4674300ce4501c"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:pan-arabism",
@@ -2787,7 +3592,8 @@
       "source:v1-canonical-manifest",
       "citation:d8c102378c0f1cac",
       "citation:9e2ab644a76326e8"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:participism",
@@ -2807,7 +3613,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:202b304371d95506"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:political-islam",
@@ -2837,48 +3644,6 @@
         "name": "Political Islam",
         "description": "Political projects that make Islamic identity or law central to state and movement politics.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
-            "targetValue": 0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:religious-authority",
-            "targetValue": 0.65,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
-            "targetValue": 0.55,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:constitutional-review",
-            "targetValue": 0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:party-competition",
-            "targetValue": 0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
-            "targetValue": 0.7,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:interpretive-pluralism",
-            "targetValue": 0.15,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:religious-national-politics-module:political-islam:base:specialist:religious-national-politics-module:islamic-public-law",
@@ -2889,6 +3654,97 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:religious-national-politics-module:political-islam:base:commitment:1",
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Popular Constitutionalism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:political-islam:base:commitment:2",
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Religious Authority in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:political-islam:base:commitment:3",
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Civilizational Nationalism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:political-islam:base:commitment:4",
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Minority Citizenship in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:political-islam:base:commitment:5",
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Constitutional Review in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:political-islam:base:commitment:6",
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Party Competition in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:political-islam:base:commitment:7",
+            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Islamic Public Law; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:political-islam:base:commitment:8",
+            "constructId": "specialist:religious-national-politics-module:interpretive-pluralism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Interpretive Pluralism in this module. The interval is categorical and not a retained numeric ideology target."
+          }
         ]
       }
     ],
@@ -2901,7 +3757,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:d08fadd20d9c7f4d"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:queer-anarchism",
@@ -2921,7 +3778,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:a4b907a1e0417153"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:queer-politics",
@@ -2941,7 +3799,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:363e9f15af07ed6e"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:radical-feminism",
@@ -2968,31 +3827,58 @@
         "name": "Radical Feminism",
         "description": "Treats patriarchy and male dominance as a distinct structural system, with sexuality, reproduction, and family relations central sites of political power.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
-            "targetValue": -0.1,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
-            "targetValue": 0.15,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
-            "targetValue": 0,
-            "weight": 1
-          }
-        ],
         "gates": [],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:feminist-faction-module:radical-feminism:base:commitment:1",
+            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Legal Equality Reform in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:feminist-faction-module:radical-feminism:base:commitment:2",
+            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Structural Patriarchy in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:feminist-faction-module:radical-feminism:base:commitment:3",
+            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Class Social Reproduction in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:feminist-faction-module:radical-feminism:base:commitment:4",
+            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Anti Hierarchy Strategy in this module. The interval is categorical and not a retained numeric ideology target."
+          }
         ]
       }
     ],
@@ -3005,7 +3891,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f3abe9549d155858"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:religious-nationalism",
@@ -3035,58 +3922,6 @@
         "name": "Religious Nationalism",
         "description": "An umbrella fusion of religious identity and national goals whose institutional forms vary over law, citizenship, authority, and minority rights.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:religious-authority",
-            "targetValue": 0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
-            "targetValue": 0.78,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:religious-national-fusion",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
-            "targetValue": 0.05,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:constitutional-review",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:party-competition",
-            "targetValue": 0.25,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
-            "targetValue": 0.15,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:jewish-national-self-determination",
-            "targetValue": 0.15,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:religious-national-politics-module:religious-nationalism:base:specialist:religious-national-politics-module:religious-national-fusion",
@@ -3097,6 +3932,121 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:1",
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Popular Constitutionalism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:2",
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Religious Authority in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:3",
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Civilizational Nationalism in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:4",
+            "constructId": "specialist:religious-national-politics-module:religious-national-fusion",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Religious National Fusion; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:5",
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Minority Citizenship in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:6",
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Constitutional Review in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:7",
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Party Competition in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:8",
+            "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Islamic Public Law in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:9",
+            "constructId": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Hindu Civilizational Belonging in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:religious-nationalism:base:commitment:10",
+            "constructId": "specialist:religious-national-politics-module:jewish-national-self-determination",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Jewish National Self Determination in this module. The interval is categorical and not a retained numeric ideology target."
+          }
         ]
       }
     ],
@@ -3109,7 +4059,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:773c66fdd80832c7"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:social-anarchism",
@@ -3132,28 +4083,6 @@
         "name": "Social / Communal Anarchism",
         "description": "A family-level experimental affinity for anti-authoritarian, communal, and federated social organization. It does not make mutualism, market anarchism, syndicalism, anarcho-communism, or a single transition strategy a required subtype.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:anarchist-families-module:anti-authority",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:market-coordination",
-            "targetValue": -0.25,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:communal-property",
-            "targetValue": 0.7,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:anarchist-families-module:direct-federation",
-            "targetValue": 0.8,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:anarchist-families-module:social-anarchism:base:specialist:anarchist-families-module:anti-authority",
@@ -3176,6 +4105,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:anarchist-families-module:social-anarchism:base:commitment:1",
+            "constructId": "specialist:anarchist-families-module:anti-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Anti Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:social-anarchism:base:commitment:2",
+            "constructId": "specialist:anarchist-families-module:market-coordination",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Market Coordination in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:anarchist-families-module:social-anarchism:base:commitment:3",
+            "constructId": "specialist:anarchist-families-module:communal-property",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.35
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Communal Property; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:anarchist-families-module:social-anarchism:base:commitment:4",
+            "constructId": "specialist:anarchist-families-module:direct-federation",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Direct Federation; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -3188,7 +4163,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:1b5ab88e18ea0d1b"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:socialist-feminism",
@@ -3215,31 +4191,57 @@
         "name": "Socialist / Marxist Feminism",
         "description": "Explains gender domination through the interaction of patriarchy with class, property, paid labor, unpaid care work, and social reproduction.",
         "status": "existing-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
-            "targetValue": 0,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
-            "targetValue": 0.65,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
-            "targetValue": -0.1,
-            "weight": 1
-          }
-        ],
         "gates": [],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:feminist-faction-module:socialist-feminism:base:commitment:1",
+            "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Legal Equality Reform in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:feminist-faction-module:socialist-feminism:base:commitment:2",
+            "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Structural Patriarchy in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:feminist-faction-module:socialist-feminism:base:commitment:3",
+            "constructId": "specialist:feminist-faction-module:class-social-reproduction",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Class Social Reproduction in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:feminist-faction-module:socialist-feminism:base:commitment:4",
+            "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Anti Hierarchy Strategy in this module. The interval is categorical and not a retained numeric ideology target."
+          }
         ]
       }
     ],
@@ -3252,7 +4254,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:efbc47adc614ad4d"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:stirnerism",
@@ -3272,7 +4275,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:57a14b87949d679e"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:strasserism",
@@ -3292,7 +4296,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:9071166f063d1fa4"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:syndicalist",
@@ -3315,28 +4320,6 @@
         "name": "Syndicalism",
         "description": "Union organization and direct industrial action as the route to social transformation.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:socialist-families-module:social-ownership",
-            "targetValue": 0.8,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:democratic-planning",
-            "targetValue": 0.65,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:reformism",
-            "targetValue": -0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
-            "targetValue": 0.8,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:socialist-families-module:syndicalist:base:specialist:socialist-families-module:social-ownership",
@@ -3353,6 +4336,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:socialist-families-module:syndicalist:base:commitment:1",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.55
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Social Ownership; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:syndicalist:base:commitment:2",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.5
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Democratic Planning; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:syndicalist:base:commitment:3",
+            "constructId": "specialist:socialist-families-module:reformism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Reformism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:socialist-families-module:syndicalist:base:commitment:4",
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Revolutionary Strategy in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          }
         ]
       }
     ],
@@ -3365,7 +4394,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:fe775ed350541829"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:techno-anarchism",
@@ -3390,38 +4420,6 @@
         "name": "Techno-Anarchism",
         "description": "Decentralized technology and cryptography used against centralized control.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:technology-governance-module:expert-administration",
-            "targetValue": -0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:algorithmic-authority",
-            "targetValue": -0.25,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:decentralized-technology",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:accelerationist-strategy",
-            "targetValue": 0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:market-acceleration",
-            "targetValue": -0.1,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:centralized-administration",
-            "targetValue": -0.75,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:technology-governance-module:techno-anarchism:base:specialist:technology-governance-module:decentralized-technology",
@@ -3438,6 +4436,75 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:technology-governance-module:techno-anarchism:base:commitment:1",
+            "constructId": "specialist:technology-governance-module:expert-administration",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Expert Administration in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:technology-governance-module:techno-anarchism:base:commitment:2",
+            "constructId": "specialist:technology-governance-module:algorithmic-authority",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Algorithmic Authority in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:technology-governance-module:techno-anarchism:base:commitment:3",
+            "constructId": "specialist:technology-governance-module:decentralized-technology",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Decentralized Technology; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:technology-governance-module:techno-anarchism:base:commitment:4",
+            "constructId": "specialist:technology-governance-module:accelerationist-strategy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Accelerationist Strategy in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:technology-governance-module:techno-anarchism:base:commitment:5",
+            "constructId": "specialist:technology-governance-module:market-acceleration",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Market Acceleration in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:technology-governance-module:techno-anarchism:base:commitment:6",
+            "constructId": "specialist:technology-governance-module:centralized-administration",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.2
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Centralized Administration; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -3451,7 +4518,8 @@
       "source:v1-canonical-manifest",
       "citation:110d4ab1090b1d1f",
       "citation:9534cf57bac8f9f1"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:technocratic-centralist",
@@ -3476,38 +4544,6 @@
         "name": "Technocratic Centralism",
         "description": "Centralized expert administration insulated from ordinary electoral pressure.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:technology-governance-module:expert-administration",
-            "targetValue": 0.95,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:algorithmic-authority",
-            "targetValue": 0.55,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:decentralized-technology",
-            "targetValue": -0.45,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:accelerationist-strategy",
-            "targetValue": 0.1,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:market-acceleration",
-            "targetValue": 0.15,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:technology-governance-module:centralized-administration",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:technology-governance-module:technocratic-centralist:base:specialist:technology-governance-module:expert-administration",
@@ -3524,6 +4560,76 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:technology-governance-module:technocratic-centralist:base:commitment:1",
+            "constructId": "specialist:technology-governance-module:expert-administration",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Expert Administration; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:technology-governance-module:technocratic-centralist:base:commitment:2",
+            "constructId": "specialist:technology-governance-module:algorithmic-authority",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Algorithmic Authority in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:technology-governance-module:technocratic-centralist:base:commitment:3",
+            "constructId": "specialist:technology-governance-module:decentralized-technology",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic rejection of Decentralized Technology in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:technology-governance-module:technocratic-centralist:base:commitment:4",
+            "constructId": "specialist:technology-governance-module:accelerationist-strategy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Accelerationist Strategy in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:technology-governance-module:technocratic-centralist:base:commitment:5",
+            "constructId": "specialist:technology-governance-module:market-acceleration",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Market Acceleration in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:technology-governance-module:technocratic-centralist:base:commitment:6",
+            "constructId": "specialist:technology-governance-module:centralized-administration",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.6
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Centralized Administration; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -3537,7 +4643,8 @@
       "source:v1-canonical-manifest",
       "citation:9e1c40cea0982cc0",
       "citation:c8e42489b2242b4d"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:theocrat",
@@ -3567,13 +4674,6 @@
         "name": "Theocratic Politics (religious-legal authority)",
         "description": "A family-level experimental affinity for final religious authority over civil-law legitimacy. It does not identify a religion, clerical office, constitutional form, or treatment of minorities.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:religious-national-politics-module:religious-authority",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:religious-national-politics-module:theocrat:base:specialist:religious-national-politics-module:religious-authority",
@@ -3584,6 +4684,19 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:religious-national-politics-module:theocrat:base:commitment:1",
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Religious Authority; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -3597,7 +4710,8 @@
       "source:v1-canonical-manifest",
       "citation:bf65879819fb8f4d",
       "citation:1281263f480658cd"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:third-way",
@@ -3617,7 +4731,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:fa0bbf92e00fbb53"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:traditional-monarchist",
@@ -3640,28 +4755,6 @@
         "name": "Traditional Monarchism",
         "description": "Hereditary authority grounded in historical and social continuity.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
-            "targetValue": 0.85,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
-            "targetValue": 0,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
-            "targetValue": -0.1,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:monarchist-municipal-module:traditional-monarchist:base:specialist:monarchist-municipal-module:hereditary-authority",
@@ -3672,6 +4765,54 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:monarchist-municipal-module:traditional-monarchist:base:commitment:1",
+            "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.7
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Hereditary Authority; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:traditional-monarchist:base:commitment:2",
+            "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Constitutional Monarchy in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:traditional-monarchist:base:commitment:3",
+            "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Municipal Autonomy in this module. The interval is categorical and not a retained numeric ideology target."
+          },
+          {
+            "id": "candidate:monarchist-municipal-module:traditional-monarchist:base:commitment:4",
+            "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "interval",
+              "minimum": -0.25,
+              "maximum": 0.25
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic non-extreme position on Confederal Coordination in this module. The interval is categorical and not a retained numeric ideology target."
+          }
         ]
       }
     ],
@@ -3684,7 +4825,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:2aff035965effa6a"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:trotskyism",
@@ -3707,28 +4849,6 @@
         "name": "Trotskyism",
         "description": "Revolutionary Marxism emphasizing international transformation and party strategy.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:socialist-families-module:social-ownership",
-            "targetValue": 0.9,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:democratic-planning",
-            "targetValue": 0.65,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:reformism",
-            "targetValue": -0.65,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
-            "targetValue": 0.9,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:socialist-families-module:trotskyism:base:specialist:socialist-families-module:social-ownership",
@@ -3751,6 +4871,52 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:socialist-families-module:trotskyism:base:commitment:1",
+            "constructId": "specialist:socialist-families-module:social-ownership",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Social Ownership; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:trotskyism:base:commitment:2",
+            "constructId": "specialist:socialist-families-module:democratic-planning",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Democratic Planning in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:socialist-families-module:trotskyism:base:commitment:3",
+            "constructId": "specialist:socialist-families-module:reformism",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "maximum",
+              "maximum": -0.3
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Reformism; failure excludes the variant and missing evidence abstains."
+          },
+          {
+            "id": "candidate:socialist-families-module:trotskyism:base:commitment:4",
+            "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Revolutionary Strategy; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -3763,7 +4929,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:56017301d376fc2e"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:voluntaryism",
@@ -3783,7 +4950,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:d5c3521c63ba5720"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:welfare-chauvinism",
@@ -3803,7 +4971,8 @@
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:439260bf94ad6598"
-    ]
+    ],
+    "commitments": []
   },
   {
     "id": "profile:specialist:zionism",
@@ -3833,43 +5002,6 @@
         "name": "Zionism",
         "description": "A family of Jewish national self-determination projects with divergent territorial and constitutional variants.",
         "status": "candidate-specialist",
-        "requirements": [
-          {
-            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
-            "targetValue": 0.3,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:religious-authority",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
-            "targetValue": 0.75,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
-            "targetValue": 0.2,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:constitutional-review",
-            "targetValue": 0.35,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:party-competition",
-            "targetValue": 0.5,
-            "weight": 1
-          },
-          {
-            "constructId": "specialist:religious-national-politics-module:jewish-national-self-determination",
-            "targetValue": 0.95,
-            "weight": 1
-          }
-        ],
         "gates": [
           {
             "id": "gate:religious-national-politics-module:zionism:base:specialist:religious-national-politics-module:jewish-national-self-determination",
@@ -3880,6 +5012,85 @@
         ],
         "provenanceRefs": [
           "source:v1-canonical-manifest"
+        ],
+        "commitments": [
+          {
+            "id": "candidate:religious-national-politics-module:zionism:base:commitment:1",
+            "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Popular Constitutionalism in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:zionism:base:commitment:2",
+            "constructId": "specialist:religious-national-politics-module:religious-authority",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Religious Authority in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:zionism:base:commitment:3",
+            "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+            "relation": "core",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.3
+            },
+            "weight": 1.0,
+            "rationale": "Core endorsement of Civilizational Nationalism in this module. The criterion is categorical and deliberately does not preserve the legacy centroid target magnitude."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:zionism:base:commitment:4",
+            "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Minority Citizenship in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:zionism:base:commitment:5",
+            "constructId": "specialist:religious-national-politics-module:constitutional-review",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Constitutional Review in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:zionism:base:commitment:6",
+            "constructId": "specialist:religious-national-politics-module:party-competition",
+            "relation": "characteristic",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.0
+            },
+            "weight": 1.0,
+            "rationale": "Characteristic endorsement of Party Competition in this module. The criterion records direction rather than distance to the retired target vector."
+          },
+          {
+            "id": "candidate:religious-national-politics-module:zionism:base:commitment:7",
+            "constructId": "specialist:religious-national-politics-module:jewish-national-self-determination",
+            "relation": "constitutive",
+            "criterion": {
+              "operator": "minimum",
+              "minimum": 0.65
+            },
+            "weight": 1.0,
+            "rationale": "Constitutive specialist criterion retained from the reviewed gate for Jewish National Self Determination; failure excludes the variant and missing evidence abstains."
+          }
         ]
       }
     ],
@@ -3894,6 +5105,7 @@
       "citation:726584f99844985f",
       "citation:e7eabd8358fb1923",
       "citation:72db72dba5db2c2e"
-    ]
+    ],
+    "commitments": []
   }
 ]

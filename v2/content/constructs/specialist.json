@@ -7,14 +7,20 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "anti-authority",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Anti Authority within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Anti Authority",
+      "positive": "endorses or prioritizes Anti Authority"
+    },
+    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:anarchist-families-module:communal-coordination",
@@ -24,14 +30,20 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "communal-coordination",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Communal Coordination within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Communal Coordination",
+      "positive": "endorses or prioritizes Communal Coordination"
+    },
+    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:anarchist-families-module:communal-property",
@@ -41,14 +53,20 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "communal-property",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Communal Property within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Communal Property",
+      "positive": "endorses or prioritizes Communal Property"
+    },
+    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:anarchist-families-module:direct-federation",
@@ -58,14 +76,20 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "direct-federation",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Direct Federation within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Direct Federation",
+      "positive": "endorses or prioritizes Direct Federation"
+    },
+    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:anarchist-families-module:market-coordination",
@@ -75,14 +99,20 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "market-coordination",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Market Coordination within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Market Coordination",
+      "positive": "endorses or prioritizes Market Coordination"
+    },
+    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:anarchist-families-module:market-property",
@@ -92,14 +122,20 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "market-property",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Market Property within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Market Property",
+      "positive": "endorses or prioritizes Market Property"
+    },
+    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:conservative-variants-module:assertive-internationalism",
@@ -109,14 +145,20 @@
     "moduleId": "conservative-variants-module",
     "sourceKey": "assertive-internationalism",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Assertive Internationalism within Conservative variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Assertive Internationalism",
+      "positive": "endorses or prioritizes Assertive Internationalism"
+    },
+    "boundaryStatement": "Scoped to Conservative variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:conservative-variants-module:moral-traditionalism",
@@ -126,14 +168,20 @@
     "moduleId": "conservative-variants-module",
     "sourceKey": "moral-traditionalism",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Moral Traditionalism within Conservative variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Moral Traditionalism",
+      "positive": "endorses or prioritizes Moral Traditionalism"
+    },
+    "boundaryStatement": "Scoped to Conservative variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:conservative-variants-module:national-continuity",
@@ -143,14 +191,20 @@
     "moduleId": "conservative-variants-module",
     "sourceKey": "national-continuity",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of National Continuity within Conservative variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes National Continuity",
+      "positive": "endorses or prioritizes National Continuity"
+    },
+    "boundaryStatement": "Scoped to Conservative variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:conservative-variants-module:prudence",
@@ -160,14 +214,20 @@
     "moduleId": "conservative-variants-module",
     "sourceKey": "prudence",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Prudence within Conservative variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Prudence",
+      "positive": "endorses or prioritizes Prudence"
+    },
+    "boundaryStatement": "Scoped to Conservative variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:feminist-faction-module:anti-hierarchy-strategy",
@@ -177,14 +237,20 @@
     "moduleId": "feminist-faction-module",
     "sourceKey": "anti-hierarchy-strategy",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Anti Hierarchy Strategy within Feminist factions. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Anti Hierarchy Strategy",
+      "positive": "endorses or prioritizes Anti Hierarchy Strategy"
+    },
+    "boundaryStatement": "Scoped to Feminist factions; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:feminist-faction-module:class-social-reproduction",
@@ -194,14 +260,20 @@
     "moduleId": "feminist-faction-module",
     "sourceKey": "class-social-reproduction",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Class Social Reproduction within Feminist factions. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Class Social Reproduction",
+      "positive": "endorses or prioritizes Class Social Reproduction"
+    },
+    "boundaryStatement": "Scoped to Feminist factions; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:feminist-faction-module:legal-equality-reform",
@@ -211,14 +283,20 @@
     "moduleId": "feminist-faction-module",
     "sourceKey": "legal-equality-reform",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Legal Equality Reform within Feminist factions. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Legal Equality Reform",
+      "positive": "endorses or prioritizes Legal Equality Reform"
+    },
+    "boundaryStatement": "Scoped to Feminist factions; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:feminist-faction-module:structural-patriarchy",
@@ -228,14 +306,20 @@
     "moduleId": "feminist-faction-module",
     "sourceKey": "structural-patriarchy",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Structural Patriarchy within Feminist factions. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Structural Patriarchy",
+      "positive": "endorses or prioritizes Structural Patriarchy"
+    },
+    "boundaryStatement": "Scoped to Feminist factions; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:green-morphology-module:collective-ownership",
@@ -245,14 +329,20 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "collective-ownership",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Collective Ownership within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Collective Ownership",
+      "positive": "endorses or prioritizes Collective Ownership"
+    },
+    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:green-morphology-module:democratic-decentralism",
@@ -262,14 +352,20 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "democratic-decentralism",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Democratic Decentralism within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Democratic Decentralism",
+      "positive": "endorses or prioritizes Democratic Decentralism"
+    },
+    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:green-morphology-module:ecological-standing",
@@ -279,14 +375,20 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "ecological-standing",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Ecological Standing within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Ecological Standing",
+      "positive": "endorses or prioritizes Ecological Standing"
+    },
+    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:green-morphology-module:market-technology",
@@ -296,14 +398,20 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "market-technology",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Market Technology within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Market Technology",
+      "positive": "endorses or prioritizes Market Technology"
+    },
+    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:green-morphology-module:post-growth",
@@ -313,14 +421,20 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "post-growth",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Post Growth within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Post Growth",
+      "positive": "endorses or prioritizes Post Growth"
+    },
+    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:ascriptive-membership",
@@ -330,14 +444,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "ascriptive-membership",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Ascriptive Membership within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Ascriptive Membership",
+      "positive": "endorses or prioritizes Ascriptive Membership"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:autonomous-resurgence",
@@ -347,14 +467,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "autonomous-resurgence",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Autonomous Resurgence within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Autonomous Resurgence",
+      "positive": "endorses or prioritizes Autonomous Resurgence"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:community-autonomy",
@@ -364,14 +490,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "community-autonomy",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Community Autonomy within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Community Autonomy",
+      "positive": "endorses or prioritizes Community Autonomy"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
@@ -381,14 +513,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "decolonial-land-sovereignty",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Decolonial Land Sovereignty within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Decolonial Land Sovereignty",
+      "positive": "endorses or prioritizes Decolonial Land Sovereignty"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:dominant-nation-congruence",
@@ -398,14 +536,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "dominant-nation-congruence",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Dominant Nation Congruence within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Dominant Nation Congruence",
+      "positive": "endorses or prioritizes Dominant Nation Congruence"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:institutional-recognition",
@@ -415,14 +559,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "institutional-recognition",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Institutional Recognition within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Institutional Recognition",
+      "positive": "endorses or prioritizes Institutional Recognition"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:minority-self-government",
@@ -432,14 +582,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "minority-self-government",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Minority Self Government within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Minority Self Government",
+      "positive": "endorses or prioritizes Minority Self Government"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:pan-african-solidarity",
@@ -449,14 +605,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "pan-african-solidarity",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Pan African Solidarity within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Pan African Solidarity",
+      "positive": "endorses or prioritizes Pan African Solidarity"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:pluralist-accommodation",
@@ -466,14 +628,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "pluralist-accommodation",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Pluralist Accommodation within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Pluralist Accommodation",
+      "positive": "endorses or prioritizes Pluralist Accommodation"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:identity-sovereignty-module:territorial-separatism",
@@ -483,14 +651,20 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "territorial-separatism",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Territorial Separatism within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Territorial Separatism",
+      "positive": "endorses or prioritizes Territorial Separatism"
+    },
+    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:monarchist-municipal-module:confederal-coordination",
@@ -500,14 +674,20 @@
     "moduleId": "monarchist-municipal-module",
     "sourceKey": "confederal-coordination",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Confederal Coordination within Monarchist and municipal/confederal families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Confederal Coordination",
+      "positive": "endorses or prioritizes Confederal Coordination"
+    },
+    "boundaryStatement": "Scoped to Monarchist and municipal/confederal families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:monarchist-municipal-module:constitutional-monarchy",
@@ -517,14 +697,20 @@
     "moduleId": "monarchist-municipal-module",
     "sourceKey": "constitutional-monarchy",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Constitutional Monarchy within Monarchist and municipal/confederal families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Constitutional Monarchy",
+      "positive": "endorses or prioritizes Constitutional Monarchy"
+    },
+    "boundaryStatement": "Scoped to Monarchist and municipal/confederal families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:monarchist-municipal-module:hereditary-authority",
@@ -534,14 +720,20 @@
     "moduleId": "monarchist-municipal-module",
     "sourceKey": "hereditary-authority",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Hereditary Authority within Monarchist and municipal/confederal families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Hereditary Authority",
+      "positive": "endorses or prioritizes Hereditary Authority"
+    },
+    "boundaryStatement": "Scoped to Monarchist and municipal/confederal families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:monarchist-municipal-module:municipal-autonomy",
@@ -551,14 +743,20 @@
     "moduleId": "monarchist-municipal-module",
     "sourceKey": "municipal-autonomy",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Municipal Autonomy within Monarchist and municipal/confederal families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Municipal Autonomy",
+      "positive": "endorses or prioritizes Municipal Autonomy"
+    },
+    "boundaryStatement": "Scoped to Monarchist and municipal/confederal families; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:civilizational-nationalism",
@@ -568,14 +766,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "civilizational-nationalism",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Civilizational Nationalism within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Civilizational Nationalism",
+      "positive": "endorses or prioritizes Civilizational Nationalism"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:constitutional-review",
@@ -585,14 +789,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "constitutional-review",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Constitutional Review within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Constitutional Review",
+      "positive": "endorses or prioritizes Constitutional Review"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
@@ -602,14 +812,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "hindu-civilizational-belonging",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Hindu Civilizational Belonging within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Hindu Civilizational Belonging",
+      "positive": "endorses or prioritizes Hindu Civilizational Belonging"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:interpretive-pluralism",
@@ -619,14 +835,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "interpretive-pluralism",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Interpretive Pluralism within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Interpretive Pluralism",
+      "positive": "endorses or prioritizes Interpretive Pluralism"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:islamic-public-law",
@@ -636,14 +858,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "islamic-public-law",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Islamic Public Law within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Islamic Public Law",
+      "positive": "endorses or prioritizes Islamic Public Law"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:jewish-national-self-determination",
@@ -653,14 +881,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "jewish-national-self-determination",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Jewish National Self Determination within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Jewish National Self Determination",
+      "positive": "endorses or prioritizes Jewish National Self Determination"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:minority-citizenship",
@@ -670,14 +904,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "minority-citizenship",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Minority Citizenship within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Minority Citizenship",
+      "positive": "endorses or prioritizes Minority Citizenship"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:party-competition",
@@ -687,14 +927,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "party-competition",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Party Competition within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Party Competition",
+      "positive": "endorses or prioritizes Party Competition"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:popular-constitutionalism",
@@ -704,14 +950,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "popular-constitutionalism",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Popular Constitutionalism within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Popular Constitutionalism",
+      "positive": "endorses or prioritizes Popular Constitutionalism"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:religious-authority",
@@ -721,14 +973,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "religious-authority",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Religious Authority within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Religious Authority",
+      "positive": "endorses or prioritizes Religious Authority"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:religious-national-politics-module:religious-national-fusion",
@@ -738,14 +996,20 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "religious-national-fusion",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Religious National Fusion within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Religious National Fusion",
+      "positive": "endorses or prioritizes Religious National Fusion"
+    },
+    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:socialist-families-module:democratic-planning",
@@ -755,14 +1019,20 @@
     "moduleId": "socialist-families-module",
     "sourceKey": "democratic-planning",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Democratic Planning within Socialist family variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Democratic Planning",
+      "positive": "endorses or prioritizes Democratic Planning"
+    },
+    "boundaryStatement": "Scoped to Socialist family variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:socialist-families-module:reformism",
@@ -772,14 +1042,20 @@
     "moduleId": "socialist-families-module",
     "sourceKey": "reformism",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Reformism within Socialist family variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Reformism",
+      "positive": "endorses or prioritizes Reformism"
+    },
+    "boundaryStatement": "Scoped to Socialist family variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:socialist-families-module:revolutionary-strategy",
@@ -789,14 +1065,20 @@
     "moduleId": "socialist-families-module",
     "sourceKey": "revolutionary-strategy",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Revolutionary Strategy within Socialist family variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Revolutionary Strategy",
+      "positive": "endorses or prioritizes Revolutionary Strategy"
+    },
+    "boundaryStatement": "Scoped to Socialist family variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:socialist-families-module:social-ownership",
@@ -806,14 +1088,20 @@
     "moduleId": "socialist-families-module",
     "sourceKey": "social-ownership",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Social Ownership within Socialist family variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Social Ownership",
+      "positive": "endorses or prioritizes Social Ownership"
+    },
+    "boundaryStatement": "Scoped to Socialist family variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:technology-governance-module:accelerationist-strategy",
@@ -823,14 +1111,20 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "accelerationist-strategy",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Accelerationist Strategy within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Accelerationist Strategy",
+      "positive": "endorses or prioritizes Accelerationist Strategy"
+    },
+    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:technology-governance-module:algorithmic-authority",
@@ -840,14 +1134,20 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "algorithmic-authority",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Algorithmic Authority within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Algorithmic Authority",
+      "positive": "endorses or prioritizes Algorithmic Authority"
+    },
+    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:technology-governance-module:centralized-administration",
@@ -857,14 +1157,20 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "centralized-administration",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Centralized Administration within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Centralized Administration",
+      "positive": "endorses or prioritizes Centralized Administration"
+    },
+    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:technology-governance-module:decentralized-technology",
@@ -874,14 +1180,20 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "decentralized-technology",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Decentralized Technology within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Decentralized Technology",
+      "positive": "endorses or prioritizes Decentralized Technology"
+    },
+    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:technology-governance-module:expert-administration",
@@ -891,14 +1203,20 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "expert-administration",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Expert Administration within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Expert Administration",
+      "positive": "endorses or prioritizes Expert Administration"
+    },
+    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
   },
   {
     "id": "specialist:technology-governance-module:market-acceleration",
@@ -908,13 +1226,19 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "market-acceleration",
     "lifecycle": {
-      "conceptualStatus": "candidate",
+      "conceptualStatus": "provisional-defined",
       "measurementStatus": "research-candidate",
-      "publicRoleStatus": "specialist"
+      "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "source:phase0-measurement-contract"
-    ]
+    ],
+    "description": "Research-only module-local construct measuring endorsement of Market Acceleration within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "poles": {
+      "negative": "rejects, opposes, or deprioritizes Market Acceleration",
+      "positive": "endorses or prioritizes Market Acceleration"
+    },
+    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
   }
 ]

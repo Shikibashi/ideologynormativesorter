@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "referenceManifest": "v2/reference/v1/manifest.json",
-  "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+  "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
   "cases": [
     {
       "id": "empty-core",
@@ -20,7 +20,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -44,7 +44,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -71,7 +71,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -95,7 +95,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -120,7 +120,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -144,7 +144,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -171,7 +171,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -196,7 +196,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -221,7 +221,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -246,7 +246,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -270,7 +270,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -297,7 +297,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -324,7 +324,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -351,7 +351,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -378,7 +378,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -405,7 +405,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -432,7 +432,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -459,7 +459,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -486,7 +486,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -513,7 +513,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [
@@ -540,7 +540,7 @@
       ],
       "sourceVersion": {
         "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
         "scoringVersion": "scoring-v2.commitment-v1"
       },
       "rationaleRefs": [

@@ -75,8 +75,15 @@ function syntheticBundle(): CanonicalContentBundle {
         name: id,
         description: id,
         status: "active",
-        requirements: [
-          { constructId: `${moduleId}:one`, targetValue: 1, weight: 1 },
+        commitments: [
+          {
+            id: `${variantId}:commitment`,
+            constructId: `${moduleId}:one`,
+            relation: "core",
+            criterion: { operator: "minimum", minimum: 0.25 },
+            weight: 1,
+            rationale: "Synthetic specialist commitment",
+          },
         ],
         gates: gate
           ? [

@@ -11,6 +11,7 @@
     "moduleId": { "type": "string", "minLength": 1 },
     "family": { "type": "string" },
     "description": { "type": "string" },
+    "boundaryStatement": { "type": "string" },
     "sourceKey": { "type": "string" },
     "poles": {
       "type": "object",
