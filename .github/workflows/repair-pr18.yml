@@ -175,7 +175,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git rm .github/workflows/repair-pr18.yml
+          git rm -f .github/workflows/repair-pr18.yml
           git add -A
           git status --short
           git commit -m "fix: synchronize commitment scoring migration"
