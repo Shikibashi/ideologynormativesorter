@@ -1,0 +1,56 @@
+name: Issue 19 reference refresh
+
+on:
+  push:
+    branches:
+      - refactor/specialist-commitment-scoring
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refactor/specialist-commitment-scoring
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Regenerate canonical and frozen references
+        run: |
+          set -euo pipefail
+          npx --yes vite-node v2/tools/compile-content.ts
+          npx --yes vite-node v2/tools/generate-phase9-golden.ts
+          node scripts/v2-reference/generate-cases.mjs
+          V2_REFERENCE_CAPTURE=1 npx vitest run tests/v2-differential/capture.spec.ts
+          npm run v2:reference:coverage
+          npm run v2:reference:differential
+          npm run v2:reference:report
+          npm run v2:reference:hash
+          npm run v2:reference:verify
+      - name: Verify affected contracts
+        run: |
+          set -euo pipefail
+          npx vitest run tests/engine/v2-phase7-specialists.spec.ts tests/engine/v2-phase9-golden.spec.ts tests/v2-differential/differential.spec.ts tests/view-model/v2-phase11-view-model.test.ts tests/architecture/v2-phase2.spec.ts
+      - name: Commit refreshed references and remove migration scaffolding
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f \
+            .github/workflows/issue19-reference-refresh.yml \
+            .github/workflows/issue19-migration-check.yml \
+            .github/workflows/issue19-migration.yml \
+            .github/workflows/specialist-audit.yml \
+            docs/issue19-migration-trigger.txt \
+            scripts/migrate-specialist-commitments.py \
+            scripts/patch-specialist-semantics.py
+          git add -A
+          git status --short
+          git commit -m "test: refresh specialist commitment references"
+          git push origin HEAD:refactor/specialist-commitment-scoring
