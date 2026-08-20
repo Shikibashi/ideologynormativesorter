@@ -1,12 +1,12 @@
 {
   "referenceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
-  "contentVersion": "v2-content-phase8.1",
+  "contentVersion": "v2-content-phase8.2-commitments",
   "scoringVersion": "production-score-v1",
   "decision": "scored",
   "evidenceCoverage": {
-    "answeredItems": 338,
+    "answeredItems": 336,
     "expectedItems": 338,
-    "coverage": 1,
+    "coverage": 0.9940828402366864,
     "status": "sufficient"
   },
   "uncertainty": {
@@ -157,10 +157,10 @@
     },
     {
       "dimensionId": "redistribution-vs-predistribution",
-      "value": 0.06293706293706292,
-      "answeredItems": 20,
+      "value": 0.088,
+      "answeredItems": 18,
       "expectedItems": 20,
-      "coverage": 1
+      "coverage": 0.9
     },
     {
       "dimensionId": "reform-vs-revolution",
@@ -171,10 +171,10 @@
     },
     {
       "dimensionId": "regulation-vs-deregulation",
-      "value": 0.06236559139784951,
-      "answeredItems": 77,
+      "value": 0.06318082788671028,
+      "answeredItems": 75,
       "expectedItems": 77,
-      "coverage": 1
+      "coverage": 0.974025974025974
     },
     {
       "dimensionId": "secularism-religious",
@@ -185,10 +185,10 @@
     },
     {
       "dimensionId": "state-action-vs-exit",
-      "value": -0.0722222222222222,
-      "answeredItems": 68,
+      "value": -0.08357348703170026,
+      "answeredItems": 66,
       "expectedItems": 68,
-      "coverage": 1
+      "coverage": 0.9705882352941176
     },
     {
       "dimensionId": "state-capacity-confidence",
@@ -221,13 +221,13 @@
       "labelId": "national-conservatism",
       "similarity": 0.7813923770760647,
       "rank": 4,
-      "runnerUpMargin": 0.02203039991461453
+      "runnerUpMargin": 0.02351134467694027
     },
     {
       "labelId": "social-liberalism",
-      "similarity": 0.7593619771614502,
+      "similarity": 0.7578810323991244,
       "rank": 5,
-      "runnerUpMargin": 0.018512900451521763
+      "runnerUpMargin": 0.01703195568919602
     },
     {
       "labelId": "market-liberal",
@@ -251,19 +251,19 @@
       "labelId": "libertarian-socialism",
       "similarity": 0.6985035710502931,
       "rank": 9,
-      "runnerUpMargin": 0.0020521474422090513
-    },
-    {
-      "labelId": "social-democrat",
-      "similarity": 0.6964514236080841,
-      "rank": 10,
-      "runnerUpMargin": 0.0021000630659084862
+      "runnerUpMargin": 0.0041522105081175376
     },
     {
       "labelId": "marxian-socialism",
       "similarity": 0.6943513605421756,
+      "rank": 10,
+      "runnerUpMargin": 0.0000051481949708831465
+    },
+    {
+      "labelId": "social-democrat",
+      "similarity": 0.6943462123472047,
       "rank": 11,
-      "runnerUpMargin": 0.0046426058891538835
+      "runnerUpMargin": 0.004637457694183
     },
     {
       "labelId": "market-right-libertarianism",
@@ -281,13 +281,13 @@
       "labelId": "democratic-socialist",
       "similarity": 0.6595776204166046,
       "rank": 14,
-      "runnerUpMargin": 0.1955323638696277
+      "runnerUpMargin": 0.19656693574815276
     },
     {
       "labelId": "marxist-leninist",
-      "similarity": 0.4640452565469769,
+      "similarity": 0.46301068466845186,
       "rank": 15,
-      "runnerUpMargin": 0.07237858988031032
+      "runnerUpMargin": 0.07134401800178525
     },
     {
       "labelId": "green-politics",

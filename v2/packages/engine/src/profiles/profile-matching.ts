@@ -311,7 +311,30 @@ export function scorePrimaryProfiles(
   for (const profile of [...bundle.profiles]
     .sort((left, right) => String(left.id).localeCompare(String(right.id)))) {
     const profileId = String(profile.id);
-    if (isDemotedPrimaryProfile(profileId)) continue;
+    if (isDemotedPrimaryProfile(profileId)) {
+      const demotedEvidence: PrimaryProfileEvidence = Object.freeze({
+        requiredConstructCount: 0,
+        measuredRequiredConstructCount: 0,
+        unavailableRequiredConstructCount: 0,
+        totalWeight: 0,
+        measuredWeight: 0,
+        unavailableWeight: 0,
+        comparisonCoverage: 0,
+        minimumEvidenceRatio: 1,
+        meetsMinimumEvidence: false,
+        unavailableConstructIds: Object.freeze([]),
+      });
+      profiles.push(
+        abstainedResult(
+          profile,
+          demotedEvidence,
+          Object.freeze([]),
+          Object.freeze([]),
+          "invalid_profile_configuration",
+        ),
+      );
+      continue;
+    }
 
     const commitmentSpec = getPrimaryIdeologyCommitmentSpec(profileId);
     const configurationError = commitmentSpec

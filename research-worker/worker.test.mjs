@@ -70,7 +70,7 @@ function environment(overrides = {}) {
     EXPECTED_MANIFEST_SCHEMA_VERSION: "canonical-domain-v2",
     EXPECTED_MANIFEST_VERSION: "ideology-registry-2026-08-clean-v1",
     EXPECTED_MANIFEST_FINGERPRINT:
-      "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+      "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
     EXPECTED_SERIALIZATION_VERSION: "canonical-json-v1",
     EXPECTED_SERIALIZATION_FINGERPRINT:
       "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc",
@@ -179,7 +179,7 @@ function coreSubmission(overrides = {}) {
     modifierMeasurementVersion: "modifier-measurement-v1",
     manifestVersion: "ideology-registry-2026-08-clean-v1",
     manifestFingerprint:
-      "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+      "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
     sourceManifestSha256: "a".repeat(64),
     manifestSchemaVersion: "canonical-domain-v2",
     serializationVersion: "canonical-json-v1",
@@ -669,7 +669,7 @@ describe("research contribution Worker", () => {
       EXPECTED_CONTRACT_ROUTE: "research-browser",
       EXPECTED_MANIFEST_VERSION: "ideology-registry-2026-08-clean-v1",
       EXPECTED_MANIFEST_FINGERPRINT:
-        "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+        "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
       EXPECTED_SERIALIZATION_VERSION: "canonical-json-v1",
       EXPECTED_COHORT: "community-2026-v5",
       EXPECTED_COHORT_VERSION: "clean-rebuild-v1",
@@ -681,7 +681,7 @@ describe("research contribution Worker", () => {
       manifestVersion: "ideology-registry-2026-08-clean-v1",
       contractVersion: "2026-08-v19",
       manifestFingerprint:
-        "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+        "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
       serializationVersion: "canonical-json-v1",
       cohort: "community-2026-v5",
       cohortVersion: "clean-rebuild-v1",
@@ -702,7 +702,7 @@ describe("research contribution Worker", () => {
       {
         canonical_manifest_version: "ideology-registry-2026-08-clean-v1",
         canonical_manifest_fingerprint:
-          "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+          "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
         serialization_version: "canonical-json-v1",
         contract_route: "research-browser",
         contract_cohort: "community-2026-v5",
@@ -718,7 +718,7 @@ describe("research contribution Worker", () => {
       contractRoute: "research-browser",
       manifestVersion: "ideology-registry-2026-08-clean-v1",
       manifestFingerprint:
-        "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+        "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
       serializationVersion: "canonical-json-v1",
       serializationFingerprint:
         "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc",
@@ -735,7 +735,7 @@ describe("research contribution Worker", () => {
         sourceManifestSha256: "a".repeat(64),
         manifestVersion: "ideology-registry-2026-08-clean-v1",
         canonicalManifestFingerprint:
-          "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+          "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
         serializationVersion: "canonical-json-v1",
         serializationFingerprint:
           "9f4160f096b88d4ced358da37148e56899252fc1b25ed658c94532f1e23ed2bc",
@@ -756,7 +756,7 @@ describe("research contribution Worker", () => {
       contractRoute: "research-browser",
       manifestVersion: "ideology-registry-2026-08-clean-v1",
       manifestFingerprint:
-        "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+        "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
       sourceManifestSha256: "a".repeat(64),
       serializationVersion: "canonical-json-v1",
       serializationFingerprint:
@@ -857,7 +857,7 @@ describe("research contribution Worker", () => {
       EXPECTED_CONTRACT_ROUTE: "research-browser",
       EXPECTED_MANIFEST_VERSION: "ideology-registry-2026-08-clean-v1",
       EXPECTED_MANIFEST_FINGERPRINT:
-        "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+        "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
       EXPECTED_SERIALIZATION_VERSION: "canonical-json-v1",
       EXPECTED_COHORT: "community-2026-v5",
       EXPECTED_COHORT_VERSION: "clean-rebuild-v1",
@@ -886,7 +886,7 @@ describe("research contribution Worker", () => {
       ALLOWED_LEGACY_CONTRACT_ROUTES: "legacy-route",
       EXPECTED_MANIFEST_VERSION: "ideology-registry-2026-08-clean-v1",
       EXPECTED_MANIFEST_FINGERPRINT:
-        "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+        "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
       EXPECTED_SERIALIZATION_VERSION: "canonical-json-v1",
       EXPECTED_COHORT: "community-2026-v5",
       EXPECTED_COHORT_VERSION: "clean-rebuild-v1",
@@ -900,7 +900,7 @@ describe("research contribution Worker", () => {
           contractRoute: "legacy-route",
           manifestVersion: "ideology-registry-2026-08-clean-v1",
           manifestFingerprint:
-            "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf",
+            "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d",
           serializationVersion: "canonical-json-v1",
           cohort: "community-2026-v5",
           cohortVersion: "clean-rebuild-v1",

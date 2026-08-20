@@ -223,7 +223,9 @@ describe("Phase 6 modifier matching", () => {
 
 describe("Phase 6 real-corpus and v1 differential checks", () => {
   it("scores the complete canonical modifier corpus and matches the direct v1 fit oracle where v1 exposes it", () => {
-    const responses = generatedBundle.items.map((item) => item.responseType === "statement-choice"
+    const responses = generatedBundle.items
+      .filter((item) => item.status === "active")
+      .map((item) => item.responseType === "statement-choice"
       ? { state: "answered", itemId: item.id, responseType: "statement-choice", optionId: item.options[0].id }
       : { state: "answered", itemId: item.id, responseType: item.responseType, value: item.responseType === "likert7" ? 3 : 2, ...(item.layer === "descriptive" ? { confidence: 5 } : {}), ...(item.layer === "prescriptive" ? { priority: 5 } : {}) });
     const assessment = scoreConstructLayer(prepareAssessmentResponses(responses, generatedBundle), generatedBundle);

@@ -121,9 +121,20 @@ describe("commitment-based production primary scoring", () => {
     const expected = PRIMARY_IDEOLOGY_COMMITMENT_SPECS
       .map((entry) => entry.profileId)
       .sort();
-    expect(result.profiles.map((entry) => String(entry.profileId)).sort()).toEqual(expected);
+    expect(
+      result.profiles
+        .filter((entry) => !DEMOTED_PRIMARY_PROFILE_IDS.includes(String(entry.profileId) as never))
+        .map((entry) => String(entry.profileId))
+        .sort(),
+    ).toEqual(expected);
     for (const demoted of DEMOTED_PRIMARY_PROFILE_IDS) {
-      expect(result.profiles.some((entry) => String(entry.profileId) === demoted)).toBe(false);
+      expect(
+        result.profiles.find((entry) => String(entry.profileId) === demoted),
+      ).toMatchObject({
+        status: "abstained",
+        abstentionReason: "invalid_profile_configuration",
+      });
+      expect(result.ranking.some((entry) => String(entry.profileId) === demoted)).toBe(false);
     }
   });
 

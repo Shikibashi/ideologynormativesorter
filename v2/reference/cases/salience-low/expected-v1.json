@@ -1,12 +1,12 @@
 {
   "referenceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
-  "contentVersion": "v2-content-phase8.1",
+  "contentVersion": "v2-content-phase8.2-commitments",
   "scoringVersion": "production-score-v1",
   "decision": "scored",
   "evidenceCoverage": {
-    "answeredItems": 338,
+    "answeredItems": 336,
     "expectedItems": 338,
-    "coverage": 1,
+    "coverage": 0.9940828402366864,
     "status": "sufficient"
   },
   "uncertainty": {
@@ -158,9 +158,9 @@
     {
       "dimensionId": "redistribution-vs-predistribution",
       "value": 0,
-      "answeredItems": 20,
+      "answeredItems": 18,
       "expectedItems": 20,
-      "coverage": 1
+      "coverage": 0.9
     },
     {
       "dimensionId": "reform-vs-revolution",
@@ -172,9 +172,9 @@
     {
       "dimensionId": "regulation-vs-deregulation",
       "value": 0,
-      "answeredItems": 77,
+      "answeredItems": 75,
       "expectedItems": 77,
-      "coverage": 1
+      "coverage": 0.974025974025974
     },
     {
       "dimensionId": "secularism-religious",
@@ -186,9 +186,9 @@
     {
       "dimensionId": "state-action-vs-exit",
       "value": 0,
-      "answeredItems": 68,
+      "answeredItems": 66,
       "expectedItems": 68,
-      "coverage": 1
+      "coverage": 0.9705882352941176
     },
     {
       "dimensionId": "state-capacity-confidence",

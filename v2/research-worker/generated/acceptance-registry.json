@@ -5,9 +5,9 @@
   "maxPayloadBytes": 131072,
   "metadata": {
     "contentSchemaVersion": "content-schema-v2.phase8.1",
-    "contentVersion": "v2-content-phase8.1",
-    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
-    "scoringVersion": "scoring-v2.phase7.1",
+    "contentVersion": "v2-content-phase8.2-commitments",
+    "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
+    "scoringVersion": "scoring-v2.commitment-v1",
     "responseSchemaVersion": "response-v2.phase1.1",
     "resultSchemaVersion": "result-v2.phase9.1"
   },
@@ -1117,24 +1117,6 @@
     },
     {
       "id": "q0067",
-      "role": "core",
-      "responseType": "likert7",
-      "scaleMin": -3,
-      "scaleMax": 3,
-      "scaleStep": 1,
-      "optionIds": []
-    },
-    {
-      "id": "q0073",
-      "role": "core",
-      "responseType": "likert7",
-      "scaleMin": -3,
-      "scaleMax": 3,
-      "scaleStep": 1,
-      "optionIds": []
-    },
-    {
-      "id": "q0074",
       "role": "core",
       "responseType": "likert7",
       "scaleMin": -3,

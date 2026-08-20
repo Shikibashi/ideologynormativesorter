@@ -1,11 +1,11 @@
 {
   "resultSchemaVersion": "result-v2.phase9.1",
-  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
   "assessment": {
     "status": "partially_scored",
     "responseSummary": {
-      "coreExpectedCount": 338,
-      "coreAnsweredCount": 338,
+      "coreExpectedCount": 336,
+      "coreAnsweredCount": 336,
       "coreMissingCount": 0,
       "coreSkippedCount": 0,
       "coreAbstainedCount": 0,
@@ -21,45 +21,35 @@
       "status": "partial",
       "coreCoverage": 1,
       "core": {
-        "expectedItemCount": 782,
-        "answeredItemCount": 782,
+        "expectedItemCount": 751,
+        "answeredItemCount": 751,
         "missingItemCount": 0,
         "skippedItemCount": 0,
         "abstainedItemCount": 0,
         "refusedItemCount": 0,
-        "supportingItemCount": 422,
-        "totalEligibleWeight": 499.89999999999986,
-        "answeredEligibleWeight": 499.89999999999986,
+        "supportingItemCount": 401,
+        "totalEligibleWeight": 483.2,
+        "answeredEligibleWeight": 483.2,
         "missingWeight": 0,
         "skippedWeight": 0,
         "abstainedWeight": 0,
         "refusedWeight": 0,
-        "scoredMappedWeight": 272.79999999999984,
-        "scoredEffectiveWeight": 272.79999999999984,
-        "weightedSum": -6.2,
+        "scoredMappedWeight": 261.9999999999999,
+        "scoredEffectiveWeight": 261.9999999999999,
+        "weightedSum": -5.999999999999999,
         "structuralCoverage": 1,
         "answeredWeightCoverage": 1,
-        "scoredWeightCoverage": 0.5457091418283655,
-        "effectiveWeightCoverage": 0.5457091418283655,
+        "scoredWeightCoverage": 0.5422185430463574,
+        "effectiveWeightCoverage": 0.5422185430463574,
         "salienceCoverage": 1,
-        "salienceSkippedWeight": 227.1,
-        "salienceSkippedItemCount": 360,
+        "salienceSkippedWeight": 221.2,
+        "salienceSkippedItemCount": 350,
         "contributionIds": [
-          "q0001\u0000anti-domination\u0000",
           "q0001\u0000authority-legitimacy\u0000",
-          "q0001\u0000liberty-noninterference\u0000",
-          "q0003\u0000anti-domination\u0000",
           "q0003\u0000authority-legitimacy\u0000",
-          "q0003\u0000liberty-noninterference\u0000",
-          "q0004\u0000anti-domination\u0000",
           "q0004\u0000authority-legitimacy\u0000",
-          "q0004\u0000liberty-noninterference\u0000",
-          "q0005\u0000anti-domination\u0000",
           "q0005\u0000authority-legitimacy\u0000",
-          "q0005\u0000liberty-noninterference\u0000",
-          "q0006\u0000anti-domination\u0000",
           "q0006\u0000authority-legitimacy\u0000",
-          "q0006\u0000liberty-noninterference\u0000",
           "q0019\u0000anti-domination\u0000",
           "q0019\u0000authority-legitimacy\u0000",
           "q0019\u0000liberty-noninterference\u0000",
@@ -81,14 +71,9 @@
           "q0039\u0000anti-domination\u0000",
           "q0039\u0000equality-theory\u0000",
           "q0039\u0000property-legitimacy\u0000",
-          "q0041\u0000equality-theory\u0000",
           "q0041\u0000liberty-noninterference\u0000",
-          "q0041\u0000property-legitimacy\u0000",
           "q0042\u0000anti-domination\u0000",
-          "q0042\u0000liberty-noninterference\u0000",
-          "q0043\u0000equality-theory\u0000",
           "q0043\u0000liberty-noninterference\u0000",
-          "q0043\u0000property-legitimacy\u0000",
           "q0044\u0000equality-theory\u0000",
           "q0044\u0000liberty-noninterference\u0000",
           "q0044\u0000property-legitimacy\u0000",
@@ -122,15 +107,9 @@
           "q0079\u0000anti-domination\u0000",
           "q0079\u0000equality-theory\u0000",
           "q0079\u0000liberty-noninterference\u0000",
-          "q0081\u0000anti-domination\u0000",
           "q0081\u0000liberty-noninterference\u0000",
-          "q0081\u0000property-legitimacy\u0000",
           "q0082\u0000anti-domination\u0000",
-          "q0082\u0000liberty-noninterference\u0000",
-          "q0082\u0000property-legitimacy\u0000",
           "q0083\u0000anti-domination\u0000",
-          "q0083\u0000liberty-noninterference\u0000",
-          "q0083\u0000property-legitimacy\u0000",
           "q0084\u0000anti-domination\u0000",
           "q0084\u0000liberty-noninterference\u0000",
           "q0084\u0000property-legitimacy\u0000",
@@ -469,11 +448,6 @@
           "sq15\u0000political-community-boundary\u0000d"
         ],
         "itemStateById": {
-          "q0001": "answered",
-          "q0003": "answered",
-          "q0004": "answered",
-          "q0005": "answered",
-          "q0006": "answered",
           "q0019": "answered",
           "q0021": "answered",
           "q0022": "answered",
@@ -490,7 +464,6 @@
           "q0065": "answered",
           "q0066": "answered",
           "q0079": "answered",
-          "q0081": "answered",
           "q0082": "answered",
           "q0083": "answered",
           "q0084": "answered",
@@ -574,6 +547,11 @@
           "q0421": "answered",
           "sq01": "answered",
           "sq15": "answered",
+          "q0001": "answered",
+          "q0003": "answered",
+          "q0004": "answered",
+          "q0005": "answered",
+          "q0006": "answered",
           "q0121": "answered",
           "q0122": "answered",
           "q0123": "answered",
@@ -706,8 +684,6 @@
           "q0467": "answered",
           "q0468": "answered",
           "q0469": "answered",
-          "q0041": "answered",
-          "q0043": "answered",
           "q0044": "answered",
           "q0045": "answered",
           "q0046": "answered",
@@ -750,6 +726,9 @@
           "q0447": "answered",
           "q0448": "answered",
           "sq07": "answered",
+          "q0041": "answered",
+          "q0043": "answered",
+          "q0081": "answered",
           "q0202": "answered",
           "q0404": "answered",
           "q0029": "answered",
@@ -781,8 +760,6 @@
           "q0035": "answered",
           "q0036": "answered",
           "q0038": "answered",
-          "q0073": "answered",
-          "q0074": "answered",
           "q0075": "answered",
           "q0076": "answered",
           "q0274": "answered",
@@ -822,9 +799,9 @@
     {
       "constructId": "anti-domination",
       "status": "scored",
-      "score": 0.05847953216374272,
-      "answeredItemCount": 105,
-      "expectedItemCount": 105,
+      "score": 0.042253521126760604,
+      "answeredItemCount": 99,
+      "expectedItemCount": 99,
       "coverage": 1
     },
     {
@@ -894,9 +871,9 @@
     {
       "constructId": "equality-theory",
       "status": "scored",
-      "score": -0.019920318725099598,
-      "answeredItemCount": 47,
-      "expectedItemCount": 47,
+      "score": 0.004081632653061245,
+      "answeredItemCount": 45,
+      "expectedItemCount": 45,
       "coverage": 1
     },
     {
@@ -926,9 +903,9 @@
     {
       "constructId": "liberty-noninterference",
       "status": "scored",
-      "score": 0.12106135986733013,
-      "answeredItemCount": 95,
-      "expectedItemCount": 95,
+      "score": 0.11929824561403521,
+      "answeredItemCount": 87,
+      "expectedItemCount": 87,
       "coverage": 1
     },
     {
@@ -966,9 +943,9 @@
     {
       "constructId": "property-legitimacy",
       "status": "scored",
-      "score": -0.031007751937984492,
-      "answeredItemCount": 41,
-      "expectedItemCount": 41,
+      "score": 0.025641025641025644,
+      "answeredItemCount": 36,
+      "expectedItemCount": 36,
       "coverage": 1
     },
     {
@@ -983,8 +960,8 @@
       "constructId": "redistribution-vs-predistribution",
       "status": "abstained",
       "score": null,
-      "answeredItemCount": 20,
-      "expectedItemCount": 20,
+      "answeredItemCount": 18,
+      "expectedItemCount": 18,
       "coverage": 1
     },
     {
@@ -999,8 +976,8 @@
       "constructId": "regulation-vs-deregulation",
       "status": "abstained",
       "score": null,
-      "answeredItemCount": 77,
-      "expectedItemCount": 77,
+      "answeredItemCount": 73,
+      "expectedItemCount": 73,
       "coverage": 1
     },
     {
@@ -1015,8 +992,8 @@
       "constructId": "state-action-vs-exit",
       "status": "abstained",
       "score": null,
-      "answeredItemCount": 68,
-      "expectedItemCount": 68,
+      "answeredItemCount": 64,
+      "expectedItemCount": 64,
       "coverage": 1
     },
     {
@@ -1068,7 +1045,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "constitutive_gate_failed"
       },
       {
         "profileId": "profile:liberal-conservatism",
@@ -1076,7 +1053,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:libertarian-socialism",
@@ -1092,7 +1069,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:market-right-libertarianism",
@@ -1124,7 +1101,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:radical-democracy",
@@ -1132,7 +1109,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:republicanism",
@@ -1398,7 +1375,7 @@
     }
   },
   "diagnostics": {
-    "contributionCount": 782,
+    "contributionCount": 751,
     "constructCount": 26,
     "profileCount": 16,
     "modifierCount": 24,

@@ -1,12 +1,12 @@
 {
   "resultSchemaVersion": "result-v2.phase9.1",
-  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
   "assessment": {
     "status": "insufficient_core_evidence",
     "responseSummary": {
-      "coreExpectedCount": 338,
+      "coreExpectedCount": 336,
       "coreAnsweredCount": 0,
-      "coreMissingCount": 338,
+      "coreMissingCount": 336,
       "coreSkippedCount": 0,
       "coreAbstainedCount": 0,
       "coreRefusedCount": 0,
@@ -21,16 +21,16 @@
       "status": "none",
       "coreCoverage": 0,
       "core": {
-        "expectedItemCount": 786,
+        "expectedItemCount": 755,
         "answeredItemCount": 0,
-        "missingItemCount": 786,
+        "missingItemCount": 755,
         "skippedItemCount": 0,
         "abstainedItemCount": 0,
         "refusedItemCount": 0,
         "supportingItemCount": 0,
-        "totalEligibleWeight": 505.29999999999995,
+        "totalEligibleWeight": 488.59999999999997,
         "answeredEligibleWeight": 0,
-        "missingWeight": 505.29999999999995,
+        "missingWeight": 488.59999999999997,
         "skippedWeight": 0,
         "abstainedWeight": 0,
         "refusedWeight": 0,
@@ -46,11 +46,6 @@
         "salienceSkippedItemCount": 0,
         "contributionIds": [],
         "itemStateById": {
-          "q0001": "missing",
-          "q0003": "missing",
-          "q0004": "missing",
-          "q0005": "missing",
-          "q0006": "missing",
           "q0019": "missing",
           "q0021": "missing",
           "q0022": "missing",
@@ -67,7 +62,6 @@
           "q0065": "missing",
           "q0066": "missing",
           "q0079": "missing",
-          "q0081": "missing",
           "q0082": "missing",
           "q0083": "missing",
           "q0084": "missing",
@@ -152,6 +146,11 @@
           "sq01": "missing",
           "sq13": "missing",
           "sq15": "missing",
+          "q0001": "missing",
+          "q0003": "missing",
+          "q0004": "missing",
+          "q0005": "missing",
+          "q0006": "missing",
           "q0121": "missing",
           "q0122": "missing",
           "q0123": "missing",
@@ -284,8 +283,6 @@
           "q0467": "missing",
           "q0468": "missing",
           "q0469": "missing",
-          "q0041": "missing",
-          "q0043": "missing",
           "q0044": "missing",
           "q0045": "missing",
           "q0046": "missing",
@@ -327,6 +324,9 @@
           "q0447": "missing",
           "q0448": "missing",
           "sq07": "missing",
+          "q0041": "missing",
+          "q0043": "missing",
+          "q0081": "missing",
           "q0202": "missing",
           "q0404": "missing",
           "sq06": "missing",
@@ -358,8 +358,6 @@
           "q0035": "missing",
           "q0036": "missing",
           "q0038": "missing",
-          "q0073": "missing",
-          "q0074": "missing",
           "q0075": "missing",
           "q0076": "missing",
           "q0274": "missing",
@@ -402,7 +400,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 106,
+      "expectedItemCount": 100,
       "coverage": 0
     },
     {
@@ -474,7 +472,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 47,
+      "expectedItemCount": 45,
       "coverage": 0
     },
     {
@@ -506,7 +504,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 96,
+      "expectedItemCount": 88,
       "coverage": 0
     },
     {
@@ -546,7 +544,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 41,
+      "expectedItemCount": 36,
       "coverage": 0
     },
     {
@@ -562,7 +560,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 20,
+      "expectedItemCount": 18,
       "coverage": 0
     },
     {
@@ -578,7 +576,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 77,
+      "expectedItemCount": 73,
       "coverage": 0
     },
     {
@@ -594,7 +592,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 68,
+      "expectedItemCount": 64,
       "coverage": 0
     },
     {
@@ -654,7 +652,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:libertarian-socialism",
@@ -670,7 +668,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:market-right-libertarianism",
@@ -702,7 +700,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:radical-democracy",
@@ -710,7 +708,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:republicanism",
@@ -976,7 +974,7 @@
     }
   },
   "diagnostics": {
-    "contributionCount": 771,
+    "contributionCount": 740,
     "constructCount": 26,
     "profileCount": 16,
     "modifierCount": 24,

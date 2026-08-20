@@ -1,6 +1,6 @@
 {
   "responseSchemaVersion": "response-v2.phase1.1",
-  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
   "coreResponses": [
     {
       "state": "answered",
@@ -311,20 +311,6 @@
       "responseType": "likert7",
       "value": 0,
       "confidence": 5
-    },
-    {
-      "state": "answered",
-      "itemId": "q0073",
-      "responseType": "likert7",
-      "value": 0,
-      "priority": 5
-    },
-    {
-      "state": "answered",
-      "itemId": "q0074",
-      "responseType": "likert7",
-      "value": 0,
-      "priority": 5
     },
     {
       "state": "answered",

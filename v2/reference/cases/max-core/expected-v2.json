@@ -1,11 +1,11 @@
 {
   "resultSchemaVersion": "result-v2.phase9.1",
-  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
   "assessment": {
     "status": "complete",
     "responseSummary": {
-      "coreExpectedCount": 338,
-      "coreAnsweredCount": 338,
+      "coreExpectedCount": 336,
+      "coreAnsweredCount": 336,
       "coreMissingCount": 0,
       "coreSkippedCount": 0,
       "coreAbstainedCount": 0,
@@ -21,22 +21,22 @@
       "status": "sufficient",
       "coreCoverage": 1,
       "core": {
-        "expectedItemCount": 781,
-        "answeredItemCount": 781,
+        "expectedItemCount": 750,
+        "answeredItemCount": 750,
         "missingItemCount": 0,
         "skippedItemCount": 0,
         "abstainedItemCount": 0,
         "refusedItemCount": 0,
-        "supportingItemCount": 781,
-        "totalEligibleWeight": 499.79999999999995,
-        "answeredEligibleWeight": 499.79999999999995,
+        "supportingItemCount": 750,
+        "totalEligibleWeight": 483.09999999999997,
+        "answeredEligibleWeight": 483.09999999999997,
         "missingWeight": 0,
         "skippedWeight": 0,
         "abstainedWeight": 0,
         "refusedWeight": 0,
-        "scoredMappedWeight": 499.79999999999995,
-        "scoredEffectiveWeight": 499.79999999999995,
-        "weightedSum": 69.59999999999991,
+        "scoredMappedWeight": 483.09999999999997,
+        "scoredEffectiveWeight": 483.09999999999997,
+        "weightedSum": 57.09999999999991,
         "structuralCoverage": 1,
         "answeredWeightCoverage": 1,
         "scoredWeightCoverage": 1,
@@ -45,21 +45,11 @@
         "salienceSkippedWeight": 0,
         "salienceSkippedItemCount": 0,
         "contributionIds": [
-          "q0001\u0000anti-domination\u0000",
           "q0001\u0000authority-legitimacy\u0000",
-          "q0001\u0000liberty-noninterference\u0000",
-          "q0003\u0000anti-domination\u0000",
           "q0003\u0000authority-legitimacy\u0000",
-          "q0003\u0000liberty-noninterference\u0000",
-          "q0004\u0000anti-domination\u0000",
           "q0004\u0000authority-legitimacy\u0000",
-          "q0004\u0000liberty-noninterference\u0000",
-          "q0005\u0000anti-domination\u0000",
           "q0005\u0000authority-legitimacy\u0000",
-          "q0005\u0000liberty-noninterference\u0000",
-          "q0006\u0000anti-domination\u0000",
           "q0006\u0000authority-legitimacy\u0000",
-          "q0006\u0000liberty-noninterference\u0000",
           "q0007\u0000coordination-optimism\u0000",
           "q0012\u0000coordination-optimism\u0000",
           "q0015\u0000centralization-preference\u0000",
@@ -102,22 +92,13 @@
           "q0035\u0000regulation-vs-deregulation\u0000",
           "q0035\u0000state-action-vs-exit\u0000",
           "q0036\u0000redistribution-vs-predistribution\u0000",
-          "q0036\u0000regulation-vs-deregulation\u0000",
-          "q0036\u0000state-action-vs-exit\u0000",
           "q0038\u0000redistribution-vs-predistribution\u0000",
-          "q0038\u0000regulation-vs-deregulation\u0000",
-          "q0038\u0000state-action-vs-exit\u0000",
           "q0039\u0000anti-domination\u0000",
           "q0039\u0000equality-theory\u0000",
           "q0039\u0000property-legitimacy\u0000",
-          "q0041\u0000equality-theory\u0000",
           "q0041\u0000liberty-noninterference\u0000",
-          "q0041\u0000property-legitimacy\u0000",
           "q0042\u0000anti-domination\u0000",
-          "q0042\u0000liberty-noninterference\u0000",
-          "q0043\u0000equality-theory\u0000",
           "q0043\u0000liberty-noninterference\u0000",
-          "q0043\u0000property-legitimacy\u0000",
           "q0044\u0000equality-theory\u0000",
           "q0044\u0000liberty-noninterference\u0000",
           "q0044\u0000property-legitimacy\u0000",
@@ -164,12 +145,6 @@
           "q0066\u0000equality-theory\u0000",
           "q0066\u0000liberty-noninterference\u0000",
           "q0067\u0000state-capacity-confidence\u0000",
-          "q0073\u0000redistribution-vs-predistribution\u0000",
-          "q0073\u0000regulation-vs-deregulation\u0000",
-          "q0073\u0000state-action-vs-exit\u0000",
-          "q0074\u0000redistribution-vs-predistribution\u0000",
-          "q0074\u0000regulation-vs-deregulation\u0000",
-          "q0074\u0000state-action-vs-exit\u0000",
           "q0075\u0000redistribution-vs-predistribution\u0000",
           "q0075\u0000regulation-vs-deregulation\u0000",
           "q0075\u0000state-action-vs-exit\u0000",
@@ -182,15 +157,9 @@
           "q0079\u0000anti-domination\u0000",
           "q0079\u0000equality-theory\u0000",
           "q0079\u0000liberty-noninterference\u0000",
-          "q0081\u0000anti-domination\u0000",
           "q0081\u0000liberty-noninterference\u0000",
-          "q0081\u0000property-legitimacy\u0000",
           "q0082\u0000anti-domination\u0000",
-          "q0082\u0000liberty-noninterference\u0000",
-          "q0082\u0000property-legitimacy\u0000",
           "q0083\u0000anti-domination\u0000",
-          "q0083\u0000liberty-noninterference\u0000",
-          "q0083\u0000property-legitimacy\u0000",
           "q0084\u0000anti-domination\u0000",
           "q0084\u0000liberty-noninterference\u0000",
           "q0084\u0000property-legitimacy\u0000",
@@ -828,11 +797,6 @@
           "sq15\u0000political-community-boundary\u0000a"
         ],
         "itemStateById": {
-          "q0001": "answered",
-          "q0003": "answered",
-          "q0004": "answered",
-          "q0005": "answered",
-          "q0006": "answered",
           "q0019": "answered",
           "q0021": "answered",
           "q0022": "answered",
@@ -849,7 +813,6 @@
           "q0065": "answered",
           "q0066": "answered",
           "q0079": "answered",
-          "q0081": "answered",
           "q0082": "answered",
           "q0083": "answered",
           "q0084": "answered",
@@ -932,6 +895,11 @@
           "q0407": "answered",
           "q0421": "answered",
           "sq01": "answered",
+          "q0001": "answered",
+          "q0003": "answered",
+          "q0004": "answered",
+          "q0005": "answered",
+          "q0006": "answered",
           "q0121": "answered",
           "q0122": "answered",
           "q0123": "answered",
@@ -1064,8 +1032,6 @@
           "q0467": "answered",
           "q0468": "answered",
           "q0469": "answered",
-          "q0041": "answered",
-          "q0043": "answered",
           "q0044": "answered",
           "q0045": "answered",
           "q0046": "answered",
@@ -1108,6 +1074,9 @@
           "q0447": "answered",
           "q0448": "answered",
           "sq07": "answered",
+          "q0041": "answered",
+          "q0043": "answered",
+          "q0081": "answered",
           "q0202": "answered",
           "q0404": "answered",
           "q0029": "answered",
@@ -1140,8 +1109,6 @@
           "q0035": "answered",
           "q0036": "answered",
           "q0038": "answered",
-          "q0073": "answered",
-          "q0074": "answered",
           "q0075": "answered",
           "q0076": "answered",
           "q0274": "answered",
@@ -1179,9 +1146,9 @@
     {
       "constructId": "anti-domination",
       "status": "scored",
-      "score": 0.9645494830132942,
-      "answeredItemCount": 104,
-      "expectedItemCount": 104,
+      "score": 0.9620253164556963,
+      "answeredItemCount": 98,
+      "expectedItemCount": 98,
       "coverage": 1
     },
     {
@@ -1251,9 +1218,9 @@
     {
       "constructId": "equality-theory",
       "status": "scored",
-      "score": 0.9352226720647776,
-      "answeredItemCount": 47,
-      "expectedItemCount": 47,
+      "score": 0.9336099585062243,
+      "answeredItemCount": 45,
+      "expectedItemCount": 45,
       "coverage": 1
     },
     {
@@ -1284,8 +1251,8 @@
       "constructId": "liberty-noninterference",
       "status": "scored",
       "score": 1,
-      "answeredItemCount": 95,
-      "expectedItemCount": 95,
+      "answeredItemCount": 87,
+      "expectedItemCount": 87,
       "coverage": 1
     },
     {
@@ -1323,9 +1290,9 @@
     {
       "constructId": "property-legitimacy",
       "status": "scored",
-      "score": -0.12307692307692303,
-      "answeredItemCount": 41,
-      "expectedItemCount": 41,
+      "score": -0.23728813559322023,
+      "answeredItemCount": 36,
+      "expectedItemCount": 36,
       "coverage": 1
     },
     {
@@ -1339,9 +1306,9 @@
     {
       "constructId": "redistribution-vs-predistribution",
       "status": "scored",
-      "score": 0.48251748251748233,
-      "answeredItemCount": 20,
-      "expectedItemCount": 20,
+      "score": 0.088,
+      "answeredItemCount": 18,
+      "expectedItemCount": 18,
       "coverage": 1
     },
     {
@@ -1355,9 +1322,9 @@
     {
       "constructId": "regulation-vs-deregulation",
       "status": "scored",
-      "score": -0.6000000000000003,
-      "answeredItemCount": 77,
-      "expectedItemCount": 77,
+      "score": -0.580135440180587,
+      "answeredItemCount": 73,
+      "expectedItemCount": 73,
       "coverage": 1
     },
     {
@@ -1371,9 +1338,9 @@
     {
       "constructId": "state-action-vs-exit",
       "status": "scored",
-      "score": -0.6666666666666666,
-      "answeredItemCount": 68,
-      "expectedItemCount": 68,
+      "score": -0.6480938416422286,
+      "answeredItemCount": 64,
+      "expectedItemCount": 64,
       "coverage": 1
     },
     {
@@ -1390,244 +1357,215 @@
       {
         "profileId": "profile:christian-democrat",
         "status": "scored",
-        "distance": 0.779335172606452,
-        "similarity": 0.610332413696774,
-        "rank": 12
+        "distance": 0.5714285714285714,
+        "similarity": 0.4285714285714286,
+        "rank": 8
       },
       {
         "profileId": "profile:classical-liberalism",
         "status": "scored",
-        "distance": 0.5544954434111564,
-        "similarity": 0.7227522782944218,
-        "rank": 2
+        "distance": 0.2222222222222222,
+        "similarity": 0.7777777777777778,
+        "rank": 4
       },
       {
         "profileId": "profile:conservative",
         "status": "scored",
-        "distance": 0.7425899312974007,
-        "similarity": 0.6287050343512997,
-        "rank": 12
+        "distance": 0.5555555555555556,
+        "similarity": 0.4444444444444444,
+        "rank": 8
       },
       {
         "profileId": "profile:democratic-socialist",
         "status": "scored",
-        "distance": 0.6803538236205581,
-        "similarity": 0.6598230881897209,
-        "rank": 6
+        "distance": 0.5,
+        "similarity": 0.5,
+        "rank": 7
       },
       {
         "profileId": "profile:green-politics",
         "status": "scored",
-        "distance": 0.5968978754820434,
-        "similarity": 0.7015510622589782,
-        "rank": 2
+        "distance": 0,
+        "similarity": 1,
+        "rank": 1
       },
       {
         "profileId": "profile:liberal-conservatism",
-        "status": "scored",
-        "distance": 0.6397974174524876,
-        "similarity": 0.6801012912737562,
-        "rank": 6
+        "status": "abstained",
+        "distance": null,
+        "similarity": null,
+        "rank": null,
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:libertarian-socialism",
         "status": "scored",
-        "distance": 0.3967320793004979,
-        "similarity": 0.8016339603497511,
+        "distance": 0,
+        "similarity": 1,
         "rank": 1
       },
       {
         "profileId": "profile:market-liberal",
-        "status": "scored",
-        "distance": 0.6122476954010003,
-        "similarity": 0.6938761522994998,
-        "rank": 6
+        "status": "abstained",
+        "distance": null,
+        "similarity": null,
+        "rank": null,
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:market-right-libertarianism",
-        "status": "scored",
-        "distance": 0.4996217489885054,
-        "similarity": 0.7501891255057473,
-        "rank": 2
+        "status": "abstained",
+        "distance": null,
+        "similarity": null,
+        "rank": null,
+        "abstentionReason": "constitutive_gate_failed"
       },
       {
         "profileId": "profile:marxian-socialism",
         "status": "scored",
-        "distance": 0.6467013165185378,
-        "similarity": 0.6766493417407311,
-        "rank": 6
+        "distance": 0.2,
+        "similarity": 0.8,
+        "rank": 4
       },
       {
         "profileId": "profile:marxist-leninist",
-        "status": "scored",
-        "distance": 1.0131017457556561,
-        "similarity": 0.4934491271221719,
-        "rank": 16
+        "status": "abstained",
+        "distance": null,
+        "similarity": null,
+        "rank": null,
+        "abstentionReason": "constitutive_gate_failed"
       },
       {
         "profileId": "profile:national-conservatism",
-        "status": "scored",
-        "distance": 0.864371746181578,
-        "similarity": 0.567814126909211,
-        "rank": 15
+        "status": "abstained",
+        "distance": null,
+        "similarity": null,
+        "rank": null,
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:radical-democracy",
-        "status": "scored",
-        "distance": 0.5055092284798282,
-        "similarity": 0.7472453857600859,
-        "rank": 2
+        "status": "abstained",
+        "distance": null,
+        "similarity": null,
+        "rank": null,
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:republicanism",
         "status": "scored",
-        "distance": 0.6713822816824128,
-        "similarity": 0.6643088591587936,
-        "rank": 6
+        "distance": 0,
+        "similarity": 1,
+        "rank": 1
       },
       {
         "profileId": "profile:social-democrat",
         "status": "scored",
-        "distance": 0.7150759789842568,
-        "similarity": 0.6424620105078716,
-        "rank": 12
+        "distance": 0.75,
+        "similarity": 0.25,
+        "rank": 10
       },
       {
         "profileId": "profile:social-liberalism",
         "status": "scored",
-        "distance": 0.6458546684106221,
-        "similarity": 0.6770726657946889,
+        "distance": 0.36363636363636365,
+        "similarity": 0.6363636363636364,
         "rank": 6
       }
     ],
     "ranking": [
       {
-        "profileId": "profile:libertarian-socialism",
-        "similarity": 0.8016339603497511,
-        "distance": 0.3967320793004979,
+        "profileId": "profile:green-politics",
+        "similarity": 1,
+        "distance": 0,
         "rank": 1,
         "tieGroup": 1
       },
       {
-        "profileId": "profile:market-right-libertarianism",
-        "similarity": 0.7501891255057473,
-        "distance": 0.4996217489885054,
-        "rank": 2,
-        "tieGroup": 2
+        "profileId": "profile:libertarian-socialism",
+        "similarity": 1,
+        "distance": 0,
+        "rank": 1,
+        "tieGroup": 1
       },
       {
-        "profileId": "profile:radical-democracy",
-        "similarity": 0.7472453857600859,
-        "distance": 0.5055092284798282,
-        "rank": 2,
+        "profileId": "profile:republicanism",
+        "similarity": 1,
+        "distance": 0,
+        "rank": 1,
+        "tieGroup": 1
+      },
+      {
+        "profileId": "profile:marxian-socialism",
+        "similarity": 0.8,
+        "distance": 0.2,
+        "rank": 4,
         "tieGroup": 2
       },
       {
         "profileId": "profile:classical-liberalism",
-        "similarity": 0.7227522782944218,
-        "distance": 0.5544954434111564,
-        "rank": 2,
+        "similarity": 0.7777777777777778,
+        "distance": 0.2222222222222222,
+        "rank": 4,
         "tieGroup": 2
-      },
-      {
-        "profileId": "profile:green-politics",
-        "similarity": 0.7015510622589782,
-        "distance": 0.5968978754820434,
-        "rank": 2,
-        "tieGroup": 2
-      },
-      {
-        "profileId": "profile:market-liberal",
-        "similarity": 0.6938761522994998,
-        "distance": 0.6122476954010003,
-        "rank": 6,
-        "tieGroup": 3
-      },
-      {
-        "profileId": "profile:liberal-conservatism",
-        "similarity": 0.6801012912737562,
-        "distance": 0.6397974174524876,
-        "rank": 6,
-        "tieGroup": 3
       },
       {
         "profileId": "profile:social-liberalism",
-        "similarity": 0.6770726657946889,
-        "distance": 0.6458546684106221,
-        "rank": 6,
-        "tieGroup": 3
-      },
-      {
-        "profileId": "profile:marxian-socialism",
-        "similarity": 0.6766493417407311,
-        "distance": 0.6467013165185378,
-        "rank": 6,
-        "tieGroup": 3
-      },
-      {
-        "profileId": "profile:republicanism",
-        "similarity": 0.6643088591587936,
-        "distance": 0.6713822816824128,
+        "similarity": 0.6363636363636364,
+        "distance": 0.36363636363636365,
         "rank": 6,
         "tieGroup": 3
       },
       {
         "profileId": "profile:democratic-socialist",
-        "similarity": 0.6598230881897209,
-        "distance": 0.6803538236205581,
-        "rank": 6,
-        "tieGroup": 3
-      },
-      {
-        "profileId": "profile:social-democrat",
-        "similarity": 0.6424620105078716,
-        "distance": 0.7150759789842568,
-        "rank": 12,
+        "similarity": 0.5,
+        "distance": 0.5,
+        "rank": 7,
         "tieGroup": 4
       },
       {
         "profileId": "profile:conservative",
-        "similarity": 0.6287050343512997,
-        "distance": 0.7425899312974007,
-        "rank": 12,
-        "tieGroup": 4
-      },
-      {
-        "profileId": "profile:christian-democrat",
-        "similarity": 0.610332413696774,
-        "distance": 0.779335172606452,
-        "rank": 12,
-        "tieGroup": 4
-      },
-      {
-        "profileId": "profile:national-conservatism",
-        "similarity": 0.567814126909211,
-        "distance": 0.864371746181578,
-        "rank": 15,
+        "similarity": 0.4444444444444444,
+        "distance": 0.5555555555555556,
+        "rank": 8,
         "tieGroup": 5
       },
       {
-        "profileId": "profile:marxist-leninist",
-        "similarity": 0.4934491271221719,
-        "distance": 1.0131017457556561,
-        "rank": 16,
+        "profileId": "profile:christian-democrat",
+        "similarity": 0.4285714285714286,
+        "distance": 0.5714285714285714,
+        "rank": 8,
+        "tieGroup": 5
+      },
+      {
+        "profileId": "profile:social-democrat",
+        "similarity": 0.25,
+        "distance": 0.75,
+        "rank": 10,
         "tieGroup": 6
       }
     ],
     "topProfileIds": [
-      "profile:libertarian-socialism"
+      "profile:green-politics",
+      "profile:libertarian-socialism",
+      "profile:republicanism"
     ],
     "topTie": {
-      "isTie": false,
+      "isTie": true,
       "profileIds": [
-        "profile:libertarian-socialism"
+        "profile:green-politics",
+        "profile:libertarian-socialism",
+        "profile:republicanism"
       ],
       "similarityDelta": 0,
-      "tolerance": 0.05
+      "tolerance": 0.05,
+      "reason": "label-tie"
     },
     "uncertainty": {
-      "level": "low",
-      "reasons": []
+      "level": "high",
+      "reasons": [
+        "label-tie"
+      ]
     }
   },
   "modifiers": [
@@ -1846,7 +1784,7 @@
     }
   },
   "diagnostics": {
-    "contributionCount": 781,
+    "contributionCount": 750,
     "constructCount": 26,
     "profileCount": 16,
     "modifierCount": 24,
