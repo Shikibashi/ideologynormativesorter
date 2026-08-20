@@ -5,6 +5,15 @@ import type {
 import type { ConstructResult } from "../../../contracts/src/constructs";
 import type { ConstructRequirement, PrimaryProfileRecord } from "../../../contracts/src/content";
 import type { ConstructId } from "../../../contracts/src/ids";
+import {
+  commitmentAffinityWeight,
+  commitmentCriterionAnchor,
+  commitmentCriterionSatisfied,
+  getPrimaryIdeologyCommitmentSpec,
+  isAffinityCommitment,
+  isDecisiveCommitment,
+  type PrimaryIdeologyCommitment,
+} from "./ideology-commitments";
 
 export interface ProfileEvidenceEvaluation {
   readonly comparisons: readonly PrimaryProfileConstructComparison[];
@@ -23,7 +32,7 @@ function validConstructScore(score: number): boolean {
   return Number.isFinite(score) && score >= -1 && score <= 1;
 }
 
-export function emptyProfileEvidence(
+function legacyEmptyProfileEvidence(
   profile: PrimaryProfileRecord,
 ): ProfileEvidenceEvaluation {
   const requirements = sortedRequirements(profile);
@@ -52,7 +61,7 @@ export function emptyProfileEvidence(
   };
 }
 
-export function evaluatePrimaryProfileEvidence(
+function legacyEvaluatePrimaryProfileEvidence(
   profile: PrimaryProfileRecord,
   constructsById: ReadonlyMap<ConstructId, ConstructResult>,
 ): ProfileEvidenceEvaluation {
@@ -138,4 +147,134 @@ export function evaluatePrimaryProfileEvidence(
       ),
     }),
   };
+}
+
+function evidenceCommitments(
+  commitments: readonly PrimaryIdeologyCommitment[],
+): readonly PrimaryIdeologyCommitment[] {
+  return commitments.filter(
+    (commitment) => isAffinityCommitment(commitment) || isDecisiveCommitment(commitment),
+  );
+}
+
+function commitmentEvidenceAvailable(
+  commitment: PrimaryIdeologyCommitment,
+  construct: ConstructResult | undefined,
+): construct is Extract<ConstructResult, { status: "scored" }> {
+  return Boolean(
+    construct &&
+      construct.status === "scored" &&
+      validConstructScore(construct.score) &&
+      (commitment.minimumAnsweredItems === undefined ||
+        construct.evidence.answeredItemCount >= commitment.minimumAnsweredItems),
+  );
+}
+
+function evaluateCommitmentProfileEvidence(
+  profile: PrimaryProfileRecord,
+  constructsById: ReadonlyMap<ConstructId, ConstructResult>,
+): ProfileEvidenceEvaluation {
+  const spec = getPrimaryIdeologyCommitmentSpec(String(profile.id));
+  if (!spec) return legacyEvaluatePrimaryProfileEvidence(profile, constructsById);
+
+  const minimumEvidenceRatio = profile.minimumEvidenceRatio ?? 0.6;
+  const measurable = evidenceCommitments(spec.commitments);
+  const affinity = spec.commitments.filter(isAffinityCommitment);
+  const requiredConstructIds = [...new Set(measurable.map((entry) => entry.constructId))].sort();
+  const unavailableConstructIds = requiredConstructIds.filter((constructId) => {
+    const commitments = measurable.filter((entry) => entry.constructId === constructId);
+    const construct = constructsById.get(constructId as ConstructId);
+    return !commitments.some((entry) => commitmentEvidenceAvailable(entry, construct));
+  });
+  const measuredConstructCount = requiredConstructIds.length - unavailableConstructIds.length;
+  const comparisonCoverage =
+    requiredConstructIds.length > 0 ? measuredConstructCount / requiredConstructIds.length : 0;
+
+  const comparisons: PrimaryProfileConstructComparison[] = affinity.map((commitment) => {
+    const constructId = commitment.constructId as ConstructId;
+    const construct = constructsById.get(constructId);
+    const weight = commitmentAffinityWeight(commitment.relation);
+    const criterion = commitment.criterion!;
+    if (!commitmentEvidenceAvailable(commitment, construct)) {
+      return {
+        constructId,
+        targetValue: commitmentCriterionAnchor(criterion),
+        observedScore:
+          construct?.status === "scored" && validConstructScore(construct.score)
+            ? construct.score
+            : null,
+        weight,
+        squaredError: null,
+        weightedSquaredError: null,
+        included: false,
+        exclusionReason:
+          construct?.status === "scored"
+            ? "minimum_answered_items_not_met"
+            : "construct_unavailable",
+      };
+    }
+    const supported = commitmentCriterionSatisfied(construct.score, criterion);
+    const mismatch = supported ? 0 : 1;
+    return {
+      constructId,
+      targetValue: commitmentCriterionAnchor(criterion),
+      observedScore: construct.score,
+      weight,
+      squaredError: mismatch,
+      weightedSquaredError: weight * mismatch,
+      included: true,
+    };
+  });
+
+  return {
+    comparisons: Object.freeze(
+      comparisons.sort((left, right) => String(left.constructId).localeCompare(String(right.constructId))),
+    ),
+    evidence: Object.freeze({
+      requiredConstructCount: requiredConstructIds.length,
+      measuredRequiredConstructCount: measuredConstructCount,
+      unavailableRequiredConstructCount: unavailableConstructIds.length,
+      totalWeight: requiredConstructIds.length,
+      measuredWeight: measuredConstructCount,
+      unavailableWeight: unavailableConstructIds.length,
+      comparisonCoverage,
+      minimumEvidenceRatio,
+      meetsMinimumEvidence:
+        requiredConstructIds.length > 0 && comparisonCoverage >= minimumEvidenceRatio,
+      unavailableConstructIds: Object.freeze(
+        unavailableConstructIds.map((id) => id as ConstructId),
+      ),
+    }),
+  };
+}
+
+export function emptyProfileEvidence(
+  profile: PrimaryProfileRecord,
+): ProfileEvidenceEvaluation {
+  const spec = getPrimaryIdeologyCommitmentSpec(String(profile.id));
+  if (!spec) return legacyEmptyProfileEvidence(profile);
+  const constructIds = [...new Set(evidenceCommitments(spec.commitments).map((entry) => entry.constructId))].sort();
+  const minimumEvidenceRatio = profile.minimumEvidenceRatio ?? 0.6;
+  return {
+    comparisons: Object.freeze([]),
+    evidence: Object.freeze({
+      requiredConstructCount: constructIds.length,
+      measuredRequiredConstructCount: 0,
+      unavailableRequiredConstructCount: constructIds.length,
+      totalWeight: constructIds.length,
+      measuredWeight: 0,
+      unavailableWeight: constructIds.length,
+      comparisonCoverage: 0,
+      minimumEvidenceRatio,
+      meetsMinimumEvidence: false,
+      unavailableConstructIds: Object.freeze(constructIds.map((id) => id as ConstructId)),
+    }),
+  };
+}
+
+export function evaluatePrimaryProfileEvidence(
+  profile: PrimaryProfileRecord,
+  constructsById: ReadonlyMap<ConstructId, ConstructResult>,
+): ProfileEvidenceEvaluation {
+  return evaluateCommitmentProfileEvidence(profile, constructsById);
 }
