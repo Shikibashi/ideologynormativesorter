@@ -1,0 +1,28 @@
+name: Issue 19 migration check
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  migrate-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Apply migration in working tree
+        run: python scripts/migrate-specialist-commitments.py
+      - name: Compile canonical content
+        run: npx --yes vite-node v2/tools/compile-content.ts
+      - name: Run focused specialist tests
+        run: npx vitest run tests/engine/v2-phase7-specialists.spec.ts tests/architecture/v2-phase2.spec.ts
+      - name: Show migration diff summary
+        if: always()
+        run: git status --short
