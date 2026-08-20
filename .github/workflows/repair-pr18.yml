@@ -2,6 +2,11 @@ name: Repair PR18
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - refactor/commitment-based-ideology-scoring
+    paths:
+      - .github/workflows/repair-pr18.yml
 
 permissions:
   contents: write
