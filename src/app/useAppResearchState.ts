@@ -1,12 +1,12 @@
 import { useState } from "react";
 import {
+  RESEARCH_MANIFEST_VERSION,
   RESEARCH_SCHEMA_VERSION,
   type CoreResearchSubmission,
   type ResearchConsent,
   type ResearchSubmission,
   type ResearchSubmissionStatus,
 } from "../research";
-import { QUESTION_BANK_VERSION } from "../domain/selectors";
 import { RESULT_SCORING_VERSION } from "../scoring";
 import type { AppBootstrapState } from "./useAppBootstrapState";
 import type { Setter } from "./actionTypes";
@@ -40,7 +40,7 @@ export function useAppResearchState(
     bootstrap.loadedPendingResearch.submission.administration ===
       bootstrap.administration &&
     bootstrap.loadedPendingResearch.submission.bankVersion ===
-      QUESTION_BANK_VERSION &&
+      RESEARCH_MANIFEST_VERSION &&
     bootstrap.loadedPendingResearch.submission.scoringVersion ===
       RESULT_SCORING_VERSION
       ? bootstrap.loadedPendingResearch
