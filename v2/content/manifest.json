@@ -2,15 +2,15 @@
   "manifestVersion": "v2-content-source-manifest-1",
   "metadata": {
     "contentSchemaVersion": "content-schema-v2.phase8.1",
-    "contentVersion": "v2-content-phase8.1",
-    "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
-    "scoringVersion": "scoring-v2.phase7.1",
+    "contentVersion": "v2-content-phase8.2-commitments",
+    "contentFingerprint": "pending-commitment-model",
+    "scoringVersion": "scoring-v2.commitment-v1",
     "responseSchemaVersion": "response-v2.phase1.1",
     "resultSchemaVersion": "result-v2.phase9.1",
     "researchSchemaVersion": "research-v2.phase1.1",
     "sourceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
     "methodologyCommit": "b1ac3e3e147e3761faccec8588d7c822a875d4dc",
-    "extractionVersion": "v2-phase8-diagnostic-relations-1",
+    "extractionVersion": "v2-phase8.2-commitment-migration-1",
     "sourceArtifact": "research-worker/generated/canonical-manifest.json#manifest",
     "counts": {
       "domains": 20,
@@ -45,6 +45,7 @@
       "core": "items/core.json",
       "specialist": "items/specialist.json"
     },
+    "itemCorrections": "items/reviewed-mapping-corrections.json",
     "profiles": {
       "primary": "profiles/primary.json",
       "modifiers": "profiles/modifiers.json",
@@ -70,7 +71,7 @@
     "authority": "research-worker/generated/canonical-manifest.json#manifest",
     "sourceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
     "methodologyCommit": "b1ac3e3e147e3761faccec8588d7c822a875d4dc",
-    "extractionVersion": "v2-phase8-diagnostic-relations-1",
+    "extractionVersion": "v2-phase8.2-commitment-migration-1",
     "generatedCounts": {
       "domains": 20,
       "constructsRoot": 26,
