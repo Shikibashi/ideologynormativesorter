@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Apply intentional compatibility repairs
+      - name: Apply commitment-model compatibility repairs
         shell: python
         run: |
           from pathlib import Path
@@ -37,7 +37,7 @@ jobs:
               p = Path(path)
               text = p.read_text()
               if old not in text:
-                  raise SystemExit(f"expected text not found in {path}: {old[:120]!r}")
+                  raise SystemExit(f"expected text not found in {path}: {old[:160]!r}")
               p.write_text(text.replace(old, new, 1))
 
           replace_once(
@@ -64,41 +64,44 @@ jobs:
               'export const SUPPORTED_SCORING_VERSION = "scoring-v2.commitment-v1" as const;',
           )
 
-      - name: Refresh canonical fingerprint and generated authority
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
+          replace_once(
+              "tests/engine/v2-primary-commitment-model.spec.ts",
+              '''    expect(result.profiles.map((entry) => String(entry.profileId)).sort()).toEqual(expected);\n    for (const demoted of DEMOTED_PRIMARY_PROFILE_IDS) {\n      expect(result.profiles.some((entry) => String(entry.profileId) === demoted)).toBe(false);\n    }''',
+              '''    expect(\n      result.profiles\n        .filter((entry) => !DEMOTED_PRIMARY_PROFILE_IDS.includes(String(entry.profileId) as never))\n        .map((entry) => String(entry.profileId))\n        .sort(),\n    ).toEqual(expected);\n    for (const demoted of DEMOTED_PRIMARY_PROFILE_IDS) {\n      expect(\n        result.profiles.find((entry) => String(entry.profileId) === demoted),\n      ).toMatchObject({\n        status: "abstained",\n        abstentionReason: "invalid_profile_configuration",\n      });\n      expect(result.ranking.some((entry) => String(entry.profileId) === demoted)).toBe(false);\n    }''',
+          )
 
-          old = "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf"
-          new = "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d"
-          changed = []
-          skip_parts = {".git", "node_modules"}
-          for p in Path('.').rglob('*'):
-              if not p.is_file() or any(part in skip_parts for part in p.parts):
-                  continue
-              try:
-                  text = p.read_text()
-              except (UnicodeDecodeError, OSError):
-                  continue
-              if old not in text:
-                  continue
-              p.write_text(text.replace(old, new))
-              changed.append(str(p))
-          if not changed:
-              raise SystemExit("old canonical fingerprint was not found")
-          print("updated canonical fingerprint references:")
-          print("\n".join(changed))
-          PY
-          npm run canonical:migrate
+          replace_once(
+              "tests/architecture/v2-phase2.spec.ts",
+              '''    for (const item of bundle.items) {\n      expect(item.status).toBe("active");\n      if (item.responseType === "statement-choice") {''',
+              '''    const inactiveItemIds = bundle.items\n      .filter((item: JsonObject) => item.status === "inactive")\n      .map((item: JsonObject) => item.id)\n      .sort();\n    expect(inactiveItemIds).toEqual(["q0073", "q0074"]);\n    for (const item of bundle.items) {\n      expect(["active", "inactive"]).toContain(item.status);\n      if (item.status !== "active") continue;\n      if (item.responseType === "statement-choice") {''',
+          )
+
+          replace_once(
+              "tests/engine/v2-phase6-modifiers.spec.ts",
+              '''    const responses = generatedBundle.items.map((item) => item.responseType === "statement-choice"''',
+              '''    const responses = generatedBundle.items\n      .filter((item) => item.status === "active")\n      .map((item) => item.responseType === "statement-choice"''',
+          )
+
+          p = Path("tests/research/v2-phase13-research.test.ts")
+          text = p.read_text()
+          anchor = '''const bundle = bundleJson as unknown as ResearchBundle;\nconst missingInput = {'''
+          if anchor not in text:
+              raise SystemExit("phase13 active-core anchor not found")
+          text = text.replace(
+              anchor,
+              '''const bundle = bundleJson as unknown as ResearchBundle;\nconst activeCoreItemCount = bundle.items.filter(\n  (item) => item.role === "core" && item.status === "active",\n).length;\nconst missingInput = {''',
+              1,
+          )
+          text = text.replace('toHaveLength(338)', 'toHaveLength(activeCoreItemCount)')
+          text = text.replace(').size).toBe(338)', ').size).toBe(activeCoreItemCount)')
+          p.write_text(text)
 
       - name: Recompile v2 content and refresh locked references
         shell: bash
         run: |
           set -euo pipefail
-          npx vite-node v2/tools/compile-content.ts
-          npx vite-node v2/tools/generate-phase9-golden.ts
+          npx --yes vite-node v2/tools/compile-content.ts
+          npx --yes vite-node v2/tools/generate-phase9-golden.ts
           node scripts/v2-reference/generate-cases.mjs
           V2_REFERENCE_CAPTURE=1 npx vitest run tests/v2-differential/capture.spec.ts
           npm run v2:reference:coverage
@@ -113,6 +116,8 @@ jobs:
           set -euo pipefail
           npm test
           npm run lint
+          node --check research-collector/server.mjs
+          npm run research:check
           npm run canonical:check
           npm run test:worker
           npm run build
@@ -125,10 +130,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/repair-pr18.yml
           git add -A
-          if git diff --cached --quiet; then
-            echo "No repair changes to commit"
-            exit 0
-          fi
-          git commit -m "fix: synchronize commitment scoring references"
+          git commit -m "fix: synchronize commitment scoring migration"
           git push origin "HEAD:${HEAD_BRANCH}"
