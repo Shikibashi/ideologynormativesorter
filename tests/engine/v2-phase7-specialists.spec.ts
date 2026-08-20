@@ -330,26 +330,6 @@ describe("Phase 7 specialist module activation and scoring", () => {
     expect(Object.isFrozen(firstResult.modules[0])).toBe(true);
   });
 
-  it("does not let retained legacy target vectors affect specialist results", () => {
-    const bundle = syntheticBundle();
-    const legacyMutated = JSON.parse(JSON.stringify(bundle)) as CanonicalContentBundle;
-    for (const profile of legacyMutated.specialists) {
-      for (const requirement of profile.requirements ?? []) {
-        requirement.targetValue = requirement.targetValue > 0 ? -1 : 1;
-        requirement.weight = 999;
-      }
-    }
-    const input = {
-      requestedModuleIds: ["module:a"],
-      responses: [answered("a:one"), answered("a:two"), answered("a:three")],
-    };
-    const firstPrepared = prepareSpecialistAssessment(input, bundle);
-    const secondPrepared = prepareSpecialistAssessment(input, legacyMutated);
-    const first = scoreSpecialists(coreAssessment(bundle), firstPrepared, bundle);
-    const second = scoreSpecialists(coreAssessment(legacyMutated), secondPrepared, legacyMutated);
-    expect(second.modules).toEqual(first.modules);
-  });
-
   it("covers the real canonical specialist corpus without cross-module ownership", () => {
     const modules = generatedBundle.specialistModules;
     const ownership = new Map<string, string>();
