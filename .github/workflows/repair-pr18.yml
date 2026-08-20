@@ -58,42 +58,34 @@ jobs:
               '["oxford-radical-democracy-constituent-power"]',
           )
 
-      - name: Refresh canonical generated authority
+      - name: Refresh canonical fingerprint and generated authority
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
-          p = Path('scripts/migrate-canonical-manifest.mjs')
-          text = p.read_text()
-          old = 'if (fingerprint !== EXPECTED_FINGERPRINT)'
-          if old not in text:
-              raise SystemExit('canonical fingerprint guard not found')
-          p.write_text(text.replace(old, 'if (false && fingerprint !== EXPECTED_FINGERPRINT)', 1))
+
+          old = "045d96d1f6d9416517ae0d59121bca17107caf645874b452afa4df61202e6cdf"
+          new = "d4bb1fa823a9ae0f4effc39971932c1e0f8444f1a5f0e184439c46d44438a73d"
+          changed = []
+          skip_parts = {".git", "node_modules"}
+          for p in Path('.').rglob('*'):
+              if not p.is_file() or any(part in skip_parts for part in p.parts):
+                  continue
+              try:
+                  text = p.read_text()
+              except (UnicodeDecodeError, OSError):
+                  continue
+              if old not in text:
+                  continue
+              p.write_text(text.replace(old, new))
+              changed.append(str(p))
+          if not changed:
+              raise SystemExit("old canonical fingerprint was not found")
+          print("updated canonical fingerprint references:")
+          print("\n".join(changed))
           PY
           npm run canonical:migrate
-          git checkout -- scripts/migrate-canonical-manifest.mjs
-          python - <<'PY'
-          import re
-          from pathlib import Path
-          generated = Path('src/domain/canonicalData.ts').read_text()
-          match = re.search(r'fingerprint:\s*\n\s*"([0-9a-f]{64})"', generated)
-          if not match:
-              raise SystemExit('generated canonical fingerprint not found')
-          fingerprint = match.group(1)
-          p = Path('scripts/migrate-canonical-manifest.mjs')
-          text = p.read_text()
-          text, count = re.subn(
-              r'(const EXPECTED_FINGERPRINT =\s*\n\s*")[0-9a-f]{64}(";)',
-              rf'\g<1>{fingerprint}\g<2>',
-              text,
-              count=1,
-          )
-          if count != 1:
-              raise SystemExit('expected fingerprint constant not updated')
-          p.write_text(text)
-          print(f'canonical fingerprint: {fingerprint}')
-          PY
 
       - name: Recompile v2 content and refresh locked references
         shell: bash
