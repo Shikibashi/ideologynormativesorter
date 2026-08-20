@@ -2,14 +2,12 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import Ajv from "ajv";
 import {
+  applyItemMappingCorrections,
   compileContent,
   type ContentInventory,
+  type ItemMappingCorrection,
 } from "../packages/content/src/index";
-import type {
-  CanonicalContentBundle,
-  ItemRecord,
-  ScoringContribution,
-} from "../packages/contracts/src/index";
+import type { CanonicalContentBundle } from "../packages/contracts/src/index";
 
 const root = process.cwd();
 const sourceRoot = path.join(root, "v2/content");
@@ -24,54 +22,6 @@ function writeJson(relativePath: string, value: unknown): void {
   const target = path.join(generatedRoot, relativePath);
   mkdirSync(path.dirname(target), { recursive: true });
   writeFileSync(target, `${JSON.stringify(value, null, 2)}\n`, "utf8");
-}
-
-interface ItemMappingCorrection {
-  readonly itemId: string;
-  readonly status: "active" | "inactive";
-  readonly contributions: readonly ScoringContribution[];
-  readonly rationale: string;
-}
-
-function applyItemMappingCorrections(
-  items: CanonicalContentBundle["items"],
-  corrections: readonly ItemMappingCorrection[],
-): CanonicalContentBundle["items"] {
-  const itemIds = new Set(items.map((item) => String(item.id)));
-  const seen = new Set<string>();
-  for (const correction of corrections) {
-    if (!correction.itemId || seen.has(correction.itemId)) {
-      throw new Error(`Invalid or duplicate item mapping correction: ${correction.itemId}`);
-    }
-    seen.add(correction.itemId);
-    if (!itemIds.has(correction.itemId)) {
-      throw new Error(`Item mapping correction references unknown item ${correction.itemId}`);
-    }
-    if (correction.contributions.length === 0) {
-      throw new Error(`Item mapping correction ${correction.itemId} has no contributions`);
-    }
-    if (!correction.rationale.trim()) {
-      throw new Error(`Item mapping correction ${correction.itemId} requires a rationale`);
-    }
-  }
-
-  return items.map((item) => {
-    const correction = corrections.find((entry) => entry.itemId === String(item.id));
-    if (!correction) return item;
-    if (item.responseType === "statement-choice") {
-      throw new Error(`Item mapping correction ${correction.itemId} cannot patch statement-choice mappings`);
-    }
-    return {
-      ...item,
-      status: correction.status,
-      scoring: {
-        mappingMode: "item",
-        contributions: correction.contributions.map((entry) => ({ ...entry })),
-      },
-      reviewStatus: "reviewed-commitment-alignment-v1",
-      contextNote: `${item.contextNote ?? ""}${item.contextNote ? " " : ""}Scoring mapping reviewed for commitment alignment: ${correction.rationale}`,
-    } satisfies ItemRecord;
-  });
 }
 
 function loadBundle(): CanonicalContentBundle {
@@ -97,7 +47,9 @@ function loadBundle(): CanonicalContentBundle {
   return {
     metadata: manifest.metadata,
     domains: read(manifest.files.domains) as CanonicalContentBundle["domains"],
-    constructs: Object.values(manifest.files.constructs).flatMap((file) => read(file) as CanonicalContentBundle["constructs"]),
+    constructs: Object.values(manifest.files.constructs).flatMap(
+      (file) => read(file) as CanonicalContentBundle["constructs"],
+    ),
     items: applyItemMappingCorrections(items, corrections),
     profiles: read(manifest.files.profiles.primary) as CanonicalContentBundle["profiles"],
     modifiers: read(manifest.files.profiles.modifiers) as CanonicalContentBundle["modifiers"],
@@ -167,10 +119,7 @@ ${responseRows}
 
 function validateDeclaredJsonSchema(bundle: CanonicalContentBundle): void {
   const ajv = new Ajv({ allErrors: true });
-  const schemaDirectory = path.join(
-    root,
-    "v2/packages/content/schemas",
-  );
+  const schemaDirectory = path.join(root, "v2/packages/content/schemas");
   const schemaFiles = [
     "content-schema.schema.json",
     "contribution.schema.json",
@@ -197,9 +146,7 @@ function validateDeclaredJsonSchema(bundle: CanonicalContentBundle): void {
     ) as Record<string, unknown>;
     ajv.addSchema(schema);
   }
-  const validate = ajv.getSchema(
-    "https://example.com/v2/content-manifest.schema.json",
-  );
+  const validate = ajv.getSchema("https://example.com/v2/content-manifest.schema.json");
   if (!validate || !validate(bundle)) {
     throw new Error(
       `Declared JSON schema validation failed: ${JSON.stringify(validate?.errors ?? [])}`,
