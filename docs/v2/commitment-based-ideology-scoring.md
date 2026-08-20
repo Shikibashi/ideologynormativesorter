@@ -109,6 +109,10 @@ These mappings must be changed in the declarative item content, not hidden behin
 
 Specialist modules remain quarantined research outputs and still contain migrated target-value variants. They do not alter the ordinary primary result. They must be converted to the same commitment semantics before any specialist result is promoted or described as validated.
 
+## Research compatibility synchronization
+
+The migration also exposed stale compatibility metadata in the legacy research-collection path. The browser research snapshot now takes canonical `helpText`, `evidenceNote`, and `contextNote` values from the manifest-backed item record and emits the canonical research manifest version as its `bankVersion`. The checked-in canonical fingerprint and worker contract artifacts are synchronized to the actual canonical manifest payload. These changes repair collection-contract drift only; they do not restore centroid or target-vector authority to primary scoring.
+
 ## Validation status
 
 This architectural change does not establish empirical validity. After the ideology/construct/item content pass, the instrument still requires expert content review, cognitive interviewing, pilot data, dimensionality/reliability analysis, retest evidence, criterion/known-groups evidence, and subgroup/DIF analysis before scoped validation claims are permitted.
