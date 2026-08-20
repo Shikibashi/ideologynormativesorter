@@ -101,9 +101,11 @@ jobs:
           npx vite-node v2/tools/generate-phase9-golden.ts
           node scripts/v2-reference/generate-cases.mjs
           V2_REFERENCE_CAPTURE=1 npx vitest run tests/v2-differential/capture.spec.ts
+          npm run v2:reference:differential
+          npm run v2:reference:coverage
+          npm run v2:reference:report
           npm run v2:reference:hash
           npm run v2:reference:verify
-          npm run v2:reference:coverage
 
       - name: Verify repaired branch
         shell: bash
