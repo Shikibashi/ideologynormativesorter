@@ -58,6 +58,12 @@ jobs:
               '["oxford-radical-democracy-constituent-power"]',
           )
 
+          replace_once(
+              "v2/packages/engine/src/assessment/score-assessment.ts",
+              'export const SUPPORTED_SCORING_VERSION = "scoring-v2.phase7.1" as const;',
+              'export const SUPPORTED_SCORING_VERSION = "scoring-v2.commitment-v1" as const;',
+          )
+
       - name: Refresh canonical fingerprint and generated authority
         shell: bash
         run: |
