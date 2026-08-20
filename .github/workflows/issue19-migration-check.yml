@@ -18,7 +18,9 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Apply migration in working tree
-        run: python scripts/migrate-specialist-commitments.py
+        run: |
+          python scripts/migrate-specialist-commitments.py
+          python scripts/patch-specialist-semantics.py
       - name: Compile canonical content
         run: npx --yes vite-node v2/tools/compile-content.ts
       - name: Run focused specialist tests
