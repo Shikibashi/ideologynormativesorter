@@ -382,11 +382,31 @@ function validateCommitments(
       const operator = value.criterion.operator;
       if (!["minimum", "maximum", "interval"].includes(String(operator))) {
         addIssue(issues, `${commitmentPath}.criterion.operator`, "value", "Unknown criterion operator");
+        return;
+      }
+      const requiredBounds = operator === "interval" ? ["minimum", "maximum"] : [String(operator)];
+      for (const key of requiredBounds) {
+        if (value.criterion[key] === undefined) {
+          addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${operator} criterion requires ${key}`);
+        }
       }
       for (const key of ["minimum", "maximum"]) {
         if (value.criterion[key] !== undefined && !isFiniteNumber(value.criterion[key])) {
           addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${key} must be finite`);
+        } else if (
+          isFiniteNumber(value.criterion[key]) &&
+          (value.criterion[key] < -1 || value.criterion[key] > 1)
+        ) {
+          addIssue(issues, `${commitmentPath}.criterion.${key}`, "value", `${key} must be within [-1,1]`);
         }
+      }
+      if (
+        operator === "interval" &&
+        isFiniteNumber(value.criterion.minimum) &&
+        isFiniteNumber(value.criterion.maximum) &&
+        value.criterion.minimum > value.criterion.maximum
+      ) {
+        addIssue(issues, `${commitmentPath}.criterion`, "value", "Criterion interval minimum cannot exceed maximum");
       }
     }
   });
@@ -442,7 +462,7 @@ function validateVariant(record: SpecialistVariantRecord, path: string, issues: 
   requiredString(record.name, `${path}.name`, issues);
   requiredString(record.description, `${path}.description`, issues);
   validateCommitments(record.commitments, `${path}.commitments`, issues);
-  if (!record.commitments.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist variant requires commitments");
+  if (!record.commitments?.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist variant requires commitments");
   validateProfileGates(record.gates, `${path}.gates`, issues);
   validateRefs(record.provenanceRefs, `${path}.provenanceRefs`, issues);
 }
@@ -456,6 +476,7 @@ function validateSpecialist(record: SpecialistProfileRecord, path: string, issue
   if (!isObject(record.activation)) addIssue(issues, `${path}.activation`, "type", "Expected activation object");
   if (record.outputType !== "primary" && record.outputType !== "diagnostic") addIssue(issues, `${path}.outputType`, "value", "Unknown specialist output type");
   validateRequirements(record.requirements ?? [], `${path}.requirements`, issues);
+  if (record.commitments !== undefined) validateCommitments(record.commitments, `${path}.commitments`, issues);
   validateProfileGates(record.gates, `${path}.gates`, issues);
   const variants = record.variants;
   if (variants !== undefined) variants.forEach((variant, index) => validateVariant(variant, `${path}.variants[${index}]`, issues));
@@ -469,7 +490,7 @@ function validateCandidate(record: SpecialistCandidateRecord, path: string, issu
   requiredString(record.name, `${path}.name`, issues);
   requiredString(record.description, `${path}.description`, issues);
   validateCommitments(record.commitments, `${path}.commitments`, issues);
-  if (!record.commitments.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist candidate requires commitments");
+  if (!record.commitments?.length) addIssue(issues, `${path}.commitments`, "value", "Scored specialist candidate requires commitments");
   validateProfileGates(record.gates, `${path}.gates`, issues);
   validateRefs(record.provenanceRefs, `${path}.provenanceRefs`, issues);
 }

@@ -55,7 +55,7 @@ export function projectPublicShare(result: AssessmentResult, options: { readonly
     primaryMatches,
     primaryTie: { isTie: result.primary.topTie.isTie, profileIds: result.primary.topTie.profileIds, similarityDelta: result.primary.topTie.similarityDelta, tolerance: result.primary.topTie.tolerance },
     modifiers: result.modifiers.filter((modifier) => modifier.status === "active").map((modifier) => ({ modifierId: modifier.modifierId, name: modifier.name, status: modifier.status, fit: modifier.fit })),
-    specialists: result.specialists.modules.filter((module) => module.status === "scored").map((module) => ({ moduleId: module.moduleId, status: module.status, profiles: module.profiles.slice(0, options.topN ?? 3).map((profile) => ({ profileId: profile.profileId, name: profile.name, similarity: profile.similarity, rank: profile.rank, tieGroup: profile.tieGroup, status: profile.status })) })),
+    specialists: result.specialists.modules.filter((module) => module.status === "scored").map((module) => ({ moduleId: module.moduleId, status: module.status, profiles: module.profiles.slice(0, options.topN ?? 3).map((profile) => ({ profileId: profile.profileId, name: profile.name, similarity: profile.affinity, rank: profile.rank, tieGroup: profile.tieGroup, status: profile.status })) })),
     evidenceSummary: { status: result.assessment.evidence.status, coreCoverage: result.assessment.evidence.coreCoverage, uncertaintyLevel: result.assessment.evidence.uncertaintyLevel },
     methodologyMetadata: { profileLanguage: "similarity", rawResponsesIncluded: false, diagnosticsIncluded: false },
   };

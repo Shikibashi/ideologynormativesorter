@@ -812,11 +812,6 @@ function matchProfile(
     target,
     evaluated: profileEvidence(profile, target, constructs, module),
   }));
-  const validTargets = targets.filter(
-    (entry) =>
-      entry.evaluated.reason === undefined &&
-      entry.evaluated.affinity !== null,
-  );
   const ordered = [...targets].sort((left, right) => {
     const leftAffinity = left.evaluated.affinity ?? -1;
     const rightAffinity = right.evaluated.affinity ?? -1;
@@ -825,7 +820,12 @@ function matchProfile(
       left.target.id.localeCompare(right.target.id)
     );
   });
-  const selected = (validTargets.length > 0 ? validTargets : ordered)[0];
+  const selected =
+    ordered.find(
+      (entry) =>
+        entry.evaluated.reason === undefined &&
+        entry.evaluated.affinity !== null,
+    ) ?? ordered[0];
   if (!selected) {
     const empty = emptyProfileEvidence(
       profile.commitments ?? [],

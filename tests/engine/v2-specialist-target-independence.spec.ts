@@ -52,14 +52,18 @@ describe("specialist commitment scoring target-vector lockout", () => {
 
     for (const profile of mutatedBundle.specialists) {
       if (String(profile.moduleId ?? "") !== moduleId || !(profile.variants?.length)) continue;
-      profile.requirements = [
-        {
-          constructId: hostileConstructId,
-          targetValue: -1,
-          weight: 999,
-          minimumAnsweredItems: 999,
-        },
-      ];
+      const hostileRequirement = {
+        constructId: hostileConstructId,
+        targetValue: -1,
+        weight: 999,
+        minimumAnsweredItems: 999,
+      };
+      profile.requirements = [{ ...hostileRequirement }];
+      for (const variant of profile.variants ?? []) {
+        (variant as unknown as { requirements: unknown[] }).requirements = [
+          { ...hostileRequirement },
+        ];
+      }
     }
 
     const responses = module.itemIds.map((itemId) => answered(String(itemId)));

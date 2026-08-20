@@ -21,11 +21,27 @@ for (const item of items) {
   }
 }
 
-const profileUses = new Map();
-const addUse = (profile, variant, requirement) => {
+const commitmentUses = new Map();
+const legacyRequirementUses = new Map();
+const addCommitmentUse = (profile, variant, commitment) => {
+  const id = String(commitment?.constructId ?? "");
+  if (!id) return;
+  const list = commitmentUses.get(id) ?? [];
+  list.push({
+    profileId: String(profile.id),
+    variantId: variant ? String(variant.id) : null,
+    commitmentId: String(commitment.id ?? ""),
+    relation: commitment.relation ?? null,
+    criterion: commitment.criterion ?? null,
+    weight: commitment.weight ?? 1,
+    minimumAnsweredItems: commitment.minimumAnsweredItems ?? null,
+  });
+  commitmentUses.set(id, list);
+};
+const addLegacyRequirementUse = (profile, variant, requirement) => {
   const id = String(requirement?.constructId ?? "");
   if (!id) return;
-  const list = profileUses.get(id) ?? [];
+  const list = legacyRequirementUses.get(id) ?? [];
   list.push({
     profileId: String(profile.id),
     variantId: variant ? String(variant.id) : null,
@@ -33,15 +49,21 @@ const addUse = (profile, variant, requirement) => {
     weight: requirement.weight,
     minimumAnsweredItems: requirement.minimumAnsweredItems ?? null,
   });
-  profileUses.set(id, list);
+  legacyRequirementUses.set(id, list);
 };
 for (const profile of profiles) {
-  for (const requirement of profile.requirements ?? []) addUse(profile, null, requirement);
+  for (const commitment of profile.commitments ?? []) addCommitmentUse(profile, null, commitment);
+  for (const requirement of profile.requirements ?? []) addLegacyRequirementUse(profile, null, requirement);
   for (const variant of profile.variants ?? []) {
-    for (const requirement of variant.requirements ?? []) addUse(profile, variant, requirement);
+    for (const commitment of variant.commitments ?? []) addCommitmentUse(profile, variant, commitment);
+    for (const requirement of variant.requirements ?? []) addLegacyRequirementUse(profile, variant, requirement);
   }
 }
 
+const useSort = (left, right) =>
+  `${left.profileId}:${left.variantId ?? ""}:${left.commitmentId ?? ""}`.localeCompare(
+    `${right.profileId}:${right.variantId ?? ""}:${right.commitmentId ?? ""}`,
+  );
 const audit = constructs.map((construct) => ({
   id: String(construct.id),
   name: String(construct.name ?? construct.id),
@@ -49,10 +71,10 @@ const audit = constructs.map((construct) => ({
   sourceKey: String(construct.sourceKey ?? ""),
   description: construct.description ?? null,
   poles: construct.poles ?? null,
+  boundaryStatement: construct.boundaryStatement ?? null,
   items: (itemUses.get(String(construct.id)) ?? []).sort((a, b) => a.itemId.localeCompare(b.itemId)),
-  legacyProfileUses: (profileUses.get(String(construct.id)) ?? []).sort((a, b) =>
-    `${a.profileId}:${a.variantId ?? ""}`.localeCompare(`${b.profileId}:${b.variantId ?? ""}`),
-  ),
+  commitmentUses: (commitmentUses.get(String(construct.id)) ?? []).sort(useSort),
+  legacyRequirementUses: (legacyRequirementUses.get(String(construct.id)) ?? []).sort(useSort),
 }));
 
 console.log(JSON.stringify({
@@ -60,8 +82,11 @@ console.log(JSON.stringify({
     constructCount: constructs.length,
     itemCount: items.length,
     profileCount: profiles.length,
-    constructsMissingDefinition: audit.filter((entry) => !entry.description || !entry.poles?.negative || !entry.poles?.positive).length,
+    constructsMissingDefinition: audit.filter(
+      (entry) => !entry.description || !entry.poles?.negative || !entry.poles?.positive || !entry.boundaryStatement,
+    ).length,
     constructsWithoutMappedItems: audit.filter((entry) => entry.items.length === 0).length,
+    constructsWithoutCommitmentUses: audit.filter((entry) => entry.commitmentUses.length === 0).length,
   },
   constructs: audit,
 }, null, 2));
