@@ -2,8 +2,10 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import Ajv from "ajv";
 import {
+  applyItemMappingCorrections,
   compileContent,
   type ContentInventory,
+  type ItemMappingCorrection,
 } from "../packages/content/src/index";
 import type { CanonicalContentBundle } from "../packages/contracts/src/index";
 
@@ -29,6 +31,7 @@ function loadBundle(): CanonicalContentBundle {
       domains: string;
       constructs: Record<string, string>;
       items: Record<string, string>;
+      itemCorrections: string;
       profiles: Record<string, string>;
       specialists: Record<string, string>;
       ontology: Record<string, string>;
@@ -37,11 +40,17 @@ function loadBundle(): CanonicalContentBundle {
     };
   }>("manifest.json");
   const read = (file: string) => readJson<unknown>(file);
+  const items = Object.values(manifest.files.items).flatMap(
+    (file) => read(file) as CanonicalContentBundle["items"],
+  );
+  const corrections = readJson<ItemMappingCorrection[]>(manifest.files.itemCorrections);
   return {
     metadata: manifest.metadata,
     domains: read(manifest.files.domains) as CanonicalContentBundle["domains"],
-    constructs: Object.values(manifest.files.constructs).flatMap((file) => read(file) as CanonicalContentBundle["constructs"]),
-    items: Object.values(manifest.files.items).flatMap((file) => read(file) as CanonicalContentBundle["items"]),
+    constructs: Object.values(manifest.files.constructs).flatMap(
+      (file) => read(file) as CanonicalContentBundle["constructs"],
+    ),
+    items: applyItemMappingCorrections(items, corrections),
     profiles: read(manifest.files.profiles.primary) as CanonicalContentBundle["profiles"],
     modifiers: read(manifest.files.profiles.modifiers) as CanonicalContentBundle["modifiers"],
     specialists: read(manifest.files.profiles.specialists) as CanonicalContentBundle["specialists"],
@@ -110,10 +119,7 @@ ${responseRows}
 
 function validateDeclaredJsonSchema(bundle: CanonicalContentBundle): void {
   const ajv = new Ajv({ allErrors: true });
-  const schemaDirectory = path.join(
-    root,
-    "v2/packages/content/schemas",
-  );
+  const schemaDirectory = path.join(root, "v2/packages/content/schemas");
   const schemaFiles = [
     "content-schema.schema.json",
     "contribution.schema.json",
@@ -140,9 +146,7 @@ function validateDeclaredJsonSchema(bundle: CanonicalContentBundle): void {
     ) as Record<string, unknown>;
     ajv.addSchema(schema);
   }
-  const validate = ajv.getSchema(
-    "https://example.com/v2/content-manifest.schema.json",
-  );
+  const validate = ajv.getSchema("https://example.com/v2/content-manifest.schema.json");
   if (!validate || !validate(bundle)) {
     throw new Error(
       `Declared JSON schema validation failed: ${JSON.stringify(validate?.errors ?? [])}`,

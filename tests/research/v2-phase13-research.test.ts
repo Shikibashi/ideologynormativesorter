@@ -11,6 +11,9 @@ import {
 } from "../../v2/packages/research/src";
 
 const bundle = bundleJson as unknown as ResearchBundle;
+const activeCoreItemCount = bundle.items.filter(
+  (item) => item.role === "core" && item.status === "active",
+).length;
 const missingInput = {
   responseSchemaVersion: bundle.metadata.responseSchemaVersion,
   contentFingerprint: bundle.metadata.contentFingerprint,
@@ -22,8 +25,8 @@ const missingInput = {
 describe("Phase 13 research contract", () => {
   it("projects every active core item exactly once without scoring fields", () => {
     const submission = createResearchSubmission(missingInput, bundle, { consentedAt: "2026-08-19T12:00:00.000Z", submissionId: "rs_00000000-0000-4000-8000-000000000001" });
-    expect(submission.responses.core).toHaveLength(338);
-    expect(new Set(submission.responses.core.map((response) => response.itemId)).size).toBe(338);
+    expect(submission.responses.core).toHaveLength(activeCoreItemCount);
+    expect(new Set(submission.responses.core.map((response) => response.itemId)).size).toBe(activeCoreItemCount);
     expect(JSON.stringify(submission)).not.toContain("contributions");
     expect(JSON.stringify(submission)).not.toContain("participantId");
   });
@@ -70,7 +73,7 @@ describe("Phase 13 research contract", () => {
   it("exports only normalized response rows and preserves explicit non-answer states", () => {
     const submission = createResearchSubmission(missingInput, bundle, { consentedAt: "2026-08-19T12:00:00.000Z", submissionId: "rs_00000000-0000-4000-8000-000000000007" });
     const rows = projectResearchRows(submission);
-    expect(rows).toHaveLength(338);
+    expect(rows).toHaveLength(activeCoreItemCount);
     expect(rows[0]).toMatchObject({ state: "missing", rawValue: null, optionId: null });
     expect(rows[0]).not.toHaveProperty("constructId");
   });

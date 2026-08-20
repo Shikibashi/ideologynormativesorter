@@ -160,7 +160,7 @@ export const primaryScoringScopeByLabelId = {
       "centralization-preference",
     ],
     ["equality-theory", "anti-domination"],
-    ["sep-radical-democracy"],
+    ["oxford-radical-democracy-constituent-power"],
     "The comparison registers equality, contestation of concentrated power, and participatory anti-domination without treating formal electoralism as a definition.",
     "The bank lacks a dedicated popular-sovereignty or participatory-self-government construct; this is a constrained family comparison, not a full radical-democracy measure.",
   ),

@@ -416,16 +416,31 @@ describe("Phase 5 primary profile matching", () => {
 });
 
 describe("Phase 5 full canonical primary-profile corpus", () => {
-  it("scores every canonical primary profile from a complete construct assessment", () => {
+  it("accounts for every canonical profile while keeping demoted compatibility profiles out of ranking", () => {
     const constructs = realBundle.constructs.map((construct) => scoredConstruct(String(construct.id), 0, 2));
     const result = scorePrimaryProfiles(assessmentFor(realBundle, constructs), realBundle);
+    const demoted = new Set([
+      "profile:liberal-conservatism",
+      "profile:market-liberal",
+      "profile:national-conservatism",
+      "profile:radical-democracy",
+    ]);
+    const demotedResults = result.profiles.filter((entry) => demoted.has(String(entry.profileId)));
+    const commitmentResults = result.profiles.filter((entry) => !demoted.has(String(entry.profileId)));
+
     expect(result.profiles).toHaveLength(realBundle.profiles.length);
-    expect(result.ranking).toHaveLength(realBundle.profiles.length);
-    expect(result.profiles.every((profileResult) => profileResult.status === "scored")).toBe(true);
-    expect(result.profiles.every((profileResult) => profileResult.comparisons.length === 26)).toBe(true);
-    expect(new Set(result.ranking.map((entry) => entry.profileId))).toEqual(
-      new Set(realBundle.profiles.map((profileRecord) => String(profileRecord.id))),
-    );
+    expect(demotedResults).toHaveLength(demoted.size);
+    expect(
+      demotedResults.every(
+        (entry) =>
+          entry.status === "abstained" &&
+          entry.abstentionReason === "invalid_profile_configuration" &&
+          entry.comparisons.length === 0,
+      ),
+    ).toBe(true);
+    expect(commitmentResults).toHaveLength(realBundle.profiles.length - demoted.size);
+    expect(commitmentResults.every((entry) => entry.comparisons.length > 0)).toBe(true);
+    expect(result.ranking.every((entry) => !demoted.has(String(entry.profileId)))).toBe(true);
   });
 
   it("does not rank profiles when required canonical evidence is absent", () => {

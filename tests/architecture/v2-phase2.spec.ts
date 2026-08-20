@@ -45,8 +45,14 @@ describe("Phase 2 audited canonical content", () => {
 
     const itemIds = new Set(bundle.items.map((item: JsonObject) => item.id));
     expect(itemIds.size).toBe(bundle.items.length);
+    const inactiveItemIds = bundle.items
+      .filter((item: JsonObject) => item.status === "inactive")
+      .map((item: JsonObject) => item.id)
+      .sort();
+    expect(inactiveItemIds).toEqual(["q0073", "q0074"]);
     for (const item of bundle.items) {
-      expect(item.status).toBe("active");
+      expect(["active", "inactive"]).toContain(item.status);
+      if (item.status !== "active") continue;
       if (item.responseType === "statement-choice") {
         expect(item.scoring.mappingMode).toBe("options");
         expect(item.options.length).toBeGreaterThan(0);

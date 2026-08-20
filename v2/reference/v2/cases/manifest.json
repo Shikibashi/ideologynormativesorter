@@ -1,6 +1,6 @@
 {
   "schemaVersion": "v2-golden-v1",
-  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
   "resultSchemaVersion": "result-v2.phase9.1",
   "cases": [
     {
@@ -8,7 +8,7 @@
       "input": "complete-core/input.json",
       "expectedResult": "complete-core/expected-result.json",
       "canonicalResult": "complete-core/expected-result.canonical.json",
-      "canonicalSha256": "bae2854ff7256ea207cea9a4b782d8e1e71d8d1e0694e32640d6c0a13ce6dc60"
+      "canonicalSha256": "fd08776f619d5de4bad3354e89892f834cd00f01f1a2441962b45c5bef52071d"
     }
   ]
 }

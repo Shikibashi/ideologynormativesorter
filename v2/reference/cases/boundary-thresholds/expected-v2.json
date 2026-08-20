@@ -1,12 +1,12 @@
 {
   "resultSchemaVersion": "result-v2.phase9.1",
-  "contentFingerprint": "bb1dfddf12db1224215440d48f14cf876b9228a850d585e70d49d18b455aaa72",
+  "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
   "assessment": {
     "status": "insufficient_core_evidence",
     "responseSummary": {
-      "coreExpectedCount": 338,
+      "coreExpectedCount": 336,
       "coreAnsweredCount": 1,
-      "coreMissingCount": 337,
+      "coreMissingCount": 335,
       "coreSkippedCount": 0,
       "coreAbstainedCount": 0,
       "coreRefusedCount": 0,
@@ -19,42 +19,35 @@
     },
     "evidence": {
       "status": "partial",
-      "coreCoverage": 0.004155946962200673,
+      "coreCoverage": 0.0020466639377814165,
       "core": {
-        "expectedItemCount": 786,
-        "answeredItemCount": 3,
-        "missingItemCount": 783,
+        "expectedItemCount": 755,
+        "answeredItemCount": 1,
+        "missingItemCount": 754,
         "skippedItemCount": 0,
         "abstainedItemCount": 0,
         "refusedItemCount": 0,
-        "supportingItemCount": 3,
-        "totalEligibleWeight": 505.29999999999995,
-        "answeredEligibleWeight": 2.1,
-        "missingWeight": 503.19999999999993,
+        "supportingItemCount": 1,
+        "totalEligibleWeight": 488.59999999999997,
+        "answeredEligibleWeight": 1,
+        "missingWeight": 487.59999999999997,
         "skippedWeight": 0,
         "abstainedWeight": 0,
         "refusedWeight": 0,
-        "scoredMappedWeight": 2.1,
-        "scoredEffectiveWeight": 2.1,
+        "scoredMappedWeight": 1,
+        "scoredEffectiveWeight": 1,
         "weightedSum": 0,
-        "structuralCoverage": 0.003816793893129771,
-        "answeredWeightCoverage": 0.004155946962200673,
-        "scoredWeightCoverage": 0.004155946962200673,
-        "effectiveWeightCoverage": 0.004155946962200673,
+        "structuralCoverage": 0.0013245033112582781,
+        "answeredWeightCoverage": 0.0020466639377814165,
+        "scoredWeightCoverage": 0.0020466639377814165,
+        "effectiveWeightCoverage": 0.0020466639377814165,
         "salienceCoverage": 1,
         "salienceSkippedWeight": 0,
         "salienceSkippedItemCount": 0,
         "contributionIds": [
-          "q0001\u0000anti-domination\u0000",
-          "q0001\u0000authority-legitimacy\u0000",
-          "q0001\u0000liberty-noninterference\u0000"
+          "q0001\u0000authority-legitimacy\u0000"
         ],
         "itemStateById": {
-          "q0001": "answered",
-          "q0003": "missing",
-          "q0004": "missing",
-          "q0005": "missing",
-          "q0006": "missing",
           "q0019": "missing",
           "q0021": "missing",
           "q0022": "missing",
@@ -71,7 +64,6 @@
           "q0065": "missing",
           "q0066": "missing",
           "q0079": "missing",
-          "q0081": "missing",
           "q0082": "missing",
           "q0083": "missing",
           "q0084": "missing",
@@ -156,6 +148,11 @@
           "sq01": "missing",
           "sq13": "missing",
           "sq15": "missing",
+          "q0001": "answered",
+          "q0003": "missing",
+          "q0004": "missing",
+          "q0005": "missing",
+          "q0006": "missing",
           "q0121": "missing",
           "q0122": "missing",
           "q0123": "missing",
@@ -288,8 +285,6 @@
           "q0467": "missing",
           "q0468": "missing",
           "q0469": "missing",
-          "q0041": "missing",
-          "q0043": "missing",
           "q0044": "missing",
           "q0045": "missing",
           "q0046": "missing",
@@ -331,6 +326,9 @@
           "q0447": "missing",
           "q0448": "missing",
           "sq07": "missing",
+          "q0041": "missing",
+          "q0043": "missing",
+          "q0081": "missing",
           "q0202": "missing",
           "q0404": "missing",
           "sq06": "missing",
@@ -362,8 +360,6 @@
           "q0035": "missing",
           "q0036": "missing",
           "q0038": "missing",
-          "q0073": "missing",
-          "q0074": "missing",
           "q0075": "missing",
           "q0076": "missing",
           "q0274": "missing",
@@ -405,9 +401,9 @@
       "constructId": "anti-domination",
       "status": "abstained",
       "score": null,
-      "answeredItemCount": 1,
-      "expectedItemCount": 106,
-      "coverage": 0.011527377521613844
+      "answeredItemCount": 0,
+      "expectedItemCount": 100,
+      "coverage": 0
     },
     {
       "constructId": "authority-legitimacy",
@@ -478,7 +474,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 47,
+      "expectedItemCount": 45,
       "coverage": 0
     },
     {
@@ -509,9 +505,9 @@
       "constructId": "liberty-noninterference",
       "status": "abstained",
       "score": null,
-      "answeredItemCount": 1,
-      "expectedItemCount": 96,
-      "coverage": 0.004909983633387892
+      "answeredItemCount": 0,
+      "expectedItemCount": 88,
+      "coverage": 0
     },
     {
       "constructId": "market-process-confidence",
@@ -550,7 +546,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 41,
+      "expectedItemCount": 36,
       "coverage": 0
     },
     {
@@ -566,7 +562,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 20,
+      "expectedItemCount": 18,
       "coverage": 0
     },
     {
@@ -582,7 +578,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 77,
+      "expectedItemCount": 73,
       "coverage": 0
     },
     {
@@ -598,7 +594,7 @@
       "status": "abstained",
       "score": null,
       "answeredItemCount": 0,
-      "expectedItemCount": 68,
+      "expectedItemCount": 64,
       "coverage": 0
     },
     {
@@ -658,7 +654,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:libertarian-socialism",
@@ -674,7 +670,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:market-right-libertarianism",
@@ -706,7 +702,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:radical-democracy",
@@ -714,7 +710,7 @@
         "distance": null,
         "similarity": null,
         "rank": null,
-        "abstentionReason": "required_construct_unavailable"
+        "abstentionReason": "invalid_profile_configuration"
       },
       {
         "profileId": "profile:republicanism",
@@ -980,7 +976,7 @@
     }
   },
   "diagnostics": {
-    "contributionCount": 771,
+    "contributionCount": 740,
     "constructCount": 26,
     "profileCount": 16,
     "modifierCount": 24,

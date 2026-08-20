@@ -540,6 +540,7 @@ function buildItemMap(
     return {
       ...item,
       prompt: canonical.prompt,
+      helpText: canonical.helpText ?? item.helpText,
       domain: canonical.domain ?? item.domain,
       layer: canonical.layer ?? item.layer,
       theoryContext: "mixed",
@@ -570,6 +571,8 @@ function buildItemMap(
         : { constructWeights: { ...canonical.localConstructWeights } }),
       reverseScored: canonical.reverseScored === true,
       reviewStatus: "approved",
+      evidenceNote: canonical.evidenceNote ?? item.evidenceNote,
+      contextNote: canonical.contextNote ?? item.contextNote,
       ...(canonical.layer === "descriptive"
         ? {
             confidencePrompt:
@@ -735,7 +738,7 @@ export function buildResearchSubmission(input: {
     durationMs: durationBetween(input.startedAt, input.completedAt),
     resumed: input.resumed,
     presentationOrder: input.questions.map((question) => String(question.id)),
-    bankVersion: input.bankVersion,
+    bankVersion: RESEARCH_MANIFEST_VERSION,
     scoringVersion: input.scoringVersion,
     taxonomyVersion: TAXONOMY_VERSION,
     primaryMeasurementVersion: PRIMARY_MEASUREMENT_VERSION,
@@ -838,7 +841,7 @@ export function buildSpecialistResearchSubmission(input: {
     moduleVersion: input.moduleVersion,
     assignment: input.assignment,
     presentationOrder: input.questions.map((question) => String(question.id)),
-    bankVersion: input.bankVersion,
+    bankVersion: RESEARCH_MANIFEST_VERSION,
     scoringVersion: input.scoringVersion,
     criterion: input.criterion,
     answers: input.answers,
