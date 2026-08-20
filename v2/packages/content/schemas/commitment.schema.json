@@ -1,0 +1,56 @@
+{
+  "$id": "https://example.com/v2/commitment.schema.json",
+  "type": "object",
+  "required": ["id", "constructId", "relation", "rationale"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "constructId": { "type": "string", "minLength": 1 },
+    "relation": {
+      "enum": [
+        "constitutive",
+        "core",
+        "characteristic",
+        "contested",
+        "compatible",
+        "peripheral",
+        "incompatible"
+      ]
+    },
+    "criterion": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["operator", "minimum"],
+          "properties": {
+            "operator": { "const": "minimum" },
+            "minimum": { "type": "number", "minimum": -1, "maximum": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["operator", "maximum"],
+          "properties": {
+            "operator": { "const": "maximum" },
+            "maximum": { "type": "number", "minimum": -1, "maximum": 1 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["operator", "minimum", "maximum"],
+          "properties": {
+            "operator": { "const": "interval" },
+            "minimum": { "type": "number", "minimum": -1, "maximum": 1 },
+            "maximum": { "type": "number", "minimum": -1, "maximum": 1 }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "weight": { "type": "number", "exclusiveMinimum": 0 },
+    "minimumAnsweredItems": { "type": "integer", "minimum": 0 },
+    "rationale": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": false
+}
