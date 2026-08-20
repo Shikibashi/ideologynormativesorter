@@ -12,12 +12,13 @@
     "activation": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } },
     "outputType": { "enum": ["primary", "diagnostic"] },
     "requirements": { "type": "array", "items": { "$ref": "requirement.schema.json" } },
+    "commitments": { "type": "array", "items": { "$ref": "commitment.schema.json" } },
     "gates": { "type": "array", "items": { "$ref": "gate.schema.json" } },
     "variants": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "sourceKey", "name", "description", "status", "requirements", "gates"],
+        "required": ["id", "sourceKey", "name", "description", "status", "commitments", "gates"],
         "properties": {
           "id": { "type": "string", "minLength": 1 },
           "sourceKey": { "type": "string", "minLength": 1 },
@@ -25,7 +26,7 @@
           "description": { "type": "string", "minLength": 1 },
           "variant": { "type": "string" },
           "status": { "type": "string", "minLength": 1 },
-          "requirements": { "type": "array", "items": { "$ref": "requirement.schema.json" } },
+          "commitments": { "type": "array", "items": { "$ref": "commitment.schema.json" } },
           "gates": { "type": "array", "items": { "$ref": "gate.schema.json" } },
           "provenanceRefs": { "type": "array", "items": { "type": "string" } }
         },
