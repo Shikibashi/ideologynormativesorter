@@ -17,9 +17,4 @@ jobs:
         with:
           ref: refactor/commitment-based-ideology-scoring
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: echo "repair trigger active"
+      - run: echo ok
