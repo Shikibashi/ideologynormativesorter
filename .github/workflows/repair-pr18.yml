@@ -22,15 +22,4 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Apply repair
-        shell: python
-        run: |
-          from pathlib import Path
-          print("repair workflow armed")
-      - name: Commit verified repair
-        shell: bash
-        env:
-          HEAD_BRANCH: refactor/commitment-based-ideology-scoring
-        run: |
-          set -euo pipefail
-          echo "workflow trigger check"
+      - run: echo "repair trigger active"
