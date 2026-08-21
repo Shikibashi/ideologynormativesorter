@@ -1,0 +1,182 @@
+[
+  {
+    "itemId": "q0001",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "authority-legitimacy",
+        "weight": 1,
+        "polarity": -1
+      }
+    ],
+    "rationale": "The stem directly concerns legitimacy of compulsory political membership. Non-domination and non-interference are not assumed from the same answer."
+  },
+  {
+    "itemId": "q0003",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "authority-legitimacy",
+        "weight": 1,
+        "polarity": -1
+      }
+    ],
+    "rationale": "The stem asks whether monopoly government is morally suspect; it directly measures political-authority legitimacy rather than a bundled liberty theory."
+  },
+  {
+    "itemId": "q0004",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "authority-legitimacy",
+        "weight": 1,
+        "polarity": -1
+      }
+    ],
+    "rationale": "Emergency power is a limit-on-authority item. Agreement does not by itself establish a general anti-domination or negative-liberty position."
+  },
+  {
+    "itemId": "q0005",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "authority-legitimacy",
+        "weight": 1,
+        "polarity": -1
+      }
+    ],
+    "rationale": "The stem concerns the presumption of political obedience under injustice. Tactical direct action and a general theory of liberty are separate questions."
+  },
+  {
+    "itemId": "q0006",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "authority-legitimacy",
+        "weight": 1,
+        "polarity": -1
+      }
+    ],
+    "rationale": "Consent and exit are proposed as standards of political legitimacy. The answer must not mechanically force anti-domination and non-interference to co-move."
+  },
+  {
+    "itemId": "q0036",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "weight": 1,
+        "polarity": -1
+      }
+    ],
+    "rationale": "Making worker-owned firms easier to form changes the rules and ownership structure before market distribution. Under the current construct definition this is the predistribution side, not redistribution."
+  },
+  {
+    "itemId": "q0038",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "redistribution-vs-predistribution",
+        "weight": 1,
+        "polarity": -1
+      }
+    ],
+    "rationale": "Making ownership more contestable changes institutional rules before distribution and therefore points toward the current construct's predistribution pole."
+  },
+  {
+    "itemId": "q0041",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "liberty-noninterference",
+        "weight": 1,
+        "polarity": 1
+      }
+    ],
+    "rationale": "The stem measures permission for peaceful exchange despite planners' preferred pattern. It does not by itself establish substantive equality or a complete theory of property."
+  },
+  {
+    "itemId": "q0042",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "anti-domination",
+        "weight": 1,
+        "polarity": 1
+      }
+    ],
+    "rationale": "Treating persons as instruments of one imposed collective blueprint is directly an anti-domination/anti-instrumental concern."
+  },
+  {
+    "itemId": "q0043",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "liberty-noninterference",
+        "weight": 1,
+        "polarity": 1
+      }
+    ],
+    "rationale": "The stem concerns plural individual ends versus an official hierarchy of goals. Property and substantive equality do not follow from the answer."
+  },
+  {
+    "itemId": "q0073",
+    "status": "inactive",
+    "contributions": [
+      {
+        "constructId": "state-action-vs-exit",
+        "weight": 1,
+        "polarity": 1
+      }
+    ],
+    "rationale": "A low-paternalism safety-net design is not equivalent to redistribution-versus-predistribution, deregulation, or state-versus-exit. Deactivate until a direct benefit-design/paternalism construct exists."
+  },
+  {
+    "itemId": "q0074",
+    "status": "inactive",
+    "contributions": [
+      {
+        "constructId": "state-action-vs-exit",
+        "weight": 1,
+        "polarity": 1
+      }
+    ],
+    "rationale": "Cash versus restricted in-kind aid is a transfer-design question. Deactivate rather than use it as a proxy for generic state action, deregulation, or redistribution orientation."
+  },
+  {
+    "itemId": "q0081",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "liberty-noninterference",
+        "weight": 1,
+        "polarity": 1
+      }
+    ],
+    "rationale": "Freedom to form worker organizations and bargain collectively directly measures associational liberty; it does not establish a general property theory."
+  },
+  {
+    "itemId": "q0082",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "anti-domination",
+        "weight": 1,
+        "polarity": 1
+      }
+    ],
+    "rationale": "Meaningful exit and non-rigged background rules are conditions against domination in employment. Property legitimacy and generic non-interference are separate questions."
+  },
+  {
+    "itemId": "q0083",
+    "status": "active",
+    "contributions": [
+      {
+        "constructId": "anti-domination",
+        "weight": 1,
+        "polarity": 1
+      }
+    ],
+    "rationale": "The stem directly concerns insulated workplace authority and contestability, so anti-domination is the primary construct."
+  }
+]

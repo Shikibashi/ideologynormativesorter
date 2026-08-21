@@ -1,28 +1,28 @@
 {
   "artifactVersion": "v2-content-bundle-1",
   "sourceManifest": "v2/content/manifest.json",
-  "contentVersion": "v2-content-phase8.2-commitments",
-  "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
+  "contentVersion": "v3-content-commitments-1",
+  "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
   "counts": {
     "domains": 20,
-    "constructsRoot": 26,
+    "constructsRoot": 74,
     "constructsSpecialist": 54,
-    "constructsTotal": 80,
+    "constructsTotal": 128,
     "constructsByFamily": {
-      "descriptive": 7,
-      "normative": 10,
-      "prescriptive": 9,
+      "descriptive": 18,
+      "normative": 28,
+      "prescriptive": 28,
       "specialist": 54
     },
-    "coreItems": 338,
+    "coreItems": 378,
     "specialistItems": 68,
     "responseTypes": {
-      "likert7": 400,
+      "likert7": 440,
       "statement-choice": 6
     },
     "reversedItems": 0,
     "statementChoiceItems": 6,
-    "primaryProfiles": 16,
+    "primaryProfiles": 12,
     "modifierProfiles": 24,
     "specialistProfiles": 78,
     "specialistCandidates": 57,
@@ -30,8 +30,8 @@
     "ontologyNodes": 145,
     "ontologyRelations": 42,
     "diagnosticRelations": 4,
-    "explicitContributionMappings": 984,
-    "contentVersion": "v2-content-phase8.2-commitments",
-    "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05"
+    "explicitContributionMappings": 549,
+    "contentVersion": "v3-content-commitments-1",
+    "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55"
   }
 }

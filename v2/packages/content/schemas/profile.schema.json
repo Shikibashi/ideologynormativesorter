@@ -1,19 +1,69 @@
 {
   "$id": "https://example.com/v2/profile.schema.json",
   "type": "object",
-  "required": ["id", "name", "role", "requirements", "gates"],
+  "required": [
+    "id",
+    "name",
+    "role",
+    "commitments",
+    "gates"
+  ],
   "properties": {
-    "id": { "type": "string", "minLength": 1 },
-    "name": { "type": "string", "minLength": 1 },
-    "role": { "const": "primary" },
-    "requirements": { "type": "array", "minItems": 1, "items": { "$ref": "requirement.schema.json" } },
-    "gates": { "type": "array", "items": { "$ref": "gate.schema.json" } },
-    "minimumEvidenceRatio": { "type": "number", "minimum": 0, "maximum": 1 },
-    "status": { "type": "string" },
-    "version": { "type": "string" },
-    "targetNodeId": { "type": "string", "minLength": 1 },
-    "rationale": { "type": "string" },
-    "provenanceRefs": { "type": "array", "items": { "type": "string" } }
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "const": "primary"
+    },
+    "requirements": {
+      "type": "array",
+      "maxItems": 0,
+      "items": {
+        "$ref": "requirement.schema.json"
+      }
+    },
+    "commitments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "commitment.schema.json"
+      }
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "$ref": "gate.schema.json"
+      }
+    },
+    "minimumEvidenceRatio": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "targetNodeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "provenanceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
   },
   "additionalProperties": false
 }

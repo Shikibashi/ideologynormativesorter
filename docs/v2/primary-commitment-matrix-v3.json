@@ -1,0 +1,2447 @@
+{
+  "schemaVersion": "v3-primary-commitment-matrix-1",
+  "empiricalValidity": "NOT_EVALUATED",
+  "profiles": [
+    {
+      "profileId": "profile:christian-democrat",
+      "rationale": "Christian democracy is identified by subsidiarity, social solidarity, democratic public authority, socially bounded property, and Christian political inspiration rather than a generic conservative midpoint.",
+      "commitments": [
+        {
+          "id": "cd-subsidiarity",
+          "constructId": "subsidiarity",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Subsidiarity is a central institutional principle of Christian-democratic political thought.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-cambridge-christian-democracy"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0535",
+            "q0536"
+          ]
+        },
+        {
+          "id": "cd-solidarity",
+          "constructId": "social-solidarity",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Solidarity and social protection are core to Christian-democratic social capitalism.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-cambridge-christian-democracy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0062",
+            "q0510"
+          ]
+        },
+        {
+          "id": "cd-democracy",
+          "constructId": "democratic-legitimacy",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Modern Christian democracy is democratic rather than clerical-authoritarian.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-cambridge-christian-democracy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0341",
+            "q0343",
+            "q0344",
+            "q0359"
+          ]
+        },
+        {
+          "id": "cd-inspiration",
+          "constructId": "religious-political-inspiration",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Christian moral inspiration is characteristic even where institutions are religiously pluralist.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-cambridge-christian-democracy",
+            "citation:v3-oxford-religion-liberal-philosophy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0508",
+            "q0509"
+          ]
+        },
+        {
+          "id": "cd-property",
+          "constructId": "productive-property",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.2
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Private property is generally accepted but constrained by social duties.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-cambridge-christian-democracy",
+            "citation:v3-sep-property"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "id": "cd-insurance",
+          "constructId": "social-insurance",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Social insurance and social-market institutions are characteristic instruments.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-cambridge-christian-democracy"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0527",
+            "q0528"
+          ]
+        },
+        {
+          "id": "cd-establishment",
+          "constructId": "religious-establishment",
+          "relation": "contested",
+          "rationale": "Christian democrats vary substantially on establishment and church-state constitutional form.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-cambridge-christian-democracy",
+            "citation:v3-oxford-religion-liberal-philosophy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0243",
+            "q0405",
+            "q0414"
+          ]
+        },
+        {
+          "id": "cd-moral-law",
+          "constructId": "coercive-moral-order",
+          "relation": "contested",
+          "rationale": "Christian-democratic parties vary on coercive enforcement of traditional morality.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-cambridge-christian-democracy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0262",
+            "q0264",
+            "q0265",
+            "q0266",
+            "q0279"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:classical-liberalism",
+      "rationale": "Classical liberalism combines non-interference, legal equality, private property, markets, constitutional limits, and skepticism toward concentrated coercive authority without requiring a single welfare or democracy theory.",
+      "commitments": [
+        {
+          "id": "cl-liberty",
+          "constructId": "liberty-noninterference",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.15
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "A protected sphere of individual non-interference is constitutive of classical liberalism.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism",
+            "citation:v3-oxford-libertarianism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0041",
+            "q0043",
+            "q0044",
+            "q0045",
+            "q0046",
+            "q0059",
+            "q0081"
+          ]
+        },
+        {
+          "id": "cl-legal-equality",
+          "constructId": "legal-equality",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Equal legal status is central to liberal citizenship.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism",
+            "citation:v3-sep-equality"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0281",
+            "q0282",
+            "sq02#a",
+            "sq13#a"
+          ]
+        },
+        {
+          "id": "cl-property",
+          "constructId": "productive-property",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Private property and voluntary exchange are core institutions.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-property",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "id": "cl-market",
+          "constructId": "market-knowledge-coordination",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Classical liberals characteristically expect decentralized markets to coordinate dispersed knowledge.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-hayek-knowledge",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0048",
+            "q0107",
+            "q0108",
+            "q0127",
+            "q0148",
+            "q0308"
+          ]
+        },
+        {
+          "id": "cl-constitutional",
+          "constructId": "constitutional-reform",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Constitutional limits and rule-bound government are core liberal institutional commitments.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0533",
+            "q0534"
+          ]
+        },
+        {
+          "id": "cl-contestability",
+          "constructId": "contestable-institutions",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Institutional checks and review are characteristic protections against arbitrary power.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-pettit-republicanism",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0354",
+            "q0355",
+            "q0356"
+          ]
+        },
+        {
+          "id": "cl-effective-agency",
+          "constructId": "effective-agency",
+          "relation": "contested",
+          "rationale": "Classical liberals disagree over how far effective material capacity belongs within liberty itself.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0063",
+            "q0079"
+          ]
+        },
+        {
+          "id": "cl-solidarity",
+          "constructId": "social-solidarity",
+          "relation": "contested",
+          "rationale": "Classical-liberal traditions vary over social minima and public social duties.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0062",
+            "q0510"
+          ]
+        },
+        {
+          "id": "cl-planning",
+          "constructId": "central-planning",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Comprehensive central planning conflicts with classical-liberal economic and political pluralism.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism",
+            "citation:v3-hayek-knowledge"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0539",
+            "q0540"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:conservative",
+      "rationale": "Prudential conservatism is identified by deference to inherited institutions, path dependence, gradual change, and skepticism of deliberate social reconstruction rather than by mandatory nationalism, religiosity, or laissez-faire economics.",
+      "commitments": [
+        {
+          "id": "con-tradition",
+          "constructId": "tradition-deference",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Inherited institutions and practices receive presumptive weight.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-conservatism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0261",
+            "q0421"
+          ]
+        },
+        {
+          "id": "con-path",
+          "constructId": "institutional-path-dependence",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Conservative prudence relies on limits created by institutional history and tacit adaptation.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-conservatism"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0519",
+            "q0520"
+          ]
+        },
+        {
+          "id": "con-gradual",
+          "constructId": "gradual-transition",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Major changes should usually be sequenced cautiously.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-conservatism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0016",
+            "q0394"
+          ]
+        },
+        {
+          "id": "con-reform",
+          "constructId": "institutional-reform",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.15
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Conservatism permits reform when it preserves continuity and manages risk.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-conservatism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0396",
+            "q0397",
+            "q0436",
+            "q0464",
+            "q0466"
+          ]
+        },
+        {
+          "id": "con-malleability",
+          "constructId": "cultural-malleability",
+          "relation": "core",
+          "criterion": {
+            "operator": "maximum",
+            "maximum": 0.25
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Conservatives characteristically doubt easy deliberate remaking of culture and institutions.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-conservatism"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0207",
+            "q0445",
+            "q0462",
+            "q0463",
+            "q0479"
+          ]
+        },
+        {
+          "id": "con-authority",
+          "constructId": "political-authority-legitimacy",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.2
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Order and authority may be legitimate, but no universal theory of unlimited state power is constitutive.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-conservatism",
+            "citation:v3-sep-political-legitimacy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0001",
+            "q0003",
+            "q0004",
+            "q0005",
+            "q0006",
+            "q0019",
+            "q0121",
+            "q0122",
+            "q0123",
+            "q0124",
+            "q0125",
+            "q0126",
+            "q0139",
+            "q0425",
+            "sq01#a",
+            "sq01#b",
+            "sq01#c",
+            "sq01#d"
+          ]
+        },
+        {
+          "id": "con-moral-order",
+          "constructId": "coercive-moral-order",
+          "relation": "contested",
+          "rationale": "Conservatives disagree over how far traditional morality should be legally enforced.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-conservatism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0262",
+            "q0264",
+            "q0265",
+            "q0266",
+            "q0279"
+          ]
+        },
+        {
+          "id": "con-national",
+          "constructId": "compatriot-priority",
+          "relation": "contested",
+          "rationale": "National attachment is important in some conservative traditions but not constitutive of prudential conservatism as such.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-conservatism",
+            "citation:v3-sep-nationalism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "sq06#a"
+          ]
+        },
+        {
+          "id": "con-market",
+          "constructId": "productive-property",
+          "relation": "contested",
+          "rationale": "Conservative traditions range from market-oriented to paternal/social variants.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-conservatism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:democratic-socialist",
+      "rationale": "Democratic socialism requires democratic political legitimacy and meaningful social or democratic control of economic power; it is not merely a more redistributive social democracy.",
+      "commitments": [
+        {
+          "id": "ds-democracy",
+          "constructId": "democratic-legitimacy",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Democratic political institutions distinguish democratic socialism from authoritarian socialist strategies.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0341",
+            "q0343",
+            "q0344",
+            "q0359"
+          ]
+        },
+        {
+          "id": "ds-workplace",
+          "constructId": "workplace-self-government",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Economic democracy and worker power are central socialist goals.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0083",
+            "q0505"
+          ]
+        },
+        {
+          "id": "ds-public-ownership",
+          "constructId": "public-ownership",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Social ownership is central, though its institutional form can be public, cooperative, municipal, or otherwise social.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0035",
+            "q0525"
+          ]
+        },
+        {
+          "id": "ds-worker-control",
+          "constructId": "worker-control",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Democratic control of productive institutions is a core route to economic democracy.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0097",
+            "q0526"
+          ]
+        },
+        {
+          "id": "ds-solidarity",
+          "constructId": "social-solidarity",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Social provision and solidarity are core socialist concerns.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0062",
+            "q0510"
+          ]
+        },
+        {
+          "id": "ds-class",
+          "constructId": "class-exploitation",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Democratic socialists commonly understand economic power in terms of class and workplace domination.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0089",
+            "q0511"
+          ]
+        },
+        {
+          "id": "ds-private-capital",
+          "constructId": "productive-property",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.75
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Treating strong private control of productive capital as presumptively overriding democratic/social claims conflicts with democratic socialism.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism",
+            "citation:v3-sep-property"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "id": "ds-revolution",
+          "constructId": "revolutionary-rupture",
+          "relation": "contested",
+          "rationale": "Democratic socialists differ over transformation through elections, extra-parliamentary action, rupture, or long reform.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0437",
+            "q0465"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:green-politics",
+      "rationale": "Green politics is identified by ecological standing, intergenerational obligations, and ecological restructuring; ecocentrism alone is not treated as the whole ideology.",
+      "commitments": [
+        {
+          "id": "green-standing",
+          "constructId": "ecological-standing",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.15
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Nature and ecological systems receive standing beyond immediate instrumental use.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-green-ideology"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0302",
+            "q0303",
+            "q0418",
+            "q0427",
+            "q0428",
+            "q0429",
+            "q0446",
+            "q0448",
+            "sq07#a",
+            "sq07#b",
+            "sq07#c",
+            "sq07#d"
+          ]
+        },
+        {
+          "id": "green-future",
+          "constructId": "intergenerational-ecological-duty",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Intergenerational ecological obligations are central to sustainability politics.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-green-ideology"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0301",
+            "q0447"
+          ]
+        },
+        {
+          "id": "green-restructure",
+          "constructId": "ecological-restructuring",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Green ideology characteristically seeks institutional restructuring to respect ecological constraints.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-green-ideology"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0537",
+            "q0538"
+          ]
+        },
+        {
+          "id": "green-limits",
+          "constructId": "ecological-limits-growth",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Many green traditions emphasize biophysical limits, while ecomodernist strands dispute stronger limits claims.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-green-ideology"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0516",
+            "q0517"
+          ]
+        },
+        {
+          "id": "green-democracy",
+          "constructId": "democratic-legitimacy",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Green political traditions commonly connect ecological politics with democratization.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-green-ideology"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0341",
+            "q0343",
+            "q0344",
+            "q0359"
+          ]
+        },
+        {
+          "id": "green-nonviolence",
+          "constructId": "nonviolent-strategy",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Nonviolence is historically characteristic but not a universal gate for every green party.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-green-ideology",
+            "citation:v3-sep-pacifism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0017",
+            "q0174",
+            "q0175",
+            "q0176",
+            "q0177",
+            "q0178",
+            "q0193",
+            "q0195",
+            "q0198",
+            "q0253",
+            "q0258",
+            "q0275",
+            "q0295",
+            "q0334",
+            "q0337",
+            "q0338",
+            "q0375",
+            "q0376"
+          ]
+        },
+        {
+          "id": "green-property",
+          "constructId": "public-ownership",
+          "relation": "contested",
+          "rationale": "Green traditions disagree over market, common, cooperative, and public ownership forms.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-green-ideology"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0035",
+            "q0525"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:libertarian-socialism",
+      "rationale": "Libertarian socialism combines anti-authoritarian/non-dominating political arrangements with social or worker control of productive institutions and decentralized organization.",
+      "commitments": [
+        {
+          "id": "ls-domination",
+          "constructId": "anti-domination",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.15
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Opposition to domination and hierarchical command is constitutive.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism",
+            "citation:v3-pettit-republicanism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0021",
+            "q0022",
+            "q0023",
+            "q0024",
+            "q0025",
+            "q0026",
+            "q0039",
+            "q0042",
+            "q0084",
+            "q0099",
+            "q0102",
+            "q0104",
+            "q0119",
+            "q0161",
+            "q0162",
+            "q0163",
+            "q0164",
+            "q0165",
+            "q0166",
+            "q0179",
+            "q0181",
+            "q0182",
+            "q0183",
+            "q0184",
+            "q0185",
+            "q0186",
+            "q0199",
+            "q0225",
+            "q0285",
+            "q0304",
+            "q0305",
+            "q0321",
+            "q0325",
+            "q0342",
+            "q0345",
+            "q0361",
+            "q0362",
+            "q0363",
+            "q0364",
+            "q0365",
+            "q0379",
+            "q0381",
+            "q0382",
+            "q0383",
+            "q0384",
+            "q0385",
+            "q0399",
+            "q0401",
+            "q0407",
+            "sq13#b",
+            "sq13#d"
+          ]
+        },
+        {
+          "id": "ls-authority",
+          "constructId": "political-authority-legitimacy",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "maximum",
+            "maximum": 0.15
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Libertarian socialism is skeptical that centralized coercive authority possesses a broad special claim to obedience.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0001",
+            "q0003",
+            "q0004",
+            "q0005",
+            "q0006",
+            "q0019",
+            "q0121",
+            "q0122",
+            "q0123",
+            "q0124",
+            "q0125",
+            "q0126",
+            "q0139",
+            "q0425",
+            "sq01#a",
+            "sq01#b",
+            "sq01#c",
+            "sq01#d"
+          ]
+        },
+        {
+          "id": "ls-workplace",
+          "constructId": "workplace-self-government",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Socialism requires democratic or social control of productive power rather than capitalist workplace hierarchy.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0083",
+            "q0505"
+          ]
+        },
+        {
+          "id": "ls-decentralize",
+          "constructId": "institutional-decentralization",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Decentralized and federated organization is characteristic of libertarian-socialist institutions.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism",
+            "citation:v3-ostrom-governing-commons"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0015",
+            "q0018",
+            "q0053",
+            "q0055",
+            "q0077",
+            "q0137",
+            "q0233",
+            "q0235",
+            "q0236",
+            "q0313",
+            "q0315",
+            "q0317",
+            "q0336",
+            "q0411"
+          ]
+        },
+        {
+          "id": "ls-worker-control",
+          "constructId": "worker-control",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Worker self-management is a characteristic institutional strategy.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0097",
+            "q0526"
+          ]
+        },
+        {
+          "id": "ls-direct",
+          "constructId": "direct-action",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Direct organization and action are characteristic but need not exclude all electoral work.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0439",
+            "q0443",
+            "q0468",
+            "q0469"
+          ]
+        },
+        {
+          "id": "ls-private-capital",
+          "constructId": "productive-property",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.7
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Strong capitalist control rights over productive assets conflict with libertarian socialism.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "id": "ls-planning",
+          "constructId": "central-planning",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Centralized administrative planning conflicts with the libertarian-socialist decentralist core.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0539",
+            "q0540"
+          ]
+        },
+        {
+          "id": "ls-markets",
+          "constructId": "market-knowledge-coordination",
+          "relation": "contested",
+          "rationale": "Market anarchist and communistic libertarian-socialist branches disagree over market coordination.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism",
+            "citation:v3-oxford-libertarianism"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0048",
+            "q0107",
+            "q0108",
+            "q0127",
+            "q0148",
+            "q0308"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:market-right-libertarianism",
+      "rationale": "Right-libertarianism is identified by strong non-interference and property rights, constrained political authority, voluntary exchange, and opposition to coercive redistribution or comprehensive planning.",
+      "commitments": [
+        {
+          "id": "rl-liberty",
+          "constructId": "liberty-noninterference",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.2
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Strong rights against coercive interference are constitutive.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0041",
+            "q0043",
+            "q0044",
+            "q0045",
+            "q0046",
+            "q0059",
+            "q0081"
+          ]
+        },
+        {
+          "id": "rl-property",
+          "constructId": "productive-property",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.2
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Strong legitimate private property claims are constitutive of right-libertarian justice.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism",
+            "citation:v3-sep-property"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "id": "rl-personal",
+          "constructId": "personal-property",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Strong control over personal holdings is central.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism",
+            "citation:v3-sep-property"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0506",
+            "q0507"
+          ]
+        },
+        {
+          "id": "rl-authority",
+          "constructId": "political-authority-legitimacy",
+          "relation": "core",
+          "criterion": {
+            "operator": "maximum",
+            "maximum": 0.2
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Political authority is sharply constrained; minarchist and anarchist variants differ over its residual scope.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism",
+            "citation:v3-sep-political-legitimacy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0001",
+            "q0003",
+            "q0004",
+            "q0005",
+            "q0006",
+            "q0019",
+            "q0121",
+            "q0122",
+            "q0123",
+            "q0124",
+            "q0125",
+            "q0126",
+            "q0139",
+            "q0425",
+            "sq01#a",
+            "sq01#b",
+            "sq01#c",
+            "sq01#d"
+          ]
+        },
+        {
+          "id": "rl-market",
+          "constructId": "market-knowledge-coordination",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Decentralized exchange is characteristically viewed as an effective coordination institution.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-hayek-knowledge",
+            "citation:v3-oxford-libertarianism"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0048",
+            "q0107",
+            "q0108",
+            "q0127",
+            "q0148",
+            "q0308"
+          ]
+        },
+        {
+          "id": "rl-deregulation",
+          "constructId": "market-deregulation",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Reducing coercive restrictions on voluntary exchange is characteristic.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0054",
+            "q0058",
+            "q0094",
+            "q0098",
+            "q0114",
+            "q0116",
+            "q0153",
+            "q0154",
+            "q0155",
+            "q0157",
+            "q0158",
+            "q0173",
+            "q0214",
+            "q0215",
+            "q0216",
+            "q0217",
+            "q0274",
+            "q0278",
+            "q0293",
+            "q0314",
+            "q0318"
+          ]
+        },
+        {
+          "id": "rl-legal-equality",
+          "constructId": "legal-equality",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Equal individual rights rather than inherited legal status is a core implication of individual rights.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism",
+            "citation:v3-sep-equality"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0281",
+            "q0282",
+            "sq02#a",
+            "sq13#a"
+          ]
+        },
+        {
+          "id": "rl-redistribution",
+          "constructId": "income-redistribution",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.7
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Strong coercive redistribution for patterned distributive outcomes conflicts with right-libertarian property claims.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0033",
+            "q0034",
+            "q0076",
+            "q0296"
+          ]
+        },
+        {
+          "id": "rl-planning",
+          "constructId": "central-planning",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.65
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Comprehensive central planning conflicts with voluntary exchange and private control.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism",
+            "citation:v3-hayek-knowledge"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0539",
+            "q0540"
+          ]
+        },
+        {
+          "id": "rl-force",
+          "constructId": "force-permissibility",
+          "relation": "contested",
+          "rationale": "Libertarians agree on defensive force more than on pacifism, foreign policy, or military institutions.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-libertarianism",
+            "citation:v3-sep-pacifism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0323",
+            "q0324",
+            "q0326",
+            "q0339",
+            "q0402",
+            "q0449",
+            "q0450",
+            "q0451"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:marxian-socialism",
+      "rationale": "Marxian socialism is distinguished by its descriptive theory of class, exploitation, accumulation, ideology, and structural historical change together with socialist transformation; it is not defined merely as non-Leninist distance from another profile.",
+      "commitments": [
+        {
+          "id": "mx-class",
+          "constructId": "class-exploitation",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.15
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Class and exploitation are constitutive explanatory commitments of Marxian analysis.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-marxian-tradition"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0089",
+            "q0511"
+          ]
+        },
+        {
+          "id": "mx-accumulation",
+          "constructId": "capital-accumulation-crisis",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Accumulation, concentration, and crisis mechanisms are central to Marxian political economy.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-marxian-tradition"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0512",
+            "q0513"
+          ]
+        },
+        {
+          "id": "mx-ideology",
+          "constructId": "ideology-hegemony",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Ideology and social reproduction of power are central explanatory themes.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-marxian-tradition"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0461",
+            "q0478"
+          ]
+        },
+        {
+          "id": "mx-structure",
+          "constructId": "historical-change-structural",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Structural social and economic forces play a major role in historical change.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-marxian-tradition"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0521",
+            "q0522"
+          ]
+        },
+        {
+          "id": "mx-private-capital",
+          "constructId": "productive-property",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.7
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Treating capitalist private productive property as presumptively just conflicts with Marxian socialism.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-marxian-tradition",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "id": "mx-public",
+          "constructId": "public-ownership",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Social ownership is characteristic, while Marxian traditions dispute state, communal, and cooperative forms.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism",
+            "citation:v3-oxford-marxian-tradition"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0035",
+            "q0525"
+          ]
+        },
+        {
+          "id": "mx-worker",
+          "constructId": "worker-control",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Worker/social control is characteristic of emancipatory socialist transformation.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-socialism",
+            "citation:v3-oxford-marxian-tradition"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0097",
+            "q0526"
+          ]
+        },
+        {
+          "id": "mx-revolution",
+          "constructId": "revolutionary-rupture",
+          "relation": "contested",
+          "rationale": "Marxian traditions disagree over revolutionary rupture, reform, and transition strategy.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-marxian-tradition",
+            "citation:v3-oxford-socialism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0437",
+            "q0465"
+          ]
+        },
+        {
+          "id": "mx-vanguard",
+          "constructId": "vanguard-party",
+          "relation": "contested",
+          "rationale": "Vanguard-party doctrine belongs to Leninist branches and is not constitutive of Marxian socialism as a whole.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-marxian-tradition",
+            "citation:v3-oxford-communism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0529",
+            "q0530"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:marxist-leninist",
+      "rationale": "Marxism-Leninism combines Marxian class analysis with the distinctive Leninist institutions of a vanguard party, democratic centralism, revolutionary transition, and extensive planned/socialized ownership.",
+      "commitments": [
+        {
+          "id": "ml-class",
+          "constructId": "class-exploitation",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Marxian class and exploitation analysis remains central.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-marxian-tradition"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0089",
+            "q0511"
+          ]
+        },
+        {
+          "id": "ml-vanguard",
+          "constructId": "vanguard-party",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.15
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "The leading revolutionary party is a defining Leninist institutional commitment.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-communism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0529",
+            "q0530"
+          ]
+        },
+        {
+          "id": "ml-dc",
+          "constructId": "democratic-centralism",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Democratic centralism is a defining organizational doctrine.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-communism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0531",
+            "q0532"
+          ]
+        },
+        {
+          "id": "ml-planning",
+          "constructId": "central-planning",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Central planning is characteristic of Marxist-Leninist political economy.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-communism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0539",
+            "q0540"
+          ]
+        },
+        {
+          "id": "ml-public",
+          "constructId": "public-ownership",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "State/social ownership of major productive assets is characteristic.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-communism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0035",
+            "q0525"
+          ]
+        },
+        {
+          "id": "ml-rupture",
+          "constructId": "revolutionary-rupture",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Revolutionary transition rather than merely constitutional reform is central to Leninist strategy.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-communism",
+            "citation:v3-oxford-marxian-tradition"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0437",
+            "q0465"
+          ]
+        },
+        {
+          "id": "ml-structure",
+          "constructId": "historical-change-structural",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Structural class forces are central to historical analysis.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-marxian-tradition"
+          ],
+          "layer": "descriptive",
+          "directItemIds": [
+            "q0521",
+            "q0522"
+          ]
+        },
+        {
+          "id": "ml-private-capital",
+          "constructId": "productive-property",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.7
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Strong private capitalist control over major productive assets conflicts with the Marxist-Leninist program.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-communism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:republicanism",
+      "rationale": "Republicanism is identified by freedom as non-domination and institutions that make power contestable, rule-bound, and publicly accountable; it is not a generic midpoint on liberty and authority.",
+      "commitments": [
+        {
+          "id": "rep-domination",
+          "constructId": "anti-domination",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.15
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Freedom as non-domination is the central republican liberty commitment.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-pettit-republicanism",
+            "citation:v3-sep-liberty"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0021",
+            "q0022",
+            "q0023",
+            "q0024",
+            "q0025",
+            "q0026",
+            "q0039",
+            "q0042",
+            "q0084",
+            "q0099",
+            "q0102",
+            "q0104",
+            "q0119",
+            "q0161",
+            "q0162",
+            "q0163",
+            "q0164",
+            "q0165",
+            "q0166",
+            "q0179",
+            "q0181",
+            "q0182",
+            "q0183",
+            "q0184",
+            "q0185",
+            "q0186",
+            "q0199",
+            "q0225",
+            "q0285",
+            "q0304",
+            "q0305",
+            "q0321",
+            "q0325",
+            "q0342",
+            "q0345",
+            "q0361",
+            "q0362",
+            "q0363",
+            "q0364",
+            "q0365",
+            "q0379",
+            "q0381",
+            "q0382",
+            "q0383",
+            "q0384",
+            "q0385",
+            "q0399",
+            "q0401",
+            "q0407",
+            "sq13#b",
+            "sq13#d"
+          ]
+        },
+        {
+          "id": "rep-contestable",
+          "constructId": "contestable-institutions",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Institutions must permit effective contestation of arbitrary power.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-pettit-republicanism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0354",
+            "q0355",
+            "q0356"
+          ]
+        },
+        {
+          "id": "rep-democracy",
+          "constructId": "democratic-legitimacy",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Public accountability and democratic control are core institutional mechanisms.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-pettit-republicanism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0341",
+            "q0343",
+            "q0344",
+            "q0359"
+          ]
+        },
+        {
+          "id": "rep-constitutional",
+          "constructId": "constitutional-reform",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Rule of law and constitutional checks are characteristic republican institutions.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-pettit-republicanism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0533",
+            "q0534"
+          ]
+        },
+        {
+          "id": "rep-equality",
+          "constructId": "legal-equality",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Equal civic standing is necessary for non-dominating citizenship.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-pettit-republicanism",
+            "citation:v3-sep-equality"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0281",
+            "q0282",
+            "sq02#a",
+            "sq13#a"
+          ]
+        },
+        {
+          "id": "rep-effective",
+          "constructId": "effective-agency",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Some material independence can be relevant where dependence exposes citizens to domination.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-pettit-republicanism",
+            "citation:v3-sep-liberty"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0063",
+            "q0079"
+          ]
+        },
+        {
+          "id": "rep-property",
+          "constructId": "productive-property",
+          "relation": "contested",
+          "rationale": "Republicans disagree over how property institutions contribute to or undermine independence and non-domination.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-pettit-republicanism",
+            "citation:v3-sep-property"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "id": "rep-welfare",
+          "constructId": "social-solidarity",
+          "relation": "contested",
+          "rationale": "Republican traditions differ over the social provision required for civic independence.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-pettit-republicanism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0062",
+            "q0510"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:social-democrat",
+      "rationale": "Social democracy combines democratic collective action, social solidarity, social insurance, labor power, redistribution, and regulation while ordinarily retaining a mixed or capitalist market economy.",
+      "commitments": [
+        {
+          "id": "sd-solidarity",
+          "constructId": "social-solidarity",
+          "relation": "constitutive",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.15
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Collective social protection is central to social democracy.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0062",
+            "q0510"
+          ]
+        },
+        {
+          "id": "sd-democracy",
+          "constructId": "democratic-legitimacy",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Democratic political accountability is core.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0341",
+            "q0343",
+            "q0344",
+            "q0359"
+          ]
+        },
+        {
+          "id": "sd-insurance",
+          "constructId": "social-insurance",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Broad social insurance is a characteristic institution of social-democratic capitalism.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0527",
+            "q0528"
+          ]
+        },
+        {
+          "id": "sd-redistribution",
+          "constructId": "income-redistribution",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Taxes and transfers are legitimate tools for social protection and equality.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0033",
+            "q0034",
+            "q0076",
+            "q0296"
+          ]
+        },
+        {
+          "id": "sd-regulation",
+          "constructId": "regulatory-intervention",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Regulation of market power, labor relations, and social risks is characteristic.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0117",
+            "q0135",
+            "q0156",
+            "q0316",
+            "q0420"
+          ]
+        },
+        {
+          "id": "sd-bargaining",
+          "constructId": "collective-bargaining",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Organized labor and collective bargaining are historically characteristic social-democratic institutions.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0093",
+            "q0095",
+            "q0096"
+          ]
+        },
+        {
+          "id": "sd-reform",
+          "constructId": "institutional-reform",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Social democracy ordinarily pursues change through democratic institutional reform.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0396",
+            "q0397",
+            "q0436",
+            "q0464",
+            "q0466"
+          ]
+        },
+        {
+          "id": "sd-private-property",
+          "constructId": "productive-property",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.25
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Modern social democracy ordinarily accepts substantial private productive property subject to social regulation.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy",
+            "citation:v3-sep-property"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "id": "sd-public-ownership",
+          "constructId": "public-ownership",
+          "relation": "contested",
+          "rationale": "Social democrats differ over public ownership and sectoral socialization.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0035",
+            "q0525"
+          ]
+        },
+        {
+          "id": "sd-rupture",
+          "constructId": "revolutionary-rupture",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.75
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "A commitment to replacing democratic institutions through revolutionary rupture conflicts with contemporary social-democratic strategy.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-oxford-social-democracy"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0437",
+            "q0465"
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "profile:social-liberalism",
+      "rationale": "Social liberalism combines liberal rights and constitutionalism with effective agency, fair opportunity, social provision, and regulated markets rather than occupying a geometric midpoint between classical liberalism and social democracy.",
+      "commitments": [
+        {
+          "id": "sl-liberty",
+          "constructId": "liberty-noninterference",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Social liberalism retains strong liberal civil and personal liberty commitments.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism",
+            "citation:v3-sep-liberty"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0041",
+            "q0043",
+            "q0044",
+            "q0045",
+            "q0046",
+            "q0059",
+            "q0081"
+          ]
+        },
+        {
+          "id": "sl-effective",
+          "constructId": "effective-agency",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Effective capacity to pursue one’s ends is central to social-liberal accounts of freedom.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism",
+            "citation:v3-sep-liberty"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0063",
+            "q0079"
+          ]
+        },
+        {
+          "id": "sl-legal-equality",
+          "constructId": "legal-equality",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Equal legal citizenship remains core.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism",
+            "citation:v3-sep-equality"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0281",
+            "q0282",
+            "sq02#a",
+            "sq13#a"
+          ]
+        },
+        {
+          "id": "sl-opportunity",
+          "constructId": "equality-opportunity",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Fair opportunity is a central social-liberal extension of liberal equality.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism",
+            "citation:v3-sep-equality"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0501",
+            "q0502"
+          ]
+        },
+        {
+          "id": "sl-solidarity",
+          "constructId": "social-solidarity",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Social provision can be justified as securing effective freedom and fair opportunity.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0062",
+            "q0510"
+          ]
+        },
+        {
+          "id": "sl-public",
+          "constructId": "public-provision",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.1
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Public provision is a legitimate instrument where it supports effective liberty and opportunity.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0254",
+            "q0417"
+          ]
+        },
+        {
+          "id": "sl-regulation",
+          "constructId": "regulatory-intervention",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.2
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Markets are retained but subject to public rules and correction.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0117",
+            "q0135",
+            "q0156",
+            "q0316",
+            "q0420"
+          ]
+        },
+        {
+          "id": "sl-property",
+          "constructId": "productive-property",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.2
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Private property is ordinarily accepted but not treated as absolute against social justice.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism",
+            "citation:v3-sep-property"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "id": "sl-democracy",
+          "constructId": "democratic-legitimacy",
+          "relation": "core",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Constitutional democracy is core to contemporary social liberalism.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "normative",
+          "directItemIds": [
+            "q0341",
+            "q0343",
+            "q0344",
+            "q0359"
+          ]
+        },
+        {
+          "id": "sl-contest",
+          "constructId": "contestable-institutions",
+          "relation": "characteristic",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": -0.05
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Rights, review, and institutional accountability constrain public power.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism",
+            "citation:v3-pettit-republicanism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0354",
+            "q0355",
+            "q0356"
+          ]
+        },
+        {
+          "id": "sl-planning",
+          "constructId": "central-planning",
+          "relation": "incompatible",
+          "criterion": {
+            "operator": "minimum",
+            "minimum": 0.75
+          },
+          "minimumAnsweredItems": 1,
+          "rationale": "Comprehensive administrative planning conflicts with social liberalism’s pluralist market order.",
+          "provenanceRefs": [
+            "citation:v3-freeden-morphology",
+            "citation:v3-sep-liberalism"
+          ],
+          "layer": "prescriptive",
+          "directItemIds": [
+            "q0539",
+            "q0540"
+          ]
+        }
+      ]
+    }
+  ]
+}

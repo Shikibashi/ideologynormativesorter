@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Compile canonical v2 content
+        run: npm run v2:content:compile
+
       - name: Run tests
         run: npm test
 

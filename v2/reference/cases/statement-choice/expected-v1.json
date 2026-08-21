@@ -1,6 +1,6 @@
 {
   "referenceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
-  "contentVersion": "v2-content-phase8.2-commitments",
+  "contentVersion": "v3-content-commitments-1",
   "scoringVersion": "production-score-v1",
   "decision": "scored",
   "evidenceCoverage": {
@@ -21,14 +21,14 @@
   "dimensionScores": [
     {
       "dimensionId": "anti-domination",
-      "value": 0.3666666666666667,
+      "value": 1,
       "answeredItems": 3,
       "expectedItems": 106,
       "coverage": 0.02830188679245283
     },
     {
       "dimensionId": "authority-legitimacy",
-      "value": 0.35,
+      "value": 1,
       "answeredItems": 2,
       "expectedItems": 53,
       "coverage": 0.03773584905660377
@@ -84,7 +84,7 @@
     },
     {
       "dimensionId": "equality-theory",
-      "value": 0.2,
+      "value": 1,
       "answeredItems": 2,
       "expectedItems": 47,
       "coverage": 0.0425531914893617
@@ -105,7 +105,7 @@
     },
     {
       "dimensionId": "human-nature-priority",
-      "value": -0.7,
+      "value": 1,
       "answeredItems": 1,
       "expectedItems": 11,
       "coverage": 0.09090909090909091
@@ -140,14 +140,14 @@
     },
     {
       "dimensionId": "political-community-boundary",
-      "value": -0.35000000000000003,
+      "value": 1,
       "answeredItems": 2,
       "expectedItems": 24,
       "coverage": 0.08333333333333333
     },
     {
       "dimensionId": "property-legitimacy",
-      "value": 0.04999999999999999,
+      "value": 1,
       "answeredItems": 2,
       "expectedItems": 41,
       "coverage": 0.04878048780487805
@@ -205,31 +205,31 @@
   "labels": [
     {
       "labelId": "radical-democracy",
-      "similarity": 0.7915000666133867,
+      "similarity": 0.841886116991581,
       "rank": 1,
-      "runnerUpMargin": 0.03762748016925954
-    },
-    {
-      "labelId": "marxian-socialism",
-      "similarity": 0.7538725864441271,
-      "rank": 2,
-      "runnerUpMargin": 0.02676009548877467
+      "runnerUpMargin": 0.31534854070297413
     },
     {
       "labelId": "democratic-socialist",
-      "similarity": 0.7271124909553525,
-      "rank": 3,
-      "runnerUpMargin": 0.04753972311752552
+      "similarity": 0.5265375762886069,
+      "rank": 2,
+      "runnerUpMargin": 0.010445280987206096
     },
     {
-      "labelId": "libertarian-socialism",
-      "similarity": 0.6795727678378269,
-      "rank": 4,
-      "runnerUpMargin": 0.2162808407746476
+      "labelId": "marxian-socialism",
+      "similarity": 0.5160922953014008,
+      "rank": 3,
+      "runnerUpMargin": 0.06495475530390449
     },
     {
       "labelId": "republicanism",
-      "similarity": 0.46329192706317934,
+      "similarity": 0.4511375399974963,
+      "rank": 4,
+      "runnerUpMargin": 0.006790309269818051
+    },
+    {
+      "labelId": "libertarian-socialism",
+      "similarity": 0.44434723072767823,
       "rank": 5
     }
   ]

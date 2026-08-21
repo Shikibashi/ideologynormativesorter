@@ -2,33 +2,53 @@
   {
     "id": "divergence-liberty-regulation",
     "type": "cross_dimension_pair",
-    "constructIds": ["liberty-noninterference", "regulation-vs-deregulation"],
+    "constructIds": [
+      "liberty-noninterference",
+      "regulatory-intervention"
+    ],
     "dimensionPair": "normative-prescriptive",
     "secondDirection": -1,
-    "provenanceRefs": ["source:phase0-measurement-contract"]
+    "provenanceRefs": [
+      "citation:v3-sep-liberty"
+    ]
   },
   {
     "id": "divergence-equality-redistribution",
     "type": "cross_dimension_pair",
-    "constructIds": ["equality-theory", "redistribution-vs-predistribution"],
+    "constructIds": [
+      "distributive-equality",
+      "income-redistribution"
+    ],
     "dimensionPair": "normative-prescriptive",
     "secondDirection": 1,
-    "provenanceRefs": ["source:phase0-measurement-contract"]
+    "provenanceRefs": [
+      "citation:v3-sep-equality"
+    ]
   },
   {
     "id": "divergence-authority-state-action",
     "type": "cross_dimension_pair",
-    "constructIds": ["authority-legitimacy", "state-action-vs-exit"],
+    "constructIds": [
+      "political-authority-legitimacy",
+      "public-provision"
+    ],
     "dimensionPair": "normative-prescriptive",
     "secondDirection": 1,
-    "provenanceRefs": ["source:phase0-measurement-contract"]
+    "provenanceRefs": [
+      "citation:v3-sep-political-legitimacy"
+    ]
   },
   {
-    "id": "divergence-militarism-coercion",
+    "id": "divergence-force-coercion",
     "type": "cross_dimension_pair",
-    "constructIds": ["militarism-pacifism", "coercion-strategy"],
+    "constructIds": [
+      "force-permissibility",
+      "coercive-enforcement-strategy"
+    ],
     "dimensionPair": "normative-prescriptive",
     "secondDirection": 1,
-    "provenanceRefs": ["source:phase0-measurement-contract"]
+    "provenanceRefs": [
+      "citation:v3-sep-pacifism"
+    ]
   }
 ]

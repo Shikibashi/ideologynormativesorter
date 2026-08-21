@@ -2361,6 +2361,213 @@
     "note": "Supports locating minarchism within the libertarian dispute over whether a limited rights-protecting state is justified; it also records arguments for and against a state exceeding minimal protection, so it does not define every libertarian or settle the debate."
   },
   {
+    "id": "citation:v3-cambridge-christian-democracy",
+    "kind": "citation",
+    "title": "What Is Christian Democracy?",
+    "location": "https://www.cambridge.org/core/books/what-is-christian-democracy/",
+    "url": "https://www.cambridge.org/core/books/what-is-christian-democracy/",
+    "publisher": "Cambridge University Press",
+    "note": "Personalism, subsidiarity, social capitalism, solidarity, democratic popularism, and Christian inspiration."
+  },
+  {
+    "id": "citation:v3-freeden-morphology",
+    "kind": "citation",
+    "title": "Ideologies and Political Theory: A Conceptual Approach",
+    "location": "https://academic.oup.com/book/32837",
+    "url": "https://academic.oup.com/book/32837",
+    "publisher": "Oxford University Press",
+    "note": "Michael Freeden; morphological analysis of ideological concepts and core/adjacent/peripheral configurations."
+  },
+  {
+    "id": "citation:v3-hayek-knowledge",
+    "kind": "citation",
+    "title": "The Use of Knowledge in Society",
+    "location": "https://www.aeaweb.org/aer/top20/35.4.519-530.pdf",
+    "url": "https://www.aeaweb.org/aer/top20/35.4.519-530.pdf",
+    "publisher": "American Economic Review",
+    "note": "F. A. Hayek; dispersed knowledge and price coordination."
+  },
+  {
+    "id": "citation:v3-ostrom-governing-commons",
+    "kind": "citation",
+    "title": "Governing the Commons",
+    "location": "https://www.cambridge.org/core/books/governing-the-commons/",
+    "url": "https://www.cambridge.org/core/books/governing-the-commons/",
+    "publisher": "Cambridge University Press",
+    "note": "Elinor Ostrom; institutional conditions under which decentralized groups solve collective-action problems."
+  },
+  {
+    "id": "citation:v3-oxford-communism",
+    "kind": "citation",
+    "title": "Communism",
+    "location": "https://academic.oup.com/edited-volume/34324/chapter/291337846",
+    "url": "https://academic.oup.com/edited-volume/34324/chapter/291337846",
+    "publisher": "Oxford Handbook of Political Ideologies",
+    "note": "Communist party monopoly, democratic centralism, state ownership, central planning, international movement, and eventual classless/stateless aspiration."
+  },
+  {
+    "id": "citation:v3-oxford-conservatism",
+    "kind": "citation",
+    "title": "Conservatism",
+    "location": "https://academic.oup.com/edited-volume/34324/chapter/291337470",
+    "url": "https://academic.oup.com/edited-volume/34324/chapter/291337470",
+    "publisher": "Oxford Handbook of Political Ideologies",
+    "note": "Conservative prudence, inherited institutions, skepticism of rationalist reconstruction, and limits of politics."
+  },
+  {
+    "id": "citation:v3-oxford-green-ideology",
+    "kind": "citation",
+    "title": "Green Ideology",
+    "location": "https://academic.oup.com/edited-volume/34324/chapter/291337947",
+    "url": "https://academic.oup.com/edited-volume/34324/chapter/291337947",
+    "publisher": "Oxford Handbook of Political Ideologies",
+    "note": "Ecological restructuring, democratization, ecological law, sustainability and nonviolence in green ideology."
+  },
+  {
+    "id": "citation:v3-oxford-libertarianism",
+    "kind": "citation",
+    "title": "Libertarianism",
+    "location": "https://academic.oup.com/edited-volume/34508/chapter/292822509",
+    "url": "https://academic.oup.com/edited-volume/34508/chapter/292822509",
+    "publisher": "Oxford Handbook of the History of Political Philosophy",
+    "note": "Strong claims to peaceful enjoyment of person/property and restrictive conditions on permissible force."
+  },
+  {
+    "id": "citation:v3-oxford-marxian-tradition",
+    "kind": "citation",
+    "title": "The Marxian Tradition",
+    "location": "https://academic.oup.com/edited-volume/34328/chapter/291365645",
+    "url": "https://academic.oup.com/edited-volume/34328/chapter/291365645",
+    "publisher": "Oxford Handbook of the History of Political Philosophy",
+    "note": "Class, exploitation, capitalism, ideology, historical change, revolution and socialist/communist institutions."
+  },
+  {
+    "id": "citation:v3-oxford-political-secularism",
+    "kind": "citation",
+    "title": "Secularism in Political Philosophy",
+    "location": "https://academic.oup.com/edited-volume/62239/chapter-abstract/550724223",
+    "url": "https://academic.oup.com/edited-volume/62239/chapter-abstract/550724223",
+    "publisher": "Oxford Research Encyclopedia of Politics",
+    "note": "Political secularism involves conscience, neutrality, non-establishment and accommodation rather than a single church-state scalar."
+  },
+  {
+    "id": "citation:v3-oxford-religion-liberal-philosophy",
+    "kind": "citation",
+    "title": "Religion in Liberal Political Philosophy",
+    "location": "https://academic.oup.com/book/9456",
+    "url": "https://academic.oup.com/book/9456",
+    "publisher": "Oxford University Press",
+    "note": "Distinguishes non-establishment/neutrality, accommodation/religious freedom, conscience, identity, and public justification."
+  },
+  {
+    "id": "citation:v3-oxford-social-democracy",
+    "kind": "citation",
+    "title": "Social Democracy",
+    "location": "https://academic.oup.com/edited-volume/34324/chapter/291337808",
+    "url": "https://academic.oup.com/edited-volume/34324/chapter/291337808",
+    "publisher": "Oxford Handbook of Political Ideologies",
+    "note": "Democratic collective action extending freedom/equality through welfare, labor institutions and regulated capitalism."
+  },
+  {
+    "id": "citation:v3-oxford-socialism",
+    "kind": "citation",
+    "title": "Socialism",
+    "location": "https://academic.oup.com/acrefore/display/10.1093/acrefore/9780190228637.013.1047",
+    "url": "https://academic.oup.com/acrefore/display/10.1093/acrefore/9780190228637.013.1047",
+    "publisher": "Oxford Research Encyclopedia of Politics",
+    "note": "Social ownership/control, exploitation, community, equality and freedom; strategic disagreements exceed a simple reform/revolution binary."
+  },
+  {
+    "id": "citation:v3-pettit-republicanism",
+    "kind": "citation",
+    "title": "Republicanism: A Theory of Freedom and Government",
+    "location": "https://global.oup.com/academic/product/republicanism-9780198296423",
+    "url": "https://global.oup.com/academic/product/republicanism-9780198296423",
+    "publisher": "Oxford University Press",
+    "note": "Philip Pettit; freedom as non-domination and institutional contestability."
+  },
+  {
+    "id": "citation:v3-public-choice",
+    "kind": "citation",
+    "title": "The Calculus of Consent",
+    "location": "https://oll.libertyfund.org/titles/buchanan-the-calculus-of-consent-logical-foundations-of-constitutional-democracy",
+    "url": "https://oll.libertyfund.org/titles/buchanan-the-calculus-of-consent-logical-foundations-of-constitutional-democracy",
+    "publisher": "University of Michigan Press / Liberty Fund edition",
+    "note": "James Buchanan and Gordon Tullock; political incentives, collective choice, and constitutional rules."
+  },
+  {
+    "id": "citation:v3-sep-equality",
+    "kind": "citation",
+    "title": "Equality",
+    "location": "https://plato.stanford.edu/entries/equality/",
+    "url": "https://plato.stanford.edu/entries/equality/",
+    "publisher": "Stanford Encyclopedia of Philosophy",
+    "note": "Distinguishes legal/political, relational, distributive, and opportunity-related equality claims."
+  },
+  {
+    "id": "citation:v3-sep-intellectual-property",
+    "kind": "citation",
+    "title": "Intellectual Property",
+    "location": "https://plato.stanford.edu/entries/intellectual-property/",
+    "url": "https://plato.stanford.edu/entries/intellectual-property/",
+    "publisher": "Stanford Encyclopedia of Philosophy",
+    "note": "Copyright, patents, trade secrets and moral/utilitarian/Lockean justifications and critiques are distinct from ordinary tangible property."
+  },
+  {
+    "id": "citation:v3-sep-liberalism",
+    "kind": "citation",
+    "title": "Liberalism",
+    "location": "https://plato.stanford.edu/entries/liberalism/",
+    "url": "https://plato.stanford.edu/entries/liberalism/",
+    "publisher": "Stanford Encyclopedia of Philosophy",
+    "note": "Liberal traditions, autonomy/effective power, property, constitutionalism, and social-liberal variation."
+  },
+  {
+    "id": "citation:v3-sep-liberty",
+    "kind": "citation",
+    "title": "Positive and Negative Liberty",
+    "location": "https://plato.stanford.edu/entries/liberty-positive-negative/",
+    "url": "https://plato.stanford.edu/entries/liberty-positive-negative/",
+    "publisher": "Stanford Encyclopedia of Philosophy",
+    "note": "Separates non-interference, positive/effective freedom, and republican non-domination."
+  },
+  {
+    "id": "citation:v3-sep-nationalism",
+    "kind": "citation",
+    "title": "Nationalism",
+    "location": "https://plato.stanford.edu/entries/nationalism/",
+    "url": "https://plato.stanford.edu/entries/nationalism/",
+    "publisher": "Stanford Encyclopedia of Philosophy",
+    "note": "National identity, special compatriot obligations, and national self-determination are distinct normative and descriptive claims."
+  },
+  {
+    "id": "citation:v3-sep-pacifism",
+    "kind": "citation",
+    "title": "Pacifism",
+    "location": "https://plato.stanford.edu/entries/pacifism/",
+    "url": "https://plato.stanford.edu/entries/pacifism/",
+    "publisher": "Stanford Encyclopedia of Philosophy",
+    "note": "Pacifism ranges from absolute nonviolence to focused anti-war commitments and is distinct from ordinary conditional force permissibility."
+  },
+  {
+    "id": "citation:v3-sep-political-legitimacy",
+    "kind": "citation",
+    "title": "Political Legitimacy",
+    "location": "https://plato.stanford.edu/entries/legitimacy/",
+    "url": "https://plato.stanford.edu/entries/legitimacy/",
+    "publisher": "Stanford Encyclopedia of Philosophy",
+    "note": "Legitimacy, political authority, and political obligation are related but separable normative questions."
+  },
+  {
+    "id": "citation:v3-sep-property",
+    "kind": "citation",
+    "title": "Property and Ownership",
+    "location": "https://plato.stanford.edu/entries/property/",
+    "url": "https://plato.stanford.edu/entries/property/",
+    "publisher": "Stanford Encyclopedia of Philosophy",
+    "note": "Property concerns distinct objects, incidents, institutions, and justifications rather than one scalar ownership attitude."
+  },
+  {
     "id": "source:phase0-known-defects",
     "kind": "decision",
     "title": "v2 known-defect register",

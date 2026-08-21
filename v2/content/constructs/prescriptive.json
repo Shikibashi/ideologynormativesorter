@@ -1,227 +1,785 @@
 [
   {
-    "id": "centralization-preference",
-    "name": "Centralization Preference",
+    "id": "institutional-decentralization",
+    "name": "Institutional Decentralization",
     "role": "prescriptive",
     "scope": "root",
-    "description": "Whether power and policymaking should be concentrated or dispersed across smaller units.",
-    "poles": {
-      "negative": "Authority and decision-making should be decentralized",
-      "positive": "Authority and decision-making should be centralized"
-    },
-    "sourceKey": "centralization-preference",
+    "family": "institutional-strategy",
+    "description": "Prescriptive support for dispersing political or administrative authority across smaller, local, federal, or polycentric units.",
+    "boundaryStatement": "Separate from the descriptive claim that decentralization works well.",
+    "sourceKey": "institutional-decentralization",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Centralization Preference",
-      "longLabel": "Centralization Preference"
+      "shortLabel": "Institutional Decentralization",
+      "longLabel": "Institutional Decentralization"
+    },
+    "poles": {
+      "negative": "Political and administrative authority should not be deliberately dispersed",
+      "positive": "Political and administrative authority should be dispersed across smaller, local, federal, or polycentric units"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-ostrom-governing-commons",
+      "citation:v3-oxford-conservatism",
+      "citation:v3-oxford-libertarianism"
     ]
   },
   {
-    "id": "coercion-strategy",
-    "name": "Coercion Strategy",
+    "id": "institutional-centralization",
+    "name": "Institutional Centralization",
     "role": "prescriptive",
     "scope": "root",
-    "description": "Whether the use of coercive or forceful tactics, beyond ordinary persuasion and lawful process, can be justified to advance favored political ends.",
-    "poles": {
-      "negative": "Change should be pursued only through peaceful, non-coercive strategies",
-      "positive": "Change may be pursued through coercive strategies in some circumstances"
-    },
-    "sourceKey": "coercion-strategy",
+    "family": "institutional-strategy",
+    "description": "Prescriptive support for concentrating authority in a central institution when uniformity or coordinated capacity is desired.",
+    "boundaryStatement": "Not simply the inverse of decentralization; institutions can combine central and local competencies.",
+    "sourceKey": "institutional-centralization",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Coercion Strategy",
-      "longLabel": "Coercion Strategy"
+      "shortLabel": "Institutional Centralization",
+      "longLabel": "Institutional Centralization"
+    },
+    "poles": {
+      "negative": "Political and administrative authority should not be deliberately concentrated",
+      "positive": "Political and administrative authority should be concentrated centrally when uniform coordination is required"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-public-choice"
     ]
   },
   {
-    "id": "compromise-vs-persistence",
-    "name": "Compromise vs Persistence",
+    "id": "electoral-participation",
+    "name": "Electoral and Institutional Participation",
     "role": "prescriptive",
     "scope": "root",
-    "description": "Whether achieving partial gains through negotiated compromise is preferable to holding out for a fuller, uncompromised outcome.",
-    "poles": {
-      "negative": "Ideological commitments should be held firm despite opposition",
-      "positive": "Practical compromise with opponents is usually worthwhile"
-    },
-    "sourceKey": "compromise-vs-persistence",
+    "family": "political-strategy",
+    "description": "Prescriptive use of elections, parties, legislation, litigation, and other formal political channels as means of change.",
+    "boundaryStatement": "Can coexist with direct action.",
+    "sourceKey": "electoral-participation",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Compromise vs Persistence",
-      "longLabel": "Compromise vs Persistence"
+      "shortLabel": "Electoral and Institutional Participation",
+      "longLabel": "Electoral and Institutional Participation"
+    },
+    "poles": {
+      "negative": "Formal electoral and institutional channels should generally be avoided as strategies for change",
+      "positive": "Elections and formal political institutions are legitimate and useful strategies for political change"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-sep-liberalism"
     ]
   },
   {
-    "id": "electoralism-vs-direct-action",
-    "name": "Electoralism vs Direct Action",
+    "id": "direct-action",
+    "name": "Direct Action",
     "role": "prescriptive",
     "scope": "root",
-    "description": "Whether favored strategies for change rely on formal political and legal processes or on direct action that bypasses them.",
-    "poles": {
-      "negative": "Change should be pursued through direct action outside formal channels",
-      "positive": "Change should be pursued through electoral and institutional channels"
-    },
-    "sourceKey": "electoralism-vs-direct-action",
+    "family": "political-strategy",
+    "description": "Prescriptive use of strikes, boycotts, occupations, mutual aid, civil resistance, or other action outside ordinary electoral channels.",
+    "boundaryStatement": "Can coexist with electoral participation; violent tactics are measured separately.",
+    "sourceKey": "direct-action",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Electoralism vs Direct Action",
-      "longLabel": "Electoralism vs Direct Action"
+      "shortLabel": "Direct Action",
+      "longLabel": "Direct Action"
+    },
+    "poles": {
+      "negative": "Political change should avoid direct action outside ordinary electoral channels",
+      "positive": "Direct action outside ordinary electoral channels can be a legitimate and useful strategy for change"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-socialism",
+      "citation:v3-sep-pacifism"
     ]
   },
   {
-    "id": "gradualism-vs-immediatism",
-    "name": "Gradualism vs Immediatism",
+    "id": "revolutionary-rupture",
+    "name": "Revolutionary Rupture",
     "role": "prescriptive",
     "scope": "root",
-    "description": "Whether favored reforms should be sequenced slowly to manage transition costs, or enacted at once.",
-    "poles": {
-      "negative": "Change should be phased in gradually",
-      "positive": "Change should be implemented immediately"
-    },
-    "sourceKey": "gradualism-vs-immediatism",
+    "family": "political-strategy",
+    "description": "Prescriptive support for replacing core institutions through revolutionary rupture rather than only reforming them in place.",
+    "boundaryStatement": "Does not imply support for violence or a vanguard party.",
+    "sourceKey": "revolutionary-rupture",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Gradualism vs Immediatism",
-      "longLabel": "Gradualism vs Immediatism"
+      "shortLabel": "Revolutionary Rupture",
+      "longLabel": "Revolutionary Rupture"
+    },
+    "poles": {
+      "negative": "Core institutions should be changed without revolutionary rupture",
+      "positive": "Some desired transformations require revolutionary rupture and replacement of core institutions"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-marxian-tradition",
+      "citation:v3-oxford-communism",
+      "citation:v3-oxford-socialism"
     ]
   },
   {
-    "id": "redistribution-vs-predistribution",
-    "name": "Redistribution vs Predistribution",
+    "id": "institutional-reform",
+    "name": "Institutional Reform",
     "role": "prescriptive",
     "scope": "root",
-    "description": "Whether the preferred remedy for unmet material need is transferring resources after the fact or changing the rules that shape market outcomes beforehand.",
-    "poles": {
-      "negative": "Underlying rules governing markets should be altered before distribution occurs",
-      "positive": "Material need is best addressed by redistributing after market outcomes occur"
-    },
-    "sourceKey": "redistribution-vs-predistribution",
+    "family": "political-strategy",
+    "description": "Prescriptive support for changing existing institutions through constitutional, legislative, administrative, or organizational reform.",
+    "boundaryStatement": "Can coexist with long-run structural transformation.",
+    "sourceKey": "institutional-reform",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Redistribution vs Predistribution",
-      "longLabel": "Redistribution vs Predistribution"
+      "shortLabel": "Institutional Reform",
+      "longLabel": "Institutional Reform"
+    },
+    "poles": {
+      "negative": "Working through reforms of existing institutions is not a legitimate strategy for major change",
+      "positive": "Existing institutions can be deliberately reformed to achieve major political goals"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-liberalism",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-oxford-conservatism"
     ]
   },
   {
-    "id": "reform-vs-revolution",
-    "name": "Reform vs Revolution",
+    "id": "gradual-transition",
+    "name": "Gradual Transition",
     "role": "prescriptive",
     "scope": "root",
-    "description": "Whether desired change should be pursued by reforming current institutions or by replacing them outright.",
-    "poles": {
-      "negative": "Change should work through existing institutions",
-      "positive": "Existing institutions should be ruptured and replaced"
-    },
-    "sourceKey": "reform-vs-revolution",
+    "family": "political-strategy",
+    "description": "Prescriptive support for sequencing major change to manage uncertainty, adaptation, and transition costs.",
+    "boundaryStatement": "Distinct from accepting only minor reforms.",
+    "sourceKey": "gradual-transition",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Reform vs Revolution",
-      "longLabel": "Reform vs Revolution"
+      "shortLabel": "Gradual Transition",
+      "longLabel": "Gradual Transition"
+    },
+    "poles": {
+      "negative": "Major changes should not be phased merely to manage transition and uncertainty",
+      "positive": "Major institutional changes should often be phased to manage uncertainty and transition costs"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-conservatism"
     ]
   },
   {
-    "id": "regulation-vs-deregulation",
-    "name": "Regulation vs Deregulation",
+    "id": "immediatist-transition",
+    "name": "Immediatist Transition",
     "role": "prescriptive",
     "scope": "root",
-    "description": "Whether the preferred policy direction is to reduce regulatory constraint or to add and strengthen oversight.",
-    "poles": {
-      "negative": "Regulatory constraints should be reduced or simplified",
-      "positive": "Regulatory constraints and oversight should be strengthened"
-    },
-    "sourceKey": "regulation-vs-deregulation",
+    "family": "political-strategy",
+    "description": "Prescriptive support for implementing a desired institutional change rapidly rather than deliberately phasing it.",
+    "boundaryStatement": "Not synonymous with revolution or violence.",
+    "sourceKey": "immediatist-transition",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Regulation vs Deregulation",
-      "longLabel": "Regulation vs Deregulation"
+      "shortLabel": "Immediatist Transition",
+      "longLabel": "Immediatist Transition"
+    },
+    "poles": {
+      "negative": "Desired institutional changes should generally be phased rather than implemented rapidly",
+      "positive": "When an institution is unjust, the desired replacement should sometimes be implemented without deliberate gradualism"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-socialism"
     ]
   },
   {
-    "id": "state-action-vs-exit",
-    "name": "State Action vs Exit",
+    "id": "income-redistribution",
+    "name": "Income and Wealth Redistribution",
     "role": "prescriptive",
     "scope": "root",
-    "description": "Whether the preferred remedy to a given problem runs through state provision or through opting out into voluntary alternatives.",
-    "poles": {
-      "negative": "Problems are best solved by exit into private or counter-institutional alternatives",
-      "positive": "Problems are best solved through state action and public provision"
-    },
-    "sourceKey": "state-action-vs-exit",
+    "family": "economic-policy",
+    "description": "Prescriptive use of taxes and transfers to alter the distribution of resources after or alongside market incomes.",
+    "boundaryStatement": "Separate from rules that shape bargaining power and ownership before market income is generated.",
+    "sourceKey": "income-redistribution",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "State Action vs Exit",
-      "longLabel": "State Action vs Exit"
+      "shortLabel": "Income and Wealth Redistribution",
+      "longLabel": "Income and Wealth Redistribution"
+    },
+    "poles": {
+      "negative": "Taxes and transfers should not deliberately alter the distribution of market income or wealth",
+      "positive": "Taxes and transfers should be used when appropriate to reduce unjust material inequality or secure social provision"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-sep-liberalism",
+      "citation:v3-oxford-socialism"
+    ]
+  },
+  {
+    "id": "predistributive-reform",
+    "name": "Predistributive Reform",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "economic-policy",
+    "description": "Prescriptive alteration of property, bargaining, competition, education, labor, or market rules that shape primary distributions before transfers.",
+    "boundaryStatement": "Can coexist with redistribution; it is not its opposite.",
+    "sourceKey": "predistributive-reform",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Predistributive Reform",
+      "longLabel": "Predistributive Reform"
+    },
+    "poles": {
+      "negative": "Policy should not deliberately reshape the rules that generate primary market distributions",
+      "positive": "Policy should reshape underlying market and bargaining rules when they generate unjust primary distributions"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-oxford-socialism"
+    ]
+  },
+  {
+    "id": "regulatory-intervention",
+    "name": "Regulatory Intervention",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "economic-policy",
+    "description": "Prescriptive use of legal rules and public oversight to constrain market or organizational conduct.",
+    "boundaryStatement": "Domain-specific; endorsement does not imply maximal regulation in every market.",
+    "sourceKey": "regulatory-intervention",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Regulatory Intervention",
+      "longLabel": "Regulatory Intervention"
+    },
+    "poles": {
+      "negative": "Public authorities should generally avoid adding regulatory constraints to market conduct",
+      "positive": "Public regulation and oversight should be used when market or organizational conduct creates serious harms or power imbalances"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-sep-liberalism"
+    ]
+  },
+  {
+    "id": "market-deregulation",
+    "name": "Market Deregulation",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "economic-policy",
+    "description": "Prescriptive removal or simplification of regulatory restrictions to expand voluntary market choice and entry.",
+    "boundaryStatement": "Can coexist with support for some rules protecting rights, competition, or externalities.",
+    "sourceKey": "market-deregulation",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Market Deregulation",
+      "longLabel": "Market Deregulation"
+    },
+    "poles": {
+      "negative": "Existing market regulations should generally be retained or strengthened rather than deliberately removed",
+      "positive": "Regulatory restrictions should be removed or simplified when they unnecessarily block voluntary entry, choice, or competition"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-libertarianism",
+      "citation:v3-sep-liberalism"
+    ]
+  },
+  {
+    "id": "public-provision",
+    "name": "Public Provision",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "social-policy",
+    "description": "Prescriptive use of state or public institutions to directly provide or finance goods and services.",
+    "boundaryStatement": "Separate from the normative claim that social needs matter and from the design of cash versus in-kind benefits.",
+    "sourceKey": "public-provision",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Public Provision",
+      "longLabel": "Public Provision"
+    },
+    "poles": {
+      "negative": "Social needs should generally be addressed without direct public provision",
+      "positive": "Public institutions should directly provide or finance important goods and services when appropriate"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-cambridge-christian-democracy",
+      "citation:v3-sep-liberalism"
+    ]
+  },
+  {
+    "id": "exit-parallel-institutions",
+    "name": "Exit and Parallel Institutions",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "institutional-strategy",
+    "description": "Prescriptive reliance on voluntary exit, mutual aid, counter-institutions, or parallel provision rather than state monopoly.",
+    "boundaryStatement": "Does not imply every collective good can be supplied through exit.",
+    "sourceKey": "exit-parallel-institutions",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Exit and Parallel Institutions",
+      "longLabel": "Exit and Parallel Institutions"
+    },
+    "poles": {
+      "negative": "Political and social problems should not generally be addressed by building voluntary alternatives outside state provision",
+      "positive": "Voluntary exit, mutual aid, and parallel institutions should be used to solve problems outside state monopoly when feasible"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-libertarianism",
+      "citation:v3-ostrom-governing-commons"
+    ]
+  },
+  {
+    "id": "coercive-enforcement-strategy",
+    "name": "Coercive Political Strategy",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "political-strategy",
+    "description": "Prescriptive willingness to use coercive or forceful tactics beyond ordinary rights-protecting enforcement to advance political change.",
+    "boundaryStatement": "Separate from conditional defensive force and from ordinary enforcement of general law.",
+    "sourceKey": "coercive-enforcement-strategy",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Coercive Political Strategy",
+      "longLabel": "Coercive Political Strategy"
+    },
+    "poles": {
+      "negative": "Political change should avoid coercive or forceful tactics beyond ordinary rights-protecting enforcement",
+      "positive": "Coercive or forceful tactics can sometimes be justified to advance political change"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-pacifism",
+      "citation:v3-oxford-libertarianism"
+    ]
+  },
+  {
+    "id": "nonviolent-strategy",
+    "name": "Nonviolent Strategy",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "political-strategy",
+    "description": "Prescriptive commitment to nonviolent methods of political conflict and change.",
+    "boundaryStatement": "Can include disruptive civil resistance and direct action.",
+    "sourceKey": "nonviolent-strategy",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Nonviolent Strategy",
+      "longLabel": "Nonviolent Strategy"
+    },
+    "poles": {
+      "negative": "Political strategy need not give nonviolence special priority",
+      "positive": "Political conflict and social change should be pursued through nonviolent methods"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-pacifism",
+      "citation:v3-oxford-green-ideology"
+    ]
+  },
+  {
+    "id": "coalitional-compromise",
+    "name": "Coalitional Compromise",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "political-strategy",
+    "description": "Prescriptive willingness to accept partial gains and negotiated compromise with political opponents.",
+    "boundaryStatement": "A strategy preference, not a substantive ideological midpoint.",
+    "sourceKey": "coalitional-compromise",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Coalitional Compromise",
+      "longLabel": "Coalitional Compromise"
+    },
+    "poles": {
+      "negative": "Political actors should generally hold out for the full preferred program rather than accept compromise",
+      "positive": "Political actors should often accept negotiated compromise and partial gains"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-conservatism",
+      "citation:v3-oxford-social-democracy"
+    ]
+  },
+  {
+    "id": "public-ownership",
+    "name": "Public Ownership",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "ownership-policy",
+    "description": "Prescriptive use of public/state/social ownership for productive assets or infrastructure.",
+    "boundaryStatement": "Does not by itself specify central planning or worker self-management.",
+    "sourceKey": "public-ownership",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Public Ownership",
+      "longLabel": "Public Ownership"
+    },
+    "poles": {
+      "negative": "Productive assets should not generally be placed in public or social ownership",
+      "positive": "Public or social ownership should be used for some important productive assets or infrastructure"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-socialism",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-oxford-communism"
+    ]
+  },
+  {
+    "id": "worker-control",
+    "name": "Worker Control",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "ownership-policy",
+    "description": "Prescriptive use of worker governance, cooperatives, codetermination, or democratic control in productive organizations.",
+    "boundaryStatement": "Distinct from union bargaining over terms and from state ownership.",
+    "sourceKey": "worker-control",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Worker Control",
+      "longLabel": "Worker Control"
+    },
+    "poles": {
+      "negative": "Workplace governance should generally remain with owners and appointed managers",
+      "positive": "Workers should exercise substantial governance or democratic control in productive organizations"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-socialism",
+      "citation:v3-oxford-social-democracy"
+    ]
+  },
+  {
+    "id": "social-insurance",
+    "name": "Social Insurance",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "social-policy",
+    "description": "Prescriptive use of broad social insurance, income security, pensions, health insurance, or related risk-pooling institutions.",
+    "boundaryStatement": "Does not determine contributory versus universal design.",
+    "sourceKey": "social-insurance",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Social Insurance",
+      "longLabel": "Social Insurance"
+    },
+    "poles": {
+      "negative": "Social risks should generally be handled without broad collective insurance institutions",
+      "positive": "Broad social-insurance institutions should pool major social risks and protect people against predictable vulnerability"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-cambridge-christian-democracy"
+    ]
+  },
+  {
+    "id": "vanguard-party",
+    "name": "Vanguard Party",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "revolutionary-strategy",
+    "description": "Prescriptive support for a disciplined revolutionary party claiming a leading role in political transition.",
+    "boundaryStatement": "A direct Marxist-Leninist discriminator, not a generic measure of organization or leadership.",
+    "sourceKey": "vanguard-party",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Vanguard Party",
+      "longLabel": "Vanguard Party"
+    },
+    "poles": {
+      "negative": "Political transition should not be led by a disciplined revolutionary vanguard party",
+      "positive": "A disciplined revolutionary vanguard party should lead the transition to socialism or communism"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-communism",
+      "citation:v3-oxford-marxian-tradition"
+    ]
+  },
+  {
+    "id": "democratic-centralism",
+    "name": "Democratic Centralism",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "revolutionary-strategy",
+    "description": "Prescriptive support for internal deliberation followed by binding organizational unity in a Leninist party structure.",
+    "boundaryStatement": "Specific to Leninist organizational doctrine; not equivalent to ordinary party discipline.",
+    "sourceKey": "democratic-centralism",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Democratic Centralism",
+      "longLabel": "Democratic Centralism"
+    },
+    "poles": {
+      "negative": "Political organizations should not require binding centralized unity after internal deliberation",
+      "positive": "A revolutionary party should combine internal deliberation with binding centralized unity after decisions"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-communism"
+    ]
+  },
+  {
+    "id": "constitutional-reform",
+    "name": "Constitutional Reform",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "institutional-strategy",
+    "description": "Prescriptive use of constitutional rules, rights, courts, checks, and formal institutional design to constrain political power.",
+    "boundaryStatement": "Distinct from generic reform and from the descriptive quality of courts or experts.",
+    "sourceKey": "constitutional-reform",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Constitutional Reform",
+      "longLabel": "Constitutional Reform"
+    },
+    "poles": {
+      "negative": "Constitutional rules and formal checks should not be a major instrument for constraining political power",
+      "positive": "Constitutional rules, rights, checks, and institutional design should be used to constrain political power"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-liberalism",
+      "citation:v3-pettit-republicanism"
+    ]
+  },
+  {
+    "id": "subsidiarity",
+    "name": "Subsidiarity",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "institutional-strategy",
+    "description": "Prescriptive allocation of public responsibilities to the lowest competent social or political level while permitting higher-level action where required.",
+    "boundaryStatement": "Not equivalent to unconditional decentralization; higher levels retain roles when lower levels cannot perform the task.",
+    "sourceKey": "subsidiarity",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Subsidiarity",
+      "longLabel": "Subsidiarity"
+    },
+    "poles": {
+      "negative": "Public responsibilities need not be allocated to lower competent institutions before higher levels act",
+      "positive": "Public responsibilities should normally rest with the lowest competent social or political level"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-cambridge-christian-democracy"
+    ]
+  },
+  {
+    "id": "contestable-institutions",
+    "name": "Contestable Institutions",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "institutional-strategy",
+    "description": "Prescriptive design of institutions so exercises of power can be challenged, reviewed, and controlled by affected people.",
+    "boundaryStatement": "Targets non-domination through institutional design rather than merely distributing authority geographically.",
+    "sourceKey": "contestable-institutions",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Contestable Institutions",
+      "longLabel": "Contestable Institutions"
+    },
+    "poles": {
+      "negative": "Exercises of public or private power need not be institutionally contestable by affected people",
+      "positive": "Institutions should provide effective mechanisms for people to contest and review exercises of power"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-pettit-republicanism"
+    ]
+  },
+  {
+    "id": "collective-bargaining",
+    "name": "Collective Bargaining",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "labor-policy",
+    "description": "Prescriptive support for worker organization and collective bargaining as institutions governing employment relations.",
+    "boundaryStatement": "Distinct from worker ownership or full workplace self-government.",
+    "sourceKey": "collective-bargaining",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Collective Bargaining",
+      "longLabel": "Collective Bargaining"
+    },
+    "poles": {
+      "negative": "Employment terms should generally be set without collective worker bargaining institutions",
+      "positive": "Workers should be able to organize and bargain collectively over employment relations"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-oxford-socialism"
+    ]
+  },
+  {
+    "id": "ecological-restructuring",
+    "name": "Ecological Restructuring",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "ecological-policy",
+    "description": "Prescriptive restructuring of economic and political institutions to satisfy ecological constraints and sustainability duties.",
+    "boundaryStatement": "Does not predetermine degrowth, market instruments, public ownership, or one energy technology.",
+    "sourceKey": "ecological-restructuring",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Ecological Restructuring",
+      "longLabel": "Ecological Restructuring"
+    },
+    "poles": {
+      "negative": "Environmental harms should be addressed without substantial restructuring of economic or political institutions",
+      "positive": "Economic and political institutions should be restructured where necessary to satisfy ecological constraints and sustainability duties"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-green-ideology"
+    ]
+  },
+  {
+    "id": "central-planning",
+    "name": "Central Economic Planning",
+    "role": "prescriptive",
+    "scope": "root",
+    "family": "economic-policy",
+    "description": "Prescriptive allocation of major productive resources through centralized administrative planning rather than primarily decentralized market exchange.",
+    "boundaryStatement": "Distinct from public ownership: publicly owned firms can use markets and privately owned firms can be heavily directed.",
+    "sourceKey": "central-planning",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Central Economic Planning",
+      "longLabel": "Central Economic Planning"
+    },
+    "poles": {
+      "negative": "Major productive resources should not be allocated through centralized administrative planning",
+      "positive": "Major productive resources should be allocated substantially through centralized administrative planning"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-communism",
+      "citation:v3-oxford-socialism"
     ]
   }
 ]

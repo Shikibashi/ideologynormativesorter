@@ -336,7 +336,7 @@ export function scorePrimaryProfiles(
       continue;
     }
 
-    const commitmentSpec = getPrimaryIdeologyCommitmentSpec(profileId);
+    const commitmentSpec = getPrimaryIdeologyCommitmentSpec(profile);
     const configurationError = commitmentSpec
       ? validateCommitmentSpec(commitmentSpec, knownConstructIds)
       : validatePrimaryProfileConfiguration(profile, knownConstructIds);

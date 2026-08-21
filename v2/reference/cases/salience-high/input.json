@@ -1,6 +1,6 @@
 {
   "responseSchemaVersion": "response-v2.phase1.1",
-  "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
+  "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
   "coreResponses": [
     {
       "state": "answered",
@@ -2155,6 +2155,276 @@
       "responseType": "likert7",
       "value": 0,
       "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0501",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0502",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0503",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0504",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0505",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0506",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0507",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0508",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0509",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0510",
+      "responseType": "likert7",
+      "value": 0
+    },
+    {
+      "state": "answered",
+      "itemId": "q0511",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0512",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0513",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0514",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0515",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0516",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0517",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0518",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0519",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0520",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0521",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0522",
+      "responseType": "likert7",
+      "value": 0,
+      "confidence": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0523",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0524",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0525",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0526",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0527",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0528",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0529",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0530",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0531",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0532",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0533",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0534",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0535",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0536",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0537",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0538",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0539",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
+    },
+    {
+      "state": "answered",
+      "itemId": "q0540",
+      "responseType": "likert7",
+      "value": 0,
+      "priority": 5
     },
     {
       "state": "answered",

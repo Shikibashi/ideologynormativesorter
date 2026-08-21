@@ -3,2725 +3,1794 @@
     "id": "profile:christian-democrat",
     "name": "Christian Democrat",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0.3,
-        "weight": 1
+        "id": "cd-subsidiarity",
+        "constructId": "subsidiarity",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Subsidiarity is a central institutional principle of Christian-democratic political thought.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-cambridge-christian-democracy"
+        ]
       },
       {
-        "constructId": "property-legitimacy",
-        "targetValue": 0.4,
-        "weight": 1
+        "id": "cd-solidarity",
+        "constructId": "social-solidarity",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Solidarity and social protection are core to Christian-democratic social capitalism.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-cambridge-christian-democracy"
+        ]
       },
       {
-        "constructId": "liberty-noninterference",
-        "targetValue": -0.3,
-        "weight": 1
+        "id": "cd-democracy",
+        "constructId": "democratic-legitimacy",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Modern Christian democracy is democratic rather than clerical-authoritarian.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-cambridge-christian-democracy"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": 0.1,
-        "weight": 1
+        "id": "cd-inspiration",
+        "constructId": "religious-political-inspiration",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Christian moral inspiration is characteristic even where institutions are religiously pluralist.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-cambridge-christian-democracy",
+          "citation:v3-oxford-religion-liberal-philosophy"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.1,
-        "weight": 1
+        "id": "cd-property",
+        "constructId": "productive-property",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.2
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Private property is generally accepted but constrained by social duties.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-cambridge-christian-democracy",
+          "citation:v3-sep-property"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": 0.5,
-        "weight": 1
+        "id": "cd-insurance",
+        "constructId": "social-insurance",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Social insurance and social-market institutions are characteristic instruments.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-cambridge-christian-democracy"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": 0.1,
-        "weight": 1
+        "id": "cd-establishment",
+        "constructId": "religious-establishment",
+        "relation": "contested",
+        "rationale": "Christian democrats vary substantially on establishment and church-state constitutional form.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-cambridge-christian-democracy",
+          "citation:v3-oxford-religion-liberal-philosophy"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "market-process-confidence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": 0.4,
-        "weight": 1
+        "id": "cd-moral-law",
+        "constructId": "coercive-moral-order",
+        "relation": "contested",
+        "rationale": "Christian-democratic parties vary on coercive enforcement of traditional morality.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-cambridge-christian-democracy"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:christian-democrat:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:christian-democrat:evidence:equality-theory",
-        "operator": "evidenceMinimum",
-        "constructId": "equality-theory",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:christian-democrat:evidence:centralization-preference",
-        "operator": "evidenceMinimum",
-        "constructId": "centralization-preference",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:christian-democrat:evidence:secularism-religious",
-        "operator": "evidenceMinimum",
-        "constructId": "secularism-religious",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "christian-democrat",
+    "rationale": "Christian democracy is identified by subsidiarity, social solidarity, democratic public authority, socially bounded property, and Christian political inspiration rather than a generic conservative midpoint.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:462f83960116c2c0",
       "citation:19f7801696d214cc",
-      "citation:361e419b1f2ade3e"
+      "citation:361e419b1f2ade3e",
+      "citation:v3-cambridge-christian-democracy",
+      "citation:v3-freeden-morphology"
     ]
   },
   {
     "id": "profile:classical-liberalism",
     "name": "Classical Liberalism",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "property-legitimacy",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
+        "id": "cl-liberty",
         "constructId": "liberty-noninterference",
-        "targetValue": 0.9,
-        "weight": 1
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.15
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "A protected sphere of individual non-interference is constitutive of classical liberalism.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism",
+          "citation:v3-oxford-libertarianism"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": -0.3,
-        "weight": 1
+        "id": "cl-legal-equality",
+        "constructId": "legal-equality",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Equal legal status is central to liberal citizenship.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism",
+          "citation:v3-sep-equality"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.3,
-        "weight": 1
+        "id": "cl-property",
+        "constructId": "productive-property",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Private property and voluntary exchange are core institutions.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-property",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "cl-market",
+        "constructId": "market-knowledge-coordination",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Classical liberals characteristically expect decentralized markets to coordinate dispersed knowledge.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-hayek-knowledge",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": 0.4,
-        "weight": 1
+        "id": "cl-constitutional",
+        "constructId": "constitutional-reform",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Constitutional limits and rule-bound government are core liberal institutional commitments.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "cl-contestability",
+        "constructId": "contestable-institutions",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Institutional checks and review are characteristic protections against arbitrary power.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-pettit-republicanism",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "market-process-confidence",
-        "targetValue": 0.5,
-        "weight": 1
+        "id": "cl-effective-agency",
+        "constructId": "effective-agency",
+        "relation": "contested",
+        "rationale": "Classical liberals disagree over how far effective material capacity belongs within liberty itself.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "state-capacity-confidence",
-        "targetValue": -0.2,
-        "weight": 1
+        "id": "cl-solidarity",
+        "constructId": "social-solidarity",
+        "relation": "contested",
+        "rationale": "Classical-liberal traditions vary over social minima and public social duties.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.3,
-        "weight": 1
+        "id": "cl-planning",
+        "constructId": "central-planning",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.65
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Comprehensive central planning conflicts with classical-liberal economic and political pluralism.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism",
+          "citation:v3-hayek-knowledge"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:classical-liberalism:evidence:authority-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "authority-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:classical-liberalism:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:classical-liberalism:evidence:liberty-noninterference",
-        "operator": "evidenceMinimum",
-        "constructId": "liberty-noninterference",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:classical-liberalism:evidence:market-process-confidence",
-        "operator": "evidenceMinimum",
-        "constructId": "market-process-confidence",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "classical-liberalism",
+    "rationale": "Classical liberalism combines non-interference, legal equality, private property, markets, constitutional limits, and skepticism toward concentrated coercive authority without requiring a single welfare or democracy theory.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:267f05e8417dd262",
-      "citation:c8d9dc64426ba5af"
+      "citation:c8d9dc64426ba5af",
+      "citation:v3-sep-liberalism",
+      "citation:v3-oxford-libertarianism"
     ]
   },
   {
     "id": "profile:conservative",
     "name": "Conservative / Prudential Conservative",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0.25,
-        "weight": 1
+        "id": "con-tradition",
+        "constructId": "tradition-deference",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Inherited institutions and practices receive presumptive weight.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-conservatism"
+        ]
       },
       {
-        "constructId": "property-legitimacy",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "con-path",
+        "constructId": "institutional-path-dependence",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Conservative prudence relies on limits created by institutional history and tacit adaptation.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-conservatism"
+        ]
       },
       {
-        "constructId": "liberty-noninterference",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "con-gradual",
+        "constructId": "gradual-transition",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Major changes should usually be sequenced cautiously.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-conservatism"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": -0.2,
-        "weight": 1
+        "id": "con-reform",
+        "constructId": "institutional-reform",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.15
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Conservatism permits reform when it preserves continuity and manages risk.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-conservatism"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "con-malleability",
+        "constructId": "cultural-malleability",
+        "relation": "core",
+        "criterion": {
+          "operator": "maximum",
+          "maximum": 0.25
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Conservatives characteristically doubt easy deliberate remaking of culture and institutions.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-conservatism"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": 0.35,
-        "weight": 1
+        "id": "con-authority",
+        "constructId": "political-authority-legitimacy",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.2
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Order and authority may be legitimate, but no universal theory of unlimited state power is constitutive.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-conservatism",
+          "citation:v3-sep-political-legitimacy"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "con-moral-order",
+        "constructId": "coercive-moral-order",
+        "relation": "contested",
+        "rationale": "Conservatives disagree over how far traditional morality should be legally enforced.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-conservatism"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": 0,
-        "weight": 1
+        "id": "con-national",
+        "constructId": "compatriot-priority",
+        "relation": "contested",
+        "rationale": "National attachment is important in some conservative traditions but not constitutive of prudential conservatism as such.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-conservatism",
+          "citation:v3-sep-nationalism"
+        ]
       },
       {
-        "constructId": "market-process-confidence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "con-market",
+        "constructId": "productive-property",
+        "relation": "contested",
+        "rationale": "Conservative traditions range from market-oriented to paternal/social variants.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-conservatism"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:conservative:evidence:cultural-plasticity",
-        "operator": "evidenceMinimum",
-        "constructId": "cultural-plasticity",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:conservative:evidence:gradualism-vs-immediatism",
-        "operator": "evidenceMinimum",
-        "constructId": "gradualism-vs-immediatism",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "conservative",
+    "rationale": "Prudential conservatism is identified by deference to inherited institutions, path dependence, gradual change, and skepticism of deliberate social reconstruction rather than by mandatory nationalism, religiosity, or laissez-faire economics.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "citation:462f83960116c2c0"
+      "citation:462f83960116c2c0",
+      "citation:v3-oxford-conservatism"
     ]
   },
   {
     "id": "profile:democratic-socialist",
     "name": "Democratic Socialist",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0,
-        "weight": 1
+        "id": "ds-democracy",
+        "constructId": "democratic-legitimacy",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Democratic political institutions distinguish democratic socialism from authoritarian socialist strategies.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism",
+          "citation:v3-oxford-social-democracy"
+        ]
       },
       {
-        "constructId": "property-legitimacy",
-        "targetValue": -0.6,
-        "weight": 1
+        "id": "ds-workplace",
+        "constructId": "workplace-self-government",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Economic democracy and worker power are central socialist goals.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "liberty-noninterference",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "ds-public-ownership",
+        "constructId": "public-ownership",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Social ownership is central, though its institutional form can be public, cooperative, municipal, or otherwise social.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": 0.8,
-        "weight": 1
+        "id": "ds-worker-control",
+        "constructId": "worker-control",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Democratic control of productive institutions is a core route to economic democracy.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.3,
-        "weight": 1
+        "id": "ds-solidarity",
+        "constructId": "social-solidarity",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Social provision and solidarity are core socialist concerns.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.4,
-        "weight": 1
+        "id": "ds-class",
+        "constructId": "class-exploitation",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Democratic socialists commonly understand economic power in terms of class and workplace domination.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": 0.7,
-        "weight": 1
+        "id": "ds-private-capital",
+        "constructId": "productive-property",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.75
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Treating strong private control of productive capital as presumptively overriding democratic/social claims conflicts with democratic socialism.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism",
+          "citation:v3-sep-property"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "market-process-confidence",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.8,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.3,
-        "weight": 1
+        "id": "ds-revolution",
+        "constructId": "revolutionary-rupture",
+        "relation": "contested",
+        "rationale": "Democratic socialists differ over transformation through elections, extra-parliamentary action, rupture, or long reform.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:democratic-socialist:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:democratic-socialist:evidence:equality-theory",
-        "operator": "evidenceMinimum",
-        "constructId": "equality-theory",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:democratic-socialist:evidence:anti-domination",
-        "operator": "evidenceMinimum",
-        "constructId": "anti-domination",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "democratic-socialist",
+    "rationale": "Democratic socialism requires democratic political legitimacy and meaningful social or democratic control of economic power; it is not merely a more redistributive social democracy.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f1300f36270734fe",
       "citation:a0b0e7732c03769f",
-      "citation:258cbf6757349f69"
+      "citation:258cbf6757349f69",
+      "citation:v3-oxford-socialism",
+      "citation:v3-oxford-social-democracy"
     ]
   },
   {
     "id": "profile:green-politics",
     "name": "Green Politics / Political Ecology",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0,
-        "weight": 1
+        "id": "green-standing",
+        "constructId": "ecological-standing",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.15
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Nature and ecological systems receive standing beyond immediate instrumental use.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-green-ideology"
+        ]
       },
       {
-        "constructId": "property-legitimacy",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "green-future",
+        "constructId": "intergenerational-ecological-duty",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Intergenerational ecological obligations are central to sustainability politics.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-green-ideology"
+        ]
       },
       {
-        "constructId": "liberty-noninterference",
-        "targetValue": 0,
-        "weight": 1
+        "id": "green-restructure",
+        "constructId": "ecological-restructuring",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Green ideology characteristically seeks institutional restructuring to respect ecological constraints.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-green-ideology"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "green-limits",
+        "constructId": "ecological-limits-growth",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Many green traditions emphasize biophysical limits, while ecomodernist strands dispute stronger limits claims.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-green-ideology"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0,
-        "weight": 1
+        "id": "green-democracy",
+        "constructId": "democratic-legitimacy",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Green political traditions commonly connect ecological politics with democratization.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-green-ideology"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.15,
-        "weight": 1
+        "id": "green-nonviolence",
+        "constructId": "nonviolent-strategy",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Nonviolence is historically characteristic but not a universal gate for every green party.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-green-ideology",
+          "citation:v3-sep-pacifism"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": 0.35,
-        "weight": 1
-      },
-      {
-        "constructId": "human-nature-priority",
-        "targetValue": 0.8,
-        "weight": 1
-      },
-      {
-        "constructId": "market-process-confidence",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.25,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.25,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0.15,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.25,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.15,
-        "weight": 1
+        "id": "green-property",
+        "constructId": "public-ownership",
+        "relation": "contested",
+        "rationale": "Green traditions disagree over market, common, cooperative, and public ownership forms.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-green-ideology"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:green-politics:evidence:human-nature-priority",
-        "operator": "evidenceMinimum",
-        "constructId": "human-nature-priority",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 2
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "green-politics",
+    "rationale": "Green politics is identified by ecological standing, intergenerational obligations, and ecological restructuring; ecocentrism alone is not treated as the whole ideology.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "citation:86698e89abab7360"
-    ]
-  },
-  {
-    "id": "profile:liberal-conservatism",
-    "name": "Liberal Conservatism",
-    "role": "primary",
-    "requirements": [
-      {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "property-legitimacy",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "liberty-noninterference",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "equality-theory",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "moral-traditionalism",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "anti-domination",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "human-nature-priority",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "market-process-confidence",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": 0.1,
-        "weight": 1
-      }
-    ],
-    "gates": [
-      {
-        "id": "gate:liberal-conservatism:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:liberal-conservatism:evidence:liberty-noninterference",
-        "operator": "evidenceMinimum",
-        "constructId": "liberty-noninterference",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:liberal-conservatism:evidence:market-process-confidence",
-        "operator": "evidenceMinimum",
-        "constructId": "market-process-confidence",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:liberal-conservatism:evidence:cultural-plasticity",
-        "operator": "evidenceMinimum",
-        "constructId": "cultural-plasticity",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
-    "targetNodeId": "liberal-conservatism",
-    "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "citation:462f83960116c2c0",
-      "citation:16a3600798f070be"
+      "citation:86698e89abab7360",
+      "citation:v3-oxford-green-ideology"
     ]
   },
   {
     "id": "profile:libertarian-socialism",
     "name": "Libertarian Socialism",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "property-legitimacy",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "liberty-noninterference",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "equality-theory",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
+        "id": "ls-domination",
         "constructId": "anti-domination",
-        "targetValue": 0.8,
-        "weight": 1
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.15
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Opposition to domination and hierarchical command is constitutive.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism",
+          "citation:v3-pettit-republicanism"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "ls-authority",
+        "constructId": "political-authority-legitimacy",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "maximum",
+          "maximum": 0.15
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Libertarian socialism is skeptical that centralized coercive authority possesses a broad special claim to obedience.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "market-process-confidence",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "ls-workplace",
+        "constructId": "workplace-self-government",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Socialism requires democratic or social control of productive power rather than capitalist workplace hierarchy.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "state-capacity-confidence",
-        "targetValue": -0.2,
-        "weight": 1
+        "id": "ls-decentralize",
+        "constructId": "institutional-decentralization",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Decentralized and federated organization is characteristic of libertarian-socialist institutions.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism",
+          "citation:v3-ostrom-governing-commons"
+        ]
       },
       {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.3,
-        "weight": 1
+        "id": "ls-worker-control",
+        "constructId": "worker-control",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Worker self-management is a characteristic institutional strategy.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.5,
-        "weight": 1
+        "id": "ls-direct",
+        "constructId": "direct-action",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Direct organization and action are characteristic but need not exclude all electoral work.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "expert-confidence",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "ls-private-capital",
+        "constructId": "productive-property",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.7
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Strong capitalist control rights over productive assets conflict with libertarian socialism.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.3,
-        "weight": 1
+        "id": "ls-planning",
+        "constructId": "central-planning",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.65
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Centralized administrative planning conflicts with the libertarian-socialist decentralist core.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.4,
-        "weight": 1
+        "id": "ls-markets",
+        "constructId": "market-knowledge-coordination",
+        "relation": "contested",
+        "rationale": "Market anarchist and communistic libertarian-socialist branches disagree over market coordination.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism",
+          "citation:v3-oxford-libertarianism"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:libertarian-socialism:evidence:authority-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "authority-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:libertarian-socialism:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:libertarian-socialism:evidence:equality-theory",
-        "operator": "evidenceMinimum",
-        "constructId": "equality-theory",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:libertarian-socialism:evidence:anti-domination",
-        "operator": "evidenceMinimum",
-        "constructId": "anti-domination",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "libertarian-socialism",
+    "rationale": "Libertarian socialism combines anti-authoritarian/non-dominating political arrangements with social or worker control of productive institutions and decentralized organization.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f1300f36270734fe",
       "citation:a0b0e7732c03769f",
-      "citation:1b5ab88e18ea0d1b"
-    ]
-  },
-  {
-    "id": "profile:market-liberal",
-    "name": "Market Liberal",
-    "role": "primary",
-    "requirements": [
-      {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "property-legitimacy",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "liberty-noninterference",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "equality-theory",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "anti-domination",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "human-nature-priority",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "market-process-confidence",
-        "targetValue": 0.8,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": -0.8,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": -0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.2,
-        "weight": 1
-      }
-    ],
-    "gates": [
-      {
-        "id": "gate:market-liberal:evidence:authority-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "authority-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:market-liberal:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:market-liberal:evidence:liberty-noninterference",
-        "operator": "evidenceMinimum",
-        "constructId": "liberty-noninterference",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:market-liberal:evidence:market-process-confidence",
-        "operator": "evidenceMinimum",
-        "constructId": "market-process-confidence",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
-    "targetNodeId": "market-liberal",
-    "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "citation:267f05e8417dd262",
-      "citation:c8d9dc64426ba5af",
-      "citation:66382c94a47a6629"
+      "citation:1b5ab88e18ea0d1b",
+      "citation:v3-oxford-socialism",
+      "citation:v3-oxford-libertarianism"
     ]
   },
   {
     "id": "profile:market-right-libertarianism",
     "name": "Right-Libertarianism",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "property-legitimacy",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
+        "id": "rl-liberty",
         "constructId": "liberty-noninterference",
-        "targetValue": 0.8,
-        "weight": 1
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.2
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Strong rights against coercive interference are constitutive.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": -0.3,
-        "weight": 1
+        "id": "rl-property",
+        "constructId": "productive-property",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.2
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Strong legitimate private property claims are constitutive of right-libertarian justice.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism",
+          "citation:v3-sep-property"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "rl-personal",
+        "constructId": "personal-property",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Strong control over personal holdings is central.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism",
+          "citation:v3-sep-property"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.2,
-        "weight": 1
+        "id": "rl-authority",
+        "constructId": "political-authority-legitimacy",
+        "relation": "core",
+        "criterion": {
+          "operator": "maximum",
+          "maximum": 0.2
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Political authority is sharply constrained; minarchist and anarchist variants differ over its residual scope.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism",
+          "citation:v3-sep-political-legitimacy"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": 0.5,
-        "weight": 1
+        "id": "rl-market",
+        "constructId": "market-knowledge-coordination",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Decentralized exchange is characteristically viewed as an effective coordination institution.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-hayek-knowledge",
+          "citation:v3-oxford-libertarianism"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": 0,
-        "weight": 1
+        "id": "rl-deregulation",
+        "constructId": "market-deregulation",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Reducing coercive restrictions on voluntary exchange is characteristic.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism"
+        ]
       },
       {
-        "constructId": "market-process-confidence",
-        "targetValue": 0.8,
-        "weight": 1
+        "id": "rl-legal-equality",
+        "constructId": "legal-equality",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Equal individual rights rather than inherited legal status is a core implication of individual rights.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism",
+          "citation:v3-sep-equality"
+        ]
       },
       {
-        "constructId": "state-capacity-confidence",
-        "targetValue": -0.4,
-        "weight": 1
+        "id": "rl-redistribution",
+        "constructId": "income-redistribution",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.7
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Strong coercive redistribution for patterned distributive outcomes conflicts with right-libertarian property claims.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism"
+        ]
       },
       {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.6,
-        "weight": 1
+        "id": "rl-planning",
+        "constructId": "central-planning",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.65
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Comprehensive central planning conflicts with voluntary exchange and private control.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism",
+          "citation:v3-hayek-knowledge"
+        ]
       },
       {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.3,
-        "weight": 1
+        "id": "rl-force",
+        "constructId": "force-permissibility",
+        "relation": "contested",
+        "rationale": "Libertarians agree on defensive force more than on pacifism, foreign policy, or military institutions.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-libertarianism",
+          "citation:v3-sep-pacifism"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:market-right-libertarianism:evidence:authority-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "authority-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:market-right-libertarianism:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:market-right-libertarianism:evidence:liberty-noninterference",
-        "operator": "evidenceMinimum",
-        "constructId": "liberty-noninterference",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:market-right-libertarianism:evidence:market-process-confidence",
-        "operator": "evidenceMinimum",
-        "constructId": "market-process-confidence",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "market-right-libertarianism",
+    "rationale": "Right-libertarianism is identified by strong non-interference and property rights, constrained political authority, voluntary exchange, and opposition to coercive redistribution or comprehensive planning.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:267f05e8417dd262",
-      "citation:c8d9dc64426ba5af"
+      "citation:c8d9dc64426ba5af",
+      "citation:v3-oxford-libertarianism",
+      "citation:v3-sep-property"
     ]
   },
   {
     "id": "profile:marxian-socialism",
     "name": "Marxian Socialism (Non-Leninist)",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0,
-        "weight": 1
+        "id": "mx-class",
+        "constructId": "class-exploitation",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.15
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Class and exploitation are constitutive explanatory commitments of Marxian analysis.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-marxian-tradition"
+        ]
       },
       {
-        "constructId": "property-legitimacy",
-        "targetValue": -0.6,
-        "weight": 1
+        "id": "mx-accumulation",
+        "constructId": "capital-accumulation-crisis",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Accumulation, concentration, and crisis mechanisms are central to Marxian political economy.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-marxian-tradition"
+        ]
       },
       {
-        "constructId": "liberty-noninterference",
-        "targetValue": 0.1,
-        "weight": 1
+        "id": "mx-ideology",
+        "constructId": "ideology-hegemony",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Ideology and social reproduction of power are central explanatory themes.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-marxian-tradition"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": 0.7,
-        "weight": 1
+        "id": "mx-structure",
+        "constructId": "historical-change-structural",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Structural social and economic forces play a major role in historical change.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-marxian-tradition"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0,
-        "weight": 1
+        "id": "mx-private-capital",
+        "constructId": "productive-property",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.7
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Treating capitalist private productive property as presumptively just conflicts with Marxian socialism.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-marxian-tradition",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.3,
-        "weight": 1
+        "id": "mx-public",
+        "constructId": "public-ownership",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Social ownership is characteristic, while Marxian traditions dispute state, communal, and cooperative forms.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism",
+          "citation:v3-oxford-marxian-tradition"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": 0.6,
-        "weight": 1
+        "id": "mx-worker",
+        "constructId": "worker-control",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Worker/social control is characteristic of emancipatory socialist transformation.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-socialism",
+          "citation:v3-oxford-marxian-tradition"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": 0.1,
-        "weight": 1
+        "id": "mx-revolution",
+        "constructId": "revolutionary-rupture",
+        "relation": "contested",
+        "rationale": "Marxian traditions disagree over revolutionary rupture, reform, and transition strategy.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-marxian-tradition",
+          "citation:v3-oxford-socialism"
+        ]
       },
       {
-        "constructId": "market-process-confidence",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.3,
-        "weight": 1
+        "id": "mx-vanguard",
+        "constructId": "vanguard-party",
+        "relation": "contested",
+        "rationale": "Vanguard-party doctrine belongs to Leninist branches and is not constitutive of Marxian socialism as a whole.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-marxian-tradition",
+          "citation:v3-oxford-communism"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:marxian-socialism:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:marxian-socialism:evidence:equality-theory",
-        "operator": "evidenceMinimum",
-        "constructId": "equality-theory",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:marxian-socialism:evidence:anti-domination",
-        "operator": "evidenceMinimum",
-        "constructId": "anti-domination",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "marxian-socialism",
+    "rationale": "Marxian socialism is distinguished by its descriptive theory of class, exploitation, accumulation, ideology, and structural historical change together with socialist transformation; it is not defined merely as non-Leninist distance from another profile.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f1300f36270734fe",
-      "citation:a0b0e7732c03769f"
+      "citation:a0b0e7732c03769f",
+      "citation:v3-oxford-marxian-tradition",
+      "citation:v3-oxford-socialism"
     ]
   },
   {
     "id": "profile:marxist-leninist",
     "name": "Marxist-Leninist",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0.7,
-        "weight": 1
+        "id": "ml-class",
+        "constructId": "class-exploitation",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Marxian class and exploitation analysis remains central.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-marxian-tradition"
+        ]
       },
       {
-        "constructId": "property-legitimacy",
-        "targetValue": -0.95,
-        "weight": 1
+        "id": "ml-vanguard",
+        "constructId": "vanguard-party",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.15
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "The leading revolutionary party is a defining Leninist institutional commitment.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-communism"
+        ]
       },
       {
-        "constructId": "liberty-noninterference",
-        "targetValue": -0.6,
-        "weight": 1
+        "id": "ml-dc",
+        "constructId": "democratic-centralism",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Democratic centralism is a defining organizational doctrine.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-communism"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": 0.9,
-        "weight": 1
+        "id": "ml-planning",
+        "constructId": "central-planning",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Central planning is characteristic of Marxist-Leninist political economy.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-communism"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "ml-public",
+        "constructId": "public-ownership",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "State/social ownership of major productive assets is characteristic.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-communism"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.2,
-        "weight": 1
+        "id": "ml-rupture",
+        "constructId": "revolutionary-rupture",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Revolutionary transition rather than merely constitutional reform is central to Leninist strategy.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-communism",
+          "citation:v3-oxford-marxian-tradition"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "ml-structure",
+        "constructId": "historical-change-structural",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Structural class forces are central to historical analysis.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-marxian-tradition"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "market-process-confidence",
-        "targetValue": -0.9,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0.95,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": 0.9,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.9,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": -0.8,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.8,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.4,
-        "weight": 1
+        "id": "ml-private-capital",
+        "constructId": "productive-property",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.7
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Strong private capitalist control over major productive assets conflicts with the Marxist-Leninist program.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-communism"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:marxist-leninist:evidence:authority-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "authority-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:marxist-leninist:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:marxist-leninist:evidence:centralization-preference",
-        "operator": "evidenceMinimum",
-        "constructId": "centralization-preference",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:marxist-leninist:evidence:reform-vs-revolution",
-        "operator": "evidenceMinimum",
-        "constructId": "reform-vs-revolution",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:marxist-leninist:evidence:state-action-vs-exit",
-        "operator": "evidenceMinimum",
-        "constructId": "state-action-vs-exit",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "marxist-leninist",
+    "rationale": "Marxism-Leninism combines Marxian class analysis with the distinctive Leninist institutions of a vanguard party, democratic centralism, revolutionary transition, and extensive planned/socialized ownership.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f1300f36270734fe",
       "citation:a0b0e7732c03769f",
-      "citation:ffb8b5e650c3af87"
-    ]
-  },
-  {
-    "id": "profile:national-conservatism",
-    "name": "National Conservatism",
-    "role": "primary",
-    "requirements": [
-      {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "property-legitimacy",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "liberty-noninterference",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "equality-theory",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "political-community-boundary",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "moral-traditionalism",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "anti-domination",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "human-nature-priority",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "market-process-confidence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": 0.3,
-        "weight": 1
-      }
-    ],
-    "gates": [
-      {
-        "id": "gate:national-conservatism:evidence:political-community-boundary",
-        "operator": "evidenceMinimum",
-        "constructId": "political-community-boundary",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:national-conservatism:evidence:cultural-plasticity",
-        "operator": "evidenceMinimum",
-        "constructId": "cultural-plasticity",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
-    "targetNodeId": "national-conservatism",
-    "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "citation:462f83960116c2c0",
-      "citation:e9afa3c3056240c5"
-    ]
-  },
-  {
-    "id": "profile:radical-democracy",
-    "name": "Radical Democracy",
-    "role": "primary",
-    "requirements": [
-      {
-        "constructId": "authority-legitimacy",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "property-legitimacy",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "liberty-noninterference",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "equality-theory",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "anti-domination",
-        "targetValue": 0.8,
-        "weight": 1
-      },
-      {
-        "constructId": "human-nature-priority",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "market-process-confidence",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": 0,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.3,
-        "weight": 1
-      }
-    ],
-    "gates": [
-      {
-        "id": "gate:radical-democracy:evidence:equality-theory",
-        "operator": "evidenceMinimum",
-        "constructId": "equality-theory",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:radical-democracy:evidence:anti-domination",
-        "operator": "evidenceMinimum",
-        "constructId": "anti-domination",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
-    "targetNodeId": "radical-democracy",
-    "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "citation:dc6dd83c651d43ae",
-      "citation:e718d25b9d38de9a",
-      "citation:5fcfd12a29651d07"
+      "citation:ffb8b5e650c3af87",
+      "citation:v3-oxford-communism",
+      "citation:v3-oxford-marxian-tradition"
     ]
   },
   {
     "id": "profile:republicanism",
     "name": "Republicanism",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "property-legitimacy",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "liberty-noninterference",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "equality-theory",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "political-community-boundary",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "moral-traditionalism",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
+        "id": "rep-domination",
         "constructId": "anti-domination",
-        "targetValue": 0.6,
-        "weight": 1
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.15
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Freedom as non-domination is the central republican liberty commitment.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-pettit-republicanism",
+          "citation:v3-sep-liberty"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "rep-contestable",
+        "constructId": "contestable-institutions",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Institutions must permit effective contestation of arbitrary power.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-pettit-republicanism"
+        ]
       },
       {
-        "constructId": "market-process-confidence",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "rep-democracy",
+        "constructId": "democratic-legitimacy",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Public accountability and democratic control are core institutional mechanisms.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-pettit-republicanism"
+        ]
       },
       {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.3,
-        "weight": 1
+        "id": "rep-constitutional",
+        "constructId": "constitutional-reform",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Rule of law and constitutional checks are characteristic republican institutions.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-pettit-republicanism"
+        ]
       },
       {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "rep-equality",
+        "constructId": "legal-equality",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Equal civic standing is necessary for non-dominating citizenship.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-pettit-republicanism",
+          "citation:v3-sep-equality"
+        ]
       },
       {
-        "constructId": "democratic-confidence",
-        "targetValue": 0,
-        "weight": 1
+        "id": "rep-effective",
+        "constructId": "effective-agency",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Some material independence can be relevant where dependence exposes citizens to domination.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-pettit-republicanism",
+          "citation:v3-sep-liberty"
+        ]
       },
       {
-        "constructId": "expert-confidence",
-        "targetValue": 0.1,
-        "weight": 1
+        "id": "rep-property",
+        "constructId": "productive-property",
+        "relation": "contested",
+        "rationale": "Republicans disagree over how property institutions contribute to or undermine independence and non-domination.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-pettit-republicanism",
+          "citation:v3-sep-property"
+        ]
       },
       {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.4,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.2,
-        "weight": 1
+        "id": "rep-welfare",
+        "constructId": "social-solidarity",
+        "relation": "contested",
+        "rationale": "Republican traditions differ over the social provision required for civic independence.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-pettit-republicanism"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:republicanism:evidence:liberty-noninterference",
-        "operator": "evidenceMinimum",
-        "constructId": "liberty-noninterference",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:republicanism:evidence:anti-domination",
-        "operator": "evidenceMinimum",
-        "constructId": "anti-domination",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "republicanism",
+    "rationale": "Republicanism is identified by freedom as non-domination and institutions that make power contestable, rule-bound, and publicly accountable; it is not a generic midpoint on liberty and authority.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:e718d25b9d38de9a",
-      "citation:dc6dd83c651d43ae"
+      "citation:dc6dd83c651d43ae",
+      "citation:v3-pettit-republicanism",
+      "citation:v3-sep-liberty"
     ]
   },
   {
     "id": "profile:social-democrat",
     "name": "Social Democrat",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0.2,
-        "weight": 1
+        "id": "sd-solidarity",
+        "constructId": "social-solidarity",
+        "relation": "constitutive",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.15
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Collective social protection is central to social democracy.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy"
+        ]
       },
       {
-        "constructId": "property-legitimacy",
-        "targetValue": -0.4,
-        "weight": 1
+        "id": "sd-democracy",
+        "constructId": "democratic-legitimacy",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Democratic political accountability is core.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy"
+        ]
       },
       {
-        "constructId": "liberty-noninterference",
-        "targetValue": 0,
-        "weight": 1
+        "id": "sd-insurance",
+        "constructId": "social-insurance",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Broad social insurance is a characteristic institution of social-democratic capitalism.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": 0.7,
-        "weight": 1
+        "id": "sd-redistribution",
+        "constructId": "income-redistribution",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Taxes and transfers are legitimate tools for social protection and equality.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.4,
-        "weight": 1
+        "id": "sd-regulation",
+        "constructId": "regulatory-intervention",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Regulation of market power, labor relations, and social risks is characteristic.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.2,
-        "weight": 1
+        "id": "sd-bargaining",
+        "constructId": "collective-bargaining",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Organized labor and collective bargaining are historically characteristic social-democratic institutions.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": 0.6,
-        "weight": 1
+        "id": "sd-reform",
+        "constructId": "institutional-reform",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Social democracy ordinarily pursues change through democratic institutional reform.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": 0.1,
-        "weight": 1
+        "id": "sd-private-property",
+        "constructId": "productive-property",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.25
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Modern social democracy ordinarily accepts substantial private productive property subject to social regulation.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy",
+          "citation:v3-sep-property"
+        ]
       },
       {
-        "constructId": "market-process-confidence",
-        "targetValue": 0,
-        "weight": 1
+        "id": "sd-public-ownership",
+        "constructId": "public-ownership",
+        "relation": "contested",
+        "rationale": "Social democrats differ over public ownership and sectoral socialization.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy"
+        ]
       },
       {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "public-choice-skepticism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "expert-confidence",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": -0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.9,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.7,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.2,
-        "weight": 1
+        "id": "sd-rupture",
+        "constructId": "revolutionary-rupture",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.75
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "A commitment to replacing democratic institutions through revolutionary rupture conflicts with contemporary social-democratic strategy.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-oxford-social-democracy"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:social-democrat:evidence:property-legitimacy",
-        "operator": "evidenceMinimum",
-        "constructId": "property-legitimacy",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:social-democrat:evidence:equality-theory",
-        "operator": "evidenceMinimum",
-        "constructId": "equality-theory",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:social-democrat:evidence:state-action-vs-exit",
-        "operator": "evidenceMinimum",
-        "constructId": "state-action-vs-exit",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "social-democrat",
+    "rationale": "Social democracy combines democratic collective action, social solidarity, social insurance, labor power, redistribution, and regulation while ordinarily retaining a mixed or capitalist market economy.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f1300f36270734fe",
       "citation:a0b0e7732c03769f",
       "citation:4a2237dbb613d774",
-      "citation:0240bdf39260a47d"
+      "citation:0240bdf39260a47d",
+      "citation:v3-oxford-social-democracy"
     ]
   },
   {
     "id": "profile:social-liberalism",
     "name": "Social Liberalism",
     "role": "primary",
-    "requirements": [
+    "commitments": [
       {
-        "constructId": "authority-legitimacy",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "property-legitimacy",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
+        "id": "sl-liberty",
         "constructId": "liberty-noninterference",
-        "targetValue": -0.4,
-        "weight": 1
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Social liberalism retains strong liberal civil and personal liberty commitments.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism",
+          "citation:v3-sep-liberty"
+        ]
       },
       {
-        "constructId": "equality-theory",
-        "targetValue": 0.5,
-        "weight": 1
+        "id": "sl-effective",
+        "constructId": "effective-agency",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Effective capacity to pursue one’s ends is central to social-liberal accounts of freedom.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism",
+          "citation:v3-sep-liberty"
+        ]
       },
       {
-        "constructId": "political-community-boundary",
-        "targetValue": 0.5,
-        "weight": 1
+        "id": "sl-legal-equality",
+        "constructId": "legal-equality",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Equal legal citizenship remains core.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism",
+          "citation:v3-sep-equality"
+        ]
       },
       {
-        "constructId": "moral-traditionalism",
-        "targetValue": -0.1,
-        "weight": 1
+        "id": "sl-opportunity",
+        "constructId": "equality-opportunity",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Fair opportunity is a central social-liberal extension of liberal equality.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism",
+          "citation:v3-sep-equality"
+        ]
       },
       {
-        "constructId": "anti-domination",
-        "targetValue": 0.3,
-        "weight": 1
+        "id": "sl-solidarity",
+        "constructId": "social-solidarity",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Social provision can be justified as securing effective freedom and fair opportunity.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "human-nature-priority",
-        "targetValue": 0.1,
-        "weight": 1
+        "id": "sl-public",
+        "constructId": "public-provision",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.1
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Public provision is a legitimate instrument where it supports effective liberty and opportunity.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "market-process-confidence",
-        "targetValue": 0.5,
-        "weight": 1
+        "id": "sl-regulation",
+        "constructId": "regulatory-intervention",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.2
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Markets are retained but subject to public rules and correction.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "state-capacity-confidence",
-        "targetValue": 0.4,
-        "weight": 1
+        "id": "sl-property",
+        "constructId": "productive-property",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.2
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Private property is ordinarily accepted but not treated as absolute against social justice.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism",
+          "citation:v3-sep-property"
+        ]
       },
       {
-        "constructId": "public-choice-skepticism",
-        "targetValue": 0,
-        "weight": 1
+        "id": "sl-democracy",
+        "constructId": "democratic-legitimacy",
+        "relation": "core",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Constitutional democracy is core to contemporary social liberalism.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism"
+        ]
       },
       {
-        "constructId": "democratic-confidence",
-        "targetValue": 0.6,
-        "weight": 1
+        "id": "sl-contest",
+        "constructId": "contestable-institutions",
+        "relation": "characteristic",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": -0.05
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Rights, review, and institutional accountability constrain public power.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism",
+          "citation:v3-pettit-republicanism"
+        ]
       },
       {
-        "constructId": "expert-confidence",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "cultural-plasticity",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "coordination-optimism",
-        "targetValue": 0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "centralization-preference",
-        "targetValue": 0.1,
-        "weight": 1
-      },
-      {
-        "constructId": "reform-vs-revolution",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "gradualism-vs-immediatism",
-        "targetValue": -0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "state-action-vs-exit",
-        "targetValue": 0.3,
-        "weight": 1
-      },
-      {
-        "constructId": "electoralism-vs-direct-action",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "compromise-vs-persistence",
-        "targetValue": 0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "coercion-strategy",
-        "targetValue": -0.6,
-        "weight": 1
-      },
-      {
-        "constructId": "regulation-vs-deregulation",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "redistribution-vs-predistribution",
-        "targetValue": 0.5,
-        "weight": 1
-      },
-      {
-        "constructId": "militarism-pacifism",
-        "targetValue": -0.2,
-        "weight": 1
-      },
-      {
-        "constructId": "secularism-religious",
-        "targetValue": -0.2,
-        "weight": 1
+        "id": "sl-planning",
+        "constructId": "central-planning",
+        "relation": "incompatible",
+        "criterion": {
+          "operator": "minimum",
+          "minimum": 0.75
+        },
+        "minimumAnsweredItems": 1,
+        "rationale": "Comprehensive administrative planning conflicts with social liberalism’s pluralist market order.",
+        "provenanceRefs": [
+          "citation:v3-freeden-morphology",
+          "citation:v3-sep-liberalism"
+        ]
       }
     ],
-    "gates": [
-      {
-        "id": "gate:social-liberalism:evidence:liberty-noninterference",
-        "operator": "evidenceMinimum",
-        "constructId": "liberty-noninterference",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:social-liberalism:evidence:equality-theory",
-        "operator": "evidenceMinimum",
-        "constructId": "equality-theory",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      },
-      {
-        "id": "gate:social-liberalism:evidence:state-action-vs-exit",
-        "operator": "evidenceMinimum",
-        "constructId": "state-action-vs-exit",
-        "minimumEvidenceRatio": 0.5,
-        "minimumItemCount": 1
-      }
-    ],
-    "minimumEvidenceRatio": 0.5,
-    "status": "compatibility-scored-unvalidated",
-    "version": "2026-08-primary-profile-v1",
+    "gates": [],
+    "minimumEvidenceRatio": 0.6,
+    "status": "commitment-scored-unvalidated",
+    "version": "2026-08-primary-commitment-v3",
     "targetNodeId": "social-liberalism",
+    "rationale": "Social liberalism combines liberal rights and constitutionalism with effective agency, fair opportunity, social provision, and regulated markets rather than occupying a geometric midpoint between classical liberalism and social democracy.",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:267f05e8417dd262",
       "citation:c8d9dc64426ba5af",
-      "citation:087a8af0cb948f82"
+      "citation:087a8af0cb948f82",
+      "citation:v3-sep-liberalism",
+      "citation:v3-sep-equality"
     ]
   }
 ]

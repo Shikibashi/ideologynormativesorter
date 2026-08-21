@@ -429,16 +429,8 @@ describe("Phase 5 full canonical primary-profile corpus", () => {
     const commitmentResults = result.profiles.filter((entry) => !demoted.has(String(entry.profileId)));
 
     expect(result.profiles).toHaveLength(realBundle.profiles.length);
-    expect(demotedResults).toHaveLength(demoted.size);
-    expect(
-      demotedResults.every(
-        (entry) =>
-          entry.status === "abstained" &&
-          entry.abstentionReason === "invalid_profile_configuration" &&
-          entry.comparisons.length === 0,
-      ),
-    ).toBe(true);
-    expect(commitmentResults).toHaveLength(realBundle.profiles.length - demoted.size);
+    expect(demotedResults).toHaveLength(0);
+    expect(commitmentResults).toHaveLength(realBundle.profiles.length);
     expect(commitmentResults.every((entry) => entry.comparisons.length > 0)).toBe(true);
     expect(result.ranking.every((entry) => !demoted.has(String(entry.profileId)))).toBe(true);
   });
