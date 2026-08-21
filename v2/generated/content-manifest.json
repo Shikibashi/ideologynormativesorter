@@ -2,7 +2,7 @@
   "artifactVersion": "v2-content-bundle-1",
   "sourceManifest": "v2/content/manifest.json",
   "contentVersion": "v3-content-commitments-1",
-  "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+  "contentFingerprint": "f30e5c34cf5242339fa8d24d9b8d98daf5416812dd43247f504a8de1a0518a1c",
   "counts": {
     "domains": 20,
     "constructsRoot": 74,
@@ -32,6 +32,6 @@
     "diagnosticRelations": 4,
     "explicitContributionMappings": 549,
     "contentVersion": "v3-content-commitments-1",
-    "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55"
+    "contentFingerprint": "f30e5c34cf5242339fa8d24d9b8d98daf5416812dd43247f504a8de1a0518a1c"
   }
 }

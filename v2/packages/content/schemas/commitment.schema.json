@@ -103,6 +103,10 @@
       "type": "string",
       "minLength": 1
     },
+    "criterionPolicy": {
+      "type": "string",
+      "minLength": 1
+    },
     "provenanceRefs": {
       "type": "array",
       "items": {

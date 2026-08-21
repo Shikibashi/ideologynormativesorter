@@ -7,20 +7,36 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "anti-authority",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:52724480906e1b00",
+      "citation:8562430ec5beba7e",
+      "citation:92cf18c2a150b81e",
+      "citation:5a562c689b1ef3bd",
+      "citation:d035a01d7395b2a3"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Anti Authority within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Skepticism toward the political justification of coercive authority, especially authority that claims obedience without continuing consent, contestability, or non-dominating justification.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Anti Authority",
-      "positive": "endorses or prioritizes Anti Authority"
+      "negative": "acceptance of authority as legitimate only when it is justified, contestable, and non-dominating",
+      "positive": "rejection of authority claims that rest on mere office, hierarchy, or coercive command"
     },
-    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Voluntary delegation can be compatible with this construct when revocable and accountable. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Skepticism toward the political justification of coercive authority, especially authority that claims obedience without continuing consent, contestability, or non-dominating justification.",
+    "conceptualScope": "This module-local construct compares anarchist and market-anarchist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a preference for disorder or the absence of all coordination."
+    ],
+    "boundaryCases": [
+      "Voluntary delegation can be compatible with this construct when revocable and accountable."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:anarchist-families-module:communal-coordination",
@@ -30,20 +46,36 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "communal-coordination",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:52724480906e1b00",
+      "citation:8562430ec5beba7e",
+      "citation:92cf18c2a150b81e",
+      "citation:5a562c689b1ef3bd",
+      "citation:d035a01d7395b2a3"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Communal Coordination within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Coordination through common deliberation, mutual aid, and shared institutions rather than through a single command center or purely competitive exchange.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Communal Coordination",
-      "positive": "endorses or prioritizes Communal Coordination"
+      "negative": "exclusive reliance on private exchange or centralized command",
+      "positive": "democratic and reciprocal common coordination"
     },
-    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Large-scale federated coordination is included when authority remains accountable to participating communities. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Coordination through common deliberation, mutual aid, and shared institutions rather than through a single command center or purely competitive exchange.",
+    "conceptualScope": "This module-local construct compares anarchist and market-anarchist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It does not require one particular ownership regime or deny all markets."
+    ],
+    "boundaryCases": [
+      "Large-scale federated coordination is included when authority remains accountable to participating communities."
+    ],
+    "semanticLayer": "mixed",
+    "structureType": "conditional"
   },
   {
     "id": "specialist:anarchist-families-module:communal-property",
@@ -53,20 +85,36 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "communal-property",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:52724480906e1b00",
+      "citation:8562430ec5beba7e",
+      "citation:92cf18c2a150b81e",
+      "citation:5a562c689b1ef3bd",
+      "citation:d035a01d7395b2a3"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Communal Property within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A property regime in which productive resources are held or governed in common by affected communities, workers, or voluntary associations.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Communal Property",
-      "positive": "endorses or prioritizes Communal Property"
+      "negative": "support for common or worker-and-community governance of productive resources",
+      "positive": "support for absentee or exclusive private control of productive resources"
     },
-    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Cooperatives, commons, and federated municipal ownership can all qualify if control is genuinely shared. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A property regime in which productive resources are held or governed in common by affected communities, workers, or voluntary associations.",
+    "conceptualScope": "This module-local construct compares anarchist and market-anarchist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not identical to state ownership or equal consumption of every good."
+    ],
+    "boundaryCases": [
+      "Cooperatives, commons, and federated municipal ownership can all qualify if control is genuinely shared."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:anarchist-families-module:direct-federation",
@@ -76,20 +124,36 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "direct-federation",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:52724480906e1b00",
+      "citation:8562430ec5beba7e",
+      "citation:92cf18c2a150b81e",
+      "citation:5a562c689b1ef3bd",
+      "citation:d035a01d7395b2a3"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Direct Federation within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A strategy of building political order through directly organized, federated associations and mutual-aid institutions rather than capturing a centralized state.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Direct Federation",
-      "positive": "endorses or prioritizes Direct Federation"
+      "negative": "priority to direct association, federation, and mutual aid as the route of political change",
+      "positive": "priority to electoral or centralized state capture as the route of political change"
     },
-    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. A federation may delegate limited tasks while retaining recall, exit, and bottom-up authority. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A strategy of building political order through directly organized, federated associations and mutual-aid institutions rather than capturing a centralized state.",
+    "conceptualScope": "This module-local construct compares anarchist and market-anarchist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It does not mean that every election, delegation, or public institution is rejected."
+    ],
+    "boundaryCases": [
+      "A federation may delegate limited tasks while retaining recall, exit, and bottom-up authority."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:anarchist-families-module:market-coordination",
@@ -99,20 +163,36 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "market-coordination",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:52724480906e1b00",
+      "citation:8562430ec5beba7e",
+      "citation:92cf18c2a150b81e",
+      "citation:5a562c689b1ef3bd",
+      "citation:d035a01d7395b2a3"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Market Coordination within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Reliance on decentralized exchange, price signals, contract, and private or cooperative enterprise to coordinate production and distribution.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Market Coordination",
-      "positive": "endorses or prioritizes Market Coordination"
+      "negative": "coordination primarily through common planning or command",
+      "positive": "coordination primarily through market exchange and dispersed information"
     },
-    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. A mixed economy can score positively when market allocation is the decisive coordinating mechanism in the relevant domain. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Reliance on decentralized exchange, price signals, contract, and private or cooperative enterprise to coordinate production and distribution.",
+    "conceptualScope": "This module-local construct compares anarchist and market-anarchist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It does not imply that markets eliminate hierarchy, externalities, or the need for public goods."
+    ],
+    "boundaryCases": [
+      "A mixed economy can score positively when market allocation is the decisive coordinating mechanism in the relevant domain."
+    ],
+    "semanticLayer": "mixed",
+    "structureType": "conditional"
   },
   {
     "id": "specialist:anarchist-families-module:market-property",
@@ -122,20 +202,36 @@
     "moduleId": "anarchist-families-module",
     "sourceKey": "market-property",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:1b5ab88e18ea0d1b",
+      "citation:52724480906e1b00",
+      "citation:8562430ec5beba7e",
+      "citation:92cf18c2a150b81e",
+      "citation:5a562c689b1ef3bd",
+      "citation:d035a01d7395b2a3"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Market Property within Anarchist and market-libertarian families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Protection of individually or privately held productive property and the right to transfer, contract over, and use it under general rules.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Market Property",
-      "positive": "endorses or prioritizes Market Property"
+      "negative": "support for private or individually controlled productive property",
+      "positive": "support for common or collectivized control of productive property"
     },
-    "boundaryStatement": "Scoped to Anarchist and market-libertarian families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Small proprietor, cooperative, and contract-based forms must be distinguished from absentee monopoly. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Protection of individually or privately held productive property and the right to transfer, contract over, and use it under general rules.",
+    "conceptualScope": "This module-local construct compares anarchist and market-anarchist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a claim that all property claims are valid or that corporate concentration is harmless."
+    ],
+    "boundaryCases": [
+      "Small proprietor, cooperative, and contract-based forms must be distinguished from absentee monopoly."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:conservative-variants-module:assertive-internationalism",
@@ -145,20 +241,35 @@
     "moduleId": "conservative-variants-module",
     "sourceKey": "assertive-internationalism",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:462f83960116c2c0",
+      "citation:v3-oxford-conservatism",
+      "citation:16a3600798f070be",
+      "citation:e9afa3c3056240c5",
+      "citation:9c44a8a1c2400720"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Assertive Internationalism within Conservative variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A prescriptive foreign-policy orientation that treats active power projection, alliance leadership, or intervention as legitimate tools for defending a political order abroad.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Assertive Internationalism",
-      "positive": "endorses or prioritizes Assertive Internationalism"
+      "negative": "support for active international power and intervention under stated political purposes",
+      "positive": "preference for restraint, non-intervention, or narrowly defensive foreign policy"
     },
-    "boundaryStatement": "Scoped to Conservative variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. A position can be assertive in one theater and restrained in another; the item must state the relevant scope. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A prescriptive foreign-policy orientation that treats active power projection, alliance leadership, or intervention as legitimate tools for defending a political order abroad.",
+    "conceptualScope": "This module-local construct compares conservative variants on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not equivalent to generic patriotism, militarism, or support for every intervention."
+    ],
+    "boundaryCases": [
+      "A position can be assertive in one theater and restrained in another; the item must state the relevant scope."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:conservative-variants-module:moral-traditionalism",
@@ -168,20 +279,35 @@
     "moduleId": "conservative-variants-module",
     "sourceKey": "moral-traditionalism",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:462f83960116c2c0",
+      "citation:v3-oxford-conservatism",
+      "citation:16a3600798f070be",
+      "citation:e9afa3c3056240c5",
+      "citation:9c44a8a1c2400720"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Moral Traditionalism within Conservative variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "The view that inherited moral, familial, religious, or social norms deserve presumptive political protection because continuity is itself a source of order and meaning.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Moral Traditionalism",
-      "positive": "endorses or prioritizes Moral Traditionalism"
+      "negative": "presumption in favor of inherited moral and social norms",
+      "positive": "presumption that inherited norms should yield readily to revision or individual choice"
     },
-    "boundaryStatement": "Scoped to Conservative variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Prudential reform can coexist with traditionalism when it is framed as preserving underlying continuity. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "The view that inherited moral, familial, religious, or social norms deserve presumptive political protection because continuity is itself a source of order and meaning.",
+    "conceptualScope": "This module-local construct compares conservative variants on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a single religion, a claim that every inherited norm is just, or opposition to all reform."
+    ],
+    "boundaryCases": [
+      "Prudential reform can coexist with traditionalism when it is framed as preserving underlying continuity."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:conservative-variants-module:national-continuity",
@@ -191,20 +317,35 @@
     "moduleId": "conservative-variants-module",
     "sourceKey": "national-continuity",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:462f83960116c2c0",
+      "citation:v3-oxford-conservatism",
+      "citation:16a3600798f070be",
+      "citation:e9afa3c3056240c5",
+      "citation:9c44a8a1c2400720"
     ],
-    "description": "Research-only module-local construct measuring endorsement of National Continuity within Conservative variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "The idea that political legitimacy and social order depend in part on maintaining a historically continuous national community, its institutions, and its inherited symbols.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes National Continuity",
-      "positive": "endorses or prioritizes National Continuity"
+      "negative": "priority to continuity of the national community and its inherited institutions",
+      "positive": "priority to reconstructing political membership without national continuity as a presumption"
     },
-    "boundaryStatement": "Scoped to Conservative variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Civic, cultural, and ethnic accounts of continuity must be distinguished rather than treated as interchangeable. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "The idea that political legitimacy and social order depend in part on maintaining a historically continuous national community, its institutions, and its inherited symbols.",
+    "conceptualScope": "This module-local construct compares conservative variants on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not identical to ethnic exclusion, territorial expansion, or hostility to all immigration."
+    ],
+    "boundaryCases": [
+      "Civic, cultural, and ethnic accounts of continuity must be distinguished rather than treated as interchangeable."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:conservative-variants-module:prudence",
@@ -214,20 +355,35 @@
     "moduleId": "conservative-variants-module",
     "sourceKey": "prudence",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:462f83960116c2c0",
+      "citation:v3-oxford-conservatism",
+      "citation:16a3600798f070be",
+      "citation:e9afa3c3056240c5",
+      "citation:9c44a8a1c2400720"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Prudence within Conservative variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A decision rule that gives weight to historical experience, unintended consequences, institutional knowledge, and incremental revision when judging political change.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Prudence",
-      "positive": "endorses or prioritizes Prudence"
+      "negative": "preference for cautious, institution-aware, consequence-sensitive change",
+      "positive": "preference for abstract principle or rapid transformation despite institutional uncertainty"
     },
-    "boundaryStatement": "Scoped to Conservative variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. A radical reformer can claim prudence when the proposed rupture is argued to prevent greater institutional harm. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A decision rule that gives weight to historical experience, unintended consequences, institutional knowledge, and incremental revision when judging political change.",
+    "conceptualScope": "This module-local construct compares conservative variants on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not mere indecision, status-quo worship, or opposition to all structural change."
+    ],
+    "boundaryCases": [
+      "A radical reformer can claim prudence when the proposed rupture is argued to prevent greater institutional harm."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "multidimensional"
   },
   {
     "id": "specialist:feminist-faction-module:anti-hierarchy-strategy",
@@ -237,20 +393,35 @@
     "moduleId": "feminist-faction-module",
     "sourceKey": "anti-hierarchy-strategy",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:f3abe9549d155858",
+      "citation:9981fba6d37552c9",
+      "citation:efbc47adc614ad4d",
+      "citation:fb7a357af1eb961e",
+      "citation:2b021c15d204189b"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Anti Hierarchy Strategy within Feminist factions. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A strategy of reducing gendered power by transforming authority relations in households, workplaces, movements, and states rather than relying only on formal equal treatment.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Anti Hierarchy Strategy",
-      "positive": "endorses or prioritizes Anti Hierarchy Strategy"
+      "negative": "priority to dismantling gendered hierarchy through structural and collective change",
+      "positive": "priority to adapting existing hierarchies or relying on formal equality alone"
     },
-    "boundaryStatement": "Scoped to Feminist factions; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Reform and abolition can be distinguished by the institution and time horizon under discussion. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A strategy of reducing gendered power by transforming authority relations in households, workplaces, movements, and states rather than relying only on formal equal treatment.",
+    "conceptualScope": "This module-local construct compares feminist factions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It does not require one theory of patriarchy or reject every institution with delegated authority."
+    ],
+    "boundaryCases": [
+      "Reform and abolition can be distinguished by the institution and time horizon under discussion."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:feminist-faction-module:class-social-reproduction",
@@ -260,20 +431,35 @@
     "moduleId": "feminist-faction-module",
     "sourceKey": "class-social-reproduction",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:f3abe9549d155858",
+      "citation:9981fba6d37552c9",
+      "citation:efbc47adc614ad4d",
+      "citation:fb7a357af1eb961e",
+      "citation:2b021c15d204189b"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Class Social Reproduction within Feminist factions. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Attention to how paid work, unpaid care, household organization, and class relations reproduce gendered political and economic power.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Class Social Reproduction",
-      "positive": "endorses or prioritizes Class Social Reproduction"
+      "negative": "recognition that social reproduction and class structure are central explanatory mechanisms",
+      "positive": "treating household and care relations as politically irrelevant or secondary by definition"
     },
-    "boundaryStatement": "Scoped to Feminist factions; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Different feminist traditions locate the mechanism in labor, property, family, race, sexuality, or their interaction. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Attention to how paid work, unpaid care, household organization, and class relations reproduce gendered political and economic power.",
+    "conceptualScope": "This module-local construct compares feminist factions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a claim that class explains every gender relation or that all care must be socialized."
+    ],
+    "boundaryCases": [
+      "Different feminist traditions locate the mechanism in labor, property, family, race, sexuality, or their interaction."
+    ],
+    "semanticLayer": "descriptive",
+    "structureType": "unipolar"
   },
   {
     "id": "specialist:feminist-faction-module:legal-equality-reform",
@@ -283,20 +469,35 @@
     "moduleId": "feminist-faction-module",
     "sourceKey": "legal-equality-reform",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:f3abe9549d155858",
+      "citation:9981fba6d37552c9",
+      "citation:efbc47adc614ad4d",
+      "citation:fb7a357af1eb961e",
+      "citation:2b021c15d204189b"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Legal Equality Reform within Feminist factions. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Use of law and public institutions to secure equal rights, anti-discrimination, equal citizenship, and enforceable access across sex and gender.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Legal Equality Reform",
-      "positive": "endorses or prioritizes Legal Equality Reform"
+      "negative": "support for legal and institutional reform toward equal rights and status",
+      "positive": "skepticism that formal legal equality is a sufficient or desirable route to justice"
     },
-    "boundaryStatement": "Scoped to Feminist factions; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. A position may support equal-rights law while also demanding material and cultural transformation. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Use of law and public institutions to secure equal rights, anti-discrimination, equal citizenship, and enforceable access across sex and gender.",
+    "conceptualScope": "This module-local construct compares feminist factions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not identical to liberal individualism or denial of structural power."
+    ],
+    "boundaryCases": [
+      "A position may support equal-rights law while also demanding material and cultural transformation."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:feminist-faction-module:structural-patriarchy",
@@ -306,20 +507,35 @@
     "moduleId": "feminist-faction-module",
     "sourceKey": "structural-patriarchy",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:f3abe9549d155858",
+      "citation:9981fba6d37552c9",
+      "citation:efbc47adc614ad4d",
+      "citation:fb7a357af1eb961e",
+      "citation:2b021c15d204189b"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Structural Patriarchy within Feminist factions. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "An explanatory account of gendered domination as a patterned system reproduced across institutions, norms, economic relations, and intimate life.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Structural Patriarchy",
-      "positive": "endorses or prioritizes Structural Patriarchy"
+      "negative": "recognition of patriarchy as a structural and institutional pattern of power",
+      "positive": "treating gender inequality as isolated prejudice or only an individual attitude"
     },
-    "boundaryStatement": "Scoped to Feminist factions; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Intersectional and transnational analyses can specify different mechanisms and groups without abandoning the structural claim. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "An explanatory account of gendered domination as a patterned system reproduced across institutions, norms, economic relations, and intimate life.",
+    "conceptualScope": "This module-local construct compares feminist factions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It does not assert a single universal male conspiracy or erase differences among women."
+    ],
+    "boundaryCases": [
+      "Intersectional and transnational analyses can specify different mechanisms and groups without abandoning the structural claim."
+    ],
+    "semanticLayer": "descriptive",
+    "structureType": "unipolar"
   },
   {
     "id": "specialist:green-morphology-module:collective-ownership",
@@ -329,20 +545,36 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "collective-ownership",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-oxford-green-ideology",
+      "citation:1ae79788486a6bdc",
+      "citation:31f76d2e42e72045",
+      "citation:88ca5b3bc9028f15",
+      "citation:e725d2d09db0e176",
+      "citation:92cf18c2a150b81e"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Collective Ownership within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Political support for collective, public, cooperative, or commons-based control of ecologically significant resources and infrastructures.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Collective Ownership",
-      "positive": "endorses or prioritizes Collective Ownership"
+      "negative": "support for collective control of ecologically significant resources",
+      "positive": "priority to private or market control as the default for those resources"
     },
-    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Public, municipal, cooperative, and commons arrangements differ in scale and accountability. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Political support for collective, public, cooperative, or commons-based control of ecologically significant resources and infrastructures.",
+    "conceptualScope": "This module-local construct compares green ideological morphologies on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not identical to central state planning or opposition to every market instrument."
+    ],
+    "boundaryCases": [
+      "Public, municipal, cooperative, and commons arrangements differ in scale and accountability."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:green-morphology-module:democratic-decentralism",
@@ -352,20 +584,36 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "democratic-decentralism",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-oxford-green-ideology",
+      "citation:1ae79788486a6bdc",
+      "citation:31f76d2e42e72045",
+      "citation:88ca5b3bc9028f15",
+      "citation:e725d2d09db0e176",
+      "citation:92cf18c2a150b81e"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Democratic Decentralism within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A prescriptive commitment to place ecological decisions in accountable local or federated institutions with meaningful participation and recall.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Democratic Decentralism",
-      "positive": "endorses or prioritizes Democratic Decentralism"
+      "negative": "priority to decentralized, participatory, and federated ecological governance",
+      "positive": "priority to centralized expert or administrative direction"
     },
-    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Decentralization is not satisfied by merely moving administration downward without public control. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A prescriptive commitment to place ecological decisions in accountable local or federated institutions with meaningful participation and recall.",
+    "conceptualScope": "This module-local construct compares green ideological morphologies on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It does not deny the need for national or transnational coordination of shared ecological systems."
+    ],
+    "boundaryCases": [
+      "Decentralization is not satisfied by merely moving administration downward without public control."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:green-morphology-module:ecological-standing",
@@ -375,20 +623,36 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "ecological-standing",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-oxford-green-ideology",
+      "citation:1ae79788486a6bdc",
+      "citation:31f76d2e42e72045",
+      "citation:88ca5b3bc9028f15",
+      "citation:e725d2d09db0e176",
+      "citation:92cf18c2a150b81e"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Ecological Standing within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "The normative view that ecological systems, nonhuman life, or future generations possess moral standing that constrains human political choice.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Ecological Standing",
-      "positive": "endorses or prioritizes Ecological Standing"
+      "negative": "recognition of ecological or nonhuman claims as politically weight-bearing",
+      "positive": "treating ecological effects as relevant only through immediate human preference"
     },
-    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Anthropocentric stewardship and intrinsic-value positions should remain distinguishable. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "The normative view that ecological systems, nonhuman life, or future generations possess moral standing that constrains human political choice.",
+    "conceptualScope": "This module-local construct compares green ideological morphologies on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It does not prescribe one metaphysics of nature or imply that all human uses are impermissible."
+    ],
+    "boundaryCases": [
+      "Anthropocentric stewardship and intrinsic-value positions should remain distinguishable."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "unipolar"
   },
   {
     "id": "specialist:green-morphology-module:market-technology",
@@ -398,20 +662,36 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "market-technology",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-oxford-green-ideology",
+      "citation:1ae79788486a6bdc",
+      "citation:31f76d2e42e72045",
+      "citation:88ca5b3bc9028f15",
+      "citation:e725d2d09db0e176",
+      "citation:92cf18c2a150b81e"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Market Technology within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Reliance on markets and technological innovation as principal tools for solving ecological scarcity, emissions, and resource problems.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Market Technology",
-      "positive": "endorses or prioritizes Market Technology"
+      "negative": "confidence in market instruments and technological innovation as leading ecological tools",
+      "positive": "priority to sufficiency, regulation, collective provision, or reduced throughput over market-technology solutions"
     },
-    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. A green position can support selective technology while rejecting market allocation in essential goods. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Reliance on markets and technological innovation as principal tools for solving ecological scarcity, emissions, and resource problems.",
+    "conceptualScope": "This module-local construct compares green ideological morphologies on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a claim that technology is always beneficial or that markets need no regulation."
+    ],
+    "boundaryCases": [
+      "A green position can support selective technology while rejecting market allocation in essential goods."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:green-morphology-module:post-growth",
@@ -421,20 +701,36 @@
     "moduleId": "green-morphology-module",
     "sourceKey": "post-growth",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-oxford-green-ideology",
+      "citation:1ae79788486a6bdc",
+      "citation:31f76d2e42e72045",
+      "citation:88ca5b3bc9028f15",
+      "citation:e725d2d09db0e176",
+      "citation:92cf18c2a150b81e"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Post Growth within Green political morphology. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A prescriptive orientation toward reducing material and energy throughput in high-consuming economies while protecting provisioning, equality, and ecological limits.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Post Growth",
-      "positive": "endorses or prioritizes Post Growth"
+      "negative": "priority to ecological sufficiency and planned reduction of high-consumption throughput",
+      "positive": "priority to continued aggregate growth and technological substitution as the primary solution"
     },
-    "boundaryStatement": "Scoped to Green political morphology; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. A post-growth position may support growth in low-income provisioning or particular public capabilities. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A prescriptive orientation toward reducing material and energy throughput in high-consuming economies while protecting provisioning, equality, and ecological limits.",
+    "conceptualScope": "This module-local construct compares green ideological morphologies on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not synonymous with recession, austerity, poverty, or every environmental policy."
+    ],
+    "boundaryCases": [
+      "A post-growth position may support growth in low-income provisioning or particular public capabilities."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:ascriptive-membership",
@@ -444,20 +740,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "ascriptive-membership",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Ascriptive Membership within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Treating inherited ethnic, religious, cultural, or ancestral membership as a politically significant basis of belonging and entitlement.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Ascriptive Membership",
-      "positive": "endorses or prioritizes Ascriptive Membership"
+      "negative": "political weight for inherited or ascribed group membership",
+      "positive": "political membership based primarily on civic, universal, or voluntary criteria"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Many movements combine ascriptive belonging with civic inclusion or constitutional equality. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Treating inherited ethnic, religious, cultural, or ancestral membership as a politically significant basis of belonging and entitlement.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not necessarily a demand for exclusion, hierarchy, or territorial separation."
+    ],
+    "boundaryCases": [
+      "Many movements combine ascriptive belonging with civic inclusion or constitutional equality."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:autonomous-resurgence",
@@ -467,20 +783,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "autonomous-resurgence",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Autonomous Resurgence within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A strategy of rebuilding subordinated collective institutions, cultural practices, and political capacity through self-directed resurgence.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Autonomous Resurgence",
-      "positive": "endorses or prioritizes Autonomous Resurgence"
+      "negative": "priority to autonomous collective resurgence and institution-building",
+      "positive": "priority to integration into dominant institutions as the primary route of change"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Resurgence may be cultural, territorial, legal, economic, or a combination. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A strategy of rebuilding subordinated collective institutions, cultural practices, and political capacity through self-directed resurgence.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a claim that autonomy requires isolation or rejection of all external alliances."
+    ],
+    "boundaryCases": [
+      "Resurgence may be cultural, territorial, legal, economic, or a combination."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:community-autonomy",
@@ -490,20 +826,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "community-autonomy",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Community Autonomy within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Political authority for a bounded community to govern substantial internal affairs through its own institutions and accountable membership.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Community Autonomy",
-      "positive": "endorses or prioritizes Community Autonomy"
+      "negative": "support for meaningful community self-government",
+      "positive": "priority to uniform central authority over community-specific self-government"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Autonomy can be territorial, non-territorial, municipal, or institutional. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Political authority for a bounded community to govern substantial internal affairs through its own institutions and accountable membership.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not identical to individual secession, ethnic purity, or immunity from general rights constraints."
+    ],
+    "boundaryCases": [
+      "Autonomy can be territorial, non-territorial, municipal, or institutional."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
@@ -513,20 +869,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "decolonial-land-sovereignty",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Decolonial Land Sovereignty within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A claim that colonized or Indigenous peoples should regain authority over land, territory, and political relationships imposed through colonial rule.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Decolonial Land Sovereignty",
-      "positive": "endorses or prioritizes Decolonial Land Sovereignty"
+      "negative": "support for decolonial land authority and self-determination",
+      "positive": "treating existing colonial title and administrative boundaries as presumptively final"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Remedies may include jurisdiction, restitution, treaty renewal, co-governance, or territorial restoration. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A claim that colonized or Indigenous peoples should regain authority over land, territory, and political relationships imposed through colonial rule.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a generic land reform program or a claim that every historical boundary has one simple remedy."
+    ],
+    "boundaryCases": [
+      "Remedies may include jurisdiction, restitution, treaty renewal, co-governance, or territorial restoration."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:dominant-nation-congruence",
@@ -536,20 +912,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "dominant-nation-congruence",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Dominant Nation Congruence within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "The view that state boundaries, public institutions, and political membership should substantially reflect the historically dominant nation or culture.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Dominant Nation Congruence",
-      "positive": "endorses or prioritizes Dominant Nation Congruence"
+      "negative": "priority to congruence between dominant national identity and state authority",
+      "positive": "priority to plural or civic state membership that does not privilege one dominant nation"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Civic national identity can still be dominant and exclusionary; the relevant boundary must be stated. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "The view that state boundaries, public institutions, and political membership should substantially reflect the historically dominant nation or culture.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not identical to ethnic nationalism, forced assimilation, or territorial expansion."
+    ],
+    "boundaryCases": [
+      "Civic national identity can still be dominant and exclusionary; the relevant boundary must be stated."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:institutional-recognition",
@@ -559,20 +955,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "institutional-recognition",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Institutional Recognition within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Support for public recognition of a group’s identity, status, history, rights, and institutions through law or constitutional practice.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Institutional Recognition",
-      "positive": "endorses or prioritizes Institutional Recognition"
+      "negative": "support for formal institutional recognition of collective identity and claims",
+      "positive": "preference for a formally uniform public order that withholds group-specific recognition"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Recognition can be individual, group-based, territorial, or constitutional. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Support for public recognition of a group’s identity, status, history, rights, and institutions through law or constitutional practice.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "Recognition is not the same as autonomy, material redistribution, or symbolic endorsement alone."
+    ],
+    "boundaryCases": [
+      "Recognition can be individual, group-based, territorial, or constitutional."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:minority-self-government",
@@ -582,20 +998,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "minority-self-government",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Minority Self Government within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Support for legally protected self-government by a politically subordinate or minority community within a wider state or federation.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Minority Self Government",
-      "positive": "endorses or prioritizes Minority Self Government"
+      "negative": "support for minority institutions with protected self-rule",
+      "positive": "preference for unilateral central control or assimilation"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Non-territorial, territorial, treaty, and consociational forms are distinct. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Support for legally protected self-government by a politically subordinate or minority community within a wider state or federation.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a claim that minority institutions are beyond review or that all minorities seek territorial rule."
+    ],
+    "boundaryCases": [
+      "Non-territorial, territorial, treaty, and consociational forms are distinct."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:pan-african-solidarity",
@@ -605,20 +1041,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "pan-african-solidarity",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Pan African Solidarity within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Political solidarity across African and African-diasporic peoples aimed at resisting colonial domination and building shared political agency.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Pan African Solidarity",
-      "positive": "endorses or prioritizes Pan African Solidarity"
+      "negative": "support for transnational African solidarity and collective political agency",
+      "positive": "priority to exclusively state-bounded or assimilationist political identity"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Pan-African projects may be cultural, diplomatic, economic, federal, or anti-colonial. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Political solidarity across African and African-diasporic peoples aimed at resisting colonial domination and building shared political agency.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not interchangeable with Black separatism, one racial essence, or one institutional program."
+    ],
+    "boundaryCases": [
+      "Pan-African projects may be cultural, diplomatic, economic, federal, or anti-colonial."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:pluralist-accommodation",
@@ -628,20 +1084,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "pluralist-accommodation",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Pluralist Accommodation within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A political arrangement that protects multiple identities through equal citizenship, institutional accommodation, and negotiated coexistence.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Pluralist Accommodation",
-      "positive": "endorses or prioritizes Pluralist Accommodation"
+      "negative": "support for plural and negotiated accommodation of group difference",
+      "positive": "priority to one uniform national or religious identity as the public norm"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Pluralism can involve individual rights, group rights, power-sharing, or federal arrangements. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A political arrangement that protects multiple identities through equal citizenship, institutional accommodation, and negotiated coexistence.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "Accommodation does not require every group claim to be accepted or exempt from general rights."
+    ],
+    "boundaryCases": [
+      "Pluralism can involve individual rights, group rights, power-sharing, or federal arrangements."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:identity-sovereignty-module:territorial-separatism",
@@ -651,20 +1127,40 @@
     "moduleId": "identity-sovereignty-module",
     "sourceKey": "territorial-separatism",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:v3-sep-nationalism",
+      "citation:72a144a375dd03d3",
+      "citation:0970dba48be47ce1",
+      "citation:ce96036bc5bbc094",
+      "citation:001375fe3543c227",
+      "citation:f2e966e6106d230b",
+      "citation:dda7d93939d1d146",
+      "citation:9b4674300ce4501c",
+      "citation:bd6acf17db8b57cf",
+      "citation:981b366400f0cd3c"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Territorial Separatism within Identity and sovereignty. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Support for establishing a separate territorial political authority for a people that regards existing state membership as incompatible with self-determination.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Territorial Separatism",
-      "positive": "endorses or prioritizes Territorial Separatism"
+      "negative": "support for territorial separation as a remedy for denied self-determination",
+      "positive": "preference for autonomy, federalism, or shared rule within the existing state"
     },
-    "boundaryStatement": "Scoped to Identity and sovereignty; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. The claim must distinguish remedial secession from expansionist or exclusionary partition. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Support for establishing a separate territorial political authority for a people that regards existing state membership as incompatible with self-determination.",
+    "conceptualScope": "This module-local construct compares identity, sovereignty, and self-determination traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not synonymous with all nationalism, ethnic cleansing, or opposition to negotiated federation."
+    ],
+    "boundaryCases": [
+      "The claim must distinguish remedial secession from expansionist or exclusionary partition."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:monarchist-municipal-module:confederal-coordination",
@@ -674,20 +1170,35 @@
     "moduleId": "monarchist-municipal-module",
     "sourceKey": "confederal-coordination",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:2aff035965effa6a",
+      "citation:855c558d330f6d15",
+      "citation:6a5fc5f74b53b6d4",
+      "citation:e725d2d09db0e176",
+      "citation:c6778c6cde4b2ae9"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Confederal Coordination within Monarchist and municipal/confederal families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Coordination among self-governing municipalities or local polities through revocable, limited, and negotiated common institutions.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Confederal Coordination",
-      "positive": "endorses or prioritizes Confederal Coordination"
+      "negative": "priority to confederal shared rule among autonomous local units",
+      "positive": "priority to a unitary or centrally sovereign administrative hierarchy"
     },
-    "boundaryStatement": "Scoped to Monarchist and municipal/confederal families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Confederal institutions may coordinate defense, infrastructure, or common rights without absorbing local sovereignty. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Coordination among self-governing municipalities or local polities through revocable, limited, and negotiated common institutions.",
+    "conceptualScope": "This module-local construct compares monarchist and municipal traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not equivalent to ordinary administrative decentralization or loose cultural association."
+    ],
+    "boundaryCases": [
+      "Confederal institutions may coordinate defense, infrastructure, or common rights without absorbing local sovereignty."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:monarchist-municipal-module:constitutional-monarchy",
@@ -697,20 +1208,35 @@
     "moduleId": "monarchist-municipal-module",
     "sourceKey": "constitutional-monarchy",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:2aff035965effa6a",
+      "citation:855c558d330f6d15",
+      "citation:6a5fc5f74b53b6d4",
+      "citation:e725d2d09db0e176",
+      "citation:c6778c6cde4b2ae9"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Constitutional Monarchy within Monarchist and municipal/confederal families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A monarchy in which the sovereign’s authority is bounded by constitutional law and shared with representative or judicial institutions.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Constitutional Monarchy",
-      "positive": "endorses or prioritizes Constitutional Monarchy"
+      "negative": "support for bounded hereditary office within constitutional government",
+      "positive": "support for unbounded hereditary sovereignty or non-monarchical constitutional rule"
     },
-    "boundaryStatement": "Scoped to Monarchist and municipal/confederal families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. The decisive boundary is legal and political constraint, not the amount of ceremonial symbolism. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A monarchy in which the sovereign’s authority is bounded by constitutional law and shared with representative or judicial institutions.",
+    "conceptualScope": "This module-local construct compares monarchist and municipal traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not the same as ceremonial monarchy, absolute monarchy, or generic respect for tradition."
+    ],
+    "boundaryCases": [
+      "The decisive boundary is legal and political constraint, not the amount of ceremonial symbolism."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:monarchist-municipal-module:hereditary-authority",
@@ -720,20 +1246,35 @@
     "moduleId": "monarchist-municipal-module",
     "sourceKey": "hereditary-authority",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:2aff035965effa6a",
+      "citation:855c558d330f6d15",
+      "citation:6a5fc5f74b53b6d4",
+      "citation:e725d2d09db0e176",
+      "citation:c6778c6cde4b2ae9"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Hereditary Authority within Monarchist and municipal/confederal families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "The claim that hereditary succession provides a legitimate basis for holding supreme or symbolically supreme political office.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Hereditary Authority",
-      "positive": "endorses or prioritizes Hereditary Authority"
+      "negative": "support for hereditary succession as a source of political authority",
+      "positive": "support for elective, rotational, or merit-based succession instead"
     },
-    "boundaryStatement": "Scoped to Monarchist and municipal/confederal families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Hereditary office can be constrained, ceremonial, elective within a dynasty, or fully sovereign. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "The claim that hereditary succession provides a legitimate basis for holding supreme or symbolically supreme political office.",
+    "conceptualScope": "This module-local construct compares monarchist and municipal traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not automatically a claim for absolute rule or inherited wealth in every domain."
+    ],
+    "boundaryCases": [
+      "Hereditary office can be constrained, ceremonial, elective within a dynasty, or fully sovereign."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:monarchist-municipal-module:municipal-autonomy",
@@ -743,20 +1284,35 @@
     "moduleId": "monarchist-municipal-module",
     "sourceKey": "municipal-autonomy",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:2aff035965effa6a",
+      "citation:855c558d330f6d15",
+      "citation:6a5fc5f74b53b6d4",
+      "citation:e725d2d09db0e176",
+      "citation:c6778c6cde4b2ae9"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Municipal Autonomy within Monarchist and municipal/confederal families. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Substantial self-government for municipalities or local communities over their own institutions, services, and political development.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Municipal Autonomy",
-      "positive": "endorses or prioritizes Municipal Autonomy"
+      "negative": "support for robust municipal self-government",
+      "positive": "priority to centralized administration over local political discretion"
     },
-    "boundaryStatement": "Scoped to Monarchist and municipal/confederal families; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Municipal autonomy can coexist with constitutional monarchy, federation, or confederation. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Substantial self-government for municipalities or local communities over their own institutions, services, and political development.",
+    "conceptualScope": "This module-local construct compares monarchist and municipal traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not merely administrative delegation or a claim that local majorities may violate general rights."
+    ],
+    "boundaryCases": [
+      "Municipal autonomy can coexist with constitutional monarchy, federation, or confederation."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:civilizational-nationalism",
@@ -766,20 +1322,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "civilizational-nationalism",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Civilizational Nationalism within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A nationalist account that defines the political nation through a broad civilizational, religious, or historical culture extending beyond a narrow civic constitution.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Civilizational Nationalism",
-      "positive": "endorses or prioritizes Civilizational Nationalism"
+      "negative": "political priority for civilizational-historical belonging",
+      "positive": "priority for civic or universal membership independent of civilizational identity"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Civilizational claims may be plural internally and can be used for inclusion or exclusion. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A nationalist account that defines the political nation through a broad civilizational, religious, or historical culture extending beyond a narrow civic constitution.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not identical to every religious identity, ethnic nationalism, or a single state religion."
+    ],
+    "boundaryCases": [
+      "Civilizational claims may be plural internally and can be used for inclusion or exclusion."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:constitutional-review",
@@ -789,20 +1363,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "constitutional-review",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Constitutional Review within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Institutional authority for courts or constitutional bodies to review legislation and executive action against higher-law commitments.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Constitutional Review",
-      "positive": "endorses or prioritizes Constitutional Review"
+      "negative": "support for authoritative constitutional review",
+      "positive": "preference for legislative or popular final authority without strong judicial review"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Religious, rights-based, and democratic constitutional review can have different sources of higher law. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Institutional authority for courts or constitutional bodies to review legislation and executive action against higher-law commitments.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a judgment that courts are always correct or that review must be centralized."
+    ],
+    "boundaryCases": [
+      "Religious, rights-based, and democratic constitutional review can have different sources of higher law."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
@@ -812,20 +1404,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "hindu-civilizational-belonging",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Hindu Civilizational Belonging within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A political conception of India or Hindu identity as a civilizational community whose history and symbols should shape public membership and state purpose.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Hindu Civilizational Belonging",
-      "positive": "endorses or prioritizes Hindu Civilizational Belonging"
+      "negative": "political priority for Hindu civilizational belonging",
+      "positive": "priority for civic membership independent of Hindu civilizational identity"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Civilizational belonging may be asserted culturally, constitutionally, territorially, or through minority policy. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A political conception of India or Hindu identity as a civilizational community whose history and symbols should shape public membership and state purpose.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a synonym for private Hindu faith, all Hindu political thought, or one party platform."
+    ],
+    "boundaryCases": [
+      "Civilizational belonging may be asserted culturally, constitutionally, territorially, or through minority policy."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:interpretive-pluralism",
@@ -835,20 +1445,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "interpretive-pluralism",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Interpretive Pluralism within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Acceptance that religious or constitutional traditions contain legitimate internal disagreement and require interpretive contestation rather than one final political reading.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Interpretive Pluralism",
-      "positive": "endorses or prioritizes Interpretive Pluralism"
+      "negative": "support for plural interpretation and contestable authority within the tradition",
+      "positive": "support for one binding institutional interpretation that settles political meaning"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Pluralism can be intra-traditional, inter-religious, constitutional, or procedural. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Acceptance that religious or constitutional traditions contain legitimate internal disagreement and require interpretive contestation rather than one final political reading.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not relativism or denial that communities can adopt shared commitments."
+    ],
+    "boundaryCases": [
+      "Pluralism can be intra-traditional, inter-religious, constitutional, or procedural."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:islamic-public-law",
@@ -858,20 +1486,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "islamic-public-law",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Islamic Public Law within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "The view that Islamic jurisprudential or ethical principles should have a specified role in public law and constitutional ordering.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Islamic Public Law",
-      "positive": "endorses or prioritizes Islamic Public Law"
+      "negative": "support for a public-law role for Islamic principles",
+      "positive": "support for public law grounded independently of Islamic jurisprudential authority"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Islamic constitutionalism ranges from rights-compatible reference to strong juristic review; these are separate dimensions. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "The view that Islamic jurisprudential or ethical principles should have a specified role in public law and constitutional ordering.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It does not specify one school, clerical institution, or degree of legal enforcement."
+    ],
+    "boundaryCases": [
+      "Islamic constitutionalism ranges from rights-compatible reference to strong juristic review; these are separate dimensions."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:jewish-national-self-determination",
@@ -881,20 +1527,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "jewish-national-self-determination",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Jewish National Self Determination within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Support for Jewish collective self-determination in a national political framework, including the claim to secure a Jewish national home or state.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Jewish National Self Determination",
-      "positive": "endorses or prioritizes Jewish National Self Determination"
+      "negative": "support for Jewish national self-determination",
+      "positive": "preference for a political order that does not institutionalize Jewish national self-determination"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Civic, ethnic, religious, and binational versions must be distinguished. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Support for Jewish collective self-determination in a national political framework, including the claim to secure a Jewish national home or state.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not identical to a particular border, government, religious orthodoxy, or policy toward minorities."
+    ],
+    "boundaryCases": [
+      "Civic, ethnic, religious, and binational versions must be distinguished."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:minority-citizenship",
@@ -904,20 +1568,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "minority-citizenship",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Minority Citizenship within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Equal political membership and civil standing for religious, ethnic, or ideological minorities within a state claiming a dominant religious or national identity.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Minority Citizenship",
-      "positive": "endorses or prioritizes Minority Citizenship"
+      "negative": "support for equal minority citizenship under the public order",
+      "positive": "acceptance of differentiated or subordinate citizenship for minorities"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Formal equality can coexist with unequal social power; the item should specify legal, political, or substantive scope. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Equal political membership and civil standing for religious, ethnic, or ideological minorities within a state claiming a dominant religious or national identity.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not the same as cultural assimilation or complete separation of religion and state."
+    ],
+    "boundaryCases": [
+      "Formal equality can coexist with unequal social power; the item should specify legal, political, or substantive scope."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:party-competition",
@@ -927,20 +1609,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "party-competition",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Party Competition within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Acceptance of organized, competitive parties as legitimate vehicles for representing disagreement and gaining governmental authority.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Party Competition",
-      "positive": "endorses or prioritizes Party Competition"
+      "negative": "support for open party competition and alternation",
+      "positive": "preference for one-party, movement, clerical, military, or non-competitive authority"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Competition may be bounded by constitutional, religious, or national rules. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Acceptance of organized, competitive parties as legitimate vehicles for representing disagreement and gaining governmental authority.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a claim that every party is equally legitimate or that competition alone secures liberal rights."
+    ],
+    "boundaryCases": [
+      "Competition may be bounded by constitutional, religious, or national rules."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:popular-constitutionalism",
@@ -950,20 +1650,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "popular-constitutionalism",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Popular Constitutionalism within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "The view that constitutional meaning and authority should remain substantially accountable to popular political judgment rather than being monopolized by courts or elites.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Popular Constitutionalism",
-      "positive": "endorses or prioritizes Popular Constitutionalism"
+      "negative": "priority to popular participation in constitutional interpretation and change",
+      "positive": "priority to elite or judicial finality over popular constitutional judgment"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Popular constitutionalism can operate through elections, movements, referenda, or constitutional conventions. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "The view that constitutional meaning and authority should remain substantially accountable to popular political judgment rather than being monopolized by courts or elites.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not simple majoritarianism or rejection of constitutional rights."
+    ],
+    "boundaryCases": [
+      "Popular constitutionalism can operate through elections, movements, referenda, or constitutional conventions."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:religious-authority",
@@ -973,20 +1691,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "religious-authority",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Religious Authority within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Political deference to recognized religious scholars, institutions, or normative authorities in determining public law or legitimate governance.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Religious Authority",
-      "positive": "endorses or prioritizes Religious Authority"
+      "negative": "support for religious authorities as authoritative political interpreters",
+      "positive": "preference for political judgment independent of religious authorities"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Authority can be advisory, constitutional, judicial, clerical, or distributed among communities. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Political deference to recognized religious scholars, institutions, or normative authorities in determining public law or legitimate governance.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not private religiosity, clerical rule, or all appeals to religious reasons."
+    ],
+    "boundaryCases": [
+      "Authority can be advisory, constitutional, judicial, clerical, or distributed among communities."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:religious-national-politics-module:religious-national-fusion",
@@ -996,20 +1732,38 @@
     "moduleId": "religious-national-politics-module",
     "sourceKey": "religious-national-fusion",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:773c66fdd80832c7",
+      "citation:6d882320da8a57cd",
+      "citation:2823223e137871fb",
+      "citation:767d8856723b95a6",
+      "citation:1281263f480658cd",
+      "citation:726584f99844985f",
+      "citation:a040a5400317ec7b",
+      "citation:11f5a6d12b7e87c8"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Religious National Fusion within Religious and national political projects. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A political project that fuses national membership and state purpose with a substantive religious identity or religiously marked public order.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Religious National Fusion",
-      "positive": "endorses or prioritizes Religious National Fusion"
+      "negative": "support for fusion of religious identity and national-state purpose",
+      "positive": "support for a civic or secular state that separates national membership from religious identity"
     },
-    "boundaryStatement": "Scoped to Religious and national political projects; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Fusion may be symbolic, constitutional, legal, or coercive; those forms should not be conflated. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A political project that fuses national membership and state purpose with a substantive religious identity or religiously marked public order.",
+    "conceptualScope": "This module-local construct compares religious-national political traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not simply religious voters, established churches, or cultural religious heritage."
+    ],
+    "boundaryCases": [
+      "Fusion may be symbolic, constitutional, legal, or coercive; those forms should not be conflated."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:socialist-families-module:democratic-planning",
@@ -1019,20 +1773,36 @@
     "moduleId": "socialist-families-module",
     "sourceKey": "democratic-planning",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:8a845d11cf0bd6a1",
+      "citation:202b304371d95506",
+      "citation:bebaea9c7a0e48c3",
+      "citation:1dad3afb436d6571",
+      "citation:2d99f6e2609c3939",
+      "citation:258cbf6757349f69"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Democratic Planning within Socialist family variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Collective determination of major production and investment priorities through participatory, representative, or deliberative planning institutions.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Democratic Planning",
-      "positive": "endorses or prioritizes Democratic Planning"
+      "negative": "priority to democratic planning of major economic decisions",
+      "positive": "priority to markets or private investment decisions as the principal allocator"
     },
-    "boundaryStatement": "Scoped to Socialist family variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Planning can be indicative, participatory, sectoral, or binding, and can coexist with markets. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Collective determination of major production and investment priorities through participatory, representative, or deliberative planning institutions.",
+    "conceptualScope": "This module-local construct compares socialist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not identical to command planning, abolition of all markets, or a claim that planning is empirically feasible."
+    ],
+    "boundaryCases": [
+      "Planning can be indicative, participatory, sectoral, or binding, and can coexist with markets."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:socialist-families-module:reformism",
@@ -1042,20 +1812,36 @@
     "moduleId": "socialist-families-module",
     "sourceKey": "reformism",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:8a845d11cf0bd6a1",
+      "citation:202b304371d95506",
+      "citation:bebaea9c7a0e48c3",
+      "citation:1dad3afb436d6571",
+      "citation:2d99f6e2609c3939",
+      "citation:258cbf6757349f69"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Reformism within Socialist family variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A strategy of pursuing socialist or egalitarian transformation through incremental reforms, elections, organized labor, and existing constitutional institutions.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Reformism",
-      "positive": "endorses or prioritizes Reformism"
+      "negative": "priority to cumulative reform through existing institutions",
+      "positive": "priority to rupture, insurrection, or extra-constitutional replacement of existing institutions"
     },
-    "boundaryStatement": "Scoped to Socialist family variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Reformists may support disruptive movements when they are linked to institutional change rather than replacement. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A strategy of pursuing socialist or egalitarian transformation through incremental reforms, elections, organized labor, and existing constitutional institutions.",
+    "conceptualScope": "This module-local construct compares socialist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not political moderation in every policy domain or a denial that institutions can be transformed."
+    ],
+    "boundaryCases": [
+      "Reformists may support disruptive movements when they are linked to institutional change rather than replacement."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:socialist-families-module:revolutionary-strategy",
@@ -1065,20 +1851,36 @@
     "moduleId": "socialist-families-module",
     "sourceKey": "revolutionary-strategy",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:8a845d11cf0bd6a1",
+      "citation:202b304371d95506",
+      "citation:bebaea9c7a0e48c3",
+      "citation:1dad3afb436d6571",
+      "citation:2d99f6e2609c3939",
+      "citation:258cbf6757349f69"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Revolutionary Strategy within Socialist family variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A strategy that treats rapid rupture with existing property or state institutions as necessary or central to socialist transformation.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Revolutionary Strategy",
-      "positive": "endorses or prioritizes Revolutionary Strategy"
+      "negative": "priority to revolutionary rupture and replacement of existing institutions",
+      "positive": "priority to gradual, electoral, or reformist transformation"
     },
-    "boundaryStatement": "Scoped to Socialist family variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Revolutionary strategies can be nonviolent, mass-democratic, insurrectionary, or institution-building. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A strategy that treats rapid rupture with existing property or state institutions as necessary or central to socialist transformation.",
+    "conceptualScope": "This module-local construct compares socialist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not mere radical rhetoric or support for any particular violent tactic."
+    ],
+    "boundaryCases": [
+      "Revolutionary strategies can be nonviolent, mass-democratic, insurrectionary, or institution-building."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:socialist-families-module:social-ownership",
@@ -1088,20 +1890,36 @@
     "moduleId": "socialist-families-module",
     "sourceKey": "social-ownership",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:8a845d11cf0bd6a1",
+      "citation:202b304371d95506",
+      "citation:bebaea9c7a0e48c3",
+      "citation:1dad3afb436d6571",
+      "citation:2d99f6e2609c3939",
+      "citation:258cbf6757349f69"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Social Ownership within Socialist family variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Collective, public, cooperative, or worker ownership and control of productive assets rather than concentrated private ownership.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Social Ownership",
-      "positive": "endorses or prioritizes Social Ownership"
+      "negative": "support for social or worker control of productive assets",
+      "positive": "priority to concentrated private ownership and investor control"
     },
-    "boundaryStatement": "Scoped to Socialist family variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Ownership and control may be separated; market socialism and cooperatives remain distinct from command administration. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Collective, public, cooperative, or worker ownership and control of productive assets rather than concentrated private ownership.",
+    "conceptualScope": "This module-local construct compares socialist families on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not one fixed model of state ownership, equal shares, or abolition of all private property."
+    ],
+    "boundaryCases": [
+      "Ownership and control may be separated; market socialism and cooperatives remain distinct from command administration."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:technology-governance-module:accelerationist-strategy",
@@ -1111,20 +1929,38 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "accelerationist-strategy",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:a2937319cd34d058",
+      "citation:c0ac56609a28bea1",
+      "citation:80af85709da20b89",
+      "citation:15c1be9ae4824ea5",
+      "citation:9e1c40cea0982cc0",
+      "citation:c38b09dea29362d0",
+      "citation:ce103804aedf7014",
+      "citation:110d4ab1090b1d1f"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Accelerationist Strategy within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A strategy of intensifying technological, economic, or social processes in order to force a political transformation or move beyond the present order.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Accelerationist Strategy",
-      "positive": "endorses or prioritizes Accelerationist Strategy"
+      "negative": "priority to acceleration and intensification as a political strategy",
+      "positive": "priority to restraint, stabilization, or deliberate slowing as the political strategy"
     },
-    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Left, reactionary, and techno-capitalist accelerationisms can share a tactic while rejecting one another’s ends. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A strategy of intensifying technological, economic, or social processes in order to force a political transformation or move beyond the present order.",
+    "conceptualScope": "This module-local construct compares technology and governance traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not generic enthusiasm for innovation or a prediction that change will be fast."
+    ],
+    "boundaryCases": [
+      "Left, reactionary, and techno-capitalist accelerationisms can share a tactic while rejecting one another’s ends."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:technology-governance-module:algorithmic-authority",
@@ -1134,20 +1970,38 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "algorithmic-authority",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:a2937319cd34d058",
+      "citation:c0ac56609a28bea1",
+      "citation:80af85709da20b89",
+      "citation:15c1be9ae4824ea5",
+      "citation:9e1c40cea0982cc0",
+      "citation:c38b09dea29362d0",
+      "citation:ce103804aedf7014",
+      "citation:110d4ab1090b1d1f"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Algorithmic Authority within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Political authority delegated to computational systems, automated classifications, or algorithmic decision procedures in ways that materially shape rights, access, or governance.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Algorithmic Authority",
-      "positive": "endorses or prioritizes Algorithmic Authority"
+      "negative": "support for algorithmic systems as authoritative governance instruments",
+      "positive": "priority to humanly contestable and non-automated authority"
     },
-    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. The decisive boundary is binding or practically unreviewable authority, not technical complexity alone. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Political authority delegated to computational systems, automated classifications, or algorithmic decision procedures in ways that materially shape rights, access, or governance.",
+    "conceptualScope": "This module-local construct compares technology and governance traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not ordinary software assistance, statistical evidence, or every use of automation."
+    ],
+    "boundaryCases": [
+      "The decisive boundary is binding or practically unreviewable authority, not technical complexity alone."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:technology-governance-module:centralized-administration",
@@ -1157,20 +2011,38 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "centralized-administration",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:a2937319cd34d058",
+      "citation:c0ac56609a28bea1",
+      "citation:80af85709da20b89",
+      "citation:15c1be9ae4824ea5",
+      "citation:9e1c40cea0982cc0",
+      "citation:c38b09dea29362d0",
+      "citation:ce103804aedf7014",
+      "citation:110d4ab1090b1d1f"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Centralized Administration within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Governance through centralized administrative institutions that coordinate information, standards, infrastructure, and enforcement across a large jurisdiction.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Centralized Administration",
-      "positive": "endorses or prioritizes Centralized Administration"
+      "negative": "support for centralized administrative coordination",
+      "positive": "priority to polycentric, local, or distributed governance"
     },
-    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. A centralized system can be democratically accountable; a decentralized system can still be coercive or opaque. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Governance through centralized administrative institutions that coordinate information, standards, infrastructure, and enforcement across a large jurisdiction.",
+    "conceptualScope": "This module-local construct compares technology and governance traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not synonymous with dictatorship, bureaucracy, or national scale by itself."
+    ],
+    "boundaryCases": [
+      "A centralized system can be democratically accountable; a decentralized system can still be coercive or opaque."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:technology-governance-module:decentralized-technology",
@@ -1180,20 +2052,38 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "decentralized-technology",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:a2937319cd34d058",
+      "citation:c0ac56609a28bea1",
+      "citation:80af85709da20b89",
+      "citation:15c1be9ae4824ea5",
+      "citation:9e1c40cea0982cc0",
+      "citation:c38b09dea29362d0",
+      "citation:ce103804aedf7014",
+      "citation:110d4ab1090b1d1f"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Decentralized Technology within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Political preference for distributed technical infrastructures that reduce dependence on a single platform, administrator, or point of control.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Decentralized Technology",
-      "positive": "endorses or prioritizes Decentralized Technology"
+      "negative": "support for distributed and interoperable technical infrastructures",
+      "positive": "priority to integrated centralized platforms or administrative control"
     },
-    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Decentralization may concern architecture, ownership, governance, or data portability; the item must specify which. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Political preference for distributed technical infrastructures that reduce dependence on a single platform, administrator, or point of control.",
+    "conceptualScope": "This module-local construct compares technology and governance traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not a guarantee of privacy, democracy, or equal power."
+    ],
+    "boundaryCases": [
+      "Decentralization may concern architecture, ownership, governance, or data portability; the item must specify which."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:technology-governance-module:expert-administration",
@@ -1203,20 +2093,38 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "expert-administration",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:a2937319cd34d058",
+      "citation:c0ac56609a28bea1",
+      "citation:80af85709da20b89",
+      "citation:15c1be9ae4824ea5",
+      "citation:9e1c40cea0982cc0",
+      "citation:c38b09dea29362d0",
+      "citation:ce103804aedf7014",
+      "citation:110d4ab1090b1d1f"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Expert Administration within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "Political deference to specialized experts and technocratic agencies to make or implement complex public decisions.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Expert Administration",
-      "positive": "endorses or prioritizes Expert Administration"
+      "negative": "support for expert or technocratic authority in complex governance",
+      "positive": "priority to lay participation, elected judgment, or contestable public deliberation"
     },
-    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Expert advice can coexist with democratic control when final authority and reasons remain contestable. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "Political deference to specialized experts and technocratic agencies to make or implement complex public decisions.",
+    "conceptualScope": "This module-local construct compares technology and governance traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not respect for evidence, professional competence, or delegated implementation in itself."
+    ],
+    "boundaryCases": [
+      "Expert advice can coexist with democratic control when final authority and reasons remain contestable."
+    ],
+    "semanticLayer": "normative",
+    "structureType": "bipolar"
   },
   {
     "id": "specialist:technology-governance-module:market-acceleration",
@@ -1226,19 +2134,37 @@
     "moduleId": "technology-governance-module",
     "sourceKey": "market-acceleration",
     "lifecycle": {
-      "conceptualStatus": "provisional-defined",
+      "conceptualStatus": "source-backed-candidate",
       "measurementStatus": "research-candidate",
       "publicRoleStatus": "research-only"
     },
     "provenanceRefs": [
       "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "source:phase0-measurement-contract",
+      "citation:a2937319cd34d058",
+      "citation:c0ac56609a28bea1",
+      "citation:80af85709da20b89",
+      "citation:15c1be9ae4824ea5",
+      "citation:9e1c40cea0982cc0",
+      "citation:c38b09dea29362d0",
+      "citation:ce103804aedf7014",
+      "citation:110d4ab1090b1d1f"
     ],
-    "description": "Research-only module-local construct measuring endorsement of Market Acceleration within Technology and governance variants. It is an operational comparison dimension for this specialist module, not a global ideology axis.",
+    "description": "A political strategy of using competition, investment, and market expansion to accelerate technological development and social transformation.",
     "poles": {
-      "negative": "rejects, opposes, or deprioritizes Market Acceleration",
-      "positive": "endorses or prioritizes Market Acceleration"
+      "negative": "priority to market competition and investment as acceleration mechanisms",
+      "positive": "priority to public, cooperative, or regulated direction of technological change"
     },
-    "boundaryStatement": "Scoped to Technology and governance variants; this construct alone cannot establish an ideology label outside its module."
+    "boundaryStatement": "The construct is limited to the political content stated in its definition. Market acceleration can be paired with strong state capacity or radical anti-state commitments; the combination matters. It is scored for this module only and remains a research candidate pending expert and respondent-validity gates.",
+    "canonicalDefinition": "A political strategy of using competition, investment, and market expansion to accelerate technological development and social transformation.",
+    "conceptualScope": "This module-local construct compares technology and governance traditions on the specified political content; it is not a global ideology axis and cannot establish a label outside the module.",
+    "exclusions": [
+      "It is not generic support for markets, innovation, or economic growth."
+    ],
+    "boundaryCases": [
+      "Market acceleration can be paired with strong state capacity or radical anti-state commitments; the combination matters."
+    ],
+    "semanticLayer": "prescriptive",
+    "structureType": "bipolar"
   }
 ]

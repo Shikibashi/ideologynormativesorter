@@ -180,6 +180,21 @@ function validateConstruct(
   optionalString(record.domainId, `${path}.domainId`, issues);
   optionalString(record.moduleId, `${path}.moduleId`, issues);
   optionalString(record.description, `${path}.description`, issues);
+  optionalString(record.canonicalDefinition, `${path}.canonicalDefinition`, issues);
+  optionalString(record.conceptualScope, `${path}.conceptualScope`, issues);
+  for (const key of ["exclusions", "boundaryCases"] as const) {
+    const values = record[key];
+    if (values !== undefined) {
+      if (!Array.isArray(values)) addIssue(issues, `${path}.${key}`, "type", "Expected string array");
+      else values.forEach((value, index) => requiredString(value, `${path}.${key}[${index}]`, issues));
+    }
+  }
+  if (record.semanticLayer !== undefined && !["normative", "descriptive", "prescriptive", "mixed"].includes(record.semanticLayer)) {
+    addIssue(issues, `${path}.semanticLayer`, "value", "Unknown semantic layer");
+  }
+  if (record.structureType !== undefined && !["bipolar", "unipolar", "multidimensional", "conditional"].includes(record.structureType)) {
+    addIssue(issues, `${path}.structureType`, "value", "Unknown construct structure type");
+  }
   optionalString(record.boundaryStatement, `${path}.boundaryStatement`, issues);
   if (record.scope === "specialist") {
     requiredString(record.description, `${path}.description`, issues);
@@ -358,6 +373,7 @@ function validateCommitments(
     requiredString(value.id, `${commitmentPath}.id`, issues);
     requiredString(value.constructId, `${commitmentPath}.constructId`, issues);
     requiredString(value.rationale, `${commitmentPath}.rationale`, issues);
+    optionalString(value.criterionPolicy, `${commitmentPath}.criterionPolicy`, issues);
     if (typeof value.id === "string") {
       if (ids.has(value.id)) addIssue(issues, `${commitmentPath}.id`, "collision", "Duplicate commitment id");
       ids.add(value.id);

@@ -23,6 +23,8 @@
     "reference-lock:diff": "node scripts/compare-reference-lock.mjs --baseline docs/clean-rebuild/reference-lock --actual artifacts/reference-lock/current",
     "test:worker": "node --test research-worker/worker.test.mjs",
     "v2:content:compile": "tsx v2/tools/compile-content.ts",
+    "v2:specialist:rebuild": "node scripts/rebuild-specialist-source-specs.mjs",
+    "v2:specialist:check": "node scripts/validate-specialist-source-specs.mjs",
     "analysis:smoke": "bash scripts/run-r-smoke.sh",
     "v2:reference:verify": "node scripts/v2-reference/verify-reference.mjs",
     "v2:reference:differential": "node scripts/v2-reference/differential.mjs",

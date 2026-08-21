@@ -11,6 +11,12 @@
     "moduleId": { "type": "string", "minLength": 1 },
     "family": { "type": "string" },
     "description": { "type": "string" },
+    "canonicalDefinition": { "type": "string", "minLength": 1 },
+    "conceptualScope": { "type": "string", "minLength": 1 },
+    "exclusions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "boundaryCases": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "semanticLayer": { "enum": ["normative", "descriptive", "prescriptive", "mixed"] },
+    "structureType": { "enum": ["bipolar", "unipolar", "multidimensional", "conditional"] },
     "boundaryStatement": { "type": "string" },
     "sourceKey": { "type": "string" },
     "poles": {

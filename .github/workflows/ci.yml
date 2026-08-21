@@ -29,6 +29,9 @@ jobs:
       - name: Compile canonical v2 content
         run: npm run v2:content:compile
 
+      - name: Validate source-backed specialist content
+        run: npm run v2:specialist:check
+
       - name: Run tests
         run: npm test
 

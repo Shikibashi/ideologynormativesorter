@@ -1,0 +1,20 @@
+{
+  "version": "specialist-commitment-evidence-v1",
+  "status": "research-only",
+  "relationThresholds": {
+    "constitutive": 0.65,
+    "core": 0.55,
+    "characteristic": 0.25,
+    "contested": 0.2,
+    "compatible": 0.2,
+    "peripheral": 0.15,
+    "incompatible": 0.65
+  },
+  "rules": {
+    "constitutive": "Failure excludes the candidate; missing evidence abstains.",
+    "core": "The candidate must meet the threshold for a defining commitment.",
+    "characteristic": "The candidate receives an affinity commitment only when the directional evidence clears the threshold.",
+    "otherRelations": "Contested, compatible, peripheral, and incompatible relations are hypotheses about semantic fit, not claims of empirical validity."
+  },
+  "prohibition": "No criterion may be justified by retired targetValue or centroid distance."
+}
