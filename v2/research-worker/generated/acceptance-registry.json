@@ -4,10 +4,10 @@
   "consentVersion": "consent-v2.phase13.1",
   "maxPayloadBytes": 131072,
   "metadata": {
-    "contentSchemaVersion": "content-schema-v2.phase8.1",
-    "contentVersion": "v2-content-phase8.2-commitments",
-    "contentFingerprint": "ca6879aca25a89e6a8d9aecfe3c309b329fd540b1785372c3bd81eaed413657b",
-    "scoringVersion": "scoring-v2.commitment-v1",
+    "contentSchemaVersion": "content-schema-v3.commitments.1",
+    "contentVersion": "v3-content-commitments-1",
+    "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+    "scoringVersion": "scoring-v3.commitment-1",
     "responseSchemaVersion": "response-v2.phase1.1",
     "resultSchemaVersion": "result-v2.phase9.1"
   },
@@ -3655,6 +3655,366 @@
     },
     {
       "id": "q0479",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0501",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0502",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0503",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0504",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0505",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0506",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0507",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0508",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0509",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0510",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0511",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0512",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0513",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0514",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0515",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0516",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0517",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0518",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0519",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0520",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0521",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0522",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0523",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0524",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0525",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0526",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0527",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0528",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0529",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0530",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0531",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0532",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0533",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0534",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0535",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0536",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0537",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0538",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0539",
+      "role": "core",
+      "responseType": "likert7",
+      "scaleMin": -3,
+      "scaleMax": 3,
+      "scaleStep": 1,
+      "optionIds": []
+    },
+    {
+      "id": "q0540",
       "role": "core",
       "responseType": "likert7",
       "scaleMin": -3,

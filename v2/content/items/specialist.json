@@ -1,2538 +1,2325 @@
 [
   {
-    "id": "fm-an-1",
-    "domainId": "state-legitimacy",
-    "prompt": "Do you agree that durable political freedom requires dismantling imposed political hierarchy rather than merely making rulers more accountable?",
-    "responseType": "likert7",
-    "scoring": {
-      "mappingMode": "item",
-      "contributions": [
-        {
-          "constructId": "authority-legitimacy",
-          "weight": 1,
-          "polarity": -1
-        },
-        {
-          "constructId": "anti-domination",
-          "weight": 0.7,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:anarchist-families-module:anti-authority",
-          "weight": 1,
-          "polarity": 1
-        }
-      ]
-    },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
-    "status": "active",
-    "moduleId": "anarchist-families-module",
-    "reverseScored": false,
     "allowDontKnow": false,
     "contextNote": "This normative specialist item treats imposed political hierarchy as a problem not solved merely by making rulers answerable. It does not deny that accountability can reduce abuse or that coordination may require roles; authority, domination, consent, exit, reciprocity, and institutional replacement are separate dimensions.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-an-1",
+    "domainId": "state-legitimacy",
+    "id": "fm-an-1",
+    "layer": "normative",
+    "moduleId": "anarchist-families-module",
+    "prompt": "Do you agree that durable political freedom requires dismantling imposed political hierarchy rather than merely making rulers more accountable?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:52724480906e1b00",
       "citation:1dad3afb436d6571",
       "citation:24f5692b9d709837"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-an-2",
-    "domainId": "markets-planning",
-    "prompt": "Do you agree that markets and private exchange can coordinate social life without requiring a centralized state to direct production?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "market-process-confidence",
+          "constructId": "political-authority-legitimacy",
           "weight": 1,
-          "polarity": 1
-        },
-        {
-          "constructId": "coordination-optimism",
-          "weight": 0.6,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:anarchist-families-module:market-coordination",
-          "weight": 1,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:anarchist-families-module:communal-coordination",
-          "weight": 0.4,
           "polarity": -1
+        },
+        {
+          "constructId": "specialist:anarchist-families-module:anti-authority",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "descriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-an-1",
     "status": "active",
-    "moduleId": "anarchist-families-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": true,
     "confidencePrompt": "How confident are you in this empirical claim?",
     "contextNote": "This descriptive specialist item asks whether markets and private exchange can coordinate social activity without a centralized state directing production. It does not claim that markets eliminate hierarchy, public goods, externalities, or coercion; price signals, polycentric rules, ownership, enforcement, and exit are distinct mechanisms.",
+    "domainId": "markets-planning",
     "evidenceNote": "Scope to the institutional conditions under which market exchange and private coordination use dispersed information, including property rules, contract enforcement, infrastructure, and public goods. The claim does not say that markets are self-sufficient, that every market is competitive, or that decentralized exchange removes all state or corporate power; market performance varies by sector and institutional design.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-an-2",
+    "id": "fm-an-2",
+    "layer": "descriptive",
+    "moduleId": "anarchist-families-module",
+    "prompt": "Do you agree that markets and private exchange can coordinate social life without requiring a centralized state to direct production?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:ec721cc683dcbaab",
       "citation:1b5ab88e18ea0d1b"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-an-3",
-    "domainId": "property-ownership",
-    "prompt": "Do you agree that productive resources should generally be held in common or governed by workers and affected communities rather than by absentee owners?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "property-legitimacy",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "equality-theory",
-          "weight": 0.6,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:anarchist-families-module:communal-property",
+          "constructId": "market-knowledge-coordination",
           "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:anarchist-families-module:market-property",
-          "weight": 0.5,
-          "polarity": -1
+          "constructId": "specialist:anarchist-families-module:market-coordination",
+          "polarity": 1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:anarchist-families-module:communal-coordination",
+          "polarity": -1,
+          "weight": 0.4
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-an-2",
     "status": "active",
-    "moduleId": "anarchist-families-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item favors common or worker-and-community governance of productive resources over absentee control. It does not specify whether common ownership is municipal, cooperative, federated, or state-run; property, workplace authority, investment, coordination, and affected-community standing can be arranged differently.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-an-3",
+    "domainId": "property-ownership",
+    "id": "fm-an-3",
+    "layer": "normative",
+    "moduleId": "anarchist-families-module",
+    "prompt": "Do you agree that productive resources should generally be held in common or governed by workers and affected communities rather than by absentee owners?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:d035a01d7395b2a3",
       "citation:8a845d11cf0bd6a1",
       "citation:0dd76313581f604c"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-an-4",
-    "domainId": "strategy-change",
-    "prompt": "Do you agree that anarchist change should prioritize federated association, mutual aid, and direct organization over electoral capture of a central state?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.7,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:anarchist-families-module:direct-federation",
+          "constructId": "distributive-equality",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:anarchist-families-module:communal-property",
+          "polarity": 1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:anarchist-families-module:market-property",
+          "polarity": -1,
+          "weight": 0.5
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-an-3",
     "status": "active",
-    "moduleId": "anarchist-families-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item prioritizes federated association, mutual aid, and direct organization over capturing a central state. It does not imply that elections, public institutions, or delegated coordination are always rejected; sequencing, scale, accountability, legality, and resistance risk remain separate strategic questions.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-an-4",
+    "domainId": "strategy-change",
+    "id": "fm-an-4",
+    "layer": "prescriptive",
+    "moduleId": "anarchist-families-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that anarchist change should prioritize federated association, mutual aid, and direct organization over electoral capture of a central state?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:24f5692b9d709837",
       "citation:f6e2684163aa6668",
       "citation:1dad3afb436d6571"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-co-1",
-    "domainId": "strategy-change",
-    "prompt": "Do you agree that political reform should normally proceed cautiously because inherited institutions contain knowledge that deliberate redesign can easily destroy?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "authority-legitimacy",
-          "weight": 0.4,
+          "constructId": "institutional-decentralization",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:conservative-variants-module:prudence",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:anarchist-families-module:direct-federation",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-an-4",
     "status": "active",
-    "moduleId": "conservative-variants-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item values inherited institutional knowledge and cautions against deliberate redesign. It does not imply that all inherited institutions are legitimate or that reform is impossible; continuity, experimentation, path dependence, justice, and the distribution of authority are distinct considerations.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-co-1",
+    "domainId": "strategy-change",
+    "id": "fm-co-1",
+    "layer": "normative",
+    "moduleId": "conservative-variants-module",
+    "prompt": "Do you agree that political reform should normally proceed cautiously because inherited institutions contain knowledge that deliberate redesign can easily destroy?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:31fd39a48ce78b9a",
       "citation:340a44756daf2be5",
       "citation:52724480906e1b00"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-co-2",
-    "domainId": "family-gender-feminism",
-    "prompt": "Do you agree that public law should actively uphold inherited family and sexual norms rather than leave those questions mainly to individual choice?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "regulation-vs-deregulation",
-          "weight": 0.6,
-          "polarity": 1
-        },
-        {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.4,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:conservative-variants-module:moral-traditionalism",
+          "constructId": "political-authority-legitimacy",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:conservative-variants-module:prudence",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-co-1",
     "status": "active",
-    "moduleId": "conservative-variants-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item favors public law upholding inherited family and sexual norms over leaving those matters mainly to individual choice. It does not specify which norms or how to protect adults and dependents; tradition, consent, equality, religion, safety, and state coercion must be distinguished.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-co-2",
+    "domainId": "family-gender-feminism",
+    "id": "fm-co-2",
+    "layer": "prescriptive",
+    "moduleId": "conservative-variants-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that public law should actively uphold inherited family and sexual norms rather than leave those questions mainly to individual choice?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f3abe9549d155858",
       "citation:c0f2fe607b311488",
       "citation:6d882320da8a57cd"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-co-3",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that the political community should give special priority to the continuity and authority of a historic national culture?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "political-community-boundary",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "moral-traditionalism",
-          "weight": 0.3,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:conservative-variants-module:national-continuity",
+          "constructId": "regulatory-intervention",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:conservative-variants-module:moral-traditionalism",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-co-2",
     "status": "active",
-    "moduleId": "conservative-variants-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item gives a historic national culture special priority in political community. It does not define whether continuity means civic institutions, language, religion, ancestry, or symbolic recognition; equal citizenship, minority rights, immigration, and ethnonational exclusion are separate possibilities.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-co-3",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-co-3",
+    "layer": "normative",
+    "moduleId": "conservative-variants-module",
+    "prompt": "Do you agree that the political community should give special priority to the continuity and authority of a historic national culture?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:852d1d589970f404",
       "citation:947e27d17c539f9c"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-co-4",
-    "domainId": "foreign-policy-war",
-    "prompt": "Do you agree that a state may need an assertive foreign policy and strong international alliances to defend a liberal order against hostile regimes?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "coercion-strategy",
-          "weight": 0.8,
+          "constructId": "compatriot-priority",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:conservative-variants-module:assertive-internationalism",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:conservative-variants-module:national-continuity",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-co-3",
     "status": "active",
-    "moduleId": "conservative-variants-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item supports assertive foreign policy and alliances as defenses of a liberal order. It does not settle when force, sanctions, arms, or alliance commitments are justified; deterrence, escalation, civilian harm, sovereignty, local agency, and accountability require separate analysis.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-co-4",
+    "domainId": "foreign-policy-war",
+    "id": "fm-co-4",
+    "layer": "prescriptive",
+    "moduleId": "conservative-variants-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that a state may need an assertive foreign policy and strong international alliances to defend a liberal order against hostile regimes?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:6590822ca0485ada",
       "citation:ed17c96b60c50674",
       "citation:72a144a375dd03d3"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-fem-1",
-    "domainId": "family-gender-feminism",
-    "prompt": "Do you agree that the main political task of feminism is to secure equal individual rights, equal opportunity, and equal protection under law; deeper changes to social structure are secondary?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "liberty-noninterference",
-          "weight": 0.7,
-          "polarity": 1
-        },
-        {
-          "constructId": "equality-theory",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+          "constructId": "coercive-enforcement-strategy",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:conservative-variants-module:assertive-internationalism",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-co-4",
     "status": "active",
-    "moduleId": "feminist-faction-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "contextNote": "This item measures an institutional reform orientation, not whether formal equality is the only valid feminist diagnosis. A respondent can support equal rights while also believing that structural patriarchy or material dependence requires additional analysis.",
-    "sourceKey": "fm-fem-1",
+    "domainId": "family-gender-feminism",
+    "id": "fm-fem-1",
+    "layer": "normative",
+    "moduleId": "feminist-faction-module",
+    "prompt": "Do you agree that the main political task of feminism is to secure equal individual rights, equal opportunity, and equal protection under law; deeper changes to social structure are secondary?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f3abe9549d155858",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-fem-2",
-    "domainId": "family-gender-feminism",
-    "prompt": "Do you agree that a society can have formally sex-neutral laws while still maintaining a durable system of male dominance in everyday institutions and relationships?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "cultural-plasticity",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+          "constructId": "coercive-moral-order",
           "weight": 1,
           "polarity": 1
         },
         {
           "constructId": "specialist:feminist-faction-module:legal-equality-reform",
-          "weight": 0.2,
-          "polarity": -1
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "descriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-fem-1",
     "status": "active",
-    "moduleId": "feminist-faction-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "allowDontKnow": true,
     "confidencePrompt": "How confident are you in this empirical claim?",
     "contextNote": "This descriptive specialist item separates formal sex neutrality in law from persistent institutional and relational hierarchy. It does not claim that every unequal outcome proves male domination or that formal equality has no effect; enforcement, informal norms, care, violence, work, and representation are distinct mechanisms.",
+    "domainId": "family-gender-feminism",
     "evidenceNote": "Scope to cross-national comparisons such as the World Bank Women, Business and the Law 2024 study of 190 economies: distinguish formal legal rules from implementation systems and observed outcomes in safety, childcare, pay enforcement, and economic participation. The evidence does not create one universal measure of male dominance across every institution or relationship.",
-    "sourceKey": "fm-fem-2",
+    "id": "fm-fem-2",
+    "layer": "descriptive",
+    "moduleId": "feminist-faction-module",
+    "prompt": "Do you agree that a society can have formally sex-neutral laws while still maintaining a durable system of male dominance in everyday institutions and relationships?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:3fe820cb06e42e2b",
       "citation:02c4e59571c5345c"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-fem-3",
-    "domainId": "family-gender-feminism",
-    "prompt": "Do you agree that power over sexuality, reproduction, and family roles is a central political structure of gender domination rather than merely a collection of private choices?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
+          "constructId": "cultural-malleability",
           "weight": 1,
           "polarity": 1
-        },
-        {
-          "constructId": "moral-traditionalism",
-          "weight": 0.5,
-          "polarity": -1
         },
         {
           "constructId": "specialist:feminist-faction-module:structural-patriarchy",
-          "weight": 1,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+          "polarity": -1,
+          "weight": 0.2
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-fem-2",
     "status": "active",
-    "moduleId": "feminist-faction-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item treats sexuality, reproduction, and family roles as sites of political power rather than only private choice. It does not deny personal agency or imply one feminist theory; consent, law, economic dependence, care, violence, and social norms can support different diagnoses.",
-    "sourceKey": "fm-fem-3",
+    "domainId": "family-gender-feminism",
+    "id": "fm-fem-3",
+    "layer": "normative",
+    "moduleId": "feminist-faction-module",
+    "prompt": "Do you agree that power over sexuality, reproduction, and family roles is a central political structure of gender domination rather than merely a collection of private choices?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f3abe9549d155858",
       "citation:9981fba6d37552c9",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-fem-4",
-    "domainId": "family-gender-feminism",
-    "prompt": "Do you agree that women's economic dependence is reproduced in substantial part through unpaid care work, household labor, and the organization of paid employment?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "cultural-plasticity",
-          "weight": 0.4,
+          "constructId": "coercive-moral-order",
+          "weight": 1,
           "polarity": -1
         },
         {
-          "constructId": "specialist:feminist-faction-module:class-social-reproduction",
-          "weight": 1,
-          "polarity": 1
-        },
-        {
           "constructId": "specialist:feminist-faction-module:structural-patriarchy",
-          "weight": 0.3,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "descriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-fem-3",
     "status": "active",
-    "moduleId": "feminist-faction-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "allowDontKnow": true,
     "confidencePrompt": "How confident are you in this empirical claim?",
     "contextNote": "This descriptive specialist item links economic dependence to unpaid care, household labor, and the organization of paid work. It does not claim that all dependence has one cause or that paid employment automatically liberates; bargaining power, social provision, family structure, labor law, and choice are separate variables.",
+    "domainId": "family-gender-feminism",
     "evidenceNote": "Scope to time-use and labour-market studies summarized by the ILO across countries: compare women’s and men’s unpaid care and household-work hours with labour-force participation, employment, earnings, and progression. Treat unpaid care, household labour, and the organization of paid work as related but separately measured mechanisms rather than one universal causal coefficient.",
-    "sourceKey": "fm-fem-4",
+    "id": "fm-fem-4",
+    "layer": "descriptive",
+    "moduleId": "feminist-faction-module",
+    "prompt": "Do you agree that women's economic dependence is reproduced in substantial part through unpaid care work, household labor, and the organization of paid employment?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:02c4e59571c5345c",
       "citation:e539227869ea0680"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-fem-5",
-    "domainId": "family-gender-feminism",
-    "prompt": "Do you agree that gender liberation requires changing the organization of paid and unpaid labor, not only strengthening anti-discrimination law?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.4,
-          "polarity": 1
-        },
-        {
-          "constructId": "reform-vs-revolution",
-          "weight": 0.3,
+          "constructId": "patriarchy-social-reproduction",
+          "weight": 1,
           "polarity": 1
         },
         {
           "constructId": "specialist:feminist-faction-module:class-social-reproduction",
-          "weight": 1,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+          "polarity": 1,
+          "weight": 0.3
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-fem-4",
     "status": "active",
-    "moduleId": "feminist-faction-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this structural question to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This item isolates whether gender liberation requires reorganizing paid and unpaid labor and care rather than relying only on formal anti-discrimination law. It does not also ask about ownership, workplace governance, or one preferred policy instrument; those are separate questions.",
-    "sourceKey": "fm-fem-5",
+    "domainId": "family-gender-feminism",
+    "id": "fm-fem-5",
+    "layer": "prescriptive",
+    "moduleId": "feminist-faction-module",
+    "priorityPrompt": "How important is this structural question to your overall outlook?",
+    "prompt": "Do you agree that gender liberation requires changing the organization of paid and unpaid labor, not only strengthening anti-discrimination law?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f3abe9549d155858",
       "citation:c91cf5deafaf5070",
       "citation:0dd76313581f604c"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-fem-6",
-    "domainId": "family-gender-feminism",
-    "prompt": "Do you agree that feminist movements should normally use legislation, courts, and public institutions as durable tools for securing autonomy and equal citizenship?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.8,
-          "polarity": 1
-        },
-        {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "reform-vs-revolution",
-          "weight": 0.5,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:feminist-faction-module:legal-equality-reform",
-          "weight": 0.8,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+          "constructId": "public-provision",
           "weight": 1,
-          "polarity": -1
+          "polarity": 1
+        },
+        {
+          "constructId": "specialist:feminist-faction-module:class-social-reproduction",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-fem-5",
     "status": "active",
-    "moduleId": "feminist-faction-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this strategic question to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This item measures the strategic value assigned to legislation, courts, and public institutions. It separates institutional strategy from a diagnosis of patriarchy and from the broader goal of gender equality.",
-    "sourceKey": "fm-fem-6",
+    "domainId": "family-gender-feminism",
+    "id": "fm-fem-6",
+    "layer": "prescriptive",
+    "moduleId": "feminist-faction-module",
+    "priorityPrompt": "How important is this strategic question to your overall outlook?",
+    "prompt": "Do you agree that feminist movements should normally use legislation, courts, and public institutions as durable tools for securing autonomy and equal citizenship?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f3abe9549d155858",
       "citation:bb6c1fa0ffb72deb",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-fem-7",
-    "domainId": "family-gender-feminism",
-    "prompt": "Do you agree that a feminist politics should treat permanent centralized state hierarchy as a source of domination to be dismantled rather than as a durable vehicle for liberation?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "reform-vs-revolution",
-          "weight": 0.4,
+          "constructId": "public-provision",
+          "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:feminist-faction-module:legal-equality-reform",
+          "polarity": 1,
+          "weight": 0.8
         },
         {
           "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
-          "weight": 1,
-          "polarity": 1
+          "polarity": -1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-fem-6",
     "status": "active",
-    "moduleId": "feminist-faction-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this strategic question to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This item asks whether permanent centralized hierarchy is compatible with liberation. It measures an anti-hierarchical strategy preference and does not imply that every state action, public institution, or temporary coordination structure has the same status.",
-    "sourceKey": "fm-fem-7",
+    "domainId": "family-gender-feminism",
+    "id": "fm-fem-7",
+    "layer": "prescriptive",
+    "moduleId": "feminist-faction-module",
+    "priorityPrompt": "How important is this strategic question to your overall outlook?",
+    "prompt": "Do you agree that a feminist politics should treat permanent centralized state hierarchy as a source of domination to be dismantled rather than as a durable vehicle for liberation?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f3abe9549d155858",
       "citation:52724480906e1b00",
       "citation:bb6c1fa0ffb72deb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-fem-8",
-    "domainId": "family-gender-feminism",
-    "prompt": "Do you agree that long-run feminist organization should favor decentralized, self-governing associations over centralized leadership structures?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
+          "constructId": "institutional-decentralization",
           "weight": 1,
-          "polarity": -1
-        },
-        {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.4,
-          "polarity": -1
+          "polarity": 1
         },
         {
           "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
-          "weight": 1,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:feminist-faction-module:structural-patriarchy",
-          "weight": 0.2,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-fem-7",
     "status": "active",
-    "moduleId": "feminist-faction-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this organizational question to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This prescriptive specialist item favors decentralized and self-governing feminist associations over centralized leadership. It does not imply that coordination, representation, expertise, or delegated authority are unnecessary; the relevant tradeoff is between autonomy and collective capacity, with accountability and inclusion kept distinct.",
-    "sourceKey": "fm-fem-8",
+    "domainId": "family-gender-feminism",
+    "id": "fm-fem-8",
+    "layer": "prescriptive",
+    "moduleId": "feminist-faction-module",
+    "priorityPrompt": "How important is this organizational question to your overall outlook?",
+    "prompt": "Do you agree that long-run feminist organization should favor decentralized, self-governing associations over centralized leadership structures?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f3abe9549d155858",
       "citation:f6e2684163aa6668",
       "citation:bb6c1fa0ffb72deb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-gr-1",
-    "domainId": "environment-climate-growth",
-    "prompt": "Do you agree that the nonhuman world has moral standing that should constrain human activity even when doing so reduces material convenience?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "human-nature-priority",
+          "constructId": "institutional-decentralization",
           "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:green-morphology-module:ecological-standing",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:feminist-faction-module:anti-hierarchy-strategy",
+          "polarity": 1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:feminist-faction-module:structural-patriarchy",
+          "polarity": 1,
+          "weight": 0.2
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-fem-8",
     "status": "active",
-    "moduleId": "green-morphology-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item gives the nonhuman world moral standing that can constrain human convenience. It does not identify whether standing belongs to organisms, species, ecosystems, or relations, and it does not choose a policy instrument; necessity, distribution, ecological thresholds, and human welfare remain distinct.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-gr-1",
+    "domainId": "environment-climate-growth",
+    "id": "fm-gr-1",
+    "layer": "normative",
+    "moduleId": "green-morphology-module",
+    "prompt": "Do you agree that the nonhuman world has moral standing that should constrain human activity even when doing so reduces material convenience?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:86698e89abab7360",
       "citation:77a9155d1a5594a8"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-gr-2",
-    "domainId": "environment-climate-growth",
-    "prompt": "Do you agree that high-income societies should reduce material throughput rather than treating continued aggregate economic growth as the default solution to social problems?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "regulation-vs-deregulation",
-          "weight": 0.5,
+          "constructId": "ecological-standing",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:green-morphology-module:post-growth",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:green-morphology-module:ecological-standing",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-gr-1",
     "status": "active",
-    "moduleId": "green-morphology-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item favors reducing material throughput in high-income societies rather than treating aggregate growth as the default solution. It does not equate GDP, energy use, material use, emissions, welfare, or poverty reduction; distribution, absolute decoupling, rebound effects, and feasibility require separate evaluation.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-gr-2",
+    "domainId": "environment-climate-growth",
+    "id": "fm-gr-2",
+    "layer": "prescriptive",
+    "moduleId": "green-morphology-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that high-income societies should reduce material throughput rather than treating continued aggregate economic growth as the default solution to social problems?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:e666accdcbd04f20",
       "citation:77a9155d1a5594a8",
       "citation:3fa0d3f4492193d4"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-gr-3",
-    "domainId": "environment-climate-growth",
-    "prompt": "Do you agree that private investment and technological innovation can be central tools for rapid ecological transition when public rules correct external harms?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "regulation-vs-deregulation",
-          "weight": 0.3,
+          "constructId": "regulatory-intervention",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:green-morphology-module:market-technology",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:green-morphology-module:post-growth",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-gr-2",
     "status": "active",
-    "moduleId": "green-morphology-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item treats private investment and technological innovation as central ecological-transition tools when public rules correct external harms. It does not imply that markets self-correct or that public ownership is excluded; finance, regulation, innovation, distribution, capture, and measured emissions outcomes are distinct.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-gr-3",
+    "domainId": "environment-climate-growth",
+    "id": "fm-gr-3",
+    "layer": "prescriptive",
+    "moduleId": "green-morphology-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that private investment and technological innovation can be central tools for rapid ecological transition when public rules correct external harms?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:e666accdcbd04f20",
       "citation:3de422c7d214f58b",
       "citation:b1a316ab3c656aeb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-gr-4",
-    "domainId": "democracy-expertise-constitutionalism",
-    "prompt": "Do you agree that ecological politics should prioritize democratic and locally accountable control over both corporate and centralized state power?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.6,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:green-morphology-module:democratic-decentralism",
+          "constructId": "ecological-restructuring",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:green-morphology-module:market-technology",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-gr-3",
     "status": "active",
-    "moduleId": "green-morphology-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item favors democratic and locally accountable control over both corporate and centralized state power. It does not assume local control automatically protects ecosystems or coordinates across borders; participation, expertise, federation, rights, scale, and ecological limits must be considered together.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-gr-4",
+    "domainId": "democracy-expertise-constitutionalism",
+    "id": "fm-gr-4",
+    "layer": "prescriptive",
+    "moduleId": "green-morphology-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that ecological politics should prioritize democratic and locally accountable control over both corporate and centralized state power?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:86698e89abab7360",
       "citation:f6e2684163aa6668",
       "citation:bb6c1fa0ffb72deb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-gr-5",
-    "domainId": "property-ownership",
-    "prompt": "Do you agree that ecological transition should give workers or communities meaningful control over productive assets rather than leaving the transition primarily to private capital owners?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "property-legitimacy",
-          "weight": 0.7,
-          "polarity": -1
-        },
-        {
-          "constructId": "anti-domination",
-          "weight": 0.4,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:green-morphology-module:collective-ownership",
+          "constructId": "institutional-decentralization",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:green-morphology-module:democratic-decentralism",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-gr-4",
     "status": "active",
-    "moduleId": "green-morphology-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item isolates collective or worker-and-community control of productive assets within ecological transition. It does not decide whether that control is cooperative, municipal, federated, or state-run, and it does not imply that private investment, markets, or technical expertise are absent from every ecosocialist proposal.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-gr-5",
+    "domainId": "property-ownership",
+    "id": "fm-gr-5",
+    "layer": "normative",
+    "moduleId": "green-morphology-module",
+    "prompt": "Do you agree that ecological transition should give workers or communities meaningful control over productive assets rather than leaving the transition primarily to private capital owners?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:d035a01d7395b2a3",
       "citation:8a845d11cf0bd6a1",
       "citation:0dd76313581f604c"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-1",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that a nation is fundamentally a people connected by shared ancestry and inherited culture, not simply everyone who holds the same citizenship?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "political-community-boundary",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:ascriptive-membership",
+          "constructId": "anti-domination",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:green-morphology-module:collective-ownership",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-gr-5",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "contextNote": "This normative specialist item defines nationhood through ancestry and inherited culture rather than citizenship alone. It does not by itself prescribe exclusion, racial hierarchy, or one state policy; ethnic membership, civic membership, assimilation, minority rights, and self-determination are distinct positions.",
-    "sourceKey": "fm-id-1",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-1",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that a nation is fundamentally a people connected by shared ancestry and inherited culture, not simply everyone who holds the same citizenship?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:852d1d589970f404",
       "citation:947e27d17c539f9c"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-10",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that collective self-reliance can be politically valuable even when a group neither seeks territorial separation nor a separate state?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.4,
+          "constructId": "national-self-determination",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:identity-sovereignty-module:community-autonomy",
-          "weight": 0.8,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
-          "weight": 0.8,
-          "polarity": -1
+          "constructId": "specialist:identity-sovereignty-module:ascriptive-membership",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-1",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item treats collective self-reliance as potentially valuable without requiring a separate state or territorial separation. It does not imply isolation or collective uniformity; autonomy, mutual aid, public institutions, individual exit, internal dissent, and interdependence can coexist in different forms.",
-    "sourceKey": "fm-id-10",
+    "domainId": "race-ethnicity-multiculturalism",
+    "id": "fm-id-10",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that collective self-reliance can be politically valuable even when a group neither seeks territorial separation nor a separate state?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:947e27d17c539f9c",
       "citation:72a144a375dd03d3",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-11",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that when a distinct people faces durable political domination, separate statehood can sometimes be morally preferable to autonomy inside the existing state?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
           "constructId": "anti-domination",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "political-community-boundary",
-          "weight": 0.4,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
           "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:identity-sovereignty-module:minority-self-government",
-          "weight": 0.5,
-          "polarity": 1
+          "constructId": "specialist:identity-sovereignty-module:community-autonomy",
+          "polarity": 1,
+          "weight": 0.8
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
+          "polarity": -1,
+          "weight": 0.8
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-10",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item allows separate statehood to be morally preferable under durable domination. It does not treat secession as automatically peaceful, feasible, or just; autonomy, borders, minority rights, consent, security, displacement, and post-separation accountability remain open questions.",
-    "sourceKey": "fm-id-11",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-11",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that when a distinct people faces durable political domination, separate statehood can sometimes be morally preferable to autonomy inside the existing state?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:c6778c6cde4b2ae9",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-12",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that where robust self-government is possible, minority autonomy within a shared state should usually be preferred to drawing new sovereign borders?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.3,
-          "polarity": -1
+          "constructId": "compatriot-priority",
+          "weight": 1,
+          "polarity": 1
         },
         {
           "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
-          "weight": 1,
-          "polarity": -1
+          "polarity": 1,
+          "weight": 1
         },
         {
           "constructId": "specialist:identity-sovereignty-module:minority-self-government",
-          "weight": 0.6,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 0.5
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-id-11",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this constitutional preference to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This prescriptive specialist item prefers minority autonomy within a shared state when robust self-government is possible. It does not rule out independence where autonomy is fictive or domination persists; constitutional guarantees, fiscal capacity, territoriality, mobility, and exit options are distinct safeguards.",
-    "sourceKey": "fm-id-12",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-12",
+    "layer": "prescriptive",
+    "moduleId": "identity-sovereignty-module",
+    "priorityPrompt": "How important is this constitutional preference to your overall outlook?",
+    "prompt": "Do you agree that where robust self-government is possible, minority autonomy within a shared state should usually be preferred to drawing new sovereign borders?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c6778c6cde4b2ae9",
       "citation:72a144a375dd03d3",
       "citation:bb6c1fa0ffb72deb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-13",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that colonial dispossession can continue through present-day institutions even when Indigenous people have formal citizenship and voting rights?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "cultural-plasticity",
-          "weight": 0.6,
-          "polarity": -1
-        },
-        {
-          "constructId": "public-choice-skepticism",
-          "weight": 0.3,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
+          "constructId": "institutional-decentralization",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:territorial-separatism",
+          "polarity": -1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+          "polarity": 1,
+          "weight": 0.6
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "descriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-id-12",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "allowDontKnow": true,
     "confidencePrompt": "How confident are you in this empirical claim?",
     "contextNote": "This descriptive specialist item concerns the persistence of colonial dispossession through present institutions despite formal citizenship and voting rights. It does not claim that every disparity has one colonial cause or that formal rights are meaningless; land, jurisdiction, administration, material resources, and political voice are separate mechanisms.",
+    "domainId": "race-ethnicity-multiculturalism",
     "evidenceNote": "Scope to Indigenous peoples in countries with colonial or settler histories: compare formal citizenship and voting rights with recognition and implementation of collective land and territory rights, participation in decisions affecting traditional lands, treaty or consultation practice, and documented dispossession or forced relocation. The claim concerns institutional continuity, not every Indigenous experience or one global causal estimate.",
-    "sourceKey": "fm-id-13",
+    "id": "fm-id-13",
+    "layer": "descriptive",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that colonial dispossession can continue through present-day institutions even when Indigenous people have formal citizenship and voting rights?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:f2e966e6106d230b",
       "citation:001375fe3543c227"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-14",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that treaties, traditional territories, and continuing relationships to land can ground political authority that is not reducible to ordinary private property or municipal jurisdiction?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "property-legitimacy",
-          "weight": 0.4,
+          "constructId": "cultural-malleability",
+          "weight": 1,
           "polarity": -1
         },
         {
-          "constructId": "anti-domination",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
           "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
-          "weight": 1,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:minority-self-government",
-          "weight": 0.4,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-13",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item recognizes treaties, traditional territories, and continuing relationships to land as possible grounds of Indigenous authority beyond ordinary private title or municipal jurisdiction. It does not settle the legal form, territorial extent, internal governance, or relationship to equal individual rights.",
-    "sourceKey": "fm-id-14",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-14",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that treaties, traditional territories, and continuing relationships to land can ground political authority that is not reducible to ordinary private property or municipal jurisdiction?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:f58a1d7e3080cce8",
       "citation:947e27d17c539f9c"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-15",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that negotiated recognition, treaty implementation, and self-government agreements within existing states are durable routes to restoring Indigenous political authority?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.6,
-          "polarity": 1
-        },
-        {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.3,
-          "polarity": 1
-        },
-        {
-          "constructId": "reform-vs-revolution",
-          "weight": 0.5,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:institutional-recognition",
+          "constructId": "anti-domination",
           "weight": 1,
           "polarity": 1
         },
         {
+          "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
+          "polarity": 1,
+          "weight": 1
+        },
+        {
           "constructId": "specialist:identity-sovereignty-module:minority-self-government",
-          "weight": 0.5,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 0.4
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-id-14",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this institutional route to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This prescriptive specialist item favors negotiated recognition, treaty implementation, and self-government agreements as routes to restoring Indigenous authority. It does not assume existing negotiations are sufficient or that recognition always precedes institution-building; consent, jurisdiction, resources, enforcement, and accountability remain distinct.",
-    "sourceKey": "fm-id-15",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-15",
+    "layer": "prescriptive",
+    "moduleId": "identity-sovereignty-module",
+    "priorityPrompt": "How important is this institutional route to your overall outlook?",
+    "prompt": "Do you agree that negotiated recognition, treaty implementation, and self-government agreements within existing states are durable routes to restoring Indigenous political authority?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c6778c6cde4b2ae9",
       "citation:947e27d17c539f9c",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-16",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that durable decolonization sometimes requires rebuilding Indigenous legal and political institutions without waiting for recognition from settler-state authorities?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.5,
-          "polarity": -1
-        },
-        {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.5,
-          "polarity": -1
-        },
-        {
-          "constructId": "reform-vs-revolution",
-          "weight": 0.4,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:autonomous-resurgence",
+          "constructId": "electoral-participation",
           "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
-          "weight": 0.5,
-          "polarity": 1
+          "constructId": "specialist:identity-sovereignty-module:institutional-recognition",
+          "polarity": 1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+          "polarity": 1,
+          "weight": 0.5
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-id-15",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this resurgence strategy to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This prescriptive specialist item permits rebuilding Indigenous legal and political institutions without waiting for settler-state recognition. It does not reject treaties or public negotiation, and it does not specify a single institutional model; resurgence, autonomy, resources, external coercion, and internal legitimacy are separate issues.",
-    "sourceKey": "fm-id-16",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-16",
+    "layer": "prescriptive",
+    "moduleId": "identity-sovereignty-module",
+    "priorityPrompt": "How important is this resurgence strategy to your overall outlook?",
+    "prompt": "Do you agree that durable decolonization sometimes requires rebuilding Indigenous legal and political institutions without waiting for recognition from settler-state authorities?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:1dad3afb436d6571",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-17",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that African peoples and African-descended diasporas have special political reasons for solidarity across existing national borders?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "political-community-boundary",
-          "weight": 0.2,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
+          "constructId": "direct-action",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:autonomous-resurgence",
+          "polarity": 1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:decolonial-land-sovereignty",
+          "polarity": 1,
+          "weight": 0.5
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-16",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item treats cross-border solidarity among African peoples and diasporas as a political reason, not merely a cultural sentiment. It does not prescribe one state structure or erase differences within Africa and the diaspora; anti-domination, self-determination, citizenship, and international institutions remain distinct.",
-    "sourceKey": "fm-id-17",
+    "domainId": "race-ethnicity-multiculturalism",
+    "id": "fm-id-17",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that African peoples and African-descended diasporas have special political reasons for solidarity across existing national borders?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:947e27d17c539f9c",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-18",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that African unity can justify building continental or transnational political institutions even when existing states surrender some sovereign discretion?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.4,
+          "constructId": "relational-equality",
+          "weight": 1,
           "polarity": 1
         },
         {
           "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
-          "weight": 1,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-id-17",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this transnational goal to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This prescriptive specialist item tests whether African unity can justify continental or transnational institutions that limit some state discretion. It does not assume centralization is automatically emancipatory or that existing states are the only legitimate units; representation, subsidiarity, mobility, security, and accountability require separate design.",
-    "sourceKey": "fm-id-18",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-18",
+    "layer": "prescriptive",
+    "moduleId": "identity-sovereignty-module",
+    "priorityPrompt": "How important is this transnational goal to your overall outlook?",
+    "prompt": "Do you agree that African unity can justify building continental or transnational political institutions even when existing states surrender some sovereign discretion?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:c6778c6cde4b2ae9",
       "citation:bb6c1fa0ffb72deb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-19",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that equal citizenship can require narrowly tailored conscience or religious exemptions when uniform rules would burden a minority practice without protecting others from harm?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "equality-theory",
-          "weight": 0.3,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
+          "constructId": "subsidiarity",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:pan-african-solidarity",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-18",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This item isolates conscience or religious exemptions and adds a harm-limiting condition. It does not imply that every claimed exemption is justified or that exemptions settle questions about representation, self-government, or clerical authority.",
-    "sourceKey": "fm-id-19",
+    "domainId": "race-ethnicity-multiculturalism",
+    "id": "fm-id-19",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that equal citizenship can require narrowly tailored conscience or religious exemptions when uniform rules would burden a minority practice without protecting others from harm?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:947e27d17c539f9c",
       "citation:c0f2fe607b311488",
       "citation:6d882320da8a57cd"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-2",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that people who adopt a country's civic institutions and public culture can become full members of the nation regardless of ancestry?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.3,
-          "polarity": 1
-        },
-        {
-          "constructId": "political-community-boundary",
-          "weight": 0.3,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:ascriptive-membership",
+          "constructId": "legal-equality",
           "weight": 1,
-          "polarity": -1
+          "polarity": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-19",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item treats civic adoption as sufficient for full national membership regardless of ancestry. It does not settle the content of civic institutions or public culture, nor does it guarantee inclusion in practice; naturalization, equal rights, language, socialization, and cultural pluralism can vary independently.",
-    "sourceKey": "fm-id-2",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-2",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that people who adopt a country's civic institutions and public culture can become full members of the nation regardless of ancestry?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:947e27d17c539f9c",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-20",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that in some institutions, guaranteed or reserved political representation for minority communities can be justified as a condition of equal citizenship?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.6,
-          "polarity": 1
-        },
-        {
-          "constructId": "equality-theory",
-          "weight": 0.3,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
+          "constructId": "universal-moral-standing",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:ascriptive-membership",
+          "polarity": -1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-2",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This item isolates guaranteed or reserved representation as a possible equality remedy. Representation is distinct from language accommodation, individual exemption, autonomy, and territorial sovereignty, and its justification can depend on institutional history and design.",
-    "sourceKey": "fm-id-20",
+    "domainId": "race-ethnicity-multiculturalism",
+    "id": "fm-id-20",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that in some institutions, guaranteed or reserved political representation for minority communities can be justified as a condition of equal citizenship?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:947e27d17c539f9c",
       "citation:bb6c1fa0ffb72deb",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-21",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that treaty implementation and formal recognition by state institutions can materially strengthen the durability of Indigenous political authority?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.4,
+          "constructId": "legal-equality",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:identity-sovereignty-module:institutional-recognition",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-20",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This item measures whether formal recognition and treaty implementation can strengthen Indigenous authority. It is separate from the descriptive claim that colonial dispossession continues and from the prescriptive possibility of rebuilding institutions without waiting for recognition.",
-    "sourceKey": "fm-id-21",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-21",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that treaty implementation and formal recognition by state institutions can materially strengthen the durability of Indigenous political authority?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:947e27d17c539f9c",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-22",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that Indigenous political renewal should prioritize rebuilding autonomous legal and political institutions even when state recognition is delayed or contested?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.4,
-          "polarity": -1
-        },
-        {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.4,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:autonomous-resurgence",
+          "constructId": "anti-domination",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:institutional-recognition",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-id-21",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this institutional strategy to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This item measures autonomous resurgence as an institutional strategy. It is not the opposite of every negotiated agreement: Indigenous movements can pursue autonomous institution-building while also using treaties, recognition, or other forms of external engagement.",
-    "sourceKey": "fm-id-22",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-22",
+    "layer": "prescriptive",
+    "moduleId": "identity-sovereignty-module",
+    "priorityPrompt": "How important is this institutional strategy to your overall outlook?",
+    "prompt": "Do you agree that Indigenous political renewal should prioritize rebuilding autonomous legal and political institutions even when state recognition is delayed or contested?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:1dad3afb436d6571",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-3",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that a state may legitimately give political priority to preserving the demographic and cultural predominance of its historic core nation?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "political-community-boundary",
-          "weight": 0.7,
-          "polarity": -1
-        },
-        {
-          "constructId": "anti-domination",
-          "weight": 0.4,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:dominant-nation-congruence",
+          "constructId": "direct-action",
           "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
-          "weight": 0.4,
-          "polarity": -1
+          "constructId": "specialist:identity-sovereignty-module:autonomous-resurgence",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-22",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item tests a priority for preserving a historic core nation’s demographic and cultural predominance. It does not specify whether priority means symbolic recognition, immigration policy, legal privilege, or exclusion; national continuity, equal citizenship, minority rights, and ethnocracy are separate possibilities.",
-    "sourceKey": "fm-id-3",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-3",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that a state may legitimately give political priority to preserving the demographic and cultural predominance of its historic core nation?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:852d1d589970f404",
       "citation:72a144a375dd03d3",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-4",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that equal citizenship is incompatible with giving the majority ethnocultural group a permanent privileged political status?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.8,
-          "polarity": 1
-        },
-        {
-          "constructId": "equality-theory",
-          "weight": 0.4,
+          "constructId": "compatriot-priority",
+          "weight": 1,
           "polarity": 1
         },
         {
           "constructId": "specialist:identity-sovereignty-module:dominant-nation-congruence",
-          "weight": 1,
-          "polarity": -1
+          "polarity": 1,
+          "weight": 1
         },
         {
           "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
-          "weight": 0.5,
-          "polarity": 1
+          "polarity": -1,
+          "weight": 0.4
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-3",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item rejects a permanent privileged political status for a majority ethnocultural group. It does not prohibit cultural majorities from organizing or receiving ordinary representation; equal citizenship, constitutional safeguards, minority accommodation, and anti-domination are distinct institutional questions.",
-    "sourceKey": "fm-id-4",
+    "domainId": "race-ethnicity-multiculturalism",
+    "id": "fm-id-4",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that equal citizenship is incompatible with giving the majority ethnocultural group a permanent privileged political status?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c0f2fe607b311488",
       "citation:947e27d17c539f9c",
       "citation:852d1d589970f404"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-5",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that equal citizenship can require public recognition and accommodation of minority languages and cultural practices?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.7,
+          "constructId": "legal-equality",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "equality-theory",
-          "weight": 0.4,
-          "polarity": 1
+          "constructId": "specialist:identity-sovereignty-module:dominant-nation-congruence",
+          "polarity": -1,
+          "weight": 1
         },
         {
           "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
-          "weight": 1,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 0.5
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-4",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This item isolates language and cultural accommodation as one form of pluralist citizenship. It does not also ask about religious exemptions, reserved representation, self-government, or territorial separation; those are measured separately.",
-    "sourceKey": "fm-id-5",
+    "domainId": "race-ethnicity-multiculturalism",
+    "id": "fm-id-5",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that equal citizenship can require public recognition and accommodation of minority languages and cultural practices?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:947e27d17c539f9c",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-6",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that common citizenship is usually best protected by applying the same public rules and institutions to everyone rather than granting group-differentiated accommodations?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "equality-theory",
-          "weight": 0.3,
-          "polarity": -1
+          "constructId": "legal-equality",
+          "weight": 1,
+          "polarity": 1
         },
         {
           "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
-          "weight": 1,
-          "polarity": -1
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-5",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item favors common public rules over group-differentiated accommodation as a route to common citizenship. It does not imply that uniform rules are always neutral or that accommodation is always justified; equal treatment, unequal effects, conscience, language, and self-government require separate assessment.",
-    "sourceKey": "fm-id-6",
+    "domainId": "race-ethnicity-multiculturalism",
+    "id": "fm-id-6",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that common citizenship is usually best protected by applying the same public rules and institutions to everyone rather than granting group-differentiated accommodations?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c0f2fe607b311488",
       "citation:947e27d17c539f9c",
       "citation:267f05e8417dd262"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-7",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that peoples coercively incorporated into a larger state can have a right to durable self-government beyond the equal individual rights of their members?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.8,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+          "constructId": "legal-equality",
           "weight": 1,
           "polarity": 1
         },
         {
           "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
-          "weight": 0.4,
-          "polarity": 1
+          "polarity": -1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-6",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This normative specialist item tests whether a coercively incorporated people can claim durable self-government beyond the equal individual rights of its members. It does not dictate secession, federalism, or one form of autonomy; history, consent, territoriality, minority protection, and institutional accountability remain distinct.",
-    "sourceKey": "fm-id-7",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-7",
+    "layer": "normative",
+    "moduleId": "identity-sovereignty-module",
+    "prompt": "Do you agree that peoples coercively incorporated into a larger state can have a right to durable self-government beyond the equal individual rights of their members?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c6778c6cde4b2ae9",
       "citation:947e27d17c539f9c",
       "citation:72a144a375dd03d3"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-8",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that minority nations should generally pursue influence through common political institutions rather than autonomous governments of their own?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.3,
+          "constructId": "anti-domination",
+          "weight": 1,
           "polarity": 1
         },
         {
           "constructId": "specialist:identity-sovereignty-module:minority-self-government",
-          "weight": 1,
-          "polarity": -1
+          "polarity": 1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:pluralist-accommodation",
+          "polarity": 1,
+          "weight": 0.4
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-id-7",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this institutional preference to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This prescriptive specialist item favors influence through shared political institutions over autonomous minority government. It does not deny that common institutions can exclude or that autonomy can fragment rights; representation, self-rule, exit, equal citizenship, and practical capacity must be weighed separately.",
-    "sourceKey": "fm-id-8",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-id-8",
+    "layer": "prescriptive",
+    "moduleId": "identity-sovereignty-module",
+    "priorityPrompt": "How important is this institutional preference to your overall outlook?",
+    "prompt": "Do you agree that minority nations should generally pursue influence through common political institutions rather than autonomous governments of their own?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:c6778c6cde4b2ae9",
       "citation:bb6c1fa0ffb72deb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-id-9",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that historically subordinated communities can reasonably build independent schools, businesses, organizations, and political institutions to increase collective autonomy?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.6,
-          "polarity": -1
-        },
-        {
-          "constructId": "centralization-preference",
-          "weight": 0.5,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:identity-sovereignty-module:community-autonomy",
+          "constructId": "institutional-centralization",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:identity-sovereignty-module:minority-self-government",
+          "polarity": -1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-id-8",
     "status": "active",
-    "moduleId": "identity-sovereignty-module",
-    "reverseScored": false,
-    "priorityPrompt": "How important is this community strategy to your overall outlook?",
+    "tier": "extensive"
+  },
+  {
     "contextNote": "This prescriptive specialist item supports independent community institutions as a route to collective autonomy for historically subordinated groups. It does not require territorial separation or deny public cooperation; voluntary association, resource access, anti-discrimination, internal accountability, and cross-group rights are separate considerations.",
-    "sourceKey": "fm-id-9",
+    "domainId": "race-ethnicity-multiculturalism",
+    "id": "fm-id-9",
+    "layer": "prescriptive",
+    "moduleId": "identity-sovereignty-module",
+    "priorityPrompt": "How important is this community strategy to your overall outlook?",
+    "prompt": "Do you agree that historically subordinated communities can reasonably build independent schools, businesses, organizations, and political institutions to increase collective autonomy?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:947e27d17c539f9c",
       "citation:72a144a375dd03d3",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-mm-1",
-    "domainId": "state-legitimacy",
-    "prompt": "Do you agree that hereditary or traditional authority can be legitimate even when it is not continuously authorized through ordinary elections?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "authority-legitimacy",
-          "weight": 0.8,
+          "constructId": "exit-parallel-institutions",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:identity-sovereignty-module:community-autonomy",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-id-9",
     "status": "active",
-    "moduleId": "monarchist-municipal-module",
-    "reverseScored": false,
+    "tier": "extensive"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item treats hereditary or traditional authority as potentially legitimate without continuous ordinary election. It does not establish that inheritance supplies consent or competence; continuity, constitutional limits, equal citizenship, accountability, succession, and exit are separate grounds for evaluation.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-mm-1",
+    "domainId": "state-legitimacy",
+    "id": "fm-mm-1",
+    "layer": "normative",
+    "moduleId": "monarchist-municipal-module",
+    "prompt": "Do you agree that hereditary or traditional authority can be legitimate even when it is not continuously authorized through ordinary elections?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:52724480906e1b00",
       "citation:bb6c1fa0ffb72deb",
       "citation:72a144a375dd03d3"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-mm-2",
-    "domainId": "democracy-expertise-constitutionalism",
-    "prompt": "Do you agree that a monarch can serve as a constitutional symbol while elected institutions retain final political authority?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.5,
+          "constructId": "political-authority-legitimacy",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:monarchist-municipal-module:hereditary-authority",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-mm-1",
     "status": "active",
-    "moduleId": "monarchist-municipal-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item assigns a monarch a constitutional-symbolic role while reserving final political authority to elected institutions. It does not settle appointment powers, reserve powers, succession, neutrality, cost, or public consent; ceremonial status and effective authority must be distinguished.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-mm-2",
+    "domainId": "democracy-expertise-constitutionalism",
+    "id": "fm-mm-2",
+    "layer": "prescriptive",
+    "moduleId": "monarchist-municipal-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that a monarch can serve as a constitutional symbol while elected institutions retain final political authority?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:52724480906e1b00",
       "citation:bb6c1fa0ffb72deb",
       "citation:577244e2eaa57e64"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-mm-3",
-    "domainId": "democracy-expertise-constitutionalism",
-    "prompt": "Do you agree that political decisions should be made as locally as possible, with higher-level bodies limited to tasks that local communities cannot coordinate alone?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.5,
+          "constructId": "constitutional-reform",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:monarchist-municipal-module:constitutional-monarchy",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-mm-2",
     "status": "active",
-    "moduleId": "monarchist-municipal-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item favors subsidiarity: local decision-making except where higher-level coordination is necessary. It does not imply that local units can solve every externality or that higher authority is illegitimate; scale, rights portability, mobility, fiscal capacity, federation, and polycentric coordination are separate questions.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-mm-3",
+    "domainId": "democracy-expertise-constitutionalism",
+    "id": "fm-mm-3",
+    "layer": "normative",
+    "moduleId": "monarchist-municipal-module",
+    "prompt": "Do you agree that political decisions should be made as locally as possible, with higher-level bodies limited to tasks that local communities cannot coordinate alone?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c6778c6cde4b2ae9",
       "citation:f6e2684163aa6668",
       "citation:8562430ec5beba7e"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-mm-4",
-    "domainId": "strategy-change",
-    "prompt": "Do you agree that political authority should be coordinated through confederal institutions among municipalities or regions rather than concentrated in one centralized state?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+          "constructId": "anti-domination",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:monarchist-municipal-module:municipal-autonomy",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-mm-3",
     "status": "active",
-    "moduleId": "monarchist-municipal-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive item isolates a preference for confederal coordination among municipalities or regions, with higher-level authority limited rather than sovereign over local communities. It is distinct from generic decentralization, ordinary federalism, and the descriptive question of whether local units can coordinate effectively.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-mm-4",
+    "domainId": "strategy-change",
+    "id": "fm-mm-4",
+    "layer": "prescriptive",
+    "moduleId": "monarchist-municipal-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that political authority should be coordinated through confederal institutions among municipalities or regions rather than concentrated in one centralized state?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c6778c6cde4b2ae9",
       "citation:f6e2684163aa6668",
       "citation:bb6c1fa0ffb72deb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-1",
-    "domainId": "religion-secularism",
-    "prompt": "Do you agree that constitutional authority should be publicly accountable to citizens even when religious law or tradition informs interpretation?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "anti-domination",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "secularism-religious",
-          "weight": 0.3,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+          "constructId": "institutional-decentralization",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:monarchist-municipal-module:confederal-coordination",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-mm-4",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item requires constitutional authority to remain publicly accountable even when religious law or tradition informs interpretation. It does not exclude religious reasoning or require one secular model; popular sovereignty, interpretive authority, rights, judicial review, and clerical power can be combined differently.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-1",
+    "domainId": "religion-secularism",
+    "id": "fm-rn-1",
+    "layer": "normative",
+    "moduleId": "religious-national-politics-module",
+    "prompt": "Do you agree that constitutional authority should be publicly accountable to citizens even when religious law or tradition informs interpretation?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:2823223e137871fb",
       "citation:53f94e515783d3ab",
       "citation:bb6c1fa0ffb72deb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-10",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that a Jewish national home or state is a legitimate expression of Jewish collective self-determination, without fixing one border, religion, or constitutional form?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "political-community-boundary",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "authority-legitimacy",
-          "weight": 0.2,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:religious-national-politics-module:jewish-national-self-determination",
+          "constructId": "religious-political-inspiration",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:religious-national-politics-module:popular-constitutionalism",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-1",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative item isolates Jewish collective self-determination as a political aim while leaving borders, religion, economic system, and constitutional form open. Zionist currents have included liberal, socialist, religious, revisionist, and other projects; agreement does not identify one current government or one position on the Israeli-Palestinian conflict.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-10",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-rn-10",
+    "layer": "normative",
+    "moduleId": "religious-national-politics-module",
+    "prompt": "Do you agree that a Jewish national home or state is a legitimate expression of Jewish collective self-determination, without fixing one border, religion, or constitutional form?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:0329dd35436bcfdd",
       "citation:72db72dba5db2c2e",
       "citation:72a144a375dd03d3"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-11",
-    "domainId": "religion-secularism",
-    "prompt": "Do you agree that when civil law conflicts with a recognized religious doctrine, that doctrine’s authorized interpreters should determine whether the law is ultimately legitimate?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "authority-legitimacy",
-          "weight": 0.45,
-          "polarity": 1
-        },
-        {
-          "constructId": "secularism-religious",
-          "weight": 0.75,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:religious-national-politics-module:religious-authority",
+          "constructId": "national-self-determination",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:religious-national-politics-module:jewish-national-self-determination",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-10",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item tests ultimate civil-law legitimacy within a recognized religious-legal authority arrangement. It does not identify one religion, doctrine, interpretive school, or regime form, and it is distinct from religious advocacy, establishment, statutory accommodation, or a religious party participating under pluralist constitutional rules.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-11",
+    "domainId": "religion-secularism",
+    "id": "fm-rn-11",
+    "layer": "normative",
+    "moduleId": "religious-national-politics-module",
+    "prompt": "Do you agree that when civil law conflicts with a recognized religious doctrine, that doctrine’s authorized interpreters should determine whether the law is ultimately legitimate?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:bf65879819fb8f4d",
       "citation:6d882320da8a57cd",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-2",
-    "domainId": "religion-secularism",
-    "prompt": "Do you agree that a recognized religious authority should have final power to reject civil laws that conflict with its interpretation of religious doctrine?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.5,
+          "constructId": "religious-accommodation",
+          "weight": 1,
           "polarity": 1
         },
         {
           "constructId": "specialist:religious-national-politics-module:religious-authority",
-          "weight": 1,
-          "polarity": 1
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-11",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item gives a recognized religious authority final power to reject conflicting civil laws. It does not identify which authority, interpretive school, or constitutional safeguard is intended, and it separates clerical veto power from private religious participation and equal citizenship.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-2",
+    "domainId": "religion-secularism",
+    "id": "fm-rn-2",
+    "layer": "prescriptive",
+    "moduleId": "religious-national-politics-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that a recognized religious authority should have final power to reject civil laws that conflict with its interpretation of religious doctrine?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:bf65879819fb8f4d",
       "citation:6d882320da8a57cd",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-3",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that the state should primarily express the historic religious or civilizational identity of the majority nation rather than remain neutral among identities?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "political-community-boundary",
-          "weight": 0.7,
-          "polarity": -1
-        },
-        {
-          "constructId": "moral-traditionalism",
-          "weight": 0.6,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+          "constructId": "public-provision",
           "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:religious-national-politics-module:religious-national-fusion",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:religious-national-politics-module:religious-authority",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-2",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item tests whether the state should express a historic majority religious or civilizational identity rather than remain neutral. It does not by itself prescribe theocracy, unequal rights, or one nationalist program; establishment, accommodation, symbolism, coercion, and minority standing are distinct.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-3",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-rn-3",
+    "layer": "normative",
+    "moduleId": "religious-national-politics-module",
+    "prompt": "Do you agree that the state should primarily express the historic religious or civilizational identity of the majority nation rather than remain neutral among identities?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:72a144a375dd03d3",
       "citation:6d882320da8a57cd",
       "citation:ba28129d26ed3524"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-4",
-    "domainId": "race-ethnicity-multiculturalism",
-    "prompt": "Do you agree that minority citizens should retain equal legal and political standing even when the state adopts a majority religious or national tradition?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "equality-theory",
-          "weight": 0.8,
-          "polarity": 1
-        },
-        {
-          "constructId": "anti-domination",
-          "weight": 0.6,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+          "constructId": "compatriot-priority",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:religious-national-politics-module:civilizational-nationalism",
+          "polarity": 1,
+          "weight": 1
+        },
+        {
+          "constructId": "specialist:religious-national-politics-module:religious-national-fusion",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-3",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item preserves equal legal and political standing for minorities even when the state adopts a majority religious or national tradition. It does not settle whether establishment is symbolic or coercive; citizenship, accommodation, representation, conversion, dissent, and institutional safeguards require separate assessment.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-4",
+    "domainId": "race-ethnicity-multiculturalism",
+    "id": "fm-rn-4",
+    "layer": "normative",
+    "moduleId": "religious-national-politics-module",
+    "prompt": "Do you agree that minority citizens should retain equal legal and political standing even when the state adopts a majority religious or national tradition?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:c0f2fe607b311488",
       "citation:947e27d17c539f9c",
       "citation:ba28129d26ed3524"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-5",
-    "domainId": "democracy-expertise-constitutionalism",
-    "prompt": "Do you agree that constitutional review should be able to invalidate legislation that conflicts with protected rights even when elected majorities support it?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.3,
+          "constructId": "legal-equality",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:religious-national-politics-module:constitutional-review",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:religious-national-politics-module:minority-citizenship",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-4",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive item isolates constitutional review as a rights constraint on ordinary lawmaking. Review may be judicial, legislative, or mixed, and systems differ over appointment, interpretive authority, amendment, and democratic control; the item does not imply that courts are always more legitimate or accurate than elected bodies.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-5",
+    "domainId": "democracy-expertise-constitutionalism",
+    "id": "fm-rn-5",
+    "layer": "prescriptive",
+    "moduleId": "religious-national-politics-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that constitutional review should be able to invalidate legislation that conflicts with protected rights even when elected majorities support it?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:53f94e515783d3ab",
       "citation:bb6c1fa0ffb72deb",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-6",
-    "domainId": "democracy-expertise-constitutionalism",
-    "prompt": "Do you agree that political parties and candidates should be able to compete and change governments peacefully, subject to rules that protect equal citizenship?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.8,
+          "constructId": "contestable-institutions",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:religious-national-politics-module:party-competition",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:religious-national-politics-module:constitutional-review",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-5",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive item isolates peaceful party competition and alternation in government. Electoral eligibility, party organization, equal citizenship, constitutional limits, and religious or ideological restrictions are distinct design choices; support for competition does not settle every question about majoritarianism, judicial review, or state neutrality.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-6",
+    "domainId": "democracy-expertise-constitutionalism",
+    "id": "fm-rn-6",
+    "layer": "prescriptive",
+    "moduleId": "religious-national-politics-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that political parties and candidates should be able to compete and change governments peacefully, subject to rules that protect equal citizenship?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:2de6358a2f9dbd56",
       "citation:bb6c1fa0ffb72deb",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-7",
-    "domainId": "religion-secularism",
-    "prompt": "Do you agree that an Islamic ethical or legal tradition may legitimately inform constitutional public authority while citizens remain politically accountable and equal in civic rights?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "secularism-religious",
-          "weight": 0.7,
-          "polarity": 1
-        },
-        {
-          "constructId": "anti-domination",
-          "weight": 0.4,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+          "constructId": "contestable-institutions",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:religious-national-politics-module:party-competition",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-6",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative item tests whether Islamic ethical or legal traditions may contribute to constitutional public authority while equal civic standing and citizen accountability remain requirements. Islamic constitutionalism has multiple historical and institutional forms; the item does not identify one school of jurisprudence or require clerical rule.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-7",
+    "domainId": "religion-secularism",
+    "id": "fm-rn-7",
+    "layer": "normative",
+    "moduleId": "religious-national-politics-module",
+    "prompt": "Do you agree that an Islamic ethical or legal tradition may legitimately inform constitutional public authority while citizens remain politically accountable and equal in civic rights?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:2823223e137871fb",
       "citation:53f94e515783d3ab",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-8",
-    "domainId": "democracy-expertise-constitutionalism",
-    "prompt": "Do you agree that a constitutional system should allow citizens and parties to contest how Islamic principles are interpreted rather than assign final interpretive power to one clerical authority?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.3,
-          "polarity": -1
-        },
-        {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:religious-national-politics-module:interpretive-pluralism",
+          "constructId": "religious-establishment",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:religious-national-politics-module:islamic-public-law",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-7",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive item isolates who may interpret and contest Islamic principles in public law. Judicial review, party competition, constitutional rights, popular sovereignty, and clerical authority can be arranged in different combinations; support for interpretive pluralism is not a claim that courts or majorities are always correct.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-8",
+    "domainId": "democracy-expertise-constitutionalism",
+    "id": "fm-rn-8",
+    "layer": "prescriptive",
+    "moduleId": "religious-national-politics-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that a constitutional system should allow citizens and parties to contest how Islamic principles are interpreted rather than assign final interpretive power to one clerical authority?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:a040a5400317ec7b",
@@ -2540,512 +2327,495 @@
       "citation:bb6c1fa0ffb72deb",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-rn-9",
-    "domainId": "national-identity-sovereignty",
-    "prompt": "Do you agree that Indian political membership should be grounded primarily in Hindu civilizational belonging rather than only in a religiously neutral civic identity?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "political-community-boundary",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "moral-traditionalism",
-          "weight": 0.6,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
+          "constructId": "contestable-institutions",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:religious-national-politics-module:interpretive-pluralism",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-8",
     "status": "active",
-    "moduleId": "religious-national-politics-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative item tests Hindu civilizational belonging as a specific account of Indian political membership, not Hinduism as a personal religion. Scholarship distinguishes several uses of Hindutva and debates how cultural identity, majoritarian citizenship, secularism, and state power relate; agreement does not specify one party program or treatment of minorities.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-rn-9",
+    "domainId": "national-identity-sovereignty",
+    "id": "fm-rn-9",
+    "layer": "normative",
+    "moduleId": "religious-national-politics-module",
+    "prompt": "Do you agree that Indian political membership should be grounded primarily in Hindu civilizational belonging rather than only in a religiously neutral civic identity?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:767d8856723b95a6",
       "citation:852d1d589970f404",
       "citation:c0f2fe607b311488"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-so-1",
-    "domainId": "property-ownership",
-    "prompt": "Do you agree that productive assets should be socially or worker owned rather than controlled primarily through private capital markets?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "property-legitimacy",
+          "constructId": "compatriot-priority",
           "weight": 1,
-          "polarity": -1
-        },
-        {
-          "constructId": "equality-theory",
-          "weight": 0.7,
           "polarity": 1
         },
         {
-          "constructId": "specialist:socialist-families-module:social-ownership",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:religious-national-politics-module:hindu-civilizational-belonging",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "normative",
-    "tier": "extensive",
+    "sourceKey": "fm-rn-9",
     "status": "active",
-    "moduleId": "socialist-families-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
     "contextNote": "This normative specialist item favors social or worker ownership of productive assets over control through private capital markets. It does not specify a single socialist institution or deny the need for investment and coordination; ownership, control, allocation, incentives, workplace voice, and public accountability are distinct.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-so-1",
+    "domainId": "property-ownership",
+    "id": "fm-so-1",
+    "layer": "normative",
+    "moduleId": "socialist-families-module",
+    "prompt": "Do you agree that productive assets should be socially or worker owned rather than controlled primarily through private capital markets?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:8a845d11cf0bd6a1",
       "citation:d035a01d7395b2a3",
       "citation:0dd76313581f604c"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-so-2",
-    "domainId": "markets-planning",
-    "prompt": "Do you agree that democratic planning and collective decision-making can coordinate complex production without relying entirely on market prices?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "market-process-confidence",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "democratic-confidence",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:socialist-families-module:democratic-planning",
+          "constructId": "distributive-equality",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:socialist-families-module:social-ownership",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "descriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-so-1",
     "status": "active",
-    "moduleId": "socialist-families-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": true,
     "confidencePrompt": "How confident are you in this empirical claim?",
     "contextNote": "This descriptive specialist item asks whether democratic planning and collective decision-making can coordinate complex production without relying entirely on prices. It does not claim that planning eliminates information problems or that prices are sufficient; knowledge, participation, computation, ownership, logistics, and correction are separate mechanisms.",
+    "domainId": "markets-planning",
     "evidenceNote": "Scope to proposals and historical debates about democratic or participatory planning in which workers, consumers, or public institutions coordinate production through deliberation, negotiated plans, or computational tools. The claim does not equate democratic planning with centralized command, imply that planning always outperforms markets, or settle the information, incentive, and accountability tradeoffs across sectors.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-so-2",
+    "id": "fm-so-2",
+    "layer": "descriptive",
+    "moduleId": "socialist-families-module",
+    "prompt": "Do you agree that democratic planning and collective decision-making can coordinate complex production without relying entirely on market prices?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:8a845d11cf0bd6a1",
       "citation:bebaea9c7a0e48c3"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-so-3",
-    "domainId": "strategy-change",
-    "prompt": "Do you agree that socialist politics should normally pursue durable gains through elections, law, unions, and public institutions rather than immediate rupture?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "reform-vs-revolution",
-          "weight": 0.8,
-          "polarity": -1
-        },
-        {
-          "constructId": "electoralism-vs-direct-action",
-          "weight": 0.6,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:socialist-families-module:reformism",
+          "constructId": "market-knowledge-coordination",
           "weight": 1,
-          "polarity": 1
+          "polarity": -1
         },
         {
-          "constructId": "specialist:socialist-families-module:revolutionary-strategy",
-          "weight": 0.5,
-          "polarity": -1
+          "constructId": "specialist:socialist-families-module:democratic-planning",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-so-2",
     "status": "active",
-    "moduleId": "socialist-families-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item favors durable socialist gains through elections, law, unions, and public institutions rather than immediate rupture. It does not imply that existing institutions are neutral or that rupture is never justified; coalition-building, reform feedback, labor power, repression, and transition risks remain distinct.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-so-3",
+    "domainId": "strategy-change",
+    "id": "fm-so-3",
+    "layer": "prescriptive",
+    "moduleId": "socialist-families-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that socialist politics should normally pursue durable gains through elections, law, unions, and public institutions rather than immediate rupture?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:31fd39a48ce78b9a",
       "citation:bb6c1fa0ffb72deb",
       "citation:0dd76313581f604c"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-so-4",
-    "domainId": "strategy-change",
-    "prompt": "Do you agree that a disciplined revolutionary organization may need to centralize political authority during the transition away from capitalism?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.7,
+          "constructId": "institutional-reform",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "reform-vs-revolution",
-          "weight": 0.8,
-          "polarity": 1
+          "constructId": "specialist:socialist-families-module:reformism",
+          "polarity": 1,
+          "weight": 1
         },
         {
           "constructId": "specialist:socialist-families-module:revolutionary-strategy",
-          "weight": 1,
-          "polarity": 1
+          "polarity": -1,
+          "weight": 0.5
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-so-3",
     "status": "active",
-    "moduleId": "socialist-families-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item tests whether a disciplined revolutionary organization may centralize authority during transition. It does not establish that centralization is temporary, accountable, or effective; emergency power, opposition, coercion, organizational capacity, and post-transition institutional release require separate judgment.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-so-4",
+    "domainId": "strategy-change",
+    "id": "fm-so-4",
+    "layer": "prescriptive",
+    "moduleId": "socialist-families-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that a disciplined revolutionary organization may need to centralize political authority during the transition away from capitalism?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:1dad3afb436d6571",
       "citation:bb6c1fa0ffb72deb",
       "citation:31fd39a48ce78b9a"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-te-1",
-    "domainId": "democracy-expertise-constitutionalism",
-    "prompt": "Do you agree that for technically complex public decisions, legitimate institutions should give qualified expertise substantial weight while preserving public accountability?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.2,
+          "constructId": "revolutionary-rupture",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:technology-governance-module:expert-administration",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:socialist-families-module:revolutionary-strategy",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-so-4",
     "status": "active",
-    "moduleId": "technology-governance-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive item asks how technically complex decisions should allocate authority between qualified expertise and ordinary public accountability. Expertise can improve analysis without settling legitimacy, representation, value conflict, or appeal; the item therefore does not imply that experts should replace democratic institutions or that every technical decision needs the same delegation model.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-te-1",
+    "domainId": "democracy-expertise-constitutionalism",
+    "id": "fm-te-1",
+    "layer": "prescriptive",
+    "moduleId": "technology-governance-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that for technically complex public decisions, legitimate institutions should give qualified expertise substantial weight while preserving public accountability?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:bb6c1fa0ffb72deb",
       "citation:3d952d918bd7046b",
       "citation:710d628d3e89a204"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-te-2",
-    "domainId": "technology-ai-surveillance",
-    "prompt": "Do you agree that algorithmic systems should be allowed to make or substantially determine public decisions when their performance exceeds that of human officials?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.5,
-          "polarity": 1
-        },
-        {
-          "constructId": "state-action-vs-exit",
-          "weight": 0.3,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:technology-governance-module:algorithmic-authority",
+          "constructId": "contestable-institutions",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:technology-governance-module:expert-administration",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-te-1",
     "status": "active",
-    "moduleId": "technology-governance-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item permits algorithmic systems to substantially determine public decisions when measured performance exceeds human officials. It does not treat accuracy as sufficient for legitimacy; bias, objective choice, contestability, privacy, distribution, due process, and who remains accountable are separate requirements.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-te-2",
+    "domainId": "technology-ai-surveillance",
+    "id": "fm-te-2",
+    "layer": "prescriptive",
+    "moduleId": "technology-governance-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that algorithmic systems should be allowed to make or substantially determine public decisions when their performance exceeds that of human officials?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:710d628d3e89a204",
       "citation:939ff927a8a1a5d5",
       "citation:bb6c1fa0ffb72deb"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-te-3",
-    "domainId": "technology-ai-surveillance",
-    "prompt": "Do you agree that cryptography, distributed networks, and peer-to-peer tools can reduce dependence on centralized states and corporations?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "coordination-optimism",
-          "weight": 0.8,
+          "constructId": "institutional-centralization",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:technology-governance-module:decentralized-technology",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:technology-governance-module:algorithmic-authority",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "descriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-te-2",
     "status": "active",
-    "moduleId": "technology-governance-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": true,
     "confidencePrompt": "How confident are you in this empirical claim?",
     "contextNote": "This descriptive item separates technical affordances from political outcomes: cryptography can provide security services such as confidentiality, integrity, and authentication, while distributed or peer-to-peer architectures can alter where coordination and trust are placed. Those properties may reduce dependence on a central intermediary in some uses, but they do not by themselves establish democratic governance, equal control, or durable decentralization.",
+    "domainId": "technology-ai-surveillance",
     "evidenceNote": "Scope to technical and governance mechanisms rather than a universal political outcome: cryptography can provide confidentiality, integrity, and authentication, while distributed networks can change how trust and coordination are organized. The claim does not establish that such tools eliminate intermediaries, equalize control, or produce democratic decentralization in every deployment.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-te-3",
+    "id": "fm-te-3",
+    "layer": "descriptive",
+    "moduleId": "technology-governance-module",
+    "prompt": "Do you agree that cryptography, distributed networks, and peer-to-peer tools can reduce dependence on centralized states and corporations?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:0b6e5b4db5d6ae3e",
       "citation:80af85709da20b89"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-te-4",
-    "domainId": "strategy-change",
-    "prompt": "Do you agree that rapid technological acceleration should be pursued even when it destabilizes existing institutions and social arrangements?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "reform-vs-revolution",
-          "weight": 0.7,
-          "polarity": 1
-        },
-        {
-          "constructId": "gradualism-vs-immediatism",
-          "weight": 0.7,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:technology-governance-module:accelerationist-strategy",
+          "constructId": "decentralized-coordination-capacity",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:technology-governance-module:decentralized-technology",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-te-3",
     "status": "active",
-    "moduleId": "technology-governance-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item favors rapid technological acceleration despite destabilizing existing institutions. It does not specify which technology or who bears the transition costs; acceleration, innovation, disruption, safety, labor, political power, and democratic capacity are distinct considerations.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-te-4",
+    "domainId": "strategy-change",
+    "id": "fm-te-4",
+    "layer": "prescriptive",
+    "moduleId": "technology-governance-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that rapid technological acceleration should be pursued even when it destabilizes existing institutions and social arrangements?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:ff6d2fc499d8d802",
       "citation:710d628d3e89a204",
       "citation:31fd39a48ce78b9a"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-te-5",
-    "domainId": "strategy-change",
-    "prompt": "Do you agree that technological and economic intensification should push market competition further, even when it weakens existing social and political arrangements?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "regulation-vs-deregulation",
-          "weight": 0.6,
-          "polarity": -1
-        },
-        {
-          "constructId": "reform-vs-revolution",
-          "weight": 0.4,
-          "polarity": 1
-        },
-        {
-          "constructId": "specialist:technology-governance-module:market-acceleration",
+          "constructId": "immediatist-transition",
           "weight": 1,
           "polarity": 1
+        },
+        {
+          "constructId": "specialist:technology-governance-module:accelerationist-strategy",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-te-4",
     "status": "active",
-    "moduleId": "technology-governance-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive item isolates the direction of accelerationist strategy: intensifying market competition and existing economic dynamics rather than redirecting technological capacity toward post-capitalist ends. Accelerationism includes left, right, unconditional, and technology-centered uses; the item does not define the whole family or imply that disruption is beneficial in every context.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-te-5",
+    "domainId": "strategy-change",
+    "id": "fm-te-5",
+    "layer": "prescriptive",
+    "moduleId": "technology-governance-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that technological and economic intensification should push market competition further, even when it weakens existing social and political arrangements?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:ff6d2fc499d8d802",
       "citation:ec721cc683dcbaab"
     ],
-    "scaleMin": -3,
-    "scaleMax": 3,
-    "scaleStep": 1
-  },
-  {
-    "id": "fm-te-6",
-    "domainId": "democracy-expertise-constitutionalism",
-    "prompt": "Do you agree that technically complex public decisions should be coordinated through one national authority rather than through multiple local or voluntary institutions?",
     "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
+    "scaleMax": 3,
+    "scaleMin": -3,
+    "scaleStep": 1,
     "scoring": {
-      "mappingMode": "item",
       "contributions": [
         {
-          "constructId": "centralization-preference",
-          "weight": 0.8,
+          "constructId": "market-deregulation",
+          "weight": 1,
           "polarity": 1
         },
         {
-          "constructId": "specialist:technology-governance-module:centralized-administration",
-          "weight": 1,
-          "polarity": 1
+          "constructId": "specialist:technology-governance-module:market-acceleration",
+          "polarity": 1,
+          "weight": 1
         }
-      ]
+      ],
+      "mappingMode": "item"
     },
-    "role": "specialist",
-    "layer": "prescriptive",
-    "tier": "extensive",
+    "sourceKey": "fm-te-5",
     "status": "active",
-    "moduleId": "technology-governance-module",
-    "reverseScored": false,
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
+  },
+  {
     "allowDontKnow": false,
-    "priorityPrompt": "How important is this strategic distinction to your outlook?",
     "contextNote": "This prescriptive specialist item isolates centralized administrative coordination from the separate question of whether technical expertise is valuable. A single national authority can be expert or non-expert, and local or voluntary institutions can use expertise; the item therefore does not by itself identify technocracy, cyberocracy, or any particular technology policy.",
-    "reviewStatus": "approved",
-    "version": "2026-08-specialist-v11",
-    "sourceKey": "fm-te-6",
+    "domainId": "democracy-expertise-constitutionalism",
+    "id": "fm-te-6",
+    "layer": "prescriptive",
+    "moduleId": "technology-governance-module",
+    "priorityPrompt": "How important is this strategic distinction to your outlook?",
+    "prompt": "Do you agree that technically complex public decisions should be coordinated through one national authority rather than through multiple local or voluntary institutions?",
     "provenanceRefs": [
       "source:v1-canonical-manifest",
       "citation:52724480906e1b00",
       "citation:c6778c6cde4b2ae9",
       "citation:28ba08abb20bf917"
     ],
-    "scaleMin": -3,
+    "responseType": "likert7",
+    "reverseScored": false,
+    "reviewStatus": "approved",
+    "role": "specialist",
     "scaleMax": 3,
-    "scaleStep": 1
+    "scaleMin": -3,
+    "scaleStep": 1,
+    "scoring": {
+      "contributions": [
+        {
+          "constructId": "institutional-centralization",
+          "weight": 1,
+          "polarity": 1
+        },
+        {
+          "constructId": "specialist:technology-governance-module:centralized-administration",
+          "polarity": 1,
+          "weight": 1
+        }
+      ],
+      "mappingMode": "item"
+    },
+    "sourceKey": "fm-te-6",
+    "status": "active",
+    "tier": "extensive",
+    "version": "2026-08-specialist-v11"
   }
 ]

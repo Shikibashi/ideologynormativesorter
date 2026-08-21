@@ -174,7 +174,7 @@ function evaluateCommitmentProfileEvidence(
   profile: PrimaryProfileRecord,
   constructsById: ReadonlyMap<ConstructId, ConstructResult>,
 ): ProfileEvidenceEvaluation {
-  const spec = getPrimaryIdeologyCommitmentSpec(String(profile.id));
+  const spec = getPrimaryIdeologyCommitmentSpec(profile);
   if (!spec) return legacyEvaluatePrimaryProfileEvidence(profile, constructsById);
 
   const minimumEvidenceRatio = profile.minimumEvidenceRatio ?? 0.6;
@@ -251,7 +251,7 @@ function evaluateCommitmentProfileEvidence(
 export function emptyProfileEvidence(
   profile: PrimaryProfileRecord,
 ): ProfileEvidenceEvaluation {
-  const spec = getPrimaryIdeologyCommitmentSpec(String(profile.id));
+  const spec = getPrimaryIdeologyCommitmentSpec(profile);
   if (!spec) return legacyEmptyProfileEvidence(profile);
   const constructIds = [...new Set(evidenceCommitments(spec.commitments).map((entry) => entry.constructId))].sort();
   const minimumEvidenceRatio = profile.minimumEvidenceRatio ?? 0.6;

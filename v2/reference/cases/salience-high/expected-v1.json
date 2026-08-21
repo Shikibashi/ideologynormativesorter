@@ -1,6 +1,6 @@
 {
   "referenceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
-  "contentVersion": "v2-content-phase8.2-commitments",
+  "contentVersion": "v3-content-commitments-1",
   "scoringVersion": "production-score-v1",
   "decision": "scored",
   "evidenceCoverage": {
@@ -13,11 +13,52 @@
     "band": "low",
     "reasons": []
   },
-  "abstentionCodes": [],
+  "abstentionCodes": [
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item",
+    "unknown-item"
+  ],
   "dimensionScores": [
     {
       "dimensionId": "anti-domination",
-      "value": 0.01997146932952926,
+      "value": 0.042796005706134135,
       "answeredItems": 106,
       "expectedItems": 106,
       "coverage": 1
@@ -80,7 +121,7 @@
     },
     {
       "dimensionId": "equality-theory",
-      "value": -0.030888030888030882,
+      "value": 0.0772200772200772,
       "answeredItems": 47,
       "expectedItems": 47,
       "coverage": 1
@@ -129,21 +170,21 @@
     },
     {
       "dimensionId": "moral-traditionalism",
-      "value": -0.019736842105263157,
+      "value": 0.06578947368421052,
       "answeredItems": 25,
       "expectedItems": 25,
       "coverage": 1
     },
     {
       "dimensionId": "political-community-boundary",
-      "value": -0.011904761904761908,
+      "value": 0.11904761904761904,
       "answeredItems": 24,
       "expectedItems": 24,
       "coverage": 1
     },
     {
       "dimensionId": "property-legitimacy",
-      "value": 0.07279693486590036,
+      "value": 0.07662835249042144,
       "answeredItems": 41,
       "expectedItems": 41,
       "coverage": 1
@@ -201,97 +242,97 @@
   "labels": [
     {
       "labelId": "christian-democrat",
-      "similarity": 0.8789444083693689,
+      "similarity": 0.8839811639558321,
       "rank": 1,
-      "runnerUpMargin": 0.006419896209188591
+      "runnerUpMargin": 0.011456651795651807
     },
     {
       "labelId": "conservative",
       "similarity": 0.8725245121601803,
       "rank": 2,
-      "runnerUpMargin": 0.06287255011283643
+      "runnerUpMargin": 0.06233677169144358
     },
     {
       "labelId": "liberal-conservatism",
-      "similarity": 0.8096519620473439,
+      "similarity": 0.8101877404687368,
       "rank": 3,
-      "runnerUpMargin": 0.022794870531294587
+      "runnerUpMargin": 0.0021207919497154837
     },
     {
       "labelId": "social-liberalism",
-      "similarity": 0.7868570915160493,
+      "similarity": 0.8080669485190213,
       "rank": 4,
-      "runnerUpMargin": 0.059770999431690064
-    },
-    {
-      "labelId": "national-conservatism",
-      "similarity": 0.7270860920843593,
-      "rank": 5,
-      "runnerUpMargin": 0.0016340002525349062
+      "runnerUpMargin": 0.07664087360796701
     },
     {
       "labelId": "republicanism",
-      "similarity": 0.7254520918318244,
-      "rank": 6,
-      "runnerUpMargin": 0.007244409591043777
+      "similarity": 0.7314260749110543,
+      "rank": 5,
+      "runnerUpMargin": 0.012686529336196739
     },
     {
       "labelId": "market-liberal",
-      "similarity": 0.7182076822407806,
-      "rank": 7,
-      "runnerUpMargin": 0.023403555863220737
+      "similarity": 0.7187395455748575,
+      "rank": 6,
+      "runnerUpMargin": 0.003787702122644454
     },
     {
       "labelId": "social-democrat",
-      "similarity": 0.6948041263775598,
-      "rank": 8,
-      "runnerUpMargin": 0.012840819401092829
+      "similarity": 0.7149518434522131,
+      "rank": 7,
+      "runnerUpMargin": 0.024594677710098378
     },
     {
-      "labelId": "classical-liberalism",
-      "similarity": 0.681963306976467,
-      "rank": 9,
-      "runnerUpMargin": 0.014038364462481523
+      "labelId": "national-conservatism",
+      "similarity": 0.6903571657421147,
+      "rank": 8,
+      "runnerUpMargin": 0.0007543643533869382
     },
     {
       "labelId": "marxian-socialism",
-      "similarity": 0.6679249425139855,
+      "similarity": 0.6896028013887278,
+      "rank": 9,
+      "runnerUpMargin": 0.007243736573373516
+    },
+    {
+      "labelId": "classical-liberalism",
+      "similarity": 0.6823590648153542,
       "rank": 10,
-      "runnerUpMargin": 0.012663771028401993
+      "runnerUpMargin": 0.0076775120014088705
+    },
+    {
+      "labelId": "radical-democracy",
+      "similarity": 0.6746815528139454,
+      "rank": 11,
+      "runnerUpMargin": 0.00298139530828756
     },
     {
       "labelId": "libertarian-socialism",
-      "similarity": 0.6552611714855835,
-      "rank": 11,
-      "runnerUpMargin": 0.008964875189287236
+      "similarity": 0.6717001575056578,
+      "rank": 12,
+      "runnerUpMargin": 0.014744595137706762
+    },
+    {
+      "labelId": "democratic-socialist",
+      "similarity": 0.656955562367951,
+      "rank": 13,
+      "runnerUpMargin": 0.010659266071654794
     },
     {
       "labelId": "green-politics",
       "similarity": 0.6462962962962963,
-      "rank": 12,
-      "runnerUpMargin": 0.0009905689061225909
-    },
-    {
-      "labelId": "radical-democracy",
-      "similarity": 0.6453057273901737,
-      "rank": 13,
-      "runnerUpMargin": 0.005715933886774827
+      "rank": 14,
+      "runnerUpMargin": 0.006290809896500327
     },
     {
       "labelId": "market-right-libertarianism",
-      "similarity": 0.6395897935033988,
-      "rank": 14,
-      "runnerUpMargin": 0.005361744082328479
-    },
-    {
-      "labelId": "democratic-socialist",
-      "similarity": 0.6342280494210704,
+      "similarity": 0.6400054863997959,
       "rank": 15,
-      "runnerUpMargin": 0.08048550336175431
+      "runnerUpMargin": 0.08670261579053595
     },
     {
       "labelId": "marxist-leninist",
-      "similarity": 0.553742546059316,
+      "similarity": 0.55330287060926,
       "rank": 16
     }
   ]

@@ -333,22 +333,28 @@ function validatePrimaryProfile(
     "ontology node",
     issues,
   );
-  for (const [index, requirement] of (profile.requirements ?? []).entries()) {
-    const construct = constructMap.get(requirement.constructId);
+  for (const [index, commitment] of (profile.commitments ?? []).entries()) {
+    const construct = constructMap.get(commitment.constructId);
     if (!construct)
       addIssue(
         issues,
-        `profiles[${profile.id}].requirements[${index}].constructId`,
+        `profiles[${profile.id}].commitments[${index}].constructId`,
         "ref",
-        `Unknown construct ${requirement.constructId}`,
+        `Unknown construct ${commitment.constructId}`,
       );
     else if (construct.scope !== "root")
       addIssue(
         issues,
-        `profiles[${profile.id}].requirements[${index}].constructId`,
+        `profiles[${profile.id}].commitments[${index}].constructId`,
         "scope",
-        "Primary profile must target root constructs",
+        "Primary commitment must target a root construct",
       );
+    validateProvenanceRefs(
+      commitment.provenanceRefs,
+      provenanceIds,
+      `profiles[${profile.id}].commitments[${index}].provenanceRefs`,
+      issues,
+    );
   }
   validateGateSet(
     profile.gates,

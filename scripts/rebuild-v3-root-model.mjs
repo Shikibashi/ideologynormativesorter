@@ -845,7 +845,7 @@ function migrateItems(items) {
 function mappedRootIndex(items) {
   const index = new Map(rootConstructSpecs.map((entry) => [entry.id, []]));
   for (const item of items) {
-    if (item.status !== "active") continue;
+    if (item.status !== "active" || item.role !== "core") continue;
     if (item.responseType === "statement-choice") {
       for (const option of item.options) {
         for (const contribution of rootContributions(option.contributions)) index.get(String(contribution.constructId))?.push(`${item.id}#${option.id}`);
@@ -1099,7 +1099,7 @@ writeJson(resolve(root, "v2/packages/content/schemas/profile.schema.json"), {
 replaceOnce(
   "v2/packages/content/src/validate-schema.ts",
   "  validateRequirements(record.requirements, `${path}.requirements`, issues);\n  if (!record.requirements?.length) addIssue(issues, `${path}.requirements`, \"value\", \"Primary profile requires requirements\");",
-  "  if (record.requirements?.length) addIssue(issues, `${path}.requirements`, \"value\", \"Primary profile legacy target requirements are not authoritative in v3\");\n  validateCommitments(record.commitments, `${path}.commitments`, issues);\n  if (!record.commitments?.length) addIssue(issues, `${path}.commitments`, \"value\", \"Primary profile requires commitment specifications\");",
+  "  if (record.commitments !== undefined) {\n    validateCommitments(record.commitments, `${path}.commitments`, issues);\n    if (!record.commitments.length) addIssue(issues, `${path}.commitments`, \"value\", \"Primary profile requires commitment specifications\");\n  } else if (record.requirements !== undefined) {\n    validateRequirements(record.requirements, `${path}.requirements`, issues);\n    if (!record.requirements.length) addIssue(issues, `${path}.requirements`, \"value\", \"Primary profile requires requirements\");\n  } else {\n    addIssue(issues, `${path}.commitments`, \"value\", \"Primary profile requires commitment specifications\");\n  }",
 );
 
 replaceOnce(

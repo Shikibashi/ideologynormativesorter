@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "referenceManifest": "v2/reference/v1/manifest.json",
-  "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
+  "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
   "cases": [
     {
       "id": "empty-core",
@@ -19,9 +19,9 @@
         "KD-008"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -43,9 +43,9 @@
         "P-002"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -70,9 +70,9 @@
         "VER-003"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -94,9 +94,9 @@
         "P-003"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -119,9 +119,9 @@
         "M-002"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -143,9 +143,9 @@
         "VER-002"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -170,9 +170,9 @@
         "K-004"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -195,9 +195,9 @@
         "C-003"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -220,9 +220,9 @@
         "SA-004"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -245,9 +245,9 @@
         "SA-003"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -269,9 +269,9 @@
         "VER-002"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -296,9 +296,9 @@
         "KD-009"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -323,9 +323,9 @@
         "KD-010"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -350,9 +350,9 @@
         "KD-010"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -377,9 +377,9 @@
         "KD-010"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -404,9 +404,9 @@
         "KD-010"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -431,9 +431,9 @@
         "KD-010"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -458,9 +458,9 @@
         "KD-010"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -485,9 +485,9 @@
         "KD-010"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -512,9 +512,9 @@
         "KD-010"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",
@@ -539,9 +539,9 @@
         "KD-010"
       ],
       "sourceVersion": {
-        "contentVersion": "v2-content-phase8.2-commitments",
-        "contentFingerprint": "38dfece4db8d2265f77ec7c204dc23f3f23aa187bd7d29481d9ff58f03bb0e05",
-        "scoringVersion": "scoring-v2.commitment-v1"
+        "contentVersion": "v3-content-commitments-1",
+        "contentFingerprint": "df5fb8cf642e85c28b3d414de6973824af9c9792de9b460814c6f5f9335fde55",
+        "scoringVersion": "scoring-v3.commitment-1"
       },
       "rationaleRefs": [
         "docs/v2/reference-oracle.md",

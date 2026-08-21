@@ -36,9 +36,9 @@ import { scoreModifiers } from "../modifiers/modifier-matching";
 import type { PreparedAssessment, SpecialistPreparedAssessment } from "../types";
 import { validateAssessmentResult } from "./result-validation";
 
-export const SUPPORTED_CONTENT_SCHEMA_VERSION = "content-schema-v2.phase8.1" as const;
+export const SUPPORTED_CONTENT_SCHEMA_VERSION = "content-schema-v3.commitments.1" as const;
 export const SUPPORTED_RESPONSE_SCHEMA_VERSION = "response-v2.phase1.1" as const;
-export const SUPPORTED_SCORING_VERSION = "scoring-v2.commitment-v1" as const;
+export const SUPPORTED_SCORING_VERSION = "scoring-v3.commitment-1" as const;
 export const SUPPORTED_RESULT_SCHEMA_VERSION = "result-v2.phase9.1" as const;
 
 export interface AssessmentLayers {

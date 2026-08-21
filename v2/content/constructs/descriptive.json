@@ -1,177 +1,496 @@
 [
   {
-    "id": "coordination-optimism",
-    "name": "Coordination Optimism",
+    "id": "market-knowledge-coordination",
+    "name": "Market Knowledge Coordination",
     "role": "descriptive",
     "scope": "root",
-    "description": "Empirical expectation about whether decentralized, voluntary arrangements between individuals and groups tend to succeed or fail absent a central coordinator.",
-    "poles": {
-      "negative": "Decentralized coordination often fails without central direction",
-      "positive": "Decentralized coordination often succeeds without central direction"
-    },
-    "sourceKey": "coordination-optimism",
+    "family": "markets",
+    "description": "Descriptive expectation that decentralized prices and exchange can aggregate dispersed information and coordinate resources.",
+    "boundaryStatement": "An empirical mechanism claim, not a claim that every market outcome is just.",
+    "sourceKey": "market-knowledge-coordination",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Coordination Optimism",
-      "longLabel": "Coordination Optimism"
+      "shortLabel": "Market Knowledge Coordination",
+      "longLabel": "Market Knowledge Coordination"
+    },
+    "poles": {
+      "negative": "Market prices generally fail to coordinate dispersed information and resources",
+      "positive": "Decentralized prices and exchange can often coordinate dispersed information and resources"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-hayek-knowledge",
+      "citation:v3-oxford-libertarianism"
     ]
   },
   {
-    "id": "cultural-plasticity",
-    "name": "Cultural Plasticity vs Persistence",
+    "id": "market-power-concentration",
+    "name": "Market Power and Concentration",
     "role": "descriptive",
     "scope": "root",
-    "description": "Empirical belief about how malleable cultural patterns, norms, and behavior are in response to law and policy.",
-    "poles": {
-      "negative": "Culture and norms are path-dependent and resist deliberate policy change",
-      "positive": "Culture and norms respond readily to policy and institutional design"
-    },
-    "sourceKey": "cultural-plasticity",
+    "family": "markets",
+    "description": "Descriptive expectation that market institutions can generate durable private concentration, monopoly, or dependency.",
+    "boundaryStatement": "Does not by itself imply a particular antitrust, ownership, or regulatory remedy.",
+    "sourceKey": "market-power-concentration",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Cultural Plasticity vs Persistence",
-      "longLabel": "Cultural Plasticity vs Persistence"
+      "shortLabel": "Market Power and Concentration",
+      "longLabel": "Market Power and Concentration"
+    },
+    "poles": {
+      "negative": "Competitive pressures usually prevent durable private concentration or dependency",
+      "positive": "Market institutions can generate durable concentration, monopoly, or dependency"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-socialism",
+      "citation:v3-oxford-social-democracy"
     ]
   },
   {
-    "id": "democratic-confidence",
-    "name": "Democratic Confidence",
+    "id": "state-administrative-capacity",
+    "name": "State Administrative Capacity",
     "role": "descriptive",
     "scope": "root",
-    "description": "Empirical confidence that majoritarian democratic processes reliably produce good collective decisions.",
-    "poles": {
-      "negative": "Voters are often manipulable or poorly informed",
-      "positive": "Voters generally deliberate well and reach sound decisions"
-    },
-    "sourceKey": "democratic-confidence",
+    "family": "institutions",
+    "description": "Descriptive expectation that state institutions can competently implement complex policy programs under suitable conditions.",
+    "boundaryStatement": "Separate from whether those programs are legitimate or desirable.",
+    "sourceKey": "state-administrative-capacity",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Democratic Confidence",
-      "longLabel": "Democratic Confidence"
+      "shortLabel": "State Administrative Capacity",
+      "longLabel": "State Administrative Capacity"
+    },
+    "poles": {
+      "negative": "State institutions generally cannot competently execute complex policy programs",
+      "positive": "State institutions can competently execute complex policy programs under suitable conditions"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-public-choice"
     ]
   },
   {
-    "id": "expert-confidence",
-    "name": "Expert Confidence",
+    "id": "political-incentives-capture",
+    "name": "Political Incentives and Capture",
     "role": "descriptive",
     "scope": "root",
-    "description": "Empirical confidence that technical or professional expertise, once given authority, tends to produce better outcomes rather than self-serving or insulated decision-making.",
-    "poles": {
-      "negative": "Expert bodies tend to cartelize or detach from public accountability",
-      "positive": "Delegating decisions to experts generally improves governance"
-    },
-    "sourceKey": "expert-confidence",
+    "family": "institutions",
+    "description": "Descriptive expectation that public institutions are vulnerable to organized interests, rent seeking, and insider incentives.",
+    "boundaryStatement": "Does not entail that private institutions are free from analogous power problems.",
+    "sourceKey": "political-incentives-capture",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Expert Confidence",
-      "longLabel": "Expert Confidence"
+      "shortLabel": "Political Incentives and Capture",
+      "longLabel": "Political Incentives and Capture"
+    },
+    "poles": {
+      "negative": "Public institutions usually overcome organized-interest and insider incentives",
+      "positive": "Public institutions are often vulnerable to organized interests, rent seeking, and insider incentives"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-public-choice"
     ]
   },
   {
-    "id": "market-process-confidence",
-    "name": "Market-Process Confidence",
+    "id": "democratic-decision-capacity",
+    "name": "Democratic Decision Capacity",
     "role": "descriptive",
     "scope": "root",
-    "description": "Empirical confidence that decentralized price-driven exchange tends to allocate resources effectively.",
-    "poles": {
-      "negative": "Markets routinely misallocate resources or produce harmful outcomes",
-      "positive": "Markets generally coordinate information and resources well"
-    },
-    "sourceKey": "market-process-confidence",
+    "family": "democracy",
+    "description": "Descriptive confidence that democratic procedures can aggregate information and preferences, correct errors, and reach workable collective decisions.",
+    "boundaryStatement": "Distinct from the normative legitimacy of democracy.",
+    "sourceKey": "democratic-decision-capacity",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Market-Process Confidence",
-      "longLabel": "Market-Process Confidence"
+      "shortLabel": "Democratic Decision Capacity",
+      "longLabel": "Democratic Decision Capacity"
+    },
+    "poles": {
+      "negative": "Democratic procedures are generally poor at aggregating information and correcting collective errors",
+      "positive": "Democratic procedures can often aggregate information and correct collective errors"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-pettit-republicanism",
+      "citation:v3-oxford-social-democracy"
     ]
   },
   {
-    "id": "public-choice-skepticism",
-    "name": "Public-Choice Skepticism",
+    "id": "expert-knowledge-capacity",
+    "name": "Expert Knowledge Capacity",
     "role": "descriptive",
     "scope": "root",
-    "description": "Empirical expectation that public institutions are bent toward the interests of insiders, regulators, or organized lobbies rather than the public.",
-    "poles": {
-      "negative": "Public institutions usually overcome self-interest and capture",
-      "positive": "Public institutions are often shaped by self-interest and capture"
-    },
-    "sourceKey": "public-choice-skepticism",
+    "family": "institutions",
+    "description": "Descriptive expectation that specialized expertise can improve collective decisions under appropriate accountability structures.",
+    "boundaryStatement": "Does not by itself justify technocratic insulation from accountability.",
+    "sourceKey": "expert-knowledge-capacity",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Public-Choice Skepticism",
-      "longLabel": "Public-Choice Skepticism"
+      "shortLabel": "Expert Knowledge Capacity",
+      "longLabel": "Expert Knowledge Capacity"
+    },
+    "poles": {
+      "negative": "Delegation to specialized expertise rarely improves collective decisions",
+      "positive": "Specialized expertise can substantially improve collective decisions under appropriate institutions"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-public-choice"
     ]
   },
   {
-    "id": "state-capacity-confidence",
-    "name": "State-Capacity Confidence",
+    "id": "cultural-malleability",
+    "name": "Cultural Malleability",
     "role": "descriptive",
     "scope": "root",
-    "description": "Empirical confidence in the administrative capability of state institutions to carry out ambitious programs.",
-    "poles": {
-      "negative": "States usually fail to execute complex tasks well",
-      "positive": "States can competently execute complex policy"
-    },
-    "sourceKey": "state-capacity-confidence",
+    "family": "culture",
+    "description": "Descriptive expectation that norms, identities, and cultural practices respond substantially to institutions, incentives, and policy.",
+    "boundaryStatement": "Distinct from the normative desirability of cultural change.",
+    "sourceKey": "cultural-malleability",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "State-Capacity Confidence",
-      "longLabel": "State-Capacity Confidence"
+      "shortLabel": "Cultural Malleability",
+      "longLabel": "Cultural Malleability"
+    },
+    "poles": {
+      "negative": "Cultural patterns are strongly persistent and resist deliberate institutional change",
+      "positive": "Cultural patterns can change substantially in response to institutions, incentives, and policy"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-conservatism",
+      "citation:v3-sep-nationalism"
+    ]
+  },
+  {
+    "id": "decentralized-coordination-capacity",
+    "name": "Decentralized Coordination Capacity",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "institutions",
+    "description": "Descriptive expectation that voluntary, local, polycentric, or federated institutions can solve coordination problems without a single central director.",
+    "boundaryStatement": "Does not imply every public good can be privately supplied.",
+    "sourceKey": "decentralized-coordination-capacity",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Decentralized Coordination Capacity",
+      "longLabel": "Decentralized Coordination Capacity"
+    },
+    "poles": {
+      "negative": "Coordination problems generally require a single central director",
+      "positive": "Voluntary, local, polycentric, or federated institutions can often solve coordination problems without one central director"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-ostrom-governing-commons",
+      "citation:v3-hayek-knowledge"
+    ]
+  },
+  {
+    "id": "class-exploitation",
+    "name": "Class and Exploitation",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "political-economy",
+    "description": "Descriptive claim that class relations and control of productive assets systematically generate exploitation or asymmetric workplace power.",
+    "boundaryStatement": "A mechanism claim that should not be inferred merely from support for redistribution.",
+    "sourceKey": "class-exploitation",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Class and Exploitation",
+      "longLabel": "Class and Exploitation"
+    },
+    "poles": {
+      "negative": "Class ownership relations do not systematically generate exploitation or asymmetric workplace power",
+      "positive": "Class ownership relations systematically generate exploitation or asymmetric workplace power"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-marxian-tradition",
+      "citation:v3-oxford-socialism"
+    ]
+  },
+  {
+    "id": "capital-accumulation-crisis",
+    "name": "Capital Accumulation and Crisis",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "political-economy",
+    "description": "Descriptive claim that capitalist accumulation tends toward concentration, instability, or recurrent crisis mechanisms.",
+    "boundaryStatement": "Distinct from ordinary claims that individual markets sometimes fail.",
+    "sourceKey": "capital-accumulation-crisis",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Capital Accumulation and Crisis",
+      "longLabel": "Capital Accumulation and Crisis"
+    },
+    "poles": {
+      "negative": "Capitalist accumulation has no systematic tendency toward concentration or recurrent crisis",
+      "positive": "Capitalist accumulation tends toward concentration, instability, or recurrent crisis mechanisms"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-marxian-tradition"
+    ]
+  },
+  {
+    "id": "ideology-hegemony",
+    "name": "Ideology and Hegemony",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "power",
+    "description": "Descriptive claim that beliefs, culture, and institutions systematically reproduce or legitimate structures of power.",
+    "boundaryStatement": "Does not imply that every belief is reducible to class interest or propaganda.",
+    "sourceKey": "ideology-hegemony",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Ideology and Hegemony",
+      "longLabel": "Ideology and Hegemony"
+    },
+    "poles": {
+      "negative": "Beliefs and cultural institutions are largely independent of structural power",
+      "positive": "Beliefs and cultural institutions can systematically reproduce or legitimate structures of power"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-marxian-tradition"
+    ]
+  },
+  {
+    "id": "nation-formation",
+    "name": "Nation Formation",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "political-community",
+    "description": "Descriptive claim that national identities are socially and institutionally produced and historically reproduced rather than simply given.",
+    "boundaryStatement": "Distinct from whether nations deserve self-determination.",
+    "sourceKey": "nation-formation",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Nation Formation",
+      "longLabel": "Nation Formation"
+    },
+    "poles": {
+      "negative": "National identities are largely fixed or given independently of institutions and historical construction",
+      "positive": "National identities are substantially produced and reproduced through institutions and historical processes"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-nationalism"
+    ]
+  },
+  {
+    "id": "patriarchy-social-reproduction",
+    "name": "Patriarchy and Social Reproduction",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "gender",
+    "description": "Descriptive claim that gendered power and social reproduction systematically structure institutions, work, family, and opportunities.",
+    "boundaryStatement": "A structural explanatory claim, not a generic endorsement of sex equality.",
+    "sourceKey": "patriarchy-social-reproduction",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Patriarchy and Social Reproduction",
+      "longLabel": "Patriarchy and Social Reproduction"
+    },
+    "poles": {
+      "negative": "Gendered power and social reproduction do not systematically structure major institutions and opportunities",
+      "positive": "Gendered power and social reproduction systematically structure institutions and opportunities"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-socialism"
+    ]
+  },
+  {
+    "id": "imperialism-dependency",
+    "name": "Imperialism and Dependency",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "international",
+    "description": "Descriptive claim that international political-economic relations can reproduce domination or dependency across states and peoples.",
+    "boundaryStatement": "Distinct from the normative view that any particular intervention is wrong.",
+    "sourceKey": "imperialism-dependency",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Imperialism and Dependency",
+      "longLabel": "Imperialism and Dependency"
+    },
+    "poles": {
+      "negative": "International political-economic relations do not systematically reproduce dependency or external domination",
+      "positive": "International political-economic relations can systematically reproduce dependency or external domination"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-marxian-tradition",
+      "citation:v3-sep-nationalism"
+    ]
+  },
+  {
+    "id": "ecological-limits-growth",
+    "name": "Ecological Limits to Growth",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "ecology",
+    "description": "Descriptive expectation that biophysical constraints can limit or materially alter the feasibility of indefinite growth in throughput.",
+    "boundaryStatement": "Does not settle whether GDP, welfare, or technological progress must decline.",
+    "sourceKey": "ecological-limits-growth",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Ecological Limits to Growth",
+      "longLabel": "Ecological Limits to Growth"
+    },
+    "poles": {
+      "negative": "Biophysical constraints place no important long-run limits on material throughput because substitution and innovation can overcome them",
+      "positive": "Biophysical constraints can materially limit the feasibility of indefinite growth in material throughput"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-green-ideology"
+    ]
+  },
+  {
+    "id": "collective-action-capacity",
+    "name": "Collective Action Capacity",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "institutions",
+    "description": "Descriptive claim that groups can overcome free-rider and coordination problems under identifiable institutional conditions.",
+    "boundaryStatement": "Not a claim that collective action is always efficient or benign.",
+    "sourceKey": "collective-action-capacity",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Collective Action Capacity",
+      "longLabel": "Collective Action Capacity"
+    },
+    "poles": {
+      "negative": "Free-rider problems generally prevent groups from sustaining collective solutions",
+      "positive": "Groups can overcome free-rider and coordination problems under identifiable institutional conditions"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-ostrom-governing-commons",
+      "citation:v3-public-choice"
+    ]
+  },
+  {
+    "id": "institutional-path-dependence",
+    "name": "Institutional Path Dependence",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "institutions",
+    "description": "Descriptive claim that inherited institutions constrain later feasible choices and reform trajectories.",
+    "boundaryStatement": "Does not imply that institutional change is impossible or undesirable.",
+    "sourceKey": "institutional-path-dependence",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Institutional Path Dependence",
+      "longLabel": "Institutional Path Dependence"
+    },
+    "poles": {
+      "negative": "Inherited institutional arrangements place little constraint on feasible later reforms",
+      "positive": "Inherited institutions substantially constrain later feasible choices and reform trajectories"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-conservatism"
+    ]
+  },
+  {
+    "id": "historical-change-structural",
+    "name": "Structural Historical Change",
+    "role": "descriptive",
+    "scope": "root",
+    "family": "history",
+    "description": "Descriptive claim that large-scale political change is substantially shaped by structural social and economic forces rather than only individual preferences or leaders.",
+    "boundaryStatement": "Allows agency and contingency while measuring the claimed explanatory importance of structure.",
+    "sourceKey": "historical-change-structural",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Structural Historical Change",
+      "longLabel": "Structural Historical Change"
+    },
+    "poles": {
+      "negative": "Large-scale political change is mainly explained by individual leaders and choices rather than structural forces",
+      "positive": "Large-scale political change is substantially shaped by structural social and economic forces"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-marxian-tradition"
     ]
   }
 ]

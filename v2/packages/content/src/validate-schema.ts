@@ -424,8 +424,15 @@ function validateProfileGates(
 function validatePrimary(record: PrimaryProfileRecord, path: string, issues: ValidationIssue[]): void {
   requiredString(record.id, `${path}.id`, issues);
   requiredString(record.name, `${path}.name`, issues);
-  validateRequirements(record.requirements, `${path}.requirements`, issues);
-  if (!record.requirements?.length) addIssue(issues, `${path}.requirements`, "value", "Primary profile requires requirements");
+  if (record.commitments !== undefined) {
+    validateCommitments(record.commitments, `${path}.commitments`, issues);
+    if (!record.commitments.length) addIssue(issues, `${path}.commitments`, "value", "Primary profile requires commitment specifications");
+  } else if (record.requirements !== undefined) {
+    validateRequirements(record.requirements, `${path}.requirements`, issues);
+    if (!record.requirements.length) addIssue(issues, `${path}.requirements`, "value", "Primary profile requires requirements");
+  } else {
+    addIssue(issues, `${path}.commitments`, "value", "Primary profile requires commitment specifications");
+  }
   validateProfileGates(record.gates, `${path}.gates`, issues);
   optionalFiniteNumber(record.minimumEvidenceRatio, `${path}.minimumEvidenceRatio`, issues);
   validateRefs(record.provenanceRefs, `${path}.provenanceRefs`, issues);

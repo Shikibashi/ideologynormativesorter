@@ -1,0 +1,686 @@
+{
+  "schemaVersion": "v3-neighbor-coverage-1",
+  "empiricalValidity": "NOT_EVALUATED",
+  "pairs": [
+    {
+      "id": "christian-democrat__conservative",
+      "left": "profile:christian-democrat",
+      "right": "profile:conservative",
+      "constructIds": [
+        "subsidiarity",
+        "social-solidarity",
+        "religious-political-inspiration"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "subsidiarity",
+          "itemIds": [
+            "q0535",
+            "q0536"
+          ]
+        },
+        {
+          "constructId": "social-solidarity",
+          "itemIds": [
+            "q0062",
+            "q0510"
+          ]
+        },
+        {
+          "constructId": "religious-political-inspiration",
+          "itemIds": [
+            "q0508",
+            "q0509"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0062",
+        "q0508",
+        "q0509",
+        "q0510",
+        "q0535",
+        "q0536"
+      ]
+    },
+    {
+      "id": "classical-liberal__right-libertarian",
+      "left": "profile:classical-liberalism",
+      "right": "profile:market-right-libertarianism",
+      "constructIds": [
+        "productive-property",
+        "effective-agency",
+        "social-solidarity"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "productive-property",
+          "itemIds": [
+            "q0503",
+            "q0504"
+          ]
+        },
+        {
+          "constructId": "effective-agency",
+          "itemIds": [
+            "q0063",
+            "q0079"
+          ]
+        },
+        {
+          "constructId": "social-solidarity",
+          "itemIds": [
+            "q0062",
+            "q0510"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0062",
+        "q0063",
+        "q0079",
+        "q0503",
+        "q0504",
+        "q0510"
+      ]
+    },
+    {
+      "id": "democratic-socialist__social-democrat",
+      "left": "profile:democratic-socialist",
+      "right": "profile:social-democrat",
+      "constructIds": [
+        "public-ownership",
+        "worker-control",
+        "workplace-self-government"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "public-ownership",
+          "itemIds": [
+            "q0035",
+            "q0525"
+          ]
+        },
+        {
+          "constructId": "worker-control",
+          "itemIds": [
+            "q0097",
+            "q0526"
+          ]
+        },
+        {
+          "constructId": "workplace-self-government",
+          "itemIds": [
+            "q0083",
+            "q0505"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0035",
+        "q0083",
+        "q0097",
+        "q0505",
+        "q0525",
+        "q0526"
+      ]
+    },
+    {
+      "id": "libertarian-socialist__democratic-socialist",
+      "left": "profile:libertarian-socialism",
+      "right": "profile:democratic-socialist",
+      "constructIds": [
+        "political-authority-legitimacy",
+        "institutional-decentralization",
+        "direct-action"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "political-authority-legitimacy",
+          "itemIds": [
+            "q0001",
+            "q0003",
+            "q0004",
+            "q0005",
+            "q0006",
+            "q0019",
+            "q0121",
+            "q0122",
+            "q0123",
+            "q0124",
+            "q0125",
+            "q0126",
+            "q0139",
+            "q0425",
+            "sq01#a",
+            "sq01#b",
+            "sq01#c",
+            "sq01#d"
+          ]
+        },
+        {
+          "constructId": "institutional-decentralization",
+          "itemIds": [
+            "q0015",
+            "q0018",
+            "q0053",
+            "q0055",
+            "q0077",
+            "q0137",
+            "q0233",
+            "q0235",
+            "q0236",
+            "q0313",
+            "q0315",
+            "q0317",
+            "q0336",
+            "q0411"
+          ]
+        },
+        {
+          "constructId": "direct-action",
+          "itemIds": [
+            "q0439",
+            "q0443",
+            "q0468",
+            "q0469"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0001",
+        "q0003",
+        "q0004",
+        "q0005",
+        "q0006",
+        "q0015",
+        "q0018",
+        "q0019",
+        "q0053",
+        "q0055",
+        "q0077",
+        "q0121",
+        "q0122",
+        "q0123",
+        "q0124",
+        "q0125",
+        "q0126",
+        "q0137",
+        "q0139",
+        "q0233",
+        "q0235",
+        "q0236",
+        "q0313",
+        "q0315",
+        "q0317",
+        "q0336",
+        "q0411",
+        "q0425",
+        "q0439",
+        "q0443",
+        "q0468",
+        "q0469",
+        "sq01#a",
+        "sq01#b",
+        "sq01#c",
+        "sq01#d"
+      ]
+    },
+    {
+      "id": "marxian__democratic-socialist",
+      "left": "profile:marxian-socialism",
+      "right": "profile:democratic-socialist",
+      "constructIds": [
+        "class-exploitation",
+        "capital-accumulation-crisis",
+        "ideology-hegemony",
+        "historical-change-structural"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "class-exploitation",
+          "itemIds": [
+            "q0089",
+            "q0511"
+          ]
+        },
+        {
+          "constructId": "capital-accumulation-crisis",
+          "itemIds": [
+            "q0512",
+            "q0513"
+          ]
+        },
+        {
+          "constructId": "ideology-hegemony",
+          "itemIds": [
+            "q0461",
+            "q0478"
+          ]
+        },
+        {
+          "constructId": "historical-change-structural",
+          "itemIds": [
+            "q0521",
+            "q0522"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0089",
+        "q0461",
+        "q0478",
+        "q0511",
+        "q0512",
+        "q0513",
+        "q0521",
+        "q0522"
+      ]
+    },
+    {
+      "id": "marxist-leninist__marxian",
+      "left": "profile:marxist-leninist",
+      "right": "profile:marxian-socialism",
+      "constructIds": [
+        "vanguard-party",
+        "democratic-centralism",
+        "central-planning"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "vanguard-party",
+          "itemIds": [
+            "q0529",
+            "q0530"
+          ]
+        },
+        {
+          "constructId": "democratic-centralism",
+          "itemIds": [
+            "q0531",
+            "q0532"
+          ]
+        },
+        {
+          "constructId": "central-planning",
+          "itemIds": [
+            "q0539",
+            "q0540"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0529",
+        "q0530",
+        "q0531",
+        "q0532",
+        "q0539",
+        "q0540"
+      ]
+    },
+    {
+      "id": "republican__social-liberal",
+      "left": "profile:republicanism",
+      "right": "profile:social-liberalism",
+      "constructIds": [
+        "anti-domination",
+        "contestable-institutions"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "anti-domination",
+          "itemIds": [
+            "q0021",
+            "q0022",
+            "q0023",
+            "q0024",
+            "q0025",
+            "q0026",
+            "q0039",
+            "q0042",
+            "q0084",
+            "q0099",
+            "q0102",
+            "q0104",
+            "q0119",
+            "q0161",
+            "q0162",
+            "q0163",
+            "q0164",
+            "q0165",
+            "q0166",
+            "q0179",
+            "q0181",
+            "q0182",
+            "q0183",
+            "q0184",
+            "q0185",
+            "q0186",
+            "q0199",
+            "q0225",
+            "q0285",
+            "q0304",
+            "q0305",
+            "q0321",
+            "q0325",
+            "q0342",
+            "q0345",
+            "q0361",
+            "q0362",
+            "q0363",
+            "q0364",
+            "q0365",
+            "q0379",
+            "q0381",
+            "q0382",
+            "q0383",
+            "q0384",
+            "q0385",
+            "q0399",
+            "q0401",
+            "q0407",
+            "sq13#b",
+            "sq13#d"
+          ]
+        },
+        {
+          "constructId": "contestable-institutions",
+          "itemIds": [
+            "q0354",
+            "q0355",
+            "q0356"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0021",
+        "q0022",
+        "q0023",
+        "q0024",
+        "q0025",
+        "q0026",
+        "q0039",
+        "q0042",
+        "q0084",
+        "q0099",
+        "q0102",
+        "q0104",
+        "q0119",
+        "q0161",
+        "q0162",
+        "q0163",
+        "q0164",
+        "q0165",
+        "q0166",
+        "q0179",
+        "q0181",
+        "q0182",
+        "q0183",
+        "q0184",
+        "q0185",
+        "q0186",
+        "q0199",
+        "q0225",
+        "q0285",
+        "q0304",
+        "q0305",
+        "q0321",
+        "q0325",
+        "q0342",
+        "q0345",
+        "q0354",
+        "q0355",
+        "q0356",
+        "q0361",
+        "q0362",
+        "q0363",
+        "q0364",
+        "q0365",
+        "q0379",
+        "q0381",
+        "q0382",
+        "q0383",
+        "q0384",
+        "q0385",
+        "q0399",
+        "q0401",
+        "q0407",
+        "sq13#b",
+        "sq13#d"
+      ]
+    },
+    {
+      "id": "republican__classical-liberal",
+      "left": "profile:republicanism",
+      "right": "profile:classical-liberalism",
+      "constructIds": [
+        "anti-domination",
+        "contestable-institutions"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "anti-domination",
+          "itemIds": [
+            "q0021",
+            "q0022",
+            "q0023",
+            "q0024",
+            "q0025",
+            "q0026",
+            "q0039",
+            "q0042",
+            "q0084",
+            "q0099",
+            "q0102",
+            "q0104",
+            "q0119",
+            "q0161",
+            "q0162",
+            "q0163",
+            "q0164",
+            "q0165",
+            "q0166",
+            "q0179",
+            "q0181",
+            "q0182",
+            "q0183",
+            "q0184",
+            "q0185",
+            "q0186",
+            "q0199",
+            "q0225",
+            "q0285",
+            "q0304",
+            "q0305",
+            "q0321",
+            "q0325",
+            "q0342",
+            "q0345",
+            "q0361",
+            "q0362",
+            "q0363",
+            "q0364",
+            "q0365",
+            "q0379",
+            "q0381",
+            "q0382",
+            "q0383",
+            "q0384",
+            "q0385",
+            "q0399",
+            "q0401",
+            "q0407",
+            "sq13#b",
+            "sq13#d"
+          ]
+        },
+        {
+          "constructId": "contestable-institutions",
+          "itemIds": [
+            "q0354",
+            "q0355",
+            "q0356"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0021",
+        "q0022",
+        "q0023",
+        "q0024",
+        "q0025",
+        "q0026",
+        "q0039",
+        "q0042",
+        "q0084",
+        "q0099",
+        "q0102",
+        "q0104",
+        "q0119",
+        "q0161",
+        "q0162",
+        "q0163",
+        "q0164",
+        "q0165",
+        "q0166",
+        "q0179",
+        "q0181",
+        "q0182",
+        "q0183",
+        "q0184",
+        "q0185",
+        "q0186",
+        "q0199",
+        "q0225",
+        "q0285",
+        "q0304",
+        "q0305",
+        "q0321",
+        "q0325",
+        "q0342",
+        "q0345",
+        "q0354",
+        "q0355",
+        "q0356",
+        "q0361",
+        "q0362",
+        "q0363",
+        "q0364",
+        "q0365",
+        "q0379",
+        "q0381",
+        "q0382",
+        "q0383",
+        "q0384",
+        "q0385",
+        "q0399",
+        "q0401",
+        "q0407",
+        "sq13#b",
+        "sq13#d"
+      ]
+    },
+    {
+      "id": "social-liberal__classical-liberal",
+      "left": "profile:social-liberalism",
+      "right": "profile:classical-liberalism",
+      "constructIds": [
+        "effective-agency",
+        "equality-opportunity",
+        "social-solidarity"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "effective-agency",
+          "itemIds": [
+            "q0063",
+            "q0079"
+          ]
+        },
+        {
+          "constructId": "equality-opportunity",
+          "itemIds": [
+            "q0501",
+            "q0502"
+          ]
+        },
+        {
+          "constructId": "social-solidarity",
+          "itemIds": [
+            "q0062",
+            "q0510"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0062",
+        "q0063",
+        "q0079",
+        "q0501",
+        "q0502",
+        "q0510"
+      ]
+    },
+    {
+      "id": "green__social-democrat",
+      "left": "profile:green-politics",
+      "right": "profile:social-democrat",
+      "constructIds": [
+        "ecological-standing",
+        "intergenerational-ecological-duty",
+        "ecological-restructuring"
+      ],
+      "directEvidence": [
+        {
+          "constructId": "ecological-standing",
+          "itemIds": [
+            "q0302",
+            "q0303",
+            "q0418",
+            "q0427",
+            "q0428",
+            "q0429",
+            "q0446",
+            "q0448",
+            "sq07#a",
+            "sq07#b",
+            "sq07#c",
+            "sq07#d"
+          ]
+        },
+        {
+          "constructId": "intergenerational-ecological-duty",
+          "itemIds": [
+            "q0301",
+            "q0447"
+          ]
+        },
+        {
+          "constructId": "ecological-restructuring",
+          "itemIds": [
+            "q0537",
+            "q0538"
+          ]
+        }
+      ],
+      "itemIds": [
+        "q0301",
+        "q0302",
+        "q0303",
+        "q0418",
+        "q0427",
+        "q0428",
+        "q0429",
+        "q0446",
+        "q0447",
+        "q0448",
+        "q0537",
+        "q0538",
+        "sq07#a",
+        "sq07#b",
+        "sq07#c",
+        "sq07#d"
+      ]
+    }
+  ]
+}

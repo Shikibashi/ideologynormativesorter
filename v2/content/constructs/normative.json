@@ -1,252 +1,785 @@
 [
   {
-    "id": "anti-domination",
-    "name": "Anti-Domination vs Hierarchy Acceptance",
-    "role": "normative",
-    "scope": "root",
-    "description": "Whether established hierarchy is entitled to continuing deference or must remain open to challenge and effective checks.",
-    "poles": {
-      "negative": "Established hierarchies may remain legitimate without continuing contestability",
-      "positive": "Hierarchy requires continuing checks, contestability, and justification"
-    },
-    "sourceKey": "anti-domination",
-    "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
-      "publicRoleStatus": "internal"
-    },
-    "display": {
-      "shortLabel": "Anti-Domination vs Hierarchy Acceptance",
-      "longLabel": "Anti-Domination vs Hierarchy Acceptance"
-    },
-    "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
-    ]
-  },
-  {
-    "id": "authority-legitimacy",
-    "name": "Authority Legitimacy",
-    "role": "normative",
-    "scope": "root",
-    "description": "Whether a central institution holding exclusive power over law and force needs special justification, or may be presumed legitimate.",
-    "poles": {
-      "negative": "Authority requires constant justification",
-      "positive": "Centralized authority is presumptively legitimate"
-    },
-    "sourceKey": "authority-legitimacy",
-    "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
-      "publicRoleStatus": "internal"
-    },
-    "display": {
-      "shortLabel": "Authority Legitimacy",
-      "longLabel": "Authority Legitimacy"
-    },
-    "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
-    ]
-  },
-  {
-    "id": "equality-theory",
-    "name": "Formal vs Substantive Equality",
-    "role": "normative",
-    "scope": "root",
-    "description": "Whether justice primarily requires equal legal status and rules or also requires reducing material disparities.",
-    "poles": {
-      "negative": "Equal legal status and rules are the main requirement",
-      "positive": "Reducing material disparities is also a central requirement"
-    },
-    "sourceKey": "equality-theory",
-    "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
-      "publicRoleStatus": "internal"
-    },
-    "display": {
-      "shortLabel": "Formal vs Substantive Equality",
-      "longLabel": "Formal vs Substantive Equality"
-    },
-    "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
-    ]
-  },
-  {
-    "id": "human-nature-priority",
-    "name": "Ecocentric vs Anthropocentric Priority",
-    "role": "normative",
-    "scope": "root",
-    "description": "Whether the nonhuman environment carries moral weight in its own right, or whether nature is properly valued chiefly as a resource for human flourishing.",
-    "poles": {
-      "negative": "Human welfare and productive use of nature take priority",
-      "positive": "The natural world has standing independent of human use"
-    },
-    "sourceKey": "human-nature-priority",
-    "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
-      "publicRoleStatus": "internal"
-    },
-    "display": {
-      "shortLabel": "Ecocentric vs Anthropocentric Priority",
-      "longLabel": "Ecocentric vs Anthropocentric Priority"
-    },
-    "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
-    ]
-  },
-  {
     "id": "liberty-noninterference",
-    "name": "Conceptions of Liberty",
+    "name": "Liberty: Non-Interference",
     "role": "normative",
     "scope": "root",
-    "description": "Whether political freedom is understood mainly as being left unimpeded or also as having the practical independence and protection from arbitrary power needed to act.",
-    "poles": {
-      "negative": "Freedom also depends on autonomy, capacity, or protection from domination",
-      "positive": "Freedom mainly means absence of interference"
-    },
+    "family": "liberty",
+    "description": "Normative priority on protection against coercive or intentional interference by others or the state.",
+    "boundaryStatement": "Distinct from material capability and from republican non-domination.",
     "sourceKey": "liberty-noninterference",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Conceptions of Liberty",
-      "longLabel": "Conceptions of Liberty"
+      "shortLabel": "Liberty: Non-Interference",
+      "longLabel": "Liberty: Non-Interference"
+    },
+    "poles": {
+      "negative": "Freedom does not require a strong protected sphere against coercive interference",
+      "positive": "People are politically freer when protected from coercive or intentional interference"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-liberty",
+      "citation:v3-sep-liberalism",
+      "citation:v3-oxford-libertarianism"
     ]
   },
   {
-    "id": "militarism-pacifism",
-    "name": "Pacifism vs Conditional Use of Force",
+    "id": "effective-agency",
+    "name": "Effective Agency",
     "role": "normative",
     "scope": "root",
-    "description": "Whether military force can ever be morally justified; this does not measure support for frequent intervention or military dominance.",
-    "poles": {
-      "negative": "Military force is never morally justified",
-      "positive": "Military force can be morally justified under specified conditions"
-    },
-    "sourceKey": "militarism-pacifism",
+    "family": "liberty",
+    "description": "Normative view that freedom also depends on practical power, resources, or capabilities to pursue important ends.",
+    "boundaryStatement": "Does not by itself entail equal outcomes or any specific welfare program.",
+    "sourceKey": "effective-agency",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Pacifism vs Conditional Use of Force",
-      "longLabel": "Pacifism vs Conditional Use of Force"
+      "shortLabel": "Effective Agency",
+      "longLabel": "Effective Agency"
+    },
+    "poles": {
+      "negative": "Formal permission is sufficient even when a person lacks practical capacity to act",
+      "positive": "Freedom also depends on practical capabilities and resources needed to pursue important ends"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-liberty",
+      "citation:v3-sep-liberalism"
     ]
   },
   {
-    "id": "moral-traditionalism",
-    "name": "Moral Traditionalism",
+    "id": "anti-domination",
+    "name": "Freedom from Domination",
     "role": "normative",
     "scope": "root",
-    "description": "Whether inherited norms around personal and family conduct deserve deference, or whether a wide range of personal moral choices should be left open.",
-    "poles": {
-      "negative": "Pluralism and permissiveness in personal morality are appropriate",
-      "positive": "A traditional, settled moral order should be upheld"
-    },
-    "sourceKey": "moral-traditionalism",
+    "family": "liberty",
+    "description": "Normative opposition to uncontrolled or arbitrary power over another person or group.",
+    "boundaryStatement": "Not equivalent to opposition to every hierarchy; constrained and contestable authority can be non-dominating.",
+    "sourceKey": "anti-domination",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Moral Traditionalism",
-      "longLabel": "Moral Traditionalism"
+      "shortLabel": "Freedom from Domination",
+      "longLabel": "Freedom from Domination"
+    },
+    "poles": {
+      "negative": "Uncontrolled power can be acceptable when it is not actively interfering",
+      "positive": "People should be protected from uncontrolled or arbitrary power even when it is not constantly exercised"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-liberty",
+      "citation:v3-pettit-republicanism"
     ]
   },
   {
-    "id": "political-community-boundary",
-    "name": "Political Community Boundary",
+    "id": "political-authority-legitimacy",
+    "name": "Political Authority Legitimacy",
     "role": "normative",
     "scope": "root",
-    "description": "Whether moral and political obligations are concentrated within a particular community or extend universally.",
-    "poles": {
-      "negative": "Special obligations to compatriots may outweigh duties to outsiders",
-      "positive": "Nationality does not limit people’s basic moral standing"
-    },
-    "sourceKey": "political-community-boundary",
+    "family": "authority",
+    "description": "Normative belief that coercive political institutions can possess special legitimacy or generate duties of compliance when justified.",
+    "boundaryStatement": "Separates the legitimacy of political authority from its administrative effectiveness and from democratic procedure.",
+    "sourceKey": "political-authority-legitimacy",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Political Community Boundary",
-      "longLabel": "Political Community Boundary"
+      "shortLabel": "Political Authority Legitimacy",
+      "longLabel": "Political Authority Legitimacy"
+    },
+    "poles": {
+      "negative": "Established political institutions possess no special moral authority merely as such",
+      "positive": "Coercive political authority can generate genuine duties of compliance when properly justified"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-political-legitimacy"
     ]
   },
   {
-    "id": "property-legitimacy",
-    "name": "Property Legitimacy",
+    "id": "legal-equality",
+    "name": "Legal and Civic Equality",
     "role": "normative",
     "scope": "root",
-    "description": "How strong a moral claim private ownership of productive assets carries relative to collective or common claims.",
-    "poles": {
-      "negative": "Collective claims are at least as strong as private title",
-      "positive": "Private property rights are strongly legitimate"
-    },
-    "sourceKey": "property-legitimacy",
+    "family": "equality",
+    "description": "Equal legal status, citizenship, and nondiscrimination independent of inherited group rank.",
+    "boundaryStatement": "Distinct from material equality, relational equality, and equality of opportunity.",
+    "sourceKey": "legal-equality",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Property Legitimacy",
-      "longLabel": "Property Legitimacy"
+      "shortLabel": "Legal and Civic Equality",
+      "longLabel": "Legal and Civic Equality"
+    },
+    "poles": {
+      "negative": "Law may assign unequal civic status by inherited or ascriptive group",
+      "positive": "Citizens should have equal legal and civic status without inherited or group-based rank"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-equality",
+      "citation:v3-sep-liberalism"
     ]
   },
   {
-    "id": "secularism-religious",
-    "name": "Secularism vs Religious Public Order",
+    "id": "equality-opportunity",
+    "name": "Equality of Opportunity",
     "role": "normative",
     "scope": "root",
-    "description": "Whether government and public institutions should be neutral with respect to religion, or may legitimately promote and reflect religious values.",
-    "poles": {
-      "negative": "Public institutions should be neutral among religions and non-religion",
-      "positive": "Public life should reflect a religious moral order"
-    },
-    "sourceKey": "secularism-religious",
+    "family": "equality",
+    "description": "Fair access to positions, education, and opportunities rather than mere formal eligibility.",
+    "boundaryStatement": "Does not imply strict equality of final resources or outcomes.",
+    "sourceKey": "equality-opportunity",
     "lifecycle": {
-      "conceptualStatus": "canonical",
-      "measurementStatus": "candidate",
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
       "publicRoleStatus": "internal"
     },
     "display": {
-      "shortLabel": "Secularism vs Religious Public Order",
-      "longLabel": "Secularism vs Religious Public Order"
+      "shortLabel": "Equality of Opportunity",
+      "longLabel": "Equality of Opportunity"
+    },
+    "poles": {
+      "negative": "Formal eligibility is sufficient regardless of background barriers",
+      "positive": "Institutions should secure fair opportunity rather than merely formal eligibility"
     },
     "provenanceRefs": [
-      "source:v1-canonical-manifest",
-      "source:phase0-measurement-contract"
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-equality",
+      "citation:v3-sep-liberalism"
+    ]
+  },
+  {
+    "id": "relational-equality",
+    "name": "Relational Equality",
+    "role": "normative",
+    "scope": "root",
+    "family": "equality",
+    "description": "Opposition to social relations of caste, status subordination, domination, or second-class standing.",
+    "boundaryStatement": "Distinct from a particular distributional pattern.",
+    "sourceKey": "relational-equality",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Relational Equality",
+      "longLabel": "Relational Equality"
+    },
+    "poles": {
+      "negative": "Status hierarchy and social subordination are not independent concerns of justice",
+      "positive": "Justice requires social relations without caste-like domination or second-class standing"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-equality",
+      "citation:v3-pettit-republicanism"
+    ]
+  },
+  {
+    "id": "distributive-equality",
+    "name": "Distributive Equality",
+    "role": "normative",
+    "scope": "root",
+    "family": "equality",
+    "description": "Normative concern with reducing unjust inequalities in income, wealth, or access to material resources.",
+    "boundaryStatement": "Does not identify one metric, pattern, or policy instrument.",
+    "sourceKey": "distributive-equality",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Distributive Equality",
+      "longLabel": "Distributive Equality"
+    },
+    "poles": {
+      "negative": "Large material inequalities are not independently objectionable if legal rights are equal",
+      "positive": "Reducing unjust material inequalities is an important requirement of justice"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-equality",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-oxford-socialism"
+    ]
+  },
+  {
+    "id": "productive-property",
+    "name": "Private Productive Property",
+    "role": "normative",
+    "scope": "root",
+    "family": "property",
+    "description": "Normative legitimacy of strong private exclusion and control rights over productive capital.",
+    "boundaryStatement": "Separate from personal possessions, land/resource claims, intellectual property, and workplace governance.",
+    "sourceKey": "productive-property",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Private Productive Property",
+      "longLabel": "Private Productive Property"
+    },
+    "poles": {
+      "negative": "Claims to productive capital are substantially limited by social or democratic ownership claims",
+      "positive": "Private owners may legitimately hold strong exclusion and control rights over productive capital"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-property",
+      "citation:v3-oxford-libertarianism",
+      "citation:v3-oxford-socialism"
+    ]
+  },
+  {
+    "id": "workplace-self-government",
+    "name": "Workplace Self-Government",
+    "role": "normative",
+    "scope": "root",
+    "family": "property",
+    "description": "Normative claim that workers have meaningful rights of voice, governance, or control in productive institutions.",
+    "boundaryStatement": "Does not require one ownership form; cooperatives, codetermination, and social ownership can instantiate it differently.",
+    "sourceKey": "workplace-self-government",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Workplace Self-Government",
+      "longLabel": "Workplace Self-Government"
+    },
+    "poles": {
+      "negative": "Ownership alone may legitimately determine workplace governance",
+      "positive": "Workers have a normative claim to meaningful voice or governance in productive institutions"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-property",
+      "citation:v3-oxford-socialism",
+      "citation:v3-oxford-social-democracy"
+    ]
+  },
+  {
+    "id": "land-natural-resource-claims",
+    "name": "Common Claims to Land and Natural Resources",
+    "role": "normative",
+    "scope": "root",
+    "family": "property",
+    "description": "Normative view that land and natural-resource value carries common, equal, or public claims that limit absolute private appropriation.",
+    "boundaryStatement": "Separate from ownership of produced capital and personal possessions.",
+    "sourceKey": "land-natural-resource-claims",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Common Claims to Land and Natural Resources",
+      "longLabel": "Common Claims to Land and Natural Resources"
+    },
+    "poles": {
+      "negative": "Strong private title may exhaust legitimate claims to land and natural-resource value",
+      "positive": "Land and natural-resource value carries common or equal claims that limit absolute private appropriation"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-property",
+      "citation:v3-oxford-libertarianism"
+    ]
+  },
+  {
+    "id": "personal-property",
+    "name": "Personal Property",
+    "role": "normative",
+    "scope": "root",
+    "family": "property",
+    "description": "Strong normative claims over personal possessions and ordinary-use property.",
+    "boundaryStatement": "Does not settle ownership of firms, land rents, or intellectual creations.",
+    "sourceKey": "personal-property",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Personal Property",
+      "longLabel": "Personal Property"
+    },
+    "poles": {
+      "negative": "Ordinary personal possessions need not receive strong individual control claims",
+      "positive": "People normally have strong moral claims over their personal possessions and ordinary-use property"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-property",
+      "citation:v3-oxford-libertarianism"
+    ]
+  },
+  {
+    "id": "intellectual-property-rights",
+    "name": "Intellectual Property Rights",
+    "role": "normative",
+    "scope": "root",
+    "family": "property",
+    "description": "Normative legitimacy of exclusion rights over inventions, expression, information, and related intangible creations.",
+    "boundaryStatement": "Copyright, patent, trademark, and trade-secret institutions remain distinct legal forms; this construct measures their common exclusion-right rationale only.",
+    "sourceKey": "intellectual-property-rights",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Intellectual Property Rights",
+      "longLabel": "Intellectual Property Rights"
+    },
+    "poles": {
+      "negative": "Intangible creations generally should not generate strong state-enforced exclusion rights",
+      "positive": "Creators and inventors may legitimately receive state-enforced exclusion rights over qualifying intellectual creations"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-intellectual-property",
+      "citation:v3-sep-property"
+    ]
+  },
+  {
+    "id": "universal-moral-standing",
+    "name": "Universal Moral Standing",
+    "role": "normative",
+    "scope": "root",
+    "family": "political-community",
+    "description": "Basic moral standing is not diminished by nationality, birthplace, or political borders.",
+    "boundaryStatement": "Compatible with some special duties to compatriots; it does not entail world government or unrestricted migration.",
+    "sourceKey": "universal-moral-standing",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Universal Moral Standing",
+      "longLabel": "Universal Moral Standing"
+    },
+    "poles": {
+      "negative": "Political borders may substantially reduce the moral standing owed to outsiders",
+      "positive": "Foreigners and compatriots possess the same basic moral standing despite political borders"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-nationalism",
+      "citation:v3-sep-liberalism"
+    ]
+  },
+  {
+    "id": "compatriot-priority",
+    "name": "Compatriot Priority",
+    "role": "normative",
+    "scope": "root",
+    "family": "political-community",
+    "description": "Normative belief that political institutions may give special priority to duties owed to compatriots.",
+    "boundaryStatement": "Distinct from denying outsiders basic rights and from national self-determination.",
+    "sourceKey": "compatriot-priority",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Compatriot Priority",
+      "longLabel": "Compatriot Priority"
+    },
+    "poles": {
+      "negative": "Political institutions should not privilege compatriots merely because of shared nationality",
+      "positive": "Political institutions may legitimately give special priority to duties owed to compatriots"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-nationalism"
+    ]
+  },
+  {
+    "id": "national-self-determination",
+    "name": "National Self-Determination",
+    "role": "normative",
+    "scope": "root",
+    "family": "political-community",
+    "description": "Normative claim that nations or national communities may possess rights to collective political self-government.",
+    "boundaryStatement": "Does not specify ethnic membership rules or require an ethnically homogeneous state.",
+    "sourceKey": "national-self-determination",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "National Self-Determination",
+      "longLabel": "National Self-Determination"
+    },
+    "poles": {
+      "negative": "National identity creates no independent claim to collective political self-government",
+      "positive": "Nations may possess legitimate claims to collective political self-government"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-nationalism"
+    ]
+  },
+  {
+    "id": "ecological-standing",
+    "name": "Ecological Standing",
+    "role": "normative",
+    "scope": "root",
+    "family": "ecology",
+    "description": "Normative standing of nonhuman nature and ecological systems beyond their instrumental usefulness to current humans.",
+    "boundaryStatement": "Distinct from empirical beliefs about ecological limits and from a specific climate policy.",
+    "sourceKey": "ecological-standing",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Ecological Standing",
+      "longLabel": "Ecological Standing"
+    },
+    "poles": {
+      "negative": "Ecological systems matter politically only through their effects on human interests",
+      "positive": "Nonhuman nature and ecological systems have moral or political standing beyond immediate human use"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-green-ideology"
+    ]
+  },
+  {
+    "id": "intergenerational-ecological-duty",
+    "name": "Intergenerational Ecological Duty",
+    "role": "normative",
+    "scope": "root",
+    "family": "ecology",
+    "description": "Normative duties concerning ecological conditions inherited by future generations.",
+    "boundaryStatement": "Does not decide the exact discount rate, growth path, or technology portfolio.",
+    "sourceKey": "intergenerational-ecological-duty",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Intergenerational Ecological Duty",
+      "longLabel": "Intergenerational Ecological Duty"
+    },
+    "poles": {
+      "negative": "Present people have no special duty to preserve ecological conditions for future generations beyond ordinary current interests",
+      "positive": "Present generations owe duties concerning the ecological conditions inherited by future people"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-green-ideology"
+    ]
+  },
+  {
+    "id": "tradition-deference",
+    "name": "Deference to Tradition",
+    "role": "normative",
+    "scope": "root",
+    "family": "conservatism",
+    "description": "Presumptive normative weight for inherited institutions and practices because they embody continuity, knowledge, or social attachment.",
+    "boundaryStatement": "Separate from coercive enforcement of traditional morality.",
+    "sourceKey": "tradition-deference",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Deference to Tradition",
+      "longLabel": "Deference to Tradition"
+    },
+    "poles": {
+      "negative": "Inherited practice has no presumptive normative weight merely because it is inherited",
+      "positive": "Inherited institutions and practices deserve some presumptive weight before deliberate reconstruction"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-conservatism"
+    ]
+  },
+  {
+    "id": "coercive-moral-order",
+    "name": "Coercive Moral Order",
+    "role": "normative",
+    "scope": "root",
+    "family": "conservatism",
+    "description": "Normative legitimacy of using law to enforce a substantive traditional moral order in private and social life.",
+    "boundaryStatement": "A person can value tradition while rejecting coercive moral legislation.",
+    "sourceKey": "coercive-moral-order",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Coercive Moral Order",
+      "longLabel": "Coercive Moral Order"
+    },
+    "poles": {
+      "negative": "Private moral conformity should not generally be enforced by law merely because it is traditional",
+      "positive": "Law may legitimately enforce important elements of a substantive traditional moral order"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-conservatism"
+    ]
+  },
+  {
+    "id": "religious-establishment",
+    "name": "Religious Establishment",
+    "role": "normative",
+    "scope": "root",
+    "family": "religion",
+    "description": "Normative legitimacy of constitutionally privileging, endorsing, or establishing a religion through public institutions.",
+    "boundaryStatement": "Distinct from accommodation of religious exercise and from religious inspiration in ordinary democratic politics.",
+    "sourceKey": "religious-establishment",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Religious Establishment",
+      "longLabel": "Religious Establishment"
+    },
+    "poles": {
+      "negative": "Public institutions should not constitutionally privilege or establish a religion",
+      "positive": "Public institutions may legitimately privilege or establish a religion"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-religion-liberal-philosophy",
+      "citation:v3-oxford-political-secularism"
+    ]
+  },
+  {
+    "id": "religious-neutrality",
+    "name": "Religious Neutrality",
+    "role": "normative",
+    "scope": "root",
+    "family": "religion",
+    "description": "Normative requirement that public institutions remain neutral among religions and between religion and non-religion.",
+    "boundaryStatement": "Neutrality can coexist with accommodation and does not require excluding religious citizens from political argument.",
+    "sourceKey": "religious-neutrality",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Religious Neutrality",
+      "longLabel": "Religious Neutrality"
+    },
+    "poles": {
+      "negative": "The state need not remain neutral among religious and nonreligious outlooks",
+      "positive": "Public institutions should remain neutral among religions and between religion and non-religion"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-religion-liberal-philosophy",
+      "citation:v3-oxford-political-secularism"
+    ]
+  },
+  {
+    "id": "religious-accommodation",
+    "name": "Religious and Conscience Accommodation",
+    "role": "normative",
+    "scope": "root",
+    "family": "religion",
+    "description": "Normative support for exemptions or accommodations protecting conscience and religious exercise under suitable conditions.",
+    "boundaryStatement": "Accommodation is not equivalent to establishment or clerical authority.",
+    "sourceKey": "religious-accommodation",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Religious and Conscience Accommodation",
+      "longLabel": "Religious and Conscience Accommodation"
+    },
+    "poles": {
+      "negative": "General legal rules normally need no accommodation for conscience or religious exercise",
+      "positive": "Law should sometimes accommodate conscience or religious exercise rather than require identical treatment"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-religion-liberal-philosophy",
+      "citation:v3-oxford-political-secularism"
+    ]
+  },
+  {
+    "id": "religious-political-inspiration",
+    "name": "Religious Political Inspiration",
+    "role": "normative",
+    "scope": "root",
+    "family": "religion",
+    "description": "Normative legitimacy of religious moral traditions inspiring ordinary democratic political projects without establishing clerical rule.",
+    "boundaryStatement": "Distinct from establishment, theocracy, and claims that religious arguments alone bind nonadherents.",
+    "sourceKey": "religious-political-inspiration",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Religious Political Inspiration",
+      "longLabel": "Religious Political Inspiration"
+    },
+    "poles": {
+      "negative": "Religious moral traditions should have no legitimate role in inspiring ordinary democratic political projects",
+      "positive": "Religious moral traditions may legitimately inspire ordinary democratic political projects without establishing clerical authority"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-oxford-religion-liberal-philosophy",
+      "citation:v3-cambridge-christian-democracy"
+    ]
+  },
+  {
+    "id": "force-permissibility",
+    "name": "Conditional Permissibility of Force",
+    "role": "normative",
+    "scope": "root",
+    "family": "force",
+    "description": "Normative belief that organized military or defensive force can be morally justified under at least some conditions.",
+    "boundaryStatement": "This is not militarism: conditional justifiability does not imply enthusiasm for war, prestige, or intervention.",
+    "sourceKey": "force-permissibility",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Conditional Permissibility of Force",
+      "longLabel": "Conditional Permissibility of Force"
+    },
+    "poles": {
+      "negative": "Organized military or defensive force is never morally justified",
+      "positive": "Organized military or defensive force can be morally justified under at least some strict conditions"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-pacifism",
+      "citation:v3-oxford-libertarianism"
+    ]
+  },
+  {
+    "id": "anti-militarism",
+    "name": "Anti-Militarism",
+    "role": "normative",
+    "scope": "root",
+    "family": "force",
+    "description": "Normative commitment to restraining military institutions, prestige, intervention, and war-making beyond ordinary acceptance of defensive force.",
+    "boundaryStatement": "Compatible with believing defensive force can sometimes be justified.",
+    "sourceKey": "anti-militarism",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Anti-Militarism",
+      "longLabel": "Anti-Militarism"
+    },
+    "poles": {
+      "negative": "Military power, prestige, and intervention need no special political presumption of restraint",
+      "positive": "Military power, prestige, and intervention should face a strong political presumption of restraint"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-pacifism",
+      "citation:v3-oxford-green-ideology"
+    ]
+  },
+  {
+    "id": "democratic-legitimacy",
+    "name": "Democratic Legitimacy",
+    "role": "normative",
+    "scope": "root",
+    "family": "democracy",
+    "description": "Normative requirement that collective political power normally be democratically authorized and accountable.",
+    "boundaryStatement": "Distinct from the descriptive claim that voters reliably make good decisions.",
+    "sourceKey": "democratic-legitimacy",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Democratic Legitimacy",
+      "longLabel": "Democratic Legitimacy"
+    },
+    "poles": {
+      "negative": "Political power need not normally be democratically authorized or accountable",
+      "positive": "Collective political power normally requires democratic authorization and accountability"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-sep-liberalism",
+      "citation:v3-pettit-republicanism",
+      "citation:v3-oxford-social-democracy"
+    ]
+  },
+  {
+    "id": "social-solidarity",
+    "name": "Social Solidarity",
+    "role": "normative",
+    "scope": "root",
+    "family": "social-obligation",
+    "description": "Normative obligation of political communities to protect members against severe social and material vulnerability.",
+    "boundaryStatement": "Does not determine whether provision is public, mutual, cash-based, contributory, or universal.",
+    "sourceKey": "social-solidarity",
+    "lifecycle": {
+      "conceptualStatus": "canonical-v3",
+      "measurementStatus": "candidate-content-reviewed",
+      "publicRoleStatus": "internal"
+    },
+    "display": {
+      "shortLabel": "Social Solidarity",
+      "longLabel": "Social Solidarity"
+    },
+    "poles": {
+      "negative": "Political communities have no collective obligation to protect members against severe social or material vulnerability",
+      "positive": "Political communities have obligations to protect members against severe social and material vulnerability"
+    },
+    "provenanceRefs": [
+      "citation:v3-freeden-morphology",
+      "citation:v3-cambridge-christian-democracy",
+      "citation:v3-oxford-social-democracy",
+      "citation:v3-sep-liberalism"
     ]
   }
 ]

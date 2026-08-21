@@ -1,28 +1,28 @@
 {
   "manifestVersion": "v2-content-source-manifest-1",
   "metadata": {
-    "contentSchemaVersion": "content-schema-v2.phase8.1",
-    "contentVersion": "v2-content-phase8.2-commitments",
-    "contentFingerprint": "pending-commitment-model",
-    "scoringVersion": "scoring-v2.commitment-v1",
+    "contentSchemaVersion": "content-schema-v3.commitments.1",
+    "contentVersion": "v3-content-commitments-1",
+    "contentFingerprint": "pending-v3-root-rebuild",
+    "scoringVersion": "scoring-v3.commitment-1",
     "responseSchemaVersion": "response-v2.phase1.1",
     "resultSchemaVersion": "result-v2.phase9.1",
     "researchSchemaVersion": "research-v2.phase1.1",
     "sourceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
-    "methodologyCommit": "b1ac3e3e147e3761faccec8588d7c822a875d4dc",
-    "extractionVersion": "v2-phase8.2-commitment-migration-1",
+    "methodologyCommit": "e1c194ff2c44ec20e23e00ab23dc410ebdd25f4c",
+    "extractionVersion": "v3-root-rebuild-1",
     "sourceArtifact": "research-worker/generated/canonical-manifest.json#manifest",
     "counts": {
       "domains": 20,
-      "constructsRoot": 26,
+      "constructsRoot": 74,
       "constructsSpecialist": 54,
-      "constructsTotal": 80,
-      "coreItems": 338,
+      "constructsTotal": 128,
+      "coreItems": 378,
       "specialistItems": 68,
-      "likert7Items": 400,
+      "likert7Items": 440,
       "statementChoiceItems": 6,
       "reversedItems": 0,
-      "primaryProfiles": 16,
+      "primaryProfiles": 12,
       "modifierProfiles": 24,
       "specialistProfiles": 78,
       "specialistCandidates": 57,
@@ -30,7 +30,7 @@
       "ontologyNodes": 145,
       "ontologyRelations": 42,
       "diagnosticRelations": 4,
-      "explicitContributionMappings": 1013
+      "explicitContributionMappings": 549
     }
   },
   "files": {
@@ -71,18 +71,18 @@
     "authority": "research-worker/generated/canonical-manifest.json#manifest",
     "sourceCommit": "f0324dbf27dfc6e35ff557992e4643e3df15ee0e",
     "methodologyCommit": "b1ac3e3e147e3761faccec8588d7c822a875d4dc",
-    "extractionVersion": "v2-phase8.2-commitment-migration-1",
+    "extractionVersion": "v3-root-rebuild-1",
     "generatedCounts": {
       "domains": 20,
-      "constructsRoot": 26,
+      "constructsRoot": 74,
       "constructsSpecialist": 54,
-      "constructsTotal": 80,
-      "coreItems": 338,
+      "constructsTotal": 128,
+      "coreItems": 378,
       "specialistItems": 68,
-      "likert7Items": 400,
+      "likert7Items": 440,
       "statementChoiceItems": 6,
       "reversedItems": 0,
-      "primaryProfiles": 16,
+      "primaryProfiles": 12,
       "modifierProfiles": 24,
       "specialistProfiles": 78,
       "specialistCandidates": 57,
@@ -90,7 +90,7 @@
       "ontologyNodes": 145,
       "ontologyRelations": 42,
       "diagnosticRelations": 4,
-      "explicitContributionMappings": 1013
+      "explicitContributionMappings": 549
     }
   }
 }

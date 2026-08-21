@@ -189,6 +189,7 @@ export interface SpecialistCommitmentRecord {
   weight?: number;
   minimumAnsweredItems?: number;
   rationale: string;
+  provenanceRefs?: string[];
 }
 
 export interface BaseProfileRecord {
@@ -196,6 +197,7 @@ export interface BaseProfileRecord {
   name: string;
   role: "primary" | "modifier" | "specialist";
   requirements?: ConstructRequirement[];
+  commitments?: SpecialistCommitmentRecord[];
   gates: ConstitutiveGate[];
   minimumEvidenceRatio?: number;
   status?: string;
