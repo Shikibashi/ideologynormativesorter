@@ -82,6 +82,12 @@ export interface ConstructRecord {
   moduleId?: SpecialistModuleId;
   family?: string;
   description?: string;
+  canonicalDefinition?: string;
+  conceptualScope?: string;
+  exclusions?: string[];
+  boundaryCases?: string[];
+  semanticLayer?: "normative" | "descriptive" | "prescriptive" | "mixed";
+  structureType?: "bipolar" | "unipolar" | "multidimensional" | "conditional";
   poles?: { negative: string; positive: string };
   boundaryStatement?: string;
   sourceKey?: string;
@@ -189,6 +195,7 @@ export interface SpecialistCommitmentRecord {
   weight?: number;
   minimumAnsweredItems?: number;
   rationale: string;
+  criterionPolicy?: string;
   provenanceRefs?: string[];
 }
 

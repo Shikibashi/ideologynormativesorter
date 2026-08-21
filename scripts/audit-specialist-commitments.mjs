@@ -33,6 +33,8 @@ const addCommitmentUse = (profile, variant, commitment) => {
     commitmentId: String(commitment.id ?? ""),
     relation: commitment.relation ?? null,
     criterion: commitment.criterion ?? null,
+    criterionPolicy: commitment.criterionPolicy ?? null,
+    provenanceRefs: commitment.provenanceRefs ?? [],
     weight: commitment.weight ?? 1,
     minimumAnsweredItems: commitment.minimumAnsweredItems ?? null,
   });
@@ -70,8 +72,15 @@ const audit = constructs.map((construct) => ({
   moduleId: String(construct.moduleId ?? ""),
   sourceKey: String(construct.sourceKey ?? ""),
   description: construct.description ?? null,
+  canonicalDefinition: construct.canonicalDefinition ?? null,
+  conceptualScope: construct.conceptualScope ?? null,
+  exclusions: construct.exclusions ?? [],
+  boundaryCases: construct.boundaryCases ?? [],
+  semanticLayer: construct.semanticLayer ?? null,
+  structureType: construct.structureType ?? null,
   poles: construct.poles ?? null,
   boundaryStatement: construct.boundaryStatement ?? null,
+  provenanceRefs: construct.provenanceRefs ?? [],
   items: (itemUses.get(String(construct.id)) ?? []).sort((a, b) => a.itemId.localeCompare(b.itemId)),
   commitmentUses: (commitmentUses.get(String(construct.id)) ?? []).sort(useSort),
   legacyRequirementUses: (legacyRequirementUses.get(String(construct.id)) ?? []).sort(useSort),
@@ -84,6 +93,12 @@ console.log(JSON.stringify({
     profileCount: profiles.length,
     constructsMissingDefinition: audit.filter(
       (entry) => !entry.description || !entry.poles?.negative || !entry.poles?.positive || !entry.boundaryStatement,
+    ).length,
+    constructsMissingSourceBacking: audit.filter(
+      (entry) => !entry.canonicalDefinition || !entry.conceptualScope || !entry.exclusions.length || !entry.boundaryCases.length || !entry.semanticLayer || !entry.structureType || !entry.provenanceRefs.some((ref) => ref.startsWith("citation:")),
+    ).length,
+    commitmentsMissingSourceBacking: audit.flatMap((entry) => entry.commitmentUses).filter(
+      (use) => !use.criterionPolicy || !use.provenanceRefs?.some((ref) => ref.startsWith("citation:")),
     ).length,
     constructsWithoutMappedItems: audit.filter((entry) => entry.items.length === 0).length,
     constructsWithoutCommitmentUses: audit.filter((entry) => entry.commitmentUses.length === 0).length,
